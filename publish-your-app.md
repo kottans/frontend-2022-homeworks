@@ -1,21 +1,21 @@
 # Publish your app on GitHub Pages
 
-Метод публікації веб-додатку, який не потребує створення чи комплектування.
+Метод публікації веб-додатку, який не потребує білду чи бандлу.
 
 ## Pre-requisites
 
-- У вас є спеціальний проект для вашої програми на GitHub.
+- У вас є спеціальний проект для вашого додатку на GitHub.
   Приклад: https://github.com/OleksiyRudenko/a-tiny-JS-world
-- Ваша програма має `index.html` у корені проекту
-- Стилі та скіпти мають посилання у `index.html`
+- Ваш додаток має `index.html` у корені проекту
+- Стилі та скріпти мають посилання у `index.html`
 
 ## Publication
 
-1. Перейдіть до Налаштування проекту
+1. Перейдіть до налаштувань проекту
 
 ![Project Settings - General](./img/publication-0-project-settings.png)
 
-2. Прокрутіть униз до розділу **Pages** і виберіть гілку
+2. Прокрутіть вниз до розділу **Pages** і оберіть гілку
    яка буде джерелом вашої публікації.
 
 ![Project Settings - GitHub Pages](./img/publication-1-github-pages-settings.png)
