@@ -3,191 +3,189 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![Telegram][icon-chat]][chat]
 
-# Frontend 2021 course homeworks
+# Frontend 2022 course homeworks
 
-This repo was created for students to submit their homeworks for review.
+Цей репозиторій було створено для того, щоб студенти могли надсилати свої домашні завдання для перевірки.
 
-Please follow the instructions below to submit your code for review.
+Виконайте наведені нижче інструкції, щоб надіслати код на розгляд.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
+**Зміст**
 
-- [Overview of contribution flow](#overview-of-contribution-flow)
-- [Glossary](#glossary)
-- [Contribution stage A. Setup the fork and local clone](#contribution-stage-a-setup-the-fork-and-local-clone)
-- [Contribution stage B. Adding new code and updating submissions](#contribution-stage-b-adding-new-code-and-updating-submissions)
-  - [B1. Submitting new task (app) code base](#b1-submitting-new-task-app-code-base)
-  - [B2. When any changes are required](#b2-when-any-changes-are-required)
-  - [B3. When all of your PRs are finally merged](#b3-when-all-of-your-prs-are-finally-merged)
-- [Reference materials and troubleshooting](#reference-materials-and-troubleshooting)
+- [Огляд contribution flow](#%D0%BE%D0%B3%D0%BB%D1%8F%D0%B4-contribution-flow)
+- [Словарик](#%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D0%B8%D0%BA)
+- [Contribution stage A. Налаштування форку і локального клону](#contribution-stage-a-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-%D1%84%D0%BE%D1%80%D0%BA%D1%83-%D1%96-%D0%BB%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BA%D0%BB%D0%BE%D0%BD%D1%83)
+- [Contribution stage B. Додавання нового коду та оновлення submissions](#contribution-stage-b-%D0%B4%D0%BE%D0%B4%D0%B0%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-%D0%BD%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE-%D0%BA%D0%BE%D0%B4%D1%83-%D1%82%D0%B0-%D0%BE%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-submissions)
+  - [B1. Відправка коду нового завдання (app).](#b1-%D0%B2%D1%96%D0%B4%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B0-%D0%BA%D0%BE%D0%B4%D1%83-%D0%BD%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE-%D0%B7%D0%B0%D0%B2%D0%B4%D0%B0%D0%BD%D0%BD%D1%8F-app)
+  - [B2. Коли потрібні будь-які зміни](#b2-%D0%BA%D0%BE%D0%BB%D0%B8-%D0%BF%D0%BE%D1%82%D1%80%D1%96%D0%B1%D0%BD%D1%96-%D0%B1%D1%83%D0%B4%D1%8C-%D1%8F%D0%BA%D1%96-%D0%B7%D0%BC%D1%96%D0%BD%D0%B8)
+  - [B3. Коли всі ваші PR нарешті будуть вмержені](#b3-%D0%BA%D0%BE%D0%BB%D0%B8-%D0%B2%D1%81%D1%96-%D0%B2%D0%B0%D1%88%D1%96-pr-%D0%BD%D0%B0%D1%80%D0%B5%D1%88%D1%82%D1%96-%D0%B1%D1%83%D0%B4%D1%83%D1%82%D1%8C-%D0%B2%D0%BC%D0%B5%D1%80%D0%B6%D0%B5%D0%BD%D1%96)
+- [Довідкові матеріали та усунення проблем](#%D0%B4%D0%BE%D0%B2%D1%96%D0%B4%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D1%96%D0%B0%D0%BB%D0%B8-%D1%82%D0%B0-%D1%83%D1%81%D1%83%D0%BD%D0%B5%D0%BD%D0%BD%D1%8F-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- *generated with [DocToc](https://github.com/thlorenz/doctoc)* -->
 
-## Overview of contribution flow
+## Огляд contribution flow
 
-Now you are a contributor to an educational open source project.
+Тепер ви є учасником освітнього проекту з відкритим кодом.
 
-[These slides](https://docs.google.com/presentation/d/13dati5gvA5f_hQFgxJPhPicjF5CRKu1e75RSsahmEaU/edit#slide=id.g58afea5148_0_0)
-visualize the contribution workflow.
+[Ці слайди](https://docs.google.com/presentation/d/13dati5gvA5f_hQFgxJPhPicjF5CRKu1e75RSsahmEaU/edit#slide=id.g58afea5148_0_0)
+візуалізують contribution workflow.
 
-The instructions below will lead you through the contribution workflow
-as you will submit your tasks code base.
+Наведені нижче інструкції проведуть вас через contribution workflow - 
+так ви будете публікувати код своїх завдань.
 
-## Glossary
+## Словарик
 
-Term | Definition
+Термін | Визначення
 ---  | ---
-repo                   | short for 'repository'
-_homeworks main repo_  | Kottans FE course homeworks repository: https://github.com/kottans/frontend-2021-homeworks
-_homeworks fork_       | your own fork of homeworks main repo
-_homeworks local repo_ | your local clone of your homeworks fork
-app                    | an application (or web page) you develop to fulfil a specific task in the course
-_app repo_             | a repository that contains your application code
+repo                   | скорочення від "репозиторій"
+_homeworks main repo_  | Kottans FE репозиторій домашніх завдань курсу: https://github.com/kottans/frontend-2022-homeworks
+_homeworks fork_       | ваш власний форк головної репи домашніх завдань
+_homeworks local repo_ | ваш локальний клон форку домашнього завдання
+app                    | програма (або веб-сторінка), яку ви розробляєте для виконання конкретного завдання в курсі
+_app repo_             | репозиторій, який містить код вашої програми
 
-## Contribution stage A. Setup the fork and local clone
+## Contribution stage A. Налаштування форку і локального клону
 
-You need to do this only once.
+Зробити це потрібно лише один раз.
 
-A1. Fork _homeworks main repo_ via GitHub web interface
+A1. Форкніть основне репо _homeworks_ через веб-інтерфейс GitHub
 
-A2. Clone _homeworks fork_ on your local machine:
-   - `git clone https://github.com/YOUR_USERNAME/frontend-2021-homeworks.git`
+A2. Клонуйте _homeworks fork_ на вашій локальній машині:
+   - `git clone https://github.com/kottans/frontend-2022-homeworks.git`
 
-> Make sure you are inside the homeworks local repo directory before any further operations  
+> Перед будь-якими подальшими операціями переконайтеся, що ви перебуваєте в каталозі локального repo homeworks
 
-A3. Add _homeworks main repo_ as an upstream:
-   - `git remote add upstream https://github.com/kottans/frontend-2021-homeworks.git`
+A3. Додайте _homeworks main repo_ як upstream:
+   - `git remote add upstream https://github.com/kottans/frontend-2022-homeworks.git`
 
-A4. In _homeworks local repo_, add a folder with your github username under `submissions` directory
+A4. У _homeworks local repo_ додайте папку зі своїм іменем користувача github до каталогу `submissions`
 
-You will add code from your every task (app) in its individual directory under
-your named directory. So, the file structure will be similar to the following
-(in this example `amashoshyna` is a username and `js-dom` is a task name)
+Ви додаватимете код із кожного завдання (app) в його окремий каталог під
+ваш іменований каталог. Отже, структура файлу буде схожа на наступну
+(у цьому прикладі `amashoshyna` - це ім'я користувача, а `js-dom` - назва завдання)
 
 ![File structure example](img/file-structure.png)
 
-## Contribution stage B. Adding new code and updating submissions 
+## Contribution stage B. Додавання нового коду та оновлення submissions
 
-### B1. Submitting new task (app) code base
+### B1. Відправка коду нового завдання (app).
 
-> IMPORTANT things to remember at all times.
+> ВАЖЛИВІ речі, про які слід завжди пам’ятати.
 >
-> 1. Do not commit to `main`.
+> 1. Не робіть коміти у `main`.
 >
-> 2. `checkout main` before creating a new branch, i.e. do not create a new branch while
-> on any branch that is not `main`.
+> 2. `checkout main` перед створенням нової гілки, тобто не створюйте нову гілку, поки ви
+> на будь-якій гілці яка не `main`.
 >
-> 3. Do not merge your branches into `main`. You can merge `main` into your branch if you
-> realize why you need this. In current workflow you normally do not need this.
+> 3. Не мержіть свої гілки в `main`. Ви можете змержити `main` у свою гілку, якщо ви
+> усвідомте, навіщо вам це потрібно. У поточному робочому процесі вам зазвичай це не потрібно.
 >
-> And don't panic if some code seems to be gone when you switch between branches.
-> It will be available to you once you switch back to a specific branch.
-> The point is to submit tasks in isolation from each other.
+> І не панікуйте, якщо під час переходу між гілками якийсь код зник.
+> Він стане доступним для вас, коли ви повернетеся до певної гілки.
+> Суть полягає в тому, щоб подавати завдання ізольовано одне від одного.
 
-B11. Make sure that the app you develop to complete the task:
+B11. Переконайтеся, що app, який ви розробляєте для виконання завдання:
 
-(a) has its own dedicated project/repository on GitHub (_app repo_)
+(a) має власний спеціальний проект/репозиторій на GitHub (_app repo_)
 
-(b) is [published on GitHub pages](./publish-your-app.md)
+(b) [опубліковано на GitHub pages](./publish-your-app.md)
 
 B12. In your _homeworks local repo_ do the following:
 
-B121. Sync up `main` branch of your _homeworks local repo_ and _homeworks fork_ (`origin`)
-with the `main` branch of _homeworks main repo_ (`upstream`):
+B121. Синхронізуйте `main` гілку вашого _homeworks local repo_ та _homeworks fork_ (`origin`)
+з гілкою `main` _homeworks main repo_ (`upstream`):
  - `git checkout main`
  - `git pull upstream main`
  - `git push origin main`
   
-> At that moment you may already have some code under some other task branch
-> and it may seem to be gone. Don't worry, it is still available under
-> its own task branch. No need to merge that branch into the `main`,
-> and do not merge it into the `main` as this will most likely entail code conflicts.  
+> На той момент у вас вже може бути код у іншій гілці завдань
+> і може здатися, що його вже немає. Не хвилюйтеся, він все ще доступний на
+> власній гілкці завдань. Немає необхідності об’єднувати цю гілку в `main`,
+> і не мержіть його в `main`, оскільки це, швидше за все, призведе до конфліктів коду.
 
-B122. Create a dedicated branch for your new task (app) code base while on the `main`:
+B122. Створіть спеціальну гілку для вашої нової кодової бази завдань (app), перебуваючи на `main`:
   - `git checkout main`
   - `git branch <task-branch-name>` (`<task-branch-name>` can be e.g. `dom-api-task`)
    
-B123. Add required files:
+B123. Додайте необхідні файли:
  - `git checkout <task-branch-name>`
- - create a directory for your task (app) code base under `./submissions/YOUR_USERNAME` so
-   that the path to your task is `./submissions/YOUR_USERNAME/TASK_NAME`
-   (see the screenshot above for an example of the structure you are expected to have)
- - copy files from your _app repo_, those and only those that are required for the review
+ - створіть каталог для бази коду вашого завдання (app) у розділі `./submissions/YOUR_USERNAME`, щоб
+    шлях до вашого завдання був – `./submissions/YOUR_USERNAME/TASK_NAME`
+   (перегляньте знімок екрана вище для прикладу структури, яку ви очікуєте)
+ - копіювати файли з вашого _app repo_, ті і тільки ті, які потрібні для перевірки
 
-> **IMPORTANT!** Put only files/code required to conduct review, i.e. `html`, `css`, `js` files and such.
-> Images, icons, IDE directories like `.idea`, `.vscode` etc **are not required** for code review.
-> **Never** have `.git` directory in your task submissions.
-> Copy required files **one by one**. **Never copy the directories** in bulk as this may entail
-> copying unwanted files and **hidden directories**.
+> **ВАЖЛИВО!** Додайте лише файли/код, необхідні для перевірки, наприклад файли `html`, `css`, `js` тощо.
+> Зображення, значки, каталоги IDE, такі як `.idea`, `.vscode` тощо - **не потрібні** для перевірки коду.
+> **Ніколи** не використовуйте `.git` у своїх завданнях які надсилаєте.
+> Скопіюйте потрібні файли **по одному**. **Ніколи не копіюйте папки** масово, оскільки це може спричинити за собою
+> копіювання небажаних файлів і **прихованих папок**.
 
- - stage files with `git add` command and commit changes
+ - помістіть на стейдж файли за допомогою команди `git add` і закомітьте зміни
 
-B124. Open a Pull Request (PR):
- - push to _homeworks fork_: `git push --set-upstream origin <task-branch-name>`
- - wait until push operation completes successfully
- - navigate to your _homeworks fork_ on GitHub
- - GitHub will offer to open a Pull Request from your new task branch; Just do it
+B124. Відкрийте Pull Request (PR):
+ - запуште до _homeworks fork_: `git push --set-upstream origin <task-branch-name>`
+ - зачекайте, доки операція push завершиться успішно
+ - перейдіть до вашого _homeworks fork_ на GitHub
+ - GitHub запропонує відкрити Pull Request із вашої нової гілки, просто зробіть це
 
 ![github-pr-opening](./img/github-pr-opening.png)
  
- - you will be offered a PR template message with instructions; read them and fulfil as prescribed
- - once PR is open, check **Files changed** to see what's being submitted
-   
-> Make sure your PR **doesn't contain any unrelated files or commits** from any other tasks,
-> and no files from other your tasks or from other authors are being deleted
+ - вам буде запропоновано PR шаблон повідомлення з інструкцією; прочитайте їх і заповніть, як це передбачено
+ - коли PR відкрито, перевірте **Файли змінено**, щоб побачити, що надсилається
+> Переконайтеся, що ваш PR **не містить жодних непов’язаних файлів або комітів** від будь-яких інших завдань,
+> і жодні файли з інших ваших завдань або від інших авторів не видаляються
 
-B125. Ask for a review:
- - post a link to your PR in the
+B125. Попросити рев'ю:
+ - опублікуйте посилання на свій PR у
    [FE Questionarium chat](https://t.me/joinchat/DmX0JAl-mh5W0jrWli8Ycw)
-   and ask mentors and peers for a code review
- - monitor your pull request for possible change requests
+   і попросіть наставників і колег про перевірку коду
+ - відслідковувати запити на можливі зміни
+
+### B2. Коли потрібні будь-які зміни
+
+Щоразу, коли ви хочете або вам буде запропоновано внести будь-які зміни, виконайте такі дії:
+
+B21. Оновіть свою програму (у відповідному _app repo_):
+ - впровадити зміни
+ - переконайтеся, що публікація вашої програми оновлена
  
-### B2. When any changes are required
-
-Whenever you want or are requested to make any changes do the following:
-
-B21. Update your app (in the relevant _app repo_):
- - implement changes
- - make sure your app publication is updated
-
-B22. Update your submission PR - in your _homeworks local repo_:
+B22. Оновіть свій PR - у вашому _homeworks local repo_:
  - `git checkout <task-branch-name>`
- - copy changed files (one by one) to your task directory from the _app repo_
- - stage, commit and push
+ - скопіюйте змінені файли (один за одним) у ваш каталог завдань із _app repo_
+ - stage, commit і push
 
-Your PR will be updated automagically.
+Ваш PR буде оновлено автоматично.
 
-B23. Check your PR and summon a mentor:
- - navigate to your PR in _homeworks main repo_
- - check your submitted files under **Files changed**;
-   you will want to see your latest changes in the files
- - click **Re-request review** icon in the list of your PR reviewers
-   to draw mentors' attention, so that they know you changed
-   your code and there is something new to see
+B23. Перевірте свій PR і повідомте ментора:
+ - перейдіть до свого PR у _homeworks main repo_
+ - перевірте надіслані файли в розділі **Файли змінено**;
+   ви повинні побачити свої останні зміни у файлах
+ - клацніть **Re-request review** у списку ваших PR-рев'юерів щоб
+   привернути увагу наставників, щоб вони знали, що є нові зміни для перегляду
 
-> When your submission gets finally merged, put your reflections on the task
-> and your code review experience to your student's diary (your `kottans-frontend` repo):
->  - _what was new to you_
->  - _what surprised you_
->  - _what you intend to use in future_
+> Коли ваш PR буде нарешті змержено, напишіть міркування про завдання
+> і досвід код рев'ю до вашого щоденника студента (ваш repo `kottans-frontend`):
+> - _що для вас було нового_
+> - _що вас здивувало_
+> - _що ви збираєтеся використовувати в майбутньому_
 
-### B3. When all of your PRs are finally merged
+### B3. Коли всі ваші PR нарешті будуть вмержені
 
-Update _homeworks local clone_ and your _homeworks fork_ to have all of your code
-under the `main` branch:
+Оновіть _homeworks local clone_ та _homeworks fork_, щоб мати весь свій код
+у `main`:
  - `git checkout main`
  - `git pull upstream main`
  - `git push origin main` 
 
-## Reference materials and troubleshooting
+## Довідкові матеріали та усунення проблем
 
 1. [Contribution guide for beginners](https://gist.github.com/OleksiyRudenko/236c3046fbba028e0555fa847dae7001).
-1. Refer to [this troubleshooting guide](https://gist.github.com/OleksiyRudenko/8b3ddb664308de0634b53c525e551d8b)
-   whenever you face any conflicts when updating `main` from the upstream (original repo)
-   or have unrelated files or commits in your pull requests
-1. Any issues? Ask community. Many others had similar issues, the community will help you out
+1. Зверніться до [цього посібнику з усунення проблем](https://gist.github.com/OleksiyRudenko/8b3ddb664308de0634b53c525e551d8b)
+   щоразу, коли ви стикаєтеся з будь-якими конфліктами під час оновлення `main` з upstream (оригінальне репо)
+   або маєте непов’язані файли чи коміти у своїх pull requests
+1. Є проблеми? Запитайте у спільноти. У багатьох інших були подібні проблеми, спільнота допоможе вам
 
 [icon-mit]: https://img.shields.io/badge/license-MIT-blue.svg
 [license]: https://github.com/OleksiyRudenko/a-tiny-JS-world/blob/master/LICENSE.md
