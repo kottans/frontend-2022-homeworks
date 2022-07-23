@@ -29,138 +29,108 @@
             </a>
           </li>
           <li class="nav__item nav__item-btn">
-            <label for="menu__input" class="menu__input" tabindex="0">
-              <img src="images/popup-button.png" alt="popup-button" class="menu__input-icon">
+            <input id="popup" class="popup__input" type="checkbox">
+            <label class="nav__btn popup__btn" for="popup">
+              <img class="popup__img" src="./images/popup-button.png" alt="popup">
             </label>
-            <input type="checkbox" id="menu__input" class="popup__btn" />
-            <div class="popup">
-              <div class="popup__inner">
-                <div class="main-content">
-                  <ul class="list-reset popup__list">
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/calendar.png" alt="Calendar">
-                        <p class="popup__item-text">Calendar</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/mail.png" alt="Mail">
-                        <p class="popup__item-text">Mail</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/news.png" alt="News">
-                        <p class="popup__item-text">News</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/maps.png" alt="Map">
-                        <p class="popup__item-text">Map</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/files.png" alt="Files">
-                        <p class="popup__item-text">Files</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/contacts.png" alt="Contacts">
-                        <p class="popup__item-text">Contacts</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/tanslation.png" alt="Translate">
-                        <p class="popup__item-text">Translate</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/videos.png" alt="Videos">
-                        <p class="popup__item-text">Videos</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/search.png" alt="Search">
-                        <p class="popup__item-text">Search</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/photos.png" alt="Photo">
-                        <p class="popup__item-text">Photo</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/apps.png" alt="Apps">
-                        <p class="popup__item-text">Apps</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/documents.png" alt="Document">
-                        <p class="popup__item-text">Document</p>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <label class="check__label-more" for="show-more" tabindex="0">More</label>
-                <input class="popup__btn-more" type="checkbox" id="show-more" />
-                <div class="more-content">
-                  <ul class="list-reset popup__list">
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/search.png" alt="Search">
-                        <p class="popup__item-text">Search</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/photos.png" alt="Photo">
-                        <p class="popup__item-text">Photo</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/apps.png" alt="Apps">
-                        <p class="popup__item-text">Apps</p>
-                      </a>
-                    </li>
-                    <li class="popup__item">
-                      <a class="popup__link" href="#">
-                        <img src="images/documents.png" alt="Document">
-                        <p class="popup__item-text">Document</p>
-                      </a>
-                    </li>
-                  </ul>
+            <div class="popup__menu">
+              <div class="menu__main">
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/calendar.png" alt="calendar">
+                  <p class="menu__item-descr">Calendar</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/mail.png" alt="mail">
+                  <p class="menu__item-descr">Mail</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/news.png" alt="news">
+                  <p class="menu__item-descr">News</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/maps.png" alt="maps">
+                  <p class="menu__item-descr">Maps</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/files.png" alt="files">
+                  <p class="menu__item-descr">Files</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/contacts.png" alt="contacts">
+                  <p class="menu__item-descr">Contacts</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/tanslation.png" alt="translate">
+                  <p class="menu__item-descr">Translate</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/videos.png" alt="videos">
+                  <p class="menu__item-descr">Videos</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/search.png" alt="search">
+                  <p class="menu__item-descr">Search</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/photos.png" alt="photo">
+                  <p class="menu__item-descr">Photo</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/apps.png" alt="apps">
+                  <p class="menu__item-descr">Apps</p>
+                </a>
+                <a href="#" class="menu__item">
+                  <img class="menu__item-img" src="./images/documents.png" alt="document">
+                  <p class="menu__item-descr">Document</p>
+                </a>
+                <input id="menu-extra" class="menu__extra-input" type="checkbox">
+                <label class="menu__extra-btn" for="menu-extra">More</label>
+                <div class="menu__extra">
+                  <a href="#" class="menu__item">
+                    <img class="menu__item-img" src="./images/chat.png" alt="chat">
+                    <p class="menu__item-descr">Chat</p>
+                  </a>
+                  <a href="#" class="menu__item">
+                    <img class="menu__item-img" src="./images/classroom.png" alt="classroom">
+                    <p class="menu__item-descr">Classroom</p>
+                  </a>
+                  <a href="#" class="menu__item">
+                    <img class="menu__item-img" src="./images/collection.png" alt="collection">
+                    <p class="menu__item-descr">Collection</p>
+                  </a>
+                  <a href="#" class="menu__item">
+                    <img class="menu__item-img" src="./images/mars.png" alt="mars">
+                    <p class="menu__item-descr">Mars</p>
+                  </a>
+                  <a href="#" class="menu__item">
+                    <img class="menu__item-img" src="./images/blogs.png" alt="blogs">
+                    <p class="menu__item-descr">Blogs</p>
+                  </a>
+                  <a href="#" class="menu__item">
+                    <img class="menu__item-img" src="./images/promo.png" alt="promos">
+                    <p class="menu__item-descr">Promos</p>
+                  </a>
+                  <a href="https://github.com/kottans/frontend" class="menu__extra-link">
+                    Even more from Kottans
+                  </a>
                 </div>
               </div>
             </div>
           </li>
           <li class="nav__item">
-            <a href="#" class="nav__link">
+            <a href="#" class="nav__btn">
               <img class="avatar" src="images/bell.png" alt="Notification icon">
             </a>
           </li>
           <li class="nav__item">
-            <a href="#" class="nav__link">
+            <a href="#" class="nav__btn">
               <img class="avatar" src="images/avatar.jpg" alt="Avatar icon">
             </a>
           </li>
         </ul>
       </nav>
-
     </div>
   </header>
-  <footer class="footer">
-  </footer>
 </body>
 
 </html>
