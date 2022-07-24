@@ -232,6 +232,10 @@ body {
 	display: none;
 }
 
+.sub-dropdown__control:checked {
+	display: none;
+}
+
 .sub-dropdown__control:hover ~ .sub-dropdown__toggler {
 	color: var(--primary-color);
 }
