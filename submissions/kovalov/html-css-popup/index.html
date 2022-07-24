@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1.0"
     />
     <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
+    <title>Kottans | Popup</title>
   </head>
   <body>
     <header class="header">
@@ -16,195 +16,96 @@
         <nav class="navigation">
           <ul class="navigation__list">
             <li class="navigation__list-item">
-              <a href="#" class="navigation__list-link"> Mail </a>
+              <a href="#" class="header__title navigation__link">
+                John Doe
+              </a>
             </li>
             <li class="navigation__list-item">
-              <a href="#" class="navigation__list-link"> Images </a>
+              <div class="dropdown">
+                <label class="dropdown__toggler" for="dropdown-1">
+                  <svg class="dropdown__icon">
+                    <use href="./assets/sprite.svg#menu-icon"></use>
+                  </svg>
+                </label>
+                <input
+                  class="dropdown__control"
+                  type="checkbox"
+                  id="dropdown-1"
+                />
+                <div class="dropdown__content">
+                  <ul class="dropdown__list">
+                    <li class="dropdown__list-item">
+                      <a href="#" class="dropdown__link">
+								<span class="dropdown__link-title">Item One</span>
+								<svg class="dropdown__link-icon">
+									<use href="./assets/sprite.svg#user-icon"></use>
+								 </svg>
+							 </a>
+                      </svg>
+                    </li>
+                    <li class="dropdown__list-item">
+                     <a href="#" class="dropdown__link">
+								<span class="dropdown__link-title">Item Two</span>
+								<svg class="dropdown__link-icon">
+									<use href="./assets/sprite.svg#calendar-icon"></use>
+								 </svg>
+							 </a>
+                    </li>
+                    <li class="dropdown__list-item">
+                     <a href="#" class="dropdown__link">
+								<span class="dropdown__link-title">Item Three</span>
+								<svg class="dropdown__link-icon">
+									<use href="./assets/sprite.svg#archive-icon"></use>
+								 </svg>
+							 </a>
+                    </li>
+						  <div class="dropdown__list-item">
+								<div class="sub-dropdown">
+									<input
+										class="sub-dropdown__control"
+										type="checkbox"
+										id="dropdown-2"
+									 />
+									<label class="sub-dropdown__toggler" for="dropdown-2">
+										<span class="sub-dropdown__title">More</span>
+									 </label>
+
+									 <div class="sub-dropdown__content">
+										<ul class="sub-dropdown__list">
+											<li class="sub-dropdown__list-item">
+												<a href="#" 	class="sub-dropdown__link">
+													<span class="sub-dropdown__link-title">Item Four</span>
+													<svg class="sub-dropdown__link-icon">
+														<use href="./assets/sprite.svg#bag-check-icon"></use>
+													 </svg>
+												 </a>
+											</li>
+											<li class="sub-dropdown__list-item">
+												<a href="#" class="sub-dropdown__link">
+													<span class="sub-dropdown__link-title">Item Five</span>
+													<svg class="sub-dropdown__link-icon">
+														<use href="./assets/sprite.svg#balloon-icon"></use>
+													 </svg>
+												 </a>
+											</li>
+											<li class="sub-dropdown__list-item">
+												<a href="#" class="sub-dropdown__link">
+													<span class="sub-dropdown__link-title">Item Six</span>
+													<svg class="sub-dropdown__link-icon">
+														<use href="./assets/sprite.svg#book-icon"></use>
+													 </svg>
+												 </a>
+											</li>
+										</ul>
+									 </div>
+								</div>
+						  </div>
+                  </nav>
+                </div>
+              </div>
             </li>
           </ul>
         </nav>
-        <div class="dropdown">
-          <input
-            class="dropdown__control"
-            type="checkbox"
-            id="dropdown-control-1"
-            tabindex="-1"
-          />
-          <label
-            class="dropdown__toggler"
-            for="dropdown-control-1"
-            id="dropdown-toggler-1"
-            tabindex="0"
-          >
-            <svg class="dropdown__toggler-icon">
-              <use href="sprite.svg#menu-icon"></use>
-            </svg>
-          </label>
-          <div class="dropdown__content" id="dropdown-content-1">
-            <div class="dropdown__inner">
-              <ul class="dropdown__grid">
-                <li class="dropdown__grid-item">
-                  <a href="#" class="dropdown__grid-link">
-                    <svg class="dropdown__grid-item-icon">
-                      <use href="sprite.svg#bell-icon"></use>
-                    </svg>
-                    <span class="dropdown__grid-item-title">
-                      Item
-                    </span>
-                  </a>
-                </li>
-                <li class="dropdown__grid-item">
-                  <a href="#" class="dropdown__grid-link">
-                    <svg class="dropdown__grid-item-icon">
-                      <use href="sprite.svg#calendar-icon"></use>
-                    </svg>
-                    <span class="dropdown__grid-item-title">
-                      Calendar
-                    </span>
-                  </a>
-                </li>
-                <li class="dropdown__grid-item">
-                  <a href="#" class="dropdown__grid-link">
-                    <svg class="dropdown__grid-item-icon">
-                      <use href="sprite.svg#archive-icon"></use>
-                    </svg>
-                    <span class="dropdown__grid-item-title">
-                      Archive
-                    </span>
-                  </a>
-                </li>
-                <li class="dropdown__grid-item">
-                  <a href="#" class="dropdown__grid-link">
-                    <svg class="dropdown__grid-item-icon">
-                      <use href="sprite.svg#at-icon"></use>
-                    </svg>
-                    <span class="dropdown__grid-item-title">
-                      At
-                    </span>
-                  </a>
-                </li>
-                <li class="dropdown__grid-item">
-                  <a href="#" class="dropdown__grid-link">
-                    <svg class="dropdown__grid-item-icon">
-                      <use href="sprite.svg#bag-check-icon"></use>
-                    </svg>
-                    <span class="dropdown__grid-item-title">
-                      Bag
-                    </span>
-                  </a>
-                </li>
-                <li class="dropdown__grid-item">
-                  <a href="#" class="dropdown__grid-link">
-                    <svg class="dropdown__grid-item-icon">
-                      <use href="sprite.svg#balloon-icon"></use>
-                    </svg>
-                    <span class="dropdown__grid-item-title">
-                      Balloon
-                    </span>
-                  </a>
-                </li>
-                <li class="dropdown__grid-item">
-                  <a href="#" class="dropdown__grid-link">
-                    <svg class="dropdown__grid-item-icon">
-                      <use href="sprite.svg#bicycle-icon"></use>
-                    </svg>
-                    <span class="dropdown__grid-item-title">
-                      Bicycle
-                    </span>
-                  </a>
-                </li>
-                <li class="dropdown__grid-item">
-                  <a href="#" class="dropdown__grid-link">
-                    <svg class="dropdown__grid-item-icon">
-                      <use href="sprite.svg#binoculars-icon"></use>
-                    </svg>
-                    <span class="dropdown__grid-item-title">
-                      Binoculars
-                    </span>
-                  </a>
-                </li>
-                <li class="dropdown__grid-item">
-                  <a href="#" class="dropdown__grid-link">
-                    <svg class="dropdown__grid-item-icon">
-                      <use href="sprite.svg#book-icon"></use>
-                    </svg>
-                    <span class="dropdown__grid-item-title">
-                      Book
-                    </span>
-                  </a>
-                </li>
-              </ul>
-              <div class="inner-dropdown">
-                <input
-                  class="inner-dropdown__control"
-                  type="checkbox"
-                  id="dropdown-control-2"
-                />
-                <label
-                  class="inner-dropdown__toggler"
-                  for="dropdown-control-2"
-                  id="dropdown-toggler-2"
-                >
-                  More
-                </label>
-                <div
-                  class="inner-dropdown__content"
-                  id="dropdown-content-2"
-                >
-                  <div class="inner-dropdown__inner">
-                    <ul class="dropdown__grid">
-                      <li class="dropdown__grid-item">
-                        <a href="#" class="dropdown__grid-link">
-                          <svg class="dropdown__grid-item-icon">
-                            <use href="sprite.svg#box-icon"></use>
-                          </svg>
-                          <span class="dropdown__grid-item-title">
-                            Box
-                          </span>
-                        </a>
-                      </li>
-                      <li class="dropdown__grid-item">
-                        <a href="#" class="dropdown__grid-link">
-                          <svg class="dropdown__grid-item-icon">
-                            <use href="sprite.svg#cart-icon"></use>
-                          </svg>
-                          <span class="dropdown__grid-item-title">
-                            Cart
-                          </span>
-                        </a>
-                      </li>
-                      <li class="dropdown__grid-item">
-                        <a href="#" class="dropdown__grid-link">
-                          <svg class="dropdown__grid-item-icon">
-                            <use
-                              href="sprite.svg#clipboard-icon"
-                            ></use>
-                          </svg>
-                          <span class="dropdown__grid-item-title">
-                            Clipboard
-                          </span>
-                        </a>
-                      </li>
-                    </ul>
-                    <a href="#" class="inner-dropdown__inner-link">
-                      More on Kottans
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="button">
-          <svg class="button__icon">
-            <use href="sprite.svg#bell-icon"></use>
-          </svg>
-        </button>
-        <button class="button">
-          <svg class="button__icon">
-            <use href="sprite.svg#user-icon"></use>
-          </svg>
-        </button>
       </div>
     </header>
   </body>
