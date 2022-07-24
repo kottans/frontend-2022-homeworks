@@ -29,13 +29,24 @@ body {
 
 .header__container {
 	padding: 0 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .header__title {
 	font-size: 1.25rem;
 	font-weight: 600;
 	color: var(--black-color);
+	text-decoration: none;
+	outline: none;
 }
+
+.header__title:focus,
+.header__title:hover {
+	color: var(--primary-color);
+}
+
 
 .navigation__list {
 	list-style: none;
@@ -51,7 +62,6 @@ body {
 .navigation__link {
 	text-decoration: none;
 	outline: none;
-	border: 2px solid transparent;
 }
 
 .navigation__link:focus,
@@ -82,9 +92,9 @@ body {
 	border: 2px solid transparent;
 }
 
-.dropdown__control:focus,
-.dropdown__control:hover {
-	border-color: var(--primary-color);
+.dropdown__control:focus ~ .dropdown__toggler,
+.dropdown__control:hover ~ .dropdown__toggler {
+	fill: var(--primary-color);
 }
 
 .dropdown__icon {
@@ -118,13 +128,17 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem;
-	border: 2px solid transparent;
 	outline: none;
 }
 
 .dropdown__link:focus,
 .dropdown__link:hover {
-	border-color: var(--primary-color);
+	color: var(--primary-color);
+}
+
+.dropdown__link:focus > .dropdown__link-icon,
+.dropdown__link:hover > .dropdown__link-icon {
+	fill:  var(--primary-color);
 }
 
 .dropdown__link-title {
@@ -161,12 +175,12 @@ body {
 	appearance: none;
 	cursor: pointer;
 	outline: none;
-	border: 2px solid transparent;
+	/* border: 2px solid transparent; */
 }
 
 .sub-dropdown__control:focus,
 .sub-dropdown__control:hover {
-	border-color: var(--primary-color);
+	color: var(--primary-color);
 }
 
 .sub-dropdown__content {
@@ -185,14 +199,18 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem;
-	border: 2px solid transparent;
 	font-weight: 600;
 	outline: none;
 }
 
 .sub-dropdown__link:focus,
 .sub-dropdown__link:hover {
-	border-color: var(--primary-color);
+	color: var(--primary-color);
+}
+
+.sub-dropdown__link:focus > .sub-dropdown__link-icon,
+.sub-dropdown__link:hover > .sub-dropdown__link-icon {
+	fill:  var(--primary-color);
 }
 
 .sub-dropdown__link-icon {
@@ -214,6 +232,6 @@ body {
 	display: none;
 }
 
-.sub-dropdown__control:checked {
-	display: none;
+.sub-dropdown__control:hover ~ .sub-dropdown__toggler {
+	color: var(--primary-color);
 }
