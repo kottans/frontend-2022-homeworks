@@ -175,12 +175,12 @@ body {
 	appearance: none;
 	cursor: pointer;
 	outline: none;
-	/* border: 2px solid transparent; */
+	border: 2px solid transparent;
 }
 
 .sub-dropdown__control:focus,
 .sub-dropdown__control:hover {
-	color: var(--primary-color);
+	border-color: var(--primary-color);
 }
 
 .sub-dropdown__content {
