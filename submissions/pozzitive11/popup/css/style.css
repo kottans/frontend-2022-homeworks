@@ -94,6 +94,10 @@ li {
   -moz-appearance: none;
   appearance: none;
   position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  outline: none;
 }
 
 .popup__list,
@@ -157,6 +161,7 @@ li {
   color: #727272;
   text-align: center;
   padding-top: 5px;
+  margin: 0 auto;
 }
 
 .popup__extra-btn:hover,
@@ -179,7 +184,6 @@ li {
 .popup__list-extra a:hover {
   text-decoration: underline;
 }
-
 
 .popup__input:focus ~ .popup__btn {
   border: 2px solid #000;
@@ -208,5 +212,6 @@ li {
 }
 
 .nav__item-btn {
+  /* position: relative; */
   display: flex;
 }
