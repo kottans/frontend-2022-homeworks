@@ -1,0 +1,241 @@
+:root {
+	--primary-color: #2ecc71;
+	--white-color: #fff;
+	--black-color: #333;
+	--main-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--primary-color);
+}
+
+.header {
+	padding: 1rem 0;
+	background-color: var(--white-color);
+	margin: 1rem;
+	border-radius: 5px;
+	position: relative;
+	box-shadow: var(--main-shadow);
+}
+
+.header__container {
+	padding: 0 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header__title {
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: var(--black-color);
+	text-decoration: none;
+	outline: none;
+}
+
+.header__title:focus,
+.header__title:hover {
+	color: var(--primary-color);
+}
+
+
+.navigation__list {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+}
+
+.navigation__list-item {
+	display: flex;
+	align-items: center;
+}
+
+.navigation__link {
+	text-decoration: none;
+	outline: none;
+}
+
+.navigation__link:focus,
+.navigation__link:hover {
+	border-color: var(--primary-color);
+}
+
+.dropdown {
+	position: relative;
+}
+
+.dropdown__toggler {
+	padding: 0.25rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.dropdown__control {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	appearance: none;
+	cursor: pointer;
+	outline: none;
+	border: 2px solid transparent;
+}
+
+.dropdown__control:focus ~ .dropdown__toggler,
+.dropdown__control:hover ~ .dropdown__toggler {
+	fill: var(--primary-color);
+}
+
+.dropdown__icon {
+	height: 1.5rem;
+	width: 1.5rem;
+}
+
+.dropdown__content {
+	display: none;
+	position: absolute;
+	overflow: auto;
+	width: 250px;
+	max-height: 300px;
+	overflow-y: hidden;
+	top: 4rem;
+	right: -1rem;
+	padding: 1rem;
+	background-color: var(--white-color);
+	border-radius: 5px;
+	box-shadow: var(--main-shadow);
+}
+
+.dropdown__list {
+	list-style: none;
+}
+
+.dropdown__link {
+	text-decoration: none;
+	color: inherit;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	outline: none;
+}
+
+.dropdown__link:focus,
+.dropdown__link:hover {
+	color: var(--primary-color);
+}
+
+.dropdown__link:focus > .dropdown__link-icon,
+.dropdown__link:hover > .dropdown__link-icon {
+	fill:  var(--primary-color);
+}
+
+.dropdown__link-title {
+	font-weight: 600;
+	word-break:keep-all;
+}
+
+.dropdown__link-icon {
+	height: 1.25rem;
+	width: 1.25rem;
+}
+
+.sub-dropdown {
+	position: relative;
+}
+
+.sub-dropdown__toggler {
+	text-align: center;
+	width: 100%;
+	padding: 1rem;
+}
+
+.sub-dropdown__title {
+	display: block;
+	font-weight: 600;
+}
+
+.sub-dropdown__control {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	appearance: none;
+	cursor: pointer;
+	outline: none;
+	border: 2px solid transparent;
+}
+
+.sub-dropdown__control:focus,
+.sub-dropdown__control:hover {
+	border-color: var(--primary-color);
+}
+
+.sub-dropdown__content {
+	display: none;
+	overflow-y: hidden;
+}
+
+.sub-dropdown__list {
+	list-style: none;
+}
+
+.sub-dropdown__link {
+	text-decoration: none;
+	color: inherit;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	font-weight: 600;
+	outline: none;
+}
+
+.sub-dropdown__link:focus,
+.sub-dropdown__link:hover {
+	color: var(--primary-color);
+}
+
+.sub-dropdown__link:focus > .sub-dropdown__link-icon,
+.sub-dropdown__link:hover > .sub-dropdown__link-icon {
+	fill:  var(--primary-color);
+}
+
+.sub-dropdown__link-icon {
+	height: 1.25rem;
+	width: 1.25rem;
+}
+
+.dropdown__control:checked ~ .dropdown__content {
+	display: block;
+	max-height: auto;
+	overflow-y: scroll;
+}
+
+.sub-dropdown__control:checked ~ .sub-dropdown__content {
+	display: block;
+}
+
+.sub-dropdown__control:checked ~ .sub-dropdown__toggler {
+	display: none;
+}
+
+.sub-dropdown__control:checked {
+	display: none;
+}
+
+.sub-dropdown__control:hover ~ .sub-dropdown__toggler {
+	color: var(--primary-color);
+}
