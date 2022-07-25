@@ -8,8 +8,8 @@ _**УВАЖНО прочитайте і виконайте всі інструк
 
 ### task name
 
-[Demo](https://maximmorenko.github.io/kottans-frontend) |
-[Code base](https://github.com/maximmorenko/kottans-frontend)
+[Demo](https://your-username.github.io/app-repo-name) |
+[Code base](https://github.com/your-username/app-repo-name)
 
 The code is submitted in a dedicated feature branch.
 Please, review.
