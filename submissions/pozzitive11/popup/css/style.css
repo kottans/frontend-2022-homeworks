@@ -90,11 +90,10 @@ li {
 }
 
 .popup__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   position: absolute;
-  top: 0px;
-  left: 0px;
-  opacity: 0;
 }
 
 .popup__list,
@@ -167,7 +166,10 @@ li {
 }
 
 .popup__extra-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
+  position: absolute;
 }
 
 .popup__list-extra {
@@ -178,10 +180,6 @@ li {
   text-decoration: underline;
 }
 
-.popup__input:focus,
-.popup__btn:focus{
-  border: 2px solid #000;
-}
 
 .popup__input:focus ~ .popup__btn {
   border: 2px solid #000;
