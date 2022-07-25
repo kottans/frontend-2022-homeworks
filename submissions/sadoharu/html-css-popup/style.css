@@ -88,6 +88,11 @@
 
 }
 
+.nav-bar .logo:focus{
+    outline: 1px solid #6130114f;
+    border-radius: 5px;
+}
+
 .nav-bar .logo img {
     height: 100px;
     position: absolute;
@@ -128,6 +133,16 @@
 
 .nav-bar .nav-bar_list_item.popup-button {
     position: relative;
+}
+
+.nav-bar .nav-bar_list_item a:focus {
+    outline: 1px solid #6130114f;
+    border-radius: 5px;
+}
+
+.nav-bar .nav-bar_list_item.popup-button .popup-icon:focus ~ .icon-grip-solid:before {
+    outline: 1px solid #6130114f;
+    border-radius: 5px;
 }
 
 .nav-bar .nav-bar_list_item.popup-button input{
