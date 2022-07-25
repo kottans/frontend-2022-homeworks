@@ -56,10 +56,17 @@ li {
   font-weight: 600;
   padding: 5px;
   color: #6f6f6f;
+  border-radius: 4px;
 }
 
 .nav__link:hover {
   text-decoration: underline;
+}
+
+.nav__link:-moz-focusring,
+.nav__link:focus,
+.nav__link:focus-visible {
+  outline: 1px solid #000;
 }
 
 .nav__btn:hover {
@@ -73,6 +80,12 @@ li {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+}
+
+.nav__btn:-moz-focusring,
+.nav__btn:focus,
+.nav__btn:focus-visible {
+  outline: 1px solid #000;
 }
 
 .nav__link {
@@ -100,6 +113,12 @@ li {
   outline: none;
 }
 
+.popup__input:-moz-focusring,
+.popup__input:focus,
+.popup__input:focus-visible {
+  outline: 1px solid #000;
+}
+
 .popup__list,
 .popup__list-extra {
   display: flex;
@@ -122,6 +141,12 @@ li {
   overflow: auto;
 }
 
+.popup__menu:-moz-focusring,
+.popup__menu:focus,
+.popup__menu:focus-visible {
+  outline: 1px solid #000;
+}
+
 .popup__link {
   padding: 10px 0;
   margin-left: 13px;
@@ -136,8 +161,10 @@ li {
 }
 
 .popup__link:hover,
-.popup__link:focus {
-  border: 1px solid #000;
+.popup__link:-moz-focusring,
+.popup__link:focus,
+.popup__link:focus-visible {
+  outline: 1px solid #000;
 }
 
 .popup__link-img {
@@ -175,18 +202,34 @@ li {
   -moz-appearance: none;
   appearance: none;
   position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  outline: none;
 }
 
 .popup__list-extra {
   display: none;
+
 }
 
-.popup__list-extra a:hover {
+.menu__extra-link{
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.menu__extra-link:hover{
   text-decoration: underline;
 }
 
+.menu__extra-link:-moz-focusring,
+.menu__extra-link:focus,
+.menu__extra-link:focus-visible{
+  outline: 1px solid #000;
+}
+
 .popup__input:focus ~ .popup__btn {
-  border: 2px solid #000;
+  outline: 1px solid #000;
 }
 
 .popup__input:checked ~ .popup__menu {
@@ -198,7 +241,7 @@ li {
 }
 
 .popup__extra-input:focus + .popup__extra-btn {
-  border: 1px solid #000;
+  outline: 1px solid #000;
 }
 
 .popup__extra-input:checked ~ .popup__list-extra {
@@ -211,7 +254,10 @@ li {
   display: none;
 }
 
+.popup__extra-input:checked + .popup__extra-input {
+  display: none;
+}
+
 .nav__item-btn {
-  /* position: relative; */
   display: flex;
 }
