@@ -1,0 +1,263 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  color: #1f1e1e;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.header {
+  padding: 40px 0;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 40px;
+}
+
+.nav__link {
+  font-size: 20px;
+  display: block;
+  font-weight: 600;
+  padding: 5px;
+  color: #6f6f6f;
+  border-radius: 4px;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
+}
+
+.nav__link:-moz-focusring,
+.nav__link:focus,
+.nav__link:focus-visible {
+  outline: 1px solid #000;
+}
+
+.nav__btn:hover {
+  background-color: #ddd;
+}
+
+.nav__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.nav__btn:-moz-focusring,
+.nav__btn:focus,
+.nav__btn:focus-visible {
+  outline: 1px solid #000;
+}
+
+.nav__link {
+  font-size: 20px;
+  display: block;
+  font-weight: 600;
+  padding: 5px;
+  color: #6f6f6f;
+}
+
+.popup__img {
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.popup__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.popup__input:-moz-focusring,
+.popup__input:focus,
+.popup__input:focus-visible {
+  outline: 1px solid #000;
+}
+
+.popup__list,
+.popup__list-extra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup__menu {
+  display: none;
+  border-radius: 2px;
+  padding: 20px 0;
+  background-color: #fbfbfb;
+  position: absolute;
+  top: 120px;
+  right: 220px;
+  width: 360px;
+  height: 500px;
+  box-shadow: 0 1px 8px #bbb;
+  overflow: auto;
+}
+
+.popup__menu:-moz-focusring,
+.popup__menu:focus,
+.popup__menu:focus-visible {
+  outline: 1px solid #000;
+}
+
+.popup__link {
+  padding: 10px 0;
+  margin-left: 13px;
+  display: inline-block;
+  font-size: 14px;
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  margin-bottom: 12px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+
+.popup__link:hover,
+.popup__link:-moz-focusring,
+.popup__link:focus,
+.popup__link:focus-visible {
+  outline: 1px solid #000;
+}
+
+.popup__link-img {
+  max-height: 32px;
+}
+
+.popup__link-descr {
+  font-weight: 500;
+  margin-top: 10px;
+  color: #757575;
+}
+
+.popup__extra-btn {
+  display: block;
+  width: 100px;
+  height: 30px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #727272;
+  text-align: center;
+  padding-top: 5px;
+  margin: 0 auto;
+}
+
+.popup__extra-btn:hover,
+.popup__extra-btn:focus {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.popup__extra-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.popup__list-extra {
+  display: none;
+
+}
+
+.menu__extra-link{
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.menu__extra-link:hover{
+  text-decoration: underline;
+}
+
+.menu__extra-link:-moz-focusring,
+.menu__extra-link:focus,
+.menu__extra-link:focus-visible{
+  outline: 1px solid #000;
+}
+
+.popup__input:focus ~ .popup__btn {
+  outline: 1px solid #000;
+}
+
+.popup__input:checked ~ .popup__menu {
+  display: block;
+}
+
+.popup__input:checked ~ .popup__extra-btn {
+  display: none;
+}
+
+.popup__extra-input:focus + .popup__extra-btn {
+  outline: 1px solid #000;
+}
+
+.popup__extra-input:checked ~ .popup__list-extra {
+  display: flex;
+  border-top: 1px solid gray;
+  padding-top: 10px;
+}
+
+.popup__extra-input:checked + .popup__extra-btn {
+  display: none;
+}
+
+.popup__extra-input:checked + .popup__extra-input {
+  display: none;
+}
+
+.nav__item-btn {
+  display: flex;
+}
