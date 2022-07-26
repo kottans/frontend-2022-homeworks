@@ -28,7 +28,6 @@
 }
 
 body {
-
     /* используем переменные ранее созданые */
     font-family: var(--family);
     /* основной цвет */
@@ -44,7 +43,7 @@ ul {
     padding: 0;
 }
 
-.nav {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,7 +69,6 @@ ul {
     padding: 10px;
 }
 .nav-item:hover {
-
     box-shadow: var(--shadow);
 }
 .nav-item:focus {
@@ -129,7 +127,7 @@ ul {
     cursor: pointer;
     /* прячем чекбокс */
     -webkit-appearance: none;
-    
+    -moz-appearance: none;
 }
 .check-label-menu {
     position: relative;
@@ -151,6 +149,7 @@ ul {
     cursor: pointer;
     /* прячем чекбокс */
     -webkit-appearance: none;
+     -moz-appearance: none;
 }
 .check-label-more {
     position: absolute;
