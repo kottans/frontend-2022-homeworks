@@ -19,10 +19,12 @@ menuMobileContent.addEventListener('click', appendContent);
 menuDesktopContent.addEventListener('click', appendContent);
 
 function appendContent(event) {
-  const { id } = event.target.dataset;
-  const data = getSelectedDataItem(id);
-  const element = createElement(data);
+  if (event.target.dataset.id) {
+    const { id } = event.target.dataset;
+    const data = getSelectedDataItem(id);
+    const element = createElement(data);
 
-  mainContent.innerHTML = '';
-  mainContent.appendChild(element);
+    mainContent.innerHTML = '';
+    mainContent.appendChild(element);
+  }
 }
