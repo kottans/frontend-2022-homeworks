@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="log">
+                Logo
+            </div>
+            <nav class="menu">
+                <ul class="list">
+                    <li class="list__item"><a href="#">Mail</a></li>
+                    <li class="list__item"><a href="#">Images</a></li>
+                    <li class="list__item popup">
+                        <label for="popup-btn__label">
+                            <img src="./img/popup-button.png" alt="">
+                        </label>
+                        <input type="checkbox" class="popup-btn" id="popup-btn">
+                        <ul class="popup-list">
+                            <li class="popup-list__item"><a href="#" class="popup-list__link"><img src="./img/blogs.png" alt="blogs"></a></li>
+                            <li class="popup-list__item"><a href="#" class="popup-list__link"><img src="./img/calendar.png" alt="calendar"></a></li>
+                            <li class="popup-list__item"><a href="#" class="popup-list__link"><img src="./img/chat.png" alt="chat"></a></li>
+                            <li class="popup-list__item"><a href="#" class="popup-list__link"><img src="./img/classroom.png" alt="classroom"></a></li>
+                            <li class="popup-list__item"><a href="#" class="popup-list__link"><img src="./img/collection.png" alt="collection"></a></li>
+                            <li class="popup-list__item popup-more">
+                                <label for="more-btn__label">
+                                    <span class="more-btn__span">More</span>
+                                </label>
+                                <input type="checkbox" class="more-btn" id="more-btn">
+                                <ul class="more-list">
+                                    <li class="more-list__item"><a href="#" class="more-list__link"><img src="./img/contacts.png" alt="contacts"></a></li>
+                                    <li class="more-list__item"><a href="#" class="more-list__link"><img src="./img/documents.png" alt="documents"></a></li>
+                                    <li class="more-list__item"><a href="#" class="more-list__link"><img src="./img/favicon.png" alt="favicon"></a></li>
+                                    <li class="more-list__item"><a href="#" class="more-list__link"><img src="./img/files.png" alt="files"></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu__list-item"><a href="#"><img src="./img/bell.png" width="50px" height="45px" alt="Bell"></a></li>
+                    <li class="menu__list-item cheshire"><a href="#"><img src="./img/cheshire.jpg" width="50px" height="45px" alt="Avatar Icon"></a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+</body>
+</html>
