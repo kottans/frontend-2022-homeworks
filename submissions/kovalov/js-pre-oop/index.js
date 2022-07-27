@@ -1,34 +1,34 @@
 const dog = {
+  species: 'dog',
   name: 'Patron',
   gender: 'male',
-  species: 'dog',
   legs: 4,
   hands: 0,
   saying: 'woof',
 };
 
 const cat = {
+  species: 'cat',
   name: 'Murzyk',
   gender: 'male',
-  species: 'cat',
   legs: 4,
   hands: 0,
   saying: 'meow',
 };
 
 const woman = {
+  species: 'human',
   name: 'Anna',
   gender: 'female',
-  species: 'human',
   legs: 2,
   hands: 2,
   saying: 'hello',
 };
 
 const man = {
+  species: 'human',
   name: 'Joey',
   gender: 'male',
-  species: 'human',
   legs: 2,
   hands: 2,
   saying: 'How you doin?',
