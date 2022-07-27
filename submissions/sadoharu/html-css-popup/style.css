@@ -90,18 +90,18 @@
     border-radius: 5px;
 }
 
-.header .logo img {
+.header .logo .logo-img {
     height: 100px;
 }
 
-.header .logo h1 {
+.header .logo .logo-title {
     font-weight: bold;
     font-size: 20px;
     margin-top: 60px;
     transition: .3s all;
 }
 
-.header .logo h1:hover {
+.header .logo .logo-title:hover {
     filter: drop-shadow(8px 8px 5px #6130114f);
 }
 
@@ -123,39 +123,39 @@
     filter: drop-shadow(0 0 3px #613011b2);
 }
 
-.nav-bar .nav-bar_list_item a, .nav-bar .nav-bar_list_item label {
+.nav-bar .nav-bar_list_item .link, .nav-bar .nav-bar_list_item .label {
     color: #613011;
     font-size: 16px;
     line-height: 20px;
     cursor: pointer;
 }
 
-.nav-bar .nav-bar_list_item.popup-button {
+.nav-bar .popup-button {
     position: relative;
 }
 
-.nav-bar .nav-bar_list_item a:focus {
+.nav-bar .nav-bar_list_item .link:focus {
     outline: 1px solid #6130114f;
     border-radius: 5px;
 }
 
-.nav-bar .nav-bar_list_item.popup-button .popup-icon:focus ~ .icon-grip-solid:before {
+.nav-bar .popup-button .popup-icon:focus ~ .icon-grip-solid:before {
     outline: 1px solid #6130114f;
     border-radius: 5px;
 }
 
-.nav-bar .nav-bar_list_item.popup-button input{
+.nav-bar .popup-button .popup-icon{
     margin: 0;
     height: 0;
     width: 0;
 }
 
-.nav-bar .nav-bar_list_item.popup-button .popup-icon:checked ~ .popup {
+.nav-bar .popup-button .popup-icon:checked ~ .popup {
     visibility: visible;
     opacity: 1;
 }
 
-.nav-bar .nav-bar_list_item.thumbnail img {
+.nav-bar .thumbnail-img {
     height: 40px;
     border-radius: 100%;
 }
@@ -190,19 +190,19 @@
     border-radius: 10px;
 }
 
-.nav-bar .popup .popup-item a:focus {
+.nav-bar .popup .popup-item .link:focus {
     outline: 1px solid #6130114f;
     border-radius: 10px;
 }
 
-.nav-bar .popup a {
+.nav-bar .popup .link {
     display: flex;
     flex-direction: column;
     text-align: center;
     font-size: 12px;
 }
 
-.nav-bar .popup img {
+.nav-bar .popup .img {
     width: 50px;
     height: 50px;
     object-fit: contain;
@@ -225,17 +225,11 @@
     grid-auto-rows: auto;
 }
 
-.nav-bar .popup .popup-showmore .more img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-}
-
 .nav-bar .popup .popup-showmore .popup-lable {
     position: relative;
     transition: .3s all;
+    color: #613011;
+    cursor: pointer;
 }
 
 .nav-bar .popup .popup-showmore .popup-lable:hover {
@@ -255,23 +249,15 @@
 }
 
 .nav-bar .popup .popup-showmore .popup-more:checked ~ .more  {
-    display: grid;   
+    display: grid;
+    margin-top: 10px;
 }
 
 .nav-bar .popup .popup-showmore .popup-more:checked ~ .popup-lable::before {
-    content: '';
-    position: absolute;
-    width: 254px;
-    height: 1px;
-    left: -121px;
-    background-color:#6130118e;
-}
-
-.nav-bar .popup .popup-showmore .popup-more:checked ~ .popup-lable::after {
     content: 'Hide';
     position: absolute;
-    bottom: -194px;
-    left: -14px;
+    width: 100px;
+    left: -49px;
 }
 
 .nav-bar .popup .popup-showmore .popup-more:focus ~.popup-lable::before {
@@ -281,11 +267,6 @@
 }
 
 .nav-bar .popup .popup-showmore .popup-more:checked:focus ~.popup-lable::before {
-    outline: none;
-    padding: 0;
-}
-
-.nav-bar .popup .popup-showmore .popup-more:checked:focus  ~.popup-lable::after {
     outline: 1px solid #6130114f;
     border-radius: 10px;
     padding: 2px;
