@@ -37,14 +37,10 @@ const man = {
 const catWoman = Object.create(cat);
 catWoman.name = 'Cat-woman';
 catWoman.species = 'human';
+catWoman.gender = 'female';
 catWoman.legs = 2;
 catWoman.hands = 2;
 
-const inhabitantsArray = [dog, cat, woman, man, catWoman];
+const inhabitants = [dog, cat, woman, man, catWoman];
 
-inhabitantsArray
-  .map(
-    (item) =>
-      `${item.species}; ${item.name}; ${item.gender}; ${item.legs}; ${item.hands}; ${item.saying}`
-  )
-  .forEach((message) => print(message));
+inhabitants.forEach((item) => print(Object.values(item).join('; ')));
