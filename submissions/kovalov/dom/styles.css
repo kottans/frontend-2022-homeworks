@@ -22,10 +22,10 @@ body {
 }
 
 .header {
-	background-color: var(--primary-color);
 	padding: 1rem 0;
-	font-size: 2rem;
 	margin-bottom: 1rem;
+	background-color: var(--primary-color);
+	font-size: 2rem;
 }
 
 .header__container {
@@ -42,11 +42,11 @@ body {
 }
 
 .header__button {
-	border: 0;
-	background-color: transparent;
 	display: flex;
+	background-color: transparent;
 	align-items: center;
 	justify-content: center;
+	border: 0;
 }
 
 .header__button-icon {
@@ -56,10 +56,10 @@ body {
 }
 
 .header__navigation {
-	overflow: hidden;
 	flex-basis: 100%;
-	text-align: center;
 	display: none;
+	overflow: hidden;
+	text-align: center;
 }
 
 .content__container {
@@ -67,9 +67,9 @@ body {
 }
 
 .aside {
+	margin-right: 1rem;
 	display: none;
 	flex: 1;
-	margin-right: 1rem;
 }
 
 .navigation {
@@ -77,8 +77,8 @@ body {
 }
 
 .navigation__list {
-	list-style: none;
 	margin-left: 0;
+	list-style: none;
 }
 
 .navigation__list-item {
@@ -91,32 +91,32 @@ body {
 }
 
 .navigation__link {
+	width: 100%;
+	padding: 1rem 0;
+	display: inline-block;
 	text-decoration: none;
 	color: inherit;
-	display: inline-block;
-	padding: 1rem 0;
-	width: 100%;
 	font-weight: 600;
 }
 
 .main {
-	flex: 4;
 	margin-bottom: 1rem;
+	flex: 4;
 }
 
 .main__title {
-	text-align: center;
 	margin-bottom: 1rem;
+	text-align: center;
 }
 
 .main__image {
 	width: 100%;
+	margin-bottom: 1rem;
 	max-width: 100%;
 	max-height: 400px;
-	object-fit: contain;
 	height: auto;
 	display: flex;
-	margin-bottom: 1rem;
+	object-fit: contain;
 }
 
 .opened {
