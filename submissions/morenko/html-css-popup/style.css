@@ -1,0 +1,206 @@
+/* импортируем гугл шрифт */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* заведем переменные в руте*/
+:root {
+    /* Typography */
+    --family: 'Nunito Sans', sans-serif;
+  /* размер */
+    --fs-sm: 14px;
+    --fs-md: 16px;
+  /* насыщенность */
+    --fw-light: 300;
+    --fw-normal: 600;
+    --fw-bold: 800;
+    /* бордер */
+    --radii: 0.5rem;
+    --border: 1px solid black;
+
+    --shadow: rgba(79, 79, 79, 1) 0 0 8px;
+
+    --colors-bg: hsla(203, 100%, 39%, 0.2);
+    --colors-bg-active: hsla(189, 16%, 91%, 0.686);
+}
+
+body {
+    /* используем переменные ранее созданые */
+    font-family: var(--family);
+    /* основной цвет */
+    color: var(--colors-text);
+    font-weight: var(--fw-bold);
+    background-color: var(--colors-bg);
+}  
+li {
+    list-style-type: none;
+    text-decoration: none;
+}
+ul {
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--colors-bg);
+}
+
+.logo {
+    margin-left: 20px;
+}
+.navi-list {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+    gap: 30px;
+}
+
+.nav-item {
+    list-style-type: none;
+    width: 70px;
+    height: 70px;
+    border-radius: var(--radii);
+    cursor: pointer;
+    padding: 10px;
+}
+.nav-item:hover {
+    box-shadow: var(--shadow);
+}
+.nav-item:focus {
+    background-color: var(--colors-bg-active);
+    border: var(--border);
+}
+
+.wrapper-popup {
+    width: 282px;
+    height: 430px;
+    background: var(--colors-bg);
+    border-radius: var(--radii);
+    border: var(--border);
+    padding: 1rem ;
+    overflow: auto;
+    position: absolute;
+    top: 100px;
+    right: -115px;
+}
+
+.main-content {
+    display: grid;
+    grid-template: repeat(4, 70px) 50px/repeat(3, 70px);
+    gap: 15px;
+}
+
+.popup-item, .popup-extra-item {
+    width: 70px;
+    height: 70px;
+    border-radius: var(--radii);
+    cursor: pointer;
+    margin: 0.2rem 0.2rem ;
+    padding: 10px;
+}
+.popup-item:hover {
+    box-shadow: var(--shadow);
+}
+.popup-item:focus {
+    background-color: var(--colors-bg-active);
+    border: var(--border);
+}
+.popup-extra-item:focus {
+    background-color: var(--colors-bg-active);
+    border: var(--border);
+}
+.popup-extra-item:hover {
+    box-shadow: var(--shadow);
+}
+
+.wrapper {
+    position: relative;
+}
+
+.popup-btn-menu{
+    position: absolute;
+    cursor: pointer;
+    /* прячем чекбокс */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.check-label-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.popup-btn-menu:checked ~ .wrapper-popup-hidden {
+    display: grid;
+}
+.wrapper-popup-hidden {
+    display: none;
+}
+.popup-btn-menu:focus ~ label {
+    outline-style: groove;
+    outline-width: 0.2rem;
+}
+
+.popup-btn-more {
+    cursor: pointer;
+    /* прячем чекбокс */
+    -webkit-appearance: none;
+     -moz-appearance: none;
+}
+.check-label-more {
+    position: absolute;
+    top: 350px;
+    left: 15px;
+    cursor: pointer;
+    text-align: center;
+    width: 230px;
+    height: 40px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+.check-label-more:focus {
+    background-color: var(--colors-bg-active);
+    border: var(--border);
+} 
+
+.popup-btn-more:checked ~ .wrapper-extra-content-hidden {
+    display: grid;
+}
+.popup-btn-more:focus ~ label {
+    border: var(--border);
+    border-radius: var(--radii);
+    background-color: var(--colors-bg-active);
+}
+.popup-btn-more:hover ~ label {
+    box-shadow: var(--shadow);
+    border-radius: var(--radii);
+}
+
+.wrapper-extra-content-hidden{
+    display: none;
+}
+
+.extra-content {
+    display: grid;
+    grid-template: repeat(2, 70px) /repeat(3, 70px) ;
+    gap: 15px;
+}
+
+.wrapper-popup::-webkit-scrollbar {
+    width: 3px;
+    height: 0;
+}
+.wrapper-popup::-webkit-scrollbar-thumb {
+    background: black;
+}
+
+.check-label-more:before {
+    content: "MORE";
+}
+.popup-btn-more:checked ~ .check-label-more::before {
+    content: "LESS"; 
+} 
