@@ -273,7 +273,7 @@
 }
 
 @media (max-width: 538px) {
-    .header .logo h1 {
+    .header .logo .logo-title {
         display: none;
     }
 }
