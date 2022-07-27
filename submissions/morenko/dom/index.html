@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="src/styles.css">
+    <title>facts</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Полноэкранный показ изображения -->
+      <section class="big-picture  overlay  hidden">
+        <!-- <h2 class="big-picture__title  visually-hidden">Просмотр фотографии</h2> -->
+        <div class="big-picture__preview">
+          <!-- Просмотр изображения -->
+          <h2 class="fact__big__title"></h2>
+          <div class="big-picture__img">
+            <img src="" alt="Девушка в купальнике" width="600" height="600">
+          </div>
+          <p class="fact__big__info"></p>
+          <!-- Кнопка для выхода из полноэкранного просмотра изображения -->
+          <button type="reset" class="big-picture__cancel  cancel" id="picture-cancel">Закрыть</button>
+        </div>
+      </section>
+      <ul class="listFacts"></ul>
+    </div>
+    <div class="main-content-wrapper">
+      <h1 class="main__title">main title</h1>
+      <p class="main__info"></p>
+      <div class="main_footer"></div>
+    </div>
+    <template id="picture">
+        <a href="#" class="picture floating-button">
+          <h2 class="fact__title "></h2>
+          <img
+            class="fact__img hidden"
+            src=""
+            width="50"
+            height="50"
+            alt="Случайная фотография"
+          />
+          <p class="fact__info hidden"></p>
+        </a>
+    </template>
+    <script src="./src/index.js" type="module"></script>
+  </body>
+</html>

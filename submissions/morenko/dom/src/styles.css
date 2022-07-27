@@ -1,0 +1,193 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+  
+  *,
+  *::before,
+  *::after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ffffff;
+    text-transform: uppercase;
+    background-color: #004a94;
+  }
+
+  .wrapper { 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #00559f;
+    min-height: 100vh;
+    width: 270px;
+  }
+
+
+  .main-content-wrapper{
+    
+    background-color: #002b76;
+    border-radius: 30px;
+    box-shadow: rgb(24, 35, 58) 0 0 8px;
+   
+    width: 600px;
+    min-height: 600px;
+    margin-top: 80px;
+
+    position: absolute;
+    top: 50px;
+    left: 50%;
+
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+
+  .main__title, .main_footer{
+    text-align: center;
+    align-items: center;
+    padding-top: 15px;
+    margin: 0;
+    width: 600px;
+    height: 50px;
+    color: #6694da;
+  }
+
+  .main__info {
+    margin: 0;
+    padding: 2rem;
+    font-size: 11px;
+    width: 600px;
+    height: 600px;
+    background-color: #2e77e5;
+  }
+  
+  /**
+   * Кнопка закрытия модального окна
+   */
+  
+  .cancel {
+    position: absolute;
+    top: 6px;
+    left: 550px;
+    z-index: 2;
+
+    display: block;
+    margin: 0;
+    padding: 0;
+  
+    width: 42px;
+    height: 42px;
+    
+  
+    font-size: 0;
+  
+    background-color: rgba(5, 0, 66, 0.2);
+    background-image: url("../assets/icon-cross.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+  
+    border: 0;
+    border-radius: 21px;
+    box-shadow: rgba(79, 79, 79, 1) 0 0 8px;
+    opacity: 0.6;
+  }
+  
+  .cancel:hover,
+  .cancel:focus {
+    background-color: rgba(255, 255, 255, 0.4);
+    opacity: 1;
+  }
+  
+  .cancel:active {
+    -webkit-transform: translateY(1px);
+        -ms-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+
+  /* Окно полноэкранного просмотра изображения
+     ========================================================================== */
+  
+  .big-picture__preview{
+    position: relative;
+    background-color: #002b76;
+    border-radius: 30px;
+    box-shadow: rgb(24, 35, 58) 0 0 8px;
+   
+    max-width: 600px;
+    min-height: 600px;
+
+    position: absolute;
+    top: 60px;
+    left: 50%;
+  
+    padding: 4px;
+  
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  
+  .big-picture__img img {
+    margin-left: -4px;
+    display: block;
+  }
+  
+ .fact__big__info {
+  padding: 10px;
+ }
+
+.fact__big__title {
+  padding-left: 10px;
+ }
+  
+.visually-hidden {
+    position: absolute;
+  
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+  
+    white-space: nowrap;
+  
+    -webkit-clip-path: inset(100%);
+            clip-path: inset(100%);
+  
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+  
+  .hidden {
+    display: none;
+  }
+
+.floating-button {
+  text-decoration: none;
+  display: inline-block;
+  width: 140px;
+  height: 45px;
+  border-radius: 45px;
+  margin: 2rem 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: rgb(69, 171, 255);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+}
+.floating-button:hover {
+  background: #2e77e5;
+  box-shadow: 0 15px 20px rgba(230, 249, 255, 0.4);
+  color: white;
+  transform: translateY(-7px);
+}
