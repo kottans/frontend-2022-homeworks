@@ -1,0 +1,10 @@
+:root {
+  --popupwrapper-color: rgba(128, 128, 128, 0.4);
+  --text-color: #000;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

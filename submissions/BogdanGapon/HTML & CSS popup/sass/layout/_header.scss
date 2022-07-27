@@ -11,40 +11,36 @@
 }
 
 .header-nav__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
   flex-basis: 30px;
 }
 
 .header-nav__link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
   text-decoration: none;
   color: rgb(17, 15, 15);
   transition: 250ms color cubic-bezier(0.075, 0.82, 0.165, 1);
 
   &:hover,
   &:focus {
-  color: rgb(170, 63, 63);
+    color: rgb(170, 63, 63);
   }
 
   &.link-img:hover {
-  box-shadow: 2px 2px 8px 2px rgba(18, 20, 22, 0.14);
+    box-shadow: 2px 2px 8px 2px rgba(18, 20, 22, 0.14);
   }
 }
 
 .visually-hidden {
-position: absolute;
-appearance: none;
+  position: absolute;
+  appearance: none;
 }
 
 .custom-checkbox {
-position: relative;
+  position: relative;
 
   &::before {
-    content:' ';
+    content: " ";
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -58,20 +54,20 @@ position: relative;
 }
 
 .visually-hidden:focus ~ .custom-checkbox::before {
-outline: 2px solid black;
+  outline: 2px solid var(--text-color);
 }
 
 .popup-wrapper {
-display: none;
-position: absolute;
-top: 65px;
-right: 50px;
-width: 350px;
-height: 400px;
-padding: 30px 15px 30px;
-border: 1px solid rgba(128, 128, 128, 0.4);
-box-shadow: 1px 1px 2px rgba(128, 128, 128, 0.4);
-overflow: auto;
+  display: none;
+  position: absolute;
+  top: 65px;
+  right: 50px;
+  width: 350px;
+  height: 400px;
+  padding: 30px 15px 30px;
+  border: 1px solid var(--popupwrapper-color);
+  box-shadow: 1px 1px 2px var(--popupwrapper-color);
+  overflow: auto;
 
   .checkbox:checked ~ & {
     display: block;
@@ -79,31 +75,29 @@ overflow: auto;
 }
 
 .popup-item {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-align-items: center;
-margin-bottom: 10px;
-gap: 40px;
+  @include flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  gap: 40px;
 }
 
 .popup-wrapper img {
-margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .span {
-content: ' ';
-position: absolute;
-top: 55px;
-z-index: 10;
+  content: " ";
+  position: absolute;
+  top: 55px;
+  z-index: 10;
 
-display: none;
-width: 20px;
-height: 20px;
-border-top: 1px solid rgba(128, 128, 128, 0.4);
-border-left: 1px solid rgba(128, 128, 128, 0.4);
-transform: rotate(45deg);
-background-color: #fff;
+  display: none;
+  width: 20px;
+  height: 20px;
+  border-top: 1px solid rgba(128, 128, 128, 0.4);
+  border-left: 1px solid rgba(128, 128, 128, 0.4);
+  transform: rotate(45deg);
+  background-color: #fff;
 
   .checkbox:checked + & {
     display: block;
@@ -111,10 +105,8 @@ background-color: #fff;
 }
 
 .popup-list__list {
-width: 65px;
-display: flex;
-justify-content: center;
-align-items: center;
+  width: 65px;
+  @include flex;
 
   &:hover,
   &:focus {
@@ -122,54 +114,49 @@ align-items: center;
   }
 
   & a {
-    display: flex;
+    @include flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     text-decoration: none;
-    color: #000;
+    color: var(--text-color);
   }
 }
 
 img {
-display: block;
-max-width: 100%;
-object-fit: contain;
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .label-more {
-position: absolute;
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100%;
-height: 40px;
-left: 0;
-z-index: 1;
-background-color: bisque;
-cursor: pointer;
+  position: absolute;
+  @include flex;
+  width: 100%;
+  height: 40px;
+  left: 0;
+  z-index: 1;
+  background-color: bisque;
+  cursor: pointer;
 
   .checkbox-more:focus ~ & {
-    border:1px solid #000;
+    border: 1px solid var(--text-color);
   }
-
 }
 
 .next-popup-wrapper {
-display: none;
-position: absolute;
-top: 500px;
-right: 0px;
-padding: 30px 15px 50px;
-background-color: #fff;
-z-index: 10;
+  display: none;
+  position: absolute;
+  top: 500px;
+  right: 0px;
+  padding: 30px 15px 50px;
+  background-color: #fff;
+  z-index: 10;
 
   .checkbox-more:checked ~ & {
-    display:block;
+    display: block;
   }
 }
 
 .checkbox-more:checked + .is-hidden {
-visibility: hidden;
-pointer-events: none;
+  visibility: hidden;
+  pointer-events: none;
 }
