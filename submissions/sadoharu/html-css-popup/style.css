@@ -27,7 +27,6 @@
     font-display: block;
 }
 
-
 [class^="icon-"], [class*=" icon-"] {
   font-family: 'icomoon';
   font-style: normal;
@@ -39,10 +38,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 .icon-bell-solid:before {
   content: "\e900";
 }
+
 .icon-grip-solid:before {
   content: "\e901";
   position: absolute;
@@ -56,6 +55,7 @@
 }
 
 .header {
+    position: relative;
     height: 100px;
     background-image: linear-gradient(to bottom, #ebe7e200 , #d7caba);
     display: flex;
@@ -63,51 +63,47 @@
 }
 
 .nav-bar {
-    position: relative;
+    position: absolute;
     margin-top: 60px;
     width: 100%;
     height: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 5px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     box-shadow: 5px 5px 45px rgba(0, 0, 0, .15);
-    background-image: linear-gradient(to bottom, #e3dbce , #c0a584);
-    
+    background-image: linear-gradient(to bottom, #e3dbce , #c0a584); 
 }
 
-.nav-bar .logo {
-    position: relative;
+.header .logo {
+    position: absolute;
     padding: 10px;
     display: flex;
     align-items: center;
-
+    z-index: 1;
     color: #613011;
-
-
 }
 
-.nav-bar .logo:focus{
+.header .logo:focus{
     outline: 1px solid #6130114f;
     border-radius: 5px;
 }
 
-.nav-bar .logo img {
+.header .logo img {
     height: 100px;
-    position: absolute;
-    top: -57px;
 }
 
-.nav-bar .logo h1 {
-    
+.header .logo h1 {
     font-weight: bold;
     font-size: 20px;
-    margin-left: 60px;
+    margin-top: 60px;
+    transition: .3s all;
 }
 
-
-
+.header .logo h1:hover {
+    filter: drop-shadow(8px 8px 5px #6130114f);
+}
 
 .nav-bar .nav-bar_list {
     list-style-type: none;
@@ -120,7 +116,11 @@
 
 .nav-bar .nav-bar_list_item {
     padding-left: 0;
+    transition: .3s all;
+}
 
+.nav-bar .nav-bar_list_item:hover {
+    filter: drop-shadow(0 0 3px #613011b2);
 }
 
 .nav-bar .nav-bar_list_item a, .nav-bar .nav-bar_list_item label {
@@ -129,7 +129,6 @@
     line-height: 20px;
     cursor: pointer;
 }
-
 
 .nav-bar .nav-bar_list_item.popup-button {
     position: relative;
@@ -152,7 +151,6 @@
 }
 
 .nav-bar .nav-bar_list_item.popup-button .popup-icon:checked ~ .popup {
-
     visibility: visible;
     opacity: 1;
 }
@@ -161,7 +159,6 @@
     height: 40px;
     border-radius: 100%;
 }
-
 
 .nav-bar .popup {
     position: absolute;
@@ -182,7 +179,6 @@
     gap: 20px;
     grid-auto-rows: auto;
     overflow-y: auto;
-    
 }
 
 .nav-bar .popup .popup-item {
@@ -197,9 +193,7 @@
 .nav-bar .popup .popup-item a:focus {
     outline: 1px solid #6130114f;
     border-radius: 10px;
-    
 }
-
 
 .nav-bar .popup a {
     display: flex;
@@ -207,7 +201,6 @@
     text-align: center;
     font-size: 12px;
 }
-
 
 .nav-bar .popup img {
     width: 50px;
@@ -220,21 +213,17 @@
 .nav-bar .popup .popup-showmore {
     grid-column: 1/4;
     text-align: center;
-
 }
-
 
 .nav-bar .popup .popup-showmore .more {
     display: none;
     list-style-type: none;
     padding-left: 0;
-    
     grid-template-columns: repeat(3, 70px);
     grid-template-rows: repeat(3, auto);
     gap: 20px;
     grid-auto-rows: auto;
 }
-
 
 .nav-bar .popup .popup-showmore .more img {
     width: 50px;
@@ -246,21 +235,18 @@
 
 .nav-bar .popup .popup-showmore .popup-lable {
     position: relative;
-
-
-
+    transition: .3s all;
 }
 
+.nav-bar .popup .popup-showmore .popup-lable:hover {
+    filter: drop-shadow(0 0 3px #613011b2);
+}
 
 .nav-bar .popup .popup-showmore .popup-lable::before {
     content: 'Show more';
     position: absolute;
     width: 100px;
     left: -49px;
-    
-
-    
-
 }
 
 .nav-bar .popup .popup-showmore .popup-more#button {
@@ -271,7 +257,6 @@
 .nav-bar .popup .popup-showmore .popup-more:checked ~ .more  {
     display: grid;   
 }
-
 
 .nav-bar .popup .popup-showmore .popup-more:checked ~ .popup-lable::before {
     content: '';
@@ -293,30 +278,21 @@
     outline: 1px solid #6130114f;
     border-radius: 10px;
     padding: 2px;
-    
-
 }
 
 .nav-bar .popup .popup-showmore .popup-more:checked:focus ~.popup-lable::before {
     outline: none;
     padding: 0;
-    
-
 }
 
 .nav-bar .popup .popup-showmore .popup-more:checked:focus  ~.popup-lable::after {
     outline: 1px solid #6130114f;
     border-radius: 10px;
     padding: 2px;
-
 }
 
-
-
 @media (max-width: 538px) {
-    .nav-bar .logo h1 {
+    .header .logo h1 {
         display: none;
     }
 }
-
-
