@@ -1,6 +1,6 @@
 .header {
-  padding: 20px;
-  background-color: #fff;
+  padding: var(--size-20);
+  background-color: var(--main-bg-color);
 }
 
 .header-nav__list {
@@ -44,11 +44,11 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: var(--size-30);
+    height: var(--size-30);
     background-image: url(../img/popup-button.png);
     background-repeat: no-repeat;
-    background-size: 30px 30px;
+    background-size: var(--size-30);
     cursor: pointer;
   }
 }
@@ -64,7 +64,7 @@
   right: 50px;
   width: 350px;
   height: 400px;
-  padding: 30px 15px 30px;
+  padding: var(--size-30) 15px var(--size-30);
   border: 1px solid var(--popupwrapper-color);
   box-shadow: 1px 1px 2px var(--popupwrapper-color);
   overflow: auto;
@@ -92,12 +92,12 @@
   z-index: 10;
 
   display: none;
-  width: 20px;
-  height: 20px;
-  border-top: 1px solid rgba(128, 128, 128, 0.4);
-  border-left: 1px solid rgba(128, 128, 128, 0.4);
+  width: var(--size-20);
+  height: var(--size-20);
+  border-top: 1px solid var(--popupwrapper-color);
+  border-left: 1px solid var(--popupwrapper-color);
   transform: rotate(45deg);
-  background-color: #fff;
+  background-color: var(--main-bg-color);
 
   .checkbox:checked + & {
     display: block;
@@ -147,8 +147,8 @@ img {
   position: absolute;
   top: 500px;
   right: 0px;
-  padding: 30px 15px 50px;
-  background-color: #fff;
+  padding: var(--size-30) 15px 50px;
+  background-color: var(--main-bg-color);
   z-index: 10;
 
   .checkbox-more:checked ~ & {
@@ -159,4 +159,50 @@ img {
 .checkbox-more:checked + .is-hidden {
   visibility: hidden;
   pointer-events: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 576px) {
+  .header-nav__list {
+    gap: var(--size-20);
+  }
+
+  .header-nav__item {
+    flex-basis: var(--size-20);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    appearance: none;
+  }
+
+  .popup-wrapper {
+    display: none;
+    position: absolute;
+    top: 65px;
+    right: 50px;
+    width: 250px;
+    height: 400px;
+    padding: var(--size-20) 5px var(--size-30);
+    border: 1px solid var(--popupwrapper-color);
+    box-shadow: 1px 1px 2px var(--popupwrapper-color);
+    overflow: auto;
+
+    .checkbox:checked ~ & {
+      display: block;
+    }
+  }
+
+  .next-popup-wrapper {
+    display: none;
+    position: absolute;
+    top: 600px;
+    right: 0px;
+    padding: var(--size-30) 15px 50px;
+    background-color: #fff;
+    z-index: 10;
+
+    .checkbox-more:checked ~ & {
+      display: block;
+    }
+  }
 }
