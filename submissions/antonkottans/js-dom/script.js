@@ -1,6 +1,6 @@
 document.body.onload = () => {
-    initializeContentArray = () => {
-        let articles = [
+    const initializeContentArray = () => {
+        const articles = [
             `		<article><h2  class="content-heading">Карп</h2>
 			<a
 				title="USFWS, Public domain, via Wikimedia Commons"
@@ -92,45 +92,49 @@ document.body.onload = () => {
     </section>
 </article>`,
         ];
-        let cashedArticles = [];
-        let fishNames = ["carp", "grassCarp", "pike", "catfish", "carassius"];
-        fishNames.forEach((fishName) =>
-            cashedArticles.push([fishName, document.createElement("div")])
+        const cashedArticles = [];
+
+        ["carp", "grassCarp", "pike", "catfish", "carassius"].forEach(
+            (fishName, i) => {
+                const contentContainer = document.createElement("div");
+                contentContainer.classList.add(fishName, "content");
+                contentContainer.insertAdjacentHTML("afterbegin", articles[i]);
+                cashedArticles.push({
+                    fishName,
+                    content: contentContainer,
+                });
+            }
         );
-        cashedArticles.forEach((contentItem, i) => {
-            contentItem[1].classList.add(contentItem[0], "content");
-            contentItem[1].insertAdjacentHTML("afterbegin", articles[i]);
-        });
         return cashedArticles;
     };
 
-    let contentArticles = initializeContentArray();
+    const contentArticles = initializeContentArray();
 
-    let main = document.querySelector(".main");
-    let temporaryFragment = document.createDocumentFragment();
+    const main = document.querySelector(".main");
+    const temporaryFragment = document.createDocumentFragment();
     contentArticles.forEach((item) => {
-        temporaryFragment.appendChild(item[1]);
+        temporaryFragment.appendChild(item.content);
     });
     main.appendChild(temporaryFragment);
 
-    let navClickHandle = ({ target }) => {
+    const navClickHandle = ({ target }) => {
         if (target.tagName === "INPUT") {
-            let checkedNode = document.querySelector(`.${target.id}`);
-            if (checkedNode) {
-                document.querySelectorAll(".content").forEach((contentItem) => {
-                    contentItem.classList.remove("visible-content");
-                });
-                checkedNode.classList.add("visible-content");
-            }
+            contentArticles.forEach((fish) =>
+                fish.content.classList.remove("visible-content")
+            );
+            contentArticles
+                .find((fish) => fish.fishName === target.id)
+                .content.classList.add("visible-content");
         }
     };
 
-    let navMenu = document.querySelector(".nav-menu");
+    const navMenu = document.querySelector(".nav-menu");
     navMenu.addEventListener("click", navClickHandle);
 
-    let initRadio = document.querySelector(".nav-radio");
-    console.log(initRadio);
+    const initRadio = document.querySelector(".nav-radio");
+
     if (initRadio) {
         initRadio.click();
     }
 };
+
