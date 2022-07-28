@@ -90,22 +90,22 @@
     border-radius: 5px;
 }
 
-.header .logo .logo-img {
+.header .logo-img {
     height: 100px;
 }
 
-.header .logo .logo-title {
+.header .logo-title {
     font-weight: bold;
     font-size: 20px;
     margin-top: 60px;
     transition: .3s all;
 }
 
-.header .logo .logo-title:hover {
+.header .logo-title:hover {
     filter: drop-shadow(8px 8px 5px #6130114f);
 }
 
-.nav-bar .nav-bar_list {
+.nav-bar_list {
     list-style-type: none;
     display: flex;
     align-items: center;
@@ -114,43 +114,43 @@
     justify-content: space-around;
 }
 
-.nav-bar .nav-bar_list_item {
+.nav-bar_list_item {
     padding-left: 0;
     transition: .3s all;
 }
 
-.nav-bar .nav-bar_list_item:hover {
+.nav-bar_list_item:hover {
     filter: drop-shadow(0 0 3px #613011b2);
 }
 
-.nav-bar .nav-bar_list_item .link, .nav-bar .nav-bar_list_item .label {
+.nav-bar_list_item .link, .nav-bar_list_item .label {
     color: #613011;
     font-size: 16px;
     line-height: 20px;
     cursor: pointer;
 }
 
-.nav-bar .popup-button {
+.nav-bar_list_item .link:focus {
+    outline: 1px solid #6130114f;
+    border-radius: 5px;
+}
+
+.popup-button {
     position: relative;
 }
 
-.nav-bar .nav-bar_list_item .link:focus {
+.popup-button .popup-icon:focus ~ .icon-grip-solid:before {
     outline: 1px solid #6130114f;
     border-radius: 5px;
 }
 
-.nav-bar .popup-button .popup-icon:focus ~ .icon-grip-solid:before {
-    outline: 1px solid #6130114f;
-    border-radius: 5px;
-}
-
-.nav-bar .popup-button .popup-icon{
+.popup-button .popup-icon{
     margin: 0;
     height: 0;
     width: 0;
 }
 
-.nav-bar .popup-button .popup-icon:checked ~ .popup {
+.popup-button .popup-icon:checked ~ .popup {
     visibility: visible;
     opacity: 1;
 }
@@ -181,28 +181,28 @@
     overflow-y: auto;
 }
 
-.nav-bar .popup .popup-item {
+.popup .popup-item {
     transition: .6s all;
 }
 
-.nav-bar .popup .popup-item:hover {
+.popup .popup-item:hover {
     background-color: #fff;
     border-radius: 10px;
 }
 
-.nav-bar .popup .popup-item .link:focus {
+.popup .link:focus {
     outline: 1px solid #6130114f;
     border-radius: 10px;
 }
 
-.nav-bar .popup .link {
+.popup .link {
     display: flex;
     flex-direction: column;
     text-align: center;
     font-size: 12px;
 }
 
-.nav-bar .popup .img {
+.popup .img {
     width: 50px;
     height: 50px;
     object-fit: contain;
@@ -210,12 +210,12 @@
     margin: 0 auto;
 }
 
-.nav-bar .popup .popup-showmore {
+.popup .popup-showmore {
     grid-column: 1/4;
     text-align: center;
 }
 
-.nav-bar .popup .popup-showmore .more {
+.popup-showmore .more {
     display: none;
     list-style-type: none;
     padding-left: 0;
@@ -225,55 +225,55 @@
     grid-auto-rows: auto;
 }
 
-.nav-bar .popup .popup-showmore .popup-lable {
+.popup-showmore .popup-lable {
     position: relative;
     transition: .3s all;
     color: #613011;
     cursor: pointer;
 }
 
-.nav-bar .popup .popup-showmore .popup-lable:hover {
+.popup-showmore .popup-lable:hover {
     filter: drop-shadow(0 0 3px #613011b2);
 }
 
-.nav-bar .popup .popup-showmore .popup-lable::before {
+.popup-showmore .popup-lable::before {
     content: 'Show more';
     position: absolute;
     width: 100px;
     left: -49px;
 }
 
-.nav-bar .popup .popup-showmore .popup-more#button {
+#button {
     width: 0;
     height: 0;
 }
 
-.nav-bar .popup .popup-showmore .popup-more:checked ~ .more  {
+.popup-showmore .popup-more:checked ~ .more  {
     display: grid;
     margin-top: 10px;
 }
 
-.nav-bar .popup .popup-showmore .popup-more:checked ~ .popup-lable::before {
+.popup-showmore .popup-more:checked ~ .popup-lable::before {
     content: 'Hide';
     position: absolute;
     width: 100px;
     left: -49px;
 }
 
-.nav-bar .popup .popup-showmore .popup-more:focus ~.popup-lable::before {
+.popup-showmore .popup-more:focus ~.popup-lable::before {
     outline: 1px solid #6130114f;
     border-radius: 10px;
     padding: 2px;
 }
 
-.nav-bar .popup .popup-showmore .popup-more:checked:focus ~.popup-lable::before {
+.popup-showmore .popup-more:checked:focus ~.popup-lable::before {
     outline: 1px solid #6130114f;
     border-radius: 10px;
     padding: 2px;
 }
 
 @media (max-width: 538px) {
-    .header .logo .logo-title {
+    .header .logo-title {
         display: none;
     }
 }
