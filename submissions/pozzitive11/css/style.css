@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-image: url(../img/star-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+
+.container {
+  max-width: 1500px;
+  padding: 0 15px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.content{
+  margin-bottom: 30px;
+}
+
+/* Header */
+
+.header {
+  padding: 30px 0;
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  font-size: 45px;
+  line-height: 60px;
+}
+
+/* Buttons */
+
+.nav {
+  margin-right: 20px;
+  min-width: 300px;
+}
+
+.nav__item{
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.nav__btn {
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+  border: none;
+  color: #fff;
+  background-color: blue;
+  font-size: 23px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+/* Content */
+
+.photo__img{
+  margin-bottom: 7px;
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.photo__name {
+  margin-bottom: 7px;
+  font-size: 25px;
+  line-height: 32px;
+}
+
+.photo__creator {
+  font-size: 16px;
+  line-height: 22px;
+  color: rgb(143, 143, 143);
+  margin-bottom: 7px;
+}
+
+.photo__descr {
+  font-size: 20px;
+  line-height: 27px;
+}
