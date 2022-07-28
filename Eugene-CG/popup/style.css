@@ -1,109 +1,101 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: content-box;
-	list-style: none;
-    outline: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  list-style: none;
 }
 .wrapper {
-	width: 100%;
-	height: 300vh;
-	background-image: url(./img/gitlogoforme.jpeg);
+  height: 300vh;
+  min-width: 100%;
+  background-image: url(./img/gitlogoforme.jpeg);
 }
 .header {
-    margin: 0 auto;
-	max-width: 1198px;
-	height: 80px;
-	display: flex;
-	justify-content: space-between;
+  height: 80px;
+  max-width: 1198px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
-img {
-	width: 50px;
-	height: 50px;
+.menu {
+  height: 100%;
+  width: 30%;
 }
-a {
-	display: block;
+.menu-list {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
 }
-.list {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	height: 80px;
+.menu-list li {
+  height: 100%;
+  width: 25%;
+  margin: 0 0.3em;
+  position: relative;
+  display: block;
 }
-li {
-	margin: 0.2em;
+.menu-list li a {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
 }
-.list__item {
-	margin: 10px 20px;
+.menu-list li img {
+  height: 100%;
+  width: 100%;
+  border-radius: 20%;
 }
-.popup, .popup-more {
-	align-self: flex-start;
-	position: relative;
+.menu-list > li input {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
 }
-a, span {
-	text-decoration: none;
-	color: rgb(255, 255, 255);
-	line-height: 1.4;
-	font-weight: 700;
-	font-size: 1.3em;
+.popup,
+.more {
+  height: 500px;
+  width: 127px;
+  display: none;
+  position: relative;
+  left: -30%;
+  top: calc(10% + 0.1rem);
 }
-a {
-    width: 50px !important;
+.more {
+  height: 0;
+  position: absolute;
+  top: 100%;
+  left: -30%;
 }
-.popup-btn__label, .more-btn__label {
-	margin: 6em;
+.popup li,
+.more li {
+  height: 70px;
+  width: 70px;
+  margin: 0.9rem auto;
 }
-.popup-btn, .more-btn {
-	outline: none;
-	position: absolute;
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	top: 0;
-	left: 0;
+.menu-list:last-child input:checked + .popup {
+  display: block;
+  overflow: hidden overlay;
 }
-.popup-btn {
-	width: 50px;
-	height: 50px;
+.menu-list:last-child li {
+  height: 80px;
+  width: 80.25px;
 }
-.more-btn {
-	width: 48.13px;
-	height: 24px;
-}
-.popup-list, .more-list {
-	overflow: hidden;
-	height: 0px;
-    width: 67px;
-    padding-right: 17px;
-}
-.more-list {
-	visibility: hidden;
-}
-.popup-btn:checked +.popup-list{
-	overflow-y: auto;
-    height: 336.5px;
-}
-.more-btn:checked + .more-list {
-	visibility: visible;
-	height: 250px;
-}
-.popup-list__link, .popup-list__item {
-	width: 67px;
-}
-.popup-btn:checked {
-	transform: scale(1.1);
-}
-.popup-btn:hover {
-    box-shadow: 0 0 0.1em 0.1em white;
-}
-a:hover {
-	box-shadow: 0 0 1em 0.3em blue, 0 0 1em 0.3em blue inset;
-	border-radius: 100%;
-}
-.cheshire{
-    margin-left: 10px;
-    border-radius: 50%;
+.popup:last-child input:checked + .more {
+  display: block;
 }
 *:focus {
-    box-shadow: 0px 0 1em 0.3em rgb(255, 255, 255);
+  box-shadow: 0 0 0 0.1em white;
+}
+*:checked:focus {
+  box-shadow: 0 0 0 0.2em gray;
 }
