@@ -34,12 +34,14 @@ const man = {
   saying: 'How you doin?',
 };
 
-const catWoman = Object.create(cat);
-catWoman.name = 'Cat-woman';
-catWoman.species = 'human';
-catWoman.gender = 'female';
-catWoman.legs = 2;
-catWoman.hands = 2;
+const catWoman = {
+  ...cat,
+  name: 'Catwoman',
+  species: 'human',
+  gender: 'female',
+  legs: 2,
+  hands: 2,
+};
 
 const inhabitants = [dog, cat, woman, man, catWoman];
 
