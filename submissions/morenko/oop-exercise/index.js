@@ -83,3 +83,4 @@ class WorldInhabitant {
     );
   
   [man, woman, cat, dog].map(el => print(el)); 
+  
