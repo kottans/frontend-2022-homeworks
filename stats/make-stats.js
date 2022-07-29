@@ -68,35 +68,44 @@ async function saveStatsToAFile(fileName, text) {
 }
 
 function makeMarkdownTable(authors, labels, dataByAuthor) {
-  const columnDelimiter = " | ";
   const rows = [
-    ' Nr ' + columnDelimiter +
-    'author' + columnDelimiter + labels.join(columnDelimiter),
-    "--- | ".repeat(labels.length + 1) + "---",
+    makeMarkdownTableRow(['Nr', 'author', ...labels]),
+    makeMarkdownTableRow(makeArray(labels.length + 2, '---')),
   ];
   let coveredTasksCountLatest = Number.MAX_SAFE_INTEGER, authorNr = 0;
   authors.forEach(authorName => {
     const coveredTasksCount = Object.keys(dataByAuthor[authorName]).length;
     if (coveredTasksCount < coveredTasksCountLatest) {
       rows.push(
-        ' &gt; ' + columnDelimiter +
-        `**${coveredTasksCount} task${coveredTasksCount > 1 ? 's' : ''}**` +
-        columnDelimiter.repeat(labels.length)
+        makeMarkdownTableRow([
+          '=',
+          `**${coveredTasksCount} task${coveredTasksCount > 1 ? 's' : ''}**`,
+          ...makeArray(labels.length, '   '),
+        ])
       );
       coveredTasksCountLatest = coveredTasksCount;
       authorNr = 0;
     }
-    rows.push([
+    rows.push(makeMarkdownTableRow([
       ` ${coveredTasksCountLatest}.${++authorNr}`,
       makePrListUrl(authorName),
       ...labels.map(label =>
         dataByAuthor[authorName][label]
           ? makePrUrl(dataByAuthor[authorName][label].prNr, dataByAuthor[authorName][label].state[0])
           : " "
-      )].join(columnDelimiter)
+      )])
     );
   });
   return rows.join("\n");
+}
+
+function makeMarkdownTableRow(cells) {
+  const columnDelimiter = " | ";
+  return `${columnDelimiter}${cells.join(columnDelimiter)}${columnDelimiter}`.trim();
+}
+
+function makeArray(count = 1, value) {
+  return Array(count).fill(value);
 }
 
 function makePrListUrl(authorName) {
