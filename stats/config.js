@@ -1,13 +1,13 @@
-const baseRepoUrl = "https://github.com/kottans/frontend-2021-homeworks/";
+const baseRepoUrl = "https://github.com/kottans/frontend-2022-homeworks/";
 
 const prLabels = [
-  "Hooli-style Popup",
-  "JS DOM",
-  "JS pre-OOP",
-  "JS OOP",
-  "JS post-OOP",
-  "Memory Pair Game",
-  "Friends App",
+  "task-PopUp",
+  "task-DOM",
+  "task-TJSW",
+  "task-Frogger",
+  "task-TJSW-OOP",
+  "task-MPG",
+  "task-Friends",
 ];
 
 const prStates = [
