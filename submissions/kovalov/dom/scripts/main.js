@@ -55,7 +55,12 @@ mainContent.addEventListener('click', (event) => {
 });
 
 modal.addEventListener('click', (event) => {
-  if (!event.target.dataset.modal === 'opened') return;
+  console.log(event.target.dataset);
+  if (
+    !event.target.dataset.modal === 'opened' ||
+    event.target.dataset.modalImage === ''
+  )
+    return;
 
   modal.classList.add('modal--hidden');
   modal.dataset.modal = 'closed';
