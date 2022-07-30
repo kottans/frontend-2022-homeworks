@@ -34,21 +34,28 @@ const man = {
   saying: 'How you doin?',
 };
 
-const catWoman = {
-  ...cat,
-  name: 'Catwoman',
-  species: 'human',
-  gender: 'female',
-  legs: 2,
-  hands: 2,
-};
+const catWoman = Object.create(cat);
+catWoman.name = 'Cat-woman';
+catWoman.species = 'human';
+catWoman.gender = 'female';
+catWoman.legs = 2;
+catWoman.hands = 2;
 
 const inhabitants = [dog, cat, woman, man, catWoman];
 
-const keys = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
+const inhabitantPropertyNames = [
+  'species',
+  'name',
+  'gender',
+  'legs',
+  'hands',
+  'saying',
+];
 
-const details = inhabitants.map((item) => {
-  return keys.map((key) => item[key]);
-});
+const details = inhabitants.map((inhabitant) =>
+  inhabitantPropertyNames.map((propName) => inhabitant[propName])
+);
 
-details.forEach((item) => print(item.join('; ')));
+inhabitantDetails.forEach((inhabitant) =>
+  print(inhabitant.join('; '))
+);
