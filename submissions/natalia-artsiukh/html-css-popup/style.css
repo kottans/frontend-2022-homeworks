@@ -37,11 +37,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+.label-position:hover,
+.label-position:focus,
+.box-size:hover,
+.box-size:focus,
+.profile-img:hover,
+.profile-img:focus {
+    border: 1px solid rgb(255, 235, 205);
+    box-shadow: 0 0 10px rgb(255, 235, 205);
+    border-radius: 5px; 
 }
 .box-popup {
     width: 1.5em;
     height: 1.5em;
     background: url(./img/popup-button.png) no-repeat rgba(255, 235, 205, 0.614); 
+}
+.box-popup:focus {
+    border: 1px solid rgb(255, 235, 205);
+    box-shadow: 0 0 10px rgb(255, 235, 205);
+    border-radius: 5px;  
 }
 .popup {
     position: fixed;
@@ -116,6 +132,12 @@ body {
     text-align: center;
     background-color: rgb(255, 225, 181);
 }
+.label-more:focus,
+.label-more:hover {
+    border: 1px solid rgb(131, 121, 106);
+    box-shadow: 0 0 10px rgb(131, 121, 106);
+    border-radius: 5px; 
+}
 .more-text {
     text-decoration: none;
     color: rgb(29, 39, 41);
@@ -131,6 +153,9 @@ body {
     display: contents;
     
 }
+.box-size {
+    cursor: pointer;
+}
 .box-bell {
     width: 1.5em;
     height: 1.5em;
@@ -140,6 +165,7 @@ body {
     background-color: rgba(255, 235, 205, 0.614);
     height: 1.5em;
     align-items: center;
+    cursor: pointer;
 }
 
 @media (width: 1920px) {
