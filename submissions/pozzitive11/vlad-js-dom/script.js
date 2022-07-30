@@ -79,5 +79,15 @@ navList.addEventListener("click", (event) => {
     let photoId = target.id;
     let photoItem = photos.find((item) => item.id === photoId);
     fillContent(photoItem);
+    nav.classList.toggle("nav--visible");
+    burger.classList.toggle("burger--active");
   }
+});
+
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav');
+
+burger.addEventListener("click", (e) => {
+  nav.classList.toggle("nav--visible");
+  burger.classList.toggle("burger--active");
 });
