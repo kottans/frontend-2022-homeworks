@@ -52,10 +52,10 @@ const inhabitantPropertyNames = [
   'saying',
 ];
 
-const details = inhabitants.map((inhabitant) =>
+const inhabitantDetails = inhabitants.map((inhabitant) =>
   inhabitantPropertyNames.map((propName) => inhabitant[propName])
 );
 
-const inhabitantDetails.forEach((inhabitant) =>
+inhabitantDetails.forEach((inhabitant) =>
   print(inhabitant.join('; '))
 );
