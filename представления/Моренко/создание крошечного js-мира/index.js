@@ -4,41 +4,41 @@ const woman = {
     gender: 'female',
     legs: 2,
     hands: 2,
-    saying: 'bye'
-  };
+    saying: 'bye',
+};
 const man = {
     species: 'human',
     name: 'Joey',
     gender: 'male',
     legs: 2,
     hands: 2,
-    saying: 'hi'
-  };
+    saying: 'hi',
+};
 const dog = {
     species: 'dog',
     name: 'Dik',
     gender: 'male',
     legs: 4,
     hands: 0,
-    saying: 'woof'
-  };
+    saying: 'woof',
+};
 const cat = {
     species: 'cat',
     name: 'Tom',
     gender: 'male',
     legs: 4,
     hands: 0,
-    saying: 'mau'
-  };
+    saying: 'mau',
+};
   
   
-  const inhabitants = [dog, cat, woman, man];
+const inhabitants = [dog, cat, woman, man];
   
-  const keys = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
+const keys = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
   
-  const description = inhabitants.map((inhabitant) => {
+const description = inhabitants.map((inhabitant) => {
     return keys.map(key => inhabitant[key]);
-  });
+});
   
-  description.map(el => print(el.join('; ')));
+description.map(el => print(el.join('; ')));
   
