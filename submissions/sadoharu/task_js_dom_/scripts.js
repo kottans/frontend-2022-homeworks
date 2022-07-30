@@ -32,23 +32,22 @@ window.addEventListener('DOMContentLoaded', () => {
     hideShowPage();
 
     const togglePage = (e, node) => {
-        hideShowPage(node);
+        hideShowPage(node.getAttribute('data-index'));
         e.currentTarget.querySelectorAll('.nav-bar__list_item').forEach(item => item.classList.remove('active'))
-        e.target.classList.add('active')
+        node.classList.add('active')
     }
 
     navList.addEventListener('click', e => {
         if (e.target.getAttribute('data-index')) {
-            togglePage(e, e.target.getAttribute('data-index'))
+            togglePage(e, e.target)
         } else if (e.target.parentNode.getAttribute('data-index')) {
-            togglePage(e, e.target.parentNode.getAttribute('data-index'))
+            togglePage(e, e.target.parentNode)
         }
-
     })
 
       document.addEventListener('keyup', e => {
         if (e.code === 'Space') {
-            togglePage(e, e.target.getAttribute('data-index'))
+            togglePage(e, e.target)
         }
       })
 });

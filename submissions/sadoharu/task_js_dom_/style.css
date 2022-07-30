@@ -121,7 +121,6 @@
     width: 100%;
     height: 1px;
     background-color: #000;
-    transition: 0.4s all;
 }
 
 .nav-bar__list_item.active {
