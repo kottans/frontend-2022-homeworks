@@ -1,30 +1,62 @@
-import { getSelectedDataItem } from './data.js';
-import { createElement } from './element.js';
+import { data as planets } from './data.js';
+import { createElement } from './createElement.js';
+import {
+  sideMenu,
+  sideMenuOpenButton,
+  sideMenuCloseButton,
+  sideMenuContent,
+  mainContent,
+  modal,
+  modalImage,
+} from './pageElements.js';
 
-const menuButton = document.querySelector('[data-menu-button]');
-const menuMobileContent = document.querySelector(
-  '[data-mobile-menu-content]'
-);
-const menuDesktopContent = document.querySelector(
-  '[data-desktop-menu-content]'
-);
-const mainContent = document.querySelector('[data-main-content]');
+function toggleSideMenu() {
+  sideMenu.dataset.sideMenu === 'opened'
+    ? (sideMenu.dataset.sideMenu = 'closed')
+    : (sideMenu.dataset.sideMenu = 'opened');
+  sideMenu.classList.toggle('side-menu--hidden');
+}
 
-menuButton.addEventListener('click', () => {
-  menuMobileContent.classList.toggle('opened');
+function getSelectedDataItem(id, data) {
+  return data.find((item) => item.id === Number(id));
+}
+
+function addSelectedDataItem(id, data) {
+  const selectedPlanetData = getSelectedDataItem(id, data);
+  const contentElement = createElement(selectedPlanetData);
+  mainContent.innerHTML = '';
+  mainContent.appendChild(contentElement);
+}
+
+function toggleModal(id, data) {
+  const selectedImage = getSelectedDataItem(id, data);
+  const { src: imageSrc } = selectedImage;
+  const imagePath = `./assets/images/${imageSrc}`;
+  modalImage.src = imagePath;
+  modal.classList.remove('modal--hidden');
+  modal.dataset.modal = 'opened';
+}
+
+sideMenuOpenButton.addEventListener('click', toggleSideMenu);
+
+sideMenuCloseButton.addEventListener('click', toggleSideMenu);
+
+sideMenuContent.addEventListener('click', (event) => {
+  if (!event.target.dataset.sideMenuId) return;
+
+  const { sideMenuId: id } = event.target.dataset;
+  addSelectedDataItem(id, planets);
+  toggleSideMenu();
 });
 
-menuMobileContent.addEventListener('click', appendContent);
+mainContent.addEventListener('click', (event) => {
+  const { imageId: id } = event.target.dataset;
+  toggleModal(id, planets);
+});
 
-menuDesktopContent.addEventListener('click', appendContent);
+modal.addEventListener('click', (event) => {
+  if (!event.target.dataset.modal === 'opened') return;
 
-function appendContent(event) {
-  if (event.target.dataset.id) {
-    const { id } = event.target.dataset;
-    const data = getSelectedDataItem(id);
-    const element = createElement(data);
-
-    mainContent.innerHTML = '';
-    mainContent.appendChild(element);
-  }
-}
+  modal.classList.add('modal--hidden');
+  modal.dataset.modal = 'closed';
+});

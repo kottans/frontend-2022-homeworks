@@ -1,4 +1,4 @@
-const data = [
+export const data = [
   {
     id: 0,
     name: 'Tatooine',
@@ -16,7 +16,7 @@ const data = [
   {
     id: 2,
     name: 'Xandar',
-    src: 'xandar.jpg',
+    src: 'xandar.webp',
     description:
       'Xandar is a fictional planet appearing in American comic books published by Marvel Comics. The planet is depicted as being in the Tranta system in the Andromeda Galaxy. It is best known as the home world of the Nova Corps, an intergalactic police task force. Xandar is also the home planet of Firelord and Air-Walker, former Heralds of Galactus, as well as the super-villain Supernova.',
   },
@@ -28,7 +28,3 @@ const data = [
       'Krypton is a fictional planet appearing in American comic books published by DC Comics. The planet was created by Jerry Siegel and Joe Shuster, and was named after the chemical element krypton. The home world of Superman, it was first mentioned in Action Comics #1 (June 1938) and made its first appearance in Superman #1 (1939).',
   },
 ];
-
-export function getSelectedDataItem(id) {
-  return data.find((item) => item.id === Number(id));
-}
