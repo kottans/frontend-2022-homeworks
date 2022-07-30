@@ -56,6 +56,6 @@ const details = inhabitants.map((inhabitant) =>
   inhabitantPropertyNames.map((propName) => inhabitant[propName])
 );
 
-inhabitantDetails.forEach((inhabitant) =>
+const inhabitantDetails.forEach((inhabitant) =>
   print(inhabitant.join('; '))
 );
