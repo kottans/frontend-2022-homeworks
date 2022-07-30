@@ -56,7 +56,9 @@ const catWoman = {
     hands: 2,
     paws: 0,
     tail: "tail",
-    saying: cat.saying,
+    get saying(){
+        return cat.saying
+    },
     friends: ["Felix"],
 };
 const inhabitants = [dog, cat, woman, man, catWoman];
