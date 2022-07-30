@@ -102,9 +102,7 @@ body {
 /* Burger */
 
 .burger {
-  position: absolute;
-  top: 30px;
-  left: 30px;
+  position: relative;
   width: 30px;
   height: 20px;
   display: none;

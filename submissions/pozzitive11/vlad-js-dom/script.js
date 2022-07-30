@@ -49,12 +49,10 @@ const createBtn = (name, img, id) => {
           </li>`;
 };
 
-function createNavList(photos) {
-  let btns = photos.map(({ name, img, id }) => createBtn(name, img, id));
-  let navList = document.querySelector(".nav__list");
-  navList.innerHTML = btns.join("");
-}
-createNavList(photos);
+const btns = photos.map(({ name, img, id }) => createBtn(name, img, id));
+const navList = document.querySelector(".nav__list");
+console.log(navList);
+navList.innerHTML = btns.join("");
 
 // Crete content
 
@@ -62,6 +60,7 @@ const img = document.querySelector(".photo__img");
 const nameImg = document.querySelector(".photo__name");
 const creator = document.querySelector(".photo__creator");
 const description = document.querySelector(".photo__descr");
+const btn = document.querySelector(".nav__btn");
 
 const fillContent = (item) => {
   img.innerHTML = `<img class="photo-img" src="${item.img}" alt="${item.name}" />`;
@@ -71,21 +70,18 @@ const fillContent = (item) => {
 };
 fillContent(photos[0]);
 
-const navList = document.querySelector(".nav__list");
-
 navList.addEventListener("click", (event) => {
-  const target = event.target;
-  if (target && target.classList.contains("nav__btn")) {
-    let photoId = target.id;
-    let photoItem = photos.find((item) => item.id === photoId);
+  if (event.target && event.target.classList.contains("nav__btn")) {
+    const photoId = event.target.id;
+    const photoItem = photos.find((item) => item.id === photoId);
     fillContent(photoItem);
     nav.classList.toggle("nav--visible");
     burger.classList.toggle("burger--active");
   }
 });
 
-const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav');
+const burger = document.querySelector(".burger");
+const nav = document.querySelector(".nav");
 
 burger.addEventListener("click", (e) => {
   nav.classList.toggle("nav--visible");
