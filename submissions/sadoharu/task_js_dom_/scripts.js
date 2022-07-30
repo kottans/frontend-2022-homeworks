@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const button = document.querySelectorAll('.nav-bar__list_item');
     const pages = document.querySelectorAll('.section__page');
     const navList = document.querySelector('.nav-bar__list')
 
@@ -32,19 +31,24 @@ window.addEventListener('DOMContentLoaded', () => {
 
     hideShowPage();
 
+    const togglePage = (e, node) => {
+        hideShowPage(node);
+        e.currentTarget.querySelectorAll('.nav-bar__list_item').forEach(item => item.classList.remove('active'))
+        e.target.classList.add('active')
+    }
+
     navList.addEventListener('click', e => {
-        const target = e.target;
-        if (target.getAttribute('data-index')) {
-            hideShowPage(target.getAttribute('data-index'));
-        } else if (target.parentNode.getAttribute('data-index')) {
-            hideShowPage(target.parentNode.getAttribute('data-index'));
+        if (e.target.getAttribute('data-index')) {
+            togglePage(e, e.target.getAttribute('data-index'))
+        } else if (e.target.parentNode.getAttribute('data-index')) {
+            togglePage(e, e.target.parentNode.getAttribute('data-index'))
         }
 
     })
 
       document.addEventListener('keyup', e => {
         if (e.code === 'Space') {
-            hideShowPage(e.target.getAttribute('data-index'))
+            togglePage(e, e.target.getAttribute('data-index'))
         }
       })
 });
