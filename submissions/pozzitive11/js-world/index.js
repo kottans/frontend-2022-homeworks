@@ -13,17 +13,10 @@ const cat = {
   gender: "female",
   legs: 4,
   hands: 0,
-  saying: "mur-mur",
+  saying: "mur",
 };
 
-const catWoman = {
-  species: "catwoman",
-  name: "Nazar",
-  gender: "female",
-  legs: 4,
-  hands: 0,
-  saying: cat.saying,
-};
+const catWoman = Object.create(cat);
 
 const woman = {
   species: "woman",
@@ -44,10 +37,10 @@ const man = {
 };
 
 const arr = [dog, cat, woman, man, catWoman];
-const arrValues = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
+const arrValues = ["species", "name", "gender", "legs", "hands", "saying"];
 
 const newArr = arr.map((item) => arrValues.map((value) => item[value]));
 
-const result = newArr.join('\n \n');
+const result = newArr.join(";\n \n") + ";";
 
 print(result);
