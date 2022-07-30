@@ -35,8 +35,8 @@
 
 .popup_checkbox {
   position: absolute;
-  top: -100vh;
-  left: -100vw;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .popup_checkbox:focus ~ .popup_checkbox_label {
@@ -141,7 +141,8 @@
 
 .inner-popup_checkbox {
   position: absolute;
-  left: -100px;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .inner-popup_checkbox:focus ~ .inner-popup_checkbox_label {
@@ -155,7 +156,3 @@
 .inner-popup__list{
   display: none;
 }
-
-
-
-
