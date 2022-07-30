@@ -118,6 +118,10 @@
   transition: 0.3s visibility;
   transition: 0.3s transform;
 }
+.header__popup-input:focus + .header__popup-btn-img {
+  outline: 1px solid white;
+  border-radius: 5px;
+}
 .header__popup-submenu {
   position: absolute;
   right: 50px;
