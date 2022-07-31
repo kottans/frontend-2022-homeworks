@@ -16,7 +16,14 @@ const cat = {
   saying: "mur",
 };
 
-const catWoman = Object.create(cat);
+const catWoman = {
+  species: "woman",
+  name: "Nazar",
+  gender: "female",
+  legs: 2,
+  hands: 2,
+  saying: "mur",
+};
 
 const woman = {
   species: "woman",
