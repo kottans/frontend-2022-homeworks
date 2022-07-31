@@ -73,16 +73,16 @@ const inhabitantsKeys = [
   "hands",
   "saying",
 ];
-let string = [];
+let output = [];
 
 inhabitants.forEach((obj) => {
-  string.push(
+  output.push(
     inhabitantsKeys.reduce((accumulator, prop) => {
       return (accumulator += obj[prop] + "; ");
     }, "")
   );
 });
-print(string.join("\n"));
+print(output.join("\n"));
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
