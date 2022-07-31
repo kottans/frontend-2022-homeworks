@@ -43,8 +43,6 @@
         overflow: hidden;
     }
 
-
-    /*label & inputs for submenu*/
     &__popup-label {
         display: block;
     }
@@ -91,9 +89,6 @@
             border-radius: 5px;
         }
     }
-
-
-    /*Submenu styles*/
 
     &__popup-submenu{
         position: absolute;
@@ -161,8 +156,6 @@
         height: 40px;
         object-fit: cover;
     }
-
-    /*More btn styles*/ 
 
     &__popup-more {
         align-self: end;
