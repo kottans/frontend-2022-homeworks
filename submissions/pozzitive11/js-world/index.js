@@ -16,15 +16,6 @@ const cat = {
   saying: "mur",
 };
 
-const catWoman = {
-  species: "woman",
-  name: "Nazar",
-  gender: "female",
-  legs: 2,
-  hands: 2,
-  saying: "mur",
-};
-
 const woman = {
   species: "woman",
   name: "Dazdraperma",
@@ -43,11 +34,30 @@ const man = {
   saying: "Hello World!",
 };
 
-const arr = [dog, cat, woman, man, catWoman];
-const arrValues = ["species", "name", "gender", "legs", "hands", "saying"];
+const catWoman = {
+  species: "catwoman",
+  name: "Nazar",
+  gender: "femalmale",
+  legs: 2,
+  hands: 2,
+};
 
-const newArr = arr.map((item) => arrValues.map((value) => item[value]));
+Object.setPrototypeOf(catWoman, cat);
 
-const result = newArr.join(";\n \n") + ";";
+const inhabitants = [dog, cat, woman, man, catWoman];
+const inhabitantsValues = [
+  "species",
+  "name",
+  "gender",
+  "legs",
+  "hands",
+  "saying",
+];
 
-print(result);
+const connectInhabitantsAndValues = inhabitants.map((item) =>
+  inhabitantsValues.map((value) => item[value])
+);
+
+const showInhabitantsInHtml = connectInhabitantsAndValues.join(";\n \n") + ";";
+
+print(showInhabitantsInHtml);
