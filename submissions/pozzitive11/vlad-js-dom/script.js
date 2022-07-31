@@ -51,7 +51,6 @@ const createBtn = (name, img, id) => {
 
 const btns = photos.map(({ name, img, id }) => createBtn(name, img, id));
 const navList = document.querySelector(".nav__list");
-console.log(navList);
 navList.innerHTML = btns.join("");
 
 // Crete content
@@ -70,9 +69,9 @@ const fillContent = (item) => {
 };
 fillContent(photos[0]);
 
-navList.addEventListener("click", (event) => {
-  if (event.target && event.target.classList.contains("nav__btn")) {
-    const photoId = event.target.id;
+navList.addEventListener("click", ({ target }) => {
+  if (target && target.classList.contains("nav__btn")) {
+    const photoId = target.id;
     const photoItem = photos.find((item) => item.id === photoId);
     fillContent(photoItem);
     nav.classList.toggle("nav--visible");
