@@ -40,26 +40,49 @@ const woman = {
   hands: 2,
   saying: "Nice to meet you",
 };
-const catWoman = {
-  species: "Dream",
-  name: "Noone",
-  gender: "female",
-  legs: 2,
-  hands: 2,
-  saying: cat.saying,
-};
-const arr = [cat, dog, man, woman, catWoman];
+const catWoman = Object.create(null, {
+  species: {
+    value: "catwoman",
+    writable: true,
+    enumerable: true,
+    configurable: true,
+  },
+  name: {
+    value: "Violet Flower",
+    writable: true,
+    enumerable: true,
+    configurable: true,
+  },
+  gender: {
+    value: "female",
+    writable: true,
+    enumerable: true,
+    configurable: true,
+  },
+  legs: { value: 2, writable: true, enumerable: true, configurable: true },
+  hands: { value: 2, writable: true, enumerable: true, configurable: true },
+});
+Object.setPrototypeOf(catWoman, cat);
+
+const inhabitants = [cat, dog, man, woman, catWoman];
+const inhabitantsKeys = [
+  "species",
+  "name",
+  "gender",
+  "legs",
+  "hands",
+  "saying",
+];
 let string = [];
 
-arr.map((obj) => {
+inhabitants.forEach((obj) => {
   string.push(
-    Object.keys(obj)
-      .map((key) => obj[key])
-      .join("; ")
+    inhabitantsKeys.reduce((accumulator, prop) => {
+      return (accumulator += obj[prop] + "; ");
+    }, "")
   );
 });
-
-print(string.join(".\n"));
+print(string.join("\n"));
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
