@@ -6,14 +6,14 @@
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.8);
   }
-  .popup__content {
+  .popup__list {
     height: 300px;
     width: 300px;
     position: absolute;
     bottom: calc(50% - 100px);
     left: calc(50% - 140px);
   }
-  .popup__content > li {
+  .popup__list > li {
     width: var(--full-size);
     margin: 5px 0;
     line-height: 5;
@@ -27,9 +27,12 @@
   .menu {
     display: none;
   }
-  .burger-label {
+  .popup-btn-label {
     width: 10%;
     display: inherit;
     position: relative;
+  }
+  img {
+    display: block;
   }
 }

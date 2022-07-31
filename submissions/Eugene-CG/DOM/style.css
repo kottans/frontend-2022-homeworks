@@ -6,6 +6,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+.delegate-events-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
 .wrapper {
   min-height: 100vh;
   max-width: var(--full-size);
@@ -50,7 +55,7 @@ input[type="checkbox"] {
   width: 40%;
   margin-left: 1rem;
 }
-.burger-label {
+.popup-btn-label {
   display: none;
 }
 .menu > ul {
@@ -86,4 +91,7 @@ li:hover {
 }
 .logo:hover {
   color: black;
+}
+img {
+  display: none;
 }
