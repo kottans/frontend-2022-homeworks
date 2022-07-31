@@ -39,7 +39,6 @@ const handleList = (target) => {
     target.closest(".menu__list-item") ||
     target.closest(".popup__list-item")
   ) {
-    alert("hi");
     const className = target.className;
     const findTextByClassName = texts.find((text) =>
       className.includes(text.class)
