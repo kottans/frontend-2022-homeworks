@@ -124,6 +124,7 @@ body {
 .popup-text {
     text-align: center;
     margin: 1em 0 0; 
+    line-height: 1em;
 }
 .more {
     appearance: none;
