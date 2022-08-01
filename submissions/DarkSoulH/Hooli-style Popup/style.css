@@ -3,12 +3,7 @@
     margin: 0px;
     border: none;
 }
-  
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+
   
 img, svg {
     max-width: 100%;
@@ -24,36 +19,28 @@ a:hover  {
 }
 
 img {
-  vertical-align: top;
+    vertical-align: top;
 }
 
 body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.case {
+.content,
+.container {
     max-width: 1230px;
-
     margin: 0 auto;
-
     background: #e9e9e9;
-
     box-shadow: rgba(149, 157, 165, 0.2) 1px 2px 40px 50px;
 }
 
 .container {
-    max-width: 1230px;
-
-    margin: 0 auto;
-
     background: #fffff1;
-
     padding: 15px 0;
 }
 
 .top_bar {
     display: flex;
-
     justify-content: flex-end;
     align-items: center;
 }
@@ -65,20 +52,14 @@ body {
 
 .menu_item {
     display: inline;
-
-    margin-right: 16px;
-
     position: relative;
+    margin-right: 16px;  
 }
 
 .menu_item_link {
-    color: inherit;
-
     font-size: 12px;
     font-weight: 600;
-
     color: #6f6f6f;
-
     border-radius: 10px;
     padding: 5px;
 }
@@ -90,58 +71,42 @@ body {
 .menu_item_link:focus,
 .menu_item_link:focus-visible {
     outline: none;
-
     background-color: #b4e2f5;
-
     box-shadow: 0px 0px 3px 1px #b1aeac;
 }
 
 .checkbox,
 .checkbox_sequel {
+    appearance: none;
     position: absolute;
-
-    opacity: 0;
-
-    cursor: pointer;
-
-    height: 0;
-    width: 0;
 }
 
 .popup_button {
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .checkbox:checked ~ label .popup_button,
 .checkbox:focus ~ label .popup_button,
 .popup_button:hover {
     background-color: #b4e2f5;
-
     box-shadow: 0px 0px 3px 1px #b1aeac;
 }
 
 .popup_wrapper {
     display: none;
-
     position: absolute;
-
     top: 44px;
     right: -80px;
-
     overflow: hidden;
-
     width: 250px;
     height: 320px;
-
     padding: 0 4px;
-
     background-color: #fff;
-
     border-radius: 9px;
     box-shadow: 0px 1px 2px 0px rgb(60 64 67 / 30%),
                 0px 2px 6px 2px rgb(60 64 67 / 15%);
-
-                z-index: 1;
+    z-index: 1;
 }
 
 .checkbox:checked ~ .popup_wrapper {
@@ -169,35 +134,26 @@ body {
 .popup_list {
     display: flex;
     flex-wrap: wrap;
-
     justify-content: center;
     align-items: center;
-
     padding-top: 10px;
 }
 
 .popup_list_item {
     display: flex;
-
     align-items: flex-end;
     justify-content: center;
-
     text-align: center;
-
     margin-bottom: 10px;
 
 }
 
 .app_name {
     display: block;
-
     text-align: center;
-
     padding-top: 10px;
-
     font-size: 12px;
     font-weight: 300;
-
     color: black;
 }
 
@@ -207,37 +163,29 @@ body {
 
 .app_icon {
     display: inline-block;
-
     width: 70px;
     height: fit-content;
-    
     text-align: center;
-
     padding: 5px 0;
-
     margin-bottom: 12px;
-
     border-radius: 3px;
     border: 1px solid transparent;
+    cursor: pointer;
+
 }
 
 .app_icon:hover {
     background-color: rgba(106, 168, 255, 0.135);
-
-    cursor: pointer;
 }
 
 .app_icon:focus {
     background-color: rgba(106, 168, 255, 0.135);
-
     box-shadow: 0px 0px 3px 1px #b1aeac;
-
     outline: none;
 }
 
 .app_icon:focus .app_name {
     text-decoration: underline;
-
     color: black;
 }
 
@@ -247,9 +195,7 @@ body {
 
 .menu_item_bell {
     border-radius: 50%;
-
     padding: 3px;
-
     font-family: unset;
 }
 
@@ -260,21 +206,14 @@ body {
 
 .menu_item_soft {
     display: flex;
-    
     align-items: center;
     justify-content: center;
-
     width: 25px;
     height: 25px;
-
     border-radius: 50%;
-
     color: rgb(247, 234, 253);
     background: #738f84;
-
-    transition: color .1s linear;
-    transition: background .1s linear;
-
+    transition: color .1s linear, background .1s linear;
     font-size: 12px;
     font-weight: 500;
 }
@@ -284,11 +223,8 @@ body {
 .menu_item_bell:hover,
 .menu_item_bell:focus-visible {
     background-color: #b4e2f5;
-
     box-shadow: 0px 0px 3px 1px #b1aeac;
-
     outline: none;
-
     color: #fff;
 }
 
@@ -296,25 +232,19 @@ body {
 .menu_item_soft:hover, 
 .menu_item_soft:focus-visible {
     background-color: #a2e99c;
-
     box-shadow: 0px 0px 3px 1px #b1aeac;
-
     outline: none;
-
     color: rgb(132, 107, 165);
 }
 
 .popup_list_sequel {
     display: none;
-
     flex-wrap: wrap;
-
     margin-top: 20px;
 }
 
 .checkbox_sequel:checked ~ .popup_list_sequel {
     display: flex;
-
     justify-content: center;
 }
 
@@ -325,20 +255,15 @@ body {
 
 .popup_sequel_more {
     display: block;
-
     width: 80%;
-
     margin: 0 auto 5px;
     padding: 2px;
-
     text-align: center;
-
     font-size: 12px;
     font-weight: 200;
-
     border-radius: 5px;
-
     color: gray;
+    cursor: pointer;
 
 }
 
@@ -352,8 +277,6 @@ body {
 
 .even_more:focus {
     background-color: #b4e2f5;
-
     box-shadow: 0px 0px 3px 1px #b1aeac;
-
     outline: none;
 }
