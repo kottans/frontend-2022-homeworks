@@ -1,5 +1,6 @@
 import { data as planets } from './data.js';
-import { createElement } from './createElement.js';
+import { createContentElement } from './createContentElement.js';
+import { initNavigation } from './initNavigation.js';
 import {
   sideMenu,
   sideMenuOpenButton,
@@ -9,6 +10,8 @@ import {
   modal,
   modalImage,
 } from './pageElements.js';
+
+initNavigation(sideMenuContent, planets);
 
 function toggleSideMenu() {
   sideMenu.dataset.sideMenu === 'opened'
@@ -23,7 +26,7 @@ function getSelectedDataItem(id, data) {
 
 function addSelectedDataItem(id, data) {
   const selectedPlanetData = getSelectedDataItem(id, data);
-  const contentElement = createElement(selectedPlanetData);
+  const contentElement = createContentElement(selectedPlanetData);
   mainContent.innerHTML = '';
   mainContent.appendChild(contentElement);
 }
@@ -55,7 +58,6 @@ mainContent.addEventListener('click', (event) => {
 });
 
 modal.addEventListener('click', (event) => {
-  console.log(event.target.dataset);
   if (
     !event.target.dataset.modal === 'opened' ||
     event.target.dataset.modalImage === ''
