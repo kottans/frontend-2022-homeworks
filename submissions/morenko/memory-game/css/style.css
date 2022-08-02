@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.wrapper {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+
+    background-color: #767676;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin: 1rem;
+    color: rgb(229, 218, 0);
+}
+
+.board {
+    width: 600px;
+    height: 600px;
+    padding: 10px;
+    background-color: #eeeeee;
+    border-radius: 25px;
+    box-shadow: rgba(79, 79, 79, 1) 0 0 8px;
+    perspective: 1000px;
+
+    display: grid;
+    grid-template: repeat(4, 1fr)/ repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    position: relative;
+    transition: transform 0.6s;
+    
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.card.flip{
+    transform: rotateY(-180deg);
+}
+
+.front, .back {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 2px solid #524f4e;
+    border-radius: 20px;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    transition: 1s;
+}
+  
+.back {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+  
+.front {
+    transform: rotateY(-180deg);
+}
+
+.board.blocked::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 100000;
+}
+
+.card.opened .front {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(117, 182, 150, 0.5);
+}
+
+.reset {
+    text-decoration: none;
+    display: inline-block;
+    width: 140px;
+    height: 45px;
+    border: none;
+    /* border: 3px solid #292929; */
+    border-radius: 45px;
+    margin: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 900;
+    color: #524f4e;
+    background: rgb(229, 218, 0);
+    box-shadow: rgba(79, 79, 79, 1) 0 0 8px;
+    transition: .3s;
+}
+
+.reset:hover {
+    background: #aea500;
+    box-shadow: rgb(255, 255, 255) 0 0 8px;
+    color: white;
+}
+
+.win {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+p {
+    font-size: 26px;
+    color: #aea500;
+}
