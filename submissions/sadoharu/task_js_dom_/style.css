@@ -181,6 +181,14 @@
     font-size: 30px;
 }
 
+.section__page {
+    display: none;
+}
+
+.section__page.visible {
+    display: block;
+}
+
 @media (max-width: 768px) {
     .title .desktop {
         display: none;

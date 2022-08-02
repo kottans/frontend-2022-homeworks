@@ -2,12 +2,26 @@ window.addEventListener('DOMContentLoaded', () => {
     const pages = document.querySelectorAll('.section__page');
     const navList = document.querySelector('.nav-bar__list');
 
-    const navListItem = [
-        {title: 'Overview', icon: 'icon-browser'},
-        {title: 'About', icon: 'icon-about-dot-me'},
-        {title: 'Achievement', icon: 'icon-award'},
-        {title: 'Projects', icon: 'icon-files-empty'},
-        {title: 'Reviews', icon: 'icon-rate_review'}
+    const navListItem = [{
+            title: 'Overview',
+            icon: 'icon-browser'
+        },
+        {
+            title: 'About',
+            icon: 'icon-about-dot-me'
+        },
+        {
+            title: 'Achievement',
+            icon: 'icon-award'
+        },
+        {
+            title: 'Projects',
+            icon: 'icon-files-empty'
+        },
+        {
+            title: 'Reviews',
+            icon: 'icon-rate_review'
+        }
     ];
 
     navListItem.forEach((item, i) => {
@@ -24,9 +38,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const hideShowPage = (show = 0) => {
         pages.forEach(item => {
-            item.style.display = "none";
+            item.classList.remove("visible");
         });
-        pages[show].style.display = "block";
+        pages[show].classList.add("visible");
     };
 
     hideShowPage();
@@ -40,14 +54,14 @@ window.addEventListener('DOMContentLoaded', () => {
     navList.addEventListener('click', e => {
         if (e.target.getAttribute('data-index')) {
             togglePage(e, e.target);
-        } else if (e.target.parentNode.getAttribute('data-index')) {
-            togglePage(e, e.target.parentNode);
+        } else if (e.target.closest('.nav-bar__list_item').getAttribute('data-index')) {
+            togglePage(e, e.target.closest('.nav-bar__list_item'));
         }
     });
 
-      document.addEventListener('keyup', e => {
+    document.addEventListener('keyup', e => {
         if (e.code === 'Space') {
             togglePage(e, e.target);
         }
-      });
+    });
 });
