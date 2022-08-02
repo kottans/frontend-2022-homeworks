@@ -47,7 +47,7 @@ class Enemy extends Character {
   }
   update(dt) {
     this.x += this.speed * dt;
-    if (this.x > 500) this.x = -tileSize.width;
+    if (this.x > tileSize.width * 5) this.x = -tileSize.width;
     this.collision();
   }
 }
