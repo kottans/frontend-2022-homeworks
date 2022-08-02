@@ -1,0 +1,202 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(./img/ocean.jpg) no-repeat;
+}
+.header {
+    background-color: rgba(110, 120, 116, 0.6);
+}
+.header_nav {
+    display: flex;
+    justify-content: end; 
+}
+.nav-position {
+    display: flex;
+    justify-content: space-evenly;
+    width: 30%;
+    align-items: center;
+    margin: 0;
+    padding-left: 0;
+    line-height: 3em;
+}
+.nav-item {
+    flex-basis: 51px;
+    list-style: none;
+}
+.link {
+    text-decoration: none;
+    color: rgb(255, 235, 205);
+    font-size: 1.1em;
+}
+.check-input {
+    appearance: none;
+    position: absolute;
+}             
+.label-position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.box-popup {
+    background: url(./img/popup-button.png) no-repeat rgba(255, 235, 205, 0.6) content-box; 
+}
+.box-popup,
+.box-bell,
+.profile-link {
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+.check-input:focus + .label-position > .box-popup,
+.check-input:focus + .label-position > .box-bell,
+.box-popup:hover,
+.box-bell:hover,
+.profile-link:focus,
+.profile-link:hover {
+    border: 1px solid rgb(255, 235, 205);
+    box-shadow: 0 0 10px rgb(255, 235, 205);
+    border-radius: 5px;  
+}
+.popup {
+    position: fixed;
+    right: 9em;
+    top: 4em;
+    width: 18em;
+    height: 35em;
+    background-color: rgb(255, 235, 205);
+    border: 1px solid rgb(255, 235, 205);
+    box-shadow: 0 0 10px rgb(255, 235, 205);
+    border-radius: 5px;
+    display: none;
+    overflow-y: auto;
+}
+.check-input:checked ~ .popup {
+    display: block;
+}
+.popup-angle {
+    width: 1em;
+    height: 1em;
+    background-color: rgb(255, 235, 205);
+    position: fixed;
+    top: 3.6em;
+    right: 15%;
+    transform: translate(50%) rotate(45deg);
+    border-bottom: 1px solid rgb(255, 235, 205);
+    border-top: 1px solid rgb(255, 235, 205);
+    box-shadow: 0 0 10px rgb(255, 235, 205);
+    border-radius: 5px;
+}
+.popup-content {
+    padding: 2em 1.5em .5em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 2fr);
+    justify-items: center;
+    align-items: center;
+    column-gap: .05em;
+    row-gap: .5em;
+}
+.popup-item {
+    text-decoration: none;
+    color: rgb(29, 39, 41);
+    width: 4.8em;
+    height: 6.5em;
+    box-sizing: border-box;
+    padding-top: 1em;
+    border: 1px solid transparent;
+}
+.popup-item:hover, 
+.popup-item:focus,
+.more:focus + .label-more   {
+    border: 1px solid rgb(131, 121, 106);
+    box-shadow: 0 0 10px rgb(131, 121, 106);
+    border-radius: 5px;     
+}
+.popup-img {
+    display: block;
+    margin: 0 auto;
+    width: 2em;
+    height: 2em;
+    object-fit: cover;
+}
+.popup-text {
+    text-align: center;
+    margin: 1em 0 0; 
+    line-height: 1em;
+}
+.more {
+    appearance: none;
+    position: absolute;
+}
+.label-more {
+    margin-top: 1.5em;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(255, 225, 181);
+    box-sizing: border-box;
+    cursor: pointer;
+    line-height: 3em;
+}
+.more:checked + .label-more,
+.more:checked {
+    display: none;
+}
+.popup-items {
+    padding: 1em 1.5em 0;
+    border-top: 1px solid rgba(29, 39, 41, 0.7);
+    display: none;
+}
+.more:checked ~ .popup-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 2fr);
+    justify-items: center;
+    align-items: center;
+    column-gap: .05em;
+    row-gap: .5em;
+}
+.box-bell {
+    background: url(./img/bell.png) center/cover no-repeat rgba(255, 235, 205, 0.6) content-box;
+}
+.profile-link {
+    display: block;
+    overflow: hidden;
+}
+.profile-img {
+    display: block;
+    background-color: rgba(255, 235, 205, 0.6);
+    width: 100%;
+}
+@media (max-width: 1140px) {
+    .nav-position {
+        width: 50%;
+    }
+    .popup-angle {
+        right: 25%;
+    } 
+}
+@media (max-width: 720px) {
+    .popup {
+        right: 7em;
+    }
+    .nav-position {
+        width: 70%;
+    }
+    .popup-angle {
+        right: 35%;
+    } 
+}
+@media (max-width: 540px) {
+    .popup {
+        right: 1em;
+    }
+    .nav-position {
+        width: 100%;
+    }
+    .popup-angle {
+        right: 50%;
+    } 
+}
