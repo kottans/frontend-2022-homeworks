@@ -7,13 +7,30 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Memory Game App</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Document</title>
   </head>
   <body>
     <div class="page-wrapper">
-      <main class="game" data-game-content></main>
+      <main class="game" data-game data-is-active="false">
+        <div class="game__flipper">
+          <div class="game__front">
+            <div class="game__menu" data-menu>
+              <h1 class="game__menu-title">Memory game app</h1>
+              <p class="game__menu-description">
+                Turn any two cards picture-side-up and find the pair.
+              </p>
+              <button class="game__menu-button" data-button="start">
+                Start
+              </button>
+            </div>
+          </div>
+          <div class="game__back">
+            <div class="game__grid" data-grid></div>
+          </div>
+        </div>
+      </main>
     </div>
-    <script type="module" src="./scripts/main.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
