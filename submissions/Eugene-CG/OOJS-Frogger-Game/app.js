@@ -89,11 +89,9 @@ const enemyLocationY = [
   tileSize.height * 2 - charactersSize.bug,
   tileSize.height * 3 - charactersSize.bug,
 ];
-const allEnemies = [];
-
-enemyLocationY.forEach((location) =>
-  allEnemies.push(new Enemy(100, location, (Math.random() + 1) * 100))
-);
+const allEnemies = enemyLocationY.map((location) => {
+  return new Enemy(100, location, (Math.random() + 1) * 100);
+});
 
 const player = new Player(
   tileSize.width * 2,
