@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin:0;
     padding:0;
-    font-family: "Roboto";    
+    font-family: 'Roboto', sans-serif;    
 }
 
 ul, li {
@@ -140,7 +140,7 @@ body {
    margin-bottom: 5px;   
 }
 
-img {
+.popup__img img {
     width: 100%;    
     object-fit: contain;
 }
