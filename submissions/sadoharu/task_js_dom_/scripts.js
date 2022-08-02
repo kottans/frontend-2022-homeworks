@@ -36,17 +36,17 @@ window.addEventListener('DOMContentLoaded', () => {
         navList.append(liItem);
     });
 
-    const hideShowPage = (show = 0) => {
+    const togglePageVisibility = (show = 0) => {
         pages.forEach(item => {
             item.classList.remove("visible");
         });
         pages[show].classList.add("visible");
     };
 
-    hideShowPage();
+    togglePageVisibility();
 
     const togglePage = (e, node) => {
-        hideShowPage(node.getAttribute('data-index'));
+        togglePageVisibility(node.getAttribute('data-index'));
         e.currentTarget.querySelectorAll('.nav-bar__list_item').forEach(item => item.classList.remove('active'));
         node.classList.add('active');
     };
