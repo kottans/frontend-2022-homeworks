@@ -1,0 +1,325 @@
+/*css reset*/
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: 400;
+}
+
+/*---------main css-----------*/
+* {
+    font-family: 'Roboto', sans-serif;
+    color: #FCE51E;
+}
+
+body {
+    overflow: hidden;
+    background-image: url(../img/star-wars-backgrounds.jpg);
+    height: 100vh;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 20%;
+
+    &__logo {
+        width: 100%;
+        height: 100%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    &__burgerMenu {
+        position: absolute;
+        top: 40%;
+        right: 20px;
+        width: 40px;
+        height: 30px;
+        background-color: transparent;
+        background-image: url(../img/burger.svg);
+        background-size: 100% 100%;
+
+        @media (min-width:993px) {
+            display: none;
+        }
+        @media (max-width: 576px) {
+            right: 8%;
+            top: 8%;
+        }
+    }
+}
+
+.burgerCross{
+    background-image: url(../img/burger-cross.svg);
+}
+
+.nav {
+    position: relatives;
+    display: flex;
+    width: 100%;
+    height: 80%;
+
+    &__list {
+        width: 20%;
+        height: 80vh;
+        z-index: 2;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+
+        &_item{
+            background: none;
+        }
+
+        @media (max-width:992px) {
+            display: none;
+            position: absolute;
+            justify-content: flex-start;
+            width: 50%;
+            margin-left: 25%;
+
+            &_item {
+                width: 300px;
+                margin-bottom: 10px;
+                padding: 5px;
+                align-self: center;
+                background-color: grey;
+                border-radius: 25px;
+            }
+        }
+    }
+    &__listOpen{
+        @media (max-width:992px){
+            display: flex;
+        }
+    }
+}
+
+.introText {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    perspective: 300px;
+
+    @media (max-width:992px) {
+        width: 100%;        
+        perspective: 300px;
+    }
+    @media (max-width:576px) {
+        perspective: 500px;
+    }
+
+    &_wrapper {
+        position: relative;
+        width: 100%;
+        overflow: visible;
+        animation: scroll 50s linear forwards;
+
+        @media (max-width: 1200px) {
+            animation: scroll1200 50s linear forwards;
+        }
+
+        @media (max-width:992px) {
+            animation: scroll992 50s linear forwards;
+        }
+        @media (max-width:576px) {
+            width: 80%;
+            left: 10%;
+            animation: scroll576 50s linear forwards;
+        }
+    }
+}
+
+.introText_wrapper>h2 {
+    font-size: 300px;
+    font-weight: 700;
+    text-align: center;
+
+    @media (max-width:992px){
+        font-size: 150px;
+    }
+
+    @media (max-width:576px){
+        font-size: 70px;
+    }
+}
+
+.introText_wrapper>h3 {
+    font-size: 100px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+
+    @media (max-width:992px){
+        font-size: 110px;
+    }
+
+    @media (max-width:576px){
+        font-size: 40px;
+    }
+}
+
+.introText_wrapper>p {
+    margin-top: 40px;
+    text-align: justify;
+    font-size: 100px;
+    line-height: 1.5;
+    font-weight: 700;
+
+    @media (max-width:992px){
+        font-size: 90px;
+    }
+
+    @media (max-width:576px){
+        font-size: 30px;
+    }
+}
+
+@keyframes scroll {
+    from {
+        top: 0;
+        transform: translateZ(0) rotateX(7deg);
+    }
+
+    to {
+        top: -13000px;
+        transform: translateZ(-2500px) rotateX(13.25deg);
+    }
+}
+
+@keyframes scroll1200 {
+    from {
+        top: 100%;
+        transform: translateZ(0) rotateX(7deg);
+    }
+
+    to {
+        top: -12000px;
+        transform: translateZ(-2500px) rotateX(15deg);
+    }
+}
+
+@keyframes scroll992 {
+    from {
+        top: 100%;
+        transform: translateZ(0) rotateX(20deg);
+    }
+
+    to {
+        top: -11000px;
+        transform: translateZ(-5000px) rotateX(28deg);
+    }
+}
+
+@keyframes scroll576 {
+    from {
+        top: 100%;
+        transform: translateZ(0) rotateX(20deg);
+    }
+
+    to {
+        top: -12000px;
+        transform: translateZ(-9000px) rotateX(40deg);
+    }
+}
+
+.listTitle {
+    display: block;
+    padding: 10px;
+    font-weight: 900;
+    font-size: 26px;
+    text-align: center;
+}
+
+.listSubTitle {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+}
