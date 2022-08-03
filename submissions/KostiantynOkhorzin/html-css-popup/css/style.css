@@ -81,11 +81,11 @@ ul li {
   border: 2px solid #fff;
 }
 
-.popap {
+.popup {
   position: relative;
 }
 
-.popap__input {
+.popup__input {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -93,16 +93,16 @@ ul li {
   clip: rect(0 0 0 0);
 }
 
-.popap__input:checked ~ .popap__body {
+.popup__input:checked ~ .popup__body {
   opacity: 1;
   visibility: visible;
 }
 
-.popap__input:focus + .popap__trigger, .popap__input:hover + .popap__trigger {
+.popup__input:focus + .popup__trigger, .popup__input:hover + .popup__trigger {
   box-shadow: 0px 0px 0px 2px #A4C6FD;
 }
 
-.popap__trigger {
+.popup__trigger {
   display: flex;
   width: 28px;
   height: 28px;
@@ -110,7 +110,7 @@ ul li {
   cursor: pointer;
 }
 
-.popap__body {
+.popup__body {
   position: absolute;
   display: flex;
   flex-direction: column-reverse;
@@ -125,7 +125,7 @@ ul li {
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
 }
 
-.popap__list {
+.popup__list {
   width: 100%;
   display: grid;
   gap: 10px;
@@ -135,7 +135,7 @@ ul li {
   overflow: hidden;
 }
 
-.popap__link {
+.popup__link {
   padding: 10px 0;
   display: grid;
   justify-content: center;
@@ -147,22 +147,22 @@ ul li {
   outline: none;
 }
 
-.popap__link:hover, .popap__link:focus {
+.popup__link:hover, .popup__link:focus {
   box-shadow: 0px 0px 0px 2px #A4C6FD;
 }
 
-.popap__link-icon {
+.popup__link-icon {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.popap__link-name {
+.popup__link-name {
   text-align: center;
 }
 
-.popap__input-more {
+.popup__input-more {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -173,24 +173,24 @@ ul li {
   right: 0;
 }
 
-.popap__input-more:checked + .popap__btn {
+.popup__input-more:checked + .popup__btn {
   background-color: transparent;
 }
 
-.popap__input-more:checked + .popap__btn::after {
+.popup__input-more:checked + .popup__btn::after {
   content: "Even more from Kottans";
 }
 
-.popap__input-more:focus + .popap__btn {
+.popup__input-more:focus + .popup__btn {
   box-shadow: 0px 0px 0px 2px #A4C6FD;
 }
 
-.popap__input-more:checked ~ .popap__list {
+.popup__input-more:checked ~ .popup__list {
   overflow: auto;
   height: 485px;
 }
 
-.popap__btn {
+.popup__btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -202,10 +202,10 @@ ul li {
   border-radius: 0 0 5px 5px;
 }
 
-.popap__btn::after {
+.popup__btn::after {
   content: "More";
 }
 
-.popap__btn:hover {
+.popup__btn:hover {
   box-shadow: 0px 0px 0px 2px #A4C6FD;
 }
