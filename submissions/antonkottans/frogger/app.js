@@ -1,71 +1,93 @@
-const Enemy = function (x, y, speed) {
-    this.x = x;
-    this.y = y;
-    this.speed = speed;
-    this.sprite = "images/enemy-bug.png";
-};
-const field = {
-    x: 4,
-    y: 4,
-};
-
-Enemy.prototype.update = function (dt) {
-    if (this.x >= (field.x+1) * 100) this.x = -100;
-    else this.x += dt * this.speed;
-
-    this.checkCollision();
-};
-
-Enemy.prototype.checkCollision = function () {
-    if (
-        Math.abs(player.x * 100 - this.x) <= 70 &&
-        Math.abs(player.y * 80 + 50 - this.y) < 20
-    ) {
-        player.x = player.start.x;
-        player.y = player.start.y;
+class Field {
+    constructor() {
+        this.maxreachableXCoord = 4;
+        this.maxreachableYCoord = 4;
+        this.topIndent = 50;
+        this.SquareWidth = 100;
+        this.SquareHeight = 80;
     }
-};
+}
+const field = new Field();
 
-Enemy.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+class Enemy {
+    constructor({ x, y, speed, row }) {
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.sprite = "images/enemy-bug.png";
+        this.row = row;
+    }
+    checkCollision() {
+        const distanceOfCollision = 70;
+        const sameRow = () => player.y === this.row;
+        const bugTooClose = () =>
+            Math.abs(player.x * field.SquareWidth - this.x) <
+            distanceOfCollision;
+        if (sameRow() && bugTooClose()) {
+            player.x = player.start.x;
+            player.y = player.start.y;
+        }
+    }
 
-const player = {
-    sprite: "images/char-boy.png",
-    start: { x: 2, y: 4 },
-    x: 2,
-    y: 4,
-    update() {},
+    update(dt) {
+        if (this.x >= (field.maxreachableXCoord + 1) * field.SquareWidth)
+            this.x = -field.SquareWidth;
+        else this.x += dt * this.speed;
+
+        this.checkCollision();
+    }
+
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+}
+
+class Player {
+    constructor() {
+        this.sprite = "images/char-boy.png";
+        this.start = { x: 2, y: 4 };
+        this.x = this.start.x;
+        this.y = this.start.y;
+    }
+
+    update() {}
     toStart() {
         this.x = this.start.x;
         this.y = this.start.y;
-    },
+    }
     render() {
         ctx.drawImage(
             Resources.get(this.sprite),
-            this.x * 100,
-            this.y * 80 + 50
+            this.x * field.SquareWidth,
+            this.y * field.SquareHeight + field.topIndent
         );
-    },
+    }
     handleInput(key) {
         key === "up"
             ? this.y--
-            : key === "right" && this.x < field.x
+            : key === "right" && this.x < field.maxreachableXCoord
             ? this.x++
-            : key === "down" && this.y < field.y
+            : key === "down" && this.y < field.maxreachableYCoord
             ? this.y++
             : key === "left" && this.x > 0
             ? this.x--
             : {};
         if (this.y < 0) this.toStart();
-    },
-};
+    }
+}
+const player = new Player();
 
 const allEnemies = (() => {
-    const enemyRows = [60, 143, 225];
-    return [0, 1, 2].map((_, i) => {
-        return new Enemy(0, enemyRows[i], Math.random() * (200 - 60) + 60);
-    });
+    const yCoordsForEnemiesToMove = [60, 143, 225];
+    return yCoordsForEnemiesToMove.map(
+        (yCoord, i) =>
+            new Enemy({
+                x: 0,
+                y: yCoord,
+                speed: Math.random() * (200 - 60) + 60,
+                row: i,
+            })
+    );
 })();
 
 document.addEventListener("keyup", function (e) {
