@@ -1,23 +1,12 @@
-const playerStart = {
-  x: 210,
-  y: 390,
-};
-
-const charactersSize = {
-  charboy: 50,
-  bug: 35,
-  sizeDiff: 12,
-};
-
-const tile = {
+const tileSize = {
   width: 101,
   height: 85,
 };
 
-const board = {
+const boardSize = {
   top: 0,
-  right: tile.width * 5,
-  bottom: tile.height * 6,
+  right: tileSize.width * 5,
+  bottom: tileSize.height * 6,
   left: 0,
 };
 class Enemy {
@@ -26,6 +15,7 @@ class Enemy {
     this.x = 0;
     this.y = y;
     this.speed = speed;
+    this.enemyCenter = 35;
   }
 
   render() {
@@ -33,76 +23,81 @@ class Enemy {
   }
 
   collision() {
-    if (this.x + tile.width > player.x && this.x + tile.width < player.x + tile.width && this.y > player.y && this.y < player.y + tile.height ) {
-      setTimeout(() => {
-        player.startPosition();
-      }, 100);
+    if (
+      this.x + tileSize.width > player.x &&
+      this.x < player.x &&
+      this.y > player.y &&
+      this.y < player.y + tileSize.height
+    ) {
+      player.moveToStartPosition();
     }
   }
 
   update(dt) {
     this.x += this.speed * dt;
-    if (this.x > board.right) this.x = -tile.width;
+    if (this.x > boardSize.right) {
+      this.x = -tileSize.width;
+    }
     this.collision();
   }
 }
 class Player {
   constructor() {
-    this.startPosition();
+    this.moveToStartPosition();
     this.sprite = "images/char-boy.png";
   }
 
-  startPosition() {
-    this.x = tile.width * 2;
-    this.y = tile.height * 5 - charactersSize.charboy;
+  moveToStartPosition() {
+    this.x = tileSize.width * 2;
+    this.y = tileSize.height * 5 - tileSize.width / 2;
+  }
+
+  resetToStartPosition() {
+    if (this.y < boardSize.top) {
+      this.moveToStartPosition();
+    }
   }
 
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 
-  reset() {
-    if (this.y < board.top) {
-      this.startPosition();
-    }
-  }
-
   handleInput(key) {
     switch (key) {
       case "left":
-        if (this.x > board.left) {
-          this.x -= tile.width;
+        if (this.x > boardSize.left) {
+          this.x -= tileSize.width;
         }
         break;
       case "right":
-        if (this.x < board.right - tile.width) {
-          this.x += tile.width;
+        if (this.x < boardSize.right - tileSize.width) {
+          this.x += tileSize.width;
         }
         break;
       case "up":
-        if (this.y > board.top) {
-          this.y -= tile.height;
+        if (this.y > boardSize.top) {
+          this.y -= tileSize.height;
         }
         break;
       case "down":
-        if (this.y < board.bottom - tile.height * 2) {
-          this.y += tile.height;
+        if (this.y < boardSize.bottom - tileSize.height * 2) {
+          this.y += tileSize.height;
         }
         break;
     }
-    this.reset();
+    this.resetToStartPosition();
   }
-
   update() {}
 }
 
-const allEnemies = [
-  new Enemy(tile.height * 3 - charactersSize.bug, 90),
-  new Enemy(tile.height * 2 - charactersSize.bug, 150),
-  new Enemy(tile.height * 1 - charactersSize.bug, 100),
-];
-
 const player = new Player();
+const enemy = new Enemy();
+
+const allEnemies = [
+  new Enemy(tileSize.height * 3 - enemy.enemyCenter, 90),
+  new Enemy(tileSize.height * 2 - enemy.enemyCenter, 150),
+  new Enemy(tileSize.height * 1 - enemy.enemyCenter, 100),
+];
 
 document.addEventListener("keyup", function (e) {
   const allowedKeys = {
