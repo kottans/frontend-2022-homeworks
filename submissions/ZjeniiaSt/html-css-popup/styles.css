@@ -1,5 +1,8 @@
 :root {
+  --background-color: rgba(229, 229, 229, 1);
   --background-color-block: rgba(245, 244, 250, 1);
+  --black-color: rgba(33, 33, 33, 1);
+  --accent-color: rgba(33, 150, 243, 1);
   --white-color: rgba(255, 255, 255, 1);
   --main-font: "Roboto", sans-serif;
   --timing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -11,15 +14,8 @@
   padding: 0;
 }
 
-/*geometry*/
 html {
   box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
 }
 
 body {
@@ -80,8 +76,13 @@ label {
 }
 
 input {
-  display: none;
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  visibility: hidden;
 }
+
 #popup:checked ~ .menu {
   display: block;
 }
@@ -92,13 +93,11 @@ input {
   top: 100px;
   right: 80px;
   overflow-y: overlay;
-  max-width: 300px;
+  width: 300px;
   max-height: 700px;
   margin: 10px;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.15);
-  z-index: 1;
 }
-
 .menu img {
   max-width: 60px;
   height: 100%;
@@ -119,11 +118,6 @@ input {
   justify-content: space-between;
   text-align: center;
   cursor: pointer;
-}
-
-.menu-item:hover,
-:focus {
-  transform: scale(1.2);
 }
 
 .menu-button {
@@ -150,13 +144,12 @@ input {
   text-align: center;
 }
 
-.button:hover,
-:focus {
-  transform: scale(0.9);
-}
-
 #submenu:checked ~ .buttonfirst {
   display: none;
+}
+
+#submenu:checked ~ .menu {
+  overflow-y: scroll;
 }
 
 #submenu:checked ~ .menu {
@@ -169,4 +162,19 @@ input {
 
 #submenu:checked ~ .buttonsecond {
   display: block;
+}
+
+.menu-item:hover,
+.menu-item:focus {
+  transform: scale(1.2);
+}
+.button:hover,
+.button:focus {
+  background-color: var(--accent-color);
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  background-color: var(--background-color-block);
+  border-radius: 20%;
 }
