@@ -99,19 +99,6 @@
 
 .nav-bar__list_item {
     position: relative;
-    display: grid;
-    grid-template-columns: 30px auto;
-    column-gap: 5px;
-    justify-content: start;
-    align-items: center;
-    justify-items: center;
-    padding-left: 10px; 
-    font-size: 20px;
-    height: 60px;
-    font-weight: 700;
-    border-radius: 10px;
-    transition: 0.4s all;
-    cursor: pointer;
 }
 
 .nav-bar__list_item::after{
@@ -123,20 +110,34 @@
     background-color: #000;
 }
 
-.nav-bar__list_item.active {
+.nav-bar__list_button.active {
     background-color: #fff;
     color: #000;
 }
 
-.nav-bar__list_item:hover {
+.nav-bar__list_button:hover {
     background-color: #fff;
     color: #000;
 }
 
-.nav-bar__list_item:hover::after {
-    content: '';
-    height: 0;
-    width: 0;
+.nav-bar__list_button {
+    font-size: 20px;
+    height: 60px;
+    font-weight: 700;
+    color: #fff;
+    display: grid;
+    grid-template-columns: 30px auto;
+    column-gap: 5px;
+    justify-content: start;
+    align-items: center;
+    justify-items: center;
+    padding-left: 10px; 
+    border-radius: 10px;
+    transition: 0.4s all;
+    background-color: #1c2246;
+    border: none;
+    width: 100%;
+    cursor: pointer;
 }
 
 .user {
