@@ -53,11 +53,13 @@ ul li {
   justify-content: flex-end;
   height: 48px;
 }
+
 .navbar__menu {
   display: flex;
   align-items: center;
   gap: 15px;
 }
+
 .navbar__link {
   display: block;
   padding: 10px 0;
@@ -65,9 +67,11 @@ ul li {
   border-radius: 5px;
   transition: all 0.3s;
 }
+
 .navbar__link:focus, .navbar__link:hover {
   box-shadow: 0px 0px 0px 2px #A4C6FD;
 }
+
 .navbar__profile {
   display: block;
   width: 32px;
@@ -80,6 +84,7 @@ ul li {
 .popap {
   position: relative;
 }
+
 .popap__input {
   position: absolute;
   width: 1px;
@@ -87,13 +92,16 @@ ul li {
   overflow: hidden;
   clip: rect(0 0 0 0);
 }
+
 .popap__input:checked ~ .popap__body {
   opacity: 1;
   visibility: visible;
 }
+
 .popap__input:focus + .popap__trigger, .popap__input:hover + .popap__trigger {
   box-shadow: 0px 0px 0px 2px #A4C6FD;
 }
+
 .popap__trigger {
   display: flex;
   width: 28px;
@@ -101,6 +109,7 @@ ul li {
   border-radius: 5px;
   cursor: pointer;
 }
+
 .popap__body {
   position: absolute;
   display: flex;
@@ -115,6 +124,7 @@ ul li {
   visibility: hidden;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
 }
+
 .popap__list {
   width: 100%;
   display: grid;
@@ -124,6 +134,7 @@ ul li {
   height: 390px;
   overflow: hidden;
 }
+
 .popap__link {
   padding: 10px 0;
   display: grid;
@@ -135,18 +146,22 @@ ul li {
   transition: all 0.3s;
   outline: none;
 }
+
 .popap__link:hover, .popap__link:focus {
   box-shadow: 0px 0px 0px 2px #A4C6FD;
 }
+
 .popap__link-icon {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
+
 .popap__link-name {
   text-align: center;
 }
+
 .popap__input-more {
   position: absolute;
   width: 1px;
@@ -157,19 +172,24 @@ ul li {
   left: 0;
   right: 0;
 }
+
 .popap__input-more:checked + .popap__btn {
   background-color: transparent;
 }
+
 .popap__input-more:checked + .popap__btn::after {
   content: "Even more from Kottans";
 }
+
 .popap__input-more:focus + .popap__btn {
   box-shadow: 0px 0px 0px 2px #A4C6FD;
 }
+
 .popap__input-more:checked ~ .popap__list {
   overflow: auto;
   height: 485px;
 }
+
 .popap__btn {
   display: flex;
   justify-content: center;
@@ -181,9 +201,11 @@ ul li {
   background-color: #F5F5F5;
   border-radius: 0 0 5px 5px;
 }
+
 .popap__btn::after {
   content: "More";
 }
+
 .popap__btn:hover {
   box-shadow: 0px 0px 0px 2px #A4C6FD;
 }
