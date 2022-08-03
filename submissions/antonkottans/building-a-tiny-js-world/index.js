@@ -34,6 +34,7 @@ const dog = {
     legs: 0,
     hands: 0,
     paws: 4,
+    tail: 'tail',
     saying: "woof-woof!",
 };
 const cat = {
@@ -43,7 +44,7 @@ const cat = {
     legs: 0,
     hands: 0,
     paws: 4,
-    tail: "tail",
+    tail: "long fluffy tail",
     saying: "meow!",
     friends: ["Tom", "Jenny"],
 };
@@ -55,7 +56,7 @@ const catWoman = {
     legs: 2,
     hands: 2,
     paws: 0,
-    tail: "tail",
+    tail: "long not fluffy tail",
     get saying(){
         return cat.saying
     },
