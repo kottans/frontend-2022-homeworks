@@ -140,6 +140,10 @@
     cursor: pointer;
 }
 
+.nav-bar__list_button.mobile {
+    display: none;
+}
+
 .user {
     margin: 30px 0 0 15px;
     display: grid;
@@ -205,6 +209,15 @@
 
     .nav-bar__list_item::after {
         width: 100%;
+    }
+
+    .nav-bar__list_button.mobile {
+        display: grid;
+        font-weight: 400;
+    }
+
+    .nav-bar__list_button.desktop {
+        display: none;
     }
 
     .nav-bar__list_title {

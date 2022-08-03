@@ -30,11 +30,12 @@ window.addEventListener("DOMContentLoaded", () => {
     liItem.classList.add("nav-bar__list_item");
     liItem.setAttribute("data-index", i);
     liItem.innerHTML = `
-      <button class="nav-bar__list_button">
+      <button class="nav-bar__list_button desktop">
         <span class="${item.icon}">
         </span>
         ${item.title}
       </button>
+      <button class="nav-bar__list_button mobile ${item.icon}"></button>
     `;
     navList.append(liItem);
   });
