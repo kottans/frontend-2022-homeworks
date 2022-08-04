@@ -1,7 +1,7 @@
 const episodes = [{
     id:'ep1',
-    title:`<h2>Episode I</h2>`,
-    subTitle:`<h3>THE PHANTOM MENACE</h3>`,
+    title:`Episode I`,
+    subTitle:`THE PHANTOM MENACE`,
     text:`<p>Turmoil has engulfed the
     Galactic Republic. The taxation
     of trade routes to outlying star
@@ -23,8 +23,8 @@ const episodes = [{
     </p>`},
 
     {id:'ep2',
-    title:`<h2>Episode II</h2>`,
-    subTitle:`<h3>ATTACK OF THE CLONES</h3>`,
+    title:`Episode II`,
+    subTitle:`ATTACK OF THE CLONES`,
     text:`<p>There is unrest in the Galactic
     Senate. Several thousand solar
     systems have declared their
@@ -46,8 +46,8 @@ const episodes = [{
     </p>`},
 
     {id:'ep3',
-    title:`<h2>Episode III</h2>`,
-    subTitle:`<h3>REVENGE OF THE SITH</h3>`,
+    title:`Episode III`,
+    subTitle:`REVENGE OF THE SITH`,
     text:`<p>War! The Republic is crumbling
     under attacks by the ruthless
     Sith Lord, Count Dooku.
@@ -68,8 +68,8 @@ const episodes = [{
     </p>`},
 
     {id:'ep4',
-    title:`<h2>Episode IV</h2>`,
-    subTitle:`<h3>A NEW HOPE</h3>`,
+    title:`Episode IV`,
+    subTitle:`A NEW HOPE`,
     text:`<p>It is a period of civil war.
     Rebel spaceships, striking
     from a hidden base, have won
@@ -92,8 +92,8 @@ const episodes = [{
     </p>`},
 
     {id:'ep5',
-    title:`<h2>Episode V</h2>`,
-    subTitle:`<h3>THE EMPIRE STRIKES BACK</h3>`,
+    title:`Episode V`,
+    subTitle:`THE EMPIRE STRIKES BACK`,
     text:`<p>It is a dark time for the
     Rebellion. Although the Death
     Star has been destroyed,
@@ -115,8 +115,8 @@ const episodes = [{
     </p>`},
 
     {id:'ep6',
-    title:`<h2>Episode VI</h2>`,
-    subTitle:`<h3>RETURN OF THE JEDI</h3>`,
+    title:`Episode VI`,
+    subTitle:`RETURN OF THE JEDI`,
     text:`<p>Luke Skywalker has returned to
     his home planet of Tatooine in
     an attempt to rescue his

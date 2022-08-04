@@ -96,9 +96,9 @@ h6 {
 }
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
     background-image: url(../img/star-wars-backgrounds.jpg);
-    height: 100vh;
+    max-height: 100%;
 }
 
 .header {

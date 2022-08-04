@@ -20,23 +20,28 @@ function burgerMenuOpen(event) {
 menuList.addEventListener('click', (event) => {
     const episodeName = event.target.closest('.nav__list_item')
     if (episodeName) {
-        changeText(episodeName.dataset.id)
+        const content = generateText(episodeName.dataset.id)
+        addContent(content,introText)
     }
 })
 
-function changeText(episodeId) {
+function generateText(episodeId) {
     const currentEpisode = episodes.find((episodeNumber) => episodeId === episodeNumber.id)
-    const storyText = `<div class="introText_wrapper">${currentEpisode.title + currentEpisode.subTitle + currentEpisode.text}</div>`
-    introText.innerHTML = storyText
+    const storyText = `<div class="introText_wrapper"><h2>${currentEpisode.title}</h2><h3>${currentEpisode.subTitle}</h3>${currentEpisode.text}</div>`
+    return storyText
 }
 
-for (let i = 0; i < episodes.length; i++) {
-    const navListItem = 
+const navList = episodes.reduce((list, episode) =>{
+    return list +
     `<li class="listItem">
-        <button class="nav__list_item" data-id="${episodes[i].id}">
-            <span class="listTitle">${episodes[i].title}</span>
-            <span class="listSubTitle">${episodes[i].subTitle}</span>
+        <button class="nav__list_item" data-id="${episode.id}">
+            <span class="listTitle">${episode.title}</span>
+            <span class="listSubTitle">${episode.subTitle}</span>
         </button>
     </li>`
-    menuList.insertAdjacentHTML('beforeend',navListItem)
+}, '')
+
+function addContent(content, target){
+    target.innerHTML = content
 }
+addContent(navList,menuList)
