@@ -64,7 +64,7 @@ body {
   top: 4em;
   width: 20em;
   height: 36em;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid #ffadc2;
   box-shadow: 0 0 10px #ffadc2;
   border-radius: 10px;
@@ -105,11 +105,11 @@ body {
 }
 
 .popup-more ~ .check-additional > .more-btn::before {
-  content: 'More...';
+  content: "More...";
 }
 
 .popup-more:checked ~ .check-additional > .more-btn::before {
-  content: 'Less';
+  content: "Less";
 }
 
 .more-btn {
@@ -159,7 +159,6 @@ body {
   width: 1.1em;
 }
 
-
 /* focus and hover  */
 .link:hover,
 .link:focus {
@@ -178,7 +177,7 @@ body {
   border: 1px solid #ffadc2;
   border-radius: 5px;
   transform: scale(1.1);
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .more-btn:hover,
@@ -187,10 +186,8 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
-.bell:hover, 
+.bell:hover,
 .popup-img:hover {
   border-radius: 5px;
   background-color: #e8e9ed;
 }
-
-
