@@ -1,5 +1,4 @@
 html {
-
   box-sizing: border-box;
   height: 100%;
 }
@@ -7,36 +6,35 @@ html {
 *,
 *::after,
 *::before {
-
   box-sizing: inherit;
   padding: 0;
   margin: 0;
 }
-body {
 
+body {
   min-width: 320px;
   overflow-x: hidden;
   height: 100%;
 }
+
 ol,
 ul {
-
   list-style: none;
 }
+
 a,
 a:link,
 a:visited,
 a:hover {
-
   text-decoration: none;
 }
-img {
 
+img {
   height: auto;
   vertical-align: top;
 }
-.container {
 
+.header {
   max-width: 1200px;
   margin: 0 auto;
   background-color: rgb(212, 240, 231);
@@ -45,21 +43,20 @@ img {
 
 
     .header__nav {
-
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      .nav__items {
 
+      .nav__items {
         display: flex;
         align-items: center;
-        .nav__item {
 
+        .nav__item {
           display: inline;
           position: relative;
           margin-right: 14px;
-          .nav__item-link {
 
+          .nav__item-link {
             font-size: 14px;
             padding: 8px 16px;
             color: rgb(27, 22, 22);
@@ -69,13 +66,13 @@ img {
             -ms-border-radius: 4px;
             -o-border-radius: 4px;
           }
-          .nav__item-link:hover {
 
+          .nav__item-link:hover {
             background-color: rgb(161, 206, 206);
           }
+
           .nav__item-link:focus,
           .nav__item-link:focus-visible {
-
             background-color: rgb(109, 221, 221);
           }
         }
@@ -85,39 +82,35 @@ img {
 
 .checkbox,
 .checkbox__more {
-
   appearance: none;
   position: absolute;
 }
+
 .checkbox:checked ~ label .popup__button,
 .checkbox:focus ~ label .popup__button,
 .popup__button:hover {
-
   background-color: rgb(134, 223, 230);
 }
 
 .checkbox:checked ~ .popup__wrapper {
-
   display: block;
 }
 
 .checkbox__more:checked ~ .popup__more-items {
-
   display: flex;
   justify-content: center;
 }
 
-.checkbox__more:focus ~ label .popup__more-name {
-  
+.checkbox__more:checked ~ label .popup__more-name {
   background-color: rgb(218, 230, 226);
+  display: none;
 }
 
 .popup__button {
-
   cursor: pointer;
 }
-.popup__wrapper {
 
+.popup__wrapper {
   display: none;
   position: absolute;
   top: 56px;
@@ -133,26 +126,26 @@ img {
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
   z-index: 1;
-  .popup__content {
 
+  .popup__content {
     height: 320px;
     overflow: auto;
-    .popup__items {
 
+    .popup__items {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       padding-top: 8px;
-      .popup__item {
 
+      .popup__item {
         display: flex;
         justify-content: center;
         align-items: flex-end;
         text-align: center;
         margin-bottom: 8px;
-        .popup__item-icon {
 
+        .popup__item-icon {
           display: inline-block;
           width: 70px;
           height: fit-content;
@@ -168,23 +161,22 @@ img {
           padding: 4px 0;
 
           .popup__item-name {
-
             display: block;
             color: rgb(27, 24, 24);
             font-size: 12px;
             padding-top: 12px;
           }
-          .popup__item-name:hover {
 
+          .popup__item-name:hover {
             text-decoration: underline;
           }
         }
-        .popup__item-icon:hover {
 
+        .popup__item-icon:hover {
           background-color: #d1cbcb;
         }
-        .popup__item-icon:focus {
 
+        .popup__item-icon:focus {
           background-color: #aaa5a5;
           outline: none;
         }
@@ -194,11 +186,10 @@ img {
 }
 
 .popup__content::-webkit-scrollbar {
-
   width: 4px;
 }
-.popup__content::-webkit-scrollbar-thumb {
 
+.popup__content::-webkit-scrollbar-thumb {
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -206,25 +197,26 @@ img {
   -o-border-radius: 4px;
   background-color: #d1cbcb;
 }
-.popup__content::-webkit-scrollbar-track {
 
+.popup__content::-webkit-scrollbar-track {
   margin: 4px;
 }
 
 .icon {
-
   max-height: 36px;
+  margin-bottom: 4px;
+  margin-top: 8px;
 }
 
   .popup__more-items {
-
     display: none;
     flex-wrap: wrap;
     margin-top: 12px;
+
     .popup__more-item {
 
       .popup__more-icon {
-
+        padding-top: 4px;
         display: inline-block;
         width: 80px;
         height: 100%;
@@ -240,16 +232,15 @@ img {
         padding: 4px 0;
 
         .popup__more-name:hover {
-
           text-decoration: underline;
         }
       }
+
       .popup__more-icon:hover {
-        
         background-color: #d1cbcb;
       }
-      .popup__more-icon:focus {
 
+      .popup__more-icon:focus {
         background-color: #aaa5a5;
         outline: none;
       }
@@ -257,47 +248,45 @@ img {
   }
 
 .even-more {
-
   width: 100%;
 }
-.even-more:hover {
 
+.even-more:hover {
   text-decoration: underline;
 }
 
 .nav__item_bell {
-
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
   padding: 4px;
-  .bell {
 
+  .bell {
     width: 20px;
   }
 }
+
 .nav__item_bell:focus,
 .nav__item_bell:hover,
 .nav__item_bell:focus-visible {
-
   background-color: rgb(109, 221, 221);
   outline: none;
 }
 
 .user-item {
-
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   padding: 4px;
-  .user {
 
+  .user {
     background-color: rgb(180, 235, 226);
     color: rgb(56, 53, 49);
+
     .user__img {
       width: 24px;
     }
@@ -305,19 +294,19 @@ img {
 }
 
 .popup__more-name {
-  
-  display: block;
+  display: flex;
   color: rgb(27, 24, 24);
   font-size: 14px;
-  padding: 4px;
+  padding: 18px 8px 8px 8px;
   cursor: pointer;
   width: 80%;
   margin: 0 auto;
   color: #1f1a1a;
   align-items: center;
+  justify-content: center;
 }
-.even-more{
 
+.even-more{
   display: inline;
   padding-bottom: 8px;
 }
