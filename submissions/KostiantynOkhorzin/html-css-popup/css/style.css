@@ -135,6 +135,10 @@ ul li {
   overflow: hidden;
 }
 
+.popup__item_hidden {
+  display: none;
+}
+
 .popup__link {
   padding: 10px 0;
   display: grid;
@@ -188,6 +192,10 @@ ul li {
 .popup__input-more:checked ~ .popup__list {
   overflow: auto;
   height: 485px;
+}
+
+.popup__input-more:checked ~ .popup__list .popup__item_hidden {
+  display: block;
 }
 
 .popup__btn {
