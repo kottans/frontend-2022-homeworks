@@ -2,9 +2,9 @@ class Field {
     constructor() {
         this.maxreachableXCoord = 4;
         this.maxreachableYCoord = 4;
-        this.topIndent = 50;
-        this.SquareWidth = 100;
-        this.SquareHeight = 80;
+        this.topIndent = 57;
+        this.SquareWidth = 101;
+        this.SquareHeight = 85;
     }
 }
 const field = new Field();
@@ -49,7 +49,9 @@ class Player {
         this.x = this.start.x;
         this.y = this.start.y;
     }
-
+    get var1() {
+        return 3 * 5;
+    }
     update() {}
     toStart() {
         this.x = this.start.x;
@@ -78,13 +80,20 @@ class Player {
 const player = new Player();
 
 const allEnemies = (() => {
-    const yCoordsForEnemiesToMove = [60, 143, 225];
+    const yCoordsForEnemiesToMove = [
+        field.topIndent,
+        field.topIndent + field.SquareHeight,
+        field.topIndent + field.SquareHeight * 2,
+    ];
+    const randomSpeed = ({ minSpeed, maxSpeed }) => {
+        return Math.random() * (maxSpeed - minSpeed) + minSpeed;
+    };
     return yCoordsForEnemiesToMove.map(
         (yCoord, i) =>
             new Enemy({
                 x: 0,
                 y: yCoord,
-                speed: Math.random() * (200 - 60) + 60,
+                speed: randomSpeed({ minSpeed: 60, maxSpeed: 200 }),
                 row: i,
             })
     );
