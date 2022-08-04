@@ -44,6 +44,7 @@
     }
 
     &__popup-label {
+        position: absolute;
         display: block;
     }
     &__popup-btn-img {
@@ -51,7 +52,6 @@
         width: 35px;
         height: 35px;
         background: url('../images/popup-button-2.png') no-repeat center;
-        cursor: pointer;
         &:after {
             visibility: hidden;
             content: '';
@@ -70,9 +70,13 @@
     &__popup-input {
         appearance: none;
         display: block;
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
         &:checked + .header__popup-btn-img {
-            border: 1px solid $color-light;
-            border-radius: 8px;
+            background-color: $color-state-first;
+            border-radius: 10px;
         }
         &:checked + .header__popup-btn-img:after {
             visibility: visible;
@@ -83,10 +87,11 @@
             transform: translateY(21px);
             transition: 0.3s visibility;
             transition: 0.3s transform;
-        }
-        &:focus + .header__popup-btn-img {
-            outline: 1px solid $color-light;
-            border-radius: 5px;
+        }   
+        &:focus  {
+            outline: none;
+            border: 1px solid $color-light;
+            border-radius: 10px;
         }
     }
 
@@ -166,9 +171,18 @@
         background-color: $color-bg;
     }
 
+    &__popup-label-more {
+        position: absolute;
+        display: block;
+    }
+
     &__popup-input-more {
         appearance: none;
         display: block;
+        position: absolute;
+        width: 100%;
+        height: 40px;
+        cursor: pointer;
         &:checked ~ .header__more-content  {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -179,8 +193,14 @@
             gap: 30px;
             padding: 40px 0;
         }   
-
-        &:focus + .header__popup-btn-text  {
+        &:focus {
+            outline: none;
+            border: 2px solid $color-state-second;
+        }
+        &:focus + .header__popup-btn-text {
+            color: $color-light;
+        }
+        &:checked + .header__popup-btn-text  {
             background-color: $color-state-second;
             &:hover {
                 color: $color-bg;
