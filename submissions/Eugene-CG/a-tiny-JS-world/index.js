@@ -1,13 +1,21 @@
 /* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
    Complete the below for code reviewers' convenience:
 
-   Code repository: https://github.com/Eugene-CG/a-tiny-JS-world
-   Web app: https://eugene-cg.github.io/a-tiny-JS-world/
+   Code repository: _put repo URL here_
+   Web app: _put project's github pages URL here_
    */
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 
+// ======== OUTPUT ========
+/* Use print(message) for output.
+   Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
+
+   Message can contain HTML markup. You may also tweak index.html and/or styles.css.
+   However, please, REFRAIN from improving visuals at least until your code is reviewed
+   so code reviewers might focus on a single file that is index.js.
+   */
 const cat = {
   species: "cat",
   name: "Eugene",
@@ -40,28 +48,13 @@ const woman = {
   hands: 2,
   saying: "Nice to meet you",
 };
-const catWoman = Object.create(null, {
-  species: {
-    value: "catwoman",
-    writable: true,
-    enumerable: true,
-    configurable: true,
-  },
-  name: {
-    value: "Violet Flower",
-    writable: true,
-    enumerable: true,
-    configurable: true,
-  },
-  gender: {
-    value: "female",
-    writable: true,
-    enumerable: true,
-    configurable: true,
-  },
-  legs: { value: 2, writable: true, enumerable: true, configurable: true },
-  hands: { value: 2, writable: true, enumerable: true, configurable: true },
-});
+const catWoman = {
+  species: "catwoman",
+  name: "Violet Flower",
+  gender: "female",
+  legs: 2,
+  hands: 2,
+};
 Object.setPrototypeOf(catWoman, cat);
 
 const inhabitants = [cat, dog, man, woman, catWoman];
@@ -73,25 +66,13 @@ const inhabitantsKeys = [
   "hands",
   "saying",
 ];
-let output = [];
-
 inhabitants.forEach((obj) => {
-  output.push(
+  print(
     inhabitantsKeys.reduce((accumulator, prop) => {
       return (accumulator += obj[prop] + "; ");
     }, "")
   );
 });
-print(output.join("\n"));
-
-// ======== OUTPUT ========
-/* Use print(message) for output.
-   Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
-
-   Message can contain HTML markup. You may also tweak index.html and/or styles.css.
-   However, please, REFRAIN from improving visuals at least until your code is reviewed
-   so code reviewers might focus on a single file that is index.js.
-   */
 
 /* Print examples:
    print('ABC');
