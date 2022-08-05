@@ -69,7 +69,6 @@ body {
 	height: 100%;
 	width: 100%;
 	position: relative;
-	border: 1px solid var(--gray-color);
 	box-shadow: var(--main-shadow);
 	transition: 0.6s;
 	transform-style: preserve-3d;
@@ -166,6 +165,7 @@ body {
 	justify-content: center;
 	transform: rotateY(180deg);
 	background-color: var(--white-color);
+	border-radius: 5px;
 	backface-visibility: hidden;
 	pointer-events: none;
 }
@@ -191,6 +191,14 @@ body {
 		width: 400px;
 	}
 
+	.game__menu-title {
+		font-size: 2rem;
+	}
+
+	.game__front {
+		padding: 2rem;
+	}
+
 	.game__grid {
 		gap: 0.75rem;
 	}
@@ -200,6 +208,10 @@ body {
 	.game {
 		height: 300px;
 		width: 300px;
+	}
+
+	.game__menu-title {
+		font-size: 1.5rem;
 	}
 
 	.game__grid {
