@@ -1,0 +1,219 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  padding: 15px 30px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  height: 48px;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar__link {
+  display: block;
+  padding: 10px 0;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.navbar__link:focus, .navbar__link:hover {
+  box-shadow: 0px 0px 0px 2px #A4C6FD;
+}
+
+.navbar__profile {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-color: #C2185B;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.popup {
+  position: relative;
+}
+
+.popup__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.popup__input:checked ~ .popup__body {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__input:focus + .popup__trigger, .popup__input:hover + .popup__trigger {
+  box-shadow: 0px 0px 0px 2px #A4C6FD;
+}
+
+.popup__trigger {
+  display: flex;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup__body {
+  position: absolute;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 30px;
+  right: -60px;
+  top: 50px;
+  width: 285px;
+  border-radius: 5px;
+  transition: all 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.popup__list {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  padding: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  height: 390px;
+  overflow: hidden;
+}
+
+.popup__item_hidden {
+  display: none;
+}
+
+.popup__link {
+  padding: 10px 0;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px auto;
+  gap: 10px;
+  border-radius: 5px;
+  transition: all 0.3s;
+  outline: none;
+}
+
+.popup__link:hover, .popup__link:focus {
+  box-shadow: 0px 0px 0px 2px #A4C6FD;
+}
+
+.popup__link-icon {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.popup__link-name {
+  text-align: center;
+}
+
+.popup__input-more {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.popup__input-more:checked + .popup__btn {
+  background-color: transparent;
+}
+
+.popup__input-more:checked + .popup__btn::after {
+  content: "Even more from Kottans";
+}
+
+.popup__input-more:focus + .popup__btn {
+  box-shadow: 0px 0px 0px 2px #A4C6FD;
+}
+
+.popup__input-more:checked ~ .popup__list {
+  overflow: auto;
+  height: 485px;
+}
+
+.popup__input-more:checked ~ .popup__list .popup__item_hidden {
+  display: block;
+}
+
+.popup__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+  background-color: #F5F5F5;
+  border-radius: 0 0 5px 5px;
+}
+
+.popup__btn::after {
+  content: "More";
+}
+
+.popup__btn:hover {
+  box-shadow: 0px 0px 0px 2px #A4C6FD;
+}

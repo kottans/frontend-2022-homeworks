@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;    
+}
+
+ul, li {
+    list-style: none;
+}
+
+a, a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+}
+
+.header {
+    background-color: rgba(150, 154, 155, 0.8);
+    padding: 10px 20px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: flex-end;    
+}
+
+.navigation__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.navigation__item {    
+    margin: 5px;
+    transition: all 0.2s;
+}
+
+.navigation__link {
+    display: flex;
+    color:rgb(37, 44, 46);
+    padding: 5px;
+    border: 1px solid transparent;  
+    transition: all 0.2s;     
+}
+
+.navigation__link:hover, .navigation__link:focus {
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.popup__input:hover + .popup__label {
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.popup__input:focus + .popup__label {
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.popup__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;  
+    transition: all 0.2s;  
+}
+
+.popup__label img {
+    width: 100%;
+}
+
+.popup__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.popup__input:checked ~ .popup__content {
+    display: block;
+    overflow: auto;
+}
+
+.popup__content {
+    display: none; 
+    position: absolute;   
+    top: 75px;
+    right: 100px;
+    max-width: 280px;
+    height: 386px;    
+    background-color: rgb(150, 154, 155);
+    border-radius: 5px;   
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);        
+}
+
+.popup__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;       
+}
+
+.popup__item {
+    width: 70px;
+    height: 70px;
+    border: 1px solid transparent; 
+    transition: all 0.2s;  
+}
+
+.popup__item:hover, .popup__item:focus {
+    border: 1px solid #fff;
+    border-radius: 5px;    
+}
+
+.popup__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;       
+}
+
+.popup__link span {
+    text-align: center;
+    font-size: 13px;   
+}
+
+.popup__img {    
+   display: block;
+   margin: 5px auto;  
+   height: 35px;
+   margin-bottom: 5px;   
+}
+
+.popup__img_mini {    
+    height: 25px;
+}
+
+
+.popup__img img {
+    width: 100%;    
+    object-fit: contain;
+}
+
+.popup__input-more, .popup__input-even {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.popup__label-more, .popup__label-even {   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid transparent;
+    background-color: rgb(138, 131, 131);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.popup__label-more:hover, .popup__label-more:focus, .popup__label-even:hover, .popup__label-even:focus {    
+    border: 1px solid rgb(251, 255, 255);
+}
+
+.popup__input-more:hover + .popup__label-more {
+    border: 1px solid #fff;
+    border-radius: 5px;    
+}
+
+.popup__input-more:focus + .popup__label-more {
+    border: 1px solid #fff;
+    border-radius: 5px;    
+}
+
+.popup__input-more:checked ~ .popup__label-more {
+    display: none;
+}
+
+.popup__input-more:checked ~ .popup__content-more {
+    display: block;
+    overflow: auto;
+}
+
+.popup__content-more {
+    display: none; 
+    position: absolute;
+    top: 360px;
+    right: 0px;    
+    max-width: 270px;     
+    background-color: rgb(150, 154, 155);
+    border-radius: 5px;
+}
+
+.popup__lists-border {
+    border-top: 1px solid rgb(77, 77, 77);
+}
+
+.popup__input-even:hover + .popup__label-even {
+    border: 1px solid #fff;
+    border-radius: 5px;    
+}
+
+.popup__input-even:focus + .popup__label-even {
+    border: 1px solid #fff;
+    border-radius: 5px;    
+}
+
+@media (max-width: 430px) {
+    .popup__content {
+        right: 30px;
+    }
+}   
+
