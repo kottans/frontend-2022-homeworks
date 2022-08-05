@@ -31,6 +31,6 @@ const man = {
 }
 
 const inhabitants = [cat, dog, woman, man]
-const arrForPrint = inhabitants.map(({name, gender, legs, hands,saying}) => [`${name}; ${gender}; ${legs}; ${hands}; ${saying}`])
+const inhabitantsInformation = inhabitants.map(({name, gender, legs, hands,saying}) => [`${name}; ${gender}; ${legs}; ${hands}; ${saying}`])
 
-arrForPrint.forEach(e=> print(e))
+inhabitantsInformation.forEach(inhabitant => print(inhabitant))
