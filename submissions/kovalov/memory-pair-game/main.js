@@ -28,7 +28,7 @@ function getShuffledImages(imageNames, filePath) {
     }));
 }
 
-function createCard(cardDetails) {
+function createCardElement(cardDetails) {
   const cardElement = document.createElement('div');
   cardElement.innerHTML = `
 	<div class="game__card" data-is-opened="false" data-name="${cardDetails.imageName}">
@@ -47,11 +47,11 @@ function createCard(cardDetails) {
 function initGame(imageNames, filePath, container) {
   const shuffledImages = getShuffledImages(imageNames, filePath);
   shuffledImages
-    .map(createCard)
-    .forEach((card) => addCard(card, container));
+    .map(createCardElement)
+    .forEach((card) => addCardElement(card, container));
 }
 
-function addCard(cardElement, container) {
+function addCardElement(cardElement, container) {
   container.appendChild(cardElement);
 }
 
@@ -70,7 +70,7 @@ gameMenu.addEventListener('click', (event) => {
   initGame(imageNames, './assets/images', cardGrid);
 });
 
-function checkWin() {
+function checkWinCombination() {
   if (timesMatched !== 8) return;
 
   isActive = false;
@@ -90,31 +90,31 @@ function checkWin() {
   gameMenu.innerHTML = successMessage;
 }
 
-function resetVariables() {
+function resetGameMove() {
   currentCard = '';
   previousCard = '';
   isActive = true;
 }
 
-function isMatched() {
+function handleMatchedCards() {
   timesMatched++;
-  checkWin();
-  resetVariables();
+  checkWinCombination();
+  resetGameMove();
   return;
 }
 
-function isNotMatched() {
+function handleNotMatchedCards() {
   setTimeout(() => {
     currentCard.dataset.isOpened = false;
     previousCard.dataset.isOpened = false;
-    resetVariables();
+    resetGameMove();
     return;
   }, 1000);
 }
 
-function checkMatching(currentCardName, previousCardName) {
-  if (currentCardName === previousCardName) isMatched();
-  if (currentCardName !== previousCardName) isNotMatched();
+function checkMatchingCards(currentCardName, previousCardName) {
+  if (currentCardName === previousCardName) handleMatchedCards();
+  if (currentCardName !== previousCardName) handleNotMatchedCards();
 }
 
 function handleClick({ target }) {
@@ -136,7 +136,7 @@ function handleClick({ target }) {
       const { name: currentCardName } = currentCard.dataset;
       const { name: previousCardName } = previousCard.dataset;
 
-      checkMatching(currentCardName, previousCardName);
+      checkMatchingCards(currentCardName, previousCardName);
     }
   }
 }
