@@ -4,7 +4,14 @@ const menuList = document.querySelector('.nav__list');
 const introText = document.querySelector('.introText')
 const burgerIcon = document.querySelector('.header__burgerMenu')
 
-document.addEventListener('click', burgerMenuOpen)
+document.addEventListener('click', (event) => {
+    const episodeName = event.target.closest('.nav__list_item')
+    if (episodeName) {
+        const content = generateText(episodeName.dataset.id)
+        addContent(content,introText)
+    }
+    burgerMenuOpen(event)
+})
 
 function burgerMenuOpen(event) {
     if (event.target.closest('.header__burgerMenu')) {
@@ -16,14 +23,6 @@ function burgerMenuOpen(event) {
         burgerIcon.classList.remove('burgerCross')
     }
 }
-
-menuList.addEventListener('click', (event) => {
-    const episodeName = event.target.closest('.nav__list_item')
-    if (episodeName) {
-        const content = generateText(episodeName.dataset.id)
-        addContent(content,introText)
-    }
-})
 
 function generateText(episodeId) {
     const currentEpisode = episodes.find((episodeNumber) => episodeId === episodeNumber.id)
