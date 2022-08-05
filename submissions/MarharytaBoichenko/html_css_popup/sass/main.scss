@@ -41,7 +41,6 @@ img {
 
 a {
   text-decoration: none;
-  color: currentColor;
 }
 
 .list {
@@ -73,10 +72,6 @@ a {
   background-color: transparent;
   border-bottom: 2px solid rgb(163, 165, 167);
   column-gap: 30px;
-
-  @media screen and (min-width: 768px) {
-    column-gap: 50px;
-  }
 }
 
 .nav {
@@ -89,35 +84,25 @@ a {
   grid-auto-flow: column;
   align-content: end;
   gap: 20px;
-  @media screen and (min-width: 768px) {
-    gap: 25px;
-  }
 }
 
 .nav__link {
   font-size: 16px;
   font-weight: 700;
-  color: rgb(93, 92, 92);
-  &:hover,
-  &:focus {
-    text-decoration: underline;
-  }
+  color: #5d5c5c;
+}
 
-  @media screen and (min-width: 768px) {
-    font-size: 20px;
-  }
+.nav__link:hover,
+.nav__link:focus {
+  color: #2b2a2a;
 }
 
 .user {
-  position: relative;
+  // position: relative;
   display: grid;
   grid-auto-flow: column;
   align-items: center;
   gap: 15px;
-
-  @media screen and (min-width: 768px) {
-    gap: 25px;
-  }
 }
 
 .user__item:not(:last-child) {
@@ -133,11 +118,6 @@ a {
   background-size: cover;
 }
 
-.menu {
-  display: none;
-  position: relative;
-}
-
 .user__checkbox {
   position: absolute;
   width: 35px;
@@ -150,42 +130,30 @@ a {
 .user__checkbox:checked ~ .menu {
   position: absolute;
   right: 0;
-  top: 55px;
+  top: 70px;
   display: block;
-  width: 350px;
-  height: 450px;
+  width: 330px;
+  height: 420px;
   padding: 25px;
   overflow-y: auto;
   background-color: $bcgColor;
   border-radius: 3px;
-  box-shadow: 16px 16px 16px 16px rgba(211, 208, 212, 0.75);
-
-  @media screen and (min-width: 768px) {
-    width: 450px;
-  }
 }
 
-// .menu::after {
-//   content: '';
-//   display: none;
-//   width: 15px;
-//   height: 15px;
-//   background-color: $bcgColor;
-//   transform: rotate(45deg);
-//   position: absolute;
-//   top: 63px;
-//   right: 40%;
-// }
-
 .user__checkbox:focus ~ .user__menu {
-  border: 2px solid grey;
+  border: 2px solid #808080;
   border-radius: 3px;
+}
+
+.menu {
+  display: none;
+  position: relative;
 }
 
 .menu__list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr) minmax(40px, auto);
 }
 
 .menu__item {
@@ -209,26 +177,24 @@ a {
   justify-items: center;
   border: 1px solid transparent;
   border-radius: 5px;
-  &:hover,
-  &:focus {
-    border: 1px solid grey;
-    background-color: rgb(180, 228, 254);
-    outline: none;
-    cursor: pointer;
-  }
+  color: #000;
+}
 
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
+.menu__link:hover,
+.menu__link:focus {
+  border: 1px solid #808080;
+  background-color: #b4e4fe;
+  outline: none;
+  cursor: pointer;
 }
 
 .menu__icon {
   max-height: 45px;
   padding-bottom: 15px;
+}
 
-  @media screen and (min-width: 768px) {
-    max-height: 50px;
-  }
+.menu__item--link {
+  grid-column: 1 / 4;
 }
 
 .user__notification {
@@ -264,7 +230,7 @@ a {
 }
 
 .more-checkbox:focus ~ .label {
-  color: white;
+  color: #ffffff;
 }
 
 .more-checkbox:checked ~ .label {
@@ -276,10 +242,6 @@ a {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr minmax(30px, auto);
   margin-bottom: 0;
-}
-
-.menu__item--link {
-  grid-column: 1 / 4;
 }
 
 .label {
@@ -301,4 +263,36 @@ a {
   display: block;
   text-align: center;
   margin-top: 15px;
+  color: #000;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    column-gap: 50px;
+  }
+
+  .nav__list {
+    gap: 25px;
+  }
+
+  .nav__link {
+    font-size: 20px;
+  }
+
+  .user {
+    gap: 25px;
+  }
+
+  .user__checkbox:checked ~ .menu {
+    width: 450px;
+    height: 450px;
+  }
+
+  .menu__link {
+    font-size: 14px;
+  }
+
+  .menu__icon {
+    max-height: 50px;
+  }
 }
