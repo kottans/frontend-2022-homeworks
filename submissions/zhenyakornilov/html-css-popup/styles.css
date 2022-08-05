@@ -72,6 +72,21 @@ body {
   overflow-y: auto;
 }
 
+.popup::after {
+  content: "";
+  position: fixed;
+  color: aqua;
+  width: 15px;
+  height: 15px;
+  transform: translate(50%) rotate(-45deg);
+  background-color: #ffffff;
+  border-top: 1px solid #ffadc2;
+  border-right: 1px solid #ffadc2;
+  box-shadow: 1 0 10px #ffadc2;
+  right: 7.4%;
+  top: 3.5em;
+}
+
 .popup-toggle:checked ~ .popup {
   display: block;
 }
@@ -95,7 +110,7 @@ body {
   align-items: center;
   display: none;
   position: relative;
-  bottom: 10%;
+  bottom: 50px;
   row-gap: 0.5em;
   column-gap: 0.1em;
 }
@@ -123,7 +138,7 @@ body {
   display: block;
   text-align: center;
   cursor: pointer;
-  bottom: 7%;
+  bottom: 50px;
 }
 
 .popup-item {
@@ -159,7 +174,6 @@ body {
   width: 1.1em;
 }
 
-/* focus and hover  */
 .link:hover,
 .link:focus {
   color: #e8e9ed;
@@ -190,4 +204,56 @@ body {
 .popup-img:hover {
   border-radius: 5px;
   background-color: #e8e9ed;
+}
+
+@media (max-width: 1140px) {
+  .nav-links {
+      width: 50%;
+  }
+
+  .popup::after {
+    right: 13%;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1680px) {
+  .popup {
+    right: 4em;
+  }
+}
+
+@media (max-width: 1279px) and (min-width: 1141px) {
+  .popup {
+    right: 2.5em;
+  }
+}
+
+@media (max-width: 1010px) and (min-width: 721px) {
+  .popup {
+    right: 2em;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-links {
+      width: 60%;
+  } 
+
+  .popup {
+    right: 3em;;
+  }
+
+  .popup::after {
+    right: 14.7%;
+  }
+}
+
+@media (max-width: 540px) {
+  .nav-links {
+      width: 80%;
+  } 
+  
+  .popup {
+    right: 2em;
+  }
 }
