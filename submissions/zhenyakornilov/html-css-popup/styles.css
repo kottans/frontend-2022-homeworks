@@ -63,8 +63,8 @@ body {
   right: 6em;
   top: 4em;
   width: 20em;
-  height: 36em;
-  background-color: #ffffff;
+  height: 29em;
+  background-color: #fff;
   border: 1px solid #ffadc2;
   box-shadow: 0 0 10px #ffadc2;
   border-radius: 10px;
@@ -72,22 +72,26 @@ body {
   overflow-y: auto;
 }
 
+.popup-wrap {
+  display: contents;
+  list-style: none;
+}
+
 .popup::after {
   content: "";
   position: fixed;
-  color: aqua;
   width: 15px;
   height: 15px;
   transform: translate(50%) rotate(-45deg);
-  background-color: #ffffff;
+  background-color: #fff;
   border-top: 1px solid #ffadc2;
   border-right: 1px solid #ffadc2;
-  box-shadow: 1 0 10px #ffadc2;
+  box-shadow: 1px -1px 0.5px #ffadc2;
   right: 7.4%;
   top: 3.5em;
 }
 
-.popup-toggle:checked ~ .popup {
+.popup-toggle:checked ~ .popup-wrap .popup {
   display: block;
 }
 
@@ -119,12 +123,8 @@ body {
   display: grid;
 }
 
-.popup-more ~ .check-additional > .more-btn::before {
-  content: "More...";
-}
-
-.popup-more:checked ~ .check-additional > .more-btn::before {
-  content: "Less";
+.popup-more:checked + .check-additional {
+  display: none;
 }
 
 .more-btn {
@@ -138,13 +138,13 @@ body {
   display: block;
   text-align: center;
   cursor: pointer;
-  bottom: 50px;
+  bottom: 20px;
 }
 
 .popup-item {
   text-decoration: none;
-  width: 5em;
-  height: 6.6em;
+  width: 5.1em;
+  height: 5.1em;
 }
 
 .popup-pic {
@@ -179,8 +179,8 @@ body {
   color: #e8e9ed;
 }
 
-.popup-toggle:focus + .label-toggle > .popup-img,
-.image-wrapper:focus > .bell {
+.popup-toggle:focus + .popup-wrap .label-toggle .popup-img,
+.image-wrapper:focus .bell {
   background-color: #e8e9ed;
   border-radius: 5px;
   color: #e8e9ed;
@@ -195,7 +195,7 @@ body {
 }
 
 .more-btn:hover,
-.popup-more:focus ~ .check-additional > .more-btn {
+.popup-more:focus + .check-additional .more-btn {
   background-color: #ffadc2;
   transition: all 0.2s ease-in-out;
 }
@@ -208,7 +208,7 @@ body {
 
 @media (max-width: 1140px) {
   .nav-links {
-      width: 50%;
+    width: 50%;
   }
 
   .popup::after {
@@ -236,11 +236,11 @@ body {
 
 @media (max-width: 720px) {
   .nav-links {
-      width: 60%;
-  } 
+    width: 60%;
+  }
 
   .popup {
-    right: 3em;;
+    right: 3em;
   }
 
   .popup::after {
@@ -250,9 +250,9 @@ body {
 
 @media (max-width: 540px) {
   .nav-links {
-      width: 80%;
-  } 
-  
+    width: 80%;
+  }
+
   .popup {
     right: 2em;
   }
