@@ -15,9 +15,9 @@ let isActive = true;
 let timesClicked = 0;
 let timesMatched = 0;
 
-const gameContainer = document.querySelector('[data-game]');
-const gameMenu = document.querySelector('[data-menu]');
-const cardGrid = document.querySelector('[data-grid]');
+const gameContainer = document.getElementById('game');
+const gameMenu = document.getElementById('game-menu');
+const cardGrid = document.getElementById('game-grid');
 
 function getShuffledImages(imageNames, filePath) {
   return [...imageNames, ...imageNames]
@@ -70,11 +70,6 @@ gameMenu.addEventListener('click', (event) => {
   initGame(imageNames, './assets/images', cardGrid);
 });
 
-function clearVariables() {
-  currentCard = '';
-  previousCard = '';
-}
-
 function checkWin() {
   if (timesMatched !== 8) return;
 
@@ -95,41 +90,53 @@ function checkWin() {
   gameMenu.innerHTML = successMessage;
 }
 
-function handleClick(event) {
+function resetVariables() {
+  currentCard = '';
+  previousCard = '';
+  isActive = true;
+}
+
+function isMatched() {
+  timesMatched++;
+  checkWin();
+  resetVariables();
+  return;
+}
+
+function isNotMatched() {
+  setTimeout(() => {
+    currentCard.dataset.isOpened = false;
+    previousCard.dataset.isOpened = false;
+    resetVariables();
+    return;
+  }, 1000);
+}
+
+function checkMatching(currentCardName, previousCardName) {
+  if (currentCardName === previousCardName) isMatched();
+  if (currentCardName !== previousCardName) isNotMatched();
+}
+
+function handleClick({ target }) {
   if (isActive) {
-    if (!event.target.closest('.game__card')) return;
+    if (!target.closest('.game__card')) return;
 
     if (!currentCard) {
       timesClicked++;
-      currentCard = event.target.closest('.game__card');
+      currentCard = target.closest('.game__card');
       currentCard.dataset.isOpened = true;
       return;
     }
 
     if (currentCard) {
-      previousCard = event.target.closest('.game__card');
+      previousCard = target.closest('.game__card');
       previousCard.dataset.isOpened = true;
       isActive = false;
 
-      if (currentCard.dataset.name === previousCard.dataset.name) {
-        timesMatched++;
-        checkWin();
-        currentCard = '';
-        previousCard = '';
-        isActive = true;
-        return;
-      }
+      const { name: currentCardName } = currentCard.dataset;
+      const { name: previousCardName } = previousCard.dataset;
 
-      if (currentCard.dataset.name !== previousCard.dataset.name) {
-        setTimeout(() => {
-          currentCard.dataset.isOpened = false;
-          previousCard.dataset.isOpened = false;
-          currentCard = '';
-          previousCard = '';
-          isActive = true;
-          return;
-        }, 1000);
-      }
+      checkMatching(currentCardName, previousCardName);
     }
   }
 }

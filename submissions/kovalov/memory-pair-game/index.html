@@ -8,15 +8,15 @@
       content="width=device-width, initial-scale=1.0"
     />
     <link rel="stylesheet" href="./styles.css" />
-    <title>Document</title>
+    <title>Memory Pair Game</title>
   </head>
   <body>
     <div class="page-wrapper">
-      <main class="game" data-game data-is-active="false">
+      <main class="game" id="game" data-is-active="false">
         <div class="game__flipper">
           <div class="game__front">
-            <div class="game__menu" data-menu>
-              <h1 class="game__menu-title">Memory game app</h1>
+            <div class="game__menu" id="game-menu">
+              <h1 class="game__menu-title">Memory Pair Game</h1>
               <p class="game__menu-description">
                 Turn any two cards picture-side-up and find the pair.
               </p>
@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="game__back">
-            <div class="game__grid" data-grid></div>
+            <div class="game__grid" id="game-grid"></div>
           </div>
         </div>
       </main>
