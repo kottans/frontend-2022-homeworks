@@ -39,44 +39,37 @@ const planets = [
 ];
 
 const solarTitle = document.querySelector('.wrapper__title');
-
 const asideList = document.querySelector('.aside__list');
-
 const solarSystemTitle = document.querySelector('.container__title');
 const solarSystemDesc = document.querySelector('.container__desc');
 
-solarTitle.onclick = function(){
+solarTitle.addEventListener('click', function() {
     solarSystemTitle.innerText = solarSystem.title;
     solarSystemDesc.innerText = solarSystem.desc;
 
     if (selected) {
         selected.classList.remove('focused');
     }
-};
+});
 
 let selected;
 
-asideList.addEventListener('click', function(event){
+asideList.addEventListener('click', function(event) {
     const listTarget = event.target;
     if (listTarget.tagName != 'LI') return;
-    focused(listTarget);
+    highlightFocused(listTarget);
 
     const thisTitle = listTarget.innerText;
 
-    const thisInPlanets = planets.filter(function (item) {
-        if (item["title"] === thisTitle) {
-            return true;
-        } else {
-            return false;
-        }
+    const thisInPlanets = planets.filter(item => {
+        return item["title"] === thisTitle;
     });
-    const thisPlanet = new Object(...thisInPlanets);
 
-    solarSystemDesc.innerText = thisPlanet.desc;
-    solarSystemTitle.innerText = thisPlanet.title;
+    solarSystemDesc.innerText = thisInPlanets[0].desc;
+    solarSystemTitle.innerText = thisInPlanets[0].title;
 });
 
-function focused(item) {
+function highlightFocused(item) {
     if (selected) {
         selected.classList.remove('focused');
     }
