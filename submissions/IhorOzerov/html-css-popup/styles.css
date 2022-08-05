@@ -1,0 +1,120 @@
+ .visually-hidden {
+     position: absolute;
+     width: 1px;
+     height: 1px;
+     margin: -1px;
+     border: 0;
+     padding: 0;
+     clip: rect(0 0 0 0);
+     overflow: hidden;
+ }
+
+ .header-icons {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     padding-left: 0;
+     margin: 0 0;
+ }
+.h-image a{
+    text-decoration: none;
+    color: rgb(72, 94, 71);
+    
+}
+#sq:focus ~ input {
+    background-color: aqua;
+    border: 2x solid black;
+}
+label.more-btn:hover, .h-image:hover{
+    cursor: pointer;
+}
+input#more:focus{
+    outline: 2x solid black;
+}
+
+li {
+     list-style: none;
+ }
+
+ .h-image {
+     width: 30px;
+     margin: 15px;
+     
+ }
+
+ .visible-img {
+     width:55px;
+     height: 50px;
+ }
+ul.menu{
+    margin-top: 0;
+}
+.menu {
+     width: 300px;
+     height: 450px;
+     background-color: rgb(226, 220, 220);
+     justify-items: center;
+     padding: 15px;
+     display: none;
+     grid-template-columns: 1fr 1fr 1fr;
+     grid-template-rows: 1fr 1fr 1fr 1fr 30px;
+     overflow-x: hidden;
+     box-sizing: border-box;
+     flex-wrap: wrap;
+
+    }
+#sq:checked ~ .menu{
+        display: grid;
+    }
+ .more-btn {
+     grid-column: 1/4;
+     height: 30px;
+     background-color: rgb(228, 215, 215);
+     width: 100%;
+     display: grid;
+     justify-content: center;
+    z-index: 1;
+    margin-bottom: -10px;
+ }
+ li.more-btn {
+     z-index: 0;
+   
+ }
+
+#more:checked ~ #opened {
+    display: grid;
+}
+
+
+ #opened {
+     width: 300px;
+     height: 200px;
+     background-color: rgb(226, 220, 220);
+     justify-items: center;
+    padding-top: 40px;
+     padding-left: 0;
+     display: none;
+     grid-template-columns: 1fr 1fr 1fr;
+     grid-template-rows: 1fr 1fr;
+ }
+
+
+ .menu-a{
+    height: 80px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    text-decoration: none;
+    color: rgb(72, 94, 71);
+ }
+
+
+
+
+
+
+ 
+ 
