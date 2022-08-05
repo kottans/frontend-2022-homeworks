@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container">
+      <nav class="header__menu menu">
+        <ul class="menu__list">
+          <li class="menu__item">
+            <a class="menu__link animation" href="#" tabindex="0">
+              Mail
+            </a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link animation" href="#" tabindex="0">
+              Images
+            </a>
+          </li>
+          <li class="menu__item">
+            <input id="checkbox" class="menu__item-checkbox" type="checkbox">
+            <label for="checkbox" class="menu__item-label" tabindex="0">              
+                <img src="images/icons/popup-button.png" alt="Popup button" width="30" height="30" />
+            </label>
+            <div class="menu__popup popup">
+              <div class="popup__content">
+                <ul class="popup__list">
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/apps.png" alt="app" width="50" height="50" /><span
+                        class="popup__name">Apps</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/calendar.png" alt="calendar" width="50" height="50" />
+                      <span class="popup__name">Calendar</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/chat.png" alt="chat" width="50" height="50" />
+                      <span class="popup__name">Chat</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/classroom.png" alt="Classroom" width="50" height="50" />
+                      <span class="popup__name">Classroom</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/collection.png" alt="Collection" width="50" height="50" />
+                      <span class="popup__name">Collection</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/contacts.png" alt="Contacts" width="50" height="50" />
+                      <span class="popup__name">Contacts</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/documents.png" alt="Documents" width="50" height="50" />
+                      <span class="popup__name">Documents</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/files.png" alt="Files" width="50" height="50" />
+                      <span class="popup__name">Files</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/mail.png" alt="Mail" width="50" height="50" />
+                      <span class="popup__name">Mail</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/maps.png" alt="Maps" width="50" height="50" />
+                      <span class="popup__name">Maps</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/mars.png" alt="Mars" width="50" height="50" />
+                      <span class="popup__name">Mars</span>
+                    </a>
+                  </li>
+                  <li class="popup__item">
+                    <a href="#" class="popup__link animation animation_icon">
+                      <img src="images/icons/news.png" alt="News" width="50" height="50" />
+                      <span class="popup__name">News</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="popup__block">
+                  <input class="menu__item-checkbox menu__item-checkbox_more" id="more" type="checkbox">
+                  <label class="menu__item-label menu__item-label_more" for="more">More</label>
+                  <ul class="popup__list popup__list_more">
+                    <li class="popup__item">
+                      <a href="#" class="popup__link animation animation_icon">
+                        <img src="images/icons/photos.png" alt="Photos" width="50" height="50" />
+                        <span class="popup__name">Photos</span>
+                      </a>
+                    </li>
+                    <li class="popup__item">
+                      <a href="#" class="popup__link animation animation_icon">
+                        <img src="images/icons/promo.png" alt="Promo" width="50" height="50" />
+                        <span class="popup__name">Promo</span>
+                      </a>
+                    </li>
+                    <li class="popup__link animation animation_icon">
+                      <a href="#" class="popup__icon">
+                        <img src="images/icons/chat.png" alt="Translation" width="50" height="50" />
+                        <span class="popup__name">Translation</span>
+                      </a>
+                    </li>
+                    <li class="popup__link animation animation_icon">
+                      <a href="#" class="popup__icon">
+                        <img src="images/icons/videos.png" alt="Videos" width="50" height="50" />
+                        <span class="popup__name">Videos</span>
+                      </a>
+                    </li>
+                    <li class="popup__item">
+                      <a href="#" class="popup__link animation animation_icon">
+                        <img src="images/icons/blogs.png" alt="Blogs" width="50" height="50" />
+                        <span class="popup__name">Blogs</span>
+                      </a>
+                    </li>
+                    <li class="popup__item">
+                      <a href="#" class="popup__link animation animation_icon">
+                        <img src="images/icons/search.png" alt="Search" width="50" height="50" />
+                        <span class="popup__name">Search</span>
+                      </a>
+
+                    </li>
+                  </ul>
+                  <a class="popup__bottom-link">
+                    Even more from Kottans
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="menu__item">
+            <button class="menu__item-button animation" type="button" tabindex="0">
+              <img class="menu__image" src="images/icons/bell.png" alt="bell" width="25" height="25" />
+            </button>
+          </li>
+          <li class="menu__item">
+            <button class="menu__item-button animation" type="button" tabindex="0">
+              <img class="menu__image" src="images/icons/user.png" alt="user photo" width="30" height="30" />
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <script src="js/main.min.js"></script>
+</body>
+
+</html>
