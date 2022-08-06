@@ -31,6 +31,19 @@ const man = {
 }
 
 const inhabitants = [cat, dog, woman, man]
-const inhabitantsInformation = inhabitants.map(({name, gender, legs, hands,saying}) => [`${name}; ${gender}; ${legs}; ${hands}; ${saying}`])
 
-inhabitantsInformation.forEach(inhabitant => print(inhabitant))
+const inhabitantsKeys = [
+   "name",
+   "gender",
+   "legs",
+   "hands",
+   "saying"
+];
+
+inhabitants.forEach(inhabitant => print(inhabitantsKeys.map(key => inhabitant[key])))
+
+
+
+// const inhabitantsInformation = inhabitants.map(({name, gender, legs, hands,saying}) => `${name}; ${gender}; ${legs}; ${hands}; ${saying}`)
+
+// inhabitantsInformation.forEach(inhabitant => print(inhabitant))
