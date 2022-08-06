@@ -49,34 +49,38 @@ const gameContainer = document.querySelector(".game__container");
 gameContainer.innerHTML = gameCard.join("");
 const gameCards = document.querySelectorAll(".game__card");
 
-let counter = 0;
-let arr = [];
+let numberOfMatches = 0;
+let ArrayOfFlippedCards = [];
 
-function flipCard() {
-  if (this && this.classList.contains("game__card")) {
-    this.classList.add("flip");
+gameCards.forEach((card) =>
+  card.addEventListener("click", ({ target }) => {
+    const parentTarget = target.parentElement;
+    if (parentTarget && parentTarget.classList.contains("game__card")) {
+      parentTarget.classList.add("flip");
 
-    arr.push(this);
-  }
-  checkArrLength();
+      ArrayOfFlippedCards.push(parentTarget);
+    }
+    checkArrayOfFlippedCardsLength();
+    checkForWin();
+  })
+);
 
-  winCOndition();
-}
-
-function checkArrLength() {
-  if (arr.length % 2 === 0) {
+function checkArrayOfFlippedCardsLength() {
+  if (ArrayOfFlippedCards.length % 2 === 0) {
     checkMatch();
   }
 }
 
 function checkMatch() {
-  const match = arr[arr.length - 1].id === arr[arr.length - 2].id;
+  const match =
+    ArrayOfFlippedCards[ArrayOfFlippedCards.length - 1].id ===
+    ArrayOfFlippedCards[ArrayOfFlippedCards.length - 2].id;
 
   if (match) {
-    counter++;
-    disableClick();
+    numberOfMatches++;
+    addingDisableClass();
     setTimeout(() => {
-      disableClick();
+      addingDisableClass();
     }, 1000);
   } else {
     removeFlip();
@@ -85,43 +89,45 @@ function checkMatch() {
 
 function removeFlip() {
   setTimeout(() => {
-    arr[arr.length - 1].classList.remove("flip");
-    arr[arr.length - 2].classList.remove("flip");
-    arr.splice(0, 2);
+    ArrayOfFlippedCards[ArrayOfFlippedCards.length - 1].classList.remove(
+      "flip"
+    );
+    ArrayOfFlippedCards[ArrayOfFlippedCards.length - 2].classList.remove(
+      "flip"
+    );
+    ArrayOfFlippedCards.splice(0, 2);
 
-    disableClick();
+    addingDisableClass();
 
-    winCOndition();
+    checkForWin();
   }, 1000);
-  disableClick();
+  addingDisableClass();
 }
 
-function disableClick() {
+function addingDisableClass() {
   gameCards.forEach((item) => {
     item.classList.toggle("disableclick");
   });
 }
 
-function winCOndition() {
-  if (arr.length === 12) {
+function checkForWin() {
+  if (ArrayOfFlippedCards.length === 12) {
     setTimeout(() => {
       gameCards.forEach((item) => {
         item.classList.remove("flip");
       });
       alert("U WIN!");
-      arr.splice(0, arr.length);
-      shuffle();
+      ArrayOfFlippedCards.splice(0, ArrayOfFlippedCards.length);
+      shuffleCards();
     }, 1000);
   }
 }
 
-function shuffle() {
+function shuffleCards() {
   gameCards.forEach((card) => {
     let randomPos = Math.floor(Math.random() * 12);
     card.style.order = randomPos;
   });
 }
 
-shuffle();
-
-gameCards.forEach((card) => card.addEventListener("click", flipCard));
+shuffleCards();

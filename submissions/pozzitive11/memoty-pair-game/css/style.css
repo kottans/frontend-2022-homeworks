@@ -19,7 +19,7 @@ body {
 }
 
 .game__container {
-  margin-top: 30px;
+  margin-top: 50px;
   width: 940px;
   height: 640px;
   display: flex;
@@ -31,6 +31,7 @@ body {
   cursor: pointer;
   position: relative;
   width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
   margin: 5px;
   border-radius: 7px;
   transform-style: preserve-3d;
@@ -64,4 +65,29 @@ body {
 
 .disableclick {
   pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .game__container {
+    width: 740px;
+    height: 540px;
+  }
+}
+
+@media (max-width: 768px) {
+  .game__container {
+    width: 540px;
+    height: 440px;
+  }
+}
+
+@media (max-width: 576px) {
+  .game__card {
+    width: calc(49% - 10px);
+    height: calc(33.333% - 10px);
+  }
+  .game__container {
+    width: 240px;
+    height: 240px;
+  }
 }
