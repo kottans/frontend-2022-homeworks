@@ -141,3 +141,5 @@
 .header__popup__checkbox__more:checked ~ .header__popup__label_more {
     display: none;
  }
+
+ 
