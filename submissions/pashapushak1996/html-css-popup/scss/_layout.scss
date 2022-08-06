@@ -11,7 +11,6 @@ body {
 
 .container {
   max-width: 1200px;
-
   margin: 0 auto;
 }
 
@@ -20,7 +19,6 @@ body {
   justify-content: flex-end;
 
   padding: 20px;
-
 
   &__list {
     display: flex;
@@ -111,7 +109,7 @@ body {
   top: 45px;
   right: -73px;
 
-  border: 1px solid #5e5e5e;
+  border: 1px solid $grey-1;
 
   background: #FFFFFF;
 
@@ -149,24 +147,23 @@ body {
   &:before {
     border-color: rgba(94, 94, 94, 0);
     border-bottom-color: $grey-1;
-    border-width: 13px;
-    margin-left: -13px;
+    border-width: 11px;
+    margin-left: -11px;
   }
 
   &__items {
     display: grid;
     align-items: center;
     justify-content: center;
-
-    gap: 10px;
-
     grid-template-columns:repeat(auto-fit, 80px);
+    gap: 10px;
 
     padding: 20px;
   }
 
   &__btn-more {
     display: block;
+
     padding: 10px;
 
     background-color: $blue-1;
@@ -190,8 +187,6 @@ body {
 
   &__text {
     display: none;
-
-
   }
 
   input:checked ~ &__text {
@@ -207,7 +202,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: 10px;
 
     padding: 10px;
