@@ -40,7 +40,7 @@ const inhabitantsKeys = [
    "saying"
 ];
 
-inhabitants.forEach(inhabitant => print(inhabitantsKeys.map(key => inhabitant[key])))
+inhabitants.forEach(inhabitant => print(inhabitantsKeys.map(key => inhabitant[key]).join(';')))
 
 
 
