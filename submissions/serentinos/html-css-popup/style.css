@@ -1,0 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+body{
+
+}
+
+header{
+  width: 1400px;
+  margin: 20px auto;
+}
+ul{
+  list-style-type: none;
+}
+
+.links-cnt{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: end;
+}
+.links-cnt li{
+  padding: 10px 15px;
+  background-color: red ;
+}
