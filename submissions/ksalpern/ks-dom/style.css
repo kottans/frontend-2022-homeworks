@@ -181,27 +181,3 @@ justify-content: center;
 .cartoon__img{
     margin: 0 auto;
 }
-/*
-@media (max-width: 768px) {
-    .navbar{
-        position: fixed;
-        height: calc(100vh - 60px);
-        width: 100%;
-        bottom: -100%;
-        right: 0;
-        top: 60px;
-        transition: 0.5s;
-        -webkit-transition: 0.5s;
-        -moz-transition: 0.5s;
-        -ms-transition: 0.5s;
-        -o-transition: 0.5s;
-        justify-content: center;
-        align-items: center; 
-}
-    
-    .navbar.active{
-        height: calc(100vh - 60px);
-        bottom: 0;
-    }
-    
-} */
