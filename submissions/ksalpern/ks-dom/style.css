@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+img{
+    max-width: 480px;
+}
+
+body{
+background-color: rgb(218, 216, 214);
+min-height: 100vh;
+overflow: hidden;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgb(24, 24, 24);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.header__title{
+    height: 60px;
+    line-height: 60px;
+    color: azure;
+    cursor: pointer;
+    font-size: 2em;
+    font-weight: 700;
+    margin-left: 24px;
+}
+
+.toggle{
+    position: absolute;
+    top: 8px;
+    right: 24px;
+    width: 42px;
+    height: 42px;
+    background-color: azure;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.toggle::before{
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 2px;
+    background-color: rgb(32, 32, 32);
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+}
+
+.toggle::after{
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 2px;
+    background-color: rgb(32, 32, 32);
+    transform: translateY(5px);
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+}
+
+.toggle.active::before{
+    transform: translateY(0px) rotate(45deg);
+    -webkit-transform: translateY(0px) rotate(45deg);
+    -moz-transform: translateY(0px) rotate(45deg);
+    -ms-transform: translateY(0px) rotate(45deg);
+    -o-transform: translateY(0px) rotate(45deg);
+}
+
+.toggle.active::after{
+    transform: translateY(0px) rotate(-45deg);
+    -webkit-transform: translateY(0px) rotate(-45deg);
+    -moz-transform: translateY(0px) rotate(-45deg);
+    -ms-transform: translateY(0px) rotate(-45deg);
+    -o-transform: translateY(0px) rotate(-45deg);
+}
+
+.navbar{
+    position: absolute;
+    height: 200px;
+    width: 0px;
+    right: 0px;
+    top: 60px;
+    background-color: rgb(58, 57, 57);
+    overflow: hidden;
+}
+
+.navbar.active{
+    width: fit-content;
+}
+
+.navbar__items{
+    position: relative;
+    margin: 24px 8px 0px 8px;
+}
+
+.navbar__item{
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.navbar__item-link{
+    color: azure;
+    font-size: 1.1em;
+}
+
+.navbar__item-link:hover{
+    color: rgb(123, 175, 175);
+}
+
+.arrow{
+    color: azure;
+}
+
+/* Section's content */
+
+ .section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    color: rgb(20, 20, 20);
+    padding: 16px;
+    padding-top: 64px;
+}
+
+.cartoons{
+    flex-direction: column;
+}
+
+.cartoon__name{
+display: flex;
+justify-content: center;
+}
+
+.cartoon__description{
+    margin: 8px;
+}
+
+.cartoon__img{
+    margin: 0 auto;
+}
+/*
+@media (max-width: 768px) {
+    .navbar{
+        position: fixed;
+        height: calc(100vh - 60px);
+        width: 100%;
+        bottom: -100%;
+        right: 0;
+        top: 60px;
+        transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        -o-transition: 0.5s;
+        justify-content: center;
+        align-items: center; 
+}
+    
+    .navbar.active{
+        height: calc(100vh - 60px);
+        bottom: 0;
+    }
+    
+} */
