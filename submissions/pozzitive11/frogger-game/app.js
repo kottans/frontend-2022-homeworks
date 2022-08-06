@@ -3,14 +3,27 @@ const tileSize = {
   height: 85,
 };
 
+const enemySpeed = {
+  first: 90,
+  second: 230,
+  third: 150,
+};
+
 const boardSize = {
   top: 0,
   right: tileSize.width * 5,
   bottom: tileSize.height * 6,
   left: 0,
 };
-class Enemy {
-  constructor(y, speed) {
+
+class gameObjectRender {
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+}
+class Enemy extends gameObjectRender {
+  constructor(y, speed, sprite) {
+    super(y, sprite);
     this.sprite = "images/enemy-bug.png";
     this.x = 0;
     this.y = y;
@@ -18,11 +31,7 @@ class Enemy {
     this.enemyCenter = 35;
   }
 
-  render() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-  }
-
-  collision() {
+  checkCollision() {
     if (
       this.x + tileSize.width > player.x &&
       this.x < player.x &&
@@ -38,11 +47,12 @@ class Enemy {
     if (this.x > boardSize.right) {
       this.x = -tileSize.width;
     }
-    this.collision();
+    this.checkCollision();
   }
 }
-class Player {
-  constructor() {
+class Player extends gameObjectRender {
+  constructor(sprite) {
+    super(sprite);
     this.moveToStartPosition();
     this.sprite = "images/char-boy.png";
   }
@@ -56,10 +66,6 @@ class Player {
     if (this.y < boardSize.top) {
       this.moveToStartPosition();
     }
-  }
-
-  render() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 
   handleInput(key) {
@@ -94,9 +100,9 @@ const player = new Player();
 const enemy = new Enemy();
 
 const allEnemies = [
-  new Enemy(tileSize.height * 3 - enemy.enemyCenter, 90),
-  new Enemy(tileSize.height * 2 - enemy.enemyCenter, 150),
-  new Enemy(tileSize.height * 1 - enemy.enemyCenter, 100),
+  new Enemy(tileSize.height * 3 - enemy.enemyCenter, enemySpeed.first),
+  new Enemy(tileSize.height * 2 - enemy.enemyCenter, enemySpeed.second),
+  new Enemy(tileSize.height * 1 - enemy.enemyCenter, enemySpeed.third),
 ];
 
 document.addEventListener("keyup", function (e) {
