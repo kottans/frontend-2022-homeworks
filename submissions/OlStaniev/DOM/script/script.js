@@ -26,16 +26,16 @@ function burgerMenuOpen(event) {
 
 function generateText(episodeId) {
     const currentEpisode = episodes.find((episodeNumber) => episodeId === episodeNumber.id)
-    const storyText = `<div class="introText_wrapper"><h2>${currentEpisode.title}</h2><h3>${currentEpisode.subTitle}</h3>${currentEpisode.text}</div>`
+    const storyText = `<div class="introText_wrapper"><h2>${currentEpisode.title}</h2><h3>${currentEpisode.subTitle}</h3><p>${currentEpisode.p1}</p><p>${currentEpisode.p2}</p><p>${currentEpisode.p3}</p></div>`
     return storyText
 }
 
-const navList = episodes.reduce((list, episode) =>{
+const navList = episodes.reduce((list, {id, title, subTitle}) =>{
     return list +
     `<li class="listItem">
-        <button class="nav__list_item" data-id="${episode.id}">
-            <span class="listTitle">${episode.title}</span>
-            <span class="listSubTitle">${episode.subTitle}</span>
+        <button class="nav__list_item" data-id="${id}">
+            <span class="listTitle">${title}</span>
+            <span class="listSubTitle">${subTitle}</span>
         </button>
     </li>`
 }, '')

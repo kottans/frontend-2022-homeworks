@@ -127,8 +127,8 @@ body {
             display: none;
         }
         @media (max-width: 576px) {
-            right: 8%;
-            top: 8%;
+            right: 5px;
+            top: 5px;
         }
     }
 }
@@ -181,6 +181,18 @@ body {
         }
     }
 }
+
+.nav__list_item:focus span{
+    color: red;
+}
+
+.nav__list_item:hover span{
+    text-decoration: underline;
+}
+.nav__list_item:active span{
+    color: rgb(209, 188, 149);
+}
+
 
 .introText {
     position: absolute;
