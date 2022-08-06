@@ -16,17 +16,22 @@ const boardSize = {
   left: 0,
 };
 
-class gameObjectRender {
+class instancesOfCharacter {
+  constructor(x, y, sprite) {
+    this.x = x;
+    this.y = y;
+    this.sprite = sprite;
+  }
+
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
+
+  update() {}
 }
-class Enemy extends gameObjectRender {
-  constructor(y, speed, sprite) {
-    super(y, sprite);
-    this.sprite = "images/enemy-bug.png";
-    this.x = 0;
-    this.y = y;
+class Enemy extends instancesOfCharacter {
+  constructor(y, speed) {
+    super(0, y, "images/enemy-bug.png");
     this.speed = speed;
     this.enemyCenter = 35;
   }
@@ -50,9 +55,9 @@ class Enemy extends gameObjectRender {
     this.checkCollision();
   }
 }
-class Player extends gameObjectRender {
-  constructor(sprite) {
-    super(sprite);
+class Player extends instancesOfCharacter {
+  constructor() {
+    super();
     this.moveToStartPosition();
     this.sprite = "images/char-boy.png";
   }
@@ -93,7 +98,6 @@ class Player extends gameObjectRender {
     }
     this.resetToStartPosition();
   }
-  update() {}
 }
 
 const player = new Player();
