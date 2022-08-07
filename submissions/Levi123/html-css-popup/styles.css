@@ -1,0 +1,93 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    padding: 15px 15px;
+}
+
+.imgMenu {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.navigationList {
+    display: flex;
+    justify-content: end;
+}
+
+.elementList {
+    margin: 5px 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.popUpBtn {
+    cursor: pointer;
+}
+
+#popUp, #popUpMore {
+    display: none;
+}
+
+.popUpBody {
+    width: 300px;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+    display: none;
+    max-height: 500px;
+    overflow:auto;
+}
+
+.popUpBodyMore {
+    display: none;
+}
+
+.popUpElements {
+    display: grid;
+    grid-template: auto/1fr 1fr 1fr;
+    gap: 0.6rem;
+    padding: 1.2rem;
+    align-items: flex-end;
+    justify-items: center;
+    gap: 0.6rem;
+}
+
+.elementPopUp {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 5px;
+}
+
+.elementPopUp:hover {
+    background-color: #ededed;
+    cursor: pointer;
+}
+
+.elementPopUp:focus-within {
+    outline: 3px solid #80f0ff;
+}
+
+.popUpMoreElements {
+    text-align: center;
+}
+
+.popUpBtnMore {
+    display: block;
+    background-color: rgb(230, 230, 230);
+    padding: 0.3em 1rem;
+}
+
+#popUp:checked ~ .popUpBody, #popUpMore:checked ~ .popUpBodyMore{
+    display: block;
+    background-color: white;
+}
