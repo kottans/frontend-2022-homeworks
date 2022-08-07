@@ -11,9 +11,9 @@ class Inhabitant {
   }
 }
 class Animal extends Inhabitant {
-  constructor(species, name, gender, paw, saying) {
-    super(species, name, gender, saying);
-    this.paw = paw;
+  constructor(name, gender, saying) {
+    super("animal", name, gender, saying);
+    this.paw = 4;
   }
   getProperties() {
     return super.getProperties() + `; I have ${this.paw} paws;`;
@@ -21,10 +21,10 @@ class Animal extends Inhabitant {
 }
 
 class Human extends Inhabitant {
-  constructor(species, name, gender, saying) {
-    super(species, name, gender, saying);
-    this.legs = 2;
+  constructor(name, gender, saying) {
+    super("human", name, gender, saying);
     this.hands = 2;
+    this.legs = 2;
   }
 
   getProperties() {
@@ -36,39 +36,39 @@ class Human extends Inhabitant {
 }
 
 class Dog extends Animal {
-  constructor(species, name, gender, saying, paw) {
-    super(species, name, gender, paw, saying);
+  constructor(name, gender, saying) {
+    super(name, gender, saying);
   }
 }
 
 class Cat extends Animal {
-  constructor(species, name, gender, paw) {
-    super(species, name, gender, paw, "meow-meow");
+  constructor(name, gender) {
+    super(name, gender, "meow-meow");
   }
 }
 class Catwoman extends Cat {
-  constructor(species, name, gender, paws, saying) {
-    super(species, name, gender, paws, saying);
+  constructor(name, saying) {
+    super(name, saying);
+    this.species = "catwoman";
+    this.gender = "female";
+    this.hands = 2;
+    this.legs = 2;
+  }
+  getProperties() {
+    return (
+      super.getProperties() +
+      `; I have ${this.legs} paws and ${this.hands} paws;`
+    );
   }
 }
 
-class Man extends Human {
-  constructor(name, gender, saying) {
-    super("man", name, gender, saying);
-  }
-}
+const dog = new Dog("Buddy", "male", "woof-woof!");
+const cat = new Cat("Kitty", "female");
+const catwoman = new Catwoman("Nazar");
+const woman = new Human("Dazdraperma", "male", "It used to be better");
+const man = new Human("Mike", "female", "Hello World!");
 
-class Woman extends Human {
-  constructor(name, gender, saying) {
-    super("woman", name, gender, saying);
-  }
-}
-
-const dog = new Dog("dog", "Dick", "male", "woof-woof!", 4);
-const cat = new Cat("cat", "Kitty", "female", 5);
-const catwoman = new Catwoman("catwoman", "Nazar", "female", 2);
-const woman = new Woman("Dazdraperma", "female", "It used to be better");
-const man = new Man("Mike", "male", "Hello World!");
+console.log(dog);
 
 const inhabitants = [dog, cat, catwoman, woman, man];
 
