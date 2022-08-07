@@ -1,5 +1,5 @@
 class Enemy {
-  constructor(x, y, speedX, fieldWidth, player) {
+  constructor({ x, y, speedX, fieldWidth, player }) {
     this.sprite = 'images/enemy-bug.png';
     this.fieldWidth = fieldWidth;
     this.x = x;
@@ -37,23 +37,22 @@ class Enemy {
 }
 
 class Player {
-  constructor(params) {
+  constructor({ fieldWidth, fieldHeight, speedX, speedY }, score) {
     this.sprite = 'images/char-boy.png';
-    this.fieldWidth = params.fieldWidth;
-    this.fieldHeight = params.fieldHeight;
-    this.x = params.fieldWidth / 2;
-    this.y = params.fieldHeight;
-    this.speedX = params.speedX;
-    this.speedY = params.speedY;
+    this.fieldWidth = fieldWidth;
+    this.fieldHeight = fieldHeight;
+    this.x = this.fieldWidth / 2;
+    this.y = this.fieldHeight;
+    this.speedX = speedX;
+    this.speedY = speedY;
     this.height = 40;
     this.width = 40;
-    this.score = 0;
-    this.scoreElement = document.querySelector('.score__number');
+    this.score = score;
   }
 
   update(dt) {
     if (this.y < 0) {
-      this.scoreElement.innerHTML = `${++this.score}`;
+      this.score.update();
       this.resetPosition();
     }
   }
@@ -91,6 +90,17 @@ class Player {
   }
 }
 
+class Score {
+  constructor(element) {
+    this.element = element;
+    this.score = 0;
+  }
+
+  update() {
+    this.element.innerHTML = `${++this.score}`;
+  }
+}
+
 const playerConfiguration = {
   fieldWidth: 400,
   fieldHeight: 375,
@@ -98,12 +108,38 @@ const playerConfiguration = {
   speedX: 100,
 };
 
-const player = new Player(playerConfiguration);
+const score = new Score(document.querySelector('.score__number'));
+
+const player = new Player(playerConfiguration, score);
+
+const enemy1Configuration = {
+  x: 0,
+  y: 50,
+  speedX: 80,
+  fieldWidth: 400,
+  player,
+};
+
+const enemy2Configuration = {
+  x: 0,
+  y: 135,
+  speedX: 100,
+  fieldWidth: 400,
+  player,
+};
+
+const enemy3Configuration = {
+  x: 0,
+  y: 215,
+  speedX: 120,
+  fieldWidth: 400,
+  player,
+};
 
 const allEnemies = [
-  new Enemy(0, 50, 80, 400, player),
-  new Enemy(0, 135, 100, 400, player),
-  new Enemy(0, 215, 120, 400, player),
+  new Enemy(enemy1Configuration),
+  new Enemy(enemy2Configuration),
+  new Enemy(enemy3Configuration),
 ];
 
 function handleClick(e) {
