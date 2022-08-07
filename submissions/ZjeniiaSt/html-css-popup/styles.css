@@ -1,9 +1,10 @@
+
 :root {
-  --background-color: rgba(229, 229, 229, 1);
-  --background-color-block: rgba(245, 244, 250, 1);
-  --black-color: rgba(33, 33, 33, 1);
-  --accent-color: rgba(33, 150, 243, 1);
-  --white-color: rgba(255, 255, 255, 1);
+  --background-color: rgb(229, 229, 229);
+  --background-color-block: rgb(245, 244, 250);
+  --black-color: rgb(33, 33, 33);
+  --accent-color: rgb(33, 150, 243);
+  --white-color: rgb(255, 255, 255);
   --main-font: "Roboto", sans-serif;
   --timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -29,7 +30,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  cursor: pointer;
+}
+
+a:focus {
+  outline: none;
 }
 
 ul {
@@ -38,26 +42,25 @@ ul {
 
 img {
   display: block;
-  width: 100%;
+  max-width: 100%;
   height: auto;
+  margin: 0 auto;
 }
 
 .container {
   margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-.wrapper {
+nav {
   display: flex;
   justify-content: end;
-  flex-direction: column;
-  margin: 30px;
-  padding: 15px;
+  margin: 10px;
+  padding: 10px;
 }
 
-.nav {
+.nav-list {
   display: flex;
   text-align: center;
   justify-content: end;
@@ -71,6 +74,16 @@ img {
 .nav-item:not(:last-child) {
   margin-right: 15px;
 }
+
+.nav-item:hover {
+  background-color: var(--background-color-block);
+  border-radius: 15%;
+}
+
+.nav-item:focus-within {
+  border-bottom: 1px solid var(--accent-color);
+}
+
 label {
   cursor: pointer;
 }
@@ -80,7 +93,6 @@ input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  visibility: hidden;
 }
 
 #popup:checked ~ .menu {
@@ -90,17 +102,18 @@ input {
 .menu {
   display: none;
   position: absolute;
-  top: 100px;
-  right: 80px;
-  overflow-y: overlay;
+  top: 80px;
+  right: 3%;
   width: 300px;
-  max-height: 700px;
+  height: 460px;
+  overflow-y: auto;
   margin: 10px;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.15);
 }
+
 .menu img {
-  max-width: 60px;
-  height: 100%;
+  width: 50px;
+  max-height: 60px;
 }
 
 .menu-list {
@@ -120,17 +133,20 @@ input {
   cursor: pointer;
 }
 
-.menu-button {
-  background-color: var(--background-color-block);
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
+.menu-item img:hover,
+.menu-item:focus-within {
+  transform: scaleX(1.2);
+}
+
+.button:hover {
+  outline: none;
+  color: var(--accent-color);
 }
 
 .submenu-list {
   display: none;
   grid-template-rows: repeat(2, 1fr);
-  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
 #submenu:checked ~ .submenu-list {
@@ -144,37 +160,48 @@ input {
   text-align: center;
 }
 
-#submenu:checked ~ .buttonfirst {
+#submenu:focus ~ .buttonfirst span,
+#evenmore:focus ~ .buttonsecond span {
+  border-bottom: 1px solid var(--accent-color);
+}
+
+#submenu:checked ~ .buttonfirst span {
   display: none;
-}
-
-#submenu:checked ~ .menu {
-  overflow-y: scroll;
-}
-
-#submenu:checked ~ .menu {
-  overflow-y: scroll;
 }
 
 .buttonsecond {
   display: none;
+  padding: 14px;
+}
+
+.buttonsecond:hover,
+.buttonsecond a:focus {
+  color: var(--accent-color);
 }
 
 #submenu:checked ~ .buttonsecond {
   display: block;
 }
 
-.menu-item:hover,
-.menu-item:focus {
-  transform: scale(1.2);
-}
-.button:hover,
-.button:focus {
-  background-color: var(--accent-color);
+@media screen and (min-width: 768px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  nav {
+    margin: 30px;
+    padding: 15px;
+  }
+
+  .menu {
+    top: 100px;
+    right: 10%;
+  }
 }
 
-.nav-item:hover,
-.nav-item:focus {
-  background-color: var(--background-color-block);
-  border-radius: 20%;
+@media screen and (min-width: 1200px) {
+  .menu {
+    right: 8%;
+  }
 }
