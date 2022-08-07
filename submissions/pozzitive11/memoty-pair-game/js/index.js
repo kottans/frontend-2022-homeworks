@@ -50,15 +50,17 @@ gameContainer.innerHTML = gameCard.join("");
 const gameCards = document.querySelectorAll(".game__card");
 
 let numberOfMatches = 0;
-let ArrayOfFlippedCards = [];
+let arrayOfFlippedCards = [];
+
+const cardd = document.querySelector(".game__card");
 
 gameCards.forEach((card) =>
   card.addEventListener("click", ({ target }) => {
-    const parentTarget = target.parentElement;
+    const parentTarget = target.closest(".game__card");
     if (parentTarget && parentTarget.classList.contains("game__card")) {
       parentTarget.classList.add("flip");
 
-      ArrayOfFlippedCards.push(parentTarget);
+      arrayOfFlippedCards.push(parentTarget);
     }
     checkArrayOfFlippedCardsLength();
     checkForWin();
@@ -66,19 +68,18 @@ gameCards.forEach((card) =>
 );
 
 function checkArrayOfFlippedCardsLength() {
-  if (ArrayOfFlippedCards.length % 2 === 0) {
+  if (arrayOfFlippedCards.length === 2) {
     checkMatch();
   }
 }
 
 function checkMatch() {
-  const match =
-    ArrayOfFlippedCards[ArrayOfFlippedCards.length - 1].id ===
-    ArrayOfFlippedCards[ArrayOfFlippedCards.length - 2].id;
+  const match = arrayOfFlippedCards[0].id === arrayOfFlippedCards[1].id;
 
   if (match) {
     numberOfMatches++;
     addingDisableClass();
+    arrayOfFlippedCards.splice(0, arrayOfFlippedCards.length);
     setTimeout(() => {
       addingDisableClass();
     }, 1000);
@@ -89,13 +90,9 @@ function checkMatch() {
 
 function removeFlip() {
   setTimeout(() => {
-    ArrayOfFlippedCards[ArrayOfFlippedCards.length - 1].classList.remove(
-      "flip"
-    );
-    ArrayOfFlippedCards[ArrayOfFlippedCards.length - 2].classList.remove(
-      "flip"
-    );
-    ArrayOfFlippedCards.splice(0, 2);
+    arrayOfFlippedCards[0].classList.remove("flip");
+    arrayOfFlippedCards[1].classList.remove("flip");
+    arrayOfFlippedCards = [];
 
     addingDisableClass();
 
@@ -111,14 +108,15 @@ function addingDisableClass() {
 }
 
 function checkForWin() {
-  if (ArrayOfFlippedCards.length === 12) {
+  if (numberOfMatches === 6) {
     setTimeout(() => {
       gameCards.forEach((item) => {
         item.classList.remove("flip");
       });
       alert("U WIN!");
-      ArrayOfFlippedCards.splice(0, ArrayOfFlippedCards.length);
+      arrayOfFlippedCards.splice(0, arrayOfFlippedCards.length);
       shuffleCards();
+      numberOfMatches = 0;
     }, 1000);
   }
 }
