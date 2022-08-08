@@ -6,53 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Popup</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style-test.css" />
   </head>
   <body>
     <div class="wrapper">
       <header class="header">
-        <div class="logotype">Logo</div>
+        <div class="logo"><a href="#">Logo</a></div>
         <nav class="menu">
-          <ul class="menu-list">
+          <ul class="menu__list">
+            <li><a href="#">Something</a></li>
+            <li><a href="#">Something</a></li>
+            <li><a href="#">Something</a></li>
+            <li><a href="#">Something</a></li>
             <li>
-              <a href="#"><img src="./img/apps.png" /></a>
-            </li>
-            <li>
-              <a href="#"><img src="./img/bell.png" /></a>
-            </li>
-            <li>
-              <a href="#"><img src="./img/blogs.png" /></a>
-            </li>
-            <li>
-              <img src="./img/popup-button.png" />
-              <input type="checkbox" />
+              <!-- Something -->
+              <span class="input-popup-span"
+                ><img src="./img/popup-button.png"
+              /></span>
+              <input type="checkbox" class="popup__checkbox" />
               <ul class="popup">
                 <li>
-                  <a href="#"><img src="./img/calendar.png" /></a>
+                  <a href="#"
+                    ><img src="./img/icons8-edit-128.png" /><span>Text</span></a
+                  >
                 </li>
                 <li>
-                  <a href="#"><img src="./img/chat.png" /></a>
+                  <a href="#"
+                    ><img src="./img/icons8-edit-128.png" /><span>Text</span></a
+                  >
                 </li>
                 <li>
-                  <a href="#"><img src="./img/classroom.png" /></a>
+                  <a href="#"
+                    ><img src="./img/icons8-edit-128.png" /><span>Text</span></a
+                  >
                 </li>
                 <li>
-                  <a href="#"><img src="./img/collection.png" /></a>
+                  <a href="#"
+                    ><img src="./img/icons8-edit-128.png" /><span>Text</span></a
+                  >
                 </li>
-                <li class="sub-popup">
-                  <img src="./img/down.png" />
-                  <input type="checkbox" />
+                <li>
+                  <span class="input-more-span">Click More</span>
+                  <input type="checkbox" class="more__checkbox" />
                   <ul class="more">
                     <li>
-                      <a href="#"><img src="./img/contacts.png" /></a>
+                      <a href="#"
+                        ><img src="./img/icons8-edit-128.png" /><span
+                          >Text</span
+                        ></a
+                      >
                     </li>
                     <li>
-                      <a href="#"><img src="./img/documents.png" /></a>
+                      <a href="#"
+                        ><img src="./img/icons8-edit-128.png" /><span
+                          >Text</span
+                        ></a
+                      >
                     </li>
                     <li>
-                      <a href="#"><img src="./img/favicon.png" /></a>
+                      <a href="#"
+                        ><img src="./img/icons8-edit-128.png" /><span
+                          >Text</span
+                        ></a
+                      >
                     </li>
                     <li>
-                      <a href="#"><img src="./img/files.png" /></a>
+                      <a href="#"
+                        ><img src="./img/icons8-edit-128.png" /><span
+                          >Text</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><img src="./img/icons8-edit-128.png" /><span
+                          >Text</span
+                        ></a
+                      >
                     </li>
                   </ul>
                 </li>
@@ -61,6 +91,14 @@
           </ul>
         </nav>
       </header>
+      <main class="main">
+        <div class="main__content">
+          <h1>Popup</h1>
+        </div>
+      </main>
+      <footer class="footer">
+        <p>Footer</p>
+      </footer>
     </div>
   </body>
 </html>
