@@ -10,223 +10,159 @@
     <div class="wrapper">
         <header class="header">
             <nav class="header__menu">
-                <ul class="header__list">
-                    <li><a href="#" class="header__link link">Mail</a></li>
-                    <li><a href="#" class="header__link link">Images</a></li>
-                    <li>
-                        <input type="checkbox" id="popup_checkbox" class="header__popup__checkbox" checked>
-                        <label for="popup_checkbox" class="header__popup__label">
-                            <img src="assets/popup-button.png" width="25" height="25" alt="" tabindex="0"
-                                class="header__popup__btn">
+                <ul class="header__list_items">
+                    <li class="header__list_item"><a href="#" class="header__link link focus_item">Mail</a></li>
+                    <li class="header__list_item"><a href="#" class="header__link link focus_item">Images</a></li>
+                    <li class="header__list_item">
+                        <input type="checkbox" id="popup_checkbox" class="header__popup_checkbox">
+                        <label for="popup_checkbox" class="header__popup_label">
+                            <img src="assets/popup-button.png" width="25" height="25" alt="">
                         </label>
-                        <div class="header__popup__menu">
-                            <ul class="header__popup__menu__items">
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/calendar.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Calendar</p>
-                                        </div>
+                        <div class="header__popup">
+                            <ul class="header__popup_items">
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/calendar.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Calendar</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/mail.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Mail</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/mail.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Mail</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/news.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>News</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/news.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>News</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/maps.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Maps</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/maps.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Maps</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/files.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Files</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/files.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Files</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/contacts.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Contacts</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/contacts.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Contacts</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/translation.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Translate</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/translation.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Translate</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/videos.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Videos</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/videos.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Videos</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/search.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Search</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/search.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Search</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/photos.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Photos</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/photos.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Photos</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/apps.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Apps</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/apps.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Apps</p>
                                     </a>
                                 </li>
-                                <li class="header__popup__menu__item">
-                                    <a href="#" class="header__popup__menu__link link">
-                                        <div class="header__popup__menu__container">
-                                            <img src="assets/documents.png" width="48" height="35" alt=""
-                                                class="header__popup__menu__img">
-                                            <p>Documents</p>
-                                        </div>
+                                <li class="header__popup_item">
+                                    <a href="#" class="header__popup_link link">
+                                        <img src="assets/documents.png" width="48" height="35" alt=""
+                                            class="header__popup__img">
+                                        <p>Documents</p>
                                     </a>
                                 </li>
                             </ul>
-                            <input type="checkbox" id="popup_checkbox_more" class="header__popup__checkbox__more">
-                            <label for="popup_checkbox_more" class="header__popup__label_more" tabindex="0">More</label>
-                            <div class="header__popup__menu__more">
-                                <ul class="header__popup__menu__items header__popup__menu__more__items">
-                                    <li class="header__popup__menu__item">
-                                        <a href="#" class="header__popup__menu__link link">
-                                            <div class="header__popup__menu__container">
-                                                <img src="assets/chat.png" width="48" height="35" alt=""
-                                                    class="header__popup__menu__img">
-                                                <p>Chat</p>
-                                            </div>
+                            <input type="checkbox" id="popup_checkbox_more" class="header__popup_checkbox_more">
+                            <label for="popup_checkbox_more" class="header__popup__label_more">More</label>
+                            <div class="header__popup__more">
+                                <ul class="header__popup_items">
+                                    <li class="header__popup_item">
+                                        <a href="#" class="header__popup_link link">
+                                            <img src="assets/chat.png" width="48" height="35" alt=""
+                                                class="header__popup__img">
+                                            <p>Chat</p>
                                         </a>
                                     </li>
-                                    <li class="header__popup__menu__item">
-                                        <a href="#" class="header__popup__menu__link link">
-                                            <div class="header__popup__menu__container">
-                                                <img src="assets/classroom.png" width="48" height="35" alt=""
-                                                    class="header__popup__menu__img">
-                                                <p>Classroom</p>
-                                            </div>
+                                    <li class="header__popup_item">
+                                        <a href="#" class="header__popup_link link">
+                                            <img src="assets/classroom.png" width="48" height="35" alt=""
+                                                class="header__popup__img">
+                                            <p>Classroom</p>
                                         </a>
                                     </li>
-                                    <li class="header__popup__menu__item">
-                                        <a href="#" class="header__popup__menu__link link">
-                                            <div class="header__popup__menu__container">
-                                                <img src="assets/blogs.png" width="48" height="35" alt=""
-                                                    class="header__popup__menu__img">
-                                                <p>Blogs</p>
-                                            </div>
+                                    <li class="header__popup_item">
+                                        <a href="#" class="header__popup_link link">
+                                            <img src="assets/blogs.png" width="48" height="35" alt=""
+                                                class="header__popup__img">
+                                            <p>Blogs</p>
                                         </a>
                                     </li>
-                                    <li class="header__popup__menu__item">
-                                        <a href="#" class="header__popup__menu__link link">
-                                            <div class="header__popup__menu__container">
-                                                <img src="assets/mars.png" width="48" height="35" alt=""
-                                                    class="header__popup__menu__img">
-                                                <p>Mars</p>
-                                            </div>
+                                    <li class="header__popup_item">
+                                        <a href="#" class="header__popup_link link">
+                                            <img src="assets/mars.png" width="48" height="35" alt=""
+                                                class="header__popup__img">
+                                            <p>Mars</p>
                                         </a>
                                     </li>
-                                    <li class="header__popup__menu__item">
-                                        <a href="#" class="header__popup__menu__link link">
-                                            <div class="header__popup__menu__container">
-                                                <img src="assets/setting.webp" width="48" height="35" alt=""
-                                                    class="header__popup__menu__img">
-                                                <p>Setting</p>
-                                            </div>
+                                    <li class="header__popup_item">
+                                        <a href="#" class="header__popup_link link">
+                                            <img src="assets/setting.webp" width="48" height="35" alt=""
+                                                class="header__popup__img">
+                                            <p>Setting</p>
                                         </a>
                                     </li>
-                                    <li class="header__popup__menu__item">
-                                        <a href="#" class="header__popup__menu__link link">
-                                            <div class="header__popup__menu__container">
-                                                <img src="assets/mic.png" width="48" height="35" alt=""
-                                                    class="header__popup__menu__img">
-                                                <p>Microphone</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="header__popup__menu__item">
-                                        <a href="#" class="header__popup__menu__link link">
-                                            <div class="header__popup__menu__container">
-                                                <img src="assets/sale.webp" width="48" height="35" alt=""
-                                                    class="header__popup__menu__img">
-                                                <p>Sale</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="header__popup__menu__item">
-                                        <a href="#" class="header__popup__menu__link link">
-                                            <div class="header__popup__menu__container">
-                                                <img src="assets/collections.webp" width="48" height="35" alt=""
-                                                    class="header__popup__menu__img">
-                                                <p>Collections</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="header__popup__menu__item">
-                                        <a href="#" class="header__popup__menu__link link">
-                                            <div class="header__popup__menu__container">
-                                                <img src="assets/books.webp" width="48" height="35" alt=""
-                                                    class="header__popup__menu__img">
-                                                <p>Books</p>
-                                            </div>
+                                    <li class="header__popup_item">
+                                        <a href="#" class="header__popup_link link">
+                                            <img src="assets/mic.png" width="48" height="35" alt=""
+                                                class="header__popup__img">
+                                            <p>Microphone</p>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <a href="#" class="header__link__bell">
-                            <img src="assets/bell.png" width="25" height="25" alt=""
-                                class="header__popup__btn">
+                    <li class="header__list_item">
+                        <a href="#" class="header__link focus_item">
+                            <img src="assets/bell.png" width="25" height="25" alt="" >
                         </a>
                     </li>
-                    <li><a href="https://github.com/NadiaVorontsova?tab=repositories" target="_blank">
-                            <div class="header__photo header__popup__btn" ></div>
+                    <li class="header__list_item">
+                        <a href="https://github.com/NadiaVorontsova?tab=repositories" target="_blank" class="header__link focus_item">
+                            <img src="assets/favicon.png" class="header__photo focus_item" width="25" height="25" alt=""></img>
                         </a>
                     </li>
                 </ul>
