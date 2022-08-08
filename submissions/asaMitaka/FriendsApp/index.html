@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="https://kottans.org/" target="_blank">Kottans</a>
+        </header>
+        <main class="mainBlock">
+            <aside class="asideBlock">
+                <div class="asideBlock__items">
+                    <p>By Last Name</p>
+                    <button class="sortedAtoZLast" data-attr="aToZ">A-Z</button>
+                    <button class="sortedZtoALast" data-attr="zToA">Z-A</button>
+                </div>
+
+
+                <div class="asideBlock__items">
+                    <p>By First Name</p>
+                    <button class="sortedAtoZFirst" data-attr="aToZ">A-Z</button>
+                    <button class="sortedZtoAFirst" data-attr="aToZ">Z-A</button>
+                </div>
+
+                <div class="asideBlock__items">
+                    <p>Age 10 - 100</p>
+                    <input type="number" name="minNumber" id="minNumber" min="10" value="10">
+                    <input type="number" name="maxNumber" id="maxNumber" max="100" value="100">
+                </div>
+
+                <div class="asideBlock__items">
+                    <div>
+                        <input type="radio" id="male"
+                         name="contact" value="male">
+                        <label for="male">MALE</label>
+                    
+                        <input type="radio" id="female"
+                         name="contact" value="female">
+                        <label for="female">FEMALE</label>
+                    
+                        <input type="radio" id="all"
+                         name="contact" value="all" checked>
+                        <label for="all">All</label>
+                      </div>
+                </div>
+
+                <div class="asideBlock__items">
+                    <input type="text" id="searchBar" name="name" required
+                        minlength="1" maxlength="10" size="20" placeholder="search">
+                </div>
+
+                <div class="asideBlock__items">
+                    <button class="reset" data-attr="reset">RESET</button>
+                </div>
+            </aside>
+            <article class="articleBlock"></article>
+        </main>
+        <footer>
+            <a href="https://kottans.org/" target="_blank">Kottans</a>
+        </footer>        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
