@@ -1,6 +1,8 @@
 "use strict";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', showSeasonsGot); 
+
+function showSeasonsGot() {
 
     const data = [
         {
@@ -98,23 +100,23 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const listBtns = document.querySelector('.side-menu');
-    const content = document.querySelector('.content');
-    const burger = document.querySelector('.burger');
-
+    const mainContent = document.querySelector('.content');
+    const btnBurger = document.querySelector('.burger');
+    const body = document.body;
 
     const renderBtns = (arr, list) => {
-        arr.map((item, i) => {
+        for (let i = 0; i < arr.length; i++) {
             list.insertAdjacentHTML('beforeend', `
                 <li class="side-menu__item">
-                    <button class="side-menu__btn" data-season='${i}'>Season ${i + 1}</button>
+                    <button class="side-menu__btn" data-season='${i}'>Season ${i+1}</button>
                 </li>
             `);
-        })
+        }
     };
 
     const renderContent = (i = 0, arr = data) => {
         const {title, descr, img} = arr[i];
-        content.innerHTML = `
+        mainContent.innerHTML = `
             <h1 class="content__title">${title}</h1>
             <div class="content__descr">${descr}</div>
             <div class="content__img-wrapper">
@@ -134,26 +136,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const changeContent = (e, itemSelector = 'side-menu__btn') => {
         const target = e.target;
         if (target && target.classList.contains(itemSelector)) {
-            const i = target.dataset.season;
-            toggleActiveClass(i);
-            renderContent(i);
+            const numberSeason = target.dataset.season;
+            toggleActiveClass(numberSeason);
+            renderContent(numberSeason);
             toTop();
             closeBurger();
         }
     };
 
     const toggleBurger = () => {
-        burger.addEventListener('click', () => {
-        document.body.classList.toggle('_lock');
-        burger.classList.toggle('burger_active');
+        btnBurger.addEventListener('click', () => {
+        body.classList.toggle('_lock');
+        btnBurger.classList.toggle('burger_active');
         listBtns.classList.toggle('side-menu_active');
         });
     }
 
     const closeBurger = () => {
         if(listBtns.classList.contains('side-menu_active')) {
-            document.body.classList.remove('_lock');
-            burger.classList.remove('burger_active');
+            body.classList.remove('_lock');
+            btnBurger.classList.remove('burger_active');
             listBtns.classList.remove('side-menu_active');
         }
     }
@@ -170,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
     listBtns.addEventListener('click', changeContent);
 
     toggleBurger()
-
-}); 
+}
 
 
