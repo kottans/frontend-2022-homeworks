@@ -77,6 +77,7 @@
   }
 
   .bg {
+    height: 100%;
     position: relative;
   }
 
@@ -91,5 +92,10 @@
 
   .music__title {
     display: none;
+  }
+
+  .hi_kottans {
+    display: block;
+    margin-top: 20px;
   }
 }
