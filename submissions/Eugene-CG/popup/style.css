@@ -84,8 +84,8 @@
   margin: 0.5em 0;
 }
 .popup li a {
-  height: 100%;
-  width: 100%;
+  height: var(--max-size-percent);
+  width: var(--max-size-percent);
   display: flex;
 }
 .popup li a img {
@@ -128,7 +128,7 @@
   font-size: 20vw;
   background-clip: text;
   background: url("./img/gitlogoforme.jpeg");
-  background-size: 100%;
+  background-size: var(--max-size-percent);
   animation: text-animation 10s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
