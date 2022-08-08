@@ -17,11 +17,11 @@ body {
 .header {
   display: flex;
   justify-content: flex-end;
-  padding: 20px;
+  padding: 2rem;
   &__list {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 2rem;
   }
 
   &__link {
@@ -38,16 +38,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25px;
-    height: 25px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   &__profile {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25px;
-    height: 25px;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
   }
 }
@@ -82,8 +82,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25px;
-    height: 25px;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
 }
@@ -91,11 +91,11 @@ body {
 .popup {
   display: none;
   flex-direction: column;
-  width: 340px;
-  max-height: 450px;
+  width: 34rem;
+  max-height: 45rem;
   position: absolute;
-  top: 45px;
-  right: -73px;
+  top: 4.5rem;
+  right: -7.3rem;
   border: 1px solid $grey-1;
   background: #FFFFFF;
   box-shadow: 0px 5px 43px -15px rgba(77, 77, 77, 1);
@@ -165,7 +165,7 @@ body {
 
   input:checked ~ &__text {
     display: block;
-    padding: 20px;
+    padding: 2rem;
     text-align: center;
   }
 
@@ -174,11 +174,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
+    gap: 1rem;
+    padding: 1rem;
     min-height: 0;
-    max-height: 80px;
-    border-radius: 5px;
+    max-height: 8rem;
+    border-radius: 0.5rem;
     text-decoration: none;
     color: $grey-2;
     &:hover {
@@ -192,8 +192,8 @@ body {
   }
 
   &__image {
-    width: 45px;
-    height: 45px;
+    width: 4.5rem;
+    height: 4.5rem;
   }
 }
 
