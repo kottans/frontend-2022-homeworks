@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.5s;
+  color: #fff;
+  font-family: "Secular One", sans-serif;
+  font-size: 18px;
+}
+
+.bg {
+  width: 100%;
+  height: 100vh;
+  background: url("https://i.pinimg.com/originals/18/d7/06/18d7064894ca28d887a3bd56816689f1.jpg")
+    center center / cover no-repeat;
+}
+
+.hi_kottans {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  text-align: center;
+}
+
+.container {
+  padding: 80px 0 0 0;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  height: 300px;
+}
+
+.container_title {
+  text-align: center;
+  font-size: 32px;
+}
+
+.music {
+  height: 300px;
+  overflow: auto;
+  margin-left: 10px;
+  width: 70%;
+}
+
+.wrapper__item {
+  line-height: 30px;
+  height: 30px;
+  padding: 5px 10px;
+}
+
+.music__descr {
+  margin-top: 10px;
+}
+
+.wrapper__item:hover {
+  cursor: pointer;
+  background: linear-gradient(to left, transparent 50%, rgba(105, 6, 100) 100%);
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .bg {
+    position: relative;
+  }
+
+  .music {
+    margin: 60px auto;
+  }
+
+  .wrapper__list,
+  .music {
+    width: 100%;
+  }
+
+  .music__title {
+    display: none;
+  }
+}
