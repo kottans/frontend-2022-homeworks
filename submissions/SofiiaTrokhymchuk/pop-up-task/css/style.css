@@ -6,6 +6,10 @@
     list-style-type: none;
 }
 
+html{
+    font-size: 16px;
+}
+
 body {
     font-family: Verdana, Tahoma, sans-serif;
     color: #212121;
@@ -153,7 +157,6 @@ img[src$=".svg"] {
     grid-column: span 3;
     display: block;
     background-color: #e6e6e6;
-    font-size: 1rem;
     padding: 5px;
     margin: 10px 0 0 0;
     font-weight: 600;
@@ -170,16 +173,17 @@ img[src$=".svg"] {
     position: absolute;
 }
 
-#more-checkbox:checked ~ .more-btn{
-    display: none;
-}
-
-.more {
+.more, #more-checkbox:checked ~ .more-btn{
     display: none;
 }
 
 #more-checkbox:checked ~ .more {
     display: block;
+}
+
+#more-checkbox:focus ~ label,
+#more-checkbox:hover ~ label{
+    box-shadow: 0px 0px 5px #4f4f4f;
 }
 
 .more-hr{
