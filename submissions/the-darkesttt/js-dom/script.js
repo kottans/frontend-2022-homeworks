@@ -43,6 +43,8 @@ const asideList = document.querySelector('.aside__list');
 const solarSystemTitle = document.querySelector('.container__title');
 const solarSystemDesc = document.querySelector('.container__desc');
 
+let selected;
+
 solarTitle.addEventListener('click', function() {
     solarSystemTitle.innerText = solarSystem.title;
     solarSystemDesc.innerText = solarSystem.desc;
@@ -52,21 +54,19 @@ solarTitle.addEventListener('click', function() {
     }
 });
 
-let selected;
-
 asideList.addEventListener('click', function(event) {
     const listTarget = event.target;
-    if (listTarget.tagName != 'LI') return;
+    if (listTarget.tagName === 'UL') return;
     highlightFocused(listTarget);
 
-    const thisTitle = listTarget.innerText;
+    const listTargetTitle = listTarget.innerText;
 
-    const thisInPlanets = planets.filter(item => {
-        return item["title"] === thisTitle;
+    const thatInPlanets = planets.filter(item => {
+        return item.title === listTargetTitle;
     });
 
-    solarSystemDesc.innerText = thisInPlanets[0].desc;
-    solarSystemTitle.innerText = thisInPlanets[0].title;
+    solarSystemDesc.innerText = thatInPlanets[0].desc;
+    solarSystemTitle.innerText = thatInPlanets[0].title;
 });
 
 function highlightFocused(item) {
