@@ -24,7 +24,6 @@
 .h-image a{
     text-decoration: none;
     color: rgb(72, 94, 71);
-    
 }
 
 label.more-btn:hover, .h-image:hover{
@@ -38,7 +37,6 @@ li {
 .h-image {
      width: 30px;
      margin: 15px;
-     
 }
 
 .visible-img {
@@ -111,5 +109,3 @@ li.more-btn {
     text-decoration: none;
     color: rgb(72, 94, 71);
 }
-
-
