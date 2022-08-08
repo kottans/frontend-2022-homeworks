@@ -55,7 +55,7 @@ ul.menu{
      justify-items: center;
      padding: 15px;
      display: none;
-     grid-template-columns: 1fr 1fr 1fr;
+     grid-template-columns: repeat(3, 1fr);
      grid-template-rows: 1fr 1fr 1fr 1fr 30px;
      overflow-x: hidden;
     box-sizing: border-box;
@@ -94,7 +94,7 @@ li.more-btn {
     padding-top: 40px;
     padding-left: 0;
     display: none;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1fr;
 }
 
