@@ -97,7 +97,7 @@ body {
   font-weight: 400;
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 8px;
   margin: 2px;
   cursor: pointer;
 }
