@@ -1,37 +1,35 @@
 class Field {
     constructor() {
-        this.maxreachableXCoord = 4;
-        this.maxreachableYCoord = 4;
         this.topIndent = 57;
-        this.SquareWidth = 101;
-        this.SquareHeight = 85;
+        this.squareWidth = 101;
+        this.squareHeight = 85;
+        this.maxreachableXCoord = 4 * this.squareWidth;
+        this.maxreachableYCoord = 4 * this.squareHeight;
     }
 }
 const field = new Field();
 
 class Enemy {
-    constructor({ x, y, speed, row }) {
+    constructor({ x, y, speed }) {
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.sprite = "images/enemy-bug.png";
-        this.row = row;
     }
     checkCollision() {
-        const distanceOfCollision = 70;
-        const sameRow = () => player.y === this.row;
+        const distanceOfXCollision = field.squareWidth / 1.3;
+        const distanceOfYColision = 1;
+        const sameRow = () => Math.abs(player.y - this.y) < distanceOfYColision;
         const bugTooClose = () =>
-            Math.abs(player.x * field.SquareWidth - this.x) <
-            distanceOfCollision;
+            Math.abs(player.x - this.x) < distanceOfXCollision;
         if (sameRow() && bugTooClose()) {
-            player.x = player.start.x;
-            player.y = player.start.y;
+            player.toStart();
         }
     }
 
     update(dt) {
-        if (this.x >= (field.maxreachableXCoord + 1) * field.SquareWidth)
-            this.x = -field.SquareWidth;
+        if (this.x >= field.maxreachableXCoord + field.squareWidth)
+            this.x = -field.squareWidth;
         else this.x += dt * this.speed;
 
         this.checkCollision();
@@ -46,34 +44,24 @@ class Player {
     constructor() {
         this.sprite = "images/char-boy.png";
         this.start = { x: 2, y: 4 };
-        this.x = this.start.x;
-        this.y = this.start.y;
-    }
-    get var1() {
-        return 3 * 5;
+        this.x = this.start.x * field.squareWidth;
+        this.y = this.start.y * field.squareHeight + field.topIndent;
     }
     update() {}
     toStart() {
-        this.x = this.start.x;
-        this.y = this.start.y;
+        this.x = this.start.x * field.squareWidth;
+        this.y = this.start.y * field.squareHeight + field.topIndent;
     }
     render() {
-        ctx.drawImage(
-            Resources.get(this.sprite),
-            this.x * field.SquareWidth,
-            this.y * field.SquareHeight + field.topIndent
-        );
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
     handleInput(key) {
-        key === "up"
-            ? this.y--
-            : key === "right" && this.x < field.maxreachableXCoord
-            ? this.x++
-            : key === "down" && this.y < field.maxreachableYCoord
-            ? this.y++
-            : key === "left" && this.x > 0
-            ? this.x--
-            : {};
+        if (key === "up") this.y -= field.squareHeight;
+        else if (key === "right" && this.x < field.maxreachableXCoord)
+            this.x += field.squareWidth;
+        else if (key === "down" && this.y < field.maxreachableYCoord)
+            this.y += field.squareHeight;
+        else if (key === "left" && this.x > 0) this.x -= field.squareWidth;
         if (this.y < 0) this.toStart();
     }
 }
@@ -82,8 +70,8 @@ const player = new Player();
 const allEnemies = (() => {
     const yCoordsForEnemiesToMove = [
         field.topIndent,
-        field.topIndent + field.SquareHeight,
-        field.topIndent + field.SquareHeight * 2,
+        field.topIndent + field.squareHeight,
+        field.topIndent + field.squareHeight * 2,
     ];
     const randomSpeed = ({ minSpeed, maxSpeed }) => {
         return Math.random() * (maxSpeed - minSpeed) + minSpeed;
@@ -94,7 +82,6 @@ const allEnemies = (() => {
                 x: 0,
                 y: yCoord,
                 speed: randomSpeed({ minSpeed: 60, maxSpeed: 200 }),
-                row: i,
             })
     );
 })();
@@ -109,3 +96,4 @@ document.addEventListener("keyup", function (e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
