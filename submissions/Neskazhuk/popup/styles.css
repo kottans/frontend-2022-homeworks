@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.5;
   font-weight: 600;
   color: gray;
@@ -40,11 +40,12 @@ body {
 .nav-item {
   padding:5px;
   cursor: pointer;
+  border:2px solid transparent;
+  border-radius: 10px;
 }
 
 .nav-item:hover {
-  box-shadow: 0px 0px 0px 2px #7b68ee;
-  border-radius: 10px;
+  border-color: #7b68ee;
 }
 
 /* Icons */
@@ -118,7 +119,7 @@ body {
   top: 75px;
   right: 25px;
 
-  width: 400px;
+  width: 340px;
   max-height: 80%;
   border-radius: 10px;
   background-color: #fff;
@@ -132,7 +133,7 @@ body {
   font-size: 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding: 10px;
+  padding: 9px;
 }
 
 .popup.link {
@@ -142,13 +143,16 @@ body {
   justify-content: center;
   grid-template-rows: 50px auto;
   gap: 10px;
-  padding: 20px 0;
+  padding: 10px 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
 }
 
 .popup.link:hover,
 .popup.link:focus {
-  box-shadow: 0px 0px 0px 2px #7b68ee;
-  border-radius: 10px;
+  border-color: #7b68ee;
+  outline: none;
+  transition: .1s;
 }
 
 .popup-img {
@@ -159,4 +163,5 @@ body {
 
 .popup-name {
   text-align: center;
+  font-size: 14px;
 }
