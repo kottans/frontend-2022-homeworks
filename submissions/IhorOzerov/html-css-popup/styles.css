@@ -1,5 +1,5 @@
-.menu-a:focus, a:focus, .greatest:focus-within, .other:focus-within {
-    outline: 1px solid rgb(74, 74, 254)
+li {
+    list-style: none;
 }
 
 .visually-hidden {
@@ -26,17 +26,9 @@
     color: rgb(72, 94, 71);
 }
 
-label.more-btn:hover, .h-image:hover{
-    cursor: pointer;
-}
-
-li {
-    list-style: none;
-}
-
 .h-image {
     width: 30px;
-    margin: 15px;
+    margin: 15px;  
 }
 
 .visible-img {
@@ -59,10 +51,6 @@ li {
     position: absolute;
 }
 
-#sq:checked ~ .menu{
-    display: grid;
-}
-
 .more-btn {
     grid-column: 1/4;
     height: 30px;
@@ -71,26 +59,6 @@ li {
     display: grid;
     justify-content: center;
     align-items: center;
-}
-
-li.more-btn {
-    z-index: 0;
-}
-
-#more:checked ~ #opened {
-    display: grid;
-}
-
-#opened {
-    width: 300px;
-    height: 200px;
-    background-color: rgb(226, 220, 220);
-    justify-items: center;
-    padding-top: 40px;
-    padding-left: 0;
-    display: none;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 1fr;
 }
 
 .menu-a{
@@ -103,4 +71,32 @@ li.more-btn {
     flex-wrap: wrap;
     text-decoration: none;
     color: rgb(72, 94, 71);
+}
+
+#more:checked ~ .opened {
+    display: grid;
+}
+
+.opened {
+    width: 300px;
+    height: 200px;
+    background-color: rgb(226, 220, 220);
+    justify-items: center;
+    padding-top: 40px;
+    padding-left: 0;
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.menu-a:focus, .nav-a:focus, .greatest:focus-within, .other:focus-within {
+    outline: 1px solid rgb(74, 74, 254)
+}
+
+.more-btn:hover, .h-image:hover{
+    cursor: pointer;
+}
+
+#sq:checked ~ .menu{
+    display: grid;
 }
