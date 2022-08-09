@@ -5,7 +5,7 @@ body {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: $primaryColor;
-  background-image: url('../popup-icons/ua.jpeg');
+  background-image: url("../popup-icons/ua.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -54,7 +54,6 @@ body {
 }
 
 .nav__link {
-  font-size: 16px;
   font-weight: 700;
   color: #5d5c5c;
 }
@@ -65,7 +64,6 @@ body {
 }
 
 .account-block {
-  // position: relative;
   display: grid;
   grid-auto-flow: column;
   align-items: center;
@@ -80,7 +78,7 @@ body {
   display: block;
   width: 35px;
   height: 35px;
-  background-image: url('../popup-icons/popup-button.png');
+  background-image: url("../popup-icons/popup-button.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -137,7 +135,7 @@ body {
 
 .menu__link {
   width: 100%;
-  font-size: 12px;
+  font-size: 0.75rem;
   text-align: center;
   padding: 15px 0;
   display: grid;
@@ -241,7 +239,7 @@ body {
   }
 
   .nav__link {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 
   .account-block {
@@ -254,7 +252,7 @@ body {
   }
 
   .menu__link {
-    font-size: 14px;
+    font-size: 0.87rem;
   }
 
   .menu__icon {
