@@ -59,7 +59,7 @@ class Player extends Character {
   constructor(x, y) {
     super(x, y, "images/char-boy.png");
   }
-  reset() {
+  resetToStartPosition() {
     if (this.y < tileSize.height - charactersSize.charboy) {
       setTimeout(() => {
         alert("You won");
@@ -84,7 +84,7 @@ class Player extends Character {
     ) {
       this.y += tileSize.height;
     }
-    this.reset();
+    this.resetToStartPosition();
   }
 }
 
