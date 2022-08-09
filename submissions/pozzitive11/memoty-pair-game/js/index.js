@@ -31,55 +31,52 @@ const cards = [
   },
 ];
 
-const createCard = (front, back, name) => {
+function createCard(front, back, name) {
   return `<div class="game__card" id="${name}">
-            <img class="front__img" src="${front}" alt="">
-            <img class="back__img" src="${back}" alt="">
-          </div>
-          <div class="game__card" id="${name}">
-            <img class="front__img" src="${front}" alt="">
-            <img class="back__img" src="${back}" alt="">
-          </div>`;
-};
+             <img class="front__img" src="${front}" alt="">
+             <img class="back__img" src="${back}" alt="">
+           </div>
+           <div class="game__card" id="${name}">
+             <img class="front__img" src="${front}" alt="">
+             <img class="back__img" src="${back}" alt="">
+           </div>`;
+}
 
 const gameCard = cards.map(({ front, back, name }) =>
   createCard(front, back, name)
 );
+
 const gameContainer = document.querySelector(".game__container");
 gameContainer.innerHTML = gameCard.join("");
 const gameCards = document.querySelectorAll(".game__card");
 
 let numberOfMatches = 0;
-let arrayOfFlippedCards = [];
+let flippedCards = [];
 
-const cardd = document.querySelector(".game__card");
+gameContainer.addEventListener("click", ({ target }) => {
+  const parentTarget = target.closest(".game__card");
+  if (parentTarget !== null) {
+    parentTarget.classList.add("flip");
 
-gameCards.forEach((card) =>
-  card.addEventListener("click", ({ target }) => {
-    const parentTarget = target.closest(".game__card");
-    if (parentTarget && parentTarget.classList.contains("game__card")) {
-      parentTarget.classList.add("flip");
-
-      arrayOfFlippedCards.push(parentTarget);
-    }
+    flippedCards.push(parentTarget);
     checkArrayOfFlippedCardsLength();
     checkForWin();
-  })
-);
+  }
+});
 
 function checkArrayOfFlippedCardsLength() {
-  if (arrayOfFlippedCards.length === 2) {
+  if (flippedCards.length === 2) {
     checkMatch();
   }
 }
 
 function checkMatch() {
-  const match = arrayOfFlippedCards[0].id === arrayOfFlippedCards[1].id;
+  const match = flippedCards[0].id === flippedCards[1].id;
 
   if (match) {
     numberOfMatches++;
     addingDisableClass();
-    arrayOfFlippedCards.splice(0, arrayOfFlippedCards.length);
+    flippedCards = [];
     setTimeout(() => {
       addingDisableClass();
     }, 1000);
@@ -90,9 +87,9 @@ function checkMatch() {
 
 function removeFlip() {
   setTimeout(() => {
-    arrayOfFlippedCards[0].classList.remove("flip");
-    arrayOfFlippedCards[1].classList.remove("flip");
-    arrayOfFlippedCards = [];
+    flippedCards[0].classList.remove("flip");
+    flippedCards[1].classList.remove("flip");
+    flippedCards = [];
 
     addingDisableClass();
 
@@ -114,7 +111,7 @@ function checkForWin() {
         item.classList.remove("flip");
       });
       alert("U WIN!");
-      arrayOfFlippedCards.splice(0, arrayOfFlippedCards.length);
+      flippedCards = [];
       shuffleCards();
       numberOfMatches = 0;
     }, 1000);
