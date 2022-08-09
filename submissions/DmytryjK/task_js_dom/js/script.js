@@ -1,5 +1,5 @@
+'user strict';
 //content
-
 const contentArray = [
     {
         h2 : "Бразилія",
@@ -67,105 +67,103 @@ const contentArray = [
     }
 ];
 
+document.addEventListener('DOMContentLoaded', startEventsForPage());
+function startEventsForPage() {
+    //Tabs
+    const mainContentBlock = document.querySelectorAll('.main__content-block');
+    const navigationButton = document.querySelectorAll('.main__navigation-button');
 
-//Tabs
-const mainContentBlock = document.querySelectorAll('.main__content-block');
-const navigationButton = document.querySelectorAll('.main__navigation-button');
+    createElements();
 
-createElements();
+    addClass(mainContentBlock, 'main__content-active');
 
-addClass(mainContentBlock, 'main__content-active');
+    currentTabButton('main__navigation-button_active');
 
-currentTabButton('main__navigation-button_active');
+    function currentTabButton (tabSelector) {
+        addClass(navigationButton, tabSelector);
+        navigationButton.forEach((button, index) => {
+            button.addEventListener('click', e => {
+                e.preventDefault();
+                removeClass(navigationButton, tabSelector);
+                e.currentTarget.classList.add(tabSelector);
 
-function currentTabButton (tabSelector) {
-    addClass(navigationButton, tabSelector);
-    navigationButton.forEach((button, index) => {
-        button.addEventListener('click', e => {
-            e.preventDefault();
-            removeClass(navigationButton, tabSelector);
-            e.currentTarget.classList.add(tabSelector);
+                removeClass(mainContentBlock, 'main__content-active');
 
-            removeClass(mainContentBlock, 'main__content-active');
+                deleteInnerHtml();
+                createElements(index);
 
-            deleteInnerHtml();
-            createElements(index);
-
-            addClass(mainContentBlock, 'main__content-active', index);
+                addClass(mainContentBlock, 'main__content-active', index);
+            });
         });
+    };
+
+    function createElements (index = 0) {
+        mainContentBlock[index].innerHTML = `
+            <h2 class="main__content-title">${contentArray[index].h2}</h2>
+            <p class="main__content-subtitle">${contentArray[index].subtitle}</p>
+            <img class="main__content-image" src="${contentArray[index].imgSrc}" alt="${contentArray[index].imgAlt}">
+            <p class="main__content-descr">${contentArray[index].firstParagraph}</p>
+            <p class="main__content-descr">${contentArray[index].secondParagraph}</p>
+        `;
+    };
+
+    function deleteInnerHtml() {
+        mainContentBlock.forEach(element => {
+            element.innerHTML = "";
+        });
+    };
+
+    function addClass(element, activeClass, index = 0) {
+        element[index].classList.add(activeClass);
+    };
+
+    function removeClass(element, activeClass) {
+        element.forEach(item => {
+            item.classList.remove(activeClass);
+        });
+    };
+
+    //Hamburger
+    const humbergerBtn = document.querySelector('.header__hamburger'),
+        adaptiveTabsMenu = document.querySelector('.adaptive'),
+        adaptiveNavTabsBtn = document.querySelectorAll('.adaptive__navigation-button'),
+        body = document.querySelector('body');
+
+    addClass(adaptiveNavTabsBtn, 'adaptive__navigation-button__active');    
+    openContentWithTab(adaptiveNavTabsBtn);  
+
+    humbergerBtn.addEventListener('click', e => {
+        e.preventDefault();
+        e.currentTarget.classList.toggle('header__hamburger-active');
+
+        body.classList.toggle('body__active');
+
+        toggleTabs(adaptiveTabsMenu, 'adaptive__active'); 
     });
-}
 
-function createElements (index = 0) {
-    mainContentBlock[index].innerHTML = `
-        <h2 class="main__content-title">${contentArray[index].h2}</h2>
-        <p class="main__content-subtitle">${contentArray[index].subtitle}</p>
-        <img class="main__content-image" src="${contentArray[index].imgSrc}" alt="${contentArray[index].imgAlt}">
-        <p class="main__content-descr">${contentArray[index].firstParagraph}</p>
-        <p class="main__content-descr">${contentArray[index].secondParagraph}</p>
-    `
-}
+    function toggleTabs(element, activeClass) {
+        element.classList.toggle(activeClass);
+    };
 
-function deleteInnerHtml() {
-    mainContentBlock.forEach(element => {
-        element.innerHTML = "";
-    })
-}
+    function openContentWithTab(navBtn) {
+        navBtn.forEach((button, index) => {
+            button.addEventListener('click', e => {
+                e.preventDefault();
 
-function addClass(element, activeClass, index=0) {
-    element[index].classList.add(activeClass);
-}
+                removeClass(mainContentBlock, 'main__content-active');
+                removeClass(adaptiveNavTabsBtn, 'adaptive__navigation-button__active');
 
-function removeClass(element, activeClass) {
-    element.forEach(item => {
-        item.classList.remove(activeClass);
-    })
-}
+                deleteInnerHtml();
+                createElements(index);
+                toggleTabs(adaptiveTabsMenu, 'adaptive__active');
+                body.classList.toggle('body__active');
 
-//Hamburger
-
-const humbergerBtn = document.querySelector('.header__hamburger'),
-      adaptiveTabsMenu = document.querySelector('.adaptive'),
-      adaptiveNavTabsBtn = document.querySelectorAll('.adaptive__navigation-button'),
-      body = document.querySelector('body');
+                humbergerBtn.classList.remove('header__hamburger-active');
 
 
-addClass(adaptiveNavTabsBtn, 'adaptive__navigation-button__active');    
-openContentWithTab(adaptiveNavTabsBtn, 'adaptive__navigation-button__active');  
-
-humbergerBtn.addEventListener('click', e => {
-    e.preventDefault();
-    e.currentTarget.classList.toggle('header__hamburger-active');
-
-    body.classList.toggle('body__active');
-
-    toggleTabs(adaptiveTabsMenu, 'adaptive__active'); 
-});
-
-
-function toggleTabs(element, activeClass) {
-    element.classList.toggle(activeClass);
-}
-
-function openContentWithTab(navBtn, activeClass) {
-    navBtn.forEach((button, index) => {
-        button.addEventListener('click', e => {
-            e.preventDefault();
-
-            removeClass(mainContentBlock, 'main__content-active');
-            removeClass(adaptiveNavTabsBtn, 'adaptive__navigation-button__active');
-
-            deleteInnerHtml();
-            createElements(index);
-            toggleTabs(adaptiveTabsMenu, 'adaptive__active');
-            body.classList.toggle('body__active');
-
-            humbergerBtn.classList.remove('header__hamburger-active');
-
-
-            addClass(mainContentBlock, 'main__content-active', index);
-            addClass(adaptiveNavTabsBtn, 'adaptive__navigation-button__active', index);
-
-        })
-    })
+                addClass(mainContentBlock, 'main__content-active', index);
+                addClass(adaptiveNavTabsBtn, 'adaptive__navigation-button__active', index);
+            });
+        });
+    };
 }

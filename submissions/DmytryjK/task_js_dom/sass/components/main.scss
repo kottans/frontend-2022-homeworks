@@ -62,7 +62,6 @@
             }
         }
     }
-
     &__content {
         max-width: 70%;
         &-block {
@@ -95,7 +94,6 @@
             color: $subtitle-color;
             font-size: 18px;
         }
-        
         &-image {
             max-width: 2560px;
             max-height: 1440px;
@@ -109,7 +107,5 @@
             font-size: 16px;
             text-align: justify;
         }
-        
     }
-    
 }
