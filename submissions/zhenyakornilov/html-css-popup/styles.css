@@ -1,8 +1,10 @@
 * {
   margin: 0;
-  margin-bottom: 0;
+  padding: 0;
   box-sizing: border-box;
   outline-style: none;
+  list-style: none;
+  text-decoration: none;
 }
 
 body {
@@ -43,7 +45,6 @@ body {
 }
 
 .link {
-  text-decoration: none;
   font-size: 1.1em;
 }
 
@@ -58,26 +59,21 @@ body {
   appearance: none;
 }
 
-.popup {
+.popup-body {
+  row-gap: 10px;
   position: absolute;
   right: 6em;
   top: 4em;
-  width: 20em;
+  width: 19em;
   height: 26.5em;
   background-color: #fff;
   border: 1px solid #ffadc2;
   box-shadow: 0 0 10px #ffadc2;
   border-radius: 10px;
   display: none;
-  overflow-y: auto;
 }
 
-.popup-wrap {
-  display: contents;
-  list-style: none;
-}
-
-.popup::after {
+.popup-body::after {
   content: "";
   position: fixed;
   width: 15px;
@@ -87,70 +83,67 @@ body {
   border-top: 1px solid #ffadc2;
   border-right: 1px solid #ffadc2;
   box-shadow: 1px -1px 0.5px #ffadc2;
-  right: 7.4%;
-  top: 3.5em;
+  right: 9.7%;
+  top: 57px;
+  z-index: 0;
 }
 
-.popup-toggle:checked ~ .popup-wrap .popup {
+.popup-toggle:checked ~ .popup-body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column-reverse;
+}
+
+.popup-content {
+  margin-top: 0.5em;
+  z-index: 1;
+  display: grid;
+  padding: 1em 0.5em 0;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  row-gap: 0.5em;
+  column-gap: 0.5em;
+}
+
+.item-wrap.hidden {
+  display: none;
+}
+
+.popup-more:checked ~ .popup-content .hidden {
   display: block;
 }
 
-.popup-content-main {
-  display: grid;
-  padding: 1em 1em 0;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  align-items: center;
-  row-gap: 0.5em;
-  column-gap: 0.1em;
+.popup-more:checked ~ .popup-content {
+  overflow: auto;
 }
 
-.popup-content-additional {
-  padding: 1.5em 1em 0;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  align-items: center;
-  display: none;
-  position: relative;
-  bottom: 50px;
-  row-gap: 0.5em;
-  column-gap: 0.1em;
-}
-
-.popup-more:checked ~ .popup-wrap .popup-content-additional {
-  display: grid;
-}
-
-.popup-more:checked + .popup-wrap .check-additional {
+.popup-more:checked + .check-additional {
   display: none;
 }
 
 .more-btn {
   border-radius: 5px;
   border: 2px solid #ffadc2;
-  padding: 5px 5px;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .check-additional {
-  position: absolute;
-  display: block;
+  width: 80px;
+  align-self: center;
   text-align: center;
-  cursor: pointer;
-  left: 8em;
-  bottom: 0.5em;
 }
 
-.popup-item {
-  text-decoration: none;
-  width: 5.1em;
-  height: 5.1em;
+.item-wrap {
+  width: 4.9em;
+  height: 4.9em;
 }
 
 .popup-pic {
   display: block;
-  margin: 5px auto 0 auto;
+  margin: 5px auto 0;
   width: 1.8em;
   height: 1.8em;
   object-fit: cover;
@@ -180,15 +173,15 @@ body {
   color: #e8e9ed;
 }
 
-.popup-toggle:focus + .popup-wrap .popup-img,
+.popup-toggle:focus + .label-toggle .popup-img,
 .image-wrapper:focus .bell {
   background-color: #e8e9ed;
   border-radius: 5px;
   color: #e8e9ed;
 }
 
-.popup-item:hover,
-.popup-item:focus {
+.item-wrap:hover,
+.item-wrap:focus-within {
   border: 1px solid #ffadc2;
   border-radius: 5px;
   transform: scale(1.1);
@@ -196,7 +189,7 @@ body {
 }
 
 .more-btn:hover,
-.popup-more:focus + .popup-wrap .more-btn {
+.popup-more:focus + .check-additional .more-btn {
   background-color: #ffadc2;
   transition: all 0.2s ease-in-out;
 }
@@ -212,26 +205,36 @@ body {
     width: 50%;
   }
 
-  .popup::after {
-    right: 13%;
+  .popup-body::after {
+    right: 15.5%;
+  }
+}
+
+@media (min-width: 1680px) {
+  .popup-body::after {
+    right: 10%;
   }
 }
 
 @media (min-width: 1280px) and (max-width: 1680px) {
-  .popup {
+  .popup-body {
     right: 4em;
   }
 }
 
 @media (max-width: 1279px) and (min-width: 1141px) {
-  .popup {
+  .popup-body {
     right: 2.5em;
   }
 }
 
 @media (max-width: 1010px) and (min-width: 721px) {
-  .popup {
+  .popup-body {
     right: 2em;
+  }
+
+  .popup-body::after {
+    right: 14.3%;
   }
 }
 
@@ -240,12 +243,12 @@ body {
     width: 60%;
   }
 
-  .popup {
+  .popup-body {
     right: 3em;
   }
 
-  .popup::after {
-    right: 14.7%;
+  .popup-body::after {
+    right: 17.5%;
   }
 }
 
@@ -254,7 +257,7 @@ body {
     width: 80%;
   }
 
-  .popup {
+  .popup-body {
     right: 1.6em;
   }
 }
