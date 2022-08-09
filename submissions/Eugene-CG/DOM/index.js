@@ -165,9 +165,9 @@ const createParagraph = (target, howMuchTimes) => {
   setTimeout(() => {
     mainContent.appendChild(paragraph);
     return createParagraph(target, howMuchTimes - 1);
-  }, 800);
+  }, 110);
 };
-const typeEffect = (paragraph, textArray) => {
+const typeEffect = async (paragraph, textArray) => {
   let i = 0;
   function recursive() {
     if (i >= textArray.length) return;
@@ -175,6 +175,6 @@ const typeEffect = (paragraph, textArray) => {
     i++;
     setTimeout(recursive, 20);
   }
-  recursive();
+  await recursive();
 };
 wrapper.addEventListener("click", delegateEvents);
