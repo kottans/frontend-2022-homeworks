@@ -66,14 +66,13 @@ const inhabitantsKeys = [
   "hands",
   "saying",
 ];
-inhabitants.forEach((obj) => {
+inhabitants.map((obj) => {
   print(
-    inhabitantsKeys.reduce((accumulator, prop) => {
-      return (accumulator += obj[prop] + "; ");
-    }, "")
+    inhabitantsKeys.map((prop) => {
+      return obj[prop];
+    })
   );
 });
-
 /* Print examples:
    print('ABC');
    print('<strong>ABC</strong>');
