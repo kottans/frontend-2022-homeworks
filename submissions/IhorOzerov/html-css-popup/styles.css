@@ -1,77 +1,54 @@
-.greatest:focus-within{
-    outline: 1px dotted red;
+li {
+    list-style: none;
 }
 
 .visually-hidden {
-     position: absolute;
-     width: 1px;
-     height: 1px;
-     margin: -1px;
-     border: 0;
-     padding: 0;
-     clip: rect(0 0 0 0);
-     overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }
 
 .header-icons {
-     display: flex;
-     justify-content: flex-start;
-     align-items: center;
-     padding-left: 0;
-     margin: 0 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0;
+    margin: 0 0;
 }
 
 .h-image a{
     text-decoration: none;
     color: rgb(72, 94, 71);
-    
 }
-
-label.more-btn:hover, .h-image:hover{
-    cursor: pointer;
-}
-
-li {
-     list-style: none;
-     
-}
-/*li>a{
-    align-items: center;
-    width: 85px;
-}*/
 
 .h-image {
-     width: 30px;
-     margin: 15px;
-     
+    width: 30px;
+    margin: 15px;  
 }
 
 .visible-img {
-     width:55px;
-     height: 50px;
-}
-
-ul.menu{
-    margin-top: 0;
+    width:55px;
+    height: 50px;
 }
 
 .menu {
-     width: 300px;
-     height: 450px;
-     background-color: rgb(226, 220, 220);
-     justify-items: center;
-     padding: 15px;
-     display: none;
-     grid-template-columns: 1fr 1fr 1fr;
-     grid-template-rows: 1fr 1fr 1fr 1fr 30px;
-     overflow-x: hidden;
+    width: 300px;
+    height: 450px;
+    background-color: rgb(226, 220, 220);
+    justify-items: center;
+    padding: 15px;
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 30px;
+    overflow-x: hidden;
     box-sizing: border-box;
     flex-wrap: wrap;
     position: absolute;
-}
-
-#sq:checked ~ .menu{
-    display: grid;
 }
 
 .more-btn {
@@ -81,28 +58,7 @@ ul.menu{
     width: 100%;
     display: grid;
     justify-content: center;
-    z-index: 1;
-    margin-bottom: -10px;
-}
-
-li.more-btn {
-    z-index: 0;
-}
-
-#more:checked ~ #opened {
-    display: grid;
-}
-
-#opened {
-    width: 300px;
-    height: 200px;
-    background-color: rgb(226, 220, 220);
-    justify-items: center;
-    padding-top: 40px;
-    padding-left: 0;
-    display: none;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    align-items: center;
 }
 
 .menu-a{
@@ -117,16 +73,30 @@ li.more-btn {
     color: rgb(72, 94, 71);
 }
 
+#more:checked ~ .opened {
+    display: grid;
+}
 
+.opened {
+    width: 300px;
+    height: 200px;
+    background-color: rgb(226, 220, 220);
+    justify-items: center;
+    padding-top: 40px;
+    padding-left: 0;
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
 
- 
+.menu-a:focus, .nav-a:focus, .greatest:focus-within, .other:focus-within {
+    outline: 1px solid rgb(74, 74, 254)
+}
 
+.more-btn:hover, .h-image:hover{
+    cursor: pointer;
+}
 
-
-
-
-
-
- 
- 
- 
+#sq:checked ~ .menu{
+    display: grid;
+}
