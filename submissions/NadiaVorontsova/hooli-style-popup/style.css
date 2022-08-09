@@ -5,8 +5,8 @@
     font-family: Arial, sans-serif;
 }
 
-::-webkit-scrollbar {
-    width: 0px;
+.invisible-scrollbar::-webkit-scrollbar {
+    display: none;
 }
 
 .header {
