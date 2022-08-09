@@ -96,23 +96,24 @@ input.popup__checkbox {
 
 .popup__container {
   display: none;
-}
-
-#popup__icon:checked ~ .popup__container {
   position: absolute;
   top: 80px;
   left: 70%;
-  display: inline-block;
-  width: 300px;
-  height: auto;
+  width: 320px;
+  height: 350px;
   margin-right: 30%;
   background-color: whitesmoke;
+  overflow-y: auto;
+}
+
+#popup__icon:checked ~ .popup__container {
+  display: inline-block;
 }
 
 .popup__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 .popup__item {
   display: block;
@@ -134,10 +135,9 @@ input.popup__checkbox {
 .hidden__item {
   display: none;
 }
-
 .popup__button__more {
   display: block;
-  width: 70%;
+  width: 220px;
   height: 30px;
   padding: 5px;
   margin: 7px auto;
@@ -148,7 +148,7 @@ input.popup__checkbox {
 
 .popup__button__hide {
   display: block;
-  width: 70%;
+  width: 220px;
   height: 30px;
   padding: 5px;
   margin: 7px auto;
@@ -161,18 +161,14 @@ input.popup__checkbox {
   display: none;
 }
 
-#popup:checked ~ * li.hidden__item {
+#popup:checked ~ .hidden__item {
   display: inline-block;
 }
-#popup:checked ~ .popup__container {
-  position: absolute;
-  top: 80px;
-  left: 70%;
-  display: inline-block;
-  width: 320px;
-  height: 300px;
-  background-color: whitesmoke;
-  overflow-y: scroll;
+
+#popup:focus ~ .popup__button {
+  outline: 3px solid rgb(67, 90, 153);
+  border-radius: 5px;
+  background-color: rgb(238, 232, 225);
 }
 
 #popup:checked ~ * span.popup__button__more {
@@ -233,82 +229,48 @@ li.popup__item:focus-within {
 
 @media (max-width: 575px) {
   #popup__icon:checked ~ .popup__container {
-    position: absolute;
-    top: 80px;
-    left: 15%;
-    display: inline-block;
-    width: 300px;
-    height: auto;
-    overflow-y: auto;
+    left: 10%;
   }
   #popup:checked ~ .popup__container {
-    position: absolute;
-    top: 80px;
-    left: 15%;
-    display: inline-block;
-    width: 320px;
-    height: 300px;
-    overflow-y: scroll;
+    left: 10%;
+  }
+  .popup__button__hide {
+    width: 250px;
+  }
+  .popup__button__more {
+    width: 250px;
   }
 }
 
 @media (576px <= width <= 767px) {
   #popup__icon:checked ~ .popup__container {
-    position: absolute;
-    top: 80px;
     left: 45%;
-    display: inline-block;
-    width: 300px;
-    height: auto;
-    overflow-y: auto;
   }
   #popup:checked ~ .popup__container {
-    position: absolute;
-    top: 80px;
     left: 45%;
-    display: inline-block;
-    width: 320px;
-    height: 300px;
-    overflow-y: scroll;
   }
 }
+
 @media (768px <= width <= 992px) {
   #popup__icon:checked ~ .popup__container {
-    position: absolute;
-    top: 80px;
     left: 58%;
-    display: inline-block;
-    width: 300px;
-    height: auto;
-    overflow-y: auto;
   }
   #popup:checked ~ .popup__container {
-    position: absolute;
-    top: 80px;
     left: 58%;
-    display: inline-block;
-    width: 320px;
-    height: 300px;
-    overflow-y: scroll;
+  }
+  .popup__button__hide {
+    width: 230px;
+  }
+  .popup__button__more {
+    width: 230px;
   }
 }
+
 @media (993px <= width <= 1200px) {
   #popup__icon:checked ~ .popup__container {
-    position: absolute;
-    top: 80px;
     left: 65%;
-    display: inline-block;
-    width: 300px;
-    height: auto;
-    overflow-y: auto;
   }
   #popup:checked ~ .popup__container {
-    position: absolute;
-    top: 80px;
     left: 65%;
-    display: inline-block;
-    width: 320px;
-    height: 300px;
-    overflow-y: scroll;
   }
 }

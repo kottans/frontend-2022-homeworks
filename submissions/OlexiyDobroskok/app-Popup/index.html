@@ -20,12 +20,6 @@
               <label for="popup__icon" class="chek__label">
                 <span class="popup__checkbox"></span>
               </label>
-              <input
-                type="checkbox"
-                id="popup"
-                class="popup__checkbox"
-                tabindex="-1"
-              />
               <div class="popup__container">
                 <ul class="popup__list">
                   <li class="popup__item">
@@ -109,6 +103,16 @@
                       />Search
                     </a>
                   </li>
+                  <input
+                    type="checkbox"
+                    id="popup"
+                    class="popup__checkbox"
+                    tabindex="0"
+                  />
+                  <label for="popup" class="popup__button">
+                    <span class="popup__button__more">MORE</span>
+                    <span class="popup__button__hide">HIDE</span>
+                  </label>
                   <li class="popup__item hidden__item">
                     <a href="#" class="popup__link">
                       <img
@@ -164,10 +168,6 @@
                     </a>
                   </li>
                 </ul>
-                <label for="popup" class="popup__button">
-                  <span class="popup__button__more" tabindex="0">MORE</span>
-                  <span class="popup__button__hide" tabindex="0">HIDE</span>
-                </label>
               </div>
             </li>
             <li class="menu__item">
