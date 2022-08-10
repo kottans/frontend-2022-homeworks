@@ -1,0 +1,137 @@
+:root {
+  --icon-size: 61px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.wrapper {
+  height: 200vh;
+  display: grid;
+  grid-template: auto 1fr auto / 1fr 1fr 8fr 1fr 1fr;
+  grid-template-areas:
+    ". header header header ."
+    ". main main main ."
+    ". footer footer footer .";
+  background: linear-gradient(
+    -45deg,
+    #616fbd 0%,
+    #353170 13%,
+    #4369af 25%,
+    #331fa5 38%,
+    #00369b 50%,
+    #57fff1 62%,
+    #4ceaff 75%,
+    #0098ac 87%,
+    #006b7e 100%
+  );
+  background-size: 400% 400%;
+  animation: animate 7.5s ease-in-out infinite;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  grid-area: header;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+.menu__popup-icon {
+  display: none;
+}
+.menu__popup-icon img {
+  height: var(--icon-size);
+  width: var(--icon-size);
+}
+.menu__list {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+.menu__list > li,
+.logo {
+  margin-right: 1em;
+  line-height: 3em;
+}
+.main {
+  grid-area: main;
+}
+.main__content {
+  margin-top: 3em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.main__content > p {
+  margin: 2em 0;
+  border-bottom: 3px solid blue;
+  font-size: 1.2em;
+  transition: 0.2s all ease-in-out;
+}
+.footer {
+  grid-area: footer;
+}
+.menu__link,
+.logo-link {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.menu__list > li:hover,
+.logo-link:hover {
+  text-decoration: underline;
+}
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #00c3ff #ffffff;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #00e1ff;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+@media (max-width: 954px) {
+  .menu__popup-icon {
+    display: block;
+  }
+  .menu__list {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: var(--icon-size);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    background-color: rgb(161, 255, 247);
+  }
+  .menu__list > li {
+    width: 100vw;
+    height: 10vh;
+    margin: 1.5em auto;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  .hide {
+    display: block;
+  }
+}
+@keyframes animate {
+  0% {
+    background-position: 0 25%;
+  }
+  50% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0 25%;
+  }
+}
