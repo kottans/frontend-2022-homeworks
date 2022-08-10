@@ -6,45 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <title>ks dom</title>
+    <title>cartoons</title>
 </head>
 <body>
-    <header class="header" id="header">
-        <a class="header__title" href="#">Cartoons</a>
-       <div class="toggle" id="toggle"></div>
-       <nav class="navbar" id="navbar">
-        <ul class="navbar__items">
-            <li class="navbar__item">
-               <span class="arrow"><</span> <a href="#adventure" class="navbar__item-link">Adventure time</a>
-            </li>
-            <li class="navbar__item">
-                <span class="arrow"><</span> <a href="#gravity" class="navbar__item-link">Gravity Falls</a>
-            </li>
-            <li class="navbar__item">
-                <span class="arrow"><</span> <a href="#rick" class="navbar__item-link">Rick and Morty</a>
-            </li>
-        </ul>
-       </nav>
-    </header>
-
-    <section class="main section" id="home">
-        <p class="main__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum a sint dignissimos provident, sequi aspernatur tempore numquam nihil eveniet aut nisi vero vitae. Repellendus neque architecto eius adipisci temporibus consectetur, numquam, ipsum odio harum velit natus, ex voluptatum quos possimus repudiandae quasi dignissimos assumenda voluptate aliquid commodi perspiciatis sed similique tempora. Neque accusamus iusto non ab blanditiis corporis delectus, velit architecto itaque totam tempora eius odit placeat, corrupti quos fugiat. Sit excepturi quaerat ex molestiae nul</p>
-    </section>
-    <section class="cartoons  section" id="adventure">
-        <h1 class="cartoon__name">Adventure time</h1>
-        <p class="cartoon__description"> A boy, Finn the human, and his adopted adoptive brother, Jake the dog, live together and go on adventures in the land of Ooo, which is filled with odd creatures and beings. The land has many kingdoms, most of which are led by a monarch. Mostly, we see princesses, which are named for their physical form. The land of Ooo is on Earth, but the planet was wiped out 1000 years ago in the Great Mushroom War, leaving behind a mutated surface and the wreckage of our civilization.</p>
-        <img src="./img/adventure.webp" alt="" class="cartoon__img">
-    </section>
-    <section class="cartoons  section" id="gravity">
-        <h1 class="cartoon__name">Gravity Falls</h1>
-        <p class="cartoon__description">Dipper and Mabel Pines are mystery twins. They are in for when they are sent off to spend the summer with their great uncle in the mysterious town of Gravity Falls, Oregon. Upon their arrival, Dipper and Mabel's huckster great uncle, Grunkle Stan, enlists the siblings' help in running the Mystery Shack, a tourist trap he owns that overcharges unsuspecting customers. Although Dipper and Mabel quickly discover that the Mystery Shack itself is a hoax, they soon discover that there is something truly strange about their new town, and together they begin to unlock the real secrets of Gravity Falls.</p>
-        <img src="./img/gravity.jfif" alt="" class="cartoon__img">
-    </section>
-    <section class="cartoons  section" id="rick">
-        <h1 class="cartoon__name">Rick and Morty</h1>
-        <p class="cartoon__description">An animated series on adult-swim about the infinite adventures of Rick, a genius alcoholic and careless scientist, with his grandson Morty, a 14 year-old anxious boy who is not so smart. Together, they explore the infinite universes; causing mayhem and running into trouble.</p>
-        <img src="./img/rick.jfif" alt="" class="cartoon__img">
-    </section>
+    <div class="wrapper">
+        <h1 class="wrapper__title">My recommendation</h1>
+        <div class="inner_wrapper">
+            <aside class="aside">
+                <ul class="aside__list">
+                    <li class="aside__item">
+                        Adventure time
+                    </li>
+                    <li class="aside__item">
+                        Gravity Falls
+                    </li>
+                    <li class="aside__item">
+                        Rick and Morty
+                    </li>
+                </ul>
+            </aside>
+            <main class="main">
+                <div class="main__container container">
+                    <h2 class="container__title">Cartoon</h2>
+                    <div class="container__desc">
+                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis doloribus sapiente facere, enim necessitatibus, nihil inventore repudiandae dolore dolor commodi laboriosam fuga. Eum excepturi maiores autem debitis a corporis nemo harum esse quaerat neque ipsam rem itaque accusantium cumque provident placeat tenetur, quos ducimus ipsa enim fuga fugiat.
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
     <script src="./scripts/main.js"></script>
 </body>
 </html>
