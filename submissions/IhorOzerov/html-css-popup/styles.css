@@ -33,8 +33,12 @@ li {
 
 .visible-img {
     width: 50px;
-    min-height: 40px;
-    max-height: 50px;
+    object-fit: contain;
+    aspect-ratio: auto;
+}
+
+.ratio{
+    height: 40px;
 }
 
 .menu {
@@ -74,9 +78,13 @@ li {
     position: relative;
 }
 
+.mini{
+    height: 70px;
+}
+
 span{
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
 }
 
 #more:checked ~ .opened {
@@ -92,7 +100,7 @@ span{
 
 .opened {
     width: 285px;
-    height: 200px;
+    height: 210px;
     background-color: rgb(226, 220, 220);
     justify-items: center;
     padding-left: 0;
