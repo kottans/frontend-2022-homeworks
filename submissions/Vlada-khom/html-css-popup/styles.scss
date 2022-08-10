@@ -1,50 +1,50 @@
 .background {
   background-color: rgb(0, 255, 255, 0.2);
 }
-.header {
-  nav {
-    text-align: right;
-    font-family: "Roboto", Arial, sans-serif;
 
-    .navLink {
-      vertical-align: middle;
-      display: inline-block;
-      padding: 10px;
-      text-decoration: none;
-      color: black;
+nav {
+  text-align: right;
+  font-family: "Roboto", Arial, sans-serif;
 
-      .imgLink {
-        width: 30px;
-        height: 30px;
-      }
-      .avatar {
-        border-radius: 50%;
-      }
+  .navLink {
+    vertical-align: middle;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+
+    .imgLink {
+      width: 30px;
+      height: 30px;
     }
-    .burger {
-      position: relative;
-
-      .input {
-        position: absolute;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        width: 1px;
-        margin: -1px;
-        padding: 0;
-        border: 0;
-      }
-
-      #burgerCheckbox:checked ~ .main {
-        display: flex;
-      }
+    .avatar {
+      border-radius: 50%;
     }
-    .navLink:focus {
-      outline: 2px solid blue;
-    }
-
   }
+  .burger {
+    position: relative;
+
+    .input {
+      position: absolute;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      width: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+    }
+
+    #burgerCheckbox:checked ~ .main {
+      display: flex;
+    }
+  }
+  .navLink:focus {
+    outline: 2px solid blue;
+  }
+
 }
+
 
 .popupContainer {
   width: 350px;
@@ -134,7 +134,7 @@
   height: 0;
   border-style: solid;
   border-width: 0 15px 15px 15px;
-  border-color: transparent transparent #ccffff transparent;
+  border-color: transparent transparent rgb(204, 255, 255) transparent;
   position: absolute;
   left: 249px;
   top: -15px;
