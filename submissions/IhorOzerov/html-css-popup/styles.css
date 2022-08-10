@@ -44,9 +44,8 @@ li {
     padding: 15px;
     display: none;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 1fr 1fr 1fr 30px;
+    grid-template-rows: repeat(4, 1fr) 30px;
     overflow-x: hidden;
-    box-sizing: border-box;
     flex-wrap: wrap;
     position: absolute;
 }
@@ -75,17 +74,23 @@ li {
 
 #more:checked ~ .opened {
     display: grid;
+    z-index: 1;
+    margin: -10px 15px 0 15px;
+}
+
+#more:checked + label {
+    display: none;
+    outline: none;
 }
 
 .opened {
-    width: 300px;
+    width: 285px;
     height: 200px;
     background-color: rgb(226, 220, 220);
     justify-items: center;
-    padding-top: 40px;
     padding-left: 0;
     display: none;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1fr;
 }
 
