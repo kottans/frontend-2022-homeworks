@@ -1,0 +1,267 @@
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.conteiner {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #FFF;
+  box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.1);
+}
+
+.header__conteiner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 80px;
+}
+
+.header__nav {
+  margin-right: 15px;
+  display: flex;
+  gap: 35px;
+  align-items: center;
+}
+
+.header__box {
+  position: relative;
+}
+
+.header__box,
+.header__link-img {
+  width: 25px;
+  height: 25px;
+}
+
+.header__link:focus,
+.header__input:focus ~ .header__check > .header__checkbox,
+.popup__item-link:focus::before {
+  outline: 2px solid blue;
+}
+
+.header__link:hover,
+.header__input:hover ~ .header__check > .header__checkbox,
+.popup__item-link:hover::before {
+  outline: 1px solid gray;
+}
+
+.header__check {
+  position: relative;
+}
+
+.header__input,
+.popup-main__input {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.header__checkbox {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/popup-button.png);
+  cursor: pointer;
+}
+
+.popup {
+  position: absolute;
+  top: -1000px;
+  left: -150px;
+  min-width: 300px;
+  height: 510px;
+  padding: 20px 20px 0px 20px;
+  box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.1);
+}
+
+.popup-main {
+  padding-bottom: 15px;
+}
+
+.popup-add {
+  display: none;
+  padding-top: 15px;
+  border-top: 1px solid rgba(128, 128, 128, 0.349);
+}
+
+.popup-main__list {
+  display: grid;
+  grid-template-columns: repeat(3, 75px);
+  grid-template-rows: repeat(4, 100px);
+  gap: 10px;
+  list-style: none;
+}
+
+.popup-add__list {
+  display: grid;
+  grid-template-columns: repeat(3, 75px);
+  grid-template-rows: repeat(2, 100px);
+  gap: 10px;
+  list-style: none;
+}
+
+.popup__item {
+  padding-top: calc(100px - 1em - 5px);
+  text-align: center;
+  background-size: 50px 40px;
+  background-repeat: no-repeat;
+  background-position: center 15px;
+}
+
+.popup__item-link {
+  display: block;
+  position: relative;
+  width: 75px;
+}
+
+.popup__item-link::before {
+  content: '';
+  position: absolute;
+  top: calc( 1em + 5px - 100px );
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.popup-main__checkbox {
+  display: block;
+  position: relative;
+  top: 5px;
+  left: -20px;
+  padding-top: 10px;
+  width: calc(100% + 40px);
+  min-height: 40px;
+  background-color: rgba(176, 196, 222, 0.481);
+  text-align: center;
+  cursor: pointer;
+}
+
+.popup__text {
+  position: relative;
+  left: -20px;
+  bottom: 0;
+  width: calc(100% + 40px);
+  margin-top: 15px;
+  padding: 15px;
+  background-color: rgb(237, 240, 233);
+}
+
+.popup__text p {
+  text-align: center;
+}
+
+.header__input:checked + .header__check + .popup {
+  top:70px;
+  overflow: auto;
+}
+
+.popup-main__input:checked + .popup-main__label > .popup-main__checkbox {
+  display: none;
+}
+
+.popup-main__input:checked + .popup-main__label + .popup-add {
+  display: block;
+}
+
+.popup-main__input:focus ~ .popup-main__label > .popup-main__checkbox,
+.popup-main__input:hover ~ .popup-main__label > .popup-main__checkbox {
+  background-color: lightsteelblue;
+}
+
+.img_1 {
+  background-image: url(./img/calendar.png);
+}
+
+.img_2 {
+  background-image: url(./img/mail.png);
+}
+
+.img_3 {
+  background-image: url(./img/news.png);
+}
+
+.img_4 {
+  background-image: url(./img/maps.png);
+}
+
+.img_5 {
+  background-image: url(./img/files.png);
+}
+
+.img_6 {
+  background-image: url(./img/contacts.png);
+}
+
+.img_7 {
+  background-image: url(./img/tanslation.png);
+}
+
+.img_8 {
+  background-image: url(./img/videos.png);
+}
+
+.img_9 {
+  background-image: url(./img/search.png);
+}
+
+.img_10 {
+  background-image: url(./img/photos.png);
+}
+
+.img_11 {
+  background-image: url(./img/apps.png);
+}
+
+.img_12 {
+  background-image: url(./img/documents.png);
+}
+
+.img_13 {
+  background-image: url(./img/chat.png);
+}
+
+.img_14 {
+  background-image: url(./img/classroom.png);
+}
+
+.img_15 {
+  background-image: url(./img/collection.png);
+}
+
+.img_16 {
+  background-image: url(./img/mars.png);
+}
+
+.img_17 {
+  background-image: url(./img/blogs.png);
+}
+
+.img_18 {
+  background-image: url(./img/promo.png);
+}
