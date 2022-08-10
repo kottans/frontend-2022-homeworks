@@ -1,6 +1,6 @@
 body {
   min-height: 100%;
-  font-family: $mainFont;
+  font-family: $primaryColor;
   font-size: 16px;
   line-height: 1.71;
   letter-spacing: 0.03em;
@@ -105,7 +105,7 @@ body {
   border-radius: 3px;
 }
 
-.account-block__checkbox:focus ~ .user__menu {
+.account-block__checkbox:focus ~ .account-block__menu {
   border: 2px solid #808080;
   border-radius: 3px;
 }
@@ -137,7 +137,7 @@ body {
   width: 100%;
   font-size: 0.75rem;
   text-align: center;
-  padding: 15px 0;
+  padding: 10px 0;
   display: grid;
   justify-items: center;
   border: 1px solid transparent;
