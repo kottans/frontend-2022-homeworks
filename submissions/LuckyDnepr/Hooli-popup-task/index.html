@@ -10,164 +10,79 @@
 </head>
 
 <body>
-    <header class="header">
-        <input id="nav_keeper_input" type="checkbox" tabindex="1">
-        <div class="nav_keeper_lines">
-            <span class="nav_keeper_line line1"></span>
-            <span class="nav_keeper_line line2"></span>
-            <span class="nav_keeper_line line3"></span>
-        </div>
-        <nav class="nav">
-            <input id="menu_show_more_input" type="checkbox" tabindex="10">
-            <label id="menu_show_more_label" for="menu_show_more_input">
-                <span class="menu_show_more show_more_span">Show more</span>
-                <span class="menu_show_more show_less_span">Show less</span>
-            </label>
-            <ul class="nav_menu" id="nav_menu" >
-                <li class="nav_menu_item">
-                    <a href="#Applications" class="nav_menu_item_link" tabindex="2">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/apps.png" title="Apps">
-                            <p>Applications</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item">
-                    <a href="#Blogs" class="nav_menu_item_link" tabindex="3">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/blogs.png" title="Blogs">
-                            <p>Blogs</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item">
-                    <a href="#Calendar" class="nav_menu_item_link" tabindex="4">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/calendar.png" title="Calendar">
-                            <p>Calendar</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item">
-                    <a href="#Chat" class="nav_menu_item_link" tabindex="5">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/chat.png" title="Chat">
-                            <p>Chat</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item">
-                    <a href="#Classroom" class="nav_menu_item_link" tabindex="6">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/classroom.png" title="Classroom">
-                            <p>Classroom</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item">
-                    <a href="#Contacts" class="nav_menu_item_link" tabindex="7">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/contacts.png" title="Contacts">
-                            <p>Contacts</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item">
-                    <a href="#Documents" class="nav_menu_item_link" tabindex="8">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/documents.png" title="Documents">
-                            <p>Documents</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item">
-                    <a href="#Files" class="nav_menu_item_link" tabindex="9">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/files.png" title="Files">
-                            <p>Files</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item show_more_item">
-                    <a href="#Mail" class="nav_menu_item_link" tabindex="11">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/mail.png" title="Mail">
-                            <p>Mail</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item show_more_item">
-                    <a href="#Maps" class="nav_menu_item_link" tabindex="12">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/maps.png" title="Maps">
-                            <p>Maps</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item show_more_item">
-                    <a href="#News" class="nav_menu_item_link" tabindex="13">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/news.png" title="News">
-                            <p>News</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item show_more_item">
-                    <a href="#Photos" class="nav_menu_item_link" tabindex="14">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/photos.png" title="Photos">
-                            <p>Photos</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item show_more_item">
-                    <a href="#Promo" class="nav_menu_item_link" tabindex="15">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/promo.png" title="Promo">
-                            <p>Promo</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item show_more_item">
-                    <a href="#Search" class="nav_menu_item_link" tabindex="16">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/search.png" title="Search">
-                            <p>Search</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item show_more_item">
-                    <a href="#Translation" class="nav_menu_item_link" tabindex="17">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/tanslation.png" title="Translation">
-                            <p>Translation</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav_menu_item show_more_item">
-                    <a href="#Videos" class="nav_menu_item_link" tabindex="18">
-                        <div class="nav_menu_item_link_container">
-                            <img class="menu_icons" src="./icons/videos.png" title="Videos">
-                            <p>Videos</p>
-                        </div>
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-    </header>
-
-    <main class="main">
-
-    </main>
-
-    <footer class="footer">
-
-    </footer>
-
-
+    <div class="wrapper">
+        <header class="header">
+            <div class="logo">LOGO</div>
+            <nav class="navigation">
+                <a href="#User" id="nav_item_user" class="nav_item_icon"></a>
+                <a href="#Notification" id="nav_item_notify" class="nav_item_icon"></a>
+                <input id="nav_popup_check" type="checkbox">
+                <label for="nav_popup_check" id="nav_popup_label">
+                    <img class="nav_icons" src="./icons/popup-button.png" alt="popup-menu">
+                </label>
+                <a href="#Mail" class="nav_item">Mail</a>
+                <a href="#Images" class="nav_item">Images</a>
+                <div class="nav_popup_menu">
+                    <input id="popup_show_more_check" type="checkbox"">
+                    <label id="menu_show_more_label" for="popup_show_more_check">
+                        <span class="menu_show_more show_more_span">Show more</span>
+                        <span class="menu_show_more show_less_span">Show less</span>
+                    </label>
+                    <div class="nav_popup_menu_links">
+                        <a href="#Applications" class="nav_menu_link">
+                            <img class="menu_icons" src="./icons/apps.png" title="Apps" alt="apps">
+                        </a>
+                        <a href="#Blogs" class="nav_menu_link" id="nav_menu_blogs">
+                            <img class="menu_icons" src="./icons/blogs.png" title="Blogs" alt="Blogs">
+                        </a>
+                        <a href="#Calendar" class="nav_menu_link">
+                            <img class="menu_icons" src="./icons/calendar.png" title="Calendar" alt="Calendar">
+                        </a>
+                        <a href="#Chat" class="nav_menu_link">
+                            <img class="menu_icons" src="./icons/chat.png" title="Chat" alt="Chat">
+                        </a>
+                        <a href="#Classroom" class="nav_menu_link">
+                            <img class="menu_icons" src="./icons/classroom.png" title="Classroom" alt="Classroom">
+                        </a>
+                        <a href="#Contacts" class="nav_menu_link">
+                            <img class="menu_icons" src="./icons/contacts.png" title="Contacts" alt="Contacts">
+                        </a>
+                        <a href="#Documents" class="nav_menu_link">
+                            <img class="menu_icons" src="./icons/documents.png" title="Documents" alt="Documents">
+                        </a>
+                        <a href="#Files" class="nav_menu_link">
+                            <img class="menu_icons" src="./icons/files.png" title="Files" alt="Files">
+                        </a>
+                        <a href="#Maps" class="nav_menu_link">
+                            <img class="menu_icons" src="./icons/maps.png" title="Maps" alt="Maps">
+                        </a>
+                        <a href="#News" class="nav_menu_link show_more_item">
+                            <img class="menu_icons" src="./icons/news.png" title="News" alt="News">
+                        </a>
+                        <a href="#Photos" class="nav_menu_link show_more_item">
+                            <img class="menu_icons" src="./icons/photos.png" title="Photos" alt="Photos">
+                        </a>
+                        <a href="#Promo" class="nav_menu_link show_more_item">
+                            <img class="menu_icons" src="./icons/promo.png" title="Promo" alt="Promo">
+                        </a>
+                        <a href="#Search" class="nav_menu_link show_more_item">
+                            <img class="menu_icons" src="./icons/search.png" title="Search" alt="Search">
+                        </a>
+                        <a href="#Translation" class="nav_menu_link show_more_item">
+                            <img class="menu_icons" src="./icons/tanslation.png" title="Translation" alt="Translation">
+                        </a>
+                        <a href="#Videos" class="nav_menu_link show_more_item">
+                            <img class="menu_icons" src="./icons/videos.png" title="Videos" alt="Videos">
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="main">
+        </main>
+        <footer class="footer">
+        </footer>
+    </div>
 </body>
 
 </html>
-
