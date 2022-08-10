@@ -1,0 +1,259 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+}
+
+.link{
+    font-family: "Roboto", serif;
+    color: #777;
+    text-decoration: none;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    font-size: 0;  
+    background-color: #eee;
+    box-shadow: 1px 0px 11px 5px rgba(0,0,0,0.66);
+}
+
+.header__link{
+    display: inline-flex;
+    justify-content: start;
+    margin-left: 50px;
+}
+
+.header__logo{
+    width: 100px;
+    height: auto;
+}
+
+.header__nav{
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+.nav__list{
+    display: inline-flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav__list-item{
+    text-transform:capitalize;
+}
+
+.nav__list-item:not(:last-child){
+    margin-right: 30px;
+}
+
+.nav__link:hover{
+    color: #000;
+}
+
+.nav__icon{
+    width: 35px;
+    height: 35px;
+}
+
+.nav__avatar{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.nav__label{
+    position: relative;
+    display: inline-block;
+}
+
+.checkbox{
+    visibility: hidden;
+    position: absolute;
+}
+
+.popup{
+    height: 395px;  
+    position: absolute;
+    right: 185px;
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(4, 80px) 40px;
+    grid-auto-rows: 0px;
+    overflow: scroll;
+    border: 1px grey solid;
+}
+
+.checkbox:not(:checked)+.popup{
+    display: none;
+}
+
+.popup__item{
+    box-sizing: border-box;
+    width: 80px;
+    height: 80px;
+}
+
+.popup__link{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+}
+
+.popup__link::before{
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 25px;
+}
+
+.popup__link:hover,
+.popup__link:focus,
+.popup__link:focus-visible{
+    border: 1px solid rgba(9, 9, 9, 0.5);
+}
+
+.popup__more{
+    width: auto;
+    height: auto;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 40px;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    font-family: "Roboto", serif;
+    color: #777;
+}
+
+.popup__more:hover,
+.popup__more:focus,
+.popup__more:focus-visible{
+    cursor: pointer;
+    border: 1px solid grey;
+}
+
+.popup__exta{
+    display: none;
+}
+
+.extra-items{
+    display: none;
+}
+
+.checkbox_more:checked+.extra-items{
+    display: grid;
+    grid-template: repeat(2, 80px) / repeat(3, 80px);
+}
+
+.icon_youtube::before{
+    background: url('../assets/icons/icon_sprite.png') top 5px right 2px/100%;
+}
+.icon_docs::before{
+    background: url('../assets/icons/icon_sprite.png') top -38px right 2px/100%;
+}
+.icon_chat::before{
+    background: url('../assets/icons/icon_sprite.png') top -81px right 2px/100%;
+}
+.icon_label::before{
+    background: url('../assets/icons/icon_sprite.png') top -124px right 2px/100%;
+}
+.icon_yellow::before{
+    background: url('../assets/icons/icon_sprite.png') top -167px right 2px/100%;
+}
+.icon_drive::before{
+    background: url('../assets/icons/icon_sprite.png') top -210px right 2px/100%;
+}
+.icon_flower::before{
+    background: url('../assets/icons/icon_sprite.png') top -253px right 2px/100%;
+}
+.icon_desk::before{
+    background: url('../assets/icons/icon_sprite.png') top -296px right 2px/100%;
+}
+.icon_calendar::before{
+    background: url('../assets/icons/icon_sprite.png') top -340px right 2px/100%;
+}
+.icon_musiem::before{
+    background: url('../assets/icons/icon_sprite.png') top -384px right 2px/100%;
+}
+.icon_apps::before{
+    background: url('../assets/icons/icon_sprite.png') top -429px right 2px/100%;
+}
+.icon_excel::before{
+    background: url('../assets/icons/icon_sprite.png') top -602px right 2px/100%;
+}
+.icon_accaunt::before{
+    background: url('../assets/icons/icon_sprite.png') top -643px right 2px/100%;
+}
+.icon_gmail::before{
+    background: url('../assets/icons/icon_sprite.png') top -685px right 2px/100%;
+}
+.icon_light::before{
+    background: url('../assets/icons/icon_sprite.png') top -726px right 2px/100%;
+}
+.icon_infinity::before{
+    background: url('../assets/icons/icon_sprite.png') top -767px right 2px/100%;
+}
+.icon_maps::before{
+    background: url('../assets/icons/icon_sprite.png') top -815px right 2px/100%;
+}
+.icon_card::before{
+    background: url('../assets/icons/icon_sprite.png') top -857px right 2px/100%;
+}
+
+@media (max-width: 768px) {
+    .header__link{
+        margin-left: 20px;
+    }
+    
+    .header__nav{
+        margin-right: 20px;
+    }
+
+    .header__logo{
+        width: 60px;
+    }
+
+    .nav__list-item:not(:last-child){
+        margin-right: 10px;
+    }
+    
+    .nav__icon{
+        width: 25px;
+        height: 25px;
+    }
+
+    .nav__avatar{
+        width: 25px;
+        height: 25px;
+    }
+
+    .popup{
+        right: 93px;
+    }
+}
+
+@media (max-width: 425px) {
+    .popup{
+        right: 33px;
+    }
+}
+
+@media (max-width: 320px) {
+    .popup{
+        right: 0;
+    }
+}
