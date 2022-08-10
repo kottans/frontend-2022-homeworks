@@ -42,13 +42,13 @@ function createCard(front, back, name) {
            </div>`;
 }
 
-const gameCard = cards.map(({ front, back, name }) =>
+const gameCards = cards.map(({ front, back, name }) =>
   createCard(front, back, name)
 );
 
 const gameContainer = document.querySelector(".game__container");
-gameContainer.innerHTML = gameCard.join("");
-const gameCards = document.querySelectorAll(".game__card");
+gameContainer.innerHTML = gameCards.join("");
+const allGameCards = document.querySelectorAll(".game__card");
 
 let numberOfMatches = 0;
 let flippedCards = [];
@@ -99,7 +99,7 @@ function removeFlip() {
 }
 
 function addingDisableClass() {
-  gameCards.forEach((item) => {
+  allGameCards.forEach((item) => {
     item.classList.toggle("disableclick");
   });
 }
@@ -107,7 +107,7 @@ function addingDisableClass() {
 function checkForWin() {
   if (numberOfMatches === 6) {
     setTimeout(() => {
-      gameCards.forEach((item) => {
+      allGameCards.forEach((item) => {
         item.classList.remove("flip");
       });
       alert("U WIN!");
@@ -119,7 +119,7 @@ function checkForWin() {
 }
 
 function shuffleCards() {
-  gameCards.forEach((card) => {
+  allGameCards.forEach((card) => {
     let randomPos = Math.floor(Math.random() * 12);
     card.style.order = randomPos;
   });
