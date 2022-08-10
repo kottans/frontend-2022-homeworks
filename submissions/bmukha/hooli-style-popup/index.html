@@ -11,16 +11,21 @@
 
   <body>
     <header class="header">
-      <div class="logo" tabindex="1">
-        <a href="https://kottans.org/" target="_blank"
-          ><img src="./popup-icons/favicon.png" width="32" alt="kottans logo"
-        /></a>
+      <div class="logo">
+        <a href="https://kottans.org/" target="_blank">
+          <img src="./popup-icons/favicon.png" width="32" alt="kottans logo" />
+        </a>
       </div>
       <nav class="header__nav">
         <ul class="header__nav__items">
-          <li class="header__nav__item__main" tabindex="2">Menu</li>
-          <li class="header__nav__item__main" tabindex="3">Items</li>
+          <li class="header__nav__item__main">
+            <a href="#">Menu</a>
+          </li>
+          <li class="header__nav__item__main">
+            <a href="#">Items</a>
+          </li>
           <li class="header__nav__item__main menu">
+            <input class="menu__toggle" id="menu__toggle" type="checkbox" />
             <label for="menu__toggle">
               <img
                 src="./popup-icons/popup-button.png"
@@ -29,73 +34,52 @@
                 alt="popup button"
               />
             </label>
-            <input
-              class="menu__toggle"
-              id="menu__toggle"
-              type="checkbox"
-              tabindex="4"
-            />
             <div class="menu__wrapper">
               <nav class="menu__wrapper__main">
                 <ul class="menu__items__main">
                   <li class="header__nav__item__main">
                     <a href="#"
-                      ><img src="./popup-icons/mail.png" width="48" alt="mail"
+                      ><img src="./popup-icons/mail.png" width="48" alt=""
                     /></a>
                   </li>
                   <li class="header__nav__item__main">
                     <a href="#"
-                      ><img
-                        src="./popup-icons/files.png"
-                        width="48"
-                        alt="files"
+                      ><img src="./popup-icons/files.png" width="48" alt=""
                     /></a>
                   </li>
                   <li class="header__nav__item__main">
                     <a href="#"
-                      ><img
-                        src="./popup-icons/calendar.png"
-                        width="48"
-                        alt="calendar"
+                      ><img src="./popup-icons/calendar.png" width="48" alt=""
                     /></a>
                   </li>
                   <li class="header__nav__item__main">
                     <a href="#"
-                      ><img
-                        src="./popup-icons/documents.png"
-                        width="48"
-                        alt="documents"
+                      ><img src="./popup-icons/documents.png" width="48" alt=""
                     /></a>
                   </li>
                   <li class="header__nav__item__main">
                     <a href="#"
-                      ><img src="./popup-icons/maps.png" width="48" alt="maps"
+                      ><img src="./popup-icons/maps.png" width="48" alt=""
                     /></a>
                   </li>
                   <li class="header__nav__item__main">
                     <a href="#"
-                      ><img src="./popup-icons/chat.png" width="48" alt="chat"
+                      ><img src="./popup-icons/chat.png" width="48" alt=""
                     /></a>
                   </li>
                   <li class="header__nav__item__main">
                     <a href="#"
-                      ><img src="./popup-icons/news.png" width="48" alt="news"
+                      ><img src="./popup-icons/news.png" width="48" alt=""
                     /></a>
                   </li>
                   <li class="header__nav__item__main">
                     <a href="#"
-                      ><img
-                        src="./popup-icons/contacts.png"
-                        width="48"
-                        alt="contacts"
+                      ><img src="./popup-icons/contacts.png" width="48" alt=""
                     /></a>
                   </li>
                   <li class="header__nav__item__main">
                     <a href="#"
-                      ><img
-                        src="./popup-icons/classroom.png"
-                        width="48"
-                        alt="classroom"
+                      ><img src="./popup-icons/classroom.png" width="48" alt=""
                     /></a>
                   </li>
                 </ul>
@@ -105,27 +89,17 @@
                   class="more__checkbox"
                   id="more__checkbox"
                 />
-                <label
-                  for="more__checkbox"
-                  class="more__label"
-                  tabindex="5"
-                ></label>
+                <label for="more__checkbox" class="more__label"></label>
                 <nav class="menu__wrapper__secondary">
                   <ul class="menu__items__secondary">
                     <li class="header__nav__item__secondary">
                       <a href="#"
-                        ><img
-                          src="./popup-icons/apps.png"
-                          width="48"
-                          alt="apps"
+                        ><img src="./popup-icons/apps.png" width="48" alt=""
                       /></a>
                     </li>
                     <li class="header__nav__item__secondary">
                       <a href="#"
-                        ><img
-                          src="./popup-icons/blogs.png"
-                          width="48"
-                          alt="blogs"
+                        ><img src="./popup-icons/blogs.png" width="48" alt=""
                       /></a>
                     </li>
                     <li class="header__nav__item__secondary">
@@ -133,15 +107,12 @@
                         ><img
                           src="./popup-icons/collection.png"
                           width="48"
-                          alt="collection"
+                          alt=""
                       /></a>
                     </li>
                     <li class="header__nav__item__secondary">
                       <a href="#"
-                        ><img
-                          src="./popup-icons/videos.png"
-                          width="48"
-                          alt="videos"
+                        ><img src="./popup-icons/videos.png" width="48" alt=""
                       /></a>
                     </li>
                     <li class="header__nav__item__secondary">
@@ -149,39 +120,27 @@
                         ><img
                           src="./popup-icons/tanslation.png"
                           width="48"
-                          alt="tanslation"
+                          alt=""
                       /></a>
                     </li>
                     <li class="header__nav__item__secondary">
                       <a href="#"
-                        ><img
-                          src="./popup-icons/promo.png"
-                          width="48"
-                          alt="promo"
+                        ><img src="./popup-icons/promo.png" width="48" alt=""
                       /></a>
                     </li>
                     <li class="header__nav__item__secondary">
                       <a href="#"
-                        ><img
-                          src="./popup-icons/search.png"
-                          width="48"
-                          alt="search"
+                        ><img src="./popup-icons/search.png" width="48" alt=""
                       /></a>
                     </li>
                     <li class="header__nav__item__secondary">
                       <a href="#"
-                        ><img
-                          src="./popup-icons/photos.png"
-                          width="48"
-                          alt="photos"
+                        ><img src="./popup-icons/photos.png" width="48" alt=""
                       /></a>
                     </li>
                     <li class="header__nav__item__secondary">
                       <a href="#"
-                        ><img
-                          src="./popup-icons/mars.png"
-                          width="48"
-                          alt="mars"
+                        ><img src="./popup-icons/mars.png" width="48" alt=""
                       /></a>
                     </li>
                   </ul>
@@ -191,11 +150,7 @@
           </li>
           <li class="header__nav__item__main">
             <a href="#"
-              ><img
-                src="./popup-icons/bell.png"
-                width="32"
-                height="32"
-                alt="bell"
+              ><img src="./popup-icons/bell.png" width="32" height="32" alt=""
             /></a>
           </li>
         </ul>
