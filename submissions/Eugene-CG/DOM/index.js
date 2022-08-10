@@ -61,7 +61,7 @@ const fillMenuList = (event) => {
     menuList.appendChild(li);
 
     const a = document.createElement("A");
-    a.setAttribute("href", "#");
+    a.setAttribute("href", "");
     a.classList.add("menu__link");
     a.innerText = currObj.identifier;
     li.appendChild(a);
@@ -70,14 +70,14 @@ const fillMenuList = (event) => {
 
 const delegateEvents = (event) => {
   const { target } = event;
-  if (target.closest(".menu__list")) handleList(target);
+  if (target.closest(".menu__list")) handleList(target, event);
   if (target.closest(".logo")) backToDefaultContent();
   if (target.closest(".menu__popup-icon")) switchMenuPopup(target);
 };
 
-const handleList = (target) => {
-  console.log(target);
+const handleList = (target, event) => {
   if (target.closest("LI") || target.closest("A")) {
+    if (target.closest("A")) event.preventDefault();
     clearMainContent();
     createMainContent(target);
     switchMenuPopup(target);
@@ -129,7 +129,7 @@ const generateStartContent = () => {
   const something = menuList.firstChild;
   handleList(something);
 };
-window.addEventListener("load", (event) => {
+window.addEventListener("DOMContentLoaded", (event) => {
   fillMenuList(event);
   generateStartContent(event);
 });
