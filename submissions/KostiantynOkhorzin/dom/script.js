@@ -133,15 +133,12 @@ function showSeasonsGot(data) {
         btns[i].classList.add(activeClassSelector);
     };
 
-    const changeContent = (e, itemSelector = 'side-menu__btn') => {
-        const target = e.target;
-        if (target && target.classList.contains(itemSelector)) {
-            const numberSeason = target.dataset.season;
-            toggleActiveClass(numberSeason);
-            renderContent(numberSeason);
-            toTop();
-            closeBurger();
-        }
+    const changeContent = (e) => {
+        const numberSeason = e.target.dataset.season;
+        toggleActiveClass(numberSeason);
+        renderContent(numberSeason);
+        toTop();
+        closeBurger();
     };
 
     const toggleBurger = () => {
