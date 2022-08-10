@@ -32,8 +32,9 @@ li {
 }
 
 .visible-img {
-    width:55px;
-    height: 50px;
+    width: 50px;
+    min-height: 40px;
+    max-height: 50px;
 }
 
 .menu {
@@ -41,7 +42,7 @@ li {
     height: 450px;
     background-color: rgb(226, 220, 220);
     justify-items: center;
-    padding: 15px;
+    padding: 20px 10px 15px 0;
     display: none;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr) 30px;
@@ -54,7 +55,7 @@ li {
     grid-column: 1/4;
     height: 30px;
     background-color: rgb(228, 215, 215);
-    width: 100%;
+    width: 280px;
     display: grid;
     justify-content: center;
     align-items: center;
@@ -64,18 +65,24 @@ li {
     height: 80px;
     width: 80px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: baseline;
+    justify-content: space-evenly;
     text-align: center;
     flex-wrap: wrap;
     text-decoration: none;
     color: rgb(72, 94, 71);
+    position: relative;
+}
+
+span{
+    position: absolute;
+    bottom: 0;
 }
 
 #more:checked ~ .opened {
     display: grid;
     z-index: 1;
-    margin: -10px 15px 0 15px;
+    margin-top: -5px;
 }
 
 #more:checked + label {
@@ -98,7 +105,7 @@ li {
     outline: 1px solid rgb(74, 74, 254)
 }
 
-.more-btn:hover, .h-image:hover{
+.more-btn:hover, .h-image:hover, .more-word{
     cursor: pointer;
 }
 
