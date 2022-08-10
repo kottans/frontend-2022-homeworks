@@ -5,46 +5,43 @@
 nav {
   text-align: right;
   font-family: "Roboto", Arial, sans-serif;
-
-  .navLink {
-    vertical-align: middle;
-    display: inline-block;
-    padding: 10px;
-    text-decoration: none;
-    color: black;
-
-    .imgLink {
-      width: 30px;
-      height: 30px;
-    }
-    .avatar {
-      border-radius: 50%;
-    }
-  }
-  .burger {
-    position: relative;
-
-    .input {
-      position: absolute;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      width: 1px;
-      margin: -1px;
-      padding: 0;
-      border: 0;
-    }
-
-    #burgerCheckbox:checked ~ .main {
-      display: flex;
-    }
-  }
-  .navLink:focus {
-    outline: 2px solid blue;
-  }
-
 }
+.navLink {
+  vertical-align: middle;
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
 
+  .imgLink {
+    width: 30px;
+    height: 30px;
+  }
+  .avatar {
+    border-radius: 50%;
+  }
+}
+.burger {
+  position: relative;
+
+  .input {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+
+  #burgerCheckbox:checked ~ .main {
+    display: flex;
+  }
+}
+.navLink:focus {
+  outline: 2px solid blue;
+}
 
 .popupContainer {
   width: 350px;
@@ -68,48 +65,45 @@ nav {
     width: 330px;
     right: -100px;
   }
+}
+.containerForItem {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-  .containerForItem {
-    flex-direction: row;
-    flex-wrap: wrap;
+.visibleBlock {
+  display: flex;
+}
+.itemBlock {
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.itemPopup {
+  width: 70px;
+  padding: 15px;
+  font-family: "Roboto", Arial, sans-serif;
+  text-decoration: none;
+  color: black;
+}
+.imgBlock {
+  width: 70px;
+  height: 65px;
+
+  img {
+    max-width: 50px;
+    max-height: 50px;
   }
+}
 
-  .visibleBlock {
-    display: flex;
-  }
-  .itemBlock {
-    padding: 5px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.itemName {
+  font-family: "Roboto", Arial, sans-serif;
+}
 
-    .itemPopup {
-      width: 70px;
-      padding: 15px;
-      font-family: "Roboto", Arial, sans-serif;
-      text-decoration: none;
-      color: black;
-
-      .imgBlock {
-        width: 70px;
-        height: 65px;
-
-        img {
-          max-width: 50px;
-          max-height: 50px;
-        }
-      }
-    }
-
-    .itemName {
-      font-family: "Roboto", Arial, sans-serif;
-    }
-  }
-
-  .itemPopup:focus {
-    outline: 2px solid blue;
-  }
+.itemPopup:focus {
+  outline: 2px solid blue;
 }
 
 .popupContainer:nth-child(2):before {
@@ -123,7 +117,12 @@ nav {
   position: absolute;
   left: 253px;
   top: -12px;
-  background: linear-gradient(to top right, rgb(204, 255, 255), rgb(204, 255, 255), rgb(204, 255, 255));
+  background: linear-gradient(
+    to top right,
+    rgb(204, 255, 255),
+    rgb(204, 255, 255),
+    rgb(204, 255, 255)
+  );
   z-index: -1;
 }
 
@@ -202,5 +201,5 @@ li {
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
