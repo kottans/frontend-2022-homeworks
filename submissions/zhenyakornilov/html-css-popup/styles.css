@@ -4,7 +4,14 @@
   box-sizing: border-box;
   outline-style: none;
   list-style: none;
+}
+
+a,
+a:active,
+a:hover,
+a:focus {
   text-decoration: none;
+  color: inherit;
 }
 
 body {
@@ -41,7 +48,6 @@ body {
 
 .nav-item {
   display: flex;
-  list-style: none;
 }
 
 .link {
@@ -144,9 +150,9 @@ body {
 .popup-pic {
   display: block;
   margin: 5px auto 0;
-  width: 1.8em;
-  height: 1.8em;
-  object-fit: cover;
+  width: 2em;
+  height: 2em;
+  object-fit: contain;
 }
 
 .popup-description {
@@ -184,8 +190,7 @@ body {
 .item-wrap:focus-within {
   border: 1px solid #ffadc2;
   border-radius: 5px;
-  transform: scale(1.1);
-  transition: all 0.3s ease-in-out;
+  background-color: #e8e9ed;
 }
 
 .more-btn:hover,
@@ -206,7 +211,7 @@ body {
   }
 
   .popup-body::after {
-    right: 15.5%;
+    right: 16.6%;
   }
 }
 
@@ -234,7 +239,7 @@ body {
   }
 
   .popup-body::after {
-    right: 14.3%;
+    right: 16.4%;
   }
 }
 
@@ -248,7 +253,7 @@ body {
   }
 
   .popup-body::after {
-    right: 17.5%;
+    right: 19.2%;
   }
 }
 
@@ -259,5 +264,21 @@ body {
 
   .popup-body {
     right: 1.6em;
+  }
+
+  .popup-body::after {
+    right: 22.5%;
+  }
+}
+
+@media (max-width: 465px) {
+  .popup-body::after {
+    right: 20.5%;
+  }
+}
+
+@media (max-width: 390px) {
+  .popup-body::after {
+    right: 17.6%;
   }
 }
