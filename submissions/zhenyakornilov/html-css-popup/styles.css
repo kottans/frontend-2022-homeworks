@@ -1,0 +1,284 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline-style: none;
+  list-style: none;
+}
+
+a,
+a:active,
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #babfd1;
+}
+
+.header {
+  background-color: #ffadc2;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.nav-logo-text,
+.link {
+  color: #607196;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  line-height: 3em;
+  width: 30%;
+}
+
+.nav-item {
+  display: flex;
+}
+
+.link {
+  font-size: 1.1em;
+}
+
+.label-toggle {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-toggle {
+  appearance: none;
+}
+
+.popup-body {
+  row-gap: 10px;
+  position: absolute;
+  right: 6em;
+  top: 4em;
+  width: 19em;
+  height: 26.5em;
+  background-color: #fff;
+  border: 1px solid #ffadc2;
+  box-shadow: 0 0 10px #ffadc2;
+  border-radius: 10px;
+  display: none;
+}
+
+.popup-body::after {
+  content: "";
+  position: fixed;
+  width: 15px;
+  height: 15px;
+  transform: translate(50%) rotate(-45deg);
+  background-color: #fff;
+  border-top: 1px solid #ffadc2;
+  border-right: 1px solid #ffadc2;
+  box-shadow: 1px -1px 0.5px #ffadc2;
+  right: 9.7%;
+  top: 57px;
+  z-index: 0;
+}
+
+.popup-toggle:checked ~ .popup-body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column-reverse;
+}
+
+.popup-content {
+  margin-top: 0.5em;
+  z-index: 1;
+  display: grid;
+  padding: 1em 0.5em 0;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  row-gap: 0.5em;
+  column-gap: 0.5em;
+}
+
+.item-wrap.hidden {
+  display: none;
+}
+
+.popup-more:checked ~ .popup-content .hidden {
+  display: block;
+}
+
+.popup-more:checked ~ .popup-content {
+  overflow: auto;
+}
+
+.popup-more:checked + .check-additional {
+  display: none;
+}
+
+.more-btn {
+  border-radius: 5px;
+  border: 2px solid #ffadc2;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.check-additional {
+  width: 80px;
+  align-self: center;
+  text-align: center;
+}
+
+.item-wrap {
+  width: 4.9em;
+  height: 4.9em;
+}
+
+.popup-pic {
+  display: block;
+  margin: 5px auto 0;
+  width: 2em;
+  height: 2em;
+  object-fit: contain;
+}
+
+.popup-description {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.popup-more {
+  appearance: none;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bell {
+  width: 1.1em;
+}
+
+.link:hover,
+.link:focus {
+  color: #e8e9ed;
+}
+
+.popup-toggle:focus + .label-toggle .popup-img,
+.image-wrapper:focus .bell {
+  background-color: #e8e9ed;
+  border-radius: 5px;
+  color: #e8e9ed;
+}
+
+.item-wrap:hover,
+.item-wrap:focus-within {
+  border: 1px solid #ffadc2;
+  border-radius: 5px;
+  background-color: #e8e9ed;
+}
+
+.more-btn:hover,
+.popup-more:focus + .check-additional .more-btn {
+  background-color: #ffadc2;
+  transition: all 0.2s ease-in-out;
+}
+
+.bell:hover,
+.popup-img:hover {
+  border-radius: 5px;
+  background-color: #e8e9ed;
+}
+
+@media (max-width: 1140px) {
+  .nav-links {
+    width: 50%;
+  }
+
+  .popup-body::after {
+    right: 16.6%;
+  }
+}
+
+@media (min-width: 1680px) {
+  .popup-body::after {
+    right: 10%;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1680px) {
+  .popup-body {
+    right: 4em;
+  }
+}
+
+@media (max-width: 1279px) and (min-width: 1141px) {
+  .popup-body {
+    right: 2.5em;
+  }
+}
+
+@media (max-width: 1010px) and (min-width: 721px) {
+  .popup-body {
+    right: 2em;
+  }
+
+  .popup-body::after {
+    right: 16.4%;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-links {
+    width: 60%;
+  }
+
+  .popup-body {
+    right: 3em;
+  }
+
+  .popup-body::after {
+    right: 19.2%;
+  }
+}
+
+@media (max-width: 540px) {
+  .nav-links {
+    width: 80%;
+  }
+
+  .popup-body {
+    right: 1.6em;
+  }
+
+  .popup-body::after {
+    right: 22.5%;
+  }
+}
+
+@media (max-width: 465px) {
+  .popup-body::after {
+    right: 20.5%;
+  }
+}
+
+@media (max-width: 390px) {
+  .popup-body::after {
+    right: 17.6%;
+  }
+}
