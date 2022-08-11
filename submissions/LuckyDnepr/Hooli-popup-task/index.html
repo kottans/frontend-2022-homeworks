@@ -1,88 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles-menu.css" />
+    <title>HTML & CSS практика: Hooli-style Popup</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles-menu.css">
-    <title>Hooli menu</title>
-</head>
-
-<body>
+  <body>
     <div class="wrapper">
-        <header class="header">
-            <div class="logo">LOGO</div>
-            <nav class="navigation">
-                <a href="#User" id="nav_item_user" class="nav_item_icon"></a>
-                <a href="#Notification" id="nav_item_notify" class="nav_item_icon"></a>
-                <input id="nav_popup_check" type="checkbox">
-                <label for="nav_popup_check" id="nav_popup_label">
-                    <img class="nav_icons" src="./icons/popup-button.png" alt="popup-menu">
-                </label>
-                <a href="#Mail" class="nav_item">Mail</a>
-                <a href="#Images" class="nav_item">Images</a>
-                <div class="nav_popup_menu">
-                    <input id="popup_show_more_check" type="checkbox"">
-                    <label id="menu_show_more_label" for="popup_show_more_check">
-                        <span class="menu_show_more show_more_span">Show more</span>
-                        <span class="menu_show_more show_less_span">Show less</span>
-                    </label>
-                    <div class="nav_popup_menu_links">
-                        <a href="#Applications" class="nav_menu_link">
-                            <img class="menu_icons" src="./icons/apps.png" title="Apps" alt="apps">
-                        </a>
-                        <a href="#Blogs" class="nav_menu_link" id="nav_menu_blogs">
-                            <img class="menu_icons" src="./icons/blogs.png" title="Blogs" alt="Blogs">
-                        </a>
-                        <a href="#Calendar" class="nav_menu_link">
-                            <img class="menu_icons" src="./icons/calendar.png" title="Calendar" alt="Calendar">
-                        </a>
-                        <a href="#Chat" class="nav_menu_link">
-                            <img class="menu_icons" src="./icons/chat.png" title="Chat" alt="Chat">
-                        </a>
-                        <a href="#Classroom" class="nav_menu_link">
-                            <img class="menu_icons" src="./icons/classroom.png" title="Classroom" alt="Classroom">
-                        </a>
-                        <a href="#Contacts" class="nav_menu_link">
-                            <img class="menu_icons" src="./icons/contacts.png" title="Contacts" alt="Contacts">
-                        </a>
-                        <a href="#Documents" class="nav_menu_link">
-                            <img class="menu_icons" src="./icons/documents.png" title="Documents" alt="Documents">
-                        </a>
-                        <a href="#Files" class="nav_menu_link">
-                            <img class="menu_icons" src="./icons/files.png" title="Files" alt="Files">
-                        </a>
-                        <a href="#Maps" class="nav_menu_link">
-                            <img class="menu_icons" src="./icons/maps.png" title="Maps" alt="Maps">
-                        </a>
-                        <a href="#News" class="nav_menu_link show_more_item">
-                            <img class="menu_icons" src="./icons/news.png" title="News" alt="News">
-                        </a>
-                        <a href="#Photos" class="nav_menu_link show_more_item">
-                            <img class="menu_icons" src="./icons/photos.png" title="Photos" alt="Photos">
-                        </a>
-                        <a href="#Promo" class="nav_menu_link show_more_item">
-                            <img class="menu_icons" src="./icons/promo.png" title="Promo" alt="Promo">
-                        </a>
-                        <a href="#Search" class="nav_menu_link show_more_item">
-                            <img class="menu_icons" src="./icons/search.png" title="Search" alt="Search">
-                        </a>
-                        <a href="#Translation" class="nav_menu_link show_more_item">
-                            <img class="menu_icons" src="./icons/tanslation.png" title="Translation" alt="Translation">
-                        </a>
-                        <a href="#Videos" class="nav_menu_link show_more_item">
-                            <img class="menu_icons" src="./icons/videos.png" title="Videos" alt="Videos">
-                        </a>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <main class="main">
-        </main>
-        <footer class="footer">
-        </footer>
+      <header class="header">
+        <div class="logo">LOGO</div>
+        <nav class="navigation">
+          <a href="#Mail" class="nav_item">Mail</a>
+          <a href="#Images" class="nav_item">Images</a>
+          <input id="nav_popup_check" type="checkbox" />
+          <label for="nav_popup_check" id="nav_popup_label">
+            <img
+              class="nav_icons"
+              src="./icons/popup-button.png"
+              alt="popup-menu"
+            />
+          </label>
+          <div class="nav_popup_menu">
+            <div class="nav_popup_menu_links">
+              <a href="#Applications" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/apps.png"
+                  title="Apps"
+                  alt="apps"
+                />
+              </a>
+              <a href="#Blogs" class="nav_menu_link" id="nav_menu_blogs">
+                <img
+                  class="menu_icons"
+                  src="./icons/blogs.png"
+                  title="Blogs"
+                  alt="Blogs"
+                />
+              </a>
+              <a href="#Calendar" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/calendar.png"
+                  title="Calendar"
+                  alt="Calendar"
+                />
+              </a>
+              <a href="#Chat" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/chat.png"
+                  title="Chat"
+                  alt="Chat"
+                />
+              </a>
+              <a href="#Classroom" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/classroom.png"
+                  title="Classroom"
+                  alt="Classroom"
+                />
+              </a>
+              <a href="#Contacts" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/contacts.png"
+                  title="Contacts"
+                  alt="Contacts"
+                />
+              </a>
+              <a href="#Documents" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/documents.png"
+                  title="Documents"
+                  alt="Documents"
+                />
+              </a>
+              <a href="#Files" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/files.png"
+                  title="Files"
+                  alt="Files"
+                />
+              </a>
+              <a href="#Maps" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/maps.png"
+                  title="Maps"
+                  alt="Maps"
+                />
+              </a>
+            </div>
+            <input id="popup_show_more_check" type="checkbox" />
+            <label id="menu_show_more_label" for="popup_show_more_check">
+              <span class="menu_show_more show_more_span">Show more</span>
+              <span class="menu_show_more show_less_span">Show less</span>
+            </label>
+            <div class="nav_popup_menu_links_hidden">
+              <a href="#News" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/news.png"
+                  title="News"
+                  alt="News"
+                />
+              </a>
+              <a href="#Photos" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/photos.png"
+                  title="Photos"
+                  alt="Photos"
+                />
+              </a>
+              <a href="#Promo" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/promo.png"
+                  title="Promo"
+                  alt="Promo"
+                />
+              </a>
+              <a href="#Search" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/search.png"
+                  title="Search"
+                  alt="Search"
+                />
+              </a>
+              <a href="#Translation" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/tanslation.png"
+                  title="Translation"
+                  alt="Translation"
+                />
+              </a>
+              <a href="#Videos" class="nav_menu_link">
+                <img
+                  class="menu_icons"
+                  src="./icons/videos.png"
+                  title="Videos"
+                  alt="Videos"
+                />
+              </a>
+            </div>
+          </div>
+          <a
+            href="#Notification"
+            id="nav_item_notify"
+            class="nav_item_icon"
+          ></a>
+          <a href="#User" id="nav_item_user" class="nav_item_icon"></a>
+        </nav>
+      </header>
+      <main class="main"></main>
+      <footer class="footer"></footer>
     </div>
-</body>
-
+  </body>
 </html>
