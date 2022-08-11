@@ -18,6 +18,15 @@ a {
   color: black;
 }
 
+#logo > img {
+  height: 50px;
+}
+
+#logo:focus {
+  background-color: rgba(250, 128, 114, 0.3);
+  outline: none;
+}
+
 .wrapper {
   display: grid;
   width: 80%;
@@ -43,22 +52,21 @@ a {
   align-items: center;
 }
 
-.navigation {
+.navigation_menu {
   display: flex;
+  padding: 0;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  list-style-type: none;
 }
 
-.logo {
-  display: block;
-}
-
-.nav_item {
+.nav_item_link {
   display: flex;
+  flex-direction: column;
   height: 35px;
-  margin: 0 10px 0 10px;
-  padding: 0 10px 0 10px;
+  margin: 0 5px 0 5px;
+  padding: 0 15px 0 15px;
   border: none;
   justify-content: center;
   align-items: center;
@@ -68,61 +76,23 @@ a {
   transition: background-color 300ms, box-shadow 300ms;
 }
 
-.nav_item:hover {
+.nav_item_link:hover {
   background-color: rgba(250, 128, 114, 0.3);
   border: 0px solid white;
   box-shadow: 3px 3px 3px grey;
 }
 
-.nav_item:focus {
-  text-decoration: none;
-  border: none;
-  background-color: rgba(250, 128, 114, 0.3);
+.nav_item_link:focus {
+  background-color: rgba(250, 128, 114, 0.25);
+  outline: none;
 }
 
 .nav_item_icon {
   height: 35px;
   width: 35px;
-  margin: 0 5px 0 5px;
+  margin: 0;
+  padding: 5px;
   outline: none;
-}
-
-#nav_item_notify {
-  background-image: url(./icons/bell.png);
-  background-size: 25px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#nav_item_user {
-  background-image: url(./icons/user.png);
-  background-size: 25px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.nav_item_icon:hover {
-  background-color: rgba(250, 128, 114, 0.3);
-  border: 0px solid white;
-  box-shadow: 3px 3px 3px grey;
-}
-
-.nav_item_icon:focus {
-  text-decoration: none;
-  border: none;
-  background-color: rgba(250, 128, 114, 0.3);
-}
-
-.nav_icons {
-  height: 2em;
-  margin: 0 10px 0 10px;
-  cursor: pointer;
-}
-
-.nav_icons:hover {
-  background-color: rgba(250, 128, 114, 0.3);
-  border: 0px solid white;
-  box-shadow: 3px 3px 3px grey;
 }
 
 #nav_popup_check {
@@ -133,24 +103,33 @@ a {
   clip: rect(0 0 0 0);
 }
 
-#nav_popup_label {
-  height: 35px;
-  margin: 10px;
-  appearance: none;
+#nav_popup_check:hover + label {
+  background-color: rgba(250, 128, 114, 0.3);
+  border: 0px solid white;
+  box-shadow: 3px 3px 3px grey;
 }
 
-#nav_popup_check:focus ~ #nav_popup_label > .nav_icons {
+#nav_popup_check:focus + label {
   background-color: rgba(250, 128, 114, 0.3);
+}
+
+#nav_popup_check:checked ~ .nav_popup_menu {
+  display: flex;
 }
 
 .nav_popup_menu {
   display: none;
-  width: 20%;
+  width: 16%;
+  max-width: 300px;
   height: 250px;
   position: absolute;
-  right: 8%;
-  top: 70px;
+  right: 5%;
+  top: 80px;
+  padding: 0;
   flex-direction: column;
+  border: 1px solid salmon;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px grey;
   overflow-y: auto;
 }
 
@@ -158,15 +137,9 @@ a {
   width: 0px;
 }
 
-.menu_icons {
-  width: auto;
-  height: 50px;
-  padding: 10px;
-}
-
 .nav_popup_menu_links {
   display: grid;
-  width: 85%;
+  width: 100%;
   height: 205px;
   justify-content: center;
   justify-items: stretch;
@@ -176,11 +149,12 @@ a {
   gap: 8px;
   grid-template-rows: repeat(3, 3.5em);
   grid-template-columns: repeat(3, 1fr);
+  list-style-type: none;
 }
 
 .nav_popup_menu_links_hidden {
   display: none;
-  width: 85%;
+  width: 100%;
   justify-content: center;
   justify-items: stretch;
   padding: 10px;
@@ -189,9 +163,10 @@ a {
   gap: 8px;
   grid-template-rows: repeat(2, 3.5em);
   grid-template-columns: repeat(3, 1fr);
+  list-style-type: none;
 }
 
-.nav_menu_link {
+.nav_popup_menu_link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -204,18 +179,24 @@ a {
   transition: background-color 300ms, box-shadow 300ms;
 }
 
-.nav_menu_link:focus {
+.nav_popup_menu_link:focus {
   background-color: rgba(250, 128, 114, 0.25);
 }
 
-.nav_menu_link:hover {
+.nav_popup_menu_link:hover {
   background-color: rgba(250, 128, 114, 0.3);
   box-shadow: 3px 3px 3px grey;
 }
 
-.menu_show_more {
+.nav_popup_menu_icons {
+  width: auto;
+  height: 50px;
+  padding: 10px;
+}
+
+.popup_menu_show_more {
   display: block;
-  width: 88%;
+  width: 100%;
   margin: auto;
   text-align: center;
   border: 1px solid rgba(250, 128, 114, 0.8);
@@ -223,12 +204,12 @@ a {
   cursor: pointer;
 }
 
-#menu_show_more_label {
+#popup_menu_show_more_label {
   margin-left: 20px;
   margin-right: 20px;
 }
 
-#popup_show_more_check {
+#popup_menu_show_more_check {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -236,12 +217,12 @@ a {
   clip: rect(0 0 0 0);
 }
 
-#popup_show_more_check:hover + label > .menu_show_more {
+#popup_menu_show_more_check:hover + label > .popup_menu_show_more {
   box-shadow: 5px 5px 5px grey;
   background-color: rgba(250, 128, 114, 0.25);
 }
 
-#popup_show_more_check:focus + label > .menu_show_more {
+#popup_menu_show_more_check:focus + label > .popup_menu_show_more {
   background-color: rgba(250, 128, 114, 0.25);
 }
 
@@ -250,55 +231,58 @@ a {
   display: none;
 }
 
-#popup_show_more_check:checked ~ .nav_popup_menu_links_hidden {
+#popup_menu_show_more_check:checked ~ .nav_popup_menu_links_hidden {
   display: grid;
 }
 
-#popup_show_more_check:checked + label > .show_more_span {
+#popup_menu_show_more_check:checked + label > .show_more_span {
   display: none;
 }
 
-#popup_show_more_check:checked + label > .show_less_span {
+#popup_menu_show_more_check:checked + label > .show_less_span {
   display: block;
 }
 /*Change "Show more" to "Show less" end*/
 
-#nav_popup_check:checked ~ .nav_popup_menu {
-  display: flex;
+@media only screen and (min-width: 1201px) {
+  .nav_popup_menu {
+    width: 50%;
+    right: 10%;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
   .nav_popup_menu {
     width: 40%;
+    right: 15%;
   }
 }
 
 @media only screen and (max-width: 1024px) {
   .nav_popup_menu {
     width: 50%;
-  }
-}
-
-@media only screen and (max-width: 720px) {
-  .nav_popup_menu {
-    width: 50%;
+    right: 15%;
   }
 }
 
 @media only screen and (max-width: 667px) {
   .nav_popup_menu {
     width: 60%;
-    right: 0;
+    right: 20px;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .nav_popup_menu {
     width: 100%;
-    right: 0;
+    right: 20px;
   }
 
-  .logo {
+  #logo {
     display: none;
+  }
+
+  .nav_item_link {
+    padding: 0 10px 0 10px;
   }
 }
