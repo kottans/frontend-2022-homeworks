@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+a {
+    text-decoration: none;
+    color: #757575;
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+}
+
+input {
+    opacity: 0;
+}
+
+input:focus-visible {
+    opacity: 100%;
+    border: 2px solid black;
+    z-index: 10;
+    height: 20px;
+}
+
+img {
+    display: block;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav>li {
+    margin: 5px 10px;
+    padding: 5px;
+    max-height: 20px;
+}
+
+.nav>li:hover,
+.nav>li:focus {
+    border: 1px solid #8bb6d6;
+    padding: 4px;
+}
+
+.popup_item:hover,
+.popup_item:focus {
+    border: 1px solid #8bb6d6;
+    padding: 9px;
+}
+
+.nav-img {
+    max-height: 20px;
+
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    z-index: 99;
+    overflow: auto;
+    max-width: 600px;
+    min-width: 300px;
+    box-shadow: 0px 0px 20px 1px rgb(0 0 255 / 20%);
+    padding-top: 5px;
+
+}
+
+.popup>ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.popup_item {
+    box-sizing: border-box;
+    padding: 10px;
+    max-width: 30%;
+}
+
+.popup_item>a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-align: center;
+
+}
+
+.popup_button {
+    position: relative;
+    min-width: 20px;
+}
+
+.popup_button>label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.popup_img {
+    max-width: 100%;
+}
+
+#menu:checked~.popup {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+li.popup_more_items {
+    display: none;
+}
+
+#more_less {
+    position: absolute;
+    width: 90%;
+    padding: 5px;
+    margin: 10px;
+}
+
+.popup_more_button {
+    position: relative;
+    display: block;
+    max-width: 500px;
+    padding: 5px;
+    margin: 10px;
+    height: 30px;
+    background-color: #d8eaf8;
+    color: #757575;
+    text-align: center;
+    cursor: pointer;
+}
+
+.popup_more_button:hover {
+    background-color: #aaa5a5;
+    color: #605959;
+}
+
+#more_less:checked~ul>li.popup_more_items {
+    display: block;
+}
+
+#more {
+    display: block;
+}
+
+#less {
+    display: none;
+}
+
+#more_less:checked~label #more {
+    display: none;
+}
+
+#more_less:checked~label #less {
+    display: block;
+}
+
+@media (max-width:400px) {
+    .popup {
+        position: absolute;
+        right: -50px;
+        max-width: 300px;
+        min-width: 250px;
+    }
+}
