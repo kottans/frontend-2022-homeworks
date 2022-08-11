@@ -33,7 +33,6 @@ img {
 }
 a {
   display: block;
-
   color: #000000;
   text-decoration: none;
   padding: 0 15px;
@@ -42,12 +41,10 @@ a {
 li {
   display: inline-block;
 }
-
 span {
   display: block;
   text-align: center;
 }
-
 .popup__input,
 .more__input {
   position: absolute;
@@ -61,16 +58,13 @@ span {
 }
 .popup {
   display: none;
-
   position: absolute;
   left: 0;
-  top: calc(100% + 5px);
   width: 310px;
-  height: 320px;
+  height: 306px;
   overflow: auto;
   border-radius: 6px;
   border: 2px solid #000000;
-  padding: 10px;
   background-color: rgb(224, 208, 158);
 }
 .popup__list {
@@ -96,18 +90,19 @@ span.more__btn {
 .popup__more {
   width: 100%;
 }
-
 .more__label {
   display: flex;
+  position: fixed;
   justify-content: center;
   padding: 16px;
-  transition: all 0.3s;
+  width: 306px;
+  top: 322px;
+  background-color: rgb(224, 208, 158);
 }
 
 .more__list {
   display: none;
   justify-content: center;
-  align-content: center;
 }
 .menu__item {
   margin: 0px 10px;
@@ -157,31 +152,23 @@ span.more__btn {
 .more__input:checked ~ .more__list {
   display: flex;
   flex-wrap: wrap;
+  margin: 0px 0px 30px 0px;
+}
+.more__input:checked ~ .more__label {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  width: 290px;
 }
 
-.more__input:checked ~ .more__label {
-  transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-}
-.more__input:checked ~ .more__label {
-  transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-}
 .more__label:hover span.more__btn {
   border-width: 0 4px 4px 0;
-  transition: all 0.3s;
 }
-.more__input:hover ~ .more__label {
-  background-color: rgba(255, 255, 255, 0.403);
-}
+
 .more__input:focus ~ .more__label {
-  background-color: rgba(255, 255, 255, 0.403);
-  border-width: 0 4px 4px 0;
-  transition: all 0.3s;
+  background-color: rgb(234, 222, 180);
 }
 .main {
   grid-area: main;
-
   margin: 0 auto;
   width: 100%;
   max-width: 1200px;
@@ -189,13 +176,14 @@ span.more__btn {
 }
 .footer {
   grid-area: footer;
-
   border: 2px solid #140b22;
   margin: 0 auto;
   border-radius: 10px 10px 0px 0px;
-
   width: 100%;
   max-width: 1200px;
   min-width: 355px;
   background-color: rgb(224, 208, 158);
 }
+
+
+
