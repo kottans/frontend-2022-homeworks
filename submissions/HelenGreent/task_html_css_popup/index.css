@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;700&display=swap");
+
+:root {
+  --main-color: #d3d3d3;
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --box-shadow: rgba(35, 35, 35, 0.2) 0px 2px 8px 0px;
+  --border-focus: 1px solid rgb(8, 74, 179);
+  --border-hover: 1px solid rgb(138, 146, 148);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+  background-color: var(--main-color);
+}
+
+.header {
+  padding: 0.6rem 0;
+  background-color: var(--bg-color);
+  box-shadow: var(--box-shadow);
+  position: relative;
+}
+
+.main__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1rem;
+}
+
+.main__nav-item {
+  padding: 0rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.main__nav-item > img {
+  height: 1rem;
+  padding-right: .2rem;
+}
+
+.nav {
+  padding: 0rem 1rem;
+}
+
+.nav__list {
+  list-style: none;
+}
+
+.nav__link {
+  text-decoration: none;
+  outline: none;
+}
+
+.popup {
+  position: relative;
+}
+
+.popup__toggler {
+  padding: .25rem;
+  display: flex;
+  align-items: center;
+}
+
+.popup__control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.popup__control:checked ~ .popup__content {
+  display: block;
+}
+
+.popup__content {
+  display: none;
+  position: absolute;
+  top: 3.5rem;
+  right: -5.5rem;
+  min-width: 300px;
+  max-height: 500px;
+  padding: .6rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 1%;
+  background-color: var(--bg-color);
+  box-shadow: var(--box-shadow);
+}
+
+.popup__content::before {
+  content: "";
+  position: fixed;
+  top: 2.25rem;
+  right: 10rem;
+  transform: translateX(-50%);
+  border: 15px solid;
+  border-color: transparent transparent var(--bg-color) transparent;
+  z-index: 1;
+}
+
+.popup__list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.popup__list:nth-child(-n+3){
+  margin-top: .5rem;
+}
+
+.popup__list-item {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  width: 30%;
+  height: 7rem;
+  text-align: center;
+}
+
+.popup__link {
+  padding: .9rem .2rem .9rem;
+  text-decoration: none;
+  outline: none;
+  color: inherit;
+  border: 1px solid transparent;
+}
+
+.popup__link-title {
+  display: block;
+  padding-top: .6rem;
+  font-size: .9rem;
+  text-align: center;
+}
+
+.popup__link-icon {
+  max-width: 3rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+.add-popup {
+  position: relative;
+}
+
+.add-popup__toggler {
+  width: 100%;
+  text-align: center;
+  padding: .6rem;
+}
+
+.add-popup__title {
+  display: block;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+}
+
+.add-popup__control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.add-popup__content {
+  display: none;
+  overflow-y: hidden;
+}
+
+.add-popup__control:checked ~ .add-popup__content {
+  display: block;
+}
+
+.add-popup__control:checked ~ .add-popup__toggler,
+.add-popup__control:checked {
+  display: none;
+}
+
+.main__nav-item:focus,
+.nav__link:focus,
+.popup__control:focus,
+.popup__link:focus,
+.add-popup__control:focus {
+  border: var(--border-focus);
+  border-radius: 3%;
+}
+
+.nav__link:hover,
+.popup__link:hover {
+  border: var(--border-hover);
+  border-radius: 3%;
+}
