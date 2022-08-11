@@ -7,10 +7,6 @@
   background-color: #dedef5;
 }
 
-.popup__icon__head:hover {
-  background-color: #dedef5;
-}
-
 .header__list:focus {
   background-color: #ddc0c0;
 }
@@ -155,8 +151,10 @@
 }
 
 .more__popup__checkbox__label {
-  width: 60px;
-  padding: 15px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  padding: 15px 0;
   margin: 0 auto;
   text-align: center;
   cursor: pointer;
