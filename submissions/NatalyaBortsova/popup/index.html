@@ -5,39 +5,41 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Popup</title>
   <link rel="stylesheet" href="css/style.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
   <header class="header">
     <div class="container">
       <nav class="header__menu menu">
         <ul class="menu__list">
           <li class="menu__item">
-            <a class="menu__link animation" href="#" tabindex="0">
+            <a class="menu__link animation" href="#" tabindex="1">
               Mail
             </a>
           </li>
           <li class="menu__item">
-            <a class="menu__link animation" href="#" tabindex="0">
+            <a class="menu__link animation" href="#" tabindex="2">
               Images
             </a>
           </li>
           <li class="menu__item">
             <input id="checkbox" class="menu__item-checkbox" type="checkbox">
-            <label for="checkbox" class="menu__item-label" tabindex="0">              
-                <img src="images/icons/popup-button.png" alt="Popup button" width="30" height="30" />
+            <span class="menu__item-check" tabindex="3"></span> 
+            <label for="checkbox" class="menu__item-label" tabindex="-1">
+              <img src="images/icons/popup-button.png" alt="menu's open button" width="30" height="30"/>
             </label>
             <div class="menu__popup popup">
               <div class="popup__content">
                 <ul class="popup__list">
                   <li class="popup__item">
                     <a href="#" class="popup__link animation animation_icon">
-                      <img src="images/icons/apps.png" alt="app" width="50" height="50" /><span
-                        class="popup__name">Apps</span>
+                      <img src="images/icons/apps.png" alt="app" width="50" height="50" />
+                      <span class="popup__name">
+                        Apps
+                      </span>
                     </a>
                   </li>
                   <li class="popup__item">
@@ -109,7 +111,8 @@
                 </ul>
                 <div class="popup__block">
                   <input class="menu__item-checkbox menu__item-checkbox_more" id="more" type="checkbox">
-                  <label class="menu__item-label menu__item-label_more" for="more">More</label>
+                  <span class="menu__item-check menu__item-check_more" tabindex="0"></span>
+                  <label class="menu__item-label menu__item-label_more" for="more" tabindex="0">More</label>
                   <ul class="popup__list popup__list_more">
                     <li class="popup__item">
                       <a href="#" class="popup__link animation animation_icon">
@@ -123,14 +126,14 @@
                         <span class="popup__name">Promo</span>
                       </a>
                     </li>
-                    <li class="popup__link animation animation_icon">
-                      <a href="#" class="popup__icon">
+                    <li class="popup__item">
+                      <a href="#" class="popup__link animation animation_icon">
                         <img src="images/icons/chat.png" alt="Translation" width="50" height="50" />
                         <span class="popup__name">Translation</span>
                       </a>
                     </li>
-                    <li class="popup__link animation animation_icon">
-                      <a href="#" class="popup__icon">
+                    <li class="popup__item">
+                      <a href="#" class="popup__link animation animation_icon">
                         <img src="images/icons/videos.png" alt="Videos" width="50" height="50" />
                         <span class="popup__name">Videos</span>
                       </a>
@@ -146,10 +149,9 @@
                         <img src="images/icons/search.png" alt="Search" width="50" height="50" />
                         <span class="popup__name">Search</span>
                       </a>
-
                     </li>
                   </ul>
-                  <a class="popup__bottom-link">
+                  <a class="popup__bottom-link animation animation_icon" tabindex="0">
                     Even more from Kottans
                   </a>
                 </div>
@@ -170,8 +172,6 @@
       </nav>
     </div>
   </header>
-
-  <script src="js/main.min.js"></script>
 </body>
 
 </html>
