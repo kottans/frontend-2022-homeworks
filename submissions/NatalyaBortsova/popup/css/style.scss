@@ -108,12 +108,12 @@ body {
                 display: block;
             }
 
-            &:checked~.menu__item-check {
+            &:focus+.menu__item-label {
                 border: 1px solid #56b0ce;
                 border-radius: 3px;
             }
 
-            &:focus+.menu__item-check {
+            &:focus+.menu__item-label_more {
                 border: 1px solid #56b0ce;
                 border-radius: 3px;
             }
@@ -135,23 +135,25 @@ body {
                 display: grid;
             }
 
-            &:checked~.menu__item-label_more {
-                font-size: 0;
-                padding: 1px;
-            }
-
             &:checked~.popup__bottom-link {
                 display: block;
             }
 
-            &:checked~.menu__item-check_more {
+            &:checked~.menu__item-label_more {
                 border: 1px solid transparent;
-                display: none;
+                font-size: 0;
+                padding: 1px 0;
+                opacity: 0.5;
             }
         }
 
         &-label {
             position: relative;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: block;
+            border: 1px solid transparent;
 
             &:hover {
                 img {
@@ -246,7 +248,13 @@ body {
         width: 100%;
         padding: 15px;
         background-color: rgb(142, 147, 149, 0.1);
+        border: 1px solid transparent;
         text-align: center;
+        transition: border 0.3s ease 0s;
+
+        &:focus {
+            border: 1px solid #56b0ce;
+        }
     }
 }
 
