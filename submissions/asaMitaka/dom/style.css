@@ -76,7 +76,7 @@ header {
 
 .mainDescr {
     border: 1px solid black;
-    max-width: 300px;
+    width: 300px;
     word-break: break-all;
     margin-right: 40px;
 }
@@ -87,6 +87,7 @@ header {
 
 .mainDescrOl {
     margin: 0 25px;
+    padding-left: 20px;
 }
 
 .mainDescrLi {
@@ -159,13 +160,12 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 0 80px;
         align-items: center;
     }
 
     .mainDescr {
         border: 1px solid black;
-        max-width: 300px;
+        width: 75vw;
         word-break: break-all;
         margin: 20px 0;
         padding: 10px;
@@ -177,4 +177,24 @@ header {
     }
 }
 
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .content {
+        height: auto;
+    }
 
+    .mainBlock {
+        width: 100%;
+    }
+
+    .mainContent {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mainDescr {
+        margin: 10px 5px;
+        padding: 10px;
+    }
+}
