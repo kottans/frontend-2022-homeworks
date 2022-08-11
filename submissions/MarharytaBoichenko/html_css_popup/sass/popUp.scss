@@ -98,7 +98,7 @@ body {
   top: 70px;
   display: block;
   width: 330px;
-  height: 420px;
+  height: 370px;
   padding: 25px;
   overflow-y: auto;
   background-color: $bcgColor;
@@ -214,8 +214,8 @@ body {
   color: $primaryColor;
   font-weight: 500;
   padding: 5px 20px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   justify-self: center;
   border: none;
   border-radius: 5px;
@@ -248,7 +248,7 @@ body {
 
   .account-block__checkbox:checked ~ .menu {
     width: 450px;
-    height: 450px;
+    height: 400px;
   }
 
   .menu__link {
