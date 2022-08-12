@@ -66,12 +66,12 @@ body {
   appearance: none;
 }
 
-.popup-input:focus-visible ~ label > img {
+.popup-input:focus-visible ~ .popup-btn > .popup-icon {
   outline: 2px solid #7b68ee;
   border-radius: 10px;
 }
 
-.more-input:focus + label {
+.more-input:focus + .more-btn {
   outline: 2px solid #7b68ee;
   border-radius: 10px;
 }
