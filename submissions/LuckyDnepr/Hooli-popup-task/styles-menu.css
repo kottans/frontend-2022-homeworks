@@ -143,7 +143,7 @@ a {
   height: 205px;
   justify-content: center;
   justify-items: stretch;
-  padding: 10px;
+  padding: 15px;
   margin: 0;
   align-self: center;
   gap: 8px;
@@ -157,7 +157,7 @@ a {
   width: 100%;
   justify-content: center;
   justify-items: stretch;
-  padding: 10px;
+  padding: 0 15px 15px 15px;
   margin: 0;
   align-self: center;
   gap: 8px;
@@ -227,20 +227,12 @@ a {
 }
 
 /*Change "Show more" to "Show less" start*/
-.show_less_span {
-  display: none;
-}
-
 #popup_menu_show_more_check:checked ~ .nav_popup_menu_links_hidden {
   display: grid;
 }
 
 #popup_menu_show_more_check:checked + label > .show_more_span {
   display: none;
-}
-
-#popup_menu_show_more_check:checked + label > .show_less_span {
-  display: block;
 }
 /*Change "Show more" to "Show less" end*/
 
