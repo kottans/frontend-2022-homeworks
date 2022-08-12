@@ -104,6 +104,14 @@ function showSeasonsGot() {
     const btnBurger = document.querySelector('.burger');
     const body = document.body;
 
+    const styleList = {
+        itemMenu: '.side-menu__btn',
+        activeItemMenu: 'side-menu__btn_active',
+        activeListBtns: 'side-menu_active',
+        activeBtnBurger: 'burger_active',
+        lock: '_lock'
+    }
+
     const renderBtns = (arr, list) => {
         arr.forEach((item, i) => {
             list.insertAdjacentHTML('beforeend', `
@@ -125,12 +133,12 @@ function showSeasonsGot() {
         `;
     };
 
-    const toggleActiveClass = (i = 0, itemSelector = '.side-menu__btn', activeClassSelector = 'side-menu__btn_active') => {
-        const btns = document.querySelectorAll(itemSelector);
+    const toggleActiveClass = (i = 0) => {
+        const btns = document.querySelectorAll(styleList.itemMenu);
         btns.forEach(item => {
-            item.classList.remove(activeClassSelector);
+            item.classList.remove(styleList.itemMenu);
         });
-        btns[i].classList.add(activeClassSelector);
+        btns[i].classList.add(styleList.itemMenu);
     };
 
     const changeContent = (e) => {
@@ -143,17 +151,17 @@ function showSeasonsGot() {
 
     const toggleBurger = () => {
         btnBurger.addEventListener('click', () => {
-        body.classList.toggle('_lock');
-        btnBurger.classList.toggle('burger_active');
-        listBtns.classList.toggle('side-menu_active');
+        body.classList.toggle(styleList.lock);
+        btnBurger.classList.toggle(styleList.activeBtnBurger);
+        listBtns.classList.toggle(styleList.activeListBtns);
         });
     }
 
     const closeBurger = () => {
-        if(listBtns.classList.contains('side-menu_active')) {
-            body.classList.remove('_lock');
-            btnBurger.classList.remove('burger_active');
-            listBtns.classList.remove('side-menu_active');
+        if(listBtns.classList.contains(styleList.activeListBtns)) {
+            body.classList.remove(styleList.lock);
+            btnBurger.classList.remove(styleList.activeBtnBurger);
+            listBtns.classList.remove(styleList.activeListBtns);
         }
     }
 
