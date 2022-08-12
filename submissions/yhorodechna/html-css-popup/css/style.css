@@ -82,19 +82,23 @@
 }
 .popup__more {
   width: 100%;
+  position: relative;
 }
 .more__label {
-  display: flex;
-  position: fixed;
-  justify-content: center;
+  position: absolute;
+  text-align: center;
   padding: 16px;
-  width: 306px;
-  top: 322px;
+  width: 100%;
+  top: 12px;
   background-color: rgb(224, 208, 158);
+  border-radius: 0px 0px 6px 6px;
 }
 .more__list {
   display: none;
   justify-content: center;
+}
+.menu__list {
+  display: flex;
 }
 .menu__item {
   margin: 0px 10px;
@@ -147,7 +151,7 @@
 .more__input:checked ~ .more__label {
   transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
-  width: 290px;
+  top: 170px;
 }
 .more__label:hover .more__btn {
   border-width: 0 4px 4px 0;
@@ -155,5 +159,6 @@
 .more__input:focus ~ .more__label {
   background-color: rgb(234, 222, 180);
 }
+
 
 
