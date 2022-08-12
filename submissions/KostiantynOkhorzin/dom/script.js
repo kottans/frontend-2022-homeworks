@@ -105,13 +105,13 @@ function showSeasonsGot() {
     const body = document.body;
 
     const renderBtns = (arr, list) => {
-        for (let i = 0; i < arr.length; i++) {
+        arr.forEach((item, i) => {
             list.insertAdjacentHTML('beforeend', `
                 <li class="side-menu__item">
-                    <button class="side-menu__btn" data-season='${i}'>Season ${i+1}</button>
+                    <button class="side-menu__btn" data-season='${i}'>Season ${++i}</button>
                 </li>
             `);
-        }
+        })
     };
 
     const renderContent = (i = 0, arr = data) => {
