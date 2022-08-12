@@ -1,6 +1,6 @@
 "use strict";
 
-document.addEventListener('DOMContentLoaded', () => showSeasonsGot(data)); 
+document.addEventListener('DOMContentLoaded', showSeasonsGot); 
 
 const data = [
     {
@@ -97,7 +97,7 @@ const data = [
     },
 ];
 
-function showSeasonsGot(data) {
+function showSeasonsGot() {
 
     const listBtns = document.querySelector('.side-menu');
     const mainContent = document.querySelector('.content');
