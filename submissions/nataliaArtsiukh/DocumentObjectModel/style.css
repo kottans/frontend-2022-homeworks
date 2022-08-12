@@ -7,7 +7,7 @@ body {
 .all-content {
     display: flex;
 }
-.burger {
+.burger-btn {
     display: none;
 }
 .nav-list {
@@ -23,11 +23,12 @@ body {
 }
 .nav-item {
     list-style: none;
-    font-family: 'Alumni Sans Inline One';
+    font-family: 'Alumni Sans Inline One', sans-serif;
     font-size: 2em;
     line-height: 1.3em;
     color: rgb(170, 152, 130);
     text-shadow: 0 0 20px rgb(45, 157, 181);
+    cursor: pointer;
 }
 .first-content {
     display: flex;
@@ -40,15 +41,16 @@ body {
 .content-img {
     display: block;
     max-width: 319px;
+    height: auto;
 }
 .content-title {
-    font-family: 'Cinzel Decorative';
+    font-family: 'Cinzel Decorative', serif;
     color: rgb(170, 152, 130);
     margin: 0;
     text-align: center;
 }
 .content-text {
-    font-family: 'Cinzel Decorative';
+    font-family: 'Cinzel Decorative', serif;
     color: rgb(170, 152, 130);
     padding-right: 10px;
     text-align: center;
@@ -56,18 +58,23 @@ body {
 }
 .azathoth {
     width: 80%;
+    height: auto;
 }
 .yog-sothoth {
-    width: 40%; 
+    width: 40%;
+    height: auto; 
 }
 .shub-niggurath {
     width: 50%;
+    height: auto;
 }
 .nyarlathotep {
     width: 33%;
+    height: auto;
 }
 .cthulhu {
     width: 65%;
+    height: auto;
 }
 
 @media (max-width: 1024px) {
@@ -76,11 +83,20 @@ body {
     }
 }
 @media (max-width: 768px) {
-    .burger {
+    .burger-btn {
         display: block;
         position: absolute;
-        transform: rotate(90deg);
         width: 20%;
+        background: none;
+        border: none;
+        padding: 0;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+    .burger {
+        display: block;
+        transform: rotate(90deg);
+        max-width: 100%;
     }
     .nav {
         position: absolute;
