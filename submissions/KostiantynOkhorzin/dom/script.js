@@ -3,7 +3,8 @@
 document.addEventListener('DOMContentLoaded', showSeasonsGot); 
 
 const data = [
-    {
+    {   
+        id: 1,
         title: 'Game of Thrones (season 1)',
         descr: `The first season of the fantasy drama television series Game of Thrones premiered on HBO on April 17, 2011, in the U.S. and concluded on June 19, 2011. It consists of ten episodes, each of approximately 55 minutes. The series is based on A Game of Thrones, the first novel in the A Song of Ice and Fire series by George R. R. Martin, adapted for television by David Benioff and D. B. Weiss.
 
@@ -19,6 +20,7 @@ const data = [
         img: 'img/season1.jpg'
     },
     {
+        id: 2,
         title: 'Game of Thrones (season 2)',
         descr: `The second season of the fantasy drama television series Game of Thrones premiered in the United States on HBO on April 1, 2012, and concluded on June 3, 2012. It consists of 10 episodes, each running approximately 50–60 minutes. The season mostly covers the events of A Clash of Kings, the second novel of the A Song of Ice and Fire series by George R. R. Martin, adapted for television by David Benioff and D. B. Weiss. HBO ordered the second season on April 19, 2011, which began filming in July 2011, primarily in Ireland, Northern Ireland, Croatia and Iceland.
 
@@ -30,6 +32,7 @@ const data = [
         img: 'img/season2.jpg'
     },
     {
+        id: 3,
         title: 'Game of Thrones (season 3)',
         descr: `The third season of the fantasy drama television series Game of Thrones premiered in the United States on HBO on March 31, 2013, and concluded on June 9, 2013. It was broadcast on Sunday at 9:00 pm in the United States, consisting of 10 episodes, each running approximately 50–60 minutes.[1] The season is based roughly on the first half of A Storm of Swords (the third of the A Song of Ice and Fire novels by George R. R. Martin, of which the series is an adaptation).[2] The series is adapted for television by David Benioff and D. B. Weiss. HBO renewed the series for a third season on April 10, 2012, nine days after the second season's premiere. Production began in July 2012.[3] The show was filmed primarily in Ireland, Northern Ireland, Croatia, Iceland and Morocco.
 
@@ -40,7 +43,8 @@ const data = [
         Critics praised the show's production values and cast. Viewership yet again rose compared to the previous season. It won 2 of the 16 Emmy Awards for which it was nominated; nominations included Outstanding Supporting Actor in a Drama Series (Dinklage), Outstanding Supporting Actress in a Drama Series (Clarke) and Outstanding Drama Series. It also won the Critics' Choice Television Award for Best Drama Series.`,
         img: 'img/season3.jpg'
     },
-    {
+    {   
+        id: 4,
         title: 'Game of Thrones (season 4)',
         descr: `The fourth season of the fantasy drama television series Game of Thrones premiered in the United States on HBO on April 6, 2014, and concluded on June 15, 2014. It was broadcast on Sunday at 9:00 pm in the United States, consisting of 10 episodes, each running approximately 50–60 minutes. The season is adapted primarily from the second half of A Storm of Swords, along with elements of A Feast for Crows and A Dance with Dragons, all novels from the A Song of Ice and Fire series by George R. R. Martin.[2] The series is adapted for television by David Benioff and D. B. Weiss. HBO ordered the fourth season on April 2, 2013, which began filming in July 2013. The season was filmed primarily in Ireland, Northern Ireland and Croatia.
 
@@ -52,6 +56,7 @@ const data = [
         img: 'img/season4.jpeg'
     },
     {
+        id: 5,
         title: 'Game of Thrones (season 5)',
         descr: `The fifth season of the fantasy drama television series Game of Thrones premiered on HBO on April 12, and concluded on June 14, 2015. It was broadcast on Sunday at 9:00 pm in the United States, consisting of 10 episodes, each running approximately 50–60 minutes. The season primarily adapts the storylines from A Feast for Crows and A Dance with Dragons, the fourth and fifth novels in George R. R. Martin's A Song of Ice and Fire series, though it also uses the remaining elements from the third novel, A Storm of Swords, as well as the upcoming sixth novel The Winds of Winter.It also contains original content not found in Martin's novels. The series is adapted for television by David Benioff and D. B. Weiss.
 
@@ -65,6 +70,7 @@ const data = [
         img: 'img/season5.jpeg'
     },
     {
+        id: 6,
         title: 'Game of Thrones (season 6)',
         descr: `The sixth season of the fantasy drama television series Game of Thrones premiered on HBO on April 24, 2016, and concluded on June 26. It consists of 10 episodes, each of approximately 50–60 minutes long. Much of the season's storyline is derived from content not yet published in George R. R. Martin's A Song of Ice and Fire series, although a significant amount of material from A Feast for Crows, A Dance with Dragons and the upcoming sixth novel The Winds of Winter, which Martin outlined to showrunners David Benioff and D.B. Weiss, was used. The series was adapted for television by Benioff and Weiss. HBO had ordered the season on April 8, 2014, together with the fifth season, which began filming in July 2015[2][3] primarily in Northern Ireland, Spain, Croatia, Iceland and Canada. The season cost over $100 million to produce.
 
@@ -76,6 +82,7 @@ const data = [
         img: 'img/season6.jpg'
     },
     {
+        id: 7,
         title: 'Game of Thrones (season 7)',
         descr: `The seventh and penultimate season of the fantasy drama television series Game of Thrones premiered on HBO on July 16, 2017, and concluded on August 27, 2017. Unlike previous seasons, which consisted of ten episodes each, the seventh season consisted of only seven episodes. Like the previous season, it largely consisted of original content not found in George R. R. Martin's A Song of Ice and Fire series, while also incorporating material that Martin revealed to showrunners about the upcoming novels in the series. The series was adapted for television by David Benioff and D. B. Weiss.
 
@@ -85,6 +92,7 @@ const data = [
         img: 'img/season7.jpg'
     },
     {
+        id: 8,
         title: 'Game of Thrones (season 8)',
         descr: `The eighth and final season of the fantasy drama television series Game of Thrones, produced by HBO, premiered on April 14, 2019, and concluded on May 19, 2019. Unlike the first six seasons, which consisted of ten episodes each, and the seventh season, which consisted of seven episodes, the eighth season consists of only six episodes.
 
@@ -113,17 +121,18 @@ function showSeasonsGot() {
     }
 
     const renderBtns = (arr, list) => {
-        arr.forEach((item, i) => {
+        arr.forEach((item) => {
             list.insertAdjacentHTML('beforeend', `
                 <li class="side-menu__item">
-                    <button class="side-menu__btn" data-season='${i}'>Season ${++i}</button>
+                    <button class="side-menu__btn" data-season='${item.id}'>Season ${item.id}</button>
                 </li>
             `);
         })
     };
-
-    const renderContent = (i = 0, arr = data) => {
-        const {title, descr, img} = arr[i];
+    
+    const renderContent = (i = 1, arr = data) => {
+        const selectedSeason = arr.filter((item) => item.id == i);
+        const {title, descr, img} = selectedSeason[0];
         mainContent.innerHTML = `
             <h1 class="content__title">${title}</h1>
             <div class="content__descr">${descr}</div>
@@ -133,12 +142,15 @@ function showSeasonsGot() {
         `;
     };
 
-    const toggleActiveClass = (i = 0) => {
+    const toggleActiveClass = (i = 1) => {
         const btns = document.querySelectorAll(styleList.itemMenu);
-        btns.forEach(item => {
-            item.classList.remove(styleList.itemMenu);
+        btns.forEach(btn => {
+            btn.classList.remove(styleList.activeItemMenu);
+            if(btn.dataset.season == i) {
+                btn.classList.add(styleList.activeItemMenu);
+            }
         });
-        btns[i].classList.add(styleList.itemMenu);
+        
     };
 
     const changeContent = (e) => {
@@ -150,11 +162,9 @@ function showSeasonsGot() {
     };
 
     const toggleBurger = () => {
-        btnBurger.addEventListener('click', () => {
         body.classList.toggle(styleList.lock);
         btnBurger.classList.toggle(styleList.activeBtnBurger);
         listBtns.classList.toggle(styleList.activeListBtns);
-        });
     }
 
     const closeBurger = () => {
@@ -176,7 +186,7 @@ function showSeasonsGot() {
 
     listBtns.addEventListener('click', changeContent);
 
-    toggleBurger()
+    btnBurger.addEventListener('click', toggleBurger);
 }
 
 
