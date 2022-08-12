@@ -9,7 +9,7 @@ $responsive-typo: clamp(1rem, 3vw, 2rem);
 }
 
 @mixin transition($value) {
-    transition: $value 0.3s ease-in-out;
+    transition: $value 0.2s ease-in-out;
 }
 
 @mixin flex {

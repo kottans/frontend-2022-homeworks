@@ -29,7 +29,7 @@ body {
 }   
 
 .nav {
- &__items {
+    &__items {
         display: flex;
         align-items: center;
         gap: clamp(1rem, 3vw, 2.7rem);
@@ -56,6 +56,7 @@ body {
         background-size: 100% 2px;
         cursor: pointer;
     }
+    
     &:focus { 
         outline: $bg-color auto 1px;
     }

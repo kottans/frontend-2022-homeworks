@@ -7,8 +7,8 @@
 
     &__toggle:checked ~ &__menu,
     &__toggle:checked ~ &__label::before {
-        opacity: 1;
-        @include transition(opacity);
+        transform: scaleX(1);
+        @include transition(transform);
     } 
     
     &__toggle-more:checked ~ &__more {
@@ -35,7 +35,7 @@
     
     &__label {
         position: relative;
-        
+
         &::before {
             content: ' ';
             position: absolute;
@@ -46,8 +46,8 @@
             border-left: 10px solid transparent;
             border-right: 10px solid transparent;
             border-bottom: 10px solid $bg-color-cards;
-            opacity: 0;
-            @include transition(opacity);
+            transform: scaleX(0);
+            @include transition(transform);
         }
     }
 
@@ -56,9 +56,6 @@
         cursor: pointer;
     }
 
-
-    
-    
     &__toggle:focus + &__label,
     &__toggle-more:focus + &__label-more,
     &__item-link:focus,
@@ -84,7 +81,6 @@
         padding: 0.2rem;
     }
     
-    
     &__menu {
         font-size: 1rem;
         position: absolute;
@@ -94,16 +90,14 @@
         overflow: scroll;
         background-color: $bg-color-cards;
         border-radius: 0.6rem;
-        opacity: 0;
+        transform: scaleX(0);
         @include shadow;
-        @include transition(opacity);
+        @include transition(transform);
         
-
         &::-webkit-scrollbar {
             display: none;
         }
 
-        
         &-items {
             display: grid;
             padding: 1rem;
@@ -111,7 +105,6 @@
             gap: 1rem;
             justify-items: center;
         }
-        
     }
     
     &__more {
