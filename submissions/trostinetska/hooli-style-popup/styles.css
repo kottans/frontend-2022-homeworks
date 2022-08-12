@@ -54,13 +54,16 @@ input[type="checkbox"] {
 }
 
 .crumb {
-  width: 3.5em;
-  height: 3.5em;
+  width: 3.6em;
+  height: 3.6em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon {
-  max-width: 3em;
-  max-height: 3em;
+  width: 3em;
+  height: 3em;
   object-fit: contain;
   display: block;
   margin: 0 auto;
@@ -68,8 +71,8 @@ input[type="checkbox"] {
 
 .popup {
   position: absolute;
-  right: -60px;
-  top: 50px;
+  right: -4.3em;
+  top: 4em;
   width: 280px;
   max-height: 420px;
   border-radius: 5px;
@@ -98,7 +101,6 @@ input[type="checkbox"] {
   justify-content: space-around;
   gap: 0.5em;
   padding: 0.4em;
-  align-items: baseline;
 }
 
 .popup_btn {
@@ -126,6 +128,17 @@ li.popup_item {
   align-items: center;
 }
 
+.popup_link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.link_more {
+  padding: 1.5em;
+}
+
 .popup_more:checked ~ .more {
   opacity: 1;
   visibility: visible;
@@ -140,32 +153,28 @@ li.popup_item {
   visibility: hidden;
 }
 
-.crumb:hover {
-  border: 1px solid grey;
-}
-
-.crumb:focus-within {
-  border: 1px solid blue;
-}
-
+.crumb:hover,
+.popup_btn:hover,
 .popup_item:hover {
   border: 1px solid grey;
 }
 
-.popup_item:focus-within {
-  border: 1px solid blue;
-}
-
-.popup_btn:hover {
-  border: 1px solid grey;
-}
-
+.crumb:focus-within,
+.popup_item:focus-within,
 .popup_btn:focus-within {
   border: 1px solid blue;
 }
 
-p {
-  margin-top: 0.4em;
+a:hover {
+  color: grey;
+}
+
+a:focus {
+  color: blue;
+}
+
+input[type="checkbox"]:focus + label {
+  outline: rgb(59, 153, 252) auto 5px;
 }
 
 @media only screen and (max-width: 310px) {
