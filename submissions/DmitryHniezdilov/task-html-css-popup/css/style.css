@@ -1,0 +1,291 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+*:after,
+*:before{
+  box-sizing: border-box;
+}
+
+*:focus-visible {
+  outline: none;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  text-size-adjust: 100%;
+}
+
+input {
+  font: inherit;
+}
+
+a {
+  border: 2px solid transparent;
+}
+
+a:focus,
+a:focus-visible,
+a:hover,
+a:active {
+  background-color: #F3F6F9;
+  border: 2px solid #007fff;
+  transition: ease 0.25s;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+.container {
+  position: static;
+  min-height: 100vh;
+  background-color: #f3f6f9;
+}
+
+.header {
+  padding: 0 30px;
+  border-bottom: 1px solid #e9edf1;
+  background-color: #fff;
+}
+
+.header__nav {
+  display: flex;
+  height: 56px;
+}
+
+.header__nav-list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__nav-item--popup {
+  margin-left: auto;
+}
+
+.header__nav-link {
+  display: block;
+  padding: 10px;
+  color: #757575;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: ease 0.25s;
+  text-decoration: none;
+}
+
+.header__nav-link--icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__nav-link--profile {
+  position: relative;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: white;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' fill='%23757575'%3E%3Ccircle cx='50' cy='50' r='50'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.header__nav-link--profile:focus,
+.header__nav-link--profile:focus-visible,
+.header__nav-link--profile:hover,
+.header__nav-link--profile:active {
+  background-color: transparent;
+}
+
+.header__nav-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.popup {
+  position: relative;
+}
+
+.popup__input,
+.popup__input-more {
+  position: absolute;
+  appearance: 0;
+  opacity:0;
+}
+
+.popup__icon {
+  width: 28px;
+  height: 28px;
+}
+
+.popup__inner {
+  position: absolute;
+  top: 38px;
+  right: -20px;
+  width: 320px;
+  max-width: 320px;
+  max-height: 510px;
+  padding: 15px;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 6px;
+  border: 1px solid #e9edf1;
+  overflow-y: scroll;
+  transition: ease 0.25s;
+}
+
+.popup__inner::-webkit-scrollbar {
+  width: 4px;
+}
+
+.popup__inner::-webkit-scrollbar-track {
+  box-shadow: transparent;
+}
+
+.popup__inner::-webkit-scrollbar-thumb {
+  background-color: #e9edf1;
+  border-radius: 2px;
+  max-height: 20px;
+}
+
+.popup__input:checked ~ .popup__inner {
+  opacity: 1;
+  visibility: visible;
+  transition: ease 0.25s;
+}
+
+.popup__item--hidden {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.popup__label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: solid 2px transparent;
+  cursor: pointer;
+  transition: ease 0.25s;
+}
+
+.popup__label-more {
+  order: 1;
+  display: inline-block;
+  margin-top: 15px;
+  padding: 5px;
+  width: 100%;
+  height: 30px;
+  border-radius: 8px;
+  border: 2px solid #F3F6F9;
+  cursor: pointer;
+  text-align: center;
+  transition: ease 0.25s;
+}
+
+.popup__label-more::after {
+  content: 'More';
+  font-size: 14px;
+  color: #757575;
+}
+
+.popup__label:focus,
+.popup__label:focus-visible,
+.popup__label:hover,
+.popup__label:active,
+.popup__label-more:focus,
+.popup__label-more:focus-visible,
+.popup__label-more:hover,
+.popup__label-more:active {
+  background-color: #F3F6F9;
+  border-color: #007fff;
+  transition: ease 0.25s;
+}
+
+.popup__input-more:checked ~ .popup__list .popup__item--hidden {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__input-more:checked ~ .popup__label-more::after {
+  content: 'Even more from Kottans';
+}
+
+.popup__list {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: auto;
+  gap: 10px 10px;
+}
+
+.popup__link {
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  justify-items: center;
+  gap: 10px 10px;
+  padding: 10px;
+  height: 100px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.popup__icon-wrap {
+  width: 44px;
+  height: 44px;
+}
+
+.popup__icon {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.popup__title {
+  font-size: 14px;
+  color: #757575;
+  z-index: 1;
+}
+
+@media screen and ( max-width: 520px) {
+  .container {
+    position: relative;
+  }
+
+  .popup {
+    position: static;
+  }
+
+  .popup__inner {
+    top: 50px;
+    right: 50%;
+    width: calc(100% - 20px);
+    transform: translateX(50%);
+  }
+}
