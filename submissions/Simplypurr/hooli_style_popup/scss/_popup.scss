@@ -1,0 +1,136 @@
+.popup {
+    &__toggle-more, 
+    &__toggle {
+        appearance: none;
+        position: absolute;
+    }
+
+    &__toggle:checked ~ &__menu,
+    &__toggle:checked ~ &__label::before {
+        opacity: 1;
+        @include transition(opacity);
+    } 
+    
+    &__toggle-more:checked ~ &__more {
+        display: block;
+        margin-top: 2rem;
+    }
+
+    &__toggle-more:checked ~ &__label-more {
+        &::after {
+            content: "Less";
+        }
+    }
+
+    &__label-more {
+        cursor: pointer;
+        position: absolute;
+        right: 6.5rem;
+        padding: 0.5rem;
+
+        &::after {
+            content: "More";
+        }
+    }
+    
+    &__label {
+        position: relative;
+        
+        &::before {
+            content: ' ';
+            position: absolute;
+            top: 3rem;
+            margin-left: 0.25rem;
+            width: 0px;
+            height: 0px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid $bg-color-cards;
+            opacity: 0;
+            @include transition(opacity);
+        }
+    }
+
+    &__label-img {
+        width: 2rem;
+        cursor: pointer;
+    }
+
+
+    
+    
+    &__toggle:focus + &__label,
+    &__toggle-more:focus + &__label-more,
+    &__item-link:focus,
+    &__more-item-link:focus {
+        outline: $bg-color auto 1px;
+    }
+
+    &__menu-item,
+    &__more-item,
+    &__label-more {
+        &:hover {
+            transform: scale(1.05);  
+        }
+        &:active {
+            transform: translateY(2px);   
+        }
+    }
+
+    &__item-link,
+    &__more-item-link {
+        @include flex;
+        width: 5rem;
+        padding: 0.2rem;
+    }
+    
+    
+    &__menu {
+        font-size: 1rem;
+        position: absolute;
+        top: 5rem;
+        right: 2rem;
+        height: 24rem;
+        overflow: scroll;
+        background-color: $bg-color-cards;
+        border-radius: 0.6rem;
+        opacity: 0;
+        @include shadow;
+        @include transition(opacity);
+        
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        
+        &-items {
+            display: grid;
+            padding: 1rem;
+            grid-template: repeat(4, minmax(4rem, 1fr)) / repeat(3, minmax(5rem, 1fr));
+            gap: 1rem;
+            justify-items: center;
+        }
+        
+    }
+    
+    &__more {
+        display: none;
+
+        &-items {
+            display: grid;
+            padding: 1rem;
+            grid-template: repeat(2, minmax(4rem, 1fr)) / repeat(3, minmax(5rem, 1fr));
+            gap: 1rem;
+            justify-items: center;
+        }
+
+    }
+
+    .item-img {
+        width: 2.5rem;
+        height: 2rem;
+    }
+}
+
+

@@ -1,0 +1,68 @@
+@import './resets', './config', './popup';
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1;
+    height: 100vh;
+    background: $bg-color;
+    color: $secondary-color;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+
+    &__logo-link {
+        font-size: $responsive-typo;
+        font-weight: 600;
+        color: $primary-color;
+    }
+
+}   
+
+.nav {
+ &__items {
+        display: flex;
+        align-items: center;
+        gap: clamp(1rem, 3vw, 2.7rem);
+    }
+
+    &__item {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+    }
+
+     &__link-image {
+        width: 2rem;        
+    }   
+}
+
+.focus {
+    padding-bottom: 0.2rem;
+    background-image: linear-gradient($bg-color,$bg-color);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    @include transition(background-size);
+
+    &:hover {
+        background-size: 100% 2px;
+        cursor: pointer;
+    }
+    &:focus { 
+        outline: $bg-color auto 1px;
+    }
+
+    &:active {
+        transform: translateY(2px);
+        
+    }
+}
+
