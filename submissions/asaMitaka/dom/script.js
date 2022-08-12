@@ -1,6 +1,6 @@
 let content = document.querySelector('.content');
 
-let aside = document.createElement('aside');
+let aside = document.createElement('nav');
 aside.classList.add('asideBlock');
 content.append(aside);
 
