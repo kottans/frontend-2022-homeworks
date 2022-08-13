@@ -38,17 +38,12 @@ main {
     height: 100%;
 }
 
-
-
 .hide {
     opacity: 0;
 }
 
-
-
 .cardItem__back, .cardItem__front {
     backface-visibility: hidden;
-
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -56,11 +51,9 @@ main {
 
 .cardItem__front {
 	z-index: 2;
-	/* for firefox 31 */
 	transform: rotateY(0deg);
 }
 
-/* back, initially hidden pane */
 .cardItem__back {
 	transform: rotateY(180deg);
 }
@@ -69,6 +62,5 @@ main {
     transition: 0.6s;
 	transform-style: preserve-3d;
     transform: rotateY(180deg);
-
 	position: relative;
 }
