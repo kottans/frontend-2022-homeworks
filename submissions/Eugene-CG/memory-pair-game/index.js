@@ -29,7 +29,6 @@ const createCard = (imgSrc) => {
       </li>`;
 };
 const flipCard = (target) => {
-  //****************************** * * * * ***/
   if (target.closest(".card")) {
     clicksStorage = [...clicksStorage, target.firstElementChild];
     target.classList.remove("card-back");
