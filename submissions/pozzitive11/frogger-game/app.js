@@ -16,6 +16,11 @@ const boardSize = {
   left: 0,
 };
 
+const startPlayerPosition = {
+  x: tileSize.width * 2,
+  y: tileSize.height * 5 - tileSize.width / 2,
+};
+
 class instancesOfCharacter {
   constructor(x, y, sprite) {
     this.x = x;
@@ -56,15 +61,13 @@ class Enemy extends instancesOfCharacter {
   }
 }
 class Player extends instancesOfCharacter {
-  constructor() {
-    super();
-    this.moveToStartPosition();
-    this.sprite = "images/char-boy.png";
+  constructor(x, y) {
+    super(x, y, "images/char-boy.png");
   }
 
   moveToStartPosition() {
-    this.x = tileSize.width * 2;
-    this.y = tileSize.height * 5 - tileSize.width / 2;
+    this.x = startPlayerPosition.x;
+    this.y = startPlayerPosition.y;
   }
 
   resetToStartPosition() {
@@ -100,7 +103,7 @@ class Player extends instancesOfCharacter {
   }
 }
 
-const player = new Player();
+const player = new Player(startPlayerPosition.x, startPlayerPosition.y);
 const enemy = new Enemy();
 
 const allEnemies = [
