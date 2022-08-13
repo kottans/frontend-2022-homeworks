@@ -12,9 +12,6 @@ class Card {
           </div>
       </li>`;
   }
-  shuffleCards = () => this.sort(() => Math.random() - 0.5);
-  createAllCards = () =>
-    this.forEach((card) => (cardsList.innerHTML += card.createCard()));
 }
 const startGame = () => {
   let cards = [
@@ -27,14 +24,15 @@ const startGame = () => {
     "hanged.jpg",
     "justice.jpg",
   ];
-  //   cards = [...cards, ...cards];
-  //   shuffleCards(cards);
-  //   cards = createCardOjects(cards);
-  //   createAllCards(cards);
   cards = [...cards, ...cards];
-  cards = createCardOjects(cards).shuffleCards().createAllCards();
+  shuffleCards(cards);
+  cards = createCardOjects(cards);
+  createAllCards(cards);
 };
+const shuffleCards = (cards) => cards.sort(() => Math.random() - 0.5);
 const createCardOjects = (cards) => cards.map((imgSrc) => new Card(imgSrc));
+const createAllCards = (cards) =>
+  cards.forEach((card) => (cardsList.innerHTML += card.createCard()));
 
 const flipCard = ({ target }) => {
   if (target.closest(".card") || target.closest("img")) {
