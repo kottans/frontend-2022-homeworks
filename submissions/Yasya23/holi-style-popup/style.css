@@ -1,6 +1,6 @@
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -15,49 +15,50 @@ ul {
   padding: 0;
 }
 
+img {
+  display: block;
+}
+
 :focus {
   outline: none;
 }
 
 .navigation {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  position: relative;
   margin: 0.3rem 0.6rem 0.6rem 0.3rem;
 }
 
 .navigation__list {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
+  -ms-flex-pack: right;
+  justify-content: right;
   margin: 1rem;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.navigation__item {
+.navigation__item,
+.navigation__popup-item {
   margin-right: 0.6rem;
-  padding: 0.2rem;
-  max-width: 100%;
-  height: 100%;
+  padding: 0.3rem;
 }
 
 .navigation__popup-icon {
+  max-width: 2.5rem;
+  height: 100%;
   cursor: pointer;
-}
-
-.popup {
-  position: relative;
 }
 
 .popup__input,
 .popup__more-input {
   position: absolute;
-  left: 0.5rem;
-  top: 0.9rem;
+  right: 5rem;
+  top: 0.7rem;
   width: 1px;
   height: 1px;
   overflow: hidden;
@@ -67,12 +68,12 @@ ul {
 .popup__container {
   display: none;
   position: absolute;
-  top: 3rem;
-  right: -2.5rem;
-  width: 19rem;
-  max-height: 35rem;
-  -webkit-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-          box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+  top: 3.1rem;
+  right: -0.2rem;
+  width: 20rem;
+  max-height: 30rem;
+  -webkit-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
   border-radius: 5px;
   overflow: auto;
 }
@@ -90,35 +91,35 @@ ul {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   overflow: hidden;
-  padding: 0.3em 1rem;
+  padding: 0.3rem;
 }
 
 .popup__box-img:hover,
 .navigation__item:hover {
   border-radius: 5px;
-  background-color: rgb(217, 242, 255);
+  background-color: #d9f2ff;
   cursor: pointer;
 }
 
 .popup__box-img:focus-within,
 .navigation__item:focus-within {
-  outline: 2px solid #73c7ff;
+  outline: 2px solid #6395ea;
   border-radius: 5px;
 }
 
 .popup__img {
   max-width: 100%;
   height: auto;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 .popup__more {
@@ -138,37 +139,35 @@ ul {
 .popup__more-icon {
   display: block;
   padding: 0.3rem;
-  background-color: #e4e4e4;
   font-weight: 400;
-  color: rgb(0, 0, 0);
+  color: #000000;
   text-align: center;
-}
-
-.popup__more-icon:hover {
-  background-color: rgb(217, 242, 255);
-  cursor: pointer;
-}
-
-.popup__more-input:focus-within ~ .popup__more-icon {
-  background-color: rgb(184, 184, 184);
 }
 
 .popup__more-input:checked ~ .popup__more-icon {
   -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-  background-color: white;
+  transform: rotate(180deg);
 }
 
-@media (max-width: 22em) {
+.popup__more-input:focus-within ~ .popup__more-icon {
+  background-color: #d9f2ff;
+}
+
+.popup__more-icon:hover {
+  background-color: #6395ea;
+  cursor: pointer;
+}
+
+@media (max-width: 23rem) {
   .popup__container {
     display: none;
     position: absolute;
-    top: 2.7em;
-    right: -4.3em;
-    width: 16em;
-    max-height: 30em;
-    -webkit-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-            box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    top: 3.2rem;
+    right: -0.8rem;
+    width: 16rem;
+    max-height: 25rem;
+    -webkit-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
     border-radius: 5px;
     overflow: auto;
   }
@@ -176,4 +175,3 @@ ul {
     font-size: 0.9rem;
   }
 }
-
