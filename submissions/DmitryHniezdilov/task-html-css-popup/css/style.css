@@ -211,14 +211,14 @@ ul li {
   color: #757575;
 }
 
-.popup__label:focus,
-.popup__label:focus-visible,
-.popup__label:hover,
-.popup__label:active,
-.popup__label-more:focus,
-.popup__label-more:focus-visible,
-.popup__label-more:hover,
-.popup__label-more:active {
+.popup__input:focus + label,
+.popup__input:focus-visible + label,
+.popup__input:hover + label,
+.popup__input:active + label,
+.popup__input-more:focus + label,
+.popup__input-more:focus-visible + label,
+.popup__input-more:hover + label,
+.popup__input-more:active + label {
   background-color: #F3F6F9;
   border-color: #007fff;
   transition: ease 0.25s;
