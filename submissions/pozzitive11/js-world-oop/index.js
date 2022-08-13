@@ -36,8 +36,8 @@ class Human extends Inhabitant {
 }
 
 class Dog extends Animal {
-  constructor(name, gender, saying) {
-    super(name, gender, saying);
+  constructor(name, gender) {
+    super(name, gender, "Woof-woof!");
   }
 }
 
@@ -51,24 +51,14 @@ class Catwoman extends Cat {
     super(name, saying);
     this.species = "catwoman";
     this.gender = "female";
-    this.hands = 2;
-    this.legs = 2;
-  }
-  getProperties() {
-    return (
-      super.getProperties() +
-      `; I have ${this.legs} paws and ${this.hands} paws;`
-    );
   }
 }
 
-const dog = new Dog("Buddy", "male", "woof-woof!");
+const dog = new Dog("Buddy", "male");
 const cat = new Cat("Kitty", "female");
 const catwoman = new Catwoman("Nazar");
-const woman = new Human("Dazdraperma", "male", "It used to be better");
-const man = new Human("Mike", "female", "Hello World!");
-
-console.log(dog);
+const woman = new Human("Dazdraperma", "female", "It used to be better");
+const man = new Human("Mike", "male", "Hello World!");
 
 const inhabitants = [dog, cat, catwoman, woman, man];
 
