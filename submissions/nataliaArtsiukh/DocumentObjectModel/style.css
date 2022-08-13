@@ -40,7 +40,7 @@ body {
 }
 .content-img {
     display: block;
-    max-width: 319px;
+    max-width: 320px;
     height: auto;
 }
 .content-title {
@@ -117,7 +117,7 @@ body {
 }
 @media (max-width: 540px) {
     .content-img {
-        max-width: 70%;
+        max-width: 61.5%;
     }
 }
 @media (max-height: 850px) {
