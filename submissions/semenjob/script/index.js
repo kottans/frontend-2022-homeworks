@@ -33,13 +33,18 @@ window.addEventListener("DOMContentLoaded", () => {
       desc: "Hip hop, also hip hop music or rap music, is a genre of popular music developed in the United States by African Americans and Hispanics living in the poorer parts of the Bronx in New York City in the 1970s.",
     },
   };
+  const defaultContent = {
+    title:
+      "There are two refuges from life's troubles: it's music and cats. — Albert Schweitzer.",
+    desc: "Music is an art form. According to A.N. Sohor, this type “reflects reality and affects a person through sound sequences that are meaningful and specially organized in height and time, consisting mainly of tones” ",
+  };
 
   parentItems.addEventListener("click", (event) => {
     const target = event.target;
     if (target.classList.contains("wrapper__item")) {
       const musicType = target.dataset.type;
       const music = listMusicStyles[musicType];
-      contentTitle.innerText = music.title;
+      contentTitle.innerHTML = music.title;
       contentDescr.innerText = music.desc;
     }
   });
@@ -51,6 +56,13 @@ window.addEventListener("DOMContentLoaded", () => {
     musicStyle.dataset.type = musicStyleName;
     return musicStyle;
   }
+
+  function createMain(item) {
+    contentTitle.innerHTML = `<div class="music__title">${item.title}</div>`;
+    contentDescr.innerHTML = `<div class="music__title">${item.desc}</div>`;
+  }
+  createMain(defaultContent);
+
   Object.keys(listMusicStyles).forEach((listMusicStyles) => {
     const musicStyle = createMusicStyleElement(listMusicStyles);
     parentItems.append(musicStyle);
