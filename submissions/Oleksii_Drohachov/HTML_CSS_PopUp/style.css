@@ -173,6 +173,11 @@ img {
   height: 65px;
 }
 
+.icon__title {
+  display: block;
+  line-height: 14px;
+}
+
 .menu__item__second__popup {
   position: relative;
   width: 150px;
@@ -180,8 +185,8 @@ img {
 
 .second {
   width: 273px;
-  height: 45px;
-  transform: translate(-41px, -3px);
+  height: 42px;
+  transform: translate(-40px, -3px);
 }
 
 .second_label {
@@ -197,6 +202,10 @@ img {
 
 .second_label:focus {
   border: 2px solid black;
+}
+
+.second:checked {
+  visibility: hidden;
 }
 
 .second_wrapper {
@@ -222,6 +231,7 @@ img {
 
   .nav__item {
     font-size: 11px;
+    line-height: 14px;
   }
 
   .nav__item:hover {
@@ -241,8 +251,9 @@ img {
     width: 200px;
     display: grid;
     box-sizing: border-box;
-    grid-template-rows: repeat(3, 70px);
+    grid-template-rows: repeat(3, minmax(70px, 80px));
     grid-template-columns: repeat(3, 70px);
+    grid-auto-rows: minmax(70px, 80px);
     gap: 10px 5px;
   }
 
@@ -270,5 +281,9 @@ img {
     width: 122px;
     height: 36px;
     transform: translate(-18px, 8px);
+  }
+
+  .nav__item__menu {
+    margin: 0 auto;
   }
 }
