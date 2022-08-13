@@ -157,12 +157,7 @@ li.popup_item {
 .popup_btn:hover,
 .popup_item:hover {
   border: 1px solid grey;
-}
-
-.crumb:focus-within,
-.popup_item:focus-within,
-.popup_btn:focus-within {
-  border: 1px solid blue;
+  border-radius: 3px;
 }
 
 a:hover {
@@ -171,10 +166,27 @@ a:hover {
 
 a:focus {
   color: blue;
+  outline: none;
 }
 
-input[type="checkbox"]:focus + label {
+.crumb:focus-within,
+.popup_item:focus-within,
+.popup_more:focus + .popup_btn {
   outline: rgb(59, 153, 252) auto 5px;
+}
+
+.crumb-item:focus-within {
+  outline: none;
+}
+
+.check_input:focus + .check {
+  outline: rgb(59, 153, 252) auto 5px;
+  outline-offset: 0.8em;
+}
+
+.link_more:focus {
+  outline: rgb(59, 153, 252) auto 5px;
+  outline-offset: -1em;
 }
 
 @media only screen and (max-width: 310px) {
