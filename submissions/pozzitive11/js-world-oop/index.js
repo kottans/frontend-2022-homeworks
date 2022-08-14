@@ -47,8 +47,8 @@ class Cat extends Animal {
   }
 }
 class Catwoman extends Cat {
-  constructor(name, saying) {
-    super(name, saying);
+  constructor(name) {
+    super(name);
     this.species = "catwoman";
     this.gender = "female";
   }
