@@ -4,53 +4,54 @@ let clicksStorage = [];
 const startGame = () => {
   let cards = [
     {
-      imgClass: "fool",
+      imgId: "fool",
       src: "fool.jpg",
     },
     {
-      imgClass: "lovers",
+      imgId: "lovers",
       src: "lovers.jpg",
     },
     {
-      imgClass: "magician",
+      imgId: "magician",
       src: "magician.jpg",
     },
     {
-      imgClass: "priestess",
+      imgId: "priestess",
       src: "priestess.jpg",
     },
     {
-      imgClass: "star",
+      imgId: "star",
       src: "star.jpg",
     },
     {
-      imgClass: "sun",
+      imgId: "sun",
       src: "sun.jpg",
     },
     {
-      imgClass: "hanged",
+      imgId: "hanged",
       src: "hanged.jpg",
     },
     {
-      imgClass: "justice",
+      imgId: "justice",
       src: "justice.jpg",
     },
   ];
   cards = shuffleCards([...cards, ...cards]);
 
   let cardListInnerHtml = ``;
+  let i = 0;
   cards.forEach((obj) => {
-    cardListInnerHtml += createCard(obj);
+    cardListInnerHtml += createCard(obj, i++);
   });
   cardsList.innerHTML = cardListInnerHtml;
 };
 const shuffleCards = (cards) => cards.sort(() => Math.random() - 0.5);
 let arr = [];
-const createCard = ({ imgClass, src }) => {
+const createCard = ({ imgId, src }, i) => {
   return `
     <li class="card__container">
           <div class="card card-back">
-              <img src="./img/${src}" class="${imgClass}">
+              <img src="./img/${src}" id="${imgId}${i}">
           </div>
       </li>`;
 };
@@ -68,7 +69,12 @@ const flipCard = (target) => {
   }
 };
 const checkMatch = () => {
-  if (!(clicksStorage[0].classList === clicksStorage[1].classList))
+  if (
+    !(
+      clicksStorage[0].id.replace(/\d+/g, "") ===
+      clicksStorage[1].id.replace(/\d+/g, "")
+    )
+  )
     checkUnmatch();
   clicksStorage = [];
 };
