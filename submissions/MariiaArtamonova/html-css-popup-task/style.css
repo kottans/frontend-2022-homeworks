@@ -1,0 +1,131 @@
+body {
+  background-image: url("https://images.wallpaperscraft.ru/image/single/kot_geterohromiia_chernyj_kot_128354_1400x1050.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.nav__menu {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.menu__item {
+  padding: 10px;
+  font-size: 26px;
+  text-transform: uppercase;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.menu__item__link {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+}
+.popup,
+.notification {
+  filter: invert(100);
+}
+.menu__item__link :not(:hover),
+.popup__item__link :not(:hover) {
+  pointer-events: none;
+}
+.menu__item :hover {
+  border: 1px solid white;
+}
+#user__icon :active {
+  filter: invert(0);
+  border: 1px solid black;
+  box-shadow: 2px 1px 1px black;
+}
+.popup__item :hover {
+  filter: invert(100);
+}
+.menu__item :active {
+  filter: invert(100);
+}
+.popup__hidden:hover,
+.grid__hidden-body:hover,
+.grid__body:hover {
+  border: 1px solid transparent;
+}
+.checkbox__popup-input,
+.checkbox__popup-more {
+  clip: rect(0 0 0 0);
+  position: absolute;
+}
+.popup__box {
+  border: 1px solid transparent;
+  background-color: transparent;
+  height: 280px;
+  position: absolute;
+  right: 90px;
+  top: 120px;
+  border-radius: 5px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+.popup__item {
+  font-size: 16px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50px;
+  margin: 10px;
+  border: 1px solid transparent;
+}
+.popup__item__link {
+  text-decoration: none;
+  color: black;
+  height: 60px;
+  width: 60px;
+  padding: 20px 20px;
+  margin: 10px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 200;
+}
+/*Scroll*/
+.popup__box::-webkit-scrollbar {
+  width: 3px;
+}
+.popup__box::-webkit-scrollbar-thumb {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+#popup__more:not(:checked) ~ .popup__hidden,
+#checkbox__popup:not(:checked) ~ .popup__box {
+  display: none;
+}
+.grid__body {
+  display: grid;
+  grid-template-columns: 120px 120px 120px;
+  grid-template-rows: 120px 120px 120px 60px;
+  padding: 10px;
+}
+.more {
+  text-decoration: none;
+  position: relative;
+  bottom: 5px;
+  left: 140px;
+  color: black;
+  padding: 1px 1px;
+  border-radius: 50px;
+}
+.grid__hidden-body {
+  display: grid;
+  grid-template-columns: 120px 120px 120px;
+  grid-template-rows: 120px;
+  position: relative;
+  top: 80px;
+  right: 160px;
+}
