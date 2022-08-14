@@ -1,42 +1,47 @@
-const url =
+const AGE = 'ageOrder';
+const NAME = 'nameOrder';
+
+const URL =
   'https://randomuser.me/api/?results=20&nat=us,dk,fr,gb&inc=gender,name,email,dob,phone,picture';
 
-const userListElement = document.querySelector('.user-list');
-const filterFormElement = document.querySelector('.filter-options');
-const nameSearchElement = document.querySelector(
-  '.name-search-control'
-);
-const ageSortElement = document.querySelector('.age-sort');
-const nameSortElement = document.querySelector('.name-sort');
-const genderFilterElement = document.querySelector('.gender-filter');
-const resetButton = document.querySelector('.filter-options__button');
+const userListContainerElement = document.querySelector('.user-list');
+const formElement = document.querySelector('.filter-options');
 
 let userData = [];
+let sortedUserData = [];
 
-const filterState = {
-  searchName: '',
-  ageOrder: '',
-  nameOrder: '',
-  genderSelected: 'all',
+const handleErrors = (response) => {
+  if (!response.ok) throw Error(response.statusText);
+  return response;
 };
 
-async function getUserData(url) {
+const getUserData = async (url) => {
   const response = await fetch(url);
-  const { results: userData } = await response.json();
-  return userData.map((userDataItem) => ({
-    fullName: `${userDataItem.name.first} ${userDataItem.name.last}`,
-    gender: userDataItem.gender,
-    email: userDataItem.email,
-    age: userDataItem.dob.age,
-    phone: userDataItem.phone,
-    imageUrl: userDataItem.picture.large,
-  }));
-}
+  const checkedResponse = handleErrors(response);
+  const data = await checkedResponse.json();
+  return data.results;
+};
 
-function createUserItem({ fullName, email, age, phone, imageUrl }) {
-  const userListItem = document.createElement('li');
-  userListItem.classList.add('user-list__item');
-  userListItem.innerHTML = `
+const getRequiredUserData = async (url) => {
+  const userListData = await getUserData(url);
+  return userListData.map((userListDataItem) => ({
+    fullName: `${userListDataItem.name.first} ${userListDataItem.name.last}`,
+    gender: userListDataItem.gender,
+    email: userListDataItem.email,
+    age: userListDataItem.dob.age,
+    phone: userListDataItem.phone,
+    imageUrl: userListDataItem.picture.large,
+  }));
+};
+
+const getUserListItemHTML = ({
+  fullName,
+  email,
+  age,
+  phone,
+  imageUrl,
+}) => {
+  return `
 	<img
 		src="${imageUrl}"
 		alt="${fullName} Image"
@@ -53,98 +58,92 @@ function createUserItem({ fullName, email, age, phone, imageUrl }) {
 		>${email}</a>
 		<a href="tel:${phone}" class="user-list__item-tel">${phone}</a>
 	</div>`;
+};
+
+const createUserListItem = (userDataItem) => {
+  const userListItem = document.createElement('li');
+  userListItem.classList.add('user-list__item');
+  userListItem.innerHTML = getUserListItemHTML(userDataItem);
   return userListItem;
-}
+};
 
-function addUserItem(element, listContainer) {
-  listContainer.appendChild(element);
-}
+const addUserListItem = (userListItem) =>
+  userListContainerElement.appendChild(userListItem);
 
-function renderUserList(userData, listContainer) {
-  listContainer.innerHTML = '';
+const renderUserList = (userData) => {
+  userListContainerElement.innerHTML = '';
   const userListItems = userData.map((userDataItem) =>
-    createUserItem(userDataItem)
+    createUserListItem(userDataItem)
   );
   userListItems.forEach((userListItem) =>
-    addUserItem(userListItem, listContainer)
+    addUserListItem(userListItem)
   );
-}
+};
 
-async function init(url, listElement) {
-  userData = await getUserData(url);
-  renderUserList(userData, listElement);
-}
+const init = async (url) => {
+  userData = await getRequiredUserData(url);
+  sortedUserData = [...userData];
+  renderUserList(userData);
+};
 
-function filterUsersByName(userData, inputValue) {
-  return userData.filter(({ fullName }) =>
-    fullName.toLowerCase().includes(inputValue.toLowerCase())
+const compareAge = (firstUser, secondUser) => {
+  return firstUser.age - secondUser.age;
+};
+
+const ageSorters = {
+  descending: () => {
+    sortedUserData.sort((a, b) => compareAge(b, a));
+  },
+  ascending: () => {
+    sortedUserData.sort(compareAge);
+  },
+};
+
+const compareName = (firstUser, secondUser) => {
+  return firstUser.fullName > secondUser.fullName ? 1 : -1;
+};
+
+const nameSorters = {
+  descending: () => {
+    sortedUserData.sort((a, b) => compareName(b, a));
+  },
+  ascending: () => {
+    sortedUserData.sort(compareName);
+  },
+};
+
+const handleFormChange = ({ target: radioButton }) => {
+  const sorter =
+    radioButton.name === AGE
+      ? ageSorters[radioButton.value]
+      : nameSorters[radioButton.value];
+
+  sorter();
+  renderUserList(sortedUserData);
+};
+
+const findName = (searchInput) => {
+  return sortedUserData.filter((userDataItem) =>
+    userDataItem.fullName
+      .toLowerCase()
+      .includes(searchInput.toLowerCase())
   );
-}
+};
 
-function sortUsersByAge(userData, sortOrder) {
-  return [...userData].sort((a, b) => {
-    if (sortOrder === 'ascending') return a.age - b.age;
-    if (sortOrder === 'descending') return b.age - a.age;
-  });
-}
+const handleFormKeyUp = ({ target: searchInput }) => {
+  const foundUserData = findName(searchInput.value);
+  renderUserList(foundUserData);
+};
 
-function sortUsersByName(userData, sortOrder) {
-  return [...userData].sort((a, b) => {
-    if (sortOrder === 'ascending')
-      return a.fullName > b.fullName ? 1 : -1;
-    if (sortOrder === 'descending')
-      return b.fullName > a.fullName ? 1 : -1;
-  });
-}
+const handleFormReset = () => {
+  renderUserList(userData);
+};
 
-function filterUsersByGender(userData, genderValue) {
-  if (genderValue === 'all') return userData;
-  return userData.filter(({ gender }) => gender === genderValue);
-}
+const handleFormSubmit = (e) => e.preventDefault();
 
-function getFilteredUserData() {
-  let userDataCopy = JSON.parse(JSON.stringify(userData));
+formElement.addEventListener('change', handleFormChange);
+formElement.addEventListener('keyup', handleFormKeyUp);
+formElement.addEventListener('reset', handleFormReset);
+formElement.addEventListener('submit', handleFormSubmit);
 
-  for (let key in filterState) {
-    if (key === 'searchName')
-      userDataCopy = filterUsersByName(
-        userDataCopy,
-        filterState[key]
-      );
-
-    if (key === 'nameOrder')
-      userDataCopy = sortUsersByName(userDataCopy, filterState[key]);
-
-    if (key === 'genderSelected')
-      userDataCopy = filterUsersByGender(
-        userDataCopy,
-        filterState[key]
-      );
-
-    if (key === 'ageOrder')
-      userDataCopy = sortUsersByAge(userDataCopy, filterState[key]);
-  }
-
-  renderUserList(userDataCopy, userListElement);
-}
-
-function handleFilterChange({ target }) {
-  filterState[target.name] = target.value;
-  getFilteredUserData();
-}
-
-function handleResetClick() {
-  renderUserList(userData, userListElement);
-  filterState.searchName = '';
-  filterState.ageOrder = '';
-  filterState.nameOrder = '';
-  filterState.genderSelected = 'all';
-}
-
-nameSearchElement.addEventListener('keyup', handleFilterChange);
-ageSortElement.addEventListener('change', handleFilterChange);
-nameSortElement.addEventListener('change', handleFilterChange);
-genderFilterElement.addEventListener('change', handleFilterChange);
-resetButton.addEventListener('click', handleResetClick);
-
-init(url, userListElement);
+init(URL);
