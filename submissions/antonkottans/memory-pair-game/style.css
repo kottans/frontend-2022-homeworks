@@ -1,0 +1,112 @@
+* {
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.game-heading {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.result {
+    z-index: 9000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100, 100, 100, 0.9);
+    font: 24px monospace;
+    color: white;
+    top: 0px;
+    left: 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer,
+.start {
+    letter-spacing: 1px;
+    font-family: monospace;
+    font-size: 19px;
+}
+
+.start {
+    cursor: pointer;
+    width: max-content;
+}
+
+.field {
+    display: grid;
+    width: max-content;
+    grid-template: repeat(3, max-content) / repeat(4, max-content);
+    grid-gap: 2px;
+    margin: 0 auto;
+}
+
+.perspective-container {
+    perspective: 250px;
+    background-color: transparent;
+}
+
+.card-container {
+    transition: transform 0.8s;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.back {
+    background-color: black;
+}
+
+.face {
+    background-color: green;
+    transform: rotateY(180deg);
+}
+
+.card-container,
+.face,
+.back {
+    width: 110px;
+    height: 163px;
+    cursor: pointer;
+}
+
+.face,
+.back {
+    position: absolute;
+    backface-visibility: hidden;
+    border: solid 2px black;
+    border-radius: 5px;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+.flip-to-face,
+.guessed {
+    transform: rotateY(180deg);
+}
+
+@media (min-width: 1000px) {
+    .field {
+        grid-template: repeat(2, max-content) / repeat(6, max-content);
+    }
+    .card-container,
+    .face,
+    .back {
+        width: 149px;
+        height: 222px;
+        cursor: pointer;
+    }
+}
+
