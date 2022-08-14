@@ -103,23 +103,20 @@
 
 .popup__input-more:checked {
     display: none;
-
 }
 
 .popup__input-more:checked~.button-more {
     display: none;
 }
 
-.popup__ul li,
-.popup__ul-more li {
+.popup__li {
     display: grid;
     justify-content: center;
     align-content: flex-end;
     text-align: center;
 }
 
-.popup__ul li img,
-.popup__ul-more li img {
+.popup__img {
     max-width: 40px;
     max-height: 40px;
 }
@@ -131,22 +128,22 @@
     padding-left: 0;
 }
 
-.top-ul li {
+.top__li {
     display: flex;
     align-items: center;
     list-style-type: none;
     margin: 0px 15px;
 }
 
-.top-ul li a:focus {
+.top__a:focus, .popup__a:focus {
     outline: 2px solid #ccc;
 }
 
-.top-ul li a:hover {
+.top__a:hover, .popup__a:hover {
     outline: 1px solid #ccc;
 }
-
-.top-ul li a {
+ 
+.top__a, .popup__a {
     text-decoration: none;
     color: #747474;
     font-weight: bold;
