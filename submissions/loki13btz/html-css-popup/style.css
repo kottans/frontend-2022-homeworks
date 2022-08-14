@@ -100,7 +100,6 @@ h6 {
     align-items: center;
     flex: 1 0 auto;
     margin: 5px;
-
 }
 
 .menu-list {
@@ -116,16 +115,22 @@ h6 {
     color: #000;
     opacity: 45%;
 }
+.menu-item:hover {
+    border: #a2a6ad solid 1px;
+    border-radius: 5px;
+}
 
+.menu-item:focus {
+    border: #35618480 solid 1px;
+    border-radius: 5px;
+}
 .popup-icon {
     width: 20px;
     opacity: 70%;
-
 }
 
 .menu-bell {
     width: 20px;
-
 }
 
 .user-icon img {
@@ -192,6 +197,7 @@ h6 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
+    align-items: end;
 }
 
 @media(max-width:480px) {
@@ -210,7 +216,6 @@ h6 {
     .header-navigation {
         padding: 5px;
         margin: 10px;
-
     }
 
     .content {
@@ -278,3 +283,4 @@ h6 {
     font-weight: 600;
     opacity: 60%;
 }
+
