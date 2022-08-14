@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&family=Work+Sans:wght@500;700&display=swap");
+
+:root {
+  --main-color: #f2f3f6;
+  --border-color: #afafafc5;
+  --black-color: #2a3039;
+  --figcaption-color: #c6dcf1;
+  --highlight-color: #53a8f3;
+
+  --main-font: "Work Sans", sans-serif;
+  --font-regular: 400;
+  --font-extra-bold: 800;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+body {
+  font-family: var(--main-font);
+  background-color: var(--main-color);
+  color: var(--black-color);
+}
+
+.header {
+  box-shadow: 2px 5px 8px var(--figcaption-color);
+  width: 100vw;
+  min-height: 7vh;
+  font-size: 1rem;
+}
+
+.header > h1 {
+  padding: 0.5rem 0.5rem;
+}
+
+.nav_item {
+  display: block;
+  width: 100%;
+  height: 20%;
+  font-size: 1.2rem;
+  border: 1px solid transparent;
+  text-align: center;
+  transition: color, border 1s;
+}
+
+.nav_item:hover {
+  border: 1px solid var(--border-color);
+  border-radius: 2%;
+  cursor: pointer;
+}
+
+.nav_item a:hover {
+  color: var(--highlight-color);
+}
+
+.ul {
+  width: 20vw;
+  display: block;
+  line-height: 3.5rem;
+}
+
+.article-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.article-desc {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.article-desc div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  padding: 0.5rem 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.article-desc div h2 {
+  border: none;
+  font-weight: var(--font-extra-bold);
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+
+.article-desc div span {
+  padding-left: 0.5rem;
+}
+
+.container {
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 100vw;
+  padding: 10px;
+}
+
+.image {
+  width: 40vw;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 1%;
+}
+
+.figcaption {
+  position: relative;
+  bottom: 15rem;
+  left: 1rem;
+  color: var(--main-color);
+  text-transform: uppercase;
+  font-weight: var(--font-extra-bold);
+  font-size: 1.3rem;
+}
+
+.description {
+  padding: 0 1rem 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: var(--font-regular);
+  text-indent: 1.5em;
+  line-height: 1.6rem;
+  text-align: justify;
+}
+
+.link {
+  color: var(--highlight-color);
+}
+
+@media screen and (max-width: 680px) {
+  .article-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .image {
+    width: 90vw;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .nav_item {
+    width: 90vw;
+  }
+}
