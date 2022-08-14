@@ -57,7 +57,7 @@ window.addEventListener("DOMContentLoaded", () => {
    
     createListHtml(sevenWonders);
     
-    function createMainContent (key) { 
+    const createMainContent  = (key) => { 
         content.innerHTML = '';  
         const titleContent = document.createElement('h2');
         titleContent.classList.add("content_title");
@@ -74,7 +74,7 @@ window.addEventListener("DOMContentLoaded", () => {
         descrContent.innerText = key.descr;
         content.append(descrContent);          
         
-    }     
+    };     
 
    function changeContentByTitle(allMyWonders) {
     let keysNames = Object.values(allMyWonders);   
