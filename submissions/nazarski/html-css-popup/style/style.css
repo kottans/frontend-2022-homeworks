@@ -1,0 +1,184 @@
+
+/*Let's start*/
+*{
+    box-sizing: border-box;
+}
+body, html, nav, ul{
+    padding: 0;
+    margin: 0;
+}
+input{
+    appearance: none;
+    -moz-appearance: none;
+}
+:focus{
+    outline-color: #1d5a32;}
+.unselectable {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+/* Scrollbar CSS */
+*::-webkit-scrollbar {
+    width: 3px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #b3b3b3;
+    border-radius: 10px;
+}
+/*General menu settings*/
+
+.menu-list{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    justify-content: flex-end;
+    padding: 10px 20px 10px 15px;
+    background-color: #e4fcf3;
+}
+.nav-icon {
+    width: 24px;
+    height: 24px;
+}
+.link-text{
+    font-size: 18px;
+    font-family: Verdana, sans-serif;
+    color: dimgrey;
+    transition-duration: 0.3s;
+}
+.link-text:hover{
+    color: #424242;
+}
+.margin-fix {
+    margin-top: -1em;
+}
+.profile-photo{
+    height: 40px;
+    border-radius: 50%;
+}
+
+/*Round background*/
+.icon-background{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input_modal:checked ~ .modal{
+    display: block;}
+.input_modal:checked ~ .icon-background{
+    background-color: #1d5a32;
+}
+.input_modal:focus ~ .icon-background{
+    background-color: #1d5a32;
+    outline: none;
+}
+.icon-background:hover{
+    background-color: #1d5a32;
+}
+.icon-background:focus{
+    background-color: #1d5a32;
+    outline: none;
+}
+
+/*Modal block set up*/
+
+.modal{
+    position: absolute;
+    right: 3%;
+    top: 8%;
+    display: none;
+}
+.modal-menu{
+    box-shadow: rgba(17, 17, 26, 0.1) 0 4px 16px, rgba(17, 17, 26, 0.05) 0 8px 32px;    position: relative;
+    border-radius: 10px;
+    top: 10px;
+    padding: 10px 5px;
+    box-sizing: initial;
+}
+.scroll{
+    overflow-y: auto;
+    height: 410px;
+    width: 300px;
+    padding: 10px;
+}
+.modal-wrap{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px 5px;
+}
+
+/*Inside modal*/
+.menu-item{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: center;
+    row-gap: 10px;
+    column-gap: 10px;
+    padding: 5px;
+    border-radius: 10%;
+    text-decoration: none;
+}
+.menu-item:focus, .menu-item:visited,.menu-item:hover {
+    background-color: #f1f1f1;
+    outline:none;
+}
+.menu-icon{
+    height: 56px;
+    width: 56px;
+}
+.icon-text{
+    text-align: center;
+    font-family: Verdana, sans-serif;
+    color: #7c7c7c;}
+
+/*More button set up*/
+.more-text{
+    font-family: Verdana, sans-serif;
+    color: #ffd2b9;
+}
+.more-wrap{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    border-radius: 20px;
+}
+.more-wrap:hover{
+    background-color: #f6f6f6;
+}
+.more-icon-wrap{
+    display: none;
+    border-top: 1px solid #d5d5d5;
+    padding-top: 10px;
+}
+.more-add:focus ~ .more-wrap{
+    background-color: #f6f6f6;
+}
+#more-btn:checked + .more-wrap{
+    display: none;}
+#more-btn:checked ~ .more-icon-wrap{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px 5px;
+}
+
+
+
+
+
+
