@@ -2,7 +2,7 @@ const AGE = 'ageOrder';
 const NAME = 'nameOrder';
 
 const URL =
-  'https://randomuser.me/api/?results=20&nat=us,dk,fr,gb&inc=gender,name,email,dob,phone,picture';
+  '1https://randomuser.me/api/?results=20&nat=us,dk,fr,gb&inc=gender,name,email,dob,phone,picture';
 
 const userListContainerElement = document.querySelector('.user-list');
 const formElement = document.querySelector('.filter-options');
@@ -16,10 +16,14 @@ const handleErrors = (response) => {
 };
 
 const getUserData = async (url) => {
-  const response = await fetch(url);
-  const checkedResponse = handleErrors(response);
-  const data = await checkedResponse.json();
-  return data.results;
+  try {
+    const response = await fetch(url);
+    const checkedResponse = handleErrors(response);
+    const data = await checkedResponse.json();
+    return data.results;
+  } catch (error) {
+    console.warn(error);
+  }
 };
 
 const getRequiredUserData = async (url) => {
