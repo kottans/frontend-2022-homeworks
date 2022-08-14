@@ -41,13 +41,20 @@ window.addEventListener("DOMContentLoaded", () => {
     const list = document.querySelector(".list_items");
     const content = document.querySelector(".content");
     
-    
-    
-    function createListHtml(obj) {
-        Object.values(obj).forEach((key) => {
-            list.innerHTML += `<li class="list_item"><button class="list_btn">${key.title}</button></li>`;
-        });        
-    }
+    const createListHtml = (allMyWonders) => {
+         Object.values(allMyWonders).forEach((key) => {
+            let listItem = document.createElement('li');
+            let btn = document.createElement('button');
+            
+            listItem.classList.add("list_item");
+            btn.classList.add("list_btn");
+            btn.innerText = key.title;
+            listItem.append(btn);
+
+            list.append(listItem);            
+        });  
+    };
+   
     createListHtml(sevenWonders);
     
     function createMainContent (key) { 
@@ -69,24 +76,26 @@ window.addEventListener("DOMContentLoaded", () => {
         
     }     
 
-   function changeContentByTitle(obj) {
-    let keysNames = Object.values(obj);   
-
+   function changeContentByTitle(allMyWonders) {
+    let keysNames = Object.values(allMyWonders);   
+    
     createMainContent(keysNames[0]);
 
-    const btns = document.querySelectorAll('.list_btn'); 
-
-    for(let i = 0; i < btns.length; i++) {
+    function buttonEvent (e) {
+        const btnName = e.target.innerText.toLowerCase(); 
         
-        btns[i].addEventListener('click', (e) => {
-            e.preventDefault();            
-                       
-            createMainContent(keysNames[i]);        
-           
-        });        
-      }      
-    
-    }           
-    changeContentByTitle(sevenWonders); 
+        keysNames.filter((wonder) => {
+           if (btnName === wonder.title) {            
+               return createMainContent(wonder);
+           }
+        });
+    }         
+
+    list.addEventListener('click', buttonEvent);      
+        
+    } 
+
+    changeContentByTitle(sevenWonders);
+
 });
     
