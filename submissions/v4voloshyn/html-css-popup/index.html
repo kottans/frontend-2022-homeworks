@@ -33,9 +33,9 @@
 				<li class="nav-item popup-btn">
 					<input type="checkbox" class="popup-checkbox" id="popup" />
 					<label for="popup" class="popup-label">
-						<span src="./assets/popup-button.png" class="popup-icon"></span>
+						<span class="popup-icon"></span>
 					</label>
-					<ul class="popup-list">
+					<ul class="popup-list visually-hidden">
 						<li class="popup-item">
 							<a href="#app" class="popup-link">
 								<img src="./assets/apps.png" alt="app" class="popup-img" />
@@ -81,7 +81,7 @@
 						<li class="popup-item">
 							<a href="#app" class="popup-link">
 								<img src="./assets/apps.png" alt="app" class="popup-img" />
-								<span class="popup-item-text">Application</span>
+								<span class="popup-item-text">Arts and Culture</span>
 							</a>
 						</li>
 						<li class="popup-item">
@@ -90,33 +90,48 @@
 								<span class="popup-item-text">Three words is a two words</span>
 							</a>
 						</li>
-						<li class="popup-item">
-							<a href="#mars" class="popup-link">
-								<img src="./assets/mars.png" alt="mars" class="popup-img" />
-								<span class="popup-item-text">1 Three words is a two words</span>
-							</a>
+
+						<!--MORE LIST-->
+						<li class="more-list-container">
+							<!--MORE BUTTON-->
+							<input type="checkbox" class="more" id="more" />
+							<label class="more-label" for="more">More</label>
+							<ul class="more-list">
+								<li class="popup-item">
+									<a href="#mars" class="popup-link">
+										<img src="./assets/mars.png" alt="mars" class="popup-img" />
+										<span class="popup-item-text">HELLO NEW LIST</span>
+									</a>
+								</li>
+								<li class="popup-item">
+									<a href="#mars" class="popup-link">
+										<img src="./assets/mars.png" alt="mars" class="popup-img" />
+										<span class="popup-item-text">HELLO NEW LIST</span>
+									</a>
+								</li>
+								<li class="popup-item">
+									<a href="#mars" class="popup-link">
+										<img src="./assets/mars.png" alt="mars" class="popup-img" />
+										<span class="popup-item-text">HELLO NEW LIST</span>
+									</a>
+								</li>
+								<li class="popup-item">
+									<a href="#mars" class="popup-link">
+										<img src="./assets/mars.png" alt="mars" class="popup-img" />
+										<span class="popup-item-text">HELLO NEW LIST</span>
+									</a>
+								</li>
+							</ul>
+
+
+
 						</li>
-						<ul class="more-list">
-							<li class="span">
-								<input type="radio" class="more" id="more" name="more" checked />
-								<label for="more" class="more-label">
-									<span src="./assets/popup-button.png" class="popup-icon">MORE</span>
-								</label>
-							</li>
-							<li class="span">
-								<input type="radio" class="more" id="more" name="more" checked />
-								<label for="more" class="more-label">
-									<span src="./assets/popup-button.png" class="popup-icon">MORE</span>
-								</label>
-							</li>
-						</ul>
 					</ul>
 
 				</li>
 				<li class="nav-item">
 					<a href="#" class="nav-link user">
-						<image class="user-img" alt="avatar" src="./assets/avatar.png" width="40" height="40">
-						</image>
+						<img class="user-img" alt="avatar" src="./assets/avatar.png" width="40" height="40" />
 					</a>
 				</li>
 			</ul>
