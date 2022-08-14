@@ -15,6 +15,7 @@ a {
 
 *:focus-visible {
     outline: 2px solid rgb(233, 113, 113);
+    border-radius: 0.625rem;
 }
 
 * {
@@ -48,7 +49,6 @@ ul {
     font-style: normal;
     font-display: block;
 }
-
 [class^="_icon-"]::before,
 [class*=" _icon-"]::before {
     /* use !important to prevent issues with browser extensions that change fonts */
@@ -82,6 +82,7 @@ ul {
     display: flex;
     flex-direction: column;
 }
+
 .header {
     background-color: rgb(249, 241, 231);
     padding: 10px 0;
@@ -114,6 +115,9 @@ ul {
 .header__notification:focus-visible,
 .header__profile:focus-visible {
     transition: none;
+}
+.header__profile:focus-visible {
+    border-radius: 0;
 }
 
 @media (any-hover: hover) {
@@ -171,6 +175,9 @@ ul {
     margin: 0;
     cursor: pointer;
     appearance: none;
+}
+.nav__checkbox:focus-visible {
+    border-radius: 0;
 }
 .nav__checkbox--popup {
     width: 1.5rem;
@@ -235,6 +242,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 2.5rem;
+    column-gap: 0.625rem;
 }
 .nav__sub-item {
     display: flex;
@@ -249,12 +257,20 @@ ul {
 }
 .nav__sub-link {
     flex: 1 1 auto;
-    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.625rem;
 }
 .nav__img {
     max-width: 3.75rem;
     height: auto;
-    margin: 0 auto 1.25rem;
+    padding-top: 0.3125rem;
+}
+.nav__text {
+    padding-bottom: 5px;
 }
 
 @media (any-hover: hover) {
