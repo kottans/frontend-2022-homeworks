@@ -28,9 +28,7 @@
                             <label class="popup__label" for="popup">
                                 <img class="popup__icon" src="icons/popup-button.png" alt="popup icon" >
                             </label>
-                            <div class="popup__inner">
-                                <input class="popup__input-more" id="popup-more" type="checkbox" tabindex="2">
-                                <label class="popup__label-more" for="popup-more"></label>
+                                <div class="popup__inner">
                                 <ul class="popup__list">
                                     <li class="popup__item">
                                         <a href="#" class="popup__link" tabindex="1">
@@ -128,7 +126,12 @@
                                             <span class="popup__title">Documents</span>
                                         </a>
                                     </li>
-                                    <li class="popup__item popup__item--hidden">
+                                </ul>
+
+                                <input class="popup__input-more" id="popup-more" type="checkbox" tabindex="1">
+                                <label class="popup__label-more" for="popup-more">More</label>
+                                <ul class="popup__list popup__list--hidden">
+                                    <li class="popup__item">
                                         <a href="#" class="popup__link" tabindex="1">
                                             <div class="popup__icon-wrap">
                                                 <img class="popup__icon" src="icons/chat.png" alt="" >
@@ -136,7 +139,7 @@
                                             <span class="popup__title">Chat</span>
                                         </a>
                                     </li>
-                                    <li class="popup__item popup__item--hidden">
+                                    <li class="popup__item">
                                         <a href="#" class="popup__link" tabindex="1">
                                             <div class="popup__icon-wrap">
                                                 <img class="popup__icon" src="icons/classroom.png" alt="" >
@@ -144,7 +147,7 @@
                                             <span class="popup__title">Classroom</span>
                                         </a>
                                     </li>
-                                    <li class="popup__item popup__item--hidden">
+                                    <li class="popup__item">
                                         <a href="#" class="popup__link" tabindex="1">
                                             <div class="popup__icon-wrap">
                                                 <img class="popup__icon" src="icons/collection.png" alt="" >
@@ -152,7 +155,7 @@
                                             <span class="popup__title">Collection</span>
                                         </a>
                                     </li>
-                                    <li class="popup__item popup__item--hidden">
+                                    <li class="popup__item">
                                         <a href="#" class="popup__link" tabindex="1">
                                             <div class="popup__icon-wrap">
                                                 <img class="popup__icon" src="icons/mars.png" alt="" >
@@ -160,7 +163,7 @@
                                             <span class="popup__title">Mars</span>
                                         </a>
                                     </li>
-                                    <li class="popup__item popup__item--hidden">
+                                    <li class="popup__item">
                                         <a href="#" class="popup__link" tabindex="1">
                                             <div class="popup__icon-wrap">
                                                 <img class="popup__icon" src="icons/blogs.png" alt="" >
@@ -168,7 +171,7 @@
                                             <span class="popup__title">Blogs</span>
                                         </a>
                                     </li>
-                                    <li class="popup__item popup__item--hidden">
+                                    <li class="popup__item">
                                         <a href="#" class="popup__link" tabindex="1">
                                             <div class="popup__icon-wrap">
                                                 <img class="popup__icon" src="icons/promo.png" alt="" >
@@ -177,6 +180,7 @@
                                         </a>
                                     </li>
                                 </ul>
+                                <a class="popup__link popup__link--more" tabindex="1" href="https://kottans.org/">Even more from kottans</a>
                             </div>
                         </li>
                         <li class="header__nav-item">
