@@ -1,0 +1,318 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Merriweather", "Time", serif;
+    font-weight: 500;
+    color: rgb(58, 58, 58);
+    margin: 0;
+    background-color: rgb(252, 248, 243);
+}
+
+a {
+    color: rgb(58, 58, 58);
+}
+
+*:focus-visible {
+    outline: 2px solid rgb(233, 113, 113);
+    border-radius: 0.625rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+}
+
+p {
+    margin: 0;
+}
+
+a,
+a:visited,
+a:hover {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: "icons";
+    src: url("../fonts/icons.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+[class^="_icon-"]::before,
+[class*=" _icon-"]::before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: "icons" !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+._icon-bell:before {
+    content: "\e900";
+}
+
+._icon-logo:before {
+    content: "\e901";
+}
+
+._icon-popup-button:before {
+    content: "\e902";
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: rgb(249, 241, 231);
+    padding: 10px 0;
+}
+.header__container {
+    width: 94%;
+    max-width: 1530px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+.header__logo {
+    font-family: "Coiny", cursive;
+    font-size: 3.125rem;
+    line-height: 1.2;
+}
+.header__user {
+    display: flex;
+    gap: 3.125rem;
+}
+.header__notification,
+.header__profile {
+    transition: all 0.3s ease 0s;
+}
+.header__notification::before,
+.header__profile::before {
+    font-size: 1.5rem;
+    display: block;
+}
+.header__notification:focus-visible,
+.header__profile:focus-visible {
+    transition: none;
+}
+.header__profile:focus-visible {
+    border-radius: 0;
+}
+
+@media (any-hover: hover) {
+    .header__notification:hover,
+    .header__profile:hover {
+        color: rgb(233, 113, 113);
+        transition: all 0.3s ease 0s;
+    }
+}
+@media screen and (max-width: 550px) {
+    .header__user {
+        gap: 1.5625rem;
+    }
+}
+.nav {
+    margin-right: 3.125rem;
+    flex: 1 1 auto;
+}
+.nav__list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 3.125rem;
+}
+.nav__link {
+    transition: color 0.3s ease 0s;
+}
+.nav__popup {
+    position: relative;
+}
+.nav__popup::before {
+    font-size: 1.5rem;
+    display: block;
+}
+.nav__content {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 30px;
+    position: absolute;
+    top: 2.9375rem;
+    right: -6.5625rem;
+    overflow: hidden;
+    width: 28.125rem;
+    max-height: 0;
+    border-radius: 0.3125rem;
+    box-shadow: 0px 4px 10px #878787;
+    transition: all 0.3s ease 0s;
+    background-color: rgb(255, 255, 255);
+    padding: 3.125rem 1.875rem 1.25rem;
+    opacity: 0;
+    visibility: hidden;
+}
+.nav__checkbox {
+    position: absolute;
+    margin: 0;
+    cursor: pointer;
+    appearance: none;
+}
+.nav__checkbox:focus-visible {
+    border-radius: 0;
+}
+.nav__checkbox--popup {
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 0;
+    left: 0;
+}
+.nav__checkbox--popup::before {
+    position: absolute;
+    content: "";
+    top: 1.6875rem;
+    right: 0.125rem;
+    border-top: 1.3125rem solid rgb(255, 255, 255);
+    border-right: 0.625rem solid transparent;
+    border-left: 0.625rem solid transparent;
+    opacity: 0;
+    visibility: hidden;
+    transform: rotate(180deg);
+    z-index: 1;
+    transition: all 0.3s ease 0s;
+}
+.nav__checkbox--more-less {
+    width: 24.375rem;
+    height: 2.5rem;
+    left: 1.875rem;
+    bottom: 1.25rem;
+}
+.nav__checkbox--popup:checked::before {
+    opacity: 1;
+    visibility: visible;
+}
+.nav__checkbox:checked ~ .nav__content {
+    max-height: 41.875rem;
+    transition: all 0.3s ease 0s;
+    overflow: auto;
+    visibility: visible;
+    opacity: 1;
+}
+.nav__checkbox--more-less:checked {
+    width: 23.3125rem;
+}
+.nav__label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(232, 159, 113);
+    padding: 0.625rem 0;
+    cursor: pointer;
+}
+.nav__label--less {
+    display: none;
+}
+.nav__checkbox--more-less:checked ~ .nav__label .nav__label--less {
+    display: block;
+}
+.nav__checkbox--more-less:checked ~ .nav__label .nav__label--more {
+    display: none;
+}
+.nav__sub-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 2.5rem;
+    column-gap: 0.625rem;
+}
+.nav__sub-item {
+    display: flex;
+    align-items: flex-end;
+    border-radius: 0.625rem;
+}
+.nav__sub-item--more {
+    display: none;
+}
+.nav__checkbox--more-less:checked ~ .nav__sub-list .nav__sub-item--more {
+    display: flex;
+}
+.nav__sub-link {
+    flex: 1 1 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.625rem;
+}
+.nav__img {
+    max-width: 3.75rem;
+    height: auto;
+    padding-top: 0.3125rem;
+}
+.nav__text {
+    padding-bottom: 5px;
+}
+
+@media (any-hover: hover) {
+    .nav__link:hover {
+        color: rgb(233, 113, 113);
+        transition: all 0.3s ease 0s;
+    }
+    .nav__popup:hover::before {
+        color: rgb(233, 113, 113);
+        transition: all 0.3s ease 0s;
+    }
+    .nav__link:hover {
+        text-decoration: underline;
+    }
+    .nav__sub-item:hover {
+        box-shadow: 0px 4px 15px #545454;
+    }
+    .nav__label:hover {
+        background-color: rgb(233, 113, 113);
+        color: rgb(255, 255, 255);
+        transition: all 0.3s ease 0s;
+    }
+}
+@media screen and (max-width: 550px) {
+    .nav {
+        margin-right: 1.5625rem;
+    }
+    .nav__item--hidden {
+        display: none;
+    }
+    .nav__content {
+        width: 18.75rem;
+    }
+    .nav__checkbox--more-less,
+    .nav__checkbox--more-less:checked {
+        width: 13.9375rem;
+    }
+    .nav__sub-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+
