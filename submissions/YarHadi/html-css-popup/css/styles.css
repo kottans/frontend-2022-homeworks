@@ -1,0 +1,131 @@
+.nav-menu{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    list-style-type: none;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+  }
+  
+.nav-itm {
+    float: left;
+  }
+  
+.nav-itm a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+
+.nav-itm a:hover {
+    background-color: #111111;
+    cursor: pointer;
+  }
+
+  .nav-itm a:focus{
+    background-color: rgba(0, 225, 255, 0.281);
+  }
+
+  .nav-itm label {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+
+  .nav-itm label:hover {
+  background-color: #111111;
+  cursor: pointer;
+  }
+
+  .nav-itm label:focus {
+    background-color: rgba(0, 225, 255, 0.281);
+    }
+
+  .nav-img{
+    height: 30px;
+  }
+
+  .popup-img{
+    height: 60px;
+  }
+ 
+  .user{
+    width: 30px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+
+.popup-menu, .popup-menu-more {
+    list-style-type: none;
+  }
+
+.popup-container, .more-menu-cont{
+    display: none;
+}
+
+#nav-popup-btn:checked ~ .popup-container {
+    display: flex;
+}
+
+#popup-more-btn:checked ~ .more-menu-cont{
+    display: flex;
+}
+  
+.popup-container{
+    max-width: 450px;
+    max-height: 740px;
+    right: 0;
+    margin: 7px;
+    background-color: #333333;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.popup-menu{   
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.popup-menu-itm{
+    justify-content: center;
+    display: flex;
+    width: 120px;
+    height: 120px;
+}
+
+.more-btn{
+width: 100%;
+}
+
+.visible-pop{
+    display: flex; 
+    flex-direction: row; 
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.more-menu-cont{
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+}
+
