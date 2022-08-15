@@ -12,7 +12,7 @@ class Inhabitant {
 }
 class Animal extends Inhabitant {
   constructor(name, gender, saying) {
-    super("animal", name, gender, saying);
+    super(name, gender, saying);
     this.paw = 4;
   }
   getProperties() {
@@ -37,13 +37,13 @@ class Human extends Inhabitant {
 
 class Dog extends Animal {
   constructor(name, gender) {
-    super(name, gender, "Woof-woof!");
+    super("dog", name, gender, "Woof-woof!");
   }
 }
 
 class Cat extends Animal {
   constructor(name, gender) {
-    super(name, gender, "meow-meow");
+    super("cat", name, gender, "meow-meow");
   }
 }
 class Catwoman extends Cat {
