@@ -1,0 +1,211 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    --logo-color: #2196F3;
+    --main-text-color: rgb(103, 103, 103);
+    --premain-font-weight: 700;
+    --logo-font-family: 'Raleway',
+        sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    min-height: 100%;
+    background-color: rgb(228, 210, 205);
+    padding: 15px;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    width: 145px;
+    height: 31px;
+    font-family: var(--logo-font-family);
+    font-weight: var(--premain-font-weight);
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    color: var(--main-text-color);
+    grid-column: 2 / 3;
+
+}
+
+.logo-link {
+    text-decoration: none;
+    margin-right: 90px;
+    width: 18%;
+    min-width: 142px;
+}
+
+.logo-web {
+    color: var(--logo-color);
+}
+
+.menu-nav {
+    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 5px;
+    padding: 0;
+}
+
+.menu-nav-item-popup {
+    position: relative;
+    display: grid;
+    align-items: center;
+    width: 70px;
+    height: 45px;
+    justify-content: center;
+    border-radius: 5px;
+    transition: ease-in-out 0.3s;
+}
+
+.menu-nav-item {
+    border-radius: 5px;
+}
+
+.menu-nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--main-text-color);
+    width: 70px;
+    height: 45px;
+    border-radius: 5px;
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+.menu-nav-link:hover,
+.menu-nav-popup-item-link:hover {
+    background-color: rgba(82, 82, 255, 0.4);
+    filter: drop-shadow(0 4px 2px gray);
+}
+
+.menu-nav-link:focus,
+.menu-nav-popup-item-link:focus {
+    background-color: rgba(82, 82, 255, 0.4);
+    outline: none;
+}
+
+#popup-active:focus+label {
+    background-color: rgba(82, 82, 255, 0.4);
+}
+
+.menu-nav-check-input,
+.nav-popup-more-check-input {
+    appearance: none;
+    position: absolute;
+}
+
+.menu-nav-popup {
+    display: none;
+    width: 310px;
+    height: 290px;
+    position: absolute;
+    background-color: #fff;
+    border: solid 1px rgba(42, 42, 255, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    top: 50px;
+    left: -115px;
+}
+
+.menu-nav-popup-more {
+    display: none;
+}
+
+.menu-nav-popup-list {
+    list-style: none;
+    padding: 5px;
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    gap: 1em;
+
+}
+
+.nav-popup-more-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr 1fr;
+    gap: 1em;
+    padding-top: 1em;
+}
+
+.menu-nav-popup-item-link {
+    display: flex;
+    justify-content: center;
+    height: 66px;
+    border-radius: 3px;
+    transition: ease-in-out 0.3s;
+}
+
+.menu-nav-popup-item a,
+.nav-popup-more-item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 0;
+}
+
+.menu-nav-popup-item-link {
+    text-decoration: none;
+    color: var(--main-text-color)
+}
+
+.popup-more-lable {
+    display: flex;
+    justify-content: center;
+    width: 0;
+    margin-top: 6px;
+    margin-left: 4em;
+    padding: 3px 5em;
+    border: solid 2px rgba(42, 42, 255, 0.5);
+    border-radius: 5px;
+    background-color: rgb(209, 209, 209);
+}
+
+.icon {
+    width: 40px;
+}
+
+.navigation-icon {
+    width: 30px;
+}
+
+#popup-active:checked~.menu-nav-popup {
+    display: block;
+}
+
+#more-active:checked+#more-active-label>.popup-more-lable {
+    display: none;
+}
+
+#more-active:checked~.menu-nav-popup-more {
+    display: block;
+}
+
+@media (min-width:391px) {
+    .wrapper {
+        min-height: 100%;
+        display: grid;
+        grid-template: minmax(50px, auto) / 1fr 5fr 1fr 1fr;
+        background-color: rgb(228, 210, 205);
+        padding: 15px;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .logo {
+        display: none;
+    }
+}

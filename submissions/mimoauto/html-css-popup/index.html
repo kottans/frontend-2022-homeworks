@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
+    <title>popUp</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="wrapper">
+      <div class="logo">
+        <a href="#" class="logo-link"
+          ><span class="logo"><span class="logo-web">Web</span>Studio</span></a
+        >
+      </div>
+      <nav class="nav">
+        <ul class="menu-nav">
+          <li class="menu-nav-item">
+            <a href="#" class="menu-nav-link">Mail</a>
+          </li>
+          <li class="menu-nav-item">
+            <a href="#" class="menu-nav-link">Images</a>
+          </li>
+          <li class="menu-nav-item-popup">
+            <input
+              class="menu-nav-check-input"
+              id="popup-active"
+              type="checkbox"
+            />
+            <label for="popup-active" class="menu-nav-link">
+              <img
+                class="navigation-icon"
+                src="./content/popup-button.png"
+                alt="popup button"
+              />
+            </label>
+            <div class="menu-nav-popup">
+              <ul class="menu-nav-popup-list">
+                <li class="menu-nav-popup-item">
+                  <a href="#calendar" class="menu-nav-popup-item-link">
+                    <img
+                      class="icon"
+                      src="./content/calendar.png"
+                      alt="calendar"
+                    />
+                    Calendar
+                  </a>
+                </li>
+                <li class="menu-nav-popup-item">
+                  <a href="#mail" class="menu-nav-popup-item-link">
+                    <img class="icon" src="./content/mail.png" alt="mail" />
+                    Mail
+                  </a>
+                </li>
+                <li class="menu-nav-popup-item">
+                  <a href="#news" class="menu-nav-popup-item-link">
+                    <img class="icon" src="./content/news.png" alt="news" />
+                    News
+                  </a>
+                </li>
+                <li class="menu-nav-popup-item">
+                  <a href="#map" class="menu-nav-popup-item-link">
+                    <img class="icon" src="./content/maps.png" alt="map" />
+                    Map
+                  </a>
+                </li>
+                <li class="menu-nav-popup-item">
+                  <a href="#files" class="menu-nav-popup-item-link">
+                    <img class="icon" src="./content/files.png" alt="files" />
+                    Files
+                  </a>
+                </li>
+                <li class="menu-nav-popup-item">
+                  <a href="#contacts" class="menu-nav-popup-item-link">
+                    <img
+                      class="icon"
+                      src="./content/contacts.png"
+                      alt="contacts"
+                    />
+                    Contacts
+                  </a>
+                </li>
+                <li class="menu-nav-popup-item">
+                  <a href="#translate" class="menu-nav-popup-item-link">
+                    <img
+                      class="icon"
+                      src="./content/tanslation.png"
+                      alt="translate"
+                    />
+                    Translate
+                  </a>
+                </li>
+                <li class="menu-nav-popup-item">
+                  <a href="#videos" class="menu-nav-popup-item-link">
+                    <img class="icon" src="./content/videos.png" alt="videos" />
+                    Videos
+                  </a>
+                </li>
+                <li class="menu-nav-popup-item">
+                  <a href="#search" class="menu-nav-popup-item-link">
+                    <img class="icon" src="./content/search.png" alt="search" />
+                    Search
+                  </a>
+                </li>
+              </ul>
+              <input
+                id="more-active"
+                class="nav-popup-more-check-input"
+                type="checkbox"
+              />
+              <label
+                id="more-active-label"
+                for="more-active"
+                class="nav-popup-more-check"
+              >
+                <span class="popup-more-lable">More</span>
+              </label>
+
+              <div class="menu-nav-popup-more">
+                <ul class="nav-popup-more-list">
+                  <li class="nav-popup-more-item">
+                    <a href="#chat" class="menu-nav-popup-item-link">
+                      <img class="icon" src="./content/chat.png" alt="chat" />
+                      Chat
+                    </a>
+                  </li>
+                  <li class="nav-popup-more-item">
+                    <a href="#classroom" class="menu-nav-popup-item-link">
+                      <img
+                        class="icon"
+                        src="./content/classroom.png"
+                        alt="classroom"
+                      />
+                      Classroom
+                    </a>
+                  </li>
+                  <li class="nav-popup-more-item">
+                    <a href="#collection" class="menu-nav-popup-item-link">
+                      <img
+                        class="icon"
+                        src="./content/collection.png"
+                        alt="collection"
+                        height="43"
+                      />
+                      Collection
+                    </a>
+                  </li>
+                  <li class="nav-popup-more-item">
+                    <a href="#mars" class="menu-nav-popup-item-link">
+                      <img class="icon" src="./content/mars.png" alt="mars" />
+                      Mars
+                    </a>
+                  </li>
+                  <li class="nav-popup-more-item">
+                    <a href="#blogs" class="menu-nav-popup-item-link">
+                      <img class="icon" src="./content/blogs.png" alt="blogs" />
+                      Blogs
+                    </a>
+                  </li>
+                  <li class="nav-popup-more-item">
+                    <a href="#promos" class="menu-nav-popup-item-link">
+                      <img
+                        class="icon"
+                        src="./content/promo.png"
+                        alt="promos"
+                      />
+                      Promos
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="menu-nav-item">
+            <a href="#" class="menu-nav-link">
+              <img class="navigation-icon" src="./content/bell.png" alt />
+            </a>
+          </li>
+          <li class="menu-nav-item">
+            <a href="#" class="menu-nav-link">
+              <img
+                class="navigation-icon"
+                src="./content/user.png"
+                alt="profile logo"
+              />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>
