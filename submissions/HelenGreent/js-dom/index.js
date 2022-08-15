@@ -61,13 +61,13 @@ function createArticle(item) {
   return article;
 }
 
-nav.addEventListener("click", ({ target }) => {
+nav.addEventListener("click", (event) => {
   let currentLink;
-  if (target.innerText !== currentLink) {
-    currentLink = target.innerText;
+  if (event.target.innerText !== currentLink) {
+    currentLink = event.target.innerText;
     main.innerHTML = "";
     main.appendChild(
-      createArticle(herbs.find((item) => item.name === target.innerText))
+      createArticle(herbs.find((item) => item.name === event.target.innerText))
     );
   }
 });

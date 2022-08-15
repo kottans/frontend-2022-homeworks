@@ -18,12 +18,12 @@
   padding: 0;
   text-decoration: none;
   list-style-type: none;
+  color: var(--black-color);
 }
 
 body {
   font-family: var(--main-font);
   background-color: var(--main-color);
-  color: var(--black-color);
 }
 
 .header {
