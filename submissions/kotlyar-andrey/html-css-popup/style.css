@@ -114,6 +114,7 @@ a.user_logo:hover {
   gap: 20px;
   padding: 20px;
   align-items: flex-end;
+  list-style-type: none;
 }
 
 .popup_item {
