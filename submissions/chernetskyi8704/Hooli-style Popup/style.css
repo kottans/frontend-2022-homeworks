@@ -115,7 +115,7 @@ h6 {
 .popup {
   display: none;
   position: absolute;
-  height: 365px;
+  height: 377px;
   max-width: 360px;
   top: 80px;
   right: 5px;
@@ -197,7 +197,8 @@ h6 {
 
 .nav__checkbox:focus ~ .nav__label,
 .popup__more-checkbox:focus ~ .popup__more-label,
-.item-focus :focus {
+.popup__link:focus,
+.nav__link:focus {
   outline: rgb(7, 192, 239) solid 2px;
 }
 
