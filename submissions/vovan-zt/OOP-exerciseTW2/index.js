@@ -7,7 +7,7 @@ class WorldInhabitant {
       this.name = name;
       this.gender = gender;
       this.saying = saying;
-    }
+   }
       
     getMeaning() {
       return `${this.species}; ${ this.name}; ${this.gender}; ${this.saying}; `
@@ -17,23 +17,22 @@ class WorldInhabitant {
 
 class Human extends WorldInhabitant { 
    constructor(species, name, gender, saying, legs = 2, hands = 2, friends = '') {
-   super(species, name, gender, saying);
-   this.legs = legs;
-   this.hands = hands;
-   this.friends = friends;
+      super(species, name, gender, saying);
+      this.legs = legs;
+      this.hands = hands;
+      this.friends = friends;
    }
 
    getMeaning() {
       return super.getMeaning() + `${this.legs}; ${this.hands}; ${this.friends}`;
-    }
-
+   }
 
 }
 
 class Animal extends WorldInhabitant { 
    constructor(species, name, gender, saying, paws = 4 ) {
-   super(species, name, gender, saying);
-   this.paws = paws;
+      super(species, name, gender, saying);
+      this.paws = paws;
    }
 
    getMeaning() {
@@ -53,5 +52,4 @@ class Animal extends WorldInhabitant {
  const catWoman = new Human('catwoman','Selina', 'female', cat.saying);
 
 
-
- [man, woman, cat, dog, catWoman].forEach(item => print(item.getMeaning()))
+[man, woman, cat, dog, catWoman].forEach(item => print(item.getMeaning()))
