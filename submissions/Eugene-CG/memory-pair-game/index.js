@@ -1,65 +1,73 @@
 const cardsList = document.querySelector(".cards__list");
 let clicksStorage = [];
-
 const startGame = () => {
-  let cards = [
+  const cards = [
     {
-      imgId: "fool",
+      cardId: "fool",
       src: "fool.jpg",
     },
     {
-      imgId: "lovers",
+      cardId: "lovers",
       src: "lovers.jpg",
     },
     {
-      imgId: "magician",
+      cardId: "magician",
       src: "magician.jpg",
     },
     {
-      imgId: "priestess",
+      cardId: "priestess",
       src: "priestess.jpg",
     },
     {
-      imgId: "star",
+      cardId: "star",
       src: "star.jpg",
     },
     {
-      imgId: "sun",
+      cardId: "sun",
       src: "sun.jpg",
     },
     {
-      imgId: "hanged",
+      cardId: "hanged",
       src: "hanged.jpg",
     },
     {
-      imgId: "justice",
+      cardId: "justice",
       src: "justice.jpg",
     },
   ];
-  cards = shuffleCards([...cards, ...cards]);
-
+  addCardListContent(shuffleCards([...cards, ...cards]));
+};
+const addCardListContent = (cards) => {
   let cardListInnerHtml = ``;
-  let i = 0;
   cards.forEach((obj) => {
-    cardListInnerHtml += createCard(obj, i++);
+    cardListInnerHtml += createCard(obj);
   });
   cardsList.innerHTML = cardListInnerHtml;
 };
 const shuffleCards = (cards) => cards.sort(() => Math.random() - 0.5);
-let arr = [];
-const createCard = ({ imgId, src }, i) => {
+const createCard = ({ cardId, src }) => {
   return `
     <li class="card__container">
-          <div class="card card-back">
-              <img src="./img/${src}" id="${imgId}${i}">
+          <div class="card card-back" data-card-id="${cardId}">
+              <img src="./img/${src}">
           </div>
       </li>`;
 };
-const flipCard = (target) => {
-  if (target.closest(".card")) {
-    clicksStorage = [...clicksStorage, target.firstElementChild];
-    target.classList.remove("card-back");
-    target.classList.add("hide", "open");
+const checkMatch = () => {
+  if (!(clicksStorage[0].dataset.cardId === clicksStorage[1].dataset.cardId)) {
+    switchCardState(clicksStorage[0].closest(".card"));
+    switchCardState(clicksStorage[1].closest(".card"));
+  }
+  clicksStorage = [];
+};
+const switchCardState = (target) => {
+  target.classList.toggle("card-back");
+  target.classList.toggle("open");
+};
+cardsList.addEventListener("click", ({ target }) => {
+  if (!(clicksStorage.length === 2) && target.closest(".card")) {
+    clicksStorage = [...clicksStorage, target];
+    switchCardState(target);
 
     if (clicksStorage.length === 2) {
       setTimeout(() => {
@@ -67,26 +75,5 @@ const flipCard = (target) => {
       }, 1000);
     }
   }
-};
-const checkMatch = () => {
-  if (
-    !(
-      clicksStorage[0].id.replace(/\d+/g, "") ===
-      clicksStorage[1].id.replace(/\d+/g, "")
-    )
-  )
-    checkUnmatch();
-  clicksStorage = [];
-};
-const checkUnmatch = () => {
-  clicksStorage.forEach((target) => {
-    target.closest(".card").classList.add("card-back");
-    target.closest(".card").classList.remove("hide", "open");
-  });
-  clicksStorage = [];
-};
-
-cardsList.addEventListener("click", (event) => {
-  if (!(clicksStorage.length === 2)) flipCard(event.target);
 });
 window.addEventListener("DOMContentLoaded", startGame);
