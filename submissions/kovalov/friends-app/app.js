@@ -2,7 +2,7 @@ const AGE = 'ageOrder';
 const NAME = 'nameOrder';
 
 const URL =
-  '1https://randomuser.me/api/?results=20&nat=us,dk,fr,gb&inc=gender,name,email,dob,phone,picture';
+  'https://randomuser.me/api/?results=20&nat=us,dk,fr,gb&inc=gender,name,email,dob,phone,picture';
 
 const userListContainerElement = document.querySelector('.user-list');
 const formElement = document.querySelector('.filter-options');
