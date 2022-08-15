@@ -132,7 +132,7 @@ input.popup__checkbox {
   width: 48px;
   height: 48px;
 }
-.hidden__item {
+.hidden__list {
   display: none;
 }
 .popup__button__more {
@@ -161,14 +161,19 @@ input.popup__checkbox {
   display: none;
 }
 
-#popup:checked ~ .hidden__item {
-  display: inline-block;
+#popup:checked ~ .hidden__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-#popup:focus ~ .popup__button {
+#popup:focus ~ * span.popup__button__more {
   outline: 3px solid rgb(67, 90, 153);
   border-radius: 5px;
-  background-color: rgb(238, 232, 225);
+}
+#popup:focus ~ * span.popup__button__hide {
+  outline: 3px solid rgb(67, 90, 153);
+  border-radius: 5px;
 }
 
 #popup:checked ~ * span.popup__button__more {
