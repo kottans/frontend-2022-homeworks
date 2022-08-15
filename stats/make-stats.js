@@ -18,6 +18,26 @@ exec("gh --version")
     console.error("make-stats ERROR:\n", e);
   });
 
+const outputPresets = {
+  'header': [
+    '# Open and merged PRs by task labels',
+    '',
+    `_as of ${new Date().toISOString()} UTC_`,
+    '',
+    'PR reference legend:',
+    ' - #xxx o -- PR is yet open ',
+    ' - #xxx i -- labelled issue referring to p2p PR(s)',
+    ' - **#xxx** -- PR is merged',
+  ],
+  'footer': [
+    '## How to update stats',
+    '',
+    '1. Have official [GitHub CLI](https://cli.github.com/) installed.',
+    '1. Run `cd stats && node make-stats.js`',
+    '1. Commit and Push changes',
+  ],
+};
+
 async function main() {
   let prDataByAuthor = {}, issueDataByAuthor = {};
   try {
@@ -40,20 +60,15 @@ async function main() {
     }))
     .sort(makeComparator("prs", "author"))
     .map(authorStats => authorStats.author);
-  const table = [
-    "# Open and merged PRs by task labels",
-    "",
-    `_as of ${new Date().toISOString()} UTC_`,
-    "",
-    "PR reference legend:",
-    " - \\#xxx o -- PR is yet open ",
-    " - \\#xxx i -- labelled issue referring to p2p PR(s)",
-    " - **\\#xxx** -- PR is merged",
-    "",
+  const report = [
+    ...outputPresets.header,
+    '',
     makeMarkdownTable(orderedAuthors, prLabels, prDataByAuthor),
-    "",
+    '',
+    ...outputPresets.footer,
+    '',
   ].join("\n");
-  const ioResult = await saveStatsToAFile(statsFileName, table);
+  const ioResult = await saveStatsToAFile(statsFileName, report);
   console.log(`\nSaving stats ${statsFileName}: ${ioResult}`);
 }
 
@@ -87,7 +102,7 @@ function makeMarkdownTable(authors, labels, dataByAuthor) {
       authorNr = 0;
     }
     rows.push(makeMarkdownTableRow([
-      ` ${coveredTasksCountLatest}.${++authorNr}`,
+      `${coveredTasksCountLatest}.${++authorNr}`,
       makePrListUrl(authorName),
       ...labels.map(label =>
         dataByAuthor[authorName][label]
@@ -183,7 +198,7 @@ function parseIssuesData(data) {
 }
 
 function fetchPrListGhCommand(label, state) {
-  return `gh pr list --state ${state} --label "${label}" --limit 200`;
+  return `gh pr list --state ${state} --label "${label}" --limit 300`;
 }
 
 function fetchIssueListGhCommand(labels) {
