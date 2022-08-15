@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" href="css/main.css">
+        <title>unabyband pop-up</title>
+    </head>
+    <!--Початок коду-->
+    <body>
+        <!--Шапка-->
+        <div class="header">
+            <!--Меню-->
+            <div class="top_menu">
+                <!--Елементи меню-->
+                <div class="top_menu__item-container">
+                    <a href="#" class="top_menu__item top_menu__item_mail">Mail</a>
+                </div>
+                <div class="top_menu__item-container">
+                    <a href="#" class="top_menu__item top_menu__item_images">Images</a>
+                </div>
+                <div class="top_menu__item-container">
+                    <!--Чекбокс попапа-->
+                    <input class="input_popup" type="checkbox" id="moreoption" name="moreoption">
+                    <label class="button_popup" for="moreoption"></label>
+                    <!--Тіло попапа-->
+                    <div class="popup">
+                        <div class="popup_window">
+                            <!--Список видимих елементів попапа-->
+                        <ul class="popup_window_list popup_window_visible">
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Calendar</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Mail</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">News</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Map</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Files</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Contacts</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Translate</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Videos</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Search</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Photo</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Apps</span>
+                            </a>
+                        </li>
+                        <li class="popup_window_list__item">
+                            <a href="#" class="popup_window__active">
+                                <span class="popup_window__img"></span>
+                                <span class="popup_window__label">Document</span>
+                            </a>
+                        </li>
+                        </ul>
+                        <!--Відкриття списку невидимих елементів-->
+                        <input class="hidden_input" type="checkbox" id="showidden" name="moreoption">
+                        <label class="morebutton" for="showidden">More</label>
+                        <div class="divider"></div>
+                            <!--Список невидимих елементів попапа-->
+                        <ul class="popup_window_list popup_window_hidden">
+                            <li class="popup_window_list__item">
+                                <a href="#" class="popup_window__active">
+                                    <span class="popup_window__img"></span>
+                                    <span class="popup_window__label">Chat</span>
+                                </a>
+                            </li>
+                            <li class="popup_window_list__item">
+                                <a href="#" class="popup_window__active">
+                                    <span class="popup_window__img"></span>
+                                    <span class="popup_window__label">Classroom</span>
+                                </a>
+                            </li>
+                            <li class="popup_window_list__item">
+                                <a href="#" class="popup_window__active">
+                                    <span class="popup_window__img"></span>
+                                    <span class="popup_window__label">Collection</span>
+                                </a>
+                            </li>
+                            <li class="popup_window_list__item">
+                                <a href="#" class="popup_window__active">
+                                    <span class="popup_window__img"></span>
+                                    <span class="popup_window__label">Mars</span>
+                                </a>
+                            </li>
+                            <li class="popup_window_list__item">
+                                <a href="#" class="popup_window__active">
+                                    <span class="popup_window__img"></span>
+                                    <span class="popup_window__label">Blog</span>
+                                </a>
+                            </li>
+                            <li class="popup_window_list__item">
+                                <a href="#" class="popup_window__active">
+                                    <span class="popup_window__img"></span>
+                                    <span class="popup_window__label">Promos</span>
+                                </a>
+                            </li>
+                            <a href="#" class="top_menu__item top_menu__item_other">Even more from Kottans</a>
+                        </ul>
+                        </div>
+                    </div>
+                    <!--кінець попапа-->
+                </div>
+                <div class="top_menu__item-container">
+                    <a href="#" class="top_menu__item top_menu__item_bell"></a>
+                </div>
+                <div class="top_menu__item-container">
+                    <a href="#" class="top_menu__item top_menu__item_user"></a>
+                </div>
+                <!--кінець елементів меню-->
+            </div>
+            <!--кінець меню-->
+        </div>
+        <!--кінець шапки-->
+        <!--Підрозділ пошуку-->
+        <div class="find">
+            <div class="find-container">
+                <!--фонова картинка-->
+                <div class="find_cover">
+                    <img src="icons/cover.jpg" alt="Cover image">
+                </div>
+                <!--поле пошуку-->
+                <div class="find_field">
+                    <input type="text" placeholder="Find yourself or something else..." class="find_field-input">
+                    <span class="find_field-icon"></span>
+                </div>
+            </div>
+        </div>
+        <!--кінець підрозділа пошуку-->
+    </body>
+</html>
