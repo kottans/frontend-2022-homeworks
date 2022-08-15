@@ -34,15 +34,27 @@ const man = {
    saying: 'one hundred himars to these brave Ukrainians'
 }
 
-const inhabitans = [dog, cat, woman, man];
+const catwoman = {
+   species: 'cat-woman',
+   name: 'Selina',
+   gender: 'female',
+   legs: 2,
+   hands: 2
+}
 
-inhabitans.forEach((inhabitan) => {
-   let str = '';
-   for (let key in inhabitan) {
-      str += `${inhabitan[key]}; `;
-   }
-   print(str);
-});
+dog.friends = [man.name, woman.name];
+cat.friends = [catwoman.name];
+catwoman.saying = cat.saying;
+
+const inhabitans = [dog, cat, woman, man, catwoman];
+
+const keys = ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends'];
+
+const convertObjToStr = (obj, arrKeys) => {
+   return arrKeys.map(key => obj[key]).join('; ');
+};
+
+inhabitans.map(inhabitan => convertObjToStr(inhabitan, keys)).forEach(inhabitan => print(inhabitan));
 
 
  
