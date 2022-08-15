@@ -61,10 +61,6 @@
   transition: 1s all ease-in-out;
   transform: scale(1.05);
 }
-.hide {
-  pointer-events: none;
-  visibility: hidden;
-}
 img {
   width: var(--full-size);
   height: var(--full-size);
