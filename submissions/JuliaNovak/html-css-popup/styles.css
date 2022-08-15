@@ -1,7 +1,7 @@
 :root {
     --hover-color: rgb(103, 103, 200);
     --bg-color:rgb(245, 243, 243);
-    --secondary-bg-color: lightgrey;
+    --secondary-bg-color: 	rgb(211,211,211);
 }
 
 body {
@@ -14,7 +14,7 @@ body {
     justify-content: end;
     align-items: center;
     padding: 0 1rem;
-    background-color: lightblue;
+    background-color: rgb(173,216,230);
 }
 
 .nav-items-container {
@@ -23,7 +23,7 @@ body {
     justify-content: space-between;
 }
 
-.menu li{
+.menu-item{
     display: inline-block;
     margin-right: .6rem;
 }
@@ -34,6 +34,7 @@ body {
 
 .menu img{
     max-width: 25px;
+    padding: 0px;
 }
 
 li {
@@ -54,6 +55,7 @@ a:hover, a:focus, .popup-item img:hover, .popup-item:focus {
 .popup-item, .popup-label, .input-more {
     cursor: pointer;
     position: absolute;
+    /* width: 37px; */
     top: 1rem;
     right: 7.7rem;
     -webkit-appearance: none;
@@ -76,8 +78,8 @@ a:hover, a:focus, .popup-item img:hover, .popup-item:focus {
 }
 
 input.popup-item {
-    width: 2rem;
-    height: 2rem;
+    width: 2.2rem;
+    height: 2.1rem;
 }
 
 input.popup-item:checked ~ .dropdown{
@@ -98,8 +100,14 @@ img {
     margin: 0.55rem;
 }
 
+.item img {
+    height: 1.6rem;
+    width: 2.6rem;
+}
+
 .item {
     align-self: baseline;
+    padding: 3px;
 }
 
 .item a{
@@ -121,8 +129,9 @@ img {
     line-height: 40px;
     cursor: pointer;
     height: 2.6rem;
-    width: 100%;
-    top: 22rem;
+    width: 98.5%;
+    top: 20.5rem;
+    padding: 2px;
 }
 
 .input-more::before{
@@ -138,6 +147,7 @@ img {
     color: var(--hover-color);
     border: 2px solid var(--hover-color);
     outline: none;
+    padding: 0;
 }
 
 .additional-wrapper{
@@ -183,7 +193,7 @@ img {
         grid-template-rows: repeat(3, 1fr);
     }
     .input-more{
-        top: 38rem;
+        top: 29.5rem;
     }
     
 }
