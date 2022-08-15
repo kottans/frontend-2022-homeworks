@@ -1,7 +1,11 @@
 let content = document.querySelector('.content');
 const backImg = 'https://i.pinimg.com/originals/13/25/05/132505ba3238e79c00034c905b2ca045.jpg';
+let previousClicked = undefined;
+let currentClicked = undefined;
+let flipped = 0;
+let isBoardLocked = false;
 
-let arrOfCards = [
+let cardsList = [
     {
         img: 'https://static3.depositphotos.com/1005348/211/i/450/depositphotos_2114992-stock-photo-aqua-digit-1.jpg',
         id: 1
@@ -36,14 +40,10 @@ let arrOfCards = [
     },
 ];
 
-let shuffledArr = shuffleArr([...arrOfCards, ...arrOfCards]);
-
-shuffledArr.forEach((el) => {
-    content.innerHTML += renderItem(el);
-});
+let shuffledCardList = shuffleArr([...cardsList, ...cardsList]).map((el) => content.innerHTML += renderItem(el));
 
 let cardItems = document.querySelectorAll('.cardItem');
-cardItems.forEach(el => el.addEventListener('click', clickedItem));
+cardItems.forEach(el => el.addEventListener('click', clickItem));
 
 function shuffleArr(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -56,27 +56,20 @@ function shuffleArr(array) {
 
 function renderItem(item) {
     return `
-        <div class='cardItem' data-attribute='${item.id}'>
+        <div class='cardItem' data-card_id='${item.id}'>
             <img class='cardItem__front' src='${backImg}'/>
             <img class='cardItem__back' src='${item.img}'/>
         </div>
     `;
 }
 
-let previousClicked = undefined;
-let currentClicked = undefined;
-let flipped = 0;
-let lockBoard = false;
-
-function clickedItem(event) {
-    if (event.target === previousClicked) return;
-    if (lockBoard) return;
-    if (!event.target.classList.contains('cardItem__front')) return; 
+function clickItem(event) {
+    if (isBoardLocked || event.target === previousClicked || !event.target.classList.contains('cardItem__front')) return;
 
     let parentElement = event.target.closest('.cardItem');
     parentElement.classList.add('flip');
 
-    if (previousClicked === undefined) {
+    if (!previousClicked) {
         previousClicked = parentElement;
     } else {
         currentClicked = parentElement;
@@ -86,14 +79,14 @@ function clickedItem(event) {
 }
 
 function sameItems(previosEvent, currentEvent) {
-    lockBoard = true;
-    if (previosEvent.dataset.attribute === currentEvent.dataset.attribute) {
+    isBoardLocked = true;
+    if (previosEvent.dataset.card_id === currentEvent.dataset.card_id) {
         previosEvent.classList.add('hide');
         currentEvent.classList.add('hide');
         resetBoardItem();
         flipped += 2;
 
-        if (flipped === shuffledArr.length) {
+        if (flipped === shuffledCardList.length) {
             alert('YOU WIN!');
             window.location.reload();
         } 
@@ -109,5 +102,5 @@ function sameItems(previosEvent, currentEvent) {
 function resetBoardItem() {
     previousClicked = undefined;
     currentClicked = undefined;
-    lockBoard = false;
+    isBoardLocked = false;
 }
