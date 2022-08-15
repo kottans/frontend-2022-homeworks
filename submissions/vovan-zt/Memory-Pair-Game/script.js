@@ -118,8 +118,8 @@ window.addEventListener('DOMContentLoaded', () => {
     flip.forEach(item => {
         item.addEventListener('click', e => {
             let target = e.target;
-        item.classList.toggle('hover');
-        cardFirst.push(target.dataset.card)
+            item.classList.toggle('hover');
+            cardFirst.push(target.dataset.card)
      
             changeCard(item);
 
