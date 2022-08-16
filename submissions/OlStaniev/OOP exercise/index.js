@@ -1,41 +1,41 @@
-class Inhabitants {
+class Inhabitant {
    constructor(name, gender, legs, saying) {
       this.name = name;
       this.gender = gender;
       this.legs = legs;
       this.saying = saying
    }
-
    prepareToPrint() {
       return [this.name, this.gender, this.legs, this.saying].join(';')
    }
 }
 
-class People extends Inhabitants {
-   constructor(name, gender, legs, hands, saying) {
+class Person extends Inhabitant {
+   constructor(name, gender, legs, hands, saying, friends) {
       super(name, gender, legs, saying)
       this.hands = hands
+      this.friends = friends || []
    }
    prepareToPrint() {
-      return [this.name, this.gender, this.legs, this.hands, this.saying].join(';')
+      return super.prepareToPrint() + ';' + this.friends.join(';')
    }
 }
 
-class PeopleWithFriends extends People {
-   constructor(name, gender, legs, hands, saying, friends) {
-      super(name, gender, legs, hands, saying)
-      this.friends = friends
+class Animal extends Inhabitant {
+   constructor(name, gender, legs, saying, tail) {
+      super(name, gender, legs, saying)
+      this.tail = tail
    }
    prepareToPrint() {
-      return [this.name, this.gender, this.legs, this.hands, this.saying, this.friends].join(';')
+      return super.prepareToPrint() + ';' + this.tail
    }
 }
 
-const dog = new Inhabitants('Bob', 'male', 4, 'woof!')
-const cat = new Inhabitants('Kitty', 'female', 4, 'meow!')
-const woman = new People('Sara', 'female', 2, 2, 'Hello!')
-const catWoman = new People('Bella', 'female', 2, 2, `${cat.saying}`)
-const man = new PeopleWithFriends('Mario', 'male', 2, 2, 'Hi!', ['Bob', 'Tom', 'Eva'])
+const dog = new Animal('Bob', 'male', 4, 'woof!', 1)
+const cat = new Animal('Kitty', 'female', 4, 'meow!', 1)
+const woman = new Person('Sara', 'female', 2, 2, 'Hello!')
+const catWoman = new Person('Bella', 'female', 2, 2, `${cat.saying}`)
+const man = new Person('Mario', 'male', 2, 2, 'Hi!', ['Bob', 'Tom', 'Eva'])
 
 const inhabitants = [cat, dog, woman, catWoman, man]
 
