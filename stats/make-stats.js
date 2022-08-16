@@ -5,7 +5,8 @@ const { promisify } = require('util');
 const exec = promisify(require('child_process').exec);
 const writeFile = promisify(require('fs').writeFile);
 const { prLabels, prStates, parsingRegex, url, statsFileName } = require('./config');
-const { mergeObjects, recombine } = require('./utils');
+const { outputPresets } = require('./assets');
+const { makeArray, mergeObjects, recombine } = require('./utils');
 
 exec("gh --version")
   .catch(e => {
@@ -17,26 +18,6 @@ exec("gh --version")
   .catch(e => {
     console.error("make-stats ERROR:\n", e);
   });
-
-const outputPresets = {
-  'header': [
-    '# Open and merged PRs by task labels',
-    '',
-    `_as of ${new Date().toISOString()} UTC_`,
-    '',
-    'PR reference legend:',
-    ' - #xxx o -- PR is yet open ',
-    ' - #xxx i -- labelled issue referring to p2p PR(s)',
-    ' - **#xxx** -- PR is merged',
-  ],
-  'footer': [
-    '## How to update stats',
-    '',
-    '1. Have official [GitHub CLI](https://cli.github.com/) installed.',
-    '1. Run `cd stats && node make-stats.js`',
-    '1. Commit and Push changes',
-  ],
-};
 
 async function main() {
   let prDataByAuthor = {}, issueDataByAuthor = {};
@@ -62,11 +43,8 @@ async function main() {
     .map(authorStats => authorStats.author);
   const report = [
     ...outputPresets.header,
-    '',
     makeMarkdownTable(orderedAuthors, prLabels, prDataByAuthor),
-    '',
     ...outputPresets.footer,
-    '',
   ].join("\n");
   const ioResult = await saveStatsToAFile(statsFileName, report);
   console.log(`\nSaving stats ${statsFileName}: ${ioResult}`);
@@ -119,10 +97,6 @@ function makeMarkdownTableRow(cells) {
   return `${columnDelimiter}${cells.join(columnDelimiter)}${columnDelimiter}`.trim();
 }
 
-function makeArray(count = 1, value) {
-  return Array(count).fill(value);
-}
-
 function makePrListUrl(authorName) {
   return `[${authorName}](${url.prListFilteredByAuthorPrefix + authorName})`;
 }
@@ -163,22 +137,24 @@ async function fetchPullRequestData(prLabels, prStates) {
 async function fetchIssueData(prLabels) {
   console.log("NB! Relevant issues must have their titles starting with 'author_username:' and have labels assigned");
   const dataByAuthor = {};
-  const command = fetchIssueListGhCommand(prLabels);
-  try {
-    const data = await exec(command);
-    const issues = parseIssuesData(data.stdout);
-    issues.forEach(({issueNr, author, labels}) => {
-      labels.forEach(label => {
-        dataByAuthor[author] = {
-          ...dataByAuthor[author],
-          [label]: { prNr: issueNr, state: "issue" },
-        };
-      });
+  const commands = fetchIssueListGhCommand(prLabels);
+  const issuesPerLabel = await Promise.all(commands.map(async command => {
+    try {
+      const data = await exec(command);
+      return parseIssuesData(data.stdout);
+    } catch(e) {
+      console.error(`ERROR executing "${command}"`);
+      throw new Error(e);
+    }
+  }));
+  issuesPerLabel.flat().forEach(({issueNr, author, labels}) => {
+    labels.forEach(label => {
+      dataByAuthor[author] = {
+        ...dataByAuthor[author],
+        [label]: {prNr: issueNr, state: "issue"},
+      };
     });
-  } catch(e) {
-    console.error(`ERROR executing "${command}"`);
-    throw new Error(e);
-  }
+  });
   return dataByAuthor;
 }
 
@@ -198,14 +174,13 @@ function parseIssuesData(data) {
 }
 
 function fetchPrListGhCommand(label, state) {
-  return `gh pr list --state ${state} --label "${label}" --limit 300`;
+  return `gh pr list --state ${state} --label "${label}" --limit 600`;
 }
 
 function fetchIssueListGhCommand(labels) {
-  return [
-    "gh issue list --state all --limit 200 ",
-    ...labels.map(label => `"${label}"`),
-  ].join(" --label ");
+  // Issues with multiple labels should be treated as individual entries.
+  // Also listing multiple labels is treated as "AND" rather than "ANY OF".
+  return labels.map(label => `gh issue list --state all --label "${label}" --limit 200`);
 }
 
 function makeComparator(primaryKeyNumericDescending, secondaryKeyAlphaAscendingCaseInsensitive) {
