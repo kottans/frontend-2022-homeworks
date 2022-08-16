@@ -1,0 +1,35 @@
+name: Update students' PR stats
+# Updates ./stats/pr-stats.md on every PR merge to main/master.
+# Changes are pushed directly to main/master.
+# Uses GitHub CLI app provided by GitHub runner.
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+      - main
+jobs:
+  update-pr-stats:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull source code
+        uses: actions/checkout@v3
+        with:
+          path: './'
+      - name: Update stats file
+        run: |
+          cd ./stats
+          node make-stats.js
+          cd ..
+      # Publish to the default branch in current repo using GITHUB_TOKEN and other default settings.
+      - name: Commit and publish update
+        uses: oleksiyrudenko/gha-git-credentials@v2-latest
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+        run: |
+          TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S %Z"`
+          git add ./stats/pr-stats.md
+          git commit -m "Stats: update stats/pr-stats.md as of $TIMESTAMP"
+          git push
