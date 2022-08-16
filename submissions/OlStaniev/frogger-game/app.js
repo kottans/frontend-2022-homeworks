@@ -9,8 +9,10 @@ const enemySize = new SizeObject(90, 63)
 const tileSize = new SizeObject(100, 83)
 const boardSize = new SizeObject(500, 498)
 const border = new SizeObject(20, 20)
-const enemyMinSpeed = 100
-const enemyMaxSpeed = 400
+const enemySpeed = {
+    min: 100,
+    max: 400
+}
 const numberOfEnemies = 3
 const allEnemies = []
 
@@ -18,16 +20,16 @@ const body = document.querySelector('body')
 const div = document.createElement('div')
 
 body.appendChild(div)
-div.style.fontSize = '30px';
+div.style.fontSize = '30px'
 
 class Enemy {
-    constructor(x, y, speed, player) {
+    constructor(x, y, speed, player, sprite) {
         this.x = x;
         this.y = y;
+        this.sprite = sprite;
         this.speed = speed;
-        this.sprite = 'images/enemy-bug.png';
         this.start = -enemySize.width;
-        this.player = player
+        this.player = player;
     }
     checkCollision() {
         if (((this.player.x > this.x && this.player.x < this.x + enemySize.width) || (this.player.x < this.x && this.player.x > this.x - enemySize.width))
@@ -40,24 +42,24 @@ class Enemy {
     update(dt) {
         if (this.x > boardSize.width) {
             this.x = this.start
-            this.speed = Math.floor(Math.random() * (enemyMaxSpeed - enemyMinSpeed) + enemyMinSpeed);
+            this.speed = Math.floor(Math.random() * (enemySpeed.max - enemySpeed.min) + enemySpeed.min);
         }
         this.x += dt * this.speed;
         this.checkCollision()
-    };
+    }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    };
-};
+    }
+}
 
 class Player {
-    constructor(x, y) {
+    constructor(x, y, sprite) {
         this.x = x;
         this.y = y;
-        this.sprite = 'images/char-boy.png';
+        this.sprite = sprite;
         this.score = 0;
         this.startY = y;
-        this.startX = x
+        this.startX = x;
     }
     update() {
         if (this.y + border.heigth < tileSize.heigth) {
@@ -78,11 +80,11 @@ class Player {
     }
 }
 
-const player = new Player((boardSize.width - tileSize.width) / 2, boardSize.heigth - tileSize.heigth - border.heigth)
+const player = new Player((boardSize.width - tileSize.width) / 2, boardSize.heigth - tileSize.heigth - border.heigth, 'images/char-boy.png')
 
 for (let i = 1; i <= numberOfEnemies; i++) {
     const enemy = new Enemy(-enemySize.width, tileSize.heigth * i - border.heigth,
-        Math.floor(Math.random() * (enemyMaxSpeed - enemyMinSpeed) + enemyMinSpeed), player);
+        Math.floor(Math.random() * (enemySpeed.max - enemySpeed.min) + enemySpeed.min), player, 'images/enemy-bug.png');
     allEnemies.push(enemy)
 }
 
