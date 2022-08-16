@@ -56,18 +56,19 @@ const properties = [
   "paws",
   "legs",
   "hands",
-  "saying",
   "friends",
+  "saying",
 ];
 
 for (let inhabitant of inhabitants) {
   print(
     properties
       .map((key) => {
-        if (key === "friends" && key in inhabitant) {
-          let friends = [];
-          inhabitant[key].forEach((friend) => friends.push(friend.name));
-          return friends.join(", ") + ";";
+        if (key === "friends") {
+          if (key in inhabitant) {
+            return inhabitant[key].map((friend) => friend.name).join(", ");
+          }           
+          return "No friends";
         }
         return inhabitant[key];
       })
