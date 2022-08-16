@@ -54,7 +54,7 @@
 A1. Форкніть основне репо _homeworks_ через веб-інтерфейс GitHub
 
 A2. Клонуйте _homeworks fork_ на вашій локальній машині:
-   - `git clone https://github.com/[your-username]/frontend-2022-homeworks.git`
+   - `git clone https://github.com/<your-username>/frontend-2022-homeworks.git`
 
 > Перед будь-якими подальшими операціями переконайтеся, що ви перебуваєте в каталозі локального repo homeworks
 
@@ -194,7 +194,7 @@ A1: Щоб це сталося, треба зробити наступне:
 
 1. Знайди всі вмерджені PR в інших репо, які треба зарахувати, і май лінки на них під рукою.
 1. Відкрий issue в цьому репо скориставшись
-   [шаблоном](https://github.com/kottans/frontend-2022-homeworks/issues/new?template=import-tasks-from-another-repo.md)
+   [шаблоном](https://github.com/kottans/frontend-2022-homeworks/issues/new?template=import-tasks-from-another-repo.md&title=your-github-username:%20Import%20tasks%20from%20another%20homeworks%20repo)
 1. В студентському чаті закинь лінк на issue і попроси менторів врахувати вже раніше прийняті задачі.
 1. Ментори перевірять статус залінкованих PR і навісять відповідні лейбли.
 1. Через деякий час в [статі цього репо](./stats/pr-stats.md) з'являться відповідні записи.
