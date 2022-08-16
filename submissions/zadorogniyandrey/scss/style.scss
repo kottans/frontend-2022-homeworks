@@ -1,6 +1,5 @@
 @import "nullstyle.scss";
 
-
 .wrapper{
     max-width: 700px;
     margin: 0 auto;
@@ -10,13 +9,13 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 50px 10px;
+    padding: 0.625em;
 }
 .header__link{
     color: #000;
     display: block;
     border: 2px solid transparent;
-    padding: 5px;
+    padding: 0.312em;
     border-radius: 5px;
 }
 .header__link:hover{
@@ -31,7 +30,7 @@
     align-items: center;
 }
 .header__info-item{
-    margin-right: 20px;
+    margin-right: 1.25em;
     cursor: pointer;
 }
 .header__info-item:last-child{
@@ -50,7 +49,7 @@
     display: block;
     width: 35px;
     height: 35px;
-    padding: 5px;
+    padding: 0.312em;
     background-color: transparent;
     border-radius: 5px;
     transition: 0.3s;
@@ -96,7 +95,7 @@
     height: 450px;
     border: 1px solid rgb(116, 116, 116);
     border-radius: 5px;
-    padding: 10px;
+    padding: 0.625em;
     box-shadow: 0px 0px 9px rgb(146, 146, 146);
     display: none;
     overflow-y: auto;
@@ -104,13 +103,12 @@
 .popup__items{
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 0.625em;
 }
 .popup__item{
-    
     height: 115px;
 }
 .popup__link{
@@ -121,7 +119,7 @@
     border: 2px solid transparent;
     width: 100%;
     height: 100%;
-    padding: 5px;
+    padding: 0.312em;
     border-radius: 5px;
 }
 .popup__link:hover{
@@ -137,7 +135,6 @@
 }
 .popup__img{
     width: 100%;
-    top: -50%;
 }
 .popup__more{
     appearance: none;
@@ -154,10 +151,10 @@
     width: 100%;
     text-align: center;
     color: #fff;
-    padding: 10px;
+    padding: 0.625em;
     background-color: rgb(91, 53, 230);
     border-radius: 5px;
-    margin: 10px auto;
+    margin: 0.625 auto;
     cursor: pointer;
 }
 .label__more:hover{
@@ -168,15 +165,15 @@
 }
 .popup__items--hidden{
     border-top: 1px solid rgb(167, 167, 167);
-    padding-top: 10px;
+    padding-top: 0.625em;
     display: none;
 }
 
 @media(max-width: 720px){
     .header__link{
-        margin-right: 10px;
+        margin-right: 0.625em;
     }
     .header__info-item{
-        margin-right: 10px;
+        margin-right: 0.625em;
     }
 }
