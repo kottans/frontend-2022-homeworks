@@ -22,6 +22,8 @@ const cat = {
 const woman = {
    species: "human",
    name: "Lena",
+   lastName: 'Jons',
+   children: 2,
    gender: "female",
    legs: 2,
    hands: 2,
@@ -49,15 +51,16 @@ const catWoman = {
 
 const WorldInhabitant = [dog, cat, woman, man, catWoman];
 
+const  WorldInhabitantKeys =  ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends'];
+
 const objPrint = WorldInhabitant.map((obj) => {
-   let arr=[];
-   for (let key in obj) { 
-      arr.push(obj[key]);
-   }
+   let arr = [];
+   WorldInhabitantKeys.forEach(keys => {
+      arr.push(obj[keys]);
+   })
    return arr;
 });
 
-
 objPrint.forEach(item => {
    print(item.join('; '))
-})
+});
