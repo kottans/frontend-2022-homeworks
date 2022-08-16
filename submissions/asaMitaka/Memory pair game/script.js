@@ -40,7 +40,15 @@ let cardsList = [
     },
 ];
 
-let shuffledCardList = shuffleArr([...cardsList, ...cardsList]).map((el) => content.innerHTML += renderItem(el));
+let shuffledCardList = shuffleArr([...cardsList, ...cardsList]);
+function renderAllItem() {
+    let accumulator = '';
+    shuffledCardList.forEach(el => accumulator += renderItem(el));
+
+    content.innerHTML = accumulator;
+}
+renderAllItem();
+
 
 let cardItems = document.querySelectorAll('.cardItem');
 cardItems.forEach(el => el.addEventListener('click', clickItem));
