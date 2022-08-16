@@ -88,11 +88,17 @@ img {
   -webkit-appearance: none;
 }
 
+.fisrt:hover,
+.second_label:hover {
+  cursor: pointer;
+}
+
 .first {
   background-image: url(icons/popup-button.png);
   background-size: 100%;
   height: 32px;
   width: 32px;
+  cursor: pointer;
 }
 
 .first:focus {
@@ -107,10 +113,6 @@ img {
 
 .first:hover {
   transform: scale(1.2);
-}
-
-.first_label:hover {
-  cursor: pointer;
 }
 
 .first:checked + .main__wrapper {
@@ -287,3 +289,4 @@ img {
     margin: 0 auto;
   }
 }
+
