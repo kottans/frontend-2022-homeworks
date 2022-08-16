@@ -14,7 +14,7 @@ const dog = {
    legs: 4,
    hands: 0,
    saying: 'woof-woof!'
-}
+};
 
 const cat = {
    species: 'cat',
@@ -23,7 +23,7 @@ const cat = {
    legs: 4,
    hands: 0,
    saying: 'meow!'
-}
+};
 
 const man = {
    species: 'human',
@@ -32,7 +32,7 @@ const man = {
    legs: 2,
    hands: 2,
    saying: 'Hi!'
-}
+};
 
 const woman = {
    species: 'human',
@@ -41,7 +41,7 @@ const woman = {
    legs: 2,
    hands: 2,
    saying: 'Hello!'
-}
+};
 
 const catWoman = Object.create(cat);
 catWoman.name = 'Cat-Woman';
@@ -52,7 +52,7 @@ catWoman.gender = 'female';
 
 const inhabitants = [dog, cat, man, woman, catWoman];
 
-function aboutObj(obj) {
+function tellAboutObj(obj) {
    return `${obj.saying} I'm a ${obj.species}. My gender is ${obj.gender}. My name is ${obj.name}. I have ${obj.legs} legs, ${obj.hands} hands`;
 }
 
