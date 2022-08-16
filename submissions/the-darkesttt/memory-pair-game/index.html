@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Pair Game</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="img/01.webp">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-menu">
+        <div class="menu-modal">
+            <h1 class="modal__title">Memory Pair Game</h1>
+            <p class="modal__desc">Your task is to find a pair for each card in the least amount of time. Good luck!</p>
+            <button id="game-start-button">Start</button>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="game-counter">
+            <p class="game-timer" id="timer">
+                <span class="timer-min" id="timerMin">00</span>:<span class="timer-sec" id="timerSec">00</span>
+            </p>
+            <button id="restart-btn">Restart</button>
+        </div>
+        <ul class="game-list"></ul>
+    </div>
+    <script src="js/newApp.js"></script>
+</body>
+</html>
