@@ -11,153 +11,155 @@
 </head>
 
 <body>
-    <nav>
-        <ul class="nav">
-            <li><a href="http://gmail.com" target="_blank" rel="noopener noreferrer">Mail</a></li>
-            <li><a href="#" target="_blank" rel="noopener noreferrer">Image</a></li>
-            <li>
-                <a href="#" target="_blank">
-                    <img class="nav-img" src="./popup-icons/bell.png" alt="bell">
-                </a>
-            </li>
-            <li class="popup_button">
+    <header>
+        <nav>
+            <ul class="nav">
+                <li class="nav_item"><a href="#" target="_blank" rel="noopener noreferrer">Mail</a></li>
+                <li class="nav_item"><a href="#" target="_blank" rel="noopener noreferrer">Image</a></li>
+                <li class="nav_item">
+                    <a href="#" target="_blank">
+                        <img class="nav-img" src="./popup-icons/bell.png" alt="bell">
+                    </a>
+                </li>
+                <li class="popup_button nav_item">
 
-                <input type="checkbox" name="menu" id="menu">
-                <label for="menu">
-                    <img class="nav-img" src="./popup-icons/popup-button.png" alt="popup button">
-                </label>
-
-
-                <div class="popup">
-
-                    <input type="checkbox" name="more" id="more_less">
-                    <label class="popup_more_button" for="more_less">
-                        <span id="more">More</span>
-                        <span id="less">Less</span>
+                    <input class="popup_button-input" type="checkbox" name="menu" id="menu">
+                    <label class="popup_button-label" for="menu">
+                        <img class="popup_button-img" src="./popup-icons/popup-button.png" alt="popup button">
                     </label>
 
-                    <ul>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/calendar.png" alt="calendar">
-                                <p>Calendar</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/mail.png" alt="mail">
-                                <p>Mail</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/news.png" alt="news">
-                                <p>News</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/maps.png" alt="map">
-                                <p>Map</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/files.png" alt="files">
-                                <p>Failes</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/contacts.png" alt="contacts">
-                                <p>Contacts</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/photos.png" alt="photos">
-                                <p>Photos</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/apps.png" alt="apps">
-                                <p>Apps</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/tanslation.png" alt="tanslation">
-                                <p>Translation</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/blogs.png" alt="blog">
-                                <p>Blog</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/videos.png" alt="video">
-                                <p>Video</p>
-                            </a>
-                        </li>
-                        <li class="popup_item">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/search.png" alt="search">
-                                <p>Search</p>
-                            </a>
-                        </li>
 
-                        <li class="popup_item popup_more_items">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/chat.png" alt="chat">
-                                <p>Chat</p>
-                            </a>
-                        </li>
-                        <li class="popup_item popup_more_items">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/classroom.png" alt="classroom">
-                                <p>classroom</p>
-                            </a>
-                        </li>
-                        <li class="popup_item popup_more_items">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/collection.png" alt="collection">
-                                <p>Collection</p>
-                            </a>
-                        </li>
-                        <li class="popup_item popup_more_items">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/documents.png" alt="documents">
-                                <p>Documents</p>
-                            </a>
-                        </li>
-                        <li class="popup_item popup_more_items">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/mars.png" alt="mars">
-                                <p>Mars</p>
-                            </a>
-                        </li>
-                        <li class="popup_item popup_more_items">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <img class="popup_img" src="./popup-icons/promo.png" alt="promo">
-                                <p>Promo</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="popup">
 
-            </li>
+                        <input class="popup_more-input" type="checkbox" name="more" id="more_less">
+                        <label class="popup_more_button" for="more_less">
+                            <span id="more">More</span>
+                            <span id="less">Less</span>
+                        </label>
 
-            <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img class="nav-img" src="./popup-icons/favicon.png" alt="user">
-                </a>
-            </li>
-        </ul>
-    </nav>
+                        <ul class="popup_list">
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/calendar.png" alt="calendar">
+                                    <p>Calendar</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/mail.png" alt="mail">
+                                    <p>Mail</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/news.png" alt="news">
+                                    <p>News</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/maps.png" alt="map">
+                                    <p>Map</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/files.png" alt="files">
+                                    <p>Failes</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/contacts.png" alt="contacts">
+                                    <p>Contacts</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/photos.png" alt="photos">
+                                    <p>Photos</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/apps.png" alt="apps">
+                                    <p>Apps</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/tanslation.png" alt="tanslation">
+                                    <p>Translation</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/blogs.png" alt="blog">
+                                    <p>Blog</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/videos.png" alt="video">
+                                    <p>Video</p>
+                                </a>
+                            </li>
+                            <li class="popup_item">
+                                <a class="popup_link" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/search.png" alt="search">
+                                    <p>Search</p>
+                                </a>
+                            </li>
+
+                            <li class="popup_item popup_more_items">
+                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/chat.png" alt="chat">
+                                    <p>Chat</p>
+                                </a>
+                            </li>
+                            <li class="popup_item popup_more_items">
+                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/classroom.png" alt="classroom">
+                                    <p>classroom</p>
+                                </a>
+                            </li>
+                            <li class="popup_item popup_more_items">
+                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/collection.png" alt="collection">
+                                    <p>Collection</p>
+                                </a>
+                            </li>
+                            <li class="popup_item popup_more_items">
+                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/documents.png" alt="documents">
+                                    <p>Documents</p>
+                                </a>
+                            </li>
+                            <li class="popup_item popup_more_items">
+                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/mars.png" alt="mars">
+                                    <p>Mars</p>
+                                </a>
+                            </li>
+                            <li class="popup_item popup_more_items">
+                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                    <img class="popup_img" src="./popup-icons/promo.png" alt="promo">
+                                    <p>Promo</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+
+                <li class="nav_item">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <img class="nav-img" src="./popup-icons/favicon.png" alt="user">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 </body>
 
 
