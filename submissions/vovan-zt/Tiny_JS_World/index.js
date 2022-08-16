@@ -1,8 +1,5 @@
-/* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
-   Complete the below for code reviewers' convenience:
-*/
 const dog = {
-   species: "animal",
+   species: "dog",
    name: "Rasti",
    gender: "male",
    legs: 4,
@@ -11,7 +8,7 @@ const dog = {
 };
    
 const cat = {
-   species: "animal",
+   species: "cat",
    name: "Luna",
    gender: "female",
    legs: 4,
@@ -53,14 +50,9 @@ const WorldInhabitant = [dog, cat, woman, man, catWoman];
 
 const  WorldInhabitantKeys =  ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends'];
 
-const objPrint = WorldInhabitant.map((obj) => {
-   let arr = [];
-   WorldInhabitantKeys.forEach(keys => {
-      arr.push(obj[keys]);
-   })
-   return arr;
-});
+const WorldInhabitantPrint = WorldInhabitant.map(keys => WorldInhabitantKeys.map(meaning => keys[meaning]));
 
-objPrint.forEach(item => {
+WorldInhabitantPrint.forEach(item => {
    print(item.join('; '))
 });
+
