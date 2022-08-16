@@ -25,7 +25,11 @@
     outline: 2px solid blue;
 }
 
-input[type='checkbox']:focus + label {
+.check__input:focus + label {
+    outline: 2px solid blue;
+}
+
+.more__checkbox:focus + label {
     outline: 2px solid blue;
 }
 
