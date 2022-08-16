@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pull source code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           path: './'
       - name: Update stats file
@@ -24,10 +24,11 @@ jobs:
           node make-stats.js
           cd ..
       # Publish to the default branch in current repo using GITHUB_TOKEN and other default settings.
-      - name: Commit and publish update
+      - name: Setup git credentials
         uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Commit and publish update
         run: |
           TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S %Z"`
           git add ./stats/pr-stats.md
