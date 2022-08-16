@@ -2,7 +2,7 @@
    Complete the below for code reviewers' convenience:
 */
 const dog = {
-   species: "dog",
+   species: "animal",
    name: "Rasti",
    gender: "male",
    legs: 4,
@@ -11,7 +11,7 @@ const dog = {
 };
    
 const cat = {
-   species: "cat",
+   species: "animal",
    name: "Luna",
    gender: "female",
    legs: 4,
@@ -20,7 +20,7 @@ const cat = {
 };
    
 const woman = {
-   species: "woman",
+   species: "human",
    name: "Lena",
    gender: "female",
    legs: 2,
@@ -30,13 +30,12 @@ const woman = {
 };
    
 const man = {
-   species: "man",
+   species: "human",
    name: "Alex",
    gender: "male",
    legs: 2,
    hands: 2,
    saying: "I want to sleep",
-   friends: 'Leo, Ivan',
 };
    
 const catWoman = {
@@ -48,17 +47,17 @@ const catWoman = {
    saying: cat.saying,
 };
 
-const objName = [dog, cat, woman, man, catWoman];
+const WorldInhabitant = [dog, cat, woman, man, catWoman];
 
-const objPrint = objName.map((obj) => {
-   let arr=[]
+const objPrint = WorldInhabitant.map((obj) => {
+   let arr=[];
    for (let key in obj) { 
-      arr.push(obj[key])
+      arr.push(obj[key]);
    }
-   return arr
+   return arr;
 });
+
 
 objPrint.forEach(item => {
    print(item.join('; '))
 })
-
