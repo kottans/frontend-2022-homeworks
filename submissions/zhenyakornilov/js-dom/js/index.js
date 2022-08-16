@@ -5,14 +5,16 @@ switchTheme();
 
 function renderButtons(arr) {
   const listMenu = document.querySelector(".menu-items");
+  let buttonsHTML = ``;
+
   arr.forEach(({ btnName }) => {
-    listMenu.insertAdjacentHTML(
-      "beforeend",
+    buttonsHTML +=
       `<li class="nav-item">` +
       `  <button class="btn-text">${btnName}</button>` +
-      `</li>`
-    );
+      `</li>`;
   });
+
+  listMenu.innerHTML = buttonsHTML;
 }
 
 renderButtons(museumsData);
@@ -67,7 +69,8 @@ function renderArticle(museumObj) {
     </p>
   </div>
   `;
-  contentTag.insertAdjacentHTML("afterbegin", content);
+
+  contentTag.innerHTML = content;
 }
 
 function openMenu() {
