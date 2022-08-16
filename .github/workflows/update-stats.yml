@@ -1,17 +1,20 @@
 name: Update students' PR stats
-# Updates ./stats/pr-stats.md on every PR merge to main/master.
+# Updates ./stats/pr-stats.md on every push to main/master.
 # Changes are pushed directly to main/master.
+# Relies on GH actions logic that prevents action to trigger itself.
+#
+# Q1: Why not `on pull_request: types: [closed] branches: [master, main]` + `if: github.event.pull_request.merged == true`?
+# A1: Apparently workflows on PRs from forks are run in the context of forks
+#     where github actor has no sufficient privileges to push to the base repo.
+#
 # Uses GitHub CLI app provided by GitHub runner.
 on:
-  pull_request:
-    types:
-      - closed
+  push:
     branches:
       - master
       - main
 jobs:
   update-pr-stats:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Pull source code
