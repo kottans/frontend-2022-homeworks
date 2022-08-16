@@ -1,42 +1,18 @@
-/* css style reset */
 html {
   box-sizing: border-box;
-  font-size: 12px;
-}
-  
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-  
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
-}
-  
-ol, ul {
-  list-style: none;
-}
-  
-img {
-  max-width: 100%;
-  height: auto;
 }
 
-/* custom scc styles */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
-* {
+*, *:before, *:after {
   font-family: 'DM Sans', sans-serif;
+  box-sizing: inherit;
   text-decoration: none;
   font-size: 16px;
   color: #170F49;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
 }
 
 .popup-header {
@@ -61,6 +37,7 @@ body {
   justify-items: center;
   align-items: center;
   margin: 0px 15px;
+  list-style: none
 }
 
 .nav-items-li, #more-button-label {
@@ -97,6 +74,8 @@ body {
   width: 50px;
   min-width: 50px;
   padding-top: 4px;
+  max-width: 100%;
+  height: auto;
 }
 
 #central-button, #more-button {
@@ -111,7 +90,6 @@ body {
   margin: 5px 15px;
   cursor: pointer;
   opacity: 70%;
-
 }
 
 #central-button-label:hover {
@@ -164,6 +142,7 @@ body {
   justify-items: center;
   align-items: center;
   text-align: center;
+  list-style: none
 }
 
 .popup-set-li {
@@ -202,6 +181,8 @@ body {
   min-width: 30px;
   padding-top: 4px;
   opacity: 80%;
+  max-width: 100%;
+  height: auto;
 }
 
 #more-button:focus ~ #more-button-label {
@@ -233,4 +214,5 @@ body {
   justify-items: center;
   align-items: center;
   text-align: center;
+  list-style: none
 }
