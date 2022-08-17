@@ -1,6 +1,6 @@
 * {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -8,15 +8,6 @@
 
 a {
   text-decoration: none;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-img {
-  display: block;
 }
 
 :focus {
@@ -34,12 +25,12 @@ img {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: right;
-  -ms-flex-pack: right;
-  justify-content: right;
+      -ms-flex-pack: right;
+          justify-content: right;
   margin: 1rem;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .navigation__item,
@@ -49,8 +40,9 @@ img {
 }
 
 .navigation__popup-icon {
-  max-width: 2.5rem;
-  height: 100%;
+  display: block;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
 }
 
@@ -73,7 +65,7 @@ img {
   width: 20rem;
   max-height: 30rem;
   -webkit-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
-  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
+          box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
   border-radius: 5px;
   overflow: auto;
 }
@@ -91,14 +83,14 @@ img {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   overflow: hidden;
   padding: 0.3rem;
 }
@@ -117,8 +109,9 @@ img {
 }
 
 .popup__img {
-  max-width: 100%;
-  height: auto;
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
   margin-bottom: 0.5rem;
 }
 
@@ -140,13 +133,11 @@ img {
   display: block;
   padding: 0.3rem;
   font-weight: 400;
-  color: #000000;
-  text-align: center;
 }
 
 .popup__more-input:checked ~ .popup__more-icon {
   -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .popup__more-input:focus-within ~ .popup__more-icon {
@@ -160,16 +151,10 @@ img {
 
 @media (max-width: 23rem) {
   .popup__container {
-    display: none;
-    position: absolute;
     top: 3.2rem;
     right: -0.8rem;
     width: 16rem;
     max-height: 25rem;
-    -webkit-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
-    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
-    border-radius: 5px;
-    overflow: auto;
   }
   .popup__box-img {
     font-size: 0.9rem;
