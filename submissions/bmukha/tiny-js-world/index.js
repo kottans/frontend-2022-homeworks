@@ -68,15 +68,18 @@ const props = [
 ];
 
 characters.forEach((character) => {
-  let representation = '';
-  for (let i = 0; i < props.length; i++) {
-    if (props[i] === 'hands' && character[props[i]] === 0) {
-      continue;
-    } else if (i < props.length - 1) {
-      representation += `${character[props[i]]}; `;
-    } else {
-      representation += `${character[props[i]].join(', ')}`;
-    }
-  }
-  print(representation);
+  const noZeroHandsOrFriends = props.filter(
+    (prop) =>
+      !(
+        (prop === 'hands' && character[prop] === 0) ||
+        (Array.isArray(character[prop]) && character[prop].length === 0)
+      )
+  );
+  const values = noZeroHandsOrFriends.map((prop) =>
+    Array.isArray(character[prop])
+      ? character[prop].join(', ')
+      : character[prop]
+  );
+
+  print(values.join('; '));
 });
