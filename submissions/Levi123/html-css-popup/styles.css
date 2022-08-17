@@ -9,33 +9,34 @@
     padding: 15px 15px;
 }
 
-.imgMenu {
+.img-menu {
     width: 50px;
     margin-bottom: 10px;
 }
 
-.navigationList {
+.navigation-list {
     display: flex;
     justify-content: end;
 }
 
-.elementList {
+.element-list {
     margin: 5px 5px;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 a {
     text-decoration: none;
 }
 
-.popUpBtn {
+.pop-up-btn {
     cursor: pointer;
 }
 
-#popUp, #popUpMore {
-    display: none;
-}
-
-.popUpBody {
+.pop-up-body {
     width: 300px;
     position: absolute;
     top: 60px;
@@ -47,11 +48,11 @@ a {
     overflow:auto;
 }
 
-.popUpBodyMore {
+.pop-up-body-more {
     display: none;
 }
 
-.popUpElements {
+.pop-up-elements {
     display: grid;
     grid-template: auto/1fr 1fr 1fr;
     gap: 0.6rem;
@@ -61,33 +62,54 @@ a {
     gap: 0.6rem;
 }
 
-.elementPopUp {
+.element-pop-up {
     text-align: center;
     display: flex;
     flex-direction: column;
     padding: 5px 5px;
 }
 
-.elementPopUp:hover {
+.element-pop-up:hover, .element-list:hover {
     background-color: #ededed;
     cursor: pointer;
 }
 
-.elementPopUp:focus-within {
-    outline: 3px solid #80f0ff;
+.element-pop-up:focus-within, .element-list:focus-within {
+    outline: 1px solid #80f0ff;
 }
 
-.popUpMoreElements {
+.pop-up-more-elements {
     text-align: center;
 }
 
-.popUpBtnMore {
+.pop-up-btn-more {
     display: block;
     background-color: rgb(230, 230, 230);
     padding: 0.3em 1rem;
+    cursor: pointer;
 }
 
-#popUp:checked ~ .popUpBody, #popUpMore:checked ~ .popUpBodyMore{
+.pop-up-btn-more:hover {
+    background-color: rgb(186, 186, 186);
+}
+
+.pop-up-btn-more:focus {
+    outline: 1px solid #80f0ff;
+}
+
+#pop-up:checked ~ .pop-up-body, #pop-up-more:checked ~ .pop-up-body-more{
     display: block;
     background-color: white;
+}
+
+.pop-up-checkbox:focus ~ .pop-up-btn  {
+    outline: 1px solid #80f0ff;
+}
+
+.pop-up-checkbox, .pop-up-more {
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
 }
