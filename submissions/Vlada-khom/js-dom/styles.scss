@@ -1,0 +1,60 @@
+$yellow: rgb(248, 248, 109);
+$violet: rgb(230, 62, 230);
+
+body {
+    height: 100%;
+}
+
+.header {
+    background-color: $violet;
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    
+}
+
+.sideMenu {
+    min-height: 100vh;
+    background-color: $violet;
+    box-shadow: 0px 0px 4px inset;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.menuList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+
+    li {
+        padding: 15px;
+        cursor: pointer;
+    }
+    li:hover {
+        box-shadow: 0 0 5px ;
+    }
+}
+
+.content {
+    background-color: $yellow;
+    height: auto;
+    box-sizing: border-box;
+    padding: 0 15px;
+    
+    
+}
+
+.titleContent, .boxImg {
+    text-align: center;
+}
