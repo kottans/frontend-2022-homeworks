@@ -11,8 +11,8 @@ class Inhabitant {
   }
 }
 class Animal extends Inhabitant {
-  constructor(name, gender, saying) {
-    super(name, gender, saying);
+  constructor(species, name, gender, saying) {
+    super(species, name, gender, saying);
     this.paw = 4;
   }
   getProperties() {
@@ -28,10 +28,7 @@ class Human extends Inhabitant {
   }
 
   getProperties() {
-    return (
-      super.getProperties() +
-      `; I have ${this.legs} legs and ${this.hands} hands;`
-    );
+    return super.getProperties() + `; I have ${this.legs} legs and ${this.hands} hands;`;
   }
 }
 
@@ -47,16 +44,15 @@ class Cat extends Animal {
   }
 }
 class Catwoman extends Cat {
-  constructor(name) {
-    super(name);
-    this.species = "catwoman";
-    this.gender = "female";
+  constructor(name, gender) {
+    super(name, gender);
+    this.species = 'catwoman';
   }
 }
 
 const dog = new Dog("Buddy", "male");
 const cat = new Cat("Kitty", "female");
-const catwoman = new Catwoman("Nazar");
+const catwoman = new Catwoman("Nazar", "female");
 const woman = new Human("Dazdraperma", "female", "It used to be better");
 const man = new Human("Mike", "male", "Hello World!");
 
