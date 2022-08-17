@@ -7,12 +7,12 @@ class WorldInhabitant {
       this.name = name;
       this.gender = gender;
       this.saying = saying;
+      this.prop = [species, name, gender, saying];
    }
-      
-    getMeaning() {
-      return `${this.species}; ${ this.name}; ${this.gender}; ${this.saying}; `
-    }
-   
+
+   getMeaning() {
+      return this.prop.map(meaning => meaning);
+   }    
 }
 
 class Human extends WorldInhabitant { 
@@ -20,30 +20,22 @@ class Human extends WorldInhabitant {
       super(species, name, gender, saying);
       this.legs = legs;
       this.hands = hands;
-      this.friends = friends;
+      this.prop = [species, name, gender, saying, legs, hands, friends];
    }
-
-   getMeaning() {
-      return super.getMeaning() + `${this.legs}; ${this.hands}; ${this.friends}`;
-   }
-
 }
 
 class Animal extends WorldInhabitant { 
-   constructor(species, name, gender, saying, paws = 4 ) {
+   constructor(species, name, gender, saying, paws = 4) {
       super(species, name, gender, saying);
       this.paws = paws;
+      this.prop = [species, name, gender, saying, paws];
    }
-
-   getMeaning() {
-      return super.getMeaning() + `${this.paws};`;
-    }
-
 }
 
- const man = new Human('Alex', 'Joey', 'male', 'I want to sleep', 2, 2, 'Ivan, Stepan');
- 
- const woman = new Human('human', 'Lena', 'female', 'Hello');
+
+ const man = new Human('human', 'Jon', 'male', 'I want to sleep');
+
+ const woman = new Human('human', 'Lena', 'female', 'Hello', 2, 2, man.name );
  
  const cat = new Animal('cat', 'Luna', 'female','murrr');
   
@@ -52,4 +44,4 @@ class Animal extends WorldInhabitant {
  const catWoman = new Human('catwoman','Selina', 'female', cat.saying);
 
 
-[man, woman, cat, dog, catWoman].forEach(item => print(item.getMeaning()))
+ [man, woman, cat, dog, catWoman].forEach(item => print(item.getMeaning().join('; ')))
