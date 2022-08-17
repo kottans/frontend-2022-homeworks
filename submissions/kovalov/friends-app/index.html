@@ -16,88 +16,69 @@
     </header>
     <main class="main">
       <div class="main__container">
-        <form class="main__filter-options filter-options">
-          <div class="filter-options__group">
-            <span class="filter-options__group-title">
-              Search By Name
-            </span>
-            <input
-              type="text"
-              name="searchName"
-              id=""
-              placeholder="Type the name..."
-              class="filter-options__name-search-control name-search-control"
-            />
-          </div>
-          <div class="filter-options__group">
-            <span class="filter-options__group-title">
-              Sort By Age
-            </span>
-            <div class="filter-options__age-sort age-sort">
-              <label
-                for="age-sort-down"
-                class="filter-options__label"
-              >
+        <form class="main__form form">
+          <input
+            type="text"
+            placeholder="Type name of the user..."
+            class="form__search-control"
+          />
+          <div class="form__filters">
+            <div class="form__group">
+              <div class="form__sub-title">Name Sorting</div>
+              <label for="name-sorting-down" class="form__label">
                 <input
                   type="radio"
-                  name="ageOrder"
-                  value="ascending"
-                  id="age-sort-down"
-                  class="filter-options__age-sort-control"
+                  name="sorting"
+                  id="name-sorting-down"
+                  value="nameAscending"
+                  class="form__filter-control"
                 />
-                <span class="filter-options__label-text">
-                  Age ↓
-                </span>
+                <span class="form__control-description">A-Z</span>
               </label>
-              <label for="age-sort-up" class="filter-options__label">
+              <label for="name-sorting-up" class="form__label">
                 <input
                   type="radio"
-                  name="ageOrder"
-                  value="descending"
-                  id="age-sort-up"
-                  class="filter-options__age-sort-control"
+                  name="sorting"
+                  id="name-sorting-up"
+                  value="nameDescending"
+                  class="form__filter-control"
                 />
-                <span class="filter-options__label-text">
-                  Age ↑
-                </span>
+                <span class="form__control-description">Z-A</span>
+              </label>
+            </div>
+            <div class="form__group">
+              <div class="form__sub-title">Age Sorting</div>
+              <label for="age-sorting-down" class="form__label">
+                <input
+                  type="radio"
+                  name="sorting"
+                  id="age-sorting-down"
+                  value="ageDescending"
+                  class="form__filter-control"
+                />
+                <span class="form__control-description">Age ↓</span>
+              </label>
+              <label for="age-sorting-up" class="form__label">
+                <input
+                  type="radio"
+                  name="sorting"
+                  id="age-sorting-up"
+                  value="ageAscending"
+                  class="form__filter-control"
+                />
+                <span class="form__control-description">Age ↑</span>
               </label>
             </div>
           </div>
-          <div class="filter-options__group">
-            <span class="filter-options__group-title">
-              Sort By Name
-            </span>
-            <div class="filter-options__name-sort name-sort">
-              <label
-                for="name-sort-down"
-                class="filter-options__label"
-              >
-                <input
-                  type="radio"
-                  name="nameOrder"
-                  value="ascending"
-                  id="name-sort-down"
-                  class="filter-options__name-sort-control"
-                />
-                <span class="filter-options__label-text"> A-Z </span>
-              </label>
-              <label for="name-sort-up" class="filter-options__label">
-                <input
-                  type="radio"
-                  name="nameOrder"
-                  value="descending"
-                  id="name-sort-up"
-                  class="filter-options__name-sort-control"
-                />
-                <span class="filter-options__label-text"> Z-A </span>
-              </label>
-            </div>
-          </div>
-          <button type="reset" class="filter-options__button">
+          <button type="reset" class="form__reset-button">
             Reset
           </button>
         </form>
-        <ul class="main__user-list user-list"></ul>
+        <ul class="main__user-list user-list">
+          <div class="user-list__loading">
+            <span class="user-list__loading-item"> Loading </span>
+          </div>
+        </ul>
       </div>
     </main>
     <script src="app.js"></script>
