@@ -6,6 +6,14 @@ class Enemy {
         this.sprite = sprite;
     }
 
+    checkCollision() {
+        if (player.x < this.x + 80 && player.x + 80 > this.x &&
+            player.y < this.y + 60 && 60 + player.y > this.y) {
+            player.x = 200;
+            player.y = 400;
+        };
+    }
+
     update(dt) {
         this.x += this.speed * dt;
 
@@ -14,11 +22,7 @@ class Enemy {
             this.speed = Math.round(Math.random() * 100 + 100); 
         };
 
-        if (player.x < this.x + 80 && player.x + 80 > this.x &&
-            player.y < this.y + 60 && 60 + player.y > this.y) {
-            player.x = 200;
-            player.y = 400;
-        };
+        this.checkCollision();
     }
     
     render() {
