@@ -1,0 +1,41 @@
+name: Update students' PR stats
+# Updates ./stats/pr-stats.md on every push to main/master.
+# Changes are pushed directly to main/master.
+# Relies on GH actions logic that prevents action to trigger itself.
+#
+# Q1: Why not `on pull_request: types: [closed] branches: [master, main]` + `if: github.event.pull_request.merged == true`?
+# A1: Apparently workflows on PRs from forks are run in the context of forks
+#     where github actor has no sufficient privileges to push to the base repo.
+#
+# Uses GitHub CLI app provided by GitHub runner.
+on:
+  push:
+    branches:
+      - master
+      - main
+jobs:
+  update-pr-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull source code
+        uses: actions/checkout@v2
+        with:
+          path: './'
+      - name: Update stats file
+        run: |
+          cd ./stats
+          node make-stats.js
+          cd ..
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Publish to the default branch in current repo using GITHUB_TOKEN and other default settings.
+      - name: Setup git credentials
+        uses: oleksiyrudenko/gha-git-credentials@v2-latest
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Commit and publish update
+        run: |
+          TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S %Z"`
+          git add ./stats/pr-stats.md
+          git commit -m "Stats: update stats/pr-stats.md as of $TIMESTAMP"
+          git push

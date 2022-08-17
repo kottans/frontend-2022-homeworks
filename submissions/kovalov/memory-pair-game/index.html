@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Memory Pair Game</title>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <main class="game" id="game" data-is-active="false">
+        <div class="game__flipper">
+          <div class="game__front">
+            <div class="game__menu" id="game-menu">
+              <h1 class="game__menu-title">Memory Pair Game</h1>
+              <p class="game__menu-description">
+                Turn any two cards picture-side-up and find the pair.
+              </p>
+              <button class="game__menu-button" data-button="start">
+                Start
+              </button>
+            </div>
+          </div>
+          <div class="game__back">
+            <div class="game__grid" id="game-grid"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>

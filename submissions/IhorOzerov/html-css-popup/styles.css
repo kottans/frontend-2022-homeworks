@@ -1,0 +1,122 @@
+li {
+    list-style: none;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.header-icons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0;
+    margin: 0 0;
+}
+
+.h-image a{
+    text-decoration: none;
+    color: rgb(72, 94, 71);
+}
+
+.h-image {
+    width: 30px;
+    margin: 15px;  
+}
+
+.visible-img {
+    width: 50px;
+    object-fit: contain;
+    aspect-ratio: auto;
+}
+
+.ratio{
+    height: 40px;
+}
+
+.menu {
+    width: 300px;
+    height: 450px;
+    background-color: rgb(226, 220, 220);
+    justify-items: center;
+    padding: 20px 10px 15px 0;
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr) 30px;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    position: absolute;
+}
+
+.more-btn {
+    grid-column: 1/4;
+    height: 30px;
+    background-color: rgb(228, 215, 215);
+    width: 280px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-a{
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    text-align: center;
+    flex-wrap: wrap;
+    text-decoration: none;
+    color: rgb(72, 94, 71);
+    position: relative;
+}
+
+.mini{
+    height: 70px;
+}
+
+span{
+    position: absolute;
+    bottom: 5px;
+}
+
+#more:checked ~ .opened {
+    display: grid;
+    z-index: 1;
+    margin-top: -5px;
+}
+
+#more:checked + label {
+    display: none;
+    outline: none;
+}
+
+.opened {
+    width: 285px;
+    height: 210px;
+    background-color: rgb(226, 220, 220);
+    justify-items: center;
+    padding-left: 0;
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+}
+
+.menu-a:focus, .nav-a:focus, .greatest:focus-within, .other:focus-within {
+    outline: 1px solid rgb(74, 74, 254)
+}
+
+.more-btn:hover, .h-image:hover, .more-word{
+    cursor: pointer;
+}
+
+#sq:checked ~ .menu{
+    display: grid;
+}

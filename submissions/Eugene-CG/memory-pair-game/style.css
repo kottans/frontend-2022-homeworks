@@ -1,0 +1,79 @@
+:root {
+  --full-size: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  list-style: none;
+}
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game {
+  width: var(--full-size);
+  height: var(--full-size);
+  position: relative;
+  align-self: flex-end;
+  animation: gradient 8s ease infinite;
+  background: linear-gradient(-45deg, #4e2635, #0919a8, #1fc3ff, #1faf8d);
+  background-size: 400% 400%;
+}
+.cards__list {
+  width: var(--full-size);
+  margin: auto;
+  position: absolute;
+  top: 10%;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(8, 1fr);
+}
+.card {
+  margin: 10px;
+  border-radius: 20px;
+  aspect-ratio: 4/7;
+  overflow: hidden;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.card-back {
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f var(--full-size)
+    );
+}
+.open > img {
+  visibility: visible;
+  transition: 1s all ease-in-out;
+  transform: scale(1.05);
+}
+img {
+  width: var(--full-size);
+  height: var(--full-size);
+  visibility: hidden;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: var(--full-size) 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
