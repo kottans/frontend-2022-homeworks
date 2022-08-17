@@ -31,19 +31,16 @@ const cards = [
   },
 ];
 
-function createCard(front, back, name) {
-  return `<div class="game__card" id="${name}">
+const gameCards = cards.map(
+  ({ front, back, name }) =>
+    `<div class="game__card" id="${name}">
              <img class="front__img" src="${front}" alt="">
              <img class="back__img" src="${back}" alt="">
            </div>
            <div class="game__card" id="${name}">
              <img class="front__img" src="${front}" alt="">
              <img class="back__img" src="${back}" alt="">
-           </div>`;
-}
-
-const gameCards = cards.map(({ front, back, name }) =>
-  createCard(front, back, name)
+           </div>`
 );
 
 const gameContainer = document.querySelector(".game__container");
