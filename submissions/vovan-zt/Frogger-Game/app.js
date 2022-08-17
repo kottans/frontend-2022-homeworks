@@ -65,9 +65,9 @@ Player.prototype.handleInput = function (keyPress) {
     };
 };
 
-let allEnemies = [73, 156, 239].map(location =>location = new Enemy(location+50, location, 200));
+const allEnemies = [73, 156, 239].map(location =>location = new Enemy(location+50, location, 200));
 
-let player = new Player(202, 405);
+const player = new Player(202, 405);
 
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {
