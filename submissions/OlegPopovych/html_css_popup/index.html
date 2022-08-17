@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="shortcut icon" type="image/png" href="img/favicon.png">
+	<title>Popup</title>
+</head>
+
+<body>
+	<nav class="nav">
+		<ul class="nav__list">
+			<li class=" nav__list--item">
+				<h1 class="nav__title">Hello Kottans!</h1>
+			</li>
+			<li class="nav__list--item">
+				<a class="nav__link" href="#">
+					<span>Mail</span>
+				</a>
+			</li>
+			<li class="nav__list--item">
+				<a class="nav__link" href="#">
+					<span>Photos</span>
+				</a>
+			</li>
+			<li class="nav__list--item relative">
+				<input class="check__input" type="checkbox" id="check-1" />
+				<label class="menu-label nav__link" for="check-1">
+					<a class="icon icon-rotate" src="#" alt="Popup opener">
+						<svg fill="none" height="24" viewBox="0 0 24 24" width="24" class="icon icon-rotate"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill="#CBD5E4" d="M4 6H20M4 12H20M4 18H20" stroke="#CBD5E4" stroke-linecap="round"
+								stroke-linejoin="round" stroke-width="2" />
+						</svg>
+					</a>
+				</label>
+				<div class="popup">
+					<ul class="popup__menu">
+						<li class="popup__menu--item">
+							<a class="popup__link" href="#">
+								<img class="icon" src="img/blogs.png" alt="Blogs" />
+								Blogs
+							</a>
+						</li>
+						<li class="popup__menu--item">
+							<a class="popup__link" href="#">
+								<img class="icon" src="img/classroom.png" alt="Classroom" />
+								Classroom
+							</a>
+						</li>
+						<li class="popup__menu--item">
+							<a class="popup__link" href="#">
+								<img class="icon" src="img/documents.png" alt="Documents" />
+								Documents
+							</a>
+						</li>
+						<li class="popup__menu--item">
+							<a class="popup__link" href="#">
+								<img class="icon" src="img/files.png" alt="Files" />
+								Files
+							</a>
+						</li>
+						<li class="popup__menu--item">
+							<a class="popup__link" href="#">
+								<img class="icon" src="img/promo.png" alt="Promo" />
+								Promo
+							</a>
+						</li>
+						<li class="popup__menu--item">
+							<a class="popup__link" href="#">
+								<img class="icon" src="img/collection.png" alt="Collection" />
+								Collection
+							</a>
+						</li>
+					</ul>
+					<input class="check__input" type="checkbox" id="check-2" />
+					<ul class="popup__sub">
+						<li class="popup__menu--item">
+							<a class="popup__link" href="#">
+								<img class="icon" src="img/search.png" alt="Search" />
+								Search
+							</a>
+						</li>
+						<li class="popup__menu--item"><a class="popup__link" href="#">
+								<img class="icon" src="img/chat.png" alt="Chat" />
+								Chat
+							</a>
+						</li>
+						<li class="popup__menu--item">
+							<a class="popup__link" href="#">
+								<img class="icon" src="img/news.png" alt="News" />
+								News
+							</a>
+						</li>
+						<li class="popup__menu--item">
+							<a class="popup__link" href="#">
+								<img class="icon" src="img/maps.png" alt="Mars" />
+								Mars
+							</a>
+						</li>
+						<li class="popup__menu--item">
+							<a class="popup__link" href="#">
+								<img class="icon" src="img/mic.png" alt="Microphone" />
+								Mic
+							</a>
+						</li>
+					</ul>
+					<label class="menu-label popup__sub--toggle" for="check-2">
+						<span class="popup__sub--button">Show more</span>
+					</label>
+				</div>
+			</li>
+			<li class="nav__list--item">
+				<a class="nav__link" href="#">
+					<img class="icon" src="img/notification-bell-icon.svg" alt="Notofication">
+				</a>
+			</li>
+			<li class="nav__list--item">
+				<a class="nav__link" href="#">
+					<svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32"
+						data-view-component="true">
+						<path fill="#CBD5E4"
+							d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+						</path>
+					</svg>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<div></div>
+	<footer class="footer">
+		<span>
+			<a class="footer__link" href="https://github.com/kottans/frontend/blob/2022_UA/tasks/html-css-popup.md">HTML &
+				CSS Practice</a>
+		</span>
+	</footer>
+</body>
+
+</html>
