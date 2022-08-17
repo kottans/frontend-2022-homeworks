@@ -59,7 +59,7 @@
     -moz-appearance: none;
 }
 
-.navigation__check_input:focus ~label {
+.navigation__check_input:focus ~label{
     outline-style: solid;
     border-radius:5px;
     outline-width: 0.15rem;
@@ -73,7 +73,7 @@
     z-index: 3;
     overflow: auto;
     width: 360px;
-    height: 530px;
+    height: 500px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
     background-color: rgba(0, 0, 0, 0.4);
     padding: 20px;
@@ -92,7 +92,7 @@
 .modal__list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 100px;
+    grid-auto-rows: 90px;
     list-style: none;
     gap: 30px 30px;
     align-items: center;
@@ -102,9 +102,9 @@
 .modal__item {
     list-style-type: none;
     text-decoration: none;
+    display:flex;
     width: 100%;
     height: 100%;
-    display:flex;
     justify-content: center;
     align-items: center;
 }
@@ -122,12 +122,14 @@
 
 .modal__link {
     text-decoration: none;
+
 }
 
 .modal__image {
     width: 40px;
     height: auto;
-    display: block;
+    display: block;  
+  
 }
 
 .modal__descr {
@@ -141,7 +143,8 @@
 }
 
 #modal:checked ~ .modal {
-    display:block;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .modal__button {
@@ -173,9 +176,6 @@
     display:flex;
   } 
 
-  #modal2:checked ~ .modal__button{
-    bottom: -400px;
-}
 
  #modal2:checked ~ .modal__button::before {
     content: 'Up';
