@@ -1,0 +1,207 @@
+:root {
+    --pink: #e14590b8;
+    --green: #52a051cf;
+    --darkpink:#df1e7b;
+    --darkchocolate: #300003;
+    --coffee: #640007;
+    --lightpink: #ebd1ea;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    background-color: var(--pink);
+}
+
+nav {
+    display: flex;
+    justify-content: end; 
+    align-items: center;
+    background-color: var(--green);
+    height: 80px;    
+    position: relative;
+}
+
+.nav-item {
+    margin: 5px;
+}
+
+.profile {
+    margin-right: 20px;
+}
+
+.avatar, .avatar-icon {
+    background-image: url(./media/mira.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.avatar {
+    position: relative; 
+    height: 50px;
+    width: 50px;
+}
+
+.avatar-icon {
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
+}
+
+.avatar:hover {
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--darkchocolate);
+    padding: 10px;
+    border: 1px solid transparent;
+}
+
+.link:hover, .link:focus {
+    border: 1px solid var(--coffee);
+}
+
+.hidden-toggle-input {
+    display: none;
+}
+
+.hidden-toggle-input:checked ~ .popup {
+    display: flex;
+}
+
+.services {
+    margin-right: 15px;
+}
+
+.services-toggle-button {
+    display: block;
+    padding: 10px;
+    border: 1px solid transparent;
+}
+
+.services-toggle-button .services-icon {
+    height: 25px;
+    display: block;
+}
+
+.services-toggle-button:hover,
+.hidden-toggle-input:checked ~ .services-toggle-button {
+    border: 1px solid var(--coffee);
+    cursor: pointer;
+}
+
+.popup {
+    border-radius: 7px;
+    width: 315px;
+    background-color: var(--lightpink);
+    position: absolute;
+    right: 20px;
+    top: 115%;
+    display: none;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    color: var(--darkchocolate);
+}
+
+.popup-items {
+    max-height: 435px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.popup-items::after {
+    content: "";
+    border-bottom: 15px solid var(--lightpink);
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    
+    position: absolute;
+    top: -12px;
+    right: 80px;
+}
+
+.popup-items .item-content { 
+  margin-left: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 5px;
+  width: 55px;
+}
+
+.popup-items .item-content img {
+    height: 40px;
+    width: 40px;
+    margin: 0 auto; 
+    display: block;
+}
+
+.popup-items .item-content .text {
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.popup-items .item-content:hover, .popup-items .item-content:focus {
+    cursor: pointer;
+    background-color: var(--pink);
+}
+
+.hidden-toggle-input:checked ~ .more-section {
+    display: flex;
+}
+
+.hidden-toggle-input:checked ~ .more-toggle-button {
+    margin-bottom: 5px;
+}
+
+.more-section {
+    flex-wrap: wrap;
+    display: none;
+    margin-bottom: 15px;
+}
+
+.more-toggle-button {
+    width: 315px;
+    text-align: center;
+    margin: 20px;
+}
+
+.more-toggle-button .title {
+    border-radius: 30px;
+    padding: 10px 25px;
+}
+
+.more-toggle-button .title:hover {
+    background-color: var(--pink);
+    cursor: pointer;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--darkpink);
+    border-radius: 10px;
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--green);
+    border-radius: 18px;
+}
