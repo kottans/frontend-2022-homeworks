@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friends App</title>
+    <meta name="title" content="Action menu">
+    <meta name="description" content="Action menu">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+   
+</head>
+<body>
+    <h1 class="header">Friends App</h1>
+    <main>
+        <div class="container">
+            <aside class="filter">
+                <div class="filter__age"> 
+                    <h2 class="filter__age-title">Sort by age</h2>
+                    <button class="filter__age-up"><img src="img/icons/up.png" alt="up"> </button>
+                    <button class="filter__age-down"> <img src="img/icons/down.png" alt="down"> </button>
+
+                    <div class="filter__age-search">
+                        <input type="number" class="filter__age-searchTerm" placeholder="age">
+                        <button type="submit" class="filter__age-searchButton">
+                        <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="filter__name">
+                    <h2 class="filter__name-title">Sort by name</h2>
+                    <button class="filter__name-up"> <img src="img/icons/up.png" alt="up"> </button>
+                    <button class="filter__name-down"> <img src="img/icons/down.png" alt="down"> </button>
+
+                    <div class="filter__name-search">
+                        <input type="text" class="filter__name-searchTerm" placeholder="name">
+                        <button type="submit" class="filter__name-searchButton">
+                        <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="filter__sex">
+                    <h2 class="filter__sex-title"> Sort by sex </h2>
+                    <form action="">
+                        <input type="radio" id="male" name="sex" value="male">
+                        <label  for="male"><span></span>male</label>
+                    
+                        <input type="radio" id="female" name="sex" value="female">
+                        <label for="famale"><span></span>female</label>
+
+                        <input type="radio" id="all" name="sex" value="all" checked>
+                        <label for="all"><span></span>all</label>
+                    </form>
+                </div>
+
+                <div class="filter__reset">
+                    <button class="filter__reset-button"> Reset </button>
+                </div>
+            </aside>
+            <section class="cards">
+            </section>
+        </div>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>
