@@ -1,6 +1,9 @@
 let stopGame = false;
 let foundedPairs = 0;
 let flippedCardsArr = [];
+let cardsItems = '';
+let min = 0;
+let sec = 0;
 
 const body = document.querySelector('body');
 const gameList = document.querySelector('.game-list');
@@ -10,16 +13,27 @@ const gameMenuTitle = document.querySelector('.modal__title');
 const gameMenuDecs = document.querySelector('.modal__desc');
 const gameStartButton = document.querySelector('#game-start-button');
 
-gameStartButton.addEventListener('click', () => {
-  body.classList.add('menu-close');
-  gameMenu.classList.add('game-menu__hide');
-  countGameTime();
-});
+const restartBtnModal = document.createElement('button');
+restartBtnModal.innerHTML = 'Restart';
+restartBtnModal.classList.add('restart-btn-modal');
 
 const timerMin = document.querySelector('#timerMin');
 const timerSec = document.querySelector('#timerSec');
-let min = 0;
-let sec = 0;
+
+function hideMenu() {
+  body.classList.add('menu-close');
+  gameMenu.classList.add('game-menu__hide');
+  setTimeout(countGameTime, 1000)
+  
+}
+
+gameStartButton.addEventListener('click', hideMenu);
+restartBtnModal.addEventListener('click', () => {
+  restartingGame();
+  timerSec.innerHTML = `00`;
+  timerMin.innerHTML = `00`;
+  hideMenu();
+});
 
 function countGameTime() {
   if (!stopGame) {
@@ -54,13 +68,9 @@ function restartingGame() {
   sec = 0;
   min = 0;
   flippedCardsArr = [];
-  
-  gameList.innerHTML = '';
+  stopGame = false;
 
-  shuffleCards(cardSprites);
-  cardsItems = '';
-  createCards();
-  gameList.innerHTML = cardsItems;
+  createCardDeck();
 }
 
 let cardSprites = [
@@ -103,20 +113,26 @@ function createCard(card) {
 }
 
 cardSprites = [...cardSprites, ...cardSprites];
+
 function shuffleCards(cards) {
     cards.sort(() => 0.5 - Math.random());
 }
-shuffleCards(cardSprites);
 
-let cardsItems = '';
 function createCards() {
   cardSprites.forEach((sprite) => {
     cardsItems += createCard(sprite);
   });
 }
-createCards();
 
-gameList.innerHTML = cardsItems;
+function createCardDeck() {
+  gameList.innerHTML = '';
+  shuffleCards(cardSprites);
+  cardsItems = '';
+  createCards();
+  gameList.innerHTML = cardsItems;
+}
+
+createCardDeck();
 
 gameList.addEventListener('click', ({ target }) => {
     if (target.closest('.flipper') && flippedCardsArr.length < 2) {
@@ -149,6 +165,11 @@ function compareCards() {
 
 }
 
+function hideCards(cardsArr) {
+  cardsArr[0].classList.remove('flip-container-clicked');
+  cardsArr[1].classList.remove('flip-container-clicked');
+}
+
 function hideMatchingCards() {
 
   foundedPairs += 2;
@@ -156,8 +177,7 @@ function hideMatchingCards() {
   flippedCardsArr = []; 
 
   setTimeout(() => {
-    temp[0].classList.remove('flip-container-clicked');
-    temp[1].classList.remove('flip-container-clicked');
+    hideCards(temp);
 
     temp[0].classList.add('founded');
     temp[1].classList.add('founded');
@@ -170,9 +190,7 @@ function hideMatchingCards() {
 
 function hideUnmatchingCards() {
   setTimeout(() => {
-    flippedCardsArr[0].classList.remove('flip-container-clicked');
-    flippedCardsArr[1].classList.remove('flip-container-clicked');
-
+    hideCards(flippedCardsArr);
     flippedCardsArr = []; 
   }, 600);
 }
@@ -181,9 +199,11 @@ function showWinMessage() {
   stopGame = true;
   setTimeout(() => {
     gameMenuTitle.innerHTML = 'You won!';
-    gameMenuDecs.innerHTML = `Congratulations! You found pairs for all cards 
-      by spending ${min} minutes and ${sec} seconds!`;
-    gameStartButton.remove();
+    gameMenuDecs.innerHTML = `Congratulations! You found pairs for all cards by spending ${min} minutes and ${sec} seconds!`;
+    
+    gameStartButton.after(restartBtnModal);
+    gameStartButton.remove()
+
     gameMenu.classList.remove('game-menu__hide');
   }, 1000);
-}
+} 
