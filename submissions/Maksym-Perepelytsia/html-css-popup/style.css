@@ -107,9 +107,11 @@ body {
     appearance: none;
     position:absolute;
 }
+
 #popup-checkbox:checked ~ .popup__wrapper {
     display: block;
 }
+
 #popup-label {
     cursor: pointer;
 }
@@ -198,6 +200,7 @@ h1 {
     text-align: center;
     line-height: 1.5em;
 }
+
 @media screen and (max-width:380px){
     .popup__wrapper{
         left:15px;
