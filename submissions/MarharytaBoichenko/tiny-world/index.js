@@ -7,7 +7,7 @@
 
 const man = {
   name: "John",
-  species: "man",
+  species: "human",
   gender: "male",
   hands: 2,
   legs: 2,
@@ -16,7 +16,7 @@ const man = {
 };
 const woman = {
   name: "Ann",
-  species: "woman",
+  species: "human",
   gender: "female",
   hands: 2,
   legs: 2,
@@ -60,9 +60,9 @@ const allProperties = [
 ];
 
 inhabitants.forEach((item) => {
-  console.log(item);
-  const allInfoInItem = allProperties.map((prop) =>
-    item[prop] ? item[prop] : `no ${prop}`
+  print(
+    allProperties
+      .map((prop) => (item[prop] ? item[prop] : `no ${prop}`))
+      .join(", ")
   );
-  print(allInfoInItem.join(", "));
 });
