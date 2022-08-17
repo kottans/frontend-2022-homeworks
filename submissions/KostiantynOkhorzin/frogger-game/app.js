@@ -65,11 +65,15 @@ class Player {
 
 const player = new Player(200, 400);
 
-const enemy1 = new Enemy(-100, 60, 100);
-const enemy2 = new Enemy(-50, 140, 150);
-const enemy3 = new Enemy(-150, 230, 200);
+const enemyLocation = [
+    {locationX: -100, locationY: 60, speed: 100},
+    {locationX: -50, locationY: 140, speed: 150},
+    {locationX: -150, locationY: 230, speed: 200}
+]; 
 
-const allEnemies = [enemy1, enemy2, enemy3];
+const allEnemies = [];
+
+enemyLocation.forEach(enemy => allEnemies.push(new Enemy(enemy.locationX, enemy.locationY,enemy.speed)));
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
