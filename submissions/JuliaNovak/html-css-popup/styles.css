@@ -28,7 +28,7 @@ body {
     margin-right: 1rem;
 }
 
-.special-item {
+.images-link {
     margin-right: 1.9rem;
 }
 
@@ -95,13 +95,9 @@ a:hover, a:focus, .popup-item img:hover, .popup-item:focus {
     padding: 0;
 }
 
-.menu-image {
-    max-height: 3rem;
-}
-
 .dropdown-image {
-    height: 2.4rem;
-    width: 2.3rem;
+    height: 1.8rem;
+    object-fit: contain;
 }
 
 .item {
@@ -129,7 +125,7 @@ a:hover, a:focus, .popup-item img:hover, .popup-item:focus {
     cursor: pointer;
     height: 2.6rem;
     width: 98.5%;
-    top: 19rem;
+    top: 16.8rem;
     padding: 2px;
 }
 
