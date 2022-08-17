@@ -1,291 +1,290 @@
 html, body, div, span, applet, object, iframe, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0
+  margin: 0;
+  padding: 0;
 }
 
 @font-face {
-	font-family: "Montserrat";
-	src: local("Montserrat"), local("Montserrat-Regular"), url(../fonts/Montserrat-Regular.ttf) format("truetype");
-	font-weight: 400;
-	font-style: normal
+  font-family: "Montserrat";
+  src: local("Montserrat"), local("Montserrat-Regular"), url(../fonts/Montserrat-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal
 }
 
 html {
-	font-size: 16px;
-	overflow-x: hidden
+  font-size: 16px;
+  overflow-x: hidden
 }
 
 @media only screen and (max-width: 558px) {
-	html {
-		font-size: 14px
-	}
+  html {
+    font-size: 14px
+  }
 }
 
 body {
-	background-color: #dadada;
-	font-family: "Montserrat", sans-serif, sans-serif;
-	font-size: 1rem;
-	font-weight: 400
+  background-color: #dadada;
+  font-family: "Montserrat", sans-serif, sans-serif;
+  font-size: 1rem;
+  font-weight: 400
 }
 
 * {
-	box-sizing: border-box
+  box-sizing: border-box
 }
 
 a {
-	color: #343434;
-	text-decoration: none
+  color: #343434;
+  text-decoration: none
 }
 
 a:hover, a:focus {
-	color: #e74100
+  color: #e74100
 }
 
 a:focus {
-	outline: none
+  outline: none
 }
 
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	min-height: 100vh
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh
 }
 
 .header {
-	position: relative;
-	background: #fff;
-	z-index: 1
+  position: relative;
+  background: #fff;
+  z-index: 1
 }
 
 .top-menu {
-	height: 4.375rem;
-	padding: 0 1.25rem
+  height: 4.375rem;
+  padding: 0 1.25rem
 }
 
 .top-menu__nav {
-	height: inherit
+  height: inherit
 }
 
 .top-menu__ul {
-	height: inherit;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center
+  height: inherit;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center
 }
 
 @media only screen and (max-width: 558px) {
-	.top-menu__ul {
-		justify-content: center
-	}
+  .top-menu__ul {
+    justify-content: center
+  }
 }
 
 .top-menu__li {
-	position: relative;
-	list-style-type: none;
-	margin-right: 0.625rem
+  position: relative;
+  list-style-type: none;
+  margin-right: 0.625rem
 }
 
 .top-menu__li:last-child {
-	margin-right: 0
+  margin-right: 0
 }
 
 .top-menu__link {
-	display: block;
-	padding: 0.4375rem 0.625rem;
-	border: solid 1px rgba(52, 52, 52, 0);
-	border-radius: 0.25rem;
-	transition-duration: 300ms
+  display: block;
+  padding: 0.4375rem 0.625rem;
+  border: solid 1px rgba(52, 52, 52, 0);
+  border-radius: 0.25rem;
+  transition-duration: 300ms
 }
 
 .top-menu__link:focus {
-	border: solid 1px #b4b4b4
+  border: solid 1px #b4b4b4
 }
 
 .top-menu__icon {
-	width: 1.5rem;
-	height: 1.5rem;
-	object-fit: cover
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: cover
 }
 
 .top-menu__avatar {
-	width: 2.25rem;
-	height: 2.25rem;
-	object-fit: cover;
-	border-radius: 50%
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: cover;
+  border-radius: 50%
 }
 
 .top-menu__label {
-	display: block;
-	cursor: pointer
+  display: block;
+  cursor: pointer
 }
 
 .top-menu__input {
-	position: absolute;
-	appearance: none
+  position: absolute;
+  appearance: none
 }
 
 .top-menu__input:focus ~ .top-menu__label .top-menu__icon-box {
-	border: solid 1px #b4b4b4
+  border: solid 1px #b4b4b4
 }
 
 .top-menu__input:checked ~ .products {
-	visibility: visible;
-	opacity: 1;
-	pointer-events: auto
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto
 }
 
 .top-menu__icon-box {
-	display: block;
-	border: solid 1px rgba(52, 52, 52, 0);
-	border-radius: 0.25rem;
-	padding: 0.4375rem 0.625rem
+  display: block;
+  border: solid 1px rgba(52, 52, 52, 0);
+  border-radius: 0.25rem;
+  padding: 0.4375rem 0.625rem
 }
 
 .top-menu__icon {
-	width: 1.5rem;
-	height: 1.5rem;
-	object-fit: cover
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: cover
 }
 
 .products {
-	position: absolute;
-	top: 4.375rem;
-	right: 0;
-	visibility: hidden;
-	pointer-events: none;
-	opacity: 0;
-	transition-duration: 300ms;
-	z-index: 2
+  position: absolute;
+  top: 4.375rem;
+  right: 0;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition-duration: 300ms;
+  z-index: 2
 }
 
 @media only screen and (max-width: 558px) {
-	.products {
-		transform: translateX(calc(50% - 35px))
-	}
+  .products {
+    transform: translateX(calc(50% - 35px))
+  }
 }
 
 .products__ul {
-	background: #fff;
-	padding: 1.25rem;
-	display: grid;
-	min-width: 25rem;
-	grid-template-columns:33.33% 33.33% 33.33%
+  background: #fff;
+  padding: 1.25rem;
+  display: grid;
+  min-width: 25rem;
+  grid-template-columns:33.33% 33.33% 33.33%
 }
 
 @media only screen and (max-width: 558px) {
-	.products__ul {
-		min-width: 20rem
-	}
+  .products__ul {
+    min-width: 20rem
+  }
 }
 
 .products__ul:before {
-	content: "";
-	position: absolute;
-	top: -1.75rem;
-	right: 0.4375rem;
-	border: 15px solid rgba(0, 0, 0, 0);
-	border-bottom: 15px solid #fff;
-	z-index: -1
+  content: "";
+  position: absolute;
+  top: -1.75rem;
+  right: 0.4375rem;
+  border: 15px solid rgba(0, 0, 0, 0);
+  border-bottom: 15px solid #fff;
+  z-index: -1
 }
 
 @media only screen and (max-width: 558px) {
-	.products__ul:before {
-		right: 0;
-		transform: translateX(-7.9375rem)
-	}
+  .products__ul:before {
+    right: 0;
+    transform: translateX(-7.9375rem)
+  }
 }
 
 .products__li {
-	list-style-type: none
+  list-style-type: none
 }
 
 .products__li:nth-child(n+10) {
-	display: none
+  display: none
 }
 
 .products__link {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0.625rem;
-	border: solid 1px rgba(52, 52, 52, 0);
-	transition-duration: 300ms
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem;
+  border: solid 1px rgba(52, 52, 52, 0);
+  transition-duration: 300ms
 }
 
 .products__link:focus {
-	border: solid 1px #cdcdcd
+  border: solid 1px #cdcdcd
 }
 
 .products__icon {
-	max-width: 100%;
-	max-height: 4.375rem;
-	margin-bottom: 0.625rem
+  max-width: 100%;
+  max-height: 4.375rem;
+  margin-bottom: 0.625rem
 }
 
 .products__input {
-	position: absolute;
-	appearance: none
+  position: absolute;
+  appearance: none
 }
 
 .products__input:checked ~ .products__ul .products__li:nth-child(n+10) {
-	display: block
+  display: block
 }
 
 .products__input:checked ~ .products__ul {
-	min-width: 26.0625rem;
-	height: 25rem;
-	overflow-y: auto
+  min-width: 26.0625rem;
+  height: 25rem;
+  overflow-y: auto
 }
 
 @media only screen and (max-width: 558px) {
-	.products__input:checked ~ .products__ul {
-		height: 24.25rem;
-		width: 20rem;
-		min-width: 20rem
-	}
+  .products__input:checked ~ .products__ul {
+    height: 24.25rem;
+    width: 20rem;
+    min-width: 20rem
+  }
 }
 
 .products__input:checked ~ .products__btn .products__box:after {
-	content: "Less"
+  content: "Less"
 }
 
 .products__input:focus ~ .products__btn .products__box {
-	background: #b4b4b4
+  background: #b4b4b4
 }
 
 .products__box {
-	display: block;
-	position: relative;
-	width: 100%;
-	height: 2.5rem;
-	background: #cdcdcd;
-	cursor: pointer;
-	transition-duration: 300ms
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 2.5rem;
+  background: #cdcdcd;
+  cursor: pointer;
+  transition-duration: 300ms
 }
 
 .products__box:hover, .products__box:focus {
-	background: #b4b4b4
+  background: #b4b4b4
 }
 
 .products__box:after {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	content: "More";
-	transform: translateY(-50%) translateX(-50%)
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "More";
+  transform: translateY(-50%) translateX(-50%)
 }
 
 .footer {
-	position: relative;
-	height: 3.125rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 0.875rem;
-	background-color: #a7a7a7;
-	color: #fff
+  position: relative;
+  height: 3.125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+  background-color: #a7a7a7;
+  color: #fff
 }
