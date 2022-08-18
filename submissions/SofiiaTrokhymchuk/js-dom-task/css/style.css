@@ -128,7 +128,6 @@ body{
 }
 
 .footer{
-    /* flex-shrink: 0; */
     margin-top: auto;
     height: 2.1rem;
     text-align: center;

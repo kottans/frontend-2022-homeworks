@@ -22,4 +22,3 @@ export function createCharacter(event){
         characterDescription.innerHTML = characters[characterId].description;
     }; 
 }
-
