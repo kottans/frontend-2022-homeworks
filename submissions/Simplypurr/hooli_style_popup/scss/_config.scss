@@ -1,0 +1,49 @@
+$primary-color: #100720;
+$secondary-color: #747474;
+$bg-color: #4A7AFF;
+$bg-color-cards: #FFFFFF;
+$responsive-typo: clamp(1rem, 3vw, 2rem);
+
+@mixin shadow {
+    box-shadow: -1px 1px 5px $bg-color-cards;
+}
+
+@mixin transition($value) {
+    transition: $value 0.2s ease-in-out;
+}
+
+@mixin flex {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.custom-shape-divider-top-1660151220 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1660151220 svg {
+    position: relative;
+    display: block;
+    width: calc(122% + 1.3px);
+    height: 500px;
+}
+
+.custom-shape-divider-top-1660151220 .shape-fill {
+    fill: #C4DDFF;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-top-1660151220 svg {
+        width: calc(198% + 1.3px);
+        height: 500px;
+    }
+}
+
