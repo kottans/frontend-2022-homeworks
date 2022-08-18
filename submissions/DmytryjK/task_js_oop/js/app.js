@@ -8,38 +8,50 @@ const baseConfig = {
     enemyWidth: 100,
     enemyLinkImg: 'images/enemy-bug.png',
     playerLinkImg: 'images/char-cat-girl.png',
-    speedRandom(minSpeed = 150, maxSpeed = 300) {
+    speedRandom(minSpeed = 150, maxSpeed = 350) {
         maxSpeed -= minSpeed;
         return Math.floor(Math.random() * ++maxSpeed) + minSpeed;
     }
 };
 
-//---------------SCORE--------------
 const body = document.querySelector('body'),
       scoreBlock = document.createElement('div');
 let scoreCount = 0;
 body.prepend(scoreBlock);
 score();
-//------------------------------------------
 
 class Enemy {
-    constructor(x, y, speedX, sprite, fieldWidth, enemyWidth) {
+    constructor(x, y, speedX, sprite, fieldWidth, enemyWidth, player) {
         this.x = x;
         this.y = y;
         this.sprite = sprite;
         this.speed = speedX;
         this.fieldWidth = fieldWidth;
         this.enemyWidth = enemyWidth;
+        this.player = player;
     }
-    update(dt) {
+    update(dt) {    
+        this.x += this.speed * dt;
+        this.collisionСheck();
+        this.addingRandomSpeed();
+    }
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+    collisionСheck() {
+        if(this.player.y == this.y && this.player.x <= Math.floor(this.x) + this.player.heroWidth / 1.5 && this.player.x >= Math.floor(this.x) - this.player.heroWidth / 1.5 ) {
+            setTimeout(deletePopupMessage, 1000, 'body', 'popUp');
+            showPopupMessage('div','popUp', 'body', 'You losе, bro :(');
+            resetPlayerPosition(player);
+            scoreCount = 0;
+            score(scoreCount);
+        }
+    }
+    addingRandomSpeed() {
         if (this.x > this.fieldWidth + this.enemyWidth) {
             this.x = -this.enemyWidth;
             this.speed = baseConfig.speedRandom();
         }
-        this.x += this.speed * dt;
-    }
-    render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 };
 
@@ -54,19 +66,8 @@ class Player {
         this.heroHeight = heroHeight;
     }
     update(dt) {
-        if (player.x < 0 || 
-            player.x > player.fieldWidth || 
-            player.y > player.fieldHeight) {
-                resetPlayerPosition(player);
-        } 
-        if (player.y <= 0) {
-            setTimeout(deletePopupMessage, 1000, 'body', 'popUp');
-            showPopupMessage('div','popUp', 'body', 'You win! :)');
-            resetPlayerPosition(player); 
-            scoreCount ++;
-            score();
-        }
-        collisionResetPositions(player, firstEnemy, secondEnemy, thirdEnemy);
+        this.outOfFiledCheck();
+        this.checkingForVictory();
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -87,13 +88,29 @@ class Player {
                 break;
         }
     }
+    outOfFiledCheck() {
+        if (this.x < 0 || 
+            this.x > this.fieldWidth || 
+            this.y > this.fieldHeight) {
+                resetPlayerPosition(player);
+        } 
+    }
+    checkingForVictory() {
+        if (this.y <= 0) {
+            setTimeout(deletePopupMessage, 1000, 'body', 'popUp');
+            showPopupMessage('div','popUp', 'body', 'You win! :)');
+            resetPlayerPosition(player); 
+            scoreCount ++;
+            score();
+        }
+    }
 };
 
-const   firstEnemy  = new Enemy(0, 60, baseConfig.speedRandom(), baseConfig.enemyLinkImg, baseConfig.fieldWidth, baseConfig.enemyWidth),
-        secondEnemy  = new Enemy(0, 145, baseConfig.speedRandom(), baseConfig.enemyLinkImg, baseConfig.fieldWidth, baseConfig.enemyWidth),
-        thirdEnemy  = new Enemy(0, 230, baseConfig.speedRandom(), baseConfig.enemyLinkImg, baseConfig.fieldWidth, baseConfig.enemyWidth);
-
 const player = new Player(baseConfig.fieldWidth, baseConfig.fieldHeight, baseConfig.playerLinkImg, baseConfig.heroWidth, baseConfig.heroHeight);
+
+const   firstEnemy  = new Enemy(0, 50, baseConfig.speedRandom(), baseConfig.enemyLinkImg, baseConfig.fieldWidth, baseConfig.enemyWidth, player),
+        secondEnemy  = new Enemy(0, 135, baseConfig.speedRandom(), baseConfig.enemyLinkImg, baseConfig.fieldWidth, baseConfig.enemyWidth, player),
+        thirdEnemy  = new Enemy(0, 220, baseConfig.speedRandom(), baseConfig.enemyLinkImg, baseConfig.fieldWidth, baseConfig.enemyWidth, player);
 
 const allEnemies = [firstEnemy, secondEnemy, thirdEnemy];
 
@@ -108,29 +125,6 @@ document.addEventListener('keyup', function(e) {
         player.handleInput(allowedKeys[e.keyCode]);
     }
 });
-
-function collisionResetPositions(player, firstEnemy, secondEnemy, thirdEnemy) {
-        if (player.y <= thirdEnemy.y && 
-            player.y > secondEnemy.y && 
-            player.x <= Math.floor(thirdEnemy.x) + player.heroWidth/1.5 && 
-            player.x >= Math.floor(thirdEnemy.x) - player.heroWidth/1.5 
-            ||
-            player.y <= secondEnemy.y && 
-            player.y > firstEnemy.y &&
-            player.x <= Math.floor(secondEnemy.x) + player.heroWidth/1.5 && 
-            player.x >= Math.floor(secondEnemy.x) - player.heroWidth/1.5 
-            ||
-            player.y <= firstEnemy.y && 
-            player.y > 0 && 
-            player.x <= Math.floor(firstEnemy.x) + player.heroWidth/1.5 && 
-            player.x >= Math.floor(firstEnemy.x) - player.heroWidth/1.5) {
-                setTimeout(deletePopupMessage, 1000, 'body', 'popUp');
-                showPopupMessage('div','popUp', 'body', 'You losе, bro :(');
-                resetPlayerPosition(player);
-                scoreCount = 0;
-                score(scoreCount);
-        }
-    }
 
 function resetPlayerPosition(player) {
     player.x = player.fieldWidth / 2;
