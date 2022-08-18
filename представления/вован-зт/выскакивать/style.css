@@ -50,6 +50,8 @@
 
 .navigation__item-modal {
     position: relative;
+    width: 50px;
+    height: 55px;
 }
 
 .navigation__check_input{
@@ -65,12 +67,19 @@
     outline-width: 0.15rem;
 }
 
+#modal {
+    background-image: url(icons/popup-button.png);
+    background-size: 100%;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+
 .modal {
     display: none; 
     position: absolute;
     top: 67px;
     right: -150px;
-    z-index: 3;
     overflow: auto;
     width: 360px;
     height: 500px;
@@ -87,7 +96,6 @@
     background: rgb(233, 197, 18);
     border-radius:5px;
 }
-
 
 .modal__list {
     display: grid;
@@ -172,11 +180,10 @@
     background-color:rgb(61, 76, 76);
 }
 
-#modal2:checked~.modal__list>.modal__item2 {
+#modal2:checked~.modal__item2 {
     display:flex;
-  } 
+}  
 
-
- #modal2:checked ~ .modal__button::before {
-    content: 'Up';
-}
+#modal2:checked ~ .modal__button::before {
+    content: 'UP';
+}  
