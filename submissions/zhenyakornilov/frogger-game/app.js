@@ -30,10 +30,11 @@ class Character {
 }
 
 class Enemy extends Character {
-  constructor(x, y, speed, direction, sprite) {
+  constructor(x, y, speed, direction, sprite, player) {
     super(x, y, sprite);
     this.speed = speed;
     this.direction = direction;
+    this.player = player;
   }
 
   update(dt) {
@@ -48,19 +49,17 @@ class Enemy extends Character {
         this.x = -10;
       }
     }
-
-    this.checkOverlap();
   }
 
   checkOverlap() {
     if (
-      player.x < this.x + 60 &&
-      player.x + 60 > this.x &&
-      player.y < this.y + 60 &&
-      player.y + 60 > this.y
+      this.player.x < this.x + 60 &&
+      this.player.x + 60 > this.x &&
+      this.player.y < this.y + 60 &&
+      this.player.y + 60 > this.y
     ) {
-      player.x = PLAYER_START_POSITION.x;
-      player.y = PLAYER_START_POSITION.y;
+      this.player.x = PLAYER_START_POSITION.x;
+      this.player.y = PLAYER_START_POSITION.y;
     }
   }
 }
@@ -71,7 +70,7 @@ class Player extends Character {
     this.sprite = "images/char-boy.png";
   }
 
-  update(dt) {
+  update() {
     if (this.y === EDGE_POSITION.topY) {
       setTimeout(() => {
         this.x = PLAYER_START_POSITION.x;
@@ -98,7 +97,7 @@ const enemiesSettings = [
   {
     posX: -10,
     posY: 55,
-    speed: generateSpeed(100, 300),
+    speed: generateSpeed(200, 300),
     direction: "right",
     img: "images/enemy-bug.png",
   },
@@ -118,13 +117,13 @@ const enemiesSettings = [
   },
 ];
 
+const player = new Player(PLAYER_START_POSITION.x, PLAYER_START_POSITION.y);
+
 const allEnemies = enemiesSettings.map(
   ({ posX, posY, speed, direction, img }) => {
-    return new Enemy(posX, posY, speed, direction, img);
+    return new Enemy(posX, posY, speed, direction, img, player);
   }
 );
-
-const player = new Player(PLAYER_START_POSITION.x, PLAYER_START_POSITION.y);
 
 document.addEventListener("keyup", function (e) {
   var allowedKeys = {
