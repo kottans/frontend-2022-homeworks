@@ -68,18 +68,14 @@ const props = [
 ];
 
 characters.forEach((character) => {
-  const noZeroHandsOrFriends = props.filter(
-    (prop) =>
-      !(
-        (prop === 'hands' && character[prop] === 0) ||
-        (Array.isArray(character[prop]) && character[prop].length === 0)
+  print(
+    props
+      .map((prop) =>
+        Array.isArray(character[prop])
+          ? character[prop].join(', ')
+          : character[prop]
       )
+      .filter((value) => Boolean(value))
+      .join('; ')
   );
-  const values = noZeroHandsOrFriends.map((prop) =>
-    Array.isArray(character[prop])
-      ? character[prop].join(', ')
-      : character[prop]
-  );
-
-  print(values.join('; '));
 });
