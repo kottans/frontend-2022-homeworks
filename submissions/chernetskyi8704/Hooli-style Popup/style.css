@@ -162,6 +162,7 @@ h6 {
 .popup__more {
   display: none;
   overflow: hidden;
+  border-top: 1px solid lightgray;
 }
 
 .popup__more-button {
@@ -216,4 +217,8 @@ h6 {
 
 .popup__more-checkbox:checked ~ .popup__more {
   display: block;
+}
+
+.popup__more-checkbox:checked ~ .popup__more-label {
+  display: none;
 }
