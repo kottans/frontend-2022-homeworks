@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Popup | Homework Kottans</title>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:regular,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./css/nulling-styles.css">
 	<link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
@@ -13,7 +14,7 @@
 		<div class="wrapper">
 			<div class="header__container">
 				<a href="#" class="header__logo">PopUp</a>
-				<nav class="nav">
+				<div class="wrapper-popup">
 					<label for="popap-icon" class="label">
 						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35" viewBox="0 0 16 16">
 							<path fill="#212121" d="M0 7h7v-7h-7v7zM1 1h5v5h-5v-5z"></path>
@@ -24,31 +25,31 @@
 					</label>
 					<input type="checkbox" id="popap-icon" class="popup-button">
 					<div class="popup">
-						<ul class="popup__list">
-							<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/01.svg" alt="icon1">Спидометр</a></li>
-							<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/02.svg" alt="icon2">Будильник</a></li>
-							<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/03.svg" alt="icon3">Якорь</a></li>
-							<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/04.svg" alt="icon4">Часы</a></li>
-							<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/05.svg" alt="icon5">Фиг знает</a></li>
-							<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/06.svg" alt="icon6">Wi-Fi</a></li>
-							<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/07.svg" alt="icon7">"Стоп"</a></li>
-							<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/08.svg" alt="icon8">Энергия</a></li>
-							<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/09.svg" alt="icon9">Батарея</a></li>
-							<li class="popup__item">
-								<label class="sub-label" for="popup-sub-icon"><span>More</span></label>
-								<input type="checkbox" id="popup-sub-icon" class="popup-sub-button">
-								<ul class="popup__sub-list">
-									<li class="popup__sub-item"><a href="#" class="popup__link"><img class="popup__img" src="./img/10.svg" alt="icon10">Блокнот</a></li>
-									<li class="popup__sub-item"><a href="#" class="popup__link"><img class="popup__img" src="./img/11.svg" alt="icon11">Закладка</a></li>
-									<li class="popup__sub-item"><a href="#" class="popup__link"><img class="popup__img" src="./img/12.svg" alt="icon12">Корзина</a></li>
-									<li class="popup__sub-item"><a href="#" class="popup__link"><img class="popup__img" src="./img/13.svg" alt="icon13">Звезда</a></li>
-									<li class="popup__sub-item"><a href="#" class="popup__link"><img class="popup__img" src="./img/14.svg" alt="icon14">USB</a></li>
-									<li class="popup__sub-item"><a href="#" class="popup__link"><img class="popup__img" src="./img/15.svg" alt="icon15">Клевер</a></li>
-								</ul>
-							</li>
-						</ul>
+						<nav>
+							<ul class="popup__list">
+								<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/01.svg" alt="Спидометр">Спидометр</a></li>
+								<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/02.svg" alt="Будильник">Будильник</a></li>
+								<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/03.svg" alt="Якорь">Якорь</a></li>
+								<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/04.svg" alt="Часы">Часы</a></li>
+								<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/05.svg" alt="Фиг знает">Фиг знает</a></li>
+								<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/06.svg" alt="Wi-Fi">Wi-Fi</a></li>
+								<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/07.svg" alt="Стоп">"Стоп"</a></li>
+								<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/08.svg" alt="Энергия">Энергия</a></li>
+								<li class="popup__item"><a class="popup__link" href="#"><img class="popup__img" src="./img/09.svg" alt="Батарея">Батарея</a></li>
+							</ul>
+							<input type="checkbox" id="popup-sub-icon" class="popup-sub-button">
+							<label class="sub-label" for="popup-sub-icon"><span>More</span></label>
+							<ul class="popup__list popup__list_sub">
+								<li class="popup__item"><a href="#" class="popup__link"><img class="popup__img" src="./img/10.svg" alt="Блокнот">Блокнотик</a></li>
+								<li class="popup__item"><a href="#" class="popup__link"><img class="popup__img" src="./img/11.svg" alt="Закладка">Закладочка</a></li>
+								<li class="popup__item"><a href="#" class="popup__link"><img class="popup__img" src="./img/12.svg" alt="Корзина">Корзина</a></li>
+								<li class="popup__item"><a href="#" class="popup__link"><img class="popup__img" src="./img/13.svg" alt="Звезда">Звезда</a></li>
+								<li class="popup__item"><a href="#" class="popup__link"><img class="popup__img" src="./img/14.svg" alt="USB">USB</a></li>
+								<li class="popup__item"><a href="#" class="popup__link"><img class="popup__img" src="./img/15.svg" alt="Клевер">Клевер</a></li>
+							</ul>
+						</nav>
 					</div>
-				</nav>
+				</div>
 			</div>
 			<div class="wrapper__img">
 				<img class="arrow" src="./img/Arrow.png" alt="Стрелочка">
