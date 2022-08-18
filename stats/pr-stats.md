@@ -1,6 +1,6 @@
 # Open and merged PRs by task labels
 
-_as of 2022-08-18T18:14:09.777Z UTC_
+_as of 2022-08-18T19:26:26.793Z UTC_
 
 PR reference legend:
  - #xxx o -- PR is yet open 
@@ -95,7 +95,7 @@ PR reference legend:
 | 1.52 | [Olha3001](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AOlha3001) | [#209 o](https://github.com/kottans/frontend-2022-homeworks/pull/209) |   |   |   |   |   |   |
 | 1.53 | [pashapushak1996](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Apashapushak1996) | [**#61**](https://github.com/kottans/frontend-2022-homeworks/pull/61) |   |   |   |   |   |   |
 | 1.54 | [selveresta](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Aselveresta) | [#45 o](https://github.com/kottans/frontend-2022-homeworks/pull/45) |   |   |   |   |   |   |
-| 1.55 | [serentinos](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Aserentinos) | [#125 o](https://github.com/kottans/frontend-2022-homeworks/pull/125) |   |   |   |   |   |   |
+| 1.55 | [serentinos](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Aserentinos) | [**#125**](https://github.com/kottans/frontend-2022-homeworks/pull/125) |   |   |   |   |   |   |
 | 1.56 | [Serge044](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ASerge044) | [#206 o](https://github.com/kottans/frontend-2022-homeworks/pull/206) |   |   |   |   |   |   |
 | 1.57 | [Simplypurr](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ASimplypurr) | [**#130**](https://github.com/kottans/frontend-2022-homeworks/pull/130) |   |   |   |   |   |   |
 | 1.58 | [sofiichuk](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Asofiichuk) | [#170 o](https://github.com/kottans/frontend-2022-homeworks/pull/170) |   |   |   |   |   |   |
