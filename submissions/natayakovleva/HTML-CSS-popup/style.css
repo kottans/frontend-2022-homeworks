@@ -115,6 +115,7 @@ img {
 
 .popup-add {
   display: none;
+  position: relative;
   padding-top: 15px;
   border-top: 1px solid rgba(128, 128, 128, 0.349);
 }
@@ -171,19 +172,26 @@ img {
   cursor: pointer;
 }
 
-.popup__text {
+.popup__link {
+  display: block;
   position: relative;
   left: -20px;
   bottom: 0;
   width: calc(100% + 40px);
   margin-top: 15px;
   padding: 15px;
+  text-align: center;
   background-color: rgb(237, 240, 233);
 }
 
-.popup__text p {
-  text-align: center;
-}
+.popup__link:focus {
+  background-color: rgba(42, 65, 12, 0.24);
+  outline: none; 
+} 
+
+.popup__link:hover {
+  background-color: rgba(87, 139, 18, 0.404);
+} 
 
 .header__input:checked + .header__check + .popup {
   top:70px;
