@@ -70,7 +70,7 @@ Player.prototype.handleInput = function (key) {
       this._x -= CELL_WIDTH;
       break;
     case "f":
-      this._joke.rotate();
+      this._joke.jokeHandler();
       break;
   }
 };
@@ -180,7 +180,12 @@ StreakText.prototype.update = function () {
 
 function JokeText(x, y) {
   TextSprite.call(this, x, y, "white");
-  this._joke = "DON'T PRESS 'F' ( ͡ಠ ͜ʖ ͡ಠ)";
+  this._messages = {
+    first: "DON'T PRESS 'F' ( ͡ಠ ͜ʖ ͡ಠ)",
+    last: "AAHHAH, GOOD LUCK ✌",
+    nope: "NOPE ≧◉◡◉≦",
+  };
+  this._joke = this._messages.first;
   this._counter = 0;
   this._state = "normal";
 }
@@ -191,18 +196,21 @@ JokeText.prototype.update = function () {
   this._text =
     this._counter < 200 || this._state === "rotated" ? this._joke : "";
 };
-JokeText.prototype.rotate = function () {
+JokeText.prototype.jokeHandler = function () {
   if (this._state === "normal") {
     this._state = "rotated";
-    this._joke = "AAHHAH, GOOD LUCK ✌";
-    ctx.translate(SCREEN_WIDTH, SCREEN_HEIGHT);
-    ctx.rotate(Math.PI);
+    this._joke = this._messages.last;
+    this.rotateScreen();
   } else {
-    this._joke = "NOPE ≧◉◡◉≦";
+    this._joke = this._messages.nope;
     setTimeout(() => {
-      this._joke = "AAHHAH, GOOD LUCK ✌";
+      this._joke = this._messages.last;
     }, 1200);
   }
+};
+JokeText.prototype.rotateScreen = function () {
+  ctx.translate(SCREEN_WIDTH, SCREEN_HEIGHT);
+  ctx.rotate(Math.PI);
 };
 
 /* Основная программа */
