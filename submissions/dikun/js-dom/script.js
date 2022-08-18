@@ -48,8 +48,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const list = document.querySelector(".list_items");
     const content = document.querySelector(".content");
     
-    function createListHtml(obj) {
-        Object.values(obj).forEach((key) => {
+    function createListHtml(allMyWonders) {
+        Object.values(allMyWonders).forEach((key) => {
             list.innerHTML += `<li class="list_item">
                                <button data-id="${key.id}" class="list_btn">${key.title}</button>
                                </li>`;
