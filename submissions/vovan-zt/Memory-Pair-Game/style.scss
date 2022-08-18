@@ -11,30 +11,28 @@
 	color: rgb(108, 48, 93);
 	margin:0 auto;
 	margin-bottom: 30px;
-	
 }
 
 .wrapper {
+	margin: 0 auto;
+	width: 800px;
 	display: grid;
 	justify-content: center;
 	grid-template-columns: repeat(4, 200px);
 	grid-template-rows: repeat(3, 200px);
 	perspective: 1000px;
-
 }
 
-
-.col {
+.hide-swap {
 	border: 1px solid black;
 	border-radius: 5px;
 	transition: 0.8s;
 	transform-style: preserve-3d;
 	position: relative;
-	
+	z-index: 99;
 }
 
-
-.hover {
+.active {
 	transform: rotateY(180deg);
 }
 
@@ -45,12 +43,12 @@
 	height: 200px;
 	backface-visibility: hidden;
 	border-radius: 5px;
+	border: 1px solid black;
 	position: absolute;
 	top: 0;
 	left: 0;
 	transform: rotateY(0deg);	
 	cursor: pointer;
-
 }
 
 .c2 {
@@ -58,26 +56,25 @@
 	height: 200px;
 	backface-visibility: hidden;
 	border-radius: 5px;
+	border: 1px solid black;
 	position: absolute;
 	top: 0;
 	left: 0;
 	transform: rotateY(180deg);
 	cursor: pointer;
-
 }
 
-.visibility {
+.visible {
 	visibility: hidden;
 }
 
-
 @media  (max-width: 768px) {
 	.wrapper {
+		width: 400px;
 		grid-template-columns: repeat(4, 100px);
 		grid-template-rows: repeat(3, 100px);
 
 	}
-
 	.c1, .c2  {
 		width: 100px;
 		height: 100px;
@@ -86,11 +83,11 @@
 
 @media  (max-width: 375px) {
 	.wrapper {
+		width: 300px;
 		grid-template-columns: repeat(4, 75px);
 		grid-template-rows: repeat(3, 75px);
 
 	}
-
 	.c1, .c2  {
 		width: 75px;
 		height: 75px;
