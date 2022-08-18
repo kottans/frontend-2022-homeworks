@@ -65,12 +65,23 @@ nav {
     border: 1px solid transparent;
 }
 
-.link:hover, .link:focus {
+.profile-link {
+    display: block;
+    border: 1px solid transparent;
+}
+
+.link:hover, .link:focus, .profile-link:focus {
     border: 1px solid var(--coffee);
+    outline: none;
 }
 
 .hidden-toggle-input {
-    display: none;
+    -webkit-appearance: none;
+    position: absolute;
+}
+
+.hidden-toggle-input:focus ~ .services-toggle-button {
+    border: 1px solid var(--coffee);
 }
 
 .hidden-toggle-input:checked ~ .popup {
@@ -154,9 +165,11 @@ nav {
     margin-top: 5px;
 }
 
-.popup-items .item-content:hover, .popup-items .item-content:focus {
+.popup-items .item-content:hover,
+.popup-items .item-content:focus {
     cursor: pointer;
     background-color: var(--pink);
+    outline: none;
 }
 
 .hidden-toggle-input:checked ~ .more-section {
@@ -184,7 +197,8 @@ nav {
     padding: 10px 25px;
 }
 
-.more-toggle-button .title:hover {
+.more-toggle-button .title:hover,
+.hidden-toggle-input:focus ~ .more-toggle-button .title {
     background-color: var(--pink);
     cursor: pointer;
 }
