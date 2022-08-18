@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+:focus-visible {
+    outline:  none;
+}
+
 .menu {
     padding: 15px 15px;
 }
@@ -93,17 +97,14 @@ a {
     background-color: rgb(186, 186, 186);
 }
 
-.pop-up-btn-more:focus {
-    outline: 1px solid #80f0ff;
+.pop-up-more:focus~.pop-up-btn-more {
+    background-color: rgb(20, 91, 191);
+    color:rgb(230, 230, 230);
 }
 
 #pop-up:checked ~ .pop-up-body, #pop-up-more:checked ~ .pop-up-body-more{
     display: block;
     background-color: white;
-}
-
-.pop-up-checkbox:focus ~ .pop-up-btn  {
-    outline: 1px solid #80f0ff;
 }
 
 .pop-up-checkbox, .pop-up-more {
