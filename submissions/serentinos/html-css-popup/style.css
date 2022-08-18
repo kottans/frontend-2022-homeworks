@@ -164,9 +164,6 @@ body {
   width: 100%;
   padding: 4px;
 }
-.more__btn:active {
-  background-color: var(--popup-hover-color-active);
-}
 
 .more-items__cnt {
   display: none;
@@ -175,6 +172,17 @@ body {
 .more__btn__checkbox:checked ~ .more-items__cnt {
   display: block;
 }
-.more__btn__checkbox:checked + .more__btn {
+.more__btn:active {
   background-color: var(--popup-hover-color-active);
+}
+.more__btn__checkbox:checked + .more__btn {
+  display: none;
+}
+
+.more-items__link{
+  /* Впороте центрування, але працюэ */
+  display: table;
+  margin: 15px auto 0 auto;
+
+  font-size: 0.9em;
 }
