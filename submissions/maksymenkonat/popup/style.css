@@ -1,0 +1,163 @@
+* {
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(92, 81, 81, 0.8);
+}
+
+.content {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+ nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: inherit;
+  padding: 0 40px;
+  height: 80px;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  box-shadow: 0 1px 5px rgb(59, 59, 59);
+}
+
+.menu {
+  display: flex;
+  position: relative;
+}
+
+.menu_section:not(:last-child) {
+  margin-right: 20px;
+}
+
+.menu_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.one_section img {
+  max-height: 30px;
+}
+
+img {
+    height: 40px;
+    width: 30px;
+    align-content: center;
+}
+
+#menu_checkbox {
+  appearance: none;
+  position: absolute;
+}
+
+.checkbox-main-menu {
+  display: none;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+#menu_checkbox:checked ~ .checkbox-main-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  overflow: auto;
+  box-sizing: border-box;
+  top: 180%;
+  right: 0;
+  border: 1px gray solid;
+  height: 348px;
+}
+
+.dropdown_menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+}
+
+.text {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.dropdown_menu .menu_li {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.menu_checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown_menu a:focus,
+.dropdown_menu a:hover,
+#menu_checkbox:focus,
+#menu_checkbox:hover,
+.link:focus,
+.link:hover,
+#more_checkbox:focus,
+#more_checkbox:hover {
+  outline: 0;
+  box-shadow: 0 0 0 2px #000;
+}
+
+.one_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 60px;
+  width: 60px;
+}
+
+.menu_li {
+  display: flex;
+  align-items: stretch;
+}
+
+#more_checkbox {
+  appearance: none;
+  position: absolute;
+}
+
+.button_more {
+  font-size: 14px;
+  font-weight: 500;
+  color: grey;
+}
+
+#more_checkbox:checked .button_more {
+  display: none;
+}
+
+.menu_checkbox_more {
+  display: none;
+}
+
+#more_checkbox:checked ~ .menu_checkbox_more {
+  display: block;
+}
+
+.link {
+  display: flex;
+}
