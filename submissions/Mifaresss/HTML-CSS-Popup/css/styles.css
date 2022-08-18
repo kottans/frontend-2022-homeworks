@@ -36,13 +36,15 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 30px;
+	gap: 25px;
 }
 .header__logo {
 	font-size: 46px;
 	color: #212121;
 	font-weight: 700;
 	transition: all .3s;
+	width: 165px;
+	text-align: center;
 }
 .header__logo:hover {
 	color: #1b4903;
@@ -50,26 +52,25 @@ body {
 }
 .header__logo:focus {
 	border: 2px solid #1b4903;
+	padding: 0 5px;
 	border-radius: 5px;
 	color: #1b4903;
-	transform: scale(1.05,1.05);
 }
 .wrapper-popup {
 	position: relative;
-	width: 35px;
-	height: 35px;
+		height: 35px;
 }
 .label {
 	cursor: pointer;
 	transition: all .3s;
 }
-.label svg {
-	transition: all .4s;
+.label__img {
+	transition: all .3s;
 }
-.label:hover svg {
+.label__img:hover {
 	transform: scale(1.05,1.05);
 }
-.label:hover svg path {
+.label__img:hover path {
 	fill: #1b4903;
 }
 .popup-button {
@@ -119,14 +120,14 @@ body {
 	justify-content: center;
 	gap: 9px;
 }
-.popup__link img {
+.popup__img {
 	transition: all .3s;
 }
-.popup__link:hover img {
+.popup__img:hover {
 	color: #1b4903;
 	transform: scale(1.05,1.05);
 }
-.popup__link:focus img {
+.popup__link:focus .popup__img {
 	color: #1b4903;
 	transform: scale(1.05,1.05);
 	border: 2px solid #1b4903;
@@ -138,7 +139,7 @@ body {
 	position: relative;
 	display: block;
 }
-.sub-label span {
+.sub-label__text {
 	position: absolute;
 	right: 119px;
 	top: 25px;
@@ -146,11 +147,7 @@ body {
 	font-size: 25px;
 	font-weight: 700;
 }
-.sub-label:hover span {
-	color: #1b4903;
-	transform: scale(1.05,1.05);
-}
-.sub-label:focus span {
+.sub-label__text:hover {
 	color: #1b4903;
 	transform: scale(1.05,1.05);
 }
@@ -189,6 +186,9 @@ body {
 }
 
 @media (max-width: 735px) {
+	.header__container {
+		gap: 15px;
+	}
 	.popup {
 		right: -95px;
 		padding: 20px 20px;
@@ -213,7 +213,7 @@ body {
 		top: 296.5px;
 		left: 113.5px;
 	}
-	.sub-label span {
+	.sub-label__text {
 		right: 89px;
 		top: 18px;
 	}
