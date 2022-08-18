@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.body {
+  background: #e6e6fa;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+/* стили для шапки */
+.header {
+  background: linear-gradient(#e6e6fa, #d8bfd8);
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+/* стили лого */
+.logo {
+  position: relative;
+  left: 50px;
+  top: 36px;
+  box-shadow: 2px 3px 2px grey;
+  border: 1px solid #c5c3c3;
+  border-radius: 4px;
+}
+/* стили для иконок навигации */
+.icon-nav-link {
+  border: 1px solid #c5c3c3;
+  border-radius: 4px;
+}
+.check-icon_s {
+  box-shadow: 2px 3px 2px grey;
+  border: 1px solid #c5c3c3;
+  border-radius: 4px;
+}
+.bell {
+  width: 28px;
+}
+/* стили для ссылок */
+.link-nav {
+  text-shadow: 2px 2px 2px grey;
+  color: #000;
+  font-weight: 700;
+  font-size: 16px;
+}
+.link {
+  text-shadow: 2px 2px 2px grey;
+  color: #000;
+}
+/* ссылки навигации и иконок */
+.link-nav:hover,
+.link-nav:focus,
+.link:hover {
+  cursor: pointer;
+  color: #4b0082;
+}
+.link:focus {
+  background-color: #e5c9f5;
+  outline: none;
+  padding: 0px 5px 0px 5px;
+  box-shadow: 1px 1px 2px #7e705b;
+  border: 1px solid #e6e6fa;
+}
+.icon-nav-link:hover {
+  outline: none;
+  padding: 2px 2px 2x 2px;
+  box-shadow: 1px 1px 2px #141414;
+  border: 1px solid #e6e6fa;
+}
+/* позицион навигации */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 800px;
+  padding-right: 110px;
+  padding-bottom: 36px;
+}
+/* позиционирование иконок попап */
+.check-item {
+  display: inline-block;
+  width: 60px;
+  height: fit-content;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+/* стили для картинок */
+.check-icons {
+  width: 35px;
+  height: 30px;
+  box-shadow: 5px 5px 5px grey;
+  display: block;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+/* позиционирование ul с контентом */
+.nav-item {
+  position: absolute;
+  background-color: #e6e6fa;
+  right: 100px;
+  top: 100px;
+  display: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 10px grey;
+  height: 480px;
+}
+
+/* позиционирование иконок-навигации */
+.nav-item {
+  display: grid;
+  grid-template-columns: repeat(3, 55px);
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 20px;
+}
+/* спрятали чекбокс */
+.input-check,
+.input-more {
+  appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+}
+.label-container {
+  cursor: pointer;
+}
+.input-check:checked ~ .nav-item {
+  display: none;
+}
+/* стили для кнопки */
+.label-more {
+  display: block;
+  width: 240px;
+  text-align: center;
+  background-color: #d8bfd8;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-left: 10px;
+  height: 40px;
+  padding-top: 8px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px grey;
+}
+/* прячем лишнее */
+.input-more:checked ~ .more-item {
+  display: none;
+}
+.input-more:focus + .label-more {
+  border: 1px solid #e6e6fa;
+  box-shadow: 0 0 10px #7e705b;
+  border-radius: 5px;
+}
+/* позиционировании иконок more */
+.more-item {
+  display: grid;
+  grid-template-columns: repeat(3, 55px);
+  gap: 50px;
+  padding: 20px 20px;
+}
