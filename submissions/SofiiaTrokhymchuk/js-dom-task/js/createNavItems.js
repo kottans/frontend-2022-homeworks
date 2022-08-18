@@ -2,12 +2,13 @@ import { characters } from "./charachters.js";
 
 export function createNavItems() {
     const navList = document.querySelector(".nav-list");
+    const navlistItems = [];
     characters.map(character => {
-            let navItem = document.createElement("li");
-            navItem.setAttribute("class", "nav-item");
-            navItem.setAttribute("id", character.id);
-            navItem.innerHTML = character.name;
-            navList.appendChild(navItem);
-        }
-    );
+        navlistItems.push(
+            `<li class="nav-item" id="${character.id}">
+                ${character.name}
+            </li>`
+        )
+    });
+    navList.innerHTML = navlistItems.join("");
 }

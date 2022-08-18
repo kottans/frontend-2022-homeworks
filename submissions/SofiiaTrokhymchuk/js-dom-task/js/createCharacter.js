@@ -1,6 +1,5 @@
 import { characters } from "./charachters.js";
 
-const navList = document.querySelector(".nav-list");
 const characterSection = document.querySelector(".character");
 const characterImg = document.createElement("img");
 characterImg.setAttribute("class", "character-img");
@@ -14,8 +13,8 @@ export function createCharacter(event){
     characterSection.appendChild(characterImg);
     characterSection.appendChild(characterName);
     characterSection.appendChild(characterDescription);
-    let navItem = event.target;
-    let characterId = navItem.getAttribute("id");
+    const navItem = event.target;
+    const characterId = navItem.getAttribute("id");
     if(parseInt(characterId) === characters[characterId].id){
         characterImg.setAttribute("src", characters[characterId].image);
         characterImg.setAttribute("alt", `${characters[characterId].name} Image`)
