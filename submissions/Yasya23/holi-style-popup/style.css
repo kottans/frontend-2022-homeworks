@@ -1,6 +1,6 @@
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -15,7 +15,7 @@ a {
 }
 
 .navigation {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin: 0.3rem 0.6rem 0.6rem 0.3rem;
 }
 
@@ -25,16 +25,15 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
-  margin: 1rem;
+  -ms-flex-pack: right;
+  justify-content: right;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 1rem;
 }
 
-.navigation__item,
-.navigation__popup-item {
+.navigation__item {
   margin-right: 0.6rem;
   padding: 0.3rem;
 }
@@ -62,10 +61,10 @@ a {
   position: absolute;
   top: 3.1rem;
   right: -0.2rem;
-  width: 20rem;
-  max-height: 30rem;
+  width: 21rem;
+  max-height: 29rem;
   -webkit-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
-          box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
   border-radius: 5px;
   overflow: auto;
 }
@@ -74,7 +73,7 @@ a {
   display: grid;
   grid-template: auto/1fr 1fr 1fr;
   gap: 0.6rem;
-  padding: 1.2rem;
+  padding: 0.8rem;
 }
 
 .popup__box-img {
@@ -83,16 +82,15 @@ a {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  overflow: hidden;
-  padding: 0.3rem;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0.2rem;
 }
 
 .popup__box-img:hover,
@@ -110,9 +108,10 @@ a {
 
 .popup__img {
   display: block;
-  width: 3.5rem;
-  height: 3.5rem;
-  margin-bottom: 0.5rem;
+  width: 4rem;
+  height: 4rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.3rem;
 }
 
 .popup__more {
@@ -132,12 +131,11 @@ a {
 .popup__more-icon {
   display: block;
   padding: 0.3rem;
-  font-weight: 400;
 }
 
 .popup__more-input:checked ~ .popup__more-icon {
   -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .popup__more-input:focus-within ~ .popup__more-icon {
@@ -149,15 +147,11 @@ a {
   cursor: pointer;
 }
 
-@media (max-width: 23rem) {
+@media (max-width: 27rem) {
   .popup__container {
     top: 3.2rem;
-    right: -0.8rem;
-    width: 16rem;
+    right: -1.1rem;
+    width: 95vw;
     max-height: 25rem;
   }
-  .popup__box-img {
-    font-size: 0.9rem;
-  }
 }
-
