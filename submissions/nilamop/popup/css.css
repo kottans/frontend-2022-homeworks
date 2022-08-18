@@ -13,8 +13,6 @@
   width: 297px;
   position: relative;
   left: 30%;
-
-  /*transition: all 5s ease-in-out;*/
   opacity: 0;
   
 }
@@ -29,9 +27,11 @@
   text-decoration: none;
   color: #333;
 }
+
 .popup .close:hover {
   color: #06D85F;
 }
+
 .popup .content {
   max-height: 30%;
   /*скрол*/
@@ -121,7 +121,6 @@ input[type="checkbox"]:checked ~ .block__element_18{
   display: inline-block;
 }
 
-/* Стилизация псевдокнопки */
 .btn{
 	flex: 0 1 100%;
 }
@@ -138,8 +137,3 @@ input[type="checkbox"]:checked ~ .block__element_18{
   text-align: center;
   width: 297px;
 }
-
-
-
-
-
