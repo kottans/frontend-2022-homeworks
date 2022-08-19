@@ -1,8 +1,8 @@
 /* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
    Complete the below for code reviewers' convenience:
 
-   Code repository: _put repo URL here_
-   Web app: _put project's github pages URL here_
+   Code repository: https://github.com/SergeyShytikov/a-tiny-JS-world
+   Web app: https://sergeyshytikov.github.io/a-tiny-JS-world/
    */
 
 // ======== OBJECTS DEFINITIONS ========
@@ -10,10 +10,11 @@
 const dog = {
    species: 'dog',
    name: 'Ice',
-   gender: 'male',
+   // gender: 'male',
    legs: 4,
    hands: 0,
-   saying: 'woof-woof!'
+   saying: 'woof-woof!',
+   gender: 'male',
 };
 const cat = {
    species: 'cat',
@@ -39,7 +40,16 @@ const man = {
    hands: 2,
    saying: 'Hello everyone!'
 };
-const inhabitants = [dog, cat, man, woman];
+const catWoman = {
+   species: 'human',
+   name: 'Kitty',
+   gender: 'female',
+   legs: 2,
+   hands: 2,
+   saying: cat.saying
+}
+const inhabitants = [dog, cat, man, woman, catWoman];
+const keysOrder = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -60,9 +70,5 @@ const inhabitants = [dog, cat, man, woman];
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-
-function getPropertiesValueToString(obj) {
-return print(Object.values(obj).join('; '))
-}
-
-inhabitants.forEach(getPropertiesValueToString);
+const mappedInhabitants = inhabitants.map(obj => keysOrder.map(key => obj[key])) ;
+mappedInhabitants.forEach(item => print(item.join('; ')));
