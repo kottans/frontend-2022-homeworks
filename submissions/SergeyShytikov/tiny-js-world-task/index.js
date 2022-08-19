@@ -70,5 +70,7 @@ const keysOrder = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-const mappedInhabitants = inhabitants.map(obj => keysOrder.map(key => obj[key])) ;
-mappedInhabitants.forEach(item => print(item.join('; ')));
+   inhabitants
+   .map(inhabitant => keysOrder
+      .map(key => inhabitant[key]))
+   .forEach(arrayOfValues => print(arrayOfValues.join('; ')));
