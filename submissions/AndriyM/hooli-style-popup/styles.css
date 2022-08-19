@@ -1,0 +1,242 @@
+/*-------------- zeroing -----------*/
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+ul,
+ol,
+li {
+    list-style: none;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+html,
+body {
+    height: 100%;
+    line-height: 1;
+}
+
+body {
+    background-color: #ccc;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
+/* ----------- header ------------------ */
+
+.nav {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.header {
+    width: 100%;
+    padding: 5px 0;
+    background-color: #20232a;
+    height: 50px;
+}
+
+.header__list {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.header__item {
+    display: flex;
+    margin-left: 70px;
+    cursor: pointer;
+}
+
+.header__item:nth-child(1) {
+    margin-left: 0;
+}
+
+.header__avatar {
+    border-radius: 50%;
+}
+
+.header__link {
+    font-size: 18px;
+    font-weight: 100;
+    color: #ffffff;
+    transition: 0.3 all ease;
+}
+svg {
+    fill: white;
+}
+
+.header__link:hover,
+.header__link:focus,
+.popup__input:focus,
+svg:hover {
+    color: #61dafb;
+    fill: #61dafb;
+    transform: scale(1.2);
+}
+
+/* -------------- popup ------------------ */
+
+.popup {
+    flex-direction: column;
+    overflow-y: auto;
+    max-width: 377px;
+    height: 415px;
+    border: transparent;
+    padding: 50px 15px 30px 15px;
+    top: 60px;
+    left: 180px;
+    position: fixed;
+    display: none;
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+        -23px 0 20px -23px rgba(0, 0, 0, 0.6),
+        23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.popup__list {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.popup__item {
+    cursor: pointer;
+}
+
+.popup__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    text-decoration: none;
+    color: black;
+}
+
+.popup__link:hover,
+.popup__link:focus {
+    transform: scale(1.2);
+    outline: none;
+    color: #61dafb;
+}
+
+.popup__icon {
+    margin-bottom: 7px;
+    width: 40px;
+    height: 40px;
+}
+.popup__icon-name {
+    font-style: 18px;
+    font-weight: 500;
+}
+
+.popup__button-container {
+    text-align: center;
+}
+
+/* ------------ check popup -------------------- */
+
+.popup__input {
+    position: absolute;
+    appearance: none;
+}
+
+.popup__label {
+    width: 30px;
+    height: 30px;
+}
+.popup__input:checked ~ .popup {
+    display: block;
+}
+
+.popup__input:focus ~ .popup__label svg,
+.popup__input:checked ~ .popup__label svg {
+    fill: #61dafb;
+    transform: scale(1.2);
+}
+
+/* ----------------- load more --------------------- */
+
+.popup__input-more:checked ~ .popup__list-more {
+    display: flex;
+}
+
+.popup__input-more:checked + * .popup__arrow-down {
+    display: none;
+}
+.popup__input-more:checked ~ .popup__list-more {
+    display: flex;
+}
+
+.popup__input-more {
+    position: absolute;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.popup__list-more {
+    flex-wrap: wrap;
+    display: none;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.popup__arrow-down {
+    background-color: #61dafb;
+    font-size: 18px;
+    color: #ffffff;
+    padding: 7px 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.popup__arrow-down:hover,
+.popup__arrow-down:focus {
+    background-color: #0bb9ea;
+    transform: scale(1.2);
+}
+
+.popup__input-more:focus ~ .popup__label-more .popup__arrow-down,
+.popup__input-more:checked ~ .popup__label-more .popup__arrow-down {
+    background-color: #0bb9ea;
+    transform: scale(1.2);
+}
