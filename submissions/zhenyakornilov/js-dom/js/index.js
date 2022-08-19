@@ -3,8 +3,10 @@ import switchTheme from "./utils.js";
 
 switchTheme();
 
-function renderButtons(arr) {
-  const listMenu = document.querySelector(".menu-items");
+const listMenu = document.querySelector(".menu-items");
+const contentBody = document.querySelector(".content-body");
+
+function renderButtons(arr, menu) {
   let buttonsHTML = ``;
 
   arr.forEach(({ btnName }) => {
@@ -14,12 +16,12 @@ function renderButtons(arr) {
       `</li>`;
   });
 
-  listMenu.innerHTML = buttonsHTML;
+  menu.innerHTML = buttonsHTML;
 }
 
-renderButtons(museumsData);
+renderButtons(museumsData, listMenu);
 
-function toggleSelectedButton(museums) {
+function toggleSelectedButton(museums, content) {
   let selectedButton = document.getElementsByClassName("nav-item")[1];
   selectedButton.classList.add("open");
 
@@ -34,28 +36,26 @@ function toggleSelectedButton(museums) {
     return obj;
   }
 
-  renderArticle(getContextObj());
+  renderArticle(getContextObj(), content);
 
   for (let button of buttons) {
     button.addEventListener("click", function () {
       if (!this.classList.contains("open")) {
-        document.querySelector(".content-body").innerHTML = "";
+        content.innerHTML = "";
         selectedButton.classList.remove("open");
         this.classList.add("open");
         selectedButton = this;
 
-        renderArticle(getContextObj());
+        renderArticle(getContextObj(), content);
       }
     });
   }
 }
 
-toggleSelectedButton(museumsData);
+toggleSelectedButton(museumsData, contentBody);
 
-function renderArticle(museumObj) {
-  let contentTag = document.querySelector(".content-body");
-
-  const content = `
+function renderArticle(museumObj, content) {
+  const contentHTML = `
   <h2 class="museum-title">${museumObj.name}</h2>
   <div class="desc-wrapper">
     <img class="museum-image" src="${museumObj.imageSrc}" alt="photo of museum">
@@ -70,16 +70,16 @@ function renderArticle(museumObj) {
   </div>
   `;
 
-  contentTag.innerHTML = content;
+  content.innerHTML = contentHTML;
 }
 
-function openMenu() {
+function openMenu(menu) {
   const dropDownBtn = document.querySelector(".dropdown");
 
   dropDownBtn.addEventListener("click", function () {
-    const sidebar = document.querySelector(".sidebar");
+    const sidebar = menu.closest(".sidebar");
     sidebar.classList.toggle("active");
   });
 }
 
-openMenu();
+openMenu(listMenu);
