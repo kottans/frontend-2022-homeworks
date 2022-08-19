@@ -65,3 +65,4 @@ window.addEventListener("DOMContentLoaded", () => {
     showContent(seriesCOD[0]);
     showMenu();
 });
+
