@@ -1,4 +1,3 @@
-
 * {
     font-family: 'Alumni Sans', sans-serif;
     font-weight: 600;
@@ -26,24 +25,26 @@ body {
 }
 
 .logo {
+    cursor: pointer;
     font-size: 30px;
+    color: #000000;
 }
 
 .logo:hover {
     transition: 0.5s;
     font-size: 40px;
     color: #E6DC1B;
-
     text-shadow: 3px 0px 7px #5D5933, 
         -3px 0px 7px #5D5933, 
         0px 4px 7px #5D5933;
+    
 }
 
 .greeting {
     font-size: 30px;
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    align-content: center;
+    cursor: pointer;
 }
 
 #menu-check, #menu-check-more{
@@ -110,24 +111,23 @@ body {
     padding: 10px
 }
 
-.input-check:focus + .check, .input-check:focus + .check-more {
+.input-check:focus + .check, .input-check:focus + .check-more{
     border-radius: 10px;
-    outline: #5d5933 solid 5px;
-    outline-offset: 5px;
+    box-shadow: 0 0 0 2.5px #B3B3B3, 0 0 0 5px #5d5933;
     font-size: 50px;
     transition: 0.5s;
 }
 
 .input-check:hover + .check, .input-check:hover + .check-more {
     border-radius: 10px;
-    outline: #5d5933 solid 5px;
-    outline-offset: 5px;
+    box-shadow: 0 0 0 2.5px #B3B3B3, 0 0 0 5px #5d5933;
     font-size: 50px;
     transition: 0.5s;
 }
 
 .check, .check-more{
     font-size: 45px;
+    cursor: pointer;
 }
 
 .check-more{
@@ -147,6 +147,7 @@ body {
 .item-name:focus, .item-name:hover{
     border-radius: 10px;
     box-shadow: 0 0 0 2.5px #B3B3B3, 0 0 0 5px #5d5933;
+    outline: none;
     font-size: 35px;
     transition: 0.5s;
     background-color: #CBCAC7;
@@ -178,37 +179,48 @@ body {
     flex-direction: row;
     align-items: center;
     font-size: 35px;
+    cursor: pointer;
 }
 
 .post-img{
     height: 512px;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .action-zone{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
     background-color: #E6DC1B;
     border: none;
     margin-top: 15px;
 }
 
 .btn{
-    height: 80px;
-    width: 80px;
-    margin-right: 20px;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 0;
+    background-color: #E6DC1B;
+    border: none;
+}
+
+.btn:hover, .btn:focus{
+    margin-right: 15px;
+    box-shadow: 0 0 0 2.5px #B3B3B3, 0 0 0 5px #5d5933;
+    outline: none;
+    border-radius: 10px;
+    transition: 0.3s;
     font-size: 20px;
 }
 
-.btn:hover{
-    box-shadow: 0 0 0 2.5px #B3B3B3, 0 0 0 5px #5d5933;
-    border-radius: 10px;
-    transition: 0.5s;
-    font-size: 25px;
+.btn-img{
+    height: 60%;
 }
 
 .post-time{
