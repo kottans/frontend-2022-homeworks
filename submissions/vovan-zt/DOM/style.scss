@@ -32,9 +32,7 @@ nav {
 	display: none;
 }
 
-
 .menu {
-
 	&__close {
 		display: none;
 	}	
@@ -100,6 +98,11 @@ nav {
             font-size: 12px;
             line-height: 18px;
         }
+	}
+	&__title {
+		text-align: center;
+		font-size: 30px;
+		color:rgb(69, 17, 17);
 	}
 
 	@keyframes append-animate {
@@ -221,3 +224,4 @@ nav {
 		}
 	} 
 }
+
