@@ -110,8 +110,9 @@
 .popup__input,
 .popup__input-more {
   position: absolute;
-  appearance: 0;
-  opacity:0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .popup__icon {
