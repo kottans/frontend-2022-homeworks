@@ -88,7 +88,7 @@ body{
 
 .main-title{
     text-align: center;
-    font-size: 2rem;
+    font-size: 2em;
     padding: 0 2.2rem;
 }
 
@@ -194,5 +194,17 @@ body{
 @media (max-width: 500px){
     html{
         font-size: 13px;
+    }
+
+    .content-container{
+        font-size: 1.4rem;
+    }
+
+    .nav-item{
+        padding: 1.5rem;
+    }
+
+    .character{
+        padding: 0 2.2rem;
     }
 }
