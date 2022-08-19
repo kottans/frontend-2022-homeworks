@@ -43,14 +43,11 @@ const female = {
    saying: 'Amazing. This slacker-clown outsmarted me!'
 };
 
-const catWoman = {
-   species: 'cat-woman',
-   name: 'Hello Kitty',
-   gender: 'female',
-   legs: 2,
-   hands: 2,
-   saying: cat.saying
-};
+const catWoman = Object.create(cat);
+catWoman.species = 'cat-woman';
+catWoman.name = 'Hello Kitty';
+catWoman.legs = 2;
+catWoman.hands = 2;
 
 function inhabitantToString(inhabitant){
    const friends = [];
