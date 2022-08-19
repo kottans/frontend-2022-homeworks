@@ -1,5 +1,3 @@
-@charset "UTF-8";
-/*Обнуление*/
 * {
   padding: 0;
   margin: 0;
@@ -72,7 +70,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: inherit;
 }
 
-/*--------------------*/
 body {
   background: FFFFFF;
   font-family: Arial, Helvetica, sans-serif;
@@ -93,13 +90,14 @@ header {
     margin: 0;
   }
 }
+
 .navigation-menu > ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .profile__avatar img {
@@ -158,6 +156,7 @@ ul.inner-list {
     margin: 0;
   }
 }
+
 ul.inner-list li, ul.inner-list__more li {
   width: 32%;
   padding-bottom: 10 px;
@@ -205,7 +204,7 @@ ul.inner-list__more {
       flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   position: relative;
   min-width: 100%;
   margin: 0 20px 0 0;
