@@ -1,0 +1,194 @@
+body {
+	background-color: rgb(245, 245, 245);
+}
+
+a {
+	cursor: default;
+	color: black;
+}
+
+.wrapper {
+	min-height: 100%;
+	max-width: 1180px;
+	margin: auto;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: inherit;
+	min-width: 350px;
+	height: 70px;
+	position: relative;
+	padding: 0px 30px 0px 30px;
+	background-color: rgb(235, 235, 235);
+	border: 2px solid rgb(50, 50, 50);
+	border-radius: 10px;
+}
+
+.menu__list {
+	display: flex;
+}
+
+.menu__item {
+	margin: 0 auto;
+	display: block;
+	border: 1px solid transparent;
+}
+
+.icon,
+.popup-icon {
+	display: block;
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	opacity: 50%;
+}
+
+.popup-icon {
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.icon {
+	margin: 0px 10px;
+	cursor: pointer;
+}
+
+.popup__label .icon {
+	border: 1px solid transparent;
+}
+
+.popup__label {
+	cursor: pointer;
+}
+
+.popup__body {
+	display: none;
+	position: absolute;
+	right: 30px;
+	top: 75px;
+	width: 320px;
+	height: 430px;
+	overflow: auto;
+	background-color: rgb(235, 235, 235);
+	border: 2px solid rgb(50, 50, 50);
+	border-radius: 10px;
+}
+
+.popup__input:checked~.popup__body {
+	display: block;
+}
+
+.popup__list {
+	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(4 2fr);
+	justify-items: center;
+	align-items: center;
+}
+
+.popup-more__list {
+	display: none;
+}
+
+.more__label {
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	width: 60%;
+	border: 2px solid rgb(50, 50, 50);
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.more__text {
+	text-align: center;
+}
+
+.popup__input,
+.more__input {
+	appearance: none;
+	-webkit-appearance: none;
+	position: absolute;
+}
+
+.popup__item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 86px;
+	height: auto;
+	padding: 10px;
+	border: 1px solid transparent;
+}
+
+.popup-more__list {
+	border-top: 1px solid rgb(50, 50, 50);
+}
+
+.more__input:checked~.popup-more__list {
+	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	justify-items: center;
+	align-items: center;
+}
+
+.more__input:checked+.more__label,
+.more__input:checked {
+	display: none;
+}
+
+.menu__item:hover,
+.popup__input:hover+.popup__label>.icon,
+.popup__item:hover {
+	border: 1px solid rgb(50, 50, 50);
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgb(50, 50, 50);
+}
+
+.menu__item:focus,
+.popup__input:focus+.popup__label>.icon,
+.popup__item:focus {
+	border: 1px solid rgb(0, 0, 200);
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px rgb(0, 0, 200);
+}
+
+.more__input:hover+.more__label {
+	box-shadow: 0 0 5px rgb(50, 50, 50);
+	background-color: rgb(220, 220, 220);
+}
+
+.more__input:focus+.more__label {
+	box-shadow: 0 0 5px rgb(0, 0, 200);
+	background-color: rgb(220, 220, 220);
+}
+
+::-webkit-scrollbar {
+	width: 16px;
+	background: rgb(245, 245, 245);
+	-webkit-border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgb(175, 175, 175);
+	-webkit-border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(150, 150, 150);
+}
+
+@media (max-width: 540px) {
+	.popup__body{
+		right: calc(50% - calc(320px / 2));
+	}
+}
