@@ -40,14 +40,14 @@ class Menu {
 
         playerSkins.forEach((skin) => {
             const menuItem = document.createElement('li');
+            menuItem.classList.add('menu-item');
+            menuItem.dataset.skin = skin.id;
     
             const itemImg = document.createElement('img');
             const imgSrc = skin.src;
-            const imgId = skin.id;
             itemImg.setAttribute('src', imgSrc);
-            itemImg.setAttribute('id', imgId);
             const imgDesc = document.createElement('p');
-            imgDesc.innerText = imgId;
+            imgDesc.innerText = skin.id;
     
             this.menuList.appendChild(menuItem);
             menuItem.appendChild(itemImg);
@@ -65,7 +65,7 @@ class Menu {
         this.menuList.addEventListener('click', ({ target }) => {
             if (target.tagName === "UL") return;
             
-            const targetId = target.getAttribute("id");
+            const targetId = target.closest('.menu-item').dataset.skin;
 
             const targetSprite = playerSkins.find((skin) => {
                 if (skin.id === targetId) {
