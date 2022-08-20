@@ -78,12 +78,12 @@
     }
 }
 
-.nav-list {
+.navigation {
     display: flex;
     align-items: center;
 }
 
-.nav-list-item:not(:first-child) {
+.navigation-link:not(:first-child) {
     margin-left: 15px;
 
     @media screen and (max-width: 480px) {
