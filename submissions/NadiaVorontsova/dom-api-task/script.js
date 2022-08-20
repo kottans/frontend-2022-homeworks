@@ -35,18 +35,20 @@ window.addEventListener("DOMContentLoaded", () => {
     const menu = document.getElementById('menu');
 
     function createMenu(series, parentElement) {
-        for (const ser of series) {
+        series.forEach( ser=> {
             const li = document.createElement('li');
             li.textContent = ser.title;
-            li.addEventListener("click", function () {
-                showContent(ser);
-                menu.classList.toggle('nav_menu_items_active');
-                burgerButton.classList.toggle('burger_img_active');
-            })
             parentElement.append(li);
             li.classList.add('nav_menu_item');
-        }
+        })
     }
+
+    listOfItemsElement.addEventListener('click', ({target}) => {
+        const seriesTitle=target.textContent;
+        const seriesItem=seriesCOD.find((item)=>item.title===seriesTitle);
+        showContent(seriesItem);
+        showMenu();
+    })
 
     function showContent(data) {
         titleOfSeriesElement.innerText = data.title;
@@ -56,13 +58,12 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     function showMenu() {
-        burgerButton.addEventListener("click", function() {
-            menu.classList.toggle('nav_menu_items_active');
-        })
+        menu.classList.toggle('nav_menu_items_active');
+        burgerButton.classList.toggle('burger_img_active');
     }
 
+    burgerButton.addEventListener("click", showMenu);
     createMenu(seriesCOD, listOfItemsElement);
     showContent(seriesCOD[0]);
-    showMenu();
 });
 
