@@ -4,7 +4,6 @@
    Code repository: https://github.com/helengreent/a-tiny-JS-world/tree/populate-world
    Web app: https://helengreent.github.io/a-tiny-JS-world/
    */
-
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 
@@ -59,12 +58,10 @@ const properties = ["species", "name", "gender", "legs", "hands", "saying"];
 // ======== OUTPUT ========
 /* Use print(message) for output.
    Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
-
    Message can contain HTML markup. You may also tweak index.html and/or styles.css.
    However, please, REFRAIN from improving visuals at least until your code is reviewed
    so code reviewers might focus on a single file that is index.js.
    */
-
 /* Print examples:
    print('ABC');
    print('<strong>ABC</strong>');
@@ -76,5 +73,5 @@ const properties = ["species", "name", "gender", "legs", "hands", "saying"];
    */
 
 const message = (arr, types) =>
-arr.map((item) => types.map((type) => item[type]).join("; ")).join("\n");
-print(message(populations,properties));
+  arr.map((item) => types.map((type) => item[type]).join("; ")).join("\n");
+print(message(populations, properties));
