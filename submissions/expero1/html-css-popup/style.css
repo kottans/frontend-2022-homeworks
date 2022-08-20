@@ -233,7 +233,6 @@ background-color:dimgray;
 .show-more-checkbox:checked ~ .hor-line {
 	display: block;
 position:relative;
-/*top:-8px;*/
 	margin: 10px 0 5px 0;
 	height: 1px;
 	border-bottom: 1px solid gray;
@@ -386,7 +385,6 @@ footer::after {
 	.popup-menu {
 		position: absolute;
 		width:450px;
-		/*min-height: 250px;*/
 		top: 60px;
 		right:-150px;
 	}
