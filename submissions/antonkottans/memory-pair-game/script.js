@@ -1,19 +1,9 @@
-const pipe = (...arrayOfFunctions) => {
-    if (arrayOfFunctions.length === 0) return undefined;
-    else if (arrayOfFunctions.length === 1) return arrayOfFunctions[0]();
-    return arrayOfFunctions.reduce((prev, func) => {
-        return func(prev);
-    }, undefined);
-};
-let timerId = null;
-
 const state = {
     timerId: null,
     guessedPairsAmount: 0,
-    flipped: false,
+    flipped: null,
     guessedPairs: [],
-    guessedIds: new Set(),
-    notGuessedIds: new Set(),
+    guessedIds: [],
     cardContainers: [],
     bodyNode: null,
     timerNode: null,
@@ -39,7 +29,7 @@ const startTimer = () => {
         return addPriorZero(minutes) + ":" + addPriorZero(seconds);
     };
 
-    timerId = setInterval(() => {
+    state.timerId = setInterval(() => {
         increaseTimer();
         state.timerNode.textContent = getFormattedTimer({ minutes, seconds });
     }, 1000);
@@ -52,12 +42,12 @@ const antiCheat = () => {
         );
     state.cardContainers.forEach((node) => {
         if (
-            state.guessedIds.has(
+            state.guessedIds.includes(
                 node
                     .getAttribute("class")
                     .split(" ")
-                    .find((clas) => {
-                        return clas.includes("card_");
+                    .find((className) => {
+                        return className.includes("card_");
                     })
             )
         )
@@ -95,9 +85,11 @@ const clickHandler = ({ target }) => {
                 ) {
                     currentCardContainer.classList.remove("flip-to-face");
                     state.flipped.container.classList.remove("flip-to-face");
-                    state.guessedIds.add(state.flipped.face.getAttribute("id"));
-                    state.guessedIds.add(currentCardFace.getAttribute("id"));
-                    state.flipped = false;
+                    state.guessedIds.push(
+                        state.flipped.face.getAttribute("id")
+                    );
+                    state.guessedIds.push(currentCardFace.getAttribute("id"));
+                    state.flipped = null;
                     state.guessedPairsAmount++;
                     if (state.guessedPairsAmount === 6) {
                         state.guessedPairsAmount = 0;
@@ -107,7 +99,7 @@ const clickHandler = ({ target }) => {
                     currentCardContainer.classList.remove("flip-to-face");
                     state.flipped.container.classList.remove("flip-to-face");
 
-                    state.flipped = false;
+                    state.flipped = null;
                 }
             }
             antiCheat();
@@ -116,24 +108,21 @@ const clickHandler = ({ target }) => {
 };
 
 const startGame = () => {
-    clearInterval(timerId);
+    clearInterval(state.timerId);
     state.guessedPairs = 0;
-    state.guessedIds = new Set();
+    state.guessedIds = [];
     document
         .querySelectorAll(".guessed")
         .forEach((elem) => elem.classList.remove("guessed"));
     setTimeout(() => {
         const cardImageNodes = getDoubledRandomImageNodes(6);
-        state.notGuessedIds = new Set(
-            cardImageNodes.map((node) => node.getAttribute("id"))
-        );
         moveCardsIntoDOM(cardImageNodes);
         startTimer();
     }, 1000);
 };
 
 const stopGame = (result = "win") => {
-    clearInterval(timerId);
+    clearInterval(state.timerId);
     const span = document.createElement("span");
     span.classList.add("result");
     span.textContent =
@@ -150,29 +139,27 @@ const getDoubledRandomImageNodes = (amountOfElements) => {
     if (amountOfElements <= 0) return [];
 
     const getCardNames = (amount) => {
-        return () => {
-            const cardNames = [
-                "ace_1",
-                "ace_2",
-                "ace_3",
-                "ace_4",
-                "king_1",
-                "king_2",
-                "king_3",
-                "king_4",
-                "queen_1",
-                "queen_2",
-                "queen_3",
-                "queen_4",
-            ];
-            const result = [];
-            while (result.length < amount) {
-                const nameIndex = Math.floor(Math.random() * amountOfElements);
-                if (!result.includes(cardNames[nameIndex]))
-                    result.push(cardNames[nameIndex]);
-            }
-            return result;
-        };
+        const cardNames = [
+            "ace_1",
+            "ace_2",
+            "ace_3",
+            "ace_4",
+            "king_1",
+            "king_2",
+            "king_3",
+            "king_4",
+            "queen_1",
+            "queen_2",
+            "queen_3",
+            "queen_4",
+        ];
+        const result = [];
+        while (result.length < amount) {
+            const nameIndex = Math.floor(Math.random() * amountOfElements);
+            if (!result.includes(cardNames[nameIndex]))
+                result.push(cardNames[nameIndex]);
+        }
+        return result;
     };
 
     const convertNamesToNodes = (arrayOfNames) => {
@@ -197,10 +184,8 @@ const getDoubledRandomImageNodes = (amountOfElements) => {
         return result;
     };
 
-    return pipe(
-        getCardNames(amountOfElements),
-        doubleAndShuffle,
-        convertNamesToNodes
+    return convertNamesToNodes(
+        doubleAndShuffle(getCardNames(amountOfElements))
     );
 };
 
