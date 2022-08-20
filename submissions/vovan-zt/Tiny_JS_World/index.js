@@ -25,7 +25,6 @@ const woman = {
    legs: 2,
    hands: 2,
    saying: "Hello",
-   friends: 'Alex, Lena',
 };
    
 const man = {
@@ -48,7 +47,7 @@ const catWoman = {
 
 const WorldInhabitant = [dog, cat, woman, man, catWoman];
 
-const  WorldInhabitantKeys =  ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends'];
+const  WorldInhabitantKeys =  ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
 
 const WorldInhabitantPrint = WorldInhabitant.map(inhabitant => WorldInhabitantKeys.map(meaning => inhabitant[meaning]));
 
