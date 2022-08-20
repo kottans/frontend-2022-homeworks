@@ -1,40 +1,21 @@
 const url = 'https://randomuser.me/api/?results=12';
+const form = document.forms;
+const content = document.querySelector('.articleBlock');
 
-let aToZLast = document.querySelector('.sortedAtoZLast');
-let zToALast = document.querySelector('.sortedZtoALast');
-let atoZFirst = document.querySelector('.sortedAtoZFirst');
-let ztoAFirst = document.querySelector('.sortedZtoAFirst');
-let content = document.querySelector('.articleBlock');
-let reset = document.querySelector('.reset');
-let male = document.querySelector('#male');
-let woman = document.querySelector('#female');
-let all = document.querySelector('#all');
-let search = document.querySelector('#searchBar');
-let minNumber = document.querySelector('#minNumber');
-let maxNumber = document.querySelector('#maxNumber');
-
-let basicArr1 = [];
-let resultArr = [];
+let friendsCopy = [];
+let friends = [];
 
 async function getResponse(url) {
     let response = await fetch(url);
-    let friendsArr = await response.json();
+    let jsonData = await response.json();
 
-    saveUsers(friendsArr.results, resultArr);
+    friendsCopy = jsonData.results;
+    friends = jsonData.results;
 
-    renderAllItemsToPage(resultArr);
+    renderAllItemsToPage(friends);
 }
 
-
-function saveUsers(arr, resArr) {
-    for (let i = 0; i < arr.length; i++) {
-        resArr.push(arr[i]);
-    }
-    basicArr1 = resultArr.slice();
-    // basicArr2 = JSON.parse(JSON.stringify(resultArr));
-}
-
-function renderItem(item) {
+function creatingDivItem(item) {
     return `
         <div class='content__item'>
             <img class='content__item-img' src='${item.picture.medium}'>
@@ -50,34 +31,102 @@ function renderItem(item) {
     `;
 }
 
-aToZLast.addEventListener('click', sortedAtoZLast);
-zToALast.addEventListener('click', sortedZtoALast);
-atoZFirst.addEventListener('click', sortedAtoZFirst);
-ztoAFirst.addEventListener('click', sortedZtoAFirst);
-reset.addEventListener('click', resetPage);
+form.first.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('first')) {
+        checkedFirstSort(e);
+    }
+});
+
+function checkedFirstSort(event) {
+    form.age.reset();
+    form.last.reset();
+    switch(event.target.value) {
+        case "firstAToZ":
+            sortedAtoZFirst();
+            break;
+        case "firstZtoA":
+            sortedZtoAFirst();
+            break;
+    }
+}
+
+form.last.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('last')) {
+        checkLastSort(e);
+    }
+});
+
+function checkLastSort(event) {
+    form.first.reset();
+    form.age.reset();
+    switch(event.target.value) {
+        case "lastAToZ":
+            sortedAtoZLast();
+            break;
+        case "lastZToA":
+            sortedZtoALast();
+            break;
+    }
+}
+
+form.reset.reset.addEventListener('click', resetPage);
+
+form.age.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('age')) {
+        sortByAge(e);
+    }
+});
+
+function sortByAge(event) {
+    form.first.reset();
+    form.last.reset();
+    switch(event.target.value) {
+        case "ageMore":
+            sortedAgeMore();
+            break;
+        case "ageLess":
+            sortedAgeLess();
+            break;
+    }
+}
+
+function sortedAgeMore() {
+    friends.sort((a, b) => a.dob.age - b.dob.age);
+    renderAllItemsToPage(friends);
+}
+
+function sortedAgeLess() {
+    friends.sort((a, b) => b.dob.age - a.dob.age);
+    renderAllItemsToPage(friends);
+}
 
 function sortedAtoZLast() {
-    resultArr.sort((a, b) => a.name.last !== b.name.last ? a.name.last < b.name.last ? -1 : 1 : 0);
-    renderAllItemsToPage(resultArr);
+    friends.sort((a, b) => a.name.last !== b.name.last ? a.name.last < b.name.last ? -1 : 1 : 0);
+    renderAllItemsToPage(friends);
 }
 
 function sortedZtoALast() {
-    resultArr.sort((a, b) => a.name.last !== b.name.last ? a.name.last > b.name.last ? -1 : 1 : 0);
-    renderAllItemsToPage(resultArr);
+    friends.sort((a, b) => a.name.last !== b.name.last ? a.name.last > b.name.last ? -1 : 1 : 0);
+    renderAllItemsToPage(friends);
 }
 
 function sortedAtoZFirst() {
-    resultArr.sort((a, b) => a.name.first !== b.name.first ? a.name.first < b.name.first ? -1 : 1 : 0);
-    renderAllItemsToPage(resultArr);
+    friends.sort((a, b) => a.name.first !== b.name.first ? a.name.first < b.name.first ? -1 : 1 : 0);
+    renderAllItemsToPage(friends);
 }
 
 function sortedZtoAFirst() {
-    resultArr.sort((a, b) => a.name.first !== b.name.first ? a.name.first > b.name.first ? -1 : 1 : 0);
-    renderAllItemsToPage(resultArr);
+    friends.sort((a, b) => a.name.first !== b.name.first ? a.name.first > b.name.first ? -1 : 1 : 0);
+    renderAllItemsToPage(friends);
 }
 
-[male, woman, all].forEach(el=> el.addEventListener('click', checked));
-function checked(event) {
+form.gender.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('gender')) {
+        checkedGender(e);
+    }
+});
+
+function checkedGender(event) {
     switch (event.target.value) {
         case 'male':
             renderMale();
@@ -92,23 +141,23 @@ function checked(event) {
 }
 
 function renderMale() {
-    resultArr = basicArr1.slice();
-    resultArr = resultArr.filter(item=> item.gender === 'male');
+    friends = friendsCopy.slice();
+    friends = friends.filter(item=> item.gender === 'male');
     ages();
-    renderAllItemsToPage(resultArr);
+    renderAllItemsToPage(friends);
 }
 
 function renderFemale() {
-    resultArr = basicArr1.slice();
-    resultArr = resultArr.filter(item=> item.gender === 'female');
+    friends = friendsCopy.slice();
+    friends = friends.filter(item=> item.gender === 'female');
     ages();
-    renderAllItemsToPage(resultArr);
+    renderAllItemsToPage(friends);
 }
 
 function renderAll() {
-    resultArr = basicArr1.slice();
+    friends = friendsCopy.slice();
     ages();
-    renderAllItemsToPage(resultArr);
+    renderAllItemsToPage(friends);
 }
 
 [minNumber, maxNumber].forEach(el => el.addEventListener('change', checkNumber));
@@ -131,47 +180,52 @@ function checkNumber() {
     } 
     
     ages();
-    renderAllItemsToPage(resultArr);
+    renderAllItemsToPage(friends);
 }
 
 function ages() {
-    resultArr = resultArr.filter(item => {
+    friends = friends.filter(item => {
         if (item.dob.age > minNumber.value && item.dob.age <= maxNumber.value) {
             return item;
         }
     });
 }
 
-search.addEventListener('input', searchFunc);
+form.search.search.addEventListener('input', searchFunc);
 
 function searchFunc() {
-    let val = search.value.toLowerCase();
+    let val = form.search.search.value.toLowerCase();
     if (val && val.length > 0) {
-        console.log(val);
         content.innerHTML = '';
-        resultArr.forEach(item=> {
+
+        let acc = '';
+        friends.forEach(item=> {
             if(item.name.first.toLowerCase().includes(val) || item.name.last.toLowerCase().includes(val)) {
-                content.innerHTML += renderItem(item);
+                acc += creatingDivItem(item);
             }
         });
+        content.innerHTML = acc;
     } else {
-        renderAllItemsToPage(resultArr);
+        renderAllItemsToPage(friends);
     }
 }
 
 function resetPage() {
     minNumber.value = 10;
     maxNumber.value = 100;
-    resultArr = basicArr1.slice();
-    // console.log(JSON.parse(JSON.stringify(basicArr2)));
-    renderAllItemsToPage(resultArr);
+    friends = friendsCopy.slice();
+
+    renderAllItemsToPage(friends);
 }
 
 function renderAllItemsToPage(arr) {
     content.innerHTML = '';
+
+    let acc = '';
     arr.forEach(el => {
-        content.innerHTML += renderItem(el);
+        acc += creatingDivItem(el);
     });
+    content.innerHTML = acc;
 }
 
 getResponse(url);
