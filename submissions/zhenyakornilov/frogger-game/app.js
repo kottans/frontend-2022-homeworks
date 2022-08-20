@@ -16,6 +16,8 @@ const MOVE_STEP = {
 };
 
 const GAME_BOARD_WIDTH = 505;
+const OUTBOARD_INDENT = 10;
+const SAFE_DISTANCE = 60;
 
 class Character {
   constructor(x, y, sprite) {
@@ -41,22 +43,23 @@ class Enemy extends Character {
     if (this.direction === "left") {
       this.x -= dt * this.speed;
       if (this.x < 0) {
-        this.x = GAME_BOARD_WIDTH + 10;
+        this.x = GAME_BOARD_WIDTH + OUTBOARD_INDENT;
       }
     } else {
       this.x += dt * this.speed;
       if (this.x > GAME_BOARD_WIDTH) {
-        this.x = -10;
+        this.x = -OUTBOARD_INDENT;
       }
     }
+    this.checkOverlap();
   }
 
   checkOverlap() {
     if (
-      this.player.x < this.x + 60 &&
-      this.player.x + 60 > this.x &&
-      this.player.y < this.y + 60 &&
-      this.player.y + 60 > this.y
+      this.player.x < this.x + SAFE_DISTANCE &&
+      this.player.x + SAFE_DISTANCE > this.x &&
+      this.player.y < this.y + SAFE_DISTANCE &&
+      this.player.y + SAFE_DISTANCE > this.y
     ) {
       this.player.x = PLAYER_START_POSITION.x;
       this.player.y = PLAYER_START_POSITION.y;
