@@ -16,26 +16,27 @@
 
 /* ----------------------------------- Header Menu ----------------------------- */
 
-.h1{
+.header__h1{
     display: none;
 }
 
-.header__lists {
-    display: flex;
+.header__menu {
+    display: flex;              
     justify-content: flex-end;
     align-items: center;
     flex-direction: row;
 }
 
-.header__lists_block {
+.header__menu_block {
     padding: 30px;
+    list-style-type: none;
 }
 
-.header__lists_block:hover {
+.header__menu_block:hover {
     border: 1px solid lightblue;
 }
 
-.header__link {
+.header__menu_block_link {
     text-decoration: none;
     color:gray;
 }
@@ -48,10 +49,10 @@
 
 
 /* --------------------------------- Dropdown #1 Popup ------------------------ */
-.dropdown_1 {
+.popup-menu {
     position: relative;
 }
-.input_1{
+.popup-menu__input{
     position: absolute;
     appearance: none;
     background-image: url(../popup-icons/popup-button.png);
@@ -60,32 +61,32 @@
     right: -1.5em;
     top: -1em;
 }
-.lists_1{
+.popup{
     height: 427px;
     width: 300px;
     overflow-y:auto;
     box-shadow: -5px 5px 5px lightgray;
 }
-.dropdown_1 .lists_1 { 
+.popup-menu .popup { 
     display: none;  
 }
-.dropdown_1 .label_1 {
+.popup-menu .popup-menu__label {
     cursor: pointer; 
 }
-.dropdown_1 .lists_1 {
+.popup-menu .popup {
     position: absolute; 
     right: -2em; 
     top: 2em; 
     margin: 0; 
     padding: 0; 
-    width: 320px;
+    width: auto;
 }
 
-.input_1:checked ~ .lists_1 {
+.popup-menu__input:checked ~ .popup {
     display: block;
 }
 
-.wrapper {
+.wrapper {              
     display: flex;
     flex-wrap: wrap;
     width: 300px;
@@ -94,35 +95,41 @@
     padding: 15px 5px 0px 5px;
 }
 
-.link-block {
+.wrapper__block_link {
     text-decoration: none;
 }
 
-.block {
+.wrapper__block {
     display: grid;
     width: 90px;
     height: 90px;
     margin: 2px;
 }
 
-.block:hover {
+.wrapper__block_link_item {
+    display: grid;
+    width: 90px;
+    height: 90px;
+    margin: 2px;
+}
+
+.wrapper__block_link_item:hover {
     border: 1px solid lightgrey;
 }
 
-.block__img {
+.wrapper__block_img {
     width: 40px;
     height: 30px;
     justify-self: center;
     align-self: center;
 }
 
-.title {
+.wrapper__block_title {
     display: flex;
     color:gray;
     align-items: center;
     justify-content: center;
 }
-
 
 
 
@@ -132,24 +139,24 @@
     width: 290px;
 }
 
-.input_2{
+.more__input{
     position: absolute;
     appearance: none;
 }   
 
-.input_2:focus{
+.more__input:focus{
     outline:none;
 }
 
-.input_2:focus + .label_2 {
+.more__input:focus + .more__label {
     outline: 2px solid lightblue;
 }
 
-.label_2 {
+.more__label {
     cursor: pointer;        
 }
 
-.hidden {
+.more__hidden {
     display: none;
     position: relative;
     margin: 0;      
@@ -157,7 +164,7 @@
     right: 0.4em;
 }
 
-.more__block{
+.more__label_text{
     display: table-cell;
     vertical-align: middle;
     width: 300px;
@@ -169,7 +176,7 @@
     text-align: center;
 }
 
-.more__block-end{
+.wrapper__block-end{
     display: flex;
     width: 290px;
     color: gray;
@@ -179,11 +186,11 @@
     justify-content: center;
 }
 
-.link-kottans{
+.wrapper__block-end_link{
     text-decoration: none;
 }
 
-.input_2:checked ~ .hidden {
+.more__input:checked ~ .more__hidden {
     display: flex;
     flex-wrap: wrap;
     width: 300px;
@@ -191,6 +198,6 @@
     justify-content: space-between;
 }
 
-.input_2:checked ~ .label_2{
+.more__input:checked ~ .more__label{
     display: none; 
 }
