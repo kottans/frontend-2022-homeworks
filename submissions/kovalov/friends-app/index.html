@@ -19,6 +19,7 @@
         <form class="main__form form">
           <input
             type="text"
+            name="search"
             placeholder="Type name of the user..."
             class="form__search-control"
           />
@@ -69,10 +70,34 @@
                 <span class="form__control-description">Age ↑</span>
               </label>
             </div>
+            <div class="form__group">
+              <div class="form__sub-title">Gender Filtering</div>
+              <label for="gender-filtering-male" class="form__label">
+                <input
+                  type="radio"
+                  name="filtering"
+                  id="gender-filtering-male"
+                  value="male"
+                  class="form__filter-control"
+                />
+                <span class="form__control-description">Male</span>
+              </label>
+              <label
+                for="gender-filtering-female"
+                class="form__label"
+              >
+                <input
+                  type="radio"
+                  name="filtering"
+                  id="gender-filtering-female"
+                  value="female"
+                  class="form__filter-control"
+                />
+                <span class="form__control-description">Female</span>
+              </label>
+            </div>
           </div>
-          <button type="reset" class="form__reset-button">
-            Reset
-          </button>
+          <button class="form__reset-button">Reset</button>
         </form>
         <ul class="main__user-list user-list">
           <div class="user-list__loading">
