@@ -3,13 +3,15 @@ const URL =
 
 const userListContainerElement = document.querySelector('.user-list');
 const formElement = document.querySelector('.form');
-const formSearchInputElement = document.querySelector(
-  '.form__search-control'
+const resetButtonElement = document.querySelector(
+  '.form__reset-button'
 );
+// const formSearchInputElement = document.querySelector(
+//   '.form__search-control'
+// );
 
 let userData = [];
 let sortedUserData = [];
-let currentSearchValue = '';
 
 const handleErrors = (response) => {
   if (!response.ok) throw Error(response.statusText);
@@ -91,6 +93,14 @@ const init = async (url) => {
   renderUserList(userData);
 };
 
+const findName = (searchInput) => {
+  return userData.filter((userDataItem) =>
+    userDataItem.fullName
+      .toLowerCase()
+      .includes(searchInput.toLowerCase())
+  );
+};
+
 const compareAge = (firstUser, secondUser) => {
   return firstUser.age - secondUser.age;
 };
@@ -117,41 +127,50 @@ const nameSorters = {
   },
 };
 
-const handleFormChange = ({ target: radioButton }) => {
-  const sorter =
-    radioButton.value === 'ageAscending' ||
-    radioButton.value === 'ageDescending'
-      ? ageSorters[radioButton.value]
-      : nameSorters[radioButton.value];
-
-  sorter();
-  const filteredUserData = findName(currentSearchValue);
-  renderUserList(filteredUserData);
-};
-
-const findName = (searchInput) => {
-  return sortedUserData.filter((userDataItem) =>
-    userDataItem.fullName
-      .toLowerCase()
-      .includes(searchInput.toLowerCase())
+const filterUsersByGender = (selectedGender) => {
+  return sortedUserData.filter(
+    ({ gender: userGender }) => userGender === selectedGender
   );
 };
 
-const handleFormKeyUp = ({ target: searchInput }) => {
-  currentSearchValue = searchInput.value;
-  const foundUserData = findName(searchInput.value);
-  renderUserList(foundUserData);
+const getFilteredUsersByGender = (selectedGender) => {
+  if (selectedGender === 'male' || selectedGender === 'female') {
+    sortedUserData = filterUsersByGender(selectedGender);
+  }
 };
 
-const handleFormReset = () => {
+const getSortedUsersByAge = (value) => {
+  if (value === 'ageAscending' || value === 'ageDescending') {
+    ageSorters[value]();
+  }
+};
+
+const getSortedUsersByName = (value) => {
+  if (value === 'nameAscending' || value === 'nameDescending') {
+    nameSorters[value]();
+  }
+};
+
+const handleFormInputs = () => {
+  const { value: searchValue } = formElement.search;
+  const { value: sortingValue } = formElement.sorting;
+  const { value: filteringValue } = formElement.filtering;
+
+  sortedUserData = findName(searchValue);
+  getSortedUsersByAge(sortingValue);
+  getSortedUsersByName(sortingValue);
+  getFilteredUsersByGender(filteringValue);
+
+  renderUserList(sortedUserData);
+};
+
+const resetForm = () => {
+  formElement.reset();
   renderUserList(userData);
 };
 
-const handleFormSubmit = (e) => e.preventDefault();
-
-formSearchInputElement.addEventListener('keyup', handleFormKeyUp);
-formElement.addEventListener('change', handleFormChange);
-formElement.addEventListener('reset', handleFormReset);
-formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener('input', handleFormInputs);
+formElement.addEventListener('submit', (e) => e.preventDefault());
+resetButtonElement.addEventListener('click', resetForm);
 
 init(URL);
