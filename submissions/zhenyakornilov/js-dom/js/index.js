@@ -1,3 +1,5 @@
+"use strict";
+
 import museums from "./data.js";
 import switchTheme from "./utils.js";
 
