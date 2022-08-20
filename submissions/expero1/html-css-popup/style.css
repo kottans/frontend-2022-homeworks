@@ -97,7 +97,6 @@ margin-right:20px;
 .popup-checkbox:checked + label .popup-button,
 .popup-checkbox:focus + label .popup-button {
 	outline: 2px solid grey;
-	/*background: no-repeat center/100% url(./img/apps.png);*/
 }
 
 /* Popup menu*/
@@ -160,7 +159,6 @@ margin-right:20px;
 	width: 6rem;
 	height: 6rem;
 	padding: 5px;
-/*	border: 1px solid black; /*DEBUG*/
 
 }
 
@@ -186,7 +184,6 @@ margin-right:20px;
 
 .product-btn img {
 	display: block;
-/*	border: 1px solid black; /* DEBUG */
 	object-fit:contain;
 	width: 3em;
 	height: 3em;
