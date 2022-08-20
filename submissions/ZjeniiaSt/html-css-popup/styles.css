@@ -1,4 +1,3 @@
-
 :root {
   --background-color: rgb(229, 229, 229);
   --background-color-block: rgb(245, 244, 250);
@@ -81,7 +80,7 @@ nav {
 }
 
 .nav-item:focus-within {
-  border-bottom: 1px solid var(--accent-color);
+  border: 1px solid var(--accent-color);
 }
 
 label {
@@ -162,7 +161,7 @@ input {
 
 #submenu:focus ~ .buttonfirst span,
 #evenmore:focus ~ .buttonsecond span {
-  border-bottom: 1px solid var(--accent-color);
+  border: 1px solid var(--accent-color);
 }
 
 #submenu:checked ~ .buttonfirst span {
