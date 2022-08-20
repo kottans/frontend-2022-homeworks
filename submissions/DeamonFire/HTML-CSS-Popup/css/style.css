@@ -1,0 +1,196 @@
+
+
+
+
+/* ------------------------------------ ALL setings ---------------------------- */
+
+*{
+    box-sizing: border-box;
+}
+
+*:focus{
+    outline: 2px solid lightblue;
+}
+
+
+
+/* ----------------------------------- Header Menu ----------------------------- */
+
+.h1{
+    display: none;
+}
+
+.header__lists {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+}
+
+.header__lists_block {
+    padding: 30px;
+}
+
+.header__lists_block:hover {
+    border: 1px solid lightblue;
+}
+
+.header__link {
+    text-decoration: none;
+    color:gray;
+}
+.header__img {
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+/* --------------------------------- Dropdown #1 Popup ------------------------ */
+.dropdown_1 {
+    position: relative;
+}
+.input_1{
+    position: absolute;
+    appearance: none;
+    background-image: url(../popup-icons/popup-button.png);
+    width: 2em;
+    height: 2em;
+    right: -1.5em;
+    top: -1em;
+}
+.lists_1{
+    height: 427px;
+    width: 300px;
+    overflow-y:auto;
+    box-shadow: -5px 5px 5px lightgray;
+}
+.dropdown_1 .lists_1 { 
+    display: none;  
+}
+.dropdown_1 .label_1 {
+    cursor: pointer; 
+}
+.dropdown_1 .lists_1 {
+    position: absolute; 
+    right: -2em; 
+    top: 2em; 
+    margin: 0; 
+    padding: 0; 
+    width: 320px;
+}
+
+.input_1:checked ~ .lists_1 {
+    display: block;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    border: 1px solid lightgrey;
+    justify-content: space-between;
+    padding: 15px 5px 0px 5px;
+}
+
+.link-block {
+    text-decoration: none;
+}
+
+.block {
+    display: grid;
+    width: 90px;
+    height: 90px;
+    margin: 2px;
+}
+
+.block:hover {
+    border: 1px solid lightgrey;
+}
+
+.block__img {
+    width: 40px;
+    height: 30px;
+    justify-self: center;
+    align-self: center;
+}
+
+.title {
+    display: flex;
+    color:gray;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+/* -------------------------------  Dropdown #2 More ---------------------------  */
+.more {
+    position: relative;
+    width: 290px;
+}
+
+.input_2{
+    position: absolute;
+    appearance: none;
+}   
+
+.input_2:focus{
+    outline:none;
+}
+
+.input_2:focus + .label_2 {
+    outline: 2px solid lightblue;
+}
+
+.label_2 {
+    cursor: pointer;        
+}
+
+.hidden {
+    display: none;
+    position: relative;
+    margin: 0;      
+    padding-top: 20px;
+    right: 0.4em;
+}
+
+.more__block{
+    display: table-cell;
+    vertical-align: middle;
+    width: 300px;
+    background-color: rgb(230, 228, 228);
+    color: gray;
+    height:30px ;
+    cursor: pointer;
+    margin: -5px;
+    text-align: center;
+}
+
+.more__block-end{
+    display: flex;
+    width: 290px;
+    color: gray;
+    height:35px ;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.link-kottans{
+    text-decoration: none;
+}
+
+.input_2:checked ~ .hidden {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    border: 1px solid lightgrey;
+    justify-content: space-between;
+}
+
+.input_2:checked ~ .label_2{
+    display: none; 
+}
