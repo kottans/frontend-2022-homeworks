@@ -1,10 +1,10 @@
-const data = [
+const museums = [
   {
-    name: 'National Museum "Chernobyl"',
-    btnName: "Chernobyl",
+    name: 'National Museum "Chornobyl"',
+    btnName: "Chornobyl",
     description:
-      "The National Museum “Chernobyl” is a multifunctional institution combining scientific, cultural and educational " +
-      "activity with a modern museum and archive, documenting,preservingand conveying the history of the Chernobyl " +
+      "The National Museum “Chornobyl” is a multifunctional institution combining scientific, cultural and educational " +
+      "activity with a modern museum and archive, documenting,preservingand conveying the history of the Chornobyl " +
       "nuclear disaster as the most severe radioecological disaster of the XX century. The after-effects of it have " +
       "no analogy and differ from other natural or manmade catastrophes. These are still the issues of contemporaneity " +
       "and, unfortunately, of the generation to come." +
@@ -79,4 +79,4 @@ const data = [
   },
 ];
 
-export default data;
+export default museums;
