@@ -1,15 +1,24 @@
 // Enemies our player must avoid
 const FIELDWIDTH = 505;
 const FIELDHEIGHT = 606;
-const playerStartX = 203;
+const BUGWIDTH = 90;
+const PLAYERWIDTH = 91;
+
+const playerStartX = (FIELDWIDTH - PLAYERWIDTH) / 2;
 const playerStartY = 300;
 const playerStepY = 83;
-const playerStepX = 101;
+const playerStepX = FIELDWIDTH / 5;
+const firstEnemyX = 51;
+const enemySpeed = {
+  min: 60,
+  max: 130,
+};
+
 const field = {
   top: 0,
-  bottom: 606,
+  bottom: FIELDHEIGHT,
   left: 0,
-  right: 505,
+  right: FIELDWIDTH,
 };
 
 class Enemy {
@@ -23,7 +32,7 @@ class Enemy {
 
   update(dt) {
     if (this.x >= FIELDWIDTH) {
-      this.x = -100;
+      this.x = -BUGWIDTH;
     }
     this.x += this.speed * dt;
     this.handleCollision();
@@ -93,10 +102,18 @@ class Player {
 }
 
 const player = new Player(playerStartX, playerStartY);
-const enemyFirst = new Enemy(-100, 51, 50);
-const enemySecond = new Enemy(-100, 134, 100);
-const enemyThird = new Enemy(-100, 217, 80);
-const allEnemies = [enemyFirst, enemySecond, enemyThird];
+
+const allEnemies = [];
+for (i = 0; i < 3; i++) {
+  allEnemies.push(
+    new Enemy(
+      -BUGWIDTH,
+      firstEnemyX + playerStepY * i,
+      Math.floor(Math.random() * (enemySpeed.max - enemySpeed.min)) +
+        enemySpeed.min
+    )
+  );
+}
 
 document.addEventListener("keyup", function (e) {
   var allowedKeys = {
