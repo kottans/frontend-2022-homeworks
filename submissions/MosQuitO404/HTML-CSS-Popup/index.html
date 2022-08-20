@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Hooli-style-Popup</title>
 </head>
@@ -11,7 +12,7 @@
 <body>
     <header class="popup-header">
         <nav class="nav-items">
-            <ul class="nav-items-ul">
+            <ul class="nav-items-ul" id="nav-items-ul-first">
                 <li class="nav-items-li">
                     <a class="nav-items-element" href="#">Home</a>
                 </li>
@@ -24,7 +25,94 @@
             </ul>
             <input type="checkbox" id="central-button">
             <label id="central-button-label" for="central-button"><img src="sources/icons/free-icon-menu-7512756.png" id="central-button-logo" alt=""></label>
-            <ul class="nav-items-ul">
+            <div id="popup-section">
+                <div class="popup-set">
+                    <ul class="popup-set-ul">
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-house-3845763.png" class="icons-pictures" alt=""><br>Home</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-contacts-3845847.png" class="icons-pictures" alt=""><br>Contacts</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-camera-3845711.png" class="icons-pictures" alt=""><br>Photo</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-browser-3845849.png" class="icons-pictures" alt=""><br>Browser</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-daily-health-app-3845768.png" class="icons-pictures" alt=""><br>Health</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-discord-3845880.png" class="icons-pictures" alt=""><br>Games</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-settings-3845826.png" class="icons-pictures" alt=""><br>Settings</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-weather-app-3845731.png" class="icons-pictures" alt=""><br>Weather</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-image-3845723.png" class="icons-pictures" alt=""><br>Gallery</a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <input type="checkbox" id="more-button">
+                <label id="more-button-label" for="more-button">More</label>
+                <div class="more-popup-set">
+                    <ul class="more-popup-set-ul">
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-search-3845863.png" class="icons-pictures" alt=""><br>Search</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-speech-bubble-3845696.png" class="icons-pictures" alt=""><br>Speech</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-spotify-3845874.png" class="icons-pictures" alt=""><br>Music</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-telegram-3845879.png" class="icons-pictures" alt=""><br>Messages</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-tv-app-3845752.png" class="icons-pictures" alt=""><br>TV</a>
+                            </span>
+                        </li>
+                        <li class="popup-set-li">
+                            <span>
+                                <a class="popup-element" href="#"><img src="sources/icons/free-icon-youtube-3845856.png" class="icons-pictures" alt=""><br>Video</a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="nav-items-ul" id="nav-items-ul-second">
                 <li class="nav-items-li">
                     <a class="nav-items-element" href="#">Blog</a>
                 </li>
@@ -35,63 +123,6 @@
                     <a class="nav-items-element" href="https://github.com/MosQuitO404" target="_blank">Contacts</a>
                 </li>
             </ul>
-            <div id="popup-section">
-                <div class="popup-set">
-                    <ul class="popup-set-ul">
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-house-3845763.png" class="icons-pictures" alt=""><br>Home</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-contacts-3845847.png" class="icons-pictures" alt=""><br>Contacts</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-camera-3845711.png" class="icons-pictures" alt=""><br>Photo</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-browser-3845849.png" class="icons-pictures" alt=""><br>Browser</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-daily-health-app-3845768.png" class="icons-pictures" alt=""><br>Health</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-discord-3845880.png" class="icons-pictures" alt=""><br>Games</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-settings-3845826.png" class="icons-pictures" alt=""><br>Settings</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-weather-app-3845731.png" class="icons-pictures" alt=""><br>Weather</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-image-3845723.png" class="icons-pictures" alt=""><br>Gallery</a>
-                        </li>
-                    </ul>
-                </div>
-                <input type="checkbox" id="more-button">
-                <label id="more-button-label" for="more-button">More</label>
-                <div class="more-popup-set">
-                    <ul class="more-popup-set-ul">
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-search-3845863.png" class="icons-pictures" alt=""><br>Search</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-speech-bubble-3845696.png" class="icons-pictures" alt=""><br>Speech</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-spotify-3845874.png" class="icons-pictures" alt=""><br>Music</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-telegram-3845879.png" class="icons-pictures" alt=""><br>Messages</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-tv-app-3845752.png" class="icons-pictures" alt=""><br>TV</a>
-                        </li>
-                        <li class="popup-set-li">
-                            <a class="popup-element" href="#"><img src="sources/icons/free-icon-youtube-3845856.png" class="icons-pictures" alt=""><br>Video</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </nav>
     </header>
 </body>

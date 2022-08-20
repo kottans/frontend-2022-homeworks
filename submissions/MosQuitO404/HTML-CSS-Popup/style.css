@@ -17,13 +17,15 @@ html {
 
 .popup-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 25px;
+  padding: 50px 50px;
 }
 
 .nav-items {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background: #FFFFFF;
@@ -31,19 +33,48 @@ html {
   border-radius: 50px;
 }
 
+@media screen and (max-width: 949px) {
+  .nav-items {
+    border-radius: 20px;
+  }
+  #nav-items-ul-first {
+    order: 1;
+  }
+  #nav-items-ul-second {
+    order: 2;
+  }
+  #central-button-label {
+    order: 3;
+  }
+  .nav-items {
+    flex-direction: column;
+    padding: 15px 0px 5px;
+  }
+}
+
 .nav-items-ul {
-  display: grid;
-  grid-template-columns: repeat(3,33.333%);
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   margin: 0px 15px;
-  list-style: none
+  list-style: none;
+}
+
+@media screen and (max-width: 489px) {
+  .nav-items-ul {
+    max-width: 220px;
+    min-width: 220px;
+  }
 }
 
 .nav-items-li, #more-button-label {
-  width: 110px;
-  margin: 0px 5px;
-  padding: 10px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 110px;
+  margin: 5px;
+  padding: 10px 40px;
   text-align: center;
 }
 
@@ -71,11 +102,7 @@ html {
 }
 
 #central-button-logo {
-  width: 50px;
-  min-width: 50px;
-  padding-top: 4px;
-  max-width: 100%;
-  height: auto;
+  max-width: 50px;
 }
 
 #central-button, #more-button {
@@ -86,8 +113,11 @@ html {
 }
 
 #central-button-label {
-  padding: 2px 10px;
-  margin: 5px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px 10px;
+  margin: 10px 0px;
   cursor: pointer;
   opacity: 70%;
 }
@@ -116,23 +146,29 @@ html {
   align-items: center;
   background: #FFFFFF;
   box-shadow: 0px 3px 14px rgba(74, 58, 255, 0.03), 0px -2px 4px rgba(20, 20, 43, 0.02), 0px 12px 24px rgba(20, 20, 43, 0.04);
-  border-radius: 10px;
+  border-radius: 20px;
   text-align: center;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  height: 305px;
-  top: 105px;
+  padding: 5px;
+  top: 150px;
+  max-height: 300px;
 }
 
 #popup-section::-webkit-scrollbar {
-  width: 0;
+  max-width: 0;
 }
 
-.popup-set {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+@media screen and (max-width: 949px) {
+  #central-button:checked ~ #popup-section {
+    top: 265px;
+  }
+}
+
+@media screen and (max-width: 489px) {
+  #central-button:checked ~ #popup-section {
+    top: 50px;
+  }
 }
 
 .popup-set-ul {
@@ -146,9 +182,13 @@ html {
 }
 
 .popup-set-li {
-  width: 70px;
-  padding: 5px;
-  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 70px;
+  max-height: 70px;
+  padding: 10px 30px;
+  margin: 5px;
 }
 
 .popup-set-li:focus-within {
@@ -177,11 +217,8 @@ html {
 }
 
 .icons-pictures {
-  width: 30px;
-  min-width: 30px;
-  padding-top: 4px;
   opacity: 80%;
-  max-width: 100%;
+  max-width: 30px;
   height: auto;
 }
 
