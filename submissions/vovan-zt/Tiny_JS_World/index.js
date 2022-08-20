@@ -50,9 +50,9 @@ const WorldInhabitant = [dog, cat, woman, man, catWoman];
 
 const  WorldInhabitantKeys =  ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends'];
 
-const WorldInhabitantPrint = WorldInhabitant.map(keys => WorldInhabitantKeys.map(meaning => keys[meaning]));
+const WorldInhabitantPrint = WorldInhabitant.map(inhabitant => WorldInhabitantKeys.map(meaning => inhabitant[meaning]));
 
-WorldInhabitantPrint.forEach(item => {
-   print(item.join('; '))
+WorldInhabitantPrint.forEach(inhabitant => {
+   print(inhabitant.join('; '))
 });
 
