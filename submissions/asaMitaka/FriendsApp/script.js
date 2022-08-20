@@ -4,9 +4,19 @@ const content = document.querySelector('.articleBlock');
 
 let friendsCopy = [];
 let friends = [];
+let isSearch = false;
 
 async function getResponse(url) {
-    let response = await fetch(url);
+    let response;
+    try {
+        response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        } 
+    } catch (err) {
+        console.log(err);
+        resetPage();
+    }
     let jsonData = await response.json();
 
     friendsCopy = jsonData.results;
@@ -143,24 +153,27 @@ function checkedGender(event) {
 function renderMale() {
     friends = friendsCopy.slice();
     friends = friends.filter(item=> item.gender === 'male');
-    ages();
+    findByAge();
     renderAllItemsToPage(friends);
 }
 
 function renderFemale() {
     friends = friendsCopy.slice();
     friends = friends.filter(item=> item.gender === 'female');
-    ages();
+    findByAge();
     renderAllItemsToPage(friends);
 }
 
 function renderAll() {
     friends = friendsCopy.slice();
-    ages();
+    findByAge();
     renderAllItemsToPage(friends);
 }
 
-[minNumber, maxNumber].forEach(el => el.addEventListener('change', checkNumber));
+form.minMax.addEventListener('change', function(e) {
+    checkNumber();
+    findByAge();
+});
 
 function checkNumber() {
     if (minNumber.value < 10) {
@@ -178,22 +191,24 @@ function checkNumber() {
         maxNumber.value = 100;
         return;
     } 
-    
-    ages();
+
     renderAllItemsToPage(friends);
 }
 
-function ages() {
+function findByAge() {
     friends = friends.filter(item => {
         if (item.dob.age > minNumber.value && item.dob.age <= maxNumber.value) {
             return item;
         }
     });
+
+    renderAllItemsToPage(friends);
 }
 
 form.search.search.addEventListener('input', searchFunc);
 
 function searchFunc() {
+    isSearch = true;
     let val = form.search.search.value.toLowerCase();
     if (val && val.length > 0) {
         content.innerHTML = '';
@@ -206,6 +221,7 @@ function searchFunc() {
         });
         content.innerHTML = acc;
     } else {
+        isSearch = false;
         renderAllItemsToPage(friends);
     }
 }
@@ -219,6 +235,10 @@ function resetPage() {
 }
 
 function renderAllItemsToPage(arr) {
+    if (form.search.search.value.length === 0) {
+        isSearch = false;
+    }
+
     content.innerHTML = '';
 
     let acc = '';
@@ -226,6 +246,10 @@ function renderAllItemsToPage(arr) {
         acc += creatingDivItem(el);
     });
     content.innerHTML = acc;
+
+    if(isSearch) {
+        searchFunc();
+    }
 }
 
 getResponse(url);
