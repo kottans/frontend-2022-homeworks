@@ -1,6 +1,6 @@
-const newP = document.createElement('p');
-newP.textContent = `Your score: 0 `;
-document.body.append(newP);
+const score = document.createElement('p');
+score.textContent = `Your score: 0 `;
+document.body.append(score);
 
 const enemyStat = {
     width: 98,
@@ -76,8 +76,9 @@ let allEnemies = allEnemyVal.map(
 const Player = function(posX, posY) {
     this.posX = posX;
     this.posY = posY;
+    this.stepX = 100;
+    this.stepY = 90;
     this.stat = 0;
-    this.step = 100;
 
     this.width = 80;
     this.height = 80;
@@ -91,9 +92,10 @@ Player.prototype.update = function() {
 }
 
 Player.prototype.win = function() {
+    console.log(field.min, this.posY);
     if (field.min >= this.posY) {
         this.stat += 1;
-        newP.textContent = `Your score: ${this.stat}`;
+        score.textContent = `Your score: ${this.stat}`;
         this.goToStartPosition();
     }
 }
@@ -110,22 +112,22 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(key) {
     switch(key) {
         case 'up':
-            this.posY -= this.step;
+            this.posY -= this.stepY;
             break;
         case 'down':
-            this.posY += this.step;
+            this.posY += this.stepY;
             if (this.posY > field.borderY) {
                 this.posY = field.borderY - 50;
             }
             break;
         case 'left':
-            this.posX -= this.step;
-            if (this.posX < this.step) {
+            this.posX -= this.stepX;
+            if (this.posX < this.stepX) {
                 this.posX = 0;
             }
             break;
         case 'right':
-            this.posX += this.step;
+            this.posX += this.stepX;
             if (this.posX > field.borderX) {
                 this.posX = field.borderX;
             }
