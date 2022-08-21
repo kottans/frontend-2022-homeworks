@@ -43,9 +43,7 @@
   border-radius: 4px;
 }
 
-.header__link:focus {
-  background-color: #fff;
-}
+.header__link:focus,
 .header__link:hover {
   background-color: #fff;
 }
