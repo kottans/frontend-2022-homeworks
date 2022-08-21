@@ -23,7 +23,6 @@ Enemy.prototype.update = function(dt) {
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
 const  Player = function(x, y) {
     this.x = x;
     this.y = y;
@@ -38,7 +37,6 @@ Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-let count = 0;
 Player.prototype.handleInput = function (keyPress) {
     if (keyPress == 'up' && this.y > 0) {
         this.y -= 83;
@@ -61,11 +59,12 @@ Player.prototype.handleInput = function (keyPress) {
             this.x = 202;
             this.y = 405;
         }, 600);
-        count++;
     };
 };
 
-const allEnemies = [73, 156, 239].map(location =>location = new Enemy(location+50, location, 200));
+const enemyLocation = [73, 156, 239];   
+
+const allEnemies = enemyLocation.map(location =>location = new Enemy(location+50, location, 200));
 
 const player = new Player(202, 405);
 
