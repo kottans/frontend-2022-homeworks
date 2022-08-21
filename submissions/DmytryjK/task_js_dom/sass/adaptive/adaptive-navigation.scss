@@ -5,6 +5,7 @@
     background-color: rgba(0, 0, 0, 0.9);
     width: 100%;
     height: 100%;
+    visibility: hidden;
     transition: 0.2s ease-in-out all;
     &__navigation {   
         height: 100%;   
@@ -42,7 +43,8 @@
         }
     }
     &__active {
+        visibility: visible;
         transition: 0.2s ease-in-out all;
         left: 0;
-    }     
+    }      
 }
