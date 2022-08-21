@@ -60,14 +60,11 @@ const NAV_BAR_ITEMS = DATA.map(item => {
 
 function createNavList(obj) {
     let activeElId;
-
     const { items,
         parentEl,
         defaultId,
         navClick } = obj;
-
     activeElId = defaultId;
-
     const navElements = items.map((item) =>
         `<li class="nav__item">
             <a id="${item.id}" onclick2="navLinkClick(this,event)" href="#" class="nav__link ${defaultId === item.id ? 'active' : ''}">
@@ -75,7 +72,6 @@ function createNavList(obj) {
             </a>
         </li>`
     );
-
     const html = `
         <header class="header">
             <a class="header__link" onclick2="headerLinkClick()" ><img src="img/logo.png" alt="" class="img__btn"></a>
@@ -83,15 +79,12 @@ function createNavList(obj) {
         </header>
         <nav class="nav"><ul class="nav__list">${navElements.join('')}</ul></nav>
                 `;
-
     const div = document.createElement("div");
     div.className = 'container';
     div.innerHTML = html;
-
     div.addEventListener("click", (event) => {
         const mainEl = document.querySelector('.main');
         const navEl = div.querySelector('.nav');
-
         let current = event.target;
         while (current) {
             if (current.className && current.className.includes('nav__link')) {
@@ -123,7 +116,6 @@ function createNavList(obj) {
             current = current.parentNode;
         }
     })
-
     parentEl.appendChild(div);
 };
 
@@ -143,7 +135,6 @@ function navClick(current, navItem) {
         `;
 
     mainEl.innerHTML = mainHtml;
-
     wrapperEl.style.cssText = `background: url("${item.bgImg}") ${item.bgLocation}px 0 / cover no-repeat;`;
 
     titleEl.innerHTML = item.title;
@@ -153,6 +144,7 @@ function navClick(current, navItem) {
         mainEl.style.cssText = `display:block;`;
     }
 }
+
 createNavList({
     items: NAV_BAR_ITEMS,
     parentEl: document.getElementById('navDivContainer'),
