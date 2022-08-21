@@ -24,16 +24,13 @@ const dB = [
 ]
 const btnArr = document.querySelectorAll('.aside-btn');
 const mainContainer = document.getElementById('main');
-console.log(btnArr);
 
 for (let btn of btnArr) {
-    console.log(btn);
     btn.addEventListener('click', addContent);
 
 }
 
 function addContent(e) {
-    console.log(e.target);
     let idElem = e.srcElement.id;
     let contant = dB[idElem - 1];
     mainContainer.innerHTML = renderTamplate(contant);
