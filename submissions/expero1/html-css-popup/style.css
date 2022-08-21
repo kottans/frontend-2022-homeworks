@@ -18,12 +18,11 @@ a:hover, a:focus {
 }
 
 /* Header */
-header {
+.header-section {
 	height: 50px;
 	justify-content: center;
 	background-color: whitesmoke;
 	box-shadow: 0 0 5px grey;
-
 	background-color: white;
 }
 
@@ -170,7 +169,7 @@ margin-right:20px;
 .popup-menu-inner li {
 	list-style: none;
 }
-.popup-menu-inner li a{
+.popup-menu-inner .product-btn {
 	display: flex;
 	height: 100%;
 	flex-direction: column;
@@ -232,7 +231,7 @@ background-color:dimgray;
 
 .show-more-checkbox:checked ~ .hor-line {
 	display: block;
-position:relative;
+	position:relative;
 	margin: 10px 0 5px 0;
 	height: 1px;
 	border-bottom: 1px solid gray;
@@ -275,13 +274,13 @@ margin-top: 10px;
 	width: 30px;
 }
 
-main {
+.content-section {
 	height: 110vh;
 	background-color: Gainsboro;
 	z-index: -1;
 	position: relative;
 }
-main::after {
+.content-section::after {
 	content: 'main section';
 	color:white;
 	position: absolute;
@@ -296,7 +295,7 @@ main::after {
 	font-size: 50px;
 }
 
-footer {
+.footer-section {
 	height: 200px;
 	background-color: black;
 	position: relative;
@@ -304,7 +303,7 @@ footer {
 	font-size: 30px;
 	text-transform: uppercase;
 }
-footer::after {
+.footer-section::after {
 	content: 'Footer';
 	color:white;
 	position: absolute;
@@ -321,7 +320,7 @@ footer::after {
 
 /*Smartphone portrait mode*/
 @media (max-width:550px) {
-	header {
+	.header-section {
 		height: 100px;
 		position: fixed;
 		top:0;
@@ -394,7 +393,7 @@ footer::after {
 		grid-template-rows: auto;
 		gap:5px;
 	}
-	.popup-menu-inner li a {
+	.popup-menu-inner .product-btn {
 		gap:0;
 	}
 }
