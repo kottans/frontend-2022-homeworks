@@ -34,9 +34,9 @@ class Animal extends Inhabitant {
 
 const dog = new Animal('dog', 'Bob', 'male', 4, 'woof!', 1)
 const cat = new Animal('cat', 'Kitty', 'female', 4, 'meow!', 1)
-const woman = new Person('woman', 'Sara', 'female', 2, 2, 'Hello!')
-const catWoman = new Person('catwoman', 'Bella', 'female', 2, 2, `${cat.saying}`)
-const man = new Person('man', 'Mario', 'male', 2, 2, 'Hi!', ['Bob', 'Tom', 'Eva'])
+const woman = new Person('human', 'Sara', 'female', 2, 2, 'Hello!')
+const catWoman = new Person('human', 'Bella', 'female', 2, 2, `${cat.saying}`)
+const man = new Person('human', 'Mario', 'male', 2, 2, 'Hi!', ['Bob', 'Tom', 'Eva'])
 
 const inhabitants = [cat, dog, woman, catWoman, man]
 
