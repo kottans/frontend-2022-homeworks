@@ -1,5 +1,3 @@
-_Thank you for contributing to this repo!_ ❤️️
-
 **This PR contains irrelevant files.**
 
 You can see this under [Files changed](./files) tab (you will find a couple of helpful tabs right under the PR title).
@@ -11,11 +9,4 @@ Why we want only few files?
 2. This keeps homeworks repository small.
    For example, images add to the weight of the repo and will affect download/upload time for mentors and other students. We all care about others' time.
 
-Please fix this issue by removing irrelevant files and **mark the checkbox below when done**.
-
-- [ ] PR contains only files required for code review
-
-Please feel free to ask questions here or seek for help in the Students' chat.
-
-_Sincerely yours,_
-_Submissions Kottachecker_ 😺
+Please fix this issue by removing irrelevant files and add a **comment stating that you did this**.
