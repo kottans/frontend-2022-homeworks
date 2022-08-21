@@ -6,7 +6,7 @@ body {
 .wrapper {
   position: relative;
   height: 100vh;
-  background: url("img/hogwarts.jpeg") -1100px 0 / cover no-repeat;
+  background: url("img/hogwarts.jpeg") -800px 0 / cover no-repeat;
   overflow: hidden;
 }
 .container {
