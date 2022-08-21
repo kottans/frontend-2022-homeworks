@@ -90,7 +90,7 @@ img {
 .popup_link {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     height: 100%;
     text-align: center;
@@ -116,6 +116,7 @@ img {
     left: 0;
     cursor: pointer;
     border: 2px solid white;
+
 }
 
 .popup_button-label:hover {
@@ -128,6 +129,7 @@ img {
 
 .popup_img {
     max-width: 100%;
+    padding-bottom: 5px;
 }
 
 #menu:checked~.popup {
