@@ -1,8 +1,3 @@
-html, body, div, span, applet, object, iframe, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0
-}
-
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat"), local("Montserrat-Regular"), url(../fonts/Montserrat-Regular.ttf) format("truetype");
@@ -79,7 +74,7 @@ a:focus {
 .top-menu__link {
   display: block;
   padding: 0.4375rem 0.625rem;
-  border: solid 1px rgba(52, 52, 52, 0);
+  border: solid 1px transparent;
   border-radius: 0.25rem;
   transition-duration: 300ms
 }
@@ -104,7 +99,7 @@ a:focus {
 .top-menu__label {
   display: block;
   cursor: pointer;
-  border: solid 1px rgba(52, 52, 52, 0);
+  border: solid 1px transparent;
   border-radius: 0.25rem;
   padding: 0.4375rem 0.625rem
 }
@@ -154,7 +149,7 @@ a:focus {
   position: absolute;
   top: -1.75rem;
   right: 0.4375rem;
-  border: 15px solid rgba(0, 0, 0, 0);
+  border: 15px solid transparent;
   border-bottom: 15px solid #fff;
   z-index: -1
 }
@@ -174,7 +169,7 @@ a:focus {
   justify-content: space-between;
   align-items: center;
   padding: 0.625rem;
-  border: solid 1px rgba(52, 52, 52, 0);
+  border: solid 1px transparent;
   transition-duration: 300ms
 }
 
