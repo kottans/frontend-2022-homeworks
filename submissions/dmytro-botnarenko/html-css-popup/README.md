@@ -1,4 +1,6 @@
-# kottans-html-css-popup
+## Hooli-style Popup
+
+[Demo](https://dmytro-botnarenko.github.io/hooli-style-popup)
 
 The practice project for Kottans Frontend learning course.
 
