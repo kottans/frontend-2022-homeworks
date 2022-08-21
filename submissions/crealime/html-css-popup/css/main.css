@@ -203,12 +203,16 @@ a:focus {
   appearance: none
 }
 
+.inner-menu__input:checked {
+  display: none
+}
+
 .inner-menu__input:checked ~ .inner-menu__ul_in {
   display: grid
 }
 
-.inner-menu__input:checked ~ .inner-menu__btn .inner-menu__box:after {
-  content: "Less"
+.inner-menu__input:checked ~ .inner-menu__btn {
+  display: none
 }
 
 .inner-menu__input:focus ~ .inner-menu__btn .inner-menu__box {
