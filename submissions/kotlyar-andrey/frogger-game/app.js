@@ -7,7 +7,7 @@ function BaseGameObject(x, y) {
 }
 
 BaseGameObject.prototype.getRow = function () {
-  return Math.ceil((this._y - 60) / CELL_HEIGHT);
+  return Math.ceil((this._y - MARGIN_TOP) / CELL_HEIGHT);
 };
 
 BaseGameObject.prototype.getColumn = function () {
@@ -118,7 +118,7 @@ function Enemy(x, y, sprite, player) {
 Enemy.prototype = Object.create(ImageSprite.prototype);
 
 Enemy.prototype.getRow = function () {
-  return Math.ceil((this._y - 60) / CELL_HEIGHT) + 1;
+  return Math.ceil((this._y - MARGIN_TOP) / CELL_HEIGHT) + 1;
 };
 
 Enemy.prototype.update = function (dt) {
@@ -187,14 +187,19 @@ function JokeText(x, y) {
   };
   this._joke = this._messages.first;
   this._counter = 0;
+  this._max_counter = 250;
+  this._animation_text_delay = 200;
+  this._toggle_joke_time = 1200;
   this._state = "normal";
 }
 JokeText.prototype = Object.create(TextSprite.prototype);
 
 JokeText.prototype.update = function () {
-  this._counter = (this._counter + 1) % 250;
+  this._counter = (this._counter + 1) % this._max_counter;
   this._text =
-    this._counter < 200 || this._state === "rotated" ? this._joke : "";
+    this._counter < this._animation_text_delay || this._state === "rotated"
+      ? this._joke
+      : "";
 };
 JokeText.prototype.jokeHandler = function () {
   if (this._state === "normal") {
@@ -205,7 +210,7 @@ JokeText.prototype.jokeHandler = function () {
     this._joke = this._messages.nope;
     setTimeout(() => {
       this._joke = this._messages.last;
-    }, 1200);
+    }, this._toggle_joke_time);
   }
 };
 JokeText.prototype.rotateScreen = function () {
@@ -226,22 +231,32 @@ document.addEventListener("keyup", function (e) {
   player.handleInput(allowedKeys[e.keyCode]);
 });
 
-const SCREEN_WIDTH = 505;
-const SCREEN_HEIGHT = 606;
-const START_X = 202;
-const START_Y = 404;
 const CELL_WIDTH = 101;
 const CELL_HEIGHT = 83;
+const ROWS = 6;
+const COLUMNS = 5;
+const START_ROW = 4;
+const START_COLUMN = 2;
+const SCREEN_WIDTH = COLUMNS * CELL_WIDTH;
+const SCREEN_HEIGHT = ROWS * CELL_WIDTH;
+const START_X = START_COLUMN * CELL_WIDTH;
+const START_Y = START_ROW * CELL_WIDTH;
 const ENEMY_ROWS = 3;
 const MIN_ENEMY_SPEED = 100;
 const MAX_ENEMY_SPEED = 350;
+const MARGIN_TOP = 60;
 
 const allEnemies = [];
 const joke = new JokeText(SCREEN_WIDTH / 2 - CELL_WIDTH, CELL_HEIGHT);
 const player = new Player(START_X, START_Y, "images/char-boy.png", joke);
 for (let i = 0; i < ENEMY_ROWS; i++) {
   allEnemies.push(
-    new Enemy(-CELL_WIDTH, 60 + CELL_HEIGHT * i, "images/enemy-bug.png", player)
+    new Enemy(
+      -CELL_WIDTH,
+      MARGIN_TOP + CELL_HEIGHT * i,
+      "images/enemy-bug.png",
+      player
+    )
   );
 }
 const score = new WinText(0, SCREEN_HEIGHT, player);
