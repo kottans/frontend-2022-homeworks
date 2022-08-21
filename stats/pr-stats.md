@@ -1,6 +1,6 @@
 # Open and merged PRs by task labels
 
-_as of 2022-08-21T16:20:38.338Z UTC_
+_as of 2022-08-21T16:54:59.141Z UTC_
 
 PR reference legend:
  - #xxx o -- PR is yet open 
@@ -85,7 +85,7 @@ PR reference legend:
 | 1.36 | [kuslosolodka](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Akuslosolodka) | [#113 o](https://github.com/kottans/frontend-2022-homeworks/pull/113) |   |   |   |   |   |   |
 | 1.37 | [Lara-trost](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ALara-trost) | [**#99**](https://github.com/kottans/frontend-2022-homeworks/pull/99) |   |   |   |   |   |   |
 | 1.38 | [Levi123](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ALevi123) | [**#82**](https://github.com/kottans/frontend-2022-homeworks/pull/82) |   |   |   |   |   |   |
-| 1.39 | [loki13btz](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Aloki13btz) | [#102 o](https://github.com/kottans/frontend-2022-homeworks/pull/102) |   |   |   |   |   |   |
+| 1.39 | [loki13btz](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Aloki13btz) | [**#102**](https://github.com/kottans/frontend-2022-homeworks/pull/102) |   |   |   |   |   |   |
 | 1.40 | [maksimsergeev97](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Amaksimsergeev97) | [#127 o](https://github.com/kottans/frontend-2022-homeworks/pull/127) |   |   |   |   |   |   |
 | 1.41 | [Maksym-Perepelytsia](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AMaksym-Perepelytsia) | [#205 o](https://github.com/kottans/frontend-2022-homeworks/pull/205) |   |   |   |   |   |   |
 | 1.42 | [martthaa](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Amartthaa) | [#162 o](https://github.com/kottans/frontend-2022-homeworks/pull/162) |   |   |   |   |   |   |
