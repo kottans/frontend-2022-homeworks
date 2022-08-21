@@ -51,9 +51,10 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 2%;
   cursor: pointer;
+  color: var(--highlight-color);
 }
 
-.nav_item a:hover {
+.nav_item:hover > a {
   color: var(--highlight-color);
 }
 
