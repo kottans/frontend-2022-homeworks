@@ -1,18 +1,19 @@
 class Inhabitant {
-   constructor(name, gender, legs, saying) {
+   constructor(specie, name, gender, legs, saying) {
+      this.specie = specie;
       this.name = name;
       this.gender = gender;
       this.legs = legs;
       this.saying = saying
    }
    prepareToPrint() {
-      return [this.name, this.gender, this.legs, this.saying].join(';')
+      return [this.specie, this.name, this.gender, this.legs, this.saying].join(';')
    }
 }
 
 class Person extends Inhabitant {
-   constructor(name, gender, legs, hands, saying, friends) {
-      super(name, gender, legs, saying)
+   constructor(specie, name, gender, legs, hands, saying, friends) {
+      super(specie, name, gender, legs, saying)
       this.hands = hands
       this.friends = friends || []
    }
@@ -22,8 +23,8 @@ class Person extends Inhabitant {
 }
 
 class Animal extends Inhabitant {
-   constructor(name, gender, legs, saying, tail) {
-      super(name, gender, legs, saying)
+   constructor(specie, name, gender, legs, saying, tail) {
+      super(specie, name, gender, legs, saying)
       this.tail = tail
    }
    prepareToPrint() {
@@ -31,11 +32,11 @@ class Animal extends Inhabitant {
    }
 }
 
-const dog = new Animal('Bob', 'male', 4, 'woof!', 1)
-const cat = new Animal('Kitty', 'female', 4, 'meow!', 1)
-const woman = new Person('Sara', 'female', 2, 2, 'Hello!')
-const catWoman = new Person('Bella', 'female', 2, 2, `${cat.saying}`)
-const man = new Person('Mario', 'male', 2, 2, 'Hi!', ['Bob', 'Tom', 'Eva'])
+const dog = new Animal('dog', 'Bob', 'male', 4, 'woof!', 1)
+const cat = new Animal('cat', 'Kitty', 'female', 4, 'meow!', 1)
+const woman = new Person('woman', 'Sara', 'female', 2, 2, 'Hello!')
+const catWoman = new Person('catwoman', 'Bella', 'female', 2, 2, `${cat.saying}`)
+const man = new Person('man', 'Mario', 'male', 2, 2, 'Hi!', ['Bob', 'Tom', 'Eva'])
 
 const inhabitants = [cat, dog, woman, catWoman, man]
 
