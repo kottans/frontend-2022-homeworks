@@ -48,7 +48,7 @@ class Creature {
   }
 }
 
-class HomoSapiens extends Creature {
+class Animal extends Creature {
   constructor(species, name, gender, phrase, legs, hands) {
     super(species, name, gender, phrase);
     this._legs = legs;
@@ -61,12 +61,9 @@ class HomoSapiens extends Creature {
   }
 }
 
-class Animal extends Creature {
-  constructor(species, name, gender, phrase, paws, wings) {
-    super(species, name, gender, phrase);
-    this._paws = paws;
-    this._wings = wings;
-    this.addProperties("_paws", "_wings");
+class HomoSapiens extends Animal {
+  constructor(name, gender, phrase, legs, hands) {
+    super("human", name, gender, phrase, legs, hands);
   }
 
   get saying() {
@@ -75,22 +72,23 @@ class Animal extends Creature {
 }
 
 class Anomaly extends HomoSapiens {
-  constructor(species, name, gender, phrase, legs, hands, linkTo) {
-    super(species, name, gender, phrase, legs, hands);
+  constructor(name, gender, phrase, legs, hands, linkTo) {
+    super(name, gender, phrase, legs, hands);
     this._linkTo = linkTo;
+    this._species = `human-${linkTo._species}`;
   }
   get saying() {
     return this._linkTo._phrase;
   }
 }
 
-const man = new HomoSapiens("human", "Ivan", "male", "Hello", 2, 2);
-const woman = new HomoSapiens("human", "Maria", "female", "Hi", 2, 2);
+const man = new HomoSapiens("Ivan", "male", "Hello", 2, 2);
+const woman = new HomoSapiens("Maria", "female", "Hi", 2, 2);
 const dog = new Animal("dog", "Bars", "male", "Woof", 4, 0);
 const cat = new Animal("cat", "Jerry", "male", "Myau", 4, 0);
-const parrot = new Animal("parrot", "Kuzya", "male", "How are you?", 2, 2);
-const woman_cat = new Anomaly("woman-cat", "Marta", "female", "", 2, 2, cat);
-const man_parrot = new Anomaly("man-parrot", "Petr", "male", "", 2, 2, parrot);
+const parrot = new Animal("parrot", "Kuzya", "male", "How are you?", 2, 0);
+const woman_cat = new Anomaly("Marta", "female", "", 2, 2, cat);
+const man_parrot = new Anomaly("Petr", "male", "", 2, 2, parrot);
 
 man.setFriends([woman, cat, dog]);
 woman.setFriends([man, cat]);
