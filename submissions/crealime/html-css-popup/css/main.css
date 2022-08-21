@@ -5,6 +5,11 @@
   font-style: normal
 }
 
+:root {
+  --brd-visible: solid 1px #b4b4b4;
+  --brd-hidden: solid 1px transparent
+}
+
 html {
   font-size: 16px;
   overflow-x: hidden
@@ -74,13 +79,13 @@ a:focus {
 .top-menu__link {
   display: block;
   padding: 0.4375rem 0.625rem;
-  border: solid 1px transparent;
+  border: var(--brd-hidden);
   border-radius: 0.25rem;
   transition-duration: 300ms
 }
 
 .top-menu__link:focus {
-  border: solid 1px #b4b4b4
+  border: var(--brd-visible)
 }
 
 .top-menu__icon {
@@ -99,7 +104,7 @@ a:focus {
 .top-menu__label {
   display: block;
   cursor: pointer;
-  border: solid 1px transparent;
+  border: var(--brd-hidden);
   border-radius: 0.25rem;
   padding: 0.4375rem 0.625rem
 }
@@ -110,7 +115,7 @@ a:focus {
 }
 
 .top-menu__input:focus ~ .top-menu__label {
-  border: solid 1px #b4b4b4
+  border: var(--brd-visible)
 }
 
 .top-menu__input:checked ~ .inner-menu {
@@ -140,8 +145,11 @@ a:focus {
   background: #fff;
   padding: 1.25rem;
   display: grid;
+  grid-row-gap: 1.25rem;
   min-width: 25rem;
-  grid-template-columns:repeat(3, 1fr)
+  max-height: 37.5rem;
+  grid-template-columns:33.3% 33.3% 33.3%;
+  overflow-y: auto
 }
 
 .inner-menu__ul:before {
@@ -154,12 +162,19 @@ a:focus {
   z-index: -1
 }
 
+.inner-menu__ul_in {
+  padding: 0;
+  display: none;
+  overflow-y: visible;
+  height: auto
+}
+
 .inner-menu__li {
   list-style-type: none
 }
 
-.inner-menu__li:nth-child(n+10) {
-  display: none
+.inner-menu__li_in {
+  grid-area: 4/1/5/4
 }
 
 .inner-menu__link {
@@ -169,7 +184,7 @@ a:focus {
   justify-content: space-between;
   align-items: center;
   padding: 0.625rem;
-  border: solid 1px transparent;
+  border: var(--brd-hidden);
   transition-duration: 300ms
 }
 
@@ -188,14 +203,8 @@ a:focus {
   appearance: none
 }
 
-.inner-menu__input:checked ~ .inner-menu__ul .inner-menu__li:nth-child(n+10) {
-  display: block
-}
-
-.inner-menu__input:checked ~ .inner-menu__ul {
-  min-width: 26.0625rem;
-  height: 25rem;
-  overflow-y: auto
+.inner-menu__input:checked ~ .inner-menu__ul_in {
+  display: grid
 }
 
 .inner-menu__input:checked ~ .inner-menu__btn .inner-menu__box:after {
@@ -209,6 +218,7 @@ a:focus {
 .inner-menu__box {
   display: block;
   position: relative;
+  margin-top: 0.625rem;
   height: 2.5rem;
   background: #cdcdcd;
   cursor: pointer;
