@@ -1,0 +1,235 @@
+
+
+body {
+  background-color: #000;
+}
+.wrapper {
+  position: relative;
+  height: 100vh;
+  background: url("img/hogwarts.jpeg") -1100px 0 / cover no-repeat;
+  overflow: hidden;
+}
+.container {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+.header {
+  position: relative;
+  width: 70%;
+  left: 30%;
+  height: 65px;
+  display: flex;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.5032387955182073) 0%,
+    rgba(0, 0, 0, 0.4640231092436975) 15%,
+    rgba(0, 0, 0, 0.08867296918767509) 72%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.header__link {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  user-select: none;
+}
+
+.header__title {
+  font-family: 'Henny Penny', cursive;
+  flex-grow: 1;
+  text-align: center;
+  font-size: 40px;
+  padding: 16px 10px 0px 50px;
+  color: rgb(166, 128, 32);
+  letter-spacing: 6px;
+  user-select: none;
+}
+
+.img__btn {
+  height: 50px;
+  width: 50px;
+  transition: all linear 0.3s;
+}
+.img__btn:hover {
+  height: 56px;
+  width: 56px;
+  transition: all linear 0.3s;
+}
+.nav {
+  position: absolute;
+  visibility: visible;
+  grid-area: nav;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+  width: 30%;
+  max-width: 400px;
+  left: 0;
+  height: 100vh;
+}
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+  padding: 100px 20px;
+}
+.nav__item {
+  font-family: 'Henny Penny', cursive;
+  text-align: center;
+}
+.nav__link {
+  color: rgb(166, 128, 32);
+  padding: 10px;
+}
+.nav__text {
+  font-size: 26px;
+  letter-spacing: 5px;
+  user-select: none;
+  transition: all linear 0.3s;
+}
+a.nav__link:hover .nav__text {
+  font-size: 30px;
+  margin: 0px;
+  transition: all linear 0.3s;
+}
+
+a.nav__link.active .nav__text {
+  font-size: 30px;
+  transition: all linear 0.3s;
+  text-decoration: line-through;
+}
+nav.nav__full {
+  display: block;
+  
+  background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(97, 97, 97, 1) 100%);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: fade-in 0.4s;
+}
+.main {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  padding: 20px;
+  margin: auto auto;
+  overflow: auto;
+  height: 90%;
+}
+.cache {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.main__article {
+  width: 60%;
+  margin: 0 auto;
+  position: relative;
+}
+.main__img {
+  margin: 0px 0px 50px 0px;
+  width: 25%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.main-description,
+.main__quote,
+.main__author {
+  font-family: "Bona Nova", serif;
+  white-space: normal;
+  color: rgb(233, 226, 226);
+  font-size: 18px;
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.452);
+  padding: 10px;
+}
+.main-description {
+  border-radius: 10px 10px 10px 0px;
+  text-align: justify;
+  line-height: 24px;
+}
+.main__quote,
+.main__author {
+  width: 70%;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 auto;
+}
+.main__author {
+  border-radius: 0px 0px 10px 10px;
+}
+@media (max-width: 475px) {
+  .header {
+    height: 50px;
+  }
+  .header__title {
+    font-size: 18px;
+  }
+  .img__btn {
+    width: 40px;
+    height: 40px;
+  }
+  .img__btn:hover {
+    width: 45px;
+    height: 45px;
+  }
+  .main__article {
+    width: 90%;
+  }
+}
+@media (min-width: 476px) and (max-width: 991px) { 
+  .header {
+    height: 50px;
+  }
+  .header__title {
+    font-size: 26px;
+  }
+  .img__btn {
+    width: 40px;
+    height: 40px;
+  }
+  .img__btn:hover {
+    width: 45px;
+    height: 45px;
+  }
+  .main {
+    left: 0;
+  }
+  .main__article {
+    width: 90%;
+  }
+}
+@media  (max-width: 992px) {
+  .wrapper {
+    background-position: -1300px 0;
+  }
+  .header__link {
+    display: block;
+  }
+  .nav {
+    max-width: 100%;
+    display: none;
+  }
+  .header {
+    left: 0;
+    width: 100%;
+  }
+  .main {
+    left: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
