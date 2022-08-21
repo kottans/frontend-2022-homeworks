@@ -6,8 +6,8 @@
 }
 
 :root {
-  --brd-visible: solid 1px #b4b4b4;
-  --brd-hidden: solid 1px transparent
+  --border-primary: solid 1px #b4b4b4;
+  --border-transparent: solid 1px transparent
 }
 
 html {
@@ -79,13 +79,13 @@ a:focus {
 .top-menu__link {
   display: block;
   padding: 0.4375rem 0.625rem;
-  border: var(--brd-hidden);
+  border: var(--border-transparent);
   border-radius: 0.25rem;
   transition-duration: 300ms
 }
 
 .top-menu__link:focus {
-  border: var(--brd-visible)
+  border: var(--border-primary)
 }
 
 .top-menu__icon {
@@ -104,7 +104,7 @@ a:focus {
 .top-menu__label {
   display: block;
   cursor: pointer;
-  border: var(--brd-hidden);
+  border: var(--border-transparent);
   border-radius: 0.25rem;
   padding: 0.4375rem 0.625rem
 }
@@ -115,7 +115,7 @@ a:focus {
 }
 
 .top-menu__input:focus ~ .top-menu__label {
-  border: var(--brd-visible)
+  border: var(--border-primary)
 }
 
 .top-menu__input:checked ~ .inner-menu {
@@ -184,7 +184,7 @@ a:focus {
   justify-content: space-between;
   align-items: center;
   padding: 0.625rem;
-  border: var(--brd-hidden);
+  border: var(--border-transparent);
   transition-duration: 300ms
 }
 
