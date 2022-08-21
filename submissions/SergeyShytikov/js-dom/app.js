@@ -39,32 +39,27 @@ const mtbCategories = [
 
 const main = document.querySelector(".main")
 const menuItems = document.querySelector(".menu-items");
+const img = document.getElementById("image");
 
-const createListOfLi = () => {
-  mtbCategories.forEach(item => {
-    const li = document.createElement("li");
-    const button = document.createElement("button")
-    li.classList.add("menu-item");
-    button.classList.add("button");
-    button.innerText = item.name;
-    li.appendChild(button)
-    menuItems.append(li);
-  })
-}
-createListOfLi()
+mtbCategories.forEach(item => {
+  const li = document.createElement("li");
+  const button = document.createElement("button");
+  li.classList.add("menu-item");
+  button.classList.add("button");
+  button.innerText = item.name;
+  li.appendChild(button);
+  menuItems.append(li);
+})
 
 const description = document.createElement("p");
   description.classList.add("text");
   main.append(description);
 
-function displayImageAndText() {
-  const  arg = [...arguments].join();
-  const category = mtbCategories.find(item => item.name === arg);
-  const img = document.getElementById("image");
+function displayImageAndText(categoryName) {
+  const category = mtbCategories.find(category => category.name === categoryName);
   img.src = category.image;
   description.innerText = category.description;
-  return ;
 }
 
 const buttons = document.querySelectorAll(".button");
-buttons.forEach(item =>{item.addEventListener("click", ()=> {displayImageAndText(item.innerText)})})
+buttons.forEach(categoryName => {categoryName.addEventListener("click", ()=> {displayImageAndText(categoryName.innerText)})});
