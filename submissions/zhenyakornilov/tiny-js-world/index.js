@@ -1,23 +1,11 @@
 class Inhabitant {
-  constructor(species, name, gender, paws, legs, hands, saying) {
+  constructor(species, name, gender, saying) {
     this.species = species;
     this.name = name;
     this.gender = gender;
-    this.paws = paws;
-    this.legs = legs;
-    this.hands = hands;
     this.friends = [];
     this.saying = saying;
-    this.props = [
-      "species",
-      "name",
-      "gender",
-      "paws",
-      "legs",
-      "hands",
-      "friends",
-      "saying",
-    ];
+    this.props = ["species", "name", "gender", "friends", "saying"];
   }
 
   toString() {
@@ -36,34 +24,37 @@ class Inhabitant {
 }
 
 class Animal extends Inhabitant {
-  constructor(species, name, gender, friends, saying) {
-    super(species, name, gender, friends, saying);
+  constructor(species, name, gender, saying) {
+    super(species, name, gender, saying);
     this.paws = 4;
-    this.legs = 0;
-    this.hands = 0;
+  }
+
+  toString() {
+    return super.toString() + `; ${this.paws} paws`;
   }
 }
 
 class Dog extends Animal {
   constructor(name, gender) {
-    super("dog", name, gender);
-    this.saying = "Woof-woof";
+    super("dog", name, gender, "Woof-woof");
   }
 }
 
 class Cat extends Animal {
   constructor(name, gender) {
-    super("cat", name, gender);
-    this.saying = "Meooow";
+    super("cat", name, gender, "Meoooow");
   }
 }
 
 class Human extends Inhabitant {
-  constructor(name, gender, friends, saying) {
-    super("human", name, gender, friends, saying);
-    this.paws = 0;
+  constructor(name, gender, saying) {
+    super("human", name, gender, saying);
     this.legs = 2;
     this.hands = 2;
+  }
+
+  toString() {
+    return super.toString() + `; ${this.legs} legs, ${this.hands} hands`;
   }
 }
 
@@ -75,7 +66,7 @@ class Woman extends Human {
 }
 
 class Man extends Human {
-  constructor(name, saying, friends) {
+  constructor(name, saying, friends = []) {
     super(name, "male");
     this.saying = saying;
     this.friends = friends;
@@ -83,9 +74,10 @@ class Man extends Human {
 }
 
 class CatWoman extends Human {
-  constructor(cat) {
+  constructor(catRef) {
     super("Selina", "female");
-    this.saying = cat.saying;
+    this.cat = catRef;
+    this.saying = this.cat.saying;
     this.species = "catwoman";
   }
 }
