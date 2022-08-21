@@ -20,7 +20,7 @@ const Star = function(numCol) {
     this.sprite = 'images/Star.png';
 }
 
-Star.prototype.update = function() {
+Star.prototype.update = function(player) {
     if (player.y < 0) {
         let index = player.x / sizes.colWidth; 
         allStars[index] = null;
@@ -63,15 +63,15 @@ Enemy.prototype.update = function(dt) {
         this.x = sizes.colWidth * -1; 
         this.speed = (Math.random() + sizes.speedCoefficient) * sizes.colWidth; 
     }
+    this.isCollided(player);
 };
 
 Enemy.prototype.isCollided = function(player) {
     if (player.y == this.y + sizes.enemyVerticalShift - sizes.playerVerticalShift) {
         if (this.x > player.x - sizes.colWidth + sizes.enemyHorizontalShift && this.x < player.x + sizes.colWidth - sizes.enemyHorizontalShift) { 
-            return true; 
+            player.comeBack();
         } 
     }
-    return false;
 };
 
 // Draw the enemy on the screen, required method for game
