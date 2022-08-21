@@ -1,19 +1,16 @@
 * {
     margin: 0;
     padding: 0;
-
 }
 
 a {
     text-decoration: none;
     color: #757575;
-
 }
 
 li {
     list-style: none;
     cursor: pointer;
-
 }
 
 
@@ -22,19 +19,16 @@ li {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-
 }
 
 
 img {
     display: block;
-
 }
 
 .nav {
     display: flex;
     justify-content: flex-end;
-
 }
 
 .nav_item {
@@ -42,25 +36,20 @@ img {
     padding: 4px;
     max-height: 20px;
     border: 2px solid white;
-
 }
 
 .nav_item:hover {
     border: 2px solid #8bb6d6;
-
-
 }
 
 .nav_item:focus {
     padding: 4px;
     border: 2px solid black;
-
 }
 
 .popup_item:hover {
     border: 1px solid #8bb6d6;
     padding: 9px;
-
 }
 
 .popup_item:focus {
@@ -70,7 +59,6 @@ img {
 
 .nav-img {
     max-height: 20px;
-
 }
 
 .popup {
@@ -85,21 +73,18 @@ img {
     height: 450px;
     box-shadow: 0px 0px 20px 1px rgb(0 0 255 / 20%);
     padding-top: 5px;
-
 }
 
 .popup_list {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-
 }
 
 .popup_item {
     box-sizing: border-box;
     padding: 10px;
     max-width: 30%;
-
 }
 
 .popup_link {
@@ -110,7 +95,6 @@ img {
     height: 100%;
     text-align: center;
     font-size: 0.9em;
-
 }
 
 .popup_button {
@@ -119,13 +103,11 @@ img {
     margin: 5px 10px;
     padding: 4px;
     max-height: 20px;
-
 }
 
 .popup_button-img {
     height: 29px;
     width: 29px;
-
 }
 
 .popup_button-label {
@@ -134,7 +116,6 @@ img {
     left: 0;
     cursor: pointer;
     border: 2px solid white;
-
 }
 
 .popup_button-label:hover {
@@ -143,24 +124,19 @@ img {
 
 .popup_button-input:focus~.popup_button-label {
     border: 2px solid black;
-
-
 }
 
 .popup_img {
     max-width: 100%;
-
 }
 
 #menu:checked~.popup {
     display: flex;
     flex-direction: column;
-
 }
 
 .popup_more_items {
     display: none;
-
 }
 
 .popup_more_button {
@@ -174,43 +150,35 @@ img {
     color: #757575;
     text-align: center;
     cursor: pointer;
-
 }
 
 .popup_more_button:hover {
     background-color: #aaa5a5;
     color: #605959;
-
 }
 
 .popup_more-input:focus~.popup_more_button {
     border: 2px solid black;
-
 }
 
 #more_less:checked~.popup_list>.popup_more_items {
     display: block;
-
 }
 
 #more {
     display: block;
-
 }
 
 #less {
     display: none;
-
 }
 
 #more_less:checked~.popup_more_button #more {
     display: none;
-
 }
 
 #more_less:checked~.popup_more_button #less {
     display: block;
-
 }
 
 @media (max-width:400px) {
@@ -219,8 +187,6 @@ img {
         right: -50px;
         max-width: 300px;
         min-width: 250px;
-
     }
-
 }
 
