@@ -1,15 +1,28 @@
-var colWidth = 101;
-var rowHeight = 83;
+const sizes = {
+    colWidth: 101,
+    rowHeight: 83,
+    enemyVerticalShift: 20,
+    playerVerticalShift: 10,
+    startRow: 5,
+    startCol: 2,
+    starVerticalShift: 10,
+    speedCoefficient: 0.7,
+    enemyHorizontalShift: 20,
+    colCount: 5,
+    rowCount: 6,
+    starCount: 5,
+    enemyCount: 3
+}
 
-var Star = function(numCol) {
-    this.x = colWidth * numCol;
-    this.y = -10;
+const Star = function(numCol) {
+    this.x = sizes.colWidth * numCol; 
+    this.y = -sizes.starVerticalShift;
     this.sprite = 'images/Star.png';
 }
 
 Star.prototype.update = function() {
     if (player.y < 0) {
-        var index = player.x / 101;
+        let index = player.x / sizes.colWidth; 
         allStars[index] = null;
         if (allStars.filter(elem => elem).length == 0) {
             setTimeout(()=> {
@@ -26,15 +39,15 @@ Star.prototype.render = function() {
 
 // Enemies our player must avoid
 
-var Enemy = function(numRow) {
+const Enemy = function(numRow) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.x = colWidth * -1;
-    this.y = rowHeight * numRow - 20;
-    this.speed = (Math.random() + 0.7) * colWidth;
+    this.x = sizes.colWidth * -1; 
+    this.y = sizes.rowHeight * numRow - sizes.enemyVerticalShift; 
+    this.speed = (Math.random() + sizes.speedCoefficient) * sizes.colWidth; 
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -44,12 +57,21 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if (this.x < colWidth * 5) {
+    if (this.x < sizes.colWidth * sizes.colCount) { 
         this.x = this.x + this.speed * dt;
     } else {
-        this.x = colWidth * -1;
-        this.speed = (Math.random() + 0.7) * colWidth;
+        this.x = sizes.colWidth * -1; 
+        this.speed = (Math.random() + sizes.speedCoefficient) * sizes.colWidth; 
     }
+};
+
+Enemy.prototype.isCollided = function(player) {
+    if (player.y == this.y + sizes.enemyVerticalShift - sizes.playerVerticalShift) {
+        if (this.x > player.x - sizes.colWidth + sizes.enemyHorizontalShift && this.x < player.x + sizes.colWidth - sizes.enemyHorizontalShift) { 
+            return true; 
+        } 
+    }
+    return false;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -60,65 +82,70 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function() {
-    this.x = colWidth * 2;
-    this.y = rowHeight * 5 - 10;
+const Player = function() {
+    this.x = sizes.colWidth * sizes.startCol; 
+    this.y = sizes.rowHeight * sizes.startRow - sizes.playerVerticalShift; 
     this.finished = false;
     this.sprite = 'images/char-boy.png';
-    this.update = function(){
-        for (var i = 0; i < allEnemies.length; i++) {
-            if (this.y == allEnemies[i].y + 10) {
-                if (allEnemies[i].x > this.x - colWidth + 20 && allEnemies[i].x < this.x + colWidth - 20) {
-                    this.x = colWidth * 2;
-                    this.y = rowHeight * 5 - 10;
-                } 
-            }
-        }
-        if (this.y < 0) {
-            if (!this.finished) {
-                setTimeout(() => {
-                    this.x = colWidth * 2;
-                    this.y = rowHeight * 5 - 10;
-                    this.finished = false;
-                }, 1000);
-                this.finished = true;
-            }
-        }
-    };
-    this.render = function(){
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    };
-    this.handleInput = function(direction) {
-        if (this.y > 0) {
-            if (direction == 'left' && this.x > 0) {
-                this.x -= colWidth;
-            } else if (direction == 'up' && this.y > 0) {
-                this.y -= rowHeight;
-            } else if (direction == 'right' && this.x < colWidth * 4) {
-                this.x += colWidth;
-            } else if (direction == 'down' && this.y < rowHeight * 5) {
-                this.y += rowHeight;
-            }
-        } 
-    };
 }
+
+Player.prototype.update = function(){
+    // for (let i = 0; i < allEnemies.length; i++) {
+    //     if (this.y == allEnemies[i].y + sizes.enemyVerticalShift - sizes.playerVerticalShift) {
+    //         if (allEnemies[i].x > this.x - sizes.colWidth + sizes.enemyHorizontalShift && allEnemies[i].x < this.x + sizes.colWidth - sizes.enemyHorizontalShift) { 
+    //             this.x = sizes.colWidth * sizes.startCol; 
+    //             this.y = sizes.rowHeight * sizes.startRow - sizes.playerVerticalShift;  
+    if (this.y < 0) {
+        if (!this.finished) {
+            setTimeout(() => {
+                this.x = sizes.colWidth * sizes.startCol; 
+                this.y = sizes.rowHeight * sizes.startRow - sizes.playerVerticalShift;  
+                this.finished = false;
+            }, 1000);
+            this.finished = true;
+        }
+    }
+};
+
+Player.prototype.comeBack = function() {
+    player.x = sizes.colWidth * sizes.startCol; 
+    player.y = sizes.rowHeight * sizes.startRow - sizes.playerVerticalShift; 
+};
+
+Player.prototype.render = function(){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+Player.prototype.handleInput = function(direction) {
+    if (this.y > 0) {
+        if (direction == 'left' && this.x > 0) {
+            this.x -= sizes.colWidth; 
+        } else if (direction == 'up' && this.y > 0) {
+            this.y -= sizes.rowHeight; 
+        } else if (direction == 'right' && this.x < sizes.colWidth * (sizes.colCount - 1)) { 
+            this.x += sizes.colWidth; 
+        } else if (direction == 'down' && this.y < sizes.rowHeight * (sizes.rowCount - 1) - sizes.playerVerticalShift) { 
+            this.y += sizes.rowHeight; 
+        }
+    } 
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var allStars;
-var allEnemies;
-var player;
+let allStars;
+let allEnemies;
+let player;
 
 function launch() {
     allStars = [];
-    for (var i = 0; i < 5; i++) {
+    for (let i = 0; i < sizes.starCount; i++) {
         allStars.push(new Star(i));
     }
     
     allEnemies = [];
-    for (var i = 1; i <= 3; i++){
+    for (let i = 1; i <= sizes.enemyCount; i++){
         allEnemies.push(new Enemy(i));
     }
     
@@ -130,7 +157,7 @@ launch();
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
