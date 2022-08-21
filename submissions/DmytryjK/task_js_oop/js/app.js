@@ -3,14 +3,18 @@
 const baseConfig = {
     fieldWidth: 400,
     fieldHeight: 390, 
-    heroWidth: 100,
+    characterWidth: 100,
     heroHeight: 170,
-    enemyWidth: 100,
     enemyLinkImg: 'images/enemy-bug.png',
     playerLinkImg: 'images/char-cat-girl.png',
     speedRandom(minSpeed = 150, maxSpeed = 350) {
         maxSpeed -= minSpeed;
         return Math.floor(Math.random() * ++maxSpeed) + minSpeed;
+    },
+    numberOfFields: {
+        1: 50,
+        2: 135,
+        3: 220
     }
 };
 
@@ -21,13 +25,13 @@ body.prepend(scoreBlock);
 score();
 
 class Enemy {
-    constructor(x, y, speedX, sprite, fieldWidth, enemyWidth, player) {
+    constructor(x, y, baseConfig, player) {
         this.x = x;
         this.y = y;
-        this.sprite = sprite;
-        this.speed = speedX;
-        this.fieldWidth = fieldWidth;
-        this.enemyWidth = enemyWidth;
+        this.sprite = baseConfig.enemyLinkImg;
+        this.speed = baseConfig.speedRandom();
+        this.fieldWidth = baseConfig.fieldWidth;
+        this.characterWidth = baseConfig.characterWidth;
         this.player = player;
     }
     update(dt) {    
@@ -39,7 +43,7 @@ class Enemy {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
     collisionСheck() {
-        if(this.player.y == this.y && this.player.x <= Math.floor(this.x) + this.player.heroWidth / 1.5 && this.player.x >= Math.floor(this.x) - this.player.heroWidth / 1.5 ) {
+        if(this.player.y == this.y && this.player.x <= Math.floor(this.x) + this.player.characterWidth / 1.5 && this.player.x >= Math.floor(this.x) - this.player.characterWidth / 1.5 ) {
             setTimeout(deletePopupMessage, 1000, 'body', 'popUp');
             showPopupMessage('div','popUp', 'body', 'You losе, bro :(');
             resetPlayerPosition(player);
@@ -48,22 +52,22 @@ class Enemy {
         }
     }
     addingRandomSpeed() {
-        if (this.x > this.fieldWidth + this.enemyWidth) {
-            this.x = -this.enemyWidth;
+        if (this.x > this.fieldWidth + this.characterWidth) {
+            this.x = -this.characterWidth;
             this.speed = baseConfig.speedRandom();
         }
     }
 };
 
 class Player {
-    constructor(fieldWidth, fieldHeight, sprite, heroWidth, heroHeight) {
-        this.x = fieldWidth / 2;
-        this.y = fieldHeight;
-        this.sprite = sprite;
-        this.fieldWidth = fieldWidth;
-        this.fieldHeight = fieldHeight;
-        this.heroWidth = heroWidth;
-        this.heroHeight = heroHeight;
+    constructor(baseConfig) {
+        this.x = baseConfig.fieldWidth / 2;
+        this.y = baseConfig.fieldHeight;
+        this.sprite = baseConfig.playerLinkImg;
+        this.fieldWidth = baseConfig.fieldWidth;
+        this.fieldHeight = baseConfig.fieldHeight;
+        this.characterWidth = baseConfig.characterWidth;
+        this.heroHeight = baseConfig.heroHeight;
     }
     update(dt) {
         this.outOfFiledCheck();
@@ -75,13 +79,13 @@ class Player {
     handleInput(key) {
         switch(key) {
             case "left":
-                this.x += -this.heroWidth; 
+                this.x += -this.characterWidth; 
                 break;
             case "up":
                 this.y += -this.heroHeight/2; 
                 break;
             case "right":
-                this.x += this.heroWidth; 
+                this.x += this.characterWidth; 
                 break;
             case "down":
                 this.y += this.heroHeight/2;
@@ -106,13 +110,24 @@ class Player {
     }
 };
 
-const player = new Player(baseConfig.fieldWidth, baseConfig.fieldHeight, baseConfig.playerLinkImg, baseConfig.heroWidth, baseConfig.heroHeight);
+const player = new Player(baseConfig);
+const allEnemies = [];
 
-const   firstEnemy  = new Enemy(0, 50, baseConfig.speedRandom(), baseConfig.enemyLinkImg, baseConfig.fieldWidth, baseConfig.enemyWidth, player),
-        secondEnemy  = new Enemy(0, 135, baseConfig.speedRandom(), baseConfig.enemyLinkImg, baseConfig.fieldWidth, baseConfig.enemyWidth, player),
-        thirdEnemy  = new Enemy(0, 220, baseConfig.speedRandom(), baseConfig.enemyLinkImg, baseConfig.fieldWidth, baseConfig.enemyWidth, player);
+createEnemies(3, 2);
+createEnemies(10, 1);
+createEnemies(7, 3);
 
-const allEnemies = [firstEnemy, secondEnemy, thirdEnemy];
+function createEnemies(n = 1, row = 1) {
+    const rowNumber = baseConfig.numberOfFields[row];
+    
+    if (rowNumber === undefined) {
+        console.error('WARNING! row value must be between 1, 2 or 3');
+    }
+
+    for (let i = 0; i < n; i++) {
+        allEnemies.push(new Enemy(0, rowNumber, baseConfig, player));
+    }
+}
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
