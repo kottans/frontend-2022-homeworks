@@ -100,6 +100,7 @@ h6 {
     align-items: center;
     flex: 1 0 auto;
     margin: 5px;
+
 }
 
 .menu-list {
@@ -118,11 +119,13 @@ h6 {
 .menu-item:hover {
     border: #a2a6ad solid 1px;
     border-radius: 5px;
+    margin: 14px;
 }
 
 .menu-item:focus {
     border: #35618480 solid 1px;
     border-radius: 5px;
+    margin: 14px;
 }
 .popup-icon {
     width: 20px;
@@ -143,6 +146,7 @@ h6 {
 
 .popup-shower {
     position: relative;
+    cursor: pointer;
 }
 
 .popup {
@@ -157,7 +161,6 @@ h6 {
     }
 }
 
-.popup-checkbox,
 .popup {
     opacity: 0;
     visibility: hidden;
@@ -249,13 +252,22 @@ h6 {
     margin: 15px;
 }
 
-.popup-checkbox:checked+.popup {
+.popup-checkbox {
+    -webkit-appearance: none;
+}
+
+.popup-checkbox:focus~.popup-shower {
+    border: #35618480 solid 1px;
+    border-radius: 5px;
+    margin: 14px;
+}
+
+.popup-checkbox:checked~.popup {
     opacity: 1;
     visibility: visible;
     transition: 1.0s;
 }
 
-.popup-checkbox,
 .button-popup {
     display: none;
 }
@@ -282,5 +294,12 @@ h6 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 600;
     opacity: 60%;
+    cursor: pointer
 }
+.open-button:hover {
+    opacity: 80%;
 
+}
+.popup-checkbox:focus~.open-button{
+    border: 2px solid #000;
+}
