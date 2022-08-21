@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet"/>
+  <title>Document</title>
+</head>
+<body>
+  <nav class="nav">
+    <ul class="nav__list">
+      <li class="nav__item">
+        <a class="nav__link" href="#">Mail</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="#">Images</a>
+      </li>
+      <li class="nav__item  nav__item--popup">
+        <input class="popupSwitcher__input  nav__popupSwitcher  srOnly" id="popupSwitcher--menu" type="checkbox"/>
+        <label class="popupSwitcher__label  popupSwitcher__label--menu" for="popupSwitcher--menu"></label>
+        <span class="popupSwitcher__title  srOnly">Menu</span>
+        <div class="popup  nav__popup">
+          <div class="popup__inner">
+            <span class="popup__triangle"></span>
+            <ul class="popup__list">
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--calendar"></span>
+                  <span class="popup__title">Calendar</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--mail"></span>
+                  <span class="popup__title">Mail</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--news"></span>
+                  <span class="popup__title">News</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--maps"></span>
+                  <span class="popup__title">Map</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--files"></span>
+                  <span class="popup__title">Files</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--contacts"></span>
+                  <span class="popup__title">Contacts</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--translation"></span>
+                  <span class="popup__title">Translate</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--videos"></span>
+                  <span class="popup__title">Videos</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--search"></span>
+                  <span class="popup__title">Search</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--photo"></span>
+                  <span class="popup__title">Photo</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--apps"></span>
+                  <span class="popup__title">Apps</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--document"></span>
+                  <span class="popup__title">Document</span>
+                </a>
+              </li>
+            </ul>
+
+            <input class="popup__moreBtn  srOnly" id="popup__moreBtn" type="checkbox"/>
+            <label class="popup__moreBtnLabel" for="popup__moreBtn">More</label>
+
+            <ul class="popup__list  popup__list--more">
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--chat"></span>
+                  <span class="popup__title">Chat</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--classroom"></span>
+                  <span class="popup__title">Classroom</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--collection"></span>
+                  <span class="popup__title">Collection</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--mars"></span>
+                  <span class="popup__title">Mars</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--blogs"></span>
+                  <span class="popup__title">Blogs</span>
+                </a>
+              </li>
+              <li class="popup__item">
+                <a class="popup__link" href="#">
+                  <span class="popup__icon  popup__icon--promos"></span>
+                  <span class="popup__title">Promos</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item  popupSwitcher">
+        <input class="popupSwitcher__input  srOnly" id="popupSwitcher--notification" type="checkbox"/>
+        <label class="popupSwitcher__label  popupSwitcher__label--notifications" for="popupSwitcher--notification"></label>
+        <span class="popupSwitcher__title  srOnly">Notifications</span>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="#">
+          <img class="nav__userpic" src="./icons/photos.png" width="32" height="32" alt="Userpic"/>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</body>
+</html>

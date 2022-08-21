@@ -1,0 +1,33 @@
+.popupSwitcher__label {
+  position: relative;
+
+  display: block;
+  
+  cursor: pointer;
+}
+
+.popupSwitcher__input:focus-visible ~ .popupSwitcher__label {
+  outline: 2px solid black;
+}
+
+.popupSwitcher__label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popupSwitcher__label--menu {
+  inline-size: 24px;
+  block-size: 24px;
+
+  background: url("../icons/popup-button.png") center / 100% no-repeat;
+}
+
+.popupSwitcher__label--notifications {
+  inline-size: 16px;
+  block-size: 20px;
+
+  background: url("../icons/bell.png") center / 100% no-repeat;
+}

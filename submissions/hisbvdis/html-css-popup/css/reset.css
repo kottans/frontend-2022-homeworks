@@ -1,0 +1,44 @@
+/* Box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+/* Размеры изображений */
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+
+/* Отключение миганий в Chrome */
+a,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Курсор "рука" для активных кнопок */
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+
+/* Убрать внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd,
+input {
+  margin: unset;
+}

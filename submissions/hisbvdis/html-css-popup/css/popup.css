@@ -1,0 +1,184 @@
+.popup {
+  position: absolute;
+  inset-block-start: calc(100% + 20px);
+  inset-inline-end: -57px;
+
+  display: none;
+  border: 1px solid #CCCCCC;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgb(0 0 0 / 0.1);
+}
+
+.popup__inner {
+  max-block-size: 503px;
+  
+  overflow-y: auto;
+}
+
+.popup__triangle {
+  position: absolute;
+  inset-block-end: 100%;
+  inset-inline-end: 54px;
+  
+	display: inline-block;
+
+	border: 15px solid transparent;
+	border-bottom: 15px solid #CCCCCC;
+  pointer-events: none;
+}
+
+.popup__triangle::before {
+	content: '';
+  position: absolute;
+  top: -24px;
+  left: -26px;
+  
+	display: inline-block;
+	
+	border: 26px solid transparent;
+	border-bottom: 26px solid #CCCCCC;
+}
+
+.popup__triangle::after {
+	content: '';
+	display: inline-block;
+	position: absolute;
+	top: -24px;
+	left: -26px;
+	border: 26px solid transparent;
+	border-bottom: 26px solid #fff;
+}
+
+.popup__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 30px;
+  margin: 0;
+
+  list-style: none;
+  border-block-end: 1px solid #F0F0F0;
+}
+
+.popup__list--more {
+  display: none;
+}
+
+.popup__moreBtn:checked ~ .popup__list--more {
+  display: grid;
+}
+
+.popup__moreBtn:checked ~ .popup__moreBtnLabel {
+  display: none;
+}
+
+.popup__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+
+  font-size: 0.9em;
+  color: inherit;
+  text-decoration: none;
+
+  border: 1px solid #fff;
+}
+
+.popup__link:hover {
+  border: 1px solid #E5E5E5;
+}
+
+.popup__moreBtnLabel {
+  display: block;
+  padding: 10px;
+
+  text-align: center;
+  
+  background-color: #F5F5F5;
+  cursor: pointer;
+}
+
+.popup__icon {
+  display: block;
+  inline-size: 40px;
+  block-size: 40px;
+  margin-inline: auto;
+
+  background-position: center;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+.popup__icon--calendar {
+  background-image: url("../icons/calendar.png");
+}
+
+.popup__icon--mail {
+  background-image: url("../icons/mail.png");
+}
+
+.popup__icon--news {
+  background-image: url("../icons/news.png");
+}
+
+.popup__icon--maps {
+  background-image: url("../icons/maps.png");
+}
+
+.popup__icon--files {
+  background-image: url("../icons/files.png");
+}
+
+.popup__icon--contacts {
+  background-image: url("../icons/contacts.png");
+}
+
+.popup__icon--translation {
+  background-image: url("../icons/translation.png");
+}
+
+.popup__icon--videos {
+  background-image: url("../icons/videos.png");
+}
+
+.popup__icon--search {
+  background-image: url("../icons/search.png");
+}
+
+.popup__icon--photo {
+  background-image: url("../icons/photos.png");
+}
+
+.popup__icon--apps {
+  background-image: url("../icons/apps.png");
+}
+
+.popup__icon--document {
+  background-image: url("../icons/documents.png");
+}
+
+.popup__icon--chat {
+  background-image: url("../icons/chat.png");
+}
+
+.popup__icon--classroom {
+  background-image: url("../icons/classroom.png");
+}
+
+.popup__icon--collection {
+  background-image: url("../icons/collection.png");
+}
+
+.popup__icon--mars {
+  background-image: url("../icons/mars.png");
+}
+
+.popup__icon--blogs {
+  background-image: url("../icons/blogs.png");
+}
+
+.popup__icon--promos {
+  background-image: url("../icons/promo.png");
+}

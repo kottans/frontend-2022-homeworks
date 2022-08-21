@@ -1,0 +1,36 @@
+.nav {
+  
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 25px;
+  margin: 0;
+  padding: 10px;
+
+  list-style: none;
+}
+
+.nav__item--popup {
+  position: relative;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav__userpic {
+  display: block;
+  inline-size: 32px;
+  block-size: 32px;
+
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.nav__popupSwitcher:checked ~ .nav__popup {
+  display: block;
+}
