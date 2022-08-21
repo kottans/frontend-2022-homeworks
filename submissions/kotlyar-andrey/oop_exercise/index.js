@@ -5,19 +5,22 @@
    Web app: https://kotlyar-andrey.github.io/a-tiny-JS-world/
    */
 
-class Creature {
+/**
+ * Общий класс для всех жителей
+ */
+ class Creature {
   constructor(species, name, gender, phrase) {
     this._species = species;
     this._name = name;
     this._gender = gender;
     this._phrase = phrase;
     this._friends = [];
-    this._properties = ["_species", "_name", "_gender", "saying"];
+    this._properties = ["_species", "_name", "_gender"];
   }
 
   getFriends() {
     return this._friends && this._friends.length > 0
-      ? this._friends.map((friend) => friend._name).join(", ")
+      ? this._friends.map(friend => friend._name).join(", ")
       : "no friends";
   }
 
@@ -26,7 +29,7 @@ class Creature {
   }
 
   getSaying() {
-    return self._phrase;
+    return this._phrase;
   }
 
   setSaying(newPhrase) {
@@ -39,56 +42,82 @@ class Creature {
 
   display() {
     const friends = this.getFriends();
+    const saying = this.getSaying();
     print(
       this._properties
-        .map((prop) => this[prop])
+        .map(prop => this[prop])
         .join("; ")
-        .concat(`; ${friends}`)
+        .concat(`; ${saying}; ${friends}`)
     );
   }
 }
 
+/**
+ * Общий класс для всех животных с ногами/лапами
+ */
 class Animal extends Creature {
-  constructor(species, name, gender, phrase, legs, hands) {
+  constructor(species, name, gender, phrase, legs) {
     super(species, name, gender, phrase);
     this._legs = legs;
-    this._hands = hands;
-    this.addProperties("_legs", "_hands");
-  }
-
-  get saying() {
-    return this._phrase;
+    this.addProperties("_legs");
   }
 }
 
-class HomoSapiens extends Animal {
-  constructor(name, gender, phrase, legs, hands) {
-    super("human", name, gender, phrase, legs, hands);
-  }
-
-  get saying() {
-    return this._phrase;
+/**
+ * Общий класс для птиц
+ */
+class Bird extends Animal {
+  constructor(species, name, gender, phrase) {
+    super(species, name, gender, phrase, 2);
+    this._wings = 2;
+    this.addProperties("_wings");
   }
 }
 
-class Anomaly extends HomoSapiens {
-  constructor(name, gender, phrase, legs, hands, linkTo) {
-    super(name, gender, phrase, legs, hands);
+class Human extends Animal {
+  constructor(name, gender, phrase) {
+    super("human", name, gender, phrase, 2);
+    this._hands = 2;
+    this.addProperties("_hands");
+  }
+}
+
+class Cat extends Animal {
+  constructor(name, gender, phrase) {
+    super("cat", name, gender, phrase, 4);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, gender, phrase) {
+    super("dog", name, gender, phrase, 4);
+  }
+}
+
+class Parrot extends Bird {
+  constructor(name, gender, phrase) {
+    super("parrot", name, gender, phrase);
+  }
+}
+
+class Anomaly extends Human {
+  constructor(name, gender, linkTo) {
+    super(name, gender);
     this._linkTo = linkTo;
     this._species = `human-${linkTo._species}`;
   }
-  get saying() {
+  getSaying() {
     return this._linkTo._phrase;
   }
 }
 
-const man = new HomoSapiens("Ivan", "male", "Hello", 2, 2);
-const woman = new HomoSapiens("Maria", "female", "Hi", 2, 2);
-const dog = new Animal("dog", "Bars", "male", "Woof", 4, 0);
-const cat = new Animal("cat", "Jerry", "male", "Myau", 4, 0);
-const parrot = new Animal("parrot", "Kuzya", "male", "How are you?", 2, 0);
-const woman_cat = new Anomaly("Marta", "female", "", 2, 2, cat);
-const man_parrot = new Anomaly("Petr", "male", "", 2, 2, parrot);
+const man = new Human("Ivan", "male", "Hello");
+const woman = new Human("Maria", "female", "Hi");
+const dog = new Dog("Bars", "male", "Woof");
+const cat = new Cat("Jerry", "male", "Myau");
+const parrot = new Parrot("Kuzya", "male", "How are you?");
+const woman_cat = new Anomaly("Marta", "female", cat);
+const man_parrot = new Anomaly("Petr", "male", parrot);
 
 man.setFriends([woman, cat, dog]);
 woman.setFriends([man, cat]);
@@ -99,6 +128,6 @@ cat.setSaying("Hello, it's me, your cat");
 
 const inhabitants = [man, woman, dog, cat, parrot, woman_cat, man_parrot];
 
-inhabitants.forEach((creature) => {
+inhabitants.forEach(creature => {
   creature.display();
 });
