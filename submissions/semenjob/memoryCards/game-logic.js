@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 const startGameBtn = document.querySelector(".start");
-const titleGame = document.querySelector(".start_game");
 const resetGame = document.querySelector(".reset");
 
 const toggleFlip = (card) => {
@@ -60,7 +59,6 @@ function startGame() {
   const cardBlocked = document.querySelectorAll(".memory_card");
 
   const removeClassBlock = () => {
-    titleGame.style.display = "none";
     cardBlocked.forEach((card) => {
       card.classList.remove("block");
     });
@@ -71,48 +69,62 @@ function startGame() {
     if (target) removeClassBlock();
   });
 
-  let firstCards = null;
-
-  cards.addEventListener("click", ({ target }) => {
-    const selectedCard = target.closest(".memory_card");
-
-    if (!selectedCard) return;
-    toggleFlip(selectedCard);
-
-    if (!firstCards) {
-      firstCards = selectedCard;
-    } else {
-      dubleCheckCards(selectedCard);
+  let winGame = 0;
+  class PairCards {
+    constructor() {
+      this.cards = [];
     }
-  });
 
-  function dubleCheckCards(secondCards) {
-    const isEqual = secondCards.dataset.cardId === firstCards.dataset.cardId;
-    if (!isEqual) {
+    get isFull() {
+      return this.cards.length === 2;
+    }
+
+    addCard(card) {
+      this.cards.push(card);
+    }
+
+    check() {
+      const cardId = this.cards[0].dataset.cardId;
+      console.log(winGame);
+      const isEqual = this.cards.every(
+        (card) => card.dataset.cardId === cardId
+      );
+      if (isEqual) {
+        winGame += 1;
+        removeClassBlock();
+        this.cards = [];
+      }
+      return isEqual;
+    }
+
+    reset() {
       setTimeout(() => {
-        toggleFlip(secondCards);
-        toggleFlip(firstCards);
-        firstCards = null;
-      }, 500);
-    } else {
-      secondCards.classList.add("flip");
-      firstCards.classList.add("flip");
-      firstCards = null;
-      winGame += 1;
-    }
-
-    if (winGame === cardsLength) {
-      alert("You win");
+        this.cards.forEach((card) => {
+          card.classList.remove("flip");
+        });
+        this.cards = [];
+      }, 1000);
     }
   }
 
-  resetGame.addEventListener("click", () => {
-    reset();
-  });
+  const pair = new PairCards();
 
-  const reset = () => {
-    const cards = document.querySelector(".memory_cards");
-    cards.innerHTML = null;
-    startGame();
+  const processClickOnCard = ({ target }) => {
+    const selectedCard = target.closest(".memory_card");
+    if (!selectedCard) return;
+    toggleFlip(selectedCard);
+    pair.addCard(selectedCard);
+    if (pair.isFull) {
+      cards.removeEventListener("click", processClickOnCard);
+      setTimeout(() => {
+        cards.addEventListener("click", processClickOnCard);
+      }, 500);
+      const isEquel = pair.check();
+      if (!isEquel) pair.reset();
+    }
+    if (winGame === cardsLength) {
+      alert("You win");
+    }
   };
+  cards.addEventListener("click", processClickOnCard);
 }
