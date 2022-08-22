@@ -1,13 +1,13 @@
 class Inhabitant {
    constructor(specie, name, gender, legs, saying) {
-      this.specie = specie;
-      this.name = name;
-      this.gender = gender;
-      this.legs = legs;
+      this.specie = specie
+      this.name = name
+      this.gender = gender
+      this.legs = legs
       this.saying = saying
    }
    prepareToPrint() {
-      return [this.specie, this.name, this.gender, this.legs, this.saying].join(';')
+      return [this.specie, this.name, this.gender, this.legs, this.saying].join('; ')
    }
 }
 
@@ -18,7 +18,7 @@ class Person extends Inhabitant {
       this.friends = friends || []
    }
    prepareToPrint() {
-      return super.prepareToPrint() + ';' + this.friends.join(';')
+      return super.prepareToPrint() + '; ' + this.friends.join(', ')
    }
 }
 
@@ -28,7 +28,7 @@ class Animal extends Inhabitant {
       this.tail = tail
    }
    prepareToPrint() {
-      return super.prepareToPrint() + ';' + this.tail
+      return super.prepareToPrint() + '; ' + this.tail + ';'
    }
 }
 
