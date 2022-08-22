@@ -1,6 +1,6 @@
 # Open and merged PRs by task labels
 
-_as of 2022-08-22T16:54:51.286Z UTC_
+_as of 2022-08-22T16:55:45.058Z UTC_
 
 PR reference legend:
  - #xxx o -- PR is yet open 
@@ -94,7 +94,7 @@ PR reference legend:
 | 1.44 | [martthaa](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Amartthaa) | [#162 o](https://github.com/kottans/frontend-2022-homeworks/pull/162) |   |   |   |   |   |   |
 | 1.45 | [Meylin-V](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AMeylin-V) | [#211 o](https://github.com/kottans/frontend-2022-homeworks/pull/211) |   |   |   |   |   |   |
 | 1.46 | [Mifaresss](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AMifaresss) | [**#116**](https://github.com/kottans/frontend-2022-homeworks/pull/116) |   |   |   |   |   |   |
-| 1.47 | [mimoauto](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Amimoauto) | [#169 o](https://github.com/kottans/frontend-2022-homeworks/pull/169) |   |   |   |   |   |   |
+| 1.47 | [mimoauto](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Amimoauto) | [**#169**](https://github.com/kottans/frontend-2022-homeworks/pull/169) |   |   |   |   |   |   |
 | 1.48 | [MishaDerkach](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AMishaDerkach) | [#253 o](https://github.com/kottans/frontend-2022-homeworks/pull/253) |   |   |   |   |   |   |
 | 1.49 | [misshatsker](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Amisshatsker) | [#203 o](https://github.com/kottans/frontend-2022-homeworks/pull/203) |   |   |   |   |   |   |
 | 1.50 | [MosQuitO404](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AMosQuitO404) | [#129 o](https://github.com/kottans/frontend-2022-homeworks/pull/129) |   |   |   |   |   |   |
