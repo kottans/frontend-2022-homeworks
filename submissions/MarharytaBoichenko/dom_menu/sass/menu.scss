@@ -31,7 +31,7 @@ body {
 .nav__list {
   display: grid;
   grid-template-rows: repeat(2, 50px);
-  grid-template-columns: repeat(5, minmax(60px, auto));
+  grid-template-columns: repeat(5, minmax(50px, auto));
 }
 
 .nav__button {
@@ -140,9 +140,18 @@ body {
   }
 
   .decoration {
-    width: 250px;
-    height: 300px;
+    width: 350px;
+    height: 400px;
     background-repeat: no-repeat;
     background-size: contain;
+  }
+
+  .quotation__text {
+    font-size: 1.8rem;
+  }
+
+  .container {
+    width: 80%;
+    top: 40%;
   }
 }

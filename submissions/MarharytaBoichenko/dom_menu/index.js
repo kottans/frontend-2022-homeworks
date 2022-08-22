@@ -1,20 +1,16 @@
-import { navList, container } from "./refs.js";
 import quotations from "../data/quotations.json" assert { type: "json" };
 
-const createNavigation = () => {
-  const buttons = [];
-  for (let i = 0; i < 10; i++) {
-    const navButton = ` <li class="nav__item">
-                    <button type="button" class="nav__button" data-number=${i + 1}>${
-      i + 1
-    }</button>
-                </li>`;
-    buttons.push(navButton);
-  }
+const navList = document.querySelector(".nav__list");
+const container = document.querySelector(".container");
 
-  navList.insertAdjacentHTML("afterbegin", buttons.join(""));
-};
-createNavigation();
+const buttons = quotations.map(
+  ({ id }) =>
+    ` <li class="nav__item">
+               <button type="button" class="nav__button" data-number=${id}>${id}</button>
+             </li>`
+);
+
+navList.insertAdjacentHTML("afterbegin", buttons.join(""));
 
 const createContent = (btnId, data) => {
   const itemToShow = data.find(({ id }) => Number(btnId) === Number(id));
@@ -27,11 +23,11 @@ const createContent = (btnId, data) => {
   container.innerHTML = markup;
 };
 
-const handleClick = (e) => {
-  if (e.target.nodeName !== "BUTTON") {
+const handleClick = ({ target }) => {
+  if (target.nodeName !== "BUTTON") {
     return;
   }
-  const selectedBtn = e.target.dataset.number;
+  const selectedBtn = target.dataset.number;
   createContent(selectedBtn, quotations);
 };
 
