@@ -10,5 +10,5 @@ export function createNavItems() {
             </li>`
         )
     });
-    navList.innerHTML = navlistItems.join("");
+    navList.innerHTML = navlistItems.reduce((acc, navItem) => acc + navItem, "");
 }
