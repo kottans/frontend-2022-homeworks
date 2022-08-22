@@ -41,25 +41,6 @@ function creatingDivItem(item) {
     `;
 }
 
-form.first.addEventListener('click', function(e) {
-    if (e.target && e.target.classList.contains('first')) {
-        checkedFirstSort(e);
-    }
-});
-
-function checkedFirstSort(event) {
-    form.age.reset();
-    form.last.reset();
-    switch(event.target.value) {
-        case "firstAToZ":
-            sortedAtoZFirst();
-            break;
-        case "firstZtoA":
-            sortedZtoAFirst();
-            break;
-    }
-}
-
 form.last.addEventListener('click', function(e) {
     if (e.target && e.target.classList.contains('last')) {
         checkLastSort(e);
@@ -67,7 +48,6 @@ form.last.addEventListener('click', function(e) {
 });
 
 function checkLastSort(event) {
-    form.first.reset();
     form.age.reset();
     switch(event.target.value) {
         case "lastAToZ":
@@ -88,7 +68,6 @@ form.age.addEventListener('click', function(e) {
 });
 
 function sortByAge(event) {
-    form.first.reset();
     form.last.reset();
     switch(event.target.value) {
         case "ageMore":
@@ -120,16 +99,6 @@ function sortedZtoALast() {
     renderAllItemsToPage(friends);
 }
 
-function sortedAtoZFirst() {
-    friends.sort((a, b) => a.name.first !== b.name.first ? a.name.first < b.name.first ? -1 : 1 : 0);
-    renderAllItemsToPage(friends);
-}
-
-function sortedZtoAFirst() {
-    friends.sort((a, b) => a.name.first !== b.name.first ? a.name.first > b.name.first ? -1 : 1 : 0);
-    renderAllItemsToPage(friends);
-}
-
 form.gender.addEventListener('click', function(e) {
     if (e.target && e.target.classList.contains('gender')) {
         checkedGender(e);
@@ -153,27 +122,22 @@ function checkedGender(event) {
 function renderMale() {
     friends = friendsCopy.slice();
     friends = friends.filter(item=> item.gender === 'male');
-    findByAge();
     renderAllItemsToPage(friends);
 }
 
 function renderFemale() {
     friends = friendsCopy.slice();
     friends = friends.filter(item=> item.gender === 'female');
-    findByAge();
     renderAllItemsToPage(friends);
 }
 
 function renderAll() {
     friends = friendsCopy.slice();
-    findByAge();
     renderAllItemsToPage(friends);
 }
 
-form.minMax.addEventListener('change', function(e) {
-    checkNumber();
-    findByAge();
-});
+form.minMax.addEventListener('change', checkNumber);    
+form.minMax.addEventListener('change', findByAge);
 
 function checkNumber() {
     if (minNumber.value < 10) {
@@ -192,10 +156,28 @@ function checkNumber() {
         return;
     } 
 
-    renderAllItemsToPage(friends);
+    findByAge();
 }
 
 function findByAge() {
+    friends = friendsCopy.slice();
+
+    if (form.age.ageLess.checked) {
+        sortedAgeLess();
+    }
+
+    if (form.age.ageMore.checked) {
+        sortedAgeMore();
+    }
+
+    if (form.last.lastAToZ.checked) {
+        sortedAtoZLast();
+    }
+
+    if (form.last.lastZToA.checked) {
+        sortedZtoALast();
+    }
+
     friends = friends.filter(item => {
         if (item.dob.age > minNumber.value && item.dob.age <= maxNumber.value) {
             return item;
