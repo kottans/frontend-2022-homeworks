@@ -170,6 +170,10 @@ li{
     display:block;
 }
 
+.checkbox_more:checked~.popup__more{
+    display: none;
+}
+
 .extra-items{
     display: grid;
     grid-template: repeat(2, 80px) / repeat(3, 80px);
