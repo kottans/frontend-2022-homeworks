@@ -1,6 +1,6 @@
 # Open and merged PRs by task labels
 
-_as of 2022-08-22T18:05:42.945Z UTC_
+_as of 2022-08-22T18:30:45.727Z UTC_
 
 PR reference legend:
  - #xxx o -- PR is yet open 
@@ -47,7 +47,6 @@ PR reference legend:
 | 2.1 | [NadiaVorontsova](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ANadiaVorontsova) | [**#76**](https://github.com/kottans/frontend-2022-homeworks/pull/76) | [#225 o](https://github.com/kottans/frontend-2022-homeworks/pull/225) |   |   |   |   |   |
 | 2.2 | [OlexiyDobroskok](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AOlexiyDobroskok) | [**#103**](https://github.com/kottans/frontend-2022-homeworks/pull/103) | [#237 o](https://github.com/kottans/frontend-2022-homeworks/pull/237) |   |   |   |   |   |
 | 2.3 | [Sadoharu](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ASadoharu) | [**#8**](https://github.com/kottans/frontend-2022-homeworks/pull/8) | [#39 o](https://github.com/kottans/frontend-2022-homeworks/pull/39) |   |   |   |   |   |
-| 2.4 | [zadorogniyandrey](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Azadorogniyandrey) | [**#70**](https://github.com/kottans/frontend-2022-homeworks/pull/70) | [#265 o](https://github.com/kottans/frontend-2022-homeworks/pull/265) |   |   |   |   |   |
 | = | **1 task** |     |     |     |     |     |     |     |
 | 1.1 | [Acerpo](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AAcerpo) | [**#26**](https://github.com/kottans/frontend-2022-homeworks/pull/26) |   |   |   |   |   |   |
 | 1.2 | [AlexeiGladkov](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AAlexeiGladkov) | [#160 o](https://github.com/kottans/frontend-2022-homeworks/pull/160) |   |   |   |   |   |   |
@@ -126,7 +125,8 @@ PR reference legend:
 | 1.75 | [YarHadi](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYarHadi) | [#156 o](https://github.com/kottans/frontend-2022-homeworks/pull/156) |   |   |   |   |   |   |
 | 1.76 | [Yasya23](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYasya23) | [**#77**](https://github.com/kottans/frontend-2022-homeworks/pull/77) |   |   |   |   |   |   |
 | 1.77 | [YuraZagor](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYuraZagor) | [#261 o](https://github.com/kottans/frontend-2022-homeworks/pull/261) |   |   |   |   |   |   |
-| 1.78 | [ZjeniiaSt](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AZjeniiaSt) | [**#86**](https://github.com/kottans/frontend-2022-homeworks/pull/86) |   |   |   |   |   |   |
+| 1.78 | [zadorogniyandrey](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Azadorogniyandrey) | [**#70**](https://github.com/kottans/frontend-2022-homeworks/pull/70) |   |   |   |   |   |   |
+| 1.79 | [ZjeniiaSt](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AZjeniiaSt) | [**#86**](https://github.com/kottans/frontend-2022-homeworks/pull/86) |   |   |   |   |   |   |
 
 ## How to "import" a PR from a different repo
 
