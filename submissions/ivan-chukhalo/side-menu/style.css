@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'LifeCraft';
+    src: url(./assets/fonts/LifeCraft.ttf);
+}
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    justify-content:space-between;
+    padding: 20px 40px;
+    background: url(./assets/wow-wallpapper.jpg) rgb(29, 29, 86) no-repeat center center / cover;
+    font-family: sans-serif;
+}
+
+body:hover{
+    cursor: url(./assets/cursor.apng) 0 0, auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    cursor: url(./assets/cursor.apng) 0 0, auto;
+}
+
+/* MENU */
+.title{
+    font-size: 24px;
+    color: #f3c03f;
+    margin-bottom: 30px;
+}
+
+.menu-wrapper{
+    display: flex;
+    flex-direction: column;
+    /* min-width: 250px; */
+    height: 100%;
+    /* box-sizing: content-box; */
+}
+
+.menu{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-y:visible;
+}
+
+.menu__item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 350px;
+    flex:1 1 auto;
+    color: white;
+    font-size: 24px;
+}
+
+.menu__item:visited{
+    color: white;
+}
+
+.menu__item:hover, :focus{
+    color:  #f3c03f;
+}
+
+.menu__icon{
+    height: 2rem;
+    margin-right: 10px;
+}
+
+/* CONTENT */
+.content{
+    text-shadow: 0px 0px 3px black;
+    padding: 50px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.content__description{
+    text-align: left;
+}
+
+.content__title{
+    margin-bottom: 50px;
+    text-align: center;
+    font-family: 'LifeCraft', serif;
+    letter-spacing: 0.2em;
+    color: #f3c03f;
+    font-size: 36px;
+}
+
+.content__img{
+    margin: 40px auto;
+    display: block;
+}
+
+.content__link_back{
+    color: #f3c03f;
+}
