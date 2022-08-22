@@ -26,11 +26,12 @@ const config = {
 };
 
 class Enemy {
-    constructor(y) {
+    constructor(y, player) {
         this.x = config.enemy.initialPositionOnX;
         this.y = y;
         this.speed = this.randomSpeed();
         this.sprite = 'images/enemy-bug.png';
+        this.player = player;
     }
 
     randomSpeed() {
@@ -38,12 +39,12 @@ class Enemy {
     }
 
     checkCollision() {
-        if(player.x < this.x + config.canvas.blockWidth &&
-            player.x + config.canvas.blockWidth > this.x &&
-            player.y < this.y + config.canvas.blockHeight && 
-            config.canvas.blockHeight + player.y > this.y) {
-            player.x = config.player.initialPositionOnX;
-            player.y = config.player.initialPositionOnY;
+        if(this.player.x < this.x + config.canvas.blockWidth &&
+            this.player.x + config.canvas.blockWidth > this.x &&
+            this.player.y < this.y + config.canvas.blockHeight && 
+            config.canvas.blockHeight + this.player.y > this.y) {
+            this.player.x = config.player.initialPositionOnX;
+            this.player.y = config.player.initialPositionOnY;
         }
     }
 
@@ -105,7 +106,7 @@ const allEnemies = [];
 const createEnemy = (positionY, numberEnemy) => {
     for (let line in positionY) {
         for (let enemy = 0; enemy < numberEnemy[line]; enemy++) {
-            allEnemies.push(new Enemy(positionY[line]));
+            allEnemies.push(new Enemy(positionY[line], player));
         }
     }
 };
