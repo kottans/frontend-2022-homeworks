@@ -13,7 +13,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     background-color: #E6DC1B;
     border-radius: 10px;
     margin: 10px;
@@ -43,8 +43,14 @@ body {
 .greeting {
     font-size: 30px;
     display: flex;
-    align-content: center;
+    flex-direction: row;
+    align-items: center;
     cursor: pointer;
+}
+
+.greeting-img{
+    height: 50px;
+    width: 50px;
 }
 
 #menu-check, #menu-check-more{
@@ -169,10 +175,6 @@ body {
     border-radius: 10px;
 }
 
-.post:hover{
-    box-shadow: 0 0 0 4px #B3B3B3, 0 0 0 10px #5d5933;
-    transition: 0.5s;
-}
 
 .topzone{
     display: flex;
@@ -208,10 +210,11 @@ body {
     font-size: 0;
     background-color: #E6DC1B;
     border: none;
+    margin-right: 15px;
 }
 
 .btn:hover, .btn:focus{
-    margin-right: 15px;
+
     box-shadow: 0 0 0 2.5px #B3B3B3, 0 0 0 5px #5d5933;
     outline: none;
     border-radius: 10px;
@@ -228,3 +231,238 @@ body {
     font-size: 15px;
     color: #5d5933;
 }
+
+@media screen and (max-width: 640px) {
+    .check, .check-more {
+        font-size: 24px;
+    }
+    .greeting{
+        font-size: 14px;
+    }
+    .greeting-img{
+        height: 25px;
+        width: 25px;
+    }
+    .logo {
+        font-size: 18px;
+    }
+    .nav-list{
+        height: 30px;
+    }
+    .nav-item{
+        width: 80px;
+    }
+    .post-img {
+        height: 256px;
+        border-radius: 5px;
+    }
+    .post{
+        padding: 10px;
+        margin-top: 12px;
+        border-radius: 5px;
+    }
+    .topzone{
+        font-size: 18px;
+    }
+    .topzone-img{
+        height: 25px;
+        width: 25px;
+    }
+    .btn{
+        height: 30px;
+        width: 30px;
+        margin-right: 8px;
+    }
+
+    .post-time {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+    .input-check:hover + .check, .input-check:hover + .check-more {
+        border-radius: 6px;
+        box-shadow: 0 0 0 1.5px #b3b3b3, 0 0 0 2.5px #5d5933;
+        font-size: 24px;
+        transition: 0.5s;
+    }
+
+    .main-menu{
+        margin-top: 24px;
+        border-radius: 5px;
+        box-shadow: 0 0 0 1.5px #b3b3b3, 0 0 0 3.5px #5d5933;
+        height: 120px;
+    }
+
+    .popup-grid{
+        grid-template: repeat(1, 75px) / repeat(3, 75px);
+    }
+
+    .icon{
+        height: 25px;
+        width: auto;
+    }
+
+    .item-name {
+        font-size: 10px;
+        height: 50px;
+        width: 50px;
+    }
+
+    .check-more {
+        margin-left: 118px;
+    }
+
+    .popup-grid-more {
+        grid-template: repeat(1, 75px) / repeat(3, 75px);
+    }
+
+    .list {
+        list-style: none;
+        padding: 5px;
+    }
+
+    .btn:hover, .btn:focus{
+
+        box-shadow: 0 0 0 1.25px #B3B3B3, 0 0 0 2.5px #5d5933;
+        outline: none;
+        border-radius: 5px;
+        transition: 0.3s;
+        font-size: 10px;
+    }
+
+    .item-name:focus, .item-name:hover{
+        border-radius: 5px;
+        box-shadow: 0 0 0 1.25px #B3B3B3, 0 0 0 2.5px #5d5933;
+        font-size: 18px;
+        transition: 0.5s;
+        background-color: #CBCAC7;
+    }
+
+    .logo:hover {
+        transition: 0.5s;
+        font-size: 20px;
+        color: #E6DC1B;
+        text-shadow: 1.5px 0px 3.5px #5D5933, 
+            -1.5px 0px 3.5px #5D5933, 
+            0px 2px 3.5px #5D5933;
+        
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .check, .check-more {
+        font-size: 12px;
+    }
+    .greeting{
+        font-size: 7px;
+    }
+    .greeting-img{
+        height: 12.5px;
+        width: 12.5px;
+    }
+    .logo {
+        font-size: 9px;
+    }
+    .nav-list{
+        height: 15px;
+    }
+    .nav-item{
+        width: 40px;
+    }
+    .post-img {
+        height: 128px;
+        border-radius: 2.5px;
+    }
+    .post{
+        padding: 5px;
+        margin-top: 6px;
+        border-radius: 2.5px;
+    }
+    .topzone{
+        font-size: 9px;
+    }
+    .topzone-img{
+        height: 12.5px;
+        width: 12.5px;
+    }
+    .btn{
+        height: 15px;
+        width: 15px;
+        margin-right: 4px;
+    }
+
+    .post-time {
+        margin-top: 2.5px;
+        font-size: 6px;
+    }
+
+    .input-check:hover + .check, .input-check:hover + .check-more {
+        border-radius: 3px;
+        box-shadow: 0 0 0 1.5px #b3b3b3, 0 0 0 2.5px #5d5933;
+        font-size: 12px;
+        transition: 0.5s;
+    }
+
+    .main-menu{
+        margin-top: 12px;
+        border-radius: 2.5px;
+        box-shadow: 0 0 0 1.5px #b3b3b3, 0 0 0 3.5px #5d5933;
+        height: 60px;
+    }
+
+    .popup-grid{
+        grid-template: repeat(1, 32.5px) / repeat(3, 32.5px);
+    }
+
+    .icon{
+        height: 12.5px;
+        width: auto;
+    }
+
+    .item-name {
+        font-size: 5px;
+        height: 25px;
+        width: 25px;
+    }
+
+    .check-more {
+        margin-left: 59px;
+    }
+
+    .popup-grid-more {
+        grid-template: repeat(1, 32.5px) / repeat(3, 32.5px);
+    }
+
+    .list {
+        list-style: none;
+        padding: 2.5px;
+    }
+
+    .btn:hover, .btn:focus{
+
+        box-shadow: 0 0 0 1.25px #B3B3B3, 0 0 0 2.5px #5d5933;
+        outline: none;
+        border-radius: 2.5px;
+        transition: 0.3s;
+        font-size: 5px;
+    }
+
+    .item-name:focus, .item-name:hover{
+        border-radius: 2.5px;
+        box-shadow: 0 0 0 1.25px #B3B3B3, 0 0 0 2.5px #5d5933;
+        font-size: 9px;
+        transition: 0.5s;
+        background-color: #CBCAC7;
+    }
+
+    .logo:hover {
+        transition: 0.5s;
+        font-size: 10px;
+        color: #E6DC1B;
+        text-shadow: 1.5px 0px 3.5px #5D5933, 
+            -1.5px 0px 3.5px #5D5933, 
+            0px 2px 3.5px #5D5933;
+        
+    }
+}
+    
