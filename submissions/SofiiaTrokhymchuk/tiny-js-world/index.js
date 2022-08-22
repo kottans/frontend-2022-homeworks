@@ -50,12 +50,8 @@ catWoman.legs = 2;
 catWoman.hands = 2;
 
 function inhabitantToString(inhabitant){
-   const friends = [];
-   if(inhabitant.friends === undefined){
-      friends.push(0);
-   }else{
-      friends.push(...inhabitant.friends);
-   }
+   let friends = [];
+   inhabitant.friends === undefined ? friends[0] = 0 : friends = inhabitant.friends;
    return `Inhabitant: ${inhabitant.species}, <strong>${inhabitant.name}</strong>, ${inhabitant.gender}, ${inhabitant.legs}, ` + 
    `${inhabitant.hands}, <em>${inhabitant.saying}</em>. Friends: ${friends.join(", ")}`;
 };
