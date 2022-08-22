@@ -1,24 +1,33 @@
 import { characters } from "./charachters.js";
 
 const characterSection = document.querySelector(".character");
-const characterImg = document.createElement("img");
-characterImg.setAttribute("class", "character-img");
-const characterName = document.createElement("h2")
-characterName.setAttribute("class", "character-name");
-const characterDescription = document.createElement("p")
-characterDescription.setAttribute("class", "character-description");
 
-
-export function createCharacter(event){
-    characterSection.appendChild(characterImg);
-    characterSection.appendChild(characterName);
-    characterSection.appendChild(characterDescription);
+function getCharacterData(event){
+    const characterData = {};
     const navItem = event.target;
     const characterId = navItem.getAttribute("id");
     if(parseInt(characterId) === characters[characterId].id){
-        characterImg.setAttribute("src", characters[characterId].image);
-        characterImg.setAttribute("alt", `${characters[characterId].name} Image`)
-        characterName.innerHTML = characters[characterId].name;
-        characterDescription.innerHTML = characters[characterId].description;
-    }; 
+        characterData.image = characters[characterId].image;
+        characterData.name = characters[characterId].name;
+        characterData.description = characters[characterId].description;
+    }
+    return characterData;
 }
+
+function createCharacter(characterData){
+    const newCharacter = document.createDocumentFragment();
+    const characterContainer = document.createElement("div");
+    characterContainer.innerHTML = `
+        <img src="${characterData.image}" alt="${characterData.name} Image" class="character-img">
+        <h2 class="character-name">${characterData.name}</h2>
+        <p class="character-description">${characterData.description}</p>
+    `;
+    newCharacter.appendChild(characterContainer);
+    return newCharacter;
+}
+
+export function insertCharacter(event){
+    characterSection.innerHTML = "";
+    const newCharacter = createCharacter(getCharacterData(event));
+    characterSection.append(newCharacter);
+};
