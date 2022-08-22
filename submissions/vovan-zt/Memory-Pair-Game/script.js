@@ -1,12 +1,12 @@
 window.addEventListener('DOMContentLoaded', () => {
 
     const cards = [
-        { name: 'card1', image: 'img/1.png' ,alt: 'naruto'},
-        { name: 'card2', image: 'img/2.png', alt: 'uchiha'},
-        { name: 'card3', image: 'img/3.png', alt: 'sai'},
-        { name: 'card4', image: 'img/4.png', alt: 'kakashi'},
-        { name: 'card5', image: 'img/5.png', alt: 'minato' },
-        { name: 'card6', image: 'img/6.png', alt: 'zetsu'}, 
+        { name: 'naruto', image: 'img/1.png'},
+        { name: 'uchiha', image: 'img/2.png'},
+        { name: 'sai', image: 'img/3.png'},
+        { name: 'kakashi', image: 'img/4.png'},
+        { name: 'minato', image: 'img/5.png'},
+        { name: 'zetsu', image: 'img/6.png'}, 
     ];
 
     cards.push(...cards);
@@ -18,10 +18,8 @@ window.addEventListener('DOMContentLoaded', () => {
         return `
             <div class ="hide-swap">
                 <div class="c1" data-card='${name}'></div>
-                <img class="c2" src="${image}" alt="${alt}">
+                <img class="c2" src="${image}" alt="${name}">
             </div>
-            
-
         `;
     }
 
@@ -46,7 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    function visibleCards() {
+    function removeClassVisible() {
         cardsList.forEach(card => { 
             card.classList.remove('visible');
         })
@@ -56,7 +54,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const cardsLength = document.querySelectorAll('.visible').length;
         if (cardsLength == 12) {
             setTimeout(() => alert('You win') , 400);
-            setTimeout(() => visibleCards() , 500);
+            setTimeout(() => removeClassVisible() , 500);
             setTimeout(() => cancelCardActive() , 600);
             cards.sort(() => (0.5 - Math.random()), 700);
         }    
