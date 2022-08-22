@@ -3,8 +3,8 @@
 :root{
     --main-bg-color: #141414;
     --main-text-color: #f7f7f7;
-    --header-bg-color: #1e1e1e;
-    --header-hover-color: #454545;
+    --nav-bg-color: #1e1e1e;
+    --nav-hover-color: #454545;
     --footer-color: #777;
 }
 
@@ -27,7 +27,7 @@ body{
     color: var(--main-text-color);
 }
 
-.header{
+.nav-container{
     width: 15rem;
     position: fixed;
 }
@@ -36,23 +36,23 @@ body{
     text-align: center;
     font-size: 1.3rem;
     font-weight: bold;
-    background-color: var(--header-bg-color);
+    background-color: var(--nav-bg-color);
     height: 100vh;
 }
 
 .nav-item{
     display: block;
     padding: 0.7rem;
-    box-shadow: 0px -15px 15px -15px var(--header-hover-color);
+    box-shadow: 0px -15px 15px -15px var(--nav-hover-color);
 }
 
 .nav-item:hover{
     cursor: pointer;
-    background-color: var(--header-hover-color);
+    background-color: var(--nav-hover-color);
 }
 
 .nav-item.selected{
-    background-color: var(--header-hover-color);
+    background-color: var(--nav-hover-color);
 }
 
 .hamburger-menu{
@@ -137,7 +137,7 @@ body{
 }
 
 @media (max-width: 925px){
-    .header{
+    .nav-container{
         flex: 0 0 2.5rem;
         position: fixed;
     }
