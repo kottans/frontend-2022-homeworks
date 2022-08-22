@@ -68,13 +68,11 @@ a:hover{
     font-size: 24px;
 }
 
-.menu__item:visited{
-    color: white;
-}
-
-.menu__item:hover, :focus{
+.menu__item:hover span, 
+.menu__item:focus span{
     color:  #f3c03f;
 }
+
 
 .menu__icon{
     height: 2rem;
