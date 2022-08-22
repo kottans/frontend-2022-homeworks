@@ -1,6 +1,3 @@
-/* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
-   Complete the below for code reviewers' convenience:
-*/
 class WorldInhabitant {
    constructor(species, name, gender, saying) {
       this.species = species;
@@ -32,7 +29,6 @@ class Animal extends WorldInhabitant {
    }
 }
 
-
  const man = new Human('human', 'Jon', 'male', 'I want to sleep');
 
  const woman = new Human('human', 'Lena', 'female', 'Hello', 2, 2, man.name );
@@ -44,4 +40,4 @@ class Animal extends WorldInhabitant {
  const catWoman = new Human('catwoman','Selina', 'female', cat.saying);
 
 
- [man, woman, cat, dog, catWoman].forEach(item => print(item.getMeaning().join('; ')))
+ [man, woman, cat, dog, catWoman].forEach(inhabitant => print(inhabitant.getMeaning().join('; ')))
