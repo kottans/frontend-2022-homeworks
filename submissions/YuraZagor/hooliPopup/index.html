@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>myPopup</title>
+</head>
+<body>
+	<nav>
+		<ul class="ul--menu">
+			<li class="li--menu" tabindex="1"><a href="#">Mail</a></li>
+			<li class="li--menu" tabindex="2"><a href="#">Images</a></li>
+
+			<li class="li--menu popup pic" >
+				<label id="popup-label" class="sub-menu" for='checkbox-icon'  ><img src="./popup-icons/popup-button.png" alt="sub-menu" ></label>
+				<input type="checkbox" id="checkbox-icon" name='checkbox-icon' class='checkbox-icon' tabindex="3" alt="show-popup-menu">
+
+				<section class="outer-popup-container">
+					<div class="inner-container">
+						<ul class="popups--container">
+							<li class="li--popup--item" tabindex="101"><img src="./popup-icons/blogs.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="102"><img src="./popup-icons/apps.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="103"><img src="./popup-icons/calendar.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="104"><img src="./popup-icons/chat.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="105"><img src="./popup-icons/classroom.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="106"><img src="./popup-icons/collection.png" alt="alt" class="popup--item"></li>	
+						</ul>
+
+						<input type="checkbox" id='show--all' class='show--all' name='show--all' alt="show-popup-menu-all-together" tabindex="107" >
+						<label id="show--all--label" for='show--all'  class='show--all--label'> Show All </label>
+					
+						<ul class="popups--container--all">
+							<li class="li--popup--item" tabindex="201"><img src="./popup-icons/contacts.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="202"><img src="./popup-icons/documents.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="203"><img src="./popup-icons/files.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="204"><img src="./popup-icons/mail.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="205"><img src="./popup-icons/maps.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="206"><img src="./popup-icons/mars.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="207"><img src="./popup-icons/mic.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="208"><img src="./popup-icons/news.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="209"><img src="./popup-icons/photos.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="210"><img src="./popup-icons/promo.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="211"><img src="./popup-icons/tanslation.png" alt="alt" class="popup--item"></li>
+							<li class="li--popup--item" tabindex="212"><img src="./popup-icons/videos.png" alt="alt" class="popup--item"></li>											
+						</ul>
+					</div>	
+				</section>
+			</li>
+			
+			<li class="li--menu sub-menu" id="bell-label"   tabindex="4"><img src="./popup-icons/bell.png"  alt="bell" ></li>
+			<li class="li--menu" tabindex="5"><a href="#">login</a></li>
+
+		</ul>
+
+	</nav>
+
+
+	<link rel="stylesheet" href="./style.css">
+</body>
+</html>
+
