@@ -98,7 +98,8 @@ img {
     
 }
 
-#checkbox_knopka:focus ~ div > ul > li > label > a {
+
+#checkbox_knopka:focus ~ label > a {
     background: rgba(241, 241, 241, 0.74);
     border-radius: 10px;
     border-bottom: 3px solid rgb(61, 68, 71);
@@ -258,7 +259,7 @@ img {
     display: block;
 }
 
-.more, #checkbox_more:checked ~ .more-btn{
+.more, #checkbox_more:checked  ~ .more-btn{
     display: none;
 }
 
@@ -285,4 +286,3 @@ img {
         margin-top: 20px;
     }
 }
-
