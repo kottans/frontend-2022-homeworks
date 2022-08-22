@@ -223,15 +223,10 @@ a:focus {
 .show-more-checkbox:checked ~ .show-more-btn {
   display: none;
 }
-
-.show-more-checkbox:checked ~ .hor-line {
-  display: block;
-  position: relative;
-  margin: 10px 0 5px 0;
-  height: 1px;
-  border-bottom: 1px solid gray;
-  box-shadow: 0 0 10px gray;
+.show-more-checkbox:checked ~ .popup-menu-inner {
+  border-top: 1px solid gray;
 }
+
 .show-more-checkbox:checked ~ .popup-menu-inner.hidden {
   display: grid;
 }
