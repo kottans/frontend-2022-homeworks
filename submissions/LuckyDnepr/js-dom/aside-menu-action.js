@@ -1,18 +1,15 @@
 "use strict";
 
-import { readJSON } from "./readJSON.js";
 
-const dataBaseUrl = "./data-films.json";
-
-export async function loadContentByID(id, container) {
-  const data = await readJSON(dataBaseUrl);
-  container.innerHTML = "";
-  const film = data.find((film) => film.ID === +id);
-  container.appendChild(makeTitle(film));
-  container.appendChild(makePoster(film));
-  container.appendChild(makeFilmInfo(film));
-  container.appendChild(makeActorsList(film));
-  container.appendChild(makeAnnotation(film));
+export function renderContent(film, container) {
+  const newContent = [
+      makeTitle(film),
+      makePoster(film),
+      makeFilmInfo(film),
+      makeActorsList(film),
+      makeAnnotation(film) 
+  ];
+  container.replaceChildren(...newContent);
 }
 
 function makeTitle(film) {
