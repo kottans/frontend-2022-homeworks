@@ -5,13 +5,18 @@ class Inhabitant {
     this.species = species;
     this.name = name;
   }
-  say(event) {
-    return this.vocabulary.hasOwnProperty(event)
-      ? this.vocabulary[event]
-      : "Nothing to say";
-  }
   getInfo() {
     return `I'm ${this.species} and my name is ${this.name}.`;
+  }
+}
+
+class Saying {
+  constructor (person, vocabulary) {
+    return function (aventForAnswer) {
+      return person[vocabulary].hasOwnProperty(aventForAnswer)
+      ? person[vocabulary][aventForAnswer]
+      : "Nothing to say";
+    };
   }
 }
 
@@ -47,7 +52,7 @@ class CatlikeMutants extends Inhabitant {
     this.gender = gender;
     this.hands = 2;
     this.legs = 2;
-    this.say = this.say.bind(new Cat());
+    //this.say = this.say.bind(new Cat());
   }
   getInfo() {
     return (
@@ -63,6 +68,7 @@ class Man extends Humans {
     this.vocabulary = {
       hi: "Hey guys!",
     };
+    this.say = new Saying(this, "vocabulary");
   }
   getInfo() {
     return `${this.say("hi")} ` + super.getInfo();
@@ -75,6 +81,7 @@ class Woman extends Humans {
     this.vocabulary = {
       hi: "Hi cute!",
     };
+    this.say = new Saying(this, "vocabulary");
   }
   getInfo() {
     return `${this.say("hi")} ` + super.getInfo();
@@ -87,6 +94,7 @@ class Cat extends FourLegged {
     this.vocabulary = {
       hi: "Nyav nyav!",
     };
+    this.say = new Saying(this, "vocabulary");
   }
   getInfo() {
     return `${this.say("hi")} ` + super.getInfo();
@@ -99,6 +107,7 @@ class Dog extends FourLegged {
     this.vocabulary = {
       hi: "Woof woof!",
     };
+    this.say = new Saying(this, "vocabulary");
   }
   getInfo() {
     return `${this.say("hi")} ` + super.getInfo();
@@ -108,6 +117,7 @@ class Dog extends FourLegged {
 class WomanCat extends CatlikeMutants {
   constructor(name) {
     super("female", name);
+    this.say = new Saying(new Cat(), "vocabulary");
   }
   getInfo() {
     return `${this.say("hi")} ` + super.getInfo();
