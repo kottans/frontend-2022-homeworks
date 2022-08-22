@@ -1,49 +1,80 @@
+const config = {
+    canvas: {
+        width: 505,
+        blockWidth: 101,
+        blockHeight: 80,
+    },
+    enemy: {
+        minSpeed: 100,
+        maxSpeed: 300,
+        initialPositionOnX: -101,
+        initialPositionOnY: {
+            firstLine: 80,
+            secondLine: 160,
+            thirdLine: 240
+        },
+        numberOfEnemy: {
+            firstLine: 1,
+            secondLine: 2,
+            thirdLine: 1
+        }
+    },
+    player: {
+        initialPositionOnX: 202,
+        initialPositionOnY: 400
+    }
+};
+
 class Enemy {
-    constructor(x, y, speed, sprite = 'images/enemy-bug.png') {
-        this.x = x;
+    constructor(y) {
+        this.x = config.enemy.initialPositionOnX;
         this.y = y;
-        this.speed = speed;
-        this.sprite = sprite;
+        this.speed = this.randomSpeed();
+        this.sprite = 'images/enemy-bug.png';
+    }
+
+    randomSpeed() {
+        return Math.round(Math.random() * (config.enemy.maxSpeed - config.enemy.minSpeed) + config.enemy.minSpeed);
     }
 
     checkCollision() {
-        if (player.x < this.x + 80 && player.x + 80 > this.x &&
-            player.y < this.y + 60 && 60 + player.y > this.y) {
-            player.x = 200;
-            player.y = 400;
-        };
+        if(player.x < this.x + config.canvas.blockWidth &&
+            player.x + config.canvas.blockWidth > this.x &&
+            player.y < this.y + config.canvas.blockHeight && 
+            config.canvas.blockHeight + player.y > this.y) {
+            player.x = config.player.initialPositionOnX;
+            player.y = config.player.initialPositionOnY;
+        }
     }
 
     update(dt) {
         this.x += this.speed * dt;
 
-        if (this.x > 510) {
-            this.x = -50;
-            this.speed = Math.round(Math.random() * 100 + 100); 
+        if (this.x > config.canvas.width) {
+            this.x = config.enemy.initialPositionOnX;
+            this.speed = this.randomSpeed();
         };
 
         this.checkCollision();
     }
-    
+
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-}
+};
 
 class Player {
-    constructor(x, y, sprite = 'images/char-boy.png') {
-        this.x = x;
-        this.y = y;
+    constructor(sprite = 'images/char-boy.png') {
+        this.x = config.player.initialPositionOnX;
+        this.y = config.player.initialPositionOnY;
         this.sprite = sprite;
-        
+
     }
 
     update() {
-        if (this.y < 5) {
-            setTimeout(() => {
-                this.x = 200;
-                this.y = 400;
-            }, 2000);
+        if (this.y < config.canvas.blockHeight) {
+            this.x = config.player.initialPositionOnX;
+            this.y = config.player.initialPositionOnY;
         };
     }
 
@@ -51,35 +82,37 @@ class Player {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
-    handleInput (keyPress) {
-        if (keyPress == 'left' && this.x > 0) {
-            this.x -= 100;
+    handleInput(keyPress) {
+        if (keyPress == 'left' && this.x >= config.canvas.blockWidth) {
+            this.x -= config.canvas.blockWidth;
         };
-        if (keyPress == 'right' && this.x < 400) {
-            this.x += 100;
+        if (keyPress == 'right' && this.x < config.canvas.width - config.canvas.blockWidth) {
+            this.x += config.canvas.blockWidth;
         };
-        if (keyPress == 'up' && this.y > 0) {
-            this.y -= 80;
+        if (keyPress == 'up' && this.y >= config.canvas.blockHeight) {
+            this.y -= config.canvas.blockHeight;
         };
-        if (keyPress == 'down' && this.y < 400) {
-            this.y += 80;
+        if (keyPress == 'down' && this.y < config.player.initialPositionOnY) {
+            this.y += config.canvas.blockHeight;
         };
     }
-}
+};
 
-const player = new Player(200, 400);
-
-const enemyLocation = [
-    {locationX: -100, locationY: 60, speed: 100},
-    {locationX: -50, locationY: 140, speed: 150},
-    {locationX: -150, locationY: 230, speed: 200}
-]; 
+const player = new Player();
 
 const allEnemies = [];
 
-enemyLocation.forEach(enemy => allEnemies.push(new Enemy(enemy.locationX, enemy.locationY,enemy.speed)));
+const createEnemy = (positionY, numberEnemy) => {
+    for (let line in positionY) {
+        for (let enemy = 0; enemy < numberEnemy[line]; enemy++) {
+            allEnemies.push(new Enemy(positionY[line]));
+        }
+    }
+};
 
-document.addEventListener('keyup', function(e) {
+createEnemy(config.enemy.initialPositionOnY, config.enemy.numberOfEnemy);
+
+document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
