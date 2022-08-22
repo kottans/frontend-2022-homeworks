@@ -39,5 +39,4 @@ class Animal extends WorldInhabitant {
 
  const catWoman = new Human('catwoman','Selina', 'female', cat.saying);
 
-
  [man, woman, cat, dog, catWoman].forEach(inhabitant => print(inhabitant.getMeaning().join('; ')))
