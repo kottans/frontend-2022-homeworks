@@ -9,12 +9,18 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="game_container">
-      <div class="start_game"></div>
+      <div class="wrapper">
+        <div class="start_game">
+          <h1 class="game_title">Memory Game</h1>
+          <button class="start">Start game</button>
+        </div>
+      </div>
       <div class="memory_cards"></div>
+      <button class="reset">Reset</button>
     </div>
   </body>
   <script type="module" src="game-logic.js"></script>

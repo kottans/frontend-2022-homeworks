@@ -5,20 +5,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
   startGame();
 });
 
-const createMemoryCard = (id, front, back) => {
-  const flipperTemplate = `
-  <div class="flipper">
-    <div class="front-view"><img src="${front}" alt="Card front view"></div>
-    <div class="back-view"><img src="${back.img}" alt="${back.alt}"></div>
-  </div>
-  `;
-
-  const card = document.createElement("div");
-  card.classList.add("memory_card");
-  card.innerHTML = flipperTemplate;
-  card.dataset.cardId = id;
-  return card;
-};
+const startGameBtn = document.querySelector(".start");
+const titleGame = document.querySelector(".start_game");
+const resetGame = document.querySelector(".reset");
 
 const toggleFlip = (card) => {
   if (card !== null) {
@@ -26,6 +15,8 @@ const toggleFlip = (card) => {
   }
   return;
 };
+
+let winGame = 0;
 
 const initMemoryCardIndexes = (n) => {
   return Array(n)
@@ -36,6 +27,21 @@ const initMemoryCardIndexes = (n) => {
 };
 
 function startGame() {
+  const createMemoryCard = (id, front, back) => {
+    const flipperTemplate = `
+    <div class="flipper">
+      <div class="front-view"><img src="${front}" alt="Card front view"></div>
+      <div class="back-view"><img src="${back.img}" alt="${back.alt}"></div>
+    </div>
+    `;
+
+    const card = document.createElement("div");
+    card.classList.add("memory_card", "block");
+    card.innerHTML = flipperTemplate;
+    card.dataset.cardId = id;
+    return card;
+  };
+
   const cards = document.querySelector(".memory_cards");
   const cardsLength = 6;
   const cardIndexes = initMemoryCardIndexes(cardsLength);
@@ -50,6 +56,20 @@ function startGame() {
     );
     cards.append(card);
   }
+
+  const cardBlocked = document.querySelectorAll(".memory_card");
+
+  const removeClassBlock = () => {
+    titleGame.style.display = "none";
+    cardBlocked.forEach((card) => {
+      card.classList.remove("block");
+    });
+  };
+
+  startGameBtn.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target) removeClassBlock();
+  });
 
   let firstCards = null;
 
@@ -68,7 +88,6 @@ function startGame() {
 
   function dubleCheckCards(secondCards) {
     const isEqual = secondCards.dataset.cardId === firstCards.dataset.cardId;
-
     if (!isEqual) {
       setTimeout(() => {
         toggleFlip(secondCards);
@@ -79,6 +98,21 @@ function startGame() {
       secondCards.classList.add("flip");
       firstCards.classList.add("flip");
       firstCards = null;
+      winGame += 1;
+    }
+
+    if (winGame === cardsLength) {
+      alert("You win");
     }
   }
+
+  resetGame.addEventListener("click", () => {
+    reset();
+  });
+
+  const reset = () => {
+    const cards = document.querySelector(".memory_cards");
+    cards.innerHTML = null;
+    startGame();
+  };
 }

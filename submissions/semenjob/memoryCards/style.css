@@ -1,11 +1,12 @@
 .game_container {
+  position: relative;
   display: block;
   width: 700px;
   margin: 0 auto;
 }
 
 .memory_cards {
-  margin-top: 100px;
+  padding-top: 200px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -75,4 +76,33 @@
   pointer-events: none;
   opacity: 30%;
   transition: 0.5s;
+}
+
+.start_game {
+  /* background: rgb(245, 235, 235); */
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  display: block;
+  position: absolute;
+  z-index: 2323;
+}
+.game_title {
+  margin-top: 40px;
+  font-size: 40px;
+  font-weight: 700;
+}
+.start,
+.reset {
+  margin: 40px;
+  width: 300px;
+  height: 30px;
+  display: block;
+  margin: 20px auto;
+}
+
+.block {
+  pointer-events: none;
+  cursor: none;
 }
