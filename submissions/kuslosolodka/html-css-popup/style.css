@@ -3,6 +3,7 @@
   padding: 0;
   font-family: "Raleway", sans-serif;
   text-decoration: none;
+  list-style: none;
 }
 body {
   overflow: hidden;
@@ -22,6 +23,7 @@ body {
 .popup-icon {
   width: 50px;
   height: 50px;
+  cursor: pointer;
 }
 .popup-icon:hover {
   box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px,
@@ -43,25 +45,26 @@ body {
   grid-template-rows: repeat(3, 1fr);
   margin: 30px 30px 30px 30px;
 }
-a {
+.menu-icon {
   display: block;
   margin: 15px 20px 15px 10px;
   align-items: center;
   text-align: center;
   color: black;
 }
-a:hover {
+.menu-icon:hover {
   box-shadow: 3px 6px 16px 0px rgba(184, 180, 184, 1);
   color: rgb(255, 157, 0);
 }
-a:focus {
+.menu-icon:focus {
   color: rgb(255, 157, 0);
   outline: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-img {
+.icon-photo {
   width: 75px;
   height: 75px;
+  object-fit: contain;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -81,6 +84,9 @@ img {
 #load-more-btn {
   display: none;
 }
+#load-more-btn:checked ~ .load-more {
+  display: none;
+}
 #load-more-btn:checked ~ .hidden-icons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -90,13 +96,19 @@ img {
 .hidden-icons {
   display: none;
 }
-p {
+.btn-text {
   margin: 165px;
   color: rgb(104, 102, 102);
+  cursor: pointer;
+}
+.footer:hover {
+  color: rgb(255, 157, 0);
+  cursor: pointer;
 }
 .footer {
   margin: 30px 0 -5px 0;
 }
+
 @media only screen and (max-width: 768px) {
   .popup-button {
     display: flex;
@@ -113,7 +125,7 @@ p {
     border-radius: 10px;
     display: none;
   }
-  a {
+  .menu-icon {
     display: block;
     margin: 0 20px 5px 10px;
     align-items: center;
@@ -129,7 +141,7 @@ p {
     align-items: center;
     border-radius: 2px;
   }
-  p {
+  .btn-text {
     margin: 180px;
     color: rgb(104, 102, 102);
   }
@@ -142,14 +154,14 @@ p {
     margin: 55px 0;
   }
   .popup-icon {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
   .popup-menu {
-    margin: 0 0 0 20px;
+    margin: 0 40px 0 40px;
     box-shadow: 3px 6px 16px 0px rgba(184, 180, 184, 1);
-    height: 600px;
-    width: 350px;
+    height: 400px;
+    width: 300px;
     overflow-y: scroll;
     border-radius: 10px;
     display: none;
@@ -158,35 +170,34 @@ p {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    margin: 30px 15px 15px 15px;
+    margin: 10px 10px 10px 10px;
   }
-  a {
+  .menu-icon {
     display: block;
-    margin: 5px 10px 15px 10px;
+    margin: 7px 0px 2px 0px;
     align-items: center;
     text-align: center;
     color: black;
-    font-size: larger;
   }
   .load-more {
     cursor: pointer;
     background: rgba(205, 203, 203, 0.397);
-    width: 400px;
-    height: 43px;
+    width: 300px;
+    height: 27px;
     display: flex;
     align-items: center;
     border-radius: 2px;
-    font-size: large;
   }
-  img {
-    width: 85px;
-    height: 85px;
+  .icon-photo {
+    width: 60px;
+    height: 60px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    object-fit: contain;
   }
-  p {
-    margin: 156px;
+  .btn-text {
+    margin: 130px;
     color: rgb(104, 102, 102);
   }
   #load-more-btn:checked ~ .hidden-icons {
@@ -194,43 +205,6 @@ p {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     margin: 30px 15px 15px 15px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .popup-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 30px 0;
-  }
-  .popup-menu {
-    margin: 0 0 30px 190px;
-    box-shadow: 3px 6px 16px 0px rgba(184, 180, 184, 1);
-    height: 500px;
-    width: 400px;
-    overflow-y: scroll;
-    border-radius: 10px;
-    display: none;
-  }
-  a {
-    display: block;
-    margin: 0 20px 5px 10px;
-    align-items: center;
-    text-align: center;
-    color: black;
-  }
-  .load-more {
-    cursor: pointer;
-    background: rgba(205, 203, 203, 0.397);
-    width: 400px;
-    height: 43px;
-    display: flex;
-    align-items: center;
-    border-radius: 2px;
-  }
-  p {
-    margin: 180px;
-    color: rgb(104, 102, 102);
   }
 }
 @media only screen and (min-width: 2560px) {
@@ -259,7 +233,7 @@ p {
     grid-template-rows: repeat(3, 1fr);
     margin: 30px 15px 15px 15px;
   }
-  a {
+  .menu-icon {
     display: block;
     margin: 15px 10px 15px 10px;
     align-items: center;
@@ -277,14 +251,14 @@ p {
     border-radius: 2px;
     font-size: x-large;
   }
-  img {
+  .icon-photo {
     width: 150px;
     height: 150px;
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-  p {
+  .btn-text {
     margin: 470px;
     color: rgb(104, 102, 102);
     font-size: xx-large;
