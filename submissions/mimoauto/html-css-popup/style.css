@@ -157,8 +157,8 @@ body {
     transition: ease-in-out 0.3s;
 }
 
-.menu-nav-popup-item a,
-.nav-popup-more-item a {
+.menu-nav-popup-item .menu-nav-popup-item-link,
+.nav-popup-more-item .menu-nav-popup-item-link  {
     display: flex;
     flex-direction: column;
     align-items: center;
