@@ -14,15 +14,16 @@ const sizes = {
     enemyCount: 3
 }
 
-const Star = function(numCol) {
+const Star = function(numCol, player) {
     this.x = sizes.colWidth * numCol; 
     this.y = -sizes.starVerticalShift;
     this.sprite = 'images/Star.png';
+    this.player = player;
 }
 
-Star.prototype.update = function(player) {
-    if (player.y < 0) {
-        let index = player.x / sizes.colWidth; 
+Star.prototype.update = function() {
+    if (this.player.y < 0) {
+        let index = this.player.x / sizes.colWidth; 
         allStars[index] = null;
         if (allStars.filter(elem => elem).length == 0) {
             setTimeout(()=> {
@@ -39,7 +40,7 @@ Star.prototype.render = function() {
 
 // Enemies our player must avoid
 
-const Enemy = function(numRow) {
+const Enemy = function(numRow, player) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -49,6 +50,7 @@ const Enemy = function(numRow) {
     this.y = sizes.rowHeight * numRow - sizes.enemyVerticalShift; 
     this.speed = (Math.random() + sizes.speedCoefficient) * sizes.colWidth; 
     this.sprite = 'images/enemy-bug.png';
+    this.player = player;
 };
 
 // Update the enemy's position, required method for game
@@ -63,7 +65,7 @@ Enemy.prototype.update = function(dt) {
         this.x = sizes.colWidth * -1; 
         this.speed = (Math.random() + sizes.speedCoefficient) * sizes.colWidth; 
     }
-    this.isCollided(player);
+    this.isCollided(this.player);
 };
 
 Enemy.prototype.isCollided = function(player) {
@@ -139,17 +141,17 @@ let allEnemies;
 let player;
 
 function launch() {
+    player = new Player();
+
     allStars = [];
     for (let i = 0; i < sizes.starCount; i++) {
-        allStars.push(new Star(i));
+        allStars.push(new Star(i, player));
     }
     
     allEnemies = [];
     for (let i = 1; i <= sizes.enemyCount; i++){
-        allEnemies.push(new Enemy(i));
-    }
-    
-    player = new Player();
+        allEnemies.push(new Enemy(i, player));
+    }  
 }
 
 launch();
