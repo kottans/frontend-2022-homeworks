@@ -87,6 +87,16 @@ body {
     filter: drop-shadow(0 4px 2px gray);
 }
 
+.popup-more-lable:hover {
+    filter: drop-shadow(0 4px 2px gray);
+    background-color: rgb(168, 168, 168);
+}
+
+#more-active:focus+label{
+    filter: drop-shadow(0 4px 2px gray);
+    background-color: rgb(147, 147, 147);
+}
+
 .menu-nav-link:focus,
 .menu-nav-popup-item-link:focus {
     background-color: rgba(82, 82, 255, 0.4);
@@ -171,6 +181,7 @@ body {
     border: solid 2px rgba(42, 42, 255, 0.5);
     border-radius: 5px;
     background-color: rgb(209, 209, 209);
+    transition: ease-in-out 0.3s;
 }
 
 .icon {
