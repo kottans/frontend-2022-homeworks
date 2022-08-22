@@ -6,6 +6,7 @@
 
 body {
   padding: 0;
+  background-color: cadetblue;
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
@@ -21,7 +22,7 @@ body {
   margin-bottom: 50px;
   text-align: center;
   font-size: 55px;
-  font-family: 'Mochiy Pop P One', sans-serif;
+  font-family: "Mochiy Pop P One", sans-serif;
   background: #f66d52;
   background: -webkit-linear-gradient(to top right, #f66d52 0%, #c521e3 100%);
   background: -moz-linear-gradient(to top right, #f66d52 0%, #c521e3 100%);
@@ -51,7 +52,7 @@ img {
   border-top-right-radius: 9px;
 }
 
-.allHuman {
+.allHumans {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -91,11 +92,10 @@ img {
   font-size: 30px;
   margin-bottom: 20px;
   letter-spacing: 3px;
-
 }
 
 .filter_menu {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   min-width: 150px;
   display: flex;
   align-items: center;
@@ -108,36 +108,73 @@ img {
   flex-direction: row;
   margin: 20px;
 }
-
-.radio_sort, .radio_sort {
-  background-color: #b3b3b3;
+.radio_sort,
+.radio_sort {
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 5px;
   height: 30px;
   line-height: 30px;
   color: #464646;
   width: 60px;
   font-size: 15px;
   display: inline-block;
-  cursor: pointer;
   text-align: center;
   margin: 10px 20px 10px 20px;
+  border-radius: 2rem;
+  border-radius: 2rem;
+  padding: 5px;
+  outline: 2px solid black;
+}
+.radio_sort_btn {
+  cursor: pointer;
+  background-color: #8f8f8f;
+  color: #c7c7c7;
+  font-size: 18px;
+  border-radius: 5px;
+  margin-left: 15px;
+  padding: 5px;
+  outline: 1px solid black;
+}
+.confirm_btn {
+  display: none;
+}
+.radio_sort_btn:active {
+  background-color: rgb(156, 156, 156);
+  padding: 7px;
+  color: #464646;
+  outline: 1px solid black;
+  box-shadow: 0 0 3px 3px whitesmoke;
+}
+.man_sort {
+  margin-right: 16px;
+}
+.radio_sort:hover {
+  background-color: #d8d8d8;
+  box-shadow: 0px 3px 20px rgba(216, 216, 216, 0.5);
 }
 
-.radio_sort:hover, .radio_sort:hover {
-  background-color: rgb(209, 209, 209);
+.sort_btn:checked ~ .radio_sort {
+  outline: 2px solid red;
+  background-color: #d8d8d8;
 }
 
-.radio_sort input {
-  position: absolute;
-  opacity: 0;
+.sort_btn {
+  display: none;
 }
 
-.sort_by_gender {
-  font-size: 17px;
-  letter-spacing: 3px;
+.gender_checkbox {
+  cursor: pointer;
 }
 label {
   cursor: pointer;
 }
+.sort_by_gender {
+  font-size: 17px;
+  letter-spacing: 3px;
+}
+
 .sort_gender {
-text-align: center;
+  display: flex;
+  justify-content: center;
 }

@@ -1,35 +1,35 @@
-const cardOfHumans = document.getElementById("allHumans");
+const cardsOfFriends = document.getElementById("allHumans");
 const searchBar = document.getElementById("search");
-const checkboxesGender = document.getElementById("filter_gender");
 
-//TODO: call displayUsers function just once
-
-let filterFriend;
-
+let filteredFriends;
+let allFriends;
+let sortedFriends;
+let friends;
 fetch("https://randomuser.me/api/?results=10")
   .then((response) => response.json())
   .then((users) => {
-    renderFriends(users.results);
+    friends = users.results;
+    renderFriends(friends);
+    displayUsers(friends);
     document.addEventListener("click", (event) =>
-      filterSetting(event, users.results)
+      filterSetting(event, friends)
     );
   });
 
-function renderFriends(friends) {
-  selectFriends(friends);
-  searchFriends();
-}
-
 function filterSetting(event, friends) {
-  selectFriends(friends);
+  renderFriends(friends);
+  filterByGender(friends);
 
-  if (event.target.closest(".filter_menu")) sortFriends(event.target, filterFriend);
+  if (event.target.closest(".filter_menu"))
+    sortFriends(event.target, filteredFriends);
 }
-
-const displayUsers = (friends) => {
-  //TODO: rename variables
-  //TODO: табуляция для html
-  const htmlString = friends
+function renderFriends(friends) {
+  filterByGender(friends);
+  searchFriends();
+  sortFriends(friends);
+}
+function displayUsers(friends) {
+  const createCards = friends
     .map((item) => {
       return `
     <div class="card_person">
@@ -42,10 +42,10 @@ const displayUsers = (friends) => {
     </div>`;
     })
     .join("");
-  cardOfHumans.innerHTML = htmlString;
-};
+  cardsOfFriends.innerHTML = createCards;
+}
 
-function increaseSortByName(friends) {
+function ascendingOfName(friends) {
   const sortedIncrease = friends.sort(function (a, b) {
     if (a.name.first.toLowerCase() < b.name.first.toLowerCase()) return -1;
     if (a.name.first.toLowerCase() > b.name.first.toLowerCase()) return 1;
@@ -54,7 +54,7 @@ function increaseSortByName(friends) {
   displayUsers(sortedIncrease);
 }
 
-function decreaseSortByName(friends) {
+function descendingOfName(friends) {
   const sortedDecrease = friends.sort(function (a, b) {
     if (a.name.first.toLowerCase() > b.name.first.toLowerCase()) return -1;
     if (a.name.first.toLowerCase() < b.name.first.toLowerCase()) return 1;
@@ -64,58 +64,53 @@ function decreaseSortByName(friends) {
 }
 
 function sortFriends(target, friends) {
-  console.log(friends)
   const button = target.id;
   switch (button) {
     case "a-z":
-      increaseSortByName(friends);
+      ascendingOfName(friends);
       break;
     case "z-a":
-      decreaseSortByName(friends);
+      descendingOfName(friends);
       break;
     case "0-9":
-      increaseSortByAge(friends);
+      ascendingOfAge(friends);
       break;
     case "9-0":
-      decreaseSortByAge(friends);
+      descendingOfAge(friends);
+      break;
+    case "set":
+      displayUsers(friends);
       break;
   }
 }
 
-function increaseSortByAge(friends) {
-  const sortedAgeIncrease = friends.sort(function (a, b) {
+function ascendingOfAge(friends) {
+  const sortedAgeAscending = friends.sort(function (a, b) {
     return a.dob.age - b.dob.age;
   });
-  displayUsers(sortedAgeIncrease);
+  displayUsers(sortedAgeAscending);
 }
 
-function decreaseSortByAge(friends) {
-  const sortedAgeDecrease = friends.sort(function (a, b) {
+function descendingOfAge(friends) {
+  const sortedAgeDescending = friends.sort(function (a, b) {
     return b.dob.age - a.dob.age;
   });
-  displayUsers(sortedAgeDecrease);
+  displayUsers(sortedAgeDescending);
 }
 
 function filterByGender(friends) {
   const checkboxes = Array.from(
     document.querySelectorAll(".gender_checkbox:checked")
   );
-  filterFriend = friends.filter((item) =>
+  filteredFriends = friends.filter((item) =>
     checkboxes.some((gender) => item.gender === gender.value)
   );
 }
 
-//TODO: rename function
-function selectFriends(friends) {
-  filterByGender(friends);
-  displayUsers(filterFriend);
-}
-
 function searchFriends() {
-  searchBar.addEventListener("keyup", (e) => {
+  searchBar.addEventListener("input", (e) => {
     const search = e.target.value.toLowerCase();
-
-    const filterFriends = filterFriend.filter((item) => {
+    const filterFriends = filteredFriends.filter((item) => {
       const { first: firstName, last: lastName } = item.name;
       return `${firstName} ${lastName}`.toLowerCase().includes(search);
     });
