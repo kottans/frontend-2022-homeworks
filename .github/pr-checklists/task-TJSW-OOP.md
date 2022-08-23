@@ -1,15 +1,6 @@
-_Thank you for contributing to this repo!_ ❤️️
+## A Tiny JS World -- OOP exercise check list
 
-# A Tiny JS World -- OOP exercise check list
-
-Relates to
-[A Tiny JS World](https://github.com/OleksiyRudenko/a-tiny-JS-world) OOP exercise.
-
-Let's do some self-checks to fix most common issues and to make some improvements to the code while reviewers find some time to dedicate it to your submission.
-
-Go through the checklist below, fix code as appropriate and **mark fulfilled requirements when you genuinely believe you are done**.
-
-Please, feel free to ask questions here or seek for help in the Students' chat.
+_Relates to [A Tiny JS World](https://github.com/OleksiyRudenko/a-tiny-JS-world) OOP exercise._
 
 ## Check-list - definition of done
 
@@ -37,6 +28,3 @@ Please, feel free to ask questions here or seek for help in the Students' chat.
 Helpful resources:
 - [ES6 classes cheat-sheet](https://gist.github.com/OleksiyRudenko/672d39b08d9d0da4e179aca49876c58b)
 - [Levelling skills up on Tiny JS World](https://github.com/OleksiyRudenko/a-tiny-JS-world#leveling-your-skills-up)
-
-_Sincerely yours,_
-_Submissions Kottachecker_ 😺
