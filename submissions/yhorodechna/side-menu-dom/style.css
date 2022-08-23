@@ -1,12 +1,10 @@
-
-
 body {
   background-color: #000;
 }
 .wrapper {
   position: relative;
   height: 100vh;
-  background: url("img/hogwarts.jpeg") -800px 0 / cover no-repeat;
+  background: url("img/hogwarts.jpeg") -900px 0px / cover no-repeat;
   overflow: hidden;
 }
 .container {
@@ -37,7 +35,7 @@ body {
 }
 
 .header__title {
-  font-family: 'Henny Penny', cursive;
+  font-family: "Henny Penny", cursive;
   flex-grow: 1;
   text-align: center;
   font-size: 40px;
@@ -76,7 +74,7 @@ body {
   padding: 100px 20px;
 }
 .nav__item {
-  font-family: 'Henny Penny', cursive;
+  font-family: "Henny Penny", cursive;
   text-align: center;
 }
 .nav__link {
@@ -102,7 +100,6 @@ a.nav__link.active .nav__text {
 }
 nav.nav__full {
   display: block;
-  
   background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(97, 97, 97, 1) 100%);
   height: 100vh;
   width: 100vw;
@@ -110,6 +107,7 @@ nav.nav__full {
   top: 0;
   left: 0;
   animation: fade-in 0.4s;
+  z-index: 10;
 }
 .main {
   position: absolute;
@@ -119,17 +117,17 @@ nav.nav__full {
   margin: auto auto;
   overflow: auto;
   height: 90%;
+  z-index: 1;
 }
-.cache {
-  width: 0;
-  height: 0;
-  overflow: hidden;
+.main__none {
+  display: none;
 }
 .main__article {
   width: 60%;
   margin: 0 auto;
   position: relative;
 }
+
 .main__img {
   margin: 0px 0px 50px 0px;
   width: 25%;
@@ -182,7 +180,7 @@ nav.nav__full {
     width: 90%;
   }
 }
-@media (min-width: 476px) and (max-width: 991px) { 
+@media (min-width: 476px) and (max-width: 991px) {
   .header {
     height: 50px;
   }
@@ -204,7 +202,7 @@ nav.nav__full {
     width: 90%;
   }
 }
-@media  (max-width: 992px) {
+@media (max-width: 992px) {
   .wrapper {
     background-position: -1300px 0;
   }
@@ -231,5 +229,3 @@ nav.nav__full {
     opacity: 1;
   }
 }
-
-
