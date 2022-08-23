@@ -1,4 +1,3 @@
-/*Правило для тіла сторінки*/
 html, body {
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
@@ -8,21 +7,19 @@ html, body {
     border: 0;
 }
 
-/*Правило для шапки*/
 .header {
     display: flex;
     justify-content: flex-end;
     padding: 20px 0;
     position: relative;
 }
-/*---------------------------------------------------------------------------
-Правило для меню*/
+
 .top_menu {
     display: flex;
     padding: 0 15px;
     align-items: center;
 }
-/*Текстові блоки меню*/
+
 .top_menu__item {
     line-height: 30px;
     padding: 0 10px 0 10px;
@@ -30,12 +27,11 @@ html, body {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.75);
 }
-/*Поведінка меню при наведенні курсора*/
+
 .top_menu__item-container:hover {
     text-decoration: underline;
-    /*opacity: 85%;*/
 }
-/*Елемент меню - повідомлення*/
+
 .top_menu__item_bell {
     margin-left: 5px;
     width: 20px;
@@ -45,7 +41,7 @@ html, body {
     background: url("../icons/bell.png") center center no-repeat;
     background-size: 20px 25px;
 }
-/*Елемент меню - профіль користувача*/
+
 .top_menu__item_user {
     display: block;
     height: 32px;
@@ -54,17 +50,20 @@ html, body {
     background: url("../icons/favicon.png") center center no-repeat;
     background-size: 32px 32px;
 }
-/*---------------------------------------------------------------------------
-Чекбокс попапа*/
+
+.top_menu__item_bell:hover, .top_menu__item_user:hover, .button_popup:hover {
+    opacity: 75%;
+}
+
 .input_popup {
     position: absolute;
     opacity: 0;
 }
-/*Видимість попапа при натисканні на чекбокс*/
+
 .input_popup:checked ~ .popup {
     visibility: visible;
 }
-/*Попап - основна частина*/
+
 .popup {
     visibility: hidden;
     display: flex;
@@ -82,7 +81,6 @@ html, body {
     margin: 0;
 }
 
-/*Псевдокласи для стрілки попапа*/
 .popup:after,
 .popup:before {
   content: "";
@@ -106,65 +104,67 @@ html, body {
   top: -9px;
 }
 
-/*Кнопка відкриття попапа*/
 .button_popup {
     width: 30px;
     height: 30px;
     display: block;
     background: url("../icons/popup-button.png") center center no-repeat;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
 }
-/*Фокусування на чекбоксі та кнопці відкриття попапа*/
+
 .input_popup:focus ~ .button_popup {
-    border: 1px solid lightgray;
-    border-radius: 10%;
-}
-/*Рамка активації кнопки відкриття попапа*/
-.input_popup:checked ~ .button_popup{
     border: 2px solid rgba(0, 0, 0, 0.75);
     border-radius: 10%;
 }
-/*Правило для класу попапа*/
+
+.input_popup:checked ~ .button_popup{
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10%;
+}
+
 .popup_window {
     width: 100%;
     height: 100%;
     overflow: auto;
 }
-/*Загальний клас елементів попапа*/
+
 .popup_window_list {
     display: flex;
     flex-wrap: wrap;
     padding: 28px 18px 28px 28px;
 }
-/*Підклас видимих елементів попапа*/
+
 .popup_window_visible {
     margin-top: 0px;
     padding-top: 0px;
 }
-/*Підклас прихованих елементів попапа*/
+
 .popup_window_hidden {
     display: none;
 }
-/*Контейнер елемента попапа*/
+
 .popup_window_list__item {
     width: 80px;
     height: 80px;
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    border: 1px solid transparent;
 }
-/*Поведінка елементів попапа*/
+
 .popup_window_list__item:hover {
-    border: 1px solid rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.75); 
 }
-/*Зображення елемента попапа*/
+
 .popup_window__img {
     height: 60px;
     width: 60px;
-    display: block;
+    display: inline-block;
 }
-/*Підпис елемента попапа*/
+.popup_window__img-src {
+    width: 100%;
+}
 .popup_window__label {
     font-size: 13px;
     text-align: center;
@@ -172,7 +172,7 @@ html, body {
     text-decoration: none;
     display: block;
 }
-/*Кінець елементів попапа - лінк Even More*/
+
 .top_menu__item_other {
     display: block;
     flex: auto;
@@ -180,139 +180,62 @@ html, body {
     padding-top: 30px;
     margin-bottom: -35px;
 }
-/*---------------------------------------------------------------------------
-Чекбокс кнопки More*/
+
 .hidden_input {
     appearance: none;
     box-sizing:content-box;
     margin: 0px;
     border: none;
 }
-/*Фокусування на чекбоксі та кнопці More*/
+
 .hidden_input:focus ~ .morebutton {
     border: 1px solid rgba(0, 0, 0, 0.75);
     border-radius: 3%;
 }
-/*Кнопка More*/
+
 .morebutton {
     display: block;
     flex: auto;
     text-align: center;
     background-color: rgba(128, 128, 128, 0.1);
     padding: 10px 0px 9px 0px;
-    margin-top: -24px;
+    margin-top: -32px;
     cursor: pointer;
 }
-/*Відкриття прихованих елементів попапа*/
+
 .hidden_input:checked ~ .popup_window_hidden {
     border-top: 2px solid #e5e5e5;
     display: flex;
 }
-/*Приховання кнопки More при натисканні*/
+
 .hidden_input:checked ~ .morebutton {
     display: none;
 }
-/*---------------------------------------------------------------------------
-Прив'язка зображень іконок до видимих елементів попапа*/
-.popup_window_visible .popup_window_list__item:first-child .popup_window__img {
-    background: url("../icons/calendar.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(2) .popup_window__img {
-    background: url("../icons/mail.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(3) .popup_window__img {
-    background: url("../icons/news.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(4) .popup_window__img {
-    background: url("../icons/maps.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(5) .popup_window__img {
-    background: url("../icons/files.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(6) .popup_window__img {
-    background: url("../icons/contacts.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(7) .popup_window__img {
-    background: url("../icons/tanslation.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(8) .popup_window__img {
-    background: url("../icons/videos.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(9) .popup_window__img {
-    background: url("../icons/search.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(10) .popup_window__img {
-    background: url("../icons/photos.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(11) .popup_window__img {
-    background: url("../icons/apps.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_visible .popup_window_list__item:nth-child(12) .popup_window__img {
-    background: url("../icons/documents.png") center / cover no-repeat;
-    background-size: 70%;
-}
-/*Прив'язка зображень іконок до прихованих елементів попапа*/
-.popup_window_hidden .popup_window_list__item:first-child .popup_window__img {
-    background: url("../icons/chat.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_hidden .popup_window_list__item:nth-child(2) .popup_window__img {
-    background: url("../icons/classroom.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_hidden .popup_window_list__item:nth-child(3) .popup_window__img {
-    background: url("../icons/collection.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_hidden .popup_window_list__item:nth-child(4) .popup_window__img {
-    background: url("../icons/mars.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_hidden .popup_window_list__item:nth-child(5) .popup_window__img {
-    background: url("../icons/blogs.png") center / cover no-repeat;
-    background-size: 70%;
-}
-.popup_window_hidden .popup_window_list__item:nth-child(6) .popup_window__img {
-    background: url("../icons/promo.png") center / cover no-repeat;
-    background-size: 70%;
-}
-/*-----------------------------------------------------------------------------
-Розділ блока пошуку*/
+
 .find {
     display: flex;
     justify-content: center;
     padding: 50px 15px;
 }
-/*Контейнер блока пошуку*/
+
 .find-container {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-/*Клас для фонової картинки*/
+
 .find_cover {
     width: 100%;
     height: 100%;
     padding-bottom: 30px;
     background-size: cover;
 }
-/*Клас пошукового поля*/
+
 .find_field {
     width: 100%;
     position: relative;
 }
-/*Поле пошуку*/
+
 .find_field-input {
     width: 100%;
     height: 100%;
@@ -327,7 +250,7 @@ html, body {
     color: #80868b;
     font-size: 14px;
 }
-/*Іконка-мікрофонка*/
+
 .find_field-icon {
     width: 20px;
     height: 30px;
@@ -336,7 +259,7 @@ html, body {
     background: url("../icons/mic.png") center no-repeat;
     background-size: cover;
 }
-/*Поведінка поля пошуку під час вибору з клавіатури та миші*/
+
 .find_field-input:focus {
     border: 2px solid rgba(0, 0, 0, 0.75);
 }
