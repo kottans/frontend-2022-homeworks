@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>js-dom</js-dom>
+    </title>
+</head>
+
+<body>
+    <header class="header-title"><img src="img/north.svg" alt="i-n" class="svg-icon ">
+        The North of Spain <img src="img/spanish-flag.svg" alt="sf" class="svg-icon spanish-flag">
+    </header>
+    <div class="bigContainer">
+    <div class="container">
+        <nav>
+            <ul class="menu">
+                <li> <a href="#" id="gal" class="menu-text selectedRegion "onclick="changeContent('galicia','gal')">GALICIA</a> </li>
+                <li> <a href="#" id="ast" class="menu-text " onclick="changeContent('asturias','ast')">ASTURIAS</a></li>
+                <li> <a href="#" id="can" class="menu-text " onclick="changeContent('cantabria','can')">CANTABRIA</a></li>
+                <li> <a href="#" id="pva" class="menu-text " onclick="changeContent('pvasco','pva')">P.VASCO</a></li>
+                <li> <a href="#" id="nav" class="menu-text " onclick="changeContent('navarra','nav')">NAVARRA</a></li>
+            </ul>
+        </nav>
+
+        <article id="galicia" class="main active">
+            <h1 class="main-title">Galicia</h1>
+            <p class="main-text"> Once again, seafood is an integral part of its local cuisine,
+                and it offers some decent Spanish wine varieties. Of course, it earns it nickname
+                Green Galicia from its scenic landscape, boosted by its geographical weather climate.
+                Sitting on the north-west coast, temperatures are lower than its counterparts in eastern
+                and southern Spain yet, for many people, this is a welcome relief and ideal conditions
+                for outdoor explorers.
+            </p>
+            <div class="img-container">
+                <img src="img/galicia-capital.jpg" alt="gal-cap">
+                <img src="img/gal-map-22.png" alt="gal-map">
+                <img src="img/galicia-2.jpg" alt="gal-1">
+            </div>
+        </article>
+
+        <article id="asturias" class="main ">
+            <h1 class="main-title">Asturias</h1>
+            <p class="main-text"> Expect lower temperatures in Asturias because this
+                delightful region sits on the northern coast. The bonus is wonderful scenic
+                landscapes that are a delight to explore, and the selective, Costa Verde that
+                in recent years is rising in popularity among discerning holidaymakers and overseas
+                property buyers. Naturally, given it shines of Mother Natures power, it attracts all
+                outdoor lovers, who mainly flock to the nationally protected park yet dont
+                underestimate the sandy beaches of Costa Verde either. </p>
+            <div class="img-container">
+                <img src="img/asturias-capital.jpg" alt="ast-cap">
+                <img src="img/ast-map.png" alt="ast-map">
+                <img src="img/asturias-2.jpg" alt="ast-1">
+            </div>
+        </article>
+
+        <article id="cantabria" class="main ">
+            <h1 class="main-title">Cantabria</h1>
+            <p class="main-text">Once you arrive in Cantabria, drop your bags and head to a restaurant
+                for the sumptuous local dish of deep-fried squid, alongside other seafood delights.
+                Cantabrias other claim to fame is that Santander in the Bay of Biscay that attracts the
+                royal family during summer. For us normal members of society, Santander, is a major ferry port,
+                hence getting around to other places is easy. While in Cantabria, see the amazing Altamira cave
+                painting. An abundance of nature parks makes this a great outdoor region. </p>
+            <div class="img-container">
+                <img src="img/cantabria-capital.jpg" alt="can-cap">
+                <img src="img/can-map.png" alt="can-map">
+                <img src="img/cantabria-2.jpg" alt="can-1">
+            </div>
+        </article>
+
+        <article id="pvasco" class="main ">
+            <h1 class="main-title">Pais Vasco</h1>
+            <p class="main-text">This is when understanding Spains autonomous communities can get
+                a little confusing. The Basque country, sitting on the border with France, has its own language and is
+                fiercely
+                independent. Hence, expect a unique culture, and tradition from the mainstream Spanish stereotype.
+                its most prominent city is San Sebastian, boasting of an excellent gastronomy scene in Spain.
+                Make a mental note to enjoy pincos served in local bars. Bilbao also offers the esteemed
+                Guggenheim museum.Galicia lies at the northwest tip of Spain. An Atlantic coastal region.
+            </p>
+            <div class="img-container">
+                <img src="img/pvasco-capital.jpg" alt="pva-cap">
+                <img src="img/pvas-map.png" alt="pva-map">
+                <img src="img/pvasco-2.jpg" alt="pva-1">
+            </div>
+        </article>
+
+        <article id="navarra" class="main">
+            <h1 class="main-title">Navarra</h1>
+            <p class="main-text"> With this autonomous community, dont think so much about the beaches but more of
+                remote
+                inland villages screaming of authentic traditions and culture. Controversy surrounds it because of the
+                annual
+                bull-running tradition, that is part of the Sanfermines festival. Aside from that, being an inland
+                region,
+                it attracts people who love the great outdoors and rambling over the green hills and mountains. Unlike
+                other places
+                in Spain, mainstream tourism is not an enormous factor in Navarree, and locals rely on more traditional
+                farming methods for sources of income.
+            <div class="img-container">
+                <img src="img/navarra-capital.jpg" alt="nav-cap">
+                <img src="img/nav-map.png" alt="nav-map">
+                <img src="img/navarra-2.jpg" alt="nav-1">
+            </div>
+        </article>
+       
+    </div>
+    <footer class="my-footter"> 2022</footer>
+</div>
+
+    
+    <script src="myScript.js"></script>
+</body>
+
+
+</html>
