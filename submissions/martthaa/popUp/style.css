@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+body {
+  height: 100vh;
+  font-size: 14px;
+  text-align: center;
+  color: black;
+  background-image: url(./img/bg.jpg);
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+  background-repeat: no-repeat;
+  background-position: 20% 20%;
+}
+
+.nav{
+    display: flex;
+    justify-content: flex-end;
+}
+
+a,a:visited {
+  text-decoration: none;
+  color: rgb(139,69,19);
+}
+
+label {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+}
+
+.box{
+  top: 40px;
+  right: 40px;
+  gap: 4em;
+  display: inline-flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Poppins", sans-serif;
+}
+
+.element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon{
+  width: 8em;
+  height: 8em;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.popup{
+  position: absolute;
+  right: 80px;
+  top: 10px;
+  width: 400px;
+  max-height: 480px;
+  border-radius: 20px;
+  transition: all 0.5s;
+  background-color:  rgba(215, 207, 196, 0.5);
+  box-shadow: 0px 0px 10px 1px gray;
+  display: flex;
+  flex-wrap: wrap;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  padding: 20px 10px;
+}
+
+.check_input:checked ~ .popup {
+  opacity: 1;
+  visibility: visible;
+}
+
+.avatar {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+
+.popup_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0.4em;
+  font-size: 18px;
+}
+
+.popup_btn, .link_more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+  font-family: 'Brush Script MT', cursive;
+  padding-top: 40px;
+  font-size: 40px;
+}
+
+.more {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+}
+
+li.popup_item {
+  width: 9em;
+  height: 9.5em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.popup_link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Brush Script MT', cursive;
+}
+
+.innerText{
+    font-size: 30px;
+}
+
+.popup_more:checked ~ .more {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  border-radius: 5px;
+  transition: all 0.5s;
+  box-shadow: 0px;
+}
+
+label.popup_btn, a.link_more{
+    color: black ;
+}
+
+label.popup_btn:hover, a.link_more:hover{
+    color: grey;
+}
+
+.popup_more:checked ~ .popup_btn {
+  opacity: 0;
+  visibility: hidden;
+}
+
+a:hover {
+  color: gray;
+}
+
+.last{
+    padding-top: 35px;
+}
+
+.element-item:focus-within {
+  outline: none;
+}
+
+.icon-chat img, .check img, .icon-recipes img{
+    width: 40px;
+    height: 40px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip:after {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    left: -90px;
+    display: none;
+    text-align: center;
+    background-color: grey;
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px;
+    text-decoration: none;
+  }
+
+  .tooltip:hover:after {
+    display: block;
+  }
+
+  .tooltip:nth-child(1)::after {
+    content: "click to watch more recipes";
+  }
+
+  .tooltip:nth-child(2)::after {
+    content: "click to watch menu of sweets";
+  }
+
+  .tooltip:nth-child(3)::after {
+    top: 70px;
+    content: "click to get in touch with me via email";
+  }
