@@ -7,66 +7,22 @@
 
 // ======== OBJECTS DEFINITIONS ========
 
-class Inhabitant {
-	constructor(species, name, gender, legs, hands, saying) {
-		this.species = species
-		this.name = name
-		this.gender = gender
-		this.legs = legs
-		this.hands = hands
-		this.saying = saying
-		this.friends = []
-	}
+function CreateInhabitant(species, name, gender, legs, hands, saying) {
+	this.species = species
+	this.name = name
+	this.gender = gender
+	this.legs = legs
+	this.hands = hands
+	this.saying = saying
+	this.friends = []
 }
 
-class Dog extends Inhabitant {
-	constructor(name, gender) {
-		super('dog', name, gender, 4, 0, 'Woof-woof!')
-	}
-}
-
-class Cat extends Inhabitant {
-	constructor(name, gender) {
-		super('cat', name, gender, 4, 0, 'Meow-meow!')
-	}
-}
-
-class Human extends Inhabitant {
-	constructor(name, gender) {
-		super('human', name, gender, 2, 2, 'Hello everyone!')
-	}
-}
-
-class Pirate extends Inhabitant {
-	constructor(name, gender, legs, hands) {
-		super('human', name, gender, legs, hands, 'Give no quarter!')
-	}
-}
-
-const dog = new Dog('Marley', 'male')
-const cat = new Cat('Sophie', 'female')
-const man = new Human('John Doe', 'male')
-const pirate = new Pirate('John Silver', 'male', 1, 2)
-const woman = new Human('Jane Doe', 'female')
-
-// const woman2 = woman
-// woman2.name = 'Sonia Smith'
-
-class CatWoman {
-	constructor(name) {
-		this.species = 'cat-woman'
-		this.name = name
-		this.gender = 'female'
-		this.legs = 2
-		this.hands = 2
-		this.friends = []
-	}
-	get saying() {
-		return cat.saying
-	}
-}
-
-const catWoman = new CatWoman('Selina Kyle')
+const dog = new CreateInhabitant('dog', 'Marley', 'male', 4, 0, 'Woof-woof!')
+const cat = new CreateInhabitant('cat', 'Sophie', 'female', 4, 0, 'Meow-meow!')
+const man = new CreateInhabitant('human', 'John Doe', 'male', 2, 2, 'Hello everyone!')
+const woman = new CreateInhabitant('human', 'Jane Doe', 'female', 2, 2, 'Hi all!')
+const catWoman = new CreateInhabitant('cat-woman', 'Selina Kyle', 'female', 2, 2, cat.saying)
+const pirate = new CreateInhabitant('human', 'John Silver', 'male', 1, 2, 'Give no quarter!')
 
 dog.friends.push(cat.name, man.name)
 cat.friends.push(dog.name, woman.name, catWoman.name)
@@ -95,10 +51,14 @@ const allInhabitant = [dog, cat, man, woman, catWoman, pirate]
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-function greetings(obj) {
-	return `${obj.saying} My name is ${obj.name} and I am a ${obj.species}! My gender is ${obj.gender}. I have ${obj.hands} ${obj.hands === 1 ? 'hand' : 'hands'} and ${obj.legs} ${obj.legs === 1 ? 'leg' : 'legs'}. I ${obj.friends.length < 1 ? 'don\'t have friends': obj.friends.length === 1 ? 'have ' + obj.friends.length + ' friend: ' + obj.friends[0] : 'have ' + obj.friends.length + ' friends: ' + obj.friends.join(', ')}.`
+function getStringFromObject(obj) {
+	const arr = []
+	for (let key in obj) {
+		arr.push([key, obj[key]])
+	}
+	return arr.map(el => Array.isArray(el[1]) && el[1].length === 0 ? 'No friends' : Array.isArray(el[1]) ? el[1].join(', ') : el[1]).join('; ')
 }
 
 allInhabitant.forEach(el => {
-	print(greetings(el))
+	print(getStringFromObject(el))
 })
