@@ -13,18 +13,7 @@ html {
   padding: 0px;
 }
 
-h1,
-h2,
-h3,
-h4,
-ul,
-p,
-b {
-  margin: 0;
-  padding: 0;
-}
-
-body {
+.body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #b886a8;
   background-color: #f8f4f0;
@@ -94,7 +83,9 @@ body {
   box-sizing: border-box;
 }
 
-.item {
+.nav-list-item,
+.item-popup,
+.item-menu-more {
   list-style: none;
   text-decoration: none;
 }
@@ -202,7 +193,9 @@ body {
   background: #b886a8;
 }
 
-.item:hover,
+.nav-list-item:hover,
+.item-popup:hover,
+.item-menu-more:hover,
 .kottans:hover,
 .label-more:hover {
   border-radius: 6px;
