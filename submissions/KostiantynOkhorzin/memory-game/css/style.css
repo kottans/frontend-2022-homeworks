@@ -90,7 +90,7 @@ body {
   opacity: 1;
 }
 
-.game__card_selected {
+.game__card_flipped {
   transform: rotateY(180deg);
 }
 
@@ -120,4 +120,3 @@ body {
 .game__card-back {
   transform: rotateY(180deg);
 }
-

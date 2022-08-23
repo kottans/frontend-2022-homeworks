@@ -1,3 +1,5 @@
+'use strict';
+
 const gameBody = document.querySelector('.game__body');
 let playerSteps = 0;
 
@@ -15,6 +17,13 @@ const getData = () => [
     { imgSrc: "img/kiwi.png", name: "kiwi" },
     { imgSrc: "img/lime.png", name: "lime" },
 ];
+
+const styleList = {
+    card: 'game__card',
+    flippedCard: 'game__card_flipped',
+    selectedCard: 'game__card_selected',
+    hiddenCard: 'game__card_hidden'  
+}
 
 class GameCard {
     constructor(img, name) {
@@ -41,27 +50,26 @@ const renderCards = () => {
 };
 
 const checkCards = (e) => {
-    if (e.target.classList.contains('game__card')) {
-        e.target.classList.add('game__card_selected', 'game__card_flipped');
-        const flippedCards = document.querySelectorAll('.game__card_flipped');
-        const selectedCards = document.querySelectorAll('.game__card_selected');
-        if (flippedCards.length === 2) {
-            if (flippedCards[0].dataset.name === flippedCards[1].dataset.name) {
-                flippedCards.forEach((card) => {
-                    card.classList.remove('game__card_flipped');
-                    setTimeout(() => card.classList.add('game__card_hidden'), 1000);
+    if (e.target.classList.contains(styleList.card)) {
+        e.target.classList.add(styleList.selectedCard, styleList.flippedCard);
+        const flippedCards = document.querySelectorAll(`.${styleList.flippedCard}`);
+        const selectedCards = document.querySelectorAll(`.${styleList.selectedCard}`);
+        if (selectedCards.length === 2) {
+            if (selectedCards[0].dataset.name === selectedCards[1].dataset.name) {
+                selectedCards.forEach((card) => {
+                    card.classList.remove(styleList.selectedCard);
+                    setTimeout(() => card.classList.add(styleList.hiddenCard), 1000);
                 })
             } else {
-                flippedCards.forEach((card) => {
-                    card.classList.remove('game__card_flipped');
-                    setTimeout(() => card.classList.remove('game__card_selected'), 1000);
+                selectedCards.forEach((card) => {
+                    setTimeout(() => card.classList.remove(styleList.flippedCard, styleList.selectedCard), 1000);
                 });
                 playerSteps++;
             };
         };
-        if (selectedCards.length === 12) {
+        if (flippedCards.length === 12) {
             restart();
-        }
+        };
     };
 };
 
