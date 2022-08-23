@@ -12,7 +12,7 @@ body {
   background-color: white;
   font-family: Tahoma, Helvetica, Arial, sans-serif;
   color: #fff;
-  font-size: calc(12px + 0.390625vw);
+  font-size: calc(12px + 0.39vw);
   line-height: 24px;
   letter-spacing: 0.05em;
 }
@@ -24,39 +24,37 @@ a {
   padding: 12px 14px;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
 }
-.wrapper {
-  min-height: 100%;
-}
 .navigation__menu {
   display: flex;
   justify-content: end;
 }
-.navigation__list {
+.navigation__item {
   min-height: 45px;
   display: flex;
-  flex: 0 1 80px;
+  flex: 0 1 85px;
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-left: 10px;
 }
 .navigation__link {
   display: flex;
   justify-content: center;
-  padding: 2px 0px;
+  padding: 2px 5px;
   min-height: 30px;
   min-width: 95%;
 }
 .navigation__link:hover {
   border-radius: 3px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 .navigation__image {
-  width: 25%;
+  width: 27%;
   height: auto;
 }
 .profile__image {
   width: 35%;
-  height: auto;
+  object-fit: contain;
   border-radius: 15%;
 }
 .popup__container,
@@ -81,7 +79,7 @@ a {
   overflow-y: scroll;
   padding: 5px 10px;
   border-radius: 5px;
-  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
   position: absolute;
   top: 80px;
   max-height: 365px;
@@ -105,12 +103,11 @@ a {
   font-size: 0.7em;
 }
 .popup__link:hover {
-  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 }
 .popup__image {
   height: 35px;
-  width: 48px;
   object-fit: contain;
   align-content: center;
 }
@@ -123,15 +120,16 @@ a {
   display: block;
   align-self: center;
   padding: 1px 40px;
-  margin-bottom: 8px;
+  margin: 12px 0;
   color: #794f45;
-  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  font-size: 0.9  em;
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   cursor: pointer;
 }
 .label__toggle__more:hover,
 .toggle__more:checked ~ .label__toggle__less:hover {
-  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 8px 1px rgb(0, 0, 0, 0.2);
 }
 .toggle__more:checked ~ .label__toggle__more {
   display: none;
@@ -141,7 +139,7 @@ a {
 .toggle:focus ~ .label__toggle,
 .toggle__more:focus ~ .label__toggle__more,
 .toggle__more:focus ~ .label__toggle__less {
-  outline: 2px solid rgba(0, 0, 0, 0.1);
+  outline: 2px solid rgb(200, 200, 200);
   border-radius: 3px;
 }
 .popup__container::-webkit-scrollbar {
