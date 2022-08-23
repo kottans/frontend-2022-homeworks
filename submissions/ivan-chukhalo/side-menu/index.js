@@ -1,3 +1,5 @@
+'use strickt';
+
 const classesArr = [
   {
     name: "Воїн",
@@ -61,7 +63,7 @@ const classesArr = [
   },
 ];
 
-let classes_list = document.getElementById("menu");
+let classesList = document.getElementById("menu");
 let title = document.getElementById("content__title");
 let description = document.getElementById("content__description");
 let classImg = document.getElementById("content__img");
@@ -83,7 +85,7 @@ function printClassInformation(event) {
     classImg.setAttribute("alt", classesArr[classIndex].name);
     linkHome.innerText = "Повернутися на головну сторінку";
 }
-classes_list.addEventListener("click", printClassInformation);
+classesList.addEventListener("click", printClassInformation);
 
 function resetContent(event){
     title.innerText = 'World of Warcraft';
