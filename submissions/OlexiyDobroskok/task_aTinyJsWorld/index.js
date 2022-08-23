@@ -49,16 +49,24 @@ const catwoman = {
 };
 
 const aTinyWorld = [man, woman, cat, dog, catwoman];
+const properties = [
+  "species",
+  "name",
+  "gender",
+  "legs",
+  "hands",
+  "saying",
+  "friends",
+];
 
 const residentsProperties = aTinyWorld.map((resident) => {
   const allProperties = [];
-  for (let prop in resident) {
-    if (resident[prop] === 0) {
-      continue;
+  properties.forEach((prop) => {
+    if (resident[prop] !== 0) {
+      allProperties.push(resident[prop]);
     }
-    allProperties.push(resident[prop]);
-  }
+  });
   return allProperties;
 });
 
-residentsProperties.forEach((properties) => print(properties.join("; ")));
+residentsProperties.forEach((prop) => print(prop.join("; ")));
