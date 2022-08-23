@@ -1,26 +1,26 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-	const url = 'json/movies.json' // Json file with movies data
-	let moviesData = [] // Storage for movies data
-	const menuUl = document.querySelector('.menu__ul')
-	const menu = document.querySelector('.menu')
-	const movieContent = document.querySelector('.main')
-	const movieRandomize = document.querySelector('.menu__random')
-	const menuShowButton = document.querySelector('.hamburger')
+  const url = 'json/movies.json' // Json file with movies data
+  let moviesData = [] // Storage for movies data
+  const menuUl = document.querySelector('.menu__ul')
+  const menu = document.querySelector('.menu')
+  const movieContent = document.querySelector('.main')
+  const movieRandomize = document.querySelector('.menu__random')
+  const menuShowButton = document.querySelector('.hamburger')
 
-	// Fill menu template with data
-	function menuTemplate({id, title}) {
-		return `
+  // Fill menu template with data
+  function menuTemplate({id, title}) {
+    return `
 			<div class="menu__li">
 				<a class="menu__link" href="#" title="Seven Random Marvel Movies" data-id="${id}">${title}</a>
 			</div>
 		`
-	}
+  }
 
-	// Fill movie template with data
-	function movieTemplate({title, description, release, box, runtime, picture}) {
+  // Fill movie template with data
+  function movieTemplate({title, description, release, box, runtime, picture}) {
 
-		return `
+    return `
 		<section class="movie">
 			<div class="movie__left">
 				<div class="preloader">
@@ -49,101 +49,101 @@ document.addEventListener("DOMContentLoaded", function() {
 			<div class="movie__right"></div>
 		</section>
 		`
-	}
+  }
 
-	function addActiveClassToMenuItem(id) {
-		const menuLinks = document.querySelectorAll('.menu__link')
-		menuLinks.forEach(el => {
-			el.classList.remove('active')
-			if (el.dataset.id === id) el.classList.add('active')
-		})
-	}
+  function addActiveClassToMenuItem(id) {
+    const menuLinks = document.querySelectorAll('.menu__link')
+    menuLinks.forEach(el => {
+      el.classList.remove('active')
+      if (el.dataset.id === id) el.classList.add('active')
+    })
+  }
 
-	// Find selected movie and paste it into the main
-	function renderActualMovie(movies, id = '01') {
+  // Find selected movie and paste it into the main
+  function renderActualMovie(movies, id = '01') {
 
-		movieContent.innerHTML = ''
+    movieContent.innerHTML = ''
 
-		const activeMovie = movies.find(el => el.id === id)
-		const activeMovieHTML = movieTemplate(activeMovie)
+    const activeMovie = movies.find(el => el.id === id)
+    const activeMovieHTML = movieTemplate(activeMovie)
 
-		movieContent.insertAdjacentHTML('afterbegin', activeMovieHTML)
+    movieContent.insertAdjacentHTML('afterbegin', activeMovieHTML)
 
-		addActiveClassToMenuItem(id)
-	}
+    addActiveClassToMenuItem(id)
+  }
 
-	// Loop through random movies and paste them into the menu
-	function renderMoviesMenu(movies) {
+  // Loop through random movies and paste them into the menu
+  function renderMoviesMenu(movies) {
 
-		menuUl.innerHTML = ''
-		let fragment = ''
+    menuUl.innerHTML = ''
+    let fragment = ''
 
-		movies.forEach(el => {
-			const movie = menuTemplate(el)
-			fragment += movie
-		})
+    movies.forEach(el => {
+      const movie = menuTemplate(el)
+      fragment += movie
+    })
 
-		menuUl.insertAdjacentHTML('afterbegin', fragment)
+    menuUl.insertAdjacentHTML('afterbegin', fragment)
 
-		const actualMovieId = movies[0].id
-		renderActualMovie(movies, actualMovieId)
-	}
+    const actualMovieId = movies[0].id
+    renderActualMovie(movies, actualMovieId)
+  }
 
-	// Get seven random movies
-	function randomMovies(movies) {
-		const arrOfRandomMovies = []
+  // Get seven random movies
+  function randomMovies(movies) {
+    const arrOfRandomMovies = []
 
-		while(arrOfRandomMovies.length < 7) {
-			const index = Math.floor(Math.random() * movies.length)
-			if (arrOfRandomMovies.some(el => el.id === movies[index].id)) continue
-			arrOfRandomMovies.push(movies[index])
-		}
+    while(arrOfRandomMovies.length < 7) {
+      const index = Math.floor(Math.random() * movies.length)
+      if (arrOfRandomMovies.some(el => el.id === movies[index].id)) continue
+      arrOfRandomMovies.push(movies[index])
+    }
 
-		renderMoviesMenu(arrOfRandomMovies)
-	}
+    renderMoviesMenu(arrOfRandomMovies)
+  }
 
-	// Get data from json
-	async function getMoviesData(url) {
-		return await fetch(url).then(response => response.json())
-	}
+  // Get data from json
+  async function getMoviesData(url) {
+    return await fetch(url).then(response => response.json())
+  }
 
-	getMoviesData(url)
-		.then(data => {
-			moviesData = data
-			randomMovies(moviesData)
-		})
-		.catch(error => console.log(error))
+  getMoviesData(url)
+    .then(data => {
+      moviesData = data
+      randomMovies(moviesData)
+    })
+    .catch(error => console.log(error))
 
-	// Click to select some movie
-	menuUl.addEventListener('click', function (event) {
-		event.preventDefault()
-		const movieId = event.target.dataset.id
-		renderActualMovie(moviesData, movieId)
-	})
+  // Click to select some movie
+  menuUl.addEventListener('click', function (event) {
+    event.preventDefault()
+    const movieId = event.target.dataset.id
+    renderActualMovie(moviesData, movieId)
+  })
 
-	// Click to randomize movies
-	movieRandomize.addEventListener('click', function (event) {
-		event.preventDefault()
-		randomMovies(moviesData)
-	})
+  // Click to randomize movies
+  movieRandomize.addEventListener('click', function (event) {
+    event.preventDefault()
+    randomMovies(moviesData)
+  })
 
-	// Hide / show menu
-	function toggleMenuClass() {
-		menuShowButton.classList.toggle('active')
-		menu.classList.toggle('active')
-	}
+  // Hide / show menu
+  function toggleMenuClass() {
+    menuShowButton.classList.toggle('active')
+    menu.classList.toggle('active')
+  }
 
-	function hideMenuClass() {
-		menuShowButton.classList.remove('active')
-		menu.classList.remove('active')
-	}
+  function hideMenuClass() {
+    menuShowButton.classList.remove('active')
+    menu.classList.remove('active')
+  }
 
-	menuShowButton.addEventListener('click', function () {
-		toggleMenuClass()
-	})
+  menuShowButton.addEventListener('click', function () {
+    toggleMenuClass()
+  })
 
-	menu.addEventListener('click', function () {
-		hideMenuClass()
-	})
+  menu.addEventListener('click', function () {
+    hideMenuClass()
+  })
 
 })
