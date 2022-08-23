@@ -1,11 +1,3 @@
-//Data to render
-fetch('https://rickandmortyapi.com/api/location/20')
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        console.log(data);
-    });
 const characters = [
     {
         "id": 1,
@@ -136,56 +128,57 @@ const characters = [
 const loadSideMenu = () => {
     const sideMenuList = document.querySelector('.side-menu__list');
 
-    characters.forEach((character) => {
+    const sideMenuListItems = characters.map((character) => {
         const sideMenuItem = document.createElement('li');
-
         sideMenuItem.className = 'side-menu__item';
         sideMenuItem.innerHTML = `<a id="${ character.id }">${ character.name }</a>`;
-        sideMenuList.appendChild(sideMenuItem);
+
+        return sideMenuItem;
     });
 
+    sideMenuList.append(...sideMenuListItems);
 
 };
 
 const menuLinkOnClick = () => {
-    const sideMenuItems = document.querySelectorAll('.side-menu__list li a');
+    const sideMenuItems = document.querySelectorAll('.side-menu__item');
 
     const characterItems = document.querySelectorAll('.character');
     sideMenuItems.forEach((item, index) => {
-        item.addEventListener('click', toggleClass(characterItems, index));
+        item.addEventListener('click', toggleClass(characterItems, index, 'character_hide'));
+
+        item.addEventListener('click', toggleClass(sideMenuItems, index, 'active', 'add'));
     });
 }
 
-const toggleClass = (arrayToChange, index) => () => {
+const toggleClass = (arrayToChange, index, className, method = 'remove') => () => {
     for (let i = 0; i < arrayToChange.length; i++) {
         const item = arrayToChange[i];
 
         if (i === index) {
-            item.classList.remove('character_hide');
+            method === 'add' ? item.classList.add(className) : item.classList.remove(className);
         } else {
-            item.classList.add('character_hide');
+            method === 'add' ? item.classList.remove(className) : item.classList.add(className);
         }
     }
 };
 
-const setImageAsBackground = (el, imageSrc) => el.style.backgroundImage = `url("${ imageSrc }")`;
-
-
 const loadMainContent = () => {
-    characters.forEach((character) => {
+    const characterBlocks = characters.map((character) => {
         const characterBlock = document.createElement('div');
         characterBlock.className = 'character character_hide';
 
         characterBlock.innerHTML =
             `<div class="character__image">
+                <img src="${ character.image }" alt="">
              </div>
              <h2 class="character__name">${ character.name }</h2>
              <span class="character__location">${ character.location }</span>`;
 
-        setImageAsBackground(characterBlock.childNodes[0], character.image);
-
-        document.querySelector('main').appendChild(characterBlock);
+        return characterBlock;
     });
+
+    document.querySelector('main').append(...characterBlocks);
 
     document.querySelector('.character').classList.remove('character_hide');
 };
