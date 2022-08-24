@@ -71,6 +71,9 @@ a {
   -moz-appearance: none;
   cursor: pointer;
 }
+.toggle__more {
+  top: 100%;
+}
 .toggle + .navigation__link {
   cursor: pointer;
   position: absolute;
@@ -122,7 +125,7 @@ a {
   padding: 1px 40px;
   margin: 12px 0;
   color: #794f45;
-  font-size: 0.9  em;
+  font-size: 0.9 em;
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   cursor: pointer;
