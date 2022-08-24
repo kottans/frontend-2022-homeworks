@@ -1,6 +1,5 @@
-window.addEventListener ('DOMContentLoaded', () => {
 "use strict";
-    
+window.addEventListener ('DOMContentLoaded', () => {
     const dataContent = {
         "html5": 
         {
@@ -42,18 +41,18 @@ window.addEventListener ('DOMContentLoaded', () => {
     }
 
     const menuList = document.querySelector('.menu__list'),
-          menuLink = document.querySelectorAll('.menu__link'),
-          mainContent = document.querySelector('.main__content');
+        menuLink = document.querySelectorAll('.menu__link'),
+        mainContent = document.querySelector('.main__content');
 
-        function menuToggleClass (target) {
-            menuLink.forEach((item, i) => {
-                if (target == item) {
-                    item.classList.add('menu__link-active');
-                } else {
-                    item.classList.remove('menu__link-active');
-                }
-            });
-        }
+    function menuToggleClass (target) {
+        menuLink.forEach((link, i) => {
+            if (target == link) {
+                link.classList.add('menu__link-active');
+            } else {
+                link.classList.remove('menu__link-active');
+            }
+        });
+    }
 
     function toggleContent (target) {
         for(let key in dataContent) {
@@ -79,24 +78,20 @@ window.addEventListener ('DOMContentLoaded', () => {
         }
     }
 
-    function tabContent() {
-        menuList.addEventListener('click', ({target}) => {
-            menuToggleClass(target);
-            toggleContent (target);
-        });
+    menuList.addEventListener('click', ({target}) => {
+        menuToggleClass(target);
+        toggleContent (target);
+    });
+
+  
+    const hamburgerBtn = document.querySelector('.hamburger'),
+        menu = document.querySelector('.menu'),
+        closeBtn = document.querySelector('.menu__close');
+
+    function toggleMenu() {
+        menu.classList.toggle('active');
     }
-    tabContent();
-        
-    const hamburger = document.querySelector('.hamburger'),
-      menu = document.querySelector('.menu'),
-      closeElem = document.querySelector('.menu__close');
 
-    hamburger.addEventListener('click', () => {
-        menu.classList.add('active');
-    });
-
-    closeElem.addEventListener('click', () => {
-        menu.classList.remove('active');
-    });
-    
+    hamburgerBtn.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);  
 });
