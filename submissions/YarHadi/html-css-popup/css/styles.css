@@ -10,11 +10,11 @@
     background-color: #333333;
   }
   
-.nav-itm {
+.nav-item {
     float: left;
   }
   
-.nav-itm a {
+.nav-item a {
     display: block;
     color: white;
     text-align: center;
@@ -42,17 +42,17 @@
   background-color: rgba(0, 225, 255, 0.281);
 }
 
-.nav-itm a:hover {
+.nav-item a:hover {
     background-color: #111111;
     cursor: pointer;
   }
 
-  .nav-itm a:focus{
+  .nav-item a:focus{
     background-color: rgba(0, 225, 255, 0.281);
     outline: none;
   }
 
-  .nav-itm label {
+  .nav-item label {
     display: block;
     color: white;
     text-align: center;
@@ -60,12 +60,12 @@
     text-decoration: none;
   }
 
-  .nav-itm label:hover {
+  .nav-item label:hover {
   background-color: #111111;
   cursor: pointer;
   }
 
-  .nav-itm label:focus {
+  .nav-item label:focus {
     background-color: rgba(0, 225, 255, 0.281);
     }
 
@@ -123,7 +123,7 @@
     margin-bottom: 25px;
 }
 
-.popup-menu-itm{
+.popup-menu-item{
     justify-content: center;
     display: flex;
     width: 120px;
