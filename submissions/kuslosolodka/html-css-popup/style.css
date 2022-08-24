@@ -14,6 +14,9 @@ body {
   align-items: center;
   margin: 30px 0;
 }
+.popup-label:focus {
+  background-color: red;
+}
 #popup-btn {
   display: none;
 }
@@ -81,6 +84,9 @@ body {
 .load-more:hover {
   background: rgb(255, 157, 0);
 }
+.load-more:focus {
+  background-color: greenyellow;
+}
 #load-more-btn {
   display: none;
 }
@@ -101,12 +107,17 @@ body {
   color: rgb(104, 102, 102);
   cursor: pointer;
 }
+.footer-icon {
+  color: black;
+}
 .footer:hover {
   color: rgb(255, 157, 0);
   cursor: pointer;
 }
 .footer {
-  margin: 30px 0 -5px 0;
+  margin: 0 100px;
+  padding: 0px 0px 30px 0px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {
@@ -115,6 +126,9 @@ body {
     justify-content: center;
     align-items: center;
     margin: 30px 0;
+  }
+  .popup-label:focus {
+    background-color: red;
   }
   .popup-menu {
     margin: 0 0 30px 190px;
@@ -141,6 +155,9 @@ body {
     align-items: center;
     border-radius: 2px;
   }
+  .load-more:focus {
+    background-color: greenyellow;
+  }
   .btn-text {
     margin: 180px;
     color: rgb(104, 102, 102);
@@ -152,6 +169,9 @@ body {
     justify-content: center;
     align-items: center;
     margin: 55px 0;
+  }
+  .popup-label:focus {
+    background-color: red;
   }
   .popup-icon {
     width: 50px;
@@ -188,6 +208,9 @@ body {
     align-items: center;
     border-radius: 2px;
   }
+  .load-more:focus {
+    background-color: greenyellow;
+  }
   .icon-photo {
     width: 60px;
     height: 60px;
@@ -206,6 +229,11 @@ body {
     grid-template-rows: repeat(2, 1fr);
     margin: 30px 15px 15px 15px;
   }
+  .footer {
+    margin: 0 55px;
+    padding: 30px 0px 15px 0px;
+    cursor: pointer;
+  }
 }
 @media only screen and (min-width: 2560px) {
   .popup-button {
@@ -213,6 +241,9 @@ body {
     justify-content: center;
     align-items: center;
     margin: 55px 0;
+  }
+  .popup-label:focus {
+    background-color: red;
   }
   .popup-icon {
     width: 90px;
@@ -250,6 +281,9 @@ body {
     align-items: center;
     border-radius: 2px;
     font-size: x-large;
+  }
+  .load-more:focus {
+    background-color: greenyellow;
   }
   .icon-photo {
     width: 150px;
