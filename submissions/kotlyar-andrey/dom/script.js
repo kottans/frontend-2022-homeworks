@@ -105,19 +105,21 @@ function createMenu() {
   menu.innerHTML = bosses
     .map(
       (boss) =>
-        `<a href="#" class="menu__item" id="menu_boss_${boss.id}">${boss.name}</a>`
+        `<a href="#" class="menu__item" id="menu_boss_${boss.id}" data_boss_id="${boss.id}">${boss.name}</a>`
     )
     .join("");
-  bosses.forEach((boss) => {
-    getMenuItem(boss.id).addEventListener("click", () => showBoss(boss.id));
+  menu.addEventListener("click", (e) => {
+    if (e.target && e.target.nodeName === "A") {
+      showBoss(parseInt(e.target.getAttribute("data_boss_id")));
+    }
   });
 }
 
 /* Показ инфорации о выбранном боссе */
 function showBoss(id) {
-  const target = document.querySelector(".content");
+  const content = document.querySelector(".content");
   const boss = bosses.filter((obj) => obj.id === id)[0];
-  target.innerHTML = `
+  content.innerHTML = `
   <h1 class="content__title">${boss.name}</h1>
   <img class="content__image" src="images/${boss.image}" alt="${boss.name}" />
   <p class="content__description">${boss.description}</p>
@@ -180,19 +182,12 @@ function setCookie() {
 
 /* Проверка, пройден ли босс. Если да, изменение цвета его отображения */
 function checkIsCompleted(id) {
+  const content = document.querySelector(".content");
   if (completed.includes(id)) {
-    document.querySelector(".content__title").classList.add("completed");
-    document.querySelector(".content__image").classList.add("completed");
-    document.querySelector(".content__description").classList.add("completed");
-    document.querySelector(".content__subtitle").classList.add("completed");
+    content.classList.add("completed");
     getMenuItem(id).classList.add("completed");
   } else {
-    document.querySelector(".content__title").classList.remove("completed");
-    document.querySelector(".content__image").classList.remove("completed");
-    document
-      .querySelector(".content__description")
-      .classList.remove("completed");
-    document.querySelector(".content__subtitle").classList.remove("completed");
+    content.classList.remove("completed");
     getMenuItem(id).classList.remove("completed");
   }
 }

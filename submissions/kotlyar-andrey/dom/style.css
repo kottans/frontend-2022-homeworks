@@ -135,18 +135,18 @@ body {
   color: #fff;
 }
 
-.content__title.completed,
+.completed .content__title,
 .menu__item.completed {
   color: #ffff00;
   text-shadow: 0 0 10px #ffa500;
 }
-.content__image.completed {
+.completed .content__image {
   border: 5px solid #aaaa00;
 }
-.content__description.completed {
+.completed .content__description {
   color: #aaaa00;
 }
-.content__subtitle.completed {
+.completed .content__subtitle {
   color: #aaaa00;
 }
 
