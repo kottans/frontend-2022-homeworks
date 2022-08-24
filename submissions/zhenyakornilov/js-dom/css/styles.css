@@ -184,12 +184,12 @@ button {
   font-size: 1.8rem;
 }
 
-.nav-item :hover {
+.nav-item:hover {
   cursor: pointer;
   color: #f5f5dc;
 }
 
-.nav-item :focus {
+.nav-item:focus {
   color: #ffc0cb;
 }
 
@@ -394,6 +394,7 @@ button {
     width: 100%;
   }
 }
+
 @media screen and (max-width: 356px) {
   :root {
     font-size: 50%;

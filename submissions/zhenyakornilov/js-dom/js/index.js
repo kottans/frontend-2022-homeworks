@@ -6,8 +6,8 @@ import switchTheme from "./utils.js";
 function main() {
   switchTheme();
 
-  const listMenu = document.querySelector(".menu-items");
-  const contentBody = document.querySelector(".content-body");
+  const listMenu = document.getElementById("menu");
+  const contentBody = document.getElementById("content");
   renderButtons(museums, listMenu);
   toggleSelectedButton(museums, contentBody);
   openMenu(listMenu);
@@ -15,21 +15,22 @@ function main() {
 
 document.addEventListener("DOMContentLoaded", main);
 
-function renderButtons(arr, menu) {
-  let buttonsHTML = ``;
-
-  arr.forEach(({ btnName }) => {
-    buttonsHTML +=
-      `<li class="nav-item">` +
-      `  <button class="btn-text">${btnName}</button>` +
-      `</li>`;
-  });
+function renderButtons(museumsObj, menu) {
+  let buttonsHTML = museumsObj
+    .map(({ btnName }) => {
+      return (
+        `<li class="nav-item">` +
+        `  <button class="btn-text">${btnName}</button>` +
+        `</li>`
+      );
+    })
+    .join("");
 
   menu.innerHTML = buttonsHTML;
 }
 
 function toggleSelectedButton(museums, content) {
-  let selectedButton = document.getElementsByClassName("nav-item")[1];
+  let selectedButton = document.getElementsByClassName("nav-item")[0];
   selectedButton.classList.add("open");
 
   const buttons = document.getElementsByClassName("nav-item");
@@ -59,17 +60,17 @@ function toggleSelectedButton(museums, content) {
   }
 }
 
-function renderArticle(museumObj, content) {
+function renderArticle({ name, description, imageSrc, url }, content) {
   const contentHTML = `
-  <h2 class="museum-title">${museumObj.name}</h2>
+  <h2 class="museum-title">${name}</h2>
   <div class="desc-wrapper">
-    <img class="museum-image" src="${museumObj.imageSrc}" alt="photo of museum">
-    <p class="museum-desc">${museumObj.description}</p>
+    <img class="museum-image" src="${imageSrc}" alt="photo of museum">
+    <p class="museum-desc">${description}</p>
   </div>
   <div class="additional-wrapper">
     <p class="museum-link">
       <span>Visit </span>
-      <a class='inner-link' href="${museumObj.museumUrl}" target="_blank">museum page</a>
+      <a class='inner-link' href="${url}" target="_blank">museum page</a>
       <span> for more information...</span>
     </p>
   </div>
@@ -79,7 +80,7 @@ function renderArticle(museumObj, content) {
 }
 
 function openMenu(menu) {
-  const dropDownBtn = document.querySelector(".dropdown");
+  const dropDownBtn = document.getElementById("dropdown");
 
   dropDownBtn.addEventListener("click", function () {
     const sidebar = menu.closest(".sidebar");

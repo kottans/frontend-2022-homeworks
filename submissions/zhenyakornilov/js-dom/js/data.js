@@ -10,8 +10,8 @@ const museums = [
       "and, unfortunately, of the generation to come." +
       "The Museum opened to the public on April 26, 1992,in Kiev, the capital of Ukraine, from a hundred " +
       "kilometers of the epicenter of the disaster.",
-    imageSrc: "images/chernobyl.jpg",
-    museumUrl: "http://chornobylmuseum.kiev.ua/uk/",
+    imageSrc: "images/chernobyl.webp",
+    url: "http://chornobylmuseum.kiev.ua/uk/",
   },
   {
     name: 'The first state "Science Museum" of the Small Academy of Sciences of Ukraine',
@@ -26,8 +26,8 @@ const museums = [
       'able to see your own voice and "metal memory", get inside a giant shell and into a mirror tunnel with an optical ' +
       "illusion. Learn how colors are formed and create a rainbow. The Science Museum's largest interactive exhibit " +
       'is a glass ceiling that changes color."',
-    imageSrc: "images/science.jpg",
-    museumUrl: "https://sciencemuseum.com.ua/",
+    imageSrc: "images/science.webp",
+    url: "https://sciencemuseum.com.ua/",
   },
   {
     name: "Museum of the History of Ukraine in the Second World War",
@@ -42,8 +42,8 @@ const museums = [
       'and "Extreme" - at a height of 91 m (on the hand with which she holds a shield). Only visitors over the age ' +
       "of 18 are allowed on this site. The ascent is accompanied by an instructor and can be carried out only in good " +
       "weather conditions (t °С from +5 to +30), without precipitation and strong gusts of wind.",
-    imageSrc: "images/ukraine_ww2.jpg",
-    museumUrl: "https://www.warmuseum.kiev.ua/",
+    imageSrc: "images/ukraine_ww2.webp",
+    url: "https://www.warmuseum.kiev.ua/",
   },
   {
     name: "The National Museum of Natural History of the National Academy of Sciences of Ukraine",
@@ -59,8 +59,8 @@ const museums = [
       "cul­ture of the tribes and peoples that inhabited the territory of Ukraine. The central place in the museums is " +
       "occupied by a complex of dioramas: 30 landscape expositions and biogroups. The National Museum of Natural History " +
       "is headed by Academician Yevhen Shniukov, the National Academy of Sciences of Ukraine.",
-    imageSrc: "images/natural_history.jpg",
-    museumUrl: "https://museumkiev.org/",
+    imageSrc: "images/natural_history.webp",
+    url: "https://museumkiev.org/",
   },
   {
     name: "National Museum of the History of Ukraine",
@@ -74,8 +74,8 @@ const museums = [
       "Cossack attributes, universals, letters, letters of hetmans and Cossack elders. The Museum of Historical Jewels " +
       "of Ukraine is a branch that houses unique collections of precious metals and stones. The museum is a real treasury " +
       "of national historical and cultural relics of the people.",
-    imageSrc: "images/ukraine_history.jpg",
-    museumUrl: "https://nmiu.org/",
+    imageSrc: "images/ukraine_history.webp",
+    url: "https://nmiu.org/",
   },
 ];
 
