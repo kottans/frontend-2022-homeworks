@@ -32,23 +32,33 @@ const informationAboutModel = [
 ]
 
 
-const buttons = document.querySelectorAll('.button');
-let mainTitle = document.querySelector('.about-product__main-title');
-let mainImage = document.querySelector('.about-product__main-image');
-let mainText = document.querySelector('.about-product__description')
+const button = document.querySelector('.about-product__navigation')
+const mainInfoBlock = document.querySelector('.about-product__info-block');
+const mainTitle = document.createElement('h1');
+const mainImage = document.createElement('img');
+const mainText = document.createElement('p');
 
 function generateInformationAboutModel(event){
-    console.log('click');
     let buttonId = Number(event.target.id);
     informationAboutModel.forEach((value) => {
         if (value.id === buttonId){
+            mainInfoBlock.prepend(mainTitle);
+            mainTitle.classList.add('about-product__main-title');
             mainTitle.innerHTML = `About BMW ${value.series}`;
-            mainImage.src = value.images;
+
+            mainInfoBlock.append(mainText);
+            mainText.classList.add('about-product__description');
             mainText.innerHTML = value.information;
+
+            mainInfoBlock.append(mainImage);
+            mainImage.classList.add('about-product__main-image');
+            mainImage.src = value.images;
         }
     })
 }
 
-buttons.forEach((button) => {
-    button.addEventListener('click', generateInformationAboutModel);
-  });
+button.addEventListener('click', function (event) {
+    if (event.target.closest('button')){
+        generateInformationAboutModel(event);
+    }
+});
