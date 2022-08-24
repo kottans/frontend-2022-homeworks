@@ -38,24 +38,6 @@ html {
     border-radius: 20px;
     padding-top: 10px;
   }
-  #home-button {
-    order: 1;
-  }
-  #about-button {
-    order: 2;
-  }
-  #pricing-button {
-    order: 3;
-  }
-  #blog-button {
-    order: 4;
-  }
-  #integrations-button {
-    order: 5;
-  }
-  #contacts-button {
-    order: 6;
-  }
   #popup-wrapper {
     order: 7;
     flex-basis: 100%;
@@ -92,6 +74,7 @@ html {
   margin: 5px;
   padding: 10px 40px;
   text-align: center;
+  cursor: pointer;
 }
 
 .nav-items-li:hover, #more-button-label:hover {
@@ -99,7 +82,6 @@ html {
   color: white;
   border-radius: 50px;
   opacity: 70%;
-  cursor: pointer;
 }
 
 .nav-items-li:focus-within {
@@ -108,11 +90,11 @@ html {
   opacity: 70%;
 }
 
-.nav-items-li:hover > .nav-items-element {
+.nav-items-li:hover .nav-items-element {
   color: white;
 }
 
-.nav-items-li:focus-within > .nav-items-element {
+.nav-items-li:focus-within .nav-items-element {
   color: white;
   outline: none;
 }
@@ -122,6 +104,18 @@ html {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+#popup-wrapper:hover #central-button-label {
+  opacity: 100%;
+  box-shadow: 0px 3px 14px rgba(74, 58, 255, 0.03), 0px -2px 4px rgba(20, 20, 43, 0.02), 0px 12px 24px rgba(20, 20, 43, 0.04);
+  border-radius: 10px;
+}
+
+#popup-wrapper:focus-within #central-button-label {
+  opacity: 100%;
+  box-shadow: 0px 3px 14px rgba(74, 58, 255, 0.03), 0px -2px 4px rgba(20, 20, 43, 0.02), 0px 12px 24px rgba(20, 20, 43, 0.04);
+  border-radius: 10px;
 }
 
 #central-button-logo {
@@ -149,18 +143,6 @@ html {
   #central-button-label {
     margin-top: 5px;
   }
-}
-
-#central-button-label:hover {
-  opacity: 100%;
-  box-shadow: 0px 3px 14px rgba(74, 58, 255, 0.03), 0px -2px 4px rgba(20, 20, 43, 0.02), 0px 12px 24px rgba(20, 20, 43, 0.04);
-  border-radius: 10px;
-}
-
-#central-button:focus ~ #central-button-label {
-  opacity: 100%;
-  box-shadow: 0px 3px 14px rgba(74, 58, 255, 0.03), 0px -2px 4px rgba(20, 20, 43, 0.02), 0px 12px 24px rgba(20, 20, 43, 0.04);
-  border-radius: 10px;
 }
 
 #popup-section {
@@ -232,7 +214,7 @@ html {
   border-radius: 10px;
 }
 
-.popup-set-li:focus-within > span > .popup-element > .icons-pictures {
+.popup-set-li:focus-within .icons-pictures {
   opacity: 100%;
 }
 
@@ -242,7 +224,7 @@ html {
   border-radius: 10px;
 }
 
-.popup-set-li:hover > span > .popup-element > .icons-pictures {
+.popup-set-li:hover .icons-pictures {
   opacity: 100%;
 }
 
