@@ -11,10 +11,11 @@
 .popupContainer {
     width: 400px;
     border: 1px solid rgba(173, 139, 156, 0.34);
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px;
     box-shadow: -3px 10px 23px 1px rgba(242, 220, 232, 0.22);
     overflow: scroll;
-    height: 400px;
+    height: 405px;
+    position: relative;
 }
 
 .popupContainer:after {
@@ -74,10 +75,27 @@
 }
 
 .navWrapper .navItem .popupBtnCheckbox {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    appearance: none;
 }
+
 .popupBtnCheckbox:checked ~ .appsPopup {
     display: block;
+}
+
+.popupBtnCheckbox:focus ~ .popupBtnLabel {
+    outline: 2px solid #144aba;
+    border-radius: 3px;
+}
+
+.popupBtnLabel {
+    display: block;
+}
+
+.popupBtnLabel:focus {
+    outline: 2px solid blue;
 }
 
 .navWrapper .profile {
@@ -127,17 +145,28 @@
     box-sizing: border-box;
     cursor: pointer;
     user-select: none;
+    position: absolute;
+    bottom: 0;
 }
 
 .popupWrapper .loadMore:hover {
-    background-color: #afafaf;
+    background-color: grey;
 }
 
 .popupWrapper .visibilityFlag {
-    display: none;
+    appearance: none;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.visibilityFlag:checked ~ .loadMore {
+.popupWrapper .visibilityFlag:focus ~ .loadMore {
+    border: 2px solid #144aba;
+    border-radius: 3px;
+    display: block;
+}
+
+.popupWrapper .visibilityFlag:checked ~ .loadMore {
     display: none;
 }
 
@@ -155,9 +184,25 @@
     padding: 10px 0;
 }
 
-.evenMore {
+.popupWrapper .evenMoreWrapper {
     display: none;
 }
+
+.visibilityFlag:checked ~ .evenMoreWrapper {
+    display: block;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.evenMoreLink {
+    text-decoration: none;
+    color: lightgrey;
+}
+
+.evenMoreLink:hover {
+    color: #f6ccdb;
+}
+
 
 .popupContainer .popupWrapper img {
     height: 40px;
