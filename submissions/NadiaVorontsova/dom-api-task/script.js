@@ -28,19 +28,18 @@ const defaultContent = seriesCOD[0];
 
 const listOfItemsElement = document.querySelector('.nav_menu_items');
 
-const seriesAllContent = document.getElementById('series');
+const seriesAllContent = document.querySelector('.series');
 const titleOfSeriesElement = document.createElement('h3');
 const seriesContentElement = document.createElement('div');
 const imageOfSeriesElement = document.createElement('img');
 const textOfSeriesElement = document.createElement('div');
 
-const burgerButton = document.getElementById('burger_img');
-const menu = document.getElementById('menu');
+const burgerButton = document.querySelector('.burger_img');
 
 function createMenu(series, parentElement) {
-    series.forEach(ser => {
+    series.forEach(serie => {
         const li = document.createElement('li');
-        li.textContent = ser.title;
+        li.textContent = serie.title;
         parentElement.append(li);
         li.classList.add('nav_menu_item');
     })
@@ -68,7 +67,7 @@ function showContent(data) {
 }
 
 function showMenu() {
-    menu.classList.toggle('nav_menu_items_active');
+    listOfItemsElement.classList.toggle('nav_menu_items_active');
     burgerButton.classList.toggle('burger_img_active');
 }
 
