@@ -4,43 +4,52 @@ const dog = {
     gender: 'male',
     greeting: 'Howl!',
     legs: 4,
-    hands: 0
+    hands: 0,
 };
+
 const cat = {
     species: 'cat',
     name: 'Kitty',
     gender: 'female',
     greeting: 'Meow!',
     legs: 4,
-    hands: 0
+    hands: 0,
 };
 
 const woman = {
     species: 'human',
-    name: 'Katty',
+    name: 'Jessy',
     gender: 'female',
-    greeting: 'Meow!',
+    greeting: 'Hello!',
     legs: 2,
-    hands: 2
+    hands: 2,
 };
 
 const man = {
     species: 'human',
-    name: 'Bred',
+    name: 'Ted',
     gender: 'male',
-    greeting: 'Hello!',
+    greeting: 'Hello my dear!',
     legs: 2,
-    hands: 2
+    hands: 2,
 };
 
-const arrayOfCharacters = [dog, cat, woman, man];
+const arrayOfInhabitants = [dog, cat, woman, man];
 
-const viewObject = (obj) => {
-    const objValues = Object.values(obj);
+const arrayOfKeys = ['species', 'name', 'gender', 'greeting', 'legs', 'hands'];
 
-    return objValues.join('; ');
+const pullValuesOfObj = (obj) => {
+    const array = [];
+
+    arrayOfKeys.forEach((key) => array.push(obj[key]));
+
+    return array;
 };
 
-arrayOfCharacters.forEach(obj => {
-    print(viewObject(obj));
+arrayOfInhabitants.forEach((inhabitant,) => {
+    const arrayOfValues = pullValuesOfObj(inhabitant);
+
+    const stringToPrint = arrayOfValues.join('; ') + ' ;';
+
+    print(stringToPrint);
 });
