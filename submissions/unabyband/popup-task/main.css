@@ -68,7 +68,7 @@ html, body {
     visibility: hidden;
     display: flex;
     width: 320px;
-    height: 440px;
+    height: 430px;
     position: absolute;
     box-sizing: border-box;
     top: 62px;
@@ -132,16 +132,23 @@ html, body {
 .popup_window_list {
     display: flex;
     flex-wrap: wrap;
-    padding: 28px 18px 28px 28px;
+    padding: 28px 18px 23px 28px;
 }
 
 .popup_window_visible {
     margin-top: 0px;
     padding-top: 0px;
+    margin-bottom: 0px;
 }
 
 .popup_window_hidden {
     display: none;
+    margin-top: 0px;
+}
+
+.popup_window__active {
+    text-decoration: none;
+    border: none;
 }
 
 .popup_window_list__item {
@@ -149,8 +156,8 @@ html, body {
     height: 80px;
     display: flex;
     justify-content: center;
-    margin-top: 10px;
     border: 1px solid transparent;
+    padding-top: 10px;
 }
 
 .popup_window_list__item:hover {
@@ -170,6 +177,7 @@ html, body {
     text-align: center;
     color: rgba(0, 0, 0, 0.87);
     text-decoration: none;
+    border: none;
     display: block;
 }
 
@@ -177,8 +185,12 @@ html, body {
     display: block;
     flex: auto;
     text-align: center;
-    padding-top: 30px;
+    margin-top: 10px;
+    padding-top: 0px;
     margin-bottom: -35px;
+}
+.top_menu__item_other:hover {
+    text-decoration: underline;
 }
 
 .hidden_input {
@@ -198,9 +210,10 @@ html, body {
     flex: auto;
     text-align: center;
     background-color: rgba(128, 128, 128, 0.1);
-    padding: 10px 0px 9px 0px;
-    margin-top: -32px;
+    padding: 10px 0px 10px 0px;
+    margin-top: -22px;
     cursor: pointer;
+    border: 1px solid transparent;
 }
 
 .hidden_input:checked ~ .popup_window_hidden {
@@ -228,7 +241,6 @@ html, body {
     width: 100%;
     height: 100%;
     padding-bottom: 30px;
-    background-size: cover;
 }
 
 .find_field {
@@ -255,7 +267,8 @@ html, body {
     width: 20px;
     height: 30px;
     position: absolute;
-    top: 5px;    right: 15px;
+    top: 5px;    
+    right: 15px;
     background: url("../icons/mic.png") center no-repeat;
     background-size: cover;
 }
@@ -265,4 +278,25 @@ html, body {
 }
 .find_field-input:hover {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 680px) {
+    .find_cover-image {
+        max-width: 550px;
+    }
+}
+@media screen and (max-width: 560px) {
+    .find_cover-image {
+        max-width: 430px;
+    }
+}
+@media screen and (max-width: 440px) {
+    .find_cover-image {
+        max-width: 310px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .find_cover-image {
+        max-width: 250px;
+    }
 }
