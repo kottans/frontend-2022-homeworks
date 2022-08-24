@@ -27,7 +27,6 @@ html,body{
 a, a:visited{text-decoration: none;}
 ul li{list-style: none;}
 
-/*-------------------- */
 
 .header {
 	display: flex;
@@ -86,10 +85,6 @@ ul li{list-style: none;}
 	cursor: pointer;
 }
 
-
-/* Popup */
-
-
 .popup:focus-within {
 	box-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
 }
@@ -139,10 +134,6 @@ ul li{list-style: none;}
 .checkbox:checked + .context__menu{
 	display:block;
 }
-
-
-   /* Context menu */
-
 
 .menu__item {
 	height: 55px;
@@ -238,5 +229,3 @@ ul li{list-style: none;}
 .checkbox__more:checked ~.btn__more {
 	display:none;
 }
-
-
