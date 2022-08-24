@@ -10,10 +10,6 @@
   height: 60px;
   }
   
-.nav-item {
-    float: left;
-  }
-  
 .nav-item a {
     display: block;
     color: rgb(255, 255, 255);
