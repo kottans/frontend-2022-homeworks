@@ -1,7 +1,7 @@
 const initialSection = document.querySelector(".character");
 const initialName = document.createElement("h2")
-initialName.setAttribute("class", "character-name");
 const initialDescription = document.createElement("p");
+initialName.setAttribute("class", "character-name");
 initialDescription.setAttribute("class", "character-description");
 
 export function createInitalPage(){
@@ -20,9 +20,4 @@ export function createInitalPage(){
     initialSection.appendChild(initialName);
     initialSection.appendChild(initialDescription);
     initialDescription.appendChild(deatnNoteRules);
-}
-
-export function deleteInitialPage(){
-    initialName.remove();
-    initialDescription.remove();
 }

@@ -51,10 +51,6 @@ body{
     background-color: var(--nav-hover-color);
 }
 
-.nav-item.selected{
-    background-color: var(--nav-hover-color);
-}
-
 .hamburger-menu{
     display: none;
     cursor: pointer;

@@ -11,6 +11,6 @@ function main(){
     document.querySelector(".nav-list").addEventListener("click", (event) =>{
         insertCharacter(event);
     })
-}
+};
 
 document.addEventListener("DOMContentLoaded", main);

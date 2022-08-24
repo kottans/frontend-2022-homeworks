@@ -3,31 +3,44 @@ import { characters } from "./charachters.js";
 const characterSection = document.querySelector(".character");
 
 function getCharacterData(event){
-    const characterData = {};
     const navItem = event.target;
     const characterId = navItem.getAttribute("id");
-    if(parseInt(characterId) === characters[characterId].id){
-        characterData.image = characters[characterId].image;
-        characterData.name = characters[characterId].name;
-        characterData.description = characters[characterId].description;
-    }
-    return characterData;
+    const invalidCharacter = {
+        image: "",
+        name: "",
+        description: "",
+      };
+      const { image, name, description } = characters[characterId]
+        ? characters[characterId]
+        : invalidCharacter;
+      return [
+        {
+          image,
+          name,
+          description,
+        },
+        !!(image && name && description),
+      ];
 }
 
 function createCharacter(characterData){
+    const { image, name, description } = characterData;
     const newCharacter = document.createDocumentFragment();
     const characterContainer = document.createElement("div");
     characterContainer.innerHTML = `
-        <img src="${characterData.image}" alt="${characterData.name} Image" class="character-img">
-        <h2 class="character-name">${characterData.name}</h2>
-        <p class="character-description">${characterData.description}</p>
+        <img src="${image}" alt="${name} Image" class="character-img">
+        <h2 class="character-name">${name}</h2>
+        <p class="character-description">${description}</p>
     `;
     newCharacter.appendChild(characterContainer);
     return newCharacter;
 }
 
 export function insertCharacter(event){
-    characterSection.innerHTML = "";
-    const newCharacter = createCharacter(getCharacterData(event));
-    characterSection.append(newCharacter);
+    const [updatedContent, isValidContent] = getCharacterData(event);
+    if (isValidContent) {
+      const newCharacter = createCharacter(updatedContent);
+      characterSection.innerHTML = "";
+      characterSection.append(newCharacter);
+    }
 };
