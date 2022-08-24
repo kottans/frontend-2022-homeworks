@@ -33,39 +33,55 @@ html {
   border-radius: 50px;
 }
 
-@media screen and (max-width: 949px) {
+@media screen and (max-width: 940px) {
   .nav-items {
     border-radius: 20px;
+    padding-top: 10px;
   }
-  #nav-items-ul-first {
+  #home-button {
     order: 1;
   }
-  #nav-items-ul-second {
+  #about-button {
     order: 2;
   }
-  #central-button-label {
+  #pricing-button {
     order: 3;
   }
+  #blog-button {
+    order: 4;
+  }
+  #integrations-button {
+    order: 5;
+  }
+  #contacts-button {
+    order: 6;
+  }
+  #popup-wrapper {
+    order: 7;
+    flex-basis: 100%;
+  }
+}
+
+@media screen and (max-width: 850px) {
   .nav-items {
-    flex-direction: column;
-    padding: 15px 0px 5px;
+    max-width: 509px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .nav-items {
+    max-width: 250px;
+    min-width: 250px;
   }
 }
 
 .nav-items-ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   margin: 0px 15px;
   list-style: none;
-}
-
-@media screen and (max-width: 489px) {
-  .nav-items-ul {
-    max-width: 220px;
-    min-width: 220px;
-  }
 }
 
 .nav-items-li, #more-button-label {
@@ -101,6 +117,13 @@ html {
   outline: none;
 }
 
+#popup-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 #central-button-logo {
   max-width: 50px;
 }
@@ -117,9 +140,15 @@ html {
   flex-wrap: wrap;
   justify-content: center;
   padding: 5px 10px;
-  margin: 10px 0px;
+  margin: 10px 10px;
   cursor: pointer;
   opacity: 70%;
+}
+
+@media screen and (max-width: 940px) {
+  #central-button-label {
+    margin-top: 5px;
+  }
 }
 
 #central-button-label:hover {
@@ -159,15 +188,21 @@ html {
   max-width: 0;
 }
 
-@media screen and (max-width: 949px) {
+@media screen and (max-width: 940px) {
   #central-button:checked ~ #popup-section {
-    top: 265px;
+    top: 205px;
   }
 }
 
-@media screen and (max-width: 489px) {
+@media screen and (max-width: 850px) {
   #central-button:checked ~ #popup-section {
-    top: 50px;
+    top: 255px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  #central-button:checked ~ #popup-section {
+    top: 45px;
   }
 }
 
@@ -197,7 +232,7 @@ html {
   border-radius: 10px;
 }
 
-.popup-set-li:focus-within > .popup-element > .icons-pictures {
+.popup-set-li:focus-within > span > .popup-element > .icons-pictures {
   opacity: 100%;
 }
 
@@ -207,7 +242,7 @@ html {
   border-radius: 10px;
 }
 
-.popup-set-li:hover > .popup-element > .icons-pictures {
+.popup-set-li:hover > span > .popup-element > .icons-pictures {
   opacity: 100%;
 }
 
