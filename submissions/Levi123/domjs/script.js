@@ -39,7 +39,7 @@ const mainImage = document.createElement('img');
 const mainText = document.createElement('p');
 
 function generateInformationAboutModel(event){
-    let buttonId = Number(event.target.id);
+    const buttonId = Number(event.target.id);
     informationAboutModel.forEach((value) => {
         if (value.id === buttonId){
             mainInfoBlock.prepend(mainTitle);
