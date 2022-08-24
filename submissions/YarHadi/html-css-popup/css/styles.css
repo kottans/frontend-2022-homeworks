@@ -115,8 +115,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: flex-start;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin: 25px;
 }
 
 .popup-menu-item{
