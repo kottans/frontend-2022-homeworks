@@ -1,29 +1,42 @@
+const X_STEP = 101
+const Y_STEP = 83
+const INITIAL_ENEMIES_Y_POSITIONS = [50, 133, 210]
+const START_ENEMIES_Y_POSITION = INITIAL_ENEMIES_Y_POSITIONS[0]
+const START_PLAYER_X_POSITION = 200
+const START_PLAYER_Y_POSITION = 380
+const DEFAULT_NUM_OF_ENEMIES = 3
+const X_OFFSET_CLICK = 50
+const Y_OFFSET_CLICK = 130
+const X_OFFSET_TAP = 60
+const Y_OFFSET_TAP = 190
+
 // Enemies our player must avoid
-class Enemy  {
+const Enemy = function(x, y, speed) {
 	// Variables applied to each of our instances go here,
 	// we've provided one for you to get started
 
 	// The image/sprite for our enemies, this uses
 	// a helper we've provided to easily load images
-	constructor(x, y, speed) {
-		this.x = x;
-		this.y = y;
-		this.speed = speed;
-		this.sprite = 'images/enemy-bug.png'
-	}
+	this.x = x;
+	this.y = y;
+	this.speed = speed;
+	this.sprite = 'images/enemy-bug.png'
+}
 
-	update(dt) {
-		this.x += this.speed * dt
+Enemy.prototype.update = function(dt) {
+	// You should multiply any movement by the dt parameter
+	// which will ensure the game runs at the same speed for
+	// all computers.
+	this.x += this.speed * dt
 
-		if (this.x > 530) {
-			this.x = -100
-			this.speed = 100 + Math.floor(Math.random() * 300)
-		}
+	if (this.x > 530) {
+		this.x = -100
+		this.speed = 100 + Math.floor(Math.random() * 300)
 	}
+}
 
-	render() {
-		ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
-	}
+Enemy.prototype.render = function() {
+	ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
 }
 
 // Update the enemy's position, required method for game
@@ -42,87 +55,88 @@ class Enemy  {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-class Player {
-	constructor(x, y, sprite) {
-		this.sprite = sprite
-		this.x = x
-		this.y = y
-		this.level = 1
-	}
+const Player = function (x, y, sprite) {
+	this.sprite = sprite
+	this.x = x
+	this.y = y
+	this.level = 1
+}
 
-	update() {
-		if (this.x > 420) this.x = 402
-		if (this.x < -20) this.x = -2
-		if (this.y > 400) this.y = 380
-		if (this.y < 40) setTimeout(() => {
-			this.x = 200
-			this.y = 380
+Player.prototype.update = function () {
+	if (this.x > START_PLAYER_X_POSITION + X_STEP * 2 + X_STEP / 2)
+		this.x = START_PLAYER_X_POSITION + X_STEP * 2
+	if (this.x < START_PLAYER_X_POSITION - X_STEP * 2 - X_STEP / 2)
+		this.x = START_PLAYER_X_POSITION - X_STEP * 2
+	if (this.y > START_PLAYER_Y_POSITION + Y_STEP / 2) this.y = START_PLAYER_Y_POSITION
+	if (this.y < Y_STEP * 5 - START_PLAYER_Y_POSITION + 5)
+		setTimeout(() => {
+			this.x = START_PLAYER_X_POSITION
+			this.y = START_PLAYER_Y_POSITION
 		}, 200)
-		if (this.y < -35) this.y = -35
-	}
-	render() {
-		ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
-	}
+	if (this.y < -(Y_STEP * 5 - START_PLAYER_Y_POSITION))
+		this.y = -(Y_STEP * 5 - START_PLAYER_Y_POSITION)
+}
 
-	handleInput(direction) {
-		switch (direction) {
-			case 'up':
-				this.y -= 83
-				break
-			case 'down':
-				this.y += 83
-				break
-			case 'left':
-				this.x -= 101
-				break
-			case 'right':
-				this.x += 101
-				break
-		}
-	}
+Player.prototype.render = function () {
+	ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
+}
 
-	click(e) {
-		const diffX = Math.abs(player.x - e.offsetX + 50)
-		const diffY = Math.abs(player.y - e.offsetY + 130)
-
-		if (diffX > diffY) {
-			if (player.x > e.offsetX - 50) player.x -= 101
-			else player.x += 101
-		}
-		else {
-			if (player.y > e.offsetY - 130) player.y -= 83
-			else player.y += 83
-		}
-	}
-
-	tap(e) {
-		e.preventDefault()
-
-		const diffX = Math.abs(player.x - e.touches[0].clientX + 60)
-		const diffY = Math.abs(player.y - e.touches[0].clientY + 190)
-
-		if (diffX > diffY) {
-			if (player.x > e.touches[0].clientX - 60) player.x -= 101
-			else player.x += 101
-		}
-		else {
-			if (player.y > e.touches[0].clientY - 190) player.y -= 83
-			else player.y += 83
-		}
+Player.prototype.handleInput = function (direction) {
+	switch (direction) {
+		case 'up':
+			this.y -= Y_STEP
+			break
+		case 'down':
+			this.y += Y_STEP
+			break
+		case 'left':
+			this.x -= X_STEP
+			break
+		case 'right':
+			this.x += X_STEP
+			break
 	}
 }
 
-class Star {
+Player.prototype.click = function (e) {
+	const X_DIFF = Math.abs(this.x - e.offsetX + X_OFFSET_CLICK)
+	const Y_DIFF = Math.abs(this.y - e.offsetY + Y_OFFSET_CLICK)
 
-	constructor(x, y, sprite) {
-		this.x = x;
-		this.y = y;
-		this.sprite = sprite
+	if (X_DIFF > Y_DIFF) {
+		if (this.x > e.offsetX - X_OFFSET_CLICK) this.x -= X_STEP
+		else this.x += X_STEP
 	}
+	else {
+		if (this.y > e.offsetY - Y_OFFSET_CLICK) this.y -= Y_STEP
+		else this.y += Y_STEP
+	}
+}
 
-	render() {
-		ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
+Player.prototype.tap = function (e) {
+	e.preventDefault()
+
+	const X_DIFF = Math.abs(this.x - e.touches[0].clientX + X_OFFSET_TAP)
+	const Y_DIFF = Math.abs(this.y - e.touches[0].clientY + Y_OFFSET_TAP)
+
+	if (X_DIFF > Y_DIFF) {
+		if (this.x > e.touches[0].clientX - X_OFFSET_TAP) this.x -= X_STEP
+		else this.x += X_STEP
 	}
+	else {
+		if (this.y > e.touches[0].clientY - Y_OFFSET_TAP) this.y -= Y_STEP
+		else this.y += Y_STEP
+	}
+}
+
+
+const Star = function (x, y, sprite) {
+	this.x = x;
+	this.y = y;
+	this.sprite = sprite
+}
+
+Star.prototype.render = function () {
+	ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
 }
 
 // Now instantiate your objects.
@@ -130,17 +144,19 @@ class Star {
 // Place the player object in a variable called player
 
 function creteEnemies(num) {
-
 	if (num > 6) num = 6
 	const arrEnemies = []
 
-	for (let i = 50; i < num * 83; i += 83) {
+	for (let i = START_ENEMIES_Y_POSITION; i < num * Y_STEP; i += Y_STEP) {
 		let y = i
-		if (i > 216 && i < 300) y = 50
-		else if (i > 300 && i < 383) y = 133
-		else if (i > 383 && i < 466) y = 210
-		let x = -100 + Math.floor(Math.random() * -300)
-		let speed = 100 + Math.floor(Math.random() * 300)
+		if (i > START_ENEMIES_Y_POSITION + Y_STEP * 2 && i <= START_ENEMIES_Y_POSITION + Y_STEP * 3)
+			y = INITIAL_ENEMIES_Y_POSITIONS[0]
+		else if (i > START_ENEMIES_Y_POSITION + Y_STEP * 3 && i <= START_ENEMIES_Y_POSITION + Y_STEP * 4)
+			y = INITIAL_ENEMIES_Y_POSITIONS[1]
+		else if (i > START_ENEMIES_Y_POSITION + Y_STEP * 4 && i <= START_ENEMIES_Y_POSITION + Y_STEP * 5)
+			y = INITIAL_ENEMIES_Y_POSITIONS[2]
+		const x = -100 + Math.floor(Math.random() * -300)
+		const speed = 100 + Math.floor(Math.random() * 300)
 		arrEnemies.push(new Enemy(x, y, speed))
 	}
 
@@ -149,18 +165,19 @@ function creteEnemies(num) {
 
 function createStars(img) {
 	const arrStars = []
+
 	for (let i = 0; i < 5; i ++) {
-		let y = i * 101
-		arrStars.push(new Star(y, -35, img))
+		let y = i * X_STEP
+		arrStars.push(new Star(y, -(Y_STEP * 5 - START_PLAYER_Y_POSITION), img))
 	}
 
 	return arrStars
 }
 
-let numOfEnemies = window.prompt('Enter the initial number of enemies (1-6)', 3);
-let allEnemies = creteEnemies(+numOfEnemies || 3)
+let numOfEnemies = window.prompt('Enter the initial number of enemies (1-6)', String(DEFAULT_NUM_OF_ENEMIES));
+let allEnemies = creteEnemies(+numOfEnemies || DEFAULT_NUM_OF_ENEMIES)
 let allStars = createStars('images/Gem Blue.png')
-const player = new Player(200, 380, 'images/char-cat-girl.png')
+const player = new Player(START_PLAYER_X_POSITION, START_PLAYER_Y_POSITION, 'images/char-cat-girl.png')
 
 
 
