@@ -94,6 +94,19 @@
 #popup-more-btn:checked ~ .more-menu-cont{
     display: flex;
 }
+
+.popup-line{
+  width: 90%;
+  display: none;
+}
+
+#popup-more-btn:checked ~ .more-btn{
+  display: none;
+}
+
+#popup-more-btn:checked ~ .popup-line{
+  display: flex;
+}
   
 .popup-container{
     max-width: 450px;
