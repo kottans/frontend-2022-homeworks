@@ -13,7 +13,7 @@
  * writing app.js a little simpler to work with.
  */
 
-const Engine = (function (global) {
+const Engine = (function(global) {
 	/* Predefine the variables we'll be using within this scope,
 	 * create the canvas element, grab the 2D context for that canvas
 	 * set the canvas element's height/width and add it to the DOM.
@@ -79,64 +79,7 @@ const Engine = (function (global) {
 	 */
 	function update(dt) {
 		updateEntities(dt);
-		checkCollisions();
-	}
-
-	function checkCollisions() {
-		// Crossing the player with a enemy
-		allEnemies.forEach(function (enemy) {
-			if (player.x < enemy.x + 70 &&
-				player.x + 70 > enemy.x &&
-				player.y < enemy.y + 80 &&
-				player.y + 80 > enemy.y) reloadLevel(false)
-		})
-
-		// Crossing the player with a star
-		allStars.forEach(function (star, i) {
-			if (player.x < star.x + 70 &&
-				player.x + 70 > star.x &&
-				player.y < star.y + 80 &&
-				player.y + 80 > star.y) {
-				delete allStars[i]
-				if (allStars.every(el => el == '')) reloadLevel(true)
-			}
-		})
-	}
-
-	// Fill array of stars
-	function setStars(img) {
-		setTimeout(() => allStars = createStars(img), 300)
-	}
-
-	// Reload or up level
-	function reloadLevel(levelUp) {
-		if (levelUp) {
-			if (player.level === 1) {
-				player.level = 2
-				allEnemies = creteEnemies(allEnemies.length + 1)
-				setStars('images/Gem Green.png')
-			} else if (player.level === 2) {
-				player.level = 3
-				allEnemies = creteEnemies(allEnemies.length + 1)
-				setStars('images/Gem Orange.png')
-			} else {
-				alert('You won!')
-				player.level = 1
-				numOfEnemies = window.prompt('Enter the initial number of enemies (1-6)', 3);
-				allEnemies = creteEnemies(+numOfEnemies || 3)
-				setStars('images/Gem Blue.png')
-			}
-		} else {
-			player.x = 200
-			player.y = 380
-			if (player.level === 1) {
-				setStars('images/Gem Blue.png')
-			} else if (player.level === 2) {
-				setStars('images/Gem Green.png')
-			} else {
-				setStars('images/Gem Orange.png')
-			}
-		}
+		// checkCollisions();
 	}
 
 	/* This is called by the update function and loops through all of the
@@ -149,6 +92,9 @@ const Engine = (function (global) {
 	function updateEntities(dt) {
 		allEnemies.forEach(function (enemy) {
 			enemy.update(dt);
+		});
+		allStars.forEach(function (star) {
+			star.update();
 		});
 		player.update();
 	}
@@ -176,7 +122,7 @@ const Engine = (function (global) {
 			row, col;
 
 		// Before drawing, clear existing canvas
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.clearRect(0,0,canvas.width,canvas.height);
 
 		/* Loop through the number of rows and columns we've defined above
 		 * and, using the rowImages array, draw the correct image for that
@@ -222,9 +168,7 @@ const Engine = (function (global) {
 	 * those sorts of things. It's only called once by the init() method.
 	 */
 	function reset() {
-		const canvas = document.querySelector('canvas')
-		canvas.addEventListener('click', (e) => player.click(e))
-		canvas.addEventListener("touchstart", (e) => player.tap(e))
+		addClickAndTap()
 	}
 
 	/* Go ahead and load all of the images we know we're going to need to

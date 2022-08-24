@@ -11,7 +11,7 @@ const X_OFFSET_TAP = 60
 const Y_OFFSET_TAP = 190
 
 // Enemies our player must avoid
-const Enemy = function(x, y, speed) {
+const Enemy = function(x, y, speed, antagonist) {
 	// Variables applied to each of our instances go here,
 	// we've provided one for you to get started
 
@@ -21,6 +21,7 @@ const Enemy = function(x, y, speed) {
 	this.y = y;
 	this.speed = speed;
 	this.sprite = 'images/enemy-bug.png'
+	this.antagonist = antagonist
 }
 
 Enemy.prototype.update = function(dt) {
@@ -33,18 +34,28 @@ Enemy.prototype.update = function(dt) {
 		this.x = -100
 		this.speed = 100 + Math.floor(Math.random() * 300)
 	}
+
+	this.collisions()
+
 }
 
 Enemy.prototype.render = function() {
 	ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
 }
 
+Enemy.prototype.collisions = function() {
+	if (this.antagonist.x < this.x + 70 &&
+		this.antagonist.x + 70 > this.x &&
+		this.antagonist.y < this.y + 80 &&
+		this.antagonist.y + 80 > this.y) reloadLevel(false)
+}
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 // Enemy.prototype.update = function(dt) {
-	// You should multiply any movement by the dt parameter
-	// which will ensure the game runs at the same speed for
-	// all computers.
+// You should multiply any movement by the dt parameter
+// which will ensure the game runs at the same speed for
+// all computers.
 // }
 
 // Draw the enemy on the screen, required method for game
@@ -129,14 +140,29 @@ Player.prototype.tap = function (e) {
 }
 
 
-const Star = function (x, y, sprite) {
+const Star = function (x, y, sprite, raider, index) {
 	this.x = x;
 	this.y = y;
 	this.sprite = sprite
+	this.raider = raider
+	this.index = index
 }
 
 Star.prototype.render = function () {
 	ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
+}
+
+Star.prototype.update = function() {
+	this.collisions()
+}
+
+Star.prototype.collisions = function() {
+	if (this.raider.x < this.x + 70 &&
+		this.raider.x + 70 > this.x &&
+		this.raider.y < this.y + 80 &&
+		this.raider.y + 80 > this.y) {
+		reloadLevel(true, this.index)
+	}
 }
 
 // Now instantiate your objects.
@@ -157,7 +183,7 @@ function creteEnemies(num) {
 			y = INITIAL_ENEMIES_Y_POSITIONS[2]
 		const x = -100 + Math.floor(Math.random() * -300)
 		const speed = 100 + Math.floor(Math.random() * 300)
-		arrEnemies.push(new Enemy(x, y, speed))
+		arrEnemies.push(new Enemy(x, y, speed, player))
 	}
 
 	return arrEnemies
@@ -168,18 +194,16 @@ function createStars(img) {
 
 	for (let i = 0; i < 5; i ++) {
 		let y = i * X_STEP
-		arrStars.push(new Star(y, -(Y_STEP * 5 - START_PLAYER_Y_POSITION), img))
+		arrStars.push(new Star(y, -(Y_STEP * 5 - START_PLAYER_Y_POSITION), img, player, i))
 	}
 
 	return arrStars
 }
 
+const player = new Player(START_PLAYER_X_POSITION, START_PLAYER_Y_POSITION, 'images/char-cat-girl.png')
 let numOfEnemies = window.prompt('Enter the initial number of enemies (1-6)', String(DEFAULT_NUM_OF_ENEMIES));
 let allEnemies = creteEnemies(+numOfEnemies || DEFAULT_NUM_OF_ENEMIES)
 let allStars = createStars('images/Gem Blue.png')
-const player = new Player(START_PLAYER_X_POSITION, START_PLAYER_Y_POSITION, 'images/char-cat-girl.png')
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -193,3 +217,55 @@ document.addEventListener('keyup', function(e) {
 
 	player.handleInput(allowedKeys[e.keyCode])
 })
+
+// Fill array of stars
+function setStars(img) {
+	setTimeout(() => allStars = createStars(img), 300)
+}
+
+// Reload or up level
+function reloadLevel(levelUp, index) {
+	// When colliding with a star
+	if (levelUp) {
+		delete allStars[index]
+		// When no more stars
+		if (allStars.every(el => el == '')) {
+			if (player.level === 1) {
+				player.level = 2
+				allEnemies = creteEnemies(allEnemies.length + 1)
+				setStars('images/Gem Green.png')
+			}
+			else if (player.level === 2) {
+				player.level = 3
+				allEnemies = creteEnemies(allEnemies.length + 1)
+				setStars('images/Gem Orange.png')
+			}
+			else {
+				alert('You won!')
+				player.level = 1
+				numOfEnemies = window.prompt('Enter the initial number of enemies (1-6)', 3);
+				allEnemies = creteEnemies(+numOfEnemies || 3)
+				setStars('images/Gem Blue.png')
+			}
+		}
+	}
+	// When colliding with an enemy
+	else {
+		player.x = 200
+		player.y = 380
+		if (player.level === 1) {
+			setStars('images/Gem Blue.png')
+		} else if (player.level === 2) {
+			setStars('images/Gem Green.png')
+		} else {
+			setStars('images/Gem Orange.png')
+		}
+	}
+}
+
+
+function addClickAndTap() {
+	const canvas = document.querySelector('canvas')
+	canvas.addEventListener('click', (e) => player.click(e))
+	canvas.addEventListener("touchstart", (e) => player.tap(e))
+}
