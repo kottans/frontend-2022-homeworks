@@ -15,6 +15,12 @@
   padding: 0;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .main-wrapper {
   background: url(../img/background.webp) 0% 0% / cover transparent;
   display: grid;
@@ -149,7 +155,7 @@
   color: aliceblue;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 890px) and (max-width: 1200px) {
   .header {
     font-size: 2em;
   }
