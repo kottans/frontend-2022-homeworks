@@ -38,23 +38,35 @@ const teas = [
   },
 ];
 
-const titleOfTea = document.querySelector("h2.more__header");
-const pictureOfTea = document.querySelector("img.more__picture");
-const descriptionOfTea = document.querySelector("div.more__about");
+const createContent = function (objectTea) {
+  const wholeArticle = document.querySelector("article.more");
+  wholeArticle.innerHTML = "";
 
-const doesChangeTea = function (event) {
-  const objectTea = teas.filter(
-    (obj) => obj.type === event.srcElement.innerHTML
-  )[0];
-  titleOfTea.innerHTML = objectTea.type;
-  pictureOfTea.alt = objectTea.type;
-  pictureOfTea.src = objectTea.image;
-  descriptionOfTea.innerHTML = objectTea.description;
+  const picture = document.createElement("img");
+  picture.classList.add("more__picture");
+  picture.setAttribute("alt", `${objectTea.type}`);
+  picture.setAttribute("src", `${objectTea.image}`);
+
+  const title = document.createElement("h2");
+  title.classList.add("more__header");
+  title.innerHTML = `${objectTea.type}`;
+
+  const descr = document.createElement("div");
+  descr.classList.add("more__about");
+  descr.innerHTML = `${objectTea.description}`;
+
+  wholeArticle.append(picture);
+  wholeArticle.append(title);
+  wholeArticle.append(descr);
 };
+// ===== initial page
+createContent(teas[0]);
 
-const listOfTeasNames = [];
+const listOfTeasNames = document.querySelector("ul.menu__items");
 
-for (let i = 0; i < document.querySelectorAll("li.menu__item").length; i += 1) {
-  listOfTeasNames[i] = document.querySelectorAll("li.menu__item")[i];
-  listOfTeasNames[i].onclick = doesChangeTea;
-}
+listOfTeasNames.onclick = function (event) {
+  const objectTea = teas.filter(
+    (obj) => obj.type === event.target.innerHTML
+  )[0];
+  createContent(objectTea);
+};
