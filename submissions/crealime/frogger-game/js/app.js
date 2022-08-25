@@ -7,10 +7,13 @@ const START_PLAYER_Y_POSITION = 380
 const DEFAULT_NUM_OF_ENEMIES = 3
 const X_OFFSET_CLICK = 50
 const Y_OFFSET_CLICK = 130
-const X_OFFSET_TAP = 60
-const Y_OFFSET_TAP = 190
+const X_OFFSET_TAP = 50
+const Y_OFFSET_TAP = 130
 const MIN_SPEED = 100
 const MAX_SPEED = 200
+
+let offsetLeft = 0
+let offsetTop = 0
 
 const Thing = function(x, y, sprite) {
 	this.x = x
@@ -132,19 +135,20 @@ Player.prototype.click = function (e) {
 Player.prototype.tap = function (e) {
 	e.preventDefault()
 
-	const X_DIFF = Math.abs(this.x - e.touches[0].clientX + X_OFFSET_TAP)
-	const Y_DIFF = Math.abs(this.y - e.touches[0].clientY + Y_OFFSET_TAP)
+	const X_DIFF = Math.abs((this.x + X_OFFSET_TAP * 2) - (e.touches[0].clientX + X_OFFSET_TAP - offsetLeft))
+	const Y_DIFF = Math.abs((this.y + Y_OFFSET_TAP) - (e.touches[0].clientY - offsetTop))
+
+	console.log(X_DIFF, '  ', Y_DIFF)
 
 	if (X_DIFF > Y_DIFF) {
-		if (this.x > e.touches[0].clientX - X_OFFSET_TAP) this.x -= X_STEP
+		if (this.x + X_OFFSET_TAP * 2 > e.touches[0].clientX + X_OFFSET_TAP - offsetLeft) this.x -= X_STEP
 		else this.x += X_STEP
 	}
 	else {
-		if (this.y > e.touches[0].clientY - Y_OFFSET_TAP) this.y -= Y_STEP
+		if (this.y + Y_OFFSET_TAP > e.touches[0].clientY - offsetTop) this.y -= Y_STEP
 		else this.y += Y_STEP
 	}
 }
-
 
 const Star = function (x, y, sprite, raider, index) {
 	Thing.call(this, x, y, sprite)
@@ -277,6 +281,9 @@ function reloadLevel(levelUp, index) {
 
 function addClickAndTap() {
 	const canvas = document.querySelector('canvas')
+	offsetLeft = canvas.getBoundingClientRect().left
+	offsetTop = canvas.getBoundingClientRect().top
+
 	canvas.addEventListener('click', (e) => player.click(e))
 	canvas.addEventListener("touchstart", (e) => player.tap(e))
 }
