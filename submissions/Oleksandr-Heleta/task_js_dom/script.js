@@ -32,7 +32,7 @@ btnContainer.addEventListener('click', addContent);
 function addContent(e) {
     const { id, tagName } = e.target;
     if (tagName !== 'BUTTON') { return; };
-    const contant = boxersList.find((boxer) => boxer.id === id ? true : false);
+    const contant = boxersList.find((boxer) => boxer.id === id);
     mainContainer.innerHTML = renderTamplate(contant);
 };
 
