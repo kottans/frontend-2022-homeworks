@@ -1,0 +1,295 @@
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  font-family: Verdana, Tahoma, sans-serif;
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+header,
+footer {
+  height: 100px;
+  background-color: #fffce8;
+}
+
+ul > li {
+  padding: 5px;
+}
+
+p {
+  font-size: 13px;
+  color: #4462ab;
+  margin-top: 3px;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 1fr;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backgroundImage {
+  height: 30%;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content {
+  margin: 15px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.hiddenNavbar {
+  position: relative;
+}
+
+.hiddenNavbar section,
+.hiddenNavbar input {
+  display: none;
+}
+
+.input {
+  -webkit-appearance: none;
+  position: absolute;
+}
+
+.hiddenNavbar .input:checked ~ .menuPopup,
+.hiddenNavbar .input:checked ~ .menuPopupSub {
+  display: block;
+}
+
+.contentItem {
+  display: inline-block;
+  font-size: 19px;
+  text-transform: uppercase;
+  color: #4462ab;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.popupLink {
+  text-transform: none;
+}
+
+.labelIcon {
+  display: inline-block;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.menuIcon {
+  width: 20px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 20px;
+}
+
+.avatar {
+  width: 45px;
+}
+
+.menuPopupIcon {
+  width: 50px;
+  height: 50px;
+}
+
+.menuPopup {
+  display: none;
+  position: absolute;
+  background-color: white;
+  height: 280px;
+  width: 314px;
+  top: 80px;
+  right: -142px;
+  box-shadow: 0px 0px 27px 5px rgba(219, 248, 254, 0.52);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.menuPopupList {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  column-gap: 4px;
+}
+
+.menuPopupItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+a.textItem {
+  font-size: 18px;
+}
+
+.menuPopupSub {
+  display: none;
+  position: absolute;
+  height: 280px;
+  width: 298px;
+  top: 275px;
+  right: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.menuInputSub {
+  appearance: none;
+  position: absolute;
+}
+
+p.more {
+  padding: 11px;
+  margin-top: 16px;
+  text-align: center;
+  opacity: 0.6;
+  background-color: #fffce8;
+  color: #3f5ba0;
+}
+
+.contentItem:hover,
+.menuPopupItem:hover,
+.labelIcon:hover,
+.labelSub:hover {
+  outline: 1px solid #7ee1e6;
+}
+
+.contentItem:focus,
+.menuPopupItem:focus,
+.labelIcon:focus,
+.input:focus + .labelIcon,
+.input:focus + .labelSub {
+  outline: 4px solid #7ee1e6;
+}
+
+.contentItem:active,
+.menuPopupItem:active,
+.labelIcon:active,
+.labelSub:active {
+  outline: 2px solid #3ae2ea;
+  color: #53a3c3;
+}
+
+@media (max-width: 550px) {
+  .content {
+    width: 100%;
+  }
+  .menuPopup {
+    right: -136px;
+  }
+  .menuPopupSub {
+    width: 314px;
+  }
+}
