@@ -95,7 +95,7 @@ sidebar.prepend(...addButtons());
 
 function addButtons() {
   const buttonList = [];
-  darkTowerSeries.forEach((el, index) => {
+  darkTowerSeries.forEach((serie, index) => {
     const button = document.createElement("button");
     button.className = "sidebar__button";
     button.id = "dt" + index;
@@ -127,16 +127,20 @@ bookImage.className = "content__img";
 textContentContainer.after(bookImage);
 
 function contentCreator(eventBtn) {
-  const contentData = darkTowerSeries.filter((el) => eventBtn.id === el.id);
-  contentTitle.innerHTML = contentData[0].title;
-  paragraphQuote.innerHTML = contentData[0].quote;
-  paragraph.innerHTML = contentData[0].about;
-  bookImage.src = contentData[0].photo;
-  bookImage.alt = contentData[0].alt;
+  const contentData = darkTowerSeries.filter(
+    (serie) => eventBtn.id === serie.id
+  );
+  let [serie] = contentData;
+  console.log(serie);
+  contentTitle.innerHTML = serie.title;
+  paragraphQuote.innerHTML = serie.quote;
+  paragraph.innerHTML = serie.about;
+  bookImage.src = serie.photo;
+  bookImage.alt = serie.alt;
 }
 
 sidebar.addEventListener("click", function (event) {
-  let target = event.target;
+  const target = event.target;
   if (target.closest(".sidebar__button")) {
     contentCreator(target);
   }
