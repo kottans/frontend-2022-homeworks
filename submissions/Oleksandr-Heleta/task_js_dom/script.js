@@ -30,9 +30,9 @@ const startPage = boxersList[0];
 btnContainer.addEventListener('click', addContent);
 
 function addContent(e) {
-    if (e.target.tagName !== 'BUTTON') { return; };
-    const idElem = e.target.id;
-    const contant = boxersList.find((e) => e.id === idElem ? true : false);
+    const elem = e.target;
+    if (elem.tagName !== 'BUTTON') { return; };
+    const contant = boxersList.find((e) => e.id === elem.id ? true : false);
     mainContainer.innerHTML = renderTamplate(contant);
 };
 
