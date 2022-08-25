@@ -177,6 +177,7 @@ ul li {
 }
 .popup__item_checkbox_input:checked ~ .popup__item_more {
   display: block;
+  border-top: 1px solid #876991;
 }
 .popup__item_checkbox_label {
   margin: auto;
@@ -192,14 +193,9 @@ ul li {
   display: block;
   color: #555;
 }
-.popup__item_checkbox_less {
+
+.popup__item_checkbox_input:checked ~ .popup__item_checkbox_label {
   display: none;
-  color: #555;
-}
-.popup__item_checkbox_input:checked
-  ~ .popup__item_checkbox_label
-  > .popup__item_checkbox_less {
-  display: block;
 }
 .popup__item_checkbox_input:checked
   ~ .popup__item_checkbox_label
