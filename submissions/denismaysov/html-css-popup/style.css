@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	 font-size: 18px;
+	font-size: 18px;
 }
 
 .invisible-scrollbar::-webkit-scrollbar {
@@ -21,7 +21,7 @@
 
 .header__list_items {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -60,7 +60,7 @@
 	text-decoration: none;
 	border-radius: 3px;
 	box-shadow: 0 14px 28px rgb(211, 234, 253), 0 10px 10px rgb(211, 234, 253);
-	transition: .3s;
+	transition: .3s all;
  }
 
 .header__popup_label {
@@ -87,7 +87,7 @@
 .header__popup {
     position: absolute;
     top: 135%;
-    right: 42%;
+    right: 0;
     box-shadow: 0 14px 28px rgb(188, 209, 226), 0 10px 10px rgb(188, 209, 226);
     border-radius: 3%;
     background-color: white;
@@ -143,12 +143,12 @@
 
 .header__popup__label_more {
     display: flex;
-	 background-color: #424242;
-	 justify-content: center;
+	background-color: #424242;
+	justify-content: center;
     padding: 9px 0px;
     color: #fff;
     font-size: 18px;
-	 border: 1px solid #3F3F3F;
+	border: 1px solid #3F3F3F;
     border-radius: 3%;
 }
 
@@ -164,3 +164,8 @@
 	transition: .3s;
 }
 
+@media (max-height: 414px){
+    .header__popup{
+        height: 100vh;
+    }
+}
