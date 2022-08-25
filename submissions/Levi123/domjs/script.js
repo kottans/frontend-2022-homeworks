@@ -31,8 +31,8 @@ const informationAboutModel = [
     },
 ]
 
-
-const button = document.querySelector('.about-product__navigation')
+const buttons = document.querySelectorAll('.button');
+// const button = document.querySelector('.about-product__navigation')
 const mainInfoBlock = document.querySelector('.about-product__info-block');
 const mainTitle = document.createElement('h1');
 const mainImage = document.createElement('img');
@@ -57,8 +57,13 @@ function generateInformationAboutModel(event){
     })
 }
 
-button.addEventListener('click', function (event) {
-    if (event.target.closest('button')){
-        generateInformationAboutModel(event);
-    }
+buttons.forEach((button) => {
+    button.addEventListener('click', generateInformationAboutModel);
 });
+
+// button.addEventListener('click', function (event) {
+//     if (event.target.closest('button')){
+//         generateInformationAboutModel(event);
+//     }
+// });
+
