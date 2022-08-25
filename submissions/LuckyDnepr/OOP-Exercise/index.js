@@ -1,144 +1,105 @@
 "use strict";
 
-class Inhabitant {
-  constructor(species, name) {
-    this.species = species;
-    this.name = name;
-  }
-  getInfo() {
-    return `I'm ${this.species} and my name is ${this.name}.`;
-  }
+class Saying {
+    constructor(person, vocabulary = "vocabulary") {
+        return function (aventForAnswer) {
+            return person[vocabulary].hasOwnProperty(aventForAnswer) ?
+                person[vocabulary][aventForAnswer] :
+                "Nothing to say";
+        };
+    }
 }
 
-class Saying {
-  constructor (person, vocabulary) {
-    return function (aventForAnswer) {
-      return person[vocabulary].hasOwnProperty(aventForAnswer)
-      ? person[vocabulary][aventForAnswer]
-      : "Nothing to say";
-    };
-  }
+class Inhabitant {
+    constructor(species, gender, name) {
+        this.species = species;
+        this.gender = gender;
+        this.name = name;
+    }
+    getInfo() {
+        return `I'm ${this.species}. My name is ${this.name} and I am ${this.gender}.`;
+    }
 }
 
 class Humans extends Inhabitant {
-  constructor(name, gender) {
-    super("Human", name);
-    this.gender = gender;
-    this.hands = 2;
-    this.legs = 2;
-  }
-  getInfo() {
-    return (
-      super.getInfo() +
-      ` I'm ${this.gender} with ${this.hands} hands and ${this.legs} legs.`
-    );
-  }
+    constructor(gender, name) {
+        super("Human", gender, name);
+        this.hands = 2;
+        this.legs = 2;
+        this.vocabulary = {
+            "hi": "Hi all!"
+        };
+        this.say = new Saying(this);
+    }
+    getInfo() {
+        return (
+            super.getInfo() + ` I have ${this.hands} hands and ${this.legs} legs.`
+        );
+    }
 }
 
-class FourLegged extends Inhabitant {
-  constructor(name, gender) {
-    super("Four-legged animal", name);
-    this.gender = gender;
-    this.paws = 4;
-  }
-  getInfo() {
-    return super.getInfo() + ` I'm ${this.gender} with ${this.paws} paws.`;
-  }
+class Animals extends Inhabitant {
+    constructor(gender, name) {
+        super("Animal", name, gender);
+        this.paws = 4;
+    }
+    getInfo() {
+        return super.getInfo() + ` I have ${this.paws} paws.`;
+    }
 }
 
-class CatlikeMutants extends Inhabitant {
-  constructor(gender, name) {
-    super("Mutant", name);
-    this.gender = gender;
-    this.hands = 2;
-    this.legs = 2;
-    //this.say = this.say.bind(new Cat());
-  }
-  getInfo() {
-    return (
-      super.getInfo() +
-      ` I'm ${this.gender} with ${this.hands} hands and ${this.legs} legs.`
-    );
-  }
+class Cat extends Animals {
+    constructor(gender, name) {
+        super(name, gender);
+        this.vocabulary = {
+            "hi": "Nyav nyav!"
+        };
+        this.say = new Saying(this);
+    }
+    getInfo() {
+        return `I'm ${this.constructor.name}. ` + super.getInfo();
+    }
 }
 
-class Man extends Humans {
-  constructor(name) {
-    super(name, "male");
-    this.vocabulary = {
-      hi: "Hey guys!",
-    };
-    this.say = new Saying(this, "vocabulary");
-  }
-  getInfo() {
-    return `${this.say("hi")} ` + super.getInfo();
-  }
+class Dog extends Animals {
+    constructor(gender, name) {
+        super(name, gender);
+        this.vocabulary = {
+            "hi": "Woof woof!"
+        };
+        this.say = new Saying(this);
+    }
+    getInfo() {
+        return `I'm ${this.constructor.name}. ` + super.getInfo();
+    }
 }
 
-class Woman extends Humans {
-  constructor(name) {
-    super(name, "female");
-    this.vocabulary = {
-      hi: "Hi cute!",
-    };
-    this.say = new Saying(this, "vocabulary");
-  }
-  getInfo() {
-    return `${this.say("hi")} ` + super.getInfo();
-  }
-}
-
-class Cat extends FourLegged {
-  constructor(gender, name) {
-    super(name, gender);
-    this.vocabulary = {
-      hi: "Nyav nyav!",
-    };
-    this.say = new Saying(this, "vocabulary");
-  }
-  getInfo() {
-    return `${this.say("hi")} ` + super.getInfo();
-  }
-}
-
-class Dog extends FourLegged {
-  constructor(gender, name, birthday) {
-    super(name, gender);
-    this.vocabulary = {
-      hi: "Woof woof!",
-    };
-    this.say = new Saying(this, "vocabulary");
-  }
-  getInfo() {
-    return `${this.say("hi")} ` + super.getInfo();
-  }
-}
-
-class WomanCat extends CatlikeMutants {
-  constructor(name) {
-    super("female", name);
-    this.say = new Saying(new Cat(), "vocabulary");
-  }
-  getInfo() {
-    return `${this.say("hi")} ` + super.getInfo();
-  }
+class WomanCat extends Humans {
+    //This class can easily be converted to HumansCat, if needed
+    constructor(name) {
+        super("female", name);
+        this.say = new Saying(new Cat());
+    }
+    getInfo() {
+        return `I'm ${this.constructor.name}. ` + super.getInfo();
+    }
 }
 
 function initInhabitants() {
-  //init some inhabitants for presentation
-  return [
-    new Man("Billy"),
-    new Woman("Jinny"),
-    new Cat("female", "Starling"),
-    new Dog("male", "Oscar"),
-    new WomanCat("Jessica"),
-  ];
+    //init some inhabitants for presentation
+    return [
+        new Humans("male", "Harry"),
+        new Humans("female", "Jinny"),
+        new Cat("female", "Starling"),
+        new Dog("male", "Oscar"),
+        new WomanCat("Jessica")
+    ];
 }
 
 function printInhabitantsInfo(inhabitants) {
-  inhabitants
-    .map((person) => person.getInfo() + "\n")
-    .forEach((info) => print(info));
+    inhabitants
+        .map((person) => person.say("hi") + " " + person.getInfo() + "\n")
+        .forEach((info) => print(info));
 }
 
 printInhabitantsInfo(initInhabitants());
