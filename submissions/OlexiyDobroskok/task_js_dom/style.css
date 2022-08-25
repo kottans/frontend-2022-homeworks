@@ -59,7 +59,9 @@ body {
 }
 .textcontent__container {
   width: 55%;
-  height: auto;
+  height: 530px;
+  padding: 10px;
+  background-color: rgba(252, 249, 243, 0.4);
 }
 
 .content__title {
@@ -118,7 +120,7 @@ footer p {
   .textcontent__container {
     width: 100%;
     height: auto;
-    padding: 0px 15px;
+    padding: 10px 15px;
   }
 
   .content__title {
@@ -176,7 +178,7 @@ footer p {
   .textcontent__container {
     width: 100%;
     height: auto;
-    padding: 0px 15px;
+    padding: 10px 15px;
   }
 
   .content__title {
@@ -233,7 +235,7 @@ footer p {
   .textcontent__container {
     width: 100%;
     height: auto;
-    padding: 0px 15px;
+    padding: 10px 15px;
   }
 
   .content__title {
