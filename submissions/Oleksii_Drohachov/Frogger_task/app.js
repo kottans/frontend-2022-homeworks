@@ -1,5 +1,5 @@
-const Enemy = function (x, y, speed) {
-  this.x = x;
+const Enemy = function (y, speed) {
+  this.x = -80;
   this.y = y;
   this.speed = speed;
   this.width = 80;
@@ -36,17 +36,14 @@ Enemy.prototype.checkCollision = function () {
 
 const enemyStats = [
   {
-    x: -80,
     y: 60,
     speed: 180,
   },
   {
-    x: -80,
     y: 140,
     speed: 140,
   },
   {
-    x: -80,
     y: 220,
     speed: 100,
   },
@@ -117,7 +114,7 @@ Player.prototype.handleInput = function (key) {
   }
 };
 
-const allEnemies = enemyStats.map(({ x, y, speed }) => new Enemy(x, y, speed));
+const allEnemies = enemyStats.map(({y, speed }) => new Enemy(y, speed));
 
 const player = new Player(200, 400);
 
