@@ -87,60 +87,59 @@ const darkTowerSeries = [
   },
 ];
 
-let main = document.querySelector(".content");
-let aside = document.createElement("aside");
-aside.className = "sidebar";
-main.prepend(aside);
-aside.prepend(...addButtons());
+const contentContainer = document.querySelector(".content");
+const sidebar = document.createElement("aside");
+sidebar.className = "sidebar";
+contentContainer.prepend(sidebar);
+sidebar.prepend(...addButtons());
 
 function addButtons() {
-  const buttonArr = [];
-  for (let i = 0; i < 9; i++) {
-    let button = document.createElement("button");
+  const buttonList = [];
+  darkTowerSeries.forEach((el, index) => {
+    const button = document.createElement("button");
     button.className = "sidebar__button";
-    button.id = "dt" + [i];
-    button.innerHTML = darkTowerSeries[i].title;
-    buttonArr.push(button);
-  }
-  return buttonArr;
+    button.id = "dt" + index;
+    button.innerHTML = darkTowerSeries[index].title;
+    buttonList.push(button);
+  });
+  return buttonList;
 }
 
-let section = document.createElement("section");
-section.className = "content__section";
-aside.after(section);
-let div = document.createElement("div");
-div.className = "textcontent__container";
-section.prepend(div);
-let h2 = document.createElement("h2");
-h2.className = "content__title";
-div.prepend(h2);
-let blockquote = document.createElement("blockquote");
-h2.after(blockquote);
-let paragraphQuote = document.createElement("p");
+const contentSection = document.createElement("section");
+contentSection.className = "content__section";
+sidebar.after(contentSection);
+const textContentContainer = document.createElement("div");
+textContentContainer.className = "textcontent__container";
+contentSection.prepend(textContentContainer);
+const contentTitle = document.createElement("h2");
+contentTitle.className = "content__title";
+textContentContainer.prepend(contentTitle);
+const blockquote = document.createElement("blockquote");
+contentTitle.after(blockquote);
+const paragraphQuote = document.createElement("p");
 paragraphQuote.className = "quote__text";
 blockquote.prepend(paragraphQuote);
-let paragraph = document.createElement("p");
+const paragraph = document.createElement("p");
 paragraph.className = "content__text";
 blockquote.after(paragraph);
-let img = document.createElement("img");
-img.className = "content__img";
-div.after(img);
-
-aside.onclick = function (event) {
-  let target = event.target;
-  if (target.tagName !== "BUTTON") return;
-  contentCreator(target);
-};
+const bookImage = document.createElement("img");
+bookImage.className = "content__img";
+textContentContainer.after(bookImage);
 
 function contentCreator(eventBtn) {
-  for (let i = 0; i < darkTowerSeries.length; i++) {
-    if (eventBtn.id === darkTowerSeries[i].id) {
-      h2.innerHTML = darkTowerSeries[i].title;
-      paragraphQuote.innerHTML = darkTowerSeries[i].quote;
-      paragraph.innerHTML = darkTowerSeries[i].about;
-      img.src = darkTowerSeries[i].photo;
-      img.alt = darkTowerSeries[i].alt;
-    }
-  }
+  const contentData = darkTowerSeries.filter((el) => eventBtn.id === el.id);
+  contentTitle.innerHTML = contentData[0].title;
+  paragraphQuote.innerHTML = contentData[0].quote;
+  paragraph.innerHTML = contentData[0].about;
+  bookImage.src = contentData[0].photo;
+  bookImage.alt = contentData[0].alt;
 }
-contentCreator(dt0);
+
+sidebar.addEventListener("click", function (event) {
+  let target = event.target;
+  if (target.closest(".sidebar__button")) {
+    contentCreator(target);
+  }
+});
+
+const frontPage = contentCreator(dt0);
