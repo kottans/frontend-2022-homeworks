@@ -159,7 +159,6 @@ ul li {
   color: #555;
   margin-bottom: 0.35em;
 }
-
 .popup__item_checkbox {
   flex-basis: 90%;
   justify-self: center;
@@ -182,7 +181,6 @@ ul li {
   display: block;
   color: #555;
 }
-
 .popup__item_checkbox_input:checked ~ .popup__item_checkbox_label {
   display: none;
 }
