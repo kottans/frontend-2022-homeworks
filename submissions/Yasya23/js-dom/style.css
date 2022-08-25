@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+  max-width: 1024px;
+  margin: 4% auto;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.navigation__item a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: rgb(61, 61, 61);
+}
+
+.navigation__item a:focus,
+.navigation__item a:focus-visible {
+  outline: none;
+}
+
+.navigation__item {
+  padding: 0.6rem 1.8rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+
+.navigation__item:hover,
+.navigation__item:focus-within,
+.navigation__item:active {
+  border: 1px solid #000000;
+}
+
+.navigation__item a:active {
+  color: #000000;
+}
+
+.img {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0.3rem;
+}
+
+.img__column {
+  flex: 25%;
+  max-width: 100%;
+  padding: 0 0.5rem;
+}
+
+.img__column img {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .img__column {
+    flex: 100%;
+    max-width: 100%;
+  }
+
+  .popup {
+    position: fixed;
+    display: block;
+    top: 0;
+    width: 100vw;
+    height: 2.7rem;
+    background-color: #ffffff;
+  }
+
+  .popup__box {
+    position: absolute;
+    top: 0.6rem;
+    right: 1.25rem;
+    width: 1.25rem;
+  }
+
+  .popup__line {
+    border-bottom: 2px solid #bdbdbd;
+    padding-bottom: 0.3rem;
+  }
+
+  .popup__box:hover > .popup__line,
+  .popup__box:focus > .popup__line {
+    border-bottom: 2px solid rgb(0, 0, 0);
+  }
+
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 1rem;
+    width: 100%;
+    margin-top: 1.6rem;
+    background-color: #ffffffc9;
+  }
+
+  .navigation__item {
+    flex: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #ffffff;
+    text-align: center;
+  }
+
+  .navigation__item:hover {
+    border: none;
+    background-color: #ffffff;
+  }
+
+  .navigation__item:focus-within,
+  .navigation__item:active {
+    border: none;
+    border-bottom: 1px solid #ffffff;
+  }
+
+  .navigation__item a:active,
+  .navigation__item a:focus,
+  .navigation__item a:hover {
+    color: #000000;
+    font-weight: 600;
+  }
+}
