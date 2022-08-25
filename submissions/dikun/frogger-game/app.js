@@ -1,4 +1,5 @@
-// Enemies our player must avoid
+"use srtict";
+
 const cell = {
 	width: 100,
 	height: 85
@@ -30,54 +31,53 @@ const speed = () => enemySpeed.min + Math.floor(Math.random() * enemySpeed.max);
 const crash = 70;
 const border = 20;
 
-class Enemy {
-	constructor ( x, y, speed, player) {
-		this.x = x;
-		this.y = y;
-		this.speed = speed();
-		this.player = player;
-		this.sprite = sprite.enemy;
-	}	
+const Enemy = function (x, y, speed, player) {
+	this.x = x;
+	this.y = y;
+	this.speed = speed();
+	this.player = player;
+	this.sprite = sprite.enemy;	
 
-	checkCollisions () {
+	this.checkColission = function () {
 		if(this.player.x + crash > this.x &&
-		   this.player.x < this.x + crash &&
-		   this.player.y + crash > this.y &&
-		   this.player.y < this.y + crash) {
+			this.player.x < this.x + crash &&
+			this.player.y + crash > this.y &&
+			this.player.y < this.y + crash) {
 			this.player.x = playerStart.x;
 			this.player.y = playerStart.y;
-			}
-	}
+		}
+	};
 
-	update (dt) {		
+	this.update = function (dt) {
 		if (this.x > gameField.right) {
 			this.x -= gameField.right;
 			this.speed = speed();
-		}
+			}
 		this.x += this.speed * dt;
-		this.checkCollisions();
-	}
+		this.checkColission();
+	};
 
-	render () {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    }
-}
+	this.render = function () {ctx.drawImage(Resources.get(this.sprite), this.x, this.y);};
+};
 
-class Player {
-	constructor() {
-		this.x = playerStart.x;
-		this.y = playerStart.y;
-		this.sprite = sprite.player;
-	}
+const Player = function () {
+	this.x = playerStart.x;
+	this.y = playerStart.y;
+	this.sprite = sprite.player;	
 
-	update () {			
-		}
-	
+	this.update = function () {
+		if (this.y  < gameField.top) {			
+		his.x = playerStart.x;
+		this.y = playerStart.y;	
+		alert('You win!');	
+	}};
 
-	handleInput (keyPress) {
+	this.render = function () {ctx.drawImage(Resources.get(this.sprite), this.x, this.y);};
+
+	this.handleInput = function (keyPress) {
 		if (keyPress == 'left' && this.x > gameField.left + cell.width) {
 			this.x -= cell.width;
-		}
+			}
 		if (keyPress == 'right' && this.x < gameField.right - cell.width) {
 			this.x += cell.width;
 		}
@@ -87,22 +87,27 @@ class Player {
 		if (keyPress == 'down' && this.y < gameField.bottom - cell.height) {
 			this.y += cell.height;
 		}	
-		else if (this.y  < gameField.top) {			
+		if (this.y  < gameField.top) {			
 			this.x = playerStart.x;
 			this.y = playerStart.y;	
 			alert('You win!');	
-		}		
-	}
+		}			
+	};
+};
 
-	render () {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    }
-}
+Function.prototype.construct = function (position) {
+	let gameEnteties = Object.create(this.prototype);
+	this.apply(gameEnteties, position);
+	return gameEnteties;
+};
 
-const player = new Player(playerStart.x, playerStart.y);
+const playerPosition = [playerStart.x, playerStart.y];
+const player = Player.construct(playerPosition);
 
-const allEnemies = [cell.height - border, cell.height*2 - border, cell.height*3 - border]
-				   .map(value => {return new Enemy(gameField.left, value, speed, player);});
+const allEnemies = [cell.height - border, cell.height*2 - border, cell.height*3 - border].map((value) => {
+	const enemyPosition = [gameField.left, value, speed, player];
+	return Enemy.construct(enemyPosition);
+});
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
