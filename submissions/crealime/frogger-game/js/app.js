@@ -138,8 +138,6 @@ Player.prototype.tap = function (e) {
 	const X_DIFF = Math.abs((this.x + X_OFFSET_TAP * 2) - (e.touches[0].clientX + X_OFFSET_TAP - offsetLeft))
 	const Y_DIFF = Math.abs((this.y + Y_OFFSET_TAP) - (e.touches[0].clientY - offsetTop))
 
-	console.log(X_DIFF, '  ', Y_DIFF)
-
 	if (X_DIFF > Y_DIFF) {
 		if (this.x + X_OFFSET_TAP * 2 > e.touches[0].clientX + X_OFFSET_TAP - offsetLeft) this.x -= X_STEP
 		else this.x += X_STEP
