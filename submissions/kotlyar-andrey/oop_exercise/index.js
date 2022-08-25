@@ -8,7 +8,7 @@
 /**
  * Общий класс для всех жителей
  */
- class Creature {
+class Creature {
   constructor(species, name, gender, phrase) {
     this._species = species;
     this._name = name;
@@ -20,7 +20,7 @@
 
   getFriends() {
     return this._friends && this._friends.length > 0
-      ? this._friends.map(friend => friend._name).join(", ")
+      ? this._friends.map((friend) => friend._name).join(", ")
       : "no friends";
   }
 
@@ -40,15 +40,18 @@
     this._properties = [...this._properties, ...newProperties];
   }
 
-  display() {
+  getPropertiesData() {
+    return this._properties.map((prop) => this[prop]).join("; ");
+  }
+
+  getAnotherData() {
     const friends = this.getFriends();
     const saying = this.getSaying();
-    print(
-      this._properties
-        .map(prop => this[prop])
-        .join("; ")
-        .concat(`; ${saying}; ${friends}`)
-    );
+    return `; ${friends}; ${saying}`;
+  }
+
+  getInfo() {
+    return this.getPropertiesData() + this.getAnotherData();
   }
 }
 
@@ -128,6 +131,6 @@ cat.setSaying("Hello, it's me, your cat");
 
 const inhabitants = [man, woman, dog, cat, parrot, woman_cat, man_parrot];
 
-inhabitants.forEach(creature => {
-  creature.display();
+inhabitants.forEach((creature) => {
+  print(creature.getInfo());
 });
