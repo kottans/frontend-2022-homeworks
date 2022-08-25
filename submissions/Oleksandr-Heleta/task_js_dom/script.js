@@ -25,15 +25,15 @@ const boxersList = [
 
 const btnContainer = document.querySelector('.aside');
 const mainContainer = document.querySelector('.main');
-const startPage = boxersList[0];
+const [startPage] = boxersList;
 
 btnContainer.addEventListener('click', addContent);
 
-function addContent(e) {
-    const { id, tagName } = e.target;
-    if (tagName !== 'BUTTON') { return; };
-    const contant = boxersList.find((boxer) => boxer.id === id);
-    mainContainer.innerHTML = renderTamplate(contant);
+function addContent({ target }) {
+    if (target.id) {
+        const contant = boxersList.find((boxer) => boxer.id === target.id);
+        mainContainer.innerHTML = renderTamplate(contant);
+    }
 };
 
 function renderTamplate({ id, title, nick, imgSrc, text }) {
@@ -48,5 +48,7 @@ function renderTamplate({ id, title, nick, imgSrc, text }) {
     );
 };
 
-mainContainer.innerHTML = renderTamplate(startPage);
+window.addEventListener('DOMContentLoaded', () => {
+    mainContainer.innerHTML = renderTamplate(startPage);
+});
 
