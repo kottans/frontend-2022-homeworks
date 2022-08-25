@@ -9,20 +9,33 @@ const X_OFFSET_CLICK = 50
 const Y_OFFSET_CLICK = 130
 const X_OFFSET_TAP = 60
 const Y_OFFSET_TAP = 190
+const MIN_SPEED = 100
+const MAX_SPEED = 200
+
+const Thing = function(x, y, sprite) {
+	this.x = x
+	this.y = y
+	this.sprite = sprite
+}
+
+Thing.prototype.render = function() {
+	ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
+}
 
 // Enemies our player must avoid
-const Enemy = function(x, y, speed, antagonist) {
+const Enemy = function(x, y, sprite, speed, antagonist) {
 	// Variables applied to each of our instances go here,
 	// we've provided one for you to get started
 
 	// The image/sprite for our enemies, this uses
 	// a helper we've provided to easily load images
-	this.x = x;
-	this.y = y;
+	Thing.call(this, x, y, sprite)
+
 	this.speed = speed;
-	this.sprite = 'images/enemy-bug.png'
 	this.antagonist = antagonist
 }
+
+Enemy.prototype = Object.create(Thing.prototype)
 
 Enemy.prototype.update = function(dt) {
 	// You should multiply any movement by the dt parameter
@@ -32,15 +45,11 @@ Enemy.prototype.update = function(dt) {
 
 	if (this.x > 530) {
 		this.x = -100
-		this.speed = 100 + Math.floor(Math.random() * 300)
+		this.speed = MIN_SPEED + Math.floor(Math.random() * MAX_SPEED)
 	}
 
 	this.collisions()
 
-}
-
-Enemy.prototype.render = function() {
-	ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
 }
 
 Enemy.prototype.collisions = function() {
@@ -67,11 +76,12 @@ Enemy.prototype.collisions = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 const Player = function (x, y, sprite) {
-	this.sprite = sprite
-	this.x = x
-	this.y = y
+	Thing.call(this, x, y, sprite)
+
 	this.level = 1
 }
+
+Player.prototype = Object.create(Thing.prototype)
 
 Player.prototype.update = function () {
 	if (this.x > START_PLAYER_X_POSITION + X_STEP * 2 + X_STEP / 2)
@@ -86,10 +96,6 @@ Player.prototype.update = function () {
 		}, 200)
 	if (this.y < -(Y_STEP * 5 - START_PLAYER_Y_POSITION))
 		this.y = -(Y_STEP * 5 - START_PLAYER_Y_POSITION)
-}
-
-Player.prototype.render = function () {
-	ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
 }
 
 Player.prototype.handleInput = function (direction) {
@@ -141,16 +147,13 @@ Player.prototype.tap = function (e) {
 
 
 const Star = function (x, y, sprite, raider, index) {
-	this.x = x;
-	this.y = y;
-	this.sprite = sprite
+	Thing.call(this, x, y, sprite)
+
 	this.raider = raider
 	this.index = index
 }
 
-Star.prototype.render = function () {
-	ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
-}
+Star.prototype = Object.create(Thing.prototype)
 
 Star.prototype.update = function() {
 	this.collisions()
@@ -181,9 +184,9 @@ function creteEnemies(num) {
 			y = INITIAL_ENEMIES_Y_POSITIONS[1]
 		else if (i > START_ENEMIES_Y_POSITION + Y_STEP * 4 && i <= START_ENEMIES_Y_POSITION + Y_STEP * 5)
 			y = INITIAL_ENEMIES_Y_POSITIONS[2]
-		const x = -100 + Math.floor(Math.random() * -300)
-		const speed = 100 + Math.floor(Math.random() * 300)
-		arrEnemies.push(new Enemy(x, y, speed, player))
+		const x = -100 + Math.floor(Math.random() * -200)
+		const speed = MIN_SPEED + Math.floor(Math.random() * MAX_SPEED)
+		arrEnemies.push(new Enemy(x, y,'images/enemy-bug.png', speed, player))
 	}
 
 	return arrEnemies
@@ -200,9 +203,9 @@ function createStars(img) {
 	return arrStars
 }
 
+// Create Player, Enemies and Gems
 const player = new Player(START_PLAYER_X_POSITION, START_PLAYER_Y_POSITION, 'images/char-cat-girl.png')
-let numOfEnemies = window.prompt('Enter the initial number of enemies (1-6)', String(DEFAULT_NUM_OF_ENEMIES));
-let allEnemies = creteEnemies(+numOfEnemies || DEFAULT_NUM_OF_ENEMIES)
+let allEnemies = creteEnemies(DEFAULT_NUM_OF_ENEMIES)
 let allStars = createStars('images/Gem Blue.png')
 
 // This listens for key presses and sends the keys to your
@@ -240,11 +243,15 @@ function reloadLevel(levelUp, index) {
 				allEnemies = creteEnemies(allEnemies.length + 1)
 				setStars('images/Gem Orange.png')
 			}
+			else if (player.level === 3) {
+				player.level = 4
+				allEnemies = creteEnemies(allEnemies.length + 1)
+				setStars('images/Gem Red.png')
+			}
 			else {
 				alert('You won!')
 				player.level = 1
-				numOfEnemies = window.prompt('Enter the initial number of enemies (1-6)', 3);
-				allEnemies = creteEnemies(+numOfEnemies || 3)
+				allEnemies = creteEnemies(DEFAULT_NUM_OF_ENEMIES)
 				setStars('images/Gem Blue.png')
 			}
 		}
@@ -255,14 +262,18 @@ function reloadLevel(levelUp, index) {
 		player.y = 380
 		if (player.level === 1) {
 			setStars('images/Gem Blue.png')
-		} else if (player.level === 2) {
+		}
+		else if (player.level === 2) {
 			setStars('images/Gem Green.png')
-		} else {
+		}
+		else if (player.level === 3) {
 			setStars('images/Gem Orange.png')
+		}
+		else {
+			setStars('images/Gem Red.png')
 		}
 	}
 }
-
 
 function addClickAndTap() {
 	const canvas = document.querySelector('canvas')
