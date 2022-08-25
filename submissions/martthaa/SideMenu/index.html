@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>music menu</title>
+	<link rel="shortcut icon" href="./img/icon.png">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+	<div class="toggle">
+		<div class="hamburger">
+			<span>
+
+			</span>
+		</div>
+	</div>
+	
+	<div class="wrapper">
+		<div class="tabs_container">
+			<div class=" sidebar">
+				<ul>
+					<li class="active">
+						<span class="item">The Hardkiss</span>
+					</li>
+					<li>
+						<span class="item">Imagine Dragons</span>
+					</li>
+					<li>
+						<span class="item">Nirvana</span>
+					</li>
+					<li>
+						<span class="item">Maneskin</span>
+					</li>
+					<li>
+						<span class="item">Speakers</span>
+					</li>
+				</ul>
+			</div>
+			<div class="tabs_wrapper">
+				<div class="tabs_content Hardkiss" style="display: block;">
+
+					<div class="tabs_info">
+
+						<h2 class="title">The Hardkiss</h2>
+						<p>The HARDKISS  is a Ukrainian musical, English-speaking and Ukrainian-speaking rock band, created in 2011 .
+							All the band's songs were written by the soloist Yulia Sanina and Valery Bebko , who is also the creative producer of "The Hardkiss".
+							The Hardkiss are representatives of world-class quality modern Ukrainian music. The audience and critics have repeatedly recognized "The Hardkiss" as the best rock band and the best concert band of the post-Soviet countries and Eastern Europe
+							A feature of the band is the soloist 's bright images and wigs , which are worked on by stylists Slava Chaika and Vitaly Datsyuk . </p>
+						<audio hidden id="Hardkiss-audio" controls>
+							<source src="./music/The_Hardkiss_-_Make-Up.mp3">
+						</audio>
+						<div class="audio-box"> 
+							<button class="fas fa-play " onclick="document.getElementById('Hardkiss-audio').play()"></button> 
+							<button class="fas fa-pause" onclick="document.getElementById('Hardkiss-audio').pause()"></button> 
+						</div>
+
+					</div>
+				</div>
+				<div class="tabs_content ImagineDragons" style="display: none;">
+					<div class="tabs_info">
+						<h2 class="title">Imagine Dragons</h3>
+						<p>Imagine Dragons is a pop-rock band from Las Vegas, Nevada.
+						They gained exposure after the release of their debut studio album, Night Visions, in September 2012.
+						Since then, they have gone on a world tour, and gained exposure on major late night shows like The Tonight Show with Jay Leno,
+						Jimmy Kimmel Live! and Late Night with Jimmy Fallon. Billboard magazine named them "The Breakthrough Band of 2013",
+						and Rolling Stone magazine called their single Radioactive "the biggest rock hit of the year."</p>
+						<audio hidden id="ImagineDragons-audio" controls>
+							<source src="./music/Imagine Dragons - Birds.mp3">
+						</audio>
+						<div class="audio-box"> 
+							<button class="fas fa-play " onclick="document.getElementById('ImagineDragons-audio').play()"></button> 
+							<button class="fas fa-pause" onclick="document.getElementById('ImagineDragons-audio').pause()"></button> 
+						</div>
+					</div>
+				</div>
+
+				<div class="tabs_content Nirvana" style="display: none;">
+					<div class="tabs_info">
+						<h2 class="title">Nirvana</h3>
+						<p>Nirvana is an American rock band formed by vocalist and
+						guitarist Kurt Cobain and bassist Chris Novoselic in Aberdeen, Washington,
+						in 1987. Several drummers changed in the team; drummer Dave Grohl, who
+						joined Cobain and Novoselic in 1990, played with the band longer than anyone else .</p>
+						<p>In 1989, Nirvana became part of the Seattle music scene, releasing their debut album
+						Bleach on the indie label Sub Pop. After signing to major label DGC Records, Nirvana 
+						had a surprise hit with the song "Smells Like Teen Spirit" from their second album ,
+						Nevermind, released in 1991. Later, Nirvana entered the music mainstream, popularizing
+						the alternative rock subgenre called grunge. In the eyes of the media, Kurt Cobain became
+						not just a musician, but the "voice of a generation", and Nirvana became the flagship of
+						"Generation X". In 1993, the third and last studio album of the group, In Utero,
+						was released, the compositions of which were musically very different from the previous works of the group.</p>
+						<audio hidden id="Nirvana-audio" controls>
+							<source src="./music/Nirvana - Smells Like Teen Spirit .mp3" type="audio/ogg">
+						</audio>
+						<div class="audio-box"> 
+							<button class="fas fa-play " onclick="document.getElementById('Nirvana-audio').play()"></button> 
+							<button class="fas fa-pause" onclick="document.getElementById('Nirvana-audio').pause()"></button> 
+						</div>
+					</div>
+				</div>
+				<div class="tabs_content Maneskin" style="display: none;">
+					<div class="tabs_info">
+						<h2 class="title">Maneskin</h3>
+						<p>Maneskin is an Italian rock band from Rome, consisting of vocalist Damiano David,
+						bassist Victoria de Angelis , guitarist Thomas Raji and drummer Ethan Torcchio. 
+						The band members first met as high school students in Monteverde , Rome . 
+						The band rose to prominence after finishing as runners-up in the eleventh season
+						of the Italian talent show The X Factor in 2017. In 2021, the band won the music
+						festival in Sanremo and represented Italy at Eurovision 2021 with the song"Zitt
+						i e buoni. The group won the Eurovision Song Contest 2021 with 524 points (206
+						from the jury and 318 from the audience).</p>
+						<audio hidden id="Maneskin-audio" controls>
+							<source src="./music/Maneskin - Chosen.mp3" type="audio/ogg">
+						</audio>
+						<div class="audio-box"> 
+							<button class="fas fa-play " onclick="document.getElementById('Maneskin-audio').play()"></button> 
+							<button class="fas fa-pause" onclick="document.getElementById('Maneskin-audio').pause()"></button> 
+						</div>
+
+					</div>
+				</div>
+				<div class="tabs_content Beatles" style="display: none;">
+					<div class="tabs_info">
+						<h2 class="title">The Beatles</h3>
+						<p>The Beatles were an English rock band, formed in Liverpool in 1960,
+						that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr.
+						They are regarded as the most influential band of all time and were integral
+						to the development of 1960s counterculture and popular music's recognition as an
+						art form.Rooted in skiffle, beat and 1950s rock 'n' roll, their sound incorporated
+						elements of classical music and traditional pop in innovative ways; the band later
+						explored music styles ranging from ballads and Indian music to psychedelia and hard rock.
+						As pioneers in recording, songwriting and artistic presentation, the Beatles revolutionised
+						many aspects of the music industry and were often publicised as leaders of the era's youth
+						and sociocultural movements.</p>
+						<audio hidden id="Beatles-audio" controls>
+							<source src="./music/The Beatles - Yesterday.mp3" type="audio/ogg">
+						</audio>
+						<div class="audio-box"> 
+							<button class="fas fa-play " onclick="document.getElementById('Beatles-audio').play()"></button> 
+							<button class="fas fa-pause" onclick="document.getElementById('Beatles-audio').pause()"></button> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="scripts.js"></script>
+</body>
+</html>

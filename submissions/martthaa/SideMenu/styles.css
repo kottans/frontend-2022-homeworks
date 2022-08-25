@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+	transition: all 0.35s linear;
+}
+
+body{
+	background: #faf8f8;
+	--bg: black;
+    background-color: var(--bg);
+    color: white;
+}
+
+.tabs_container{
+	display: flex;
+}
+
+.sidebar{
+    max-width: 250px;
+	width: 100%;
+    /* padding: 30px 30px; */
+	height: 100vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background: rgb(0,0,0);
+	position: relative;
+    z-index: 2;
+    border-right: 2px solid white;
+}
+.sidebar:before{
+    content: "";
+    background: url(./img/leandra-rieger-wk966Ouqces-unsplash.jpg) no-repeat;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+}
+
+.tabs_container .sidebar ul{
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.tabs_container .sidebar ul li{
+	color: #fff;
+	padding: 20px 0px;
+	/* padding-bottom: 20px; */
+	text-transform: uppercase;
+	font-size: 14px;
+	letter-spacing: 2px;
+	margin-right: 1px;
+	position: relative;
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.2s ease;
+}
+
+.tabs_container .sidebar ul li.active:before,
+.tabs_container .sidebar ul li:hover:before{
+	content: "";
+	position: absolute;
+	bottom: 1px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: #fff;
+	transition: all 0.2s ease;
+}
+
+.tabs_container .tabs_wrapper{
+	padding: 30px;
+}
+
+.tabs_container .tabs_wrapper .tabs_content{
+	padding: 30px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.05), -1px -1px 1px rgba(0,0,0,0.05);
+} 
+
+.tabs_container .tabs_wrapper .tabs_content .tabs_info h3{
+	margin-bottom: 15px;
+	letter-spacing: 3px;
+}
+
+.tabs_container .tabs_wrapper .tabs_content .tabs_info p{
+	line-height: 25px;
+	color: #7a7a7a;
+	margin-bottom: 20px;
+}
+
+.tabs_container .tabs_wrapper .tabs_content .tabs_info p:last-child{
+	margin-bottom: 0;
+}
+
+.title{
+    padding-bottom: 20px;
+}
+
+.title:hover {
+    transform: translateY(-7px);
+    text-shadow:  0px 3px 10px rgb(255,255,255);
+}
+
+.toggle{
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    background-color: #222;
+    border: 2px solid white;
+    cursor: pointer;
+	z-index: 3;
+}
+
+.hamburger{
+    position: relative;
+    top: calc(50% - 2px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+}
+
+.hamburger > span,
+.hamburger > span::before,
+.hamburger > span::after{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 20px;
+    background-color: #fff;
+    transition-duration: 0.25s;
+}
+
+.hamburger > span::before{
+    content: "";
+    top: 9px;
+}
+
+.hamburger > span::after{
+    content: "";
+    top: -9px;
+}
+
+.toggle.active .hamburger > span{
+    transform: rotate(45deg);
+}
+
+.toggle.active .hamburger > span::before{
+    top: 0;
+    transform: rotate(0deg);
+}
+
+.toggle.active .hamburger > span::after{
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.tabs_content{
+    position: relative;
+}
+
+.Hardkiss, .ImagineDragons, .Nirvana, .Maneskin, .Beatles{
+    background-size: cover;
+	display: flex;
+    min-height: 100%;
+}
+
+.Hardkiss::after,
+.ImagineDragons::after,
+.Nirvana::after,
+.Maneskin::after,
+.Beatles::after {
+    content: "";
+    /* background: url(./img/okeanElzy.jpeg) no-repeat center/100%; */
+    opacity: 0.4;
+    filter: blur(0px);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+}
+
+.Hardkiss::after{
+    background: url(./img/hardkiss1jpg.jpg) no-repeat center/100%;
+}
+
+.ImagineDragons::after{
+    background: url(./img/ImagineDragons.jpg)no-repeat center/100%;
+}
+
+.Nirvana::after{
+    background: url(./img/nirvana.jpg)no-repeat center/100%;
+    opacity: 0.3;
+}
+
+.Maneskin::after{
+    background: url(./img/maneskinInred.jpg)no-repeat center/100%;
+}
+
+.Beatles::after{
+    background: url(./img/beatles3.jpg) no-repeat center/100%;
+    opacity: 0.2;
+}
+
+.audio-box{
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+    display: flex;
+    gap: 30px;
+}
+
+button{
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    border: 2px solid white;
+}
+
+button:hover {
+    background-color: white;
+    box-shadow: 0px 15px 20px rgba(192,192,192, 0.4);
+    color: grey;
+    transform: translateY(-7px);
+}
+
+@media screen and (max-width:1540px) {
+    .Hardkiss::after,
+    .ImagineDragons::after,
+    .Nirvana::after,
+    .Maneskin::after,
+    .Beatles::after {
+        background-size: cover;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .toggle{
+        max-width: 250px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .toggle{
+        display: block;
+    }
+    .tabs_content{
+        height: 100vh;
+        font-size: 18px;
+    }
+    .sidebar{
+        position: fixed;
+        top: 0;
+        left: -350px;
+        height: 100vh;
+        width: 100%;
+        max-width: 350px;
+        transition: 0.4s ease;
+    }
+    .sidebar.active{
+        left: 0;
+
+    }
+}
