@@ -65,30 +65,17 @@ const catWoman = {
    so code reviewers might focus on a single file that is index.js.
    */
 
-const prop = ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends']
 const allCharactersArray = [catWoman, male, female, cat, dog]
 
-// function printObjectNew(personToPrint){
-//    const propToPrint = [];
-//    prop.forEach((propOfObj) => {
-//       propToPrint.push(personToPrint[propOfObj]);
-//    })
-//    let newStr = propToPrint.join('; ');
-//    print(newStr);
-// }
-
-function arrayToString(propToPrint){
-   let newStr = propToPrint.join('; ');
-   console.log(propToPrint);
-   print(newStr);
+function arrayOfPropToPrint(personToPrint){
+   const prop = ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends']
+   const propToPrint = prop.map((propOfObj) => personToPrint[propOfObj]);
+   arrayToStringAndPrint(propToPrint);
 }
 
-function arrayOfPropToPrint(personToPrint){
-   const propToPrint = [];
-   prop.forEach((propOfObj) => {
-      propToPrint.push(personToPrint[propOfObj]);
-   })
-   arrayToString(propToPrint);
+function arrayToStringAndPrint(propToPrint){
+   let newStr = propToPrint.join('; ');
+   print(newStr);
 }
 
 function printAllObjects(arrayAllObjects){
@@ -98,9 +85,3 @@ function printAllObjects(arrayAllObjects){
 }
 
 printAllObjects(allCharactersArray);
-
-// printObjectNew(catWoman);
-// printObjectNew(male);
-// printObjectNew(female);
-// printObjectNew(cat);
-// printObjectNew(dog);
