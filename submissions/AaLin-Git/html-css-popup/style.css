@@ -105,6 +105,10 @@ p {
   margin-top: 3px;
 }
 
+h1 {
+  color: #4462ab;
+}
+
 .wrapper {
   min-height: 100%;
   overflow: hidden;
@@ -250,7 +254,10 @@ a.textItem {
   position: absolute;
 }
 
-p.more {
+.more {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 100%;
   padding: 11px;
   margin-top: 16px;
   text-align: center;
