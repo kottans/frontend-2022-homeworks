@@ -53,7 +53,5 @@ const inhabitants = [dog, cat, woman, womanCat, man];
 const keys = ["species", "name", "gender", "legs", "hands", "saying"];
 
 inhabitants.map((inhabitant) => {
-  const arr = [];
-  keys.forEach((key) => arr.push(inhabitant[key]));
-  print(arr.join("; "));
+  print(keys.map((key) => inhabitant[key]).join(", "));
 });
