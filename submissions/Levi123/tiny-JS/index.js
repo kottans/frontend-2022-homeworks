@@ -70,10 +70,6 @@ const allCharactersArray = [catWoman, male, female, cat, dog]
 function arrayOfPropToPrint(personToPrint){
    const prop = ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends']
    const propToPrint = prop.map((propOfObj) => personToPrint[propOfObj]);
-   arrayToStringAndPrint(propToPrint);
-}
-
-function arrayToStringAndPrint(propToPrint){
    let newStr = propToPrint.join('; ');
    print(newStr);
 }
