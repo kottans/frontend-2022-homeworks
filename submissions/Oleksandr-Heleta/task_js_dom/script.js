@@ -1,40 +1,40 @@
-const dB = [
+const boxersList = [
     {
-        id: 1,
+        id: '1',
         title: 'Володимир Кличко',
         nick: 'Dr.Steelhammer',
         imgSrc: 'https://klitschko-brothers.com/wp-content/uploads/2020/04/vlad-5-scaled.jpg',
         text: 'Володимир Володимирович Кличко́ (нар. 25 березня 1976, Семипалатинськ, нині Семей) — український професійний боксер. Олімпійський чемпіон з боксу у надважкій ваговій категорії (1996 рік). Чемпіон світу з боксу у важкій ваговій категорії за версіями WBO (2000—2003 роки, 2008—2015 роки), IBF (2006—2015 роки), IBO (2006—2015 роки), The Ring (2009—2015 роки), WBA (2011—2015 роки). Молодший брат чемпіона світу за версією WBC Віталія Кличка.',
     },
     {
-        id: 2,
+        id: '2',
         title: 'Віталій Кличко',
         nick: 'Dr. Ironfist',
         imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3A61s8XcvGaXYdqU4ad5wzPxItLZ00sSWMw&usqp=CAU',
         text: "Віталій Володимирович Кличко (нар. 19 липня 1971, с. Біловодське, Чуйська область, Киргизька РСР) — український державний діяч, боксер, політик, громадський діяч, меценат, учений-педагог. Міський голова Києва з 5 червня 2014 року. Голова КМДА з 25 червня 2014 року. Багаторазовий чемпіон світу з боксу у важкій ваговій категорії. Кандидат наук з фізичного виховання і спорту (2000). Герой України (2004). Народний депутат України 7-го скликання(з 12 грудня 2012 по 5 червня 2014 року).Голова Асоціації міст України з 23 січня 2016 року.Член громадської ради журналу «ЄвроАтлантика». Шестиразовий чемпіон світу з кікбоксингу(двічі серед аматорів і чотири рази серед професіоналів).Чемпіон світу з боксу у важкій ваговій категорії за версіями WBO(1999—2000 роки), WBC(2004—2005 роки та 2008—2014 роки), The Ring(2004—2005 роки).Протягом кар'єри переміг 15 бійців за титул чемпіона світу у важкій вазі. Срібний призер чемпіонату світу з боксу серед аматорів за версією AIBA (1995 рік). Єдиний боксер, якому вручили пояс «Вічного» чемпіона світу у важкій вазі за версією WBC. Триразовий чемпіон України з боксу серед аматорів. Чемпіон I Всесвітніх ігор військовослужбовців у важкій ваговій категорії (1995 рік). 11 червня 2018 року першим з громадян України включений до Міжнародної зали боксерської слави. Займає 35-е місце в рейтингу найкращих боксерів в історії незалежно від вагової категорії за версією BoxRec."
     },
     {
-        id: 3,
+        id: '3',
         title: 'Олександр Усик',
         nick: 'Cat',
         imgSrc: 'https://static.ukrinform.com/photos/2022_08/thumb_files/360_240_1661045142-532.jpg',
         text: "Олександр Олександрович У́cик (нар. 17 січня 1987, Сімферополь) — професійний український боксер. Чемпіон світу в першій важкій вазі (версії WBO (2016—2019), WBC (2018—2019), IBF (2018—2019), WBA (Super) (2018—2019), The Ring (2018 — 2019)), чинний чемпіон світу у важкій вазі (версії WBO (2021—н.ч.), IBF (2021—н.ч.), WBA (Super) (2021—н.ч.) та IBO (2021—н.ч.), олімпійський чемпіон (2012), чемпіон світу (2011), чемпіон Європи (2008), багаторазовий чемпіон України. Переміг 7 бійців за титул чемпіона світу у першій важкій вазі."
     },
 
-]
-const btnArr = document.querySelectorAll('.aside-btn');
-const mainContainer = document.getElementById('main');
+];
 
-for (let btn of btnArr) {
-    btn.addEventListener('click', addContent);
+const btnContainer = document.querySelector('.aside');
+const mainContainer = document.querySelector('.main');
+const startPage = boxersList[0];
 
-}
+btnContainer.addEventListener('click', addContent);
 
 function addContent(e) {
-    let idElem = e.srcElement.id;
-    let contant = dB[idElem - 1];
+    if (e.target.tagName !== 'BUTTON') { return; };
+    const idElem = e.target.id;
+    const contant = boxersList.find((e) => e.id === idElem ? true : false);
     mainContainer.innerHTML = renderTamplate(contant);
-}
+};
 
 function renderTamplate({ id, title, nick, imgSrc, text }) {
 
@@ -46,7 +46,7 @@ function renderTamplate({ id, title, nick, imgSrc, text }) {
             <p class="content-text">${text}</p>
         </section>`
     );
-}
+};
 
-mainContainer.innerHTML = renderTamplate(dB[0]);
+mainContainer.innerHTML = renderTamplate(startPage);
 
