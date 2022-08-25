@@ -1,4 +1,3 @@
-/* base styles */
 * {
   padding: 0;
   margin: 0;
@@ -28,15 +27,13 @@ a {
 ul li {
   list-style: none;
 }
-/*---------------------------------------------------*/
 .main {
   height: 100%;
   background-color: #fff4e4;
   margin: auto;
   font-family: Arial, Helvetica, sans-serif;
 }
-/* ================Menu==================== */
-.menu__items {
+.menu__list {
   background-color: #fff4e4;
   margin: auto;
   font-family: Arial, Helvetica, sans-serif;
@@ -50,9 +47,7 @@ ul li {
   height: 1.715em;
   margin: 0.715em;
 }
-/* ===============Menu text items======================= */
 .menu__item_text {
-  /* display: block; */
   border: 0.15em solid transparent;
   border-radius: 0.2em;
   color: #555;
@@ -64,11 +59,8 @@ ul li {
 .menu__item_text:hover {
   border-color: #c4b4c9;
 }
-/* ===============Menu picture items==================== */
 .menu__item_picture {
-  /* display: block; */
   width: 1.715em;
-  /* height: 1.715em; */
   border: 0.15em solid transparent;
   border-radius: 0.2em;
   padding: 0.15em;
@@ -84,7 +76,6 @@ ul li {
 .menu__item_picture:hover {
   border-color: #c4b4c9;
 }
-/* ===============Menu checkbox item===================*/
 .menu__item_checkbox {
   position: relative;
   min-width: 1.715em;
@@ -95,9 +86,8 @@ ul li {
   width: 1.715em;
   border: 0.15em solid transparent;
   border-radius: 0.2em;
-  background: url("../img/popup-button.png") 50% 50%/75% auto no-repeat;
+  background: url("../img/popup-button.png") 50% 50%/80% 80% no-repeat;
 }
-/* hiding checkbox */
 .visually-hidden {
   position: absolute;
   height: 1px;
@@ -117,7 +107,6 @@ ul li {
 .menu__item_checkbox_input:checked ~ .popup__wrapper {
   display: block;
 }
-/* ================Popup menu========================== */
 .popup__wrapper {
   display: none;
   position: absolute;
@@ -131,7 +120,7 @@ ul li {
   padding: 0.2em 0em 0.5em 0.2em;
   overflow: auto;
 }
-.popup__items {
+.popup__list {
   display: flex;
   flex-wrap: wrap;
 }
@@ -170,7 +159,7 @@ ul li {
   color: #555;
   margin-bottom: 0.35em;
 }
-/* =====================Popup more button================================= */
+
 .popup__item_checkbox {
   flex-basis: 90%;
   justify-self: center;
