@@ -130,7 +130,7 @@ function contentCreator(eventBtn) {
   const contentData = darkTowerSeries.filter(
     (serie) => eventBtn.id === serie.id
   );
-  let [serie] = contentData;
+  const [serie] = contentData;
   console.log(serie);
   contentTitle.innerHTML = serie.title;
   paragraphQuote.innerHTML = serie.quote;
