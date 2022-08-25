@@ -30,9 +30,9 @@ const startPage = boxersList[0];
 btnContainer.addEventListener('click', addContent);
 
 function addContent(e) {
-    const elem = e.target;
-    if (elem.tagName !== 'BUTTON') { return; };
-    const contant = boxersList.find((e) => e.id === elem.id ? true : false);
+    const { id, tagName } = e.target;
+    if (tagName !== 'BUTTON') { return; };
+    const contant = boxersList.find((boxer) => boxer.id === id ? true : false);
     mainContainer.innerHTML = renderTamplate(contant);
 };
 
