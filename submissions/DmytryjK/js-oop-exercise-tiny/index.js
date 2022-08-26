@@ -29,12 +29,13 @@
    */
 
 class Inhabitant {
-   constructor(name, spacies, gender, saying) {
+   constructor(name, spacies, gender, saying, legs) {
       this.name = name;
       this.spacies = spacies;
       this.gender = gender;
       this.saying = saying;
-      this.property = ['name', 'spacies', 'gender', 'saying'];
+      this.legs = legs;
+      this.property = ['name', 'spacies', 'gender', 'saying', 'legs'];
    }
    get props() {
       return this.property.map(key => this[key]).join('; ');
@@ -43,32 +44,29 @@ class Inhabitant {
 
 class Human extends Inhabitant {
    constructor (name, gender, saying) {
-      super(name, 'human', gender, saying);
-      this.legs = 2;
+      super(name, 'human', gender, saying, '2');
       this.hands = 2;
    }
    get props() {
-      return super.props + `; ${this.legs}; ${this.hands}`;
+      return super.props + `; ${this.hands}`;
    }
 }
 
 class Dog extends Inhabitant {
    constructor (name, gender, saying) {
-      super(name, 'dog', gender, saying);
-      this.legs = 4;
+      super(name, 'dog', gender, saying, '4');
    }
    get props() {
-      return super.props + `; ${this.legs}`;
+      return super.props;
    }
 }
 
 class Cat extends Inhabitant {
    constructor (name, gender, saying) {
-      super(name, 'cat', gender, saying);
-      this.legs = 4;
+      super(name, 'cat', gender, saying, '4');
    }
    get props() {
-      return super.props + `; ${this.legs}`;
+      return super.props;
    }
 }
 
@@ -78,6 +76,9 @@ class CatWoman extends Cat {
       this.spacies = 'catWoman';
       this.legs = 2;
       this.hands = 2;
+   }
+   get props() {
+      return super.props + `; ${this.hands}`;
    }
 }
 
