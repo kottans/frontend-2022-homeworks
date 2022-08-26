@@ -37,25 +37,8 @@ const mainTitle = document.createElement('h1');
 const mainImage = document.createElement('img');
 const mainText = document.createElement('p');
 
-function generateDefaultInformation(mainDataArray){
-    const { id, series, information, images } = mainDataArray.find(({id}) => id === 1);
-    mainInfoBlock.prepend(mainTitle);
-    mainTitle.classList.add('about-product__main-title');
-    mainTitle.innerHTML = `About BMW ${series}`;
-
-    mainInfoBlock.append(mainText);
-    mainText.classList.add('about-product__description');
-    mainText.innerHTML = information;
-
-    mainInfoBlock.append(mainImage);
-    mainImage.classList.add('about-product__main-image');
-    mainImage.alt = `bmw${id}`
-    mainImage.src = images;
-}
-
-generateDefaultInformation(informationAboutModel);
-
 function generateInformationAboutModel({target}){
+    mainInfoBlock.innerHTML="";
     if(target.dataset.id) {
         const buttonId = Number(target.dataset.id);
         const { id, series, information, images } = informationAboutModel.find(({id}) => id === buttonId);
