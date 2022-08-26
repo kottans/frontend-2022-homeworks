@@ -94,8 +94,10 @@ html, body {
 
 .main__row {
   display: flex;
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
   justify-content: flex-end;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -107,27 +109,37 @@ html, body {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
-  padding: 8px;
-  padding-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  border-radius: 5px;
+  right: 0;
 }
 .option__label:hover {
   box-shadow: rgba(0, 0, 0, 0.19) 0px 2px 25px, rgba(0, 0, 0, 0.23) 0px 3px 3px;
 }
+.option__label:focus {
+  border: 1px solid #f3dced;
+}
 
 .option__menu {
-  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
   position: relative;
+  margin: 0;
   list-style-type: none;
   background-color: #61608c;
   z-index: 0;
   height: 81vh;
+  width: 100px;
 }
 .option__menu-item {
+  margin-right: 2rem;
   margin-top: 1em;
-  margin-right: 30px;
   cursor: pointer;
 }
 .option__menu-item:first-child {
@@ -140,6 +152,17 @@ html, body {
   -moz-appearance: none;
        appearance: none;
   z-index: 1;
+}
+
+li:focus-within {
+  outline: 1px solid #f3dced;
+  border-radius: 5px;
+}
+
+li {
+  margin: 0 0 0 32px;
+  width: 32px;
+  height: 32px;
 }
 
 .popup {
