@@ -157,7 +157,7 @@ h1 {
 
 .hiddenNavbar section,
 .hiddenNavbar input {
-  display: none;
+  appearance: none;
 }
 
 .input {
@@ -234,8 +234,9 @@ h1 {
   border-radius: 4px;
 }
 
-a.textItem {
-  font-size: 18px;
+.textItem {
+  font-size: 13px;
+  color: #3f5ba0;
 }
 
 .menuPopupSub {
@@ -269,20 +270,25 @@ a.textItem {
 .contentItem:hover,
 .menuPopupItem:hover,
 .labelIcon:hover,
-.labelSub:hover {
+.labelSub:hover,
+.more:hover {
   outline: 1px solid #7ee1e6;
 }
 
 .contentItem:focus,
 .menuPopupItem:focus,
+.more:focus,
 .labelIcon:focus,
-.input:focus + .labelIcon,
-.input:focus + .labelSub {
+.labelSub:focus,
+.labelSub2:focus,
+.hiddenNavbar .input:focus + .labelIcon,
+.menuPopup .input:focus + .labelSub {
   outline: 4px solid #7ee1e6;
 }
 
 .contentItem:active,
 .menuPopupItem:active,
+.more:active,
 .labelIcon:active,
 .labelSub:active {
   outline: 2px solid #3ae2ea;
