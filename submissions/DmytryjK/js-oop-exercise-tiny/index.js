@@ -42,42 +42,42 @@ class Inhabitant {
 }
 
 class Human extends Inhabitant {
-   constructor (name, gender, saying, spacies, legs, hands) {
-      super(name, spacies, gender, saying);
-      this.spacies = 'human';
+   constructor (name, gender, saying) {
+      super(name, 'human', gender, saying);
       this.legs = 2;
       this.hands = 2;
-      this.property.push('legs', 'hands');
-
+   }
+   get props() {
+      return super.props + `; ${this.legs}; ${this.hands}`;
    }
 }
 
 class Dog extends Inhabitant {
-   constructor (name, gender, saying, spacies, legs) {
-      super(name, spacies, gender, saying);
-      this.spacies = 'dog';
+   constructor (name, gender, saying) {
+      super(name, 'dog', gender, saying);
       this.legs = 4;
-      this.property.push('legs');
+   }
+   get props() {
+      return super.props + `; ${this.legs}`;
    }
 }
 
 class Cat extends Inhabitant {
-   constructor (name, gender, saying, spacies, legs) {
-      super(name, spacies, gender, saying);
-      this.spacies = 'cat';
+   constructor (name, gender, saying) {
+      super(name, 'cat', gender, saying);
       this.legs = 4;
-      this.property.push('legs');
+   }
+   get props() {
+      return super.props + `; ${this.legs}`;
    }
 }
 
 class CatWoman extends Cat {
-   constructor (name, gender, saying, spacies, legs, hands) {
-      super(name, gender, spacies, saying);
-      this.saying = cat.saying;
+   constructor (name, gender) {
+      super(name, gender, cat.saying);
       this.spacies = 'catWoman';
       this.legs = 2;
       this.hands = 2;
-      this.property.push('hands');
    }
 }
 
