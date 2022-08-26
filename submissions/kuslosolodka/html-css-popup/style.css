@@ -99,7 +99,24 @@ body {
   grid-template-rows: repeat(2, 1fr);
   margin: 30px 30px 30px 30px;
 }
+#load-more-btn:checked ~ .hidden-footer {
+  margin: 0 100px;
+  padding: 0px 0px 30px 0px;
+  cursor: pointer;
+  display: block;
+}
+.footer-icon {
+  color: black;
+}
+.footer:hover {
+  color: rgb(255, 157, 0);
+  cursor: pointer;
+}
+
 .hidden-icons {
+  display: none;
+}
+.hidden-footer {
   display: none;
 }
 .btn-text {
@@ -107,7 +124,7 @@ body {
   color: rgb(104, 102, 102);
   cursor: pointer;
 }
-.footer-icon {
+/* .footer-icon {
   color: black;
 }
 .footer:hover {
@@ -118,7 +135,7 @@ body {
   margin: 0 100px;
   padding: 0px 0px 30px 0px;
   cursor: pointer;
-}
+} */
 
 @media only screen and (max-width: 768px) {
   .popup-button {
@@ -230,9 +247,12 @@ body {
     margin: 30px 15px 15px 15px;
   }
   .footer {
-    margin: 0 55px;
-    padding: 30px 0px 15px 0px;
+    margin: 35px 0px 0 -55px;
+    width: 200px;
     cursor: pointer;
+    display: block;
+    justify-content: center;
+    text-align: center;
   }
 }
 @media only screen and (min-width: 2560px) {
@@ -302,5 +322,9 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     margin: 30px 15px 15px 15px;
+  }
+  .footer {
+    font-size: xx-large;
+    margin: 0 200px;
   }
 }
