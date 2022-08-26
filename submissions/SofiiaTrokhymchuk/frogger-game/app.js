@@ -7,7 +7,8 @@ function createWinLossPointsBlock(){
         margin: 30px auto -10px;
         display: flex;
         justify-content: space-evenly;
-    `
+    `;
+
     pointsBlock.innerHTML = `
         <span>Wins: 0</span>
         <span>Losses: 0</span>
@@ -28,20 +29,23 @@ const pointsBlock = createWinLossPointsBlock();
 const TILE_WIDTH = 101;
 const TILE_HEIGHT = 83;
 
-const BOARD_WIDTH = TILE_WIDTH * 4;
-const BOARD_HEIGHT = TILE_HEIGHT * 5;
+const ROWS = 5;
+const COLUMNS = 4;
+
+const BOARD_WIDTH = TILE_WIDTH * COLUMNS;
+const BOARD_HEIGHT = TILE_HEIGHT * ROWS;
 
 const CHARACTERS_WIDTH = 101;
 const CHARACHTERS_HEIGHT = 171;
 
-const SIZE_DIFFERENCE = 20;
+const CHARACTERS_SIZE_DIFFERENCE = 20;
 
 const INITIAL_ENEMY_X = -CHARACTERS_WIDTH;
 const ENEMY_MIN_SPEED = 100;
 const ENEMY_MAX_SPEED = 500;
 
-const INITAL_PLAYER_X = BOARD_WIDTH / 2;
-const INITAL_PLAYER_Y = BOARD_HEIGHT - SIZE_DIFFERENCE;
+const INITAL_PLAYER_X = BOARD_WIDTH / Math.ceil(COLUMNS / 2);
+const INITAL_PLAYER_Y = BOARD_HEIGHT - CHARACTERS_SIZE_DIFFERENCE;
 
 const Enemy = function(x, y, player) {
     this.sprite = 'images/enemy-bug.png';
@@ -68,7 +72,8 @@ Enemy.prototype.generateSpeed = function() {
 };
 
 Enemy.prototype.checkCollisions = function() {
-    if(Math.abs(this.x - this.player.x) <= CHARACTERS_WIDTH - SIZE_DIFFERENCE * 1.5 && Math.abs(this.y - this.player.y) <= SIZE_DIFFERENCE){
+    if(Math.abs(this.x - this.player.x) <= CHARACTERS_WIDTH - CHARACTERS_SIZE_DIFFERENCE * 1.5 
+    && Math.abs(this.y - this.player.y) <= CHARACTERS_SIZE_DIFFERENCE){
         this.player.loses += 1;
         addWinLossPointsToBlock(pointsBlock, this.player);
         this.player.resetInitialPosition();
@@ -76,7 +81,8 @@ Enemy.prototype.checkCollisions = function() {
 };
 
 function generateEnemies(player){
-    return [2, 3, 4].map(i => new Enemy(INITIAL_ENEMY_X, TILE_HEIGHT * i - (CHARACHTERS_HEIGHT / 2 + SIZE_DIFFERENCE), player));
+    return [2, 3, 4].map(rowNumber => new Enemy(INITIAL_ENEMY_X, 
+        TILE_HEIGHT * rowNumber - (CHARACHTERS_HEIGHT / 2 + CHARACTERS_SIZE_DIFFERENCE), player));
 };
 
 const Player = function(x, y) {
