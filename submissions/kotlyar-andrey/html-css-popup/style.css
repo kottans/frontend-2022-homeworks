@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  background-color: #eeeeee;
+  padding: 12px;
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.header__logo {
+  padding: 3px;
+  border-radius: 50%;
+}
+
+.header__logo:hover,
+.header__logo:focus {
+  background-color: #ffffff;
+}
+
+.header__menu {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__menu > li {
+  display: block;
+  margin-right: 20px;
+}
+
+.header__link {
+  text-decoration: none;
+  color: #808080;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.header__link:focus,
+.header__link:hover {
+  background-color: #fff;
+}
+
+.user_logo {
+  background-color: #808080;
+  color: #f2f2f2;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.user_logo:focus,
+.user_logo:hover {
+  outline: 5px solid #fff;
+}
+
+#popup_checkbox,
+#more_checkbox {
+  appearance: none;
+  position: absolute;
+}
+
+.popup_label {
+  cursor: pointer;
+  display: block;
+}
+
+.popup_label img {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+#popup_checkbox:focus ~ .popup_label,
+.popup_label:hover {
+  background-color: #fff;
+}
+
+#popup_checkbox:checked ~ .popup_label {
+  background-color: #fff;
+}
+
+.popup_container {
+  display: none;
+}
+
+#popup_checkbox:checked ~ .popup_container {
+  display: block;
+  position: absolute;
+  top: 80px;
+  right: 2px;
+  border: 2px solid #eeeeee;
+  border-radius: 2px;
+  width: 300px;
+  height: 362px;
+  overflow: auto;
+}
+
+.popup_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  align-items: flex-end;
+  list-style-type: none;
+}
+
+.popup_item {
+  display: block;
+  text-decoration: none;
+  padding: 3px;
+}
+
+.popup_item:hover,
+.popup_item:focus {
+  background-color: #eeeeee;
+}
+
+.popup_item img {
+  display: block;
+  width: 50px;
+  margin: 10px auto;
+}
+
+.popup_item p {
+  text-align: center;
+  color: black;
+}
+
+.more_label {
+  display: block;
+  background-color: #eeeeee;
+  padding: 5px;
+  border-radius: 2px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.more_label:hover,
+#more_checkbox:focus ~ .more_label {
+  background-color: #cccccc;
+}
+
+.popup_more {
+  display: none;
+}
+
+#more_checkbox:checked ~ .more_label,
+#more_checkbox:checked {
+  display: none;
+}
+
+#more_checkbox:checked ~ .popup_more {
+  display: block;
+}
+
+.more_hr {
+  margin: 2px 0;
+  border-top: 1px solid #cccccc;
+}
