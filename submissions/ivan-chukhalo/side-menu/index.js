@@ -1,4 +1,4 @@
-'use strickt';
+'use strict';
 
 const classesArr = [
   {
@@ -63,24 +63,24 @@ const classesArr = [
   },
 ];
 
-let classesList = document.getElementById("menu");
-let title = document.getElementById("content__title");
-let description = document.getElementById("content__description");
-let classImg = document.getElementById("content__img");
-let linkHome = document.getElementById("content__link_back");
+const classesList = document.querySelector(".menu");
+const title = document.querySelector('.content__title');
+const titleInnerText = title.innerText;
+const description = document.querySelector('.content__description');
+const descriptionInnerText = description.innerText;
+const classImg = document.querySelector('.content__img');
+const linkHome = document.querySelector('.content__link_back');
 
 function printClassInformation(event) {
-    let menuItem = event.target.closest("a");
-    let className = menuItem.innerText;
-    let classIndex = classesArr.findIndex((el) => {
+  const menuItem = event.target.closest("a");
+  const className = menuItem.innerText;
+  const classIndex = classesArr.findIndex((el) => {
       if (el.name === className) {
           return true;
         }
     });
     title.innerText = classesArr[classIndex].name;
     description.innerText = classesArr[classIndex].description;
-    classImg.setAttribute("width", "240px");
-    classImg.setAttribute("height", "auto");
     classImg.setAttribute("src","./assets/illustrations/" + menuItem.innerText + ".jpg");
     classImg.setAttribute("alt", classesArr[classIndex].name);
     linkHome.innerText = "Повернутися на головну сторінку";
@@ -88,8 +88,8 @@ function printClassInformation(event) {
 classesList.addEventListener("click", printClassInformation);
 
 function resetContent(event){
-    title.innerText = 'World of Warcraft';
-    description.innerText = "World of Warcraft (WoW; укр. Світ Воєнного ремесла) — багатокористувацька рольова онлайн-гра, розроблена компанією Blizzard Entertainment. Це четверта відеогра в серії Warcraft, не враховуючи доповнень та відхиленої Warcraft Adventures: Lord of the Clans. Події ігор серії Warcraft відбуваються у фентезійному всесвіті Warcraft, що вперше був зображений у грі Warcraft: Orcs & Humans в 1994 році. Події World of Warcraft відбуваються через п'ять років після фіналу Warcraft III: The Frozen Throne. Згідно з книгою рекордів Гіннесса, World of Warcraft є найпопулярнішою MMORPG в світі. В прес-релізі Blizzard від 23 січня 2007 року повідомлялося, що кількість передплатників гри склала більше 8 млн. осіб по всьому світу, станом на 7 жовтня 2010 року кількість передплатників перевищила вже 12 млн. World of Warcraft таким чином є найбільш популярною MMORPG в світі, і тримає місце в Книзі рекордів Гіннеса як найпопулярніша MMORPG за кількістю передплатників. Станом на липень 2012 року, Гра зібрала понад 10 млрд. доларів США, що робить World of Warcraft також найбільш касовою відеогрою всіх часів, обійшовши дохід від Call of Duty: Black Ops на 1,5 мільярди доларів. У січні 2014 було оголошено, що протягом всієї роботи гри створено понад 100 млн. акаунтів. Гра отримала декілька нагород, одна з них — Gamespot's Game of the Year Award, як найкраща гра 2004 року. WoW періодично отримує доповнення, які вносять зміни до ігрового процесу та розширюють ігровий світ. Першим з них стало World of Warcraft: The Burning Crusade, випущене 16 січня 2007 року. На 2018 рік останнім є World of Warcraft: Battle for Azeroth, вихід якого відбувся 14 серпня 2018 року.";
+    title.innerText = titleInnerText;
+    description.innerText = descriptionInnerText;
     classImg.setAttribute('src', '');
     classImg.setAttribute('alt', '');
     event.target.innerText = '';

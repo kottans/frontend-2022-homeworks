@@ -98,8 +98,10 @@ a:hover{
 }
 
 .content__img{
-    margin: 40px auto;
     display: block;
+    margin: 40px auto;
+    width: 240px;
+    height: auto;
 }
 
 .content__link_back{
