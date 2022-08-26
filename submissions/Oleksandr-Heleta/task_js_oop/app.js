@@ -1,12 +1,13 @@
-const fieldWidth = 505,
-    startX = 202,
-    startY = 404;
-cellWidth = 100;
-cellHeigth = 83;
-enemySpeed = {
-    min: 60,
-    max: 200,
-};
+const FIELD_WIDTH = 505,
+    START_X = 202,
+    START_Y = 404,
+    CELL_WIDTH = 100,
+    CELL_HEIGTH = 83,
+    ROW_POSITION = [60, 143, 228],
+    ENEMY_SPEED = {
+        min: 60,
+        max: 200,
+    };
 
 
 const counter = document.createElement("div");
@@ -29,19 +30,19 @@ const Player = function (x, y) {
 };
 
 Enemy.prototype.update = function (dt) {
-    if (this.x < fieldWidth) {
+    if (this.x < FIELD_WIDTH) {
         this.x += this.speed * dt;
     } else {
-        this.x -= fieldWidth;
+        this.x -= FIELD_WIDTH;
     }
     if (this.checkCollision(player)) player.resetPosition("fail");
 };
 
 Enemy.prototype.checkCollision = function (player) {
     return (
-        this.y + cellHeigth > player.y &&
-        player.x < this.x + cellWidth &&
-        player.x > this.x - cellWidth
+        this.y + CELL_HEIGTH > player.y &&
+        player.x < this.x + CELL_WIDTH &&
+        player.x > this.x - CELL_WIDTH
     );
 };
 
@@ -56,17 +57,17 @@ Enemy.prototype.render = function () {
 
 
 Player.prototype.update = function () {
-    if (this.y > startY) {
-        this.y = startY;
+    if (this.y > START_Y) {
+        this.y = START_Y;
     }
     if (this.y < 0) {
         this.resetPosition("win");
     }
-    if (this.x > fieldWidth - cellWidth) {
-        this.x -= fieldWidth;
+    if (this.x > FIELD_WIDTH - CELL_WIDTH) {
+        this.x -= FIELD_WIDTH;
     }
     if (this.x < 0) {
-        this.x = fieldWidth - cellWidth;
+        this.x = FIELD_WIDTH - CELL_WIDTH;
     }
 };
 
@@ -77,16 +78,16 @@ Player.prototype.render = function () {
 Player.prototype.handleInput = function (key) {
     switch (key) {
         case "up":
-            this.y -= cellHeigth;
+            this.y -= CELL_HEIGTH;
             break;
         case "down":
-            this.y += cellHeigth;
+            this.y += CELL_HEIGTH;
             break;
         case "left":
-            this.x -= cellWidth;
+            this.x -= CELL_WIDTH;
             break;
         case "right":
-            this.x += cellWidth;
+            this.x += CELL_WIDTH;
             break;
 
         default:
@@ -107,15 +108,12 @@ Player.prototype.resetPosition = function (status) {
         default:
             break;
     }
-    this.x = startX;
-    this.y = startY;
+    this.x = START_X;
+    this.y = START_Y;
 };
 
-let player = new Player(startX, startY),
-    enemy1 = new Enemy(-100, 60, enemySpeed),
-    enemy2 = new Enemy(-100, 143, enemySpeed),
-    enemy3 = new Enemy(-100, 228, enemySpeed),
-    allEnemies = [enemy1, enemy2, enemy3];
+let player = new Player(START_X, START_Y),
+    allEnemies = ROW_POSITION.map((position) => new Enemy(-100, position, ENEMY_SPEED));
 
 
 document.addEventListener('keyup', function (e) {
@@ -128,4 +126,3 @@ document.addEventListener('keyup', function (e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
