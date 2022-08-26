@@ -1,3 +1,21 @@
+const gridSize = {
+    width: 101,
+    height: 81,
+};
+
+const fieldSize = {
+width: gridSize.width*5,
+height: gridSize.height*6,
+top:0,
+left:0,
+};
+
+const startPlayerPosition = {
+x:gridSize.width*2 ,
+y:gridSize.height*5,
+};
+
+const enemySpeed = 200;
 const  Enemy = function(x, y, speed) {  
     this.x = x;
     this.y = y;
@@ -8,15 +26,15 @@ const  Enemy = function(x, y, speed) {
 Enemy.prototype.update = function(dt) {
     this.x += this.speed*dt;
 
-    if (this.x > 510) {
-        this.x = -70;
-        this.speed = 100 + Math.floor(Math.random() * 200);
+    if (this.x > fieldSize.width) {
+        this.x = -gridSize.width;
+        this.speed = 100 + Math.floor(Math.random() * enemySpeed);
     };
 
-    if (player.x + 80 > this.x && player.x < this.x + 80 &&
-        player.y + 80 > this.y && player.y < this.y + 80) {
-        player.x = 202;
-        player.y = 405;
+    if (player.x + gridSize.width > this.x && player.x < this.x + gridSize.width &&
+        player.y + gridSize.height > this.y && player.y < this.y + gridSize.height) {
+        player.x = startPlayerPosition.x;
+        player.y = startPlayerPosition.y;
     }  
 };
 
@@ -38,35 +56,45 @@ Player.prototype.render = function () {
 };
 
 Player.prototype.handleInput = function (keyPress) {
-    if (keyPress == 'up' && this.y > 0) {
-        this.y -= 83;
+    if (keyPress == 'up' && this.y > fieldSize.top) {
+        this.y -= gridSize.height;
     }
 
-    if (keyPress == 'down' && this.y < 405) {
-        this.y += 83;
+    if (keyPress == 'down' && this.y < fieldSize.width-gridSize.width) {
+        this.y += gridSize.height;
     }
 
-    if (keyPress == 'left' && this.x > 0) {
-        this.x -= 101;
+    if (keyPress == 'left' && this.x > fieldSize.left) {
+        this.x -= gridSize.width;
     }
 
-    if (keyPress == 'right' && this.x < 404) {
-        this.x += 101;
+    if (keyPress == 'right' && this.x < fieldSize.width-gridSize.width) {
+        this.x += gridSize.width;
     }
 
-    if (this.y <= 0) {
+    if (this.y <= fieldSize.top) {
         setTimeout(() => {
-            this.x = 202;
-            this.y = 405;
+            this.x = startPlayerPosition.x;
+            this.y = startPlayerPosition.y;
         }, 600);
     };
-};
+}; 
 
-const enemyLocation = [73, 156, 239];   
+let positionEnemies= [];
+function numbeOfEnemies(amount) {
+    for(let i = 1; i<=amount; i++) {
+        if (i>3) {
+        return numbeOfEnemies(amount-i+1);
+        }
+        positionEnemies.push(i);
+    }
+    positionEnemies = positionEnemies.map(rowNumber => rowNumber * gridSize.height);
+    return positionEnemies;
+}
 
-const allEnemies = enemyLocation.map(location =>location = new Enemy(location+50, location, 200));
+const allEnemies = numbeOfEnemies(6).map(location =>location = new Enemy(location, location, enemySpeed));
 
-const player = new Player(202, 405);
+const player = new Player(startPlayerPosition.x, startPlayerPosition.y);
 
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {
