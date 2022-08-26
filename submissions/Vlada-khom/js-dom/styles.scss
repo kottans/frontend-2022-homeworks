@@ -23,7 +23,7 @@ body {
     
 }
 
-.sideMenu {
+.sideWrap {
     min-height: 100vh;
     background-color: $violet;
     box-shadow: 0px 0px 4px inset;
@@ -31,7 +31,7 @@ body {
     box-sizing: border-box;
 }
 
-.menuList {
+.catList {
     list-style-type: none;
     margin: 0;
     padding: 0;

@@ -1,7 +1,7 @@
 const data = [
   {
     name: "Abyssinian",
-    id: 'b48bec34-a43c-447d-a309-2cc3978e72b9',
+    id: '1',
     description: [
       `The Abyssinian - is a breed of domestic short-haired cat with a distinctive 
         "ticked" tabby coat, in which individual hairs are banded with different colors. They are also 
@@ -28,7 +28,7 @@ const data = [
   },
   {
     name: "American Bobtail",
-    id: '447f7af8-0a6a-4a55-a638-bb09e202666e',
+    id: '2',
     description: [
       `The American Bobtail is an uncommon breed of domestic cat which was developed 
         in the late 1960s. It is most notable for its stubby "bobbed" tail about one-third to 
@@ -46,7 +46,7 @@ const data = [
   },
   {
     name: "American Curl",
-    id: 'ea6ed6de-fe8c-4dea-8e71-1d20118fbb48',
+    id: '3',
     description: [
       `The American Curl is a breed of cat characterized by its unusual ears, which curl 
         back from the face toward the center of the back of the skull. The breed originated in Lakewood, 
@@ -56,7 +56,7 @@ const data = [
   },
   {
     name: "British Longhair",
-    id: '4890c3f5-3691-4e08-afca-783a2343c187',
+    id: '4',
     description: [
       `The British Longhair is a medium-sized, semi-long-haired breed of domestic cat, 
         originating in Great Britain.`,
@@ -73,7 +73,7 @@ const data = [
   },
   {
     name: "British Shorthair",
-    id: '2263aab2-f0b8-4ce9-be9d-94c1fc3107e2',
+    id: '5',
     description: [
       `The British Shorthair is the pedigreed version of the traditional British domestic 
         cat, with a distinctively stocky body, dense coat, and broad face. The most familiar colour 
@@ -95,36 +95,40 @@ const data = [
 ];
 
 
+const content = document.querySelector(".content");
 
 function main() {
-  const sideMenu = document.querySelector(".sideMenu");
-  const menuList = document.createElement("ul");
-  menuList.className = "menuList";
-  data.forEach((el) => {
-    menuList.innerHTML += `<li><div class="itemMenu" data-id="${el.id}">${el.name}</div></li>`;
-  });
-  sideMenu.appendChild(menuList);
+  const sideWrap = document.querySelector(".sideWrap");
+  const catList = document.createElement("ul");
+  catList.className = "catList";
+  data.map((cat) => {
+    catList.innerHTML += `<li><div class="itemMenu" data-id="${cat.id}">${cat.name}</div></li>`;
+  }).join('');
+  sideWrap.appendChild(catList);
 
-  const content = document.querySelector(".content");
+  document.addEventListener('click', function (event) {
+    if(event.target.dataset.id) {
+      data.map((cat) => {
+        if (event.target.dataset.id === cat.id) {
+          content.innerHTML = `<h2 class="titleContent">${cat.name}</h2>
+                                <div class="boxImg"><img class="contentImg"src="${cat.image}" 
+                                alt="${cat.name}"></div> `;
+          cat.description.map((desc) => {
+            content.innerHTML += `<p>${desc}</p>`;
+          }).join(' ');
+        }
+      }).join('');
+    }
 
-  menuList.onclick = function (event) {
-    data.forEach((el) => {
-      if (event.target.innerText === el.name  && event.target.dataset.id === el.id) {
-        content.innerHTML = `<h2 class="titleContent">${el.name}</h2>
-                              <div class="boxImg"><img class="contentImg"src="${el.image}" 
-                              alt="${el.name}"></div> `;
-        el.description.map((desc) => {
-          content.innerHTML += `<p>${desc}</p>`;
-        }).join(' ');
-      }
-    });
-  };
-
-  mainTitle.onclick = () => {
-    content.innerHTML = `<h2 class="titleContent">Hello!</h2>
+    if(event.target.id === 'mainTitle') {
+      content.innerHTML = `<h2 class="titleContent">Hello!</h2>
       <p>In this catalog you can see some breeds of cats with description.</p>`;
-  };
+    }
+  });
+
 }
+
+
 
 window.addEventListener('load', main);
 
