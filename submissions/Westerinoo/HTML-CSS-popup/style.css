@@ -153,3 +153,4 @@ top: 91%;
 .checkbox__popup-more:checked~.popup__lists-more{
     display:grid;
 }
+
