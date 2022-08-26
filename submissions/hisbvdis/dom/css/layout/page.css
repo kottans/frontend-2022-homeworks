@@ -1,0 +1,23 @@
+.page {
+  max-inline-size: 1280px;
+  margin-inline: auto;
+}
+
+.page__header {
+  grid-column: 1 / -1;
+}
+
+.page__block {
+  padding: 20px;
+  
+  box-shadow: 0 0 10px rgb(255 255 255 / 0.5);
+}
+
+
+@media (min-width: 768px) {
+  .page {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 20px;
+  }
+}

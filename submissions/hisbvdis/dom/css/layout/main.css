@@ -1,0 +1,32 @@
+.main {
+
+}
+
+.main__header {
+  margin-block-end: 30px;
+  
+  color: inherit;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.main__planet {
+  display: block;
+  inline-size: 800px;
+  block-size: 400px;
+  margin-inline: auto;
+  margin-block-end: 30px;
+
+  object-fit: contain;
+}
+
+.main__desc {
+  inline-size: 90%;
+  margin-inline: auto;
+
+  line-height: 1.6;
+}
+
+.main__desc + .main__desc {
+  margin-block-start: 15px;
+}
