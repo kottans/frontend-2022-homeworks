@@ -8,22 +8,27 @@ class Inhabitan {
       this.keys = ['species', 'name', 'gender', 'saying'];
    }
 
-   showPropsToPrint() {
-      let props = [];
-      this.keys.forEach((key) => {
-         props.push(this[key]);
-      })
-      print(props.join('; '));
+   showProps() {
+      return ['species', 'name', 'gender', 'saying'].map(key => this[key]).join('; ');
    }
 };
-
 
 class Human extends Inhabitan {
    constructor(name, gender, saying, legs = 2, hands = 2) {
       super('human', name, gender, saying);
       this.legs = legs;
       this.hands = hands;
-      this.keys = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
+   }
+
+   connectsProps() {
+      const props = super.showProps().split('; ');
+      const propsStart = props.slice(0, props.indexOf('gender'));
+      const propsEnd = props.slice(props.indexOf('gender'));
+      return [...propsStart, this.legs, this.hands, ...propsEnd].join('; ');
+   }
+
+   showProps() {
+      return this.connectsProps();
    }
 };
 
@@ -31,7 +36,17 @@ class Animal extends Inhabitan {
    constructor(species, name, gender, saying, legs = 4) {
       super(species, name, gender, saying);
       this.legs = legs;
-      this.keys = ['species', 'name', 'gender', 'legs', 'saying'];
+   }
+
+   connectsProps() {
+      const props = super.showProps().split('; ');
+      const propsStart = props.slice(0, props.indexOf('gender'));
+      const propsEnd = props.slice(props.indexOf('gender'));
+      return [...propsStart, this.legs, ...propsEnd].join('; ');
+   }
+
+   showProps() {
+      return this.connectsProps();
    }
 };
 
@@ -42,5 +57,5 @@ const man = new Human('Joe', 'male', 'one hundred himars to these brave Ukrainia
 
 const inhabitans = [dog, cat, woman, man];
 
-inhabitans.forEach(inhabitan => inhabitan.showPropsToPrint());
+inhabitans.forEach(inhabitan => print(inhabitan.showProps()));
 
