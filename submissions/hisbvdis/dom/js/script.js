@@ -1,10 +1,11 @@
 import { data } from "./data.js";
-const navBtn = document.querySelector("[js-navBtn]");
-const nav = document.querySelector("[js-nav]");
-const navList = document.querySelector("[js-navList]");
-const navCloseBtn = document.querySelector("[nav-closeBtn]");
-const mainHeader = document.querySelector("[main-header]");
-const mainContent = document.querySelector("[main-content]");
+
+const navBtn = document.querySelector("#navBtn");
+const nav = document.querySelector("#nav");
+const navList = document.querySelector("#navList");
+const navCloseBtn = document.querySelector("#navCloseBtn");
+const mainHeader = document.querySelector("#mainHeader");
+const mainContent = document.querySelector("#mainContent");
 let activeLink = null;
 
 window.addEventListener("load", onWindow_Load_Handler);
