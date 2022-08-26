@@ -73,7 +73,7 @@ const solarSystem = [
             "Venus, second planet from the Sun and sixth in the solar system in size and mass. No planet approaches closer to Earth than Venus; at its " +
             "nearest it is the closest large body to Earth other than the Moon. Because Venus's orbit is nearer the Sun than Earth's, the planet is always " +
             "roughly in the same direction in the sky as the Sun and can be seen only in the hours near sunrise or sunset. When it is visible, it is the most " +
-            "brilliant planet in the sky. Venus is designated by the symbol ♀. Venus has been called Earth’s twin because of the similarities in their masses, " +
+            "brilliant planet in the sky. Venus is designated by the symbol ♀. Venus has been called Earth's twin because of the similarities in their masses, " +
             "sizes, and densities and their similar relative locations in the solar system. Because they presumably formed in the solar nebula from the same kind " +
             "of rocky planetary building blocks, they also likely have similar overall chemical compositions.",
         image: "img/pictures/venus.png",
@@ -222,7 +222,7 @@ const solarSystem = [
         text:
             "Saturn, second largest planet of the solar system in mass and size and the sixth nearest planet in distance to the Sun. In the night sky Saturn is easily visible to the unaided eye as a " +
             "non-twinkling point of light. When viewed through even a small telescope, the planet encircled by its magnificent rings is arguably the most sublime object in the solar system. Saturn is " +
-            "designated by the symbol ♄. Saturn occupies almost 60 percent of Jupiter's volume but has only about one-third of its mass and the lowest mean density—about 70 percent that of water—of any " +
+            "designated by the symbol ♄. Saturn occupies almost 60 percent of Jupiter's volume but has only about one-third of its mass and the lowest mean density about 70 percent that of water of any " +
             "known object in the solar system. Hypothetically, Saturn would float in an ocean large enough to hold it.",
         image: "img/pictures/saturn.png",
         diameter: "120 536",
@@ -335,11 +335,11 @@ const solarSystem = [
     },
 ];
 
-const mainContent = document.querySelector(".main");
+const mainBlock = document.querySelector(".main");
 
 // function to generate html code for the current planet
 // (sorry, the sun will also be a planet)
-function currentPlanet(planet) {
+function getCurrentPlanet(planet) {
     solarSystem.map((item) => {
         if (item.id == planet) {
             const planetTitle = item.title;
@@ -359,78 +359,76 @@ function currentPlanet(planet) {
             let planetTemplateEnd = `</div>`;
 
             let planetTemplateTextContent = `
-            <div class="main__text-wrapper">
                 <h1 class="main__title">${planetTitle}</h1>
-                <img src="${planetImage}" alt="${planetAltText}" class="main__img main__img--hidden" width="300" height="300"/>
                 <p class="main__text">${planetText}</p>
-            </div>`;
+            `;
 
             let planetTemplateImage = `<img src="${planetImage}" alt="${planetAltText}" class="main__img" width="450" height="450"/>`;
 
-            let planetTemplateListStart = `<ul class="main__list">`;
+            let planetTemplateListStart = `<ul class="list">`;
 
             let planetTemplateListEnd = `</ul>`;
 
-            let planetTemplateConstItem = `
-                <li class="main__item">
-                    <p class="main__info">Diameter: <span class="main__value">${planetDiameter} </span>km</p>
+            let planetTemplateListItems = `
+                <li class="list__item">
+                    <p class="list__info">Diameter: <span class="list__value">${planetDiameter} </span>km</p>
                 </li>
-                <li class="main__item">
-                    <p class="main__info">Mass: <span class="main__value">${planetMass}</span>kg</p>
+                <li class="list__item">
+                    <p class="list__info">Mass: <span class="list__value">${planetMass}</span>kg</p>
                 </li>
-                <li class="main__item">
-                    <p class="main__info">Gravity: <span class="main__value">${planetGravity} </span>m/s<sup>2</sup></p>
+                <li class="list__item">
+                    <p class="list__info">Gravity: <span class="list__value">${planetGravity} </span>m/s<sup>2</sup></p>
                 </li>
-                <li class="main__item">
-                    <p class="main__info">Length of Day: <span class="main__value">${planetLengthOfDay} </span>hr</p>
+                <li class="list__item">
+                    <p class="list__info">Length of Day: <span class="list__value">${planetLengthOfDay} </span>hr</p>
                 </li>
             `;
 
-            let planetTemplateTempItem = "";
+            let planetTemplateTemp = "";
 
             if (planetTemp) {
                 let planetTemplateTempContent = "";
 
                 planetTemp.forEach((tempItem) => {
                     planetTemplateTempContent += `
-                    <li class="main__item">
-                        <p class="main__info">${tempItem.name}: <span class="main__value">${tempItem.value} </span><sup>o</sup>C</p>
+                    <li class="list__item">
+                        <p class="list__info">${tempItem.name}: <span class="list__value">${tempItem.value} </span><sup>o</sup>C</p>
                     </li>`;
                 });
 
-                planetTemplateTempItem += planetTemplateTempContent;
+                planetTemplateTemp += planetTemplateTempContent;
             }
 
-            let planetTemplateMoonsItem = "";
+            let planetTemplateMoons = "";
 
             if (planetMoons) {
                 let planetTemplateMoonsContent = "";
 
                 planetMoons.forEach((moonsItem) => {
                     planetTemplateMoonsContent += `
-                    <li class="main__item">
-                        <p class="main__info main__info--flax">
-                            ${moonsItem.name}: <span class="main__value"> <img src="img/icons/moon.png" alt="" class="main__icon" /></span><span> * ${moonsItem.value}</span>
+                    <li class="list__item">
+                        <p class="list__info list__info--flax">
+                            ${moonsItem.name}: <span class="list__value"> <img src="img/icons/moon.png" alt="" class="list__icon" width="100" height="104"/></span><span> * ${moonsItem.value}</span>
                         </p>
                     </li>`;
                 });
 
-                planetTemplateMoonsItem += planetTemplateMoonsContent;
+                planetTemplateMoons += planetTemplateMoonsContent;
             }
 
-            let planetTemplateDistanceItem = "";
+            let planetTemplateDistance = "";
 
             if (planetDistance) {
                 let planetTemplateDistanceContent = "";
 
                 planetDistance.forEach((distanceItem) => {
                     planetTemplateDistanceContent += `
-                    <li class="main__item">
-                        <p class="main__info">${distanceItem.name}: <span class="main__value">${distanceItem.value} </span>${distanceItem.unit}</p>
+                    <li class="list__item">
+                        <p class="list__info">${distanceItem.name}: <span class="list__value">${distanceItem.value} </span>${distanceItem.unit}</p>
                     </li>`;
                 });
 
-                planetTemplateDistanceItem += planetTemplateDistanceContent;
+                planetTemplateDistance += planetTemplateDistanceContent;
             }
 
             let planetTemplate = "";
@@ -438,20 +436,20 @@ function currentPlanet(planet) {
             planetTemplate += planetTemplateTextContent;
             planetTemplate += planetTemplateImage;
             planetTemplate += planetTemplateListStart;
-            planetTemplate += planetTemplateConstItem;
-            planetTemplate += planetTemplateTempItem;
-            planetTemplate += planetTemplateMoonsItem;
-            planetTemplate += planetTemplateDistanceItem;
+            planetTemplate += planetTemplateListItems;
+            planetTemplate += planetTemplateTemp;
+            planetTemplate += planetTemplateMoons;
+            planetTemplate += planetTemplateDistance;
             planetTemplate += planetTemplateListEnd;
             planetTemplate += planetTemplateEnd;
 
-            mainContent.innerHTML = planetTemplate;
+            mainBlock.innerHTML = planetTemplate;
         }
     });
 }
 
 // create homepage
-currentPlanet(0);
+getCurrentPlanet(0);
 
 const iconMenu = document.querySelector(".nav__icon");
 const listMenu = document.querySelector(".nav__body");
@@ -465,10 +463,10 @@ iconMenu.addEventListener("click", function () {
 
 // track the presence of the "_active" class for navigation elements
 // track the "click" event on them
-let navItem = document.getElementsByClassName("nav__item");
+let navButton = document.getElementsByClassName("nav__button");
 let activeClass = document.getElementsByClassName("_active");
-for (i = 0; navItem.length > i; i++) {
-    navItem[i].onclick = function () {
+for (i = 0; navButton.length > i; i++) {
+    navButton[i].onclick = function () {
         let currentActive = activeClass[0];
         if (currentActive)
             currentActive.classList.remove("_active") ||
@@ -485,10 +483,13 @@ const navList = document.querySelector(".nav__list");
 
 // track the "click" event on navigation elements
 // get the id of a specific planet and send it to the function
-navList.addEventListener("click", (e) => {
-    const itemListId = e.target.parentElement.id;
+navList.addEventListener("click", ({ target }) => {
+    const buttonId = target.parentElement.id;
 
-    let planetId = solarSystem.findIndex((item) => item.id == itemListId);
+    let planetId = solarSystem.findIndex((item) => item.id == buttonId);
 
-    currentPlanet(planetId);
+    getCurrentPlanet(planetId);
 });
+
+
+
