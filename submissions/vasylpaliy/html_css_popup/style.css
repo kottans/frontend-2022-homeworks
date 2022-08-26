@@ -21,13 +21,12 @@ body {
 }
 
 .container-navbar-img {
-	height: 5vh;
-	width: 50%;
+	width:40px ;
 	border-style: none;
 	border-radius: 70%;
 	margin: 0.5vw;
+	aspect-ratio: 1/1;
 }
-
 
 /*--- popup --- */
 .input-nav-popup,
@@ -38,21 +37,29 @@ body {
 .popup-container {
 	display: none;
 	position: absolute;
+	align-items: center;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	height: auto;
-	width: 40vh;
+	width: 40vw;
+	max-width: 350px;
 	margin: 1vw;
 	padding: 1vw;
 	right: 1vw;
-	overflow-y: auto;
-	height: 45vh;
 	border-radius: 5%;
-
+	overflow: hidden;
+	height: 350px;
 }
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: #888;
+  }
 
 .popup-text {
 	text-decoration: none;
-	font-size: 0.9em;
+	font-size: 1em;
 	color: black;
 }
 
@@ -63,7 +70,10 @@ body {
 .input-nav-popup:checked~.popup-container {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	text-align: center;
+	overflow-y: scroll;
+	height: 30vh;
+	min-height: 300px;
 }
 
 .popup {
@@ -71,42 +81,39 @@ body {
 	display: grid;
 	grid-template-rows: 1fr 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
-	gap: 1vw;
+	gap: 10px;
 	padding: 0;
-	text-align: center;
 	width: 100%;
-	height: 40vh;
+	align-items: center;
+	justify-items: center;
 }
 
 .popup-img {
-	max-width: 100%;
-	height: 5vh;
+	width: 50px;
 	border-radius: 20%;
+	aspect-ratio: 3/2;
 }
 
 .more {
 	background-color: rgb(216, 216, 216);
-	width: 20%;
+	width: 30%;
 	border-radius: 15%;
 }
 
 .popup-menu-more {
 	color: black;
-	font-size: 3vh;
-	text-align: center;
-
-
+	font-size: 1.5rem;
 }
 
 /*--- second  popup ---*/
 .popup2-container {
 	display: none;
-
 }
 
 .input-popup-more:checked~.popup2-container {
 	display: block;
 	width: 100%;
+	align-items: center;
 }
 
 .input-popup-more:checked~.more {
@@ -123,8 +130,9 @@ body {
 	padding-top: 4%;
 	border-style: solid none none none;
 	border-color: grey;
-	text-align: center;
-
+	height: 100%;
+	align-items: center;
+	
 }
 
 .final {
@@ -151,22 +159,27 @@ body {
 /* small screen*/
 @media screen and (max-width: 600px) {
 	.popup-container {
+		max-width: none;
 		width: 90%;
-		height: 50vh;
+		height: 45vh;
 		margin: 1vh;
 		padding: 3vw;
 		right: 0;
+		aspect-ratio: 3/6;
 	}
 
 	.popup {
-		height: 45vh;
+		width: 100%;
 	}
-
+	.popup-img{
+	width: 7vh;
+	aspect-ratio: 3/2;
+	}
 	.container-nav {
 		justify-content: center;
+		height: 6vh;
 	}
-
 	.container-navbar-img {
-		width: 7vh;
+		width: 4vh;
 	}
 }
