@@ -1,35 +1,34 @@
 class Inhabitant {
-   constructor(name, gender, legs, saying) {
+   constructor(specie, name, gender, legs, saying) {
+      this.specie = specie
       this.name = name
       this.gender = gender
       this.legs = legs
       this.saying = saying
    }
    prepareToPrint() {
-      return [this.name, this.gender, this.legs, this.saying].join('; ')
+      return [this.specie, this.name, this.gender, this.legs, this.saying].join('; ')
    }
 }
 
 class Person extends Inhabitant {
    constructor(name, gender, legs, saying, hands, friends) {
-      super(name, gender, legs, saying)
-      this.specie = 'human'
+      super('human', name, gender, legs, saying)
       this.hands = hands
       this.friends = friends || []
    }
    prepareToPrint() {
-      return this.specie + '; ' + super.prepareToPrint() + '; ' + [this.hands, this.friends.join(', ')].join('; ')
+      return super.prepareToPrint() + '; ' + [this.hands, this.friends.join(', ')].join('; ')
    }
 }
 
 class Animal extends Inhabitant {
    constructor(specie, name, gender, legs, saying, tail) {
-      super(name, gender, legs, saying)
-      this.specie = specie
+      super(specie, name, gender, legs, saying)
       this.tail = tail
    }
    prepareToPrint() {
-      return this.specie + '; ' + super.prepareToPrint() + '; ' + this.tail + ';'
+      return super.prepareToPrint() + '; ' + this.tail + ';'
    }
 }
 
