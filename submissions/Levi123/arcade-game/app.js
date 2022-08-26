@@ -1,95 +1,108 @@
 // Enemies our player must avoid
-class Player {
+const DEFAULT_PLAYER = {
+    sprite: 'images/char-boy.png',
+    positionX: 200,
+    positionY: 400,
+}
 
-    constructor(x, y, score = 0){
-        this.sprite = 'images/char-boy.png';
+const DEFAULT_ENEMY = {
+    sprite: 'images/enemy-bug.png',
+    minSpeed: 200,
+    maxSpeed: 400,
+    widthEnemy: 80,
+    heightEnemy: 60,
+    positionX: -100,
+    positionY: [50, 140, 225],
+}
+
+const DEFAULT_MAP = {
+    widthMap: 505,
+    widthBlock: 101,
+    heightBlock: 82,
+    waterLine: 0,
+}
+
+class Player {
+    constructor(x = DEFAULT_PLAYER.positionX, y = DEFAULT_PLAYER.positionY){
+        this.sprite = DEFAULT_PLAYER.sprite;
         this.x = x;
         this.y = y;
-        this.score = score;
     }
 
-    update () {
-
-        if (this.y < 0){
+    update(){
+        if (this.y < DEFAULT_MAP.waterLine){
             setTimeout(() => {
-                this.x = 200;
-                this.y = 400;
+                this.x = DEFAULT_PLAYER.positionX;
+                this.y = DEFAULT_PLAYER.positionY;
             }, 300)
-            // this.score += 1;
-            // document.querySelector('.score').innerHTML = `Score: ${this.score}`;
-            // console.log(this.score);
         }
     }
-    render () {
+
+    render(){
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
     handleInput(key){
-       if (key == 'left' && this.x > 0){
-        this.x -= 101;
+       if (key == 'left' && this.x > DEFAULT_MAP.waterLine){
+        this.x -= DEFAULT_MAP.widthBlock;
        }
-       if (key == 'right' && this.x < 400){
-        this.x += 101;
+       if (key == 'right' && this.x < DEFAULT_PLAYER.positionY){
+        this.x += DEFAULT_MAP.widthBlock;
        }
-       if (key == 'up' && this.y > 0){
-        this.y -= 82;
+       if (key == 'up' && this.y > DEFAULT_MAP.waterLine){
+        this.y -= DEFAULT_MAP.heightBlock;
        }
-       if (key == 'down' && this.y < 400){
-        this.y += 82;
+       if (key == 'down' && this.y < DEFAULT_PLAYER.positionY){
+        this.y += DEFAULT_MAP.heightBlock;
        }
     }
 }
 
-let player = new Player(200,400);
+let player = new Player();
 
 class Enemy {
-
-    constructor(x, y) {
-        this.sprite = 'images/enemy-bug.png';
+    constructor(x, y){
+        this.sprite = DEFAULT_ENEMY.sprite;
         this.x = x;
         this.y = y;
         this.speed = this.changeSpeed();
     }
 
-    changeSpeed(min = 200, max = 400) {
+    changeSpeed(min = DEFAULT_ENEMY.minSpeed, max = DEFAULT_ENEMY.maxSpeed){
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    enemyKillPlayer() {
-        if(player.x < this.x + 80 &&
-            player.x + 80 > this.x &&
-            player.y < this.y + 60 &&
-            60 + player.y > this.y &&
-            60 + player.y > this.y){
-                player.x = 200;
-                player.y = 400;
+    enemyKillPlayer(){
+        if(player.x < this.x + DEFAULT_ENEMY.widthEnemy &&
+            player.x + DEFAULT_ENEMY.widthEnemy > this.x &&
+            player.y < this.y + DEFAULT_ENEMY.heightEnemy &&
+            DEFAULT_ENEMY.heightEnemy + player.y > this.y){
+                player.x = DEFAULT_PLAYER.positionX;
+                player.y = DEFAULT_PLAYER.positionY;
         }
     }
 
-    update(delta) {
+    update(delta){
         this.x += this.speed * delta; 
 
-        if(this.x > 505){
+        if(this.x > DEFAULT_MAP.widthMap){
             this.speed = this.changeSpeed();
-            this.x = -100;
+            this.x = DEFAULT_ENEMY.positionX;
         }
-
         this.enemyKillPlayer();
     }
 
-    render() {
+    render(){
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 };
 
 let allEnemies = [];
-let yForEnemies = [50, 140, 225];
 
-yForEnemies.forEach((valueY) => {
-    enemy = new Enemy(-100, valueY);
+DEFAULT_ENEMY.positionY.forEach((valueY) => {
+    enemy = new Enemy(DEFAULT_ENEMY.positionX, valueY);
     allEnemies.push(enemy);
 })
-console.log(allEnemies);
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
