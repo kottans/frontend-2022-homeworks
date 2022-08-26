@@ -57,6 +57,26 @@ $btn-hov: rgba(227, 90, 37, 0.5);
     width: 100%;
     height: auto;
   }
+
+  &__inner {
+    max-height: 100vh;
+    position: relative;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
+
+  &__inner::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &__inner::-webkit-scrollbar-track {
+    box-shadow: transparent;
+  }
+
+  &__inner::-webkit-scrollbar-thumb {
+    background-color: $bcgBlue;
+    border-radius: 2px;
+  }
 }
 
 @keyframes bg {

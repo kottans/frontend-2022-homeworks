@@ -51,7 +51,7 @@
 .wrapper__bcg-box {
   position: absolute;
   right: 0;
-  bottom: -20px;
+  bottom: -100px;
   left: 0;
   height: 65%;
   -webkit-user-select: none;
@@ -65,6 +65,27 @@
   object-fit: contain;
   width: 100%;
   height: auto;
+}
+
+.wrapper__inner {
+  max-height: 100vh;
+  position: relative;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.wrapper__inner::-webkit-scrollbar {
+  width: 4px;
+}
+
+.wrapper__inner::-webkit-scrollbar-track {
+  -webkit-box-shadow: transparent;
+  box-shadow: transparent;
+}
+
+.wrapper__inner::-webkit-scrollbar-thumb {
+  background-color: #2d78b5;
+  border-radius: 2px;
 }
 
 @-webkit-keyframes bg {
