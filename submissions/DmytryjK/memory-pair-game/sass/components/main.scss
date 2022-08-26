@@ -1,0 +1,73 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url('../images/sun-tornado (1).svg') center center/cover no-repeat;
+    &__cards {
+        padding: 50px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 225px);
+        grid-auto-rows: 225px;
+        grid-gap: 40px;
+        width: 900px;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        list-style-type: none;
+        border-radius: 25px;
+        animation: main-cards 2.3s infinite linear;
+        user-select: none;
+    }
+    &__card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: drop-shadow(0px 0px 10px rgb(20, 0, 0));
+        cursor: pointer;
+        transition: 0.5s ease all;
+        &:hover {
+            filter: drop-shadow(0px 0px 10px rgba(255, 0, 0, 0.9));
+            transition: 0.5s ease all;
+            transform: scale(1.04);
+        }
+        &-front {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: rotateY(180deg) perspective(600px) translate(0%, 0%);
+            border-radius: 15px;
+            backface-visibility: hidden;
+            transition: 0.5s ease all;
+        }
+        &-back {
+            position: absolute;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(37, 32, 32);
+            border-radius: 15px;
+            backface-visibility: hidden;
+            transform: rotateY(0deg) perspective(600px) translate(0%, 0%);
+            transition: 0.5s ease all;
+        }
+    }
+    .active-card {
+        .main__card-front {
+            transform: rotateY(0deg) perspective(600px) translate(0%, 0%);
+            transition: 0.5s ease all;
+            box-shadow: 0px 0px 30px rgba(255, 0, 0, 1);
+        }
+        .main__card-back {
+            transform: rotateY(-180deg) perspective(600px) translate(0%, 0%);
+            transition: 0.5s ease all;
+        }
+    }
+}
+
+

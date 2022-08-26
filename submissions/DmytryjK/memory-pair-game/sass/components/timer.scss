@@ -1,0 +1,32 @@
+.timer {
+    padding: 15px;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    top: 0;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: gagalin;
+    text-shadow: 2px 2px 4px #000;
+    letter-spacing: 1px;
+    user-select: none; 
+    &-current {
+        padding-left: 10px;
+        color: rgb(255, 40, 40);
+        width: 360px;
+        span {
+            color: white;
+        }
+    }
+    &-best {
+        padding-left: 10px;
+        color: rgb(255, 196, 0);
+        width: 360px;
+        span {
+            color: white;
+        }
+    }
+}
