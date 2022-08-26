@@ -1,0 +1,238 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+html,
+body {
+    height: 100%;
+    line-height: 1;
+}
+
+body {
+    background-color: #121212;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
+.header {
+    background-color: #1F1B24;
+    height: 60px;
+    padding: 12px 0;
+}
+
+.nav-list {
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+}
+
+
+.popup-input:hover ~ .popup-label .nav-img-link,
+.nav-li:focus,
+.nav-img-link:hover,
+.nav-link:focus,
+.nav-li:nth-child(1):hover,
+.nav-li:nth-child(2):hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.nav-li a {
+    color: #808080;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 22px;
+    color: white
+}
+
+.popup-list{
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    min-width: 300px;
+    height: 580px;
+    border: transparent;
+    padding: 10px;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%);
+    position: fixed;
+    gap: 10px;
+    display: none;
+    background-color: #808080;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    -23px 0 20px -23px rgba(0, 0, 0, 0.6),
+    23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.popup-list-more{
+    flex-wrap: wrap;
+    border: transparent;
+    display: none;
+    background-color: #808080;
+    gap: 10px;
+}
+
+.popup-li {
+    text-align: center;
+    width: 30%;
+    gap: 10px;
+    padding: 10px;
+}
+
+.popup-li:hover {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    -23px 0 20px -23px rgba(0, 0, 0, 0.6),
+    23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.popup-img {
+    margin-bottom: 10px;
+}
+
+.popup-text {
+    text-decoration: none;
+    color: #121212;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.popup-link:focus{
+    outline: none;
+}
+
+.popup-li:focus-within{
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    -23px 0 20px -23px rgba(0, 0, 0, 0.6),
+    23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.btn-more {
+    width: 90%;
+    padding: 5px 30px;
+    border-radius: 5px;
+    background-color: inherit;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    display: block;
+    color: #121212;
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 24px;
+    font-style: normal;
+    font-weight: 500;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.popup-input-more:hover ~ .popup-label-more .btn-more,
+.btn-more:hover,
+.btn-more:focus{
+    background-color: #D3D3D3;
+    outline: none;
+    cursor: pointer;
+}
+
+.span{
+    justify-content: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.popup-input {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.popup-input-more{
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    left:116px
+}
+
+.popup-item-more{
+    width: 100%;
+}
+
+.popup-item-more:focus-visible{
+    outline: none;
+}
+
+.popup-input-more:focus,
+.popup-input-more:focus ~ .popup-label-more .btn-more{
+    color:rgb(230, 229, 237);
+    font-size: 28px;
+    outline: none;
+    text-decoration: underline;
+}
+
+.popup-input:checked ~ .popup-list,
+.popup-input-more:checked ~ .popup-list-more {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.popup-input-more:checked ~ .popup-label-more .btn-more,
+.popup-input-more:checked{
+    display: none;
+}
