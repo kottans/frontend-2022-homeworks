@@ -1,4 +1,3 @@
-/*Обнуление*/
 * {
   padding: 0;
   margin: 0;
@@ -18,151 +17,151 @@
   outline: none;
 }
 
-a:focus,
-a:active {
-  outline: none;
-}
-
-nav,
-footer,
-header,
-aside {
+.container,
+.footer,
+.header {
   display: block;
 }
 
 html,
-body {
+.body {
   font-family: Verdana, Tahoma, sans-serif;
   height: 100%;
   width: 100%;
   font-size: 100%;
   line-height: 1;
-  font-size: 14px;
+  font-size: 13px;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
-input,
-button,
-textarea {
-  font-family: inherit;
-}
-
-input::-ms-clear {
+.input::-ms-clear {
   display: none;
 }
 
-button {
-  cursor: pointer;
+.menuPopup,
+.menuPopupSub {
+  display: none;
 }
 
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
+.wrapper,
+.main,
+.footer,
+.container,
+.content,
+.menuPopupItem {
+  display: flex;
 }
 
-a,
-a:visited {
-  text-decoration: none;
+.contentItem,
+.labelIcon {
+  display: inline-block;
 }
 
-a:hover {
-  text-decoration: none;
+.hiddenNavbar,
+.content {
+  position: relative;
 }
 
-ul li {
-  list-style: none;
+.input,
+.menuPopup,
+.menuPopupSub,
+.menuInputSub {
+  position: absolute;
 }
 
-img {
-  vertical-align: top;
+.wrapper,
+.main,
+.menuPopupItem {
+  flex-direction: column;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: 400;
+.main,
+.footer,
+.content,
+.menuPopupItem {
+  align-items: center;
 }
 
-header,
-footer {
+.main,
+.container {
+  justify-content: flex-end;
+}
+
+.footer,
+.menuPopupItem,
+.more {
+  justify-content: center;
+}
+
+.header,
+.footer {
   height: 100px;
   background-color: #fffce8;
 }
 
-ul > li {
+.content,
+.contentItem,
+.labelIcon {
   padding: 5px;
 }
 
-p {
-  font-size: 13px;
-  color: #4462ab;
-  margin-top: 3px;
+.menuPopupItem {
+  margin: 5px;
+  padding: 5px 0;
 }
 
-h1 {
+.footer,
+.textItem,
+.more,
+.contentItem {
   color: #4462ab;
+}
+
+.contentItem,
+.menuPopupItem,
+.more {
+  text-decoration: none;
+}
+
+.contentItem,
+.labelIcon,
+.menuPopupItem {
+  border-radius: 4px;
+}
+
+.menuPopup,
+.menuPopupSub {
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .wrapper {
   min-height: 100%;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 .main {
-  display: flex;
   flex: 1 1 auto;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
   height: 1fr;
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .backgroundImage {
   height: 30%;
 }
 
-.container {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .content {
   margin: 15px 30px;
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  position: relative;
   width: 50%;
-  box-sizing: border-box;
-}
-
-.hiddenNavbar {
-  position: relative;
+  list-style: none;
 }
 
 .hiddenNavbar section,
 .hiddenNavbar input {
   appearance: none;
-}
-
-.input {
-  -webkit-appearance: none;
-  position: absolute;
 }
 
 .hiddenNavbar .input:checked ~ .menuPopup,
@@ -171,100 +170,64 @@ h1 {
 }
 
 .contentItem {
-  display: inline-block;
   font-size: 19px;
   text-transform: uppercase;
-  color: #4462ab;
-  padding: 8px;
-  border-radius: 4px;
 }
 
 .popupLink {
   text-transform: none;
 }
 
+.labelSub,
+.menuIcon,
 .labelIcon {
-  display: inline-block;
-  padding: 5px;
-  border-radius: 4px;
+  cursor: pointer;
 }
 
 .menuIcon {
   width: 20px;
-  cursor: pointer;
 }
 
 .icon {
   width: 20px;
 }
 
-.avatar {
-  width: 45px;
-}
-
+.avatar,
 .menuPopupIcon {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 }
 
 .menuPopup {
-  display: none;
-  position: absolute;
-  background-color: white;
-  height: 280px;
-  width: 314px;
+  background-color: #fff;
+  height: 287px;
+  width: 318px;
   top: 80px;
   right: -142px;
   box-shadow: 0px 0px 27px 5px rgba(219, 248, 254, 0.52);
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .menuPopupList {
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  column-gap: 4px;
-}
-
-.menuPopupItem {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-}
-
-.textItem {
-  font-size: 13px;
-  color: #3f5ba0;
+  list-style: none;
 }
 
 .menuPopupSub {
-  display: none;
-  position: absolute;
-  height: 280px;
-  width: 298px;
-  top: 275px;
+  height: 285px;
+  width: 302px;
+  top: 284px;
   right: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.menuInputSub {
-  appearance: none;
-  position: absolute;
 }
 
 .more {
   display: inline-flex;
-  justify-content: center;
   min-width: 100%;
-  padding: 11px;
+  padding: 11px 0;
   margin-top: 16px;
   text-align: center;
   opacity: 0.6;
   background-color: #fffce8;
-  color: #3f5ba0;
 }
 
 .contentItem:hover,
@@ -280,7 +243,6 @@ h1 {
 .more:focus,
 .labelIcon:focus,
 .labelSub:focus,
-.labelSub2:focus,
 .hiddenNavbar .input:focus + .labelIcon,
 .menuPopup .input:focus + .labelSub {
   outline: 4px solid #7ee1e6;
