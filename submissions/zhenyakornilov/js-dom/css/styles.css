@@ -33,7 +33,7 @@ button {
   outline: inherit;
 }
 
-:root {
+html {
   font-size: 62.5%;
   width: 100%;
   height: 100%;
@@ -85,10 +85,6 @@ button {
   right: 2rem;
 }
 
-.header .check-switch:checked + .theme-switcher .circle {
-  transform: translatex(2.4rem);
-}
-
 .header .theme-switcher {
   position: relative;
   display: flex;
@@ -129,8 +125,8 @@ button {
   color: #f5f5dc;
 }
 
-.dropdown-wrap {
-  display: inline;
+.check-switch:checked + .theme-switcher .circle {
+  transform: translateX(2.4rem);
 }
 
 .dropdown {
@@ -396,7 +392,7 @@ button {
 }
 
 @media screen and (max-width: 356px) {
-  :root {
+  html {
     font-size: 50%;
   }
 
@@ -406,7 +402,7 @@ button {
 }
 
 @media screen and (max-width: 290px) {
-  :root {
+  html {
     font-size: 43%;
   }
 

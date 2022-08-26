@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", main);
 function renderButtons(museumsObj, menu) {
   let buttonsHTML = museumsObj
     .map(({ btnName }) => {
-      return (
-        `<li class="nav-item">` +
-        `  <button class="btn-text">${btnName}</button>` +
-        `</li>`
-      );
+      return `
+      <li class="nav-item">
+        <button class="btn-text">${btnName}</button>
+      </li>
+      `;
     })
     .join("");
 
