@@ -31,39 +31,59 @@ const informationAboutModel = [
     },
 ]
 
-const buttons = document.querySelectorAll('.button');
-// const button = document.querySelector('.about-product__navigation')
+// const buttons = document.querySelectorAll('.button');
+const button = document.querySelector('.about-product__navigation')
 const mainInfoBlock = document.querySelector('.about-product__info-block');
 const mainTitle = document.createElement('h1');
 const mainImage = document.createElement('img');
 const mainText = document.createElement('p');
 
-function generateInformationAboutModel(event){
-    const buttonId = Number(event.target.dataset.id);
-    informationAboutModel.forEach((value) => {
-        if (value.id === buttonId){
-            mainInfoBlock.prepend(mainTitle);
-            mainTitle.classList.add('about-product__main-title');
-            mainTitle.innerHTML = `About BMW ${value.series}`;
+// function generateInformationAboutModel(event){
+//     const buttonId = Number(event.target.dataset.id);
+//     informationAboutModel.forEach((value) => {
+//         if (value.id === buttonId){
+//             mainInfoBlock.prepend(mainTitle);
+//             mainTitle.classList.add('about-product__main-title');
+//             mainTitle.innerHTML = `About BMW ${value.series}`;
 
-            mainInfoBlock.append(mainText);
-            mainText.classList.add('about-product__description');
-            mainText.innerHTML = value.information;
+//             mainInfoBlock.append(mainText);
+//             mainText.classList.add('about-product__description');
+//             mainText.innerHTML = value.information;
 
-            mainInfoBlock.append(mainImage);
-            mainImage.classList.add('about-product__main-image');
-            mainImage.src = value.images;
-        }
-    })
+//             mainInfoBlock.append(mainImage);
+//             mainImage.classList.add('about-product__main-image');
+//             mainImage.alt = `bmw${value.id}`
+//             mainImage.src = value.images;
+//         }
+//     })
+// }
+
+function generateInformationAboutModel({target}){
+    if(target.dataset.id) {
+        const buttonId = Number(target.dataset.id);
+        const { id, series, information, images } = informationAboutModel.find(({id}) => id === buttonId);
+        mainInfoBlock.prepend(mainTitle);
+        mainTitle.classList.add('about-product__main-title');
+        mainTitle.innerHTML = `About BMW ${series}`;
+
+        mainInfoBlock.append(mainText);
+        mainText.classList.add('about-product__description');
+        mainText.innerHTML = information;
+
+        mainInfoBlock.append(mainImage);
+        mainImage.classList.add('about-product__main-image');
+        mainImage.alt = `bmw${id}`
+        mainImage.src = images;
+    }
 }
 
-buttons.forEach((button) => {
-    button.addEventListener('click', generateInformationAboutModel);
-});
-
-// button.addEventListener('click', function (event) {
-//     if (event.target.closest('button')){
-//         generateInformationAboutModel(event);
-//     }
+// buttons.forEach((button) => {
+//     button.addEventListener('click', generateInformationAboutModel);
 // });
+
+button.addEventListener('click', function (event) {
+    if (event.target.closest('button')){
+        generateInformationAboutModel(event);
+    }
+});
 
