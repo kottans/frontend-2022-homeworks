@@ -6,5 +6,7 @@ Universal recommendations:
 
 Also take a note of the requirements above and follow them in all your future projects.
 
+By the way, you may proceed to the next task before this one is reviewed and merged.
+
 _Sincerely yours,_
 _Submissions Kottachecker_ 😺
