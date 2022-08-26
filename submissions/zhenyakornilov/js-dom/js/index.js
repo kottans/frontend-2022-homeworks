@@ -30,12 +30,10 @@ function renderButtons(museumsObj, menu) {
 
 function showMuseumInfoByClick(museums, content, menu) {
   menu.addEventListener("click", function ({ target }) {
-    console.log(target.textContent);
     if (target.tagName.toLowerCase() === "button") {
       const currentContentObject = museums.filter(
         ({ btnName }) => btnName === target.textContent
       );
-      console.log(currentContentObject);
       renderArticle(currentContentObject[0], content);
     }
   });
