@@ -1,9 +1,9 @@
-const FIELD_WIDTH = 505,
-    START_X = 202,
+const START_X = 202,
     START_Y = 404,
     CELL_WIDTH = 100,
     CELL_HEIGTH = 83,
     ROW_POSITION = [60, 143, 228],
+    FIELD_WIDTH = CELL_WIDTH * 5,
     ENEMY_SPEED = {
         min: 60,
         max: 200,
@@ -15,11 +15,20 @@ let count = 0;
 counter.innerHTML = `Counter: ${count}`;
 document.body.append(counter);
 
-
-var Enemy = function (x, y, speed) {
+const Person = function (x, y) {
     this.x = x;
     this.y = y;
-    this.speed = this.randomSpeed(speed);
+};
+
+Person.prototype.render = function () {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+var Enemy = function (x, y, speed, player) {
+    this.x = x;
+    this.y = y;
+    this.speed = this.getRandomSpeed(speed);
+    this.player = player
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -29,13 +38,16 @@ const Player = function (x, y) {
     this.sprite = "images/char-boy.png";
 };
 
+Enemy.prototype = Object.create(Person.prototype);
+Player.prototype = Object.create(Person.prototype);
+
 Enemy.prototype.update = function (dt) {
     if (this.x < FIELD_WIDTH) {
         this.x += this.speed * dt;
     } else {
         this.x -= FIELD_WIDTH;
     }
-    if (this.checkCollision(player)) player.resetPosition("fail");
+    if (this.checkCollision(this.player)) this.player.resetPosition("fail");
 };
 
 Enemy.prototype.checkCollision = function (player) {
@@ -46,15 +58,10 @@ Enemy.prototype.checkCollision = function (player) {
     );
 };
 
-Enemy.prototype.randomSpeed = function ({ min, max }) {
-    let rand = min + Math.random() * (max + 1 - min);
-    return Math.floor(rand);
+Enemy.prototype.getRandomSpeed = function ({ min, max }) {
+    let randomSpeed = min + Math.random() * (max + 1 - min);
+    return Math.floor(randomSpeed);
 };
-
-Enemy.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
 
 Player.prototype.update = function () {
     if (this.y > START_Y) {
@@ -69,10 +76,6 @@ Player.prototype.update = function () {
     if (this.x < 0) {
         this.x = FIELD_WIDTH - CELL_WIDTH;
     }
-};
-
-Player.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 Player.prototype.handleInput = function (key) {
@@ -113,7 +116,7 @@ Player.prototype.resetPosition = function (status) {
 };
 
 let player = new Player(START_X, START_Y),
-    allEnemies = ROW_POSITION.map((position) => new Enemy(-100, position, ENEMY_SPEED));
+    allEnemies = ROW_POSITION.map((position) => new Enemy(-100, position, ENEMY_SPEED, player));
 
 
 document.addEventListener('keyup', function (e) {
