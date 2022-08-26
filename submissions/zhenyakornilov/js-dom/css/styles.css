@@ -53,7 +53,7 @@ html {
 .wrapper {
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: auto 1fr auto;
   grid-template-areas: "header-top header-top" "sidebar-nav content-main" "footer-bottom footer-bottom";
 }
@@ -74,18 +74,7 @@ html {
   overflow-y: hidden;
 }
 
-.header .title {
-  color: #8fe3cf;
-  font-size: 3.2rem;
-}
-
-.header .check-switch {
-  opacity: 0;
-  position: absolute;
-  right: 2rem;
-}
-
-.header .theme-switcher {
+.theme-switcher {
   position: relative;
   display: flex;
   align-items: center;
@@ -99,17 +88,37 @@ html {
   right: 1.5rem;
 }
 
-.header .check-switch:focus-visible + .theme-switcher {
+.title {
+  color: #8fe3cf;
+  font-size: 3.2rem;
+}
+
+.moon-icon,
+.sun-icon {
+  color: #f5f5dc;
+}
+
+.check-switch {
+  opacity: 0;
+  position: absolute;
+  right: 2rem;
+}
+
+.check-switch:checked + .theme-switcher .circle {
+  transform: translateX(2.4rem);
+}
+
+.check-switch:focus-visible + .theme-switcher {
   border: 2px solid #ffc0cb;
 }
 
-.header .check-switch:focus-visible + .theme-switcher .circle {
+.check-switch:focus-visible + .theme-switcher .circle {
   top: 0.05rem;
   left: 0.05rem;
   background-color: #ffc0cb;
 }
 
-.header .circle {
+.circle {
   position: absolute;
   background-color: #8fe3cf;
   height: 2.2rem;
@@ -118,15 +127,6 @@ html {
   left: 0.2rem;
   border-radius: 50%;
   transition: transform 0.2s linear;
-}
-
-.header .moon-icon,
-.header .sun-icon {
-  color: #f5f5dc;
-}
-
-.check-switch:checked + .theme-switcher .circle {
-  transform: translateX(2.4rem);
 }
 
 .dropdown {
@@ -171,9 +171,6 @@ html {
 .nav-item {
   border-bottom: 1px solid #f5f5dc;
   width: 20rem;
-}
-
-.nav-item {
   height: 2rem;
   color: #8fe3cf;
   margin-bottom: 5rem;
@@ -224,12 +221,12 @@ html {
   grid-template-areas: "title title" "desc desc" "more more";
 }
 
-.content-body .museum-title {
+.museum-title {
   display: grid;
   grid-area: title;
 }
 
-.content-body .desc-wrapper {
+.desc-wrapper {
   grid-area: desc;
   line-height: 1.6;
   font-size: 1.75rem;
@@ -237,13 +234,13 @@ html {
   margin-top: 20px;
 }
 
-.content-body .desc-wrapper .museum-image {
+.museum-image {
   float: left;
   margin: 0 1.5rem 1.5rem 0;
   width: 450px;
 }
 
-.content-body .additional-wrapper {
+.additional-wrapper {
   justify-self: flex-end;
   align-self: flex-end;
   grid-area: more;
@@ -291,16 +288,6 @@ html {
   border-bottom: 1px solid #ffc0cb;
 }
 
-@media screen and (max-width: 1400px) {
-  .wrapper {
-    grid-template-columns: 1fr 4fr;
-  }
-
-  .content-body {
-    grid-template-rows: 80px 1fr 0.5fr;
-  }
-}
-
 @media screen and (max-width: 1200px) {
   .wrapper {
     grid-template-columns: 1fr 3fr;
@@ -311,29 +298,47 @@ html {
   }
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    grid-template-columns: 1fr 3fr;
+  }
   .nav-item {
     width: 16rem;
   }
 
   .content-body {
+    grid-template-rows: 60px 1fr 100px;
     gap: 10px;
   }
 
-  .content-body .desc-wrapper {
+  .desc-wrapper {
     font-size: 1.9rem;
   }
 
-  .content-body .desc-wrapper .museum-image {
+  .museum-image {
     display: block;
     float: none;
     width: 450px;
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
   .wrapper {
     grid-template-areas: "header-top header-top" "content-main content-main" "footer-bottom footer-bottom";
+  }
+
+  .content-body {
+    grid-template-rows: auto 1fr 100px;
+  }
+
+  .museum-image {
+    display: block;
+    float: none;
+    width: 400px;
   }
 
   .dropdown {
@@ -347,7 +352,7 @@ html {
   }
 
   .sidebar.active {
-    width: 200px;
+    width: 220px;
     text-align: left;
     visibility: visible;
     z-index: 10;
@@ -366,51 +371,22 @@ html {
   }
 }
 
-@media screen and (max-width: 576px) {
-  .header .title {
-    font-size: 2.5rem;
-  }
-
-  .content-body {
-    grid-template-rows: 100px 1fr 100px;
-  }
-}
-
-@media screen and (max-width: 508px) {
-  .header .title {
-    font-size: 1.8rem;
-  }
-
-  .content-body {
-    grid-template-rows: auto auto auto;
-    row-gap: 0;
-  }
-
-  .content-body .desc-wrapper .museum-image {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 356px) {
+@media screen and (max-width: 480px) {
   html {
     font-size: 50%;
   }
 
+  .title {
+    font-size: 2.1rem;
+  }
+
   .content-body {
-    margin: 2rem 2rem 0 2rem;
-  }
-}
-
-@media screen and (max-width: 290px) {
-  html {
-    font-size: 43%;
+    grid-template-rows: auto 1fr 100px;
   }
 
-  .content-body .desc-wrapper {
-    font-size: 2rem;
-  }
-
-  .museum-link {
-    font-size: 1.6rem;
+  .museum-image {
+    display: block;
+    float: none;
+    width: 100%;
   }
 }
