@@ -177,38 +177,3 @@ a:hover {
     height: 40px;
 }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .tooltip:after {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    left: -90px;
-    display: none;
-    text-align: center;
-    background-color: grey;
-    color: #fff;
-    border-radius: 4px;
-    padding: 2px;
-    text-decoration: none;
-  }
-
-  .tooltip:hover:after {
-    display: block;
-  }
-
-  .tooltip:nth-child(1)::after {
-    content: "click to watch more recipes";
-  }
-
-  .tooltip:nth-child(2)::after {
-    content: "click to watch menu of sweets";
-  }
-
-  .tooltip:nth-child(3)::after {
-    top: 70px;
-    content: "click to get in touch with me via email";
-  }
