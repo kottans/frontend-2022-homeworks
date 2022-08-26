@@ -30,7 +30,9 @@
 
 .sub-menu img {
 	width: 1.1em;
-	height: 1.1em;
+	/* height: 1.1em; */
+
+	height: auto;
 	cursor: pointer;
 }
 
