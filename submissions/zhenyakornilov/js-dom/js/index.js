@@ -4,16 +4,15 @@ import museums from "./data.js";
 import switchTheme from "./utils.js";
 
 function main() {
-  switchTheme();
-
+  const dropdownBtn = document.getElementById("dropdown");
   const listMenu = document.getElementById("menu");
   const contentBody = document.getElementById("content");
   renderButtons(museums, listMenu);
-  toggleSelectedButton(museums, contentBody);
-  openMenu(listMenu);
+  renderArticle(museums[0], contentBody);
+  showMuseumInfoByClick(museums, contentBody, listMenu);
+  openMenu(listMenu, dropdownBtn);
+  switchTheme();
 }
-
-document.addEventListener("DOMContentLoaded", main);
 
 function renderButtons(museumsObj, menu) {
   let buttonsHTML = museumsObj
@@ -29,35 +28,17 @@ function renderButtons(museumsObj, menu) {
   menu.innerHTML = buttonsHTML;
 }
 
-function toggleSelectedButton(museums, content) {
-  let selectedButton = document.getElementsByClassName("nav-item")[0];
-  selectedButton.classList.add("open");
-
-  const buttons = document.getElementsByClassName("nav-item");
-
-  function getContextObj() {
-    const selectedBtnText = document.querySelector(".open .btn-text");
-    let obj = museums.filter(
-      ({ btnName }) => btnName === selectedBtnText.textContent
-    )[0];
-
-    return obj;
-  }
-
-  renderArticle(getContextObj(), content);
-
-  for (let button of buttons) {
-    button.addEventListener("click", function () {
-      if (!this.classList.contains("open")) {
-        content.innerHTML = "";
-        selectedButton.classList.remove("open");
-        this.classList.add("open");
-        selectedButton = this;
-
-        renderArticle(getContextObj(), content);
-      }
-    });
-  }
+function showMuseumInfoByClick(museums, content, menu) {
+  menu.addEventListener("click", function ({ target }) {
+    console.log(target.textContent);
+    if (target.tagName.toLowerCase() === "button") {
+      const currentContentObject = museums.filter(
+        ({ btnName }) => btnName === target.textContent
+      );
+      console.log(currentContentObject);
+      renderArticle(currentContentObject[0], content);
+    }
+  });
 }
 
 function renderArticle({ name, description, imageSrc, url }, content) {
@@ -79,11 +60,11 @@ function renderArticle({ name, description, imageSrc, url }, content) {
   content.innerHTML = contentHTML;
 }
 
-function openMenu(menu) {
-  const dropDownBtn = document.getElementById("dropdown");
-
-  dropDownBtn.addEventListener("click", function () {
+function openMenu(menu, dropdownButton) {
+  dropdownButton.addEventListener("click", function () {
     const sidebar = menu.closest(".sidebar");
     sidebar.classList.toggle("active");
   });
 }
+
+document.addEventListener("DOMContentLoaded", main);
