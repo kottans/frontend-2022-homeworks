@@ -103,11 +103,11 @@ const updateContent = (item) => {
 elemMenu.addEventListener("click", (event) => {
     const isPrevent = event.target.classList.contains("is-active") || event.target.classList.contains("menu__list");
 
-    isPrevent ? event.preventDefault : (updateContent(getContentItem(event)), deleteActiveClass(), addActiveClass(event));
+    isPrevent ? event.preventDefault() : (updateContent(getContentItem(event)), deleteActiveClass(), addActiveClass(event));
 });
 
 elemLogo.addEventListener("click", (event) => {
     const isPrevent = elemMenu.querySelectorAll(".is-active");
 
-    isPrevent ? (updateContent(defaultContentItem), deleteActiveClass()) : event.preventDefault;
+    isPrevent ? (updateContent(defaultContentItem), deleteActiveClass()) : event.preventDefault();
 });
