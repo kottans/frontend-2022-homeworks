@@ -35,8 +35,7 @@
   background-color: rgb(23, 72, 78);
 }
 
-
-.nav-item{
+.nav-item {
   display: flex;
   height: 100%;
   align-items: center;
@@ -132,7 +131,7 @@
   width: 100%;
   flex-wrap: wrap;
   padding: 0;
-  margin: 10px 0;
+  margin: -10px 0 20px 0;
   justify-content: space-around;
 }
 
@@ -156,10 +155,6 @@
   margin: 10px 0;
 }
 
-.submenu-link p {
-  margin: 0;
-}
-
 .more-btn {
   width: 100%;
 }
@@ -168,7 +163,7 @@
   width: 100%;
   flex-wrap: wrap;
   padding: 0;
-  margin: 10px 0;
+  margin: 0 0 15px 0;
   justify-content: space-around;
 }
 
