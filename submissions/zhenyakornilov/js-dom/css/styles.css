@@ -186,10 +186,6 @@ html {
   color: #ffc0cb;
 }
 
-.nav-item.open {
-  color: #f5f5dc;
-}
-
 .content.dark {
   background-color: #04293a;
 }
@@ -302,6 +298,7 @@ html {
   .wrapper {
     grid-template-columns: 1fr 3fr;
   }
+
   .nav-item {
     width: 16rem;
   }
@@ -383,7 +380,7 @@ html {
   .content-body {
     grid-template-rows: auto 1fr 100px;
   }
-
+  
   .museum-image {
     display: block;
     float: none;
