@@ -63,10 +63,6 @@ body {
   transform: rotateY(180deg);
 }
 
-.disableclick {
-  pointer-events: none;
-}
-
 @media (max-width: 1024px) {
   .game__container {
     width: 740px;

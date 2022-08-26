@@ -1,56 +1,58 @@
 const cards = [
   {
-    front: "images/front.jpg",
     back: "images/sleepy-cat.jpg",
     name: "sleepy",
   },
   {
-    front: "images/front.jpg",
     back: "images/cat.jpg",
     name: "cat",
   },
   {
-    front: "images/front.jpg",
     back: "images/frightened-cat.jpg",
     name: "frightened",
   },
   {
-    front: "images/front.jpg",
     back: "images/brutal-cat.jpg",
     name: "brutal",
   },
   {
-    front: "images/front.jpg",
     back: "images/rock-cat.jpg",
     name: "rock",
   },
   {
-    front: "images/front.jpg",
     back: "images/cute-cat.jpg",
     name: "cute",
   },
 ];
 
+let lockBoard = false;
+
 const gameCards = cards.map(
-  ({ front, back, name }) =>
-    `<div class="game__card" id="${name}">
-             <img class="front__img" src="${front}" alt="">
-             <img class="back__img" src="${back}" alt="">
-           </div>
-           <div class="game__card" id="${name}">
-             <img class="front__img" src="${front}" alt="">
-             <img class="back__img" src="${back}" alt="">
-           </div>`
+  ({ back, name }) =>
+    `<div class="game__card" data-card-name="${name}">
+      <img class="front__img" src="images/front.jpg" alt="">
+      <img class="back__img" src="${back}" alt="">
+    </div>`
 );
 
+function shuffleCards(card) {
+  return card.sort(function () {
+    return 0.5 - Math.random();
+  });
+}
+
+shuffleCards(gameCards);
+
 const gameContainer = document.querySelector(".game__container");
-gameContainer.innerHTML = gameCards.join("");
+gameContainer.innerHTML = gameCards.concat(gameCards).join("");
+
 const allGameCards = document.querySelectorAll(".game__card");
 
 let numberOfMatches = 0;
 let flippedCards = [];
 
 gameContainer.addEventListener("click", ({ target }) => {
+  if (lockBoard) return;
   const parentTarget = target.closest(".game__card");
   if (parentTarget !== null) {
     parentTarget.classList.add("flip");
@@ -68,15 +70,12 @@ function checkArrayOfFlippedCardsLength() {
 }
 
 function checkMatch() {
-  const match = flippedCards[0].id === flippedCards[1].id;
+  const match =
+    flippedCards[0].dataset.cardName === flippedCards[1].dataset.cardName;
 
   if (match) {
     numberOfMatches++;
-    addingDisableClass();
     flippedCards = [];
-    setTimeout(() => {
-      addingDisableClass();
-    }, 1000);
   } else {
     removeFlip();
   }
@@ -88,17 +87,10 @@ function removeFlip() {
     flippedCards[1].classList.remove("flip");
     flippedCards = [];
 
-    addingDisableClass();
-
+    lockBoard = false;
     checkForWin();
   }, 1000);
-  addingDisableClass();
-}
-
-function addingDisableClass() {
-  allGameCards.forEach((item) => {
-    item.classList.toggle("disableclick");
-  });
+  lockBoard = true;
 }
 
 function checkForWin() {
@@ -109,17 +101,7 @@ function checkForWin() {
       });
       alert("U WIN!");
       flippedCards = [];
-      shuffleCards();
       numberOfMatches = 0;
     }, 1000);
   }
 }
-
-function shuffleCards() {
-  allGameCards.forEach((card) => {
-    let randomPos = Math.floor(Math.random() * 12);
-    card.style.order = randomPos;
-  });
-}
-
-shuffleCards();
