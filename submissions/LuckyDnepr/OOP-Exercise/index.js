@@ -17,11 +17,11 @@ class Inhabitant {
         this.name = name;
     }
     getInfo() {
-        return `I'm ${this.species}. My name is ${this.name} and I am ${this.gender}.`;
+        return `I'm ${this.constructor.name}. My name is ${this.name} and I am ${this.gender}.`;
     }
 }
 
-class Humans extends Inhabitant {
+class Human extends Inhabitant {
     constructor(gender, name) {
         super("Human", gender, name);
         this.hands = 2;
@@ -38,7 +38,7 @@ class Humans extends Inhabitant {
     }
 }
 
-class Animals extends Inhabitant {
+class Animal extends Inhabitant {
     constructor(gender, name) {
         super("Animal", name, gender);
         this.paws = 4;
@@ -48,7 +48,7 @@ class Animals extends Inhabitant {
     }
 }
 
-class Cat extends Animals {
+class Cat extends Animal {
     constructor(gender, name) {
         super(name, gender);
         this.vocabulary = {
@@ -57,11 +57,11 @@ class Cat extends Animals {
         this.say = new Saying(this);
     }
     getInfo() {
-        return `I'm ${this.constructor.name}. ` + super.getInfo();
+        return super.getInfo();
     }
 }
 
-class Dog extends Animals {
+class Dog extends Animal {
     constructor(gender, name) {
         super(name, gender);
         this.vocabulary = {
@@ -70,26 +70,26 @@ class Dog extends Animals {
         this.say = new Saying(this);
     }
     getInfo() {
-        return `I'm ${this.constructor.name}. ` + super.getInfo();
+        return super.getInfo();
     }
 }
 
-class WomanCat extends Humans {
+class WomanCat extends Human {
     //This class can easily be converted to HumansCat, if needed
     constructor(name) {
         super("female", name);
         this.say = new Saying(new Cat());
     }
     getInfo() {
-        return `I'm ${this.constructor.name}. ` + super.getInfo();
+        return super.getInfo();
     }
 }
 
 function initInhabitants() {
     //init some inhabitants for presentation
     return [
-        new Humans("male", "Harry"),
-        new Humans("female", "Jinny"),
+        new Human("male", "Harry"),
+        new Human("female", "Jinny"),
         new Cat("female", "Starling"),
         new Dog("male", "Oscar"),
         new WomanCat("Jessica")
