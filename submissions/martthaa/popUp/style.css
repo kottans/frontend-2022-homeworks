@@ -46,7 +46,7 @@ input[type="checkbox"] {
   font-family: "Poppins", sans-serif;
 }
 
-.element {
+.list-item {
   display: flex;
   justify-content: center;
   align-items: center;
