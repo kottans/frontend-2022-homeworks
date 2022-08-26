@@ -9,7 +9,7 @@ body {
   height: 100vh;
   font-size: 14px;
   text-align: center;
-  color: black;
+  color: #000000;
   background-image: url(./img/bg.jpg);
   background-size: cover;
   font-family: 'Poppins', sans-serif;
@@ -148,11 +148,11 @@ li.popup_item {
 }
 
 label.popup_btn, a.link_more{
-    color: black ;
+    color: #000000 ;
 }
 
 label.popup_btn:hover, a.link_more:hover{
-    color: grey;
+    color: 808080;
 }
 
 .popup_more:checked ~ .popup_btn {
@@ -161,7 +161,7 @@ label.popup_btn:hover, a.link_more:hover{
 }
 
 a:hover {
-  color: gray;
+  color: 808080;
 }
 
 .last-item-menu{
