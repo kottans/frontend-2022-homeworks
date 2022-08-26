@@ -13,8 +13,8 @@ const GAME_FIELD = {
 };
 
 const PLAYER_START = {
-	x: 202,
-	y: 400
+	x: CELL.width * 2.02,
+	y: CELL.height * 4.7
 };
 
 const ENEMY_SPEED = {
@@ -27,16 +27,22 @@ const SPRITE = {
 	player: 'images/char-boy.png'
 };
 
-const SPEED = () => ENEMY_SPEED.min + Math.floor(Math.random() * ENEMY_SPEED.max);
+const speed = () => ENEMY_SPEED.min + Math.floor(Math.random() * ENEMY_SPEED.max);
 const OVERLAP_AMOUNT = 70;
 const BORDER = 20;
 
-const Enemy = function (x, y, SPEED, player) {
+const LINE = {
+	1: CELL.height - BORDER,
+	2: CELL.height * 2 - BORDER,
+	3: CELL.height * 3- BORDER
+};
+
+const Enemy = function (x, y, speed, player) {
 	this.x = x;
 	this.y = y;
-	this.SPEED = SPEED();
+	this.speed = speed();
 	this.player = player;
-	this.SPRITE = SPRITE.enemy;	
+	this.sprite = SPRITE.enemy;	
 };
 
 Enemy.prototype.checkColission = function () {
@@ -51,21 +57,21 @@ Enemy.prototype.checkColission = function () {
 
 Enemy.prototype.update = function (dt) {
 	if (this.x > GAME_FIELD.right) {
-		this.x -= GAME_FIELD.right;
-		this.SPEED = SPEED();
+		this.x -= GAME_FIELD.right + CELL.width;
+		this.speed = speed();
 		}
-	this.x += this.SPEED * dt;
+	this.x += this.speed * dt;
 	this.checkColission();
 };
 
 Enemy.prototype.render = function () {
-	ctx.drawImage(Resources.get(this.SPRITE), this.x, this.y);
+	ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 const Player = function () {
 	this.x = PLAYER_START.x;
 	this.y = PLAYER_START.y;
-	this.SPRITE = SPRITE.player;	
+	this.sprite = SPRITE.player;	
 };
 
 Player.prototype.update = function (dt) {};
@@ -91,13 +97,22 @@ Player.prototype.handleInput = function (keyPress) {
 };
 
 Player.prototype.render = function () {
-	ctx.drawImage(Resources.get(this.SPRITE), this.x, this.y);
+	ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 const player = new Player(PLAYER_START.x, PLAYER_START.y);
 
-const allEnemies = [CELL.height - BORDER, CELL.height*2 - BORDER, CELL.height*3 - BORDER]
-				   .map(value => {return new Enemy(GAME_FIELD.left, value, SPEED, player);});
+const allEnemies = [];
+
+function createEnemyPerLine (line, numberOfEnemies) {	
+	for (let i = 0; i < numberOfEnemies; i++) {		
+		allEnemies.push(new Enemy((GAME_FIELD.left - CELL.width), LINE[line], speed, player));		
+	}
+}
+
+createEnemyPerLine(1, 1);
+createEnemyPerLine(2, 2);
+createEnemyPerLine(3, 1);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
