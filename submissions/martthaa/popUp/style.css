@@ -177,3 +177,33 @@ a:hover {
     height: 40px;
 }
 
+@media screen and (max-width:540px) {
+  .popup{
+    right: -240%;
+    top: 350%;
+    padding: 30px;
+  }
+  .boxOfNavigationButtons{
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width:462px) {
+  .popup{
+    right: -110px;
+    width: 300px;
+    max-height: 480px;
+  }
+}
+
+@media screen and (max-width:375px) {
+  .popup{
+    width: 300px;
+    top: 90px;
+    max-height: 440px;
+    left: -130px;
+  }
+}
+
+
+
