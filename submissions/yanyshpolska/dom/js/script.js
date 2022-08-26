@@ -66,14 +66,17 @@ const createContent = function (objectTea) {
   wholeArticle.append(descr);
 };
 
-const initValue = teas[Math.floor(Math.random() * teas.length)];
-createContent(initValue);
+const getRandomNumber = () => Math.floor(Math.random() * teas.length);
+const initValue = getRandomNumber();
+createContent(teas[initValue]);
 
 const listOfTeasNames = document.querySelector(".menu__items");
 
-listOfTeasNames.onclick = function (event) {
+const changeTea = function (event) {
   const objectTea = teas.find(
     (obj) => obj.id === Number(event.target.dataset.id)
   );
   createContent(objectTea);
 };
+
+listOfTeasNames.addEventListener("click", changeTea);
