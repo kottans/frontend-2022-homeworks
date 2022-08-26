@@ -1,19 +1,39 @@
-const X_STEP = 101
-const Y_STEP = 83
-const INITIAL_ENEMIES_Y_POSITIONS = [50, 133, 210]
-const START_ENEMIES_Y_POSITION = INITIAL_ENEMIES_Y_POSITIONS[0]
-const START_PLAYER_X_POSITION = 200
-const START_PLAYER_Y_POSITION = 380
+const X_SIZE = 101
+const Y_SIZE = 83
+const ROWS = 6
+const COLUMNS = 5
+const START_ROW = 5
+const START_COLUMN = 2
+const WIDTH_FIELD = COLUMNS * X_SIZE
+const HEIGHT_FIELD = ROWS * Y_SIZE
+const Y_OFFSET_PLAYER = 35
+const Y_OFFSET_ENEMY = 35
+const X_OFFSET_ENEMY = 20
+const START_PLAYER_X_POSITION = X_SIZE * START_COLUMN
+const START_PLAYER_Y_POSITION = Y_SIZE * START_ROW - Y_OFFSET_PLAYER
 const DEFAULT_NUM_OF_ENEMIES = 3
 const X_OFFSET_CLICK = 50
 const Y_OFFSET_CLICK = 130
 const X_OFFSET_TAP = 50
 const Y_OFFSET_TAP = 130
 const MIN_SPEED = 100
-const MAX_SPEED = 200
+const MAX_SPEED = 300
+const PLAYER_IMG = 'images/char-cat-girl.png'
+const ENEMY_IMG = 'images/enemy-bug.png'
+const STARS_IMG_LEVEL = {
+	1: 'images/Gem Blue.png',
+	2: 'images/Gem Green.png',
+	3: 'images/Gem Orange.png',
+	4: 'images/Gem Red.png',
+}
+const MAX_LEVEL = Object.keys(STARS_IMG_LEVEL).length
 
 let offsetLeft = 0
 let offsetTop = 0
+
+function randomMinMax(min, max)  {
+	return Math.floor(min + Math.random() * (max + 1 - min))
+}
 
 const Thing = function(x, y, sprite) {
 	this.x = x
@@ -34,7 +54,7 @@ const Enemy = function(x, y, sprite, speed, antagonist) {
 	// a helper we've provided to easily load images
 	Thing.call(this, x, y, sprite)
 
-	this.speed = speed;
+	this.speed = speed
 	this.antagonist = antagonist
 }
 
@@ -46,20 +66,18 @@ Enemy.prototype.update = function(dt) {
 	// all computers.
 	this.x += this.speed * dt
 
-	if (this.x > 530) {
-		this.x = -100
-		this.speed = MIN_SPEED + Math.floor(Math.random() * MAX_SPEED)
+	if (this.x > WIDTH_FIELD) {
+		this.x = -X_SIZE
+		this.speed = randomMinMax(MIN_SPEED, MAX_SPEED)
 	}
 
 	this.collisions()
-
 }
 
 Enemy.prototype.collisions = function() {
-	if (this.antagonist.x < this.x + 70 &&
-		this.antagonist.x + 70 > this.x &&
-		this.antagonist.y < this.y + 80 &&
-		this.antagonist.y + 80 > this.y) reloadLevel(false)
+	if (this.antagonist.y + Y_OFFSET_PLAYER === this.y + Y_OFFSET_ENEMY &&
+		this.antagonist.x < this.x + X_SIZE / 2 + X_OFFSET_ENEMY &&
+		this.antagonist.x > this.x - X_SIZE / 2 - X_OFFSET_ENEMY) reloadLevel(false)
 }
 
 // Update the enemy's position, required method for game
@@ -87,33 +105,30 @@ const Player = function (x, y, sprite) {
 Player.prototype = Object.create(Thing.prototype)
 
 Player.prototype.update = function () {
-	if (this.x > START_PLAYER_X_POSITION + X_STEP * 2 + X_STEP / 2)
-		this.x = START_PLAYER_X_POSITION + X_STEP * 2
-	if (this.x < START_PLAYER_X_POSITION - X_STEP * 2 - X_STEP / 2)
-		this.x = START_PLAYER_X_POSITION - X_STEP * 2
-	if (this.y > START_PLAYER_Y_POSITION + Y_STEP / 2) this.y = START_PLAYER_Y_POSITION
-	if (this.y < Y_STEP * 5 - START_PLAYER_Y_POSITION + 5)
+	if (this.x > WIDTH_FIELD - X_SIZE) this.x = WIDTH_FIELD - X_SIZE
+	if (this.x < 0) this.x = 0
+	if (this.y > HEIGHT_FIELD - Y_OFFSET_PLAYER * 2) this.y = START_PLAYER_Y_POSITION
+	if (this.y < 0)
 		setTimeout(() => {
 			this.x = START_PLAYER_X_POSITION
 			this.y = START_PLAYER_Y_POSITION
 		}, 200)
-	if (this.y < -(Y_STEP * 5 - START_PLAYER_Y_POSITION))
-		this.y = -(Y_STEP * 5 - START_PLAYER_Y_POSITION)
+	if (this.y < 0) this.y = -Y_OFFSET_PLAYER
 }
 
 Player.prototype.handleInput = function (direction) {
 	switch (direction) {
 		case 'up':
-			this.y -= Y_STEP
+			this.y -= Y_SIZE
 			break
 		case 'down':
-			this.y += Y_STEP
+			this.y += Y_SIZE
 			break
 		case 'left':
-			this.x -= X_STEP
+			this.x -= X_SIZE
 			break
 		case 'right':
-			this.x += X_STEP
+			this.x += X_SIZE
 			break
 	}
 }
@@ -123,12 +138,12 @@ Player.prototype.click = function (e) {
 	const Y_DIFF = Math.abs(this.y - e.offsetY + Y_OFFSET_CLICK)
 
 	if (X_DIFF > Y_DIFF) {
-		if (this.x > e.offsetX - X_OFFSET_CLICK) this.x -= X_STEP
-		else this.x += X_STEP
+		if (this.x > e.offsetX - X_OFFSET_CLICK) this.x -= X_SIZE
+		else this.x += X_SIZE
 	}
 	else {
-		if (this.y > e.offsetY - Y_OFFSET_CLICK) this.y -= Y_STEP
-		else this.y += Y_STEP
+		if (this.y > e.offsetY - Y_OFFSET_CLICK) this.y -= Y_SIZE
+		else this.y += Y_SIZE
 	}
 }
 
@@ -139,12 +154,12 @@ Player.prototype.tap = function (e) {
 	const Y_DIFF = Math.abs((this.y + Y_OFFSET_TAP) - (e.touches[0].clientY - offsetTop))
 
 	if (X_DIFF > Y_DIFF) {
-		if (this.x + X_OFFSET_TAP * 2 > e.touches[0].clientX + X_OFFSET_TAP - offsetLeft) this.x -= X_STEP
-		else this.x += X_STEP
+		if (this.x + X_OFFSET_TAP * 2 > e.touches[0].clientX + X_OFFSET_TAP - offsetLeft) this.x -= X_SIZE
+		else this.x += X_SIZE
 	}
 	else {
-		if (this.y + Y_OFFSET_TAP > e.touches[0].clientY - offsetTop) this.y -= Y_STEP
-		else this.y += Y_STEP
+		if (this.y + Y_OFFSET_TAP > e.touches[0].clientY - offsetTop) this.y -= Y_SIZE
+		else this.y += Y_SIZE
 	}
 }
 
@@ -162,12 +177,8 @@ Star.prototype.update = function() {
 }
 
 Star.prototype.collisions = function() {
-	if (this.raider.x < this.x + 70 &&
-		this.raider.x + 70 > this.x &&
-		this.raider.y < this.y + 80 &&
-		this.raider.y + 80 > this.y) {
-		reloadLevel(true, this.index)
-	}
+	if (this.raider.y + Y_OFFSET_PLAYER === this.y + Y_OFFSET_ENEMY &&
+		this.raider.x === this.x) reloadLevel(true, this.index)
 }
 
 // Now instantiate your objects.
@@ -176,39 +187,35 @@ Star.prototype.collisions = function() {
 
 function creteEnemies(num) {
 	if (num > 6) num = 6
-	const arrEnemies = []
+	allEnemies.splice(0, allEnemies.length)
 
-	for (let i = START_ENEMIES_Y_POSITION; i < num * Y_STEP; i += Y_STEP) {
+	for (let i = 1; i < num + 1; i++) {
 		let y = i
-		if (i > START_ENEMIES_Y_POSITION + Y_STEP * 2 && i <= START_ENEMIES_Y_POSITION + Y_STEP * 3)
-			y = INITIAL_ENEMIES_Y_POSITIONS[0]
-		else if (i > START_ENEMIES_Y_POSITION + Y_STEP * 3 && i <= START_ENEMIES_Y_POSITION + Y_STEP * 4)
-			y = INITIAL_ENEMIES_Y_POSITIONS[1]
-		else if (i > START_ENEMIES_Y_POSITION + Y_STEP * 4 && i <= START_ENEMIES_Y_POSITION + Y_STEP * 5)
-			y = INITIAL_ENEMIES_Y_POSITIONS[2]
-		const x = -100 + Math.floor(Math.random() * -200)
-		const speed = MIN_SPEED + Math.floor(Math.random() * MAX_SPEED)
-		arrEnemies.push(new Enemy(x, y,'images/enemy-bug.png', speed, player))
+		if (i === 4) y = 1
+		if (i === 5) y = 2
+		if (i === 6) y = 3
+		y = y * Y_SIZE - Y_OFFSET_ENEMY
+		const x = -randomMinMax(X_SIZE, X_SIZE * 3)
+		const speed = randomMinMax(MIN_SPEED, MAX_SPEED)
+		allEnemies.push(new Enemy(x, y, ENEMY_IMG, speed, player))
 	}
-
-	return arrEnemies
 }
 
 function createStars(img) {
-	const arrStars = []
+	allStars.splice(0, allStars.length)
 
 	for (let i = 0; i < 5; i ++) {
-		let y = i * X_STEP
-		arrStars.push(new Star(y, -(Y_STEP * 5 - START_PLAYER_Y_POSITION), img, player, i))
+		let y = i * X_SIZE
+		allStars.push(new Star(y, -(Y_SIZE * 5 - START_PLAYER_Y_POSITION), img, player, i))
 	}
-
-	return arrStars
 }
 
 // Create Player, Enemies and Gems
-const player = new Player(START_PLAYER_X_POSITION, START_PLAYER_Y_POSITION, 'images/char-cat-girl.png')
-let allEnemies = creteEnemies(DEFAULT_NUM_OF_ENEMIES)
-let allStars = createStars('images/Gem Blue.png')
+const player = new Player(START_PLAYER_X_POSITION, START_PLAYER_Y_POSITION, PLAYER_IMG)
+const allEnemies = []
+const allStars = []
+creteEnemies(DEFAULT_NUM_OF_ENEMIES)
+createStars(STARS_IMG_LEVEL[1])
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -225,7 +232,7 @@ document.addEventListener('keyup', function(e) {
 
 // Fill array of stars
 function setStars(img) {
-	setTimeout(() => allStars = createStars(img), 300)
+	setTimeout(() => createStars(img), 300)
 }
 
 // Reload or up level
@@ -234,46 +241,25 @@ function reloadLevel(levelUp, index) {
 	if (levelUp) {
 		delete allStars[index]
 		// When no more stars
-		if (allStars.every(el => el == '')) {
-			if (player.level === 1) {
-				player.level = 2
-				allEnemies = creteEnemies(allEnemies.length + 1)
-				setStars('images/Gem Green.png')
-			}
-			else if (player.level === 2) {
-				player.level = 3
-				allEnemies = creteEnemies(allEnemies.length + 1)
-				setStars('images/Gem Orange.png')
-			}
-			else if (player.level === 3) {
-				player.level = 4
-				allEnemies = creteEnemies(allEnemies.length + 1)
-				setStars('images/Gem Red.png')
-			}
-			else {
+		if (allStars.every(el => el === '')) {
+			if (player.level === MAX_LEVEL) {
 				alert('You won!')
 				player.level = 1
-				allEnemies = creteEnemies(DEFAULT_NUM_OF_ENEMIES)
-				setStars('images/Gem Blue.png')
+				creteEnemies(DEFAULT_NUM_OF_ENEMIES)
+				setStars(STARS_IMG_LEVEL[player.level])
+			}
+			else {
+				player.level++
+				creteEnemies(allEnemies.length + 1)
+				setStars(STARS_IMG_LEVEL[player.level])
 			}
 		}
 	}
 	// When colliding with an enemy
 	else {
-		player.x = 200
-		player.y = 380
-		if (player.level === 1) {
-			setStars('images/Gem Blue.png')
-		}
-		else if (player.level === 2) {
-			setStars('images/Gem Green.png')
-		}
-		else if (player.level === 3) {
-			setStars('images/Gem Orange.png')
-		}
-		else {
-			setStars('images/Gem Red.png')
-		}
+		player.x = START_PLAYER_X_POSITION
+		player.y = START_PLAYER_Y_POSITION
+		setStars(STARS_IMG_LEVEL[player.level])
 	}
 }
 
