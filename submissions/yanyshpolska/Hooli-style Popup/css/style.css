@@ -125,15 +125,15 @@ ul li {
   flex-wrap: wrap;
 }
 .popup__item {
+  user-select: none;
   flex: 0 0 30%;
   border: 0.15em solid transparent;
   border-radius: 0.2em;
   margin: 0.3em;
+  padding: 0.3em 0em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  overflow: hidden;
 }
 .popup__item:hover {
   border-color: #c4b4c9;
@@ -141,23 +141,14 @@ ul li {
 .popup__item:focus {
   border-color: #876991;
 }
-.popup__item_image_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin: 0.35em 1.2em 0.35em 1.2em;
-  height: 2.3em;
-  width: 3.3em;
-}
 .popup__item_image {
-  height: 100%;
-  width: 100%;
-  margin: auto;
+  height: 2.3em;
+  width: 3em;
   object-fit: contain;
 }
 .popup__item_name {
   color: #555;
-  margin-bottom: 0.35em;
+  margin-top: 0.35em;
 }
 .popup__item_checkbox {
   flex-basis: 90%;
