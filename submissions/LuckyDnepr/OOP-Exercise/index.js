@@ -11,7 +11,7 @@ class Saying {
 }
 
 class Inhabitant {
-    constructor(species, gender, name) {
+    constructor(gender, name, species = this.constructor.name) {
         this.species = species;
         this.gender = gender;
         this.name = name;
@@ -23,7 +23,7 @@ class Inhabitant {
 
 class Human extends Inhabitant {
     constructor(gender, name) {
-        super("Human", gender, name);
+        super(gender, name);
         this.hands = 2;
         this.legs = 2;
         this.vocabulary = {
@@ -40,7 +40,7 @@ class Human extends Inhabitant {
 
 class Animal extends Inhabitant {
     constructor(gender, name) {
-        super("Animal", name, gender);
+        super(gender, name);
         this.paws = 4;
     }
     getInfo() {
@@ -50,7 +50,7 @@ class Animal extends Inhabitant {
 
 class Cat extends Animal {
     constructor(gender, name) {
-        super(name, gender);
+        super(gender, name);
         this.vocabulary = {
             "hi": "Nyav nyav!"
         };
@@ -63,7 +63,7 @@ class Cat extends Animal {
 
 class Dog extends Animal {
     constructor(gender, name) {
-        super(name, gender);
+        super(gender, name);
         this.vocabulary = {
             "hi": "Woof woof!"
         };
