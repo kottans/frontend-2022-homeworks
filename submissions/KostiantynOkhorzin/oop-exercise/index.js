@@ -20,14 +20,13 @@ class Human extends Inhabitan {
    }
 
    showProps() {
-      return `${super.showProps()} ${this.hands};`
+      return `${super.showProps()}; ${this.hands};`
    }
 };
 
 class Dog extends Inhabitan {
    constructor(name, gender, saying, legs = 4) {
-      super('dog', name, gender, saying);
-      this.legs = legs;
+      super('dog', name, gender, legs, saying);
    }
 };
 
