@@ -126,7 +126,8 @@ bookImage.className = "content__img";
 textContentContainer.after(bookImage);
 
 function contentCreator(eventBtn) {
-  const [serie] = darkTowerSeries.filter((serie) => eventBtn.id === serie.id);
+  const contentData = darkTowerSeries.filter((serie) => eventBtn.id === serie.id);
+  const [{ title, quote, about, photo, alt }] = contentData;
   contentTitle.innerHTML = serie.title;
   paragraphQuote.innerHTML = serie.quote;
   paragraph.innerHTML = serie.about;
