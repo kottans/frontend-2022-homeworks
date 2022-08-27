@@ -72,6 +72,10 @@
   display: none;
 }
 
+.popup__moreBtn:focus ~ .popup__moreBtnLabel {
+  outline: 2px solid black;
+}
+
 .popup__link {
   display: flex;
   flex-direction: column;
