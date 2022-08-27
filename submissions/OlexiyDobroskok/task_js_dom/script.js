@@ -94,14 +94,14 @@ contentContainer.prepend(sidebar);
 sidebar.prepend(...addButtons());
 
 function addButtons() {
-  const buttonList = darkTowerSeries.map((serie, serieNumber) => {
-    const button = document.createElement("button");
-    button.className = "sidebar__button";
-    button.id = "dt" + serieNumber;
-    button.innerHTML = darkTowerSeries[serieNumber].title;
-    return button;
-  });
-  return buttonList;
+    return darkTowerSeries.map(serie => {
+      const { id, title } = serie;
+      const btn = document.createElement('button');
+      btn.classList.add('sidebar__button');
+      btn.id = id;
+      btn.innerText = title;
+      return btn;
+    });
 }
 
 const contentSection = document.createElement("section");
