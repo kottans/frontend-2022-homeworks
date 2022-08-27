@@ -48,7 +48,6 @@ catWoman.name = "Woman-Cat";
 catWoman.legs = 2;
 catWoman.hands = 2;
 
-
 // ======== OUTPUT ========
 /* Use print(message) for output.
    Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
@@ -68,10 +67,9 @@ catWoman.hands = 2;
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-
 const inhabitants = [dog, cat, woman, man, catWoman];
 
 inhabitants
   .map((habitant) => Object.values(habitant))
   .map((array) => array.join("; "))
-  .forEach((string) => print(string))
+  .forEach((string) => print(string));
