@@ -43,7 +43,7 @@ body {
     justify-content: flex-start;
 }
 
-.navbar input {
+.navbar .navbar__input {
     position: absolute;
     top: 0;
     left: 0;
@@ -57,11 +57,11 @@ body {
     box-sizing: border-box;
 }
 
-.navbar input:focus {
+.navbar .navbar__input:focus {
     box-shadow: none;
 }
 
-.navbar input:focus + label {
+.navbar .navbar__input:focus + .navbar__link {
     outline: none;
     border-radius: 1px;
     box-shadow: 0 0 0 2px #84a6bc;
@@ -78,7 +78,7 @@ body {
     -webkit-backdrop-filter: blur(50px);
     opacity: 0;
     visibility: hidden;
-    min-width: 150px;
+    min-width: 200px;
 }
 
 .navbar__sub--icons {
@@ -102,6 +102,8 @@ body {
 
 .navbar__sub--icons .navbar__link {
     border: 1px solid transparent;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .navbar__sub--icons .navbar__link:hover,
@@ -109,22 +111,26 @@ body {
     border-color: #000;
 }
 
-.navbar__item input:checked ~ .navbar__sub {
+.navbar__sub--icons .navbar__link > img {
+    width: 40px;
+}
+
+.navbar__item .navbar__input:checked ~ .navbar__sub {
     opacity: 1;
     visibility: visible;
-    max-height: 150px;
+    max-height: 250px;
     overflow-y: auto;
 }
 
-.navbar__item input:checked + label {
+.navbar__item .navbar__input:checked + .navbar__link {
     background-color: #dadada;
 }
 
-.navbar__item input:checked  ~ .navbar__sub input:checked + .navbar__link {
+.navbar__item .navbar__input:checked  ~ .navbar__sub .navbar__input:checked + .navbar__link {
     display: none;
 }
 
-.navbar__item input:checked  ~ .navbar__sub .navbar__sub {
+.navbar__item .navbar__input:checked  ~ .navbar__sub .navbar__sub {
     position: static;
     background: transparent;
     backdrop-filter: none;
@@ -135,7 +141,7 @@ body {
     overflow: hidden;
 }
 
-.navbar__item input:checked  ~ .navbar__sub input:checked ~ .navbar__sub {
+.navbar__item .navbar__input:checked  ~ .navbar__sub .navbar__input:checked ~ .navbar__sub {
     opacity: 1;
     visibility: visible;
     height: auto;
