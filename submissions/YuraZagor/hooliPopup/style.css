@@ -23,7 +23,7 @@
 	width: 2.1em;
 	height: 2.1em;
 	cursor: pointer;
-	object-fit: cover;
+	object-fit: contain;
 	padding: 2px;
 	margin: 10px;
 	user-select: none;
