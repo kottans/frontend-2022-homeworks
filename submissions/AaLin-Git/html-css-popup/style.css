@@ -138,8 +138,6 @@ html,
 
 .menuPopup,
 .menuPopupSub {
-  /* overflow-y: auto; */
-
   overflow-x: hidden;
 }
 
@@ -186,9 +184,6 @@ html,
   display: block;
 }
 
-/* .input:checked {
-  display: none;
-} */
 .input:checked ~ .labelSub > .moreP {
   color: #fffce8;
   opacity: 0.1;
@@ -259,9 +254,9 @@ html,
 .moreP {
   z-index: 100;
 }
+
 .lessP {
   bottom: 52px;
-  /* left: 0; */
   z-index: 0;
 }
 
