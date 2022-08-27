@@ -1,43 +1,46 @@
+const KEYS_VALUE_SEPARATOR = ": ";
+const PROPS_SEPARATOR = "; ";
+
 class Creature {
     constructor({ name, gender, friends = [], species, saying }) {
         this.name = name;
         this.species = species;
         this.gender = gender;
         this.friends = friends;
-        if(saying) this.saying = saying;
+        this.saying = saying;
     }
 
-    returnFullInfo() {
-        let result = ["name", "species", "gender", "saying"].map(
-            (key) => key + ": " + this[key]
-        );
-        if (this.friends.length > 0)
-            return result.concat(
-                "friends: " +
+    createArrayOfProps() {
+        return ["name", "species", "gender", "saying", "friends"]
+            .map((key) => {
+                if (key != "friends")
+                    return this.friends.length
+                        ? key + KEYS_VALUE_SEPARATOR + this[key]
+                        : "";
+                return (
+                    "friends: " +
                     this.friends.map((friend) => friend.name).join(", ")
-            );
-        return result;
+                );
+            })
+            .filter((_) => _);
     }
 
-    addFriends(...friends) {
-        if (friends && friends.length > 0)
-            for (const friend of friends) {
-                this.friends = Array.from(friends);
-            }
+    addFriends(...newFriends) {
+        if (newFriends.length > 0)
+            this.friends = [...this.friends, ...newFriends];
     }
 }
 
 class Animal extends Creature {
-    constructor({ name, gender, friends, paws, tail, species, saying }) {
+    constructor({ name, gender, friends, paws, species, saying }) {
         super({ name, gender, friends, species, saying });
         this.paws = paws;
-        if (tail) this.tail = tail;
     }
 
-    returnFullInfo() {
+    createArrayOfProps() {
         return [
-            ...super.returnFullInfo(),
-            ...["paws", "tail"].map((key) => key + ": " + this[key]),
+            ...super.createArrayOfProps(),
+            "paws" + KEYS_VALUE_SEPARATOR + this["paws"],
         ];
     }
 }
@@ -49,72 +52,86 @@ class Human extends Creature {
         this.hands = hands;
     }
 
-    returnFullInfo() {
+    createArrayOfProps() {
         return [
-            ...super.returnFullInfo(),
-            ...["legs", "hands", "species", "saying"].map(
-                (key) => key + ": " + this[key]
+            ...super.createArrayOfProps(),
+            ...["legs", "hands"].map(
+                (key) => key + KEYS_VALUE_SEPARATOR + this[key]
             ),
         ];
     }
 }
 
 class Dog extends Animal {
-    constructor({ name, gender, friends, paws, tail, saying }) {
+    constructor({
+        name,
+        gender,
+        friends,
+        paws,
+        tail = "ordinary tail",
+        saying,
+    }) {
         super({ name, gender, friends, paws, tail, species: "dog", saying });
+        this.tail = tail;
     }
 
-    returnFullInfo() {
-        return [...super.returnFullInfo(), ["saying" + ": " + this.saying]];
-    }
-}
-
-class CatSaying {
-    constructor(initSaying) {
-        this._saying = initSaying;
-    }
-
-    get saying() {
-        return this._saying;
-    }
-
-    set saying(newSaying) {
-        this._saying = newSaying;
+    createArrayOfProps() {
+        return [
+            ...super.createArrayOfProps(),
+            "tail" + KEYS_VALUE_SEPARATOR + this.tail,
+        ];
     }
 }
-
-const catSaying = new CatSaying("meow");
 
 class Cat extends Animal {
-    constructor({ name, gender, friends, paws, tail }) {
-        super({ name, gender, friends, paws, tail, species: "cat" });
+    constructor({
+        name,
+        gender,
+        friends,
+        paws,
+        tail = "ordinary tail",
+        saying = "meow!",
+    }) {
+        super({ name, gender, friends, paws, tail, species: "cat", saying });
+        this.saying = saying;
+        this.tail = tail;
     }
 
-    get saying() {
-        return catSaying.saying;
-    }
-
-    set saying(newSaying) {
-        catSaying.saying = newSaying;
+    createArrayOfProps() {
+        return [
+            ...super.createArrayOfProps(),
+            "tail" + KEYS_VALUE_SEPARATOR + this.tail,
+        ];
     }
 }
 
 class CatWoman extends Human {
-    constructor({ name, gender, friends, legs, hands, tail }) {
-        super({ name, gender, friends, legs, hands, species: "cat-woman" });
-        if (tail) this.tail = tail;
+    constructor({
+        name,
+        gender,
+        friends,
+        legs,
+        hands,
+        tail = "ordinary Cat-woman tail",
+        saying = "meow!",
+    }) {
+        super({
+            name,
+            gender,
+            friends,
+            legs,
+            hands,
+            species: "cat-woman",
+        });
+        this.tail = tail;
+        this.saying = saying;
     }
 
-    get saying() {
-        return catSaying.saying;
-    }
-
-    set saying(newSaying) {
-        catSaying.saying = newSaying;
-    }
-
-    returnFullInfo() {
-        return super.returnFullInfo().splice(5, 0, "tail: " + this.tail);
+    createArrayOfProps() {
+        return [
+            ...super.createArrayOfProps(),
+            "tail" + KEYS_VALUE_SEPARATOR + this.tail,
+        ];
     }
 }
 
@@ -124,6 +141,7 @@ const Halle = new CatWoman({
     legs: 2,
     hands: 2,
     tail: "long, not fluffy tail",
+    saying: Cat.saying,
 });
 
 const Felix = new Cat({
@@ -165,10 +183,6 @@ Jenny.addFriends(Tom, Felix);
 const inhabitants = [Rex, Felix, Jenny, Tom, Halle];
 
 inhabitants.forEach((inhabitant) =>
-    print(inhabitant.returnFullInfo().join(" "))
-);
-
-const sortedFriends = AllUsers.filter(() => gender_condition).filter(
-    () => name_condition
+    print(inhabitant.createArrayOfProps().join(PROPS_SEPARATOR))
 );
 
