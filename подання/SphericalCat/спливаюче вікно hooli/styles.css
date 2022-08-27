@@ -1,3 +1,5 @@
+
+
 body {
     margin: 0px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -38,6 +40,10 @@ body {
     -webkit-appearance: none;
 }
 
+.see_more{
+    cursor: pointer;
+}
+
 .see_more_item {
     display: block;
     text-align: center;
@@ -45,6 +51,7 @@ body {
     background: #33cccc3b;
     border-radius: 10px;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 .see_more_item:hover {
@@ -79,7 +86,7 @@ body {
 
 .check_more:focus-within~.see_more{
     background: #33cccc81;
-    color: white;
+    color: darkslategrey;
 }
 
 .check_more:checked~.see_more .see_more_item {
@@ -132,6 +139,11 @@ body {
     width: 60px;
     background-size: cover;
     background-position: center;
+    cursor: pointer;
+}
+
+.burger_check{
+    cursor: pointer;
 }
 
 .check:checked~.burger_check .burger_img {
@@ -143,9 +155,9 @@ body {
 
 .check:focus-within~.burger_check .burger_img {
     background-image: url(styles/img/burger.png);
-        background-position: center;
-        background-size: 90%;
-        background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
 }
 
 .items_img {
