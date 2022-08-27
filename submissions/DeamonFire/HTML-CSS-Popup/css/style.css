@@ -1,7 +1,3 @@
-
-
-
-
 /* ------------------------------------ ALL setings ---------------------------- */
 
 *{
@@ -12,10 +8,7 @@
     outline: 2px solid lightblue;
 }
 
-
-
 /* ----------------------------------- Header Menu ----------------------------- */
-
 .header__h1{
     display: none;
 }
@@ -44,9 +37,6 @@
     width: 30px;
     height: 30px;
 }
-
-
-
 
 /* --------------------------------- Dropdown #1 Popup ------------------------ */
 .popup-menu {
@@ -131,8 +121,6 @@
     justify-content: center;
 }
 
-
-
 /* -------------------------------  Dropdown #2 More ---------------------------  */
 .more {
     position: relative;
@@ -200,4 +188,72 @@
 
 .more__input:checked ~ .more__label{
     display: none; 
+}
+
+
+@media screen and (max-width: 500px) {
+    .header__menu_block {
+        padding: 20px;
+        list-style-type: none;
+    }
+    .popup-menu__input{
+        height: 2em;
+        right: -1.2em;
+        top: -1.1em;
+    }
+    .popup-menu .popup {
+        right: -6em; 
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .header__menu_block {
+        padding: 15px;
+    }
+    .popup-menu .popup {
+        right: -8em; 
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header__menu_block {
+        padding: 13px;
+        list-style-type: none;
+    }
+    .popup-menu .popup {
+        right: -8em; 
+    }
+    .popup{
+        height: 350px;
+        width: 150px;
+        box-shadow: -1px 1px 1px lightgray;
+    }
+    .wrapper__block {
+        width: 70px;
+        height: 70px;
+        margin: 2px;
+    }
+    .wrapper {              
+        width: 250px;
+        padding: 15px 5px 0px 5px;
+    }
+    .wrapper__block_link_item {
+        width: 70px;
+        height: 70px;
+        margin: 2px;
+    }
+    
+    .wrapper__block_img {
+        width: 30px;
+        height: 20px;
+    }
+    
+    .wrapper__block-end{
+        width: 250px;
+        height:35px ;
+    }
+    .more__input:checked ~ .more__hidden {
+        width: 250px;
+    }
 }
