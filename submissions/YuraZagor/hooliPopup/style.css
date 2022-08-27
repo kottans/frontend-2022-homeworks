@@ -26,6 +26,7 @@
 	width: 2.1em;
 	height: 2.1em;
 	cursor: pointer;
+	object-fit: cover;
 }
 
 .sub-menu img {
