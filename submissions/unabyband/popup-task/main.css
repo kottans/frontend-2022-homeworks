@@ -1,9 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 html, body {
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
     height: 100%;
-    margin: 0;
-    padding: 0;
     border: 0;
 }
 
@@ -16,8 +19,9 @@ html, body {
 
 .top_menu {
     display: flex;
-    padding: 0 15px;
     align-items: center;
+    padding: 0 15px;
+    list-style: none;
 }
 
 .top_menu__item {
@@ -28,31 +32,30 @@ html, body {
     color: rgba(0, 0, 0, 0.75);
 }
 
-.top_menu__item-container:hover {
+.top_menu__item:hover {
     text-decoration: underline;
 }
 
 .top_menu__item_bell {
-    margin-left: 5px;
-    width: 20px;
-    height: 25px;
     display: block;
-    cursor: pointer;
-    background: url("../icons/bell.png") center center no-repeat;
+    width: 20px;
+    height: 32px;
+    background: url("../icons/bell.png") center no-repeat;
     background-size: 20px 25px;
+    margin-left: 5px;
 }
 
 .top_menu__item_user {
     display: block;
     height: 32px;
     width: 32px;
-    border-radius: 50%;
-    background: url("../icons/favicon.png") center center no-repeat;
+    background: url("../icons/favicon.png") center no-repeat;
     background-size: 32px 32px;
 }
 
 .top_menu__item_bell:hover, .top_menu__item_user:hover, .button_popup:hover {
-    opacity: 75%;
+    background-color: rgba(0, 64, 128, 0.07);
+    border-radius: 5%;
 }
 
 .input_popup {
@@ -66,19 +69,17 @@ html, body {
 
 .popup {
     visibility: hidden;
-    display: flex;
+    display: flex;  
+    flex-direction: column; 
+    position: absolute;
     width: 320px;
     height: 430px;
-    position: absolute;
-    box-sizing: border-box;
     top: 62px;
     right: 15px;
     border: 1px solid #ccc;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
     background: #ffffff;
-    flex-direction: column;
-    z-index: 50;
-    margin: 0;
 }
 
 .popup:after,
@@ -90,8 +91,8 @@ html, body {
   height: 0;
   border-color: transparent;
   border-style: dashed dashed solid;
-  border-width: 0 8.5px 8.5px;
-  right: 102.5px;
+  border-width: 0 9px 9px;
+  right: 102px;
   border-bottom-color: rgba(0, 0, 0, 0.2);
   top: -10px;
 }
@@ -99,8 +100,8 @@ html, body {
   border-color: transparent;
   border-bottom: solid #fff;
   border-style: dashed dashed solid;
-  border-width: 0 8.5px 8.5px;
-  right: 102.5px;
+  border-width: 0 9px 9px;
+  right: 102px;
   top: -9px;
 }
 
@@ -108,7 +109,7 @@ html, body {
     width: 30px;
     height: 30px;
     display: block;
-    background: url("../icons/popup-button.png") center center no-repeat;
+    background: url("../icons/popup-button.png") center no-repeat;
     cursor: pointer;
     border: 2px solid transparent;
 }
@@ -143,12 +144,12 @@ html, body {
 
 .popup_window_hidden {
     display: none;
-    margin-top: 0px;
 }
 
-.popup_window__active {
+.popup_window__link {
     text-decoration: none;
-    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .popup_window_list__item {
@@ -157,28 +158,27 @@ html, body {
     display: flex;
     justify-content: center;
     border: 1px solid transparent;
-    padding-top: 10px;
+    margin-top: 10px;
 }
 
-.popup_window_list__item:hover {
-    border: 1px solid rgba(0, 0, 0, 0.75); 
-}
+.popup_window_list__item:hover, .morebutton:hover {
+    background-color: rgba(0, 64, 128, 0.07);
+    border-radius: 3%;
 
+}
 .popup_window__img {
-    height: 60px;
-    width: 60px;
     display: inline-block;
-}
-.popup_window__img-src {
-    width: 100%;
+    height: 55px;
+    width: 55px;
+    
 }
 .popup_window__label {
+    display: block;
     font-size: 13px;
     text-align: center;
     color: rgba(0, 0, 0, 0.87);
-    text-decoration: none;
     border: none;
-    display: block;
+   
 }
 
 .top_menu__item_other {
@@ -186,17 +186,12 @@ html, body {
     flex: auto;
     text-align: center;
     margin-top: 10px;
-    padding-top: 0px;
     margin-bottom: -35px;
-}
-.top_menu__item_other:hover {
-    text-decoration: underline;
 }
 
 .hidden_input {
     appearance: none;
     box-sizing:content-box;
-    margin: 0px;
     border: none;
 }
 
@@ -217,8 +212,8 @@ html, body {
 }
 
 .hidden_input:checked ~ .popup_window_hidden {
-    border-top: 2px solid #e5e5e5;
     display: flex;
+    border-top: 2px solid #e5e5e5;
 }
 
 .hidden_input:checked ~ .morebutton {
@@ -233,8 +228,9 @@ html, body {
 
 .find-container {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    
 }
 
 .find_cover {
@@ -251,9 +247,8 @@ html, body {
 .find_field-input {
     width: 100%;
     height: 100%;
-    border: 0;
+    border: 2px solid transparent;
     background: transparent;
-    outline: 0;
     padding: 13px 45px 13px 30px;
     box-sizing: border-box;
     background: #F1F3F4;
@@ -264,10 +259,10 @@ html, body {
 }
 
 .find_field-icon {
+    position: absolute;
     width: 20px;
     height: 30px;
-    position: absolute;
-    top: 5px;    
+    top: 7px;    
     right: 15px;
     background: url("../icons/mic.png") center no-repeat;
     background-size: cover;
@@ -280,17 +275,12 @@ html, body {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 768px) {
     .find_cover-image {
-        max-width: 550px;
+        max-width: 470px;
     }
 }
-@media screen and (max-width: 560px) {
-    .find_cover-image {
-        max-width: 430px;
-    }
-}
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 480px) {
     .find_cover-image {
         max-width: 310px;
     }
