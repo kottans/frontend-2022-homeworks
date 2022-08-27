@@ -1,7 +1,6 @@
 function changeImagesByClick() {
   const imgHtml = document.querySelectorAll(".img__js");
-  let id = this.id;
-  const result = images.filter((key) => key.id === id);
+  const result = images.filter((key) => key.id === this.id);
   for (i = 0; i < imgHtml.length; i++) {
     imgHtml[i].setAttribute("src", result[i].src);
     imgHtml[i].setAttribute("alt", result[i].alt);
@@ -17,6 +16,53 @@ function showPopup(event) {
     menu.style.display = "flex";
   }
 }
+
+document.querySelector("main").innerHTML = `
+        <div class="img">
+          <div class="img__column">
+            <img
+              src="img/Cats/1.jpg"
+              alt="The man strokes the cat."
+              class="img__js"
+            />
+            <img
+              src="img/Dogs/2.jpg"
+              alt="Nine dogs against a pink wall."
+              class="img__js"
+            />
+            <img
+              src="img/Horses/3.jpg"
+              alt="Two horses in the meadow."
+              class="img__js"
+            />
+          </div>
+          <div class="img__column">
+            <img src="img/Horses/4.jpg" alt="Brown horse." class="img__js" />
+            <img
+              src="img/Dogs/5.jpg"
+              alt="A woman holds a dog in her arms."
+              class="img__js"
+            />
+            <img
+              src="img/Cats/6.jpg"
+              alt="The cat sleeps in the bed."
+              class="img__js"
+            />
+          </div>
+          <div class="img__column">
+            <img
+              src="img/Cats/7.jpg"
+              alt="The face of a red fluffy cat."
+              class="img__js"
+            />
+            <img
+              src="img/Dogs/8.jpg"
+              alt="Two dogs run along the path."
+              class="img__js"
+            />
+            <img src="img/Cats/9.jpg" alt="Three kittens." class="img__js" />
+          </div>
+        </div>`;
 
 const popupIcon = document.querySelector("#popup");
 popupIcon.addEventListener("click", showPopup);
