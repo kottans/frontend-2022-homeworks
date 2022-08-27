@@ -31,7 +31,6 @@
 .sub-menu img {
 	width: 1.1em;
 	/* height: 1.1em; */
-
 	height: auto;
 	cursor: pointer;
 }
@@ -73,18 +72,26 @@
 }
 
 
-.checkbox-icon, .show--all {
+.show--all {
 	position: absolute;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;		
+}
+.checkbox-icon {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow:hidden;
+	clip: rect(0 0 0 0);
+		
 }
 
 
 .show--all--label{
 	display: flex;
 	user-select: none;
-	width: 100%;
+	width: 100%;			
 	max-width: 40vw;
 	align-content: center;
 	justify-content: center;
@@ -127,19 +134,15 @@
 	transition: ease 0.2s;
 }
 
-.checkbox-icon:active,
-.show--all:active,
-.checkbox-icon:focus,
-.show--all:focus,
-.checkbox-icon:hover,
-.show--all:hover {
-	-webkit-appearance:inherit ;
-	-moz-appearance:inherit;
-	appearance: inherit;	
-	background-color: #F3F6F9;
-	border-color: #007fff;
-	transition: ease 0.25s;
-}
+
+.checkbox-icon:focus + #popup-label{
+
+	outline: 2px solid black;
+} 
+
+.show--all:focus + .show--all--label {
+	outline: 2px solid black;
+} 
 
 @media screen and ( max-width: 620px) {
 	.inner-container{
