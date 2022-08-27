@@ -35,7 +35,6 @@ body {
 
 img {
   width: 80%;
-  
 }
 
 .conteiner_menu {
@@ -60,7 +59,7 @@ img {
     
 }
 
-#checkbox_knopka {
+#checkbox_btn {
     appearance: none;
     position: absolute;
 }
@@ -75,11 +74,10 @@ img {
     color: #242220;
     border-radius: 10px;
     cursor: pointer;
+    justify-content: space-around;
 }
 
-.list img {
-    width: 100%;
-}
+
 
 
 
@@ -100,7 +98,7 @@ img {
 }
 
 
-#checkbox_knopka:focus ~ label > a {
+#checkbox_btn:focus ~ label > a {
     background: rgba(241, 241, 241, 0.74);
     border-radius: 10px;
     border-bottom: 3px solid rgb(61, 68, 71);
@@ -226,7 +224,7 @@ img {
     box-shadow: 0px 4px 24px rgba(129, 63, 5, 0.712);
 }
 
-#checkbox_knopka:checked ~ .conteiner__list-hiden {
+#checkbox_btn:checked ~ .conteiner__list-hiden {
     display: flex;
 }
 
@@ -243,10 +241,6 @@ img {
 
 #checkbox_more:checked ~ .more {
     display: grid;
-}
-
-#checkbox_more:checked ~ .more-hr {
-    display: block;
 }
 
 .more, #checkbox_more:checked  ~ .more-btn{
