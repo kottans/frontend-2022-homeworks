@@ -1,0 +1,276 @@
+body {
+    margin: 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    color: darkslategray;
+}
+
+.logo {
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px 0 50px;
+    height: 60px;
+    box-shadow: 0 5px 10px rgba(34, 63, 87, 0.151);
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 0 10px 10px 10px;
+
+}
+
+.menu_item {
+    margin-left: 20px;
+}
+
+.check,
+.check_more {
+    position: absolute;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+.see_more_item {
+    display: block;
+    text-align: center;
+    padding: 5px;
+    background: #33cccc3b;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.see_more_item:hover {
+    background: #33cccc81;
+    color: white;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    right: 5%;
+    overflow-y: scroll;
+    background: white;
+    border: 2px dotted #33cccc6b;
+    border-radius: 20px;
+    padding: 10px;
+    height: 300px;
+}
+
+.popup_two {
+    margin-top: 10px;
+    display: none;
+}
+
+.check:checked~.popup {
+    display: block;
+}
+
+.check_more:checked~.popup_two {
+    display: block;
+}
+
+.check_more:focus-within~.see_more{
+    background: #33cccc81;
+    color: white;
+}
+
+.check_more:checked~.see_more .see_more_item {
+    background: white;
+    border: 2px dotted #33cccc6b;
+}
+
+.check_more:checked~.see_more .see_more_item:hover {
+    color: darkslategray;
+    border: 2px dotted rgba(47, 79, 79, 0.411);
+}
+
+.popup::-webkit-scrollbar {
+    opacity: 0;
+    width: 5px;
+
+}
+
+.popup::-webkit-scrollbar-thumb {
+    background: #33cccc2d;
+    border-radius: 14%;
+}
+
+.popup_items {
+    list-style: none;
+    display: grid;
+    grid-template: repeat(3, 65px)/ repeat(3, 65px);
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    padding: 0;
+}
+
+.popup_two_items {
+    display: grid;
+    grid-template-columns: repeat(3, 65px);
+    list-style: none;
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    padding: 0;
+}
+
+.burger_img {
+    display: block;
+    background-image: url(styles/img/burger.gif);
+    height: 60px;
+    width: 60px;
+    background-size: cover;
+    background-position: center;
+}
+
+.check:checked~.burger_check .burger_img {
+    background-image: url(styles/img/burger.png);
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+}
+
+.check:focus-within~.burger_check .burger_img {
+    background-image: url(styles/img/burger.png);
+        background-position: center;
+        background-size: 90%;
+        background-repeat: no-repeat;
+}
+
+.items_img {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+}
+
+.items_img:hover {
+    width: 50px;
+    height: 50px;
+}
+
+.calendar {
+    background-image: url(styles/img/calendar.png);
+}
+
+.calendar:hover {
+    background-image: url(styles/img/calendar.gif);
+}
+
+.mail {
+    background-image: url(styles/img/chat.png);
+}
+
+.mail:hover {
+    background-image: url(styles/img/chat.gif);
+}
+
+.finance {
+    background-image: url(styles/img/save-money.png)
+}
+
+.finance:hover {
+    background-image: url(styles/img/save-money.gif)
+}
+
+.cthulhu {
+    background-image: url(styles/img/octopus.png);
+}
+
+.cthulhu:hover {
+    background-image: url(styles/img/octopus.gif);
+}
+
+.files {
+    background-image: url(styles/img/folder.png);
+}
+
+.files:hover {
+    background-image: url(styles/img/folder.gif);
+}
+
+.contacts {
+    background-image: url(styles/img/phone.png);
+}
+
+.contacts:hover {
+    background-image: url(styles/img/phone.gif);
+}
+
+.videos {
+    background-image: url(styles/img/video-player.png);
+}
+
+.videos:hover {
+    background-image: url(styles/img/video-player.gif);
+}
+
+.photo {
+    background-image: url(styles/img/photo-camera.png);
+}
+
+.photo:hover {
+    background-image: url(styles/img/photo-camera.gif);
+}
+
+.maps {
+    background-image: url(styles/img/gps.png);
+}
+
+.maps:hover {
+    background-image: url(styles/img/gps.gif);
+}
+
+.food {
+    background-image: url(styles/img/fishbone.png);
+}
+
+.food:hover {
+    background-image: url(styles/img/fishbone.gif);
+}
+
+.game {
+    background-image: url(styles/img/yarn.png);
+}
+
+.game:hover {
+    background-image: url(styles/img/yarn.gif);
+}
+
+.experience {
+    background-image: url(styles/img/bone.png);
+}
+
+.experience:hover {
+    background-image: url(styles/img/bone.gif);
+}
+
+.link {
+    text-decoration: none;
+    color: darkslategray;
+}
+
+.my_icon {
+    background: rgba(0, 0, 0, 0.411);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+}
+
+.back_img {
+    position: fixed;
+    margin-top: 35%;
+}
