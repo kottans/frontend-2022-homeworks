@@ -5,72 +5,132 @@
    Web app: https://kotlyar-andrey.github.io/a-tiny-JS-world/
    */
 
-class Creature {
-  constructor(species, name, gender, legs, hands, phrase, linkTo = null) {
+/**
+ * Общий класс для всех жителей
+ */
+ class Creature {
+  constructor(species, name, gender, phrase) {
     this._species = species;
     this._name = name;
     this._gender = gender;
-    this._legs = legs;
-    this._hands = hands;
     this._phrase = phrase;
     this._friends = [];
-    this._link = linkTo;
-    this._properties = [
-      "species",
-      "_name",
-      "_gender",
-      "_legs",
-      "_hands",
-      "saying",
-      "friends",
-    ];
+    this._properties = ["_species", "_name", "_gender"];
   }
 
-  get species() {
-    return this._link
-      ? `${this._species}-${this._link._species}`
-      : this._species;
-  }
-
-  get friends() {
+  getFriends() {
     return this._friends && this._friends.length > 0
       ? this._friends.map(friend => friend._name).join(", ")
       : "no friends";
   }
 
-  set friends(newFriends) {
+  setFriends(newFriends) {
     this._friends = [...newFriends];
   }
 
-  get saying() {
-    return this._link ? this._link._phrase : this._phrase;
+  getSaying() {
+    return this._phrase;
   }
 
-  set saying(newFrase) {
-    this._phrase = newFrase;
+  setSaying(newPhrase) {
+    this._phrase = newPhrase;
   }
 
-  display() {
-    print(this._properties.map(prop => this[prop]).join("; "));
+  addProperties(...newProperties) {
+    this._properties = [...this._properties, ...newProperties];
+  }
+
+  getPropertiesData() {
+    return this._properties.map(prop => this[prop]).join("; ");
+  }
+
+  getAnotherData() {
+    const friends = this.getFriends();
+    const saying = this.getSaying();
+    return `; ${friends}; ${saying}`;
+  }
+
+  getInfo() {
+    return this.getPropertiesData() + this.getAnotherData();
   }
 }
 
-const cat = new Creature("cat", "Jerry", "male", 4, 0, "Myau");
-const dog = new Creature("dog", "Bars", "male", 4, 0, "Woof");
-const woman = new Creature("human", "Maria", "female", 2, 2, "Hi");
-const man = new Creature("human", "Ivan", "male", 2, 2, "Hello");
-const woman_cat = new Creature("human", "Marta", "female", 2, 2, "", cat);
-const werewolf = new Creature("human", "Petr", "male", 4, 2, "", dog);
+/**
+ * Общий класс для всех животных с ногами/лапами
+ */
+class Animal extends Creature {
+  constructor(species, name, gender, phrase, legs) {
+    super(species, name, gender, phrase);
+    this._legs = legs;
+    this.addProperties("_legs");
+  }
+}
 
-man.friends = [woman, cat, dog];
-woman.friends = [man, cat];
-dog.friends = [cat];
-woman_cat.friends = [man, cat];
+/**
+ * Общий класс для птиц
+ */
+class Bird extends Animal {
+  constructor(species, name, gender, phrase) {
+    super(species, name, gender, phrase, 2);
+    this._wings = 2;
+    this.addProperties("_wings");
+  }
+}
 
-cat.saying = "new message for test woman-cats";
+class Human extends Animal {
+  constructor(name, gender, phrase) {
+    super("human", name, gender, phrase, 2);
+    this._hands = 2;
+    this.addProperties("_hands");
+  }
+}
 
-const inhabitants = [man, woman, dog, cat, woman_cat, werewolf];
+class Cat extends Animal {
+  constructor(name, gender, phrase) {
+    super("cat", name, gender, phrase, 4);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, gender, phrase) {
+    super("dog", name, gender, phrase, 4);
+  }
+}
+
+class Parrot extends Bird {
+  constructor(name, gender, phrase) {
+    super("parrot", name, gender, phrase);
+  }
+}
+
+class Anomaly extends Human {
+  constructor(name, gender, linkTo) {
+    super(name, gender);
+    this._linkTo = linkTo;
+    this._species = `human-${linkTo._species}`;
+  }
+  getSaying() {
+    return this._linkTo._phrase;
+  }
+}
+
+const man = new Human("Ivan", "male", "Hello");
+const woman = new Human("Maria", "female", "Hi");
+const dog = new Dog("Bars", "male", "Woof");
+const cat = new Cat("Jerry", "male", "Myau");
+const parrot = new Parrot("Kuzya", "male", "How are you?");
+const woman_cat = new Anomaly("Marta", "female", cat);
+const man_parrot = new Anomaly("Petr", "male", parrot);
+
+man.setFriends([woman, cat, dog]);
+woman.setFriends([man, cat]);
+dog.setFriends([cat]);
+woman_cat.setFriends([man, cat]);
+
+cat.setSaying("Hello, it's me, your cat");
+
+const inhabitants = [man, woman, dog, cat, parrot, woman_cat, man_parrot];
 
 inhabitants.forEach(creature => {
-  creature.display();
+  print(creature.getInfo());
 });

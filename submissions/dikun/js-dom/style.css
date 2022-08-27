@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: 'Montserrat', sans-serif;    
+}
+
+ul, li {
+    list-style: none;
+}
+
+a, a:visited {    
+    text-decoration: none;
+    cursor: pointer;
+}
+
+body {
+    background: url('img/bg.jpg') center center /cover no-repeat;
+}
+
+.container {
+    max-width: 1100px; 
+    min-height: 600px;      
+    padding: 0 15px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 20px 5px rgba(221, 221, 221, 1);
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 35px;
+    color: rgb(71 107 211);
+}
+
+.container_wrapper {
+    width: 100%;    
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.list_items {
+    flex: 0 0 150px;
+    margin-right: 15px;   
+    display: flex;
+    justify-content: start;
+    flex-direction: column;    
+}
+
+.list_btn {
+    margin: 10px;
+    padding: 5px;    
+    width: 180px;
+    height: 50px;
+    color: rgb(117, 124, 23);
+    font-size: 16px; 
+    font-weight: 700;   
+    cursor: pointer;
+    border: 2px solid rgb(117, 124, 23);  
+    border-radius: 10px;     
+    background-color: transparent;
+    text-transform: uppercase;
+    transition: 0.3s all;    
+}
+
+.list_btn:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(117, 124, 23);
+}
+
+.content {
+    flex: 0 1 800px;
+    min-height: 600px;
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content_title{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: rgb(117, 124, 23);
+    padding-bottom: 15px;
+}
+
+.content_img {
+    width: 100%;
+    max-height: 400px;
+    padding-bottom: 15px;
+    object-fit: contain;
+}
+
+.content_descr {
+    font-size: 16px;
+    line-height: 18px;
+    padding-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 18px auto;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 30px; 
+        margin-bottom: 10px;       
+    }
+
+    .container_wrapper {
+        padding-top: 0;
+        flex-direction: column;
+    }
+
+    .list_items {
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .list_btn {
+        margin: 5px;
+        padding: 5px;
+        width: 150px;
+        height: 45px;        
+        font-size: 14px; 
+        font-weight: 700;
+    }
+
+    .content {
+        flex: 0 1 auto;
+        margin: 10px 15px;
+    }
+}
