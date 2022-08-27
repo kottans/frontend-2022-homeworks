@@ -1,9 +1,29 @@
 // Enemies our player must avoid
+const DEFAULT_MAP = {
+    widthMap: 505,
+    widthBlock: 101,
+    heightBlock: 82,
+    waterLine: 0,
+    firstRow: 0,
+    secondRow: 82,
+    thirdRow: 164,
+}
+
 const DEFAULT_PLAYER = {
     sprite: 'images/char-boy.png',
     positionX: 200,
     positionY: 400,
 }
+
+// const DEFAULT_ENEMY = {
+//     sprite: 'images/enemy-bug.png',
+//     minSpeed: 200,
+//     maxSpeed: 400,
+//     widthEnemy: 80,
+//     heightEnemy: 60,
+//     positionX: -100,
+//     positionY: [60, 142, 225],
+// }
 
 const DEFAULT_ENEMY = {
     sprite: 'images/enemy-bug.png',
@@ -12,15 +32,14 @@ const DEFAULT_ENEMY = {
     widthEnemy: 80,
     heightEnemy: 60,
     positionX: -100,
-    positionY: [50, 140, 225],
+    positionY: {
+        firstRowEnemy: DEFAULT_MAP.firstRow + 60,
+        secondRowEnemy: DEFAULT_MAP.secondRow + 60,
+        thirdRowEnemy: DEFAULT_MAP.thirdRow + 60,
+    },
 }
 
-const DEFAULT_MAP = {
-    widthMap: 505,
-    widthBlock: 101,
-    heightBlock: 82,
-    waterLine: 0,
-}
+let {firstRowEnemy, secondRowEnemy, thirdRowEnemy} = DEFAULT_ENEMY.positionY;
 
 class Player {
     constructor(x = DEFAULT_PLAYER.positionX, y = DEFAULT_PLAYER.positionY){
@@ -98,11 +117,30 @@ class Enemy {
 };
 
 let allEnemies = [];
+//If you want create Enemy, add row number (along which a new enemy will run) to array.
+let createEnemies = [1,2,3]
 
-DEFAULT_ENEMY.positionY.forEach((valueY) => {
-    enemy = new Enemy(DEFAULT_ENEMY.positionX, valueY);
-    allEnemies.push(enemy);
+createEnemies.forEach((valueY) => {
+    if (valueY === 1){
+        enemy = new Enemy(DEFAULT_ENEMY.positionX, firstRowEnemy);
+        allEnemies.push(enemy);
+    }
+
+    if (valueY === 2){
+        enemy = new Enemy(DEFAULT_ENEMY.positionX, secondRowEnemy);
+        allEnemies.push(enemy);
+    }
+
+    if (valueY === 3){
+        enemy = new Enemy(DEFAULT_ENEMY.positionX, thirdRowEnemy);
+        allEnemies.push(enemy);
+    }
 })
+
+// DEFAULT_ENEMY.positionY.forEach((valueY) => {
+//     enemy = new Enemy(DEFAULT_ENEMY.positionX, valueY);
+//     allEnemies.push(enemy);
+// })
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
