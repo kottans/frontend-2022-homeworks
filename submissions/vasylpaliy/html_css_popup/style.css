@@ -73,7 +73,7 @@ body {
 	text-align: center;
 	overflow-y: scroll;
 	height: 30vh;
-	min-height: 300px;
+	min-height: 360px;
 }
 
 .popup {
@@ -91,7 +91,7 @@ body {
 .popup-img {
 	width: 50px;
 	border-radius: 20%;
-	aspect-ratio: 3/2;
+	aspect-ratio: 1/1;
 }
 
 .more {
@@ -135,9 +135,13 @@ body {
 	
 }
 
-.final {
-	text-align: center;
+.popup-text-final{
+	text-decoration: none;
 	background-color: black;
+	width: 100%;
+}
+.final {
+	text-decoration: none;
 	color: white;
 }
 
@@ -165,15 +169,15 @@ body {
 		margin: 1vh;
 		padding: 3vw;
 		right: 0;
-		aspect-ratio: 3/6;
+		aspect-ratio: 1/2;
 	}
 
 	.popup {
 		width: 100%;
 	}
 	.popup-img{
-	width: 7vh;
-	aspect-ratio: 3/2;
+	width: 50px;
+	aspect-ratio: 1/1;
 	}
 	.container-nav {
 		justify-content: center;
