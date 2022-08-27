@@ -29,7 +29,7 @@ body {
 .sidebar__button {
   width: 350px;
   height: 50px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-weight: bold;
   background-color: rgb(221, 159, 25);
   border-radius: 10px;
@@ -59,7 +59,7 @@ body {
 }
 .textcontent__container {
   width: 55%;
-  height: 530px;
+  height: 540px;
   padding: 10px;
   background-color: rgba(252, 249, 243, 0.4);
 }

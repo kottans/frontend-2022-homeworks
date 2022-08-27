@@ -94,13 +94,12 @@ contentContainer.prepend(sidebar);
 sidebar.prepend(...addButtons());
 
 function addButtons() {
-  const buttonList = [];
-  darkTowerSeries.forEach((serie, index) => {
+  const buttonList = darkTowerSeries.map((serie, serieNumber) => {
     const button = document.createElement("button");
     button.className = "sidebar__button";
-    button.id = "dt" + index;
-    button.innerHTML = darkTowerSeries[index].title;
-    buttonList.push(button);
+    button.id = "dt" + serieNumber;
+    button.innerHTML = darkTowerSeries[serieNumber].title;
+    return button;
   });
   return buttonList;
 }
@@ -127,11 +126,7 @@ bookImage.className = "content__img";
 textContentContainer.after(bookImage);
 
 function contentCreator(eventBtn) {
-  const contentData = darkTowerSeries.filter(
-    (serie) => eventBtn.id === serie.id
-  );
-  const [serie] = contentData;
-  console.log(serie);
+  const [serie] = darkTowerSeries.filter((serie) => eventBtn.id === serie.id);
   contentTitle.innerHTML = serie.title;
   paragraphQuote.innerHTML = serie.quote;
   paragraph.innerHTML = serie.about;
@@ -146,4 +141,5 @@ sidebar.addEventListener("click", function (event) {
   }
 });
 
-const frontPage = contentCreator(dt0);
+const aboutSeries = dt0;
+const frontPage = contentCreator(aboutSeries);
