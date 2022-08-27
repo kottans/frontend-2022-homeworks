@@ -1,6 +1,4 @@
-.nav {
-  
-}
+.nav {}
 
 .nav__list {
   display: flex;
@@ -31,6 +29,6 @@
   border-radius: 50%;
 }
 
-.nav__popupSwitcher:checked ~ .nav__popup {
+.nav__popupSwitcher:checked~.nav__popup {
   display: block;
 }

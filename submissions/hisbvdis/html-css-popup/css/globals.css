@@ -3,7 +3,7 @@ body {
   min-inline-size: 320px;
 
   font-family: sans-serif;
-  
+
   /* По умолчанию прокрутка у всех страниц */
   overflow-y: scroll;
 }
