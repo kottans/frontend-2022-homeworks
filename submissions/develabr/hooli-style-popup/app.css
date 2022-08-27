@@ -1,0 +1,148 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  color: #333;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 20px;
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav__menu__link:focus,
+.menu__popup__link:focus,
+.menu__checkbox__input:focus ~ .menu__checkbox__label,
+.more__input:focus ~ .more__label {
+  outline: 1px solid blue;
+}
+
+.nav__menu__link {
+  display: block;
+  text-decoration: none;
+  color: #939393;
+  font-weight: 600;
+}
+
+.nav__menu__img {
+  width: 24px;
+  height: 24px;
+}
+
+.menu__checkbox__input,
+.more__input {
+  width: 0;
+  height: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+}
+
+.menu__checkbox__input:checked ~ .menu__popup,
+.more__input:checked ~ .menu__more__wrap {
+  display: block;
+}
+
+.menu__checkbox__label {
+  cursor: pointer;
+  display: block;
+}
+
+.menu__popup {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  border: 1px solid #e2e2e2;
+  background-color: #fff;
+  height: 435px;
+  overflow-y: auto;
+  width: 350px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.menu__popup__list,
+.menu__more__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.menu__popup__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 5px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #939393;
+}
+
+.menu__popup__item:hover,
+.menu__more__item:hover {
+  box-shadow: 0px 0px 22px -1px rgba(0, 0, 0, 0.12);
+}
+
+.menu__popup__image {
+  width: 50px;
+  height: 35px;
+  object-fit: contain;
+  margin: 0 0 15px;
+}
+
+.more__input:checked + .more__label {
+  display: none;
+}
+
+.menu__more__wrap {
+  display: none;
+  margin-top: 40px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  padding-top: 40px;
+}
+
+.more__label {
+  display: block;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #e2e2e2;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.more__kottans {
+  display: block;
+  margin: 25px 0 15px;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  color: #939393;
+}
+
+.more__kottans:hover {
+  text-decoration: underline;
+  color: #9393937d;
+}
