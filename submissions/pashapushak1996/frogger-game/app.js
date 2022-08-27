@@ -17,7 +17,8 @@ const config = {
     game: {
         MAX_SPEED: 300,
         MIN_SPEED: 100,
-        BUG_SIZE: 78
+        BUG_PADDING_LEFT: 78,
+        BUG_PADDING_TOP:20
     }
 };
 
@@ -122,10 +123,10 @@ class Player extends Enemy {
     checkCollisions() {
         allEnemies.forEach((enemy) => {
             if (
-                this.calculateEnemyPosition(this.x, config.game.BUG_SIZE, '-') < enemy.x &&
-                this.calculateEnemyPosition(this.x, config.game.BUG_SIZE) > enemy.x &&
-                this.calculateEnemyPosition(this.y, config.game.BUG_SIZE, '-') < enemy.y &&
-                this.calculateEnemyPosition(this.y, config.game.BUG_SIZE) > enemy.y
+                this.calculateEnemyPosition(this.x, config.game.BUG_PADDING_LEFT, '-') < enemy.x &&
+                this.calculateEnemyPosition(this.x, config.game.BUG_PADDING_LEFT) > enemy.x &&
+                this.calculateEnemyPosition(this.y, config.game.BUG_PADDING_TOP, '-') < enemy.y &&
+                this.calculateEnemyPosition(this.y, config.game.BUG_PADDING_TOP) > enemy.y
             ) {
                 this.lose();
             }
