@@ -5,10 +5,8 @@
 	padding: 0;
 }
 
-
 .ul--menu, .popups--container, .popups--container--all {
-	list-style-type: none;
-	
+	list-style-type: none;	
 }
 
 .ul--menu {
@@ -18,18 +16,20 @@
 	
 }
 .li--menu {
-	padding: 10px;
-	
+	padding: 10px;	
 }
 
-.li--menu img {
+.popup--item {
 	width: 2.1em;
 	height: 2.1em;
 	cursor: pointer;
 	object-fit: cover;
+	padding: 2px;
+	margin: 10px;
+	user-select: none;
 }
 
-.sub-menu img {
+.sub-menu .menu--img {
 	width: 1.1em;
 	height: auto;
 	cursor: pointer;
@@ -40,9 +40,8 @@
 	position: absolute;
 	top: 45px;
 	right: -80px;
-
-
 }
+
 .inner-container{
 	max-height: 250px;
 	border: 0.5px solid lightcoral;
@@ -53,24 +52,17 @@
 	overflow-y:scroll;
 	margin: 0 10px;
 	padding: 0 10px;
-
 }
 
 .popups--container{
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;	
 }
+
 .popups--container--all{
 	display: none;
 	grid-template-columns: 1fr 1fr 1fr;	
 }
-
-.popup--item{
-	padding: 2px;
-	margin: 10px;
-	user-select: none;
-}
-
 
 .show--all {
 	position: absolute;
@@ -78,15 +70,14 @@
 	-moz-appearance: none;
 	appearance: none;		
 }
+
 .checkbox-icon {
 	position: absolute;
 	width: 1px;
 	height: 1px;
 	overflow:hidden;
 	clip: rect(0 0 0 0);
-		
 }
-
 
 .show--all--label{
 	display: flex;
@@ -95,7 +86,6 @@
 	max-width: 40vw;
 	align-content: center;
 	justify-content: center;
-
 	border: 1px solid lightcoral;
 	border-radius: 4px;
 	background-color: antiquewhite;
@@ -134,9 +124,7 @@
 	transition: ease 0.2s;
 }
 
-
 .checkbox-icon:focus + #popup-label{
-
 	outline: 2px solid black;
 } 
 
