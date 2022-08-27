@@ -15,31 +15,33 @@ html {
 
 .body {
   font-family: Georgia, "Times New Roman", Times, serif;
-  color: #b886a8;
+  color: #faeaf5;
   background-color: #f8f4f0;
 }
 
 .wrapper {
   display: flex;
   justify-content: flex-end;
-  background-color: #e1bbba;
-  height: 50px;
+  align-items: center;
+  background-color: #dd7bcd;
+  height: 60px;
+  font-size: 18px;
 }
 
 .menu-wrapper {
   display: none;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
-  width: 250px;
-  max-height: 370px;
+  font-size: 16px;
+  width: 351px;
+  max-height: 450px;
   position: absolute;
-  right: 30px;
+  right: 10px;
   top: 62px;
   border-radius: 5%;
   box-shadow: 0 2px 5px rgba(151, 210, 34, 0.2),
     0 4px 6px rgba(238, 51, 85, 0.2);
-  background-color: #f1e0da;
+  background-color: #f3e3f3;
   overflow-y: overlay;
   padding: 15px;
 }
@@ -72,14 +74,14 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 65px;
-  height: 45px;
+  width: 80px;
+  height: 65px;
 }
 
 .img {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 50px;
+  height: 45px;
   box-sizing: border-box;
 }
 
@@ -93,7 +95,6 @@ html {
 .input-more,
 .input-popup {
   appearance: none;
-  position: absolute;
 }
 
 .nav-list-item {
@@ -104,9 +105,8 @@ html {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 215px;
-  height: 250px;
-  padding: 3px;
+  width: 300px;
+  height: 380px;
 }
 
 .label-more {
@@ -114,30 +114,23 @@ html {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 50px;
+  position: absolute;
+  top: 385px;
+  width: 350px;
   height: 25px;
-  margin-bottom: 20px;
-  background-color: #e1bbba;
+  background-color: #dd7bcd;
   border-radius: 6px;
 }
 
 .nav-list-more {
   display: none;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 215px;
-  height: 20px;
-  position: relative;
-  top: -10px;
-  right: 0px;
-  padding: 3px;
 }
 
 .item-popup,
 .item-menu-more {
-  width: 65px;
-  height: 45px;
-  margin: 0px auto 15px auto;
+  width: 80px;
+  height: 65px;
+  margin: 0px auto 22px auto;
 }
 
 .input-popup:checked ~ .menu-wrapper {
@@ -151,8 +144,8 @@ html {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 215px;
-  height: 60px;
+  width: 300px;
+  height: 100px;
   position: relative;
   right: 0px;
 }
@@ -168,7 +161,7 @@ html {
 .kottans {
   display: none;
   position: relative;
-  top: 50px;
+  top: 60px;
   padding: 10px;
 }
 
@@ -176,20 +169,20 @@ html {
 .favicon,
 .img-popup {
   display: block;
-  width: 27px;
-  height: 27px;
+  width: 32px;
+  height: 32px;
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-  width: 7px;
+.scrollbar-menu::-webkit-scrollbar {
+  width: 9px;
 }
 
-::-webkit-scrollbar-track {
+.scrollbar-menu::-webkit-scrollbar-track {
   background: #cd97a6;
 }
 
-::-webkit-scrollbar-thumb {
+.scrollbar-menu::-webkit-scrollbar-thumb {
   background: #b886a8;
 }
 
@@ -200,6 +193,7 @@ html {
 .label-more:hover {
   border-radius: 6px;
   box-shadow: 0px 0px 15px #aaaaaa;
+  background-color: #f59bef;
 }
 
 .nav-link:hover,
