@@ -30,7 +30,7 @@ body {
   position: relative;
 }
 
-.logo img {
+.logo {
   display: block;
   max-width: 40px;
 }
@@ -131,9 +131,12 @@ body {
   display: grid;
 }
 
-.checkbox:checked ~ .popup-label,
-.checkbox:checked ~ .subpopup-label {
+.checkbox:checked ~ .popup-label {
   transform: rotate(180deg);
+}
+
+.checkbox:checked ~ .subpopup-label {
+  display: none;
 }
 
 .checkbox:checked ~ .popup-content {
@@ -202,10 +205,6 @@ body {
 
 .subpopup-svg {
   fill: #333;
-}
-
-.subpopup-content {
-  margin: 10px auto 0px;
 }
 
 @media (max-height: 525px) {
