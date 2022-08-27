@@ -12,7 +12,7 @@ const scopeElement = document.createElement('div');
 scopeElement.style.cssText = 'font-size:25px; padding-top:20px; margin-bottom:-20px';
 document.body.appendChild(scopeElement);
 
-var Player = function (x, y) {
+const Player = function (x, y) {
     this.resetPlayerPosition();
     this.sprite = 'images/char-boy.png';
 };
@@ -56,9 +56,9 @@ Player.prototype.handleInput = function (route) {
     }
 };
 
-let player = new Player();
+const player = new Player();
 
-var Enemy = function (x, y) {
+const Enemy = function (x, y) {
     this.x = x;
     this.y = y;
     this.speed = Math.random() * 200 + 80;
@@ -89,7 +89,7 @@ Enemy.prototype.checkCollision = function () {
     }
 };
 
-let allEnemies = [];
+const allEnemies = [];
 
 function createEnemies() {
     const positionY = [60, 140, 220];
@@ -100,7 +100,7 @@ function createEnemies() {
 };
 
 function score() {
-    scopeElement.innerHTML = `Scope: ${countScore} / 5`;
+    scopeElement.innerHTML = `Score: ${countScore} / 5`;
     if (countScore == 5) {
         showWinMessage();
     }
