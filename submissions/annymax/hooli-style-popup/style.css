@@ -224,3 +224,7 @@ html {
   background-color: #f8f4f0;
   border-radius: 6px;
 }
+
+.label-popup, .label-more {
+  cursor:pointer;
+}
