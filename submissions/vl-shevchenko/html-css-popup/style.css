@@ -245,6 +245,13 @@ img {
     display: grid;
 }
 
+<<<<<<< HEAD
+=======
+#checkbox_more:checked ~ .more-hr {
+    display: block;
+}
+
+>>>>>>> 5a55c3a2189ef3ad8612a8a792b595d521545654
 .more, #checkbox_more:checked  ~ .more-btn{
     display: none;
 }

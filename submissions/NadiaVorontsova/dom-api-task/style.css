@@ -1,0 +1,250 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+}
+
+body {
+    background-image: url("assets/img/bgMilitary.jpg");
+    background-size: 125%;
+}
+
+.container {
+    display: grid;
+    padding: 7% 13%;
+    grid-template: 1fr / 20% 75%;
+    column-gap: 5%;
+}
+
+.bg {
+    background: rgb(252, 247, 239);
+    border-radius: 2%;
+    box-shadow: 1px 1px 5px 2px rgb(220, 219, 219);
+}
+
+.nav_menu {
+    opacity: 0.7;
+}
+
+.nav_menu_items {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.nav_menu_item {
+    list-style-type: none;
+    padding: 11% 9%;
+    color: rgb(30, 22, 13);
+}
+
+.nav_menu_item:hover {
+    box-shadow: 2px 2px 8px 3px rgb(220, 219, 219);
+    cursor: pointer;
+    background-image: url("assets/img/camouflage.jpg");
+    color: white;
+    border-radius: 3%;
+    transition: .3s ease-in-out;
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.main_wrapper {
+    padding: 3%;
+    opacity: 0;
+    animation: menu 2.2s forwards;
+}
+
+@keyframes menu {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.series {
+    display: grid;
+    grid-template: 11% 85% / 1fr;
+}
+
+.series_title {
+    color: rgb(7, 51, 12);
+}
+
+.series_content {
+    display: flex;
+    column-gap: 2%;
+}
+
+.series_content_img {
+    width: 100%;
+    max-width: 300px;
+    object-fit: contain;
+}
+
+.series_content_text {
+    line-height: 125%;
+    text-align: justify;
+}
+
+@media(max-width:1280px) {
+    body {
+        background-size: 160%;
+    }
+
+    .container {
+        padding: 13% 7%;
+    }
+
+    .series_content_img {
+        padding-top: 1%;
+        max-width: 265px;
+    }
+}
+
+@media(max-width:913px) {
+    body {
+        background-size: 320%;
+    }
+
+    .container {
+        padding-top: 5%;
+        padding-bottom: 10%;
+        grid-template: auto auto / 1fr;
+        row-gap: 3%;
+    }
+
+    .nav_menu_item {
+        padding-top: 1%;
+        padding-bottom: 1%;
+        font-size: 20px;
+    }
+
+    .main_wrapper {
+        padding-bottom: 13%;
+    }
+
+    .series {
+        grid-template: 5% 80%/ 1fr;
+    }
+
+    .series_title {
+        text-align: center;
+    }
+
+    .series_content {
+        display: grid;
+        justify-items: center;
+        row-gap: 6%;
+    }
+
+    .series_content_img {
+        padding-top: 5%;
+    }
+
+    .series_content_text {
+        font-size: 18px;
+        text-align: center;
+        padding: 0 5%;
+    }
+}
+
+@media(max-width:540px) {
+    body {
+        background-size: 400%;
+    }
+
+    .container {
+        padding-top: 5%;
+        padding-bottom: 10%;
+    }
+
+    .nav_menu_items {
+        display: none;
+    }
+
+    .main_wrapper {
+        padding-bottom: 15%;
+    }
+
+    .nav_menu_items_active {
+        margin-top: 18%;
+        display: block;
+    }
+
+    .nav_menu_item {
+        padding-top: 2%;
+        padding-bottom: 3%;
+        font-size: 17px;
+    }
+
+    .burger_img {
+        display: block;
+        width: 45px;
+        float: right;
+        cursor: pointer;
+        padding: 1%;
+        margin: 3%;
+        background-color: rgb(136, 110, 82);
+        border-radius: 4%;
+        transition: .3s ease-in-out;
+    }
+
+    .burger_caption {
+        display: block;
+        float: right;
+        color: rgb(67, 74, 68);
+        padding-top: 25px;
+        text-align: right;
+    }
+
+    .burger_img:hover {
+        transition: .3s ease-in-out;
+        -webkit-transform: scaleX(-1) scale(1.1);
+        transform: scaleX(-1) scale(1.1);
+    }
+
+    .burger_img_active {
+        transition: .3s ease-in-out;
+        -webkit-transform: scaleX(-1) scale(1.1);
+        transform: scaleX(-1) scale(1.1);
+    }
+}
+
+@media(max-width:420px) {
+    body {
+        background-size: 800%;
+    }
+
+    .container {
+        padding-top: 7%;
+        padding-bottom: 20%;
+    }
+
+    .main_wrapper {
+        padding-bottom: 35%;
+    }
+}
+
+@media(max-width:391px) {
+    .nav_menu_item {
+        font-size: 16px;
+    }
+
+    .nav_menu_items_active {
+        margin-top: 23%;
+    }
+
+    .container {
+        padding-top: 7%;
+        padding-bottom: 20%;
+    }
+
+    .main_wrapper {
+        padding-bottom: 35%;
+    }
+}

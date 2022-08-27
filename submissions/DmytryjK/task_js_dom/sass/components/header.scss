@@ -1,0 +1,54 @@
+.header {
+    padding: 20px 100px;
+    .wrapper {
+        display: flex;
+        align-items: center;
+    }
+    &__logo-link {
+        display: inline-block;
+    }
+    &__logo-img {
+        width: 150px;
+    }
+    &__hamburger {
+        z-index: 2;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 5%;
+        overflow: hidden;
+        display: none;
+        cursor: pointer;
+        span {
+            display: block;
+            background-color: $main-second-color;
+            width: 30px;
+            height: 2px;
+            transition: 0.3s ease-in-out all;
+            &:not(:first-child) {
+                margin-top: 8px;
+            }
+        }
+        &:hover {
+            span {
+                background-color: $main-accent-color;
+                transition: 0.3s ease-in-out all;
+            }   
+        }
+        &-active {
+            transition: 0.3s ease-in-out all;
+            span:first-child {
+                transform: rotate(45deg) translateY(8px) translateX(6px);
+                background-color: $main-accent-color;
+            }
+            span:last-child {
+                transform: rotate(-45deg) translateY(-8px) translateX(6px);
+                background-color: $main-accent-color;
+            }
+            span:nth-child(2) {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+    }
+}
