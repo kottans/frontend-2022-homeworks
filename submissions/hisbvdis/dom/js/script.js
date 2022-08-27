@@ -11,16 +11,13 @@ let activeLink = null;
 window.addEventListener("load", onWindow_Load_Handler);
 navBtn.addEventListener("click", onNavBtn_Click_Handler);
 
-
 function openNav() {
   nav.classList.add("nav--visible");
 }
 
-
 function closeNav() {
   nav.classList.remove("nav--visible");
 }
-
 
 function renderNav() {
   data.forEach(({ id, name, url }) => {
@@ -43,17 +40,16 @@ function renderNav() {
   navCloseBtn.addEventListener("click", onNavCloseBtn_Click_Handler);
 }
 
-
-function renderMain(planetId=null) {
+function renderMain(planetId = null) {
   mainContent.innerHTML = "";
-  
+
   if (planetId === null) {
     mainHeader.textContent = "Planets of Solar System";
 
     const planetsList = document.createElement("ul");
     planetsList.classList.add("planetsList");
 
-    data.forEach(({name, imgUrl}) => {
+    data.forEach(({ name, imgUrl }) => {
       const item = document.createElement("li");
       item.classList.add("planetsList__item");
 
@@ -66,19 +62,19 @@ function renderMain(planetId=null) {
 
       item.append(img);
       planetsList.append(item);
-    })
+    });
 
     mainContent.append(planetsList);
-  } 
-  
-  else {
-    const {name, imgUrl, desc} = data.find(({id}) => id === Number(planetId));
-    
+  } else {
+    const { name, imgUrl, desc } = data.find(
+      ({ id }) => id === Number(planetId)
+    );
+
     mainHeader.textContent = name;
 
     const planet = document.createElement("img");
     planet.classList.add("main__planet");
-    planet.src=`./img/${imgUrl}`;
+    planet.src = `./img/${imgUrl}`;
     planet.width = "800";
     planet.height = "400";
     planet.alt = name;
@@ -89,26 +85,22 @@ function renderMain(planetId=null) {
       paragraph.classList.add("main__desc");
       paragraph.textContent = par;
       mainContent.append(paragraph);
-    })
+    });
   }
 }
-
 
 function onWindow_Load_Handler() {
   renderNav();
   renderMain();
 }
 
-
 function onNavBtn_Click_Handler() {
   openNav();
 }
 
-
 function onNavCloseBtn_Click_Handler() {
   closeNav();
 }
-
 
 function forNavLinks_onNavList_Click_Handler(evt) {
   if (!evt.target.dataset.navLink) return;

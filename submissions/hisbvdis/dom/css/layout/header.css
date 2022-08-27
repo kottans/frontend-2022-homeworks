@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   font-size: 1.5em;
   font-weight: 600;
   text-align: center;
@@ -17,10 +17,10 @@
 
 .header__navBtn {
   padding: 5px 15px;
-  
+
   color: inherit;
   font-size: 0.8em;
-  
+
   background-color: transparent;
   border: 1px solid rgb(255 255 255 / 0.4);
 }

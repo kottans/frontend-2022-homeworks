@@ -1,18 +1,23 @@
 /* Box-sizing */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 /* Размер шрифта 1rem=1px */
 /* "rem" - если в браузере изменён размер шрифта по умолчанию, чтобы сохранялись пропорции */
-:root { font-size: 6.25% }
+:root {
+  font-size: 6.25%
+}
+
 /* body  { font-size: 16rem } */
 
 
 body {
   /* Запретить ширину меньше 320px */
   min-inline-size: 320px;
-  
+
   color: #fff;
   /* Шрифт без засечек */
   font-family: sans-serif;
@@ -20,7 +25,7 @@ body {
   font-size: 18rem;
   /* Межстрочный интервал (из Normalize) */
   line-height: 1.15;
-  
+
   /* По умолчанию прокрутка у всех страниц */
   overflow-y: scroll;
   background-color: #000000;
