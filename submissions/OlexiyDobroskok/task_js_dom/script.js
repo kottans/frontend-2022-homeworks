@@ -134,7 +134,7 @@ function contentCreator(eventBtn) {
   bookImage.alt = serie.alt;
 }
 
-sidebar.addEventListener("click", function (event) {
+sidebar.addEventListener("click", function ({ target }) {
   const target = event.target;
   if (target.closest(".sidebar__button")) {
     contentCreator(target);
