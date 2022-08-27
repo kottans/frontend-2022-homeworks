@@ -93,10 +93,14 @@ class Player extends Enemy {
                 }
                 break;
             case 'ArrowLeft':
-                this.x -= config.canvas.COLUMN;
+                 if (this.x > 0) {
+                    this.x -= config.canvas.COLUMN;
+                }
                 break;
             case 'ArrowRight':
-                this.x += config.canvas.COLUMN;
+                   if (this.x < config.canvas.WIDTH - config.canvas.COLUMN) {
+                    this.x += config.canvas.COLUMN;
+                }
                 break;
         }
     }
