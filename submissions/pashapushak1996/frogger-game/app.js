@@ -17,7 +17,7 @@ const config = {
     game: {
         MAX_SPEED: 300,
         MIN_SPEED: 100,
-        BUG_SIZE: 50
+        BUG_SIZE: 78
     }
 };
 
@@ -40,7 +40,7 @@ const randomCharacter = () => {
 randomCharacter();
 
 class Enemy {
-    constructor(y, x = 0) {
+    constructor(y, x = -config.canvas.COLUMN) {
         this.x = x;
         this.y = y;
         this.sprite = 'images/enemy-bug.png';
@@ -52,7 +52,7 @@ class Enemy {
     }
 
     resetPosition() {
-        this.x = 0;
+        this.x = -config.canvas.COLUMN;
     }
 
     update(dt) {
@@ -93,12 +93,12 @@ class Player extends Enemy {
                 }
                 break;
             case 'ArrowLeft':
-                 if (this.x > 0) {
+                if (this.x > 0) {
                     this.x -= config.canvas.COLUMN;
                 }
                 break;
             case 'ArrowRight':
-                   if (this.x < config.canvas.WIDTH - config.canvas.COLUMN) {
+                if (this.x < config.canvas.WIDTH - config.canvas.COLUMN) {
                     this.x += config.canvas.COLUMN;
                 }
                 break;
