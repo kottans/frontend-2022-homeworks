@@ -1,32 +1,41 @@
-const Enemy = function (y, speed) {
-  this.x = -80;
-  this.y = y;
-  this.speed = speed;
-  this.width = 80;
-  this.height = 60;
+const entity = {
+  width: 80,
+  height: 60,
+};
+
+const Enemy = function (yAxisPosition, moveSpeed, width, height) {
+  this.xAxisPosition = -80;
+  this.yAxisPosition = yAxisPosition;
+  this.moveSpeed = moveSpeed;
+  this.width = width;
+  this.height = height;
   this.sprite = "images/enemy-bug.png";
 };
 
 Enemy.prototype.update = function (dt) {
-  this.x += this.speed * dt;
+  this.xAxisPosition += this.moveSpeed * dt;
 
-  if (this.x >= ctx.canvas.width) {
-    this.x = -80;
+  if (this.xAxisPosition >= ctx.canvas.width) {
+    this.xAxisPosition = -80;
   }
 
   this.checkCollision();
 };
 
 Enemy.prototype.render = function () {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(
+    Resources.get(this.sprite),
+    this.xAxisPosition,
+    this.yAxisPosition
+  );
 };
 
 Enemy.prototype.checkCollision = function () {
   if (
-    player.x < this.x + this.width &&
-    player.width + player.x > this.x &&
-    player.y < this.y + this.height &&
-    player.y + player.height > this.y
+    player.xAxisPosition < this.xAxisPosition + this.width &&
+    player.width + player.xAxisPosition > this.xAxisPosition &&
+    player.yAxisPosition < this.yAxisPosition + this.height &&
+    player.yAxisPosition + player.height > this.yAxisPosition
   ) {
     player.score = 0;
     scoreTitle.textContent = `Current score is: ${player.score}`;
@@ -36,33 +45,33 @@ Enemy.prototype.checkCollision = function () {
 
 const enemyStats = [
   {
-    y: 60,
-    speed: 180,
+    yAxisPosition: 60,
+    moveSpeed: 180,
   },
   {
-    y: 140,
-    speed: 140,
+    yAxisPosition: 140,
+    moveSpeed: 140,
   },
   {
-    y: 220,
-    speed: 100,
+    yAxisPosition: 220,
+    moveSpeed: 100,
   },
 ];
 
-const Player = function (x, y) {
-  this.x = x;
-  this.y = y;
-  this.moveX = 100;
-  this.moveY = 90;
-  this.width = 80;
-  this.height = 60;
+const Player = function (xAxisPosition, yAxisPosition) {
+  this.xAxisPosition = xAxisPosition;
+  this.yAxisPosition = yAxisPosition;
+  this.moveXAxis = 100;
+  this.moveYAxis = 90;
   this.sprite = "images/char-boy.png";
   this.score = 0;
   this.scoreMax = 0;
 };
 
+Player.prototype = entity;
+
 Player.prototype.update = function () {
-  if (player.y < 0) {
+  if (player.yAxisPosition < 0) {
     player.respawn();
     player.win();
   }
@@ -78,43 +87,50 @@ Player.prototype.win = function () {
 };
 
 Player.prototype.render = function () {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(
+    Resources.get(this.sprite),
+    this.xAxisPosition,
+    this.yAxisPosition
+  );
 };
 
 Player.prototype.handleInput = function () {};
 
 Player.prototype.respawn = function () {
-  this.x = 200;
-  this.y = 400;
+  this.xAxisPosition = 200;
+  this.yAxisPosition = 400;
 };
 
 Player.prototype.handleInput = function (key) {
   switch (key) {
     case "up":
-      this.y -= this.moveY;
+      this.yAxisPosition -= this.moveYAxis;
       break;
     case "down":
-      this.y += this.moveY;
-      if (this.y > 450) {
-        this.y = 400;
+      this.yAxisPosition += this.moveYAxis;
+      if (this.yAxisPosition > 450) {
+        this.yAxisPosition = 400;
       }
       break;
     case "left":
-      this.x -= this.moveX;
-      if (this.x < 0) {
-        this.x = 0;
+      this.xAxisPosition -= this.moveXAxis;
+      if (this.xAxisPosition < 0) {
+        this.xAxisPosition = 0;
       }
       break;
     case "right":
-      this.x += this.moveX;
-      if (this.x > 450) {
-        this.x = 400;
+      this.xAxisPosition += this.moveXAxis;
+      if (this.xAxisPosition > 450) {
+        this.xAxisPosition = 400;
       }
       break;
   }
 };
 
-const allEnemies = enemyStats.map(({y, speed }) => new Enemy(y, speed));
+const allEnemies = enemyStats.map(
+  ({ yAxisPosition, moveSpeed }) =>
+    new Enemy(yAxisPosition, moveSpeed, entity.width, entity.height)
+);
 
 const player = new Player(200, 400);
 
