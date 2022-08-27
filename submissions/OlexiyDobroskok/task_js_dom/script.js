@@ -142,4 +142,4 @@ sidebar.addEventListener("click", function (event) {
 });
 
 const aboutSeries = dt0;
-const frontPage = contentCreator(aboutSeries);
+contentCreator(aboutSeries);
