@@ -54,7 +54,7 @@ Player.prototype.handleInput = function (route) {
         default:
             break;
     }
-}
+};
 
 let player = new Player();
 
@@ -70,8 +70,9 @@ Enemy.prototype.update = function (dt) {
     if (this.x > ctx.canvas.width) {
         this.x = startX;
     }
-    if (this.checkCollision())
+    if (this.checkCollision()) {
         player.resetPlayerPosition();
+    }
 };
 
 Enemy.prototype.render = function () {
@@ -86,7 +87,7 @@ Enemy.prototype.checkCollision = function () {
             score();
         }
     }
-}
+};
 
 let allEnemies = [];
 
@@ -96,30 +97,29 @@ function createEnemies() {
         const randomPositionX = Math.random() * (-100) - 100;
         allEnemies.push(new Enemy(randomPositionX, y));
     }
-}
+};
 
 function score() {
     scopeElement.innerHTML = `Scope: ${countScore} / 5`;
     if (countScore == 5) {
         showWinMessage();
     }
-}
+};
 
 const message = document.createElement('div');
 
 function showWinMessage() {
-
     message.style.cssText = 'position:absolute; font-size:50px; top:45%; left:5%; width:90%; padding-top:10px; padding-bottom:10px; background-color:rgba(176, 235, 182, 0.8);';
     document.body.appendChild(message);
     message.textContent = 'You win';
     window.setTimeout(resetGame, 2000);
-}
+};
 
 function resetGame() {
     countScore = 0;
     score(countScore);
     document.body.removeChild(message);
-}
+};
 
 createEnemies();
 score();
