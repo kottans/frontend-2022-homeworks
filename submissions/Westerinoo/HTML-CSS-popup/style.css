@@ -14,8 +14,9 @@
     background-position: center;
     width: 80px;
     display: block; 
+    cursor: pointer;
 }
-.checkbox__popup:focus{ 
+.checkbox__popup:focus,.link:focus{ 
     outline: 2px solid rgb(108, 201, 238);
     border-radius: 3px;
 }
@@ -103,14 +104,14 @@
     border-radius: 3px;
 }
   
-a{
+.link-popup{
     height: 100%;
     display: grid;
     justify-items: center;
     align-items:center;
    
 }
-a:focus{
+.link-popup:focus{
     outline: 2px solid rgb(108, 201, 238);
     border-radius: 3px;
 }
@@ -135,11 +136,10 @@ a:focus{
 .checkbox__popup-more:focus{
     outline: none;
 }
-.popup__lists-more{
- display: none;      
-position: absolute;
-height: 230px;
-top: 91%;
+.popup__lists-more{display: none;      
+    position: absolute;
+    height: 230px;
+    top: 91%;
 }
 .popup__lists-more{
     margin-left: 10px;
