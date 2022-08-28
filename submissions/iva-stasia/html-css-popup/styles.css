@@ -28,14 +28,15 @@
 html,
 body {
   height: 100%;
+  width: 100%;
   background-color: #F4F4F4;
-  overflow: hidden;
+  
 }
 
-.wrapper {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 /* HEADER */
@@ -77,10 +78,15 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  position: absolute;
 }
 
 .check_input:checked ~ .popup {
   display: grid;
+}
+
+.check_input:checked ~ .popup_arrow {
+  display: block;
 }
 
 /* POPUP */
@@ -92,7 +98,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   position: absolute;
-  top: 4.8rem;
+  top: 5.7rem;
   left: 50%;
   transform: translate(-50%, 0%);
   padding: 1rem;
@@ -101,6 +107,19 @@ body {
   display: none;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.7rem;
+}
+
+.popup_arrow {
+  display: none;
+  width: 0; 
+  height: 0; 
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-bottom: 1rem solid var(--color2);
+  position: absolute;
+  top: 4.8rem;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 /* Scrollbar */
@@ -217,37 +236,28 @@ details[open] .line {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  position: absolute;
 }
 
 .no_input:checked ~ .no_img {
   transform: scale(1);
 }
 
-/* MAIN */
-
-.main {
-  flex: 1 1 auto;
-}
-
 /* FOOTER */
 
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background-color: var(--color2);
-  padding: 1rem;
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.phrase {
-  background-color: var(--color1);
-  color: var(--color4);
-  padding: 0.5rem 1rem;
-  border-radius: 0%;
-  text-align: center;
-  border-radius: 2rem;
-  width:max-content;
-  font-size: 0.8rem;
+.footer_img {
+  width: 3rem;
 }
 
 /* BACKGROUND IMAGES, hover, focus */
@@ -482,4 +492,16 @@ details[open] .line {
   .nav_list {
     justify-content: center;
   } 
+}
+
+@supports (-webkit-touch-callout: none) {
+  .check_input:checked ~ * .check_menu,
+  .check_input:focus ~ * .check_menu,
+  .no_input:checked ~ .dont_press,
+  .no_input:focus ~ .dont_press {
+    outline: none;
+}
+  .check_menu {
+    outline: none;
+}
 }
