@@ -61,16 +61,14 @@ html,
 
 .hiddenNavbar,
 .content,
-.moreP,
-.lessP {
+.more {
   position: relative;
 }
 
 .input,
 .menuPopup,
 .menuPopupSub,
-.menuInputSub,
-.more {
+.menuInputSub {
   position: absolute;
 }
 
@@ -118,8 +116,6 @@ html,
 .footer,
 .textItem,
 .more,
-.moreP,
-.lessP,
 .contentItem {
   color: #4462ab;
 }
@@ -139,16 +135,6 @@ html,
 .menuPopup,
 .menuPopupSub {
   overflow-x: hidden;
-}
-
-.moreP,
-.lessP {
-  display: inline-flex;
-  min-width: 100%;
-  padding: 11px 0;
-  margin-top: 16px;
-  background-color: #fffce8;
-  justify-content: center;
 }
 
 .wrapper {
@@ -184,9 +170,8 @@ html,
   display: block;
 }
 
-.input:checked ~ .labelSub > .moreP {
-  color: #fffce8;
-  opacity: 0.1;
+.input:checked ~ .labelSub {
+  display: none;
 }
 
 .contentItem {
@@ -220,7 +205,7 @@ html,
 
 .menuPopup {
   background-color: #fff;
-  height: 336px;
+  height: 288px;
   width: 318px;
   top: 80px;
   right: -142px;
@@ -237,7 +222,7 @@ html,
 .menuPopupSub {
   height: 285px;
   width: 302px;
-  top: 284px;
+  top: 235px;
   right: 0;
 }
 
@@ -249,15 +234,6 @@ html,
   text-align: center;
   opacity: 0.6;
   background-color: #fffce8;
-}
-
-.moreP {
-  z-index: 100;
-}
-
-.lessP {
-  bottom: 52px;
-  z-index: 0;
 }
 
 .contentItem:hover,
