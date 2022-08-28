@@ -71,13 +71,13 @@ body {
 }
 
 .avatar {
-   border-radius: 50%;
+    border-radius: 50%;
 }
 
 .nav__link {
     text-decoration: none;
     font-size: 22px;
-    color: white
+    color: white;
 }
 
 .popup__input:hover ~ .popup__label .nav__img-link,
@@ -85,14 +85,12 @@ body {
 .nav__link:hover,
 .nav__img-link:hover,
 .nav__link:focus {
-   transform: scale(1.2);
-   border: 1px solid white;
-   cursor: pointer;
-
-
+    transform: scale(1.2);
+    border: 1px solid white;
+    cursor: pointer;
 }
 
-.popup__list{
+.popup__list {
     overflow-y: scroll;
     flex-wrap: wrap;
     max-width: 350px;
@@ -100,7 +98,6 @@ body {
     border: transparent;
     padding: 50px 35px 30px 35px;
     top: 60px;
-    left: 250px;
     position: fixed;
     gap: 40px;
     display: none;
@@ -109,7 +106,7 @@ body {
         -23px 0 20px -23px rgba(0, 0, 0, 0.6),
         23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
 }
- .popup__list-more{
+.popup__list-more {
     flex-wrap: wrap;
     border: transparent;
     display: none;
@@ -141,13 +138,13 @@ body {
     font-weight: normal;
 }
 
-.popup__link:focus{
+.popup__link:focus {
     outline: none;
 }
-.popup__item:focus-within{
-     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
-    -23px 0 20px -23px rgba(0, 0, 0, 0.6),
-    23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
+.popup__item:focus-within {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+        -23px 0 20px -23px rgba(0, 0, 0, 0.6),
+        23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
 }
 
 .btn-more {
@@ -166,26 +163,29 @@ body {
     line-height: 24px;
     font-style: normal;
     font-weight: 500;
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      0 1px 5px 0 rgba(0, 0, 0, 0.12);
-  }
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+        0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
 
-  .popup__input-more:hover ~ .popup__label-more .btn-more,
-  .btn-more:hover,
-  .btn-more:focus{
+.popup__input-more:hover ~ .popup__label-more .btn-more,
+.btn-more:hover,
+.btn-more:focus {
     background-color: #303f9f;
     outline: none;
     cursor: pointer;
-  }
+}
 
-  .div{
+.div {
     justify-content: center;
     display: flex;
     margin-bottom: 20px;
-  }
+}
 
 .popup__list-more {
-    gap:40px;
+    gap: 40px;
+}
+.popup__item {
+    position: relative;
 }
 
 .popup__input {
@@ -193,14 +193,14 @@ body {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    left: 268px;
-    top: 10px;
+    top: 0;
+    left: 0;
     cursor: pointer;
     width: 40px;
     height: 40px;
 }
 
-.popup__input-more{
+.popup__input-more {
     position: absolute;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -208,18 +208,18 @@ body {
     width: 100px;
     height: 40px;
     cursor: pointer;
-    left:116px
+    left: 116px;
 }
-.popup__item-more{
+.popup__item-more {
     width: 100%;
 }
-.popup__item-more:focus-visible{
-   outline: none;
+.popup__item-more:focus-visible {
+    outline: none;
 }
 
 .popup__input-more:focus,
-.popup__input-more:focus ~ .popup__label-more .btn-more{
-    color:rgb(230, 229, 237);
+.popup__input-more:focus ~ .popup__label-more .btn-more {
+    color: rgb(230, 229, 237);
     font-size: 28px;
     outline: none;
     text-decoration: underline;
@@ -231,12 +231,12 @@ body {
 }
 
 .popup__input-more:checked ~ .popup__label-more .btn-more,
-.popup__input-more:checked{
+.popup__input-more:checked {
     display: none;
 }
 
-@media  (max-width:500px) {
-    .popup__list{
+@media (max-width: 500px) {
+    .popup__list {
         overflow-y: scroll;
         flex-wrap: wrap;
         max-width: 300px;
@@ -247,10 +247,13 @@ body {
         left: 33px;
         position: fixed;
         gap: 20px;
-  }
+    }
 
-  .popup__list-more{
-    gap:20px;
-  }
+    .popup__list-more {
+        gap: 20px;
+    }
 }
 
+.popup__label {
+    position: relative;
+}
