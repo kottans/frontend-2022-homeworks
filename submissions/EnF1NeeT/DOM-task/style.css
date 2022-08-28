@@ -5,6 +5,7 @@
     padding: 0;
     text-decoration: none;
 }
+
 body {
     background-image: url('https://i.im.ge/2022/08/03/FE91Z6.5624543.jpg');
 }
@@ -17,6 +18,7 @@ body {
     background-color: #E6DC1B;
     border-radius: 10px;
     margin: 10px 10px 0 10px;
+    width:auto;
     height: 60px;
 }
 
@@ -187,14 +189,13 @@ body {
     cursor: pointer;
 }
 
-.post-img{
-    max-height: 500px;
-    min-height: 450px;
+.postImg{
+    width: 600px;
     border-radius: 15px;
     cursor: pointer;
 }
 
-.action-zone{
+.actionZone{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -215,6 +216,7 @@ body {
     background-color: #E6DC1B;
     border: none;
     margin-right: 15px;
+    transition: 0.3s;
 }
 
 .btn:hover, .btn:focus{
@@ -224,13 +226,14 @@ body {
     border-radius: 10px;
     transition: 0.3s;
     font-size: 20px;
+    background-color: #CBCAC7;
 }
 
-.btn-img{
+.btnImg{
     height: 60%;
 }
 
-.post-time{
+.postTime{
     margin-top: 10px;
     font-size: 15px;
     color: #5d5933;
@@ -250,6 +253,7 @@ body {
     border: none;
     margin: 25px 0 0 0;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .clickme:hover, .clickme:focus{
@@ -265,7 +269,6 @@ body {
     width: 110px;
     display: flex;
     flex-direction: column;
-    position: static;
 }
 
 .btn-frds{
@@ -299,19 +302,20 @@ main{
     .nav-item{
         width: 80px;
     }
-    .post-img {
-        max-width: 256px;
+    .postImg {
+        width: 256px;
+        border-radius: 2.5px;
         border-radius: 5px;
     }
     .post{
         padding: 10px;
         margin-top: 12px;
-        border-radius: 5px;
+        border-radius: 10px;
     }
     .topzone{
         font-size: 18px;
     }
-    .topzone-img{
+    .topzoneImg{
         height: 25px;
         width: 25px;
     }
@@ -321,7 +325,7 @@ main{
         margin-right: 8px;
     }
 
-    .post-time {
+    .postTime {
         margin-top: 5px;
         font-size: 12px;
     }
@@ -394,6 +398,46 @@ main{
             0px 2px 3.5px #5D5933;
         
     }
+
+    .clickme{
+        height: 50px;
+        width: 50px;
+        font-size: 15px;
+        border-radius: 100px;
+        margin: 10px;
+    }
+
+    .btn-frds{
+        height: 30%;
+    }
+    
+    main {
+        display: flex;
+        align-items: flex-start;
+        grid-template-columns: repeat(1, auto) repeat(2, auto);
+        flex-direction: column;
+    }
+
+    .friends {
+        width:max-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: static;
+        align-content: center;
+        margin: auto;
+
+    }
+
+    .clickme:hover, .clickme:focus{
+
+        box-shadow: 0 0 0 2.5px #B3B3B3, 0 0 0 5px #5d5933;
+        outline: none;
+        transition: 0.3s;
+        font-size: 20px;
+        background-color: #CBCAC7;
+    }
 }
 
 @media screen and (max-width: 320px) {
@@ -416,7 +460,7 @@ main{
     .nav-item{
         width: 40px;
     }
-    .post-img {
+    .postImg {
         max-width: 128px;
         border-radius: 2.5px;
     }
@@ -428,7 +472,7 @@ main{
     .topzone{
         font-size: 9px;
     }
-    .topzone-img{
+    .topzoneImg{
         height: 12.5px;
         width: 12.5px;
     }
@@ -438,7 +482,7 @@ main{
         margin-right: 4px;
     }
 
-    .post-time {
+    .postTime {
         margin-top: 2.5px;
         font-size: 6px;
     }
@@ -510,6 +554,47 @@ main{
             -1.5px 0px 3.5px #5D5933, 
             0px 2px 3.5px #5D5933;
         
+    }
+
+    
+    .clickme{
+        height: 30px;
+        width: 30px;
+        font-size: 10px;
+        border-radius: 100px;
+        margin: 5px;
+    }
+
+    .btn-frds{
+        height: 30%;
+    }
+    
+    main {
+        display: flex;
+        align-items: flex-start;
+        grid-template-columns: repeat(1, auto) repeat(2, auto);
+        flex-direction: column;
+    }
+
+    .friends {
+        width:max-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: static;
+        align-content: center;
+        margin: auto;
+
+    }
+
+    .clickme:hover, .clickme:focus{
+
+        box-shadow: 0 0 0 2.5px #B3B3B3, 0 0 0 5px #5d5933;
+        outline: none;
+        transition: 0.3s;
+        font-size: 10px;
+        background-color: #CBCAC7;
     }
 }
     

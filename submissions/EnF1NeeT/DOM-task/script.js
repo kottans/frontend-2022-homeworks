@@ -55,100 +55,100 @@ function post({ imgSrc, imgSrc2, imgSrc3, imgSrc4, p, topzoneImg}) {
     return (
         `<article class="post">
             <div class="topzone">
-                <img class="topzone-img" src="${topzoneImg}" alt="post-img">
+                <img class="topzoneImg" src="${topzoneImg}" alt="postImg">
                 <p>${p}</p>
             </div>
-            <div class="post-img">
-                <img src="${imgSrc}" class="post-img" alt="post-img">
+            <div class="postImg">
+                <img src="${imgSrc}" class="postImg" alt="postImg">
             </div>
-            <div class="action-zone">
+            <div class="actionZone">
                 <button class="btn">
-                    <img src="./img/favorite_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/favorite_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Like
                 </button>
                 <button class="btn">
-                    <img src="./img/forum_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/forum_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Comment
                 </button>
                 <button class="btn">
-                    <img src="./img/send_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/send_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Share
                 </button>
             </div>
-        <div class="post-time">posted <time datetime="24.5.3222">posted 5h ago</time></div>
+            <div class="postTime">posted <time datetime="24.5.3222">posted 5h ago</time></div>
         </article>
         <article class="post">
             <div class="topzone">
-                <img class="topzone-img" src="${topzoneImg}" alt="post-img">
+                <img class="topzoneImg" src="${topzoneImg}" alt="postImg">
                 <p>${p}</p>
             </div>
-            <div class="post-img">
-                <img src="${imgSrc2}" class="post-img" alt="post-img">
+            <div class="postImg">
+                <img src="${imgSrc2}" class="postImg" alt="postImg">
             </div>
-            <div class="action-zone">
+            <div class="actionZone">
                 <button class="btn">
-                    <img src="./img/favorite_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/favorite_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Like
                 </button>
                 <button class="btn">
-                    <img src="./img/forum_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/forum_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Comment
                 </button>
                 <button class="btn">
-                    <img src="./img/send_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/send_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Share
                 </button>
             </div>
-        <div class="post-time">posted <time datetime="24.5.3222">posted 5h ago</time></div>
+            <div class="postTime">posted <time datetime="24.5.3222">posted 5h ago</time></div>
         </article>
         <article class="post">
             <div class="topzone">
-                <img class="topzone-img" src="${topzoneImg}" alt="post-img">
+                <img class="topzoneImg" src="${topzoneImg}" alt="postImg">
                 <p>${p}</p>
             </div>
-            <div class="post-img">
-                <img src="${imgSrc3}" class="post-img" alt="post-img">
+            <div class="postImg">
+                <img src="${imgSrc3}" class="postImg" alt="postImg">
             </div>
-            <div class="action-zone">
+            <div class="actionZone">
                 <button class="btn">
-                    <img src="./img/favorite_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/favorite_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Like
                 </button>
                 <button class="btn">
-                    <img src="./img/forum_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/forum_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Comment
                 </button>
                 <button class="btn">
-                    <img src="./img/send_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/send_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Share
                 </button>
             </div>
-        <div class="post-time">posted <time datetime="24.5.3222">posted 5h ago</time></div>
+            <div class="postTime">posted <time datetime="24.5.3222">posted 5h ago</time></div>
         </article>
         </article>
         <article class="post">
             <div class="topzone">
-                <img class="topzone-img" src="${topzoneImg}" alt="post-img">
+                <img class="topzoneImg" src="${topzoneImg}" alt="postImg">
                 <p>${p}</p>
             </div>
-            <div class="post-img">
-                <img src="${imgSrc4}" class="post-img" alt="post-img">
+            <div class="postImg">
+                <img src="${imgSrc4}" class="postImg" alt="postImg">
             </div>
-            <div class="action-zone">
+            <div class="actionZone">
                 <button class="btn">
-                    <img src="./img/favorite_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/favorite_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Like
                 </button>
                 <button class="btn">
-                    <img src="./img/forum_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/forum_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Comment
                 </button>
                 <button class="btn">
-                    <img src="./img/send_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btn-img">
+                    <img src="./img/send_FILL0_wght400_GRAD0_opsz48.png" alt="" class="btnImg">
                     Share
                 </button>
             </div>
-        <div class="post-time">posted <time datetime="24.5.3222">posted 5h ago</time></div>
+            <div class="postTime">posted <time datetime="24.5.3222">posted 5h ago</time></div>
         </article>`
         
     );
