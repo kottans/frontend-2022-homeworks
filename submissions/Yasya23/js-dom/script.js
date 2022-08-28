@@ -1,79 +1,4 @@
-function changeImagesByClick() {
-  const imgHtml = document.querySelectorAll(".img__js");
-  const result = images.filter((key) => key.id === this.id);
-  for (i = 0; i < imgHtml.length; i++) {
-    imgHtml[i].setAttribute("src", result[i].src);
-    imgHtml[i].setAttribute("alt", result[i].alt);
-  }
-}
-
-function showPopup(event) {
-  event.preventDefault();
-  const menu = document.querySelector("#navigation");
-  if (menu.style.display === "flex" && window.innerWidth <= 700) {
-    menu.style.display = "none";
-  } else {
-    menu.style.display = "flex";
-  }
-}
-
-document.querySelector("main").innerHTML = `
-        <div class="img">
-          <div class="img__column">
-            <img
-              src="img/Cats/1.jpg"
-              alt="The man strokes the cat."
-              class="img__js"
-            />
-            <img
-              src="img/Dogs/2.jpg"
-              alt="Nine dogs against a pink wall."
-              class="img__js"
-            />
-            <img
-              src="img/Horses/3.jpg"
-              alt="Two horses in the meadow."
-              class="img__js"
-            />
-          </div>
-          <div class="img__column">
-            <img src="img/Horses/4.jpg" alt="Brown horse." class="img__js" />
-            <img
-              src="img/Dogs/5.jpg"
-              alt="A woman holds a dog in her arms."
-              class="img__js"
-            />
-            <img
-              src="img/Cats/6.jpg"
-              alt="The cat sleeps in the bed."
-              class="img__js"
-            />
-          </div>
-          <div class="img__column">
-            <img
-              src="img/Cats/7.jpg"
-              alt="The face of a red fluffy cat."
-              class="img__js"
-            />
-            <img
-              src="img/Dogs/8.jpg"
-              alt="Two dogs run along the path."
-              class="img__js"
-            />
-            <img src="img/Cats/9.jpg" alt="Three kittens." class="img__js" />
-          </div>
-        </div>`;
-
-const popupIcon = document.querySelector("#popup");
-popupIcon.addEventListener("click", showPopup);
-
-const cat = document.querySelector("#cat");
-const dog = document.querySelector("#dog");
-const horse = document.querySelector("#horses");
-
-cat.addEventListener("click", changeImagesByClick);
-dog.addEventListener("click", changeImagesByClick);
-horse.addEventListener("click", changeImagesByClick);
+"use strict";
 
 const images = [
   {
@@ -212,3 +137,72 @@ const images = [
     alt: "Brown horse.",
   },
 ];
+
+document.querySelector("main").innerHTML = `
+        <div class="img">
+          <div class="img__column">
+            <img
+              src="${images[0].src}" alt="${images[0].alt}"
+            />
+            <img
+              src="${images[10].src}" alt="${images[10].alt}"
+            />
+            <img
+              src="${images[22].src}" alt="${images[22].alt}"
+            />
+          </div>
+          <div class="img__column">
+            <img
+            src="${images[21].src}" alt="${images[21].alt}"
+            />
+            <img
+              src="${images[14].src}" alt="${images[14].alt}"
+            />
+            <img
+              src="${images[3].src}" alt="${images[3].alt}"
+            />
+          </div>
+          <div class="img__column">
+            <img
+              src="${images[6].src}" alt="${images[6].alt}"
+            />
+            <img
+              src="${images[16].src}" alt="${images[16].alt}"
+            />
+            <img
+            src="${images[8].src}" alt="${images[8].alt}"
+            />
+          </div>
+        </div>`;
+
+const imgClass = document.querySelectorAll("img");
+imgClass.forEach((element) => element.classList.add("img__js"));
+
+const popupIcon = document.querySelector("#popup");
+popupIcon.addEventListener("click", showPopup);
+
+const cat = document.querySelector("#cat");
+const dog = document.querySelector("#dog");
+const horse = document.querySelector("#horses");
+
+cat.addEventListener("click", changeImagesByClick);
+dog.addEventListener("click", changeImagesByClick);
+horse.addEventListener("click", changeImagesByClick);
+
+function changeImagesByClick() {
+  const imgHtml = document.querySelectorAll(".img__js");
+  const result = images.filter((key) => key.id === this.id);
+  for (let i = 0; i < imgHtml.length; i++) {
+    imgHtml[i].setAttribute("src", result[i].src);
+    imgHtml[i].setAttribute("alt", result[i].alt);
+  }
+}
+
+function showPopup() {
+  const menu = document.querySelector("#navigation");
+  if (menu.style.display === "flex" && window.innerWidth <= 700) {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "flex";
+  }
+}
