@@ -34,18 +34,18 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-header {
+.header {
   padding: 0.5rem 0;
   background-color: #ffdcdc;
 }
 
-main {
+.main {
   flex: 1 1 auto;
   background-color: #f9e5e5;
   padding-bottom: 0.5rem;
 }
 
-footer {
+.footer {
   padding: 0;
   background-color: #ffdcdc;
 }
