@@ -1,0 +1,240 @@
+@font-face {
+  font-family: BelweBold;
+  src: url(../fonts/BelweBoldBT.ttf);
+}
+
+@font-face {
+  font-family: BelweLight;
+  src: url(../fonts/BelweLightBT.ttf);
+}
+
+* {
+  font-family: BelweLight;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-wrapper {
+  background: url(../img/background.webp) 0% 0% / cover transparent;
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: auto;
+  grid-template-areas: 'aside content';
+}
+
+.menu,
+.header,
+.footer,
+.hero-name,
+.hero-portrait,
+.hero-power,
+.hero-logo,
+.list-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  grid-area: aside;
+  background-image: url(../img/sidebar-background.png);
+  color: aliceblue;
+  align-items: flex-start;
+  padding-top: 60px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.list-item {
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  display: block;
+}
+
+.list-item:hover {
+  cursor: pointer;
+}
+
+.list-item:hover .hero-logo {
+  background: url(../img/logo-shine.png) 0% 0% / cover transparent;
+}
+
+.hero-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.hero-logo {
+  width: 60px;
+  height: 60px;
+  padding: 0.5em;
+}
+
+.hero-class {
+  display: flex;
+  align-items: center;
+  font-family: BelweBold;
+  font-size: 1.5em;
+  padding: 0 0.5em;
+  vertical-align: middle;
+}
+
+.header {
+  background-image: url(../img/header.webp);
+  color: aliceblue;
+  font-family: BelweBold;
+  font-size: 3em;
+  padding: 5px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.content {
+  margin-top: 65px;
+  grid-area: content;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+    'name name name'
+    'heroportrait heropower lore';
+  align-items: start;
+}
+
+.hero-name {
+  grid-area: name;
+  font-family: BelweBold;
+  font-size: 3em;
+  align-self: center;
+}
+
+.hero-portrait {
+  grid-area: heroportrait;
+}
+
+.hero-power {
+  grid-area: heropower;
+}
+
+.lore {
+  grid-area: lore;
+  text-align: justify;
+  padding: 1.5em;
+}
+
+.lore::first-letter {
+  font-size: 1.5em;
+}
+
+.footer {
+  background-image: url(../img/header.webp);
+  color: aliceblue;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.link {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+@media only screen and (min-width: 890px) and (max-width: 1200px) {
+  .header {
+    font-size: 2em;
+  }
+
+  .hero-power_img,
+  .hero-portrait_img {
+    width: 50%;
+    height: auto;
+  }
+
+  .content {
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr 6fr;
+    grid-template-areas:
+      'name name'
+      'heroportrait heropower'
+      'lore lore';
+  }
+
+  .hero-class {
+    font-size: 1em;
+  }
+
+  .hero-name {
+    font-size: 2em;
+  }
+}
+
+@media only screen and (max-width: 889px) {
+  .header {
+    font-size: 1em;
+  }
+
+  .hero-power_img,
+  .hero-portrait_img {
+    width: 30%;
+    height: auto;
+  }
+
+  .main-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, min-content);
+    grid-template-areas:
+      'aside'
+      'content';
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      'name'
+      'heroportrait'
+      'heropower'
+      'lore';
+  }
+
+  .hero-class {
+    font-size: 1em;
+  }
+
+  .hero-name {
+    font-size: 2em;
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(5, auto);
+    margin-top: 30px;
+  }
+
+  .hero-logo {
+    width: 30px;
+    height: 30px;
+    padding: 0.2em;
+  }
+
+  .menu {
+    padding-top: 0;
+  }
+}

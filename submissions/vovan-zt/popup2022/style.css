@@ -180,9 +180,11 @@
     background-color:rgb(61, 76, 76);
 }
 
+
 #modal2:checked~.modal__item2 {
     display:flex;
 }  
+
 
 #modal2:checked ~ .modal__button::before {
     content: 'UP';
