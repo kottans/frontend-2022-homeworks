@@ -27,6 +27,7 @@ html,body{
 a, a:visited{text-decoration: none;}
 ul li{list-style: none;}
 
+/*-------------------- */
 
 .header {
 	display: flex;
@@ -85,6 +86,10 @@ ul li{list-style: none;}
 	cursor: pointer;
 }
 
+
+/* Popup */
+
+
 .popup:focus-within {
 	box-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
 }
@@ -97,8 +102,8 @@ ul li{list-style: none;}
 }
 
 .menu {
-	width: 	255px;
-	height: 292px;
+	width: 	275px;
+	height: 352px;
 	background-color: white;
 	border: 1px solid rgba(0, 0, 255, .2);
     position: relative;
@@ -135,8 +140,12 @@ ul li{list-style: none;}
 	display:block;
 }
 
+
+   /* Context menu */
+
 .menu__item {
-	height: 55px;
+	width: 70px;
+	height: 70px;
 }
 
 .menu__item:hover {
@@ -152,8 +161,8 @@ ul li{list-style: none;}
 	gap: 10px;
 	align-items:center;
 	justify-items: center;
-	width: 55px;
-	height: 55px;
+	width: 70px;
+	height: 70px;
 	color: black;
 }
 
@@ -162,12 +171,12 @@ ul li{list-style: none;}
 }
 
 .icon {
-	width: 30px;
-	height: 30px;
+	width: 40px;
+	height: 40px;
 }
 
 .icon__name {
-	font-size: 9px;
+	font-size: 12px;
 }
 
 .main__menu, .more__menu {
@@ -228,4 +237,62 @@ ul li{list-style: none;}
 
 .checkbox__more:checked ~.btn__more {
 	display:none;
+}
+
+
+/* mobile */
+
+@media only screen
+
+and (min-width: 320px)
+and (max-width: 767px) {
+
+.header {
+	padding: 0 10px;
+}	
+
+.logo__img {
+	height: 25px;
+}
+
+.link {
+	font-size: 12px;
+}
+
+.nav_item {
+    margin: 0 5px;
+}
+
+.nav_img {
+	width: 15px;
+}
+
+.context__menu {
+	padding-top: 10px;
+	right: 47px;
+}
+
+.icon {
+	width: 30px;
+	height: 30px;
+}
+
+.icon__name {
+	font-size: 8px;
+}
+
+.menu__link {
+	width: 50px;
+	height: 50px;
+}
+.menu__item {
+	width: 50px;
+	height: 50px;
+}
+
+.menu {
+	width: 230px;
+    height: 272px;
+}
+
 }
