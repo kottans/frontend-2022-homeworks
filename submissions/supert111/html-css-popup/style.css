@@ -95,6 +95,7 @@ li {
     width: 26px;
     height: 26px;
     background-image: url(images/popup-button.png);
+    border: 1px solid white;
 }
 
 .checkInput:focus ~ * .checkBox, 
@@ -134,6 +135,10 @@ li {
 #checkMoreInputId:checked ~ .checkMore,
 #checkMoreInputId:checked ~ * .checkMore {
     display: none;
+}
+
+#checkMoreInputId:checked {
+    visibility: hidden;
 }
 
 .wrapperPopup::before, .wrapperPopup:after {
