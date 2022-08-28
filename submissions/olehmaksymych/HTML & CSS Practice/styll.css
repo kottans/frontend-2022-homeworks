@@ -1,26 +1,40 @@
 #myDIV {
-  background-color:#FFF;
+  padding-top: 120px;
+  background-color: #fff;
   width: 100%;
-  height: 300px;
+  height: 500px;
 }
 
 #myDIV div {
   width: 80px;
   height: 80px;
-  background: green;
+  background: rgb(9, 6, 173);
   position: relative;
-  animation: mymove 5s infinite;
+  animation: mymove 7s infinite;
 }
 
 @keyframes mymove {
-  from {left: 0px;}
-  to {left: 600px;}
+  from {
+    left: 0px;
+  }
+  to {
+    left: 1190px;
+  }
 }
 @keyframes myothermove {
-  from {top: 0px;}
-  to {top: 300px;}
+  from {
+    top: 0px;
+  }
+  to {
+    top: 100px;
+  }
 }
 @keyframes mylastmove {
-  from {background-color: red;}
-  to {background-color: blue;}
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: rgb(0, 255, 13);
+  }
 }
+

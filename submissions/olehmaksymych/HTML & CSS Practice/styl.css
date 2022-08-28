@@ -1,163 +1,154 @@
-:root{
-    --green:#27ae60;
-    --black:#192a56;
-    --light-color:#666;
-    --picture-size: 45px;
-    --border-radious: 5px;
+:root {
+  --green: #27ae60;
+  --black: #192a56;
+  --light-color: #666;
+  --picture-size: 40px;
+  --border-radious: 5px;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-img[src$=".png"] { /*the default size of png pictures*/
-    max-height: var(--picture-size);
-    border-radius: var(--border-radious);
-    max-width: var(--picture-size);
+img[src$=".png"] {
+  /*the default size of png pictures*/
+  max-height: var(--picture-size);
+  border-radius: var(--border-radious);
+  max-width: var(--picture-size);
 }
 
-
-body{
-    background-color: orange;
+body {
+  background-color: orange;
 }
 
-.header_menu{ /* it is a navigation attribute in header */
-    /*position: relative;*/
-    display: inline;
-    z-index: 2;
+.header_menu {
+  /* it is a navigation attribute in header */
+  /*position: relative;*/
+  display: inline;
+  z-index: 2;
 }
 
-.header_list{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
+.header_list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-
-.header_item{ /* the style for the header list items */
-    position: relative;
-    display: inline;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0.1rem 1.2rem;
+.header_item {
+  /* the style for the header list items */
+  position: relative;
+  display: inline;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.3rem 1.6rem;
 }
 
-.text_item :hover{
-    color: #fff;
-    background-color: #27ae60;
-    border-radius: var(--border-radious);
+.text_item :hover {
+  color: #fff;
+  background-color: #27ae60;
+  border-radius: var(--border-radious);
 }
 
-.hover_item :hover{
-    transform: scale(1.2);
+.container_item :hover {
+  transform: scale(1.2);
 }
 
-
-a{ /*the style for the links */
-    text-decoration: none;
-    color: var(--black);
+.hover_item {
+  font-size: 10px;
+  outline: none;
 }
+
+a {
+  /*the style for the links */
+  text-decoration: none;
+  color: var(--black);
+}
+
 li {
-    list-style: none; /*it will hide a toggle for the list item*/
+  list-style: none; /*it will hide a toggle for the list item*/
 }
-
 
 .menu_container_items, /*the initial style for the popup containers (more and main) */
 .menu_container_items_more {
-    display: none;
+  display: none;
 }
 
-.container_item{
-    align-items: center;
-    padding: 10px;
-    margin-left: 10px;
+.container_item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
 /*#popup_moreBtn,*/
-.icon_for_thecheckbox{
-    /* visibility: collapse; */
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-
+.icon_for_thecheckbox {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
-.icon_for_thecheckbox_more{
-    visibility: collapse;
-    position: absolute;
-    overflow: hidden;
-    margin-top: 370px;
-    clip: rect(0 0 0 0);
-    width: 180px;
-    height: 50px;
+.icon_for_thecheckbox_more {
+  visibility: collapse;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
-#popup_icon2 { 
-    margin-top: 20px;
-    margin-left: 40px;
-    margin-right: 35px;
-    padding: 5px 5px;
-    border: 2px solid var(--black);
-    border-radius: 3px;
+#popup_icon2 {
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-right: 35px;
+  padding: 5px 5px;
+  border: 2px solid var(--black);
+  border-radius: 3px;
 }
-
 
 /*The style of the popup btn itself*/
 #popup_icon {
-    display: inline-block;
-    margin-top: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 5px 5px;
-    border: 2px solid var(--black);
-    border-radius: 3px;
-    
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px 5px;
+  border: 2px solid var(--black);
+  border-radius: 3px;
 }
 
 /* Show hidden content when the checkbox is checked */
-#popup_box:checked ~ * .menu_container_items{
-    position: absolute;
-    top: 50px;
-    left: -75px;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    gap: 1px;
-    background-color: darkgreen;
-    padding: 1px;
-    border: 2px solid var(--black);
-    border-radius: var(--border-radious);
-    align-items: baseline;
-    width: 235px;
-    height: 250px;
-    overflow:scroll;
+#popup_box:checked ~ * .menu_container_items {
+  position: absolute;
+  top: 50px;
+  left: -75px;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  gap: 1px;
+  background-color: darkgreen;
+  border: 2px solid var(--black);
+  border-radius: var(--border-radious);
+  align-items: baseline;
+  width: 235px;
+  height: 250px;
+  overflow: scroll;
 }
 
 /* Style the button when the checkbox is checked */
 #popup_box:checked ~ * #popup_icon {
-    background-color: orangered;
-    border: 2px solid aqua;
+  background-color: orangered;
+  border: 2px solid aqua;
 }
 
 #popup_box_more:checked ~ * #popup_icon2 {
-    visibility: collapse;
-    /* position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0); */
+  visibility: collapse;
 }
 
 #popup_box_more:checked ~ * .menu_container_items_more {
-    display: flex;
-    flex-flow: row wrap;
-    flex-wrap: wrap;
-    /* gap: 1px;
-    background-color: darkgreen;
-    padding: 1px; */
-    align-items: baseline;
-    justify-content: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: -55px;
 }
-
 
