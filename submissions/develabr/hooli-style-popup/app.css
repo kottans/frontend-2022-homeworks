@@ -146,3 +146,17 @@ li {
   text-decoration: underline;
   color: #9393937d;
 }
+
+@media (max-width: 500px) {
+  .menu__popup {
+    right: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .menu__popup {
+    width: 100%;
+    right: 0;
+    margin: 0 auto;
+  }
+} ;
