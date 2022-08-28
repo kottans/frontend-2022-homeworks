@@ -1,31 +1,3 @@
-function createWinLossPointsBlock(){
-    const pointsBlock = document.createElement('div');
-    pointsBlock.style.cssText = `
-        font-family: Helvetica; 
-        font-size: 30px; 
-        width: 50%;
-        margin: 30px auto -10px;
-        display: flex;
-        justify-content: space-evenly;
-    `;
-
-    pointsBlock.innerHTML = `
-        <span>Wins: 0</span>
-        <span>Losses: 0</span>
-    `;
-    document.body.prepend(pointsBlock);
-    return pointsBlock;
-}
-
-function addWinLossPointsToBlock(pointsBlock, player){
-    pointsBlock.innerHTML = `
-        <span>Wins: ${player.wins}</span>
-        <span>Losses: ${player.loses}</span>
-    `;
-}
-
-const pointsBlock = createWinLossPointsBlock();
-
 const TILE_WIDTH = 101;
 const TILE_HEIGHT = 83;
 
@@ -75,7 +47,7 @@ Enemy.prototype.checkCollisions = function() {
     if(Math.abs(this.x - this.player.x) <= CHARACTERS_WIDTH - CHARACTERS_SIZE_DIFFERENCE * 1.5 
     && Math.abs(this.y - this.player.y) <= CHARACTERS_SIZE_DIFFERENCE){
         this.player.loses += 1;
-        addWinLossPointsToBlock(pointsBlock, this.player);
+        this.player.addWinLossPointsToBlock(this.player.pointsBlock, this.player);
         this.player.resetInitialPosition();
     }
 };
@@ -91,6 +63,7 @@ const Player = function(x, y) {
     this.y = y;
     this.wins = 0;
     this.loses = 0;
+    this.pointsBlock = this.createWinLossPointsBlock();
 };
 
 Player.prototype.update = function() {
@@ -133,10 +106,36 @@ Player.prototype.checkPosition = function() {
         this.y = BOARD_HEIGHT - 20;
     }else if(this.y < 0){
         this.wins += 1;
-        addWinLossPointsToBlock(pointsBlock, this);
+        this.addWinLossPointsToBlock(this.pointsBlock, this);
         this.resetInitialPosition();
     };
 };
+
+Player.prototype.createWinLossPointsBlock = function(){
+    const pointsBlock = document.createElement('div');
+    pointsBlock.style.cssText = `
+        font-family: Helvetica; 
+        font-size: 30px; 
+        width: 50%;
+        margin: 30px auto -10px;
+        display: flex;
+        justify-content: space-evenly;
+    `;
+
+    pointsBlock.innerHTML = `
+        <span>Wins: 0</span>
+        <span>Losses: 0</span>
+    `;
+    document.body.prepend(pointsBlock);
+    return pointsBlock;
+}
+
+Player.prototype.addWinLossPointsToBlock = function(pointsBlock, player){
+    pointsBlock.innerHTML = `
+        <span>Wins: ${player.wins}</span>
+        <span>Losses: ${player.loses}</span>
+    `;
+}
 
 const player = new Player(INITAL_PLAYER_X, INITAL_PLAYER_Y);
 const allEnemies = generateEnemies(player);
