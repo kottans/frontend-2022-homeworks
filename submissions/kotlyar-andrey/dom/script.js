@@ -105,12 +105,14 @@ function createMenu() {
   menu.innerHTML = bosses
     .map(
       (boss) =>
-        `<a href="#" class="menu__item" id="menu_boss_${boss.id}" data_boss_id="${boss.id}">${boss.name}</a>`
+        `<a href="#" class="menu__item${
+          completed.includes(boss.id) ? " completed" : ""
+        }" id="menu_boss_${boss.id}" data-bossid="${boss.id}">${boss.name}</a>`
     )
     .join("");
   menu.addEventListener("click", (e) => {
-    if (e.target && e.target.nodeName === "A") {
-      showBoss(parseInt(e.target.getAttribute("data_boss_id")));
+    if (e.target.dataset.bossid != undefined) {
+      showBoss(parseInt(e.target.dataset.bossid));
     }
   });
 }
@@ -118,7 +120,7 @@ function createMenu() {
 /* Показ инфорации о выбранном боссе */
 function showBoss(id) {
   const content = document.querySelector(".content");
-  const boss = bosses.filter((obj) => obj.id === id)[0];
+  const boss = bosses.find((obj) => obj.id === id);
   content.innerHTML = `
   <h1 class="content__title">${boss.name}</h1>
   <img class="content__image" src="images/${boss.image}" alt="${boss.name}" />
@@ -145,14 +147,11 @@ function showBoss(id) {
 
 /* Изменение активного элемента меню */
 function selectMenuItem(id) {
-  bosses.forEach((boss) => {
-    const menuItem = getMenuItem(boss.id);
-    if (id === boss.id) {
-      menuItem.classList.add("active");
-    } else {
-      menuItem.classList.remove("active");
-    }
-  });
+  const activeElement = document.querySelector(".menu__item.active");
+  if (activeElement) {
+    activeElement.classList.remove("active");
+  }
+  document.querySelector(`[data-bossid="${id}"]`).classList.add("active");
 }
 
 /* Получение элемента меню по id */
@@ -212,7 +211,7 @@ function showModal(bossId = null) {
   const wrapper = document.querySelector(".wrapper");
   const modal = document.createElement("div");
   if (bossId) {
-    const boss = bosses.filter((obj) => obj.id === bossId)[0];
+    const boss = bosses.find((obj) => obj.id === bossId);
     modal.innerHTML = `${boss.name} повержен`;
     modal.classList.add("modal", "boss_defeted");
   } else {
@@ -232,9 +231,7 @@ function showModal(bossId = null) {
   }, 5000);
 }
 
-createMenu();
-
 const completed = getCookie();
-completed.forEach((id) => getMenuItem(id).classList.add("completed"));
+createMenu();
 
 showBoss(1);
