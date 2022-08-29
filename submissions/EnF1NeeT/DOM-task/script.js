@@ -153,4 +153,3 @@ function post({ imgSrc, imgSrc2, imgSrc3, imgSrc4, p, topzoneImg}) {
         
     );
 };
-
