@@ -1,4 +1,4 @@
-const AVAILABLEROWSFORENEMIES = [63, 146, 229]; 
+const AVAILABLE_ROWS_FOR_ENEMIES = [63, 146, 229]; 
 const allEnemies = [];
 
 function resetPlayer(){
@@ -91,7 +91,7 @@ Player.prototype.handleInput = function (direction){
 }
 
 
-for (let elem of AVAILABLEROWSFORENEMIES.concat(AVAILABLEROWSFORENEMIES)){
+for (let elem of AVAILABLE_ROWS_FOR_ENEMIES.concat(AVAILABLE_ROWS_FOR_ENEMIES)){
     allEnemies.push(new Enemy(elem));
 }
 let player = new Player();
