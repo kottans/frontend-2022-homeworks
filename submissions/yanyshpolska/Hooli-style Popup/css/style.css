@@ -170,6 +170,9 @@ a {
 .popup__item_checkbox_input:checked ~ .popup__item_checkbox_label {
   display: none;
 }
+.popup__item_checkbox_input:checked {
+  display: none;
+}
 .popup__item_checkbox_input:checked
   ~ .popup__item_checkbox_label
   > .popup__item_checkbox_more {
