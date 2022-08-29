@@ -1,6 +1,6 @@
 # Open and merged PRs by task labels
 
-_as of 2022-08-29T17:23:57.665Z UTC_
+_as of 2022-08-29T19:21:39.852Z UTC_
 
 PR reference legend:
  - #xxx o -- PR is yet open 
@@ -136,7 +136,7 @@ PR reference legend:
 | 1.69 | [supert111](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Asupert111) | [**#192**](https://github.com/kottans/frontend-2022-homeworks/pull/192) |   |   |   |   |   |   |
 | 1.70 | [TetianaDiachenko](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ATetianaDiachenko) | [**#293**](https://github.com/kottans/frontend-2022-homeworks/pull/293) |   |   |   |   |   |   |
 | 1.71 | [thunderpussy1](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Athunderpussy1) | [#291 o](https://github.com/kottans/frontend-2022-homeworks/pull/291) |   |   |   |   |   |   |
-| 1.72 | [unabyband](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Aunabyband) | [#157 o](https://github.com/kottans/frontend-2022-homeworks/pull/157) |   |   |   |   |   |   |
+| 1.72 | [unabyband](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Aunabyband) | [**#157**](https://github.com/kottans/frontend-2022-homeworks/pull/157) |   |   |   |   |   |   |
 | 1.73 | [v4voloshyn](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Av4voloshyn) | [#155 o](https://github.com/kottans/frontend-2022-homeworks/pull/155) |   |   |   |   |   |   |
 | 1.74 | [vadiimvooo](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Avadiimvooo) | [**#147**](https://github.com/kottans/frontend-2022-homeworks/pull/147) |   |   |   |   |   |   |
 | 1.75 | [vl-shevchenko](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Avl-shevchenko) | [**#231**](https://github.com/kottans/frontend-2022-homeworks/pull/231) |   |   |   |   |   |   |
