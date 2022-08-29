@@ -1,7 +1,6 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap");
 
-/*=============== BASE ===============*/
 * {
   box-sizing: border-box;
   padding: 0;
@@ -45,7 +44,6 @@ img {
   height: auto;
 }
 
-/*=============== Header ===============*/
 .header{
   height: 10vh;
   display: flex;
@@ -55,8 +53,6 @@ img {
 .h1-like{
   font-size: 2rem;
 }
-
-/*=============== Main ===============*/
 
 .main{
   display: grid;

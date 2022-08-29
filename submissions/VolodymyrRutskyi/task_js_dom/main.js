@@ -137,30 +137,37 @@ const main = document.querySelector('.main');
 const navList = document.querySelector('.nav__list');
 const content = document.querySelector('.content');
 
-document.addEventListener('DOMContentLoaded', contentDisplay);
+// function contentDisplay() {
+//     dataList.map((item) =>{
+//         navList.innerHTML += `<li class='nav__item'>${item.name}</li>`;
+//     })
+//     main.prepend(navList);
+// }
 
 function contentDisplay() {
-    dataList.map((item) =>{
-        navList.innerHTML += `<li class='nav__item'>${item.name}</li>`;
+    const updatedList = dataList.map((item) =>{
+        return `<li class='nav__item'>${item.name}</li>`;
     })
+    navList.innerHTML = updatedList.join('');
     main.prepend(navList);
 }
 
-navList.onclick = function(event){
+function buildContent(event){
     let btns= document.querySelectorAll('.nav__item');
     dataList.map((item) => {
         if (event.target.innerHTML === item.name) { 
             content.innerHTML = `
-                <header class="main__header">
+                <div class="main__header">
                     <h2 class="h2-like">${item.name}</h2>
-                </header>
+                </div>
                 <article class="main__content">
                     <img src="${item.image}" alt="${item.name}">
                 </article>
             `;
-            item.description.map((text) => {
-                document.querySelector('.main__content').innerHTML += `<p>${text}</p>`;
+            const contentText = item.description.map((text) => {
+                return `<p>${text}</p>`;
             });
+            document.querySelector('.main__content').innerHTML += contentText.join('');
         } 
     });
     btns.forEach((item) =>{
@@ -172,3 +179,8 @@ navList.onclick = function(event){
     });
     
 };
+
+document.addEventListener('DOMContentLoaded', contentDisplay);
+
+navList.addEventListener('click', buildContent);
+
