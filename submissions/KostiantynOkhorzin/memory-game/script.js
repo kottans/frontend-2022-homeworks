@@ -62,7 +62,8 @@ const checkCards = (e) => {
                 })
             } else {
                 selectedCards.forEach((card) => {
-                    setTimeout(() => card.classList.remove(styleList.flippedCard, styleList.selectedCard), 1000);
+                    card.classList.remove(styleList.selectedCard);
+                    setTimeout(() => card.classList.remove(styleList.flippedCard), 1000);
                 });
                 playerSteps++;
             };
