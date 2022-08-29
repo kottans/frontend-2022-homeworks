@@ -168,6 +168,13 @@ a:hover {
     padding-top: 35px;
 }
 
+.list-item:hover, 
+.list-item:focus-within   {
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgb(131, 121, 106);
+    border-radius: 5px;  
+}
+
 .element-item:focus-within {
   outline: none;
 }
@@ -194,6 +201,9 @@ a:hover {
     width: 300px;
     max-height: 480px;
   }
+  .last-item-menu{
+    margin-top: 35px;
+  }
 }
 
 @media screen and (max-width:375px) {
@@ -202,6 +212,12 @@ a:hover {
     top: 90px;
     max-height: 440px;
     left: -130px;
+  }
+}
+
+@media screen and (max-width:345px) {
+  .popup{
+    left: -115px;
   }
 }
 
