@@ -8,10 +8,9 @@ class Creature {
       "species",
       "name",
       "gender",
-      "legs",
-      "hands",
       "saying",
       "friends",
+      "legs",
     ];
   }
   output = () => {
@@ -29,7 +28,6 @@ class Animal extends Creature {
   constructor(name, gender, saying, friends) {
     super(name, gender, saying, friends);
     this.legs = 4;
-    this.hands = 0;
   }
 }
 
@@ -39,6 +37,7 @@ class Human extends Creature {
     this.species = "human";
     this.legs = 2;
     this.hands = 2;
+    this.propsArray = [...this.propsArray, "hands"];
   }
 }
 
