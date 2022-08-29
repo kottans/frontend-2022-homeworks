@@ -4,31 +4,13 @@
     padding: 0;
 }
 
-.hiddenItems {
-    display: none;
-}
-
 .popupContainer {
-    width: 400px;
     border: 1px solid rgba(173, 139, 156, 0.34);
     border-radius: 5px;
     box-shadow: -3px 10px 23px 1px rgba(242, 220, 232, 0.22);
     overflow: scroll;
     height: 405px;
     position: relative;
-}
-
-.popupContainer:after {
-    content: "";
-    width: 15px;
-    height: 15px;
-    transform: rotate(-45deg);
-    background: #fff;
-    position: absolute;
-    box-shadow: 2px -2px 2px -1px rgb(242 220 232);
-    z-index: 0;
-    top: -5px;
-    left: calc(90% - 3px);
 }
 
 .menuContainer {
@@ -46,18 +28,19 @@
     height: 50px;
 }
 
-.navWrapper .navItem {
+.navItem {
     border: 2px solid transparent;
     position: relative;
     padding: 5px 8px;
+    list-style: none;
 }
 
-.navWrapper .navItem:hover {
+.navItem:hover {
     border: 2px solid #f6ccdb;
     border-radius: 3px;
 }
 
-.navWrapper .navItem .navLink {
+.navLink {
     font-size: 18px;
     color: dimgray;
     text-decoration: none;
@@ -65,16 +48,17 @@
     display: block;
 }
 
-.navWrapper .navItem img {
+.navImg, .popupItemImg {
     height: 100%;
+    display: block;
 }
 
-.navWrapper .navItem.icon {
+.navItem.icon {
     width: 25px;
     height: 25px;
 }
 
-.navWrapper .navItem .popupBtnCheckbox {
+.navItem .popupBtnCheckbox {
     position: absolute;
     top: 0;
     left: 0;
@@ -98,41 +82,55 @@
     outline: 2px solid blue;
 }
 
-.navWrapper .profile {
+.profile {
     height: 45px;
     width: 45px;
     padding: 0;
     margin-left: 15px;
 }
 
-.navWrapper .navItem.profile:hover {
+.profile:hover {
     border-radius: 50%;
 }
 
-.navWrapper .profile img {
+.profileImg {
     border-radius: 50%;
     width: 100%;
     height: 100%;
 }
 
-.navWrapper .appsPopup {
+.appsPopup {
     display: none;
     position: absolute;
     right: -15px;
     top: 50px;
+    width: 400px;
 }
 
-.navWrapper a:focus .appsPopup {
-    display: block;
+.appsPopup:after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    transform: rotate(-45deg);
+    background: #fff;
+    position: absolute;
+    box-shadow: 2px -2px 2px -1px rgb(242 220 232);
+    z-index: 0;
+    top: -5px;
+    left: calc(90% - 3px);
 }
 
-.navWrapper .popupWrapper .itemList {
+.itemList {
     overflow: auto;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
-.popupWrapper .loadMore {
+.hiddenItems {
+    display: none;
+}
+
+.loadMore {
     background-color: lightgrey;
     border: none;
     color: white;
@@ -149,34 +147,33 @@
     bottom: 0;
 }
 
-.popupWrapper .loadMore:hover {
+.loadMore:hover {
     background-color: grey;
 }
 
-.popupWrapper .visibilityFlag {
+.visibilityFlag {
     appearance: none;
     position: absolute;
     top: 0;
     left: 0;
 }
 
-.popupWrapper .visibilityFlag:focus ~ .loadMore {
+.visibilityFlag:focus ~ .loadMore {
     border: 2px solid #144aba;
     border-radius: 3px;
     display: block;
 }
 
-.popupWrapper .visibilityFlag:checked ~ .loadMore {
+.visibilityFlag:checked ~ .loadMore {
     display: none;
 }
 
-.popupWrapper .visibilityFlag:checked ~ .hiddenItems {
+.visibilityFlag:checked ~ .hiddenItems {
     overflow: auto;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
 }
 
-.popupWrapper .visibilityFlag:checked ~ .evenMore {
+.visibilityFlag:checked ~ .evenMore {
     display: block;
     width: 100%;
     color: lightslategray;
@@ -184,7 +181,7 @@
     padding: 10px 0;
 }
 
-.popupWrapper .evenMoreWrapper {
+.evenMoreWrapper {
     display: none;
 }
 
@@ -203,8 +200,7 @@
     color: #f6ccdb;
 }
 
-
-.popupContainer .popupWrapper img {
+.popupItemImg {
     height: 40px;
     padding: 5px 3px;
     margin: 8px 3px;
@@ -212,12 +208,14 @@
 
 .columnItem {
     box-sizing: border-box;
-    width: 32%;
-    text-align: center;
+    align-items: center;
     margin: 13px auto;
     border: 1px solid transparent;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
 }
+
 .columnItem:hover {
     border: 1px dashed #b4e2f5;
 }
@@ -227,7 +225,7 @@
 }
 
 .itemTitle {
-    font-size: 13px;
+    font-size: 16px;
     color: grey;
     text-decoration: none;
 }
@@ -241,4 +239,25 @@
     text-decoration: none;
     font-size: 17px;
     width: 100%;
+}
+
+@media (max-width: 500px) {
+    .appsPopup {
+        width: 300px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 33px);
+    }
+    
+    .appsPopup:after {
+        left: 48%;
+    }
+
+    .popupItemImg {
+        max-height: 50%;
+    }
+
+    .columnItem .itemTitle {
+        font-size: 14px;
+    }
 }
