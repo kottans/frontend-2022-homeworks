@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+li {
+    list-style: none;
+}
+
 .popupContainer {
     border: 1px solid rgba(173, 139, 156, 0.34);
     border-radius: 5px;
@@ -32,7 +36,6 @@
     border: 2px solid transparent;
     position: relative;
     padding: 5px 8px;
-    list-style: none;
 }
 
 .navItem:hover {
