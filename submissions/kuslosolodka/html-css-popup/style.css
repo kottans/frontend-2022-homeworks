@@ -8,17 +8,14 @@
 body {
   overflow: hidden;
 }
-.popup-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 30px 0;
-}
-.popup-label:focus {
-  background-color: red;
+.popup-checkbox:focus-within ~ .popup-label {
+  background: #33cccc81;
+  display: block;
+  width: 50px;
+  margin: 30px 400px 0 740px;
 }
 #popup-btn {
-  display: none;
+  appearance: none;
 }
 #popup-btn:checked ~ .popup-menu {
   display: block;
@@ -27,6 +24,10 @@ body {
   width: 50px;
   height: 50px;
   cursor: pointer;
+  margin: 30px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .popup-icon:hover {
   box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px,
@@ -34,9 +35,9 @@ body {
     rgb(255, 85, 85) 0px 0px 0px 15px;
 }
 .popup-menu {
-  margin: 10px 0 30px 570px;
+  margin: 0px 0 -30px 570px;
   box-shadow: 3px 6px 16px 0px rgba(184, 180, 184, 1);
-  height: 600px;
+  height: 570px;
   width: 400px;
   overflow-y: scroll;
   border-radius: 10px;
@@ -50,7 +51,7 @@ body {
 }
 .menu-icon {
   display: block;
-  margin: 15px 20px 15px 10px;
+  margin: 10px 20px 10px 10px;
   align-items: center;
   text-align: center;
   color: black;
@@ -76,19 +77,21 @@ body {
   cursor: pointer;
   background: rgba(205, 203, 203, 0.397);
   width: 383px;
-  height: 43px;
+  height: 44px;
   display: flex;
   align-items: center;
+  margin: -10px 0;
   border-radius: 2px;
 }
 .load-more:hover {
   background: rgb(255, 157, 0);
 }
-.load-more:focus {
-  background-color: greenyellow;
+.load-more-checkbox:focus-within ~ .load-more {
+  background: #33cccc81;
+  color: darkslategrey;
 }
 #load-more-btn {
-  display: none;
+  appearance: none;
 }
 #load-more-btn:checked ~ .load-more {
   display: none;
@@ -124,19 +127,6 @@ body {
   color: rgb(104, 102, 102);
   cursor: pointer;
 }
-/* .footer-icon {
-  color: black;
-}
-.footer:hover {
-  color: rgb(255, 157, 0);
-  cursor: pointer;
-}
-.footer {
-  margin: 0 100px;
-  padding: 0px 0px 30px 0px;
-  cursor: pointer;
-} */
-
 @media only screen and (max-width: 768px) {
   .popup-button {
     display: flex;
@@ -144,8 +134,11 @@ body {
     align-items: center;
     margin: 30px 0;
   }
-  .popup-label:focus {
-    background-color: red;
+  .popup-checkbox:focus-within ~ .popup-label {
+    background: #33cccc81;
+    display: block;
+    width: 50px;
+    margin: 30px 400px 0 360px;
   }
   .popup-menu {
     margin: 0 0 30px 190px;
@@ -171,9 +164,7 @@ body {
     display: flex;
     align-items: center;
     border-radius: 2px;
-  }
-  .load-more:focus {
-    background-color: greenyellow;
+    margin: -19px 0;
   }
   .btn-text {
     margin: 180px;
@@ -187,8 +178,11 @@ body {
     align-items: center;
     margin: 55px 0;
   }
-  .popup-label:focus {
-    background-color: red;
+  .popup-checkbox:focus-within ~ .popup-label {
+    background: #33cccc81;
+    display: block;
+    width: 50px;
+    margin: 30px 400px 0 160px;
   }
   .popup-icon {
     width: 50px;
@@ -220,13 +214,11 @@ body {
     cursor: pointer;
     background: rgba(205, 203, 203, 0.397);
     width: 300px;
-    height: 27px;
+    height: 25px;
+    margin: -17px 0;
     display: flex;
     align-items: center;
     border-radius: 2px;
-  }
-  .load-more:focus {
-    background-color: greenyellow;
   }
   .icon-photo {
     width: 60px;
