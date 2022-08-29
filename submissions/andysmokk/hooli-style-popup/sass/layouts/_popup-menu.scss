@@ -15,8 +15,8 @@
     background-image: url("../../icons/menu-grid-focus.svg");
 }
 
-.more-input:focus~.more-label,
-.more-input:hover~.more-label {
+.more-input:hover~.more-label,
+.more-input:focus~.more-label {
     background-color: var(--hover-focus-color);
 }
 
