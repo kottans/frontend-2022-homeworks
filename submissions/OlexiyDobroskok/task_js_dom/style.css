@@ -1,0 +1,264 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  background-image: url(../img/Dark_tower2.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+.header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 30%;
+  height: 470px;
+}
+
+.sidebar__button {
+  width: 350px;
+  height: 50px;
+  margin-bottom: 12px;
+  font-weight: bold;
+  background-color: rgb(221, 159, 25);
+  border-radius: 10px;
+}
+.sidebar__button:active {
+  background-color: rgb(177, 125, 12);
+}
+.sidebar__button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.sidebar__button:focus {
+  background-color: rgb(177, 125, 12);
+}
+.sidebar__button:last-child {
+  margin: 0;
+}
+.content {
+  display: flex;
+  margin: 0px 50px 100px 50px;
+}
+.content__section {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-left: 40px;
+}
+.textcontent__container {
+  width: 55%;
+  height: 540px;
+  padding: 10px;
+  background-color: rgba(252, 249, 243, 0.4);
+}
+
+.content__title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.quote__text {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.content__text {
+  text-indent: 1.5em;
+  line-height: 1.5em;
+}
+.content__img {
+  width: 300px;
+  height: 450px;
+  border-radius: 5px;
+  padding-top: 30px;
+}
+
+footer p {
+  text-align: center;
+  padding-top: 100px;
+}
+
+@media (max-width: 576px) {
+  .header h1 {
+    font-size: 18px;
+  }
+  .sidebar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 200px;
+  }
+  .sidebar__button {
+    width: 30%;
+    margin: 2px;
+    padding: 0px;
+    font-size: 12px;
+  }
+  .content {
+    display: block;
+    margin: 0;
+  }
+  .content__section {
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column-reverse;
+    width: 100%;
+    margin-left: 0px;
+  }
+  .textcontent__container {
+    width: 100%;
+    height: auto;
+    padding: 10px 15px;
+  }
+
+  .content__title {
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .quote__text {
+    margin-bottom: 5px;
+    font-size: 12px;
+    text-align: center;
+  }
+  .content__text {
+    font-size: 12px;
+  }
+  .content__img {
+    width: 100px;
+    height: 150px;
+    margin-bottom: 15px;
+  }
+
+  footer p {
+    padding-top: 30px;
+  }
+}
+
+@media ((min-width: 577px) and (max-width:768px)) {
+  .header h1 {
+    font-size: 24px;
+  }
+  .sidebar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 200px;
+  }
+  .sidebar__button {
+    width: 30%;
+    margin: 2px;
+    padding: 0px;
+    font-size: 14px;
+  }
+  .content {
+    display: block;
+    margin: 0;
+  }
+  .content__section {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+    margin-left: 0px;
+  }
+  .textcontent__container {
+    width: 100%;
+    height: auto;
+    padding: 10px 15px;
+  }
+
+  .content__title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .quote__text {
+    margin-bottom: 5px;
+    font-size: 18px;
+    text-align: center;
+  }
+  .content__text {
+    font-size: 18px;
+  }
+  .content__img {
+    width: 200px;
+    height: 300px;
+    margin-bottom: 15px;
+  }
+
+  footer p {
+    padding-top: 30px;
+  }
+}
+@media ((min-width: 769px) and (max-width:1100px)) {
+  .header h1 {
+    font-size: 24px;
+  }
+  .sidebar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 200px;
+  }
+  .sidebar__button {
+    width: 30%;
+    margin: 2px;
+    padding: 0px;
+    font-size: 16px;
+  }
+  .content {
+    display: block;
+    margin: 0;
+  }
+  .content__section {
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column-reverse;
+    width: 100%;
+    margin-left: 0px;
+  }
+  .textcontent__container {
+    width: 100%;
+    height: auto;
+    padding: 10px 15px;
+  }
+
+  .content__title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .quote__text {
+    margin-bottom: 5px;
+    font-size: 18px;
+    text-align: center;
+  }
+  .content__text {
+    font-size: 18px;
+  }
+  .content__img {
+    width: 200px;
+    height: 300px;
+    margin-bottom: 15px;
+  }
+
+  footer p {
+    padding-top: 30px;
+  }
+}

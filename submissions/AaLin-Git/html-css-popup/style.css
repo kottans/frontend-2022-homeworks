@@ -1,0 +1,276 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+.container,
+.footer,
+.header {
+  display: block;
+}
+
+html,
+.body {
+  font-family: Verdana, Tahoma, sans-serif;
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 13px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+.input::-ms-clear {
+  display: none;
+}
+
+.menuPopup,
+.menuPopupSub {
+  display: none;
+}
+
+.wrapper,
+.main,
+.footer,
+.container,
+.content,
+.menuPopupItem {
+  display: flex;
+}
+
+.contentItem,
+.labelIcon {
+  display: inline-block;
+}
+
+.hiddenNavbar,
+.content,
+.more {
+  position: relative;
+}
+
+.input,
+.menuPopup,
+.menuPopupSub,
+.menuInputSub {
+  position: absolute;
+}
+
+.wrapper,
+.main,
+.menuPopupItem {
+  flex-direction: column;
+}
+
+.main,
+.footer,
+.content,
+.menuPopupItem {
+  align-items: center;
+}
+
+.main,
+.container {
+  justify-content: flex-end;
+}
+
+.footer,
+.menuPopupItem,
+.more {
+  justify-content: center;
+}
+
+.header,
+.footer {
+  height: 100px;
+  background-color: #fffce8;
+}
+
+.content,
+.contentItem,
+.labelIcon {
+  padding: 5px;
+}
+
+.menuPopupItem {
+  margin: 5px;
+  padding: 5px 0;
+}
+
+.footer,
+.textItem,
+.more,
+.contentItem {
+  color: #4462ab;
+}
+
+.contentItem,
+.menuPopupItem,
+.more {
+  text-decoration: none;
+}
+
+.contentItem,
+.labelIcon,
+.menuPopupItem {
+  border-radius: 4px;
+}
+
+.menuPopup,
+.menuPopupSub {
+  overflow-x: hidden;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1 1 auto;
+  height: 1fr;
+}
+
+.backgroundImage {
+  height: 30%;
+}
+
+.content {
+  margin: 15px 30px;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  list-style: none;
+}
+
+.menuPopup,
+.menuPopupSub,
+.input {
+  appearance: none;
+}
+
+.hiddenNavbar .input:checked ~ .menuPopup,
+.hiddenNavbar .input:checked ~ .menuPopupSub {
+  display: block;
+}
+
+.input:checked ~ .labelSub {
+  display: none;
+}
+
+.contentItem {
+  font-size: 19px;
+  text-transform: uppercase;
+}
+
+.popupLink {
+  text-transform: none;
+}
+
+.labelSub,
+.menuIcon,
+.labelIcon {
+  cursor: pointer;
+}
+
+.menuIcon {
+  width: 20px;
+}
+
+.icon {
+  width: 20px;
+}
+
+.avatar,
+.menuPopupIcon {
+  width: 45px;
+  height: 45px;
+}
+
+.menuPopup {
+  background-color: #fff;
+  height: 288px;
+  width: 318px;
+  top: 80px;
+  right: -142px;
+  box-shadow: 0px 0px 27px 5px rgba(219, 248, 254, 0.52);
+  scrollbar-gutter: stable;
+}
+
+.menuPopupList {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  list-style: none;
+}
+
+.menuPopupSub {
+  height: 285px;
+  width: 302px;
+  top: 235px;
+  right: 0;
+}
+
+.more {
+  display: inline-flex;
+  min-width: 100%;
+  padding: 11px 0;
+  margin-top: 16px;
+  text-align: center;
+  opacity: 0.6;
+  background-color: #fffce8;
+}
+
+.contentItem:hover,
+.menuPopupItem:hover,
+.labelIcon:hover,
+.labelSub:hover,
+.more:hover {
+  outline: 1px solid #7ee1e6;
+}
+
+.contentItem:focus,
+.menuPopupItem:focus,
+.more:focus,
+.labelIcon:focus,
+.labelSub:focus,
+.hiddenNavbar .input:focus + .labelIcon,
+.menuPopup .input:focus + .labelSub {
+  outline: 4px solid #7ee1e6;
+}
+
+.contentItem:active,
+.menuPopupItem:active,
+.more:active,
+.labelIcon:active,
+.labelSub:active {
+  outline: 2px solid #3ae2ea;
+  color: #53a3c3;
+}
+
+@media (max-width: 550px) {
+  .content {
+    width: 100%;
+  }
+  .menuPopup {
+    right: -136px;
+  }
+  .menuPopupSub {
+    width: 314px;
+  }
+}
