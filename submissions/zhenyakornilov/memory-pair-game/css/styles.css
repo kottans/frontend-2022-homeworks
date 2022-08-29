@@ -30,6 +30,7 @@ button {
   font-size: 2rem;
   height: 5rem;
 }
+
 .header .title {
   color: #576f72;
   padding: 5px 0 5px 0;
@@ -55,6 +56,7 @@ button {
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
 }
+
 .all-cards .card-desc {
   text-align: center;
   font-size: 1.6rem;
@@ -127,10 +129,12 @@ button {
   html {
     font-size: 57.5%;
   }
+
   .all-cards {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 @media screen and (max-width: 480px) {
   html {
     font-size: 38%;
