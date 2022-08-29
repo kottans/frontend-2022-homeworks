@@ -1,0 +1,259 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+.header {
+    background-color: lightgrey;
+    padding: 0 10% 0 10%;
+}
+
+.header__row{
+    display: flex;
+    flex-wrap:nowrap;
+    justify-content:flex-end;
+    align-items:center;
+    height: 50px;
+}
+
+
+.header__menu {
+    margin-left: 30px;
+    color: dimgrey;
+}
+
+.link {
+    text-decoration: none;
+    color: dimgrey;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.link:focus {
+    text-decoration: underline;
+    color: black;
+}
+
+.header__img__menu:last-child {
+
+}
+
+ .header__img__menu {
+     width: 37px;
+     overflow: hidden;
+ }
+
+.header__img__menu:hover {
+    cursor: pointer;
+}
+
+ .for_popup.for_popup {
+     position: relative;
+ }
+
+ .check-box:hover {
+     background: black;
+ }
+
+.header__img__bell {
+    width: 20px;
+    height: 22px;
+}
+
+.header__img__ava {
+    width: 40px;
+    margin-left: 30px;
+    border-radius: 25px;
+}
+
+.menu__items {
+    display: none;
+    position: absolute;
+    right: -116px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    background-color: white;
+    border-radius: 5px;
+    width: 300px;
+    overflow: scroll;
+}
+
+.menu__items::after, .menu__items::before {
+    content: '';
+    position: absolute;
+    background: white;
+    left: 144px;
+    bottom: 396px;
+    width: 20px; height: 20px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    z-index: -1; /* hide one block above main viv */
+    transform: rotate(45deg); /* rotate 45º */
+}
+.menu__items::before {
+    z-index: 1; /* add block on div without shadow */
+    box-shadow: none;
+    }
+
+
+.menu__items__first__section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 8px;
+    row-gap: 8px;
+    margin: 15px;
+}
+
+.grid__item {
+    z-index: 2; /* add img closer than triangle */
+}
+
+.grid__link {
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    color: dimgrey;
+}
+
+.grid__link:hover {
+    border: 2px solid grey;
+    border-radius: 5px;
+    transition: 1s;
+    transform: scale(1.05, 1.05);
+
+}
+
+.grid__link:focus {
+    border: 2px solid grey;
+    border-radius: 5px;
+    transition: 1s;
+    transform: scale(1.05, 1.05);
+
+}
+
+.grid__link {
+    display: grid;
+    grid-template: 50px 1fr / 1fr;
+    text-decoration:none;
+}
+
+.grid__link:hover {
+    color: black;
+}
+
+.grid__img {
+    height: 80%;
+    margin: 0px auto;
+}
+
+.grid__img:focus {
+    outline: 2px solid blue;
+}
+
+.grid__name {
+    text-align: center;
+}
+
+.menu__items__separator {
+    position: relative;
+    text-align: center;
+    background-color: lightgrey;
+    height: 23px;
+    padding-top: 5px;
+    color: black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+
+.menu__items__second__section {
+    display: none;
+    position: absolute;
+    top: 364px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    background-color: white;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.menu__items__second__section::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: white;
+    box-shadow: none;
+    top: -6px;
+    height: 20px;
+    width: 100%;
+}
+
+.menu__items__second__section__hr {
+    width: 90%;
+    margin-top: 15px;
+}
+
+.grid__second__section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 8px;
+    row-gap: 8px;
+    padding: 15px;
+}
+
+.menu__items__end {
+    text-align: center;
+    height: 23px;
+    padding: 5px 0 10px 0;
+}
+
+.check_input_1 {
+    position: absolute;
+    appearance: none;
+}
+
+.check_input_1:checked + .menu__items {
+    display: block;
+}
+
+
+.check_2 {
+
+}
+
+.check_input_2 {
+    position: absolute;
+    appearance: none;
+    width: 0px;
+    height: 0px;
+}
+
+.check_input_2:checked + .menu__items__second__section {
+    display: block;
+}
+
+.even_more {
+    text-decoration: none;
+    color: dimgrey;
+}
+
+.header__bell {
+    margin-left: 10px;
+}
+
