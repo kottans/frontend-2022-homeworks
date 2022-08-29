@@ -1,127 +1,346 @@
 <!DOCTYPE html>
 <html class="page" lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MultiPopup</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<div class="page__body">
-    <header class="header">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="page__body">
+      <header class="header">
         <div class="logo">
-            <a href="https://github.com/denismaysov" target="_blank">
-            <img src="img/user.svg" alt="#"></a>
+          <a href="https://github.com/denismaysov" target="_blank">
+            <img src="img/user.svg" alt="#"
+          /></a>
         </div>
         <div class="search">
-            <input placeholder="Search.." class="search__input" id="search" type="search">
-            <label class="search__label" for="search">
-                <button class="search__button" type="submit">
-                    Поиск
-                </button>
-            </label>
+          <input
+            placeholder="Search.."
+            class="search__input"
+            id="search"
+            type="search"
+          />
+          <label class="search__label" for="search">
+            <button class="search__button" type="submit" id="search">
+              Поиск
+            </button>
+          </label>
         </div>
-    </header>
-    <div class="main">
-    <div class="main__row">
-    <nav class="option">
-        <div class="option__wrapper">
-        <ul class="option__menu">
-            <li class="option__menu-item">
-                <label class="option__label" for="menu__popup">
-                    <img class="option__img" src="img/menu.svg" alt="#" width="32" height="32">
-                </label>
-                <input class="option__checkbox" id="menu__popup" type="checkbox">
-                <div class="popup">
+      </header>
+      <div class="main">
+        <div class="main__row">
+          <nav class="option">
+            <div class="option__wrapper">
+              <ul class="option__menu">
+                <li class="option__menu-item">
+                  <label class="option__label" for="menu__popup">
+                    <img
+                      class="option__img"
+                      src="img/menu.svg"
+                      alt="#"
+                      width="32"
+                      height="32"
+                    />
+                  </label>
+                  <input
+                    class="option__checkbox"
+                    id="menu__popup"
+                    type="checkbox"
+                  />
+                  <div class="popup">
                     <div class="popup__container">
-                        <div class="popup__menu">
-                            <div class="popup__menu-item">
-                                <h2>First</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, iusto.</p>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio officiis autem accusantium, laudantium accusamus fugit aperiam quis at id dolores.</p>
-                            </div>
+                      <div class="popup__menu">
+                        <div class="popup__menu-item">
+                          <h2>First</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Nihil, iusto.
+                          </p>
+                          <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing
+                            elit. Odio officiis autem accusantium, laudantium
+                            accusamus fugit aperiam quis at id dolores.
+                          </p>
+                          <div class="popup__menu-image">
+                            <label class="popup__menu-label" for="popup-image">
+                              <div class="popup__menu-click">
+                                <a
+                                  target="_blank"
+                                  class="popup__menu-link"
+                                  aria-label="Lofi-music radio"
+                                  href="https://www.youtube.com/watch?v=jfKfPfyJRdk"
+                                >
+                                  <img
+                                    class="popup__menu-img"
+                                    src="img/headphones.svg"
+                                    alt="lofi radio"
+                                  />
+                                  <p>lofi radio</p>
+                                </a>
+                              </div>
+                            </label>
+                            <input
+                              id="popup-image"
+                              class="popup__menu-input"
+                              type="checkbox"
+                            />
+                          </div>
                         </div>
+                      </div>
                     </div>
-                </div>
-            </li>
-            <li class="option__menu-item">
-                <label class="option__label" for="mail__popup">
-                    <span></span>
-                    <img class="option__img" src="img/mail.svg" alt="#" width="32" height="32">
-                </label>
-                <input class="option__checkbox" id="mail__popup" type="checkbox">
-                <div class="popup">
+                  </div>
+                </li>
+                <li class="option__menu-item">
+                  <label class="option__label" for="mail__popup">
+                    <img
+                      class="option__img"
+                      src="img/mail.svg"
+                      alt="#"
+                      width="32"
+                      height="32"
+                    />
+                  </label>
+                  <input
+                    class="option__checkbox"
+                    id="mail__popup"
+                    type="checkbox"
+                  />
+                  <div class="popup">
                     <div class="popup__container">
-                        <div class="popup__menu">
-                            <div class="popup__menu-item">
-                                <h2>Second</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, iusto.</p>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio officiis autem accusantium, laudantium accusamus fugit aperiam quis at id dolores.</p>
-                            </div>
+                      <div class="popup__menu">
+                        <div class="popup__menu-item">
+                          <h2>Second</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Nihil, iusto.
+                          </p>
+                          <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing
+                            elit. Odio officiis autem accusantium, laudantium
+                            accusamus fugit aperiam quis at id dolores.
+                          </p>
+                          <div class="popup__menu-image">
+                            <label class="popup__menu-label" for="popup-image">
+                              <div class="popup__menu-click">
+                                <a
+                                  target="_blank"
+                                  class="popup__menu-link"
+                                  aria-label="Mafia Fandom"
+                                  href="https://mafia.fandom.com/ru/wiki/Mafia_Wiki"
+                                >
+                                  <img
+                                    class="popup__menu-img"
+                                    src="img/hipster.svg"
+                                    alt="Tobacco pipe"
+                                  />
+                                  <p>Mafia fandom</p>
+                                </a>
+                              </div>
+                            </label>
+                            <input
+                              id="popup-image"
+                              class="popup__menu-input"
+                              type="checkbox"
+                            />
+                          </div>
                         </div>
+                      </div>
                     </div>
-                </div>
-            </li>
-            <li class="option__menu-item">
-                <label class="option__label" for="heart__popup">
-                    <img class="option__img" src="img/heart.svg" alt="#" width="32" height="32">
-                </label>
-                <input class="option__checkbox" id="heart__popup" type="checkbox">
-                <div class="popup">
+                  </div>
+                </li>
+                <li class="option__menu-item">
+                  <label class="option__label" for="heart__popup">
+                    <img
+                      class="option__img"
+                      src="img/heart.svg"
+                      alt="#"
+                      width="32"
+                      height="32"
+                    />
+                  </label>
+                  <input
+                    class="option__checkbox"
+                    id="heart__popup"
+                    type="checkbox"
+                  />
+                  <div class="popup">
                     <div class="popup__container">
-                        <div class="popup__menu">
-                            <div class="popup__menu-item">
-                                <h2>Third</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, iusto.</p>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio officiis autem accusantium, laudantium accusamus fugit aperiam quis at id dolores.</p>
-                            </div>
+                      <div class="popup__menu">
+                        <div class="popup__menu-item">
+                          <h2>Third</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Nihil, iusto.
+                          </p>
+                          <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing
+                            elit. Odio officiis autem accusantium, laudantium
+                            accusamus fugit aperiam quis at id dolores.
+                          </p>
+                          <div class="popup__menu-image">
+                            <label class="popup__menu-label" for="popup-image">
+                              <div class="popup__menu-click">
+                                <a
+                                  target="_blank"
+                                  class="popup__menu-link"
+                                  aria-label="Best books for developer"
+                                  href="https://dev.to/awwsmm/20-most-recommended-books-for-software-developers-5578"
+                                >
+                                  <img
+                                    class="popup__menu-img"
+                                    src="img/book.svg"
+                                    alt="Book"
+                                  />
+                                  <p>Books</p>
+                                </a>
+                              </div>
+                            </label>
+                            <input
+                              id="popup-image"
+                              class="popup__menu-input"
+                              type="checkbox"
+                            />
+                          </div>
                         </div>
+                      </div>
                     </div>
-                </div>
-            </li>
-            <li class="option__menu-item">
-                <label class="option__label" for="star__popup">
-                    <img class="option__img" src="img/star.svg" alt="#" width="32" height="32">
-                </label>
-                <input class="option__checkbox" id="star__popup" type="checkbox">
-                <div class="popup">
+                  </div>
+                </li>
+                <li class="option__menu-item">
+                  <label class="option__label" for="star__popup">
+                    <img
+                      class="option__img"
+                      src="img/star.svg"
+                      alt="#"
+                      width="32"
+                      height="32"
+                    />
+                  </label>
+                  <input
+                    class="option__checkbox"
+                    id="star__popup"
+                    type="checkbox"
+                  />
+                  <div class="popup">
                     <div class="popup__container">
-                        <div class="popup__menu">
-                            <div class="popup__menu-item">
-                                <h2>Fourth</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, iusto.</p>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio officiis autem accusantium, laudantium accusamus fugit aperiam quis at id dolores.</p>
-                            </div>
+                      <div class="popup__menu">
+                        <div class="popup__menu-item">
+                          <h2>Fourth</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Nihil, iusto.
+                          </p>
+                          <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing
+                            elit. Odio officiis autem accusantium, laudantium
+                            accusamus fugit aperiam quis at id dolores.
+                          </p>
+                          <div class="popup__menu-image">
+                            <label
+                              class="popup__menu-label fourth"
+                              for="popup-image"
+                            >
+                              <div class="popup__menu-click">
+                                <a
+                                  target="_blank"
+                                  class="popup__menu-link"
+                                  aria-label="Best laptops"
+                                  href="https://www.cnet.com/tech/computing/best-laptop/"
+                                >
+                                  <img
+                                    class="popup__menu-img"
+                                    src="img/laptop.svg"
+                                    alt="Laptop"
+                                  />
+                                  <p>Best laptops 2022</p>
+                                </a>
+                              </div>
+                            </label>
+                            <input
+                              id="popup-image"
+                              class="popup__menu-input"
+                              type="checkbox"
+                            />
+                          </div>
                         </div>
+                      </div>
                     </div>
-                </div>
-            </li>
-            <li class="option__menu-item">
-                <label class="option__label" for="linkedin__popup">
-                    <img class="option__img" src="img/linkedin.svg" alt="#" width="32" height="32">
-                </label>
-                <input class="option__checkbox" id="linkedin__popup" type="checkbox">
-                <div class="popup">
+                  </div>
+                </li>
+                <li class="option__menu-item">
+                  <label class="option__label" for="linkedin__popup">
+                    <img
+                      class="option__img"
+                      src="img/linkedin.svg"
+                      alt="#"
+                      width="32"
+                      height="32"
+                    />
+                  </label>
+                  <input
+                    class="option__checkbox"
+                    id="linkedin__popup"
+                    type="checkbox"
+                  />
+                  <div class="popup">
                     <div class="popup__container">
-                        <div class="popup__menu">
-                            <div class="popup__menu-item">
-                                <h2>Fifth</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, iusto.</p>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio officiis autem accusantium, laudantium accusamus fugit aperiam quis at id dolores.</p>
-                            </div>
+                      <div class="popup__menu">
+                        <div class="popup__menu-item">
+                          <h2>Fifth</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Nihil, iusto.
+                          </p>
+                          <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing
+                            elit. Odio officiis autem accusantium, laudantium
+                            accusamus fugit aperiam quis at id dolores.
+                          </p>
+                          <div class="popup__menu-image">
+                            <label
+                              class="popup__menu-label fifth"
+                              for="popup-image"
+                            >
+                              <div class="popup__menu-click">
+                                <a
+                                  target="_blank"
+                                  class="popup__menu-link"
+                                  aria-label="My music playlist"
+                                  href="https://www.youtube.com/watch?v=mzB1VGEGcSU&list=RDmzB1VGEGcSU&start_radio=1"
+                                >
+                                  <img
+                                    class="popup__menu-img"
+                                    src="img/ipod.svg"
+                                    alt="Ipod"
+                                  />
+                                  <p>My music playlist</p>
+                                </a>
+                              </div>
+                            </label>
+                            <input
+                              id="popup-image"
+                              class="popup__menu-input"
+                              type="checkbox"
+                            />
+                          </div>
                         </div>
+                      </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
     </div>
-    </nav>
-</div>
-</div>
-</div>
-</body>
+  </body>
 </html>
