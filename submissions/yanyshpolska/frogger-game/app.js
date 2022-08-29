@@ -17,7 +17,6 @@ const PLAYER_START_POSITION = {
 
 const minEnemySpeed = 100;
 const speedIncrease = 70;
-const numberOfEnemies = 5;
 
 const ENEMY_POSITION_CORRECTION = 62;
 const STAR_POSITION_CORRECTION = 72;
@@ -125,10 +124,10 @@ Player.prototype.update = function (dt) {
   if (this.y > FIELD_HEIGHT) {
     this.y = FIELD_HEIGHT - PLAYER_POSITION_CORRECTION * this.rowPosition;
   }
-  if (this.y === 0 && reachRiver === false) {
+  if (this.y === 0 && doesReachWater === false) {
     level += 1;
     updateScore(bestStars, bestLevel, stars, level);
-    reachRiver = true;
+    doesReachWater = true;
     setTimeout(initialisation, 500);
   }
 };
@@ -136,7 +135,7 @@ Player.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 Player.prototype.handleInput = function (pressedKey) {
-  if (reachRiver) {
+  if (doesReachWater) {
     return;
   }
   switch (pressedKey) {
@@ -192,14 +191,14 @@ Star.prototype.checkCollision = function () {
 const player = new Player();
 const star = new Star(player);
 const allEnemies = [];
-let reachRiver = false;
+let doesReachWater = false;
 
 function initialisation(newGame) {
   updateScore(bestStars, bestLevel, stars, level);
-  reachRiver = false;
+  doesReachWater = false;
   star.newPosition();
   player.setStartPosition(PLAYER_START_POSITION);
-  createNewEnemy(1, player);
+  createNewEnemy(player);
   if (newGame) {
     allEnemies.splice(1);
   }
@@ -207,15 +206,13 @@ function initialisation(newGame) {
 
 initialisation();
 
-function createNewEnemy(numberOfEnemies, player) {
-  for (let i = 0; i < numberOfEnemies; i += 1) {
-    const x = getRandomNumber(FIELD_WIDTH);
-    const y =
-      getItemRowPosition(NUMBER_OF_DANGER_ROWS) + ENEMY_POSITION_CORRECTION;
-    const speed = getRandomNumber(speedIncrease) + minEnemySpeed;
-    const newEnemy = new Enemy(x, y, speed, player);
-    allEnemies.push(newEnemy);
-  }
+function createNewEnemy(player) {
+  const x = getRandomNumber(FIELD_WIDTH);
+  const y =
+    getItemRowPosition(NUMBER_OF_DANGER_ROWS) + ENEMY_POSITION_CORRECTION;
+  const speed = getRandomNumber(speedIncrease) + minEnemySpeed;
+  const newEnemy = new Enemy(x, y, speed, player);
+  allEnemies.push(newEnemy);
 }
 
 document.addEventListener("keyup", function (e) {
