@@ -16,7 +16,7 @@ class Creature {
   }
 
   getProps() {
-    return Object.getOwnPropertyNames(this).map((prop) => this[prop]);
+    return Object.getOwnPropertyNames(this).map((prop) => this[prop]).join("; ");
   }
 }
 
