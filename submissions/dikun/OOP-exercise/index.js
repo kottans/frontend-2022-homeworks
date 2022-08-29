@@ -50,7 +50,8 @@ const dog = new Dog('Bim', 'male', 'woof!');
 const cat = new Cat('Tom', 'male', "meow!");
 const man = new Human('Jack', 'male', "Captain Jack Sparrow!");
 const woman = new Human('Elizabeth', 'female', "He's A Pirate.");
-const inhabitants = [dog, cat, man, woman];
+const catwoman = new Human('Lisa', 'female', cat.talk);
+const inhabitants = [dog, cat, man, woman, catwoman];
 
 
 inhabitants.forEach((resident) => print(resident.inhabitantsDescr()));
