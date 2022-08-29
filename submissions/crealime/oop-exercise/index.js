@@ -54,8 +54,8 @@ class Human extends Inhabitant {
 }
 
 class CatWoman extends Inhabitant {
-  constructor(name, surname, saying, society = false) {
-    super('cat-woman', name, 'female', saying, society)
+  constructor(name, surname, society = false) {
+    super('cat-woman', name, 'female', new Cat().saying, society)
     this.surname = surname
     this.legs = 2
     this.hands = 2
@@ -66,13 +66,12 @@ class CatWoman extends Inhabitant {
   }
 }
 
-
 const dog = new Dog('Marley', 'male', 4)
 const cat = new Cat('Sophie', 'female', 4)
 const man = new Human('Harry', 'Taylor', 'male', 2, 2, 'Hello everyone!')
 const woman = new Human('Emily', 'Brown', 'female', 2, 2, 'Hi all!')
 const pirate = new Human('John', 'Silver', 'male', 1, 2, 'Give no quarter!')
-const catWoman = new CatWoman('Selina', 'Kyle', cat.saying)
+const catWoman = new CatWoman('Selina', 'Kyle')
 
 dog.friends.push(cat.name, man.name)
 cat.friends.push(dog.name, woman.name, catWoman.name)
