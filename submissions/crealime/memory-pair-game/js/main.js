@@ -231,10 +231,13 @@ function initStartPage() {
   startPageUl.addEventListener('click', function(e) {
     e.preventDefault()
 
+    const link = e.target.closest('.start-page__link') || null
     const isPreview = document.querySelector('.start-page__checkbox').checked
-    const numberOfPairs = e.target.dataset.pair
 
-    fadeOutFadeIn(initGame, numberOfPairs, isPreview) // Show game page with animation
+    if (link) {
+      const numberOfPairs = link.dataset.pair
+      fadeOutFadeIn(initGame, numberOfPairs, isPreview) // Show game page with animation
+    }
   })
 }
 
