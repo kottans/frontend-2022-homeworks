@@ -14,18 +14,11 @@ html,
 body {
   height: 100%;
   width: 100%;
-  font-size: 100%;
   line-height: 1;
   font-size: 14px;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
 }
 a {
   text-decoration: none;
-}
-ul li {
-  list-style: none;
 }
 .main {
   height: 100%;
@@ -81,6 +74,7 @@ ul li {
   min-width: 1.715em;
 }
 .menu__item_checkbox_label {
+  cursor: pointer;
   position: absolute;
   height: 1.715em;
   width: 1.715em;
@@ -159,6 +153,7 @@ ul li {
   border-top: 1px solid #876991;
 }
 .popup__item_checkbox_label {
+  cursor: pointer;
   margin: auto;
   display: flex;
   justify-content: center;
