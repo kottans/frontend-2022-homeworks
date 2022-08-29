@@ -113,7 +113,6 @@ Player.prototype.setStartPosition = function (position) {
   this.rowPosition = position.rowPosition;
   this.x = position.x;
   this.y = position.y - PLAYER_POSITION_CORRECTION * this.rowPosition;
-  console.log(this.y);
 };
 Player.prototype.update = function (dt) {
   //  reached right/left borders
