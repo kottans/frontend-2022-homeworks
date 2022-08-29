@@ -72,18 +72,16 @@ function makeFirstPage() {
 makeFirstPage();
 
 function makeMenu(content) {
-  for (let i = 0; i < content.length; i++) {
-    const item = document.createElement("li");
+  content.forEach((item) => {
+    const menuItem = document.createElement("li");
     const menuLink = document.createElement("a");
-    item.classList.add("menu__item");
-    item.setAttribute("id", `${i}`);
-    menuLink.setAttribute("id", `${i}`);
+    menuItem.classList.add("menu__item");
     menuLink.setAttribute("href", "#");
     menuLink.classList.add("menu__link");
-    menuLink.textContent = content[i].name;
-    item.append(menuLink);
-    menuList.append(item);
-  }
+    menuLink.textContent = item.name;
+    menuItem.append(menuLink);
+    menuList.append(menuItem);
+  });
 
   menuWrapper.append(menuList);
 }
@@ -93,7 +91,7 @@ makeMenu(content);
 burger.addEventListener("click", menuHandler);
 const menuClasses = menuList.classList;
 
-function menuHandler(e) {
+function menuHandler() {
   function openMenu() {
     menuClasses.remove("menu__list_hidden");
   }
@@ -117,48 +115,61 @@ function menuHandler(e) {
   }
 }
 
-const menuItems = document.querySelectorAll(".menu__item");
+menuList.addEventListener("click", prepareLayoutById);
 
-for (let i = 0; i < content.length; i++) {
-  menuItems[i].addEventListener("click", makeContent);
-}
-
-function makeContent(e) {
+function prepareLayoutById(e) {
   menuHandler();
-  contentBox.innerHTML = "";
-  const id = e.target.id;
 
-  const contentContainer = document.createElement("div");
-  contentContainer.classList.add("content__container");
+  const contentId = getContentId();
 
-  const image = document.createElement("img");
-  image.classList.add("content__image");
-  image.setAttribute("srcset", content[id].imgUrl);
+  prepareLayout(contentId);
 
-  const textWrapper = document.createElement("div");
-  textWrapper.classList.add("content__text__wrapper");
+  function getContentId() {
+    let result;
+    content.forEach((item) => {
+      if (item.name === e.target.textContent) result = content.indexOf(item);
+    });
+    return result;
+  }
 
-  const name = document.createElement("h2");
-  name.classList.add("content__title");
-  name.innerHTML = content[id].name;
+  function prepareLayout(contentId) {
+    if (contentId != undefined) {
+      const contentContainer = document.createElement("div");
+      contentContainer.classList.add("content__container");
 
-  const subTitle = document.createElement("h3");
-  subTitle.classList.add("content__subtitle");
-  subTitle.innerHTML = content[id].altName;
+      const image = document.createElement("img");
+      image.classList.add("content__image");
+      image.setAttribute("srcset", content[contentId].imgUrl);
 
-  const warcry = document.createElement("h4");
-  warcry.classList.add("content__warcry");
-  warcry.innerHTML = content[id].warCry;
+      const textWrapper = document.createElement("div");
+      textWrapper.classList.add("content__text__wrapper");
 
-  const description = document.createElement("p");
-  description.classList.add("content__description");
-  description.innerHTML = content[id].descr;
+      const name = document.createElement("h2");
+      name.classList.add("content__title");
+      name.innerHTML = content[contentId].name;
 
-  const mainLegion = document.createElement("h5");
-  mainLegion.classList.add("content__main__legion");
-  mainLegion.innerHTML = content[id].mainLegion;
+      const subTitle = document.createElement("h3");
+      subTitle.classList.add("content__subtitle");
+      subTitle.innerHTML = content[contentId].altName;
 
-  textWrapper.append(name, subTitle, warcry, description, mainLegion);
-  contentContainer.append(image, textWrapper);
-  contentBox.append(contentContainer);
+      const warcry = document.createElement("h4");
+      warcry.classList.add("content__warcry");
+      warcry.innerHTML = content[contentId].warCry;
+
+      const description = document.createElement("p");
+      description.classList.add("content__description");
+      description.innerHTML = content[contentId].descr;
+
+      const mainLegion = document.createElement("h5");
+      mainLegion.classList.add("content__main__legion");
+      mainLegion.innerHTML = content[contentId].mainLegion;
+
+      textWrapper.append(name, subTitle, warcry, description, mainLegion);
+      contentContainer.append(image, textWrapper);
+
+      contentBox.innerHTML = "";
+
+      contentBox.append(contentContainer);
+    }
+  }
 }
