@@ -247,11 +247,21 @@ $btn-hov: rgba(227, 90, 37, 0.5);
     text-align: center;
   }
 
+  &__img-inner {
+    height: 0;
+    padding-bottom: 141%;
+    position: relative;
+  }
+
   &__img {
-    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     max-height: 500px;
+    object-fit: cover;
+    object-position: center;
   }
 
   &__info-list {
@@ -289,11 +299,6 @@ $btn-hov: rgba(227, 90, 37, 0.5);
       "top"
       "img-wrap"
       "info-wrap";
-  }
-
-  .content__img-wrap {
-    max-width: 350px;
-    margin: 0 auto;
   }
 }
 
