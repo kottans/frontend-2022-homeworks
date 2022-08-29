@@ -15,30 +15,16 @@ const wrapper = document.querySelector(".wrapper");
 function closeModal() {
   modal.classList.add("hide");
   modal.classList.remove("show");
-  document.body.style.overflow = "";
 }
 
 function openModal() {
   modal.classList.add("show");
   modal.classList.remove("hide");
-  document.body.style.overflow = "hidden";
 }
 
-burgerBtn.addEventListener("click", (e) => {
+burgerBtn.addEventListener("click", () => {
   burgerBtn.classList.toggle("active");
   sidebar.classList.toggle("sidebar--visible");
-
-  if (e.target === wrapper) {
-    burgerBtn.classList.toggle("active");
-    sidebar.classList.toggle("sidebar--visible");
-  }
-});
-
-wrapper.addEventListener("click", (e) => {
-  if (e.target === wrapper) {
-    console.log(123);
-    closeModal();
-  }
 });
 
 const message = {
@@ -110,24 +96,19 @@ function addGenderHeader(gender, element) {
   element.prepend(friendGender);
 }
 
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
 const compareByName = (a, b) =>
   a.name.first.toLowerCase() <= b.name.first.toLowerCase() ? -1 : 1;
 const compareByAge = (a, b) => a.dob.age - b.dob.age;
 
 const compareByGender = (friend, type) => friend.gender === type;
 
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
 function filterBySearch(arr, target) {
   return arr.filter((friend) => {
     const fullName = `${friend.name.first} ${friend.name.last}`;
     return fullName.toLowerCase().includes(target.toLowerCase());
   });
 }
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
+
 function filterUsers({ target }) {
   let resultUsers = [...users];
   if (searchInput.value !== "") {
