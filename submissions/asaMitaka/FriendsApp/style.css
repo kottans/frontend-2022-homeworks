@@ -6,15 +6,13 @@
 
 .container {
     width: 100%;
-    /* min-height: 100vh; */
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     background-color: #e4e4e4;
 }
 
-/* Header */
-header {
+.header {
     width: 100%;
     min-height: 2.5vh;
     margin-left: auto;
@@ -22,7 +20,7 @@ header {
     background-color: #f1eaea;
 }
 
-header a {
+.header__a {
     text-decoration: none;
     color: #000000;
 }
@@ -32,7 +30,6 @@ header a {
     min-height: 95vh;
 }
 
-/* Aside block */
 .asideBlock {
     background: #eeebeb;
     flex-basis: 33%;
@@ -49,23 +46,12 @@ header a {
     display: flex;
     justify-content: center;
     padding: 10px 0;
+    border-top: .3px solid black;
+    border-right: .3px solid black;
+    border-left: .5px solid white;
+    border-bottom: .5px solid white;
 }
 
-#minNumber, #maxNumber {
-    width: 20%;
-}
-
-#minNumber:focus, #maxNumber:focus {
-    background-color: lightblue;
-}
-
-#minNumber::-webkit-outer-spin-button, #maxNumber::-webkit-outer-spin-button ,
-#minNumber::-webkit-inner-spin-button, #maxNumber::-webkit-inner-spin-button  {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/*mainContent*/
 .articleBlock {
     background: #faf1f1;
     flex-basis: 66%;
@@ -99,19 +85,20 @@ header a {
     padding: 5px 0;
 }
 
-.content__item p {
+.content__item-p {
     word-break: break-all;
     height: 3em;
     font-size: 12px;
 }
 
-.content__item a {
+.content__item-a {
     text-decoration: none;
     color: #000000;
 }
 
-.content__item a:hover {
-    color: #423f3f
+.content__item-a:hover {
+    color: #423f3f;
+    background-color: rgb(228, 226, 222);
 }
 
 .content__item-gender {
@@ -124,18 +111,41 @@ header a {
     height: 2em;
 }
 
-/* Footer */
-footer {
+.footer {
     min-height: 2.5vh;
     background-color: rgb(197, 186, 197);
     width: 100%;
-    /* bottom: 0px; */
-    /* position: fixed; */
 }
 
-footer a {
+.footer__a {
     text-decoration: none;
     color: #000000;
+}
+
+input:checked {
+    accent-color: black;
+}
+
+input + label:hover {
+    accent-color: black;
+    background-color: #e7e5e5;
+}
+
+#reset {    
+    transition-duration: 0.4s;
+    border-top: .3px solid black;
+    border-right: .3px solid black;
+    border-left: .5px solid white;
+    border-bottom: .5px solid white;
+}
+
+#reset:hover {
+    transition-duration: 0.4s;
+    background-color: rgb(201, 195, 195);
+    border-top: .5px solid white;
+    border-right: .5px solid white;
+    border-left: .3px solid black;
+    border-bottom: .3px solid black;
 }
 
 @media screen and (max-width: 600px) {
@@ -153,7 +163,7 @@ footer a {
         background-color: #e4e4e4;
     }
 
-    footer {
+    .footer {
         position: fixed;
         bottom: 0;
     }

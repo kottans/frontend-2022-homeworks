@@ -9,62 +9,54 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <a href="https://kottans.org/" target="_blank">Kottans</a>
-        </header>
+        <div class="header">
+            <a class='header__a' href="https://kottans.org/" target="_blank">Kottans</a>
+        </div>
 
-        <main class="mainBlock">
-            <aside class="asideBlock">
-                <form name="age" class="asideBlock__items">
-                    <p>By Age</p>
-                    <input type="radio" name="age" id="ageMore" value="ageMore" class="age">
-                    <label for="ageMore">Age < </label>
-                    <input type="radio" name="age" id="ageLess" value="ageLess" class="age">
-                    <label for="ageLess">Age > </label>
-                </form>
-
-                <form class="asideBlock__items" name="last">
-                    <p>By Last Name</p>
-                    <input type="radio" name="last" id="lastAToZ" value="lastAToZ" class="last">
-                    <label for="lastAToZ">A-Z</label>
-                    <input type="radio" name="last" id="lastZToA" value="lastZToA" class="last">
-                    <label for="lastZToA">Z-A</label>
-                </form>
-            
-                <form class="asideBlock__items" name="minMax">
-                    <p>Age 10 - 100</p>
-                    <input type="number" name="minNumber" id="minNumber" min="10" value="10">
-                    <input type="number" name="maxNumber" id="maxNumber" max="100" value="100">
-                </form>  
-    
-                <form class="asideBlock__items" name="search">
-                    <input type="text" id="searchBar" name="search" required
-                                minlength="1" maxlength="10" size="20" placeholder="search">
+        <div class="mainBlock">
+            <div class="asideBlock">
+                <form name="age">
+                    <div class="asideBlock__items">
+                        <p>By Age</p>
+                        <input type="radio" name="sort" id="ageMore">
+                        <label for="ageMore">Age < </label>
+                        <input type="radio" name="sort" id="ageLess">
+                        <label for="ageLess">Age > </label>
+                    </div>
+                    <div class="asideBlock__items">
+                        <p>By Last Name</p>
+                        <input type="radio" name="sort" id="lastAToZ">
+                        <label for="lastAToZ">A-Z</label>
+                        <input type="radio" name="sort" id="lastZToA">
+                        <label for="lastZToA">Z-A</label>
+                    </div>
                 </form>
     
-                <form class="asideBlock__items" name="gender">
-                    <input type="radio" id="male"
-                    name="gender" value="male" class="gender">
-                    <label for="male" class="gender">MALE</label>
-                
-                    <input type="radio" id="female"
-                    name="gender" value="female" class="gender">
-                    <label for="female">FEMALE</label>
-                
-                    <input type="radio" id="all"
-                    name="gender" value="all" class="gender" checked>
-                    <label for="all">All</label>
+                <form name="gender">
+                    <div class="asideBlock__items">
+                        <input type="radio" id="male"
+                        name="gender">
+                        <label for="male" class="gender">MALE</label>
+                    
+                        <input type="radio" id="female"
+                        name="gender">
+                        <label for="female">FEMALE</label>
+                    
+                        <input type="radio" id="all"
+                        name="gender" checked>
+                        <label for="all">All</label>
+                    </div>
                 </form>
     
-                <form class="asideBlock__items" name="reset">
-                    <button class="reset" name="reset" data-attr="reset">RESET</button>
-                </form>
-            </aside>
+                <div class="asideBlock__items">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
             <article class="articleBlock"></article>
-        </main>
-        <footer>
-            <a href="https://kottans.org/" target="_blank">Kottans</a>
-        </footer>        
+        </div>
+        <div class="footer">
+            <a class="footer__a" href="https://kottans.org/" target="_blank">Kottans</a>
+        </div>        
     </div>
     <script src="script.js"></script>
 </body>
