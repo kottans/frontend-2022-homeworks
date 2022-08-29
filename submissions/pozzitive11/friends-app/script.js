@@ -1,9 +1,9 @@
 let users = [];
-const cardList = document.querySelector(".users__list");
+const cardsList = document.querySelector(".users__list");
 
-const sortAge = document.querySelector(".sort-age");
-const sortName = document.querySelector(".sort-name");
-const filterGender = document.querySelector(".sort-gender");
+const sortAgeBlock = document.querySelector(".sort-age");
+const sortNameBlock = document.querySelector(".sort-name");
+const filterGenderBlock = document.querySelector(".sort-gender");
 
 const searchInput = document.querySelector("#search-input");
 const resetBtn = document.querySelector(".form__button");
@@ -22,27 +22,27 @@ function openModal() {
   modal.classList.remove("hide");
 }
 
-burgerBtn.addEventListener("click", () => {
+burgerBtn.addEventListener("click", (e) => {
   burgerBtn.classList.toggle("active");
   sidebar.classList.toggle("sidebar--visible");
 });
 
-const message = {
+const statusMessage = {
   loading: "img/spinner.svg",
-  failure: "Technical problems, try again later :(",
+  failure: "Technical problems, try again later",
 };
 
 let loadingMessage = document.createElement("img");
-function loadingStatus() {
-  loadingMessage.src = message.loading;
+function showLoadingStatus() {
+  loadingMessage.src = statusMessage.loading;
   loadingMessage.classList.add("status-block");
 
-  cardList.insertAdjacentElement("afterend", loadingMessage);
+  cardsList.insertAdjacentElement("afterend", loadingMessage);
 }
 
 function loadUsersData() {
-  loadingStatus();
-  
+  showLoadingStatus();
+
   fetch(
     "https://randomuser.me/api/?results=20&nat=us,ua,de&inc=picture,name,dob,gender,location"
   )
@@ -54,20 +54,20 @@ function loadUsersData() {
       showCards(users);
       loadingMessage.remove();
     })
-    .catch(() => showError());
+    .catch(() => showErrorStauts());
 }
 
-function showError() {
+function showErrorStauts() {
   const errorMessage = document.createElement("div");
   errorMessage.classList.add("error-block");
-  errorMessage.innerHTML = `${message.failure}`;
-  
-  console.log(message.failure);
-  cardList.append(errorMessage);
+  errorMessage.innerHTML = `${statusMessage.failure}`;
+
+  console.log(statusMessage.failure);
+  cardsList.append(errorMessage);
 }
 
-function showCards(arr) {
-  arr.forEach(({ picture, name, dob, gender, location }) => {
+function showCards(cards) {
+  cards.forEach(({ picture, name, dob, gender, location }) => {
     createCard({ picture, name, dob, gender, location });
   });
 }
@@ -83,28 +83,31 @@ function createCard({ picture, name, dob, gender, location }) {
     <p class="user__location">${location.country}</p>`;
 
   addGenderHeader(gender, userCard);
-  cardList.append(userCard);
+  cardsList.append(userCard);
 }
 
-function addGenderHeader(gender, element) {
+function addGenderHeader(gender, card) {
   const friendGender = document.createElement("div");
   if (gender === "male") {
     friendGender.innerHTML = `<h4 class="user__gender user__gender--male">${gender}</h4>`;
   } else {
     friendGender.innerHTML = `<h4 class="user__gender user__gender--female">${gender}</h4>`;
   }
-  element.prepend(friendGender);
+  card.prepend(friendGender);
 }
 
-const compareByName = (a, b) =>
-  a.name.first.toLowerCase() <= b.name.first.toLowerCase() ? -1 : 1;
-const compareByAge = (a, b) => a.dob.age - b.dob.age;
+const compareByName = (firstUser, secondUser) =>
+  firstUser.name.first.toLowerCase() <= secondUser.name.first.toLowerCase()
+    ? -1
+    : 1;
+const compareByAge = (firstUser, secondUser) =>
+  firstUser.dob.age - secondUser.dob.age;
 
-const compareByGender = (friend, type) => friend.gender === type;
+const compareByGender = (user, type) => user.gender === type;
 
 function filterBySearch(arr, target) {
-  return arr.filter((friend) => {
-    const fullName = `${friend.name.first} ${friend.name.last}`;
+  return arr.filter((user) => {
+    const fullName = `${user.name.first} ${user.name.last}`;
     return fullName.toLowerCase().includes(target.toLowerCase());
   });
 }
@@ -118,13 +121,13 @@ function filterUsers({ target }) {
   if (target.checked) {
     switch (form.gender.value) {
       case "male":
-        resultUsers = resultUsers.filter((friend) =>
-          compareByGender(friend, "male")
+        resultUsers = resultUsers.filter((user) =>
+          compareByGender(user, "male")
         );
         break;
       case "female":
-        resultUsers = resultUsers.filter((friend) =>
-          compareByGender(friend, "female")
+        resultUsers = resultUsers.filter((user) =>
+          compareByGender(user, "female")
         );
         break;
       case "all":
@@ -145,22 +148,22 @@ function filterUsers({ target }) {
     }
   }
 
-  cardList.innerHTML = "";
+  cardsList.innerHTML = "";
   showCards(resultUsers);
 }
 
 function resetFilters() {
   resultUsers = [...users];
-  cardList.innerHTML = "";
+  cardsList.innerHTML = "";
   showCards(resultUsers);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   loadUsersData();
 
-  sortName.addEventListener("click", filterUsers);
-  sortAge.addEventListener("click", filterUsers);
-  filterGender.addEventListener("click", filterUsers);
+  sortNameBlock.addEventListener("click", filterUsers);
+  sortAgeBlock.addEventListener("click", filterUsers);
+  filterGenderBlock.addEventListener("click", filterUsers);
   searchInput.addEventListener("input", filterUsers);
   resetBtn.addEventListener("click", resetFilters);
 });
