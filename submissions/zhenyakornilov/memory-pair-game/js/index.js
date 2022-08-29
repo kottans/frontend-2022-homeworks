@@ -10,7 +10,7 @@ const states = {
   totalTries: 0,
 };
 const allGameCards = shuffleCards([...cards, ...cards]);
-renderCards(allGameCards);
+renderCards(allGameCards, cardsMenu);
 
 function shuffleCards(cardsArr) {
   for (let i = cardsArr.length - 1; i > 0; i--) {
@@ -23,8 +23,7 @@ function shuffleCards(cardsArr) {
   return cardsArr;
 }
 
-function renderCards(cardsObj) {
-  const cardsAll = document.getElementById("game-cards");
+function renderCards(cardsObj, cardsList) {
   let cardsHTML = cardsObj
     .map(({ name, imageSrc }) => {
       return `
@@ -43,7 +42,7 @@ function renderCards(cardsObj) {
     })
     .join("");
 
-  cardsAll.innerHTML = cardsHTML;
+  cardsList.innerHTML = cardsHTML;
 }
 
 function sleep(milliseconds) {
