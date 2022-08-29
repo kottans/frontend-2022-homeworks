@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-image: url(./img/hp-pattern.png);
+}
+img {
+    display: block;
+    max-width: 200px;
+    border-radius: 15px;
+    background-color: aliceblue;
+}
+img:hover{
+    cursor: pointer;
+}
+header {
+    width: 100%;
+    font-size: 50px;
+}
+span {
+    display: block;
+    text-align: center;
+    color: rgb(64, 8, 196)
+}
+.boardWrapper {
+    margin: 20px auto;
+    max-width: 1200px;
+    display: grid;
+    gap: 10%;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    perspective: 1000px;
+}
+.card {
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+.flippedCard {
+    content: url(./img/funko-logo.png);
+}
+.transform{
+    transform: rotateY(180deg);
+}
+@media (max-width: 1200px) {
+    .boardWrapper{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    .boardWrapper{
+        gap: 10px;
+    }
+    header{
+        font-size: 36px;
+    }
+    img{
+        width: 150px;
+    }
+}
+@media (max-width: 500px) {
+    img{
+        width: 100px;
+    }
+}
