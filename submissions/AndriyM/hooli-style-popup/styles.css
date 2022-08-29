@@ -64,30 +64,29 @@ body {
     padding: 12px 0px;
 }
 
+.avatar {
+    border-radius: 50%;
+}
+
 .nav__list {
     justify-content: space-around;
     display: flex;
     align-items: center;
 }
 
-.avatar {
-    border-radius: 50%;
-}
-
 .nav__link {
     text-decoration: none;
     font-size: 22px;
     color: white;
+    transition: 0.7 all;
 }
 
-.popup__input:hover ~ .popup__label .nav__img-link,
-.nav__item:focus,
-.nav__link:hover,
-.nav__img-link:hover,
-.nav__link:focus {
-    transform: scale(1.2);
-    border: 1px solid white;
-    cursor: pointer;
+.nav__link:hover {
+    outline: white solid 2px;
+}
+
+.item__nav {
+    position: relative;
 }
 
 .popup__list {
@@ -102,9 +101,7 @@ body {
     gap: 40px;
     display: none;
     background-color: #ffffff;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
-        -23px 0 20px -23px rgba(0, 0, 0, 0.6),
-        23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), -23px 0 20px -23px rgba(0, 0, 0, 0.6), 23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
 }
 .popup__list-more {
     flex-wrap: wrap;
@@ -118,10 +115,9 @@ body {
     text-align: center;
 }
 
-.popup__item:hover {
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
-        -23px 0 20px -23px rgba(0, 0, 0, 0.6),
-        23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
+.popup__item:hover,
+.popup__item:focus-within {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), -23px 0 20px -23px rgba(0, 0, 0, 0.6), 23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
 }
 
 .popup__item:nth-child(even) {
@@ -129,6 +125,26 @@ body {
 }
 .popup__link-img {
     margin-bottom: 10px;
+}
+
+.popup__input {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    top: 0;
+    left: 0;
+    width: 35px;
+    height: 35px;
+}
+
+.popup__label {
+    position: relative;
+    cursor: pointer;
+}
+
+.popup__item {
+    cursor: pointer;
 }
 
 .popup__text {
@@ -141,11 +157,6 @@ body {
 .popup__link:focus {
     outline: none;
 }
-.popup__item:focus-within {
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
-        -23px 0 20px -23px rgba(0, 0, 0, 0.6),
-        23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
-}
 
 .btn-more {
     padding: 5px 30px;
@@ -157,14 +168,12 @@ body {
     color: #fff;
     border: 0;
     text-decoration: none;
-    cursor: pointer;
     font-family: inherit;
     font-size: 18px;
     line-height: 24px;
     font-style: normal;
     font-weight: 500;
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-        0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
 .popup__input-more:hover ~ .popup__label-more .btn-more,
@@ -172,7 +181,6 @@ body {
 .btn-more:focus {
     background-color: #303f9f;
     outline: none;
-    cursor: pointer;
 }
 
 .div {
@@ -184,21 +192,6 @@ body {
 .popup__list-more {
     gap: 40px;
 }
-.popup__item {
-    position: relative;
-}
-
-.popup__input {
-    position: absolute;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-}
 
 .popup__input-more {
     position: absolute;
@@ -207,8 +200,8 @@ body {
     appearance: none;
     width: 100px;
     height: 40px;
-    cursor: pointer;
     left: 116px;
+    cursor: pointer;
 }
 .popup__item-more {
     width: 100%;
@@ -228,6 +221,7 @@ body {
 .popup__input:checked ~ .popup__list,
 .popup__input-more:checked ~ .popup__list-more {
     display: flex;
+    outline: none;
 }
 
 .popup__input-more:checked ~ .popup__label-more .btn-more,
@@ -252,8 +246,4 @@ body {
     .popup__list-more {
         gap: 20px;
     }
-}
-
-.popup__label {
-    position: relative;
 }
