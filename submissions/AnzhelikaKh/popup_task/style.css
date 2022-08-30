@@ -85,13 +85,14 @@
     flex-direction: row;
     flex-wrap: wrap;
     position: absolute;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     box-sizing: border-box;
     top: 180%;
     right: 0;
     box-shadow:  0 0 2px 2px rgb(139, 223, 145);
-    height: 355px;
-    width: 280px;
+    height: 335px;
+    width: 259px;
     margin-right: 15px;
     background-color: rgb(223, 245, 225);
 }
@@ -99,14 +100,14 @@
     display: flex;
     justify-content: space-between;
     align-self: center;
-    margin: 10px 15px ;
+    margin: 10px 13px ;
 
 }
 .more__item{
     display: flex;
     justify-content: space-between;
     align-self: center;
-    margin: 5px 30px 10px 0px;
+    margin: 5px 24px 10px 0px;
     padding-left: 1px;
 }
 .checkbox__more{
@@ -114,11 +115,13 @@
     position: absolute;
     align-items: center;
 }
+
 .more__list{
     display: none;
     box-sizing: border-box;
     background-color: #fff;
 }
+
 .checkbox__more:checked ~ .more__list{
     display: flex;
     flex-direction: row;
@@ -126,11 +129,15 @@
     position: absolute;
     overflow-y: auto;
     box-sizing: border-box;
-    top: 100%;
+    top: 88%;
     background-color: rgb(223, 245, 225);
-    
+    overflow-x: hidden;
 }
-
+.checkbox__less:checked ~ .more__list{
+    display: none;
+    box-sizing: border-box;
+    background-color: #fff;
+}
 .btn:focus,
 .btn:hover {
     color: #17a212;
@@ -143,20 +150,16 @@
 
 .checkbox__more:checked + .more__label > .visible{
     display: none;
+    appearance: none;
 } 
-.checkbox__more:checked + .more__label > .hide{
-    display: block;
-} 
+
 
 .btn{
     display: block;
     line-height: 1;
     font-size: 2em;
-    height: 1;
 }
-.hide{
-    display: none;
-}
+
 .main__content{
   text-transform:uppercase;
   text-shadow: #000;
