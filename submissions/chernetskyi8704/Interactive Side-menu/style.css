@@ -124,6 +124,7 @@ body._lock {
   width: 100%;
   font-size: 30px;
   padding: 5px;
+  cursor: pointer;
 }
 
 ._activeBtn {
