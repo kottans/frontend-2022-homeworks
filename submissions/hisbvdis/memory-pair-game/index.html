@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./style.css" rel="stylesheet" />
+  <script src="./script.js" type="module"></script>
+  <title>Memory Pair Game</title>
+</head>
+<body>
+  <div class="page">
+    <main class="board  flipper">
+      <div class="board__inner  flipper__inner  " data-board-inner>
+        <div class="board__side  board__side--front  flipper__side  flipper__side--front">
+          <h1 class="board__title">Memory Pair Game</h1>
+          <p class="board__desc">Turn any two cards picture-side-up and find the pair</p>
+          <button class="btn  board__btn" data-start-btn>Start</button>
+        </div>
+        <div class="board__side  flipper__side  flipper__side--back">
+          <ul class="board__grid" data-board-grid>
+            <!-- <li class="card  flipper">
+              <div class="card__inner  flipper__inner" data-card-inner>
+                <div class="card__side  card__side--front  flipper__side  flipper__side--front"  data-card-front>
+                  ?
+                </div>
+                <div class="card__side  card__side--front  flipper__side  flipper__side--back">
+                  <img class="card__img" src="img/acura.png" width="100" height="100" alt="Acura"/>
+                </div>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

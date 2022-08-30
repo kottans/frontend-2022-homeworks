@@ -1,0 +1,37 @@
+.board {
+  inline-size: 600px;
+  block-size: 600px;
+
+  perspective: 100000px;
+}
+
+.board__inner {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.board__side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.board__title {
+  margin: 0;
+  
+  font-size: 2.5em;
+}
+
+.board__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 15px;
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  padding: 15px;
+
+  list-style: none;
+}

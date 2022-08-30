@@ -1,0 +1,23 @@
+.card {
+  
+}
+
+.card__inner {
+  border: 1px solid #dcdde1;
+  border-radius: 5px;
+  box-shadow: 0px 4px 12px rgb(0 0 0 / 0.1);
+}
+
+.card__inner--resolved {
+  display: none;
+}
+
+.card__side--front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2em;
+  
+  cursor: pointer;
+}
