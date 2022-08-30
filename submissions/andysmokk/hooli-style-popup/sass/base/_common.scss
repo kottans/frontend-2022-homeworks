@@ -1,0 +1,61 @@
+html {
+    box-sizing: border-box;
+
+    scrollbar-color: var(--yellow-color) var(--main-bgc-gray);
+    scrollbar-width: thin;
+}
+
+body {
+    font-family: var(--default-font);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:visited {
+    color: var(--black-color);
+}
+
+button {
+    margin: 0;
+    cursor: pointer;
+}
+
+// scrollbar for Chrome
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--hover-focus-color);
+    border-radius: 5px;
+}

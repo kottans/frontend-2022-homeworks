@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a,
+a:active {
+  text-decoration: none;
+  color: #000000;
+}
+
+:focus {
+  outline: none;
+}
+
+.navigation {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 0.3rem 0.6rem 0.6rem 0.3rem;
+}
+
+.navigation__list {
+  position: relative;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin: 1rem;
+}
+
+.navigation__item {
+  margin-right: 0.6rem;
+  padding: 0.3rem;
+}
+
+.navigation__popup-icon {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.popup__input,
+.popup__more-input {
+  position: absolute;
+  right: 5rem;
+  top: 0.7rem;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.popup__container {
+  display: none;
+  position: absolute;
+  top: 3.1rem;
+  right: -0.2rem;
+  width: 21rem;
+  max-height: 29rem;
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
+  border-radius: 5px;
+  overflow: auto;
+}
+
+.popup__list {
+  display: grid;
+  grid-template: auto/1fr 1fr 1fr;
+  gap: 0.6rem;
+  padding: 0.8rem;
+}
+
+.popup__box-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
+}
+
+.popup__box-img:hover,
+.navigation__item:hover {
+  border-radius: 5px;
+  background-color: #d9f2ff;
+  cursor: pointer;
+}
+
+.popup__box-img:focus-within,
+.navigation__item:focus-within {
+  outline: 2px solid #6395ea;
+  border-radius: 5px;
+}
+
+.popup__img {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.popup__more {
+  text-align: center;
+}
+
+.popup__list-more {
+  display: none;
+  border-top: 1px solid #e4e4e4;
+}
+
+.popup__input:checked ~ .popup__container,
+.popup__more-input:checked ~ .popup__list-more {
+  display: block;
+}
+
+.popup__more-icon {
+  display: block;
+  padding: 0.3rem;
+}
+
+.popup__more-input:checked ~ .popup__more-icon {
+  transform: rotate(180deg);
+}
+
+.popup__more-input:focus-within ~ .popup__more-icon {
+  background-color: #d9f2ff;
+}
+
+.popup__more-icon:hover {
+  background-color: #6395ea;
+  cursor: pointer;
+}
+
+@media (max-width: 27rem) {
+  .popup__container {
+    top: 3.2rem;
+    right: -1.1rem;
+    width: 95vw;
+    max-height: 25rem;
+  }
+}

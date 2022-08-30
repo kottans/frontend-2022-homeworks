@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+ul li {
+  list-style: none;
+}
+
+html {
+  background-image: url(./img/main-background.jpg);
+}
+
+.wrapper {
+  display: grid;
+  margin: auto;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 0 2em 0 2em;
+  grid-template-rows: 100px auto 70px;
+  grid-template-columns: 100%;
+}
+
+.header {
+  display: flex;
+  height: 100px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 3px 3px 6px salmon;
+}
+
+.main_container {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.aside_menu {
+  display: flex;
+  width: 30%;
+  height: 100%;
+  padding: 10px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.aside_menu_list {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.aside_menu_list_item {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  width: 100%;
+  margin: 3px;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  border: 2px solid grey;
+  border-radius: 10px;
+  background: none;
+  font-size: large;
+  font-size: medium;
+  cursor: pointer;
+  transition: all 300ms linear;
+}
+
+.aside_menu_list_item:hover {
+  background: linear-gradient(
+    rgba(255, 255, 255, 0),
+    rgba(255, 102, 0, 0.589),
+    rgba(255, 255, 255, 0)
+  );
+  border: 3px solid rgb(250, 128, 114);
+}
+
+.aside_menu_list_item::before {
+  display: block;
+  margin: auto 0.5em auto 0.5em;
+  position: inherit;
+  content: "";
+  height: 40px;
+  width: 40px;
+  background: url(./icons/trash-empty-0.png) center center/cover no-repeat;
+}
+
+.aside_menu_list_item.active::before {
+  background: url(./icons/trash-full-0.png) center center/cover no-repeat;
+}
+
+.aside_menu_list_item.active {
+  border: 3px solid rgb(250, 128, 114);
+}
+
+.content {
+  display: grid;
+  width: 100vw;
+  max-width: 65%;
+  margin: 1em auto auto;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  gap: 1em;
+  grid-template-areas:
+    "title title title"
+    "infolist poster starslist"
+    "annotation annotation annotation";
+}
+
+.title_film {
+  grid-area: title;
+  margin: 0 0.5em 0 0.5em;
+  text-align: center;
+  text-shadow: 3px 3px 5px salmon;
+}
+
+.poster {
+  grid-area: poster;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  margin: 0.5em;
+}
+
+.info_list {
+  grid-area: infolist;
+  margin: auto 0.5em;
+}
+
+.stars_list {
+  grid-area: starslist;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0.5em;
+}
+
+.list_title {
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-shadow: 3px 3px 5px salmon;
+}
+
+.info_field {
+  text-transform: capitalize;
+  font-weight: bold;
+  text-shadow: 3px 3px 5px salmon;
+}
+
+.annotation {
+  grid-area: annotation;
+  display: flex;
+  margin: auto 0.5em;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  text-indent: 2em;
+}
+
+.annotation_text::first-letter {
+  font-size: x-large;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.footer {
+  display: flex;
+  height: 60px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+@media only screen and (max-width: 1024px) {
+  .wrapper {
+    padding: 0 1em;
+  }
+  .header {
+    font-size: smaller;
+  }
+  .aside_menu {
+    width: 60%;
+  }
+  .aside_menu_list_item {
+    height: 50px;
+    font-size: smaller;
+  }
+  .aside_menu_list_item.active {
+    border: 1px solid rgb(250, 128, 114);
+  }
+  .aside_menu_list_item::before {
+    margin: auto 0em auto 0.5em;
+    height: 30px;
+    width: 30px;
+  }
+  .content {
+    width: 100%;
+    max-width: 100%;
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+      "title title"
+      "infolist starslist"
+      "poster poster"
+      "annotation annotation";
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    padding: 0 1em;
+  }
+  .header {
+    font-size: smaller;
+  }
+  .main_container {
+    flex-direction: column;
+  }
+  .aside_menu {
+    width: 100%;
+  }
+  .aside_menu_list_item {
+    height: 40px;
+    font-size: smaller;
+  }
+  .aside_menu_list_item.active {
+    border: 1px solid rgb(250, 128, 114);
+  }
+  .aside_menu_list_item::before {
+    margin: auto 0.2em auto 0.2em;
+    height: 25px;
+    width: 25px;
+  }
+  .content {
+    width: 100%;
+    max-width: 100%;
+    grid-template-rows: repeat(5, auto);
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "title"
+      "infolist"
+      "poster"
+      "starslist"
+      "annotation";
+  }
+}

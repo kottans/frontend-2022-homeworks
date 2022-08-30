@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+    background-color: rgb(0, 0, 0);
+}
+.all-content {
+    display: flex;
+}
+.burger-btn {
+    display: none;
+}
+.nav-list {
+    margin: 0;
+    padding: 0 2em;
+    width: 28vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: rgb(0, 0, 0);
+    box-sizing: border-box;
+}
+.nav-item {
+    list-style: none;
+    font-family: 'Alumni Sans Inline One', sans-serif;
+    font-size: 2em;
+    line-height: 1.3em;
+    color: rgb(170, 152, 130);
+    text-shadow: 0 0 20px rgb(45, 157, 181);
+    cursor: pointer;
+}
+.first-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding:  0 10px;
+}
+.content-img {
+    display: block;
+    max-width: 320px;
+    height: auto;
+}
+.content-title {
+    font-family: 'Cinzel Decorative', serif;
+    color: rgb(170, 152, 130);
+    margin: 0;
+    text-align: center;
+}
+.content-text {
+    font-family: 'Cinzel Decorative', serif;
+    color: rgb(170, 152, 130);
+    padding-right: 10px;
+    text-align: center;
+    width: 80%;
+}
+.azathoth {
+    width: 80%;
+    height: auto;
+}
+.yog-sothoth {
+    width: 40%;
+    height: auto; 
+}
+.shub-niggurath {
+    width: 50%;
+    height: auto;
+}
+.nyarlathotep {
+    width: 33%;
+    height: auto;
+}
+.cthulhu {
+    width: 65%;
+    height: auto;
+}
+
+@media (max-width: 1024px) {
+    body {
+        font-size: 15px;
+    }
+}
+@media (max-width: 768px) {
+    .burger-btn {
+        display: block;
+        position: absolute;
+        width: 20%;
+        background: none;
+        border: none;
+        padding: 0;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+    .burger {
+        display: block;
+        transform: rotate(90deg);
+        max-width: 100%;
+    }
+    .nav {
+        position: absolute;
+        left: -100vw;
+        transition: .8s;
+    }
+    .nav-shown {
+        left: 0;
+        transition: .8s;
+    }
+    .nav-list {
+        width: 100vw;
+        align-items: center;
+    }
+    .nav-item {
+        text-align: center;
+    }
+}
+@media (max-width: 540px) {
+    .content-img {
+        max-width: 61.5%;
+    }
+}
+@media (max-height: 850px) {
+    .first-content {
+        height: auto;
+    }
+}

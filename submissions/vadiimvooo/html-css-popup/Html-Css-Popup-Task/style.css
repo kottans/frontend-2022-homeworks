@@ -1,0 +1,328 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 16px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.content {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-without-footer {
+  flex: 1 1 auto;
+}
+
+.content__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: inherit;
+  padding: 0 40px;
+}
+
+.header__container {
+  height: 80px;
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 5px #000;
+}
+
+.header__container nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: inherit;
+}
+
+.mainpage-link {
+  font-family: "Alfa Slab One";
+  font-size: 2em;
+  font-weight: 100;
+  color: rgba(92, 81, 81, 0.5);
+}
+
+.navigation__list {
+  display: flex;
+  position: relative;
+}
+
+ul .list-item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.navigation__list .list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-link img {
+  border-radius: 25px;
+  border: 2px solid gray;
+}
+
+.link:focus,
+.link:hover {
+  color: #00f;
+}
+
+.checkbox__input {
+  appearance: none;
+  position: absolute;
+}
+
+.checkbox-main-menu {
+  display: none;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.checkbox__input:checked ~ .checkbox-main-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  overflow: auto;
+  box-sizing: border-box;
+  top: 180%;
+  right: 0;
+  border: 1px gray solid;
+  height: 348px;
+}
+
+.item-link img {
+  width: 50px;
+  height: auto;
+  max-height: 30px;
+}
+
+.checkbox-main-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+}
+
+.checkbox-main-flex .item p {
+  font-size: 12px;
+  text-align: center;
+}
+
+.checkbox-main-flex .item {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.main__checkbox-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox-main-flex .item a:focus,
+.checkbox-main-flex .item a:hover,
+.checkbox__input:focus + .main__checkbox-label,
+.checkbox__input:hover + .main__checkbox-label,
+.link:focus,
+.link:hover {
+  outline: 0;
+  box-shadow: 0 0 0 2px #000;
+}
+
+.item-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 60px;
+  width: 60px;
+}
+
+.item {
+  display: flex;
+  align-items: stretch;
+}
+
+.item-size img {
+  max-height: 80%;
+}
+
+.item-size p {
+  margin-top: 5px;
+}
+
+img.document,
+img.photo {
+  width: 30px;
+  height: 40px;
+}
+
+img.apps {
+  width: 40px;
+  height: 40px;
+}
+
+img.search {
+  position: absolute;
+  top: 5px;
+  margin-top: 5px;
+}
+
+.more__input {
+  appearance: none;
+  position: absolute;
+}
+
+.more__checkbox-label {
+  text-align: center;
+}
+
+.label-button {
+  font-size: 14px;
+  font-weight: 500;
+  color: grey;
+}
+
+.more__checkbox-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+  box-sizing: border-box;
+  min-height: 36px;
+}
+
+.more__input:focus + .more__checkbox-label,
+.more__input:hover + .more__checkbox-label {
+  box-shadow: none;
+  border: 2px #000 solid;
+}
+
+.more__input:checked + .more__checkbox-label > .hide {
+  display: block;
+}
+
+.more__input:checked + .more__checkbox-label > .visible {
+  display: none;
+}
+
+.checkbox-more-menu {
+  display: none;
+}
+
+.more__input:checked ~ .checkbox-more-menu {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.link {
+  display: flex;
+}
+
+li.item div img {
+  max-height: 40px;
+  max-width: 40px;
+}
+
+.main {
+  height: 550px;
+}
+
+.main-header {
+  height: inherit;
+  font-size: 4em;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.footer {
+  height: 80px;
+  background-color: grey;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 767.98px) {
+  .content__container {
+    padding: 0 20px;
+  }
+
+  .main-header {
+    font-size: 3em;
+  }
+
+  ul .list-item:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  .header__container {
+    height: 50px;
+  }
+
+  .footer {
+    height: 50px;
+  }
+
+  .mainpage-link {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 424.98px) {
+  * {
+    font-size: 12px;
+  }
+
+  ul .list-item:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .main-header {
+    font-size: 2.8em;
+  }
+
+  .content__container {
+    padding: 0 10px;
+  }
+}

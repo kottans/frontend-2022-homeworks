@@ -1,0 +1,281 @@
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"), local("Montserrat-Regular"), url(../fonts/Montserrat-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal
+}
+
+:root {
+  --border-primary: solid 1px #b4b4b4;
+  --border-transparent: solid 1px transparent
+}
+
+html {
+  font-size: 16px;
+  overflow-x: hidden
+}
+
+body {
+  background-color: #dadada;
+  font-family: "Montserrat", sans-serif
+}
+
+* {
+  box-sizing: border-box
+}
+
+a {
+  color: #343434;
+  text-decoration: none
+}
+
+a:hover, a:focus {
+  color: #e74100
+}
+
+a:focus {
+  outline: none
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh
+}
+
+.header {
+  position: relative;
+  background: #fff;
+  z-index: 1
+}
+
+.top-menu {
+  height: 4.375rem;
+  padding: 0 1.25rem
+}
+
+.top-menu__nav {
+  height: inherit
+}
+
+.top-menu__ul {
+  height: inherit;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center
+}
+
+.top-menu__li {
+  position: relative;
+  list-style-type: none;
+  margin-right: 0.625rem
+}
+
+.top-menu__li:last-child {
+  margin-right: 0
+}
+
+.top-menu__link {
+  display: block;
+  padding: 0.4375rem 0.625rem;
+  border: var(--border-transparent);
+  border-radius: 0.25rem;
+  transition-duration: 300ms
+}
+
+.top-menu__link:focus {
+  border: var(--border-primary)
+}
+
+.top-menu__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: cover
+}
+
+.top-menu__avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: cover;
+  border-radius: 50%
+}
+
+.top-menu__label {
+  display: block;
+  cursor: pointer;
+  border: var(--border-transparent);
+  border-radius: 0.25rem;
+  padding: 0.4375rem 0.625rem
+}
+
+.top-menu__input {
+  position: absolute;
+  appearance: none
+}
+
+.top-menu__input:focus ~ .top-menu__label {
+  border: var(--border-primary)
+}
+
+.top-menu__input:checked ~ .inner-menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto
+}
+
+.top-menu__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: cover
+}
+
+.inner-menu {
+  position: absolute;
+  top: 4.375rem;
+  right: 0;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition-duration: 300ms;
+  z-index: 2
+}
+
+.inner-menu__ul {
+  background: #fff;
+  padding: 1.25rem;
+  display: grid;
+  grid-row-gap: 1.25rem;
+  min-width: 25rem;
+  max-height: 37.5rem;
+  grid-template-columns:33.3% 33.3% 33.3%;
+  overflow-y: auto
+}
+
+.inner-menu__ul:before {
+  content: "";
+  position: absolute;
+  top: -1.75rem;
+  right: 0.4375rem;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #fff;
+  z-index: -1
+}
+
+.inner-menu__ul_in {
+  padding: 0;
+  display: none;
+  overflow-y: visible;
+  height: auto
+}
+
+.inner-menu__li {
+  list-style-type: none
+}
+
+.inner-menu__li_in {
+  grid-area: 4/1/5/4
+}
+
+.inner-menu__link {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem;
+  border: var(--border-transparent);
+  transition-duration: 300ms
+}
+
+.inner-menu__link:focus {
+  border: solid 1px #cdcdcd
+}
+
+.inner-menu__icon {
+  max-width: 100%;
+  max-height: 4.375rem;
+  margin-bottom: 0.625rem
+}
+
+.inner-menu__input {
+  position: absolute;
+  appearance: none
+}
+
+.inner-menu__input:checked {
+  display: none
+}
+
+.inner-menu__input:checked ~ .inner-menu__ul_in {
+  display: grid
+}
+
+.inner-menu__input:checked ~ .inner-menu__btn {
+  display: none
+}
+
+.inner-menu__input:focus ~ .inner-menu__btn .inner-menu__box {
+  background: #b4b4b4
+}
+
+.inner-menu__box {
+  display: block;
+  position: relative;
+  margin-top: 0.625rem;
+  height: 2.5rem;
+  background: #cdcdcd;
+  cursor: pointer;
+  transition-duration: 300ms
+}
+
+.inner-menu__box:hover, .inner-menu__box:focus {
+  background: #b4b4b4
+}
+
+.inner-menu__box:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "More";
+  transform: translateY(-50%) translateX(-50%)
+}
+
+.footer {
+  position: relative;
+  height: 3.125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+  background-color: #a7a7a7;
+  color: #fff
+}
+
+@media only screen and (max-width: 576px) {
+  html {
+    font-size: 13px
+  }
+
+  .top-menu__ul {
+    justify-content: center
+  }
+
+  .inner-menu {
+    transform: translateX(calc(50% - 35px))
+  }
+
+  .inner-menu__ul {
+    min-width: 20rem
+  }
+
+  .inner-menu__ul:before {
+    right: calc(50% - 30px)
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  html {
+    font-size: 12px
+  }
+}
