@@ -24,6 +24,7 @@ html,body{
 	font-family: Verdana, sans-serif;
 }
 
+
 a, a:visited{text-decoration: none;}
 ul li{list-style: none;}
 
@@ -37,6 +38,7 @@ ul li{list-style: none;}
 
 .wrapper {
 	display: grid;
+	height: 100vh;
 	grid-template-columns: 400px 1fr;
 	grid-template-rows: 150px 1fr;
 	grid-template-areas: 
@@ -57,7 +59,7 @@ ul li{list-style: none;}
 	display: inline-flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 2%;
+	padding: 0 3%;
 
 }
 .title {
@@ -240,7 +242,7 @@ ul li{list-style: none;}
 	display: grid;
 	justify-items: center;
 	row-gap: 20px;
-	grid-template-rows: 80px 1fr 1fr 50px;
+	grid-template-rows: 80px 1fr 100px;
 	padding: 30px;
 }
 
@@ -286,14 +288,12 @@ ul li{list-style: none;}
 
 .buttons {
 	display: none;
-	width: 380px;
-	gap: 10px;
+	max-width: 380px;
+	gap: 15px;
 	justify-content: space-between;
 	align-items:center;
 
 }
-
-
 
 /* mobile */
 
@@ -302,5 +302,92 @@ ul li{list-style: none;}
 and (min-width: 320px)
 and (max-width: 767px) {
 
+.wrapper {
+	grid-template-columns: 140px 1fr;
+	grid-template-rows: 100px 1fr;
+}
+
+.title,
+.stage__name,
+.chapter,
+.title__chapter {
+font-size: 80%;
+}	
+
+.title__chapter {
+	padding: 0;
+}
+.logo__img {
+	width: 45px;
+	height: 45px;
+}
+
+.title {
+	font-size: 14px;
+	width: 50%;
+}
+
+.user__img {
+	width: 35px;
+	height: 35px;
+}
+
+.user__name {
+	display: none;
+}
+
+.progress__wrapper {
+	width: 150px;
+	right: calc(50% - (155px / 2));
+	top: 74px;
+}
+
+.nav__item:before {
+	display: none;
+}
+
+.nav__item {
+	padding-left: 0;
+	text-transform: none;
+	font-size: 9px;
+}
+
+.chapter {
+	margin: 10px 0;
+}
+.chapter::after {
+	width: 30px;
+	margin-top: -3px;
+}
+
+.section {
+	row-gap: 10px;
+	grid-template-rows: 37px 1fr 100px;
+	padding: 15px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+.task__item {
+	font-size: 10px;
+	line-height: 1rem;
+}
+
+.tomato {
+	font-size: 10px;
+}
+
+li.task__item::marker {
+	font-size: 10px;
+}
+
+.description {
+	line-height: 1.3em;
+}
+.btn {
+	height: 40px;
+    width: 100px;
+    font-size: 10px;
+}
 
 }

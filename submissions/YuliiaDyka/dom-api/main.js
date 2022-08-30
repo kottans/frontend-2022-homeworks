@@ -71,7 +71,7 @@ newDesc.innerHTML = currentDesc;
 description.replaceWith(newDesc);
 
 btn.style.display = "none";
-buttonsDiv.style.display = 'flex';
+buttonsDiv.style.display = 'grid';
 
 };
 
