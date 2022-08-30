@@ -2,6 +2,7 @@
 
 const gameBody = document.querySelector('.game__body');
 let playerSteps = 0;
+const time = 1500;
 
 const getData = () => [
     { imgSrc: "img/ananas.png", name: "ananas" },
@@ -22,7 +23,7 @@ const styleList = {
     card: 'game__card',
     flippedCard: 'game__card_flipped',
     selectedCard: 'game__card_selected',
-    hiddenCard: 'game__card_hidden'  
+    hiddenCard: 'game__card_hidden'
 }
 
 class GameCard {
@@ -46,24 +47,35 @@ const randomize = () => {
 };
 
 const renderCards = () => {
-    randomize().forEach(({ imgSrc, name }) => new GameCard(imgSrc, name).render());
+    randomize().map(({ imgSrc, name }) => new GameCard(imgSrc, name).render());
 };
 
-const checkCards = (e) => {
+const disableCards = () => {
+    const cards = document.querySelectorAll('.game__card');
+    cards.forEach(card => {
+        card.setAttribute('disabled', '');
+        setTimeout(() => {
+            card.removeAttribute('disabled');
+        }, time);
+    });
+};
+
+const flippingCards = (e) => {
     if (e.target.classList.contains(styleList.card)) {
         e.target.classList.add(styleList.selectedCard, styleList.flippedCard);
         const flippedCards = document.querySelectorAll(`.${styleList.flippedCard}`);
         const selectedCards = document.querySelectorAll(`.${styleList.selectedCard}`);
         if (selectedCards.length === 2) {
+            disableCards();
             if (selectedCards[0].dataset.name === selectedCards[1].dataset.name) {
                 selectedCards.forEach((card) => {
                     card.classList.remove(styleList.selectedCard);
-                    setTimeout(() => card.classList.add(styleList.hiddenCard), 1000);
+                    setTimeout(() => card.classList.add(styleList.hiddenCard), time);
                 })
             } else {
                 selectedCards.forEach((card) => {
                     card.classList.remove(styleList.selectedCard);
-                    setTimeout(() => card.classList.remove(styleList.flippedCard), 1000);
+                    setTimeout(() => card.classList.remove(styleList.flippedCard), time);
                 });
                 playerSteps++;
             };
@@ -79,11 +91,11 @@ const restart = () => {
         alert(`you win in ${playerSteps} steps`);
         gameBody.innerHTML = '';
         renderCards();
-    }, 2000);
+    }, time);
 };
 
 renderCards();
 
-gameBody.addEventListener('click', checkCards);
+gameBody.addEventListener('click', flippingCards);
 
 
