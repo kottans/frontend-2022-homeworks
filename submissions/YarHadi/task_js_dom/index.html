@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+
+    <link rel="stylesheet" href="https://use.typekit.net/hfn7qlg.css" />
+
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="header-container">
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a class="nav-text" onclick="change(kaer);"> Main </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-text" onclick="change(lambert);"> Lambert </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-text" onclick="change(eskel);"> Eskel </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-text" onclick="change(vesemir);"> Vesemir </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-text" onclick="change(geralt);"> Geralt of Rivia </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main-body">
+      <section class="main-content">
+        <h1 class="text-header" id="main-header">Welcome to Kaer Morhen!</h1>
+        <img
+          id="main-img"
+          class="main-img"
+          src="./img/kaer.webp"
+          alt="Image of character"
+        />
+        <p class="main-text" id="main-text">
+          From there they could see the ruins of Kaer Morhen huddled against the
+          stone precipices - the partially demolished trapezium of the defensive
+          wall, the remains of the barbican and gate, the thick, blunt column of
+          the donjon.
+        </p>
+      </section>
+    </main>
+    <script src="./scripts/form.js"></script>
+  </body>
+</html>
