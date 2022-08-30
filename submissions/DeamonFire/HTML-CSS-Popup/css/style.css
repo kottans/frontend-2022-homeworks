@@ -54,6 +54,9 @@
     width: 30px;
     height: 30px;
 }
+.header__menu_block_hiden-title{
+    font-size: 0;
+}
 
 /* --------------------------------- Dropdown #1 Popup ------------------------ */
 .popup-menu {
