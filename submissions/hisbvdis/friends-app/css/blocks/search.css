@@ -1,0 +1,23 @@
+.search {
+  
+}
+
+.search__input {
+  inline-size: 100%;
+  padding: 15px;
+  margin-block-end: 20px;
+
+  font-size: 1.2em;
+
+  border: none;
+  border-block-end: 1px solid #eee;
+  box-shadow: var(--shadow-main);
+}
+
+.search__input::placeholder {
+  color: #aaa;
+}
+
+.search__input::-webkit-search-cancel-button {
+  -webkit-appearance:none;
+}

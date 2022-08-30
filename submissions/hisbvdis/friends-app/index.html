@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./css/style.css" rel="stylesheet"/>
+  <script src="./js/script.js" type="module"></script>
+  <title>Friends App</title>
+</head>
+<body>
+  <header class="header">Friends App</header>
+
+  <main class="main">
+
+    <form class="search" role="search" aria-labelledby="search-form-header">
+      <h2 class="srOnly" id="search-form-header">Friends search</h2>
+      <label class="srOnly" for="search-input">Search bar</label>
+      <input class="search__input" type="search" id="search-input" placeholder="Search by name..."  data-search-input/>
+    </form>
+
+    <form class="filters" aria-labelledby="filters-form-header" data-filters-form>
+      <h2 class="srOnly" id="filters-form-header">Friends filters</h2>
+      <fieldset class="filters__fieldset">
+        <label class="filters__title" for="sort-select">Sort by:</label>
+        <select name="sort" id="sort-select" data-sort-select>
+          <option value="default" selected>default</option>
+          <option value="name-asc">name (ASC)</option>
+          <option value="name-desc">name (DESC)</option>
+          <option value="age-asc">age (ASC)</option>
+          <option value="age-desc">age (DESC)</option>
+        </select>
+      </fieldset>
+      <fieldset class="filters__fieldset">
+        <span class="filters__title">Gender:</span>
+        <label class="filters__label">
+          <span>All</span>
+          <input type="radio" name="gender" value="all" checked/>
+        </label>
+        <label class="filters__label">
+          <span>Male</span>
+          <input type="radio" name="gender" value="male"/>
+        </label>
+        <label class="filters__label">
+          <span>Female</span>
+          <input type="radio" name="gender" value="female"/>
+        </label>
+      </fieldset>
+    </form>
+
+    <section class="users" aria-labelledby="users-section-header">
+      <h2 class="srOnly" id="users-section-header">Friends list</h2>
+      <ul class="users__list"  data-user-list></ul>
+    </section>
+
+  </main>
+</body>
+</html>

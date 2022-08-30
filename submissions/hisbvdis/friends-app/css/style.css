@@ -1,0 +1,11 @@
+@import "./globals/variables.css";
+@import "./globals/globals.css";
+@import "./globals/srOnly.css";
+
+@import "./layout/header.css";
+@import "./layout/main.css";
+
+@import "./blocks/users.css";
+@import "./blocks/user.css";
+@import "./blocks/search.css";
+@import "./blocks/filters.css";

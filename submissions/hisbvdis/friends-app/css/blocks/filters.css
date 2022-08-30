@@ -1,0 +1,32 @@
+.filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 10px;
+  margin-block-end: 20px;
+  
+  box-shadow: var(--shadow-main);
+}
+
+.filters__fieldset {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  
+  border: none;
+}
+
+.filters__title {
+  font-weight: 600;
+}
+
+.filters__label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  
+  cursor: pointer;
+}
