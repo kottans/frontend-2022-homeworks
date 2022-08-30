@@ -46,7 +46,6 @@ class Human extends Habitat {
     super(Habitat.SPECIES.HUMAN, name, gender, legs, saying);
     this.hands = hands;
     this.PROPS.splice(this.PROPS.indexOf("legs"), 0, "hands");
-    console.log(this.PROPS);
   }
 }
 
