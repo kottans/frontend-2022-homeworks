@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="title">Friends App</h1>
+      <main class="main">
+        <div class="sidebar">
+          <div class="search">
+            <input
+              type="text"
+              class="search__input"
+              placeholder="Search by name"
+            />
+          </div>
+          <div class="sort-name sort">
+            <span class="sort__span">Name:</span>
+            <span class="sort__icons">
+              <span class="name-up icon-hover name-icon"
+                ><img src="./img/up-arrow-white.png" data-direction="up"
+              /></span>
+              <span class="name-down icon-hover name-icon"
+                ><img src="./img/up-arrow-black.png" data-direction="down"
+              /></span>
+            </span>
+          </div>
+          <hr />
+          <div class="sort-age sort">
+            <span class="sort__span">Age:</span>
+            <span class="sort__icons">
+              <span class="age-up icon-hover age-icon"
+                ><img src="./img/up-arrow-white.png" data-direction="up"
+              /></span>
+              <span class="age-down icon-hover age-icon"
+                ><img src="./img/up-arrow-black.png" data-direction="down"
+              /></span>
+            </span>
+          </div>
+          <hr />
+          <div class="sort-sex sort">
+            <span class="sort__span">Sex:</span>
+            <span class="sort__icons">
+              <span class="sex__male icon-hover sex-icon"
+                ><img src="./img/male-gender.png" data-id="male"
+              /></span>
+              <span class="sex__female icon-hover sex-icon"
+                ><img src="./img/female-gender.png" data-id="female"
+              /></span>
+              <span class="sex__both icon-hover sex-icon"
+                ><img src="./img/male-and-female.png" data-id="both"
+              /></span>
+            </span>
+          </div>
+          <hr />
+        </div>
+        <div class="friends">
+          <div class="friends-container"></div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
