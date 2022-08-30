@@ -41,8 +41,11 @@ a:hover {
 
 .header {
   background-color: bisque;
-  padding: 10px 100px 0px 25px;
   height: 3em;
+}
+
+.header__menu {
+  margin-right: 5vw;
 }
 
 .header__list {
@@ -93,7 +96,6 @@ a:hover {
   top: 3em;
   right: -4em;
   max-height: 35em;
-  width: 400px;
   overflow: auto;
   box-shadow: 0 0 5px 2px gray;
 }
@@ -171,4 +173,10 @@ a:hover {
 
 .more__checkbox:checked ~ label .show-less {
   display: flex;
+}
+
+@media (max-width: 430px) {
+  .popup__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
