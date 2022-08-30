@@ -1,21 +1,23 @@
-const START_X = 202,
-    START_Y = 404,
-    CELL_WIDTH = 100,
+const
+    ENEMY_IMG = 'images/enemy-bug.png',
+    PLAYER_IMG = "images/char-boy.png",
+    COLUMNS = 5,
+    ROWS = 5,
+    ROW_CENTER = 20,
+    COLUMN_CENTER = 35,
+    CELL_WIDTH = 101,
     CELL_HEIGTH = 83,
-    ROW_POSITION = [60, 143, 228],
-    FIELD_WIDTH = CELL_WIDTH * 5,
+    ENEMIES_ROWS = [1, 2, 3],
+    FIELD_WIDTH = CELL_WIDTH * COLUMNS,
+    START_Y = ROWS * CELL_HEIGTH - ROW_CENTER,
+    START_X = FIELD_WIDTH / Math.ceil(COLUMNS / 2) + COLUMN_CENTER,
     ENEMY_SPEED = {
         min: 60,
         max: 200,
     };
 
-
-const counter = document.createElement("div");
-let count = 0;
-counter.innerHTML = `Counter: ${count}`;
-document.body.append(counter);
-
-const Person = function (x, y) {
+const Person = function (sprite, x, y) {
+    this.sprite = sprite;
     this.x = x;
     this.y = y;
 };
@@ -24,22 +26,14 @@ Person.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-var Enemy = function (x, y, speed, player) {
-    this.x = x;
-    this.y = y;
+var Enemy = function (sprite, x, y, speed, player) {
+    Person.call(this, sprite, x, y);
     this.speed = this.getRandomSpeed(speed);
     this.player = player
-    this.sprite = 'images/enemy-bug.png';
-};
-
-const Player = function (x, y) {
-    this.x = x;
-    this.y = y;
-    this.sprite = "images/char-boy.png";
 };
 
 Enemy.prototype = Object.create(Person.prototype);
-Player.prototype = Object.create(Person.prototype);
+
 
 Enemy.prototype.update = function (dt) {
     if (this.x < FIELD_WIDTH) {
@@ -51,10 +45,12 @@ Enemy.prototype.update = function (dt) {
 };
 
 Enemy.prototype.checkCollision = function (player) {
+    console.log
     return (
-        this.y + CELL_HEIGTH > player.y &&
-        player.x < this.x + CELL_WIDTH &&
-        player.x > this.x - CELL_WIDTH
+        this.y + ROW_CENTER > player.y &&
+        this.y - ROW_CENTER < player.y &&
+        player.x < this.x + COLUMN_CENTER &&
+        player.x > this.x - COLUMN_CENTER
     );
 };
 
@@ -62,6 +58,12 @@ Enemy.prototype.getRandomSpeed = function ({ min, max }) {
     let randomSpeed = min + Math.random() * (max + 1 - min);
     return Math.floor(randomSpeed);
 };
+
+const Player = function (sprite, x, y) {
+    Person.call(this, sprite, x, y);
+};
+
+Player.prototype = Object.create(Person.prototype);
 
 Player.prototype.update = function () {
     if (this.y > START_Y) {
@@ -102,8 +104,6 @@ Player.prototype.resetPosition = function (status) {
     switch (status) {
         case "win":
             alert("You win!!!");
-            count += 1;
-            counter.innerHTML = `Counter: ${count}`;
             break;
         case "fail":
             alert("You fail!!!");;
@@ -115,8 +115,8 @@ Player.prototype.resetPosition = function (status) {
     this.y = START_Y;
 };
 
-let player = new Player(START_X, START_Y),
-    allEnemies = ROW_POSITION.map((position) => new Enemy(-100, position, ENEMY_SPEED, player));
+let player = new Player(PLAYER_IMG, START_X, START_Y),
+    allEnemies = ENEMIES_ROWS.map((position) => new Enemy(ENEMY_IMG, -CELL_WIDTH, (position * CELL_HEIGTH - ROW_CENTER), ENEMY_SPEED, player));
 
 
 document.addEventListener('keyup', function (e) {
