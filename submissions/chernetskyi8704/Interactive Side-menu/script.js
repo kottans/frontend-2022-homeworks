@@ -2,6 +2,7 @@
 
 const mainContent = document.querySelector(".main__content");
 const menuItem = document.querySelectorAll(".menu__link");
+const menuList = document.querySelector(".menu__list");
 const iconBurger = document.querySelector(".menu__icon-burger");
 const menuBody = document.querySelector(".main__menu");
 
@@ -49,37 +50,37 @@ iconBurger.addEventListener("click", (e) => {
   menuBody.classList.toggle("_active");
 });
 
-menuItem.forEach((element, index) => {
-  element.addEventListener("click", function () {
-    menuItem.forEach((e) => {
-      e.classList.remove("_activeBtn");
-    });
-    this.classList.add("_activeBtn");
+menuList.addEventListener("click", (event) => {
+  const target = event.target;
+
+  menuItem.forEach((e) => {
+    e.classList.remove("_activeBtn");
   });
+  target.classList.add("_activeBtn");
 
-  element.addEventListener("click", (e) => {
-    if (iconBurger.classList.contains("_active")) {
-      document.body.classList.remove("_lock");
-      iconBurger.classList.remove("_active");
-      menuBody.classList.remove("_active");
-    }
+  if (iconBurger.classList.contains("_active")) {
+    document.body.classList.remove("_lock");
+    iconBurger.classList.remove("_active");
+    menuBody.classList.remove("_active");
+  }
 
-    mainContent.innerHTML = "";
+  mainContent.innerHTML = "";
 
-    const html = `<h2 class="content__name" >${contentData[index].name}</h2>
-    <div class="content__section">
-      <div class="section__img-container">
-        <img
-          class="section__img"
-          src="${contentData[index].image}"
-          alt="${contentData[index].alt}"
-        />
-        <span class="section__description">
-        ${contentData[index].description}
-      </span>
-      </div>
-    </div>`;
+  const html = `<h2 class="content__name" >${
+    contentData[Number(target.id)].name
+  }</h2>
+        <div class="content__section">
+          <div class="section__img-container">
+            <img
+              class="section__img"
+              src="${contentData[Number(target.id)].image}"
+              alt="${contentData[Number(target.id)].alt}"
+            />
+            <span class="section__description">
+            ${contentData[Number(target.id)].description}
+          </span>
+          </div>
+        </div>`;
 
-    mainContent.insertAdjacentHTML("beforeend", html);
-  });
+  mainContent.insertAdjacentHTML("beforeend", html);
 });
