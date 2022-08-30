@@ -1,51 +1,158 @@
-let highScore = localStorage.getItem('highScore') ?? 0;
-let currentScore = 0;
-const highHolder = document.querySelector('.high');
-const currentHolder = document.querySelector('.current');
-const infoHolder = document.querySelector('.info');
+class Environment {
+  constructor() {
+    this.tileWidth = 101;
+    this.tileHeight = 83;
+    this.tilesInRow = 5;
+    this.fieldMinX = 0;
+    this.fieldMinY = -10;
+    this.fieldMaxX = this.tileWidth * this.tilesInRow;
+    this.fieldMaxY = 415;
+    this.isGameOn = true;
+    this.directions = ['left', 'right'];
+  }
+  getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
 
-const getRandomNumber = (min, max) =>
-  Math.floor(Math.random() * (max - min) + min);
+  getRandomDirection() {
+    return this.directions[Math.floor(Math.random() * this.directions.length)];
+  }
+}
 
-const directions = ['left', 'right'];
+class ScoreBoard {
+  constructor(highScoreHolder, messageHolder, currentScoreHolder) {
+    this.currentScore = 0;
+    this.highScoreHolder = document.querySelector(highScoreHolder);
+    this.messageHolder = document.querySelector(messageHolder);
+    this.welcomeMessage = "Let's go!";
+    this.winMessage = 'You win!';
+    this.loseMessage = 'You lose!';
+    this.highScore = localStorage.getItem('highScore') ?? 0;
+    this.currentScoreHolder = document.querySelector(currentScoreHolder);
+  }
+  updateGameInfo(message) {
+    this.currentScoreHolder.innerText = `Current score: ${this.currentScore}`;
+    this.highScoreHolder.innerText = `High score: ${this.highScore}`;
+    this.messageHolder.innerText = `${message}`;
+  }
+  incrementScore() {
+    this.currentScore += 1;
+    if (this.currentScore > this.highScore) {
+      this.highScore = this.currentScore;
+      this.saveHighScore(this.highScore);
+    }
+  }
+  saveHighScore(score) {
+    localStorage.setItem('highScore', score);
+  }
+  resetScore() {
+    this.currentScore = 0;
+  }
+}
 
-const getRandomDirection = () =>
-  directions[Math.floor(Math.random() * directions.length)];
+class Player {
+  constructor(env, scoreBoard) {
+    this.env = env;
+    this.scoreBoard = scoreBoard;
+    this.sprite = 'images/char-boy.png';
+    this.startX = this.env.tileWidth * 2;
+    this.startY = this.env.fieldMinY + this.env.tileHeight * 5;
+    this.currX = this.startX;
+    this.currY = this.startY;
+    this.resetDelay = 1000;
+  }
 
-canvas = {
-  width: 505,
-  height: 606,
-};
+  update(newX = this.currX, newY = this.currY) {
+    if (!this.env.isGameOn) {
+      return;
+    }
+    (this.currX = newX), (this.currY = newY);
+  }
+
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.currX, this.currY);
+  }
+
+  handleInput(code) {
+    if (!this.env.isGameOn) {
+      return;
+    }
+    switch (code) {
+      case 'ArrowLeft':
+        if (this.currX - this.env.tileWidth < this.env.fieldMinX) return;
+        this.currX -= this.env.tileWidth;
+        break;
+      case 'ArrowRight':
+        if (this.currX + this.env.tileWidth >= this.env.fieldMaxX) return;
+        this.currX += this.env.tileWidth;
+        break;
+      case 'ArrowUp':
+        if (this.currY - this.env.tileHeight < this.env.fieldMinY) return;
+        this.currY -= this.env.tileHeight;
+        break;
+      case 'ArrowDown':
+        if (this.currY + this.env.tileHeight >= this.env.fieldMaxY) return;
+        this.currY += this.env.tileHeight;
+        break;
+      default:
+        break;
+    }
+    this.update(this.currX, this.currY);
+    if (this.currY === this.env.fieldMinY) {
+      this.env.isGameOn = false;
+      this.scoreBoard.incrementScore();
+      this.scoreBoard.updateGameInfo(this.scoreBoard.winMessage);
+      setTimeout(() => {
+        this.env.isGameOn = true;
+        this.scoreBoard.updateGameInfo(this.scoreBoard.welcomeMessage);
+        this.update(this.startX, this.startY);
+      }, this.resetDelay);
+    }
+  }
+}
 
 class Enemy {
-  constructor(startY, mult) {
-    this.width = 101;
-    this.height = 171;
-    this.direction = getRandomDirection();
+  constructor(startY, player, env, scoreBoard) {
+    this.scoreBoard = scoreBoard;
+    this.env = env;
+    this.directions = ['left', 'right'];
+    this.direction = this.env.getRandomDirection();
     this.sprite = `images/enemy-bug-${this.direction}.png`;
-    this.minX = -this.width;
-    this.maxX = canvas.width + this.width;
+    this.minX = -this.env.tileWidth;
+    this.maxX = this.env.fieldMaxX + this.env.tileWidth;
     this.startX = this.direction === 'right' ? this.minX : this.maxX;
     this.startY = startY;
     this.currX = this.startX;
     this.currY = this.startY;
-    this.mult = this.direction === 'right' ? mult : -mult;
+    this.minSpeed = 150;
+    this.maxSpeed = 300;
+    this.mult =
+      this.direction === 'right'
+        ? this.env.getRandomNumber(this.minSpeed, this.maxSpeed)
+        : -this.env.getRandomNumber(this.minSpeed, this.maxSpeed);
+    this.player = player;
+  }
+  checkCollision() {
+    if (this.player.currY !== this.currY) {
+      return false;
+    }
+    if (
+      (this.player.currX >= this.currX && this.player.currX <= this.currX + this.env.tileWidth) ||
+      (this.player.currX + this.env.tileWidth >= this.currX &&
+        this.player.currX + this.env.tileWidth <= this.currX + this.env.tileWidth)
+    ) {
+      return true;
+    }
+    return false;
   }
   update(dt) {
-    if (
-      player.currX >= this.currX &&
-      player.currX <= this.currX + this.width &&
-      player.currY >= this.currY &&
-      player.currY <= this.currY + 85
-    ) {
-      infoHolder.innerText = `You lost`;
-      currentScore = 0;
-      currentHolder.innerText = `Current score: ${currentScore}`;
+    if (this.checkCollision()) {
+      this.scoreBoard.resetScore();
+      this.scoreBoard.updateGameInfo(this.scoreBoard.loseMessage);
+      this.player.update(this.player.startX, this.player.startY);
       setTimeout(() => {
-        player.update(player.startX, player.startY);
-        infoHolder.innerText = `Let's go!`;
-      }, 1000);
-      player.update(player.startX, player.startY);
+        this.scoreBoard.updateGameInfo(this.scoreBoard.welcomeMessage);
+      }, 500);
     }
     if (this.currX >= this.maxX) {
       this.mult *= -1;
@@ -63,87 +170,23 @@ class Enemy {
   }
 }
 
-class Player {
-  constructor() {
-    this.sprite = 'images/char-boy.png';
-    this.width = 101;
-    this.height = 171;
-    this.startX = 203;
-    this.startY = 404;
-    this.currX = this.startX;
-    this.currY = this.startY;
-    this.minX = 0;
-    this.maxX = canvas.width;
-    this.stepX = this.width;
-    this.minY = -50;
-    this.maxY = 450;
-    this.stepY = 82;
-  }
-
-  update(newX = this.currX, newY = this.currY) {
-    (this.currX = newX), (this.currY = newY);
-  }
-
-  render() {
-    ctx.drawImage(Resources.get(this.sprite), this.currX, this.currY);
-  }
-
-  getHighcore() {
-    return localStorage.getItem('highScore') || 0;
-  }
-
-  handleInput(code) {
-    switch (code) {
-      case 'ArrowLeft':
-        if (this.currX - this.stepX <= this.minX) return;
-        this.currX -= this.stepX;
-        break;
-      case 'ArrowRight':
-        if (this.currX + this.stepX >= this.maxX) return;
-        this.currX += this.stepX;
-        break;
-      case 'ArrowUp':
-        if (this.currY - this.stepY <= this.minY) return;
-        this.currY -= this.stepY;
-        break;
-      case 'ArrowDown':
-        if (this.currY + this.stepY >= this.maxY) return;
-        this.currY += this.stepY;
-        break;
-      default:
-        break;
-    }
-    this.update(this.currX, this.currY);
-    if (this.currY === -6) {
-      infoHolder.innerText = `You won`;
-      currentScore += 1;
-      currentHolder.innerText = `Current score: ${currentScore}`;
-      setTimeout(() => {
-        player.update(this.startX, this.startY);
-        infoHolder.innerText = `Let's go!`;
-      }, 1000);
-      if (currentScore > highScore) {
-        highScore = currentScore;
-        localStorage.setItem('highScore', highScore);
-        highHolder.innerText = `High score: ${highScore}`;
-      }
-    }
-  }
-}
-
+const env = new Environment();
+const scoreBoard = new ScoreBoard('.high', '.message', '.current');
+const player = new Player(env, scoreBoard);
+const firstEnemyY = env.fieldMinY + env.tileHeight;
+const secondEnemyY = env.fieldMinY + env.tileHeight * 2;
+const thirdEnemyY = env.fieldMinY + env.tileHeight * 3;
 const allEnemies = [
-  new Enemy(65, getRandomNumber(150, 300)),
-  new Enemy(150, getRandomNumber(150, 300)),
-  new Enemy(235, getRandomNumber(150, 300)),
+  new Enemy(firstEnemyY, player, env, scoreBoard),
+  new Enemy(secondEnemyY, player, env, scoreBoard),
+  new Enemy(thirdEnemyY, player, env, scoreBoard),
 ];
-const player = new Player();
 
-document.addEventListener('keyup', function (e) {
+document.addEventListener('keyup', function ({ code }) {
   const allowedKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
-  if (allowedKeys.includes(e.code)) player.handleInput(e.code);
+  if (allowedKeys.includes(code)) player.handleInput(code);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  currentHolder.innerText = `Current score: ${currentScore}`;
-  highHolder.innerText = `High score: ${highScore}`;
+  scoreBoard.updateGameInfo(scoreBoard.welcomeMessage);
 });
