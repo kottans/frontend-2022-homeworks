@@ -83,5 +83,3 @@ function goToHomePage() {
     btn.style.display = "flex";
     buttonsDiv.style.display = 'none';
 };
-
-
