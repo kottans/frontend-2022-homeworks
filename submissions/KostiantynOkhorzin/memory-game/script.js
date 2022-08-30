@@ -91,7 +91,7 @@ const restart = () => {
         alert(`you win in ${playerSteps} steps`);
         gameBody.innerHTML = '';
         renderCards();
-    }, time);
+    }, 2000);
 };
 
 renderCards();
