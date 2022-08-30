@@ -35,17 +35,18 @@ const characters = [
 
 const navList = document.querySelector(".nav__list");
 const mainInner = document.querySelector(".main__inner");
+const [firstPage] = characters
 
-function createContent(character) {
+function createContent({name, illustration, general, appearance, personality}) {
     return (
-        `<h1 class="main__title">${character.name}</h1>
-        <img class="main__img" src="${character.illustration}" alt="${character.name} illustration">
+        `<h1 class="main__title">${name}</h1>
+        <img class="main__img" src="${illustration}" alt="${name} illustration">
         <h2 class="main__subtitle">${"General"}</h2>
-        <p class="main__text">${character.general}</p>
+        <p class="main__text">${general}</p>
         <h2 class="main__subtitle">${"Appearance"}</h2>
-        <p class="main__text">${character.appearance}</p>
+        <p class="main__text">${appearance}</p>
         <h2 class="main__subtitle">${"Personality"}</h2>
-        <p class="main__text">${character.personality}</p>`
+        <p class="main__text">${personality}</p>`
     );
 };
 
@@ -55,4 +56,4 @@ const changeContent = function(event) {
 };
 
 navList.addEventListener("click", changeContent);
-mainInner.innerHTML = createContent(characters[0]);
+mainInner.innerHTML = createContent(firstPage);
