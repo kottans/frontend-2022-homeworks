@@ -1,0 +1,306 @@
+
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	font-family: Verdana, sans-serif;
+}
+
+a, a:visited{text-decoration: none;}
+ul li{list-style: none;}
+
+/*-------------------- */
+
+.header,
+.aside,
+.main {
+ border: 1px solid white;
+}
+
+.wrapper {
+	display: grid;
+	grid-template-columns: 400px 1fr;
+	grid-template-rows: 150px 1fr;
+	grid-template-areas: 
+	"header header"
+	"aside main";
+	background: #485563;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+	
+
+}
+
+/* header */
+
+.header {
+	grid-area: header;
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 2%;
+
+}
+.title {
+	font-size: 30px;
+}
+
+.logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo__img {
+	width: 80px;
+	height: 80px;
+
+}
+
+.logo__img * {
+	fill: white;
+	transition: 0.5s;
+}
+
+.logo__img:hover * {
+	fill: tomato;
+}
+
+.user__area {
+	display: grid;
+	justify-items: center;
+	row-gap: 5px;
+
+}
+
+.user__name {
+	font-size: 10px;
+}
+
+.user__img{
+	width: 60px;
+	transition: 0.5s;
+}
+
+.user__img:hover {
+	box-shadow: 0px 0px 5px tomato;
+}
+
+.progress__dig {
+	font-size: 10px;
+}
+
+.progress__wrapper {
+	position: absolute;
+	width: 490px;
+	border-radius: 10px;
+	right: calc(50% - (510px / 2));
+	top: 101px;
+	border: 1px solid white;
+}
+
+.progress {
+	display: flex;
+	justify-content: center;
+	border-radius: 10px;
+	background-color: tomato;
+	width: 5%;
+
+}
+
+/* side-bar */
+
+.aside {
+	grid-area: aside;
+	padding-left: 15px;
+
+}
+
+.stage__name{
+	padding: 15px 0;
+	text-transform: uppercase;
+	font-size: 30px;
+}
+
+.chapter {
+	display: inline-block;
+	width: 100%;
+	text-transform: uppercase;
+	font-size: 20px;
+	margin: 20px 0;
+	font-weight: 700;
+	transition: 0.5s;
+}
+
+.chapter:hover {
+	color: tomato;
+}
+
+.chapter:hover::after {
+	content: "PUSH";
+	margin-top: -3px;
+	margin-left: 15px;
+	color:tomato;
+	background-color: white;
+	box-shadow: 0 5px 0 rgb(89, 71, 255);
+
+}
+
+.chapter::after {
+	content: "Done!";
+	position: absolute;
+	display: inline-block;
+	text-align: center;
+	line-height: 16px;
+	justify-content: center;
+	font-size: 6px;
+	font-weight: 500;
+	background-color: gray;	
+	color: #485563;
+	width: 40px;
+	height: 16px;
+	border-radius: 50px;
+	margin-left: 12px;
+	margin-top: 2px;
+}
+
+
+.checkbox {
+	opacity:0;
+}
+
+.checkbox:checked + .chapter::after {
+	background-color: tomato;
+	color: white;
+}
+
+
+.link {
+	text-decoration: none;
+	color: white;
+}
+
+.tomato {
+	color: tomato;
+}
+
+.nav__item {
+	padding: 10px 0 10px 20px;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.nav__item:hover {
+	background-color:tomato;
+}
+
+.selected {
+	background-color:tomato;
+}
+
+
+.nav__item:before {
+	content: '';
+	background-image: url(img/paw-white.png);
+	width: 15px;
+    height: 15px;
+	position: absolute;
+    background-size: cover;
+	left: 18px;
+	
+}
+
+/* content */
+
+.main {
+	grid-area: main;
+
+}
+
+.section {
+	display: grid;
+	justify-items: center;
+	row-gap: 20px;
+	grid-template-rows: 80px 1fr 1fr 50px;
+	padding: 30px;
+}
+
+.title__chapter {
+	font-size: 30px;
+	padding-top: 20px;
+}
+
+.description {
+	max-width: 650px;
+	font-size: 20px;
+	line-height: 2rem;
+}
+
+.btn {
+	height: 50px;
+	width: 150px;
+	font-size: 14px;
+	background-color: tomato;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	transition: 0.5s;
+}
+
+.btn:hover {
+	background-color: white;
+	color: black;
+	box-shadow: 10px 5px 0px tomato;
+}
+
+
+.hidden {
+ display: none;
+} 
+
+.task__item {
+	font-size: 18px;
+	line-height: 1.8rem;
+}
+
+.buttons {
+	display: none;
+	width: 380px;
+	gap: 10px;
+	justify-content: space-between;
+	align-items:center;
+
+}
+
+
+
+/* mobile */
+
+@media only screen
+
+and (min-width: 320px)
+and (max-width: 767px) {
+
+
+}
