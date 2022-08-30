@@ -10,9 +10,12 @@ body {
 }
 .popup-checkbox:focus-within ~ .popup-label {
   background: #33cccc81;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
   display: block;
   width: 50px;
-  margin: 30px 400px 0 740px;
+  height: 50px;
 }
 #popup-btn {
   appearance: none;
@@ -136,9 +139,12 @@ body {
   }
   .popup-checkbox:focus-within ~ .popup-label {
     background: #33cccc81;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
     display: block;
     width: 50px;
-    margin: 30px 400px 0 360px;
+    height: 50px;
   }
   .popup-menu {
     margin: 0 0 30px 190px;
@@ -179,10 +185,12 @@ body {
     margin: 55px 0;
   }
   .popup-checkbox:focus-within ~ .popup-label {
-    background: #33cccc81;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
     display: block;
     width: 50px;
-    margin: 30px 400px 0 160px;
+    height: 50px;
   }
   .popup-icon {
     width: 50px;
@@ -254,8 +262,13 @@ body {
     align-items: center;
     margin: 55px 0;
   }
-  .popup-label:focus {
-    background-color: red;
+  .popup-checkbox:focus-within ~ .popup-label {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    display: block;
+    width: 90px;
+    height: 90px;
   }
   .popup-icon {
     width: 90px;
@@ -293,9 +306,6 @@ body {
     align-items: center;
     border-radius: 2px;
     font-size: x-large;
-  }
-  .load-more:focus {
-    background-color: greenyellow;
   }
   .icon-photo {
     width: 150px;
