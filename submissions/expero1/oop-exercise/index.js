@@ -31,20 +31,13 @@ class Habitat {
   }
 
   toString() {
-    let propsKeys = this.PROPS.map((key) => {
-      return this[key];
-    });
-    let info = propsKeys.join("; ");
-    if (this.friends.length > 0) {
-      info += "; ";
-      let friendList = this.friends.reduce((list, friend) => {
-        list.push(friend.species + " " + friend.name);
-        return list;
-      }, []);
-
-      info += friendList.join(", ");
-    }
-    return info;
+    const propsKeys = this.PROPS.map((key) => this[key]);
+    propsKeys.push(
+      this.friends
+        .map((friend) => `${friend.species} ${friend.name}`)
+        .join(", ")
+    );
+    return propsKeys.join("; ");
   }
 }
 
@@ -52,7 +45,7 @@ class Human extends Habitat {
   constructor(name, gender, legs, hands, saying) {
     super(Habitat.SPECIES.HUMAN, name, gender, legs, saying);
     this.hands = hands;
-    this.PROPS.splice(this.PROPS.indexOf('legs'), 0, 'hands')
+    this.PROPS.splice(this.PROPS.indexOf("legs"), 0, "hands");
     console.log(this.PROPS);
   }
 }
@@ -69,12 +62,16 @@ class Cat extends Habitat {
   }
 }
 
-
 const dog = new Dog("Sharik", Habitat.GENDER.MALE, 4, "gav-gav!");
 const cat = new Cat("Murka", Habitat.GENDER.FEMALE, 4, "Myau");
 const man = new Human("Igor", Habitat.GENDER.MALE, 2, 2, "Hello, everebody!");
-const woman = new Human("Nata", Habitat.GENDER.FEMALE, 2, 2, "Hi. My name is Nata");
-
+const woman = new Human(
+  "Nata",
+  Habitat.GENDER.FEMALE,
+  2,
+  2,
+  "Hi. My name is Nata"
+);
 
 dog.addFriend(cat);
 dog.addFriend(cat);
