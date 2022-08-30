@@ -1,6 +1,6 @@
-let mainContent = document.querySelector(".mainContent");
+const mainContent = document.querySelector(".mainContent");
 
-let sideMenu = document.querySelector('.sideMenu');
+const sideMenu = document.querySelector('.sideMenu');
 
 sideMenu.addEventListener('click', function (event) {
     mainContent.style.backgroundColor = event.target.id;
