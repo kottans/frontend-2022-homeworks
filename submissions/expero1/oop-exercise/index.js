@@ -11,14 +11,23 @@
 class Habitat {
   static SPECIES = { DOG: "dog", CAT: "cat", HUMAN: "human" };
   static GENDER = { MALE: "male", FEMALE: "female" };
+  static LIMBS = { HANDS: "hands", LEGS: "legs" };
+  static PROPS = {
+    SPECIES: "species",
+    NAME: "name",
+    GENDER: "gender",
+    SAYING: "saying",
+  };
   friends = [];
-  PROPS = ["species", "name", "gender", "legs", "saying"];
-  constructor(species, name, gender, legs, saying) {
+  limbs = {};
+  constructor(species, name, gender, saying) {
     this.species = species;
     this.name = name;
     this.gender = gender;
-    this.legs = legs;
     this.saying = saying;
+  }
+  addLegs(quantity) {
+    this.limbs[Habitat.LIMBS.LEGS] = quantity;
   }
 
   addFriend(habitat) {
@@ -31,33 +40,48 @@ class Habitat {
   }
 
   toString() {
-    const propsKeys = this.PROPS.map((key) => this[key]);
-    propsKeys.push(
+    const props = [
+      this[Habitat.PROPS.SPECIES],
+      this[Habitat.PROPS.NAME],
+      this[Habitat.PROPS.GENDER],
+    ];
+    const limbs = [];
+    for (let limb in this.limbs) {
+      limbs.push(`${limb} - ${this.limbs[limb]}`);
+    }
+    props.push(limbs.join(", "));
+    props.push(this[Habitat.PROPS.SAYING]);
+    props.push(
       this.friends
         .map((friend) => `${friend.species} ${friend.name}`)
         .join(", ")
     );
-    return propsKeys.join("; ");
+    return props.join("; ");
   }
 }
 
 class Human extends Habitat {
   constructor(name, gender, legs, hands, saying) {
-    super(Habitat.SPECIES.HUMAN, name, gender, legs, saying);
-    this.hands = hands;
-    this.PROPS.splice(this.PROPS.indexOf("legs"), 0, "hands");
+    super(Habitat.SPECIES.HUMAN, name, gender, saying);
+    this.addLegs(legs);
+    this.addHands(hands);
+  }
+  addHands(quantity) {
+    this.limbs[Habitat.LIMBS.HANDS] = quantity;
   }
 }
 
 class Dog extends Habitat {
   constructor(name, gender, legs, saying) {
-    super(Habitat.SPECIES.DOG, name, gender, legs, saying);
+    super(Habitat.SPECIES.DOG, name, gender, saying);
+    this.addLegs(legs);
   }
 }
 
 class Cat extends Habitat {
   constructor(name, gender, legs, saying) {
-    super(Habitat.SPECIES.CAT, name, gender, legs, saying);
+    super(Habitat.SPECIES.CAT, name, gender, saying);
+    this.addLegs(legs);
   }
 }
 
@@ -78,9 +102,7 @@ man.addFriend(cat);
 man.addFriend(woman);
 
 // ======== OUTPUT ========
-[dog, cat, man, woman].forEach((habitat) => {
-  print(habitat);
-});
+[dog, cat, man, woman].forEach((habitat) => print(habitat));
 
 /* Use print(message) for output.
    Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
