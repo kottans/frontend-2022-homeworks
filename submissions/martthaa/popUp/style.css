@@ -31,7 +31,7 @@ input[type="checkbox"] {
   appearance: none;
 }
 
-.boxOfNavigationButtons{
+.box-navigation-buttons{
   top: 40px;
   right: 40px;
   gap: 4em;
@@ -185,7 +185,7 @@ input[type="checkbox"] {
     padding: 30px;
   }
 
-  .boxOfNavigationButtons{
+  .box-navigation-buttons{
     flex-direction: row;
   }
 
