@@ -79,12 +79,6 @@ input[type="checkbox"] {
   visibility: visible;
 }
 
-.avatar {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-}
-
 .popup_list {
   display: flex;
   flex-wrap: wrap;
@@ -104,6 +98,7 @@ input[type="checkbox"] {
   font-family: 'Brush Script MT', cursive;
   padding-top: 40px;
   font-size: 40px;
+  text-decoration: none;
 }
 
 .more-item-menu {
@@ -175,9 +170,15 @@ input[type="checkbox"] {
   outline: none;
 }
 
-.icon-chat img, .check img, .icon-recipes img{
-    width: 40px;
-    height: 40px;
+.button-icon{
+  width: 40px;
+  height: 40px;
+}
+
+.avatar {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
 }
 
 @media screen and (max-width:540px) {
@@ -186,8 +187,13 @@ input[type="checkbox"] {
     top: 350%;
     padding: 30px;
   }
+
   .boxOfNavigationButtons{
     flex-direction: row;
+  }
+
+  .popup_item{
+    margin-top: 10px;
   }
 }
 
@@ -197,6 +203,7 @@ input[type="checkbox"] {
     width: 300px;
     max-height: 480px;
   }
+
   .last-item-menu{
     margin-top: 35px;
   }
@@ -206,7 +213,7 @@ input[type="checkbox"] {
   .popup{
     width: 300px;
     top: 90px;
-    max-height: 440px;
+    max-height: 600px;
     left: -130px;
   }
 }
