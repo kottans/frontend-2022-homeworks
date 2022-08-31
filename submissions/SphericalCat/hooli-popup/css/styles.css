@@ -1,0 +1,406 @@
+body {
+    margin: 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    color: darkslategray;
+}
+
+.logo {
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px 0 50px;
+    height: 60px;
+    box-shadow: 0 5px 10px rgba(34, 63, 87, 0.151);
+    width: auto;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 0 10px 10px 10px;
+
+}
+
+.menu_item {
+    margin-left: 20px;
+}
+
+.check,
+.check_more {
+    position: absolute;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+.see_more{
+    cursor: pointer;
+}
+
+.see_more_item {
+    display: block;
+    text-align: center;
+    padding: 5px;
+    background: #33cccc3b;
+    border-radius: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.see_more_item:hover {
+    background: #33cccc81;
+    color: white;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    right: 5%;
+    overflow-y: scroll;
+    background: white;
+    border: 2px dotted #33cccc6b;
+    border-radius: 20px;
+    padding: 10px;
+    height: 300px;
+}
+
+.popup_two {
+    margin-top: 10px;
+    display: none;
+}
+
+.check:checked~.popup {
+    display: block;
+}
+
+.check_more:checked~.popup_two {
+    display: block;
+}
+
+.check_more:focus-within~.see_more .see_more_item{
+    background: #33cccc81;
+    color: white;
+}
+
+.check_more:checked~.see_more .see_more_item {
+    background: #33cccc31;
+    color: white;
+}
+
+.check_more:checked~.see_more .see_more_item:hover {
+    color: darkslategray;
+}
+
+.check_more:checked:focus-within~.see_more .see_more_item{
+    color: darkslategray;
+}
+
+.popup::-webkit-scrollbar {
+    opacity: 0;
+    width: 5px;
+
+}
+
+.popup::-webkit-scrollbar-thumb {
+    background: #33cccc2d;
+    border-radius: 14%;
+}
+
+.popup_items {
+    list-style: none;
+    display: grid;
+    grid-template: repeat(3, 65px)/ repeat(3, 65px);
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    padding: 0;
+}
+
+.popup_two_items {
+    display: grid;
+    grid-template-columns: repeat(3, 65px);
+    list-style: none;
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    padding: 0;
+}
+
+.burger_img {
+    display: block;
+    background-image: url(styles/img/burger.gif);
+    height: 60px;
+    width: 60px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.burger_check{
+    cursor: pointer;
+}
+
+.check:checked~.burger_check .burger_img {
+    background-image: url(styles/img/burger.png);
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+}
+
+.check:focus-within~.burger_check .burger_img {
+    background-image: url(styles/img/burger.png);
+        background-position: center;
+        background-size: 90%;
+        background-repeat: no-repeat;
+}
+
+.items_img {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+}
+
+.popup_link:hover .items_img {
+    width: 50px;
+    height: 50px;
+}
+
+.popup_link:focus .items_img {
+    width: 50px;
+    height: 50px;
+}
+
+.calendar {
+    background-image: url(styles/img/calendar.png);
+}
+
+.popup_link:hover .calendar {
+    background-image: url(styles/img/calendar.gif);
+}
+
+.popup_link:focus .calendar {
+    background-image: url(styles/img/calendar.gif);
+}
+
+.mail {
+    background-image: url(styles/img/chat.png);
+}
+
+.popup_link:hover .mail {
+    background-image: url(styles/img/chat.gif);
+}
+
+.popup_link:focus .mail {
+    background-image: url(styles/img/chat.gif);
+}
+
+.finance {
+    background-image: url(styles/img/save-money.png)
+}
+
+.popup_link:hover .finance {
+    background-image: url(styles/img/save-money.gif)
+}
+
+.popup_link:focus .finance {
+    background-image: url(styles/img/save-money.gif)
+}
+
+.cthulhu {
+    background-image: url(styles/img/octopus.png);
+}
+
+.popup_link:hover .cthulhu {
+    background-image: url(styles/img/octopus.gif);
+}
+
+.popup_link:focus .cthulhu {
+    background-image: url(styles/img/octopus.gif);
+}
+
+.files {
+    background-image: url(styles/img/folder.png);
+}
+
+.popup_link:hover .files {
+    background-image: url(styles/img/folder.gif);
+}
+
+.popup_link:focus .files {
+    background-image: url(styles/img/folder.gif);
+}
+
+.contacts {
+    background-image: url(styles/img/phone.png);
+}
+
+.popup_link:hover .contacts {
+    background-image: url(styles/img/phone.gif);
+}
+
+.popup_link:focus .contacts {
+    background-image: url(styles/img/phone.gif);
+}
+
+.videos {
+    background-image: url(styles/img/video-player.png);
+}
+
+.popup_link:hover .videos {
+    background-image: url(styles/img/video-player.gif);
+}
+
+.popup_link:focus .videos {
+    background-image: url(styles/img/video-player.gif);
+}
+
+.photo {
+    background-image: url(styles/img/photo-camera.png);
+}
+
+.popup_link:hover .photo {
+    background-image: url(styles/img/photo-camera.gif);
+}
+
+.popup_link:focus .photo {
+    background-image: url(styles/img/photo-camera.gif);
+}
+
+.maps {
+    background-image: url(styles/img/gps.png);
+}
+
+.popup_link:hover .maps {
+    background-image: url(styles/img/gps.gif);
+}
+
+.popup_link:focus .maps {
+    background-image: url(styles/img/gps.gif);
+}
+
+.food {
+    background-image: url(styles/img/fishbone.png);
+}
+
+.popup_link:hover .food {
+    background-image: url(styles/img/fishbone.gif);
+}
+
+.popup_link:focus .food {
+    background-image: url(styles/img/fishbone.gif);
+}
+
+.game {
+    background-image: url(styles/img/yarn.png);
+}
+
+.popup_link:hover .game {
+    background-image: url(styles/img/yarn.gif);
+}
+
+.popup_link:focus .game {
+    background-image: url(styles/img/yarn.gif);
+}
+
+.experience {
+    background-image: url(styles/img/bone.png);
+}
+
+.popup_link:hover .experience {
+    background-image: url(styles/img/bone.gif);
+}
+
+.popup_link:focus .experience {
+    background-image: url(styles/img/bone.gif);
+}
+
+.link {
+    text-decoration: none;
+    color: darkslategray;
+}
+
+.my_icon {
+    background: rgba(0, 0, 0, 0.411);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+}
+
+.back_img {
+    position: fixed;
+    margin-top: 35%;
+}
+
+@media (max-width: 768px) {
+    .head{
+        width: 100%;
+        padding: 0;
+    }
+
+    .logo{
+        margin-left: 20px;
+    }
+
+    .menu{
+        padding-left: 0;
+        padding-right: 20px;
+    }
+
+    .back_img{
+        z-index: -1;
+    }
+
+}
+
+@media (max-width: 480px){
+
+    .head{
+        flex-wrap: wrap;
+        height: 120px;
+        justify-content: center;
+    }
+
+    .logo{
+        margin-left: 0;
+        margin-right: 20px;
+    }
+
+    .back_img {
+        z-index: -1;
+    }
+
+    .popup{
+        width: 100%;
+        position: absolute;
+        right: 0;
+        padding: 0;
+    }
+
+    .see_more_item{
+        margin: 10px;
+    }
+
+    .popup_items,
+    .popup_two_items{
+        margin: auto;
+        padding-left: 30px;
+        justify-content:space-evenly;    
+    }
+
+    .hug_cat_linck{
+        margin-left: 23%;
+    }
+
+}
+
