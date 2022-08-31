@@ -287,3 +287,21 @@ button:hover {
 
     }
 }
+
+@media screen and (max-width:825px) {
+    .audio-box{
+        right: 5px;
+        bottom: 20px;
+    }
+}
+
+@media screen and (max-width:390px) {
+    .tabs_content{
+        font-size: 12px;
+    }
+
+    button{
+        width: 80px;
+    }
+}
+
