@@ -37,25 +37,24 @@ const methods = [
     },
 ]
 
-let methodsList = document.getElementsByClassName('methods-list')[0]
+const methodsList = document.getElementsByClassName('methods-list')[0]
 methods.forEach(el => {
-    let li = document.createElement('li')
+    const li = document.createElement('li')
     li.innerText = el.type
     li.classList.add("methods-list__list-item");
 
-    let img = document.createElement('img')
+    const img = document.createElement('img')
     img.classList.add("methods-description__image-example");
     img.src = el.img
 
-    let title = document.createElement('h4')
+    const title = document.createElement('h4')
     title.innerText = el.type
     title.classList.add("title");
     
-    let description = document.createElement('p')
+    const description = document.createElement('p')
     description.innerText = el.description
-    // description.classList.add('methods-description__text')
 
-    let methodsDescription = document.querySelector('.methods-description')
+    const methodsDescription = document.querySelector('.methods-description')
     
     li.addEventListener('click', () => {
         methodsDescription.innerText=''

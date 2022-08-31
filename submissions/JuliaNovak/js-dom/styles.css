@@ -55,6 +55,7 @@
 
 .methods-description__image-example {
     margin-top: 1rem;
+    width: 50%;
 }
 
 @media (max-width: 1000px) {
@@ -69,5 +70,8 @@
     .methods-description {
         font-style: 18px;
         margin: 0;
+    }
+    .methods-description__image-example {
+        width: 100%;
     }
 }
