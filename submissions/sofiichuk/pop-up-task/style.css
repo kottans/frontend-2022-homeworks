@@ -58,13 +58,13 @@ input {
     right: 140px;
 }
 
-.dropdownMenu > ul {
+.dropdownMenu {
     max-height: 0;
     display: none;
     position: absolute;
 }
 
-#input_1:checked ~ .dropdownMenu > ul {
+#input_1:checked ~ .dropdownMenu {
     max-height: 500px;
     top: 30px;
     right: 20px;
