@@ -65,7 +65,7 @@ input[type="checkbox"] {
   border-radius: 20px;
   transition: all 0.5s;
   background-color:  rgba(215, 207, 196, 0.5);
-  box-shadow: 0px 0px 10px 1px gray;
+  box-shadow: 0px 0px 10px 1px #808080;
   display: flex;
   flex-wrap: wrap;
   opacity: 0;
@@ -162,8 +162,8 @@ input[type="checkbox"] {
 
 .list-item:hover, 
 .list-item:focus-within   {
-    border: 1px solid rgb(255, 255, 255);
-    box-shadow: 0 0 10px rgb(131, 121, 106);
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 10px #808080;
     border-radius: 5px;  
 }
 
@@ -220,6 +220,7 @@ input[type="checkbox"] {
     left: -115px;
   }
 }
+
 
 
 
