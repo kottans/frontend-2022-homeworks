@@ -2,54 +2,108 @@ const score = document.createElement('p');
 score.textContent = `Your score: 0 `;
 document.body.append(score);
 
-const enemyStat = {
-    width: 98,
-    height: 56,
-    sprite: "images/enemy-bug.png",
-};
-
 const field = {
-    min: -50,
+    min: 0,
     borderX: 400,
     borderY: 450,
     waterCoord: 50,
 }
 
-const playerStat = {
-    startPositionX: 200,
-    startPositionY: 400
-}
+const xColDistance = 80;
+const yColDistance = 50;
 
-let xColDistance = 80;
-let yColDistance = 60;
-
-const Enemy = function(posX, posY, speed) {
-    this.posX = posX;
-    this.posY = posY;
-    this.speed = speed;
-    this.width = 100;
-    this.height = 56;
-    this.sprite = "images/enemy-bug.png";
-};
-
-Enemy.prototype.update = function(dt) {
-    this.posX += this.speed * dt;
-    if (this.posX > ctx.canvas.width) {
-        this.posX = -100;
+class Enemy {
+    constructor(posX, posY, speed) {
+        this.posX = posX;
+        this.posY = posY;
+        this.speed = speed;
+        this.width = 100;
+        this.height = 50;
+        this.sprite = 'images/enemy-bug.png';
     }
 
-    this.collision();
-};
+    update(dt) {
+        this.posX += this.speed * dt;
+        if (this.posX > ctx.canvas.width) {
+            this.posX = -100;
+        }
 
-Enemy.prototype.collision = function() {
-    if (player.posX < this.posX + xColDistance && player.posX + xColDistance > this.posX && player.posY < this.posY + yColDistance && yColDistance + player.posY > this.posY) {
-        player.goToStartPosition();
+        this.collision();
+    }
+
+    collision() {
+        if (player.posX < this.posX + xColDistance && player.posX + xColDistance > this.posX && player.posY < this.posY + yColDistance && yColDistance + player.posY > this.posY) {
+            player.goToStartPosition();
+        }
+    }
+
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.posX, this.posY);
     }
 }
 
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.posX, this.posY);
-};
+class Player {
+    constructor(posX, posY) {
+        this.posX = posX;
+        this.posY = posY;
+        this.stepX = 100;
+        this.stepY = 90;
+        this.stat = 0;
+        this.startPositionX = 200;
+        this.startPositionY = 400;
+        this.width = 80;
+        this.height = 80;
+    
+        this.sprite = 'images/char-boy.png';
+    }
+
+    update() {
+        this.win();
+    }
+
+    win() {
+        if (field.min >= this.posY) {
+            this.stat += 1;
+            score.textContent = `Your score: ${this.stat}`;
+            this.goToStartPosition();
+        }
+    }
+
+    goToStartPosition() {
+        this.posX = this.startPositionX;
+        this.posY = this.startPositionY;
+    }
+
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.posX, this.posY);
+    }
+
+    handleInput(key) {
+        switch(key) {
+            case 'up':
+                this.posY -= this.stepY;
+                break;
+            case 'down':
+                this.posY += this.stepY;
+                if (this.posY > field.borderY) {
+                    this.posY = field.borderY - 50;
+                }
+                break;
+            case 'left':
+                this.posX -= this.stepX;
+                if (this.posX < this.stepX) {
+                    this.posX = 0;
+                }
+                break;
+            case 'right':
+                this.posX += this.stepX;
+                if (this.posX > field.borderX) {
+                    this.posX = field.borderX;
+                }
+                break;
+        }
+    }
+}
 
 const allEnemyVal = [
     {
@@ -69,80 +123,20 @@ const allEnemyVal = [
     }
 ];
 
-let allEnemies = allEnemyVal.map(
-    ({x, y, speed}) => new Enemy(x, y, speed)
-)
+let allEnemies = allEnemyVal.map(({x, y, speed}) => new Enemy(x, y, speed));
 
-const Player = function(posX, posY) {
-    this.posX = posX;
-    this.posY = posY;
-    this.stepX = 100;
-    this.stepY = 90;
-    this.stat = 0;
-
-    this.width = 80;
-    this.height = 80;
-
-    this.sprite = 'images/char-boy.png';
-}
-
-
-Player.prototype.update = function() {
-    this.win();
-}
-
-Player.prototype.win = function() {
-    console.log(field.min, this.posY);
-    if (field.min >= this.posY) {
-        this.stat += 1;
-        score.textContent = `Your score: ${this.stat}`;
-        this.goToStartPosition();
-    }
-}
-
-Player.prototype.goToStartPosition = function() {
-    this.posX = playerStat.startPositionX;
-    this.posY = playerStat.startPositionY;
-}
-
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.posX, this.posY);
-}
-
-Player.prototype.handleInput = function(key) {
-    switch(key) {
-        case 'up':
-            this.posY -= this.stepY;
-            break;
-        case 'down':
-            this.posY += this.stepY;
-            if (this.posY > field.borderY) {
-                this.posY = field.borderY - 50;
-            }
-            break;
-        case 'left':
-            this.posX -= this.stepX;
-            if (this.posX < this.stepX) {
-                this.posX = 0;
-            }
-            break;
-        case 'right':
-            this.posX += this.stepX;
-            if (this.posX > field.borderX) {
-                this.posX = field.borderX;
-            }
-            break;
-    }
-}
-
-let player = new Player(playerStat.startPositionX, playerStat.startPositionY);
+let player = new Player(200, 400);
 
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {
         37: 'left',
+        65: 'left',
         38: 'up',
+        87: 'up',
         39: 'right',
-        40: 'down'
+        68: 'right',
+        40: 'down',
+        83: 'down'
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
