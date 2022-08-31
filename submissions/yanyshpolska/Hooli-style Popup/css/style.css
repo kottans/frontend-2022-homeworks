@@ -41,7 +41,7 @@ a {
 }
 .menu__item_text {
   border: 0.15rem solid transparent;
-  border-radius: 0.2rem;
+  border-radius: 0.2em;
   color: #555;
   padding: 0.2rem 0.15rem;
 }
@@ -54,7 +54,7 @@ a {
 .menu__item_picture {
   width: 1.715rem;
   border: 0.15rem solid transparent;
-  border-radius: 0.2rem;
+  border-radius: 0.2em;
   padding: 0.15rem;
 }
 .menu__item_picture_img {
@@ -78,7 +78,7 @@ a {
   height: 1.715rem;
   width: 1.715rem;
   border: 0.15rem solid transparent;
-  border-radius: 0.2rem;
+  border-radius: 0.2em;
   background: url("../img/popup-button.png") 50% 50%/80% 80% no-repeat;
 }
 .visually-hidden {
@@ -106,7 +106,7 @@ a {
   right: -6.45rem;
   top: 2.15rem;
   border: 0.15rem solid rgb(135, 105, 145);
-  border-radius: 0.2rem;
+  border-radius: 0.2em;
   background-color: #fffaf2;
   width: 22rem;
   height: 23.5rem;
@@ -121,7 +121,7 @@ a {
   user-select: none;
   flex: 0 0 30%;
   border: 0.15rem solid transparent;
-  border-radius: 0.2rem;
+  border-radius: 0.2em;
   margin: 0.33rem;
   padding: 0.3rem 0rem;
   display: flex;
@@ -158,7 +158,7 @@ a {
   justify-content: center;
   padding: 0.15rem;
   background-color: #fde4ba;
-  border-radius: 0.2rem;
+  border-radius: 0.2em;
   width: 18rem;
   border: 0.15rem solid transparent;
 }
