@@ -1,3 +1,7 @@
+function makeArray(count = 1, value) {
+  return Array(count).fill(value);
+}
+
 function mergeObjects(primaryObject, secondaryObject) {
   const mergedObject = {...primaryObject};
   Object.keys(secondaryObject)
@@ -21,6 +25,7 @@ function recombine(arr1, arr2) {
 }
 
 module.exports = {
+  makeArray,
   mergeObjects,
   recombine,
 };

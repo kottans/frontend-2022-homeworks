@@ -1,0 +1,206 @@
+.header {
+    box-shadow: 0px 5px 5px var(--main-gray-color);
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+}
+
+.header-flex-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-img {
+    fill: var(--blue-color);
+
+    @media screen and (max-width: 480px) {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.logo-link:focus,
+.logo-link:hover,
+.logo-link:focus .logo-img,
+.logo-link:hover .logo-img {
+    color: var(--hover-focus-color);
+    stroke-width: 10;
+    stroke: var(--blue-color);
+    fill: var(--hover-focus-color);
+    text-shadow: 1px 1px 1px var(--blue-color)
+}
+
+.logo-flex {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.logo-text {
+    font-size: 30px;
+    font-weight: 700;
+    margin-left: 10px;
+    padding-top: 10px;
+
+    @media screen and (max-width: 480px) {
+        font-size: 24px;
+    }
+}
+
+.right-menu-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 50px;
+
+    @media screen and (max-width: 480px) {
+        margin-right: 40px;
+    }
+}
+
+.notification-list {
+    margin-left: 15px;
+
+    @media screen and (max-width: 480px) {
+        margin-left: 10px;
+    }
+}
+
+.popup-menu-list {
+    margin-left: 15px;
+
+    @media screen and (max-width: 480px) {
+        margin-left: 10px;
+    }
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navigation-link:not(:first-child) {
+    margin-left: 15px;
+
+    @media screen and (max-width: 480px) {
+        margin-left: 10px;
+    }
+}
+
+.link-envelope,
+.link-images,
+.link-bell,
+.dropdown-link {
+    fill: var(--blue-color);
+}
+
+.envelope-img,
+.images-img {
+    @media screen and (max-width: 480px) {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.bell-img {
+    @media screen and (max-width: 480px) {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.avatar-img {
+    @media screen and (max-width: 480px) {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.link-images:focus,
+.link-images:hover,
+.link-envelope:focus,
+.link-envelope:hover,
+.link-bell:focus,
+.link-bell:hover,
+.dropdown-link:focus,
+.dropdown-link:hover {
+    stroke: var(--blue-color);
+    stroke-width: 10;
+    fill: var(--hover-focus-color);
+    outline: none;
+}
+
+.check {
+    cursor: pointer;
+    stroke: var(--blue-color);
+    fill: var(--blue-color);
+}
+
+.check-input {
+    position: absolute;
+    appearance: none;
+}
+
+.link-avatar {
+    top: 20%;
+    right: 15px;
+    position: absolute;
+    border: 2px solid var(--blue-color);
+    border-radius: 50%;
+    fill: var(--blue-color);
+
+    @media screen and (max-width: 480px) {
+        top: 22%;
+        right: 18px;
+    }
+}
+
+.link-avatar:focus,
+.link-avatar:hover {
+    border: 2px solid var(--blue-color);
+    stroke-width: 10;
+    stroke: var(--blue-color);
+    fill: var(--hover-focus-color);
+    outline: none;
+}
+
+.check-input:checked~.dropdown-content {
+    font-size: 12px;
+    border: 2px solid var(--blue-color);
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    top: 85px;
+    right: 55px;
+    background-color: var(--white-color);
+    min-width: 150px;
+
+    @media screen and (max-width: 480px) {
+        top: 78px;
+        right: 36px;
+    }
+}
+
+.polygon-blue {
+    position: absolute;
+    top: -25px;
+    right: 65px;
+    width: 25px;
+    height: 25px;
+    background-color: var(--blue-color);
+    clip-path: polygon(51% 24%, 0% 100%, 100% 100%);
+}
+
+.polygon-white {
+    position: absolute;
+    top: -22px;
+    right: 65px;
+    width: 25px;
+    height: 25px;
+    background-color: var(--white-color);
+    clip-path: polygon(51% 24%, 0% 100%, 100% 100%);
+}
