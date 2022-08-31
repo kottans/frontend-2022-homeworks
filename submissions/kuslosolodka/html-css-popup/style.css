@@ -1,0 +1,332 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  overflow: hidden;
+}
+.popup-checkbox:focus-within ~ .popup-label {
+  background: #33cccc81;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+#popup-btn {
+  appearance: none;
+}
+#popup-btn:checked ~ .popup-menu {
+  display: block;
+}
+.popup-icon {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin: 30px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.popup-icon:hover {
+  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px,
+    rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px,
+    rgb(255, 85, 85) 0px 0px 0px 15px;
+}
+.popup-menu {
+  margin: 0px 0 -30px 570px;
+  box-shadow: 3px 6px 16px 0px rgba(184, 180, 184, 1);
+  height: 570px;
+  width: 400px;
+  overflow-y: scroll;
+  border-radius: 10px;
+  display: none;
+}
+.icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin: 30px 30px 30px 30px;
+}
+.menu-icon {
+  display: block;
+  margin: 10px 20px 10px 10px;
+  align-items: center;
+  text-align: center;
+  color: black;
+}
+.menu-icon:hover {
+  box-shadow: 3px 6px 16px 0px rgba(184, 180, 184, 1);
+  color: rgb(255, 157, 0);
+}
+.menu-icon:focus {
+  color: rgb(255, 157, 0);
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.icon-photo {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.load-more {
+  cursor: pointer;
+  background: rgba(205, 203, 203, 0.397);
+  width: 383px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  margin: -10px 0;
+  border-radius: 2px;
+}
+.load-more:hover {
+  background: rgb(255, 157, 0);
+}
+.load-more-checkbox:focus-within ~ .load-more {
+  background: #33cccc81;
+  color: darkslategrey;
+}
+#load-more-btn {
+  appearance: none;
+}
+#load-more-btn:checked ~ .load-more {
+  display: none;
+}
+#load-more-btn:checked ~ .hidden-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin: 30px 30px 30px 30px;
+}
+#load-more-btn:checked ~ .hidden-footer {
+  margin: 0 100px;
+  padding: 0px 0px 30px 0px;
+  cursor: pointer;
+  display: block;
+}
+.footer-icon {
+  color: black;
+}
+.footer:hover {
+  color: rgb(255, 157, 0);
+  cursor: pointer;
+}
+
+.hidden-icons {
+  display: none;
+}
+.hidden-footer {
+  display: none;
+}
+.btn-text {
+  margin: 165px;
+  color: rgb(104, 102, 102);
+  cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  .popup-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+  }
+  .popup-checkbox:focus-within ~ .popup-label {
+    background: #33cccc81;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    display: block;
+    width: 50px;
+    height: 50px;
+  }
+  .popup-menu {
+    margin: 0 0 30px 190px;
+    box-shadow: 3px 6px 16px 0px rgba(184, 180, 184, 1);
+    height: 500px;
+    width: 400px;
+    overflow-y: scroll;
+    border-radius: 10px;
+    display: none;
+  }
+  .menu-icon {
+    display: block;
+    margin: 0 20px 5px 10px;
+    align-items: center;
+    text-align: center;
+    color: black;
+  }
+  .load-more {
+    cursor: pointer;
+    background: rgba(205, 203, 203, 0.397);
+    width: 400px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    margin: -19px 0;
+  }
+  .btn-text {
+    margin: 180px;
+    color: rgb(104, 102, 102);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .popup-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 55px 0;
+  }
+  .popup-checkbox:focus-within ~ .popup-label {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    display: block;
+    width: 50px;
+    height: 50px;
+  }
+  .popup-icon {
+    width: 50px;
+    height: 50px;
+  }
+  .popup-menu {
+    margin: 0 40px 0 40px;
+    box-shadow: 3px 6px 16px 0px rgba(184, 180, 184, 1);
+    height: 400px;
+    width: 300px;
+    overflow-y: scroll;
+    border-radius: 10px;
+    display: none;
+  }
+  .icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 10px 10px 10px 10px;
+  }
+  .menu-icon {
+    display: block;
+    margin: 7px 0px 2px 0px;
+    align-items: center;
+    text-align: center;
+    color: black;
+  }
+  .load-more {
+    cursor: pointer;
+    background: rgba(205, 203, 203, 0.397);
+    width: 300px;
+    height: 25px;
+    margin: -17px 0;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+  }
+  .icon-photo {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+  }
+  .btn-text {
+    margin: 130px;
+    color: rgb(104, 102, 102);
+  }
+  #load-more-btn:checked ~ .hidden-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    margin: 30px 15px 15px 15px;
+  }
+  .footer {
+    margin: 35px 0px 0 -55px;
+    width: 200px;
+    cursor: pointer;
+    display: block;
+    justify-content: center;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 2560px) {
+  .popup-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 55px 0;
+  }
+  .popup-checkbox:focus-within ~ .popup-label {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    display: block;
+    width: 90px;
+    height: 90px;
+  }
+  .popup-icon {
+    width: 90px;
+    height: 90px;
+  }
+  .popup-menu {
+    margin: 0 0 0 780px;
+    box-shadow: 3px 6px 16px 0px rgba(184, 180, 184, 1);
+    height: 1000px;
+    width: 1000px;
+    overflow-y: scroll;
+    border-radius: 10px;
+    display: none;
+  }
+  .icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 30px 15px 15px 15px;
+  }
+  .menu-icon {
+    display: block;
+    margin: 15px 10px 15px 10px;
+    align-items: center;
+    text-align: center;
+    color: black;
+    font-size: xx-large;
+  }
+  .load-more {
+    cursor: pointer;
+    background: rgba(205, 203, 203, 0.397);
+    width: 1000px;
+    height: 89px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    font-size: x-large;
+  }
+  .icon-photo {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btn-text {
+    margin: 470px;
+    color: rgb(104, 102, 102);
+    font-size: xx-large;
+  }
+  #load-more-btn:checked ~ .hidden-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    margin: 30px 15px 15px 15px;
+  }
+  .footer {
+    font-size: xx-large;
+    margin: 0 200px;
+  }
+}
