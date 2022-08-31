@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    text-decoration: none;
+    color: #4f4f4f;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.navBar {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    justify-content: end;
+    margin: 20px 60px 0 0;
+    position: relative;
+}
+
+.navBar__item > a, #label_1 {
+    height: 35px;
+    width: 60px;
+}
+
+.item_txt > a {
+    padding-top: 8px;
+}
+
+a, span, label {
+    display: block;
+}
+
+img {
+    height: 35px;
+    width: auto;
+}
+
+img[src="icons/bell.png"] {
+    height: 28px;
+    width: 28px;
+    position: relative;
+    top: 4px;
+}
+
+input {
+    position: absolute;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+#input_1 {
+    position: absolute;
+    height: 35px;
+    width: 60px;
+    right: 140px;
+}
+
+.dropdownMenu > ul {
+    max-height: 0;
+    display: none;
+    position: absolute;
+}
+
+#input_1:checked ~ .dropdownMenu > ul {
+    max-height: 500px;
+    top: 30px;
+    right: 20px;
+    gap: 30px;
+    margin: 15px;
+    padding: 15px;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(4, 40px) repeat(2, 40px);
+    font-size: 12px;
+    text-align: center;
+}
+
+#input_2 {
+    height: 20px;
+    width: 240px;
+    left: 15px;
+}
+
+#label_2:before {
+    content: "More";
+    color: #4f4f4f;
+    font-family: sans-serif;
+    width: 240px;
+    display: block;
+    grid-column: span 3;
+    background: lightgrey;
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    position: absolute;
+}
+
+#input_2:checked + #label_2:before, #input_2:checked {
+    height: 0;
+    opacity: 0;
+    cursor: none;
+}
+
+.dropdownMenu__collapsiblePart {
+    max-height: 20px;
+    display: none;
+}
+
+#input_2:checked ~ .dropdownMenu__collapsiblePart {
+    max-height: 500px;
+    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(2, 40px);
+}
+
+a:hover, input:hover {
+    outline: 1px black solid;
+}
+
+a:focus {
+    outline: 2px black solid;
+    border-radius: 1px;
+}
