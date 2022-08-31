@@ -96,15 +96,11 @@ function printClassInformation(event) {
   contentLinkHome.innerText = "Повернутися на головну сторінку";
   
   const className = event.target.closest("a").dataset.gameClass;
-  const classIndex = classesArr.findIndex((el) => {
-    if (el.name === className) {
-      return true;
-    }
-  });
-  contentTitle.innerText = classesArr[classIndex].name;
-  contentDescription.innerText = classesArr[classIndex].description;
-  contentImg.setAttribute("src","./assets/illustrations/" + className + ".jpg");
-  contentImg.setAttribute("alt", classesArr[classIndex].name);
+  const classObj = classesArr.find(classObj => classObj.name === className)
+  contentTitle.innerText = classObj.name;
+  contentDescription.innerText = classObj.description;
+  contentImg.setAttribute("src","./assets/illustrations/" + classObj.name + ".jpg");
+  contentImg.setAttribute("alt", classObj.name);
   
   clearAndAppendContent.call(content, contentTitle, contentDescription, contentImg, contentLinkHome);
 }
