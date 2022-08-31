@@ -7,53 +7,72 @@
 
 // ======== OBJECTS DEFINITIONS ========
 class Inhabitant {
-  constructor(name, saying, sex, legs, species) {
+  constructor(name, saying, sex) {
     this.name = name;
     this.saying = saying;
-    this.legs = legs;
     this.sex = sex;
-    this.species = species;
   }
   getInfo() {
-    return (
-      this.name +
-      ", " +
-      this.saying +
-      ", " +
-      this.legs +
-      ", " +
-      this.sex +
-      ", " +
-      this.species
-    );
+    return this.name + ", " + this.saying + ", " + this.sex;
   }
 }
 
 class Human extends Inhabitant {
-  constructor(name, saying, sex, legs, species, hands) {
-    super(name, saying, sex, legs, species);
-    this.hands = hands;
+  friends = inhabitants.map((inhabitant) => {
+    return inhabitant;
+  });
+  hands = 2;
+  legs = 2;
+  constructor(...args) {
+    super(...args);
   }
   getInfo() {
-    return super.getInfo() + ", " + this.hands;
+    return (
+      super.getInfo() +
+      ", " +
+      this.hands +
+      ", " +
+      this.legs +
+      ", " +
+      this.constructor.name
+    );
   }
 }
 
 class Animal extends Inhabitant {
-  constructor(name, saying, sex, legs, species, tail) {
-    super(name, saying, sex, legs, species);
-    this.tail = tail;
+  tail = 1;
+  legs = 4;
+  constructor(...args) {
+    super(...args);
   }
   getInfo() {
-    return super.getInfo() + ", " + this.tail;
+    return super.getInfo() + ", " + this.legs + ", " + this.tail;
   }
 }
 
-const manTom = new Human("Tom", "Hi there!", "male", 2, "human", 2);
-const womanAnn = new Human("Ann", "Hello!", "female", 2, "human", 2);
-const catFlow = new Animal("Flow", "meow!", "female", 4, "cat", 1);
-const dogBobik = new Animal("Bobik", "woof-woof!", "male", 4, "dog", 1);
-const womanCat = new Human("Jess", catFlow.saying, "female", 2, "human", 2);
+class Cat extends Animal {
+  constructor(...args) {
+    super(...args);
+  }
+  getInfo() {
+    return super.getInfo() + ", " + this.constructor.name;
+  }
+}
+
+class Dog extends Animal {
+  constructor(...args) {
+    super(...args);
+  }
+  getInfo() {
+    return super.getInfo() + ", " + this.constructor.name;
+  }
+}
+
+const manTom = new Human("Tom", "Hi there!", "male");
+const womanAnn = new Human("Ann", "Hello!", "female");
+const catFlow = new Cat("Flow", "meow!", "female");
+const dogBobik = new Dog("Bobik", "woof-woof!", "male");
+const womanCat = new Human("Jess", catFlow.saying, "female");
 
 const inhabitants = [manTom, womanAnn, catFlow, dogBobik, womanCat];
 
