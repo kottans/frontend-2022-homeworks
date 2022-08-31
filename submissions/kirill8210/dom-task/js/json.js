@@ -26,3 +26,4 @@ const clubs = [
 ];
 
 export default clubs;
+
