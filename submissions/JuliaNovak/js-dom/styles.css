@@ -66,8 +66,10 @@
     }
     .methods-list {
         font-size: 22px;
+        margin: 1rem;
     }
     .methods-description {
+        width: 90%;
         font-style: 18px;
         margin: 0;
     }
