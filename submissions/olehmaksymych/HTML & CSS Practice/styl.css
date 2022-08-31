@@ -3,68 +3,86 @@
   --black: #192a56;
   --light-color: #666;
   --picture-size: 40px;
-  --border-radious: 5px;
+  --border-radious: 3px;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; padding: 0;
+  box-sizing:border-box;
+  text-decoration: none;
+  /* outline: none;  */
+  /* border:none; */
+  transition: all .2s linear; 
 }
 
-img[src$=".png"] {
-  /*the default size of png pictures*/
-  max-height: var(--picture-size);
+
+html{
+  font-size: 62.5%;
+}
+
+.header_menu  a.navbar.active,
+.header_menu a.navbar:hover{
+    color: rgb(255, 255, 255);
+    border-radius: var(--border-radious);
+    background: var(--green);
+}
+
+.navbar{
+  color:aqua;
+}
+
+.image_item{
+  max-height: 30px;
+  max-width: 35px;
   border-radius: var(--border-radious);
-  max-width: var(--picture-size);
+}
+
+#popup_icon2{
+  width: var(--picture-size);
+  height: var(--picture-size);
+  margin-top: 10px;
+  margin-left: 40px;
+  margin-right: 35px;
+  border: 2px solid var(--black);
+  border-radius: 3px;
 }
 
 body {
-  background-color: orange;
+  width:100%;
+  background-color: rgb(0, 255, 106);
 }
-
-.header_menu {
-  /* it is a navigation attribute in header */
-  /*position: relative;*/
-  display: inline;
-  z-index: 2;
-}
-
-.header_list {
+ 
+header{
+  position: fixed;
+  top:0; left:0; right:0;
+  background: rgb(26, 23, 228);
+  padding: 1rem 7%;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-}
+  justify-content:flex-end;
+  z-index:1;
+  box-shadow: 0.5rem 1.5rem rgba(0,0,0,.1);
+} 
 
-.header_item {
+ .header_item {
   /* the style for the header list items */
   position: relative;
-  display: inline;
-  justify-content: flex-end;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  padding: 0.3rem 1.6rem;
-}
+  padding: 0.3rem 1.1rem;
+}  
 
-.text_item :hover {
-  color: #fff;
-  background-color: #27ae60;
-  border-radius: var(--border-radious);
-}
-
-.container_item :hover {
-  transform: scale(1.2);
-}
 
 .hover_item {
-  font-size: 10px;
+  font-size: 60%;
+  text-align: center;
   outline: none;
+  text-decoration: none;
+  color: #fff;
 }
 
-a {
-  /*the style for the links */
-  text-decoration: none;
-  color: var(--black);
-}
+
 
 li {
   list-style: none; /*it will hide a toggle for the list item*/
@@ -75,35 +93,15 @@ li {
   display: none;
 }
 
-.container_item {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-}
 
 /*#popup_moreBtn,*/
-.icon_for_thecheckbox {
+.icon_for_thecheckbox,
+.icon_for_thecheckbox_more {
   position: absolute;
   overflow: hidden;
   clip: rect(0 0 0 0);
 }
 
-.icon_for_thecheckbox_more {
-  visibility: collapse;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-}
-
-#popup_icon2 {
-  margin-top: 20px;
-  margin-left: 40px;
-  margin-right: 35px;
-  padding: 5px 5px;
-  border: 2px solid var(--black);
-  border-radius: 3px;
-}
 
 /*The style of the popup btn itself*/
 #popup_icon {
@@ -120,18 +118,21 @@ li {
 #popup_box:checked ~ * .menu_container_items {
   position: absolute;
   top: 50px;
-  left: -75px;
+  left: -45px;
+  width: 220%;
+  height: 250%;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
-  gap: 1px;
+  gap: 10px;
   background-color: darkgreen;
   border: 2px solid var(--black);
   border-radius: var(--border-radious);
   align-items: baseline;
-  width: 235px;
-  height: 250px;
+  text-align: center;
   overflow: scroll;
+  scrollbar-width: none;
+  margin-bottom: 15px;
 }
 
 /* Style the button when the checkbox is checked */
@@ -145,10 +146,23 @@ li {
 }
 
 #popup_box_more:checked ~ * .menu_container_items_more {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap:4px;
+  align-items: baseline;
   justify-content: center;
-  margin-top: -55px;
+  text-align: center;
+  margin-top: -30px;
+  margin-bottom: 15px;
+}
+
+
+li.container_item:focus-within {
+  /* margin: 9px 5px; */
+  outline: 2px solid rgb(231, 50, 104);
+  border-radius: 3px;
+  background-color: rgb(54, 14, 197);
+  padding: 1px;
 }
 
