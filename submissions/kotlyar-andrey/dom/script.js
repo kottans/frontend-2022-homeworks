@@ -110,14 +110,6 @@ function createMenu() {
       }" id="menu_boss_${boss.id}" data-bossid="${boss.id}">${boss.name}</a>`,
     ""
   );
-  const a = bosses
-    .map(
-      (boss) =>
-        `<a href="#" class="menu__item${
-          completed.includes(boss.id) ? " completed" : ""
-        }" id="menu_boss_${boss.id}" data-bossid="${boss.id}">${boss.name}</a>`
-    )
-    .join("");
   menu.addEventListener("click", (e) => {
     if (e.target.dataset.bossid != undefined) {
       showBoss(parseInt(e.target.dataset.bossid));
