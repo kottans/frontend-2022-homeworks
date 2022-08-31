@@ -147,7 +147,7 @@ function contentDisplay() {
 function buildContent(event){
     const btns= document.querySelectorAll('.nav__item');
     dataList.map((item) => {
-        if (event.target.innerHTML === item.name) { 
+        if (event.target.innerText === item.name.toUpperCase()) { 
             const contentTemplate = `
                 <div class="main__header">
                     <h2 class="h2-like">${item.name}</h2>
