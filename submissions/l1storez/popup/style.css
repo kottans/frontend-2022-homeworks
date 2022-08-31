@@ -1,0 +1,252 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+  
+img, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+a, a:link, a:visited  {
+    text-decoration: none;
+}
+
+a:hover  {
+    text-decoration: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #151515;
+}
+
+.content,
+.container {
+    margin: 0 auto;
+    background: #151515;
+    box-shadow: #3b3c3d33 1px 2px 10px 10px;
+}
+
+.container {
+    background: #151515;
+    padding: 20px 0;
+}
+
+.top_bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.top_menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu_item {
+    display: inline;
+    position: relative;
+    margin-right: 25px;  
+}
+
+.menu_item_link {
+    font-size: 18px;
+    font-weight: 600;
+    color: #B4A5A5;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.menu_item_link:hover {
+    background-color:#252424;
+}
+
+.checkbox,
+.checkbox_sequel {
+    appearance: none;
+    position: absolute;
+}
+
+.popup_button {
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+.checkbox:checked ~ label .popup_button,
+.checkbox:focus ~ label .popup_button,
+.popup_button:hover {
+    background-color:#252424;
+    box-shadow: 0px 0px 5px 10px #252424;
+}
+
+.popup_wrapper {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: -15px;
+    overflow: hidden;
+    width: 280px;
+    height: 350px;
+    padding: 10 10px;
+    background-color: #151515;
+    border-radius: 10px;
+    box-shadow: 0px 1px 2px 0px #252424,
+                0px 2px 6px 2px #252424;
+    z-index: 1;
+}
+
+.checkbox:checked ~ .popup_wrapper {
+    display:block;
+}
+
+.popup_content {
+    height: 350px;
+    overflow: auto;
+}
+
+.popup_content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.popup_content::-webkit-scrollbar-thumb {
+    background-color: #252424;
+    border-radius: 9px;
+}
+
+.popup_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.popup_list_item {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.app_name {
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #B4A5A5;
+}
+
+.app_name:hover {
+    background-color:#252424;
+}
+
+.app_icon {
+    display: inline-block;
+    width: 75px;
+    height: fit-content;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.app_icon:hover {
+    background-color:#252424;
+}
+
+.app_icon:focus {
+    background-color:#252424;
+    box-shadow: 0px 0px 3px 1px #252424;
+    outline: none;
+}
+
+.app_icon:focus .app_name {
+    color: #3C415C;
+}
+
+.icon {
+    max-height: 35px;
+}
+
+.menu_item_bell {
+    border-radius: 10%;
+    padding: 10px;
+}
+
+.bell {
+    width: 25px;
+    height: 25px;
+}
+
+.menu_item_soft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 10%;
+    color: #f7eafd;
+    background: #3b3c3d33;
+    transition: color .1s linear, background .1s linear;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+.menu_item_bell:focus, 
+.menu_item_bell:hover,
+.menu_item_bell:focus-visible {
+    background-color: #3b3c3d33;
+    box-shadow: 0px 0px 5px 10px #252424;
+    outline: none;
+    color: #fff;
+}
+
+.menu_item_soft:focus,
+.menu_item_soft:hover, 
+.menu_item_soft:focus-visible {
+    background-color: #3b3c3d33;
+    box-shadow: 0px 0px 5px 10px #252424;
+    outline: none;
+    color: #301B3F;
+}
+
+.popup_list_sequel {
+    display: none;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.checkbox_sequel:checked ~ .popup_list_sequel {
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox_sequel:focus ~ label .popup_sequel_more,
+.popup_sequel_more:hover {
+    background-color: #252424;
+}
+
+.popup_sequel_more {
+    display: block;
+    width: 40%;
+    margin: 0 auto 5px;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 10px;
+    color: #B4A5A5;
+    cursor: pointer;
+}
