@@ -99,7 +99,7 @@ input[type="checkbox"] {
   padding-top: 40px;
   font-size: 40px;
   text-decoration: none;
-  
+
 }
 
 .more-item-menu {
@@ -165,10 +165,6 @@ input[type="checkbox"] {
     border: 1px solid rgb(255, 255, 255);
     box-shadow: 0 0 10px rgb(131, 121, 106);
     border-radius: 5px;  
-}
-
-.element-item:focus-within {
-  outline: none;
 }
 
 .button-icon{
