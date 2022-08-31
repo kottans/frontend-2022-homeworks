@@ -2,9 +2,10 @@
 
 const START_POINT = 0;
 const END_POINT = 400;
+const WATER = 0;
 
-const ENEMY_START = -30;
-const ENEMY_END = 480;
+const ENEMY_START = -70;
+const ENEMY_END = 500;
 const ENEMY_SPEED_MIN = 80;
 const ENEMY_SPEED_MAX = 200;
 const ENEMY_LOCATION_1 = 63;
@@ -15,7 +16,7 @@ const X_STEP = 100;
 const Y_STEP = 80;
 
 const PLAYER_X_START = 200;
-const PLAYER_Y_START = 400;
+const PLAYER_Y_START = 320;
 const PLAYER_HEIGHT = 60;
 
 let win = 1;
@@ -82,12 +83,12 @@ Player.prototype.handleInput = function (keyPress) {
       }
       break;
     case "up":
-      if (this.y !== START_POINT) {
+      if (this.y !== Y_STEP) {
         this.y -= Y_STEP;
       } else {
+        alert(`Your score! 🏆 Win: ${win++}  Lose: ${lose}`);
         this.x = PLAYER_X_START;
         this.y = PLAYER_Y_START;
-        alert(`Your score! 🏆 Win: ${win++}  Lose: ${lose}`);
       }
       break;
     case "down":
