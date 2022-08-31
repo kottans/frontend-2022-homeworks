@@ -118,6 +118,11 @@ html {
   background-color: #ffc0cb;
 }
 
+.theme-switcher:hover .sun-icon,
+.theme-switcher:hover .moon-icon {
+  color: #8fe3cf;
+}
+
 .circle {
   position: absolute;
   background-color: #8fe3cf;
@@ -380,7 +385,7 @@ html {
   .content-body {
     grid-template-rows: auto 1fr 100px;
   }
-  
+
   .museum-image {
     display: block;
     float: none;
