@@ -2,11 +2,13 @@
   margin: 0;
   padding: 0;
 }
+
 html,
 body {
   height: 100%;
   background-color: #212121;
 }
+
 @font-face {
   font-family: "Cormorant Unicase";
   src: url("fonts/CormorantUnicase-Regular.woff2") format("woff2"),
@@ -46,7 +48,7 @@ body {
 }
 
 .header__logo {
-  font-family: "Cormorant Unicase";
+  font-family: "Cormorant Unicase", Georgia, "Times New Roman", serif;
   font-size: 42px;
   color: #f3f3f3;
   padding: 4px 20px;
@@ -73,12 +75,13 @@ body {
 
 .menu__item {
   font-size: 36px;
-  font-family: "Cormorant Unicase";
+  font-family: "Cormorant Unicase", Georgia, "Times New Roman", serif;
   text-decoration: none;
   font-weight: bold;
   color: #c2c2c2;
   transition: all 0.5s ease;
 }
+
 .menu__item:hover,
 .menu__item.completed:hover,
 .menu__item.completed.active,
@@ -96,23 +99,26 @@ body {
   width: 100%;
   padding: 12px;
 }
+
 .content__title {
   font-size: 48px;
-  font-family: "Cormorant Unicase";
+  font-family: "Cormorant Unicase", Georgia, "Times New Roman", serif;
   margin-bottom: 20px;
   text-align: center;
   color: #c2c2c2;
   cursor: pointer;
   transition: all 2s ease;
 }
+
 .content__subtitle {
   font-size: 24px;
-  font-family: "Cormorant Unicase";
+  font-family: "Cormorant Unicase", Georgia, "Times New Roman", serif;
   margin-bottom: 10px;
   text-align: center;
   color: #c2c2c2;
   transition: all 3s ease;
 }
+
 .content__image {
   max-height: 400px;
   max-width: 400px;
@@ -121,13 +127,14 @@ body {
   margin-bottom: 10px;
   transition: all 3s ease;
 }
+
 .content__description {
   max-width: 1200px;
   font-size: 18px;
   text-align: center;
   color: #707070;
   margin-bottom: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
   transition: all 3s ease;
 }
 
@@ -143,6 +150,7 @@ body {
   font-size: 14px;
   text-align: center;
 }
+
 .footer a {
   color: #fff;
 }
@@ -152,12 +160,15 @@ body {
   color: #ffff00;
   text-shadow: 0 0 10px #ffa500;
 }
+
 .completed .content__image {
   border: 5px solid #aaaa00;
 }
+
 .completed .content__description {
   color: #aaaa00;
 }
+
 .completed .content__subtitle {
   color: #aaaa00;
 }
@@ -172,7 +183,7 @@ body {
   color: #c2c2c2;
   width: 200px;
   font-size: 14px;
-  font-family: "Cormorant Unicase";
+  font-family: "Cormorant Unicase", Georgia, "Times New Roman", serif;
 }
 
 .modal {
@@ -186,7 +197,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Cormorant Unicase";
+  font-family: "Cormorant Unicase", Georgia, "Times New Roman", serif;
   padding: 10px;
   font-size: 96px;
   letter-spacing: 14px;
@@ -195,14 +206,17 @@ body {
   text-transform: uppercase;
   transition: all 2s ease;
 }
+
 .modal.boss_defeted.show {
   color: #ffff00;
   text-shadow: 0 0 10px #ffa500;
 }
+
 .modal.you_died.show {
   color: #ff0000;
   text-shadow: 0 0 10px #700000;
 }
+
 .modal.hide {
   color: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
@@ -212,30 +226,37 @@ body {
   .header {
     height: 80px;
   }
+
   .header__logo {
     font-size: 36px;
     padding: 4px 12px;
   }
+
   .header__logo::after,
   .header__logo::before {
     height: 80px;
     width: 80px;
   }
+
   .menu {
     width: 420px;
     padding: 10px 14px;
   }
+
   .menu__item {
     font-size: 28px;
   }
+
   .content__title {
     font-size: 36px;
     margin-bottom: 20px;
   }
+
   .content__subtitle {
     font-size: 22px;
     margin-bottom: 8px;
   }
+
   .content__image {
     max-height: 360px;
     max-width: 360px;
@@ -243,6 +264,7 @@ body {
     border-radius: 4px;
     margin-bottom: 8px;
   }
+
   .hint {
     width: 132px;
     font-size: 14px;
@@ -254,31 +276,38 @@ body {
     height: 70px;
     padding-bottom: 8px;
   }
+
   .header__logo {
     font-size: 32px;
     padding: 2px 10px;
   }
+
   .header__logo::after,
   .header__logo::before {
     height: 60px;
     width: 60px;
   }
+
   .menu {
     width: 330px;
     padding: 10px 12px;
     min-height: 800px;
   }
+
   .menu__item {
     font-size: 24px;
   }
+
   .content__title {
     font-size: 32px;
     margin-bottom: 14px;
   }
+
   .content__subtitle {
     font-size: 18px;
     margin-bottom: 6px;
   }
+
   .content__image {
     max-height: 296px;
     max-width: 296px;
@@ -286,18 +315,22 @@ body {
     border-radius: 3px;
     margin-bottom: 6px;
   }
+
   .content__description {
     font-size: 16px;
     margin-bottom: 14px;
   }
+
   .content__video {
     width: 500px;
     height: 282px;
   }
+
   .hint {
     width: 96px;
     font-size: 12px;
   }
+
   .modal {
     font-size: 64px;
   }
@@ -307,19 +340,23 @@ body {
   .main {
     flex-direction: column;
   }
+
   .header {
     height: 60px;
     padding-bottom: 5px;
   }
+
   .header__logo {
     font-size: 18px;
     padding: 2px;
   }
+
   .header__logo::after,
   .header__logo::before {
     height: 30px;
     width: 30px;
   }
+
   .menu {
     width: 100%;
     flex-direction: row;
@@ -329,22 +366,27 @@ body {
     border: 2px solid #111;
     min-height: 0;
   }
+
   .menu__item {
     font-size: 16px;
     padding: 8px;
     text-align: center;
   }
+
   .content__title {
     font-size: 28px;
     margin-bottom: 10px;
   }
+
   .content__subtitle {
     font-size: 18px;
     margin-bottom: 8px;
   }
+
   .content__description {
     max-width: 100%;
   }
+
   .content__image {
     max-height: 320px;
     max-width: 280px;
@@ -352,10 +394,12 @@ body {
     border-radius: 4px;
     margin-bottom: 8px;
   }
+
   .content__video {
     width: 90%;
     height: 290px;
   }
+
   .hint {
     position: static;
     width: 100%;
@@ -363,8 +407,8 @@ body {
     padding: 4px;
     text-align: center;
     font-size: 14px;
-    font-family: "Cormorant Unicase";
   }
+
   .modal {
     font-size: 36px;
     letter-spacing: 6px;

@@ -102,7 +102,15 @@ const bosses = [
 function createMenu() {
   const menu = document.querySelector(".menu");
 
-  menu.innerHTML = bosses
+  menu.innerHTML = bosses.reduce(
+    (html, boss) =>
+      html +
+      `<a href="#" class="menu__item${
+        completed.includes(boss.id) ? " completed" : ""
+      }" id="menu_boss_${boss.id}" data-bossid="${boss.id}">${boss.name}</a>`,
+    ""
+  );
+  const a = bosses
     .map(
       (boss) =>
         `<a href="#" class="menu__item${
