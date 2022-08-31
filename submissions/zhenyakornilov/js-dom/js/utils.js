@@ -5,9 +5,4 @@ function toggleDarkClass() {
       });
 }
 
-function switchTheme() { 
-  const checkbox = document.getElementById("switcher");
-  checkbox.addEventListener("change", toggleDarkClass);
-}
-
-export default switchTheme;
+export default toggleDarkClass;

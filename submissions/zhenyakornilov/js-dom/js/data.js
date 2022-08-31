@@ -11,6 +11,7 @@ const museums = [
       "The Museum opened to the public on April 26, 1992,in Kiev, the capital of Ukraine, from a hundred " +
       "kilometers of the epicenter of the disaster.",
     imageSrc: "images/chernobyl.webp",
+    imageAlt: "photo of Chornobyl museum",
     url: "http://chornobylmuseum.kiev.ua/uk/",
   },
   {
@@ -27,6 +28,7 @@ const museums = [
       "illusion. Learn how colors are formed and create a rainbow. The Science Museum's largest interactive exhibit " +
       'is a glass ceiling that changes color."',
     imageSrc: "images/science.webp",
+    imageAlt: "photo of Science museum",
     url: "https://sciencemuseum.com.ua/",
   },
   {
@@ -43,6 +45,7 @@ const museums = [
       "of 18 are allowed on this site. The ascent is accompanied by an instructor and can be carried out only in good " +
       "weather conditions (t °С from +5 to +30), without precipitation and strong gusts of wind.",
     imageSrc: "images/ukraine_ww2.webp",
+    imageAlt: "photo of Ukraine in WWII museum",
     url: "https://www.warmuseum.kiev.ua/",
   },
   {
@@ -60,6 +63,7 @@ const museums = [
       "occupied by a complex of dioramas: 30 landscape expositions and biogroups. The National Museum of Natural History " +
       "is headed by Academician Yevhen Shniukov, the National Academy of Sciences of Ukraine.",
     imageSrc: "images/natural_history.webp",
+    imageAlt: "photo of Natural museum",
     url: "https://museumkiev.org/",
   },
   {
@@ -75,6 +79,7 @@ const museums = [
       "of Ukraine is a branch that houses unique collections of precious metals and stones. The museum is a real treasury " +
       "of national historical and cultural relics of the people.",
     imageSrc: "images/ukraine_history.webp",
+    imageAlt: "photo of Ukraine's history museum",
     url: "https://nmiu.org/",
   },
 ];

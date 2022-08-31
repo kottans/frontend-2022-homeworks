@@ -1,18 +1,12 @@
 "use strict";
 
 import museums from "./data.js";
-import switchTheme from "./utils.js";
+import toggleDarkClass from "./utils.js";
 
-function main() {
-  const dropdownBtn = document.getElementById("dropdown");
-  const listMenu = document.getElementById("menu");
-  const contentBody = document.getElementById("content");
-  renderButtons(museums, listMenu);
-  renderArticle(museums[0], contentBody);
-  showMuseumInfoByClick(museums, contentBody, listMenu);
-  openMenu(listMenu, dropdownBtn);
-  switchTheme();
-}
+const themeSwitcher = document.getElementById("switcher");
+const listMenu = document.getElementById("menu");
+const dropdownBtn = document.getElementById("dropdown-button");
+const contentBody = document.getElementById("content");
 
 function renderButtons(museumsObj, menu) {
   let buttonsHTML = museumsObj
@@ -28,41 +22,46 @@ function renderButtons(museumsObj, menu) {
   menu.innerHTML = buttonsHTML;
 }
 
-function showMuseumInfoByClick(museums, content, menu) {
-  menu.addEventListener("click", function ({ target }) {
-    if (target.tagName.toLowerCase() === "button") {
-      const currentContentObject = museums.filter(
-        ({ btnName }) => btnName === target.textContent
-      );
-      renderArticle(currentContentObject[0], content);
-    }
-  });
+function showMuseumInfo({ target }) {
+  if (target.tagName.toLowerCase() === "button") {
+    const currentContentObject = museums.filter(
+      ({ btnName }) => btnName === target.textContent
+    );
+    renderArticle(currentContentObject[0], contentBody);
+  }
 }
 
-function renderArticle({ name, description, imageSrc, url }, content) {
+function renderArticle({ name, description, imageSrc, imageAlt, url }, content) {
   const contentHTML = `
   <h2 class="museum-title">${name}</h2>
   <div class="desc-wrapper">
-    <img class="museum-image" src="${imageSrc}" alt="photo of museum">
+    <img class="museum-image" src="${imageSrc}" alt="${imageAlt}">
     <p class="museum-desc">${description}</p>
   </div>
   <div class="additional-wrapper">
-    <p class="museum-link">
-      <span>Visit </span>
+    <span class="museum-link">
+      Visit 
       <a class='inner-link' href="${url}" target="_blank">museum page</a>
-      <span> for more information...</span>
-    </p>
+      for more information...
+    </span>
   </div>
   `;
 
   content.innerHTML = contentHTML;
 }
 
-function openMenu(menu, dropdownButton) {
-  dropdownButton.addEventListener("click", function () {
-    const sidebar = menu.closest(".sidebar");
-    sidebar.classList.toggle("active");
-  });
+function openDropdownMenu() {
+  const sidebar = listMenu.closest(".sidebar");
+  sidebar.classList.toggle("active");
+}
+
+function main() {
+  renderButtons(museums, listMenu);
+  renderArticle(museums[0], contentBody);
+
+  themeSwitcher.addEventListener("change", toggleDarkClass);
+  dropdownBtn.addEventListener("click", openDropdownMenu);
+  listMenu.addEventListener("click", showMuseumInfo);
 }
 
 document.addEventListener("DOMContentLoaded", main);
