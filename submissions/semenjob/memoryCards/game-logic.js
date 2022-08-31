@@ -85,13 +85,13 @@ function startGame() {
 
     check() {
       const cardId = this.cards[0].dataset.cardId;
-      console.log(winGame);
       const isEqual = this.cards.every(
         (card) => card.dataset.cardId === cardId
       );
       if (isEqual) {
         winGame += 1;
-        removeClassBlock();
+        console.log("winGame");
+        addClassBlock(this.cards);
         this.cards = [];
       }
       return isEqual;
@@ -99,13 +99,32 @@ function startGame() {
 
     reset() {
       setTimeout(() => {
-        this.cards.forEach((card) => {
-          card.classList.remove("flip");
+        this.cards.forEach((cards) => {
+          cards.classList.remove("flip");
         });
         this.cards = [];
       }, 1000);
     }
   }
+
+  const winGameAutoReset = () => {
+    cardBlocked.forEach((card) => {
+      card.classList.remove("flip");
+      card.classList.remove("block");
+      cards.innerHTML = "";
+      startGame();
+    });
+  };
+
+  resetGame.addEventListener("click", () => {
+    winGameAutoReset();
+  });
+
+  const addClassBlock = (cards) => {
+    cards.forEach((card) => {
+      card.classList.add("block");
+    });
+  };
 
   const pair = new PairCards();
 
@@ -123,7 +142,10 @@ function startGame() {
       if (!isEquel) pair.reset();
     }
     if (winGame === cardsLength) {
-      alert("You win");
+      setTimeout(() => {
+        alert("You win");
+        winGameAutoReset();
+      }, 1500);
     }
   };
   cards.addEventListener("click", processClickOnCard);
