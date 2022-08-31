@@ -16,9 +16,6 @@
 }
 
 
-html{
-  font-size: 62.5%;
-}
 
 .header_menu  a.navbar.active,
 .header_menu a.navbar:hover{
@@ -32,8 +29,8 @@ html{
 }
 
 .image_item{
-  max-height: 30px;
-  max-width: 35px;
+  height: var(--picture-size);
+  width: var(--picture-size);
   border-radius: var(--border-radious);
 }
 
@@ -74,16 +71,20 @@ header{
   padding: 0.3rem 1.1rem;
 }  
 
-
-.hover_item {
-  font-size: 60%;
-  text-align: center;
-  outline: none;
-  text-decoration: none;
-  color: #fff;
-  padding-top: 1px;
+.container_item {
+  width: 80px;
+  height:65px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
+.hover_item{
+  color: #fff;
+  text-align: center;
+  font-size: 60%;
+  text-decoration: none;
+  outline: none;
+}
 
 
 li {
@@ -116,7 +117,7 @@ li {
   margin-top: 5px;
   margin-left: 5px;
   margin-right: 5px;
-  padding: 5px 5px;
+  padding: 3px 3px;
   border: 2px solid var(--black);
   border-radius: 3px;
   cursor: pointer;
@@ -126,19 +127,19 @@ li {
 /* Show hidden content when the checkbox is checked */
 #popup_box:checked ~ * .menu_container_items {
   position: absolute;
-  padding: 10px;
+  padding: 5px;
   top: 50px;
-  left: -45px;
-  width: 220%;
-  height: 400%;
+  left: -35px;
+  width: 350%;
+  height: 500%;
   display: flex;
-  flex-flow: wrap;
+  flex-flow: wrap; 
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
   background-color: darkgreen;
   border: 2px solid var(--black);
   border-radius: var(--border-radious);
-  align-items: baseline;
+  align-items: center;
   text-align: center;
   overflow: scroll;
   scrollbar-width: none;
@@ -153,19 +154,18 @@ li {
 
 #popup_box_more:checked ~ * #popup_icon2 {
   visibility: collapse;
-  /* overflow: hidden; */
-  /* clip: rect(0 0 0 0); */
 }
 
 #popup_box_more:checked ~ * .menu_container_items_more {
   position: relative;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap:8px;
+  display: flex;
+  flex-flow: wrap; 
+  justify-content: center;
+  gap: 5px;
   align-items: baseline;
   justify-content: center;
   text-align: center;
-  margin-top: -49px;
+  margin-top: -35px;
   margin-bottom: 15px;
 }
 
@@ -174,16 +174,19 @@ li {
 
 li.container_item:focus-within {
   /* margin: 9px 5px; */
-  outline: 2px solid rgb(105, 97, 100);
+  outline: 1.5px solid rgb(105, 97, 100);
   border-radius: 3px;
   background-color: rgb(54, 14, 197);
-  padding: 1px;
+  padding: 5px;
+  text-align: center;
 }
 
 
-@media (max-width: 575px) {
-  #popup_box:checked ~ * .menu_container_items {
-    left: 10%;
+@media (176px <= width <= 576px) {
+  #popup_box:checked ~ * .header_item{
+    left: -35px;
+    width: 250%;
+    height: 400%;
   }
 }
 
@@ -204,3 +207,4 @@ li.container_item:focus-within {
     left: 65%;
   }
 } 
+
