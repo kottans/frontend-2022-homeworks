@@ -14,7 +14,7 @@ const dog = {
    legs: 4,
    hands: 0,
    saying: "woof-woof!",
-   friends: "Cake",
+   friends: "Cake"
 };
 
 const cat = {
@@ -24,7 +24,7 @@ const cat = {
    legs: 4,
    hands: 0,
    saying: "meow!",
-   friends: ["Pie", "Selina"],
+   friends: ["Pie", "Selina"]
 };
 
 const man = {
@@ -34,7 +34,7 @@ const man = {
    legs: 2,
    hands: 2,
    saying: "Hello!",
-   friends: "Dominica",
+   friends: "Dominica"
 };
 
 const woman = {
@@ -44,7 +44,7 @@ const woman = {
    legs: 2,
    hands: 1,
    saying: "Hello!",
-   friends: ["Dominic", "Selina"],
+   friends: ["Dominic", "Selina"]
 };
 
 const catWoman = {
@@ -54,7 +54,7 @@ const catWoman = {
    legs: 2,
    hands: 2,
    saying: cat.saying,
-   friends: ["Cake", "Dominica"],
+   friends: ["Cake", "Dominica"]
 };
 
 // ======== OUTPUT ========
