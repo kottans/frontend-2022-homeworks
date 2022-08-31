@@ -365,13 +365,15 @@ body {
 
 @media (max-width: 480px){
     .head {
-        display: grid;
+       flex-wrap: wrap;
         height: 120px;
-        justify-items: center;
-        justify-content:space-between;
-        width: 100%;
-        padding: 0;
+        justify-content: center;
 
+    }
+    
+    .logo{
+        margin-left: 0;
+        margin-right: 20px;
     }
     
     .back_img {
@@ -385,12 +387,18 @@ body {
 
     .popup_items,
     .popup_two_items{
-        padding-right: 10%;
+        margin: auto;
+        padding-left: 30px;
         justify-content:space-evenly;    
+    }
+    
+    .see_more_item{
+        width: 100%;
+        margin: 10px;
     }
 
     .hug_cat_linck{
-        margin: 20%;
+        margin-left: 30%;
     }
 
 }
