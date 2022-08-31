@@ -22,13 +22,9 @@ body {
     justify-content: flex-end;
 }
 
-a,a:visited {
+.popup_link,.popup_link:visited {
   text-decoration: none;
   color: rgb(139,69,19);
-}
-
-label {
-  cursor: pointer;
 }
 
 input[type="checkbox"] {
@@ -116,7 +112,7 @@ input[type="checkbox"] {
   position: absolute;
 }
 
-li.popup_item {
+.popup_item {
   width: 9em;
   height: 9.5em;
   display: inline-flex;
@@ -147,12 +143,12 @@ li.popup_item {
   box-shadow: 0px;
 }
 
-label.popup_btn, a.link_more{
+.popup_btn, .link_more{
     color: #000000 ;
 }
 
-label.popup_btn:hover, a.link_more:hover{
-    color: 808080;
+.popup_btn:hover, .link_more:hover{
+    color: #808080;
 }
 
 .popup_more:checked ~ .popup_btn {
@@ -160,8 +156,8 @@ label.popup_btn:hover, a.link_more:hover{
   visibility: hidden;
 }
 
-a:hover {
-  color: 808080;
+.popup_link:hover{
+  color: #808080;
 }
 
 .last-item-menu{
