@@ -12,6 +12,10 @@
   background-color: #46B6AC;
 }
 
+.user--female .user__name {
+  background-color: #996BC7;
+}
+
 .user__info {
   display: flex;
   flex-direction: column;
