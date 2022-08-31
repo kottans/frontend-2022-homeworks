@@ -383,6 +383,7 @@ body {
     .popup{
         width: 100%;
         position: absolute;
+        right: 0;
     }
 
     .popup_items,
