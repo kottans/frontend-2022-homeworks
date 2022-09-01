@@ -1,6 +1,6 @@
 # Open and merged PRs by task labels
 
-_as of 2022-08-31T19:26:25.050Z UTC_
+_as of 2022-09-01T12:59:10.388Z UTC_
 
 PR reference legend:
  - #xxx o -- PR is yet open 
@@ -279,7 +279,7 @@ PR reference legend:
 | 1.267 | [2022-08-28 11:48](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-28 11:48) |   |   |   | [#330 o](https://github.com/kottans/frontend-2022-homeworks/pull/330) |   |   |   |
 | 1.268 | [2022-08-28 13:31](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-28 13:31) |   | [#331 o](https://github.com/kottans/frontend-2022-homeworks/pull/331) |   |   |   |   |   |
 | 1.269 | [2022-08-28 17:40](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-28 17:40) | [#333 o](https://github.com/kottans/frontend-2022-homeworks/pull/333) |   |   |   |   |   |   |
-| 1.270 | [2022-08-28 17:46](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-28 17:46) |   | [#334 o](https://github.com/kottans/frontend-2022-homeworks/pull/334) |   |   |   |   |   |
+| 1.270 | [2022-08-28 17:46](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-28 17:46) |   | [**#334**](https://github.com/kottans/frontend-2022-homeworks/pull/334) |   |   |   |   |   |
 | 1.271 | [2022-08-28 19:35](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-28 19:35) |   |   |   | [#335 o](https://github.com/kottans/frontend-2022-homeworks/pull/335) |   |   |   |
 | 1.272 | [2022-08-28 22:09](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-28 22:09) |   |   |   |   | [#336 o](https://github.com/kottans/frontend-2022-homeworks/pull/336) |   |   |
 | 1.273 | [2022-08-29 05:48](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-29 05:48) |   |   |   | [#337 o](https://github.com/kottans/frontend-2022-homeworks/pull/337) |   |   |   |
