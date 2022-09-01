@@ -15,7 +15,6 @@
     height: 90px;
     border-bottom: 1px solid #000;
     box-shadow: 0 2px 5px #000;
-
 }
 
 .logo__img{
@@ -92,7 +91,7 @@
     right: 0;
     box-shadow:  0 0 2px 2px rgb(139, 223, 145);
     height: 335px;
-    width: 259px;
+    width: 245px;
     margin-right: 15px;
     background-color: rgb(223, 245, 225);
 }
@@ -100,15 +99,19 @@
     display: flex;
     justify-content: space-between;
     align-self: center;
-    margin: 10px 13px ;
+    margin: 10px 12px ;
 
 }
 .more__item{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-self: center;
+    left: 0;
     margin: 5px 24px 10px 0px;
     padding-left: 1px;
+}
+.last__item{
+    margin-right: 9px;
 }
 .checkbox__more{
     appearance: none;
@@ -130,13 +133,9 @@
     overflow-y: auto;
     box-sizing: border-box;
     top: 88%;
+    left:5%;
     background-color: rgb(223, 245, 225);
     overflow-x: hidden;
-}
-.checkbox__less:checked ~ .more__list{
-    display: none;
-    box-sizing: border-box;
-    background-color: #fff;
 }
 .btn:focus,
 .btn:hover {
@@ -151,6 +150,9 @@
 .checkbox__more:checked + .more__label > .visible{
     display: none;
     appearance: none;
+    
+    left:0;
+    margin: 0;
 } 
 
 
@@ -208,21 +210,14 @@
         margin-right: 15px;
     }
     .item__view__img{
-        width: 25px;
-        height: 25px;
-    }
-    .more__item{
-        margin-right: 20px;
-    }
-    .popup__item{
-        margin-right: 5px;
+        width: 40px;
+        height: 40px;
     }
     .btn{
         font-size: 1.2em;
     }
     .checkbox__main:checked ~ .popup__list{
         height: 250px;
-        width: 210px;
+        width: 200px;
     }
-
   }
