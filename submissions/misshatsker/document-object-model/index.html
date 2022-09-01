@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./icons/heart.png">
+    <title>Document-Object-Model-misshatsker</title>
+</head>
+<body>
+    <header class="header">
+        <span class="logo">Facts About Pets</span>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu"></ul>
+    </header>
+    <main>
+        <div class="full-main-page">
+            <img class="media-animal" alt="">
+            <div class="animal-main-page">
+                <div class="animal-main-info">
+                    <h1 class="animal-category-title"></h1>
+                    <p class="animal-category-description"></p>
+                    <ul class="animal-property-list" >
+                        <li class="property">
+                            <img class="property-icon" src="./icons/heart.png" alt="">
+                            <p class="property-info">
+                                <span class="property-name property-lifespan">Average lifespan:</span>
+                                <span class="property-description-lifespan"></span>
+                            </p>
+                        </li>
+                        <li class="property">
+                            <img class="property-icon" src="./icons/heart.png" alt="">
+                            <p class="property-info">
+                                <span class="property-name">Diet:</span>
+                                <span class="property-description-diet"></span>
+                            </p>
+                        </li>
+                        <li class="property">
+                            <img class="property-icon" src="./icons/heart.png" alt="">
+                            <p class="property-info">
+                                <span class="property-name">Size:</span>
+                                <span class="property-description-size"></span>
+                            </p>
+                        </li>
+                        <li class="property property2" id="weight">
+                            <img class="property-icon" src="./icons/heart.png" alt="">
+                            <p class="property-info">
+                                <span class="property-name">Weight:</span>
+                                <span class="property-description-weight"></span>
+                            </p>
+                        </li>
+                    </ul>
+                 </div>
+            </div>
+        </div>
+    </main>
+    <script src="./index.js"></script>
+</body>
