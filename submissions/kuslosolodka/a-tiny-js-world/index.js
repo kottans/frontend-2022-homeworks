@@ -47,7 +47,7 @@ const cat_woman = {
   hands: 2,
   saying: cat["saying"],
 };
-dog.friend = `${woman.name},${man.name},${woman.name}`;
+dog.friend = `${woman.name},${man.name},${cat.name}`;
 cat.friend = undefined;
 woman.friend = `${man.name},${dog.name}`;
 man.friend = `${woman.name},${dog.name}`;
