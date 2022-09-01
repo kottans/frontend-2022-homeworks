@@ -8,7 +8,7 @@ const createElem = (elem, attrObj, className) => {
 };
 
 const createMenu = (data) => {
-  let menu = createElem("ul", { id: "menu", class: "menu" });
+  const menu = createElem("ul", { id: "menu", class: "menu" });
   data.forEach(
     (item, index) => { menu.appendChild(createMenuItem(data[index], index)) }
   )
@@ -16,7 +16,7 @@ const createMenu = (data) => {
 };
 
 const createMenuItem = (data, id) => {
-  let menuItem = createElem("li", {
+  const menuItem = createElem("li", {
     id: "menu-item-" + id,
     class: "menu-item",
     'data-id': id,
@@ -72,7 +72,8 @@ const setEventListeners = () => {
 };
 
 const start = (data) => {
-  let container = document.querySelector("#container");
+  const container = document.querySelector("#container");
+  
   container.appendChild(createMenu(data));
   container.appendChild(createMainContent(data[0]));
   setEventListeners();
