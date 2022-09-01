@@ -2,23 +2,9 @@
 
 import { dataList, defaultContentItem } from "./data.js";
 
-// helpers funk
-
-let changeMinToHm = (min) => {
-  const MIN = Number(min.split(" ")[0]);
-  let h = Math.floor(MIN / 60);
-  let m = Math.abs(MIN % 60);
-
-  return h < 0 ? `${m}m` : `${h}h ${m}m`;
-};
-
-// find elements
-
 const elemLogo = document.querySelector(".js-elem-logo");
 const elemMenu = document.querySelector(".js-elem-menu");
 const elemContent = document.querySelector(".js-elem-content");
-
-// create markup
 
 const createMenuMarkup = (data) => {
   const menuListItems = data.map((item) => {
@@ -34,6 +20,14 @@ const createMenuMarkup = (data) => {
                 ${menuListItems}
             </ul>
         `;
+};
+
+const changeMinToHm = (min) => {
+  const MIN = Number(min.split(" ")[0]);
+  let h = Math.floor(MIN / 60);
+  let m = Math.abs(MIN % 60);
+
+  return h < 0 ? `${m}m` : `${h}h ${m}m`;
 };
 
 const createСontentMarkup = (item = defaultContentItem) => {
@@ -74,12 +68,8 @@ const createСontentMarkup = (item = defaultContentItem) => {
         `;
 };
 
-// add initial markup
-
 elemMenu.innerHTML += createMenuMarkup(dataList);
 elemContent.innerHTML += createСontentMarkup();
-
-// control
 
 const deleteActiveClass = () =>
   elemMenu
