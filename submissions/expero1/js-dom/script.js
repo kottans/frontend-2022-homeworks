@@ -1,14 +1,15 @@
-const createElem = (elem, attrObj, className) => {
-  elem = document.createElement(elem);
-  elem.classList.add(className);
-  for (attrName in attrObj) {
-    elem.setAttribute(attrName, attrObj[attrName]);
+"use strict"
+const createHtmlElement = (htmlElementName, attributes, className) => {
+  const htmlElement = document.createElement(htmlElementName);
+  htmlElement.classList.add(className);
+  for (const attributeName in attributes) {
+    htmlElement.setAttribute(attributeName, attributes[attributeName]);
   }
-  return elem;
+  return htmlElement;
 };
 
 const createMenu = (data) => {
-  const menu = createElem("ul", { id: "menu", class: "menu" });
+  const menu = createHtmlElement("ul", { id: "menu", class: "menu" });
   data.forEach(
     (item, index) => { menu.appendChild(createMenuItem(data[index], index)) }
   )
@@ -16,7 +17,7 @@ const createMenu = (data) => {
 };
 
 const createMenuItem = (data, id) => {
-  const menuItem = createElem("li", {
+  const menuItem = createHtmlElement("li", {
     id: "menu-item-" + id,
     class: "menu-item",
     'data-id': id,
@@ -26,21 +27,21 @@ const createMenuItem = (data, id) => {
 };
 
 const createMainContent = (data) => {
-  const container = createElem("main", {
+  const container = createHtmlElement("main", {
     id: "content-container",
     class: "content-container",
   });
 
-  const header = createElem("h2", {
+  const header = createHtmlElement("h2", {
     id: "content-header",
     class: "content-header",
   });
 
   header.innerHTML = data.name;
-  const text = createElem("div", { id: "main-text", class: "main-text" });
+  const text = createHtmlElement("div", { id: "main-text", class: "main-text" });
   text.innerHTML = data.description;
-  const imgContainer = createElem("div", { class: "img-container" });
-  const img = createElem(
+  const imgContainer = createHtmlElement("div", { class: "img-container" });
+  const img = createHtmlElement(
     "img",
     {
       src: data["image"],
