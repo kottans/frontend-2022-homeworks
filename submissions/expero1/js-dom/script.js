@@ -18,7 +18,7 @@ const createMenu = (data) => {
 
 const createMenuItem = (data, id) => {
   const menuItem = createHtmlElement("li", {
-    id: "menu-item-" + id,
+    id: `menu-item-${id}`,
     class: "menu-item",
     'data-id': id,
   });
@@ -68,7 +68,7 @@ const setEventListeners = () => {
     menuItems.forEach((item) => {
       item.classList.remove("active");
     });
-    document.querySelector("#menu-item-" + id).classList.add("active");
+    document.querySelector(`#menu-item-${id}`).classList.add("active");
   });
 };
 
