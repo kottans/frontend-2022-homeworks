@@ -14,13 +14,11 @@ class Creature {
         return ["name", "species", "gender", "saying", "friends"]
             .map((key) => {
                 if (key != "friends")
-                    return this.friends.length
-                        ? key + KEYS_VALUE_SEPARATOR + this[key]
-                        : "";
-                return (
-                    "friends: " +
-                    this.friends.map((friend) => friend.name).join(", ")
-                );
+                    return key + KEYS_VALUE_SEPARATOR + this[key];
+                return this.friends.length
+                    ? "friends: " +
+                          this.friends.map((friend) => friend.name).join(", ")
+                    : "";
             })
             .filter((_) => _);
     }
@@ -185,4 +183,3 @@ const inhabitants = [Rex, Felix, Jenny, Tom, Halle];
 inhabitants.forEach((inhabitant) =>
     print(inhabitant.createArrayOfProps().join(PROPS_SEPARATOR))
 );
-
