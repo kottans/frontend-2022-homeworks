@@ -123,6 +123,10 @@ html {
   color: #8fe3cf;
 }
 
+.theme-switcher:hover {
+  cursor: pointer;
+}
+
 .circle {
   position: absolute;
   background-color: #8fe3cf;
@@ -189,6 +193,12 @@ html {
 
 .nav-item:focus-within {
   color: #ffc0cb;
+}
+
+.btn-text {
+  width: 100%;
+  height: 100%;
+  text-align: left;
 }
 
 .content.dark {
@@ -385,7 +395,7 @@ html {
   .content-body {
     grid-template-rows: auto 1fr 100px;
   }
-
+  
   .museum-image {
     display: block;
     float: none;

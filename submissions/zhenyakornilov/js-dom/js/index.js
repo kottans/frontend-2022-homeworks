@@ -23,15 +23,25 @@ function renderButtons(museumsObj, menu) {
 }
 
 function showMuseumInfo({ target }) {
-  if (target.tagName.toLowerCase() === "button") {
-    const currentContentObject = museums.filter(
-      ({ btnName }) => btnName === target.textContent
-    );
-    renderArticle(currentContentObject[0], contentBody);
+  if (target.closest(".btn-text")) {
+    let currentSelectedBtn = target.closest(".nav-item");
+    if (!currentSelectedBtn.classList.contains("active")) {
+      const [currentContentObject] = museums.filter(
+        ({ btnName }) => btnName === target.textContent
+      );
+      renderArticle(currentContentObject, contentBody);
+      document
+        .querySelectorAll(".nav-item")
+        .forEach((button) => button.classList.remove("active"));
+      currentSelectedBtn.classList.add("active");
+    }
   }
 }
 
-function renderArticle({ name, description, imageSrc, imageAlt, url }, content) {
+function renderArticle(
+  { name, description, imageSrc, imageAlt, url },
+  content
+) {
   const contentHTML = `
   <h2 class="museum-title">${name}</h2>
   <div class="desc-wrapper">
