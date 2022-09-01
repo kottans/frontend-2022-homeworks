@@ -35,55 +35,43 @@ const data = {
     },
 };
 
-function createNavigation(item) {
-    for (item in data) {
-        let navItem = document.createElement('li');
-        navItem.classList.add('cards__item');
-
-        let h3 = document.createElement('h3');
-        h3.classList.add('cards__title');
-        h3.textContent = item;
-        navItem.appendChild(h3);
-
-        navigation.append(navItem);
-    }
-}
-
 function createSideNavigation() {
-    startHeader.classList.remove('header-active');
-    startNav.classList.remove('start-menu');
-    startNav.classList.add('side-menu');
-    resetBtn.classList.remove('non-active');
-    mainContent.classList.remove('non-active');
-    burgenBtn.classList.remove('non-active');
-
     if (!mainContent.classList.contains('non-active')) {
         footer.classList.add('footer--element-end');
     }
+
+    startNav.classList.add('side-menu');
+
+    startHeader.classList.remove('active');
+    startNav.classList.remove('start-menu');
+    resetBtn.classList.remove('non-active');
+    burgenBtn.classList.remove('non-active');
+    mainContent.classList.remove('non-active');
 }
 
 function goToStartPage() {
-    startHeader.classList.add('header-active');
-    startNav.classList.remove('side-menu');
+    startHeader.classList.add('active');
+    startNav.classList.add('_start--marker');
     startNav.classList.add('start-menu');
     resetBtn.classList.add('non-active');
-    mainContent.classList.add('non-active');
     burgenBtn.classList.add('non-active');
-    startNav.classList.add('_start--marker');
-    document.body.classList.remove('_scroll-lock');
+    mainContent.classList.add('non-active');
+
+    startNav.classList.remove('side-menu');
     burgenIcon.classList.remove('burger-icon--active');
+    document.body.classList.remove('_scroll-lock');
     footer.classList.remove('footer--element-end');
 }
 
 function burgerHandler() {
-    document.body.classList.toggle('_scroll-lock');
     startNav.classList.toggle('side-menu--active');
     burgenBtn.classList.toggle('burger--white');
     burgenIcon.classList.toggle('burger-icon--active');
+    document.body.classList.toggle('_scroll-lock');
 }
 
 function navigationHandler(event) {
-    if (startHeader.classList.contains('header-active') && startNav.classList.contains('start-menu')) {
+    if (startHeader.classList.contains('active') && startNav.classList.contains('start-menu')) {
         createSideNavigation();
         createContent(event.target.textContent);
     }
@@ -104,6 +92,20 @@ function navigationHandler(event) {
     }
 
     createContent(event.target.textContent);
+}
+
+function createNavigation(item) {
+    for (item in data) {
+        let navItem = document.createElement('li');
+        navItem.classList.add('cards__item');
+
+        let h3 = document.createElement('h3');
+        h3.classList.add('cards__title');
+        h3.textContent = item;
+        navItem.appendChild(h3);
+
+        navigation.append(navItem);
+    }
 }
 
 function createContent(item) {

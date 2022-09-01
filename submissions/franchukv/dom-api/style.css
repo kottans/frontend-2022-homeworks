@@ -157,10 +157,6 @@ body {
     display: none;
 }
 
-.header-active {
-    display: block;
-}
-
 .header__container {
     display: flex;
     flex-direction: column;
@@ -176,6 +172,7 @@ body {
 .header__title {
     font-size: calc(30px + (100 * 0.7) * ((100vw - 320px) / 3540));
     display: block;
+    line-height: 1.5;
     margin-bottom: 30px;
 }
 
