@@ -191,7 +191,6 @@ body {
     justify-content: center;
 }
 
-/* Start side menu */
 .side-menu {
     position: fixed;
     top: 0;
@@ -251,9 +250,6 @@ body {
     text-decoration: underline;
 }
 
-/* End Side Menu */
-
-/* Start Nav*/
 .cards-menu {
     display: flex;
     flex-direction: row;
@@ -333,8 +329,6 @@ body {
     text-decoration: none;
 }
 
-/*End Footer*/
-
 @media (max-width: 1600px) {
     .cards__item {
         padding: 20px 30px 50px 20px;
@@ -402,8 +396,6 @@ body {
     }
 
 }
-
-/* Start Content */
 
 .content {
     max-width: 1015px;
@@ -529,8 +521,6 @@ body {
         color: #fff;
     }
 }
-
-/* End Content */
 
 .burger--white {
     background-color: #fff;
