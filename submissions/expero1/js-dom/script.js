@@ -9,7 +9,7 @@ const createHtmlElement = (htmlElementName, attributes, className) => {
 };
 
 const createMenu = (data) => {
-  const menu = createHtmlElement("ul", { id: "menu", class: "menu" });
+  const menu = createHtmlElement("ul", { id: "menu"},'menu');
   data.forEach(
     (item, index) => { menu.appendChild(createMenuItem(data[index], index)) }
   )
@@ -19,9 +19,8 @@ const createMenu = (data) => {
 const createMenuItem = (data, id) => {
   const menuItem = createHtmlElement("li", {
     id: `menu-item-${id}`,
-    class: "menu-item",
     'data-id': id,
-  });
+  },'menu-item');
   menuItem.innerHTML = `<a href="#" data-id=${id} class="menu-link">${data["name"]}</a>`;
   return menuItem;
 };
@@ -29,24 +28,21 @@ const createMenuItem = (data, id) => {
 const createMainContent = (data) => {
   const container = createHtmlElement("main", {
     id: "content-container",
-    class: "content-container",
-  });
+  },"content-container");
 
   const header = createHtmlElement("h2", {
     id: "content-header",
-    class: "content-header",
-  });
+  },"content-header");
 
   header.innerHTML = data.name;
-  const text = createHtmlElement("div", { id: "main-text", class: "main-text" });
+  const text = createHtmlElement("div", { id: "main-text"},"main-text");
   text.innerHTML = data.description;
-  const imgContainer = createHtmlElement("div", { class: "img-container" });
+  const imgContainer = createHtmlElement("div", {},"img-container");
   const img = createHtmlElement(
     "img",
     {
       src: data["image"],
       id: "main-image",
-      class: "main-image",
       alt: data["name"],
     },
     "main-image"
