@@ -83,14 +83,6 @@ function prepareGame() {
       path: "img/Fire.jpg",
     },
     {
-      name: "heavens",
-      path: "img/Heavens.jpg",
-    },
-    {
-      name: "heavens",
-      path: "img/Heavens.jpg",
-    },
-    {
       name: "life",
       path: "img/Life.jpg",
     },
@@ -113,14 +105,6 @@ function prepareGame() {
     {
       name: "metal",
       path: "img/Metal.jpg",
-    },
-    {
-      name: "shadow",
-      path: "img/Shadow.jpg",
-    },
-    {
-      name: "shadow",
-      path: "img/Shadow.jpg",
     },
   ];
   let shuffled = [...cardsArray];
@@ -212,7 +196,7 @@ function prepareGame() {
       resetBoard();
       guessedCardPairs++;
 
-      if (guessedCardPairs === 8) {
+      if (guessedCardPairs === 6) {
         setTimeout(renderModalAfterWin(), 2000);
       }
     }
