@@ -54,8 +54,7 @@ const createMainContent = (data) => {
   container.append(header, imgContainer, text);
 
   return container;
-};
-// wrapper to quickly create new element
+}
 
 const setEventListeners = () => {
   const menu = document.querySelector(".menu ");
@@ -78,5 +77,4 @@ const start = (data) => {
   container.appendChild(createMainContent(data[0]));
   setEventListeners();
 };
-// We recieve data variable from data.js file (included in index.html)
 start(data);
