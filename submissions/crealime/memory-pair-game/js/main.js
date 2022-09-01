@@ -1,9 +1,9 @@
-const URL = 'json/images.json' // Json file with images urls
-const TIMER = { // Timer values
+const URL = 'json/images.json'
+const TIMER = {
   time: 600,
   step: 50
 }
-const GAME_TIME = { // Time to calculate results
+const GAME_TIME = {
   start: '',
   end: '',
   diff: '',
@@ -27,14 +27,13 @@ const GAME_TIME = { // Time to calculate results
     return this.diff
   }
 }
-const pair = [] // Current pair of cards
-let numOfPairs = 0 // Number of cards in this game
-let pairCounter = 0 // Card remaining counter
-let resultMessage = '' // Result message based on past attempts
+const pair = []
+let numOfPairs = 0
+let pairCounter = 0
+let resultMessage = ''
 let main = document.querySelector('.main')
 
-// Start page template
-function startPageTemplate() {
+function getStartPageTemplate() {
   return `
     <div class="start-page">
       <div class="start-page__title">Select number of&nbsp;pairs</div>
@@ -60,8 +59,7 @@ function startPageTemplate() {
   `
 }
 
-// Card template
-function cardTemplate([url, id]) {
+function getCardTemplate([url, id]) {
   return `
     <div class="game__card flip id-${id}" data-id="${id}">
       <div class="game__front">
@@ -72,8 +70,7 @@ function cardTemplate([url, id]) {
   `
 }
 
-// Result page template
-function resultPageTemplate(time, pairs) {
+function getResultPageTemplate(time, pairs) {
   return `
     <div class="result-page">
       <div class="result-page__message">Your result is<br>${time}<br>for ${pairs} pairs</div>
@@ -83,26 +80,23 @@ function resultPageTemplate(time, pairs) {
   `
 }
 
-// Result message template
-function resultMessageTemplate(isBest) {
+function getResultMessageTemplate(isBest) {
   return !isBest
     ? `<div class="result-page__message_success">It’s your own record</div>`
     : `<div class="result-page__message_warning">Your record is ${isBest}</div>`
 }
 
-// Setting the game result data in LocaleStorage
 function setTimeInLocaleStorage() {
   const bestTime = localStorage.getItem(`pairs-${numOfPairs}`) || null;
   if (!bestTime || bestTime && GAME_TIME.getDiffTime().replace(/\D/g, '') < bestTime.replace(/\D/g, '')) {
     localStorage.setItem(`pairs-${numOfPairs}`, GAME_TIME.getDiffTime())
-    resultMessage = resultMessageTemplate(false)
+    resultMessage = getResultMessageTemplate(false)
   }
   else {
-    resultMessage = resultMessageTemplate(bestTime)
+    resultMessage = getResultMessageTemplate(bestTime)
   }
 }
 
-// Page transition animation
 function fadeOutFadeIn(foo, num, preview) {
   const animation = main.animate([
     {opacity: 1},
@@ -113,7 +107,7 @@ function fadeOutFadeIn(foo, num, preview) {
   })
 
   animation.addEventListener('finish', function() {
-    foo(num, preview) // Render next page
+    foo(num, preview)
     main.animate([
       {opacity: 0},
       {opacity: 1}
@@ -124,8 +118,7 @@ function fadeOutFadeIn(foo, num, preview) {
   })
 }
 
-// Card preview when game start
-function previewCards() {
+function showPreviewCards() {
   const cards = document.querySelectorAll('.game__card')
 
   setTimeout(() => {
@@ -140,24 +133,23 @@ function previewCards() {
   }, TIMER.time)
 }
 
-// Handling a click on the card depending on the conditions
 function flipCard(e) {
   const card = e.target.closest('.game__card')
 
   if (card) {
     const id = card.dataset.id
 
-    if (pair.length === 0) { // If no cards are open
+    if (pair.length === 0) {
       card.classList.toggle('flip')
       pair.push(card)
     }
-    else if (pair.some(el => el === card)) { // If click on an open card
+    else if (pair.some(el => el === card)) {
       pair.forEach(el => {
         el.classList.toggle('flip')
       })
       pair.splice(0, 2)
     }
-    else if (pair.length === 1 && pair[0].classList.contains(`id-${id}`)) { // If the cards match
+    else if (pair.length === 1 && pair[0].classList.contains(`id-${id}`)) {
       card.classList.toggle('flip')
       pair.splice(0, 2)
       pairCounter--
@@ -165,7 +157,7 @@ function flipCard(e) {
         document.querySelectorAll(`.id-${id}`).forEach(el => {
           el.classList.add('hidden')
         })
-        if (pairCounter === 0) { // If these were the last cards
+        if (pairCounter === 0) {
           GAME_TIME.setEndTime()
           GAME_TIME.setDiffTime()
           setTimeInLocaleStorage()
@@ -173,11 +165,11 @@ function flipCard(e) {
         }
       }, TIMER.time)
     }
-    else if (pair.length === 1 && pair[0] !== id) { // If the cards don't match
+    else if (pair.length === 1 && pair[0] !== id) {
       card.classList.toggle('flip')
       pair.push(card)
     }
-    else { // Click with two open cards
+    else {
       pair.forEach(el => {
         el.classList.toggle('flip')
       })
@@ -188,7 +180,6 @@ function flipCard(e) {
   }
 }
 
-// Render cards
 function renderCards(data, num, preview) {
   main.innerHTML =''
 
@@ -197,18 +188,15 @@ function renderCards(data, num, preview) {
   game.classList.add('game')
   game.classList.add(`num-${num * 2}`)
 
-  // Pre-random all cards, reduction their number to the number of pairs and create separate arrays with card number
   let cardsData = data.sort(() => 0.5 - Math.random()).slice(0, num).reduce((acc, el, i) => {
     acc.push([el, i + 1])
     return acc
   }, [])
 
-  // Create array of pairs and randomize them
   cardsData = [...cardsData, ...cardsData].sort(() => 0.5 - Math.random())
 
-  // Add cards to the game element
   cardsData.forEach(el => {
-    const card = cardTemplate(el)
+    const card = getCardTemplate(el)
     game.insertAdjacentHTML('beforeend', card)
   })
 
@@ -216,15 +204,13 @@ function renderCards(data, num, preview) {
 
   main.appendChild(game)
 
-  // Show preview if checked
-  if (preview) previewCards()
+  if (preview) showPreviewCards()
 }
 
-// Show start page
 function initStartPage() {
   main.innerHTML = ''
 
-  main.insertAdjacentHTML('afterbegin', startPageTemplate())
+  main.insertAdjacentHTML('afterbegin', getStartPageTemplate())
 
   const startPageUl = document.querySelector('.start-page__ul')
 
@@ -241,10 +227,8 @@ function initStartPage() {
   })
 }
 
-// Show game page
 function initGame(num, preview) {
 
-  // Get data from json
   async function getImagesData(url) {
     return await fetch(url).then(response => response.json())
   }
@@ -259,21 +243,19 @@ function initGame(num, preview) {
     .catch(error => console.log(error))
 }
 
-// Show result page
 function initResultPage() {
   main.innerHTML = ''
 
-  main.insertAdjacentHTML('afterbegin', resultPageTemplate(GAME_TIME.getDiffTime(), numOfPairs))
+  main.insertAdjacentHTML('afterbegin', getResultPageTemplate(GAME_TIME.getDiffTime(), numOfPairs))
 
   const resultPageLink = document.querySelector('.result-page__link')
 
   resultPageLink.addEventListener('click', function(e) {
     e.preventDefault()
-    fadeOutFadeIn(initStartPage) // Show start page with animation
+    fadeOutFadeIn(initStartPage)
   })
 }
 
-// Show start page on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", function() {
   main = document.querySelector('.main')
   initStartPage()
