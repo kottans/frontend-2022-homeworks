@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory pair game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="logo-bar">
+            <img src="img/logo.png" alt="logo" class="logo">
+        </nav>
+    </header>
+    <main>
+        <div class="main-content">
+            <p class="main-content__time">Your time:<span class="seconds">0 sec</span></p>
+            <p class="main-content__flips">Your flips:<span class="flips">0</span></p>
+            <div class="main-content__playing-field flip-container" ontouchstart="this.classList.toggle('hover');">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <nav class="logo-bar">
+            <img src="img/logo.png" alt="logo" class="logo">
+        </nav>
+    </footer>
+</body>
+<script src="script.js"></script>
+</html>
