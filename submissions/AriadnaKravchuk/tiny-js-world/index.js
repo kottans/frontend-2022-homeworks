@@ -14,7 +14,7 @@ const dog = {
    legs: 4,
    hands: 0,
    saying: "woof-woof!",
-   friends: "Cake"
+   friends: ["Cake"]
 };
 
 const cat = {
@@ -34,7 +34,7 @@ const man = {
    legs: 2,
    hands: 2,
    saying: "Hello!",
-   friends: "Dominica"
+   friends: ["Dominica"]
 };
 
 const woman = {
@@ -48,7 +48,7 @@ const woman = {
 };
 
 const catWoman = {
-   species: ["cat", "human"],
+   species: "human",
    name: "Selina",
    gender: "female",
    legs: 2,
@@ -63,7 +63,7 @@ function printInhabitant(inhabitant) {
    let result = "";
 
    for (let val in inhabitant) {
-      result += inhabitant[val] + ";";
+      result += inhabitant[val] + "; ";
    }
 
    print(result);
