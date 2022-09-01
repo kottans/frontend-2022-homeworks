@@ -81,8 +81,8 @@ Player.prototype.update = function (moveDirection){
     }
     if (moveDirection === 'up' && this.y > this.yAxisMin ){
         this.y -= this.yStep;
-        if (player.y === player.yAxisMin){
-            isOnWater.call(player);
+        if (this.y === this.yAxisMin){
+            isOnWater.call(this);
         }
     }
     if (moveDirection === 'down' && this.y < this.yAxisMax) {
