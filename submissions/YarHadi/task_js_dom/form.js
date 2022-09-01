@@ -34,4 +34,5 @@ const kaer = {
     document.getElementById("main-text").textContent = character.text;
   }
   
+
   
