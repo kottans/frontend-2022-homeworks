@@ -5,8 +5,12 @@ body {
 }
   /** HEADER **/
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 15px;
   fill: #757575;
+  background: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1; 
 }
 .menu-items { 
   display: flex;
@@ -40,7 +44,6 @@ body {
   top: 65px;
   width: 300px;
   height: 475px;
-  overflow-y: scroll;
   overflow-x: hidden;
   z-index: 1;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
@@ -144,12 +147,60 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.tooltip-more__input:checked +.tooltip-more-btn{
+.tooltip-more__input:checked +.tooltip-more-btn {
   display: none;
+}
+.hidden {
+  display: none;
+}
+.tooltip-more__input:checked ~ .more-btn {
+  display: flex;
+  background-color: transparent;
 }
 .tooltip-more__input:checked {
-  display: none;
+  display: block;
 }
-.tooltip-more__input:checked ~.tooltip {
-  overflow: scroll;
+ /* Buttons */
+::-webkit-scrollbar-button:single-button {
+  display: block;
+  height: 13px;
+  width: 16px;
+}
+::-webkit-scrollbar {
+  width: 18px;
+  height: 18px;
+}
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(168, 166, 166);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: rgb(148, 146, 146);
+}
+/* Buttons */
+::-webkit-scrollbar-button:single-button {
+  display: block;
+  background-size: 10px;
+  background-repeat: no-repeat;
+}
+/* Up */
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  height: 12px;
+  width: 16px;
+  background-position: center 4px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(96, 96, 96)'><polygon points='50,00 0,50 100,50'/></svg>");
+}
+/* Down */
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  height: 12px;
+  width: 16px;
+  background-position: center 2px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(96, 96, 96)'><polygon points='0,0 100,0 50,50'/></svg>");
 }
