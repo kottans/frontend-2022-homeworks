@@ -28,7 +28,7 @@ const solarSystem = [
             },
         ],
         lengthOfDay: "5 * 10<sup>13 </sup>",
-        moons: "",
+        moons: [],
         altText: "the sun depicted as a large fireball",
     },
     {
@@ -63,7 +63,7 @@ const solarSystem = [
             },
         ],
         lengthOfDay: "4222.6",
-        moons: "",
+        moons: [],
         altText: "gray planet mercury with many small craters",
     },
     {
@@ -99,7 +99,7 @@ const solarSystem = [
             },
         ],
         lengthOfDay: "2802",
-        moons: "",
+        moons: [],
         altText: "red planet Venus with obvious irregularities in the landscape",
     },
     {
@@ -336,120 +336,55 @@ const solarSystem = [
 ];
 
 const mainBlock = document.querySelector(".main");
+const firstElement = solarSystem[0];
 
-// function to generate html code for the current planet
-// (sorry, the sun will also be a planet)
-function getCurrentPlanet(planet) {
-    solarSystem.map((item) => {
-        if (item.id == planet) {
-            const planetTitle = item.title;
-            const planetText = item.text;
-            const planetImage = item.image;
-            const planetDiameter = item.diameter;
-            const planetMass = item.mass;
-            const planetTemp = item.temp;
-            const planetGravity = item.gravity;
-            const planetDistance = item.distance;
-            const planetLengthOfDay = item.lengthOfDay;
-            const planetMoons = item.moons;
-            const planetAltText = item.altText;
-
-            let planetTemplateStart = `<div class="main__content">`;
-
-            let planetTemplateEnd = `</div>`;
-
-            let planetTemplateTextContent = `
-                <h1 class="main__title">${planetTitle}</h1>
-                <p class="main__text">${planetText}</p>
-            `;
-
-            let planetTemplateImage = `<img src="${planetImage}" alt="${planetAltText}" class="main__img" width="450" height="450"/>`;
-
-            let planetTemplateListStart = `<ul class="list">`;
-
-            let planetTemplateListEnd = `</ul>`;
-
-            let planetTemplateListItems = `
-                <li class="list__item">
-                    <p class="list__info">Diameter: <span class="list__value">${planetDiameter} </span>km</p>
-                </li>
-                <li class="list__item">
-                    <p class="list__info">Mass: <span class="list__value">${planetMass}</span>kg</p>
-                </li>
-                <li class="list__item">
-                    <p class="list__info">Gravity: <span class="list__value">${planetGravity} </span>m/s<sup>2</sup></p>
-                </li>
-                <li class="list__item">
-                    <p class="list__info">Length of Day: <span class="list__value">${planetLengthOfDay} </span>hr</p>
-                </li>
-            `;
-
-            let planetTemplateTemp = "";
-
-            if (planetTemp) {
-                let planetTemplateTempContent = "";
-
-                planetTemp.forEach((tempItem) => {
-                    planetTemplateTempContent += `
-                    <li class="list__item">
-                        <p class="list__info">${tempItem.name}: <span class="list__value">${tempItem.value} </span><sup>o</sup>C</p>
-                    </li>`;
-                });
-
-                planetTemplateTemp += planetTemplateTempContent;
-            }
-
-            let planetTemplateMoons = "";
-
-            if (planetMoons) {
-                let planetTemplateMoonsContent = "";
-
-                planetMoons.forEach((moonsItem) => {
-                    planetTemplateMoonsContent += `
-                    <li class="list__item">
-                        <p class="list__info list__info--flax">
-                            ${moonsItem.name}: <span class="list__value"> <img src="img/icons/moon.png" alt="" class="list__icon" width="100" height="104"/></span><span> * ${moonsItem.value}</span>
-                        </p>
-                    </li>`;
-                });
-
-                planetTemplateMoons += planetTemplateMoonsContent;
-            }
-
-            let planetTemplateDistance = "";
-
-            if (planetDistance) {
-                let planetTemplateDistanceContent = "";
-
-                planetDistance.forEach((distanceItem) => {
-                    planetTemplateDistanceContent += `
-                    <li class="list__item">
-                        <p class="list__info">${distanceItem.name}: <span class="list__value">${distanceItem.value} </span>${distanceItem.unit}</p>
-                    </li>`;
-                });
-
-                planetTemplateDistance += planetTemplateDistanceContent;
-            }
-
-            let planetTemplate = "";
-            planetTemplate += planetTemplateStart;
-            planetTemplate += planetTemplateTextContent;
-            planetTemplate += planetTemplateImage;
-            planetTemplate += planetTemplateListStart;
-            planetTemplate += planetTemplateListItems;
-            planetTemplate += planetTemplateTemp;
-            planetTemplate += planetTemplateMoons;
-            planetTemplate += planetTemplateDistance;
-            planetTemplate += planetTemplateListEnd;
-            planetTemplate += planetTemplateEnd;
-
-            mainBlock.innerHTML = planetTemplate;
-        }
-    });
+function chosenPlanet({ title, text, image, diameter, mass, temp, gravity, distance, lengthOfDay, moons, altText }) {
+    return `
+    <div class="main__content">
+        <h1 class="main__title">${title}</h1>
+        <p class="main__text">${text}</p>
+        <img src="${image}" alt="${altText}" class="main__img" />
+        <ul class="list">
+            <li class="list__item">
+                <p class="list__info">Diameter: <span class="list__value">${diameter} </span>km</p>
+            </li>
+            <li class="list__item">
+                <p class="list__info">Mass: <span class="list__value">${mass}</span>kg</p>
+            </li>
+            <li class="list__item">
+                <p class="list__info">Gravity: <span class="list__value">${gravity} </span>m/s<sup>2</sup></p>
+            </li>
+            <li class="list__item">
+                <p class="list__info">Length of Day: <span class="list__value">${lengthOfDay} </span>hr</p>
+            </li>
+            ${temp.map(
+                (el) =>
+                    `<li class="list__item">
+                <p class="list__info">${el.name}: <span class="list__value">${el.value} </span><sup>o</sup>C</p>
+            </li>`
+            )}
+            ${moons.map(
+                (el) =>
+                    `<li class="list__item">
+                <p class="list__info list__info--flax">
+                    ${el.name}: <span class="list__value"> <img src="img/icons/moon.png" alt="" class="list__icon"/></span><span> * ${el.value}</span>
+                </p>
+            </li>`
+            )}
+            ${distance
+                .map(
+                    (el) =>
+                        `<li class="list__item">
+                <p class="list__info">${el.name}: <span class="list__value">${el.value} </span>${el.unit}</p>
+            </li>`
+                )
+                .join("")}
+        </ul>
+    </div>
+       `;
 }
 
-// create homepage
-getCurrentPlanet(0);
+mainBlock.innerHTML = chosenPlanet(firstElement);
 
 const iconMenu = document.querySelector(".nav__icon");
 const listMenu = document.querySelector(".nav__body");
@@ -461,35 +396,34 @@ iconMenu.addEventListener("click", function () {
     listMenu.classList.toggle("_opened");
 });
 
-// track the presence of the "_active" class for navigation elements
-// track the "click" event on them
-let navButton = document.getElementsByClassName("nav__button");
-let activeClass = document.getElementsByClassName("_active");
-for (i = 0; navButton.length > i; i++) {
-    navButton[i].onclick = function () {
-        let currentActive = activeClass[0];
-        if (currentActive)
-            currentActive.classList.remove("_active") ||
-                iconMenu.classList.remove("_opened") ||
-                listMenu.classList.remove("_opened") ||
-                document.body.classList.remove("_lock");
+const navList = document.querySelector(".nav__list");
+const navButton = document.querySelector(".nav__button");
+let initialActiveClass = document.getElementsByClassName("_active");
 
-        if (currentActive !== this) this.classList.add("_active");
-        if (currentActive == this) this.classList.add("_active");
-    };
+navList.onclick = function ({ target }) {
+    let button = target.closest(".nav__button");
+
+    if (!button) return;
+
+    if (!navList.contains(button)) return;
+
+    activeClass(button);
+};
+
+let selectedButton = initialActiveClass[0];
+
+function activeClass(button) {
+    if (selectedButton) {
+        selectedButton.classList.remove("_active");
+        iconMenu.classList.remove("_opened") || listMenu.classList.remove("_opened") || document.body.classList.remove("_lock");
+    }
+    if ((selectedButton = button)) {
+        selectedButton.classList.add("_active");
+    }
 }
 
-const navList = document.querySelector(".nav__list");
-
-// track the "click" event on navigation elements
-// get the id of a specific planet and send it to the function
 navList.addEventListener("click", ({ target }) => {
     const buttonId = target.parentElement.id;
 
-    let planetId = solarSystem.findIndex((item) => item.id == buttonId);
-
-    getCurrentPlanet(planetId);
+    mainBlock.innerHTML = chosenPlanet(solarSystem.find((item) => item.id === buttonId));
 });
-
-
-
