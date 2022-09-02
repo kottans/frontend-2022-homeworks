@@ -147,13 +147,20 @@ body
   z-index: 1
   width: 100%
 
+  &:focus
+    ~ .see-more-button__label
+      border: 2px solid grey
+
   &:checked
     ~ .sub-popup
       display: block
 
     ~ .see-more-button__label .see-more-button__img
-      animation: one_time_180_rotate 1.5 ease
-      transform: rotate(180deg)
+      display: none
+
+  &:hover
+    ~ .see-more-button__label
+      cursor: pointer
 
 .sub-popup
   display: none
