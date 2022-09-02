@@ -18,7 +18,7 @@ const man = {
    hands: 2,
    feets: 2,
    saying: 'Sheikh Ma Shieraki Anni.',
-}
+};
 
 const woman = {
    species: 'human',
@@ -29,7 +29,7 @@ const woman = {
    feets: 2,
    saying: 'Drakaris!',
    friends: `Fell in love with ${man.name}.`,
-}
+};
 
 const dog = {
    species: 'dog',
@@ -40,7 +40,7 @@ const dog = {
    feets: 4,
    saying: 'woof-woof!',
    friends: `Only ${man.name} is friends.`,
-}
+};
 
 const cat = {
    species: 'cat',
@@ -51,7 +51,7 @@ const cat = {
    feets: 4,
    saying: 'Meow, bow to me!',
    friends: 'No friends, only servants!'
-}
+};
 
 const catwoman = {
    species: 'human',
@@ -62,7 +62,7 @@ const catwoman = {
    feets: 2,
    saying: cat.saying,
    friends: `In astral connection with ${cat.name}.`,
-}
+};
 
 // ======== OUTPUT ========
 
@@ -77,12 +77,12 @@ const objToString = (obj) => {
    }
 
    return propValuesArr.join('; ');
-}
+};
 
 function greetings(arr, func) {
    for (let i = 0; i < arr.length; i++) {
-      print(func(arr[i]))
+      print(func(arr[i]));
    }
 }
 
-greetings(inhabitants, objToString)
+greetings(inhabitants, objToString);
