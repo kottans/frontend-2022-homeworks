@@ -141,6 +141,11 @@ a:focus {
         width: 100px;
     }
 
+    .navBar__item > a, #label_1 {
+        height: 50px;
+        width: 100px;
+    }
+
     img {
         height: 60px;
         width: auto;
@@ -154,7 +159,7 @@ a:focus {
     #input_1 {
         height: 50px;
         width: 100px;
-        right: 235px;
+        right: 220px;
     }
 
     #input_1:checked ~ .dropdownMenu {
