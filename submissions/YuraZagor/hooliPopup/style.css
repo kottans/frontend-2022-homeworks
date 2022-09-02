@@ -1,0 +1,144 @@
+* {
+	box-sizing: border-box;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+.ul--menu, .popups--container, .popups--container--all {
+	list-style-type: none;	
+}
+
+.ul--menu {
+	display:flex;
+	justify-content: flex-end;
+	align-items: center;	
+}
+
+.li--menu {
+	padding: 10px;	
+}
+
+.popup--item {
+	width: 2.5em;
+	height: 2.4em;
+	cursor: pointer;
+	object-fit: contain;
+	padding: 6px;
+	user-select: none;
+}
+
+.menu--img {
+	width: 1.1em;
+	height: auto;
+	cursor: pointer;
+}
+
+.outer-popup-container {
+	display: none;
+	position: absolute;
+	top: 35px;
+	right: -80px;
+	width: 12em;
+}
+
+.inner-container{
+	max-height: 250px;
+	border: 0.5px solid lightcoral;
+	border-radius: 6px;
+	justify-items: center;
+	align-items: center;
+	scroll-behavior: auto;
+	overflow-y:scroll;
+	margin: 10px;
+	padding: 10px;
+}
+
+.popups--container{
+	display: grid;	
+	grid-template-columns: 1fr 1fr 1fr;	
+}
+
+.popups--container--all{
+	display: none;
+	grid-template-columns: 1fr 1fr 1fr;	
+}
+
+.show--all {
+	position: absolute;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;		
+}
+
+.checkbox-icon {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow:hidden;
+	clip: rect(0 0 0 0);
+}
+
+.show--all--label{
+	display: flex;
+	user-select: none;
+	width: 100%;			
+	max-width: 40vw;
+	align-content: center;
+	justify-content: center;
+	border: 1px solid lightcoral;
+	border-radius: 4px;
+	background-color: antiquewhite;
+	cursor: pointer;
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.li--href {
+	width: 2.1em;
+	height: 2.1em;
+	cursor: pointer;
+	object-fit: contain;
+}
+
+.checkbox-icon:checked ~ .outer-popup-container {
+	display: block;
+}
+
+#show--all:checked ~ .popups--container--all {
+	display: grid;
+}
+
+#show--all:checked ~ #show--all--label {
+	display: none;
+}
+
+.popup--item:hover, .li--menu:hover {
+	background-color: rgb(230, 207, 207);
+	border-color: #94989b;
+	transition: 0.3s ease-in-out;
+}
+
+.popup--item:active, .li--menu:active {
+	background-color: #ff9501;
+	border-color: #94989b;
+	transition: 0.3s ease-in-out;
+}
+
+.popup--item:focus, .li--menu:focus {
+	background-color: #e0ebf7;
+	border-color: #9d9ea0;
+	transition: ease 0.2s;
+}
+
+.checkbox-icon:focus + .popup-label,
+.show--all:focus + .show--all--label {
+	outline: 2px solid black !important;
+} 
+
+@media screen and ( max-width: 620px) {
+	.inner-container{
+		margin: 0;
+		padding: 0;
+	}
+}

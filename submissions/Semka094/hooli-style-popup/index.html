@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+          rel="stylesheet">
+    <title>Pop-up</title>
+</head>
+
+<body>
+
+<div class="menuContainer">
+    <nav>
+        <ul class="navWrapper">
+            <li class="navItem">
+                <a class="navLink" href="#">Mail</a>
+            </li>
+            <li class="navItem">
+                <a class="navLink" href="#">Images</a>
+            </li>
+            <li class="navItem icon">
+                <input class="popupBtnCheckbox" type="checkbox" id="popupBtn">
+                <label class="popupBtnLabel" for="popupBtn">
+                    <img class="navImg" src="./images/popup-button.png" alt="">
+                </label>
+
+                <div class="appsPopup">
+                    <div class="popupContainer">
+                        <ul class="itemList">
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/calendar.png" alt="">
+                                    <span class="itemTitle">Calendar</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/mail.png" alt="">
+                                    <span class="itemTitle">Mail</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/news.png" alt="">
+                                    <span class="itemTitle">News</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/maps.png" alt="">
+                                    <span class="itemTitle">Map</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/files.png" alt="">
+                                    <span class="itemTitle">Files</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/contacts.png" alt="">
+                                    <span class="itemTitle">Contacts</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/tanslation.png" alt="">
+                                    <span class="itemTitle">Translation</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/videos.png"
+                                         alt="">
+                                    <span class="itemTitle">Videos</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/search.png" alt="">
+                                    <span class="itemTitle">Search</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <input class="visibilityFlag" type="checkbox" id="loadMore">
+                        <label class="loadMore" for="loadMore">
+                            More
+                        </label>
+                        <ul class="itemList hiddenItems">
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/photos.png" alt="">
+                                    <span class="itemTitle">Photo</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/apps.png" alt="">
+                                    <span class="itemTitle">Apps</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/documents.png" alt="">
+                                    <span class="itemTitle">Documents</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/chat.png" alt="">
+                                    <span class="itemTitle">Chat</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/classroom.png" alt="">
+                                    <span class="itemTitle">Classroom</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/collection.png"
+                                         alt="">
+                                    <span class="itemTitle">Collection</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/mars.png"
+                                         alt="">
+                                    <span class="itemTitle">Mars</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/blogs.png" alt="">
+                                    <span class="itemTitle">Blogs</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="columnItem">
+                                    <img class="popupItemImg" src="./images/promo.png"
+                                         alt="">
+                                    <span class="itemTitle">Promos</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="evenMoreWrapper">
+                            <a class="evenMoreLink" href="https://github.com/kottans">Even more from Kottans</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="navItem icon">
+                <a href="#">
+                    <img class="navImg" src="./images/bell.png" alt="">
+                </a>
+            </li>
+            <li class="navItem profile">
+                <a class="navLink" href="#">
+                    <img class="profileImg" src="./images/profileImg_1.png" alt="">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
