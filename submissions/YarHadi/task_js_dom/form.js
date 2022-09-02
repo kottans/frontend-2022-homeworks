@@ -57,9 +57,7 @@ createButtons(characters);
 // Creation of content
 
 const mainContainer = document.querySelector(".main-content");
-
-function showContent(buttonId, data) {
-  const {header,img,text} = data.find((character) => character.id == buttonId);
+function showContent(header,img,text) {  
   const content = `<h1 class="text-header" id="main-header">${header}</h1>
   <img
     id="main-img"
@@ -78,12 +76,12 @@ function showContent(buttonId, data) {
 
 const onClick = ({ target }) => {
   const selectedBtn = target.dataset.id;
-  showContent(selectedBtn, characters);
+  const {header,img,text} = characters.find((character) => character.id == selectedBtn);
+  showContent(header,img,text);
 };
 
 navMenu.addEventListener("click", onClick);
 
 //inner first page
 
-showContent(1, characters);
 
