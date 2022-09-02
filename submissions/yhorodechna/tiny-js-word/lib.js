@@ -1,3 +1,4 @@
+
 function print(message, tag = 'pre') {
   var element = document.createElement(tag);
   element.innerHTML = message;
@@ -116,5 +117,6 @@ INHABITANTS.forEach((inhabitant) => {
   print(inhabitant.render())
 }
 );
+
 
 
