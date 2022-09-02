@@ -42,7 +42,7 @@ catWoman.legs = 2;
 catWoman.hands = 2;
 catWoman.friends =  ["Yohanna", "Gangster"];
 
-const keys = {
+const extraWords = {
    creature: "I am ",
    name: "My name is ",
    gender: "I am a pretty ",
@@ -56,7 +56,7 @@ const members = [man, woman, cat, dog, catWoman];
 const memberProps = ['creature', 'name', 'gender', 'hands', 'legs', 'friends', 'say'];
 members.forEach(member => 
    print((memberProps 
-      .map(key => keys[key] + member[key]))
+      .map(key => extraWords[key] + member[key]))
       .join(" ")
    )
 );
