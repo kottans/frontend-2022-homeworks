@@ -59,16 +59,16 @@ createButtons(characters);
 const mainContainer = document.querySelector(".main-content");
 
 function showContent(buttonId, data) {
-  const contentData = data.find((character) => character.id == buttonId);
-  const content = `<h1 class="text-header" id="main-header">${contentData.header}</h1>
+  const {header,img,text} = data.find((character) => character.id == buttonId);
+  const content = `<h1 class="text-header" id="main-header">${header}</h1>
   <img
     id="main-img"
     class="main-img"
-    src="${contentData.img}"
+    src="${img}"
     alt="Image of character"
   />
   <p class="main-text" id="main-text">
-  ${contentData.text}
+  ${text}
   </p>`;
 
   mainContainer.innerHTML = content;
