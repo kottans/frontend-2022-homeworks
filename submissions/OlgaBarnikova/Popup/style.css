@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  padding: 0;    
+}
+
+.header {    
+ background-color: bisque;
+}
+
+.navigation {  
+  margin: 0.3rem 0.6rem 0.6rem 0.3rem;
+}
+
+.nav_list {
+  position: relative;
+  display: flex;
+  justify-content:flex-end;
+  align-items:center;    
+  flex-wrap: wrap;    
+}
+
+.nav_item {
+  margin: 0.3rem;
+  padding: 0.3rem;   
+}
+
+nav_popup_icon {
+cursor: pointer;
+}
+
+a,
+a:active {
+text-decoration: none;
+color: #6868e4;
+}
+
+a:focus {
+outline: none;
+}
+
+.popup_input, .popup_input_more {
+position: absolute;
+right: 5rem;
+top: 0.7rem;
+width: 1px;
+height: 1px;
+overflow: hidden;
+clip: rect(0 0 0 0);  
+}
+
+.popup_container {    
+display: none;
+position: absolute;
+top: 4rem;
+right: 2.5rem;
+width: 15rem;
+max-height: 50rem;
+overflow: auto;  
+box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.278);
+font-size: small;
+}
+
+.popup_list {
+display: grid;  
+grid-template: auto/ 1fr 1fr 1fr;
+gap: 0.2rem;  
+}
+
+.popup_box_img {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;  
+padding: 0.2rem; 
+margin: 0.2rem; 
+}
+
+.popup_img {
+display: block;
+width: 2rem;
+height: 2rem;    
+}
+
+.popup_input:checked ~ .popup_container,
+.popup_input_more:checked ~ .popup_list_more {
+display: block;    
+}
+
+.nav_item:focus-within,
+.popup_box_img:focus-within {
+outline: 1px solid blue;
+cursor: pointer;
+}
+
+.popup_input_more:focus-within ~ .popup_more_item {
+outline: 1px solid blue;
+cursor: pointer;
+}
+
+.nav_item:hover,
+.popup_box_img:hover, .popup_more_item:hover {
+border-radius: 5px;
+background-color: lightblue;
+cursor: pointer;
+}
+
+.popup_list_more {
+display: none;
+}
+
+.popup_more_item {
+display: block;
+padding: 0.2rem;
+margin: 0.2rem;
+text-align: center;  
+color: blue;
+}
+
+.popup_input_more:checked ~ .popup_more_item {
+transform: rotate(180deg);
+}
+
+@media (max-width: 27rem) {
+.popup_container {
+  top: 5em;
+  right: 5rem;
+  left: 7.5rem;
+  width: 12rem;
+  max-height: 50rem;
+}
+}

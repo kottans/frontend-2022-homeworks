@@ -1,0 +1,195 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+    width: 510px;
+    margin: auto;
+}
+
+img {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.navBlock {
+    position: relative;
+    margin-left: 50px;
+    padding: 10px 0 0 100px;
+}
+
+.navBlock, 
+.list {
+    display: flex;
+}
+
+.link {
+    margin: 0 20px 0 0;
+}
+
+.linkFokus:focus,
+.linkFokusPopupItem:focus, 
+.checkMore:focus,
+.popupDescriptionLink:focus,
+.checkInput:focus ~ .checkMore {
+    outline: none;
+    box-shadow: 0 0 0 1px #0055ffcc;
+    border-radius: 2px;
+}
+
+.linkFokusPopupItem {
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+}
+
+.headerStyle {
+    height: 50px;
+    padding: 20px 0 0;
+}
+
+  /* Checkbox */
+
+.check {
+    position: relative;
+}
+
+.checkMore {
+    margin: 12px 0 0;
+    color: rebeccapurple;
+    cursor: pointer;
+}
+
+.checkMore:hover,
+.popupItem:hover,
+.link:hover,
+.checkBox:hover,
+.popupDescriptionLink:hover  {
+    outline: none;
+    box-shadow: 0 0 0 1px lightgray;
+    border-radius: 2px;
+}
+
+.checkInput {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.checkBox {
+    position: absolute;
+    cursor: pointer;
+    top: -2px;
+    width: 26px;
+    height: 26px;
+    background-image: url(images/popup-button.png);
+    border: 1px solid white;
+}
+
+.checkInput:focus ~ * .checkBox, 
+.popupItem:focus {
+    border: 1px solid #0055ffcc;
+    border-radius: 2px;
+}
+
+.wrapperPopup {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.popup {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 300px;
+    height: 490px;
+    padding: 40px 40px 0;
+    overflow: overlay;
+    box-shadow: 1px 1px 7px 1px #888888;
+    text-align: center;
+}
+
+#checkInputId:checked ~ div.wrapperPopup,
+#checkInputId:checked ~ * div.wrapperPopup {
+    opacity: 1;
+    visibility: visible;
+}
+
+#checkInputId:checked ~ .checkMore,
+#checkInputId:checked ~ * .checkMore {
+    display: inline-block;
+}
+
+#checkMoreInputId:checked ~ .checkMore,
+#checkMoreInputId:checked ~ * .checkMore {
+    display: none;
+}
+
+#checkMoreInputId:checked {
+    visibility: hidden;
+}
+
+.wrapperPopup::before, .wrapperPopup:after {
+    content: ''; 
+    position: absolute;
+    right: 222px; 
+    top: 30px;
+    border: 10px solid transparent; 
+    border-bottom: 10px solid lightgray;
+}
+
+.wrapperPopup:after {
+    border-bottom: 10px solid white;
+    top: 32px;  
+}
+
+.popupList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+p {
+    margin: 0 auto;
+    padding-bottom: 5px;
+}
+
+.popupItem {
+    width: calc(100% / 3);
+}
+
+.popupImg {
+    margin: auto;
+}
+
+.noCheckItem,
+.noCheckItemBlock {
+    display: none;
+}
+
+#checkMoreInputId:checked ~ .noCheckItem,
+#checkMoreInputId:checked ~ * .noCheckItem,
+#checkMoreInputId:checked ~ .noCheckItemBlock {
+    display: block;
+    color: rebeccapurple;
+}
+
+.noCheckItemBlock {
+    margin-top: 60px;
+}
+
+.popupDescriptionLink {
+    display: inline-block;
+    margin: 60px 0 20px;
+}
