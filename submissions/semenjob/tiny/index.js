@@ -1,65 +1,5 @@
-// const content = document.querySelector(".content");
-// const inhabitantsOfTheWorld = [
-//   (man = {
-//     species: "human",
-//     name: "Benjamin Geza Affleck-Bold",
-//     gender: "male",
-//     legs: 2,
-//     hands: 2,
-//     said: "Im batman",
-//   }),
-//   (woman = {
-//     species: "human",
-//     name: "Lady Diana",
-//     gender: "Famele",
-//     legs: 2,
-//     hands: 2,
-//     said: "A man is great on earth and throughout the ages, but every iota of his greatness has grown out of a woman.",
-//   }),
-//   (dog = {
-//     species: "dog",
-//     name: "Hachiko: The most loyal friend",
-//     gender: "male",
-//     legs: 4,
-//     hands: 0,
-//     said: "Wow my master is so cool he can drink 20 liters of beer",
-//   }),
-//   (cat = {
-//     species: "cat",
-//     gender: "male",
-//     legs: 4,
-//     hands: 0,
-//     said: "Man quickly bring me some water",
-//   }),
-//   (catWoman = {
-//     species: "cathuman",
-//     name: "Halle Berry",
-//     gender: "Famele",
-//     legs: 2,
-//     hands: 2,
-//   }),
-// ];
-
-// Object.setPrototypeOf(catWoman, cat);
-
-// const valueInhabitantsWorld = [
-//   "species",
-//   "name",
-//   "gender",
-//   "legs",
-//   "hands",
-//   "said",
-// ];
-
-// const listInhabitantsWorld = inhabitantsOfTheWorld.map((item) =>
-//   valueInhabitantsWorld.map((value) => item[value])
-// );
-// const contents = listInhabitantsWorld.join("\n\n");
-
-// content.innerHTML = contents;
-
 class inhabitant {
-  static viewArr = { dog: "dog", cat: "cat", hum: "human" };
+  static viewArr = { animal: "animal", hum: "human" };
   static genderArr = { mele: "male", famele: "female" };
 
   constructor(species, name, gender, hands, legs, soid) {
@@ -91,33 +31,30 @@ class Human extends inhabitant {
   }
 }
 
-class Dog extends inhabitant {
+class Animals extends inhabitant {
   constructor(name, gender, legs, hands = "", soid) {
-    super(inhabitant.viewArr.dog, name, gender, hands, legs, soid);
+    super(inhabitant.viewArr.animal, name, gender, hands, legs, soid);
+    this.legs = 4;
   }
 }
-
-class Cat extends inhabitant {
-  constructor(name, gender, legs, hands = "", soid) {
-    super(inhabitant.viewArr.cat, name, gender, hands, legs, soid);
-  }
-}
-
-const dog = new Dog(
+const Dog = new Animals(
+  (this.species = "Dog"),
   "Hachiko: The most loyal friend",
   inhabitant.genderArr.mele,
   4,
   "Wow my master is so cool he can drink 20 liters of beer"
 );
 
-const cat = new Cat(
+const Cat = new Animals(
+  (this.species = "Cat"),
   "Halle Berry",
   inhabitant.genderArr.famele,
   4,
   "Man quickly bring me some water"
 );
 
-const man = new Human(
+const Man = new Human(
+  (this.species = "Man"),
   "Benjamin Geza Affleck-Bold",
   inhabitant.genderArr.mele,
   2,
@@ -125,7 +62,8 @@ const man = new Human(
   "Im batman!"
 );
 
-const woman = new Human(
+const Woman = new Human(
+  (this.species = "Woman"),
   "Lady Diana",
   inhabitant.genderArr.famele,
   2,
@@ -134,14 +72,15 @@ const woman = new Human(
 );
 
 const catWoman = new Human(
+  (this.species = "CatWoman"),
   "Lady Diana",
   inhabitant.genderArr.famele,
   2,
   2,
-  "A man is great on earth and throughout the ages, but every iota of his greatness has grown out of a woman."
+  "Man quickly bring me some water"
 );
 
-let allHebians = [dog, man, catWoman, cat, woman];
+let allHebians = [Dog, Man, catWoman, Cat, Woman];
 
 allHebians.forEach((item) => {
   print(item);
