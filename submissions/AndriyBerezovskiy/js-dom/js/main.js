@@ -198,6 +198,3 @@ card__inner.addEventListener('click', (e) => {
         card__inner.classList.toggle('is-flipped');
     }
 })
-
-
-
