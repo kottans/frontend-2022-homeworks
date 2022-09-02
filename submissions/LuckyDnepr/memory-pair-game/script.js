@@ -7,18 +7,20 @@ let themesData,
     numberOfCards = 6,
     cardsSet,
     openedCards = [],
-    findedPairs;
+    foundPairs;
 
-doc.querySelector(".game_field").addEventListener("click", (e) =>
-    isClickOnCard(e.target)
-);
+doc.querySelector(".game_field").addEventListener("click", (e) => {
+    if (e.target.classList.contains("card_face")) {
+        cardFlip(e.target.parentNode);
+    }
+});
 
 makeMenuAndListeners(themesDataPath);
 
 function gameStart() {
+    foundPairs = 0;
     renderGameField(numberOfCards);
     generateCardsSet(numberOfCards, themesData[themeIndex].pictures.length - 1);
-    findedPairs = 0;
     switchMenuAndGameField();
 }
 
@@ -36,38 +38,28 @@ function renderGameField(numberOfCards) {
     }
     gameField.innerHTML = new Array(numberOfCards)
         .fill(0)
-        .map(
-            (newCard, i) => `
-            <div class="game_card" data-card_id="${i}">
+        .reduce((innerhtml, curr,  i) => {
+            return innerhtml +=`<div class="game_card" data-card_id="${i}">
                 <img src="./images/bg-hearts.png" alt="" class="card_face card_face_front">
                 <img src="#" alt="" class="card_face card_face_back">
             </div>
-        `
-        )
-        .join("");
-}
-
-function isClickOnCard(target) {
-    if (target.classList.contains("card_face")) {
-        cardFlip(target.parentNode);
-    }
+        `;
+        }, "");
 }
 
 function cardFlip(card) {
     if (!card.classList.contains("flipped")) {
         card.classList.add("flipped");
         openedCards.push(card);
-        card.querySelector(".card_face_back").src =
-            themesData[themeIndex].pictures[cardsSet[+card.dataset.card_id]];
+        changeCardFace(card);
         checkPair();
     }
 }
 
 function checkPair() {
-    if (openedCards.length % 2 === 0) {
-        const firstCard = openedCards.pop(),
-            secondCard = openedCards.pop();
-        openedCards = [];
+    if (openedCards.length % 2 == 0) {
+        const firstCard = openedCards.at(-1),
+            secondCard = openedCards.at(-2);
         if (
             cardsSet[firstCard.dataset.card_id] !==
             cardsSet[secondCard.dataset.card_id]
@@ -77,28 +69,30 @@ function checkPair() {
             matchFound(firstCard, secondCard);
         }
     }
-    isWin();
+    winCheck();
 }
 
 function noMatchFound(firstCard, secondCard) {
+    openedCards = [];
     setTimeout(() => {
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
         setTimeout(() => {
-            firstCard.querySelector(".card_face_back").src = "#";
-            secondCard.querySelector(".card_face_back").src = "#";
+            changeCardFace(firstCard);
+            changeCardFace(secondCard);
         }, 500);
     }, 1000);
 }
 
 function matchFound(firstCard, secondCard) {
+    openedCards = [];
     firstCard.classList.add("pair");
     secondCard.classList.add("pair");
-    findedPairs++;
+    foundPairs++;
 }
 
-function isWin() {
-    if (findedPairs === cardsSet.length / 2) {
+function winCheck() {
+    if (foundPairs === cardsSet.length / 2) {
         setTimeout(() => {
             showWinWindow("show");
         }, 1000);
@@ -133,4 +127,13 @@ function generateCardsSet(sizeOfSet, highestNumber) {
         setOfPairs.splice(index, 1);
     }
     cardsSet = mixedSetOfPairs;
+}
+
+function changeCardFace (card) {
+    if (card.classList.contains("flipped")) {
+        card.querySelector(".card_face_back").src =
+            themesData[themeIndex].pictures[cardsSet[+card.dataset.card_id]];
+    } else {
+        card.querySelector(".card_face_back").src = "#";
+    }
 }
