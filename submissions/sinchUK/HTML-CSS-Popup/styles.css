@@ -34,7 +34,7 @@ body {
   text-decoration: none;
   color: #757575;
 }
-.menu-item img {
+.menu-item-img {
   box-sizing: border-box;
   width: 25px;
 }
@@ -42,13 +42,13 @@ body {
   text-align: left;
   position: absolute;
   top: 65px;
-  width: 300px;
+  width: 320px;
   height: 475px;
   overflow-x: hidden;
   z-index: 1;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   transition: height 0.3s ease-in-out 0s;
-  right: 115px;
+  right: 95px;
   max-height: calc(-65px + 100vh);
   visibility: hidden;
 }
@@ -104,12 +104,8 @@ body {
   flex-wrap: wrap;
   list-style: none;
   text-decoration: none;
-  justify-content: space-around;
   align-items: center;
-}
-.tooltip-item a img {
-  width: 45px;
-  margin-bottom: 15px;
+  justify-content: space-between;
 }
 .tooltip-item .width-30 {
   width: 30px;
@@ -160,12 +156,6 @@ body {
 .tooltip-more__input:checked {
   display: block;
 }
- /* Buttons */
-::-webkit-scrollbar-button:single-button {
-  display: block;
-  height: 13px;
-  width: 16px;
-}
 ::-webkit-scrollbar {
   width: 18px;
   height: 18px;
@@ -184,9 +174,11 @@ body {
 ::-webkit-scrollbar-thumb:active {
   background-color: rgb(148, 146, 146);
 }
-/* Buttons */
+ /* Buttons */
 ::-webkit-scrollbar-button:single-button {
   display: block;
+  height: 13px;
+  width: 16px;
   background-size: 10px;
   background-repeat: no-repeat;
 }
@@ -203,4 +195,10 @@ body {
   width: 16px;
   background-position: center 2px;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(96, 96, 96)'><polygon points='0,0 100,0 50,50'/></svg>");
+}
+@media only screen and (max-width: 768px) {
+  .tooltip {
+    right: 15px;
+    width: 300px;
+  }
 }
