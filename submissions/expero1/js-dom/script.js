@@ -1,14 +1,15 @@
-const createElem = (elem, attrObj, className) => {
-  elem = document.createElement(elem);
-  elem.classList.add(className);
-  for (attrName in attrObj) {
-    elem.setAttribute(attrName, attrObj[attrName]);
+"use strict"
+const createHtmlElement = (htmlElementName, attributes, className) => {
+  const htmlElement = document.createElement(htmlElementName);
+  htmlElement.classList.add(className);
+  for (const attributeName in attributes) {
+    htmlElement.setAttribute(attributeName, attributes[attributeName]);
   }
-  return elem;
+  return htmlElement;
 };
 
 const createMenu = (data) => {
-  let menu = createElem("ul", { id: "menu", class: "menu" });
+  const menu = createHtmlElement("ul", { id: "menu"},'menu');
   data.forEach(
     (item, index) => { menu.appendChild(createMenuItem(data[index], index)) }
   )
@@ -16,36 +17,32 @@ const createMenu = (data) => {
 };
 
 const createMenuItem = (data, id) => {
-  let menuItem = createElem("li", {
-    id: "menu-item-" + id,
-    class: "menu-item",
+  const menuItem = createHtmlElement("li", {
+    id: `menu-item-${id}`,
     'data-id': id,
-  });
+  },'menu-item');
   menuItem.innerHTML = `<a href="#" data-id=${id} class="menu-link">${data["name"]}</a>`;
   return menuItem;
 };
 
 const createMainContent = (data) => {
-  const container = createElem("main", {
+  const container = createHtmlElement("main", {
     id: "content-container",
-    class: "content-container",
-  });
+  },"content-container");
 
-  const header = createElem("h2", {
+  const header = createHtmlElement("h2", {
     id: "content-header",
-    class: "content-header",
-  });
+  },"content-header");
 
   header.innerHTML = data.name;
-  const text = createElem("div", { id: "main-text", class: "main-text" });
+  const text = createHtmlElement("div", { id: "main-text"},"main-text");
   text.innerHTML = data.description;
-  const imgContainer = createElem("div", { class: "img-container" });
-  const img = createElem(
+  const imgContainer = createHtmlElement("div", {},"img-container");
+  const img = createHtmlElement(
     "img",
     {
       src: data["image"],
       id: "main-image",
-      class: "main-image",
       alt: data["name"],
     },
     "main-image"
@@ -54,8 +51,7 @@ const createMainContent = (data) => {
   container.append(header, imgContainer, text);
 
   return container;
-};
-// wrapper to quickly create new element
+}
 
 const setEventListeners = () => {
   const menu = document.querySelector(".menu ");
@@ -68,15 +64,15 @@ const setEventListeners = () => {
     menuItems.forEach((item) => {
       item.classList.remove("active");
     });
-    document.querySelector("#menu-item-" + id).classList.add("active");
+    document.querySelector(`#menu-item-${id}`).classList.add("active");
   });
 };
 
 const start = (data) => {
-  let container = document.querySelector("#container");
+  const container = document.querySelector("#container");
+  
   container.appendChild(createMenu(data));
   container.appendChild(createMainContent(data[0]));
   setEventListeners();
 };
-// We recieve data variable from data.js file (included in index.html)
 start(data);
