@@ -57,6 +57,7 @@ createButtons(characters);
 // Creation of content
 
 const mainContainer = document.querySelector(".main-content");
+
 function showContent(header,img,text) {  
   const content = `<h1 class="text-header" id="main-header">${header}</h1>
   <img
@@ -84,4 +85,10 @@ navMenu.addEventListener("click", onClick);
 
 //inner first page
 
+function firstPage(data){
+  const {header,img,text} = data.find((character) => character.id == 1);
+  showContent(header,img,text);
+}
+
+firstPage(characters);
 
