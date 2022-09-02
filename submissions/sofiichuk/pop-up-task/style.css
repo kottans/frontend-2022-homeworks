@@ -126,3 +126,64 @@ a:focus {
     outline: 2px black solid;
     border-radius: 1px;
 }
+
+@media screen and (max-width: 768px) {
+    * {
+        font-size: 24px;
+    }
+
+    .navBar {
+        margin: 20px 20px 0 0;
+    }
+
+    .navBar__item {
+        height: 50px;
+        width: 100px;
+    }
+
+    img {
+        height: 60px;
+        width: auto;
+    }
+
+    img[src="icons/bell.png"] {
+        height: 52px;
+        width: 52px;
+    }
+
+    #input_1 {
+        height: 50px;
+        width: 100px;
+        right: 235px;
+    }
+
+    #input_1:checked ~ .dropdownMenu {
+        top: 50px;
+        right: 80px;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(4, 65px) repeat(2, 65px);
+    }
+
+    .showMoreButton {
+        height: 40px;
+        width: 360px;
+    }
+
+    #input_2 {
+        height: 40px;
+        width: 360px;
+        left: 15px;
+    }
+
+    #label_2:before {
+        font-size: 24px;
+        width: 360px;
+        height: 30px;
+        padding-top: 10px;
+    }
+
+    #input_2:checked ~ .dropdownMenu__collapsiblePart {
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(2, 65px);
+    }
+}
