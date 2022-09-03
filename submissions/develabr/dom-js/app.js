@@ -12,18 +12,19 @@ iconMenu.addEventListener('click', function (e) {
 
 // Insert content
 
-const btns = document.querySelectorAll('.navbar-link');
+const listBtn = document.querySelector('.navbar-list');
 const main = document.querySelector('.main');
 
-for (const btn of btns) {
-  btn.addEventListener('click', function () {
-    if (btn && btn.classList.contains('navbar-link')) {
-      const itemId = btn.id;
-      const cityItem = cities.find((item) => item.id === itemId);
-      addContent(cityItem);
-    }
-  });
-}
+let [kyiv, lviv, mykolaiv, odesa, ternopil, kharkiv, kherson, chernivtsi] =
+  cities;
+
+listBtn.onclick = function (event) {
+  let target = event.target;
+  if (target && target.classList.contains('navbar-link')) {
+    const cityItem = cities.find(({ id }) => id === target.dataset.city);
+    addContent(cityItem);
+  }
+};
 
 const addContent = (item) => {
   main.innerHTML = `
@@ -59,4 +60,4 @@ const addContent = (item) => {
 </section>
 	`;
 };
-addContent(cities[0]);
+addContent(kyiv);

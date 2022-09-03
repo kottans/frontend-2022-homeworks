@@ -68,6 +68,7 @@ body {
   width: 100%;
   outline: none;
   border: none;
+  cursor: pointer;
 }
 
 .main {
