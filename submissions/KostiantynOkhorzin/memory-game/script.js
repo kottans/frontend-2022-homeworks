@@ -90,6 +90,7 @@ const restart = () => {
     setTimeout(() => {
         alert(`you win in ${playerSteps} steps`);
         gameBody.innerHTML = '';
+        playerSteps = 0;
         renderCards();
     }, 2000);
 };
