@@ -1,71 +1,59 @@
-class Inmate {
-   constructor(species, name, gender, legs, friends, saying) {
-      this.species = species;
-      this.name = name;
-      this.gender = gender;
-      this.legs = legs;
-      this.friends = friends;
-      this.saying = saying;
-   }
-   DisplayData() {
-      let propertiesForDispaly = ['species', 'name', 'gender', 'legs', 'friends', 'saying'];
-      return propertiesForDispaly.map(property => `<b>${property}:</b> ${this[property]}`).join('\t');
-   }
-};
-
-class Dog extends Inmate {
-   constructor(name, gender, friends, saying) {
-      super('dog', name, gender, 4, friends, saying || 'guf');
-   }
-};
-
-class Cat extends Inmate {
-   constructor(name, gender, friends, saying) {
-      super('cat', name, gender, 4, friends, saying || 'meow');
-   }
-   get getSaying() {
-      return this.saying;
-   }
+const dog = {
+   species: 'dog',
+   name: 'Brown',
+   gender: 'male',
+   legs: 4,
+   hands: 0,
+   saying: 'woof-woof',
+   friends:['Sky', 'Boba']
 }
 
-class Human extends Inmate {
-   constructor(name, gender, friends, saying) {
-      super('human', name, gender, 2, friends, saying);
-      this.hands = 2;
-      this.saying = saying || `Hello! I'm ${this.name}`;
-   }
-
-   DisplayData() {
-      return super.DisplayData() + '\t' + `<b>hands:</b> ${this.hands}`;
-   }
+const cat = {
+   species: 'cat',
+   name: 'Ponchik',
+   gender: 'male',
+   legs: 4,
+   hands: 0,
+   saying: 'meow-meow',
+   friends: ['Simba', 'Murchik']
 }
 
-class Man extends Human {
-   constructor(name, friends, saying) {
-      super(name, 'male', friends, saying);
-   }
+const man = {
+   species: 'man',
+   name: 'Orest',
+   gender: 'male',
+   legs: 2,
+   hands: 2,
+   saying: 'Hello!',
+   friends: ['Jan', 'Nazar']
 }
 
-class Woman extends Human {
-   constructor(name, friends, saying) {
-      super(name, 'female', friends, saying);
-   }
+const woman = {
+   species: 'woman',
+   name: 'Sasha',
+   gender: 'female',
+   legs: 2,
+   hands: 2,
+   saying: 'Hi!',
+   friends: ['Ulyana', 'Dima']
 }
 
-class CatWoman extends Woman {
-   constructor(name, friends) {
-      super(name, friends, 'meow', Cat.prototype.getSaying);
-   }
+const catWoman = {
+   species: 'cat-woman',
+   name: 'Selina',
+   gender: 'female',
+   legs: 2,
+   hands: 2,
+   saying: cat.saying,
+   friends: ['Batman','Tom']
 }
-const cat = new Cat('Ponchik', 'male', ['Simba', 'Murchik']);
-const dog = new Dog('Brown', 'male', ['Sky', 'Boba'], 'guffyy');
-const man = new Man('Orest', ['Jan', 'Nazar']);
-const woman = new Woman('Sasha', ['Ulyana', 'Dima']);
-const catWoman = new CatWoman('Selina', ['Batman','Tom']);
-
-const inmates = [cat, dog, man, woman, catWoman];
-
-let OUTPUT = inmates.map(inmates => inmates.DisplayData()).join('\n');
-
-print(OUTPUT);
+const inhabitants = [dog, cat, man, woman, catWoman]
+const introduceInhabitants = (inhabitants) => {
+   const inhabitantValues = Object.values(inhabitants)
+   const inhabitant = inhabitantValues.map(item => Array.isArray(item) ? item.map(nestedItem => nestedItem).join(', ') : item).join('; ')
+   return inhabitant;
+}
+inhabitants.forEach((item) => {
+   print(introduceInhabitants(item))
+})
 
