@@ -1,12 +1,3 @@
-/* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
-   Complete the below for code reviewers' convenience:
-
-   Code repository: https://github.com/OlexiyDobroskok/a-tiny-JS-world
-   Web app: https://olexiydobroskok.github.io/a-tiny-JS-world/
-   */
-
-// ======== OBJECTS DEFINITIONS ========
-
 class Resident {
   constructor(species, name, gender, saying) {
     this.species = species;
