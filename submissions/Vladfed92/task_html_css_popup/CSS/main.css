@@ -1,0 +1,95 @@
+.navigation {
+	height: 100px;
+	width: 1200px;
+	position: relative;
+	margin: 0 auto;
+
+}
+
+.nav__list {
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	width: 150px;
+
+}
+.check img{
+	cursor: pointer;
+}
+
+li {
+	list-style: none;
+}
+
+.nav__item a {
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: 600;
+	color: rgba(0, 0, 0, 0.842)
+}
+a{
+	text-decoration: none;
+	color: rgba(0, 0, 0, 0.842);
+}
+#check {
+	appearance: none;
+	position: absolute;
+}
+
+.popup__list {
+	display: none;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	padding: 0;
+	background-color: rgba(128, 128, 128, 0.055);
+	border: 1px solid rgba(128, 128, 128, 0.144);
+	height: 450px;
+	width: 350px;
+	position: absolute;
+	right: -100px;
+	top: 50px;
+	text-align: center;
+
+	overflow-y: scroll;
+}
+
+#check:checked + .popup__list {
+display: flex;
+}
+
+.popup__icon {
+	width: 150px;
+	height: 150px;
+}
+
+.popup__icon img {
+	display: block;
+	margin: 10px auto;
+	height: 60%;
+
+}
+
+summary {
+	display: block;
+	width: 335px;
+	height: 25px;
+	background-color: rgba(128, 128, 128, 0.199);
+	padding-top: 4px;
+	cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
+
+.summary__list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 335px;
+	text-align: center;
+	padding: 20px 0 0 0;
+}
