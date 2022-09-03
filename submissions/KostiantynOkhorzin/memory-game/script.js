@@ -56,7 +56,7 @@ const disableCards = () => {
         card.setAttribute('disabled', '');
         setTimeout(() => {
             card.removeAttribute('disabled');
-        }, time);
+        }, 3000);
     });
 };
 
