@@ -1,0 +1,274 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul, 
+ol, 
+li {
+    list-style: none;
+}
+
+img {
+    align-self: center;
+    width: 600px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+html, body {
+    height: 100%;
+    line-height: 1;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+header {
+    height: 100px;
+    background-color: black;
+    display: flex;
+    box-sizing: border-box;
+    border-bottom: 1px solid lightgray;
+    border-radius: 20px;
+}
+
+.home-link {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url("../src/home.png") center no-repeat;
+    background-size: 25px 25px;
+    margin: 35px 0 0 35px;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 100px);
+    background-color: lightgray;
+    
+}
+
+.sidebar {
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    max-width: 100%;
+    background-color: lightgray;
+    border: 40px solid black;
+    border-radius: 20px;
+}
+
+.inner-text {
+    font-weight: 700;
+    font-size: 24px;
+    margin: auto;
+    color: white;
+}
+
+.content span {
+    max-width: 600px;
+    font-size: 20px;
+    color: black;
+}
+
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    justify-content: space-around;  
+}
+
+.side-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    width: 300px;
+    color: white;
+    box-sizing: border-box;
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+.side-menu-item:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.side-menu-item:focus-within {
+    background-color: skyblue;
+    border-radius: 10px;
+}
+
+
+
+
+@media only screen and (max-width: 912px) {
+    .main-container {
+        flex-direction: column-reverse;
+        min-height: calc(100vh - 80px);
+    }    
+    header {
+        height: 80px;
+    }
+    .inner-text {
+        font-size: 20px;
+    }
+    .sidebar {
+        height: 160px;   
+    }
+    .side-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;        
+    }
+
+    .side-menu-item {
+        flex: 1 1 25%;
+        font-size: 22px;
+        height: 80px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        border-radius: 15px;
+    }
+    img {
+        width: 460px;
+    }
+    .inner-text {
+        font-size: 15px;
+    }
+    .side-menu-item {
+        flex: 1 1 25%;
+        font-size: 15px;
+    }
+    .content {
+        border: 25px solid black;
+    }
+    .content span {
+        max-width: 460px;
+        font-size: 16px;
+    }
+    .home-link {
+        width: 20px;
+        height: 20px;
+        background-size: 20px 20px;
+        margin: 30px 5px 0 20px;
+        border-radius: 2px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    img {
+        width: 400px;
+    }
+    .inner-text {
+        font-size: 14px;
+    }
+    .side-menu-item {
+        flex: 1 1 50%;
+        height: 40px;
+    }
+    .content span {
+        max-width: 400px;
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    img {
+        width: 280px;
+    }
+    header .inner-text {
+        margin-right: 20px;
+    }
+    .inner-text {
+        font-size: 13px;
+    }
+    .sidebar {
+        max-height: fit-content;
+        display: block;
+    }
+    .side-menu-item {
+        flex: 1 1 50%;
+    }
+    .content {
+        align-items: center;
+        align-content: center;
+    }
+    .content span {
+        max-width: 280px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    body {
+        border-radius: 10px;
+    }
+    img {
+        width: 200px;
+    }
+    .inner-text {
+        font-size: 12px;
+    }
+    .side-menu-item {
+        font-size: 12px;
+    }
+    .content {
+        border: 20px solid black;
+    }
+    .content span {
+        max-width: 200px;
+        font-size: 13px;
+    }
+    .sidebar {
+        min-width: 50%;
+    }
+}
+
+@media only screen and (max-height: 649px) {
+    header {
+        height: 80px;
+    }    
+    .main-container {
+        min-height: calc(100vh - 80px);
+    }  
+    .content span, img {
+        width: 400px;
+        font-size: 17px;
+    }
+}
