@@ -1,4 +1,5 @@
-"use strict"
+"use strict";
+import { ponyInformation } from "./ponyInformation.js";
 const createHtmlElement = (htmlElementName, attributes, className) => {
   const htmlElement = document.createElement(htmlElementName);
   htmlElement.classList.add(className);
@@ -9,35 +10,47 @@ const createHtmlElement = (htmlElementName, attributes, className) => {
 };
 
 const createMenu = (data) => {
-  const menu = createHtmlElement("ul", { id: "menu"},'menu');
-  data.forEach(
-    (item, index) => { menu.appendChild(createMenuItem(data[index], index)) }
-  )
+  const menu = createHtmlElement("ul", { id: "menu" }, "menu");
+  data.forEach((item, index) => {
+    menu.appendChild(createMenuItem(item, index));
+  });
   return menu;
 };
 
 const createMenuItem = (data, id) => {
-  const menuItem = createHtmlElement("li", {
-    id: `menu-item-${id}`,
-    'data-id': id,
-  },'menu-item');
-  menuItem.innerHTML = `<a href="#" data-id=${id} class="menu-link">${data["name"]}</a>`;
+  const menuItem = createHtmlElement(
+    "li",
+    {
+      id: `menu-item-${id}`,
+      "data-id": id,
+    },
+    "menu-item"
+  );
+  menuItem.innerHTML = `<a href="#" class="menu-link">${data["name"]}</a>`;
   return menuItem;
 };
 
 const createMainContent = (data) => {
-  const container = createHtmlElement("main", {
-    id: "content-container",
-  },"content-container");
+  const container = createHtmlElement(
+    "main",
+    {
+      id: "content-container",
+    },
+    "content-container"
+  );
 
-  const header = createHtmlElement("h2", {
-    id: "content-header",
-  },"content-header");
+  const header = createHtmlElement(
+    "h2",
+    {
+      id: "content-header",
+    },
+    "content-header"
+  );
 
   header.innerHTML = data.name;
-  const text = createHtmlElement("div", { id: "main-text"},"main-text");
+  const text = createHtmlElement("div", { id: "main-text" }, "main-text");
   text.innerHTML = data.description;
-  const imgContainer = createHtmlElement("div", {},"img-container");
+  const imgContainer = createHtmlElement("div", {}, "img-container");
   const img = createHtmlElement(
     "img",
     {
@@ -51,14 +64,14 @@ const createMainContent = (data) => {
   container.append(header, imgContainer, text);
 
   return container;
-}
+};
 
-const setEventListeners = () => {
+const setEventListeners = (ponyInformation) => {
   const menu = document.querySelector(".menu ");
 
-  menu.addEventListener("click", (e) => {
-    const id = e.target.closest(".menu-item").dataset.id;
-    const newContent = createMainContent(data[id]);
+  menu.addEventListener("click", ({ target }) => {
+    const { id } = target.closest(".menu-item").dataset;
+    const newContent = createMainContent(ponyInformation[id]);
     document.querySelector("main").replaceWith(newContent);
     const menuItems = document.querySelectorAll(".menu-item");
     menuItems.forEach((item) => {
@@ -68,11 +81,10 @@ const setEventListeners = () => {
   });
 };
 
-const start = (data) => {
+const start = (ponyInformation) => {
   const container = document.querySelector("#container");
-  
-  container.appendChild(createMenu(data));
-  container.appendChild(createMainContent(data[0]));
-  setEventListeners();
+  container.appendChild(createMenu(ponyInformation));
+  container.appendChild(createMainContent(ponyInformation[0]));
+  setEventListeners(ponyInformation);
 };
-start(data);
+start(ponyInformation);
