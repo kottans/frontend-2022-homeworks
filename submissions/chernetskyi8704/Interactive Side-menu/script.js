@@ -50,13 +50,41 @@ iconBurger.addEventListener("click", (e) => {
   menuBody.classList.toggle("_active");
 });
 
-menuList.addEventListener("click", (event) => {
-  const target = event.target;
+const getSelectData = (target) => {
+  const { name, image, alt, description } = contentData[target.id];
 
-  menuItem.forEach((e) => {
-    e.classList.remove("_activeBtn");
+  const template = `<h2 class="content__name" >${name}</h2>
+      <div class="content__section">
+        <div class="section__img-container">
+          <img
+            class="section__img"
+            src="${image}"
+            alt="${alt}"
+          />
+          <span class="section__description">
+          ${description}
+        </span>
+        </div>
+      </div>`;
+
+  return template;
+};
+
+const cleanContent = (area) => (area.innerHTML = "");
+
+const renderData = function (area, target) {
+  return area.insertAdjacentHTML("beforeend", getSelectData(target));
+};
+
+const toggleActiveMenuItem = (listOfMenuItems, target) => {
+  listOfMenuItems.forEach((item) => {
+    item.classList.remove("_activeBtn");
   });
   target.classList.add("_activeBtn");
+};
+
+menuList.addEventListener("click", (event) => {
+  const target = event.target;
 
   if (iconBurger.classList.contains("_active")) {
     document.body.classList.remove("_lock");
@@ -64,23 +92,7 @@ menuList.addEventListener("click", (event) => {
     menuBody.classList.remove("_active");
   }
 
-  mainContent.innerHTML = "";
-
-  const html = `<h2 class="content__name" >${
-    contentData[Number(target.id)].name
-  }</h2>
-        <div class="content__section">
-          <div class="section__img-container">
-            <img
-              class="section__img"
-              src="${contentData[Number(target.id)].image}"
-              alt="${contentData[Number(target.id)].alt}"
-            />
-            <span class="section__description">
-            ${contentData[Number(target.id)].description}
-          </span>
-          </div>
-        </div>`;
-
-  mainContent.insertAdjacentHTML("beforeend", html);
+  toggleActiveMenuItem(menuItem, target);
+  cleanContent(mainContent);
+  renderData(mainContent, target);
 });
