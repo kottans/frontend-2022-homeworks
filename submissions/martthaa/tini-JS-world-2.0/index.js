@@ -70,5 +70,3 @@ class Inmate {
  let OUTPUT = inmates.map(inmates => inmates.DisplayData()).join('\n');
  
  print(OUTPUT);
-
- 
