@@ -57,3 +57,4 @@ inhabitants.forEach((item) => {
    print(introduceInhabitants(item))
 })
 
+
