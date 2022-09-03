@@ -122,7 +122,7 @@ a:hover, input:hover {
     outline: 1px black solid;
 }
 
-a:focus {
+a:focus, input:focus {
     outline: 2px black solid;
     border-radius: 1px;
 }
@@ -138,12 +138,13 @@ a:focus {
 
     .navBar__item {
         height: 50px;
-        width: 100px;
+        max-width: 100px;
+        width: 20%;
     }
 
     .navBar__item > a, #label_1 {
-        height: 50px;
-        width: 100px;
+        height: 56px;
+        width: 100%;
     }
 
     img {
@@ -157,14 +158,15 @@ a:focus {
     }
 
     #input_1 {
-        height: 50px;
-        width: 100px;
+        height: 56px;
+        max-width: 100px;
+        width: 20%;
         right: 220px;
     }
 
     #input_1:checked ~ .dropdownMenu {
         top: 50px;
-        right: 80px;
+        right: 62px;
         grid-template-columns: repeat(3, 100px);
         grid-template-rows: repeat(4, 65px) repeat(2, 65px);
     }
