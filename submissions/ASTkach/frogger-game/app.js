@@ -100,7 +100,14 @@ Enemy.prototype.position = function () {
 Enemy.prototype.position();
 
 Enemy.prototype.collision = function () {
-    if (!(player.x > this.x + cellWidth || player.x + cellWidth < this.x || player.y > this.y + cellHeight || player.y + cellHeight < this.y)) {
+    if (
+        !(
+            player.x > this.x + cellWidth - 10 ||
+            player.x + cellWidth - 10 < this.x ||
+            player.y > this.y + cellHeight - 10 ||
+            player.y + cellHeight - 10 < this.y
+        )
+    ) {
         player.toTheBeginning();
     }
 };
