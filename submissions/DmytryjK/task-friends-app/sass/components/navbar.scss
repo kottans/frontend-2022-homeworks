@@ -11,6 +11,17 @@
         display: flex;
         gap: 10px;
     }
+    &__closebtn {
+        position: absolute;
+        right: 12px;
+        top: 12px;
+        display: none;
+        width: 25px;
+        height: 25px;
+        border: none;
+        background: url('../img/x.svg') center center no-repeat;
+        cursor: pointer;
+    }
     &__title {
         font-size: 18px;
     }
@@ -113,7 +124,7 @@
             }
         }
     }
-    &__reset-btn {
+    &__bottom-btn {
         margin: 0 auto;
         height: 40px;
         min-width: 120px;

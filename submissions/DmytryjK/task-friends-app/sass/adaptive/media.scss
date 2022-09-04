@@ -246,6 +246,9 @@
             display: block;
             text-align: center;
         }
+        &__closebtn {
+            display: block;
+        }
         &__title {
             font-size: 14px;
         }
@@ -270,9 +273,8 @@
         &__btn {
             font-size: 12px;
         }
-        &__reset-btn {
+        &__bottom-btn {
             font-size: 12px;
-            min-width: 80px;
             height: 30px;
         }
     } 
