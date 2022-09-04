@@ -138,16 +138,17 @@ const loadSideMenu = () => {
 
     sideMenuList.append(...sideMenuListItems);
 
+    sideMenuList.addEventListener('click', menuLinkOnClick);
 };
 
-const listPersone = Array.from(document.querySelectorAll('.character'));
+const characterList = Array.from(document.querySelectorAll('.character'));
 const menuList = document.querySelector('.side-menu__list');
 const sideMenuItems = Array.from(document.querySelectorAll('.side-menu__item'));
 
 const hideActiveLink = () => sideMenuItems.forEach(link => link.classList.remove('active'));
 
 const toggleMenuItem = (selectItem) => {
-    listPersone.forEach(item => {
+    characterList.forEach(item => {
         if(item.dataset.id === selectItem.id) {
             item.classList.remove('character_hide');
         } else {
@@ -156,10 +157,14 @@ const toggleMenuItem = (selectItem) => {
     });
 }
 
-const menuLinkOnClick = ({target}) => {
-    hideActiveLink();
-    target.parentElement.classList.add('active');
-    toggleMenuItem(target);
+function menuLinkOnClick({ target }) {
+    const { id } = target;
+
+    if (id) {
+        hideActiveLink();
+        target.parentElement.classList.add('active');
+        toggleMenuItem(target);
+    }
 }
 
 menuList.addEventListener('click', menuLinkOnClick);
@@ -187,5 +192,4 @@ const loadMainContent = () => {
 window.addEventListener('DOMContentLoaded', () => {
     loadSideMenu();
     loadMainContent();
-    menuLinkOnClick();
 });
