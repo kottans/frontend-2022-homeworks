@@ -50,12 +50,6 @@ function initGlob() {
   })
 
   glob.formFilters.addEventListener('change', (e) => {
-    // if (e.target.name === 'by-age') glob.inputs.forEach(input => {
-    //   if (input.name === 'by-name') input.checked = false
-    // })
-    // if (e.target.name === 'by-name') glob.inputs.forEach(input => {
-    //   if (input.name === 'by-age') input.checked = false
-    // })
     if (e.target.name) glob.filters.updateURL(e.target.name, e.target.value)
     glob.filters.filterFriendsByURL(glob.baseURL)
   })

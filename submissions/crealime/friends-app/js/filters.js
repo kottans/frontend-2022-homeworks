@@ -54,7 +54,7 @@ export default class Filters {
   updateURL(param, value) {
     this.glob.baseURL.searchParams.set(param, value)
     if (param === 'is-name' && value.length === 0) this.glob.baseURL.searchParams.delete('is-name')
-    this.pushHistory()
+    this.setHistory()
   }
 
   resetURL() {
