@@ -1,0 +1,136 @@
+@font-face {
+    font-family: Homer;
+    src: url(./fonts/Homer_Simpson_Revised.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --main-text-color: #294a4a;
+    --bg-color: #9f45ff;
+    --selection-color: #f8d62a;
+}
+
+body {
+    margin: 0;
+    padding: 1px;
+    box-sizing: border-box;
+    background: url(./img/bg.jpg) center/cover no-repeat;
+    height: 100vh;
+    font-family: Homer, sans-serif;
+    font-size: 1.3vw;
+    color: var(--main-text-color);
+}
+
+.title {
+    margin: .2em auto;
+    font-size: 4em;
+    text-align: center;
+}
+
+.title::selection {
+    background-color: var(--selection-color);
+}
+
+.main {
+    width: 60%;
+    height: 80%;
+    margin: 0 1em;
+    border: .2em solid var(--main-text-color);
+    border-radius: 1em;
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+    gap: .2px;
+    perspective: 40em;
+    position: relative;
+    user-select: none;
+}
+
+.finish {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.finish-title {
+    font-size: 4em;
+    margin: .5em;
+}
+
+.finish-text {
+    font-size: 2em;
+    margin: 0;
+}
+
+.flipper.flipped  {
+    transform: rotateY(180deg);
+}
+
+.flipper {
+    margin: auto;
+    width: 60%;
+    height: 95%;
+    transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.front {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: .2em solid var(--main-text-color);
+    border-radius: 1em; 
+    overflow: hidden;
+    z-index: 2;
+	transform: rotateY(0deg);
+}
+
+.back {
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    box-sizing: border-box;
+    border: .2em solid var(--main-text-color);
+    border-radius: 1em; 
+    overflow: hidden;
+    transform: rotateY(180deg);
+    background-color: white;
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.front-img, .back-img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.back-img {
+    object-fit: contain;
+}
+
+@media (orientation: portrait) {
+    body {
+        background: var(--bg-color);
+        font-size: 3vw;
+    }
+
+    .main {
+        width: auto;
+    } 
+
+    .flipper {
+        width: 90%;
+    }
+}
