@@ -128,6 +128,7 @@
   html,
   body {
 	height: 100%;
+	user-select: none;
   }
   
   body {
@@ -359,7 +360,6 @@
 	  grid-template-columns: repeat(4, 90px);
 	  margin: 5px;
 	  padding: 5px;
-	  user-select: none;
 	}
   
 	.character-img {
