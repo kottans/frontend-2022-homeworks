@@ -46,14 +46,20 @@ const animals = [
     }
 ];
 
-const title = document.getElementsByClassName("animal-category-title")[0];
+const menuIcon  = document.getElementsByClassName("menu-icon")[0];
+const menu = document.getElementsByClassName("menu")[0];
+
 const media = document.getElementsByClassName("media-animal")[0];
-const description = document.getElementsByClassName("animal-category-description")[0];
-const propertyLifespan = document.getElementsByClassName("property-description-lifespan")[0];
-const propertyDiet = document.getElementsByClassName("property-description-diet")[0];
-const propertySize = document.getElementsByClassName("property-description-size")[0];
-const propertyWeight = document.getElementsByClassName("property-description-weight")[0];
-const ul = document.getElementsByClassName("menu")[0];
+
+const documentMainInfo = document.getElementsByClassName("animal-main-info")[0];
+
+const title = documentMainInfo.getElementsByClassName("animal-category-title")[0];
+const description = documentMainInfo.getElementsByClassName("animal-category-description")[0];
+const propertyLifespan = documentMainInfo.getElementsByClassName("property-description-lifespan")[0];
+const propertyDiet = documentMainInfo.getElementsByClassName("property-description-diet")[0];
+const propertySize = documentMainInfo.getElementsByClassName("property-description-size")[0];
+const propertyWeight = documentMainInfo.getElementsByClassName("property-description-weight")[0];
+
 
 function changeMainPageInfo(animal) {
     title.textContent = animal.title;
@@ -75,21 +81,42 @@ for (let i = 0; i < animals.length; i++) {
     let li = document.createElement('li');
     li.className = "menu-item";
     if (i === 0) {
-        li.className = "menu-item active-menu-item";
+        li.classList.add("active-menu-item");
         activeLi = li;
     }
 
     li.innerHTML = '<a class="link" href="#'+ animalTitle + '">' + animalTitle + '</a>';
 
     li.onclick = () => {
+        closeMenu();
+
         if (activeLi) {
-            activeLi.className = "menu-item";
+            activeLi.classList.remove("active-menu-item");
         }
 
         changeMainPageInfo(animal);
-        li.className = "menu-item active-menu-item";
+        li.classList.add("active-menu-item");
         activeLi = li;
     };
 
-    ul.append(li);
+    menu.append(li);
+}
+
+let isOpened = false;
+menuIcon.onclick = () => {
+    if (isOpened) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
+}
+
+function openMenu() {
+    menuIcon.classList.add("opened"); 
+    isOpened = true; 
+}
+
+function closeMenu() {
+    menuIcon.classList.remove("opened");
+    isOpened = false;
 }
