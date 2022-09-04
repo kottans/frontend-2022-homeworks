@@ -30,11 +30,13 @@
                 <div class="wrapper">
                     <nav class="navigation-top">
                         <ul class="navigation-top__list">
-                            <button class="navigation-top__list-adaptive-burger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-                                </svg>
-                            </button>
+                            <li class="navigation-top__item">
+                                <button class="navigation-top__list-adaptive-burger">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                                    </svg>
+                                </button>
+                            </li>
                             <li class="navigation-top__item">
                                 <label class="navigation-top__sort" for="navigation-top-sort">Sort by:</label>
                                 <select class="navigation-top__select" name="sort" id="navigation-top-sort">
@@ -70,8 +72,8 @@
                             <div id="range-slider" class="navigation-left__item-age">
                             </div>
                             <div class="navigation-left__item-min-max-wrapper">
-                                <input class="navigation-left__item-minage range-parametres" id="first-input" min="1" max="100" type="number" inputmode="numeric" pattern="[0-9]*">
-                                <input class="navigation-left__item-maxage range-parametres" id="second-input" min="1" max="100" type="number" inputmode="numeric" pattern="[0-9]*">
+                                <input class="navigation-left__item-minage range-parametres" id="first-input" min="1" max="100" type="number" inputmode="numeric">
+                                <input class="navigation-left__item-maxage range-parametres" id="second-input" min="1" max="100" type="number" inputmode="numeric">
                             </div>
                             <input type="submit" class="navigation-left__item-submit range-parametres" value="OK">
                             <hr>
