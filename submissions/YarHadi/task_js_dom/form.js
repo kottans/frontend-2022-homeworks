@@ -83,12 +83,12 @@ const onClick = ({ target }) => {
 
 navMenu.addEventListener("click", onClick);
 
-//inner first page
+//init first page
 
-function firstPage(data){
-  const {header,img,text} = data.find((character) => character.id == 1);
+function initPage(){
+  const [{ header, img, text }] = characters;
   showContent(header,img,text);
 }
 
-firstPage(characters);
+initPage();
 
