@@ -4,6 +4,7 @@ const board = {
     boardDiv: document.querySelector('.main'),
     openedCard: null,
     clickCounter: 0,
+    disappearedCardsCount: 0,
     shuffleCards: function() {
         for (let i = this.cardURLs.length - 1; i > 0; i--) {
             let j = Math.floor (Math.random() * (i + 1));
@@ -85,8 +86,8 @@ const clickHandler = function(e) {
             if (isEqual(board.openedCard, currentCard)) {
                 makeDisappear(board.openedCard);
                 makeDisappear(currentCard);
-                let disappearedCards = document.querySelectorAll('div[style]');
-                if (disappearedCards.length == board.cardURLs.length) {
+                board.disappearedCardsCount += 2;
+                if (board.disappearedCardsCount == board.cardURLs.length) {
                     setTimeout(createMessage, 1000);
                 }
             } else {
