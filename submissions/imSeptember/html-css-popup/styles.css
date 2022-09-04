@@ -35,6 +35,8 @@ input[type="checkbox"] {
 .wrapper__popup {
   opacity: 0;
   visibility: hidden;
+  justify-content: end;
+  display: grid;
 }
 
 .input__popup-button:checked ~ .wrapper__popup {
@@ -80,16 +82,20 @@ input[type="checkbox"] {
   opacity: 1;
 }
 
+.hover:focus {
+  border: solid black 4px;
+}
+
 a:focus {
   border: solid black 4px;
 }
 
-a > img {
+.list_link > img {
   max-width: 40px;
   max-height: 40px;
 }
 
 h3 {
   position: absolute;
-  left: 130px;
+  right: 130px;
 }
