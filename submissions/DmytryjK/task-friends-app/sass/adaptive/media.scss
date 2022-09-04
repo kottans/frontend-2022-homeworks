@@ -170,7 +170,7 @@
     }
     .navigation-top {
         &__item {
-            flex: 1 1 auto;
+            display: block; 
         }
         &__sort {
             font-size: 12px;
@@ -179,7 +179,10 @@
             font-size: 12px;
         }
         &__list {
+            justify-content: center;
             &-adaptive-burger {
+                top: 112px;
+                left: 0;
                 position: fixed;
                 display: block;  
                 width: 40px;  
@@ -187,49 +190,51 @@
                 background-color: transparent;
                 cursor: pointer;
                 z-index: 12;
+                transition: 0.3s all;
                 svg {
                     transition: 0.3s all;
                     width: 40px;
-                    stroke: $second-accent-color;
+                    stroke: $second-accent-color;;
                 }
                 &:after {
-                    transition: 0.3s all;
-                    content: '\2B9F';
+                    content: '';
+                    background: url('../img/arrow-down-s-fill.svg') center center no-repeat;
+                    width: 25px;
+                    height: 25px;
                     position: absolute;
                     font-size: 15px;
                     line-height: 15px;
                     color: $second-accent-color;
-                    top: 80%;
-                    left: 30px;
-                    transform: translateY(-80%) rotate(180deg);
+                    left: 25px;
+                    transform: rotate(180deg);
+                    transition: all 0.3s;
                 }
                 &:hover {
-                    svg {
-                        transition: 0.3s all;
+                    transition: 0.3s all;
+                    svg {      
                         stroke: $first-accent-color;
+                        transition: 0.3s all;
                     }
                     &:after {  
+                        background: url('../img/arrow-down-s-fill-hover.svg') center center no-repeat;
                         transition: 0.3s all;
-                        color: $first-accent-color;
                     }
                 }
             }
             &-adaptive-burger-active {
+                transition: 0.3s all;
                 svg {
-                    transition: 0.3s all;
                     stroke: $first-accent-color;
                 }
                 &:after {
-                    transition: 0.3s all;
-                    color: $first-accent-color;
-                    transform: translateY(-80%) rotate(0deg);
+                    background: url('../img/arrow-down-s-fill-hover.svg') center center no-repeat;
+                    transform: rotate(0deg);
                 }
             }
         }
-        
     }
     .navigation-left {
-        padding-top: 10px;
+        padding: 20px;
         top: 100px;
         height: 100vh;
         visibility: hidden;
