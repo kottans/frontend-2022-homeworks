@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Friends App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header class="header">
             <a class='header__a' href="https://kottans.org/" target="_blank">Kottans</a>
-        </div>
+        </header>
 
-        <div class="mainBlock">
+        <main class="mainBlock">
             <div class="asideBlock">
-                <form name="age">
+                <form name="age" id="ageForm">
                     <div class="asideBlock__items">
                         <p>By Age</p>
                         <input type="radio" name="sort" id="ageMore">
@@ -32,31 +35,36 @@
                     </div>
                 </form>
     
-                <form name="gender">
+                <form name="gender" id="genderForm">
                     <div class="asideBlock__items">
                         <input type="radio" id="male"
                         name="gender">
-                        <label for="male" class="gender">MALE</label>
+                        <label for="male" class="gender">Male</label>
                     
                         <input type="radio" id="female"
                         name="gender">
-                        <label for="female">FEMALE</label>
+                        <label for="female">Female</label>
                     
                         <input type="radio" id="all"
                         name="gender" checked>
                         <label for="all">All</label>
                     </div>
                 </form>
+
+                <div class="asideBlock__items">
+                    <p>Search: </p>
+                    <input type="text" name="search" id="search">
+                </div>
     
                 <div class="asideBlock__items">
                     <button id="reset">Reset</button>
                 </div>
             </div>
             <article class="articleBlock"></article>
-        </div>
-        <div class="footer">
+        </main>
+        <footer class="footer">
             <a class="footer__a" href="https://kottans.org/" target="_blank">Kottans</a>
-        </div>        
+        </footer>        
     </div>
     <script src="script.js"></script>
 </body>

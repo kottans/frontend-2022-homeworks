@@ -1,17 +1,17 @@
 const url = 'https://randomuser.me/api/?results=12';
 const content = document.querySelector('.articleBlock');
-const form = document.forms;
+const ageForm = document.querySelector('#ageForm');
+const genderForm = document.querySelector('#genderForm');
+const search = document.querySelector('#search');
 let friends = [];
 let friendsCopy = [];
 
 const data = (url) => fetch(url)
     .then(handleErrors)
     .then(res => res.json())
-    .then(res => res.results)
-    .then(res => {
-        friends = [...res];
-        friendsCopy = [...friends];
-        renderAllItemsToPage(friends);
+    .then(res =>  {
+        friends = [...res.results];
+        init();
     });
 
 function handleErrors(res) {
@@ -21,41 +21,66 @@ function handleErrors(res) {
     return res;
 }
 
-document.querySelector('.asideBlock').addEventListener('click', sortBy);
-function sortBy({target}) {
-    const id = target.id;
+const filterState = {
+    search: null, 
+    gender: null,
+    sort: null,
+    reset() {
+        this.search = null;
+        this.gender = null;
+        this.sort = null;
+    }
+}
 
+function filterBy(id, usersToFilter) {
     switch(id) {
-        case 'ageMore':
-            friendsCopy = friendsCopy.sort((a, b) => a.dob.age - b.dob.age);
-            break;
-        case 'ageLess':
-            friendsCopy = friendsCopy.sort((a, b) => b.dob.age - a.dob.age);
-            break;
-        case 'lastAToZ':
-            friendsCopy = friendsCopy.sort((a, b) => a.name.last !== b.name.last ? a.name.last < b.name.last ? -1 : 1 : 0);
-            break;
-        case 'lastZToA':
-            friendsCopy = friendsCopy.sort((a, b) => a.name.last !== b.name.last ? a.name.last > b.name.last ? -1 : 1 : 0);
-            break;
         case 'male':
-            form[0].reset();
-            friendsCopy = friends.filter(item => item.gender === 'male');
+            usersToFilter = usersToFilter.filter(item => item.gender === 'male');
             break;
         case 'female':
-            form[0].reset();
-            friendsCopy = friends.filter(item => item.gender === 'female');
+            usersToFilter = usersToFilter.filter(item => item.gender === 'female');
             break;
-        case 'all':
-        case 'reset':
-            form[0].reset();
-            form[1].reset();    
-            friendsCopy = [...friends];
+        case 'all':   
+            usersToFilter = [...friends];
+            break;
+    }
+    return usersToFilter;
+}
+
+function sortAge(a, b) {
+    return a.dob.age - b.dob.age;
+}
+
+function sortAlph(a, b) {
+    return a.name.last !== b.name.last ? a.name.last < b.name.last ? -1 : 1 : 0;
+}
+
+function sortBy(id, usersToSort) {
+    switch(id) {
+        case 'ageMore':
+            usersToSort = usersToSort.sort((a, b) => sortAge(a, b));
+            break;
+        case 'ageLess':
+            usersToSort = usersToSort.sort((a, b) => sortAge(b, a));
+            break;
+        case 'lastAToZ':
+            usersToSort = usersToSort.sort((a, b) => sortAlph(a, b));
+            break;
+        case 'lastZToA':
+            usersToSort = usersToSort.sort((a, b) => sortAlph(b, a));
             break;
     }
 
-    renderAllItemsToPage(friendsCopy);
+    return usersToSort;
 }
+
+function filterBySearch(searchValue, usersToSearch) {
+	return usersToSearch.filter((elem) =>
+		`${elem.name.first}${elem.name.last}`.toLowerCase().includes(searchValue.toLowerCase())
+	);
+};
+
+
 
 function creatingProfileCard({picture, name, email, dob, phone, location, gender}) {
     return `
@@ -71,6 +96,55 @@ function creatingProfileCard({picture, name, email, dob, phone, location, gender
             <div class='content__item-gender'>${gender}</div>
         </div>
     `;
+}
+
+
+function init() {
+    renderAllItemsToPage(friends);
+
+    document.querySelector('.asideBlock').addEventListener('input', ({target}) => {
+        if (target.name === 'gender') {
+            filterState.gender = target.id;
+        }
+    
+        if (target.name === 'search') {
+            filterState.search = target.value;
+        }
+    
+        if (target.name === 'sort') {
+            filterState.sort = target.id;
+        }
+    
+        render();
+    });
+
+    document.querySelector('#reset').addEventListener('click', function() {
+        ageForm.reset();
+        genderForm.reset();    
+        filterState.reset();
+        search.value = '';
+        friendsCopy = [...friends];
+
+        render();
+    })
+}
+
+function render() {
+    friendsCopy = [...friends];
+    
+    if (filterState.gender) {
+        friendsCopy = filterBy(filterState.gender, friendsCopy);
+    }
+
+    if (filterState.sort) {
+        friendsCopy = sortBy(filterState.sort, friendsCopy);
+    }
+
+    if (filterState.search) {
+        friendsCopy = filterBySearch(filterState.search, friendsCopy);
+    }
+    
+    renderAllItemsToPage(friendsCopy);
 }
 
 function renderAllItemsToPage(arr) {
