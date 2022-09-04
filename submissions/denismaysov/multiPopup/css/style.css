@@ -166,10 +166,7 @@ li {
 }
 
 .popup {
-  transition: opacity 0.3s ease-out;
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
+  display: none;
 }
 .popup__container {
   position: absolute;
@@ -239,8 +236,7 @@ li {
 }
 
 .option__checkbox:checked ~ .popup {
-  opacity: 1;
-  height: auto;
+  display: block;
 }
 
 @media (max-width: 558px) {
