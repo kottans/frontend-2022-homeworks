@@ -41,6 +41,7 @@ function filterCards() {
     
         sortParent.addEventListener('change', event => {
             const target = event.target;
+
             if (target.name === 'sort') {   
                 sortedCards = sortByAgeAndName(target.value, sortedCards);
                 cardsRenderOnPage(sortedCards);
@@ -52,12 +53,15 @@ function filterCards() {
             sortedCards = filterSearchByName(sortedCards, searchInputValue.value);
             sortedCards = filterBySliderAge(sortedCards);
             isEventSearchFilterIsDone = true;
+
             if (dataFilterSexActiveValue === 'male' || dataFilterSexActiveValue === 'female') {
                 sortedCards = filterBySex(sortedCards, dataFilterSexActiveValue);
             }
+
             if (searchInputValue.value === '') {
                 isEventSearchFilterIsDone = false;
                 sortedCards = filterBySliderAge(sortedCards);
+
                 if (dataFilterSexActiveValue === 'male' || dataFilterSexActiveValue === 'female') { 
                     sortedCards = filterBySex(sortedCards, dataFilterSexActiveValue);
                 } 
@@ -95,6 +99,7 @@ function filterCards() {
                         dataFilterSexActiveValue = '';
                         break;
                 }
+
                 cardsRenderOnPage(sortedCards);
             }  
         });
@@ -103,9 +108,11 @@ function filterCards() {
             sortedCards = filterBySliderAge(cards);
             sortedCards = sortByAgeAndName(sortFilter.value, sortedCards);
             sortedCards = filterSearchByName(sortedCards, searchInputValue.value);
+
             if (dataFilterSexActiveValue === 'male' || dataFilterSexActiveValue === 'female') {
                 sortedCards = filterBySex(sortedCards, dataFilterSexActiveValue);
             } 
+
             cardsRenderOnPage(sortedCards);
         });
 
@@ -128,25 +135,26 @@ function filterCards() {
         switch(checkedValueForSort) {
             case 'A-Z':
                 cardsForSort = cardsForSort.sort(function (a,b) {
-                    if (a['name']['first'] < b['name']['first']) return -1;
+                    return a['name']['first'] < b['name']['first'] ? -1 : 1;
                 })
                 break;
             case 'Z-A':
                 cardsForSort = cardsForSort.sort(function (a,b) {
-                    if (a['name']['first'] > b['name']['first']) return -1;
+                    return a['name']['first'] > b['name']['first'] ? -1 : 1;
                 })
                 break;
             case '1-99':
                 cardsForSort = cardsForSort.sort(function (a,b) {
-                    if (a['dob']['age'] < b['dob']['age']) return -1;
+                    return a['dob']['age'] < b['dob']['age'] ? -1 : 1;
                 })
                 break;
             case '99-1':
                 cardsForSort = cardsForSort.sort(function (a,b) {
-                    if (a['dob']['age'] > b['dob']['age']) return -1;
+                    return a['dob']['age'] > b['dob']['age'] ? -1 : 1;
                 })
                 break;
         }
+
         return cardsForSort;
     }
 
@@ -178,14 +186,16 @@ function filterCards() {
         let result = 0;
         let checkArr = [];
         cards.forEach(item => checkArr.push(item['dob']['age']));
+
         switch(value) {
             case 'min':
-            result = Math.min.apply(null, checkArr);
+                result = Math.min.apply(null, checkArr);
             break;
             case 'max' :
                 result = Math.max.apply(null, checkArr);
             break;
         }
+
         return result;
     }
 
