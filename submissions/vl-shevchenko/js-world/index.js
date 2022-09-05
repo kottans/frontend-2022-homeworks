@@ -33,6 +33,8 @@ const inhabitants = [
       saying: 'What did you say?'
    },
    {
+   
+   
       species: 'man',
       name: 'John',
       gender: 'male',
