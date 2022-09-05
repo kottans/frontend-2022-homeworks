@@ -58,10 +58,8 @@ export default class Filters {
   }
 
   resetURL() {
-    this.glob.baseURL.searchParams.delete('sort-by')
-    this.glob.baseURL.searchParams.delete('by-gender')
-    this.glob.baseURL.searchParams.delete('age-min')
-    this.glob.baseURL.searchParams.delete('age-max')
+    const properties = ['sort-by', 'by-gender', 'age-min', 'age-max']
+    properties.forEach(el => this.glob.baseURL.searchParams.delete(el))
     this.setHistory()
   }
 
