@@ -1,10 +1,6 @@
-Hey!
-
-Congratulations on your PR! 😎😎😎
-
 Let's do some **self-checks** to fix most common issues and to make some improvements to the code before reviewers put their hands on the code.
 
-Go through the requirements/most common mistakes listed/linked below and fix the code as appropriate.
+Go through the requirements/most common mistakes linked below and fix the code as appropriate.
 
 If you have any questions to requirements/common mistakes **feel free asking** them here or in Students' chat.
 
