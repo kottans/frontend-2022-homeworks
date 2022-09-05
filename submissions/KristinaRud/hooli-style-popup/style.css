@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #f8f8f8;
+  }
+  
+  header {
+    background-color: #ffffff;
+    height: 60px;
+  }
+  
+  nav {
+    background-color: #ffffff;
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-content: space-around;
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .nav__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .tab__area__profile {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .tab__area__icon {
+    width: 1.5em;
+    height: 1.5em;
+    outline: invert;
+  }
+  
+  .nav-item input:checked ~ label,
+  .nav-item input:focus ~ label {
+    background-color: rgb(225, 225, 228);
+    cursor: pointer;
+  }
+  
+  .nav-item:hover > label,
+  .nav-item:focus > label,
+  .nav-item:hover > a,
+  .nav-item:focus > a {
+    background-color: rgb(225, 225, 228);
+  }
+  
+  .tab__area__profile:hover {
+    border: 2px solid rgb(231, 133, 133);
+    border-radius: 100%;
+  }
+  
+  .tab__area__profile {
+    width: 2em;
+    height: 2em;
+    border: 2px solid #ffffff;
+    text-align: center;
+  }
+  
+  .nav-item > a {
+    text-decoration: none;
+    color: gray;
+  }
+  
+  .nav-item {
+    display: flex;
+    margin-right: 20px;
+  }
+  
+  .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .check__input,
+  .wrap__check__input {
+    position: absolute;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  .check__box {
+    position: absolute;
+    width: 1.5em;
+    height: 1.5em;
+    overflow: hidden;
+  }
+  
+  .popup__icon {
+    background-image: url(popup-icons/popup-button.png);
+    background-size: 100%;
+  }
+  
+  .bell_btn {
+    background-image: url(popup-icons/bell.png);
+    background-size: 100%;
+  }
+  
+  .profile_btn {
+    background-image: url(popup-icons/favicon.png);
+    background-size: 100%;
+    background-color: #dd1313;
+    width: 1.9em;
+    height: 1.9em;
+  }
+  
+  .check__box.profile_btn {
+    border-radius: 20px;
+  }
+  
+  .nav-item input:checked ~ .popup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .popup {
+    display: none;
+    width: 350px;
+    max-height: 600px;
+    background-color: #ffffff;
+    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px gray;
+    padding: 10px 15px 10px 15px;
+    text-transform: uppercase;
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    right: 20%;
+    top: 7%;
+    overflow-y: auto;
+  }
+  
+  .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+  
+  .wrap__area__icon {
+    display: block !important;
+  
+    margin: 0;
+  
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  .wrap__item:hover,
+  .wrap__item:focus-visible {
+    border-radius: 5px;
+    background-color: #9dc2fa;
+    outline: none;
+  }
+  
+  .wrap__check__box {
+    width: 4em;
+    height: 4em;
+    background-repeat: no-repeat;
+    margin: 10px 10px 15px;
+  }
+  
+  .wrap__item {
+    background-color: #ffffff;
+    text-align: center;
+    margin: 0 5px 15px 5px;
+  }
+  
+  .wrap__item,
+  .wrap__area__icon {
+    width: 100px;
+    height: 120px;
+  }
+  
+  .wrap__check__box {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+  }
+  
+  .calendar__icon {
+    background-image: url(popup-icons/calendar.png);
+    background-size: 100%;
+  }
+  
+  .mail__icon {
+    background-image: url(popup-icons/mail.png);
+    background-size: 100%;
+  }
+  
+  .news__icon {
+    background-image: url(popup-icons/news.png);
+    background-size: 100%;
+  }
+  
+  .map__icon {
+    background-image: url(popup-icons/maps.png);
+    background-size: 100%;
+  }
+  
+  .files__icon {
+    background-image: url(popup-icons/files.png);
+    background-size: 100%;
+  }
+  
+  .contacts__icon {
+    background-image: url(popup-icons/contacts.png);
+    background-size: 100%;
+  }
+  
+  .translate__icon {
+    background-image: url(popup-icons/tanslation.png);
+    background-size: 100%;
+  }
+  
+  .videos__icon {
+    background-image: url(popup-icons/videos.png);
+    background-size: 100%;
+  }
+  
+  .search__icon {
+    background-image: url(popup-icons/search.png);
+    background-size: 100%;
+  }
+  
+  .photo__icon {
+    background-image: url(popup-icons/photos.png);
+    background-size: 100%;
+  }
+  
+  .apps__icon {
+    background-image: url(popup-icons/apps.png);
+    background-size: 100%;
+  }
+  
+  .document__icon {
+    background-image: url(popup-icons/documents.png);
+    background-size: 100%;
+  }
+  
+  .title__icon {
+    height: 20px;
+    width: 100px;
+    position: unset;
+  }
+  
+  .popup__list__hidden {
+    display: none;
+  }
+  
+  .lable__more {
+    order: 1;
+    margin-top: 20px;
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-align: center;
+  }
+  
+  .lable__more:hover {
+    background: #cfcfcf;
+    color: #fff;
+  }
+  
+  .lable__more span:last-of-type {
+    display: none;
+    visibility: hidden;
+  }
+  
+  .line {
+    display: none;
+  }
+  
+  input[type="checkbox"]:checked ~ .line {
+    display: block;
+    visibility: visible;
+    margin: 20px 0 40px 0;
+  }
+  
+  input[type="checkbox"]:checked ~ .popup__list__hidden {
+    display: flex;
+  }
+  
+  input[type="checkbox"]:checked ~ [for="load_more"] span:first-of-type {
+    display: none;
+    visibility: hidden;
+  }
+  
+  input[type="checkbox"]:checked ~ [for="load_more"] span:last-of-type {
+    display: block;
+    visibility: visible;
+  }
