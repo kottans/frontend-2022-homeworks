@@ -32,9 +32,7 @@ const inhabitants = [
       hands: 2,
       saying: 'What did you say?'
    },
-   {
-   
-   
+   { 
       species: 'man',
       name: 'John',
       gender: 'male',
@@ -73,3 +71,4 @@ for (let i = 0; i < inhabitants.length; i++) {
 
    print(`${species}; <strong>${name}</strong>; ${gender}; ${legs}; ${hands}; <em>${saying}</em>`);
 }
+
