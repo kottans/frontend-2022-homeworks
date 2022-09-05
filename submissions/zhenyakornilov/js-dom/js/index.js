@@ -9,32 +9,33 @@ const dropdownBtn = document.getElementById("dropdown-button");
 const contentBody = document.getElementById("content");
 
 function renderButtons(museumsObj, menu) {
-  let buttonsHTML = museumsObj
-    .map(({ btnName }) => {
+  let buttonsListHTML = museumsObj
+    .map(({ id, btnName }) => {
       return `
       <li class="nav-item">
-        <button class="btn-text">${btnName}</button>
+        <button class="btn-text" id="${id}">${btnName}</button>
       </li>
       `;
     })
     .join("");
 
-  menu.innerHTML = buttonsHTML;
+  menu.innerHTML = buttonsListHTML;
 }
 
 function showMuseumInfo({ target }) {
-  if (target.closest(".btn-text")) {
-    let currentSelectedBtn = target.closest(".nav-item");
-    if (!currentSelectedBtn.classList.contains("active")) {
-      const [currentContentObject] = museums.filter(
-        ({ btnName }) => btnName === target.textContent
-      );
-      renderArticle(currentContentObject, contentBody);
-      document
-        .querySelectorAll(".nav-item")
-        .forEach((button) => button.classList.remove("active"));
-      currentSelectedBtn.classList.add("active");
-    }
+  const currentSelectedBtn = target.closest(".nav-item");
+  if (
+    target.closest(".btn-text") &&
+    !currentSelectedBtn.classList.contains("active")
+  ) {
+    const [currentContentObject] = museums.filter(
+      ({ id }) => id === parseInt(target.id)
+    );
+    renderArticle(currentContentObject, contentBody);
+    document
+      .querySelectorAll(".nav-item")
+      .forEach((button) => button.classList.remove("active"));
+    currentSelectedBtn.classList.add("active");
   }
 }
 

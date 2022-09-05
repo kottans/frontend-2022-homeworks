@@ -1,5 +1,6 @@
 const museums = [
   {
+    id: 0,
     name: 'National Museum "Chornobyl"',
     btnName: "Chornobyl",
     description:
@@ -15,6 +16,7 @@ const museums = [
     url: "http://chornobylmuseum.kiev.ua/uk/",
   },
   {
+    id: 1,
     name: 'The first state "Science Museum" of the Small Academy of Sciences of Ukraine',
     btnName: "Science",
     description:
@@ -32,6 +34,7 @@ const museums = [
     url: "https://sciencemuseum.com.ua/",
   },
   {
+    id: 2,
     name: "Museum of the History of Ukraine in the Second World War",
     btnName: "Ukraine in WWII",
     description:
@@ -49,6 +52,7 @@ const museums = [
     url: "https://www.warmuseum.kiev.ua/",
   },
   {
+    id: 3,
     name: "The National Museum of Natural History of the National Academy of Sciences of Ukraine",
     btnName: "Natural",
     description:
@@ -67,6 +71,7 @@ const museums = [
     url: "https://museumkiev.org/",
   },
   {
+    id: 4,
     name: "National Museum of the History of Ukraine",
     btnName: "Ukraine's history",
     description:
