@@ -1,6 +1,6 @@
 # Open and merged PRs by task labels
 
-_as of 2022-09-04T06:44:49.366Z UTC_
+_as of 2022-09-04T19:55:21.124Z UTC_
 
 PR reference legend:
  - #xxx o -- PR is yet open 
@@ -127,9 +127,9 @@ PR reference legend:
 | 1.115 | [2022-08-13 17:57](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-13 17:57) |   | [#141 o](https://github.com/kottans/frontend-2022-homeworks/pull/141) |   |   |   |   |   |
 | 1.116 | [2022-08-14 09:22](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-14 09:22) | [#142 o](https://github.com/kottans/frontend-2022-homeworks/pull/142) |   |   |   |   |   |   |
 | 1.117 | [2022-08-14 10:16](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-14 10:16) | [**#143**](https://github.com/kottans/frontend-2022-homeworks/pull/143) |   |   |   |   |   |   |
-| 1.118 | [2022-08-14 11:19](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-14 11:19) | [#144 o](https://github.com/kottans/frontend-2022-homeworks/pull/144) |   |   |   |   |   |   |
+| 1.118 | [2022-08-14 11:19](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-14 11:19) | [**#144**](https://github.com/kottans/frontend-2022-homeworks/pull/144) |   |   |   |   |   |   |
 | 1.119 | [2022-08-14 11:23](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-14 11:23) |   | [**#145**](https://github.com/kottans/frontend-2022-homeworks/pull/145) |   |   |   |   |   |
-| 1.120 | [2022-08-14 12:34](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-14 12:34) | [#146 o](https://github.com/kottans/frontend-2022-homeworks/pull/146) |   |   |   |   |   |   |
+| 1.120 | [2022-08-14 12:34](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-14 12:34) | [**#146**](https://github.com/kottans/frontend-2022-homeworks/pull/146) |   |   |   |   |   |   |
 | 1.121 | [2022-08-14 12:57](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-14 12:57) | [**#147**](https://github.com/kottans/frontend-2022-homeworks/pull/147) |   |   |   |   |   |   |
 | 1.122 | [2022-08-14 13:21](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-14 13:21) |   | [**#148**](https://github.com/kottans/frontend-2022-homeworks/pull/148) |   |   |   |   |   |
 | 1.123 | [2022-08-14 13:55](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-14 13:55) | [#149 o](https://github.com/kottans/frontend-2022-homeworks/pull/149) |   |   |   |   |   |   |
@@ -205,7 +205,7 @@ PR reference legend:
 | 1.193 | [2022-08-20 17:01](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-20 17:01) |   |   |   |   | [**#236**](https://github.com/kottans/frontend-2022-homeworks/pull/236) |   |   |
 | 1.194 | [2022-08-20 17:52](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-20 17:52) |   | [**#237**](https://github.com/kottans/frontend-2022-homeworks/pull/237) |   |   |   |   |   |
 | 1.195 | [2022-08-20 18:21](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-20 18:21) |   |   |   |   | [**#238**](https://github.com/kottans/frontend-2022-homeworks/pull/238) |   |   |
-| 1.196 | [2022-08-20 22:38](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-20 22:38) |   |   | [#240 o](https://github.com/kottans/frontend-2022-homeworks/pull/240) |   |   |   |   |
+| 1.196 | [2022-08-20 22:38](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-20 22:38) |   |   | [**#240**](https://github.com/kottans/frontend-2022-homeworks/pull/240) |   |   |   |   |
 | 1.197 | [2022-08-21 07:49](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-21 07:49) | [**#242**](https://github.com/kottans/frontend-2022-homeworks/pull/242) |   |   |   |   |   |   |
 | 1.198 | [2022-08-21 13:04](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-21 13:04) |   | [#244 o](https://github.com/kottans/frontend-2022-homeworks/pull/244) |   |   |   |   |   |
 | 1.199 | [2022-08-21 14:20](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-21 14:20) |   | [**#245**](https://github.com/kottans/frontend-2022-homeworks/pull/245) |   |   |   |   |   |
@@ -234,7 +234,7 @@ PR reference legend:
 | 1.222 | [2022-08-23 11:04](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-23 11:04) |   | [**#273**](https://github.com/kottans/frontend-2022-homeworks/pull/273) |   |   |   |   |   |
 | 1.223 | [2022-08-23 14:49](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-23 14:49) |   |   | [**#277**](https://github.com/kottans/frontend-2022-homeworks/pull/277) |   |   |   |   |
 | 1.224 | [2022-08-23 16:14](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-23 16:14) | [#278 o](https://github.com/kottans/frontend-2022-homeworks/pull/278) |   |   |   |   |   |   |
-| 1.225 | [2022-08-23 19:02](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-23 19:02) |   | [#279 o](https://github.com/kottans/frontend-2022-homeworks/pull/279) |   |   |   |   |   |
+| 1.225 | [2022-08-23 19:02](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-23 19:02) |   | [**#279**](https://github.com/kottans/frontend-2022-homeworks/pull/279) |   |   |   |   |   |
 | 1.226 | [2022-08-23 19:34](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-23 19:34) |   |   | [**#280**](https://github.com/kottans/frontend-2022-homeworks/pull/280) |   |   |   |   |
 | 1.227 | [2022-08-23 19:35](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-23 19:35) | [**#281**](https://github.com/kottans/frontend-2022-homeworks/pull/281) |   |   |   |   |   |   |
 | 1.228 | [2022-08-23 21:10](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-08-23 21:10) |   |   |   | [#282 o](https://github.com/kottans/frontend-2022-homeworks/pull/282) |   |   |   |
@@ -364,8 +364,15 @@ PR reference legend:
 | 1.352 | [2022-09-03 18:41](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-09-03 18:41) | [#420 o](https://github.com/kottans/frontend-2022-homeworks/pull/420) |   |   |   |   |   |   |
 | 1.353 | [2022-09-03 18:51](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-09-03 18:51) |   |   |   |   |   | [#421 o](https://github.com/kottans/frontend-2022-homeworks/pull/421) |   |
 | 1.354 | [2022-09-03 18:52](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-09-03 18:52) | [#422 o](https://github.com/kottans/frontend-2022-homeworks/pull/422) |   |   |   |   |   |   |
-| 1.355 | [DaniaB24](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ADaniaB24) | [#174 i](https://github.com/kottans/frontend-2022-homeworks/pull/174) |   |   |   |   |   |   |
-| 1.356 | [SergeyShytikov](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ASergeyShytikov) | [#175 i](https://github.com/kottans/frontend-2022-homeworks/pull/175) |   |   |   |   |   |   |
+| 1.355 | [2022-09-04 06:15](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-09-04 06:15) |   |   |   |   |   |   | [#423 o](https://github.com/kottans/frontend-2022-homeworks/pull/423) |
+| 1.356 | [2022-09-04 07:15](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-09-04 07:15) |   |   |   |   |   | [#424 o](https://github.com/kottans/frontend-2022-homeworks/pull/424) |   |
+| 1.357 | [2022-09-04 11:52](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-09-04 11:52) |   | [#426 o](https://github.com/kottans/frontend-2022-homeworks/pull/426) |   |   |   |   |   |
+| 1.358 | [2022-09-04 12:26](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-09-04 12:26) | [#427 o](https://github.com/kottans/frontend-2022-homeworks/pull/427) |   |   |   |   |   |   |
+| 1.359 | [2022-09-04 12:29](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-09-04 12:29) | [#428 o](https://github.com/kottans/frontend-2022-homeworks/pull/428) |   |   |   |   |   |   |
+| 1.360 | [2022-09-04 15:18](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-09-04 15:18) |   |   |   |   |   | [#429 o](https://github.com/kottans/frontend-2022-homeworks/pull/429) |   |
+| 1.361 | [2022-09-04 17:18](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3A2022-09-04 17:18) |   |   |   |   |   | [#430 o](https://github.com/kottans/frontend-2022-homeworks/pull/430) |   |
+| 1.362 | [DaniaB24](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ADaniaB24) | [#174 i](https://github.com/kottans/frontend-2022-homeworks/pull/174) |   |   |   |   |   |   |
+| 1.363 | [SergeyShytikov](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ASergeyShytikov) | [#175 i](https://github.com/kottans/frontend-2022-homeworks/pull/175) |   |   |   |   |   |   |
 
 ## How to "import" a PR from a different repo
 
