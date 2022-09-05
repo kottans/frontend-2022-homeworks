@@ -3,6 +3,3 @@ Universal recommendations:
 - Use common sense or seek for an advice whenever requirements look ambiguous or unclear. 
 
 By the way, you may proceed to the next task before this one is reviewed and merged.
-
-_Sincerely yours,_
-_Submissions Kottachecker_ 😺
