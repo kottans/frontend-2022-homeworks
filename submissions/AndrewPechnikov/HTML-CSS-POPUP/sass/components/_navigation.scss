@@ -1,23 +1,21 @@
-.navigation{
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+  margin-right: 50px;
+
+  & > * {
     display: flex;
-    justify-content: space-around;
-    gap: 50px;
-    margin-right: 50px;
+    height: $header-height;
+    align-items: center;
+    cursor: pointer;
+  }
 
-    & > *{
-        display: flex;
-        height: $header-height;
-        align-items: center;
-        cursor: pointer;
+  & > *:hover {
+    background-color: $hover-background-navigation-color;
+  }
 
-    }
-
-    & > *:hover{
-        background-color: $hover-background-navigation-color;
-    }
-
-    & > *:focus{
-        background-color: $hover-background-navigation-color;
-    }
-
+  & > *:focus {
+    background-color: $hover-background-navigation-color;
+  }
 }
