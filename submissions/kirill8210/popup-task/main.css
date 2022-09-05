@@ -57,35 +57,63 @@ h1, h2, h3, p{
     position: relative;
 }
 
-.menu > li{
+.menu_li{
     display: flex;
     align-items: center;
     margin-left: 10px;
 }
 
-.menu > li{
+.menu_li{
     border: 1px solid transparent;
     height: 35px;
 }
 
-.menu > li:hover{
+.menu_li > a:hover{
     border: 1px solid #e5e5e5;
+    padding: 5px 6px;
 }
 
-.menu > li > a{
+.menu_li a:focus {
+    border: 2px solid #a6c8ff;
+}
+
+.menu_li > a:hover:focus {
+    padding: 5px;
+    border: 2px solid #a6c8ff;
+}
+
+.menu_li > a{
     display: flex;
     align-items: center;
-    height: 25px;
+    height: 35px;
     padding: 5px;
+    border: 2px solid transparent;
 }
 
-.menu > li > label{
+.menu_li > .checkbox{
+    width: 35px;
+    height: 35px;
+}
+
+.menu_li > label{
     display: flex;
     align-items: center;
     width: 35px;
     height: 35px;
     padding: 5px;
     border: 1px solid transparent;
+}
+
+.menu_li > .checkbox:hover{
+    border: 1px solid #e5e5e5;
+}
+
+.menu_li > .checkbox:focus {
+    border: 2px solid #a6c8ff;
+}
+
+.menu_li > .checkbox:hover:focus {
+    border: 2px solid #a6c8ff;
 }
 
 .checkbox, .checkbox_more{
@@ -99,11 +127,6 @@ h1, h2, h3, p{
 
 .checkbox:checked ~ label{
     border: 2px solid #a6c8ff;
-}
-
-.checkbox_more:checked ~ label span{
-    border: 2px solid #a6c8ff;
-    width: 294px;
 }
 
 .popup_img{
@@ -129,8 +152,8 @@ h1, h2, h3, p{
 }
 
 .popup img, .popup_more img{
-    max-width: 45px!important;
-    max-height: 45px!important;
+    max-width: 45px;
+    max-height: 45px;
     margin: 10px auto 0;
 }
 
@@ -138,34 +161,34 @@ h1, h2, h3, p{
     margin: 10px auto;
 }
 
-.popup li{
+.popup_li{
     border: 1px solid transparent;
     width: 90px;
     height: 90px;
     margin-bottom: 10px;
 }
 
-.popup li a{
+.popup_li > a{
     border: 2px solid transparent;
 }
 
-.popup li a:hover{
+.popup_li a:hover{
     border: 1px solid #e5e5e5;
 }
 
-.popup li:hover p{
+.popup_li a:hover p{
     margin-bottom: 11px;
 }
 
-.popup li a:focus{
+.popup_li a:focus{
     border: 2px solid #a6c8ff;
 }
 
-.popup li a:focus p{
+.popup_li a:focus p{
     margin-bottom: 10px;
 }
 
-.popup li a, .popup_more li label{
+.popup_li a, .popup_more li label{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -174,9 +197,7 @@ h1, h2, h3, p{
 }
 
 .more{
-    height: 40px!important;
-    margin: 10px 0 0!important;
-    border: 1px solid #e5e5e5;
+    height: 28px!important;
 }
 
 .more label{
@@ -184,17 +205,26 @@ h1, h2, h3, p{
     left: -1px;
 }
 
-.more label span{
+.checkbox_more_span{
     position: absolute;
     width: 311px;
     height: 40px;
     background: #e5e5e5;
-    border: 1px solid transparent;
     padding: 10px 0;
     text-align: center;
 }
 
-.more span:hover{
+.checkbox_more:checked ~ .more{
+    height: 0;
+    margin: 0;
+    border: none;
+}
+
+.checkbox_more:checked ~ label{
+    display: none;
+}
+
+.checkbox_more_span:hover{
     background: #c4c4c4;
     border: 1px solid transparent;
 }
@@ -203,7 +233,6 @@ h1, h2, h3, p{
     display: none;
     flex-flow: wrap;
     width: 292px;
-    margin-top: 50px;
     gap: 0 10px;
 }
 
@@ -213,12 +242,16 @@ h1, h2, h3, p{
     height: 90px!important;
 }
 
-.popup_more li a:hover p{
-    margin-bottom: 12px!important;
+.popup_more_li a{
+    border: 2px solid transparent;
 }
 
-.popup_more li a:focus p{
-    margin-bottom: 11px!important;
+.popup_more_li a:hover p{
+    margin-bottom: 11px;
+}
+
+.popup_more_li a:focus p{
+    margin-bottom: 10px;
 }
 
 @media (max-width: 620px) {
@@ -230,7 +263,3 @@ h1, h2, h3, p{
         right: -5px;
     }
 }
-
-
-
-
