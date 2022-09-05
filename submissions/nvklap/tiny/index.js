@@ -42,8 +42,8 @@ const man = {
   saying: '...Hm',
 };
 
-const inhabitans = [dog, cat, woman, man];
-const inhabitansPropertyNames = [
+const inhabitants = [dog, cat, woman, man];
+const inhabitantsPropertyNames = [
   'species',
   'name',
   'gender',
@@ -53,9 +53,9 @@ const inhabitansPropertyNames = [
 ];
 
 // ======== OUTPUT ========
-inhabitans.forEach((inhabitant) =>
+inhabitants.forEach((inhabitant) =>
   print(
-    inhabitansPropertyNames
+    inhabitantsPropertyNames
       .map((propertyName) => inhabitant[propertyName])
       .join('; ')
   )
