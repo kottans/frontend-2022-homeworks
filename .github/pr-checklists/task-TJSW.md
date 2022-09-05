@@ -1,1 +1,1 @@
-Please, make sure that your code follows the requirements [based on the most common mistakes](https://kottans.org/documentation/docs/doc/code-review/#oop-exercise) as well as [basic requirements](https://github.com/OleksiyRudenko/a-tiny-JS-world#the-job) from the original task.
+Please, make sure that your code follows the requirements [based on the most common mistakes](https://kottans.org/documentation/docs/doc/code-review/#a-tiny-js-world----pre-oop) as well as [basic requirements](https://github.com/OleksiyRudenko/a-tiny-JS-world#the-job) from the original task.
