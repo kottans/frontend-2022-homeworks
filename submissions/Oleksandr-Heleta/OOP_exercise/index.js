@@ -8,42 +8,57 @@
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 class Inhabitants {
-   constructor(species, name, gender, say) {
+   constructor(species, name, gender, legs, say) {
       this.species = species;
       this.name = name;
       this.gender = gender;
+      this.legs = legs;
       this.say = say;
-   }
-   createInhabitantsString() {
-      return Object.values(this).join('; ');
    }
 }
 
 class Human extends Inhabitants {
-   constructor(species, name, gender, say, legs, hands) {
-      super(species, name, gender, say);
-      this.legs = legs;
-      this.hands = hands;
+   constructor(name, gender, say) {
+      super('human', name, gender, 2, say);
+      this.hands = 2;
    }
 }
 
 class Animal extends Inhabitants {
-   constructor(species, name, gender, say, paws) {
-      super(species, name, gender, say);
-      this.paws = paws;
-
+   constructor(species, name, gender, say) {
+      super(species, name, gender, 4, say);
    }
 }
 
-const dog = new Animal('dog', 'Bob', "male", "bark", 4);
-const cat = new Animal('cat', 'Kitty', "female", "meow", 4);
+class Dog extends Animal {
+   constructor(name, gender, say) {
+      super('dog', name, gender, say);
+   }
+}
 
-const man = new Human('human', 'John', "male", "Hello Jenny!", 2, 2);
-const woman = new Human('human', 'Jenny', "female", "Hi John!", 2, 2);
+class Cat extends Animal {
+   constructor(name, gender, say) {
+      super('cat', name, gender, say);
+   }
+}
 
-const catWoman = new Human('human', 'Jenny', "female", cat.say, 2, 2);
+const dog = new Dog('Bob', "male", "bark");
+const cat = new Cat('Kitty', "female", "meow");
+
+const man = new Human('John', "male", "Hello Jenny!");
+const woman = new Human('Jenny', "female", "Hi John!");
+
+const catWoman = new Human('Jenny', "female", cat.say);
 
 const persons = [dog, cat, man, woman, catWoman];
+const properties = ['species', 'name', 'gender', 'legs', 'hands', 'say']
+
+function createString(persons, properties) {
+   return persons.map((person) =>
+      properties.map((property) => person[property] || 'none').join('; ')
+   ).join('\n');
+}
+
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -65,5 +80,6 @@ const persons = [dog, cat, man, woman, catWoman];
    */
 
 
-print(persons.map((person) => person.createInhabitantsString()).join('\n'));
+print(createString(persons, properties));
+
 
