@@ -117,21 +117,27 @@ body {
   text-transform: uppercase;
   color: #000;
 }
-.nav .nav__menu li:hover, .nav .nav__menu li:focus {
-  background-color: #0b3b41;
+.nav .nav__menu li:focus-within a, .nav .nav__menu li:hover a {
   color: white;
+}
+.nav .nav__menu li:focus-within label, .nav .nav__menu li:hover label {
+  opacity: 0.5;
+  border: 2.5px solid rgb(7, 68, 64);
+  border-radius: 4px;
+}
+.nav .nav__menu li:focus {
+  opacity: 0.5;
+  border: 2.5px solid rgb(7, 68, 64);
+  border-radius: 4px;
 }
 .nav .nav__menu li .nav__popup {
   display: flex;
   opacity: 0;
   position: absolute;
 }
-.nav .nav__menu li .nav__popup:hover {
-  opacity: 1;
-}
 
-.checkbox1,
-.checkbox2 {
+.checkbox-base,
+.checkbox-additional {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -161,7 +167,7 @@ body {
   text-shadow: none;
 }
 
-.content__more {
+.content__additional {
   display: none;
   grid-template-columns: repeat(3, 1fr);
   font-size: 13px;
@@ -170,8 +176,8 @@ body {
   text-shadow: none;
 }
 
-.content2,
-.content__more2 {
+.content-button,
+.content-button-add {
   padding: 10px;
 }
 
@@ -181,35 +187,39 @@ body {
   padding: 10px;
 }
 
-.checkbox2__label {
+.label-additional {
   display: grid;
   text-align: center;
-  padding: 15px;
+  padding: 20px;
 }
 
-.checkbox1:checked ~ .content {
+.checkbox-base:checked ~ .content {
   display: block;
 }
 
-.checkbox2:checked ~ .content__more {
+.checkbox-additional:checked ~ .content__additional {
   display: grid;
 }
 
-.checkbox2:checked ~ .checkbox2__label {
+.checkbox-additional:checked ~ .label-additional {
   display: none;
 }
 
-.content2:focus,
-.content2:hover,
-.content__more2:focus,
-.content__more2:hover,
-.checkbox2:focus,
-.checkbox2:hover {
+.content-button:hover,
+.content-button-add:hover,
+.label-additional:hover {
   background-color: rgb(243, 221, 161);
-  border-color: #000;
-  border-style: outset;
-  border-width: thin;
-  border-radius: 10px;
+}
+
+.content-button:focus-within,
+.content-button-add:focus-within {
+  background-color: rgb(243, 221, 161);
+}
+
+.checkbox-additional:focus ~ label {
+  border: 2.5px solid rgb(7, 68, 64);
+  border-radius: 4px;
+  background-color: rgb(243, 221, 161);
 }
 
 .main {
@@ -239,3 +249,4 @@ body {
 .footer .footer__git:hover {
   color: rgb(26, 41, 215);
 }
+
