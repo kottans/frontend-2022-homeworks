@@ -1,73 +1,112 @@
-class Animal {
-   constructor (species, name, gender){
-      this.species = species;
-      this.name = name;
-      this.gender = gender;
+// class Animal {
+//    constructor (species, name, gender){
+//       this.species = species;
+//       this.name = name;
+//       this.gender = gender;
+//    }
+// }
+
+class Entity {
+   constructor (options){
+      this.name = options.name;
+      this.species = options.species;
+      this.gender = options.gender;
+      this.saying = options.saying;
    }
 }
 
-class Human {
-   constructor (name, species, gender, legs, hands, saying){
-      this.name = name;
-      this.species = species;
-      this.gender = gender;
-      this.legs = legs;
-      this.hands = hands;
-      this.saying = saying;
+class Human extends Entity {
+   constructor(options){
+      super(options);
+      this.species = 'Human';
+      this.legs = 2;
+      this.hands = 2;
+   }
+}
+
+class Animal extends Entity {
+   constructor(options){
+      super(options);
+      this.paws = 4;
    }
 }
 
 class Woman extends Human {
-   constructor(name, saying){
-      super(name, 'Human', 'Woman', 2, 2, saying)
+   constructor(options){
+      super(options)
+      this.gender = 'Woman';
    }
 }
 
 class Man extends Human {
-   constructor(name, saying){
-      super(name, 'Human', 'Man', 2, 2, saying)
-   }
-}
-
-class Dog extends Animal {
-   constructor (name, gender, saying){
-      super('Dog', name, gender);
-      this.paws = 4;
-      this.saying = saying;
-   }
-}
-
-class Cat extends Animal {
-   constructor (name, gender, saying){
-      super('Cat', name, gender);
-      this.paws = 4;
-      this.saying = saying;
+   constructor(options){
+      super(options)
+      this.gender = 'Man';
    }
 }
 
 class CatWoman extends Woman {
-   constructor(name){
-      super(name);
+   constructor(options){
+      super(options);
       this.species = 'Half-woman, half-cat';
       this.saying = cat.saying;
    }
 }
 
-const woman = new Woman('Olivia', 'Hello!');
-const man = new Man('Johny', 'How are you my friend?');
-const dog = new Dog ('Dollar', 'boy', 'Gav-gav!');
-const cat = new Cat ('Bonya', 'girl', 'Meoooow');
-const catWoman = new CatWoman ('Katty');
+class Dog extends Animal {
+   constructor(options){
+      super(options)
+      this.species = 'Dog'
+   }
+} 
 
-const allResidents = [woman, man, dog, cat, catWoman]
-
-function printAllResidents(allResidentsArray) {
-   for (let i = 0; i < allResidentsArray.length; i++){
-      const prop = Object.keys(allResidentsArray[i]);
-      const propToPrint = prop.map((propOfObj) => allResidentsArray[i][propOfObj])
-      let strToPrint = propToPrint.join('; ');
-      print(strToPrint);
+class Cat extends Animal {
+   constructor(options){
+      super(options)
+      this.species = 'Cat'
    }
 }
 
-printAllResidents(allResidents);
+const woman = new Woman({
+   name: 'Olivia',
+   saying: 'Hello!',
+})
+
+const man = new Man({
+   name: 'Johny',
+   saying: 'How are you my friend?',
+})
+
+const dog = new Dog({
+   name: 'Dollar',
+   gender: 'Boy',
+   saying: 'Gav-gav!',
+})
+
+const cat = new Cat({
+   name: 'Bonya',
+   gender: 'Girl',
+   saying: 'Meeeeooow!',
+})
+
+const catWoman = new CatWoman({
+   name: 'Kitty',
+})
+
+const allResidents = [woman, man, dog, cat, catWoman]
+const allProp = ['name', 'species', 'gender', 'saying', 'legs', 'hands', 'paws']
+
+
+function toPrint (arrayAllResidents) {
+   const propToPrint = allProp.filter((propOfObj) => arrayAllResidents[propOfObj] !== undefined)
+      .map((propOfObj) => arrayAllResidents[propOfObj]).join('; ');
+   print(propToPrint);
+}
+
+function printAllObjects(arrayAllObjects){
+   arrayAllObjects.forEach((characters) => {
+      toPrint(characters);
+   })
+}
+
+printAllObjects(allResidents);
