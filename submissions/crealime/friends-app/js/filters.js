@@ -63,11 +63,11 @@ export default class Filters {
     this.setHistory()
   }
 
-  sortFriends(sortFoo) {
+  sortPersons(sortFoo) {
     this.glob.friends.personsEdit = this.glob.friends.personsEdit.sort(sortFoo)
   }
 
-  filterFriends(filterFoo) {
+  filterPersons(filterFoo) {
     this.glob.friends.personsEdit = this.glob.friends.personsEdit.filter(filterFoo)
   }
 
@@ -76,14 +76,14 @@ export default class Filters {
     const params = url.searchParams
 
     for (let p of params) {
-      if (p[1] === 'name-up') this.sortFriends((a, b) => a.name.first > b.name.first ? 1 : -1)
-      if (p[1] === 'name-down') this.sortFriends((a, b) => a.name.first < b.name.first ? 1 : -1)
-      if (p[1] === 'age-up') this.sortFriends((a, b) => a.dob.age - b.dob.age)
-      if (p[1] === 'age-down') this.sortFriends((a, b) => b.dob.age - a.dob.age)
-      if (p[0] === 'age-min') this.filterFriends(person => person.dob.age >= p[1])
-      if (p[0] === 'age-max') this.filterFriends(person => person.dob.age <= p[1])
-      if (p[0] === 'by-gender' && p[1] !== 'all') this.filterFriends(person => person.gender === p[1])
-      if (p[0] === 'is-name') this.filterFriends(person => `${person.name.first} ${person.name.last}`.toLowerCase().includes(p[1].toLowerCase()))
+      if (p[1] === 'name-up') this.sortPersons((a, b) => a.name.first > b.name.first ? 1 : -1)
+      if (p[1] === 'name-down') this.sortPersons((a, b) => a.name.first < b.name.first ? 1 : -1)
+      if (p[1] === 'age-up') this.sortPersons((a, b) => a.dob.age - b.dob.age)
+      if (p[1] === 'age-down') this.sortPersons((a, b) => b.dob.age - a.dob.age)
+      if (p[0] === 'age-min') this.filterPersons(person => person.dob.age >= p[1])
+      if (p[0] === 'age-max') this.filterPersons(person => person.dob.age <= p[1])
+      if (p[0] === 'by-gender' && p[1] !== 'all') this.filterPersons(person => person.gender === p[1])
+      if (p[0] === 'is-name') this.filterPersons(person => `${person.name.first} ${person.name.last}`.toLowerCase().includes(p[1].toLowerCase()))
     }
 
     if (this.glob.currentPage > this.glob.friends.personsEdit.length / this.glob.cardsOnPage) {
