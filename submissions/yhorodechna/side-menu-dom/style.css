@@ -1,5 +1,7 @@
 body {
   background-color: #000;
+  cursor: url("img/wand.png"), auto;
+  user-select: none;
 }
 .wrapper {
   position: relative;
@@ -33,18 +35,19 @@ body {
   left: 10px;
   user-select: none;
 }
-
-.header__title {
+.header__title,
+.main__header {
   font-family: "Henny Penny", cursive;
   flex-grow: 1;
   text-align: center;
-  font-size: 40px;
-  padding: 16px 10px 0px 50px;
+  padding: 16px 50px 0px 50px;
   color: rgb(166, 128, 32);
   letter-spacing: 6px;
   user-select: none;
 }
-
+.header__title {
+  font-size: 40px;
+}
 .img__btn {
   height: 50px;
   width: 50px;
@@ -80,6 +83,7 @@ body {
 .nav__link {
   color: rgb(166, 128, 32);
   padding: 10px;
+  cursor: url("img/wand.png"), auto;
 }
 .nav__text {
   font-size: 26px;
@@ -96,7 +100,7 @@ a.nav__link:hover .nav__text {
 a.nav__link.active .nav__text {
   font-size: 30px;
   transition: all linear 0.3s;
-  text-decoration: line-through;
+  text-decoration: underline;
 }
 nav.nav__full {
   display: block;
@@ -113,8 +117,8 @@ nav.nav__full {
   position: absolute;
   top: 10%;
   left: 30%;
-  padding: 20px;
-  margin: auto auto;
+  padding: 0px 20px 20px 20px;
+  margin: 0 auto;
   overflow: auto;
   height: 90%;
   z-index: 1;
@@ -123,11 +127,24 @@ nav.nav__full {
   display: none;
 }
 .main__article {
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   position: relative;
 }
-
+.main__header {
+  display: block;
+  font-size: 30px;
+  margin: 0px 0px 20px 0px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.5032387955182073) 0%,
+    rgba(0, 0, 0, 0.4640231092436975) 15%,
+    rgba(0, 0, 0, 0.08867296918767509) 72%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  border-radius: 40%;
+  padding: 20px;
+}
 .main__img {
   margin: 0px 0px 50px 0px;
   width: 25%;
@@ -186,6 +203,9 @@ nav.nav__full {
   }
   .header__title {
     font-size: 26px;
+  }
+  .main__header {
+    font-size: 18px;
   }
   .img__btn {
     width: 40px;
