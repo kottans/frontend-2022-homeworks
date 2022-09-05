@@ -8,8 +8,7 @@ export default class Pagination {
     this.glob.friends.renderFriends(this.glob.friends.personsEdit, page)
     this.setCurrentPageToInput()
     this.glob.baseURL.searchParams.set('page', page)
-    history.pushState({href: window.location.href}, null, this.glob.baseURL.href)
-    history.replaceState({href: window.location.href}, null, this.glob.baseURL.href)
+    this.glob.filters.setHistory()
   }
 
   listToPreviousPage() {
