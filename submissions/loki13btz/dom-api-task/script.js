@@ -36,39 +36,47 @@ const sideMenuContent = [
   },
 ];
 
-$(function () {
-  let $menuItems = $(".side-menu_item");
+document.addEventListener('DOMContentLoaded', function() {
+  let menuItems = document.querySelectorAll(".side-menu_item");
   function renderContent(menuId) {
-    let $menuContent = $(".side-menu_content");
-    let $pageContent = $(".content .content-wrapper");
-    let $pageTitle = $('<h1 class="content-title"></h1>');
-    let $pageDescription = $('<p class="content-description"></p>');
+    let menuContent = document.querySelector(".side-menu_content");
+    let pageContent = document.querySelector(".content .content-wrapper");
+    let pageTitle = document.createElement('h1');
+    pageTitle.classList.add("content-title");
+    let pageDescription = document.createElement('p');
+    pageDescription.classList.add("content-description");
     const { id, img, title, content } = sideMenuContent.find(
       ({ id }) => id === menuId
     );
-    $pageContent.html("");
-    $menuContent.css("background-image", `url(${img})`);
-    $pageTitle.text(title);
-    $pageDescription.text(content);
-    $pageContent.append($pageTitle).append($pageDescription);
+    pageContent.innerHTML="";
+    menuContent.style.backgroundImage= `url(${img})`;
+    pageTitle.innerHTML=title;
+    pageDescription.innerHTML=content;
+    pageContent.append(pageTitle);
+    pageContent.append(pageDescription);
+
   }
   function clearActive() {
-    $menuItems.removeClass("active");
+    menuItems.forEach(menuItem => {
+      menuItem.classList.remove("active");
+    });
   }
 
-  $menuItems.on("click ", function () {
-    let menuItemId = $(this).data("id");
-    clearActive();
-    $(this).addClass("active");
-    renderContent(menuItemId);
-  });
-  $menuItems.keydown(function (e) {
-    if (e.keyCode == 32) {
-      let menuItemId = $(this).data("id");
+  menuItems.forEach(menuItem => {
+    menuItem.addEventListener('click', function (e) {
+      let menuItemId = Number(e.currentTarget.dataset.id);
       clearActive();
-      $(this).addClass("active");
+      e.currentTarget.classList.add("active");
       renderContent(menuItemId);
-    }
+    });
+    menuItem.addEventListener('keydown', function (e) {
+      if (e.keyCode == 32) {
+        let menuItemId = Number(e.currentTarget.dataset.id);
+        clearActive();
+        e.currentTarget.classList.add("active");
+        renderContent(menuItemId);
+      }
+    });
   });
   renderContent(1);
 });
