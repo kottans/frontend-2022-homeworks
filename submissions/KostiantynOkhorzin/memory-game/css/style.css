@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   border: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 *, *:before, *:after {
@@ -36,10 +37,6 @@ button::-moz-focus-inner {
 h1, h2, h3, h4, h5, h6 {
   font-size: inherit;
   font-weight: inherit;
-}
-
-* {
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {

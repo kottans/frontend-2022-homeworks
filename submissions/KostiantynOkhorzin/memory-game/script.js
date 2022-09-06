@@ -2,9 +2,9 @@
 
 const gameBody = document.querySelector('.game__body');
 let playerSteps = 0;
-const time = 1500;
+const cardProcessingTime = 1500;
 
-const getData = () => [
+const dataImgs = [
     { imgSrc: "img/ananas.png", name: "ananas" },
     { imgSrc: "img/apple.png", name: "apple" },
     { imgSrc: "img/avocado.png", name: "avocado" },
@@ -23,7 +23,9 @@ const styleList = {
     card: 'game__card',
     flippedCard: 'game__card_flipped',
     selectedCard: 'game__card_selected',
-    hiddenCard: 'game__card_hidden'
+    hiddenCard: 'game__card_hidden',
+    frontCard: 'game__card-front',
+    backCard: 'game__card-back'
 }
 
 class GameCard {
@@ -34,48 +36,39 @@ class GameCard {
 
     render() {
         gameBody.insertAdjacentHTML('beforeend', `
-            <button class="game__card" data-name=${this.name}>
-                <span class="game__card-front"></span>
-                <img class="game__card-back" src=${this.img} alt=${this.name}>
+            <button class=${styleList.card} data-name=${this.name}>
+                <span class=${styleList.frontCard}></span>
+                <img class=${styleList.backCard} src=${this.img} alt=${this.name}>
             </button>
         `);
     }
 };
 
-const randomize = () => {
-    return getData().sort(() => Math.random() - 0.5);
+const randomlyMixArrayElem = () => {
+    return dataImgs.sort(() => Math.random() - 0.5);
 };
 
 const renderCards = () => {
-    randomize().map(({ imgSrc, name }) => new GameCard(imgSrc, name).render());
+    randomlyMixArrayElem().map(({ imgSrc, name }) => new GameCard(imgSrc, name).render());
 };
 
-const disableCards = () => {
-    const cards = document.querySelectorAll('.game__card');
-    cards.forEach(card => {
-        card.setAttribute('disabled', '');
-        setTimeout(() => {
-            card.removeAttribute('disabled');
-        }, 3000);
-    });
-};
-
-const flippingCards = (e) => {
-    if (e.target.classList.contains(styleList.card)) {
-        e.target.classList.add(styleList.selectedCard, styleList.flippedCard);
+const handleCardFlip = ({ target }) => {
+    if (target.classList.contains(styleList.card)) {
+        target.classList.add(styleList.selectedCard, styleList.flippedCard);
         const flippedCards = document.querySelectorAll(`.${styleList.flippedCard}`);
         const selectedCards = document.querySelectorAll(`.${styleList.selectedCard}`);
         if (selectedCards.length === 2) {
-            disableCards();
             if (selectedCards[0].dataset.name === selectedCards[1].dataset.name) {
                 selectedCards.forEach((card) => {
+                    card.style.pointerEvents = 'none';
                     card.classList.remove(styleList.selectedCard);
-                    setTimeout(() => card.classList.add(styleList.hiddenCard), time);
-                })
+                    setTimeout(() => card.classList.add(styleList.hiddenCard), cardProcessingTime);
+                });
+                playerSteps++;
             } else {
                 selectedCards.forEach((card) => {
                     card.classList.remove(styleList.selectedCard);
-                    setTimeout(() => card.classList.remove(styleList.flippedCard), time);
+                    setTimeout(() => card.classList.remove(styleList.flippedCard), cardProcessingTime);
                 });
                 playerSteps++;
             };
@@ -97,6 +90,4 @@ const restart = () => {
 
 renderCards();
 
-gameBody.addEventListener('click', flippingCards);
-
-
+gameBody.addEventListener('click', handleCardFlip);
