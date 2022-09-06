@@ -13,12 +13,13 @@ var Enemy = function (x, y) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
+   const fieldWidth = 505;
    // You should multiply any movement by the dt parameter
    // which will ensure the game runs at the same speed for
    // all computers.
    for (let i = 0; i < 200; i++) {
       this.x += dt;
-      if (this.x > 550) {
+      if (this.x > fieldWidth) {
          this.x = Math.floor(Math.random() * -200);
       }
    }
@@ -44,6 +45,9 @@ let Player = function (x, y) {
    this.y = y;
    this.sprite = "images/char-cat-girl.png";
    Player.prototype.update = function () {
+      this.collide();
+   };
+   Player.prototype.collide = function () {
       allEnemies.forEach((enemy) => {
          if (
             this.x < enemy.x + 80 &&
