@@ -59,15 +59,17 @@ const catWoman = {
 
 // ======== OUTPUT ========
 
-function printInhabitant(inhabitant) {
-   let result = "";
-
-   for (let val in inhabitant) {
-      result += inhabitant[val] + "; ";
-   }
-
-   print(result);
-}
-
 const inhabitants = [dog, cat, man, woman, catWoman];
-inhabitants.forEach(printInhabitant);
+const keys = [
+   "species",
+   "name",
+   "gender",
+   "legs",
+   "hands",
+   "saying",
+   "friends",
+];
+
+inhabitants.forEach((inhabitant) =>
+   print(keys.map((key) => inhabitant[key]).join("; "))
+);
