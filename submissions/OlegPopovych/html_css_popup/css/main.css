@@ -412,6 +412,10 @@ h2 {
   display: grid;
 }
 
+.popup__input:checked ~ .popup__sub--toggle {
+  display: none;
+}
+
 .popup__input:focus ~ .menu-label {
   outline: 0.2rem solid #3C8F87;
   border-radius: 0.3rem;
