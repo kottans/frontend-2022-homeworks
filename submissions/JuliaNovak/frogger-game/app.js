@@ -32,10 +32,7 @@ Enemy.prototype.render = function () {
 
 // Now instantiate your Enemy.
 // Place all enemy objects in an array called allEnemies
-let enemy1 = new Enemy(0, 63);
-let enemy2 = new Enemy(-30, 145);
-let enemy3 = new Enemy(-50, 230);
-const allEnemies = [enemy1, enemy2, enemy3];
+const allEnemies = [new Enemy(0, 63), new Enemy(-30, 145), new Enemy(-50, 230)];
 
 // Now write your own player class
 // This class requires an update(), render() and
