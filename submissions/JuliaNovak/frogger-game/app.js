@@ -48,12 +48,13 @@ let Player = function (x, y) {
       this.collide();
    };
    Player.prototype.collide = function () {
+      const collisionPx = 80;
       allEnemies.forEach((enemy) => {
          if (
-            this.x < enemy.x + 80 &&
-            this.x + 80 > enemy.x &&
-            this.y < enemy.y + 60 &&
-            60 + this.y > enemy.y
+            this.x < enemy.x + collisionPx &&
+            this.x + collisionPx > enemy.x &&
+            this.y < enemy.y + collisionPx &&
+            collisionPx + this.y > enemy.y
          ) {
             this.x = 200;
             this.y = 400;
@@ -64,28 +65,30 @@ let Player = function (x, y) {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
    };
    Player.prototype.handleInput = function (key) {
+      const cellX = 101;
+      const cellY = 83;
       switch (key) {
          case "left":
             if (this.x > 0) {
-               this.x -= 101;
+               this.x -= cellX;
                this.render();
             }
             break;
          case "right":
             if (this.x < y) {
-               this.x += 101;
+               this.x += cellX;
                this.render();
             }
             break;
          case "up":
             if (this.y > 0) {
-               this.y -= 83;
+               this.y -= cellY;
                this.render();
             }
             break;
          case "down":
             if (this.y < y) {
-               this.y += 83;
+               this.y += cellY;
                this.render();
             }
             break;
