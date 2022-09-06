@@ -49,8 +49,8 @@ input[type="checkbox"] {
 }
 
 .icon{
-  width: 8em;
-  height: 8em;
+  width: 140px;
+  height: 140px;
   display: block;
   margin: 0 auto;
   border-radius: 50%;
@@ -100,7 +100,6 @@ input[type="checkbox"] {
   padding: 25px 0;
   font-size: 40px;
   text-decoration: none;
-
 }
 
 .more-item-menu {
@@ -125,10 +124,7 @@ input[type="checkbox"] {
   align-items: center;
   gap: 10px;
   font-family: 'Brush Script MT', cursive;
-}
-
-.innerText{
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .popup_more:checked ~ .more-item-menu {
@@ -186,8 +182,8 @@ input[type="checkbox"] {
 
 @media screen and (max-width:540px) {
   .popup{
-    right: -240%;
-    top: 350%;
+    right: -80px;
+    top: 100px;
     padding: 30px;
   }
 
@@ -226,7 +222,3 @@ input[type="checkbox"] {
     left: -115px;
   }
 }
-
-
-
-
