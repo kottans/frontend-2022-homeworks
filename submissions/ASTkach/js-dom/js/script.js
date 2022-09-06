@@ -1,4 +1,3 @@
-// create a data array for planets and one star
 const solarSystem = [
     {
         id: "0",
@@ -336,14 +335,14 @@ const solarSystem = [
 ];
 
 const mainBlock = document.querySelector(".main");
-const firstElement = solarSystem[0];
+const [firstElement] = solarSystem;
 
 function chosenPlanet({ title, text, image, diameter, mass, temp, gravity, distance, lengthOfDay, moons, altText }) {
     return `
     <div class="main__content">
         <h1 class="main__title">${title}</h1>
         <p class="main__text">${text}</p>
-        <img src="${image}" alt="${altText}" class="main__img" />
+        <img src="${image}" alt="${altText}" class="main__img"  width="450", height="450"/>
         <ul class="list">
             <li class="list__item">
                 <p class="list__info">Diameter: <span class="list__value">${diameter} </span>km</p>
@@ -389,7 +388,6 @@ mainBlock.innerHTML = chosenPlanet(firstElement);
 const iconMenu = document.querySelector(".nav__icon");
 const listMenu = document.querySelector(".nav__body");
 
-// track the "click" event on "burger menu"
 iconMenu.addEventListener("click", function () {
     document.body.classList.toggle("_lock");
     iconMenu.classList.toggle("_opened");
@@ -397,33 +395,23 @@ iconMenu.addEventListener("click", function () {
 });
 
 const navList = document.querySelector(".nav__list");
-const navButton = document.querySelector(".nav__button");
-let initialActiveClass = document.getElementsByClassName("_active");
+const navButton = Array.from(document.querySelectorAll(".nav__button"));
 
-navList.onclick = function ({ target }) {
-    let button = target.closest(".nav__button");
-
-    if (!button) return;
-
-    if (!navList.contains(button)) return;
-
-    activeClass(button);
-};
-
-let selectedButton = initialActiveClass[0];
-
-function activeClass(button) {
-    if (selectedButton) {
-        selectedButton.classList.remove("_active");
-        iconMenu.classList.remove("_opened") || listMenu.classList.remove("_opened") || document.body.classList.remove("_lock");
-    }
-    if ((selectedButton = button)) {
-        selectedButton.classList.add("_active");
-    }
-}
+const removeActiveLink = () => navButton.forEach((btn) => btn.classList.remove("_active"));
 
 navList.addEventListener("click", ({ target }) => {
     const buttonId = target.parentElement.id;
 
-    mainBlock.innerHTML = chosenPlanet(solarSystem.find((item) => item.id === buttonId));
+    if (target.parentElement.closest(".nav__button")) {
+        removeActiveLink();
+        if (target.parentElement.classList.contains("_active")) {
+            target.parentElement.classList.remove("_active");
+        } else {
+            target.parentElement.classList.add("_active");
+            iconMenu.classList.remove("_opened");
+            listMenu.classList.remove("_opened");
+            document.body.classList.remove("_lock");
+            mainBlock.innerHTML = chosenPlanet(solarSystem.find((item) => item.id === buttonId));
+        }
+    }
 });
