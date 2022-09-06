@@ -7,41 +7,38 @@
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
-const inhabitants = [
-   {
-      species: 'dog',
-      name: 'Toby',
-      gender: 'male',
-      legs: 4,
-      hands: 0,
-      saying: 'woof-woof!'
-   },
-   {
-      species: 'cat',
-      name: 'Zhorik',
-      gender: 'male',
-      legs: 4,
-      hands: 0,
-      saying: 'moooow!'
-   },
-   {
-      species: 'woman',
-      name: 'Kate',
-      gender: 'female',
-      legs: 2,
-      hands: 2,
-      saying: 'What did you say?'
-   },
-   { 
-      species: 'man',
-      name: 'John',
-      gender: 'male',
-      legs: 2,
-      hands: 2,
-      saying: 'Im fine.'
-   },
-
-];
+const dog = {
+   species: 'dog',
+   name: 'Toby',
+   gender: 'male',
+   legs: 4,
+   hands: 0,
+   saying: 'woof-woof!'
+};
+const cat = {
+   species: 'cat',
+   name: 'Zhorik',
+   gender: 'male',
+   legs: 4,
+   hands: 0,
+   saying: 'moooow!'
+};
+const woman = {
+   species: 'woman',
+   name: 'Kate',
+   gender: 'female',
+   legs: 2,
+   hands: 2,
+   saying: 'What did you say?'
+};
+const man = {
+   species: 'man',
+   name: 'John',
+   gender: 'male',
+   legs: 2,
+   hands: 2,
+   saying: 'I am fine.'
+};
 // ======== OUTPUT ========
 /* Use print(message) for output.
    Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
@@ -60,15 +57,9 @@ const inhabitants = [
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
-
-for (let i = 0; i < inhabitants.length; i++) {
-   let species = inhabitants[i].species;
-   let name = inhabitants[i].name;
-   let gender = inhabitants[i].gender;
-   let legs = inhabitants[i].legs;
-   let hands = inhabitants[i].hands;
-   let saying = inhabitants[i].saying;
-
+let arr = [dog, cat, woman, man];
+arr.forEach(function ({ species, name, gender, legs, hands, saying }) {
    print(`${species}; <strong>${name}</strong>; ${gender}; ${legs}; ${hands}; <em>${saying}</em>`);
-}
+});
+
 
