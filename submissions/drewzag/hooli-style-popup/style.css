@@ -1,0 +1,182 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a,
+a:link,
+a:visited,
+a:hover {
+  text-decoration: none;
+  color: gray;
+}
+
+.popup-image {
+  max-height: 2em;
+}
+
+.popup {
+  cursor: pointer;
+  height: 1.7em;
+}
+
+.bell {
+  height: 1.5em;
+}
+
+.header {
+  background-color: bisque;
+  height: 3em;
+}
+
+.header__menu {
+  margin-right: 5vw;
+}
+
+.header__list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header__item {
+  margin-left: 20px;
+  position: relative;
+}
+
+.header__checkbox,
+.more__checkbox,
+.less__checkbox {
+  appearance: none;
+  position: absolute;
+}
+
+.header__checkbox {
+  width: 30px;
+  height: 30px;
+}
+
+.more__checkbox {
+  bottom: 10px;
+  right: 50px;
+  height: 30px;
+  width: 300px;
+}
+
+.more__checkbox:checked {
+  bottom: -145px;
+  right: 50px;
+  height: 30px;
+  width: 300px;
+}
+
+.popup__wrapper {
+  display: none;
+}
+
+.header__checkbox:checked ~ .popup__wrapper {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 3em;
+  right: -4em;
+  max-height: 35em;
+  overflow: auto;
+  box-shadow: 0 0 5px 2px gray;
+}
+
+.header__checkbox::before {
+  position: absolute;
+  top: 2em;
+  left: -0.2em;
+  content: '';
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 16.5px 21px 16.5px;
+  border-color: transparent transparent white transparent;
+  display: none;
+}
+
+.header__checkbox:checked::before {
+  display: block;
+}
+
+.popup__list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.popup__item {
+  margin: 20px;
+}
+
+.popup__item:hover {
+  box-shadow: 0 0 5px 2px gray;
+}
+
+.popup__item-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.show-more,
+.show-less {
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: gray;
+  color: white;
+  width: 100%;
+  cursor: pointer;
+}
+
+.popup__menu-more {
+  position: relative;
+}
+
+.popup__wrapper-more {
+  display: none;
+}
+
+.show-less {
+  display: none;
+}
+
+.more__checkbox:checked ~ label .show-more {
+  display: none;
+}
+
+.more__checkbox:checked ~ .popup__wrapper-more {
+  display: block;
+}
+
+.more__checkbox:checked ~ label .show-less {
+  display: flex;
+}
+
+@media (max-width: 430px) {
+  .popup__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

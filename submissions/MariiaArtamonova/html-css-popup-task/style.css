@@ -1,0 +1,165 @@
+body {
+  background-image: url("./image/background-cat.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.menu__item__link:focus,
+.menu__item__icon:focus,
+.checkbox__popup-input:focus + .menu__item__icon,
+.popup__item__link:focus,
+.popup__more:focus + .popup__button-more
+{
+  outline: 2px dashed blanchedalmond;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu__items {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.menu__item {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding: 15px;
+  margin: 10px;
+}
+
+.menu__item__link {
+  text-decoration: none;
+  color: white;
+  align-items: center;
+  border: 1px solid transparent;
+  padding: 15px;
+  border-radius: 50px;
+}
+
+.menu__item__icon {
+  border: 1px solid transparent;
+  padding: 15px;
+  border-radius: 50px;
+  display: flex;
+}
+
+.icon-reverse {
+  filter: invert(100);
+}
+
+.menu__item__link:hover,
+.menu__item__icon:hover {
+  border: 1px solid white;
+  box-shadow: 0 0 2px 2px white;
+}
+
+.menu__item__link:active,
+.menu__item__icon:active {
+  filter: invert();
+  border: 1px solid white;
+  box-shadow: 0 0 2px 2px white;
+}
+
+.checkbox__popup-input,
+.popup__more {
+  clip: rect(0 0 0 0);
+  position: absolute;
+}
+
+#popup__more:not(:checked) ~ .popup__hidden-items,
+.checkbox__popup-input:not(:checked) ~ .popup__box {
+  display: none;
+}
+
+.popup__box {
+  border: 1px solid transparent;
+  background-color: transparent;
+  height: 280px;
+  border-radius: 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: 1px solid black;
+  position: absolute;
+  right: 120px;
+  top: 150px;
+}
+
+.popup__box::-webkit-scrollbar {
+  width: 10px;
+}
+
+.popup__box::-webkit-scrollbar-thumb {
+  border: 1px solid black;
+  filter: blur(1px);
+  border-radius: 50px;
+}
+
+.popup__items {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 120px 120px 120px;
+  grid-template-rows: 120px 120px 120px;
+  padding: 10px;
+}
+
+.popup__item {
+  font-size: 16px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  border-radius: 50px;
+  margin: 10px;
+  border: 1px solid transparent;
+}
+
+.popup__item__link {
+  text-decoration: none;
+  color: black;
+  height: 65px;
+  width: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 500;
+  border: 1px solid transparent;
+  padding: 15px;
+  border-radius: 50px;
+  flex-direction: column;
+  align-content: stretch;
+}
+
+.popup__item__link:hover,
+.popup__button-more:hover {
+  border: 1px solid black;
+  box-shadow: 0 0 2px 2px black;
+}
+
+.popup__item__link:active,
+.popup__button-more:active {
+  filter: invert();
+  border: 1px solid black;
+  box-shadow: 0 0 2px 2px black;
+}
+
+.popup__button-more {
+  height: 25px;
+  width: 25px;
+  border: 1px solid transparent;
+  padding: 13px;
+  border-radius: 50px;
+  display: flex;
+  margin: 0 auto;
+}
+
+.popup__hidden-items {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 120px 120px 120px;
+  grid-template-rows: 120px 120px;
+  padding: 10px;
+}

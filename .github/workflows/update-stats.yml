@@ -24,6 +24,7 @@ jobs:
       - name: Update stats file
         run: |
           cd ./stats
+          gh --version
           node make-stats.js
           cd ..
         env:

@@ -4,7 +4,7 @@
 const { promisify } = require('util');
 const exec = promisify(require('child_process').exec);
 const writeFile = promisify(require('fs').writeFile);
-const { prLabels, prStates, parsingRegex, url, statsFileName } = require('./config');
+const { prLabels, prStates, url, statsFileName } = require('./config');
 const { outputPresets } = require('./assets');
 const { makeArray, mergeObjects, recombine } = require('./utils');
 
@@ -159,28 +159,28 @@ async function fetchIssueData(prLabels) {
 }
 
 function parsePrsData(data) {
-  const matches = data.matchAll(parsingRegex.pr);
-  return Array.from(matches, ({groups}) => groups);
+  return JSON.parse(data).map(({number: prNr, author: {login: authorId}}) => ({
+    prNr,
+    author: authorId,
+  }));
 }
 
 function parseIssuesData(data) {
-  const matches = data.matchAll(parsingRegex.issue);
-  return Array.from(matches,
-    ({ groups: {
-      issueNr, author, labels,
-    }}) => ({
-      issueNr, author, labels: labels.split(", "),
-    }));
+  return JSON.parse(data).map(({number: issueNr, author: {login: authorId}, labels}) => ({
+    issueNr,
+    author: authorId,
+    labels: labels.map(labelDetails => labelDetails.name),
+  }));
 }
 
 function fetchPrListGhCommand(label, state) {
-  return `gh pr list --state ${state} --label "${label}" --limit 600`;
+  return `gh pr list --state ${state} --label "${label}" --limit 600 --json author,number`;
 }
 
 function fetchIssueListGhCommand(labels) {
   // Issues with multiple labels should be treated as individual entries.
   // Also listing multiple labels is treated as "AND" rather than "ANY OF".
-  return labels.map(label => `gh issue list --state all --label "${label}" --limit 200`);
+  return labels.map(label => `gh issue list --state all --label "${label}" --limit 200 --json author,title,labels,number`);
 }
 
 function makeComparator(primaryKeyNumericDescending, secondaryKeyAlphaAscendingCaseInsensitive) {

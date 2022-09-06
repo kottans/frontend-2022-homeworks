@@ -1,0 +1,153 @@
+/*---Variables---*/
+:root {
+    /*---Colors---*/
+    --main-bg-color: #1D1B26;
+    --main-text-color: #FFFFFF;
+    --hover-color: #FD2D00;
+    --shadow-color: #00c5c8;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+.wrapper {
+    padding: 50px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    gap: 20px;
+}
+
+.side-menu__item {
+    margin-bottom: 1rem;
+}
+
+.side-menu__item a {
+    font-size: 1.8rem;
+    transition: 0.3s;
+}
+
+.side-menu__item a:hover {
+    color: var(--hover-color);
+    text-shadow: 4px 4px 2px rgba(253, 45, 0, 0.63);
+    cursor: pointer;
+}
+
+.side-menu__item.active {
+    color: var(--hover-color);
+}
+
+main {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+}
+
+.character {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    animation: fadeIn 1s;
+}
+
+
+.character_hide {
+    display: none;
+}
+
+.character__name {
+    margin: 2rem 0;
+    font-size: 3.5rem;
+
+    color: var(--shadow-color);
+}
+
+
+.character__image {
+    width: 35rem;
+    height: 35rem;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: -18px 41px 93px -18px rgba(0, 197, 200, 0.39);
+}
+
+.character__image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.character__location {
+    font-size: 1.6rem;
+    color: var(--hover-color);
+}
+
+/*---Animation---*/
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*Media queries*/
+
+@media (max-width: 768px) {
+    .character__image {
+        width: 25rem;
+        height: 25rem;
+    }
+
+    .side-menu__item {
+        margin-bottom: 0.5rem;
+    }
+
+    .side-menu__item a {
+        font-size: 1.6rem;
+        transition: 0.3s;
+    }
+
+    .character__name {
+        margin: 1rem 0;
+    }
+}
+
+@media (max-width: 586px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side-menu__list {
+        text-align: center;
+    }
+
+    .main {
+        align-self: center;
+    }
+
+}
+
+
+

@@ -1,0 +1,223 @@
+*{
+    font-family: cursive;
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    color: rgb(91, 91, 91);
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    height: 90px;
+    border-bottom: 1px solid #000;
+    box-shadow: 0 2px 5px #000;
+}
+
+.logo__img{
+    width: 30%;
+    height: 95%;
+    margin-left: 45px;
+    margin-right: 15px;
+}
+.item__view__img{
+    width: 50px;
+    height: 50px;
+}
+.wrapper{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center; 
+    width: 80%;
+    height: 90px;
+    
+  }
+.menu__list{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu__item{
+    justify-content: space-between;
+    margin-right: 50px;
+}
+.menu__item:focus,
+.menu__item:hover,
+.item__link:focus,
+.item__link:hover,
+.checkbox__main:focus + .main__label,
+.checkbox__main:hover + .main__label{
+    color: #17a212;
+    outline: 0;
+    box-shadow:  2px 2px 2px 2px #000;
+    border-radius: 2px;
+}
+.checkbox__main{
+    appearance: none;
+    position: absolute;
+}
+.main__label {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+.popup__list{
+    display: none;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+.checkbox__main:checked ~ .popup__list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    top: 180%;
+    right: 0;
+    box-shadow:  0 0 2px 2px rgb(139, 223, 145);
+    height: 335px;
+    width: 245px;
+    margin-right: 15px;
+    background-color: rgb(223, 245, 225);
+}
+.popup__item{
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    margin: 10px 12px ;
+
+}
+.more__item{
+    display: flex;
+    justify-content: flex-start;
+    align-self: center;
+    left: 0;
+    margin: 5px 24px 10px 0px;
+    padding-left: 1px;
+}
+.last__item{
+    margin-right: 9px;
+}
+.checkbox__more{
+    appearance: none;
+    position: absolute;
+    align-items: center;
+}
+
+.more__list{
+    display: none;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.checkbox__more:checked ~ .more__list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    overflow-y: auto;
+    box-sizing: border-box;
+    top: 88%;
+    left:5%;
+    background-color: rgb(223, 245, 225);
+    overflow-x: hidden;
+}
+.btn:focus,
+.btn:hover {
+    color: #17a212;
+}
+.checkbox__more:focus + .more__label,
+.checkbox__more:hover + .more__label{
+    box-shadow:  2px 2px 2px 2px #000;
+    border-radius: 3px;
+}
+
+.checkbox__more:checked + .more__label > .visible{
+    display: none;
+    appearance: none;
+    
+    left:0;
+    margin: 0;
+} 
+
+
+.btn{
+    display: block;
+    line-height: 1;
+    font-size: 2em;
+}
+
+.main__content{
+  text-transform:uppercase;
+  text-shadow: #000;
+  text-align: center;
+  margin: 30px;
+  
+}
+.some__text{
+    color: #17a212;
+    font-size: 55px;
+}
+
+@media (max-width: 767.99px) {
+    .some__text{
+        padding: 0 20px;
+        font-size: 30px;
+
+    }
+    .menu__item{
+        justify-content: space-between;
+        margin-right: 30px;
+        font-size: 22px;
+    }
+    .logo__img{
+        width: 37%;
+        height: 95%;
+        margin-left: 30px;
+        margin-right: 15px;
+    }
+  }
+  
+  @media (max-width: 424.98px) {
+    .menu__item{
+        justify-content: space-between;
+        margin-right: 15px;
+        font-size: 20px;
+    }
+    .some__text{
+        padding: 0 20px;
+        font-size: 20px;
+    }
+    .logo__img{
+        width: 50%;
+        height: 95%;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .item__view__img{
+        width: 40px;
+        height: 40px;
+    }
+    .btn{
+        font-size: 1.2em;
+    }
+    .checkbox__main:checked ~ .popup__list{
+        height: 250px;
+        width: 200px;
+    }
+  }
