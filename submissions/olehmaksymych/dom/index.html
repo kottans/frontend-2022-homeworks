@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Football</title>
+    <link rel="shortcut icon" class="short_icon" href="/images/soccer-icon.png"/>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="#home" class="logo" id="open_logo"
+        ><i class="fa-solid fa-futbol"></i> Footbal Clubs</a
+      >
+
+      <nav class="navbar">
+        <a href="#home" class="navbar_item" id="home">Home</a>
+        <a href="#England" class="navbar_item" id="england">England</a>
+        <a href="#Germany" class="navbar_item" id="germany">Germany</a>
+        <a href="#Italy" class="navbar_item" id="italy">Italy</a>
+        <a href="#Spain" class="navbar_item" id="spain">Spain</a>
+        <a href="#France" class="navbar_item" id="france">France</a>
+      </nav>
+
+      <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <i class="fas fa-search" id="search-icon"></i>
+      </div>
+    </header>
+    <!--header section ends-->
+
+    <!--search form-->
+
+    <form action="" id="search-form">
+      <input
+        type="search"
+        placeholder="search here..."
+        name=""
+        id="search-box"
+      />
+      <label for="search-box" class="fas fa-search"></label>
+      <i class="fas fa-times" id="close"></i>
+    </form>
+    <main>
+      <div class="section_content">
+      <!--home section starts-->
+      <section class="section_item1" id="home_page">
+        <h1 class="section_description">The most titled footbal clubs</h1>
+        <p class="paragraph_description">
+          This is a brief description of the main football clubs in Western
+          European Countries. Please, click on the country you want to find out
+          what football club is the most titled club in the whole history of
+          football in the selected country.
+        </p>
+        <br /><br /><br />
+        <div class="home_div">
+          <ul class="home_ul">
+            The names of the football leagues are:
+          </ul>
+          <li>England - <strong>"Premier League"</strong></li>
+          <li>Germany - <strong>"The Bundesliga"</strong></li>
+          <li>Italy - <strong>"Serie A"</strong></li>
+          <li>Spain - <strong>"La Liga"</strong></li>
+          <li>France - <strong>"Ligue 1"</strong></li>
+        </div>
+      </section>
+
+      <!-- home sections ends -->
+
+      <section class="section_item" id="manchester">
+        <h1 class="section_description">Manchester United</h1>
+        <img
+          class="picture_description"
+          src="images/footbal_clubs/man_united.png"
+          alt="Manchester United"
+        />
+        <p class="club_description">
+          Manchester United is one of the most successful English clubs in terms
+          of trophies of all time, and for the last 20 years, the most
+          successful club in England. <br />
+          The Red Devils have won 20 FA Cups and three Uefa Champions League
+          Cups. In total, Manchester has 43 titles.
+        </p>
+      </section>
+      <section class="section_item" id="bavaria">
+        <h1 class="section_description">Bayern Munich</h1>
+        <img
+          class="picture_description"
+          src="images/footbal_clubs/bayern_munich.png"
+          alt="Bayern Munich"
+        />
+        <p class="club_description">
+          FC Bayern München is a German football club from Munich. One of the
+          most famous and strongest clubs in Germany and the world. <br />
+          Bayern Munich has 84 trophies, 32 of which are Bundesliga cups and 6
+          UEFA Champions League cups.
+        </p>
+      </section>
+      <section class="section_item" id="juve">
+        <h1 class="section_description">Juventus</h1>
+        <img
+          class="picture_description"
+          src="images/footbal_clubs/juventus.png"
+          alt="Juventus"
+        />
+        <p class="club_description">
+          Juventus Football Club is a football club from the city of Turin, one
+          of the oldest clubs in Italy, and one of the most titled clubs in
+          Europe and the world. <br />This club has a record 36 Serie A cups, as
+          well as 2 UEFA Champions League cups. <br />
+          In total, Juve has total of 75 prestigious trophies.
+        </p>
+      </section>
+      <section class="section_item" id="real">
+        <h1 class="section_description">Real Madrid</h1>
+        <img
+          class="picture_description"
+          src="images/footbal_clubs/real.png"
+          alt="Real Madrid"
+        />
+        <p class="club_description">
+          This club is the best club in Spain in the history of Spanish
+          football. <br />The assets of this club include 99 trophies. The club
+          became the champion of "La Liga" 35 times and won the Champions League
+          the maximum number of times - 14.<br />
+          Real Madrid is recognized as the best football club of the 20th
+          century according to FIFA.
+        </p>
+      </section>
+      <section class="section_item" id="psg">
+        <h1 class="section_description">PSG</h1>
+        <img
+          class="picture_description"
+          src="images/footbal_clubs/psg.png"
+          alt="PSG"
+        />
+        <p class="club_description">
+          Paris Saint-GermainParis Saint-Germain <br />
+          As France's most successful club, they have won over 40 official
+          honours, including ten league titles and one major European trophy.
+          <br />
+          PSG has a total of 48 trophies.
+        </p>
+      </section>
+    </div>
+    </main>
+
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+    <footer>©2022 Oleh Maksymych</footer>
+  </body>
+</html>
