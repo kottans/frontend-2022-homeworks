@@ -1,0 +1,266 @@
+$xxs: 321px;
+$xs: 541px;
+$md: 961px;
+
+$mainColor: #90ee90;
+$contrastColor: #faebd7;
+$accentColor: #008000;
+$accentContrastColor: #fcc87c;
+$mainTextColor: #000000;
+
+body {
+  margin: 0;
+  font-family: 'Bookman Old Style', serif;
+  font-size: 16px;
+
+  @media (min-width: $md) {
+    font-size: 24px;
+  }
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: $contrastColor;
+
+  &__nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: $xs) {
+      justify-content: flex-end;
+    }
+  }
+
+  &__list {
+    flex: 0 1 22.5em;
+    display: flex;
+    height: 3em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link {
+    font-weight: bold;
+    color: $mainTextColor;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      outline: none;
+      color: $accentColor;
+    }
+
+    &:focus > .header__bell,
+    &:hover > .header__bell {
+      background-color: $mainColor;
+    }
+
+    &:focus > .header__avatar,
+    &:hover > .header__avatar {
+      border: 2px solid $accentColor;
+    }
+  }
+
+  &__popup-button {
+    cursor: pointer;
+  }
+
+  &__button-image {
+    display: block;
+    height: 1.5em;
+    border-radius: 50%;
+    border: 2px solid $contrastColor;
+  }
+
+  &__checkbox {
+    position: absolute;
+    appearance: none;
+
+    &:focus + .header__popup-button > .header__button-image,
+    &:hover + .header__popup-button > .header__button-image {
+      background-color: $mainColor;
+    }
+
+    &:checked + .header__popup-button > .header__button-image {
+      border: 2px solid $accentColor;
+    }
+
+    &:checked ~ .popup {
+      display: flex;
+    }
+  }
+
+  &__bell {
+    display: block;
+    box-sizing: border-box;
+    height: 1.5em;
+    padding: .2em;
+    border-radius: 50%;
+  }
+
+  &__avatar {
+    display: block;
+    height: 2em;
+    border-radius: 50%;
+    border: 2px solid $contrastColor;
+    background-color: $mainColor;
+  }
+}
+
+.popup {
+  display: none;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 3.3em;
+  right: 3vw;
+  width: 94vw;
+  height: 14em;
+  padding: 0;
+  overflow: hidden;
+  overflow: auto;
+  background-color: $contrastColor;
+
+  @media (min-width: $xs) {
+    right: 5.25em;
+    width: 12em;
+  }
+
+  @media (min-height: $xxs) {
+    height: 30em;
+  }
+
+  @media (min-height: $xxs) and (min-width: $xs){
+    height: 18em;
+  }
+
+  &__item {
+    flex: 0 0 33.33%;
+    list-style: none;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    height: 3em;
+    color: $mainTextColor;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      outline: none;
+    }
+
+    &:hover > .popup__caption,
+    &:focus > .popup__caption {
+      background-color: $mainColor;
+    }
+
+    @media (min-height: $xxs) {
+      height: 7em;
+    }
+
+    @media (min-height: $xxs) and (min-width: $xs){
+      height: 4em;
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 100%;    
+    height: 4em;
+    box-sizing: border-box;
+    padding: .5em;
+    object-position: center;
+    object-fit: contain;
+
+    @media (min-width: $xs) {
+      height: 2.0em;
+    }
+
+    @media (min-height: $xxs) and (min-width: $xs){
+      height: 2.6em;
+    }
+  }
+
+  &__caption {
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+
+    @media (min-width: $xs) {
+      font-size: .6em;
+    }
+
+    @media (min-height: $xxs) {
+      margin: .5em 0;
+    }
+  }
+
+  &__more {
+    flex: 0 0 100%;
+  }
+
+  &__more-caption {
+    margin: 0;
+    background-color: $accentContrastColor;
+    text-align: center;
+    line-height: 2em;
+    font-weight: bold;
+  }
+
+  &__more-list {
+    flex: 0 0 100%;
+    display: none;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  &__more-label {
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    position: absolute;
+    appearance: none;
+
+    &:focus + .popup__more-label > .popup__more-caption,
+    &:hover + .popup__more-label > .popup__more-caption {
+      background-color: $mainColor;
+    }
+
+    &:checked {
+      display: none;
+    }
+
+    &:checked + .popup__more-label {
+      display: none;
+    }
+
+    &:checked ~ .popup__more-list {
+      display: flex;
+    }
+  }
+}
+
+.main {
+  padding: 5em 3em 3em;
+  background: linear-gradient(to bottom right, $mainColor, #ffb6c1);
+
+  &__title {
+    margin: 0;
+    font-size: 3em;
+  }
+
+  &__text {
+    margin: 0.67em 0;
+    font-size: 1.5em;
+  }
+}
