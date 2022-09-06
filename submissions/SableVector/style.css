@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #f8f8f8;
+  color: rgb(237, 237, 237);
+  font-size: 16px;
+  line-height: 122.2222222222%;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  padding: 0 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 20px 0;
+  background-color: #348ccc;
+  text-align: center;
+}
+.header__title {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.page {
+  flex: 1 1 auto;
+}
+.page__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.page__sidebar {
+  flex: 0 0 360px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.page__book {
+  flex: 0 1 calc(100% - 380px);
+}
+
+.sidebar {
+  background-color: #42b0ff;
+}
+.sidebar__list {
+  padding: 10px 0;
+}
+
+.sidebar-list-item__button {
+  transition: all ease-in-out 0.3s;
+  padding: 12px 24px;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  line-height: 1.5em;
+}
+.sidebar-list-item__button::before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #21587e;
+  content: "";
+  transition: all ease-in-out 0.3s;
+}
+.sidebar-list-item__button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.sidebar-list-item__button:hover::before {
+  width: 100%;
+}
+
+.book {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #46697f;
+}
+.book__image {
+  flex: 0 0 200px;
+  width: 200px;
+  height: 305px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.book__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.book__description {
+  flex: 0 1 calc(100% - 220px);
+}
+
+.book-description__title {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 120%;
+}
+.book-description__title:not(:last-child) {
+  margin-bottom: 20px;
+}
+.book-description__table {
+  width: 100%;
+}
+.book-description__table:not(:last-child) {
+  margin-bottom: 20px;
+}
+.book-description__table > tbody {
+  width: 100%;
+  display: inline-block;
+}
+.book-description__table > tbody > tr {
+  display: flex;
+  align-items: flex-start;
+}
+.book-description__table > tbody > tr:not(:last-child) {
+  margin-bottom: 10px;
+}
+.book-description__table > tbody > tr > td:first-child {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 18px;
+  display: inline-block;
+  flex: 0 0 170px;
+}
+.book-description__table > tbody > tr > td:last-child {
+  flex: 0 0 calc(100% - 175px);
+}
+.book-description__text p + p {
+  margin-top: 10px;
+}
+
+.footer {
+  padding: 20px 0;
+  background-color: #21587e;
+  text-align: center;
+}
+.footer a {
+  text-decoration: none;
+  color: inherit;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 991.78px) {
+  .page {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+@media (max-width: 991.78px) {
+  .page__container {
+    display: block;
+  }
+  .page__book {
+    padding-top: 20px;
+  }
+  .sidebar__list {
+    overflow-x: auto;
+    display: flex;
+  }
+  .sidebar-list__item {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 767.78px) {
+  .book {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: block;
+  }
+  .book__image {
+    margin: 0 auto;
+  }
+  .book__image:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .book__description > *:not(:last-child) {
+    margin-bottom: 30px;
+  }
+  .book-description__text {
+    text-align: justify;
+  }
+  .book-description__title {
+    text-align: center;
+  }
+  .book-description__table > tbody > tr {
+    display: block;
+  }
+  .book-description__table > tbody > tr > td {
+    width: 100%;
+  }
+  .book-description__table > tbody > tr > td:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
