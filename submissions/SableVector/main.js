@@ -36,7 +36,7 @@ const books = [
         description: [
             `Американский Юг, на дворе 1960-е годы. Скитер только-только закончила университет и возвращается домой, в сонный городок Джексон, где никогда ничего не происходит. Она мечтает стать писательницей, вырваться в большой мир. Но приличной девушке с Юга не пристало тешиться столь глупыми иллюзиями, приличной девушке следует выйти замуж и хлопотать по дому. Мудрая Эйбилин на тридцать лет старше Скитер, она прислуживает в домах белых всю свою жизнь, вынянчила семнадцать детей и давно уже ничего не ждет от жизни, ибо сердце ее разбито после смерти единственного сына.`,
             `Минни — самая лучшая стряпуха во всем Джексоне, а еще она самая дерзкая служанка в городе. И острый язык не раз уже сослужил ей плохую службу. На одном месте Минни никогда подолгу не задерживается. Но с Минни лучше не связываться даже самым высокомерным белым дамочкам. Двух черных служанок и белую неопытную девушку объединяет одно — обостренное чувство справедливости и желание хоть как-то изменить порядок вещей. Смогут ли эти трое противостоять целому миру? Сумеют ли они выжить в этой борьбе?`,
-            `Экранизация романа "Прислуга" выйдет в российский прокат зимой 2012 года. Авторами сценария стали Кэтрин Стокетт и известный режиссер и сценарист Тэйт Тэйлор (одна из самых ярких его работ — сериал "Зачарованные"). Одним из продюсеров выступил культовый режиссер Крис Коламбус ("Один дома", фильмы о Гарри Поттере, "Перси Джексон и похититель молний").`
+            `Экранизация романа "Прислуга" выйдет в российский прокат зимой 2012 года. Авторами сценария стали Кэтрин Стокетт и известный режиссер и сценарист Тэйт Тэйлор.`
         ]
     },
     {
@@ -92,98 +92,104 @@ const books = [
     },
 ];
 
-// get element from the page
-const sidebarList = document.querySelector('.sidebar__list');
-const pageContainer = document.querySelector('.page__container');
+document.addEventListener('DOMContentLoaded', () => {
+    // get element from the page
+    const sidebar = document.querySelector('.sidebar');
+    const pageContainer = document.querySelector('.page__container');
 
+    // create buttons on the page
+    createButton(books);
 
-// create buttons on the page
-books.forEach(book => {
-    const { title } = book;
-
-    createButton(title);
-});
-
-// create first book on the page
-if (pageContainer.querySelector('.book')) {
-    removeBook();
-    createBook(books[0]);
-} else {
-    createBook(books[0]);
-}
-
-// create content on the page after clicking on the button
-sidebarList.addEventListener('click', function (e) {
-    const target = e.target;
-
-    if (target && target.closest('.sidebar-list-item__button')) {
-        e.preventDefault();
-        
-        // delete content
+    // create first book on the page
+    if (pageContainer.querySelector('.book')) {
         removeBook();
-
-        // create content
-        books.find(book => book.title === target.textContent ? createBook(book) : null);
+        createBook(books[0]);
+    } else {
+        createBook(books[0]);
     }
+
+    // create content on the page after clicking on the button
+    sidebar.addEventListener('click', function (e) {
+        const target = e.target;
+
+        if (target && target.closest('.sidebar-list-item__button')) {
+            e.preventDefault();
+
+            // delete content
+            removeBook();
+
+            // create content
+            books.find(book => book.title === target.textContent ? createBook(book) : null);
+        }
+    });
+
+    function removeBook() {
+        pageContainer.querySelector('.book').remove();
+    }
+
+    function createButton(arr) {
+        const element = document.createElement('ul');
+        element.classList.add('sidebar__list');
+
+        let listItems = '';
+
+        arr.forEach(item => {
+            const { title } = item;
+
+            listItems += `<li class="sidebar-list__item">
+                            <button class="sidebar-list-item__button">${title}</button>
+                        </li>`;
+        });
+
+        element.innerHTML = listItems;
+
+        sidebar.appendChild(element);
+    }
+
+    function createBook(book) {
+        const { image, title, author, year, publisher, language, rating, description } = book;
+        const element = document.createElement('section');
+
+        element.classList.add('book', 'page__book');
+
+        element.innerHTML = `
+            <div class="book__image">
+                <img src="./image/${image}" alt="обложка книги ${title}" title="" />
+            </div>
+            <div class="book__description">
+                <h2 class="book-description__title">${title}</h2>
+
+                <table class="book-description__table">
+                    <tbody>
+                        <tr>
+                            <td>Автор:</td>
+                            <td>${author}</td>
+                        </tr>
+                        <tr>
+                            <td>Год издания:</td>
+                            <td>${year}</td>
+                        </tr>
+                        <tr>
+                            <td>Издательство:</td>
+                            <td>${publisher}</td>
+                        </tr>
+                        <tr>
+                            <td>Язык:</td>
+                            <td>${language}</td>
+                        </tr>
+                        <tr>
+                            <td>Рейтинг:</td>
+                            <td>${rating}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="book-description__text">
+                    ${description};
+                </div>
+            </div>`
+
+        pageContainer.appendChild(element);
+    };
+
 });
-
-
-function removeBook() {
-    pageContainer.querySelector('.book').remove();
-}
-
-function createButton(name) {
-    const element = document.createElement('li');
-    element.classList.add('sidebar-list__item');
-    element.innerHTML = `
-        <button class="sidebar-list-item__button">${name}</button>
-    `;
-    sidebarList.appendChild(element);
-}
-
-function createBook(book) {
-    const { image, title, author, year, publisher, language, rating, description } = book;
-    const element = document.createElement('section');
-
-    element.classList.add('book', 'page__book');
-
-    element.innerHTML = `
-    <div class="book__image">
-        <img src="./image/${image}" alt="обложка книги ${title}" title="" />
-    </div>
-    <div class="book__description">
-        <h2 class="book-description__title">${title}</h2>
-
-        <table class="book-description__table">
-            <tbody>
-                <tr>
-                    <td>Автор:</td>
-                    <td>${author}</td>
-                </tr>
-                <tr>
-                    <td>Год издания:</td>
-                    <td>${year}</td>
-                </tr>
-                <tr>
-                    <td>Издательство:</td>
-                    <td>${publisher}</td>
-                </tr>
-                <tr>
-                    <td>Язык:</td>
-                    <td>${language}</td>
-                </tr>
-                <tr>
-                    <td>Рейтинг:</td>
-                    <td>${rating}</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="book-description__text">
-            ${description};
-        </div>
-    </div>`
-
-    pageContainer.appendChild(element);
-};
-
