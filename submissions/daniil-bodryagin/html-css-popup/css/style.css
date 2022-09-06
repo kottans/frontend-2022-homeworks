@@ -258,6 +258,7 @@ body {
 }
 
 .popup__more-caption {
+  display: block;
   margin: 0;
   background-color: #fcc87c;
   text-align: center;
