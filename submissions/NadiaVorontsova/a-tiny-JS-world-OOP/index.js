@@ -14,8 +14,13 @@ class Inhabitant {
       this.friend = friend || 'no friend:(';
    }
    printInhabitant() {
-      return `I am a <strong>${this.species}</strong>; My name is <strong>${this.name}</strong>; I am a <strong>${this.gender}</strong>;
-      I say: <strong>'${this.saying}'</strong>; My friends: <strong>${this.friend}</strong>`;
+      return [
+         "I am a <strong>" + this.species + "</strong>",
+         "My name is <strong>" + this.name + "</strong>",
+         "I am a <strong>" + this.gender + "</strong>",
+         "I say: <strong>" + this.saying + "</strong>",
+         "My friends: <strong>" + this.friend + "</strong>",
+      ].join("; ");
    }
 }
 
@@ -31,14 +36,14 @@ class Human extends Inhabitant {
 }
 
 class Man extends Human {
-   constructor(name, gender, friend) {
-      super(name, gender, 'Hello everybody!', friend);
+   constructor(name, friend) {
+      super(name, 'male', 'Hello everybody!', friend);
    }
 }
 
 class Woman extends Human {
-   constructor(name, gender, friend) {
-      super(name, gender, 'Hello my friend!', friend);
+   constructor(name, friend) {
+      super(name, 'female', 'Hello my friend!', friend);
    }
 }
 
@@ -80,12 +85,12 @@ mainBlock.appendChild(outputElement);
 
 const dog = new Dog('Ben', 'male');
 const cat = new Cat('Sarah', 'female', 'Halle Berry');
-const man = new Man('Yura', 'male', 'Oksana');
-const woman = new Woman('Oksana', 'female', 'Yura');
+const man = new Man('Yura', 'Oksana');
+const woman = new Woman('Oksana', 'Yura');
 const catWoman = new CatWoman('Halle Berry', 'female', 'Sarah');
 
 const animals = [dog, cat, catWoman];
-animals.map(animal => outputElement.insertAdjacentHTML('beforeend',animal.printAnimal()+'<br>'));
+animals.map(animal => outputElement.insertAdjacentHTML('beforeend', animal.printAnimal() + '<br>'));
 
 const people = [man, woman];
-people.map(human => outputElement.insertAdjacentHTML('beforeend',human.printHuman()+'<br>'));
+people.map(human => outputElement.insertAdjacentHTML('beforeend', human.printHuman() + '<br>'));
