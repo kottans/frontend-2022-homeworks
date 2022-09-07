@@ -31,7 +31,7 @@ let clickCounter = 0;
 
     const popupBtn = document.createElement('span');
     popupBtn.classList.add('popup__btn');
-    popupBtn.textContent = 'Starn Game';
+    popupBtn.textContent = 'Start Game';
     popup.append(popupBtn);
 
     addEventListenerToPopupBtn();
@@ -55,7 +55,7 @@ function finishTheGame() {
 
     const popupBtn = document.createElement('span');
     popupBtn.classList.add('popup__btn');
-    popupBtn.textContent = 'Starn New Game';
+    popupBtn.textContent = 'Start New Game';
     popup.append(popupBtn);
 
     addEventListenerToPopupBtn();
@@ -63,7 +63,7 @@ function finishTheGame() {
 
 function addEventListenerToPopupBtn() {
     mainPopupBtn = document.querySelector('.popup__btn');
-    mainPopupBtn.addEventListener('click', initializeGame);
+    mainPopupBtn.addEventListener('mouseup', initializeGame);
 }
 
 function getShuffledArray(arr) {
@@ -122,10 +122,6 @@ function addCardToBoard(card) {
     frontsideBlock.append(frontsideTitle);
 }
 
-function updateDisplay() {
-    console.log(clickCounter);
-}
-
 function checkForMatch() {
     const isMatch = firstCard.dataset.civilization === secondCard.dataset.civilization;
 
@@ -140,8 +136,8 @@ function checkForMatch() {
 }
 
 function disableCards() {
-    firstCard.removeEventListener('click', flipCards);
-    secondCard.removeEventListener('click', flipCards);
+    firstCard.removeEventListener('mouseup', flipCards);
+    secondCard.removeEventListener('mouseup', flipCards);
 
     resetBoard();
 }
@@ -171,7 +167,6 @@ function flipCards() {
     if (lockBoard) return;
 
     clickCounter++;
-    updateDisplay();
 
     if (this === firstCard) return;
 
@@ -212,5 +207,5 @@ function initializeGame() {
     }
 
     const memoryCards = document.querySelectorAll('.memory-card');
-    memoryCards.forEach(card => card.addEventListener('click', flipCards));
+    memoryCards.forEach(card => card.addEventListener('mouseup', flipCards));
 }
