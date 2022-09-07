@@ -35,48 +35,57 @@ const sideMenuContent = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
 ];
+const defaultMenuId=1;
 
-document.addEventListener('DOMContentLoaded', function() {
-  let menuItems = document.querySelectorAll(".side-menu_item");
-  function renderContent(menuId) {
-    let menuContent = document.querySelector(".side-menu_content");
-    let pageContent = document.querySelector(".content .content-wrapper");
-    let pageTitle = document.createElement('h1');
-    pageTitle.classList.add("content-title");
-    let pageDescription = document.createElement('p');
-    pageDescription.classList.add("content-description");
-    const { id, img, title, content } = sideMenuContent.find(
-      ({ id }) => id === menuId
-    );
-    pageContent.innerHTML="";
-    menuContent.style.backgroundImage= `url(${img})`;
-    pageTitle.innerHTML=title;
-    pageDescription.innerHTML=content;
-    pageContent.append(pageTitle);
-    pageContent.append(pageDescription);
+function renderContent(menuId) {
+  const menuContent = document.querySelector(".side-menu_content");
+  const pageContent = document.querySelector(".content .content-wrapper");
+  const pageTitle = document.createElement("h1");
+  pageTitle.classList.add("content-title");
+  const pageDescription = document.createElement("p");
+  pageDescription.classList.add("content-description");
+  const { id, img, title, content } = sideMenuContent.find(
+    ({ id }) => id === menuId
+  );
+  pageContent.innerHTML = "";
+  menuContent.style.backgroundImage = `url(${img})`;
+  pageTitle.innerHTML = title;
+  pageDescription.innerHTML = content;
+  pageContent.append(pageTitle);
+  pageContent.append(pageDescription);
+}
 
-  }
-  function clearActive() {
-    menuItems.forEach(menuItem => {
-      menuItem.classList.remove("active");
-    });
-  }
-
-  menuItems.forEach(menuItem => {
-    menuItem.addEventListener('click', function (e) {
-      let menuItemId = Number(e.currentTarget.dataset.id);
-      clearActive();
-      e.currentTarget.classList.add("active");
-      renderContent(menuItemId);
-    });
-    menuItem.addEventListener('keydown', function (e) {
-      if (e.keyCode == 32) {
-        let menuItemId = Number(e.currentTarget.dataset.id);
-        clearActive();
-        e.currentTarget.classList.add("active");
-        renderContent(menuItemId);
-      }
-    });
+function clearActive() {
+  const menuItems = document.querySelectorAll(".side-menu_item");
+  menuItems.forEach((menuItem) => {
+    menuItem.classList.remove("active");
   });
-  renderContent(1);
+}
+
+function addActive(menuItem) {
+  if (menuItem.classList.contains("side-menu_item")) {
+    const menuItemId = Number(menuItem.dataset.id);
+    clearActive();
+    menuItem.classList.add("active");
+    renderContent(menuItemId);
+  }
+}
+
+function initMenuEventListener() {
+  const menuItemList = document.querySelector(".side-menu_nav");
+  menuItemList.addEventListener("click", function (e) {
+    const menuItem = e.target;
+    addActive(menuItem);
+  });
+  menuItemList.addEventListener("keydown", function (e) {
+    const menuItem = e.target;
+    if (e.keyCode == 32) {
+      addActive(menuItem);
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  initMenuEventListener();
+  renderContent(defaultMenuId);
 });
