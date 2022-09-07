@@ -77,11 +77,8 @@ const inhabitantsProps = [
   "saying",
 ];
 
-inhabitants.forEach((inhabitant) =>
-  print(
-    inhabitantsProps.reduce(
-      (accum, prop) => accum.concat(inhabitant[prop], "; "),
-      ""
-    )
+inhabitants
+  .map((inhabitant) =>
+    inhabitantsProps.map((prop) => inhabitant[prop]).join("; ")
   )
-);
+  .forEach((inhabitant) => print(inhabitant));
