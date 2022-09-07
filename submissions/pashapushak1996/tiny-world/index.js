@@ -34,22 +34,13 @@ const man = {
     hands: 2,
 };
 
-const arrayOfInhabitants = [dog, cat, woman, man];
+const inhabitants = [dog, cat, woman, man];
 
-const arrayOfKeys = ['species', 'name', 'gender', 'greeting', 'legs', 'hands'];
+const inhabitantKeys = ['species', 'name', 'gender', 'greeting', 'legs', 'hands'];
 
-const pullValuesOfObj = (obj) => {
-    const array = [];
+const inhabitantValuesToString = (inhabitant) =>
+    inhabitantKeys
+        .map((inhabitantKey) => inhabitant[inhabitantKey])
+        .join('; ') + ';';
 
-    arrayOfKeys.forEach((key) => array.push(obj[key]));
-
-    return array;
-};
-
-arrayOfInhabitants.forEach((inhabitant,) => {
-    const arrayOfValues = pullValuesOfObj(inhabitant);
-
-    const stringToPrint = arrayOfValues.join('; ') + ' ;';
-
-    print(stringToPrint);
-});
+inhabitants.forEach((inhabitant) => print(inhabitantValuesToString(inhabitant)));
