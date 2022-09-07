@@ -69,8 +69,6 @@ function flip(cardId) {
 }
 
 function clickCard(event) {
-  console.log("click");
-
   if (lockGameProgress) {
     return;
   }
@@ -86,7 +84,6 @@ function clickCard(event) {
   const currentCardId = Array.from(
     event.target.parentElement.parentElement.parentElement.children
   ).indexOf(event.target.parentElement.parentElement);
-  console.log(currentCardId);
 
   if (isSecondCard) {
     flip(currentCardId);
@@ -99,8 +96,6 @@ function clickCard(event) {
       setTimeout(flipBack, 800);
     }
   } else {
-    console.log("first click");
-
     isSecondCard = true;
     firstCardID = currentCardId;
     flip(currentCardId);
