@@ -1,7 +1,33 @@
+let cardSprites = [
+  {
+      id: 'spite-01',
+      src: 'img/01.webp',
+  },
+  {
+      id: 'spite-02',
+      src: 'img/02.webp',
+  },
+  {
+      id: 'spite-03',
+      src: 'img/03.webp',
+  },
+  {
+      id: 'spite-04',
+      src: 'img/04.webp',
+  },
+  {
+      id: 'spite-05',
+      src: 'img/05.webp',
+  },
+  {
+      id: 'spite-06',
+      src: 'img/06.webp',
+  },
+];
+
 let stopGame = false;
 let foundedPairs = 0;
 let flippedCardsArr = [];
-let cardsItems = '';
 let min = 0;
 let sec = 0;
 
@@ -16,6 +42,7 @@ const gameStartButton = document.querySelector('#game-start-button');
 const restartBtnModal = document.createElement('button');
 restartBtnModal.innerHTML = 'Restart';
 restartBtnModal.classList.add('restart-btn-modal');
+const restartButton = document.querySelector('#restart-btn');
 
 const timerMin = document.querySelector('#timerMin');
 const timerSec = document.querySelector('#timerSec');
@@ -23,11 +50,11 @@ const timerSec = document.querySelector('#timerSec');
 function hideMenu() {
   body.classList.add('menu-close');
   gameMenu.classList.add('game-menu__hide');
-  setTimeout(countGameTime, 1000)
-  
+  setTimeout(countGameTime, 1000);
 }
 
 gameStartButton.addEventListener('click', hideMenu);
+
 restartBtnModal.addEventListener('click', () => {
   restartingGame();
   timerSec.innerHTML = `00`;
@@ -60,8 +87,12 @@ function countGameTime() {
   }
 }
 
-const restartButton = document.querySelector('#restart-btn');
-restartButton.addEventListener('click', restartingGame);
+
+restartButton.addEventListener('click', () => {
+  timerSec.innerHTML = `00`;
+  timerMin.innerHTML = `00`;
+  setTimeout(restartingGame(), 5000);
+});
 
 function restartingGame() {
   foundedPairs = 0;
@@ -71,45 +102,7 @@ function restartingGame() {
   stopGame = false;
 
   createCardDeck();
-}
-
-let cardSprites = [
-    {
-        id: 'spite-01',
-        src: 'img/01.webp',
-    },
-    {
-        id: 'spite-02',
-        src: 'img/02.webp',
-    },
-    {
-        id: 'spite-03',
-        src: 'img/03.webp',
-    },
-    {
-        id: 'spite-04',
-        src: 'img/04.webp',
-    },
-    {
-        id: 'spite-05',
-        src: 'img/05.webp',
-    },
-    {
-        id: 'spite-06',
-        src: 'img/06.webp',
-    },
-];
-
-function createCard(card) {
-    return `
-    <li>
-        <div class='flip-container' data-sprite-id='${card.id}'>
-            <div class='flipper'>
-                <div class='front'></div>
-                <div class='back'><img src='${card.src}'></div>
-            </div>
-        </div>
-    </li>`;
+  
 }
 
 cardSprites = [...cardSprites, ...cardSprites];
@@ -119,17 +112,23 @@ function shuffleCards(cards) {
 }
 
 function createCards() {
-  cardSprites.forEach((sprite) => {
-    cardsItems += createCard(sprite);
-  });
+  return cardSprites.reduce((accumulator, currentSprite) => {
+    return accumulator += `
+    <li>
+        <div class='flip-container' data-sprite-id='${currentSprite.id}'>
+            <div class='flipper'>
+                <div class='front'></div>
+                <div class='back'><img src='${currentSprite.src}'></div>
+            </div>
+        </div>
+    </li>`;
+  }, '');
 }
 
 function createCardDeck() {
   gameList.innerHTML = '';
   shuffleCards(cardSprites);
-  cardsItems = '';
-  createCards();
-  gameList.innerHTML = cardsItems;
+  gameList.innerHTML = createCards();
 }
 
 createCardDeck();
@@ -157,12 +156,7 @@ function compareCards() {
   const firstCardID = flippedCardsArr[0].dataset.spriteId;
   const secondCardID = flippedCardsArr[1].dataset.spriteId;
 
-  if (firstCardID === secondCardID) {
-    hideMatchingCards();
-  } else {
-    hideUnmatchingCards();
-  }
-
+  return (firstCardID === secondCardID) ? hideMatchingCards() : hideUnmatchingCards();
 }
 
 function hideCards(cardsArr) {
@@ -205,5 +199,5 @@ function showWinMessage() {
     gameStartButton.remove()
 
     gameMenu.classList.remove('game-menu__hide');
-  }, 1000);
+  }, 600);
 }
