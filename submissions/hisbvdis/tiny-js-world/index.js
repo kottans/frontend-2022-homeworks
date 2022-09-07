@@ -68,8 +68,20 @@ catWoman.hands = 2;
    */
 
 const inhabitants = [dog, cat, woman, man, catWoman];
+const inhabitantsProps = [
+  "species",
+  "name",
+  "gender",
+  "legs",
+  "hands",
+  "saying",
+];
 
-inhabitants
-  .map((habitant) => Object.values(habitant))
-  .map((array) => array.join("; "))
-  .forEach((string) => print(string));
+inhabitants.forEach((inhabitant) =>
+  print(
+    inhabitantsProps.reduce(
+      (accum, prop) => accum.concat(inhabitant[prop], "; "),
+      ""
+    )
+  )
+);
