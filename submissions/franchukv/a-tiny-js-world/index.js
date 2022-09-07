@@ -64,14 +64,6 @@ const catwoman = {
 const inhabitants = [man, woman, dog, cat, catwoman];
 const properties = ['species', 'gender', 'name', 'status', 'hands', 'feets', 'saying', 'friends'];
 
-function objectToString(habitant) {
-   let temporaryArray = [];
-
-   properties.forEach((property) => {
-      temporaryArray.push(habitant[property]);
-   })
-
-   return temporaryArray.join('; ');
-}
-
-inhabitants.map((habitant) => { print(objectToString(habitant)) });
+inhabitants.forEach((habitant) => {
+   print(properties.map((property) => habitant[property]).join('; '));
+})
