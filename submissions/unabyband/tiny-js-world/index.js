@@ -75,22 +75,16 @@ const inhabitants = [
     print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
     */
  
- // var test = man;
- // test.saying = "<h2>Where's the money, Lebowski?</h2>";
+//  var test = man;
+//  test.saying = "<h2>Where's the money, Lebowski?</h2>";
  
- function printInhabitants(inhabitant) {
-   print(
-     [
-       inhabitant.species,
-       "<strong>" + inhabitant.name + "</strong>",
-       inhabitant.gender,
-       inhabitant.legs,
-       inhabitant.hands,
-       "<em>" + inhabitant.saying + "</em>",
-       inhabitant.friends,
-     ].join("; ")
-   );
+ function printInhabitant(inhabitant) {
+  let str = "";
+  for (param in inhabitant) {
+    str += inhabitant[param] + '; ';
+  }
+  print (str);
  }
  
- inhabitants.forEach((resident) => printInhabitants(resident));
+ inhabitants.forEach((resident) => printInhabitant(resident));
  
