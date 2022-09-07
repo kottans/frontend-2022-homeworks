@@ -103,11 +103,19 @@ Player.prototype.reset = function () {
 
 const player = new Player(field);
 
-const allEnemies = [
-  new Enemy(field, -100, 60, 200, player),
-  new Enemy(field, -100, 140, 250, player),
-  new Enemy(field, -100, 225, 300, player),
-];
+const generateRandomEnemies = (count) => {
+  return Array(count)
+    .fill()
+    .map((_, i) => {
+      const getRandom = (min, max) => Math.round(min - 0.5 + Math.random() * (max - min + 1));
+      const randomX = [-100, -200, -300][i <= 2 ? i : getRandom(0, 2)];
+      const randomY = [60, 140, 225][i <= 2 ? i : getRandom(0, 2)];
+      const randomSpeed = [200, 300, 400][i <= 2 ? i : getRandom(0, 2)];
+      return new Enemy(field, randomX, randomY, randomSpeed, player);
+    });
+}
+
+const allEnemies = generateRandomEnemies(3);
 
 document.addEventListener("keydown", (evt) => {
   const allowedCodes = {
