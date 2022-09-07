@@ -30,8 +30,13 @@ class Human extends Inhabitant {
       this.legs = 2;
       this.hands = 2;
    }
-   printHuman() {
-      return `${this.printInhabitant()}; I have <strong>${this.hands} hands</strong> and <strong>${this.legs} legs</strong>;`;
+   printInhabitant() {
+      return [
+         super.printInhabitant(),
+         "I have <strong>" + this.hands +
+         "hands</strong> and <strong>" + 
+         this.legs + "legs</strong>"
+      ].join("; ");
    }
 }
 
@@ -53,8 +58,13 @@ class Animal extends Inhabitant {
       this.paws = 4;
       this.tail = 1;
    }
-   printAnimal() {
-      return `${this.printInhabitant()}; I have <strong>${this.paws} paws</strong> and <strong>${this.tail} tail</strong>;`;
+   printInhabitant() {
+      return [
+         super.printInhabitant(),
+         "I have <strong>"+ this.paws + 
+         "paws</strong> and <strong>" + 
+         this.tail + "tail</strong>"
+      ].join("; ");
    }
 }
 
@@ -89,8 +99,5 @@ const man = new Man('Yura', 'Oksana');
 const woman = new Woman('Oksana', 'Yura');
 const catWoman = new CatWoman('Halle Berry', 'female', 'Sarah');
 
-const animals = [dog, cat, catWoman];
-animals.map(animal => outputElement.insertAdjacentHTML('beforeend', animal.printAnimal() + '<br>'));
-
-const people = [man, woman];
-people.map(human => outputElement.insertAdjacentHTML('beforeend', human.printHuman() + '<br>'));
+const inhabitants = [man, woman, dog, cat, catWoman];
+inhabitants.map(inhabitant => outputElement.insertAdjacentHTML('beforeend', inhabitant.printInhabitant() + '<br>'));
