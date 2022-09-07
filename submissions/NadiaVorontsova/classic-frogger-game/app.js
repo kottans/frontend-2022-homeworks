@@ -1,5 +1,7 @@
 const START_PLAYER_POSITION_X = 200,
     START_PLAYER_POSITION_Y = 390,
+    PLAYER_MAX_SPEED = 200,
+    PLAYER_MIN_SPEED = 80,
     CELL_WIDTH = 83,
     CELL_HEIGHT = 101,
     START_X = 0,
@@ -8,7 +10,7 @@ const START_PLAYER_POSITION_X = 200,
     BOTTOM_WALL = 350,
     CHAR_BOY = 55,
     ENEMY = 40;
-    
+
 let countScore = 0;
 const scopeElement = document.createElement('div');
 scopeElement.style.cssText = 'font-size:25px; padding-top:20px; margin-bottom:-20px';
@@ -64,7 +66,7 @@ const Enemy = function (x, y, player) {
     this.x = x;
     this.y = y;
     this.player = player;
-    this.speed = Math.random() * 200 + 80;
+    this.speed = Math.random() * PLAYER_MAX_SPEED + PLAYER_MIN_SPEED;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -97,10 +99,10 @@ const allEnemies = [];
 function createEnemies() {
     const positionY = [
         CELL_HEIGHT - ENEMY,
-        CELL_HEIGHT * 1.8 - ENEMY, 
+        CELL_HEIGHT * 1.8 - ENEMY,
         CELL_HEIGHT * 2.6 - ENEMY
     ];
-    positionY.map((y)=>{
+    positionY.map((y) => {
         allEnemies.push(new Enemy(START_X, y, player));
     });
 };
