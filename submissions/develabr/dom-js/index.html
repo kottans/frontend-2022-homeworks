@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Object Model</title>
+    <link rel="stylesheet" href="./app.css" />
+  </head>
+  <body>
+    <div class="mobile-menu" id="mobile-menu">
+      <span class="line"></span>
+    </div>
+    <div class="container">
+      <nav class="navbar" id="navbar">
+        <header class="navbar-header">Міста України</header>
+        <ul class="navbar-list">
+          <li class="navbar-list-item">
+            <button class="navbar-link" data-city="kyiv">Київ</button>
+          </li>
+          <li class="navbar-list-item">
+            <button class="navbar-link" data-city="lviv">Львів</button>
+          </li>
+          <li class="navbar-list-item">
+            <button class="navbar-link" data-city="mykolaiv">Миколаїв</button>
+          </li>
+          <li class="navbar-list-item">
+            <button class="navbar-link" data-city="odesa">Одеса</button>
+          </li>
+          <li class="navbar-list-item">
+            <button class="navbar-link" data-city="ternopil">Тернопіль</button>
+          </li>
+          <li class="navbar-list-item">
+            <button class="navbar-link" data-city="kharkiv">Харків</button>
+          </li>
+          <li class="navbar-list-item">
+            <button class="navbar-link" data-city="kherson">Херсон</button>
+          </li>
+          <li class="navbar-list-item">
+            <button class="navbar-link" data-city="chernivtsi">Чернівці</button>
+          </li>
+        </ul>
+      </nav>
+      <main class="main" id="main-doc"></main>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
