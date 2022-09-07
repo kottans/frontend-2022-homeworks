@@ -1,6 +1,8 @@
 const Field = function() {
   this.width = 400;
   this.height = 375;
+  this.cellWidth = 100;
+  this.cellHeight = 80;
 }
 
 const field = new Field();
@@ -73,20 +75,20 @@ Player.prototype.render = function () {
 
 Player.prototype.handleInput = function (key) {
   const actions = {
-    up: () => this.y -= 80,
+    up: () => this.y -= this.field.cellHeight,
     down: () => {
       if (this.y < this.field.height) {
-        this.y += 80
+        this.y += this.field.cellHeight
       }
     },
     left: () => {
       if (this.x > 0) {
-        this.x -= 100
+        this.x -= this.field.cellWidth;
       }
     },
     right: () => {
       if (this.x < this.field.width) {
-        this.x += 100
+        this.x += this.field.cellWidth;
       }
     },
   };
