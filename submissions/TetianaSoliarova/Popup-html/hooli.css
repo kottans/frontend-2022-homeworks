@@ -1,0 +1,179 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+.nav-icon{
+  margin-right: 20px;
+  width: 52px;
+  list-style-type: none;
+  display: block;
+  
+}
+.nav-icon:hover{
+  border: 1px solid blue;
+}
+.nav-icon :focus{
+  border: 1px solid black;
+}
+a{
+  padding: 5px;
+    margin: 0px;
+    text-decoration: none;
+    color: black;
+}
+.nav-menu{
+  display: inline-flex;
+    
+}
+.popup{
+    padding: 20px;
+    margin: 5px;
+    position: relative;
+    top: 10%;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    
+    justify-content: end;
+}
+.check-btn::before{
+    content: " ";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    display: block;
+    background-image: url(./PopupIcons/popup-button.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+    
+    
+}
+.check-box{
+    display: none;
+}
+.check-box:checked ~ .check-form{
+ top: 60px;
+}
+.check-form{
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+
+    width: 400px;
+    height: 340px;
+    right: 350px;
+    box-shadow: #666666;
+    display: block;
+    position: relative;
+    top: -9999px;
+    box-shadow: 5px 5px 5px 5px rgba(5, 1, 1, 0.1);
+}
+.list{
+
+    padding: 0px;
+    list-style-type: none;
+    background-color: rgb(250, 246, 246);
+    z-index: 55;
+    display: grid;
+    width: 400px;
+    
+    row-gap: 20px;
+    column-gap: 20px;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: repeat(1,1fr);;
+    justify-content:center;
+    align-content:space-around;
+    
+   
+}
+.popup_menu{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100px;    
+}
+
+.popup_menu:hover{ 
+  
+   border: 1px solid rgb(190, 185, 185);
+}
+.popup_menu :focus{
+  
+     border: 1px solid black; 
+ }
+.popup_menu img{
+  
+    max-width: 80px;
+    height: 70px;
+}
+.btn_more { 
+    display: none; 
+
+} 
+.check-button:checked ~ #demo { 
+    display: block; 
+}
+.check-label {
+  display: block;
+  position: relative;
+  padding: 15px 200px 15px 140px;
+  border: 2px solid rgb(150, 147, 142);
+  color: rgb(29, 28, 28);
+  background-color: rgb(250, 246, 246);
+  box-shadow: 0px 0 20px rgba(0, 0, 0, .2);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .2s, box-shadow .2s;
+}
+.check-label::before {
+  content: 'MORE';
+  display: block;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 170px;
+  width: 32px;
+  transition: background-color .2s;
+}
+.check-button:checked + .check-label::before {
+  content: 'HIDE ';
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 170px;
+  bottom: 10px;
+  width: 32px;
+  transition: background-color .2s;
+}
+.check-button{
+    display: none;
+}
+.list-more{
+    padding-right: 100px;
+    list-style-type: none;
+    background-color: rgb(250, 246, 246);
+    z-index: 55;
+    display: grid;
+    width: 400px;
+    
+    row-gap: 20px;
+    column-gap: 20px;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: repeat(1,1fr);;
+    justify-content:center;
+    align-content:space-around;
+    
+   
+}
+
+/*.check-box::before:checked + .check-style{
+    border: 2px solid aqua;
+}
+.check-box::before:focus + .check-style{
+   border: 2px solid rgb(39, 43, 43); 
+}*/
