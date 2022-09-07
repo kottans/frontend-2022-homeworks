@@ -50,8 +50,8 @@ function renderMain(planetId = null) {
     planetsList.classList.add("planetsList");
 
     data.forEach(({ name, imgUrl }) => {
-      const item = document.createElement("li");
-      item.classList.add("planetsList__item");
+      const planetsItem = document.createElement("li");
+      planetsItem.classList.add("planetsList__item");
 
       const img = document.createElement("img");
       img.classList.add("planetsList__img");
@@ -60,8 +60,8 @@ function renderMain(planetId = null) {
       img.height = "150";
       img.alt = name;
 
-      item.append(img);
-      planetsList.append(item);
+      planetsItem.append(img);
+      planetsList.append(planetsItem);
     });
 
     mainContent.append(planetsList);
