@@ -1,6 +1,6 @@
 // Enemy
 
-var Enemy = class Enemy {
+let Enemy = class Enemy {
     constructor(speed, x, y) {
         this.x = x;
         this.y = y;
@@ -30,7 +30,7 @@ Enemy.prototype.render = function() {
 
 // Player
 
-var Player = class Player {
+let Player = class Player {
     constructor(x, y) {
         this.x = x;
         this.y = y;
