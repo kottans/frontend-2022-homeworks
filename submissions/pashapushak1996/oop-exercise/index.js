@@ -39,25 +39,17 @@ const cat = new Cat('Kitty', 'female', 'Meow!');
 const woman = new Human('Jessy', 'female', 'Hello!');
 const man = new Human('Ted', 'male', 'Hello my dear!');
 
-const arrayOfInhabitants = [dog, cat, woman, man];
+const inhabitants = [dog, cat, woman, man];
 
-const arrayOfKeys = ['species', 'name', 'gender', 'greeting', 'legs', 'hands', 'paws'];
+const inhabitantsKeys = ['species', 'name', 'gender', 'greeting', 'legs', 'hands', 'paws'];
 
-const pullValuesOfObj = (obj) => {
-    const array = [];
-
-    arrayOfKeys.forEach((key) => {
-        obj[key] && array.push(obj[key]);
-    });
-
-
-    return array;
+const inhabitantValuesToString = (inhabitant) => {
+    return inhabitantsKeys
+        .filter((key) => inhabitant[key])
+        .map((key) => inhabitant[key])
+        .join('; ') + ';';
 };
 
 arrayOfInhabitants.forEach((inhabitant,) => {
-    const arrayOfValues = pullValuesOfObj(inhabitant);
-
-    const stringToPrint = arrayOfValues.join('; ') + ' ;';
-
-    print(stringToPrint);
+    print(inhabitantValuesToString(inhabitant));
 });
