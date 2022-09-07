@@ -50,9 +50,11 @@ const inhabitants = [
    so code reviewers might focus on a single file that is index.js.
    */
 
-   const inhabProp = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
+   const inhabitantProperties = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
 
-   print(inhabitants.map(obj => inhabProp.map(elem => obj[elem]).join('; ')).join('\n'));
+   inhabitants.map(inhabitant => {
+      print(inhabitantProperties.map(property => inhabitant[property]).join('; '));
+   });
    
 /* Print examples:
    print('ABC');
