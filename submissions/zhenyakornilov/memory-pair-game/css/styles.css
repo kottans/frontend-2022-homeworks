@@ -66,6 +66,7 @@ button {
   background-color: #f0ebe3;
   width: 11.8rem;
   height: 13.6rem;
+  cursor: pointer;
 }
 
 .card-inner {
@@ -85,6 +86,7 @@ button {
   background-color: #fff;
   backface-visibility: hidden;
   position: absolute;
+  box-shadow: 0 1px 3px #7d9d9c;
 }
 
 .card-back {
@@ -104,7 +106,7 @@ button {
 }
 
 .game-card:hover .card-inner {
-  box-shadow: #7d9d9c 0px 5px 15px;
+  box-shadow: 0 5px 15px #7d9d9c;
 }
 
 .card-img {
