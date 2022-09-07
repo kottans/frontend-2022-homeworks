@@ -43,7 +43,7 @@ img {
 .container {
   display: block;
   background-image: url(img/grey_marble.jpg);
-  background-size: cover no-repeat;
+  background-size: 100%;
   width: 100%;
   min-height: 600px;
 }

@@ -1,8 +1,29 @@
 const burger = document.querySelector(".burger");
 const menu = document.querySelector(".menu");
 const menuWrapper = document.querySelector(".menu__wrapper");
-const menuList = document.querySelector(".menu__list_hidden");
+const menuList = document.createElement("ul");
+menuList.classList.add("menu__list", "menu__list_hidden");
+const menuClasses = menuList.classList;
 const contentBox = document.querySelector(".main__content");
+
+//CONTENT CONTAINER INNER PARTS
+
+const contentContainer = document.createElement("div");
+contentContainer.classList.add("content__container");
+const image = document.createElement("img");
+image.classList.add("content__image");
+const textWrapper = document.createElement("div");
+textWrapper.classList.add("content__text__wrapper");
+const name = document.createElement("h2");
+name.classList.add("content__title");
+const subTitle = document.createElement("h3");
+subTitle.classList.add("content__subtitle");
+const warcry = document.createElement("h4");
+warcry.classList.add("content__warcry");
+const description = document.createElement("p");
+description.classList.add("content__description");
+const mainLegion = document.createElement("h5");
+mainLegion.classList.add("content__main__legion");
 
 const greetings = {
   imgUrl: "img/Lorgar.jpg",
@@ -51,6 +72,11 @@ const content = [
   },
 ];
 
+makeFirstPage();
+makeMenu(content);
+burger.addEventListener("click", menuHandler);
+menuList.addEventListener("click", prepareLayoutById);
+
 function makeFirstPage() {
   const container = document.createElement("div");
   container.classList.add("first__page");
@@ -69,8 +95,6 @@ function makeFirstPage() {
   contentBox.append(container);
 }
 
-makeFirstPage();
-
 function makeMenu(content) {
   content.forEach((item) => {
     const menuItem = document.createElement("li");
@@ -86,20 +110,7 @@ function makeMenu(content) {
   menuWrapper.append(menuList);
 }
 
-makeMenu(content);
-
-burger.addEventListener("click", menuHandler);
-const menuClasses = menuList.classList;
-
 function menuHandler() {
-  function openMenu() {
-    menuClasses.remove("menu__list_hidden");
-  }
-
-  function closeMenu() {
-    menuClasses.add("menu__list_hidden");
-  }
-
   function closeMenuByTap(e) {
     if (!e.target.classList.contains("menu__item")) {
       menuClasses.add("menu__list_hidden");
@@ -107,69 +118,38 @@ function menuHandler() {
   }
 
   if (menuClasses.contains("menu__list_hidden")) {
-    openMenu();
+    menuClasses.remove("menu__list_hidden");
     contentBox.addEventListener("click", closeMenuByTap);
   } else {
-    closeMenu();
+    menuClasses.add("menu__list_hidden");
     contentBox.removeEventListener("click", closeMenuByTap);
   }
 }
 
-menuList.addEventListener("click", prepareLayoutById);
-
-function prepareLayoutById(e) {
+function prepareLayoutById({ target }) {
   menuHandler();
 
-  const contentId = getContentId();
+  const contentId = content.findIndex(
+    (item) => item.name === target.textContent
+  );
 
   prepareLayout(contentId);
 
-  function getContentId() {
-    let result;
-    content.forEach((item) => {
-      if (item.name === e.target.textContent) result = content.indexOf(item);
-    });
-    return result;
-  }
-
   function prepareLayout(contentId) {
-    if (contentId != undefined) {
-      const contentContainer = document.createElement("div");
-      contentContainer.classList.add("content__container");
+    
+    if (contentId === undefined) return;
 
-      const image = document.createElement("img");
-      image.classList.add("content__image");
-      image.setAttribute("srcset", content[contentId].imgUrl);
+    contentBox.innerHTML = "";
 
-      const textWrapper = document.createElement("div");
-      textWrapper.classList.add("content__text__wrapper");
+    image.setAttribute("srcset", content[contentId].imgUrl);
+    name.innerHTML = content[contentId].name;
+    subTitle.innerHTML = content[contentId].altName;
+    warcry.innerHTML = content[contentId].warCry;
+    description.innerHTML = content[contentId].descr;
+    mainLegion.innerHTML = content[contentId].mainLegion;
+    textWrapper.append(name, subTitle, warcry, description, mainLegion);
+    contentContainer.append(image, textWrapper);
 
-      const name = document.createElement("h2");
-      name.classList.add("content__title");
-      name.innerHTML = content[contentId].name;
-
-      const subTitle = document.createElement("h3");
-      subTitle.classList.add("content__subtitle");
-      subTitle.innerHTML = content[contentId].altName;
-
-      const warcry = document.createElement("h4");
-      warcry.classList.add("content__warcry");
-      warcry.innerHTML = content[contentId].warCry;
-
-      const description = document.createElement("p");
-      description.classList.add("content__description");
-      description.innerHTML = content[contentId].descr;
-
-      const mainLegion = document.createElement("h5");
-      mainLegion.classList.add("content__main__legion");
-      mainLegion.innerHTML = content[contentId].mainLegion;
-
-      textWrapper.append(name, subTitle, warcry, description, mainLegion);
-      contentContainer.append(image, textWrapper);
-
-      contentBox.innerHTML = "";
-
-      contentBox.append(contentContainer);
-    }
+    contentBox.append(contentContainer);
   }
 }
