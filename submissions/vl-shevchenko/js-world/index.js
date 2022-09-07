@@ -57,9 +57,10 @@ const man = {
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
-let arr = [dog, cat, woman, man];
-arr.forEach(function ({ species, name, gender, legs, hands, saying }) {
-   print(`${species}; <strong>${name}</strong>; ${gender}; ${legs}; ${hands}; <em>${saying}</em>`);
-});
+let population = [dog, cat, woman, man];
+let properties = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
 
+population.map((population) => {
+   print(properties.map((key) => population[key]).join('; '));
+});
 
