@@ -48,13 +48,13 @@ const catWoman = {
    friends: ['Batman','Tom']
 }
 const inhabitants = [dog, cat, man, woman, catWoman]
-const introduceInhabitants = (inhabitants) => {
-   const inhabitantValues = Object.values(inhabitants)
-   const inhabitant = inhabitantValues.map(item => Array.isArray(item) ? item.map(nestedItem => nestedItem).join(', ') : item).join('; ')
-   return inhabitant;
-}
-inhabitants.forEach((item) => {
-   print(introduceInhabitants(item))
-})
+
+function printInhabitant ({species, name, gender, legs, hands, saying, friends}) {
+
+   const inhabitant = [species, "<strong>" + name + "</strong>", gender, legs, hands, "<em>" + saying + "</em>", friends];
+   print (inhabitant.join("; "));
+ }
+  
+inhabitants.forEach((resident) => printInhabitant(resident));
 
 
