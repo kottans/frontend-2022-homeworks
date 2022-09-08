@@ -115,17 +115,8 @@ function renderPersonsCards(arrayOfPersons) {
 }
 
 function handleCardClick({ target }) {
-  const neededElement = target.classList.contains("person__card")
-    ? target
-    : target.parentElement.classList.contains("person__card")
-    ? target.parentElement
-    : target.parentElement.parentElement.classList.contains("person__card")
-    ? target.parentElement.parentElementclassList
-    : undefined;
-
-  neededElement === undefined
-    ? null
-    : neededElement.classList.toggle("person__card_spreaded");
+  const neededElement = target.closest('.person__card');
+  neededElement.classList.toggle("person__card_spreaded");
 }
 
 function handleFilterBtnClick() {
