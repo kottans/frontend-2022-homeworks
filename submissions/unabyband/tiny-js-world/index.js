@@ -88,8 +88,8 @@ const inhabitants = [
 
 function printInhabitant ({species, name, gender, legs, hands, saying, friends}) {
 
-  const res = [species, name, gender, legs, hands, saying, friends];
-  print (res.join("; "));
+  const inhabitant = [species, "<strong>" + name + "</strong>", gender, legs, hands, "<em>" + saying + "</em>", friends];
+  print (inhabitant.join("; "));
 }
  
  inhabitants.forEach((resident) => printInhabitant(resident));
