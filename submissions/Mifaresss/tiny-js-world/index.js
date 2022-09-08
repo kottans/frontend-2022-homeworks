@@ -10,24 +10,9 @@ const cat = new Population('Lunya', 'cat', 'female', 'Meeeow!');
 const man = new Population('Alex', 'human', 'male', 'Hello!');
 const women = new Population('Alice', 'human', 'female', 'Hi!');
 
+const inhabitants = [dog, cat, man, women];
+const inhabitantsProperties = ['name', 'species', 'gender', 'saying'];
 
-let dogPrint = '';
-for (let key in dog) {
-   dogPrint += (key + '; ' + dog[key] + '; ')
-}
-let catPrint = '';
-for (let key in cat) {
-   catPrint += (key + '; ' + cat[key] + '; ')
-}
-let manPrint = '';
-for (let key in man) {
-   manPrint += (key + '; ' + man[key] + '; ')
-}
-let womenPrint = '';
-for (let key in women) {
-   womenPrint += (key + '; ' + women[key] + '; ')
-}
-print(dogPrint);
-print(catPrint);
-print(manPrint);
-print(womenPrint);
+inhabitants.forEach(item => {
+   print(inhabitantsProperties.map(property => item[property]).join('; '))
+})
