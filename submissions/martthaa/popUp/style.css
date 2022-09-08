@@ -71,7 +71,7 @@ input[type="checkbox"] {
   opacity: 0;
   visibility: hidden;
   overflow-y: auto;
-  padding: 20px 10px;
+  padding: 20px 20px;
 }
 
 .check_input:checked ~ .popup {
@@ -180,45 +180,29 @@ input[type="checkbox"] {
   border-radius: 50%;
 }
 
-@media screen and (max-width:540px) {
+@media screen and (max-width:560px) {
   .popup{
+    width: 300px;
     right: -80px;
     top: 100px;
+    max-height: 600px;
     padding: 30px;
   }
-
   .box-navigation-buttons{
-    flex-direction: row;
+    flex-direction: row-reverse;
   }
-
   .popup_item{
     margin-top: 10px;
   }
 }
 
-@media screen and (max-width:462px) {
+@media (max-width:420px) {
   .popup{
-    right: -110px;
-    width: 300px;
-    max-height: 480px;
+    right: -120px;
+    width: 260px;
+    padding: 20px;
   }
-
-  .last-item-menu{
-    margin-top: 35px;
-  }
-}
-
-@media screen and (max-width:375px) {
-  .popup{
-    width: 300px;
-    top: 90px;
-    max-height: 600px;
-    left: -130px;
-  }
-}
-
-@media screen and (max-width:345px) {
-  .popup{
-    left: -115px;
+  .popup_btn, .link_more{
+    font-size: 35px;
   }
 }
