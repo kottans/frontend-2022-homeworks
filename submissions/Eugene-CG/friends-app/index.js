@@ -42,7 +42,7 @@ const getFriendsData = async (url) => {
 };
 const setFriendsDataToHtml = (results) => {
   const friends = results;
-  friends.forEach(async (friend) => createFriend(friend));
+  friends.forEach((friend) => createFriend(friend));
 };
 const initialFriends = getFriendsData(FRIEND_URL);
 
@@ -52,6 +52,13 @@ let friendsObj;
   setFriendsDataToHtml([...temp]);
   friendsObj = [...temp];
 })();
+// actualy I could use this code below, but I prefer IIFE here, because fetch called once
+// const createInitialFriendsCopy = async (initialFriends) => {
+//   const temp = await initialFriends;
+//   setFriendsDataToHtml([...temp]);
+//   friendsObj = [...temp];
+// };
+// createInitialFriendsCopy(initialFriends);
 let sex;
 let headerInputValue = "";
 
