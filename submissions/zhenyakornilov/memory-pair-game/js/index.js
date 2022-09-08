@@ -33,7 +33,7 @@ function renderCards(cardsObj, cardsList) {
             <img class="card-img-front" src="images/treble_clef.webp" alt="image of treble clef">
           </div>
           <div class="card-back">
-            <img class="card-img" src="${imageSrc}" alt="image of ${name}">
+            <img class="card-img-back" src="${imageSrc}" alt="image of ${name}">
             <p class="card-desc">${name}</p>
           </div>
         </div>
