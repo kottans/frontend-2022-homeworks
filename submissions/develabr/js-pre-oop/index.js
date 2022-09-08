@@ -62,7 +62,7 @@ const attr = [
 
 function tellMeAboutYou(obj) {
   const arr = [];
-  attr.forEach((key) => {
+  attr.map((key) => {
     obj[key] && arr.push(obj[key]);
   });
   return arr.join('; ') + '.';
