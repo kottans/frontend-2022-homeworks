@@ -98,7 +98,8 @@ display: none;
 #more:checked ~ .hide {
   display: flex;
 }
-#more:checked~.btn {
+#more:checked~.btn,
+#more:checked {
 display: none;
 }
 #more:checked~.close {
