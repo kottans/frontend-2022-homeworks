@@ -137,8 +137,8 @@ function prepareLayoutById({ target }) {
 
   function prepareLayout(contentId) {
     
-    if (contentId === undefined) return;
-
+    if (contentId === -1 ) return;
+    
     contentBox.innerHTML = "";
 
     image.setAttribute("srcset", content[contentId].imgUrl);
