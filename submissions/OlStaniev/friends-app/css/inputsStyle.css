@@ -1,69 +1,91 @@
-.label {
-    cursor: pointer;
+.inputWrapper {
     position: relative;
-    margin: auto;
+    margin-right: 15px;
+}
+
+.inputWrapper>input {
+    appearance: none;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.inputWrapper>.inputSpan {
+    display: block;
+    position: absolute;
     width: 18px;
     height: 18px;
-    -webkit-tap-highlight-color: transparent;
-    transform: translate3d(0, 0, 0);
-}
-
-.label:before {
-    content: "";
-    position: absolute;
-    top: -15px;
-    left: -15px;
-    width: 48px;
-    height: 48px;
+    border: 2px solid #9b9b9b;
     border-radius: 50%;
-    background: rgba(34, 50, 84, 0.03);
-    opacity: 0;
-    transition: opacity 0.2s ease;
+    top: 4px;
+    z-index: -5;
 }
 
-.label svg {
-    position: relative;
-    z-index: 1;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke: #c8ccd4;
-    stroke-width: 1.5;
-    transform: translate3d(0, 0, 0);
-    transition: all 0.2s ease;
+.inputWrapper>.inputSpan::after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    display: block;
+    position: absolute;
+    background-color: #4285f4;
+    border-radius: 50%;
+    top: -2px;
+    left: -2px;
+    transform: translate(-50%, -50%) scale(0);
 }
 
-.label svg path {
-    stroke-dasharray: 60;
-    stroke-dashoffset: 0;
+.inputWrapper>.inputSpan::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    border: 2px solid #4285f4;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
 }
 
-.label svg polyline {
-    stroke-dasharray: 22;
-    stroke-dashoffset: 66;
+.inputWrapper>input:checked~span:after {
+    transform: scale(0.5);
 }
 
-.label:hover:before {
-    opacity: 1;
+.inputWrapper>input:checked~span::before {
+    background-color: none;
+    transform: scale(1);
 }
 
-.label:hover svg {
-    stroke: #4285f4;
+.conteiner {
+    display: flex;
+    flex-direction: column;
 }
 
-.input:checked+.label svg {
-    stroke: #4285f4;
+.label {
+    width: max-content;
+    margin-right: 10px;
+    margin-left: 25px;
+    z-index: 6;
 }
 
-.input:checked+.label svg path {
-    stroke-dashoffset: 60;
-    transition: all 0.3s linear;
+@media(max-width: 768px) {
+    .label {
+        margin-right: 25px;
+        margin-left: 0;
+    }
+
+    .conteiner {
+        align-items: flex-end;
+    }
+
+    .inputWrapper>.inputSpan {
+        left: -5px;
+    }
 }
 
-.input:checked+.label svg polyline {
-    stroke-dashoffset: 42;
-    transition: all 0.2s linear;
-    transition-delay: 0.15s;
+.label,
+.searchForm input {
+    cursor: pointer;
 }
 
 .searchByName {
@@ -78,7 +100,7 @@
     font-family: inherit;
     width: 100%;
     border: none;
-    border-bottom: 2px solid #9b9b9b;
+    border-bottom: 1px solid #9b9b9b;
     outline: 0;
     font-size: 14px;
     font-weight: 300;

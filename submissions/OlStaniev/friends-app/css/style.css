@@ -5,7 +5,16 @@
     font-family: 'Poppins', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
 body {
+    width: 100%;
     color: rgb(155, 155, 155);
     background-color: rgb(33, 33, 33);
 }
@@ -15,7 +24,7 @@ main {
     height: 100vh;
     padding: 20px;
     display: flex;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .burgerForForm {
@@ -38,16 +47,6 @@ main {
     margin-bottom: 50px;
 }
 
-.label {
-    margin-right: 10px;
-    z-index: 6;
-}
-
-.label,
-.searchForm input {
-    cursor: pointer;
-}
-
 main>.content {
     width: calc(100% - 300px);
     height: 100vh;
@@ -62,13 +61,14 @@ main>.content {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    position: relative;
 }
 
 .userCard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: -100px;
+    margin-bottom: -90px;
 }
 
 .contentWrapper .userCard {
@@ -80,6 +80,7 @@ main>.content {
     width: 300px;
     height: 200px;
     transition: 0.5s;
+    border-radius: 30px;
 }
 
 .contentWrapper .userCard .face.face1 {
@@ -95,10 +96,11 @@ main>.content {
 .contentWrapper .userCard:hover .face.face1 {
     background: #4285f4;
     transform: translateY(0);
+    border-radius: 30px 30px 0 0;
 }
 
 .contentWrapper .userCard .face.face1 .content {
-    opacity: 0.2;
+    opacity: 1;
     transition: 0.5s;
 }
 
@@ -128,10 +130,13 @@ main>.content {
     box-sizing: border-box;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
     transform: translateY(-100px);
+    visibility: hidden;
 }
 
 .contentWrapper .userCard:hover .face.face2 {
     transform: translateY(0);
+    border-radius: 0 0 30px 30px;
+    visibility: inherit;
 }
 
 .concontentWrappertainer .userCard .face.face2 .content {
@@ -154,17 +159,30 @@ main>.content {
     justify-content: center;
 }
 
-.pagination>ul {
+.pagination>ol {
     display: flex;
     flex-direction: row;
     list-style: none;
-    margin-top: 20px;
+    align-items: center;
+    margin-top: 100px;
+    padding-bottom: 50px;
     z-index: 5;
 }
 
-.pagination>ul>li {
-    margin: 0 10px;
+.pagination>ol>li {
+    margin: 10px;
     cursor: pointer;
+    font-size: 16px;
+}
+
+.currentPage {
+    text-decoration: underline;
+}
+
+.error {
+    margin-top: 100px;
+    text-align: center;
+    color: #4285f4;
 }
 
 @media(max-width:1024px) {
@@ -220,7 +238,7 @@ main>.content {
     }
 
     .searchForm>div {
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         display: flex;
         align-items: flex-end;
         flex-direction: column;

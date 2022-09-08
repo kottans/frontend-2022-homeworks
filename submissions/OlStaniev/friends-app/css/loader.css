@@ -1,7 +1,7 @@
 .loader {
     width: 100px;
     height: 100px;
-    top: calc(50% - 50px);
+    top: calc(50vh - 50px);
     left: calc(50% - 50px);
     box-sizing: border-box;
     border-radius: 50%;

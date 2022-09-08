@@ -11,30 +11,45 @@ let users = []
 const numberUsersOnPage = 24
 
 document.addEventListener("DOMContentLoaded", loadData)
-form.addEventListener('input', handleFormChange)
+form.addEventListener('input', () => renderPageContent(1))
 form.addEventListener("submit", (e) => e.preventDefault())
 burgerMenu.addEventListener('click', searchFormSwitch)
 paginationList.addEventListener('click', changePage)
 
-function loadData() {
+
+async function loadData() {
     try {
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                users = data.results;
-                renderCards(preparCardsToRender(pageForRender(users, 1)))
-                createPaginationList(users, 1)
-            })
-    } catch (e) {
-        console.log(e)
+        const response = await fetch(url)
+        if (!response.ok) {
+            throw new Error(`http status ${response.status}`)
+        }
+        const data = await response.json()
+        users = data.results
+        renderPageContent(1)
+    }
+    catch (e) {
+        console.error(`FRIENDS ERROR: ${e}`)
+        let secondsToReload = 5
+        setInterval(() => {
+            cardsField.innerHTML =
+                `<div class="error">
+                <p>Somthing went wrong</p>
+                <p>The page will reload in ${secondsToReload} sec</p>
+            </div>`
+            if (--secondsToReload === -1) { location.reload() }
+        }, 1000)
     }
 }
-function handleFormChange() {
+function renderPageContent(currentPage) {
+    const usersForRender = prepairUsersForRender()
+    createPaginationList(usersForRender, currentPage)
+    renderCards(preparCardsToRender(getUsersForCurrentPage(usersForRender, currentPage)))
+}
+function prepairUsersForRender() {
     const searchedByName = searchByName(users)
-    const sortedUsers = sortingUsers(searchedByName)
-    const filteredByGender = filterByGender(sortedUsers)
-    createPaginationList(filteredByGender, 1)
-    renderCards(preparCardsToRender(pageForRender(filteredByGender, 1)))
+    const sortedByAge = sortingUsersByAge(searchedByName)
+    const sortedByAlphabet = sortingUsersByAlphabet(sortedByAge)
+    const filteredByGender = filterByGender(sortedByAlphabet)
     return filteredByGender
 }
 function searchByName(users) {
@@ -42,72 +57,34 @@ function searchByName(users) {
         return users.filter(user =>
             (user.name.first + ' ' + user.name.last).toLowerCase()
                 .includes(form.searchName.value.toLowerCase()))
-    } else {
-        return users
     }
+    return users
 }
-function sortingUsers(users) {
-    if (form.sort.value === 'ageDown') {
-        return users.sort((user1, user2) => {
-            if (user1.dob.age < user2.dob.age) {
-                return -1
-            }
-            if (user1.dob.age > user2.dob.age) {
-                return 1
-            }
-            return 0
-        })
-    }
+function sortingUsersByAge(users) {
     if (form.sort.value === 'ageUp') {
-        return users.sort((user1, user2) => {
-            if (user1.dob.age < user2.dob.age) {
-                return 1
-            }
-            if (user1.dob.age > user2.dob.age) {
-                return -1
-            }
-            return 0
-        })
+        return users.sort((userA, userB) =>
+            userA.dob.age < userB.dob.age ? -1 : 1)
     }
+    if (form.sort.value === 'ageDown') {
+        return users.sort((userA, userB) =>
+            userA.dob.age < userB.dob.age ? 1 : -1)
+    }
+    return users
+}
+function sortingUsersByAlphabet(users) {
     if (form.sort.value === 'az') {
-        return users = users.sort((user1, user2) => {
-            if (user1.name.last < user2.name.last) {
-                return -1
-            }
-            if (user1.name.last > user2.name.last) {
-                return 1
-            }
-            return 0
-        })
+        return users.sort((userA, userB) =>
+            userA.name.first < userB.name.first ? -1 : 1)
+    } if (form.sort.value === 'za') {
+        return users.sort((userA, userB) =>
+            userA.name.first > userB.name.first ? 1 : -1)
     }
-    if (form.sort.value === 'za') {
-        return users = users.sort((user1, user2) => {
-            if (user1.name.last < user2.name.last) {
-                return 1
-            }
-            if (user1.name.last > user2.name.last) {
-                return -1
-            }
-            return 0
-        })
-    }
-    if (!form.sort.value) {
-        return users
-    }
+    return users
 }
 function filterByGender(users) {
-    if (form.male.checked && !form.female.checked) {
-        return users.filter(user => user.gender === 'male')
-    }
-    if (form.female.checked && !form.male.checked) {
-        return users.filter(user => user.gender === 'female')
-    }
-    if (form.male.checked && form.female.checked) {
-        return users
-    }
-    if (!form.male.checked && !form.female.checked) {
-        return users
-    }
+    return users.filter(user =>
+        user.gender === form.gender.value || form.gender.value === 'all'
+    )
 }
 function preparCardsToRender(users) {
     return users
@@ -137,12 +114,7 @@ function renderCards(cards) {
     cardsField.innerHTML = cards
 }
 function searchFormSwitch() {
-    if (burgerMenu.burgerInput.checked) {
-        formWrapper.style.display = 'block'
-    }
-    if (!burgerMenu.burgerInput.checked) {
-        formWrapper.style.display = 'none'
-    }
+    formWrapper.style.display = burgerMenu.burgerInput.checked ? 'block' : 'none'
 }
 function createPaginationList(users, currentPage) {
     numberOfPages = users.length / numberUsersOnPage
@@ -150,63 +122,34 @@ function createPaginationList(users, currentPage) {
     for (let i = 0; i < numberOfPages; i++) {
         listOfPages.push(i + 1)
     }
-    if (listOfPages.length > 10 && currentPage > 3) {
-        paginationList.innerHTML = `
-        <li class="listItem">${currentPage - 3}</li>
-        <li class="listItem">${currentPage - 2}</li>
-        <li class="listItem">${currentPage - 1}</li>
-        <li class="listItem">${currentPage}</li>
-        <li class="listItem">${currentPage + 1}</li>
-        <li class="listItem">${currentPage + 2}</li>
-        <li class="listItem">${currentPage + 3}</li>
-        <li class="listItem">...</li>
-        <li class="listItem">${listOfPages[listOfPages.length - 1]}</li>`
-    } else if (listOfPages.length > 10 && currentPage === 1) {
-        paginationList.innerHTML = `
-        <li class="listItem">${currentPage}</li>
-        <li class="listItem">${currentPage + 1}</li>
-        <li class="listItem">${currentPage + 2}</li>
-        <li class="listItem">${currentPage + 3}</li>
-        <li class="listItem">${currentPage + 4}</li>
-        <li class="listItem">${currentPage + 5}</li>
-        <li class="listItem">${currentPage + 6}</li>
-        <li class="listItem">...</li>
-        <li class="listItem">${listOfPages[listOfPages.length - 1]}</li>`
-    } else if (listOfPages.length > 10 && currentPage === 2) {
-        paginationList.innerHTML = `
-        <li class="listItem">${currentPage - 1}</li>
-        <li class="listItem">${currentPage}</li>
-        <li class="listItem">${currentPage + 1}</li>
-        <li class="listItem">${currentPage + 2}</li>
-        <li class="listItem">${currentPage + 3}</li>
-        <li class="listItem">${currentPage + 4}</li>
-        <li class="listItem">${currentPage + 5}</li>
-        <li class="listItem">...</li>
-        <li class="listItem">${listOfPages[listOfPages.length - 1]}</li>`
-    } else if (listOfPages.length > 10 && currentPage === 3) {
-        paginationList.innerHTML = `
-        <li class="listItem">${currentPage - 2}</li>
-        <li class="listItem">${currentPage - 1}</li>
-        <li class="listItem">${currentPage}</li>
-        <li class="listItem">${currentPage + 1}</li>
-        <li class="listItem">${currentPage + 2}</li>
-        <li class="listItem">${currentPage + 3}</li>
-        <li class="listItem">${currentPage + 4}</li>
-        <li class="listItem">...</li>
-        <li class="listItem">${listOfPages[listOfPages.length - 1]}</li>`
-    } else {
-        paginationList.innerHTML = listOfPages.map(page =>
-            `<li class="listItem">${page}</li>`).join('')
+    const currentListOfPages = listOfPages.map((page) =>
+        `<li class="listItem ${parseInt(page) === parseInt(currentPage) ? "currentPage" : ""}">
+        <a class="listItemA">${page}</a></li>`)
+    if (currentPage === 1) {
+        paginationList.innerHTML = currentListOfPages
+            .slice(currentPage - 1, currentPage + 7).join('')
+    }
+    if (currentPage === 2) {
+        paginationList.innerHTML = currentListOfPages
+            .slice(currentPage - 2, currentPage + 6).join('')
+    }
+    if (currentPage === 3) {
+        paginationList.innerHTML = currentListOfPages
+            .slice(currentPage - 3, currentPage + 5).join('')
+    }
+    if (currentPage > 3) {
+        paginationList.innerHTML = `${currentListOfPages
+            .slice(0, 1)}<span>...</span>${currentListOfPages
+                .slice(currentPage - 3, currentPage + 5).join('')}`
     }
 }
-function pageForRender(users, currentPage) {
+function getUsersForCurrentPage(users, currentPage) {
     return users
         .slice(numberUsersOnPage * (currentPage - 1), numberUsersOnPage * currentPage)
 }
 function changePage({ target }) {
-    if (target.closest('.listItem')) {
+    if (target.closest('.listItemA')) {
         currentPage = parseInt(target.innerHTML)
-        renderCards(preparCardsToRender(pageForRender(handleFormChange(), currentPage)))
-        createPaginationList(handleFormChange(), currentPage)
+        renderPageContent(currentPage)
     }
 }
