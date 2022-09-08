@@ -17,10 +17,10 @@ on:
       - main
 
 jobs:
-  add-pr-checklist:
+  pr-basic-checks:
     # define Eligible Labels; consider also using startsWith method
     # (see also https://docs.github.com/en/actions/learn-github-actions/expressions#startswith)
-    if: contains( fromJson('["bad-pr-intro", "irrelevant-files", "irrelevant-commits", "task-PopUp", "task-DOM", "task-TJSW", "task-Frogger", "task-TJSW-OOP", "task-Friends"]'), github.event.label.name )
+    if: contains( fromJson('["bad-pr-intro", "irrelevant-files", "irrelevant-commits"]'), github.event.label.name )
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -29,6 +29,21 @@ jobs:
       - uses: oleksiyrudenko/pr-comment@v1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SOURCES: '["_intro.md", "${{ github.event.label.name }}.md", "_outro.md"]'
+          SOURCES: '["_greeting.md", "${{ github.event.label.name }}.md", "_signature.md"]'
+        with:
+          path: .github/pr-checklists/
+  add-pr-checklist:
+    # define Eligible Labels; consider also using startsWith method
+    # (see also https://docs.github.com/en/actions/learn-github-actions/expressions#startswith)
+    if: contains( fromJson('["task-PopUp", "task-DOM", "task-TJSW", "task-Frogger", "task-TJSW-OOP", "task-Friends"]'), github.event.label.name )
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # use https://github.com/actions/download-artifact to get templates from a resource other than the PR's targeted branch
+      # use https://github.com/actions/github-script to use GtiHub Action API methods immediately in the workflow
+      - uses: oleksiyrudenko/pr-comment@v1.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCES: '["_greeting.md", "_requirements_intro.md", "${{ github.event.label.name }}.md", "_requirements_outro.md", "_signature.md"]'
         with:
           path: .github/pr-checklists/
