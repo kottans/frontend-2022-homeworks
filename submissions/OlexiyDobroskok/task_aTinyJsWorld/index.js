@@ -1,3 +1,12 @@
+/* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
+   Complete the below for code reviewers' convenience:
+
+   Code repository: https://github.com/OlexiyDobroskok/a-tiny-JS-world
+   Web app: https://olexiydobroskok.github.io/a-tiny-JS-world/
+   */
+
+// ======== OBJECTS DEFINITIONS ========
+
 const man = {
   species: "human",
   name: "José",
@@ -48,6 +57,8 @@ const catwoman = {
   friends: ["José", "Lalo"],
 };
 
+// ======== OUTPUT ========
+
 const aTinyWorld = [man, woman, cat, dog, catwoman];
 const properties = [
   "species",
@@ -60,12 +71,12 @@ const properties = [
 ];
 
 const residentsProperties = aTinyWorld.map((resident) => {
-  const allProperties = [];
-  properties.forEach((prop) => {
-    if (resident[prop] !== 0) {
-      allProperties.push(resident[prop]);
-    }
-  });
+  const allProperties = properties
+    .map((prop) => {
+      return resident[prop];
+    })
+    .filter((prop) => prop !== 0 && prop !== "");
+
   return allProperties;
 });
 
