@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+/*--------HEADER----------------*/
+
+.header-title {
+    margin: 0;
+    background-color: #353636;
+    text-align: center;
+    color: white;
+    height: auto;
+    font-size: 4vw;
+   
+}
+.tittle-frontend{
+    color: #FFC033;
+}
+
+/*------SIDE NAVIGATION MENU------ */
+.menu {
+    background-color: #353636;
+    list-style: none;
+    padding: 0;
+    margin:0;
+}
+.menu-text {
+    color: white;
+    text-decoration: none;
+    font-size: 2vw;
+    display: block;
+    padding: 1rem;
+    text-align: center;
+    width: 10vw;
+}
+
+.selectedFramework {
+    background-color: #F5F5F6;
+    color: black;
+    border-style: none none none solid;
+    border-width: 5px;
+    border-color: #FFC033;
+}
+
+/*------MAIN CONTENT---------*/
+.bigContainer{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
+    
+}
+.container {
+    display: flex;
+    margin: 0;
+    margin-top: 5%;
+    height: auto;
+}
+.main {
+    background-color: #F5F5F6;
+    width: 100%;
+    text-align: center;
+    min-height: 650px;
+}
+.main-icon{
+    width: 70px;
+    height: 70px;
+    margin:5%;
+}
+.main-text{
+    font-size: 1.5em;
+    padding: 15px;
+}
+
+/*----foooter-------*/
+
+.my-footter {
+    color: white;
+    background-color: black;
+    text-align: center;
+    width: 100%;
+}
+
+/*----FOR SMALLER SCREENS-------*/
+
+@media only screen and (max-width: 600px) {
+    .header-title {
+        margin: 0;
+        font-size: 10vw;
+    }
+    .container {
+        flex-direction: column;
+        margin-top: 5%;
+        height: auto;
+    }
+    .menu-text {
+        font-size: 4vw;
+        width: 100%;
+    }
+    .selectedFramework {
+    } 
+}
+
