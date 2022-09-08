@@ -13,6 +13,6 @@ const women = new Population('Alice', 'human', 'female', 'Hi!');
 const inhabitants = [dog, cat, man, women];
 const inhabitantsProperties = ['name', 'species', 'gender', 'saying'];
 
-inhabitants.forEach(item => {
-   print(inhabitantsProperties.map(property => item[property]).join('; '))
+inhabitants.forEach(inhabitant => {
+   print(inhabitantsProperties.map(property => inhabitant[property]).join('; '))
 })
