@@ -49,7 +49,7 @@ const dog = {
 };
 
 const catWoman = {
-  species: "cat-human",
+  species: "cat-woman",
   name: "Kity",
   hands: 2,
   legs: 2,
@@ -59,33 +59,33 @@ const catWoman = {
 };
 
 const population = [man, woman, cat, dog, catWoman];
+const populationProperties = [
+  "species",
+  "name",
+  "hands",
+  "legs",
+  "gender",
+  "saying",
+  "friends",
+];
 
-const printPopulation = (arr) => {
-  arr.map((el) =>
+const printPopulation = (inhabitantes, inhabitantProperties) => {
+  inhabitantes.forEach((inhabitant) =>
     print(
-      el.species +
-        "; " +
-        "<strong>" +
-        el.name +
-        "</strong>" +
-        "; " +
-        el.hands +
-        "; " +
-        el.legs +
-        "; " +
-        el.gender +
-        "; " +
-        "<em>" +
-        el.saying +
-        "</em>" +
-        "; " +
-        el.friends.join(", "),
-      "div"
+      inhabitantProperties
+        .map((property) =>
+          property === "name"
+            ? `<strong>${inhabitant[property]}</strong>`
+            : property === "saying"
+            ? `<em>"${inhabitant[property]}"</em>`
+            : inhabitant[property]
+        )
+        .join("; ")
     )
   );
 };
 
-printPopulation(population);
+printPopulation(population, populationProperties);
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
