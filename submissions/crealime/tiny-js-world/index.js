@@ -19,10 +19,10 @@ function CreateInhabitant(species, name, gender, legs, hands, saying) {
 
 const dog = new CreateInhabitant('dog', 'Marley', 'male', 4, 0, 'Woof-woof!')
 const cat = new CreateInhabitant('cat', 'Sophie', 'female', 4, 0, 'Meow-meow!')
-const man = new CreateInhabitant('human', 'John Doe', 'male', 2, 2, 'Hello everyone!')
-const woman = new CreateInhabitant('human', 'Jane Doe', 'female', 2, 2, 'Hi all!')
-const catWoman = new CreateInhabitant('cat-woman', 'Selina Kyle', 'female', 2, 2, cat.saying)
-const pirate = new CreateInhabitant('human', 'John Silver', 'male', 1, 2, 'Give no quarter!')
+const man = new CreateInhabitant('human', 'Brian', 'male', 2, 2, 'Hello everyone!')
+const woman = new CreateInhabitant('human', 'Jane', 'female', 2, 2, 'Hi all!')
+const catWoman = new CreateInhabitant('cat-woman', 'Selina', 'female', 2, 2, cat.saying)
+const pirate = new CreateInhabitant('human', 'John', 'male', 1, 2, 'Give no quarter!')
 
 dog.friends.push(cat.name, man.name)
 cat.friends.push(dog.name, woman.name, catWoman.name)
@@ -30,7 +30,8 @@ man.friends.push(dog.name, woman.name)
 woman.friends.push(cat.name, man.name)
 catWoman.friends.push(cat.name)
 
-const allInhabitant = [dog, cat, man, woman, catWoman, pirate]
+const inhabitantKeys = ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends']
+const allInhabitants = [dog, cat, man, woman, catWoman, pirate]
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -51,14 +52,14 @@ const allInhabitant = [dog, cat, man, woman, catWoman, pirate]
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-function getStringFromObject(obj) {
-	const arr = []
-	for (let key in obj) {
-		arr.push([key, obj[key]])
-	}
-	return arr.map(el => Array.isArray(el[1]) && el[1].length === 0 ? 'No friends' : Array.isArray(el[1]) ? el[1].join(', ') : el[1]).join('; ')
+function getStringFromObject(inhabitant) {
+	return inhabitantKeys.map((key) => {
+		if (Array.isArray(inhabitant[key]) && !inhabitant[key][0]) return 'No friends'
+		else if (Array.isArray(inhabitant[key])) return inhabitant[key].join(', ')
+		else return inhabitant[key]
+	}).join('; ')
 }
 
-allInhabitant.forEach(el => {
-	print(getStringFromObject(el))
+allInhabitants.forEach(inhabitant => {
+	print(getStringFromObject(inhabitant))
 })
