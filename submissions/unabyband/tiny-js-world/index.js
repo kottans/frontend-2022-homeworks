@@ -94,3 +94,4 @@ function printInhabitant ({species, name, gender, legs, hands, saying, friends})
  
  inhabitants.forEach((resident) => printInhabitant(resident));
  
+ 
