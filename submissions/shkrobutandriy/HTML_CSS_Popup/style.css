@@ -1,0 +1,112 @@
+body {
+  background-color: antiquewhite;
+  box-sizing: border-box;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+margin-top: 20px;
+}
+.header__nav_menu {
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+}
+
+.nav__menu_items {
+  list-style-type: none;
+  align-self: center;
+  margin: 0 20px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid antiquewhite;
+}
+.choice,
+.menu__input,
+#more {
+  -webkit-appearance: none;
+}
+.icon {
+  border: 2px solid antiquewhite;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+}
+
+#more:focus~.btn,
+.close:hover,
+.btn:hover {
+border: 2px solid rgb(82, 204, 34);
+}
+.popup {
+  position: relative;
+}
+.market {
+  display: none;
+  border: 1px solid rgb(82, 204, 34);
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  width: 300px;
+  max-height: 420px;
+  overflow: auto;
+  right: -130px;
+  top: 60px;
+}
+.icons {
+  border: 2px solid antiquewhite;
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  margin: 10px 5px;
+}
+#pop:checked ~ .market {
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+}
+
+.hide {
+display: none;
+}
+.menu__input:focus ~ .icon,
+.choice:focus  ~ .icons{
+  border: 2px solid rgb(82, 204, 34);
+  border-radius: 50%;
+}
+.icon:hover,
+.avatar:hover,
+.icons:hover {
+  border: 2px solid rgb(111, 112, 110);
+    border-radius: 50%;
+}
+.btn{
+  padding: 0 50px;
+  display: block;
+  background-color: rgb(131, 112, 112);
+  color: aliceblue;
+  font-size: 20px;
+  border-radius: 5px;
+}
+#more:checked ~ .hide {
+  display: flex;
+}
+#more:checked~.btn {
+display: none;
+}
+#more:checked~.close {
+  padding: 0 50px;
+  display: block;
+  background-color: rgb(131, 112, 112);
+  color: aliceblue;
+  font-size: 20px;
+  border-radius: 5px;
+  transform: rotate(180deg);
+}
