@@ -50,10 +50,9 @@ catWoman.gender = "female";
 const inhabitants = [dog, cat, man, woman, catWoman];
 const properties = ["species", "name", "gender", "legs", "hands", "saying"];
 
-inhabitants.forEach(function (elem) {
-  let result = properties.map((key) => elem[key]);
-  print(result.join("; "));
-});
+inhabitants.forEach((inhabitant) =>
+  print(properties.map((property) => inhabitant[property]).join("; "))
+);
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
