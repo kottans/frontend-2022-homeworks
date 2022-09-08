@@ -24,7 +24,7 @@ async function getResponse() {
 }
 
 function createCards({ picture, name, dob, gender, location, email, cell }) {
-    const cardSection = document.createElement('section')
+    const cardSection = document.createElement('article')
     cardSection.classList.add('cards__wrapper')
 
     let colorGender = ''
