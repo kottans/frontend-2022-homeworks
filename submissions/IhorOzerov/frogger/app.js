@@ -1,93 +1,93 @@
 const canvasWidth = 505;
 const refreshTime = 500;
+const yStart = 0;
+const xStart = 0;
 
-const enemyStartSpeed = 200;
-const enemyRefresh = -50;
-const enemyLocation1 = 62;
-const enemyLocation2 = 144;
-const enemyLocation3 = 228;
-const enemySpeed = (Math.random() * 200) + 150;
-const enemySprite = "images/enemy-bug.png";
+const enemyConst = {
+    refresh: -101,
+    locations: [62, 144, 228],
+    speed: (Math.random() * 200) + 200,
+    sprite: "images/enemy-bug.png"
+}
 
-const playerX = 203;
-const playerY = 390;
-const playerStepX = 102;
-const playerStepY = 83;
-const playerSprite = "images/char-boy.png";
-const playerHeight = 60;
-const playerWidth = 70;
-const playerRightBorder = 400;
+const playerConst = {
+    x: 203,
+    y: 390,
+    stepX: 102,
+    stepY: 83,
+    sprite: "images/char-boy.png",
+    height: 60,
+    width: 70,
+    rightBorder: 400
+}
 
-const Enemy = function(x, y, speed) {
+const Enemy = function (x, y) {
     this.x = x;
     this.y = y;
-    this.speed = speed;
-    this.sprite = enemySprite;
-};
+    this.speed = enemyConst.speed;
+    this.sprite = enemyConst.sprite;
+}; 
+
+const allEnemies = [];
+
+enemyConst.locations.forEach(function(enemyY){
+    const startPoint = Math.random()*canvasWidth;
+    const enemy = new Enemy(startPoint, enemyY, enemyConst.speed);
+    allEnemies.push(enemy);
+});
 
 Enemy.prototype.update = function(dt) {
-    this.x += enemySpeed * dt;
+    this.x += enemyConst.speed * dt;
     if(this.x > canvasWidth){
-        this.x = enemyRefresh;
+        this.x = enemyConst.refresh;
     }
-    if(player.x < this.x + playerWidth &&
-        player.x + playerWidth > this.x &&
-        player.y < this.y + playerHeight &&
-        playerHeight + player.y > this.y){
-            player.x = playerX;
-            player.y = playerY;
-        }
+    if(player.x < this.x + playerConst.width &&
+        player.x + playerConst.width > this.x &&
+        player.y < this.y + playerConst.height &&
+        playerConst.height + player.y > this.y){
+            player.x = playerConst.x;
+            player.y = playerConst.y;
+    }
 };
 
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const Player = function(x, y, sprite) {
-    this.x = x;
-    this.y = y;
-    this.sprite = sprite;
+const Player = function() {
+    this.x = playerConst.x;
+    this.y = playerConst.y;
+    this.sprite = playerConst.sprite;
 };
+const player = new Player;
 
-Player.prototype.update = function (){} 
+Player.prototype.update = function (){ 
+    if(this.y < yStart){
+    setTimeout(function (){
+        player.x = playerConst.x;
+        player.y = playerConst.y;
+    }, refreshTime);
+}} 
 
-Player.prototype.render = function  (){
+Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 } 
 
 Player.prototype.handleInput = function (allowKey){
-    if(allowKey == "left" && this.x > 0){
-        this.x -= playerStepX;
+    if(allowKey == "left" && this.x > xStart){
+        this.x -= playerConst.stepX;
     }
-    if(allowKey == "right" && this.x < playerRightBorder){
-        this.x += playerStepX;
+    if(allowKey == "right" && this.x < playerConst.rightBorder){
+        this.x += playerConst.stepX;
     }
-    if(allowKey == "up" && this.y > 0){
-        this.y -= playerStepY;
+    if(allowKey == "up" && this.y > yStart){
+        this.y -= playerConst.stepY;
     }
-    if(allowKey == "down" && this.y < playerY){
-        this.y += playerStepY;
-    }
-    if(this.y < 0){
-        setTimeout(function (){
-            player.x = playerX;
-            player.y = playerY;
-        }, refreshTime);
+    if(allowKey == "down" && this.y < playerConst.y){
+        this.y += playerConst.stepY;
     }
 } 
-
-const player = new Player(playerX, playerY, playerSprite); 
-
-const allEnemies = [];
-
-const enemyLocations = [enemyLocation1,enemyLocation2,enemyLocation3];
-
-enemyLocations.forEach(function (enemyLocation){
-    const enemyStart = Math.random()*canvasWidth;
-        const enemy = new Enemy(enemyStart, enemyLocation, enemyStartSpeed);
-            allEnemies.push(enemy);
-})
-
+ 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
