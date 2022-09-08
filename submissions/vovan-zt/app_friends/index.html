@@ -5,66 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Friends App</title>
-    <meta name="title" content="Action menu">
-    <meta name="description" content="Action menu">
+    <meta name="title" content="Friends App">
+    <meta name="description" content="Friends App">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" type='text/css' href="css/style.min.css">
    
 </head>
 <body>
-    <h1 class="header">Friends App</h1>
+    <header class="header">
+        <div class="header__wrapper">
+            <h1 class="header__title">Friends App</h1>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+       
     <main>
         <div class="container">
             <aside class="filter">
-                <div class="filter__age"> 
-                    <h2 class="filter__age-title">Sort by age</h2>
-                    <button class="filter__age-up"><img src="img/icons/up.png" alt="up"> </button>
-                    <button class="filter__age-down"> <img src="img/icons/down.png" alt="down"> </button>
-
-                    <div class="filter__age-search">
-                        <input type="number" class="filter__age-searchTerm" placeholder="age">
-                        <button type="submit" class="filter__age-searchButton">
-                        <i class="fa fa-search"></i>
-                        </button>
+                <form class="filter__wrapper form">
+                    <div class="filter__close">
+                        <svg width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.1568 14.5231L28.4489 3.23075C29.1837 2.49623 29.1837 1.30861 28.4489 0.574085C27.7144 -0.160437 26.5267 -0.160437 25.7922 0.574085L14.4998 11.8665L3.20781 0.574085C2.47295 -0.160437 1.28567 -0.160437 0.551149 0.574085C-0.183716 1.30861 -0.183716 2.49623 0.551149 3.23075L11.8432 14.5231L0.551149 25.8155C-0.183716 26.55 -0.183716 27.7376 0.551149 28.4721C0.917206 28.8385 1.39852 29.0226 1.87948 29.0226C2.36045 29.0226 2.84141 28.8385 3.20781 28.4721L14.4998 17.1798L25.7922 28.4721C26.1586 28.8385 26.6396 29.0226 27.1205 29.0226C27.6015 29.0226 28.0825 28.8385 28.4489 28.4721C29.1837 27.7376 29.1837 26.55 28.4489 25.8155L17.1568 14.5231Z" fill="white"/>
+                        </svg>
                     </div>
 
-                </div>
+                    <div class="filter__age filter__sorting">
+                        <fieldset>
+                            <legend class="filter__sorting-title">Compare by age</legend>
+                        
+                            <input type="radio" id="filter__age-up" name="sorting" value="ageUp">
+                            <label  for="filter__age-up">ascending</label><br/>
+                        
+                            <input type="radio" id="filter__age-down" name="sorting" value="ageDown">
+                            <label for="filter__age-down">descending</label><br/>
+                        
+                            <div class="filter__sorting-search">
+                                <input type="number" class="filter__sorting-searchTerm" name="searchAge" id ='age-searchTerm' placeholder="age">
+                            </div>
+                        </fieldset>
+                    </div> 
 
-                <div class="filter__name">
-                    <h2 class="filter__name-title">Sort by name</h2>
-                    <button class="filter__name-up"> <img src="img/icons/up.png" alt="up"> </button>
-                    <button class="filter__name-down"> <img src="img/icons/down.png" alt="down"> </button>
+                    <div class="filter__name filter__sorting">
+                        <fieldset>
+                            <legend class="filter__sorting-title">Compare by name</legend>
+                        
+                            <input type="radio" id="filter__name-up" name="sorting" value="nameUp">
+                            <label  for="filter__name-up">ascending</label><br/>
+                        
+                            <input type="radio" id="filter__name-down" name="sorting" value="nameDown">
+                            <label for="filter__name-down">descendingn</label><br/>
 
-                    <div class="filter__name-search">
-                        <input type="text" class="filter__name-searchTerm" placeholder="name">
-                        <button type="submit" class="filter__name-searchButton">
-                        <i class="fa fa-search"></i>
-                        </button>
+                            <div class="filter__sorting-search">
+                            <input type="text" class="filter__sorting-searchTerm" name="searchName" id ='name-searchTerm' placeholder="name">
+                            </div>
+                        </fieldset>
+                    </div>   
+
+                    <div class="filter__gender filter__sorting">
+                        <fieldset>
+                            <legend class="filter__sorting-title">Compare by gender</legend>
+                        
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label  for="male"><span></span>male</label>
+                        
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female"><span></span>female</label>
+
+                            <input type="radio" id="all" name="gender" value="all" checked>
+                            <label for="all"><span></span>all</label>
+                        </fieldset>
+                    </div>   
+
+                    <div class="filter__reset">
+                        <button class="filter__reset-button" id="filter__reset-button"> Reset </button>
                     </div>
-
-                </div>
-
-                <div class="filter__sex">
-                    <h2 class="filter__sex-title"> Sort by sex </h2>
-                    <form action="">
-                        <input type="radio" id="male" name="sex" value="male">
-                        <label  for="male"><span></span>male</label>
-                    
-                        <input type="radio" id="female" name="sex" value="female">
-                        <label for="famale"><span></span>female</label>
-
-                        <input type="radio" id="all" name="sex" value="all" checked>
-                        <label for="all"><span></span>all</label>
-                    </form>
-                </div>
-
-                <div class="filter__reset">
-                    <button class="filter__reset-button"> Reset </button>
-                </div>
+                </form>
             </aside>
-            <section class="cards">
-            </section>
+
+            <section class="content">
+                <section class="cards"></section>
+            </section> 
         </div>
     </main>
     <script src="js/script.js"></script>
