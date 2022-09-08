@@ -44,35 +44,44 @@ const methods = [
 ];
 
 const methodsList = document.querySelector(".methods-list");
+const methodsDescription = document.querySelector(".methods-description");
 
-methods.forEach((el) => {
-   const li = document.createElement("li");
-   li.innerText = el.type;
-   li.setAttribute("data-id", el.id);
-   li.classList.add("methods-list__list-item");
+function renderMenuList() {
+   return methods.map((el) => {
+      const li = document.createElement("li");
+      li.setAttribute("data-id", el.id);
+      li.classList.add("methods-list__list-item");
+      li.innerText = el.type;
+      methodsList.append(li);
+   });
+}
 
+function renderContent(data) {
    const img = document.createElement("img");
    img.classList.add("methods-description__image-example");
-   img.src = el.img;
-
+   img.src = data.img;
    const title = document.createElement("h4");
-   title.innerText = el.type;
+   title.innerText = data.type;
    title.classList.add("title");
 
    const description = document.createElement("p");
-   description.innerText = el.description;
+   description.innerText = data.description;
 
-   const methodsDescription = document.querySelector(".methods-description");
-   const onClick = ({ target }) => {
-      const selectedLi = target.dataset.id;
-      const el = methods.find((method) => method.id == selectedLi);
-      methodsDescription.innerText = "";
+   methodsDescription.appendChild(title);
+   methodsDescription.appendChild(description);
+   methodsDescription.appendChild(img);
+}
 
-      methodsDescription.appendChild(title);
-      methodsDescription.appendChild(description);
-      methodsDescription.appendChild(img);
-   };
+function onClick({ target }) {
+   const selectedLi = target.dataset.id;
+   const el = methods.find((method) => method.id == selectedLi);
+   methodsDescription.innerText = "";
+   renderContent(el);
+}
 
-   li.addEventListener("click", onClick);
-   methodsList.append(li);
-});
+function init() {
+   renderMenuList();
+   methodsList.addEventListener("click", onClick);
+}
+
+document.addEventListener("DOMContentLoaded", init);
