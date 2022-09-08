@@ -9,10 +9,8 @@ name: Update students' PR stats
 #
 # Uses GitHub CLI app provided by GitHub runner.
 on:
-  push:
-    branches:
-      - master
-      - main
+  schedule:
+    - cron:  '37 10,22 * * *'
 jobs:
   update-pr-stats:
     runs-on: ubuntu-latest
@@ -35,8 +33,13 @@ jobs:
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
       - name: Commit and publish update
+        # consider ${{ '"$..."' }} pattern to escape $-sequence that should reach bash
         run: |
-          TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S %Z"`
-          git add ./stats/pr-stats.md
-          git commit -m "Stats: update stats/pr-stats.md as of $TIMESTAMP"
-          git push
+          if [ -n "$(git status --porcelain)" ]; then
+          TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S %Z"`;
+          git add ./stats/pr-stats.md;
+          git commit -m "Stats: update stats/pr-stats.md as of $TIMESTAMP";
+          git push;
+          else
+          echo "Nothing to commit and push";
+          fi
