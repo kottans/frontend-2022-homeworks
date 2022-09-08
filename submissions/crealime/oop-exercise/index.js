@@ -118,7 +118,7 @@ function isInSociety(society, objects) {
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-function greetings(obj) {
+function getFullInfo(obj) {
   const getAcquaintance = `This is ${obj.getFullName()} and ${obj.gender === 'male' ? 'he' : 'she'} is a ${obj.species}.`
   const getGender = `${obj.gender === 'male' ? 'His' : 'Her'} gender is ${obj.gender}.`
   const getLimbs = `${obj.gender === 'male' ? 'He' : 'She'} have ${obj.hands || 0} ${obj.hands === 1 ? 'hand' : 'hands'} and ${obj.legs || 0} ${obj.legs === 1 ? 'leg' : 'legs'}.`
@@ -129,7 +129,7 @@ function greetings(obj) {
 }
 
 allInhabitant.forEach(el => {
-  print(greetings(el))
+  print(getFullInfo(el))
 })
 
 const getMembers = `${isInSociety(secretSociety, allInhabitant)} ${secretSociety.length < 1 ? '' : secretSociety.length === 1 ? 'in a secret society...' : 'are in a secret society...'}`
