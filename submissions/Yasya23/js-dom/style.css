@@ -101,7 +101,6 @@ body {
   }
 
   .navigation {
-    display: none;
     position: absolute;
     top: 1rem;
     width: 100%;
@@ -133,5 +132,9 @@ body {
   .navigation__item a:hover {
     color: #000000;
     font-weight: 600;
+  }
+
+  .navigation__none {
+    display: none;
   }
 }

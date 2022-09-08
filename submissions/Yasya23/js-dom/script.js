@@ -1,208 +1,206 @@
 "use strict";
 
-const images = [
+const animalList = [
   {
-    id: "cat",
+    species: "cat",
     src: "img/Cats/1.jpg",
     alt: "The man strokes the cat.",
   },
   {
-    id: "cat",
+    species: "cat",
     src: "img/Cats/2.jpg",
     alt: "Ginger cat is stretching.",
   },
   {
-    id: "cat",
+    species: "cat",
     src: "img/Cats/3.jpg",
     alt: "The cat is sitting on the table.",
   },
   {
-    id: "cat",
+    species: "cat",
     src: "img/Cats/4.jpg",
     alt: "Ginger cat looks up.",
   },
   {
-    id: "cat",
+    species: "cat",
     src: "img/Cats/5.jpg",
     alt: "Four cats on the kitchen surface.",
   },
   {
-    id: "cat",
+    species: "cat",
     src: "img/Cats/6.jpg",
     alt: "The cat sleeps in the bed.",
   },
   {
-    id: "cat",
+    species: "cat",
     src: "img/Cats/7.jpg",
     alt: "The face of a red fluffy cat.",
   },
   {
-    id: "cat",
+    species: "cat",
     src: "img/Cats/8.jpg",
     alt: "Two cats are lying.",
   },
   {
-    id: "cat",
+    species: "cat",
     src: "img/Cats/9.jpg",
     alt: "Three kittens.",
   },
   {
-    id: "dog",
+    species: "dog",
     src: "img/Dogs/1.jpg",
     alt: "A white puppy runs across the grass.",
   },
   {
-    id: "dog",
+    species: "dog",
     src: "img/Dogs/2.jpg",
     alt: "Nine dogs against a pink wall.",
   },
   {
-    id: "dog",
+    species: "dog",
     src: "img/Dogs/3.jpg",
     alt: "Dog with one drooping ear.",
   },
   {
-    id: "dog",
+    species: "dog",
     src: "img/Dogs/4.jpg",
     alt: "Two dogs run along the path.",
   },
   {
-    id: "dog",
+    species: "dog",
     src: "img/Dogs/5.jpg",
     alt: "A woman holds a dog in her arms.",
   },
   {
-    id: "dog",
+    species: "dog",
     src: "img/Dogs/6.jpg",
     alt: "Two white and brown dogs.",
   },
   {
-    id: "dog",
+    species: "dog",
     src: "img/Dogs/7.jpg",
     alt: "Two dogs white and black.",
   },
   {
-    id: "dog",
+    species: "dog",
     src: "img/Dogs/8.jpg",
     alt: "Two dogs run along the path.",
   },
   {
-    id: "dog",
+    species: "dog",
     src: "img/Dogs/9.jpg",
     alt: "Red dog.",
   },
   {
-    id: "horses",
+    species: "horses",
     src: "img/Horses/1.jpg",
     alt: "The white horse is running.",
   },
   {
-    id: "horses",
+    species: "horses",
     src: "img/Horses/2.jpg",
     alt: "The horse's head lies on the back of another.",
   },
   {
-    id: "horses",
+    species: "horses",
     src: "img/Horses/3.jpg",
     alt: "Two horses in the meadow.",
   },
   {
-    id: "horses",
+    species: "horses",
     src: "img/Horses/4.jpg",
     alt: "Brown horse.",
   },
   {
-    id: "horses",
+    species: "horses",
     src: "img/Horses/5.jpg",
     alt: "Three horses.",
   },
   {
-    id: "horses",
+    species: "horses",
     src: "img/Horses/6.jpg",
     alt: "White horse in the field.",
   },
   {
-    id: "horses",
+    species: "horses",
     src: "img/Horses/7.jpg",
     alt: "Two horses white and brown are grazing.",
   },
   {
-    id: "horses",
+    species: "horses",
     src: "img/Horses/8.jpg",
     alt: "Four brown horses are running.",
   },
   {
-    id: "horses",
+    species: "horses",
     src: "img/Horses/9.jpg",
     alt: "Brown horse.",
   },
 ];
 
-document.querySelector("main").innerHTML = `
+const codeTemplate = `
         <div class="img">
           <div class="img__column">
             <img
-              src="${images[0].src}" alt="${images[0].alt}"
+              src="${animalList[0].src}" alt="${animalList[0].alt}"
             />
             <img
-              src="${images[10].src}" alt="${images[10].alt}"
+              src="${animalList[10].src}" alt="${animalList[10].alt}"
             />
             <img
-              src="${images[22].src}" alt="${images[22].alt}"
-            />
-          </div>
-          <div class="img__column">
-            <img
-            src="${images[21].src}" alt="${images[21].alt}"
-            />
-            <img
-              src="${images[14].src}" alt="${images[14].alt}"
-            />
-            <img
-              src="${images[3].src}" alt="${images[3].alt}"
+              src="${animalList[22].src}" alt="${animalList[22].alt}"
             />
           </div>
           <div class="img__column">
             <img
-              src="${images[6].src}" alt="${images[6].alt}"
+            src="${animalList[21].src}" alt="${animalList[21].alt}"
             />
             <img
-              src="${images[16].src}" alt="${images[16].alt}"
+              src="${animalList[14].src}" alt="${animalList[14].alt}"
             />
             <img
-            src="${images[8].src}" alt="${images[8].alt}"
+              src="${animalList[3].src}" alt="${animalList[3].alt}"
+            />
+          </div>
+          <div class="img__column">
+            <img
+              src="${animalList[6].src}" alt="${animalList[6].alt}"
+            />
+            <img
+              src="${animalList[16].src}" alt="${animalList[16].alt}"
+            />
+            <img
+            src="${animalList[8].src}" alt="${animalList[8].alt}"
             />
           </div>
         </div>`;
 
-const imgClass = document.querySelectorAll("img");
-imgClass.forEach((element) => element.classList.add("img__js"));
+render(codeTemplate, document.querySelector("main"));
+
+const imgHtml = document.querySelectorAll("img");
+imgHtml.forEach((element) => element.classList.add("img__js"));
 
 const popupIcon = document.querySelector("#popup");
 popupIcon.addEventListener("click", showPopup);
 
-const cat = document.querySelector("#cat");
-const dog = document.querySelector("#dog");
-const horse = document.querySelector("#horses");
+const menuList = document.querySelector(".navigation");
+menuList.addEventListener("click", changeImagesByClick);
 
-cat.addEventListener("click", changeImagesByClick);
-dog.addEventListener("click", changeImagesByClick);
-horse.addEventListener("click", changeImagesByClick);
+function render(codeTemplate, placeholder) {
+  placeholder.innerHTML = codeTemplate;
+}
 
-function changeImagesByClick() {
-  const imgHtml = document.querySelectorAll(".img__js");
-  const result = images.filter((key) => key.id === this.id);
+function changeImagesByClick(event) {
+  const imgFiltreById = animalList.filter(
+    (kindOfAnimal) => kindOfAnimal.species === event.target.id
+  );
+
   for (let i = 0; i < imgHtml.length; i++) {
-    imgHtml[i].setAttribute("src", result[i].src);
-    imgHtml[i].setAttribute("alt", result[i].alt);
+    imgHtml[i].setAttribute("src", imgFiltreById[i].src);
+    imgHtml[i].setAttribute("alt", imgFiltreById[i].alt);
   }
 }
 
 function showPopup() {
-  const menu = document.querySelector("#navigation");
-  if (menu.style.display === "flex" && window.innerWidth <= 700) {
-    menu.style.display = "none";
-  } else {
-    menu.style.display = "flex";
-  }
+  menuList.classList.toggle("navigation__none");
 }
