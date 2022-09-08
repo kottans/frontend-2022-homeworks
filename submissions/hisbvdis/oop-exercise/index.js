@@ -8,23 +8,33 @@
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 class Creature {
-  constructor(species, name, gender, saying) {
+  constructor(species, name, gender, saying, legs) {
     this.species = species;
     this.name = name;
     this.gender = gender;
+    this.legs = legs;
     this.saying = saying;
+    this.props = [
+      { prop: "species", preface: "I am a" },
+      { prop: "name", preface: "My name is" },
+      { prop: "gender", preface: "I am a" },
+      { prop: "saying", preface: "I can say —" },
+      { prop: "legs", preface: "I have legs:" },
+    ];
   }
 
   getProps() {
-    return Object.getOwnPropertyNames(this).map((prop) => this[prop]).join("; ");
+    return this.props
+      .map(({ prop, preface }) => `${preface} ${this[prop]}`)
+      .join("; ");
   }
 }
 
 class Human extends Creature {
   constructor(name, gender, saying) {
-    super("human", name, gender, saying);
+    super("human", name, gender, saying, 2);
     this.hands = 2;
-    this.legs = 2;
+    this.props = this.props.concat({prop: "hands", preface: "I have hands:"});
   }
 }
 
