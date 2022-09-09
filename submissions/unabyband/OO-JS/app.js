@@ -4,7 +4,7 @@
 // The image/sprite for our enemies, this uses
 // a helper we've provided to easily load images
 
-var Enemy = function(x, y, speed) {
+const Enemy = function(x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -41,7 +41,7 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function (x, y) {
+const Player = function (x, y) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/char-boy.png'
@@ -81,8 +81,8 @@ Player.prototype.handleInput = function (keyPress) {
 
         if ((wins % 3) == 0  && wins < 12) {
             enemySpeed += 100;
-            speedMsg = "\nIncreasing the bug speed up to " + enemySpeed;
-        } else if (wins == 9) {
+            speedMsg = "\nIncreasing average bugs speed up to " + enemySpeed;
+        } else if (wins == 12) {
             mainMsg = "\nYou're a REAL BUG-DECEIVER!"
             enemySpeed = 100;
             wins = 0;
@@ -90,18 +90,17 @@ Player.prototype.handleInput = function (keyPress) {
     };
 };
 
-
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var wins = 0;
-var enemySpeed = 100;
-var mainMsg = "";
+let wins = 0;
+let enemySpeed = 100;
+let mainMsg = "";
 let enemy = new Enemy();
 const allEnemies = []; 
 const enemyLocation = [63, 147, 230];
 
 enemyLocation.forEach(function (locationY) {
-    enemy = new Enemy(0, locationY, 200);
+    enemy = new Enemy(0, locationY, enemySpeed);
     allEnemies.push(enemy);
 });
 
@@ -111,12 +110,12 @@ let player = new Player(202, 405);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
