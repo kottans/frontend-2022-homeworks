@@ -18,6 +18,7 @@ body {
 	font-size: 200%;
 	text-align: center;
 	background-color: rgb(218, 216, 207);
+	user-select: none;
 }
 .hide--message {
 	display: none
@@ -26,6 +27,7 @@ body {
 .title, .subtitle {
 	padding: 15px;
 	text-align: center;
+	user-select: none;
 }
 
 .container {
