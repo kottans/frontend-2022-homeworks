@@ -90,13 +90,10 @@ addToSociety(secretSociety, catWoman)
 addToSociety(secretSociety, pirate)
 
 function isInSociety(society, objects) {
-  const arrInSociety = []
-
-  objects.forEach(el => {
-    if (society.some(soc => soc === el.id)) arrInSociety.push(el.name)
-  })
-
-  return arrInSociety.join(', ')
+  return objects.reduce((acc, el) => {
+    if (society.some(soc => soc === el.id)) acc.push(el.name)
+    return acc
+  }, []).join(', ')
 }
 
 // ======== OUTPUT ========
