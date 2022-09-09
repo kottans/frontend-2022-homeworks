@@ -89,7 +89,7 @@ h6 {
 }
 
 /*--------------------*/
-.side-menu_content {
+#side-menu_content {
     display: flex;
     background-size: cover;
 }
@@ -221,4 +221,19 @@ h6 {
     .content-description {
         font-size: 1.5em;
     }
+}
+.sea1{
+    background-image: url('./img/sea1.jpg');
+}
+.sea2{
+    background-image: url('./img/sea2.jpg');
+}
+.sea3{
+    background-image: url('./img/sea3.jpg');
+}
+.sea4{
+    background-image: url('./img/sea4.jpg');
+}
+.sea5{
+    background-image: url('./img/sea5.jpg');
 }
