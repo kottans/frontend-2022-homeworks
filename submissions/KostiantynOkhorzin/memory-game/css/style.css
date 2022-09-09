@@ -53,31 +53,11 @@ body {
   text-align: center;
 }
 
-@media (max-width: 425px) {
-  .game__title {
-    font-size: 28px;
-  }
-}
-
 .game__body {
   display: grid;
   grid-template-columns: repeat(4, 150px);
   grid-template-rows: repeat(3, 150px);
   perspective: 1000px;
-}
-
-@media (max-width: 768px) {
-  .game__body {
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: repeat(3, 100px);
-  }
-}
-
-@media (max-width: 425px) {
-  .game__body {
-    grid-template-columns: repeat(3, 6rem);
-    grid-template-rows: repeat(4, 6rem);
-  }
 }
 
 .game__card {
@@ -116,4 +96,22 @@ body {
 
 .game__card-back {
   transform: rotateY(180deg);
+}
+
+@media (max-width: 768px) {
+  .game__body {
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(3, 100px);
+  }
+}
+
+@media (max-width: 425px) {
+  .game__title {
+    font-size: 28px;
+  }
+
+  .game__body {
+    grid-template-columns: repeat(3, 6rem);
+    grid-template-rows: repeat(4, 6rem);
+  }
 }
