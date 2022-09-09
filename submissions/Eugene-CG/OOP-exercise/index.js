@@ -30,43 +30,27 @@ class Human extends Inhabitant {
   }
 }
 class Cat extends Animal {
-  constructor(name, gender) {
-    super(name, "", gender);
-    this.saying = "meow";
+  constructor(name, gender, saying = "meow") {
+    super(name, saying, gender);
     this.paws = 4;
     this.species = "Felis catus";
   }
 }
 class Dog extends Animal {
-  constructor(name, gender) {
-    super(name, "", gender);
-    this.saying = "woof";
+  constructor(name, gender, saying = "woof") {
+    super(name, saying, gender);
     this.paws = 4;
     this.species = "Canis familiaris";
   }
 }
 class Man extends Human {
-  constructor(name, saying) {
-    super(name, saying, "");
-    this.gender = "male";
+  constructor(name, saying, gender = "male") {
+    super(name, saying, gender);
   }
 }
 class Woman extends Human {
-  constructor(name, saying) {
-    super(name, saying, "");
-    this.gender = "female";
-  }
-}
-class CatWoman extends Cat {
-  constructor(name) {
-    super(name, "", "");
-    this.gender = "female";
-    this.legs = 2;
-    this.hands = 2;
-    this.species = "сatwoman";
-  }
-  getProperties() {
-    return super.getStr() + `${this.species} ${this.legs} ${this.hands}`;
+  constructor(name, saying, gender = "female") {
+    super(name, saying, gender);
   }
 }
 const inhabitants = [
@@ -74,7 +58,6 @@ const inhabitants = [
   new Dog("Toby", "male"),
   new Man("John", "I am a man"),
   new Woman("Yennefer", "Nice to meet you"),
-  new CatWoman("Violet Flower"),
 ].forEach((inhabitant) => {
   print(inhabitant.getProperties());
 });
