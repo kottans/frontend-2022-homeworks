@@ -81,11 +81,7 @@ Player.prototype.handleInput = function (keyPress) {
 
         if ((wins % 3) == 0  && wins < 12) {
             enemySpeed += 100;
-<<<<<<< HEAD
             speedMsg = "\nIncreasing average bugs speed up to " + enemySpeed;
-=======
-            speedMsg = "\nIncreasing the bug speed up to " + enemySpeed;
->>>>>>> 6a1637f4704e55a1e0c48566986846bd177409c3
         } else if (wins == 12) {
             mainMsg = "\nYou're a REAL BUG-DECEIVER!"
             enemySpeed = 100;
