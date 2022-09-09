@@ -5,67 +5,62 @@ const NAV_BAR_ITEMS = DATA.map(item => {
     }
 });
 
+function findHeaderLinkOrNavLink(clickedElement) {
+    let res = { navLink: undefined, headerLink: undefined };
+    let current = clickedElement;
+    while (current) {
+        const { className } = current;
+        if (className) {
+            if (className.includes('nav__link')) {
+                res = {
+                    navLink: current
+                }
+                break;
+            }
+            else if (className.includes('header__link')) {
+                res = {
+                    headerLink: current
+                }
+                break;
+            }
+            else if (className.includes('container')) {
+                break;
+            }
+        }
+        current = current.parentNode;
+    }
+    return res;
+}
+
+function handleContainerClick({ target }) {
+    const navEl = document.querySelector('#nav');
+    const { navLink, headerLink } = findHeaderLinkOrNavLink(target);
+
+    if (navLink) {
+        if (activeElId !== navLink.id) {
+            if (activeElId) {
+                document.querySelector('#' + activeElId).classList.remove('active');
+            };
+            activeElId = navLink.id;;
+            navLink.classList.add('active')
+            const currentArticleData = DATA.find(article => article.id === navLink.id);
+            navClick(navLink, currentArticleData);
+        };
+        navEl.classList.remove('nav__full');
+    } else if (headerLink) {
+        navEl.classList.add('nav__full');
+    };
+};
+
+let activeElId;
 function createNavList(obj) {
-    let activeElId;
     const { items: DATA,
         parentEl,
-        defaultId,
-        navClick } = obj;
+        defaultId } = obj;
     activeElId = defaultId;
 
-    function findHeaderLinkOrNavLink(clickedElement) {
-        // just for info what this methods returns.
-        let res = { navLink: undefined, headerLink: undefined };
-        let current = clickedElement;
-        console.log(current)
-        while (current) {
-            const { className } = current;
-            if (className) {
-                // example of navLink html - if user clicks on child (nav_text) then continue searching (get parent element until find nav_text)
-                // <a id="${item.id}" href="#" class="nav__link ${defaultId === item.id ? 'active' : ''}">
-                //     <span class="nav__text">${item.title}</span> 
-                // </a>
-                if (className.includes('nav__link')) {
-                    res = {
-                        navLink: current
-                    }
-                    break;
-                }
-                // example of headerLink html - if user clicks on child (image for example) then continue searching (get parent element)
-                //<a class="header__link" alt=""><img src="img/logo.png" alt="" class="img__btn"></a>
-                else if (className.includes('header__link')) {
-                    res = {
-                        headerLink: current
-                    }
-                    break;
-                }
-                else if (className.includes('container')) {
-                    break;
-                }
-            }
-            current = current.parentNode;
-        }
-        return res;
-    }
-    function handleContainerClick({ target }) {
-        const navEl = container.querySelector('#nav');
-        const { navLink, headerLink } = findHeaderLinkOrNavLink(target);
+    findHeaderLinkOrNavLink()
 
-        if (navLink) {
-            if (activeElId !== navLink.id) {
-                if (activeElId) {
-                    container.querySelector('#' + activeElId).classList.remove('active');
-                };
-                activeElId = navLink.id;;
-                navLink.classList.add('active')
-                const currentArticleData = DATA.find(article => article.id === navLink.id);
-                navClick(navLink, currentArticleData);
-            };
-            navEl.classList.remove('nav__full');
-        } else if (headerLink) {
-            navEl.classList.add('nav__full');
-        };
-    };
     const navElements = DATA.map((item) =>
         `<li class="nav__item">
             <a id="${item.id}" href="#" class="nav__link ${defaultId === item.id ? 'active' : ''}">
@@ -114,10 +109,5 @@ createNavList({
     items: NAV_BAR_ITEMS,
     parentEl: document.getElementById('navDivContainer'),
     defaultId,
-    navClick
 });
 showArticle(defaultId)
-
-
-
-
