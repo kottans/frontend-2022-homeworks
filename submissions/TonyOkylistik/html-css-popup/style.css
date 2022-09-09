@@ -88,50 +88,59 @@ header {
   border-bottom: 3px solid #d48cc0;
 }
 
+#popup__main:focus ~ label {
+  z-index: 1;
+  outline: 2px solid black;
+  border-radius: 40% 10%;
+  padding: 2px;
+}
+
 #popup__main {
   opacity: 0;
-  transform: scale(2);
+  z-index: -1;
   position: absolute;
-  top: 7px;
-  left: 7px;
 }
 #popup__main:checked ~ .burger-menu {
   visibility: visible;
+}
+#popup__main:focus {
+  border-radius: 40% 10%;
+  outline: 2px solid black;
 }
 #popup__more {
   opacity: 0;
   height: 22px;
   position: absolute;
-  top: 300px;
-  width: 100%;
+  left: 0;
+}
+#popup__more:focus ~ label {
+  outline: 2px solid black;
+  margin: 2px;
+}
+#popup__more:checked {
+  visibility: visible;
 }
 #popup__more:checked ~ .list__more {
   display: flex;
 }
-#popup__more:checked ~ #more {
+#popup__more:checked ~ .more {
   background-color: #f6f1b4;
 }
-#popup__more:checked ~ #more:before {
+#popup__more:checked ~ .more:before {
   content: "...";
 }
 
-a#more {
+.more {
   overflow-x: hidden;
   background-color: #8cd4aa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.085);
   transition: opacity 0.3s ease;
 }
-a#more:before {
+.more:before {
   content: "MORE";
 }
-a#more:hover {
+.more:hover {
   opacity: 0.85;
-}
-a#more:focus {
-  border: 2px solid 0;
-  border-radius: 0;
-  margin: 1px 2px;
-  width: 256px;
 }
 
 li,
@@ -172,6 +181,13 @@ li__item:active,
 .list__item:active {
   border: 2px solid #2cb264;
   background-color: #8cd4aa;
+}
+
+a.focus:focus {
+  outline: 2px solid black;
+  margin: 2px;
+  border-radius: 0;
+  margin-bottom: 5px;
 }
 
 label {
