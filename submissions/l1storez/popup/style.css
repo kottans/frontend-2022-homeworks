@@ -230,7 +230,8 @@ body {
 
 .checkbox_sequel:checked ~ .popup_list_sequel {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .checkbox_sequel:focus ~ label .popup_sequel_more,
