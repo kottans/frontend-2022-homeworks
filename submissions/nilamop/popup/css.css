@@ -114,9 +114,6 @@ body {
     background-color: #78DBE2;
 }
 
-
-
-
 .menu_item a:hover {
     background-color: #FDF5E6;
     border-radius: 10%;
@@ -126,7 +123,6 @@ body {
     padding-top: 12px;
 }
 
-/*more_btn*/
 .lable__more {
     margin-top: 10px;
     background-color: rgba(0, 0, 0, 0.1);
