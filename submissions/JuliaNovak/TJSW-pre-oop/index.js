@@ -48,7 +48,8 @@ const catWoman = {
 // ======== OUTPUT ========
 
 const inhabitantsArr = [dog, cat, man, woman, catWoman];
+const properties = ["species", "gender", "name", "hands", "legs", "saying"];
+
 inhabitantsArr.forEach((inhabitant) => {
-   const inhabitantToArr = Object.values(inhabitant);
-   print(inhabitantToArr.map((prop) => prop));
+   print(properties.map((property) => inhabitant[property]).join("; "));
 });
