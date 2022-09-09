@@ -5,6 +5,24 @@
 body {
 	background-color: beige;
 }
+.show--message{
+	position: absolute;
+	top: 50%;  
+	left: 50%;
+	transform: translateX(-50%);
+	transform: translate(-50%);
+
+	border: 2px solid grey;
+	max-width: 350px;
+	padding: 10px;
+	font-size: 200%;
+	text-align: center;
+	background-color: rgb(218, 216, 207);
+}
+.hide--message {
+	display: none
+}
+
 .title, .subtitle {
 	padding: 15px;
 	text-align: center;
@@ -20,7 +38,6 @@ body {
 	padding: 10px;
 	box-shadow: 2px 2px 30px 2px rgb(56, 56, 54);
 	user-select: none;
-
 }
 
 .hidden{
@@ -39,7 +56,6 @@ body {
 	transform-style: preserve-3d;
 	transition: 0.7s;
 }
-
 
 .front, .back {
 	position: absolute;
