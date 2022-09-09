@@ -39,10 +39,12 @@ function displayUsers(friends) {
   cardsOfFriends.innerHTML = createCards;
 }
 
-function sortByName(a, b) {
+function sortByAge(a, b) {
   return a.dob.age > b.dob.age ? 1 : -1;
 }
-
+function sortByName (a, b) {
+  return a.name.first.localeCompare(b.name.first);
+}
 function sortFriends(target, friends) {
   const button = target.id;
 
