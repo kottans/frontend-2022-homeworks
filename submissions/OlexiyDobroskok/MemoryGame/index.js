@@ -74,7 +74,8 @@ winBtn.addEventListener("click", closeWinWindow);
 function newGame() {
   showGameStatus();
   const shuffleDeck = shuffle(deckMoneyHeist).slice(0, 6);
-  const gameDeck = [...shuffleDeck, ...shuffleDeck];
+  const doubleDeck = [...shuffleDeck, ...shuffleDeck];
+  const gameDeck = shuffle(doubleDeck);
   playArea.append(...makePlayArea(gameDeck));
 }
 
@@ -216,7 +217,7 @@ function showWhoAreYou(getName) {
   const winTitle = document.querySelector(".win__title");
   winTitle.innerHTML = `Congratulations!<br/>All pairs founded! Used attempts: ${attempt}`;
   const winText = document.querySelector(".win__text");
-  winText.innerHTML = `You&rsquo;re "&laquo;${nameCharacter}"&raquo;`;
+  winText.innerHTML = `You&rsquo;re &laquo;${nameCharacter}&raquo;`;
   const winImg = document.querySelector(".win__img");
   winImg.src = openCard;
 }

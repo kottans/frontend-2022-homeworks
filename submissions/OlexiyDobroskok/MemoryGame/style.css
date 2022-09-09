@@ -13,7 +13,7 @@ body {
 }
 
 .title {
-  font-size: 36px;
+  font-size: 26px;
   font-weight: bold;
   color: #b9423c;
   text-align: center;
@@ -25,7 +25,7 @@ body {
   font-weight: bold;
   color: #b9423c;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .wrap {
@@ -38,8 +38,8 @@ body {
 .card__list {
   display: flex;
   flex-wrap: wrap;
-  width: 620px;
-  height: 620px;
+  width: 520px;
+  height: 530px;
   padding: 10px;
   margin: 30px 0px;
   background-image: url(../img/Kottans.jpg);
@@ -54,8 +54,8 @@ body {
 }
 
 .card__item {
-  width: 150px;
-  height: 200px;
+  width: 125px;
+  height: 170px;
   position: relative;
   transform-style: preserve-3d;
   transform: scale(1);
@@ -77,10 +77,11 @@ body {
 .card__item.flipped {
   transform: rotateY(180deg);
 }
+
 .closed__card,
 .opened__card {
-  width: 150px;
-  height: 200px;
+  width: 125px;
+  height: 170px;
   position: absolute;
   border: solid 10px black;
   backface-visibility: hidden;
@@ -106,12 +107,12 @@ body {
 }
 
 .rules {
-  width: 700px;
-  height: 630px;
+  width: 540px;
+  height: 580px;
   position: fixed;
   right: 0px;
   bottom: 0px;
-  top: 130px;
+  top: 70px;
   left: 0px;
   opacity: 1;
   visibility: visible;
@@ -129,18 +130,20 @@ body {
   font-size: 24px;
   color: #b9423c;
   text-align: center;
-  padding-top: 30px;
+  padding-top: 15px;
 }
+
 .rules__text {
-  font-size: 18px;
+  font-size: 16px;
   color: #b9423c;
   padding: 15px 10px 0 10px;
   margin-bottom: 10px;
   text-align: center;
 }
+
 .rules__btn {
   display: block;
-  margin: 45px auto;
+  margin: 30px auto;
   width: 150px;
   height: 30px;
   border-radius: 5px;
@@ -155,6 +158,7 @@ body {
   transform: scale(1.05);
   transition: transform 0.3s;
 }
+
 .rules__btn:active {
   transform: scale(0.9);
   transition: transform 0.5s;
@@ -165,6 +169,7 @@ body {
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
 .character {
   display: flex;
   flex-direction: column-reverse;
@@ -174,7 +179,7 @@ body {
 }
 
 .character__name {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #b9423c;
   padding-left: 10px;
@@ -186,6 +191,7 @@ body {
   color: #b9423c;
   padding-left: 10px;
 }
+
 .character__img {
   width: 100px;
   height: 150px;
@@ -206,13 +212,14 @@ body {
   z-index: 5;
   transition: all 1s ease 0s;
 }
+
 .win__window {
-  width: 650px;
-  height: 650px;
+  width: 540px;
+  height: 600px;
   position: fixed;
   right: 0px;
   bottom: 0px;
-  top: 130px;
+  top: 70px;
   left: 0px;
   opacity: 0;
   visibility: hidden;
@@ -225,6 +232,7 @@ body {
   box-shadow: 0px 0px 47px 7px #b43c3c;
   transition: all 1s ease 0s;
 }
+
 .win__title {
   font-size: 24px;
   line-height: 1.5em;
@@ -233,6 +241,7 @@ body {
   text-align: center;
   padding-top: 10px;
 }
+
 .win__text {
   font-size: 24px;
   font-weight: bolder;
@@ -241,20 +250,21 @@ body {
   padding-top: 20px;
   margin-bottom: 15px;
 }
+
 .win__img {
   display: block;
-  width: 300px;
-  height: 400px;
+  width: 250px;
+  height: 350px;
   margin: 0 auto;
-  padding-top: 20px;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 100px 8px #b43b3c;
   -moz-box-shadow: 0px 0px 100px 8px #b43b3c;
   box-shadow: 0px 0px 100px 8px #b43b3c;
 }
+
 .win__btn {
   display: block;
-  margin: 40px auto;
+  margin: 30px auto;
   width: 150px;
   height: 30px;
   border-radius: 5px;
@@ -269,6 +279,7 @@ body {
   transform: scale(1.05);
   transition: transform 0.3s;
 }
+
 .win__btn:active {
   transform: scale(0.9);
   transition: transform 0.5s;
@@ -292,150 +303,51 @@ a {
   padding-right: 30px;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 576px) {
   .rules {
-    width: 90%;
-    height: 550px;
-    top: 20px;
+    width: 300px;
+    height: 500px;
+    top: 50px;
   }
 
   .rules__title {
     font-size: 18px;
     padding-top: 10px;
   }
+
   .rules__text {
     font-size: 14px;
-    margin: 0;
+    margin: 0px;
   }
+
   .rules__btn {
-    margin: 20px auto;
+    margin: 50px auto;
   }
 
   .character {
-    width: 150px;
-  }
-
-  .character__name {
-    font-size: 16px;
-  }
-
-  .character__text {
-    font-size: 14px;
-  }
-  .character__img {
-    width: 50px;
-    height: 80px;
-    padding-top: 10px;
-  }
-  .title {
-    font-size: 20px;
-  }
-
-  .text__info {
-    font-size: 18px;
-    padding-top: 10px;
-  }
-
-  .wrap {
-    margin: 0 15px;
-  }
-
-  .card__list {
-    width: 350px;
-    height: auto;
-    justify-content: space-between;
-    margin: 15px 0px;
-  }
-
-  .card__item {
     width: 100px;
-    height: 130px;
-  }
-
-  .closed__card,
-  .opened__card {
-    width: 100px;
-    height: 130px;
-    border: solid 5px black;
-  }
-  .win__window {
-    width: 90%;
-    height: 550px;
-    top: 20px;
-  }
-  .win__title {
-    font-size: 20px;
-    line-height: 1.2em;
-  }
-  .win__text {
-    font-size: 20px;
-    padding-top: 10px;
-  }
-  .win__img {
-    width: 70%;
-    height: 60%;
-    margin: 0 auto;
-    padding-top: 20px;
-    -webkit-box-shadow: 0px 0px 50px 8px #b43b3c;
-    -moz-box-shadow: 0px 0px 50px 8px #b43b3c;
-    box-shadow: 0px 0px 50px 8px #b43b3c;
-  }
-  .win__btn {
-    margin: 20px auto;
-  }
-
-  footer {
-    height: 15px;
-    padding-top: 10px;
-    justify-content: flex-end;
-  }
-
-  footer,
-  a {
-    padding-right: 10px;
-  }
-}
-
-@media (min-width: 376px) and (max-width: 455px) {
-  .rules {
-    width: 85%;
-    height: 570px;
-    top: 20px;
-  }
-
-  .rules__title {
-    font-size: 18px;
-    padding-top: 10px;
-  }
-  .rules__text {
-    font-size: 14px;
-  }
-  .rules__btn {
-    margin: 20px auto;
-  }
-
-  .character {
-    width: 150px;
   }
 
   .character__name {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .character__text {
-    font-size: 14px;
+    font-size: 10px;
   }
+
   .character__img {
     width: 50px;
     height: 80px;
     padding-top: 10px;
   }
+
   .title {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .text__info {
-    font-size: 18px;
+    font-size: 16px;
     padding-top: 10px;
   }
 
@@ -444,155 +356,55 @@ a {
   }
 
   .card__list {
-    width: 350px;
-    height: auto;
+    width: 290px;
+    height: 460px;
     justify-content: space-between;
-    margin: 15px 0px;
-  }
-
-  .card__item {
-    width: 110px;
-    height: 140px;
-  }
-
-  .closed__card,
-  .opened__card {
-    width: 110px;
-    height: 140px;
-    border: solid 5px black;
-  }
-  .win__window {
-    width: 90%;
-    height: 550px;
-    top: 20px;
-  }
-  .win__title {
-    font-size: 20px;
-    line-height: 1.2em;
-  }
-  .win__text {
-    font-size: 20px;
-    padding-top: 10px;
-  }
-  .win__img {
-    width: 80%;
-    height: 70%;
-    margin: 0 auto;
-    padding-top: 20px;
-    -webkit-box-shadow: 0px 0px 50px 8px #b43b3c;
-    -moz-box-shadow: 0px 0px 50px 8px #b43b3c;
-    box-shadow: 0px 0px 50px 8px #b43b3c;
-  }
-  .win__btn {
-    margin: 20px auto;
-  }
-
-  footer {
-    height: 15px;
-    padding-top: 10px;
-    justify-content: flex-end;
-  }
-
-  footer,
-  a {
-    padding-right: 10px;
-  }
-}
-@media (min-width: 456px) and (max-width: 530px) {
-  .rules {
-    width: 85%;
-    height: 570px;
-    top: 20px;
-  }
-
-  .rules__title {
-    font-size: 18px;
-    padding-top: 10px;
-  }
-  .rules__text {
-    font-size: 14px;
-  }
-  .rules__btn {
-    margin: 20px auto;
-  }
-
-  .character {
-    width: 150px;
-  }
-
-  .character__name {
-    font-size: 16px;
-  }
-
-  .character__text {
-    font-size: 14px;
-  }
-  .character__img {
-    width: 50px;
-    height: 80px;
-    padding-top: 10px;
-  }
-  .title {
-    font-size: 20px;
-  }
-
-  .text__info {
-    font-size: 18px;
-    padding-top: 10px;
-  }
-
-  .wrap {
-    margin: 0 15px;
-  }
-
-  .card__list {
-    width: 400px;
-    height: auto;
-    justify-content: space-between;
-    margin: 15px 0px;
   }
 
   .card__item {
     width: 90px;
-    height: 120px;
+    height: 110px;
   }
 
   .closed__card,
   .opened__card {
     width: 90px;
-    height: 120px;
+    height: 110px;
     border: solid 5px black;
   }
+
   .win__window {
-    width: 90%;
-    height: 550px;
-    top: 20px;
+    width: 300px;
+    height: 510px;
+    top: 50px;
   }
+
   .win__title {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.2em;
   }
+
   .win__text {
-    font-size: 20px;
+    font-size: 18px;
     padding-top: 10px;
   }
+
   .win__img {
-    width: 80%;
-    height: 70%;
-    margin: 0 auto;
-    padding-top: 20px;
+    width: 200px;
+    height: 300px;
+    margin: 0 auto 50px auto;
     -webkit-box-shadow: 0px 0px 50px 8px #b43b3c;
     -moz-box-shadow: 0px 0px 50px 8px #b43b3c;
     box-shadow: 0px 0px 50px 8px #b43b3c;
   }
+
   .win__btn {
-    margin: 20px auto;
+    margin: 0 auto;
   }
 
   footer {
     height: 15px;
     padding-top: 10px;
-    justify-content: flex-end;
   }
 
   footer,
@@ -600,43 +412,55 @@ a {
     padding-right: 10px;
   }
 }
-@media (min-width: 531px) and (max-width: 700px) {
+
+@media (min-width: 576px) and (max-width: 768px) {
   .rules {
-    width: 85%;
-    height: 530px;
-    top: 70px;
+    width: 440px;
+    height: 490px;
+    top: 50px;
   }
 
   .rules__title {
-    font-size: 20px;
+    font-size: 18px;
     padding-top: 10px;
   }
+
   .rules__text {
     font-size: 16px;
   }
 
+  .rules__btn {
+    margin: 0 auto;
+  }
+
   .character {
-    width: 150px;
+    width: 140px;
+  }
+
+  .character__list {
+    margin-bottom: 30px;
   }
 
   .character__name {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .character__text {
-    font-size: 16px;
+    font-size: 12px;
   }
+
   .character__img {
     width: 80px;
     height: 110px;
     padding-top: 10px;
   }
+
   .title {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .text__info {
-    font-size: 20px;
+    font-size: 16px;
     padding-top: 10px;
   }
 
@@ -645,50 +469,168 @@ a {
   }
 
   .card__list {
-    width: 420px;
-    height: auto;
+    width: 440px;
+    height: 440px;
     justify-content: space-between;
-    margin: 15px 0px;
   }
 
   .card__item {
-    width: 100px;
-    height: 130px;
+    width: 105px;
+    height: 140px;
   }
 
   .closed__card,
   .opened__card {
-    width: 100px;
-    height: 130px;
+    width: 105px;
+    height: 140px;
     border: solid 5px black;
   }
+
   .win__window {
-    width: 60%;
-    height: 550px;
-    top: 70px;
+    width: 440px;
+    height: 490px;
+    top: 50px;
   }
+
   .win__title {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.2em;
   }
+
   .win__text {
-    font-size: 20px;
+    font-size: 18px;
     padding-top: 10px;
   }
+
   .win__img {
-    width: 60%;
-    height: 60%;
-    margin: 0 auto;
-    padding-top: 20px;
+    width: 200px;
+    height: 300px;
+    margin: 0 auto 30px auto;
     -webkit-box-shadow: 0px 0px 50px 8px #b43b3c;
     -moz-box-shadow: 0px 0px 50px 8px #b43b3c;
     box-shadow: 0px 0px 50px 8px #b43b3c;
   }
 
+  .win__btn {
+    margin: 0 auto;
+  }
+
   footer {
     height: 15px;
     padding-top: 10px;
-    justify-content: flex-end;
+  }
+
+  footer,
+  a {
+    padding-right: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .rules {
+    width: 480px;
+    height: 510px;
+    top: 50px;
+  }
+
+  .rules__title {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .rules__text {
+    font-size: 16px;
+  }
+
+  .rules__btn {
+    margin: 0 auto;
+  }
+
+  .character {
+    width: 140px;
+  }
+
+  .character__list {
+    margin-bottom: 40px;
+  }
+
+  .character__name {
+    font-size: 14px;
+  }
+
+  .character__text {
+    font-size: 12px;
+  }
+
+  .character__img {
+    width: 80px;
+    height: 110px;
+    padding-top: 10px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .text__info {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .wrap {
+    margin: 0 15px;
+  }
+
+  .card__list {
+    width: 480px;
+    height: 470px;
+    justify-content: space-between;
+  }
+
+  .card__item {
+    width: 115px;
+    height: 150px;
+  }
+
+  .closed__card,
+  .opened__card {
+    width: 115px;
+    height: 150px;
+    border: solid 5px black;
+  }
+
+  .win__window {
+    width: 480px;
+    height: 530px;
+    top: 50px;
+  }
+
+  .win__title {
+    font-size: 18px;
+    line-height: 1.2em;
+  }
+
+  .win__text {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .win__img {
+    width: 220px;
+    height: 320px;
+    margin: 0 auto 40px auto;
+    -webkit-box-shadow: 0px 0px 50px 8px #b43b3c;
+    -moz-box-shadow: 0px 0px 50px 8px #b43b3c;
+    box-shadow: 0px 0px 50px 8px #b43b3c;
+  }
+
+  .win__btn {
+    margin: 0 auto;
+  }
+
+  footer {
+    height: 15px;
+    padding-top: 10px;
   }
 
   footer,
@@ -699,49 +641,55 @@ a {
 
 @media (orientation: landscape) and (max-height: 420px) {
   .title {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .text__info {
-    font-size: 14px;
+    font-size: 12px;
     padding-top: 5px;
+    margin-bottom: 5px;
   }
 
   .card__list {
-    height: 280px;
-    padding: 10px;
+    width: 500px;
+    height: 230px;
+    padding: 5px;
     margin: 5px 0px;
   }
 
   .card__item {
-    width: 100px;
-    height: 130px;
+    width: 80px;
+    height: 110px;
   }
 
   .closed__card,
   .opened__card {
-    width: 100px;
-    height: 130px;
+    width: 80px;
+    height: 110px;
     border: solid 5px black;
   }
 
   .rules {
-    width: 95%;
-    height: 300px;
-    top: 30px;
+    width: 500px;
+    height: 240px;
+    top: 50px;
   }
 
   .rules__title {
     font-size: 14px;
     padding-top: 5px;
   }
+
   .rules__text {
     font-size: 12px;
     padding: 5px 10px 0 10px;
     margin-bottom: 5px;
   }
+
   .rules__btn {
-    width: 130px;
+    width: 100px;
+    height: 25px;
+    font-size: 14px;
   }
 
   .character {
@@ -756,31 +704,38 @@ a {
   .character__text {
     font-size: 8px;
   }
+
   .character__img {
     width: 50px;
     height: 80px;
   }
 
   .win__window {
-    width: 95%;
-    height: 330px;
-    top: 20px;
+    width: 500px;
+    height: 260px;
+    top: 40px;
   }
+
   .win__title {
     font-size: 14px;
     line-height: 1.1em;
   }
+
   .win__text {
     font-size: 14px;
     padding-top: 5px;
     margin-bottom: 10px;
   }
+
   .win__img {
-    width: 130px;
-    height: 180px;
+    width: 90px;
+    height: 120px;
     padding-top: 0px;
   }
+
   .win__btn {
-    margin: 30px auto;
+    width: 100px;
+    height: 25px;
+    font-size: 14px;
   }
 }
