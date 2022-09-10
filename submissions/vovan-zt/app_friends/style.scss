@@ -21,47 +21,67 @@ label {
 
 .header {
 	background: #1f2833;
-	height: 50px;
+	height: 70px;
 	position: relative;
 	&__wrapper {
 	position: fixed;
 	width: 100%;	
+	background-color:#0b0c10;
 	}
 	&__title {
 	text-align: center;
-	background-color:#0b0c10;
 	color:$main-color;
+	font-size: 40px;
+	height: 60px;
+	color: transparent;
+	background-image: linear-gradient(90deg, red, blue, green, magenta, cyan, yellow);
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-size: 300px 300px;
+	background-position: 0 0;
+	animation: bp 10s infinite linear;
 	}
 }
+
+@keyframes bp {
+	from {
+	  background-position-x: 0px;
+	}
+	to {
+	  background-position-x: 300px;
+	}
+  }
+
 .container {
 	display: grid;
 	grid-template-columns:1fr;
 	grid-template-rows: auto;
-	gap: 20px;
+	column-gap: 20px;
 	padding: 10px;
+	&__active {
+		grid-template-columns:230px 1fr;
+	}
 }
 .filter {
-	position: fixed;
+	position: relative;
 	top: 0;
 	left: -100%;
-	width:100%;
+	width:240px;
+	height: 100%;
 	z-index: 10;
 	visibility: hidden;
 	opacity: 0;
-	transition: 0.6s all;
+	transition: 0.8s all;
 	&__wrapper {
-		position: relative;
-		width:230px;
-		padding-top: 50px;
-		padding-left: 10px;
+		position: fixed;
 		border-radius:5px;
 		background-color:rgba(57, 56, 56, 0.9);
-		height: 100%;
-		transition: 0.6 all;
+		transition: 0.8 all;
 		z-index: 10;
 		box-shadow: 3px 3px 10px 5px #000;
 	}
 	&__active {
+		display: block;
 		left: 0;
 		visibility: visible;
 		opacity: 1;
@@ -69,34 +89,25 @@ label {
 	&__close {
 		display: block;
 		position: absolute;
-		top: 25px;
-		right: 25px;
+		top: 0;
+		right: 0;
 		cursor: pointer;
 	}
 	&__sorting {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-around;
-		align-content: space-around;
+		align-content: flex-start;
 		padding: 10px;
 		color:#45a29e;
 		border-radius:5px;
 		&-title {
 			width: 100%;
 			text-align: center;
-			font-size: 20px;
+			font-size: 21px;
 			font-weight: 400;
 			color:$third-color;
 			
 		}	
-		&-up, &-down {
-			width: 50px;
-			height: 50px;
-			border-radius: 100%;
-			background-color:$second-color;
-			box-shadow: 3px 3px 5px rgb(41, 40, 40);
-			transition: 0.5s all;
-		}
 		&-search {
 			padding-top: 10px;
 			width: 100%;
@@ -113,15 +124,16 @@ label {
 	&__reset {
 		height: 50px;
 		&-button {
-			width: 100px;
-			font-size: 20px;
-			background-color:$second-color;
+			box-shadow: 3px 3px  5px #000;
+			width: 130px;
 			display: block;
 			margin: 0 auto;
-			margin-top: 10px;
+			font-size: 21px;
+			font-weight: 600;
+			background-color:$second-color;
 			border-radius:5px;
 			cursor: pointer;
-			transition: 0.5s all;
+			transition: 0.6s all;
 			&:hover {
 				background-color:rgb(7, 130, 109)
 			}
@@ -141,6 +153,10 @@ label {
 		border-radius:5px;
 		width: 230px;
 		height: 310px;
+		transition: 1s all;
+		&:hover {
+			scale: 1.05;
+		}
 		&-name {
 			background-color: $main-color;
 			border-top-left-radius:5px;
@@ -217,4 +233,20 @@ label {
 	span.long {
 		width: 38px; 
 	}
+}
+
+@media  (max-width: 500px) {
+	.container {
+		&__active {
+			grid-template-columns:1fr;
+		}
+
+	}
+
+	.header {
+		&__title {
+			font-size: 35px;
+		}
+	}
+	
 }

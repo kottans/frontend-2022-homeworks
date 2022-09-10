@@ -1,11 +1,12 @@
-﻿const url = 'https://randomuser.me/api/?results=20'
+﻿const url = 'https://randomuser.me/api/?results=40'
 
 const myForm = document.querySelector('.form'),
-    cards = document.querySelector('.cards'),
+    content = document.querySelector('.content'),
     resetBtn = document.querySelector('.filter__reset-button'),
     hamburgerBtn = document.querySelector('.hamburger'),
     filter = document.querySelector('.filter'),
-    closeBtn = document.querySelector('.filter__close')
+    closeBtn = document.querySelector('.filter__close'),
+    container = document.querySelector('.container')
 
 let dataBase = []
 let sortedDataBase = []
@@ -24,9 +25,6 @@ async function getResponse() {
 }
 
 function createCards({ picture, name, dob, gender, location, email, cell }) {
-    const cardSection = document.createElement('article')
-    cardSection.classList.add('cards__wrapper')
-
     let colorGender = ''
     let bgcolorName = ''
     if (gender == 'female') {
@@ -34,42 +32,45 @@ function createCards({ picture, name, dob, gender, location, email, cell }) {
         bgcolorName = 'bgcolor_violet'
     }
 
-    cardSection.innerHTML = `
-    <div class="cards__wrapper-name ${bgcolorName}">
-    <h3> ${name.first} ${name.last}</h3>
-    </div>
+    return `
+   <article class="cards__wrapper"> 
+        <div class="cards__wrapper-name ${bgcolorName}">
+        <h3> ${name.first} ${name.last}</h3>
+        </div>
 
-    <div class="cards__wrapper-photo">
-      <img src=${picture.large} alt="">
-    </div>
+        <div class="cards__wrapper-photo">
+            <img src=${picture.large} alt="">
+        </div>
 
-    <div class="cards__wrapper-years">
-    I have ${dob.age} years old
-    </div>
+        <div class="cards__wrapper-years">
+        I have ${dob.age} years old
+        </div>
 
-    <div class="cards__wrapper-email">
-    <a href='${email}'>${email}</a>
-    </div>
+        <div class="cards__wrapper-email">
+            <a href='mailto:${email}'>${email}</a>
+        </div>
 
-    <div class="cards__wrapper-phone">
-    <a  href="tel:+ ${cell}"> ${cell}</a>
-    </div>
+        <div class="cards__wrapper-phone">
+            <a  href="tel:+ ${cell}"> ${cell}</a>
+        </div>
 
-    <div class="cards__wrapper-city">
-      ${location.city}
-    </div>
+        <div class="cards__wrapper-city">
+            ${location.city}
+        </div>
 
-    <hr class="devider">
+        <hr class="devider">
 
-    <div class="cards__wrapper-gender ${colorGender}">${gender}</div>
-
-  `
-    cards.append(cardSection)
+        <div class="cards__wrapper-gender ${colorGender}">${gender}</div>
+   </article>
+ `
 }
 
 function showCards(dataBase) {
-    dataBase.forEach(
-        ({ picture, name, dob, gender, location, email, cell }) => {
+    const cardSection = document.createElement('div')
+    cardSection.classList.add('cards')
+
+    const cardsHTML = dataBase
+        .map(({ picture, name, dob, gender, location, email, cell }) => {
             return createCards({
                 picture,
                 name,
@@ -79,15 +80,21 @@ function showCards(dataBase) {
                 email,
                 cell,
             })
-        }
-    )
+        })
+        .join('')
+
+    cardSection.innerHTML = cardsHTML
+    content.append(cardSection)
 }
 
 function searchByInput(sortedDataBase) {
-    if (myForm.searchAge.value) {
+    if (myForm.searchAge.value && !myForm.searchName.value) {
         return inputSearchAge(sortedDataBase)
-    } else if (myForm.searchName.value) {
+    } else if (myForm.searchName.value && !myForm.searchAge.value) {
         return inputSearchName(sortedDataBase)
+    } else if (myForm.searchName.value && myForm.searchAge.value) {
+        const searchAge = inputSearchAge(sortedDataBase)
+        return inputSearchName(searchAge)
     } else {
         return sortedDataBase
     }
@@ -103,9 +110,11 @@ function inputSearchAge(dataArray) {
 function inputSearchName(dataArray) {
     return dataArray.filter((card) => {
         const fullName = `${card.name.first} ${card.name.last}`
-        return fullName
-            .toLowerCase()
-            .includes(myForm.searchName.value.toLowerCase())
+        if (myForm.searchName.value.length >= 3) {
+            return fullName
+                .toLowerCase()
+                .includes(myForm.searchName.value.toLowerCase())
+        } else return fullName
     })
 }
 
@@ -145,7 +154,7 @@ function filterByGender(dataArray) {
 
 function resetFilters() {
     sortedDataBase = [...dataBase]
-    cards.innerHTML = ''
+    content.innerHTML = ''
     myForm.reset()
     showCards(sortedDataBase)
 }
@@ -155,13 +164,14 @@ function changeForm() {
     const filterGender = filterByGender(sortedDataBase)
     const searchInput = searchByInput(filterGender)
 
-    cards.innerHTML = ''
+    content.innerHTML = ''
     showCards(searchInput)
     return searchInput
 }
 
 function toggleFilter() {
     filter.classList.toggle('filter__active')
+    container.classList.toggle('container__active')
 }
 
 document.addEventListener('DOMContentLoaded', function () {
