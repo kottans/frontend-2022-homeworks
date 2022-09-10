@@ -8,7 +8,7 @@
 // ======== OBJECTS DEFINITIONS ========
 
 function getRandomId() {
-  return Math.floor(1000 + Math.random() * (9999 + 1 - 1000)) + new Date().getTime()
+  return  new Date().getTime() + '_' + Math.floor(10000 + Math.random() * (99999 + 1 - 10000))
 }
 
 class Inhabitant {
@@ -41,8 +41,8 @@ class Cat extends Inhabitant {
 }
 
 class Human extends Inhabitant {
-  constructor(name, surname, gender, legs, hands, saying, society = false) {
-    super('human', name, gender, saying, society)
+  constructor(name, surname, gender, legs, hands, saying) {
+    super('human', name, gender, saying)
     this.surname = surname
     this.legs = legs
     this.hands = hands
@@ -54,8 +54,8 @@ class Human extends Inhabitant {
 }
 
 class CatWoman extends Inhabitant {
-  constructor(name, surname, society = false) {
-    super('cat-woman', name, 'female', new Cat().saying, society)
+  constructor(name, surname) {
+    super('cat-woman', name, 'female', new Cat().saying)
     this.surname = surname
     this.legs = 2
     this.hands = 2
@@ -73,27 +73,24 @@ const woman = new Human('Emily', 'Brown', 'female', 2, 2, 'Hi all!')
 const pirate = new Human('John', 'Silver', 'male', 1, 2, 'Give no quarter!')
 const catWoman = new CatWoman('Selina', 'Kyle')
 
-dog.friends.push(cat.name, man.name)
-cat.friends.push(dog.name, woman.name, catWoman.name)
-man.friends.push(dog.name, woman.name)
-woman.friends.push(cat.name, man.name)
-catWoman.friends.push(cat.name)
+dog.friends.push(cat, man)
+cat.friends.push(dog, woman, catWoman)
+man.friends.push(dog, woman)
+woman.friends.push(cat, man)
+catWoman.friends.push(cat)
 
 const secretSociety = []
 const allInhabitant = [dog, cat, man, woman, catWoman, pirate]
 
-function addToSociety(society, obj) {
-  society.push(obj.id)
+function addToSociety(society, member) {
+  society.push(member.id)
 }
 
 addToSociety(secretSociety, catWoman)
 addToSociety(secretSociety, pirate)
 
-function isInSociety(society, objects) {
-  return objects.reduce((acc, el) => {
-    if (society.some(soc => soc === el.id)) acc.push(el.name)
-    return acc
-  }, []).join(', ')
+function isInSociety(society, members) {
+  return members.filter(member => society.includes(member.id)).map(member => member.name)
 }
 
 // ======== OUTPUT ========
@@ -115,21 +112,28 @@ function isInSociety(society, objects) {
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-function getFullInfo(obj) {
-  const getAcquaintance = `This is ${obj.getFullName()} and ${obj.gender === 'male' ? 'he' : 'she'} is a ${obj.species}.`
-  const getGender = `${obj.gender === 'male' ? 'His' : 'Her'} gender is ${obj.gender}.`
-  const getLimbs = `${obj.gender === 'male' ? 'He' : 'She'} have ${obj.hands || 0} ${obj.hands === 1 ? 'hand' : 'hands'} and ${obj.legs || 0} ${obj.legs === 1 ? 'leg' : 'legs'}.`
-  const getFriends = `${obj.name} have ${obj.friends.length} ${obj.friends.length === 1 ? 'friend' : 'friends'}${obj.friends.length > 0 ? ': ' + obj.friends.join(', ') : ''}.`
-  const getSaying = `${obj.gender === 'male' ? 'He' : 'She'} usually says hello like this: ${obj.saying}`
+function getFullInfo(inhabitant) {
+  const getAcquaintance = `This is ${inhabitant.getFullName()} and ${inhabitant.gender === 'male' ? 'he' : 'she'} is a ${inhabitant.species}.`
+  const getGender = `${inhabitant.gender === 'male' ? 'His' : 'Her'} gender is ${inhabitant.gender}.`
+  const getLimbs = `${inhabitant.gender === 'male' ? 'He' : 'She'} have ${inhabitant.hands || 0} ${inhabitant.hands === 1 ? 'hand' : 'hands'} and ${inhabitant.legs || 0} ${inhabitant.legs === 1 ? 'leg' : 'legs'}.`
+  const getFriends = `${inhabitant.name} have ${inhabitant.friends.length} ${inhabitant.friends.length === 1 ? 'friend' : 'friends'}${inhabitant.friends.length > 0 ? ': ' + inhabitant.friends.map(friend => friend.name).join(', ') : ''}.`
+  const getSaying = `${inhabitant.gender === 'male' ? 'He' : 'She'} usually says hello like this: ${inhabitant.saying}`
 
   return `${getAcquaintance} ${getGender} ${getLimbs} ${getFriends} ${getSaying}`
 }
 
-allInhabitant.forEach(el => {
-  print(getFullInfo(el))
+allInhabitant.forEach(inhabitant => {
+  print(getFullInfo(inhabitant))
 })
 
-const getMembers = `${isInSociety(secretSociety, allInhabitant)} ${secretSociety.length < 1 ? '' : secretSociety.length === 1 ? 'in a secret society...' : 'are in a secret society...'}`
+function getMembersOfSociety() {
+  const names = isInSociety(secretSociety, allInhabitant)
+  let textAfterNames = ''
+  if (names.length === 1) textAfterNames = 'in a secret society...'
+  if (names.length > 1) textAfterNames = 'are in a secret society...'
+
+  return `${names.join(', ')} ${textAfterNames}`
+}
 
 print(' ')
-print(getMembers)
+print(getMembersOfSociety())
