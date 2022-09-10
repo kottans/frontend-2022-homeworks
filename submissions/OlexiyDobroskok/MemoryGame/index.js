@@ -62,25 +62,31 @@ const wrap = document.querySelector(".wrap");
 const playArea = document.createElement("ul");
 playArea.classList.add("card__list");
 wrap.append(playArea);
-const pairsInfo = document.createElement("p");
-pairsInfo.classList.add("text__info");
-wrap.before(pairsInfo);
+const gameStatusInfo = document.createElement("p");
+gameStatusInfo.classList.add("text__info");
+wrap.before(gameStatusInfo);
 
 const rulesBtn = document.querySelector(".rules__btn");
-rulesBtn.addEventListener("click", closeRules);
+rulesBtn.addEventListener("click", closePopupWindow);
 const winBtn = document.querySelector(".win__btn");
-winBtn.addEventListener("click", closeWinWindow);
+winBtn.addEventListener("click", closePopupWindow);
 
 function newGame() {
   showGameStatus();
-  const shuffleDeck = shuffle(deckMoneyHeist).slice(0, 6);
-  const doubleDeck = [...shuffleDeck, ...shuffleDeck];
-  const gameDeck = shuffle(doubleDeck);
-  playArea.append(...makePlayArea(gameDeck));
+  playArea.append(...makePlayArea(makeGameDeck(deckMoneyHeist)));
+}
+
+function makeGameDeck(deck) {
+  if (deck.length < 6) {
+    return;
+  }
+  const initialDeck = shuffle(deck).slice(0, 6);
+  const doubleDeck = [...initialDeck, ...initialDeck];
+  return shuffle(doubleDeck);
 }
 
 function showGameStatus() {
-  pairsInfo.innerHTML = `Pairs found: ${numberOfPairs} / ${maxPairs} Attempt: ${attempt}`;
+  gameStatusInfo.innerHTML = `Pairs found: ${numberOfPairs} / ${maxPairs} Attempt: ${attempt}`;
 }
 
 function shuffle(deck) {
@@ -115,12 +121,11 @@ function searchPair({ target }) {
     sumFlippedCards++;
     if (selectedCards.length < 2) {
       selectedCards.push(chosenCard.firstChild.src);
-      if (selectedCards.length === 2 && selectedCards[0] === selectedCards[1]) {
+      const [firstCard, secondCard] = selectedCards;
+      if (selectedCards.length === 2 && firstCard === secondCard) {
         getPairCards();
-      } else if (
-        selectedCards.length === 2 &&
-        selectedCards[0] !== selectedCards[1]
-      ) {
+      }
+      if (selectedCards.length === 2) {
         resetPairCards();
         chosenCard = "";
       }
@@ -202,42 +207,22 @@ function whoAreYou() {
   }
 }
 
-function showWhoAreYou(getName) {
-  const nameCharacter = getName;
-  const [{ openCard }] = deckMoneyHeist.filter(
+function showWhoAreYou(nameCharacter) {
+  const [{ openCard: characterFace }] = deckMoneyHeist.filter(
     (character) => character.name === nameCharacter
   );
-
-  const winArea = document.querySelector(".win__window");
-  winArea.style.visibility = "visible";
-  winArea.style.opacity = "1";
   const winOverlay = document.querySelector(".win__overlay");
-  winOverlay.style.visibility = "visible";
-  winOverlay.style.opacity = "1";
+  winOverlay.classList.toggle("hide__popup");
   const winTitle = document.querySelector(".win__title");
   winTitle.innerHTML = `Congratulations!<br/>All pairs founded! Used attempts: ${attempt}`;
   const winText = document.querySelector(".win__text");
   winText.innerHTML = `You&rsquo;re &laquo;${nameCharacter}&raquo;`;
   const winImg = document.querySelector(".win__img");
-  winImg.src = openCard;
+  winImg.src = characterFace;
 }
 
-function closeRules() {
-  const rulesArea = document.querySelector(".rules");
-  rulesArea.style.visibility = "hidden";
-  rulesArea.style.opacity = "0";
-  const rulesOverlay = document.querySelector(".rules__overlay");
-  rulesOverlay.style.visibility = "hidden";
-  rulesOverlay.style.opacity = "0";
-  newGame();
-}
-
-function closeWinWindow() {
-  const winArea = document.querySelector(".win__window");
-  winArea.style.visibility = "hidden";
-  winArea.style.opacity = "0";
-  const winOverlay = document.querySelector(".win__overlay");
-  winOverlay.style.visibility = "hidden";
-  winOverlay.style.opacity = "0";
+function closePopupWindow({ target }) {
+  const popupOverlay = target.closest("div");
+  popupOverlay.classList.toggle("hide__popup");
   newGame();
 }

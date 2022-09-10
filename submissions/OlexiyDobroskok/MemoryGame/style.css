@@ -100,8 +100,6 @@ body {
   top: 0;
   bottom: 0;
   background-color: rgba(170, 204, 219, 0.281);
-  opacity: 1;
-  visibility: visible;
   z-index: 5;
   transition: all 0.5s ease 0s;
 }
@@ -114,8 +112,6 @@ body {
   bottom: 0px;
   top: 70px;
   left: 0px;
-  opacity: 1;
-  visibility: visible;
   z-index: 10;
   background-color: rgb(0, 0, 0);
   margin: 0 auto;
@@ -124,6 +120,11 @@ body {
   -moz-box-shadow: 0px 0px 47px 7px #b43c3c;
   box-shadow: 0px 0px 47px 7px #b43c3c;
   transition: all 0.5s ease 0s;
+}
+
+.hide__popup {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .rules__title {
@@ -207,8 +208,6 @@ body {
   top: 0;
   bottom: 0;
   background-color: rgba(170, 204, 219, 0.281);
-  opacity: 0;
-  visibility: hidden;
   z-index: 5;
   transition: all 1s ease 0s;
 }
@@ -221,8 +220,6 @@ body {
   bottom: 0px;
   top: 70px;
   left: 0px;
-  opacity: 0;
-  visibility: hidden;
   z-index: 10;
   background-color: black;
   margin: 0 auto;
@@ -305,9 +302,9 @@ a {
 
 @media (max-width: 576px) {
   .rules {
-    width: 300px;
-    height: 500px;
-    top: 50px;
+    width: 320px;
+    height: 470px;
+    top: 5px;
   }
 
   .rules__title {
@@ -321,11 +318,14 @@ a {
   }
 
   .rules__btn {
-    margin: 50px auto;
+    margin: 0 auto;
   }
 
+  .character__list {
+    margin-bottom: 60px;
+  }
   .character {
-    width: 100px;
+    width: 105px;
   }
 
   .character__name {
@@ -343,12 +343,13 @@ a {
   }
 
   .title {
-    font-size: 18px;
+    display: none;
   }
 
   .text__info {
     font-size: 16px;
-    padding-top: 10px;
+    padding-top: 5px;
+    margin-bottom: 7px;
   }
 
   .wrap {
@@ -359,6 +360,7 @@ a {
     width: 290px;
     height: 460px;
     justify-content: space-between;
+    margin: 0px;
   }
 
   .card__item {
@@ -374,9 +376,9 @@ a {
   }
 
   .win__window {
-    width: 300px;
-    height: 510px;
-    top: 50px;
+    width: 320px;
+    height: 485px;
+    top: 5px;
   }
 
   .win__title {
@@ -390,9 +392,9 @@ a {
   }
 
   .win__img {
-    width: 200px;
-    height: 300px;
-    margin: 0 auto 50px auto;
+    width: 180px;
+    height: 280px;
+    margin: 0 auto 40px auto;
     -webkit-box-shadow: 0px 0px 50px 8px #b43b3c;
     -moz-box-shadow: 0px 0px 50px 8px #b43b3c;
     box-shadow: 0px 0px 50px 8px #b43b3c;
@@ -641,7 +643,7 @@ a {
 
 @media (orientation: landscape) and (max-height: 420px) {
   .title {
-    font-size: 14px;
+    display: none;
   }
 
   .text__info {
@@ -671,8 +673,8 @@ a {
 
   .rules {
     width: 500px;
-    height: 240px;
-    top: 50px;
+    height: 245px;
+    top: 5px;
   }
 
   .rules__title {
@@ -712,8 +714,8 @@ a {
 
   .win__window {
     width: 500px;
-    height: 260px;
-    top: 40px;
+    height: 262px;
+    top: 5px;
   }
 
   .win__title {
@@ -731,6 +733,7 @@ a {
     width: 90px;
     height: 120px;
     padding-top: 0px;
+    margin-bottom: 20px;
   }
 
   .win__btn {
