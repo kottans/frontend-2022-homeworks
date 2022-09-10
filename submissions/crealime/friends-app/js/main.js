@@ -4,83 +4,84 @@ import Friends from './friends.js'
 import Filters from "./filters.js";
 import Pagination from './pagination.js'
 
-const glob = {}
+const GLOB = {}
 
 function initGlob() {
-  glob.baseURL = new URL(window.location.href)
-  glob.cardsOnPage = 24
-  glob.duration = 300
-  glob.currentPage = glob.baseURL.searchParams.get('page') || 1
-  glob.rangeAge01 = document.querySelector('.range__age_01')
-  glob.rangeAge02 = document.querySelector('.range__age_02')
-  glob.trackAge = document.querySelector('.range__age-track')
-  glob.valuesAge = document.querySelector('.range__age-values')
-  glob.formFilters = document.querySelector('.filter')
-  glob.showFilters = document.querySelector('.top-menu__show-filters')
-  glob.showFiltersIcon = document.querySelector('.top-menu__show-filters-icon')
-  glob.reloadData = document.querySelector('.top-menu__reload-data')
-  glob.reloadDataIcon = document.querySelector('.top-menu__reload-data-icon')
-  glob.preloader = document.querySelector('.preloader')
-  glob.friendsContainer = document.querySelector('.friends')
-  glob.main = document.querySelector('.main')
-  glob.inputs = document.querySelectorAll('input')
-  glob.search = document.querySelector('.top-menu__search')
-  glob.paginationInput = document.querySelector('.pagination__input')
-  glob.paginationLeft = document.querySelector('.pagination__left')
-  glob.paginationRight = document.querySelector('.pagination__right')
+  GLOB.baseURL = new URL(window.location.href)
+  GLOB.cardsOnPage = 24
+  GLOB.duration = 300
+  GLOB.delay = 500
+  GLOB.currentPage = GLOB.baseURL.searchParams.get('page') || 1
+  GLOB.rangeAge01 = document.querySelector('.range__age_01')
+  GLOB.rangeAge02 = document.querySelector('.range__age_02')
+  GLOB.trackAge = document.querySelector('.range__age-track')
+  GLOB.valuesAge = document.querySelector('.range__age-values')
+  GLOB.formFilters = document.querySelector('.filter')
+  GLOB.showFilters = document.querySelector('.top-menu__show-filters')
+  GLOB.showFiltersIcon = document.querySelector('.top-menu__show-filters-icon')
+  GLOB.reloadData = document.querySelector('.top-menu__reload-data')
+  GLOB.reloadDataIcon = document.querySelector('.top-menu__reload-data-icon')
+  GLOB.preloader = document.querySelector('.preloader')
+  GLOB.friendsContainer = document.querySelector('.friends')
+  GLOB.main = document.querySelector('.main')
+  GLOB.inputs = document.querySelectorAll('input')
+  GLOB.search = document.querySelector('.top-menu__search')
+  GLOB.paginationInput = document.querySelector('.pagination__input')
+  GLOB.paginationLeft = document.querySelector('.pagination__left')
+  GLOB.paginationRight = document.querySelector('.pagination__right')
 
-  glob.colorPrimary = getComputedStyle(document.documentElement).getPropertyValue('--color-primary')
-  glob.colorMan = getComputedStyle(document.documentElement).getPropertyValue('--color-man')
-  glob.colorWoman = getComputedStyle(document.documentElement).getPropertyValue('--color-woman')
+  GLOB.colorPrimary = getComputedStyle(document.documentElement).getPropertyValue('--color-primary')
+  GLOB.colorMan = getComputedStyle(document.documentElement).getPropertyValue('--color-man')
+  GLOB.colorWoman = getComputedStyle(document.documentElement).getPropertyValue('--color-woman')
 
-  glob.showFilters.addEventListener('click', function(e) {
+  GLOB.showFilters.addEventListener('click', function(e) {
     e.preventDefault()
-    glob.main.classList.toggle('m-left-0')
-    glob.showFiltersIcon.classList.toggle('rotate-180')
+    GLOB.main.classList.toggle('m-left-0')
+    GLOB.showFiltersIcon.classList.toggle('rotate-180')
   })
 
-  glob.reloadData.addEventListener('click', function(e) {
+  GLOB.reloadData.addEventListener('click', function(e) {
     e.preventDefault()
-    glob.toggleClass(glob.reloadDataIcon, 'rotate-360')
-    setTimeout(() => {glob.toggleClass(glob.reloadDataIcon, 'rotate-360')}, 300)
+    GLOB.toggleClass(GLOB.reloadDataIcon, 'rotate-360')
+    setTimeout(() => {GLOB.toggleClass(GLOB.reloadDataIcon, 'rotate-360')}, 300)
     store.init().then(() => {
-      glob.friends.reloadPersons(store.persons)
-      glob.filters.filterFriendsByURL(glob.baseURL)
+      GLOB.friends.reloadPersons(store.persons)
+      GLOB.filters.filterFriendsByURL(GLOB.baseURL)
     })
   })
 
-  glob.formFilters.addEventListener('change', (e) => {
-    if (e.target.name) glob.filters.updateURL(e.target.name, e.target.value)
-    glob.filters.filterFriendsByURL(glob.baseURL)
+  GLOB.formFilters.addEventListener('change', (e) => {
+    if (e.target.name) GLOB.filters.updateURL(e.target.name, e.target.value)
+    GLOB.filters.filterFriendsByURL(GLOB.baseURL)
   })
 
-  glob.formFilters.addEventListener('reset', () => {
-    glob.filters.resetURL()
-    glob.filters.filterFriendsByURL(glob.baseURL)
+  GLOB.formFilters.addEventListener('reset', () => {
+    GLOB.filters.resetURL()
+    GLOB.filters.filterFriendsByURL(GLOB.baseURL)
     setTimeout(() => {
-      glob.range.changeRangeValuesInHTML()
-      glob.range.fillRangeTrack()}, 10)
+      GLOB.range.changeRangeValuesInHTML()
+      GLOB.range.fillRangeTrack()}, 10)
   })
 
-  glob.search.addEventListener('input', (e) => {
-    glob.filters.updateURL(e.target.name, e.target.value)
-    glob.filters.filterFriendsByURL(glob.baseURL)
+  GLOB.search.addEventListener('input', (e) => {
+    GLOB.filters.updateURL(e.target.name, e.target.value)
+    GLOB.filters.filterFriendsByURL(GLOB.baseURL)
   })
 
-  glob.paginationLeft.addEventListener('click', () => {glob.pagination.listToPreviousPage()})
-  glob.paginationRight.addEventListener('click', () => {glob.pagination.listToNextPage()})
-  glob.paginationInput.addEventListener('change', (e) => {glob.pagination.listToThisPage(e)})
+  GLOB.paginationLeft.addEventListener('click', () => {GLOB.pagination.listToPreviousPage()})
+  GLOB.paginationRight.addEventListener('click', () => {GLOB.pagination.listToNextPage()})
+  GLOB.paginationInput.addEventListener('change', (e) => {GLOB.pagination.listToThisPage(e)})
 
-  glob.rangeAge01.addEventListener('input', (e) => {
-    glob.range.changeCustomRange(e.target)
+  GLOB.rangeAge01.addEventListener('input', (e) => {
+    GLOB.range.changeCustomRange(e.target)
   })
 
-  glob.rangeAge02.addEventListener('input', (e) => {
-    glob.range.changeCustomRange(e.target)
+  GLOB.rangeAge02.addEventListener('input', (e) => {
+    GLOB.range.changeCustomRange(e.target)
   })
 }
 
-glob.toggleClass = function(tElement, tClass) {
+GLOB.toggleClass = function(tElement, tClass) {
   tElement.classList.toggle(tClass)
 }
 
@@ -99,36 +100,36 @@ function fadeOut(element, duration, delay) {
 }
 
 function initAgeRange() {
-  glob.range = new CustomRange(glob)
-  glob.range.changeRangeValuesInHTML()
-  glob.range.fillRangeTrack()
+  GLOB.range = new CustomRange(GLOB)
+  GLOB.range.changeRangeValuesInHTML()
+  GLOB.range.fillRangeTrack()
 }
 
 function initPagination() {
-  glob.pagination = new Pagination(glob)
-  glob.pagination.setCurrentPageToInput()
+  GLOB.pagination = new Pagination(GLOB)
+  GLOB.pagination.setCurrentPageToInput()
 }
 
 function initFriends() {
   store.init().then(() => {
-    glob.friends = new Friends(store.persons, glob)
-    glob.filters.filterFriendsByURL(glob.baseURL)
+    GLOB.friends = new Friends(store.persons, GLOB)
+    GLOB.filters.filterFriendsByURL(GLOB.baseURL)
   })
 }
 
 function initFilters() {
-  glob.filters = new Filters(glob)
-  glob.filters.setInputs()
-  glob.filters.replaceHistory()
+  GLOB.filters = new Filters(GLOB)
+  GLOB.filters.setInputs()
+  GLOB.filters.replaceHistory()
 }
 
 function watchHistory() {
   window.addEventListener('popstate', (e) => {
     if (e.state) {
-      glob.baseURL = new URL(e.state.href)
-      glob.filters.filterFriendsByURL(glob.baseURL)
-      glob.filters.setInputs()
-      glob.pagination.setCurrentPageToInput()
+      GLOB.baseURL = new URL(e.state.href)
+      GLOB.filters.filterFriendsByURL(GLOB.baseURL)
+      GLOB.filters.setInputs()
+      GLOB.pagination.setCurrentPageToInput()
     }
   })
 }
@@ -140,7 +141,7 @@ window.addEventListener('load', function() {
   initFriends()
   initFilters()
   watchHistory()
-  fadeOut(glob.preloader, 300, 500)
+  fadeOut(GLOB.preloader, GLOB.duration, GLOB.delay)
 })
 
-setTimeout(() => fadeOut(glob.preloader, 300, 500), 3000)
+setTimeout(() => fadeOut(GLOB.preloader, GLOB.duration, GLOB.delay), 3000)

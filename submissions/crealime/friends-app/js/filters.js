@@ -1,16 +1,16 @@
 export default class Filters {
   constructor(glob) {
-    this.glob = glob
+    this.GLOB = glob
   }
 
   setInputs() {
-    const params = this.glob.baseURL.searchParams
+    const params = this.GLOB.baseURL.searchParams
 
-    document.querySelectorAll(`input[type="radio"]`).forEach(el => el.checked = false)
+    document.querySelectorAll(`input[type="radio"]`).forEach(input => input.checked = false)
 
     if (!params.has('page')) {
-      this.glob.currentPage = 1
-      this.glob.pagination.setCurrentPageToInput()
+      this.GLOB.currentPage = 1
+      this.GLOB.pagination.setCurrentPageToInput()
     }
     if (!params.has('age-min')) {
       document.querySelector(`input[name="age-min"]`).value = 0
@@ -21,7 +21,7 @@ export default class Filters {
 
     for (let p of params) {
       if (p[0] === 'page') {
-        this.glob.currentPage = p[1]
+        this.GLOB.currentPage = p[1]
       }
       if (p[0] === 'age-min' || p[0] === 'age-max' || p[0] === 'is-name') {
         document.querySelector(`input[name="${p[0]}"]`).value = p[1]
@@ -34,8 +34,8 @@ export default class Filters {
       }
     }
 
-    this.glob.range.changeRangeValuesInHTML()
-    this.glob.range.fillRangeTrack()
+    this.GLOB.range.changeRangeValuesInHTML()
+    this.GLOB.range.fillRangeTrack()
   }
 
   setHistory() {
@@ -44,35 +44,35 @@ export default class Filters {
   }
 
   pushHistory() {
-    history.pushState({href: window.location.href}, null, this.glob.baseURL.href)
+    history.pushState({href: window.location.href}, null, this.GLOB.baseURL.href)
   }
 
   replaceHistory() {
-    history.replaceState({href: window.location.href}, null, this.glob.baseURL.href)
+    history.replaceState({href: window.location.href}, null, this.GLOB.baseURL.href)
   }
 
   updateURL(param, value) {
-    this.glob.baseURL.searchParams.set(param, value)
-    if (param === 'is-name' && value.length === 0) this.glob.baseURL.searchParams.delete('is-name')
+    this.GLOB.baseURL.searchParams.set(param, value)
+    if (param === 'is-name' && value.length === 0) this.GLOB.baseURL.searchParams.delete('is-name')
     this.setHistory()
   }
 
   resetURL() {
     const properties = ['sort-by', 'by-gender', 'age-min', 'age-max']
-    properties.forEach(el => this.glob.baseURL.searchParams.delete(el))
+    properties.forEach(property => this.GLOB.baseURL.searchParams.delete(property))
     this.setHistory()
   }
 
   sortPersons(sortFoo) {
-    this.glob.friends.personsEdit = this.glob.friends.personsEdit.sort(sortFoo)
+    this.GLOB.friends.personsEdit = this.GLOB.friends.personsEdit.sort(sortFoo)
   }
 
   filterPersons(filterFoo) {
-    this.glob.friends.personsEdit = this.glob.friends.personsEdit.filter(filterFoo)
+    this.GLOB.friends.personsEdit = this.GLOB.friends.personsEdit.filter(filterFoo)
   }
 
   filterFriendsByURL(url) {
-    this.glob.friends.personsEdit = [...this.glob.friends.persons]
+    this.GLOB.friends.personsEdit = [...this.GLOB.friends.persons]
     const params = url.searchParams
 
     for (let p of params) {
@@ -86,10 +86,10 @@ export default class Filters {
       if (p[0] === 'is-name') this.filterPersons(person => `${person.name.first} ${person.name.last}`.toLowerCase().includes(p[1].toLowerCase()))
     }
 
-    if (this.glob.currentPage > this.glob.friends.personsEdit.length / this.glob.cardsOnPage) {
-      this.glob.pagination.changePage(Math.ceil(this.glob.friends.personsEdit.length / this.glob.cardsOnPage) || 1)
+    if (this.GLOB.currentPage > this.GLOB.friends.personsEdit.length / this.GLOB.cardsOnPage) {
+      this.GLOB.pagination.changePage(Math.ceil(this.GLOB.friends.personsEdit.length / this.GLOB.cardsOnPage) || 1)
     }
 
-    this.glob.friends.renderFriends(this.glob.friends.personsEdit)
+    this.GLOB.friends.renderFriends(this.GLOB.friends.personsEdit)
   }
 }

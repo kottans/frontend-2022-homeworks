@@ -1,7 +1,7 @@
 export default class Friends {
   constructor(persons, glob) {
     this.persons = persons
-    this.glob = glob
+    this.GLOB = glob
     this.personsEdit = [...this.persons]
   }
 
@@ -10,16 +10,15 @@ export default class Friends {
     this.personsEdit = [...this.persons]
   }
 
-  renderFriends(persons = this.personsEdit, page = this.glob.currentPage) {
-    this.glob.friendsContainer.classList.toggle('opacity-0')
+  renderFriends(persons = this.personsEdit, page = this.GLOB.currentPage) {
+    this.GLOB.friendsContainer.classList.toggle('opacity-0')
 
     setTimeout(() => {
-      this.glob.friendsContainer.innerHTML = ''
-      this.glob.friendsContainer.innerHTML = persons.slice((page - 1) * this.glob.cardsOnPage, page * this.glob.cardsOnPage).reduce((acc, el) => {
-        return acc + this.getCardTemplate(el)
+      this.GLOB.friendsContainer.innerHTML = persons.slice((page - 1) * this.GLOB.cardsOnPage, page * this.GLOB.cardsOnPage).reduce((acc, person) => {
+        return acc + this.getCardTemplate(person)
       }, '')
-      this.glob.friendsContainer.classList.toggle('opacity-0')
-    }, this.glob.duration)
+      this.GLOB.friendsContainer.classList.toggle('opacity-0')
+    }, this.GLOB.duration)
   }
 
   getCardTemplate(person) {
