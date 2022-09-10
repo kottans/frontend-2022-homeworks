@@ -143,9 +143,9 @@ function flipCard(e) {
       card.classList.toggle('flip')
       pair.push(card)
     }
-    else if (pair.some(el => el === card)) {
-      pair.forEach(el => {
-        el.classList.toggle('flip')
+    else if (pair.some(cardInPair => cardInPair === card)) {
+      pair.forEach(cardInPair => {
+        cardInPair.classList.toggle('flip')
       })
       pair.splice(0, 2)
     }
@@ -154,8 +154,8 @@ function flipCard(e) {
       pair.splice(0, 2)
       pairCounter--
       setTimeout(() => {
-        document.querySelectorAll(`.id-${id}`).forEach(el => {
-          el.classList.add('hidden')
+        document.querySelectorAll(`.id-${id}`).forEach(cardDOMElement => {
+          cardDOMElement.classList.add('hidden')
         })
         if (pairCounter === 0) {
           GAME_TIME.setEndTime()
@@ -170,8 +170,8 @@ function flipCard(e) {
       pair.push(card)
     }
     else {
-      pair.forEach(el => {
-        el.classList.toggle('flip')
+      pair.forEach(cardDOMElement => {
+        cardDOMElement.classList.toggle('flip')
       })
       card.classList.toggle('flip')
       pair.splice(0, 2)
@@ -188,17 +188,14 @@ function renderCards(data, num, preview) {
   game.classList.add('game')
   game.classList.add(`num-${num * 2}`)
 
-  let cardsData = data.sort(() => 0.5 - Math.random()).slice(0, num).reduce((acc, el, i) => {
-    acc.push([el, i + 1])
-    return acc
-  }, [])
+  let cardsData = data.sort(() => 0.5 - Math.random()).slice(0, num).map((card, i) => [card, i + 1])
 
   cardsData = [...cardsData, ...cardsData].sort(() => 0.5 - Math.random())
 
-  cardsData.forEach(el => {
-    const card = getCardTemplate(el)
-    game.insertAdjacentHTML('beforeend', card)
-  })
+  game.innerHTML = cardsData.reduce((acc, card) => {
+    acc += getCardTemplate(card)
+    return acc
+  }, '')
 
   game.addEventListener('click', flipCard)
 
@@ -208,9 +205,7 @@ function renderCards(data, num, preview) {
 }
 
 function initStartPage() {
-  main.innerHTML = ''
-
-  main.insertAdjacentHTML('afterbegin', getStartPageTemplate())
+  main.innerHTML = getStartPageTemplate()
 
   const startPageUl = document.querySelector('.start-page__ul')
 
@@ -244,9 +239,7 @@ function initGame(num, preview) {
 }
 
 function initResultPage() {
-  main.innerHTML = ''
-
-  main.insertAdjacentHTML('afterbegin', getResultPageTemplate(GAME_TIME.getDiffTime(), numOfPairs))
+  main.innerHTML = getResultPageTemplate(GAME_TIME.getDiffTime(), numOfPairs)
 
   const resultPageLink = document.querySelector('.result-page__link')
 
