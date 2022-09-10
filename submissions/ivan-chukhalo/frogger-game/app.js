@@ -2,13 +2,19 @@ const AVAILABLE_ROWS_FOR_ENEMIES = [63, 146, 229];
 const allEnemies = [];
 
 const WIDTH_OF_GAME_SPRITES = 100;
-const COLUMNS_ON_GAME_FIELD = 5;
+const COLUMNS_ROWS_ON_GAME_FIELD = 5;
 const HEIGH_OF_GAME_FIELD_CELL = 83;
 const PLAYER_BUG_CENTERS_DISTANCE_OF_TOUCHING = 80;
-const Y_OF_GAME_FIELD_ROWS = [63, 146, 229, 312, 395];
-const Y_OF_LOWEST_GAME_FIELD_ROW = Y_OF_GAME_FIELD_ROWS[4];
 const MIN_SPEED_MULTIPLIER_FOR_BUG = 200;
 const MAX_SPEED_MULTIPLIER_FOR_BUG = 350;
+const Y_OF_HIGHEST_ROW = 63;
+const Y_OF_GAME_FIELD_ROWS = [Y_OF_HIGHEST_ROW];
+(function calculating_coords_of_game_rows(){
+    for (let i = 1; i < 5; i++){
+        Y_OF_GAME_FIELD_ROWS.push(Y_OF_HIGHEST_ROW + HEIGH_OF_GAME_FIELD_CELL * i);
+    }
+})();
+const Y_OF_LOWEST_GAME_FIELD_ROW = Y_OF_GAME_FIELD_ROWS[4];
 
 function resetPlayer(){
     player.x = player.xInitial;
@@ -36,12 +42,12 @@ var Enemy = function(y) {
     this.xInitial = -WIDTH_OF_GAME_SPRITES;
     this.xAxisMin = this.xInitial;
     this.x = this.xInitial;
-    this.xAxisMax = WIDTH_OF_GAME_SPRITES * COLUMNS_ON_GAME_FIELD;
+    this.xAxisMax = WIDTH_OF_GAME_SPRITES * COLUMNS_ROWS_ON_GAME_FIELD;
     this.y = y;
 };
 
-Enemy.prototype.doesHitPlayer = function (){
-    if (Math.abs(this.x - player.x) <= PLAYER_BUG_CENTERS_DISTANCE_OF_TOUCHING && this.y === player.y){   
+Enemy.prototype.doesHitPlayer = function (input_player){
+    if (Math.abs(this.x - input_player.x) <= PLAYER_BUG_CENTERS_DISTANCE_OF_TOUCHING && this.y === input_player.y){   
         resetPlayer();
         resetEnemies();
     }
@@ -49,8 +55,7 @@ Enemy.prototype.doesHitPlayer = function (){
 
 Enemy.prototype.update = function(dt) {     
     this.x = this.x >= this.xAxisMax ? this.x = this.xInitial : this.x + dt * this.speedKoef;
-    this.doesHitPlayer();        
-    
+    this.doesHitPlayer(player);   
 };
 
 Enemy.prototype.render = function() {
@@ -67,9 +72,9 @@ var Player = function (){
     this.x = this.xInitial;
     this.y = this.yInitial;
     this.xAxisMin = 0;
-    this.xAxisMax = this.xAxisMin + this.xStep * (COLUMNS_ON_GAME_FIELD - 1);             
-    this.yAxisMin = this.yInitial - this.yStep * COLUMNS_ON_GAME_FIELD;             
-    this.yAxisMax = this.yAxisMin + this.yStep * COLUMNS_ON_GAME_FIELD;             
+    this.xAxisMax = this.xAxisMin + this.xStep * (COLUMNS_ROWS_ON_GAME_FIELD - 1);             
+    this.yAxisMin = this.yInitial - this.yStep * COLUMNS_ROWS_ON_GAME_FIELD;             
+    this.yAxisMax = this.yAxisMin + this.yStep * COLUMNS_ROWS_ON_GAME_FIELD;             
 }
 
 Player.prototype.update = function (moveDirection){             
