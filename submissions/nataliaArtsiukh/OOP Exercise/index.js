@@ -6,6 +6,10 @@ class Habitant {
     this.friends = friends;
     this.legs = legs;
   }
+  toString() {
+    let {name, gender, saying, friends, legs} = this;
+    return [name, gender, saying, friends, legs].join(';');
+  }
 }
 
 class Human extends Habitant {
@@ -14,8 +18,9 @@ class Human extends Habitant {
     this.hands = hands;
   }
   toString() {
-    let {name, gender, saying, friends, legs, hands, constructor} = this;
-    return `${saying}! My name is ${name}. I'm ${gender}, ${constructor.name.toLowerCase()}. I have ${hands} hands and ${legs} legs. I'm friends with ${friends}.`;
+    let {hands, constructor: {name: species}} = this;
+    let [name, gender, saying, friends, legs] = super.toString().split(';');
+    return `${saying}! My name is ${name}. I'm ${gender}, ${species.toLowerCase()}. I have ${hands} hands and ${legs} legs. I'm friends with ${friends}.`;
   }
 }
 
@@ -32,8 +37,9 @@ class Cat extends Habitant {
     }
   }
   toString() {
-    let {name, gender, saying, friends, legs, constructor} = this;
-    return `${saying}! This cat's name is ${name}. It's ${gender}, ${constructor.name.toLowerCase()}. It has ${legs} legs. It's friends with ${friends}. By the way, ${this.scatterLitterBox()}`;
+    let {constructor: {name: species}} = this;
+    let [name, gender, saying, friends, legs] = super.toString().split(';');
+    return `${saying}! This cat's name is ${name}. It's ${gender}, ${species.toLowerCase()}. It has ${legs} legs. It's friends with ${friends}. By the way, ${this.scatterLitterBox()}`;
   }
 }
 
@@ -51,8 +57,9 @@ class Dog extends Habitant {
     }
   }
   toString() {
-    let {name, gender, saying, friends, legs, constructor} = this;
-    return `${saying}! This dog's name is ${name}. It's ${gender}, ${constructor.name.toLowerCase()}. It has ${legs} legs. It's friends with ${friends}. ${name} is sniffing. ${this.sniff()}`;
+    let {constructor: {name: species}} = this;
+    let [name, gender, saying, friends, legs] = super.toString().split(';');
+    return `${saying}! This dog's name is ${name}. It's ${gender}, ${species.toLowerCase()}. It has ${legs} legs. It's friends with ${friends}. ${name} is sniffing. ${this.sniff()}`;
   }
 }
 
@@ -65,11 +72,29 @@ class CatWoman extends Cat {
 
 CatWoman.prototype.toString = Human.prototype.toString;
 
-const habitants = [];
-habitants.push(new Human('Bob', 'male', 'I\'m vegan', 'no one'));
-habitants.push(new Human('Mary', 'female', 'Hi everyone', 'Tom, Rex, Halle'));
-habitants.push(new Cat('Tom', 'male', 'Mrrr', 'Mary, Halle'));
-habitants.push(new Dog('Rex', 'male', 'Woof', 'Mary', habitants));
-habitants.push(new CatWoman('Halle', 'female', 'Mrrr', 'Mary, Tom, Batman'));
- 
-habitants.forEach((habitant) => print(habitant));
+let habitants = [
+  {
+    habitantClass: Human,
+    habitantProperties: ['Bob', 'male', 'I\'m vegan', 'no one']
+  },
+  {
+    habitantClass: Human,
+    habitantProperties: ['Mary', 'female', 'Hi everyone', 'Tom, Rex, Halle']
+  },
+  {
+    habitantClass: Cat,
+    habitantProperties: ['Tom', 'male', 'Mrrr', 'Mary, Halle']
+  },
+  {
+    habitantClass: Dog,
+    habitantProperties: ['Rex', 'male', 'Woof', 'Mary', null]
+  },
+  {
+    habitantClass: CatWoman,
+    habitantProperties: ['Halle', 'female', 'Mrrr', 'Mary, Tom, Batman']
+  }
+].map(({habitantClass, habitantProperties}) => new habitantClass(...habitantProperties));
+
+habitants.find(habitant => habitant instanceof Dog).company = habitants;
+
+habitants.forEach(habitant => print(habitant));
