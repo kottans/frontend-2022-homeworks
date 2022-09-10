@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <title>HTML-CSS-Hooli-PopUP</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="header__menu">
+          <ul class="header__list_items">
+            <li class="header__list_item">
+              <a href="#" class="header__link link focus_item" aria-label="Email">Mail</a>
+            </li>
+            <li class="header__list_item">
+              <a href="#" class="header__link link focus_item" aria-label="Images">Images</a>
+            </li>
+            <li class="header__list_item">
+              <input
+                type="checkbox"
+                id="popup_checkbox"
+                class="header__popup_checkbox"
+              />
+              <label for="popup_checkbox" class="header__popup_label">
+                <img
+                  src="assets/popup-button.png"
+                  width="25"
+                  height="25"
+                  alt=""
+                />
+              </label>
+              <div class="header__popup invisible-scrollbar">
+                <ul class="header__popup_items">
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/mail.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Mail
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/calendar.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Calendar
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/maps.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Maps
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/news.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      News
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/files.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Files
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/contacts.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Contacts
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/videos.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Video
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/translation.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Translate
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/search.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Search
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/apps.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Apps
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/photos.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Photos
+                    </a>
+                  </li>
+                  <li class="header__popup_item">
+                    <a href="#" class="header__popup_link link">
+                      <img
+                        src="assets/documents.png"
+                        width="48"
+                        height="35"
+                        alt=""
+                        class="header__popup__img"
+                      />
+                      Documents
+                    </a>
+                  </li>
+                </ul>
+                <input
+                  type="checkbox"
+                  id="popup_checkbox_more"
+                  class="header__popup_checkbox_more"
+                />
+                <label
+                  for="popup_checkbox_more"
+                  class="header__popup__label_more"
+                  aria-label="Show more"
+                  >More</label
+                >
+                <div class="header__popup__more">
+                  <ul class="header__popup_items">
+                    <li class="header__popup_item">
+                      <a href="#" class="header__popup_link link">
+                        <img
+                          src="assets/classroom.png"
+                          width="48"
+                          height="35"
+                          alt=""
+                          class="header__popup__img"
+                        />
+                        Classroom
+                      </a>
+                    </li>
+                    <li class="header__popup_item">
+                      <a href="#" class="header__popup_link link">
+                        <img
+                          src="assets/chat.png"
+                          width="48"
+                          height="35"
+                          alt=""
+                          class="header__popup__img"
+                        />
+                        Chat
+                      </a>
+                    </li>
+                    <li class="header__popup_item">
+                      <a href="#" class="header__popup_link link">
+                        <img
+                          src="assets/blogs.png"
+                          width="48"
+                          height="35"
+                          alt=""
+                          class="header__popup__img"
+                        />
+                        Blogs
+                      </a>
+                    </li>
+                    <li class="header__popup_item">
+                      <a href="#" class="header__popup_link link">
+                        <img
+                          src="assets/mars.png"
+                          width="48"
+                          height="35"
+                          alt=""
+                          class="header__popup__img"
+                        />
+                        Mars
+                      </a>
+                    </li>
+                    <li class="header__popup_item">
+                      <a href="#" class="header__popup_link link">
+                        <img
+                          src="assets/mic.png"
+                          width="48"
+                          height="35"
+                          alt=""
+                          class="header__popup__img"
+                        />
+                        Microphone
+                      </a>
+                    </li>
+                    <li class="header__popup_item">
+                      <a href="#" class="header__popup_link link">
+                        <img
+                          src="assets/setting.webp"
+                          width="48"
+                          height="35"
+                          alt=""
+                          class="header__popup__img"
+                        />
+                        Settings
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="header__list_item">
+              <a href="#" class="header__link focus_item" aria-label="Receive notifications">
+                <img src="assets/bell.png" width="25" height="25" alt="" />
+              </a>
+            </li>
+            <li class="header__list_item">
+              <a
+                href="https://github.com/denismaysov"
+                target="_blank"
+                class="header__link focus_item"
+                aria-label="MyGitHub"
+              >
+                <img
+                  src="assets/favicon.png"
+                  class="header__photo focus_item"
+                  width="25"
+                  height="25"
+                  alt=""
+                />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+  </body>
+</html>

@@ -4,8 +4,9 @@
 const { promisify } = require('util');
 const exec = promisify(require('child_process').exec);
 const writeFile = promisify(require('fs').writeFile);
-const { prLabels, prStates, parsingRegex, url, statsFileName } = require('./config');
-const { mergeObjects, recombine } = require('./utils');
+const { prLabels, prStates, url, statsFileName } = require('./config');
+const { outputPresets } = require('./assets');
+const { makeArray, mergeObjects, recombine } = require('./utils');
 
 exec("gh --version")
   .catch(e => {
@@ -40,20 +41,12 @@ async function main() {
     }))
     .sort(makeComparator("prs", "author"))
     .map(authorStats => authorStats.author);
-  const table = [
-    "# Open and merged PRs by task labels",
-    "",
-    `_as of ${new Date().toISOString()} UTC_`,
-    "",
-    "PR reference legend:",
-    " - \\#xxx o -- PR is yet open ",
-    " - \\#xxx i -- labelled issue referring to p2p PR(s)",
-    " - **\\#xxx** -- PR is merged",
-    "",
+  const report = [
+    ...outputPresets.header,
     makeMarkdownTable(orderedAuthors, prLabels, prDataByAuthor),
-    "",
+    ...outputPresets.footer,
   ].join("\n");
-  const ioResult = await saveStatsToAFile(statsFileName, table);
+  const ioResult = await saveStatsToAFile(statsFileName, report);
   console.log(`\nSaving stats ${statsFileName}: ${ioResult}`);
 }
 
@@ -87,7 +80,7 @@ function makeMarkdownTable(authors, labels, dataByAuthor) {
       authorNr = 0;
     }
     rows.push(makeMarkdownTableRow([
-      ` ${coveredTasksCountLatest}.${++authorNr}`,
+      `${coveredTasksCountLatest}.${++authorNr}`,
       makePrListUrl(authorName),
       ...labels.map(label =>
         dataByAuthor[authorName][label]
@@ -102,10 +95,6 @@ function makeMarkdownTable(authors, labels, dataByAuthor) {
 function makeMarkdownTableRow(cells) {
   const columnDelimiter = " | ";
   return `${columnDelimiter}${cells.join(columnDelimiter)}${columnDelimiter}`.trim();
-}
-
-function makeArray(count = 1, value) {
-  return Array(count).fill(value);
 }
 
 function makePrListUrl(authorName) {
@@ -148,49 +137,50 @@ async function fetchPullRequestData(prLabels, prStates) {
 async function fetchIssueData(prLabels) {
   console.log("NB! Relevant issues must have their titles starting with 'author_username:' and have labels assigned");
   const dataByAuthor = {};
-  const command = fetchIssueListGhCommand(prLabels);
-  try {
-    const data = await exec(command);
-    const issues = parseIssuesData(data.stdout);
-    issues.forEach(({issueNr, author, labels}) => {
-      labels.forEach(label => {
-        dataByAuthor[author] = {
-          ...dataByAuthor[author],
-          [label]: { prNr: issueNr, state: "issue" },
-        };
-      });
+  const commands = fetchIssueListGhCommand(prLabels);
+  const issuesPerLabel = await Promise.all(commands.map(async command => {
+    try {
+      const data = await exec(command);
+      return parseIssuesData(data.stdout);
+    } catch(e) {
+      console.error(`ERROR executing "${command}"`);
+      throw new Error(e);
+    }
+  }));
+  issuesPerLabel.flat().forEach(({issueNr, author, labels}) => {
+    labels.forEach(label => {
+      dataByAuthor[author] = {
+        ...dataByAuthor[author],
+        [label]: {prNr: issueNr, state: "issue"},
+      };
     });
-  } catch(e) {
-    console.error(`ERROR executing "${command}"`);
-    throw new Error(e);
-  }
+  });
   return dataByAuthor;
 }
 
 function parsePrsData(data) {
-  const matches = data.matchAll(parsingRegex.pr);
-  return Array.from(matches, ({groups}) => groups);
+  return JSON.parse(data).map(({number: prNr, author: {login: authorId}}) => ({
+    prNr,
+    author: authorId,
+  }));
 }
 
 function parseIssuesData(data) {
-  const matches = data.matchAll(parsingRegex.issue);
-  return Array.from(matches,
-    ({ groups: {
-      issueNr, author, labels,
-    }}) => ({
-      issueNr, author, labels: labels.split(", "),
-    }));
+  return JSON.parse(data).map(({number: issueNr, author: {login: authorId}, labels}) => ({
+    issueNr,
+    author: authorId,
+    labels: labels.map(labelDetails => labelDetails.name),
+  }));
 }
 
 function fetchPrListGhCommand(label, state) {
-  return `gh pr list --state ${state} --label "${label}" --limit 200`;
+  return `gh pr list --state ${state} --label "${label}" --limit 600 --json author,number`;
 }
 
 function fetchIssueListGhCommand(labels) {
-  return [
-    "gh issue list --state all --limit 200 ",
-    ...labels.map(label => `"${label}"`),
-  ].join(" --label ");
+  // Issues with multiple labels should be treated as individual entries.
+  // Also listing multiple labels is treated as "AND" rather than "ANY OF".
+  return labels.map(label => `gh issue list --state all --label "${label}" --limit 200 --json author,title,labels,number`);
 }
 
 function makeComparator(primaryKeyNumericDescending, secondaryKeyAlphaAscendingCaseInsensitive) {

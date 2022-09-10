@@ -1,0 +1,334 @@
+/* ------------------------------------ ALL setings ---------------------------- */
+
+*{
+    box-sizing: border-box;
+}
+
+*:focus{
+    outline: 2px solid lightblue;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/* ----------------------------------- Header Menu ----------------------------- */
+.header__h1{
+    display: none;
+}
+
+.header__menu {
+    display: flex;              
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    border: 2px solid #fff;
+}
+
+.header__menu_block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    border: 2px solid #fff;
+    width: 100px;
+    height: 80px;
+    padding: 1px;
+}
+
+.header__menu_block:hover {
+    border-color: lightblue;
+    cursor: pointer;
+}
+
+.header__menu_block_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color:gray;
+    width: 100px;
+    height: 80px;
+}
+.header__img {
+    width: 30px;
+    height: 30px;
+}
+.header__menu_block_hiden-title{
+    font-size: 0;
+}
+
+/* --------------------------------- Dropdown #1 Popup ------------------------ */
+.popup-menu {
+    position: relative;
+}
+.popup-menu__input{
+    position: absolute;
+    appearance: none;
+    background-image: url(../popup-icons/popup-button.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 7em;
+    height: 5.8em;
+    right: -3.5em;
+    top: -3em;
+    cursor: pointer;
+}
+.popup-menu__label{
+    width: 100px;
+    height: 80px;
+}
+.popup{
+    height: 429px;
+    width: 300px;
+    overflow-y:auto;
+    box-shadow: -5px 5px 5px lightgray;
+    border: 1px solid lightgray;
+}
+.popup-menu .popup { 
+    display: none;  
+}
+.popup-menu .popup-menu__label {
+    cursor: pointer; 
+}
+.popup-menu .popup {
+    position: absolute; 
+    right: -9em; 
+    top: 3em; 
+    margin: 0; 
+    padding: 0; 
+    width: auto;
+}
+
+.popup-menu__input:checked ~ .popup {
+    display: block;
+}
+
+.wrapper {              
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    border: 1px solid lightgrey;
+    justify-content: space-between;
+    padding: 15px 5px 0px 5px;
+}
+
+.wrapper__block_link {
+    text-decoration: none;
+}
+
+.wrapper__block {
+    display: grid;
+    width: 90px;
+    height: 90px;
+    margin: 2px;
+}
+
+.wrapper__block_link_item {
+    display: grid;
+    width: 90px;
+    height: 90px;
+    margin: 2px;
+}
+
+.wrapper__block_link_item:hover {
+    border: 1px solid lightgrey;
+}
+
+.wrapper__block_img {
+    width: 40px;
+    height: 30px;
+    justify-self: center;
+    align-self: center;
+}
+
+.wrapper__block_title {
+    display: flex;
+    color:gray;
+    align-items: center;
+    justify-content: center;
+}
+
+/* -------------------------------  Dropdown #2 More ---------------------------  */
+.more {
+    position: relative;
+    width: 290px;
+}
+
+.more__input{
+    position: absolute;
+    appearance: none;
+}   
+
+.more__input:focus{
+    outline:none;
+}
+
+.more__input:focus + .more__label {
+    outline: 2px solid lightblue;
+}
+
+.more__label {
+    cursor: pointer;        
+}
+
+.more__hidden {
+    display: none;
+    position: relative;
+    margin: 0;      
+    padding-top: 20px;
+    right: 0.4em;
+}
+
+.more__label_text{
+    display: table-cell;
+    vertical-align: middle;
+    width: 300px;
+    background-color: rgb(230, 228, 228);
+    color: gray;
+    height:30px ;
+    cursor: pointer;
+    margin: -5px;
+    text-align: center;
+}
+
+.wrapper__block-end{
+    display: flex;
+    width: 290px;
+    color: gray;
+    height:35px ;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper__block-end_link{
+    text-decoration: none;
+}
+
+.more__input:checked ~ .more__hidden {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    border: 1px solid lightgrey;
+    justify-content: space-between;
+}
+
+.more__input:checked ~ .more__label{
+    display: none; 
+}
+
+
+@media screen and (max-width: 560px) {
+    .header__menu_block {
+        width: 80px;
+        height: 60px;
+    }
+    .header__menu_block_link {
+        width: 80px;
+        height: 60px;
+    }
+    .popup-menu__label{
+        width: 80px;
+        height: 60px;
+    }
+    .popup-menu__input{
+        width: 5.7em;
+        height: 4em;
+        right: -2.8em;
+        top: -2em;
+    }
+    .popup-menu .popup {
+        right: -9em; 
+        top: 2.5em; 
+    }
+}
+
+
+@media screen and (max-width: 460px) {
+    .header__menu {
+        padding: 20px;
+    }
+    .header__menu_block {
+        width: 60px;
+        height: 40px;
+    }
+    .header__menu_block_link {
+        width: 60px;
+        height: 40px;
+    }
+    .popup-menu__label{
+        width: 60px;
+        height: 40px;
+    }
+    .popup-menu__input{
+        width: 4.15em;
+        height: 2.8em;
+        right: -2em;
+        top: -1.4em;
+    }
+    .popup-menu .popup {
+        right: -8em; 
+        top: 1.7em;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .header__menu {
+        padding: 20px;
+    }
+    .header__menu_block {
+        width: 50px;
+        height: 30px;
+    }
+    .header__menu_block_link {
+        width: 50px;
+        height: 30px;
+    }
+    .popup-menu__label{
+        width: 50px;
+        height: 30px;
+    }
+    .popup-menu__input{
+        width: 3.65em;
+        height: 1.9em;
+        right: -1.83em;
+        top: -1.1em;
+    }
+    .popup-menu .popup {
+        right: -8em; 
+        top: 1.3em;
+    }
+    .popup{
+        height: 347px;
+        width: 150px;
+        box-shadow: -2px 2px 2px lightgray;
+    }
+    .wrapper__block {
+        width: 70px;
+        height: 70px;
+        margin: 2px;
+    }
+    .wrapper {              
+        width: 250px;
+        padding: 15px 5px 0px 5px;
+    }
+    .wrapper__block_link_item {
+        width: 70px;
+        height: 70px;
+        margin: 2px;
+    }
+    
+    .wrapper__block_img {
+        width: 30px;
+        height: 20px;
+    }
+    
+    .wrapper__block-end{
+        width: 250px;
+        height:35px ;
+    }
+    .more__input:checked ~ .more__hidden {
+        width: 250px;
+    }
+}

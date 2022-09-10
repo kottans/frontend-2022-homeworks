@@ -1,0 +1,248 @@
+@import 'colors', 'animations', 'fonts'
+
+*
+  padding: 0
+  margin: 0
+
+  &::-webkit-scrollbar-thumb
+    background-color: grey
+
+a
+  cursor: pointer
+
+body
+  overflow-x: hidden
+
+.wrapper
+  box-sizing: border-box
+  font-family: OpenSans-Regular, "Times New Roman", Times, serif
+
+.header
+  background-color: nth($second-colors, 2)
+  height: 65px
+  position: absolute
+  top: 0
+  left: 0
+  width: 100vw
+  z-index: 1
+  box-shadow: 0 3px 15px 1px rgb(115, 82, 68)
+
+.header__container
+  margin: 0 25px
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  column-gap: 25px
+
+.menu__list
+  list-style-type: none
+  display: flex
+  align-items: center
+  column-gap: 20px
+
+.menu__item
+  display: flex
+
+.menu__link
+  display: flex
+
+.menu__img, .see-more-button__img
+  width: 35px
+  height: 35px
+
+  &:hover
+    animation: nav-animation 2s infinite
+
+.submenu__img, .sub-popup__img
+  &:hover
+    animation: nav-animation 2s infinite
+
+.check__input
+  position: absolute
+  appearance: none
+  -webkit-appearance: none
+  -moz-appearance: none
+  width: 35px
+  height: 35px
+  z-index: -1
+
+  &:checked
+    ~ .menu__popup
+      display: block
+
+.menu__popup
+  overflow-y: scroll
+  display: none
+  position: absolute
+  top: 80px
+  right: 35px
+  z-index: -1
+  border: 2px solid nth($main-colors, 2)
+  border-radius: 2.5%
+  width: 400px
+  max-height: 300px
+  box-shadow: 0 2px 15px 1px rgba(203, 134, 88, 1)
+
+  &::-webkit-scrollbar
+    width: 8px
+
+  &::-webkit-scrollbar-thumb
+    background-color: nth($main-colors, 2)
+    border-radius: 15px
+
+.submenu__list, .sub-popup__list
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  overflow: auto
+
+.submenu__item, .sub-popup__item
+  text-align: center
+  display: flex
+  flex-direction: column
+  margin: 10px
+  flex: 1
+
+.submenu__link, .sub-popup__link
+  text-decoration: none
+  color: nth($main-colors, 4)
+
+  &:focus
+    outline: 2px solid darkgrey
+    text-decoration: underline
+    color: nth($main-colors, 5)
+
+  .submenu__img, .menu__img, .submenu__img, .see-more-button__img, .sub-popup__img
+    border: 2px solid black
+    border-radius: 50%
+    overflow: hidden
+    width: 75px
+    height: 75px
+
+    + h3
+      border: 2px solid grey
+      background-color: nth($second-colors, 1)
+      margin-top: 5px
+      font-size: 18px
+
+.see-more-button
+  width: 100%
+  overflow: hidden
+  margin: 15px 0
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+
+  .see-more-button__label
+    display: flex
+    justify-content: center
+    width: 95%
+    border: 1px solid grey
+
+.see-more-check__input
+  position: absolute
+  appearance: none
+  -webkit-appearance: none
+  -moz-appearance: none
+  z-index: 1
+  width: 100%
+
+  &:focus
+    ~ .see-more-button__label
+      border: 2px solid grey
+
+  &:checked
+    ~ .sub-popup
+      display: block
+
+    ~ .see-more-button__label .see-more-button__img
+      display: none
+
+  &:hover
+    ~ .see-more-button__label
+      cursor: pointer
+
+.sub-popup
+  display: none
+
+.header__avatar
+  display: flex
+  align-items: center
+  padding: 5px
+
+  .header__img
+    border-radius: 50%
+    width: 50px
+    height: 50px
+
+    &:hover
+      animation: logo-animation 3s infinite
+
+.main
+  box-shadow: inset 0 5px 17px 5px rgba(219, 199, 181, 1)
+  border: 2px solid lightgrey
+  height: 90vh
+  background-color: nth($second-colors, 1)
+
+  .content
+    position: relative
+    top: 80px
+
+.footer
+  background-color: nth($second-colors, 3)
+  height: 65px
+  font-family: 'Dancing Script', cursive
+  font-size: 36px
+  display: flex
+  justify-content: center
+  align-items: center
+
+.footer__container
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 90px
+
+.copyright
+  text-decoration: none
+  color: nth($main-colors, 4)
+
+@media (max-width: 450px)
+  .header
+    display: flex
+    justify-content: center
+  .header__container
+    margin: 0
+    scroll-snap-type: x mandatory
+    gap: 12px
+    height: 100%
+  .menu__list
+    width: 220px
+    overflow-x: scroll
+    overflow-y: hidden
+
+    &::-webkit-scrollbar
+      height: 8px
+
+    &::-webkit-scrollbar-thumb
+      background-color: black
+      border-radius: 10px
+      width: 5px
+
+    &::-webkit-scrollbar-corner
+      display: none
+
+    &::-webkit-scrollbar-track
+      border: 1px solid black
+      border-radius: 10px
+      .menu__item
+        scroll-snap-align: start
+
+  .menu__popup
+    width: 230px
+  .footer
+    font-size: 32px
+
+@media (max-width: 350px)
+  .menu__list
+    width: 165px

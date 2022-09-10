@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Merriweather&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="css/app.css" />
+        <title>Hooli-style Popup</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header class="header" id="home">
+                <div class="header__container">
+                    <a href="#home" class="header__logo" tabindex="1">Cat.</a>
+                    <nav class="nav">
+                        <ul class="nav__list">
+                            <li class="nav__item nav__item--hidden">
+                                <a class="nav__link" href="#" target="_blank" rel="nofollow noopener" tabindex="1">Mail</a>
+                            </li>
+                            <li class="nav__item nav__item--hidden">
+                                <a class="nav__link" href="#" target="_blank" rel="nofollow noopener" tabindex="1">Photo</a>
+                            </li>
+                            <li class="nav__item">
+                                <div class="nav__popup _icon-popup-button">
+                                    <input type="checkbox" class="nav__checkbox nav__checkbox--popup" tabindex="1" />
+                                    <div class="nav__content">
+                                        <input type="checkbox" class="nav__checkbox nav__checkbox--more-less" name="name" id="more-less" tabindex="3" />
+                                        <label class="nav__label" for="more-less"
+                                            ><span class="nav__label--more">More</span><span class="nav__label--less">Less</span></label
+                                        >
+                                        <ul class="nav__sub-list">
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/calendar.png" alt="" class="nav__img" width="886" height="709" />
+                                                    <p class="nav__text">Calendar</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/mail.png" alt="" class="nav__img" width="900" height="539" />
+                                                    <p class="nav__text">Mail</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/news.png" alt="" class="nav__img" width="880" height="621" />
+                                                    <p class="nav__text">News</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/maps.png" alt="" class="nav__img" width="887" height="710" />
+                                                    <p class="nav__text">Map</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/files.png" alt="" class="nav__img" width="886" height="531" />
+                                                    <p class="nav__text">Files</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/contacts.png" alt="" class="nav__img" width="886" height="734" />
+                                                    <p class="nav__text">Contacts</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/tanslation.png" alt="" class="nav__img" width="883" height="879" />
+                                                    <p class="nav__text">Translate</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/videos.png" alt="" class="nav__img" width="886" height="531" />
+                                                    <p class="nav__text">Videos</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/search.png" alt="" class="nav__img" width="903" height="553" />
+                                                    <p class="nav__text">Search</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/photos.png" alt="" class="nav__img" width="708" height="886" />
+                                                    <p class="nav__text">Photo</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/apps.png" alt="" class="nav__img" width="886" height="883" />
+                                                    <p class="nav__text">Apps</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="2">
+                                                    <img src="img/icons/documents.png" alt="" class="nav__img" width="620" height="889" />
+                                                    <p class="nav__text">Documents</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item nav__sub-item--more">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="4">
+                                                    <img src="img/icons/chat.png" alt="" class="nav__img" width="886" height="584" />
+                                                    <p class="nav__text">Chat</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item nav__sub-item--more">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="4">
+                                                    <img src="img/icons/classroom.png" alt="" class="nav__img" width="956" height="658" />
+                                                    <p class="nav__text">Classroom</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item nav__sub-item--more">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="4">
+                                                    <img src="img/icons/collection.png" alt="" class="nav__img" width="737" height="919" />
+                                                    <p class="nav__text">Collection</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item nav__sub-item--more">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="4">
+                                                    <img src="img/icons/mars.png" alt="" class="nav__img" width="886" height="885" />
+                                                    <p class="nav__text">Mars</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item nav__sub-item--more">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="4">
+                                                    <img src="img/icons/blogs.png" alt="" class="nav__img" width="798" height="709" />
+                                                    <p class="nav__text">Blogs</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav__sub-item nav__sub-item--more">
+                                                <a class="nav__sub-link" href="#" target="_blank" rel="nofollow noopener" tabindex="4">
+                                                    <img src="img/icons/promo.png" alt="" class="nav__img" width="883" height="883" />
+                                                    <p class="nav__text">Promos</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header__user">
+                        <a href="#" class="header__notification _icon-bell" target="_blank" rel="nofollow noopener" tabindex="5"></a>
+                        <a href="#" class="header__profile _icon-logo" target="_blank" rel="nofollow noopener" tabindex="5"> </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </body>
+</html>

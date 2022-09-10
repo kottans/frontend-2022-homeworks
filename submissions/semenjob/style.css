@@ -1,0 +1,169 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.header__list:hover {
+  background-color: #dedef5;
+}
+
+.header__list:focus {
+  background-color: #ddc0c0;
+}
+
+.popup__icon {
+  display: block;
+  margin: 0 auto;
+  width: 30px;
+  height: 40%;
+  margin: 10px auto 10px;
+}
+
+.popup__icon__head {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.popup__list {
+  list-style: none;
+}
+
+.head__link {
+  color: #000000;
+  text-decoration: none;
+  padding: 0 15px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.header__list,
+.popup__item {
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.icon_text {
+  margin: 5px auto;
+  display: block;
+  text-align: center;
+}
+
+.item__link {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  border-radius: 5px;
+  padding: 2px 0;
+  height: 100%;
+}
+
+.popup__item {
+  height: 75px;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.item__link:hover {
+  cursor: pointer;
+  background-color: #dedef5;
+}
+
+.item__link:focus {
+  background-color: #ddc0c0;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #000;
+  position: relative;
+}
+
+.popup__checkbox__dropdown,
+.more__popup__checkbox {
+  position: absolute;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.popup__checkbox__dropdown:focus ~ .popup__checkbox__label {
+  border-radius: 4px;
+  background-color: #ddc0c0;
+}
+
+.popup__checkbox__label {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: block;
+}
+
+.more__popup__list {
+  display: none;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 5px);
+  width: 170px;
+  height: 300px;
+  overflow: auto;
+  border-radius: 5px;
+  border: 2px solid #000000;
+  padding: 20px;
+}
+
+.popup__checkbox__dropdown:checked ~ .popup {
+  display: block;
+}
+
+.popup__list,
+.more__popup__checkbox:checked ~ .more__popup__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 5px;
+}
+
+.more__popup__checkbox:checked ~ .label__disable {
+  display: none;
+}
+
+.head__link,
+.more {
+  width: 100%;
+}
+
+.label__disable:hover {
+  background-color: #dedef5;
+}
+
+.more__popup__checkbox:focus ~ .more__popup__checkbox__label {
+  border-radius: 5px;
+  background-color: #ddc0c0;
+}
+
+.more__popup__checkbox__label {
+  left: 0;
+  position: absolute;
+  width: 100%;
+  padding: 15px 0;
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    width: 100%;
+  }
+}

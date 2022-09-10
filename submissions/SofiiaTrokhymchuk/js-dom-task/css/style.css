@@ -1,0 +1,206 @@
+@import url('//fonts.googleapis.com/css2?family=IM+Fell+Great+Primer+SC&display=swap');
+
+:root{
+    --main-bg-color: #141414;
+    --main-text-color: #f7f7f7;
+    --nav-bg-color: #1e1e1e;
+    --nav-hover-color: #454545;
+    --footer-color: #777;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    word-spacing: 0.3rem;
+}
+
+html{
+    font-size: 20px;
+}
+
+body{
+    font-family: 'IM Fell Great Primer SC', serif;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+.nav-container{
+    width: 15rem;
+    position: fixed;
+}
+
+.nav-list{
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background-color: var(--nav-bg-color);
+    height: 100vh;
+}
+
+.nav-item{
+    display: block;
+    padding: 0.7rem;
+    box-shadow: 0px -15px 15px -15px var(--nav-hover-color);
+}
+
+.nav-item:hover{
+    cursor: pointer;
+    background-color: var(--nav-hover-color);
+}
+
+.hamburger-menu{
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger-icon{
+    display: block;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    transform: rotate(-80deg);
+    margin: -1.9rem 0;
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.content-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin-left: 15rem;
+}
+
+.main{
+    flex: 1 0 auto;
+    padding: 0.6rem;
+}
+
+.main > *{
+    padding-bottom: 0.7rem;
+}
+
+.main-title{
+    text-align: center;
+    font-size: 2em;
+    padding: 0 2.2rem;
+}
+
+.logo-img{
+    width: 10rem;
+    display: block;
+    margin: 0 auto;  
+}
+
+.character{ 
+    padding: 0 5rem;
+    margin-top: 1rem;
+}
+
+.character > *{
+    margin-bottom: 0.9rem;
+}
+
+.character-img{
+    display: block;
+    height: 25rem;
+    margin: 0 auto 0.9rem;
+}
+
+.character-name{
+    text-align: center;
+}
+
+.character-description{
+    text-align: justify;
+}
+
+.death-note-rules > li{
+    list-style-type: disc;
+    list-style-position: inside;
+    padding-bottom: 0.5rem;
+}
+
+.footer{
+    margin-top: auto;
+    height: 2.1rem;
+    text-align: center;
+    line-height: 2.1rem;
+    font-size: 0.85rem;
+    color: var(--footer-color);
+}
+
+@media (max-width: 925px){
+    .nav-container{
+        flex: 0 0 2.5rem;
+        position: fixed;
+    }
+
+    .hamburger-menu{
+        display: block;
+        margin: 0 1rem;
+        position: relative;
+        top: 3.5rem;
+    }
+
+    .hamburger-menu.opened .hamburger-icon:nth-child(2){
+        opacity: 0;
+    }
+
+    .hamburger-menu.opened .hamburger-icon:nth-child(1){
+        position: relative;
+        top: -0.5rem;
+        transform:rotate(45deg);
+    }
+
+    .hamburger-menu.opened .hamburger-icon:nth-child(3){
+        transform: rotate(-45deg);
+        position: relative;
+        top: 0.5rem;
+    }
+
+    .nav-list{
+        width: 100%;
+        position: fixed;
+        left:-100%;
+        transition: 0.3s;
+    }
+
+    .nav-item{
+        margin-left: 2.5rem;
+    }
+
+    .nav-list.opened{
+        top: 0;
+        left: 0;
+    }
+
+    .content-container{
+        margin-left: 0;
+    }
+
+    .character{
+        padding: 0 2.5rem;
+    }
+
+}
+
+@media (max-width: 500px){
+    html{
+        font-size: 13px;
+    }
+
+    .content-container{
+        font-size: 1.4rem;
+    }
+
+    .nav-item{
+        padding: 1.5rem;
+    }
+
+    .character{
+        padding: 0 2.2rem;
+    }
+}

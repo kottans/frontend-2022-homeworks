@@ -1,0 +1,262 @@
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  height: 100vh;
+  padding: 0;
+}
+
+.header,
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 60px;
+  padding: 0 30px;
+}
+
+.header {
+  box-shadow: 0 5px 10px -5px gray;
+  position: relative;
+  z-index: 1;
+}
+
+.footer {
+  box-shadow: 0 -1px 10px 1px gray;
+  position:fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.header__nav__list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(2, auto) repeat(3, 40px);
+  padding: 5px;
+  align-items: center;
+  grid-gap: 10px;
+}
+
+.header__nav__list__item__link,
+.nav__checkbox__label,
+.more__checkbox__label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.header__nav__list__item__link:focus,
+.header__nav__list__item__link:hover,
+.header__nav__list__item__link.active {
+  border: 2px solid royalblue;
+  padding: 3px;
+  border-radius: 10px;
+  outline: transparent;
+}
+
+.nav__checkbox__input,
+.more__checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+
+  /* ALTERNATIVE VARIANT */
+  /* -webkit-appearance: none; */
+}
+
+.nav__checkbox__label:hover,
+.nav__checkbox__input:checked + .nav__checkbox__label,
+.nav__checkbox__input:focus + .nav__checkbox__label,
+.nav__checkbox__input:focus:checked + .nav__checkbox__label {
+  border: 2px solid royalblue;
+  padding: 3px;
+  border-radius: 10px;
+  outline: transparent;
+}
+
+.nav__checkbox__input:checked ~ .popup {
+  display: block;
+}
+
+.title {
+  line-height: 35px;
+  font-weight: 800;
+  color: #757575;
+}
+
+.nav__checkbox__image,
+.bell {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid silver;
+}
+
+.popup {
+  position: absolute;
+  width: 300px;
+  height: 435px;
+  top: 80px;
+  right: 10px;
+  margin-left: auto;
+  border: 1px solid rgb(211, 210, 210);
+  box-shadow: 3px 3px 10px -3px #999, 3px 3px 10px -3px #999,
+    -3px 3px 10px -3px #999;
+
+  display: none;
+  overflow: auto;
+  background-color: white;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  top: 65px;
+  right: 140px;
+  transform: rotate(45deg);
+  background-color: white;
+  z-index: 3;
+  position: fixed;
+  border-top: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+}
+
+.menu {
+  padding: 20px 10px 9px 10px;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  column-gap: 20px;
+  grid-row-gap: 5px;
+}
+
+.menu__item {
+  font-size: 14px;
+}
+
+.menu__item__link {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menu__item__image {
+  width: 40px;
+  width: 40px;
+}
+
+.menu__item__title {
+  color: grey;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.menu__item__link:hover {
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+  outline: transparent;
+  padding: 8px;
+}
+
+.menu__item__link:focus,
+.menu__item__link.active {
+  border: 2px solid royalblue;
+  border-radius: 10px;
+  outline: transparent;
+  padding: 8px;
+}
+
+.button__more {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.more__checkbox__label {
+  width: 100%;
+  height: 34px;
+  background-color: lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.more__checkbox__label:hover,
+.more__checkbox__input:checked + .more__checkbox__label,
+.more__checkbox__input:focus + .more__checkbox__label,
+.more__checkbox__input:focus:checked + .more__checkbox__label {
+  background-color: royalblue;
+  color: white;
+  outline: transparent;
+}
+
+.more__checkbox__input:checked + .more__checkbox__label {
+  display: none;
+}
+
+.more__checkbox__input:checked ~ .horizontalLine {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: grey;
+}
+
+.more__checkbox__input:checked ~ .additional {
+  display: grid;
+}
+
+.more__checkbox__input:checked ~ .kottans__link {
+  display: flex;
+}
+
+.additional {
+  display: none;
+}
+
+.horizontalLine {
+  display: none;
+}
+
+.kottans__link {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 20px;
+  margin-bottom: 20px;
+  color: grey;
+  display: none;
+}
+
+@media (min-width: 425px) {
+  .popup {
+    width: 320px;
+    right: 50px;
+  }
+
+  .menu {
+    padding: 20px 20px 9px 20px;
+  }
+}

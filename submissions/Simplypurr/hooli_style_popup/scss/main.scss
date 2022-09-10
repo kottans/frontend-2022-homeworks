@@ -1,0 +1,183 @@
+@import "./resets", "./config", "./popup";
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1;
+    height: 100vh;
+    background: $bg-color;
+    color: $primary-color;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+
+    &__logo {
+        border-radius: 1.5rem;
+        font-size: $responsive-typo;
+        font-weight: 600;
+
+        &:active {
+            transform: translateY(2px);
+        }
+
+        &-link {
+            opacity: 0.7;
+
+            &:hover {
+                cursor: pointer;
+                opacity: 1;
+            }
+
+            &:focus {
+                outline: $bg-color auto 1px;
+            }
+
+        }
+    }
+
+    &__nav {
+
+        &-items {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            gap: clamp(1rem, 3vw, 2.7rem);
+        }
+
+        &-item {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+
+            &:active:not(:nth-child(3n)) {
+                transform: translateY(2px);
+            }
+
+        }
+
+        &-link {
+            opacity: 0.7;
+
+            &:hover {
+                opacity: 1;
+                cursor: pointer;
+            }
+
+            &:focus {
+                outline: $bg-color auto 3px;
+            }
+
+            &-image {
+                opacity: 0.7;
+
+                &:hover {
+                    opacity: 1;
+                    cursor: pointer;
+                }
+
+                &:active {
+                    transform: translateY(2px);
+                }
+
+            }
+        }
+    }
+}
+@import "./resets", "./config", "./popup";
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1;
+    height: 100vh;
+    background: $bg-color;
+    color: $primary-color;
+}
+
+.header {
+    position: relative;
+    overflow: visible;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+
+    &__logo {
+        font-size: $responsive-typo;
+        font-weight: 600;
+
+        &:active {
+            transform: translateY(2px);
+        }
+
+        &-link {
+            opacity: 0.7;
+
+            &:hover {
+                cursor: pointer;
+                opacity: 1;
+            }
+
+            &:focus {
+                outline: $bg-color auto 1px;
+            }
+
+        }
+    }
+
+    &__nav {
+
+        &-items {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem
+        }
+
+        &-item {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+
+            &:active:not(:nth-child(3n)) {
+                transform: translateY(2px);
+            }
+
+        }
+
+        &-link {
+            opacity: 0.7;
+
+            &:hover {
+                opacity: 1;
+                cursor: pointer;
+            }
+
+            &:focus {
+                outline: $bg-color auto 3px;
+            }
+
+            &-image {
+                width: 2rem;
+                opacity: 0.7;
+
+                &:hover {
+                    opacity: 1;
+                    cursor: pointer;
+                }
+
+                &:active {
+                    transform: translateY(2px);
+                }
+
+            }
+        }
+    }
+}
+
+
