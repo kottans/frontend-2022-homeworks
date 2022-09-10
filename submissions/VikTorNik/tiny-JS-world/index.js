@@ -9,21 +9,42 @@ import { print } from './js/lib.js';
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 
-class basePerson {
-   constructor(person, name, gender, legs, hands, voice) {
-      this.person = person;
-      this.name = name;
-      this.gender = gender;
-      this.legs = legs;
-      this.hands = hands;
-      this.voice = voice;
-   }
+const dog = {
+   person: 'dog',
+   name: 'Buran',
+   gender: 'male',
+   legs: 4,
+   hands: 0,
+   voice: 'woof!'
 };
 
-const dog = new basePerson('dog', 'Buran', 'male', 4, 0, 'woof!');
-const cat = new basePerson('cat', 'Yana', 'female', 4, 0, 'meow!');
-const man = new basePerson('human', 'Viktor', 'male', 2, 2, 'Congratulations!');
-const woman = new basePerson('human', 'Olena', 'female', 2, 2, 'Slava Ukraine!');
+const cat = {
+   person: 'cat',
+   name: 'Yana',
+   gender: 'female',
+   legs: 4,
+   hands: 0,
+   voice: 'meow!'
+};
+
+const man = {
+   person: 'human',
+   name: 'Viktor',
+   gender: 'male',
+   legs: 2,
+   hands: 2,
+   voice: 'Congratulations!'
+};
+
+const woman = {
+   person: 'human',
+   name: 'Olena',
+   gender: 'female',
+   legs: 2,
+   hands: 2,
+   voice: 'Slava Ukraine!'
+};
+
 const catWoman = Object.create(cat);
 catWoman.person = 'Cat-Woman';
 catWoman.name = 'Selina Kyle';
@@ -32,5 +53,6 @@ catWoman.legs = 2;
 catWoman.hands = 2;
 
 const fictionalWorld = [dog, cat, man, woman, catWoman];
-fictionalWorld.map(p => print(Object.values(p).map(val => val).join(' - ')));
+const propertyPersonage = ['person', 'name', 'gender', 'legs', 'hands', 'voice'];
 
+fictionalWorld.map(personage => print(propertyPersonage.map(property => personage[property]).join(' - ')));
