@@ -1,56 +1,51 @@
 class Inhabitant {
-  constructor(name, saying, gender) {
+  constructor(name, saying, gender, species) {
     this.name = name;
     this.saying = saying;
     this.gender = gender;
+    this.species = species;
   }
-  getStr() {
-    return `${this.name} ${this.saying} ${this.gender} `;
+  getProperties() {
+    return `Name:${this.name} | Saying:${this.saying} | Gender:${this.gender} | Species:${this.species} |`;
   }
 }
 class Animal extends Inhabitant {
   constructor(name, saying, gender, species, paws) {
-    super(name, saying, gender);
-    this.species = species;
+    super(name, saying, gender, species);
     this.paws = paws;
   }
   getProperties() {
-    return super.getStr() + `${this.species} ${this.paws}`;
+    return super.getProperties() + ` Paws:${this.paws}`;
   }
 }
 class Human extends Inhabitant {
   constructor(name, saying, gender) {
-    super(name, saying, gender);
+    super(name, saying, gender, "Homo sapiens");
     this.legs = 2;
     this.hands = 2;
-    this.species = "Homo sapiens";
   }
   getProperties() {
-    return super.getStr() + `${this.species} ${this.legs} ${this.hands}`;
+    return super.getProperties() + ` Legs:${this.legs} | Hands:${this.hands}`;
   }
 }
 class Cat extends Animal {
-  constructor(name, gender, saying = "meow") {
-    super(name, saying, gender);
-    this.paws = 4;
-    this.species = "Felis catus";
+  constructor(name, gender) {
+    super(name, "meow", gender, "Felis catus", 4);
   }
 }
 class Dog extends Animal {
-  constructor(name, gender, saying = "woof") {
-    super(name, saying, gender);
-    this.paws = 4;
-    this.species = "Canis familiaris";
+  constructor(name, gender) {
+    super(name, "woof", gender, "Canis familiaris", 4);
   }
 }
 class Man extends Human {
-  constructor(name, saying, gender = "male") {
-    super(name, saying, gender);
+  constructor(name, saying) {
+    super(name, saying, "male");
   }
 }
 class Woman extends Human {
-  constructor(name, saying, gender = "female") {
-    super(name, saying, gender);
+  constructor(name, saying) {
+    super(name, saying, "female");
   }
 }
 const inhabitants = [
