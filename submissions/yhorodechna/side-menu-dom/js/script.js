@@ -1,67 +1,59 @@
-const NAV_BAR_ITEMS = DATA.map(item => {
-    return {
-        title: item.title,
-        id: item.id
-    }
-});
+let _navEl;
+const getNavElement = () => {
+    if (!_navEl) {
+        _navEl = document.querySelector('#nav');
+    };
+    return _navEl;
+};
+let ACTIVE_EL_ID;
 
 function findHeaderLinkOrNavLink(clickedElement) {
-    let res = { navLink: undefined, headerLink: undefined };
+    let res;
     let current = clickedElement;
-    while (current) {
+    while (!res && current) {
         const { className } = current;
         if (className) {
             if (className.includes('nav__link')) {
                 res = {
                     navLink: current
                 }
-                break;
+                continue;
             }
             else if (className.includes('header__link')) {
                 res = {
                     headerLink: current
                 }
-                break;
-            }
-            else if (className.includes('container')) {
-                break;
+                continue;
             }
         }
         current = current.parentNode;
     }
     return res;
-}
+};
 
 function handleContainerClick({ target }) {
-    const navEl = document.querySelector('#nav');
     const { navLink, headerLink } = findHeaderLinkOrNavLink(target);
 
     if (navLink) {
-        if (activeElId !== navLink.id) {
-            if (activeElId) {
-                document.querySelector('#' + activeElId).classList.remove('active');
+        if (ACTIVE_EL_ID !== navLink.id) {
+            if (ACTIVE_EL_ID) {
+                document.querySelector('#' + ACTIVE_EL_ID).classList.remove('active');
             };
-            activeElId = navLink.id;;
-            navLink.classList.add('active')
-            const currentArticleData = DATA.find(article => article.id === navLink.id);
-            navClick(navLink, currentArticleData);
+            ACTIVE_EL_ID = navLink.id;
+            navLink.classList.add('active');
+            showArticle(navLink);
         };
-        navEl.classList.remove('nav__full');
+        getNavElement().classList.remove('nav__full');
     } else if (headerLink) {
-        navEl.classList.add('nav__full');
+        getNavElement().classList.add('nav__full');
     };
 };
 
-let activeElId;
-function createNavList(obj) {
-    const { items: DATA,
-        parentEl,
-        defaultId } = obj;
-    activeElId = defaultId;
+function createNavList({ items, parentEl, defaultId }) {
+    ACTIVE_EL_ID = defaultId;
+    findHeaderLinkOrNavLink();
 
-    findHeaderLinkOrNavLink()
-
-    const navElements = DATA.map((item) =>
+    const navElements = items.map((item) =>
         `<li class="nav__item">
             <a id="${item.id}" href="#" class="nav__link ${defaultId === item.id ? 'active' : ''}">
                 <span class="nav__text">${item.title}</span> 
@@ -70,44 +62,46 @@ function createNavList(obj) {
     );
     const html = `
         <header class="header">
-            <a class="header__link" alt=""><img src="img/logo.png" alt="" class="img__btn"></a>
+            <a class="header__link" alt="">
+                <img src="img/logo.png" alt="" class="img__btn">
+            </a>
             <h1 class="header__title">The Houses of Hogwarts</h1>
         </header>
-        <nav id="nav" class="nav"><ul class="nav__list">${navElements.join('')}</ul></nav>
-                `;
+        <nav id="nav" class="nav">
+            <ul class="nav__list">${navElements.join('')}</ul>
+        </nav>`;
 
     const container = document.createElement("div");
     container.className = 'container';
     container.innerHTML = html;
-    container.addEventListener("click", handleContainerClick)
+    container.addEventListener("click", handleContainerClick);
     parentEl.appendChild(container);
 };
 
-function navClick(current) {
-    showArticle(current.id);
-}
-
-function showArticle(id) {
+function showArticle({ id }) {
     const currentArticleData = DATA.find(article => article.id === id);
     const mainEl = document.querySelector('#main');
     const mainHtml = `
         <article class="main__article">
-                <h2 class="main__header">${currentArticleData.title}</h2>
-                <img class="main__img" src="${currentArticleData.img}" alt="">
-                <p class="main-description">${currentArticleData.desc}</p>
+            <h2 class="main__header">${currentArticleData.title}</h2>
+            <img class="main__img" src="${currentArticleData.img}" alt="">
+            <p class="main-description">${currentArticleData.desc}</p>
+            <figure>
                 <blockquote class="main__quote" cite="https://www.onlinereadfreebooks.com/en/Harry-Potter-and-the-Philosophers-Stone/1">
-                <p>${currentArticleData.quote}</p>
+                    <p>${currentArticleData.quote}</p>
                 </blockquote>
-                <figcaption class="main__author">—${currentArticleData.author}, <cite>${currentArticleData.cite}</cite></figcaption>
-        </article>
-        `;
+                <figcaption class="main__author">—${currentArticleData.author},
+                    <cite>${currentArticleData.cite}</cite>
+                </figcaption>
+            </figure>
+        </article>`;
     mainEl.innerHTML = mainHtml;
-}
+};
 
-const defaultId = NAV_BAR_ITEMS[0].id;
+const DEFAULT_ID = DATA[0].id;
 createNavList({
-    items: NAV_BAR_ITEMS,
+    items: DATA,
     parentEl: document.getElementById('navDivContainer'),
-    defaultId,
+    defaultId: DEFAULT_ID,
 });
-showArticle(defaultId)
+showArticle({ id: DEFAULT_ID });
