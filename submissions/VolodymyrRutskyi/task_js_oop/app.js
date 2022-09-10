@@ -1,26 +1,35 @@
+const fieldWidth = 510,
+      startX = 202,
+      startY = 405,
+      tileWidth = 100,
+      tileHeight = 83;
+
 class Enemy {
-  constructor({x, y, speed}) {
-    this.x = x;
+  constructor(y, speed) {
+    this.x = 0;
     this.y = y;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
   }
+
+  checkCollisions(){
+    if (
+      player.x < this.x + tileWidth &&
+      player.x + tileWidth > this.x &&
+      player.y < this.y + tileHeight &&
+      tileHeight + player.y > this.y
+    ) {
+      player.x = startX;
+      player.y = startY;
+    }
+  }
+
   update(dt) {
     this.x += this.speed * dt;
-
-    if (this.x > 510) {
-      this.x = -50;
-      this.speed = 100 + Math.floor(Math.random() * 222);
-    }
-
-    if (
-      player.x < this.x + 80 &&
-      player.x + 80 > this.x &&
-      player.y < this.y + 60 &&
-      60 + player.y > this.y
-    ) {
-      player.x = 202;
-      player.y = 405;
+    if (this.x > fieldWidth) {
+      this.x = 0;
+    } else {
+      this.checkCollisions();
     }
   }
 
@@ -48,55 +57,35 @@ class Player {
 
   handleInput(keyPress) {
     if (keyPress == "left" && this.x > 0) {
-      this.x -= 102;
+      this.x -= tileWidth;
     }
-    if (keyPress == "right" && this.x < 405) {
-      this.x += 102;
+    if (keyPress == "right" && this.x < startY) {
+      this.x += tileWidth;
     }
     if (keyPress == "up" && this.y > 0) {
-      this.y -= 83;
+      this.y -= tileHeight;
     }
-    if (keyPress == "down" && this.y < 405) {
-      this.y += 83;
+    if (keyPress == "down" && this.y < startY) {
+      this.y += tileHeight;
     }
     if (this.y < 0) {
       setTimeout(function () {
-        player.x = 202;
-        player.y = 405;
+        resetPosition();
       }, 600);
     }
   }
 
   resetPosition() {
-    this.x = this.fieldWidth / 2;
-    this.y = this.fieldHeight;
+    this.x = startX;
+    this.y = startY;
   }
 }
 
-const enemySetting1 = {
-    x : 0,
-    y : 63,
-    speed: 800, 
-}
-const enemySetting2 = {
-    x : 0,
-    y : 147,
-    speed: 1000,
-}
-const enemySetting3 = {
-    x : 0,
-    y : 230,
-    speed: 1200, 
-}
-
-const allEnemies = [
-    new Enemy(enemySetting1),
-    new Enemy(enemySetting2),
-    new Enemy(enemySetting3)
-];
-
-
-const player = new Player(202, 405);
+const player = new Player(startX, startY),
+      enemyOne = new Enemy (66, 80),
+      enemyTwo = new Enemy (150, 100),
+      enemyTree = new Enemy (236, 120),
+      allEnemies = [enemyOne, enemyTwo, enemyTree];
 
 document.addEventListener("keyup", function (e) {
   var allowedKeys = {
