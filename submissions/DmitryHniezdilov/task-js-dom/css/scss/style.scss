@@ -1,16 +1,14 @@
-//bcg colors
 $bcgWhite: #fff;
 $bcgBlue: #2d78b5;
-$bcgWhiteA: #f7efd6;
-$bcgBluePic: #0a6a8d;
+$bcgWhiteApricot: #f7efd6;
+$bcgBlueAllports: #0a6a8d;
 $bcgBluePolo: #7ca3d2;
 $bcgBlueFill: #1e90ff;
-
-$font: #182331;
-$selection: rgba(110, 123, 127, 0.8);
-$logo-hov: rgba(227, 90, 37, 0.7);
-$paper-bcg: rgba(110, 123, 127, 0.3);
-$btn-hov: rgba(227, 90, 37, 0.5);
+$colorFont: #182331;
+$colorSelection: rgba(110, 123, 127, 0.8);
+$colorLogoHover: rgba(227, 90, 37, 0.7);
+$colorPaperBcg: rgba(110, 123, 127, 0.3);
+$colorBtnHov: rgba(227, 90, 37, 0.5);
 
 * {
   box-sizing: border-box;
@@ -18,7 +16,7 @@ $btn-hov: rgba(227, 90, 37, 0.5);
   margin: 0;
   font-size: 0;
   font-family: "Roboto Mono", monospace;
-  color: $font;
+  color: $colorFont;
 }
 
 *:focus-visible {
@@ -26,7 +24,7 @@ $btn-hov: rgba(227, 90, 37, 0.5);
 }
 
 *::selection {
-  background: $selection;
+  background: $colorSelection;
 }
 
 .wrapper {
@@ -85,10 +83,10 @@ $btn-hov: rgba(227, 90, 37, 0.5);
     background-color: $bcgBlue;
   }
   25% {
-    background-color: $bcgWhiteA;
+    background-color: $bcgWhiteApricot;
   }
   50% {
-    background-color: $bcgBluePic;
+    background-color: $bcgBlueAllports;
   }
   75% {
     background-color: $bcgBluePolo;
@@ -114,7 +112,7 @@ $btn-hov: rgba(227, 90, 37, 0.5);
     &:active,
     &:focus,
     &:focus-visible {
-      background-color: $logo-hov;
+      background-color: $colorLogoHover;
       transition: ease 0.25s;
     }
   }
@@ -144,7 +142,7 @@ $btn-hov: rgba(227, 90, 37, 0.5);
 
 .paper {
   border-radius: 15px;
-  background-color: $paper-bcg;
+  background-color: $colorPaperBcg;
   backdrop-filter: blur(10px);
 }
 
@@ -170,7 +168,7 @@ $btn-hov: rgba(227, 90, 37, 0.5);
     &:active,
     &:focus,
     &:focus-visible {
-      background-color: $btn-hov;
+      background-color: $colorBtnHov;
       transition: ease 0.25s;
 
       &.is-active:after {
@@ -203,7 +201,7 @@ $btn-hov: rgba(227, 90, 37, 0.5);
       left: 15px;
       width: auto;
       height: 2px;
-      background-color: $btn-hov;
+      background-color: $colorBtnHov;
     }
 
     &.is-active {

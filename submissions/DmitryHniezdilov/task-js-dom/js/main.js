@@ -37,6 +37,7 @@ const createСontentMarkup = (item = defaultContentItem) => {
           key === "Runtime"
             ? changeMinToHm(item["details"][key])
             : item["details"][key];
+
         return `
                     <li class="content__info-item">
                         <span class="content__info-text"><strong>${key}: </strong>${value}</span>
@@ -56,28 +57,31 @@ const createСontentMarkup = (item = defaultContentItem) => {
             </div>
             <div class="content__info-wrap">
                 <ul class="content__info-list">
-
                     <li class="content__info-item">
                         <span class="content__info-text content__info-text--plot">${item["Plot"]}</span>
                     </li>
-
                     ${detailsList}
-
                 </ul>
             </div>
         `;
 };
 
-elemMenu.innerHTML += createMenuMarkup(dataList);
-elemContent.innerHTML += createСontentMarkup();
+const createInitialMarkup = () => {
+  elemMenu.innerHTML += createMenuMarkup(dataList);
+  elemContent.innerHTML += createСontentMarkup();
+};
+
+createInitialMarkup();
 
 const deleteActiveClass = () =>
   elemMenu
     .querySelectorAll(".is-active")
     .forEach((item) => item.classList.remove("is-active"));
-const addActiveClass = (event) => event.target.classList.add("is-active");
 
-const getItemId = (event) => event.target.getAttribute("data-item-id");
+const addActiveClass = ({ target }) => target.classList.add("is-active");
+
+const getItemId = ({ target }) => target.getAttribute("data-item-id");
+
 const getContentItem = (event) =>
   dataList.filter((item) => item["id"] === getItemId(event))[0];
 
