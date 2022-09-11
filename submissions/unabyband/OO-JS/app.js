@@ -28,6 +28,12 @@ Enemy.prototype.update = function(dt) {
         player.x + 80 > this.x &&
         player.y < this.y + 60 &&
         player.y + 60 > this.y) {
+        if (wins > 0) {
+            wins -= 1;
+        } else {
+            wins = 0;
+            enemySpeed = 100;
+        }
             player.x = 202;
             player.y = 405;
         };
@@ -57,10 +63,10 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function (keyPress) {
     if (keyPress == 'left' && this.x > 0) {
-        this.x -= 51;
+        this.x -= 102;
     };
     if (keyPress == 'right' && this.x < 405) {
-        this.x += 51;
+        this.x += 102;
     };
     if (keyPress == 'up' && this.y > 0) {
         this.y -= 83;
