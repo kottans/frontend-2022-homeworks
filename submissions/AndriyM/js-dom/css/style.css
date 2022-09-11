@@ -1,0 +1,147 @@
+body {
+    font-family: Lora, Roboto;
+    font-size: 16px;
+}
+
+[class*="__container"] {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+@media (max-width: 767.98px) {
+    [class*="__container"] {
+        max-width: none;
+        padding: 0px;
+    }
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #d0e4f5;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
+.header {
+    min-height: 120px;
+    align-items: center;
+    display: flex;
+    padding: 7px 0px;
+}
+
+.header__title {
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    font-size: 48px;
+    padding: 0px 10px;
+    font-style: italic;
+    font-weight: 700;
+    color: white;
+    text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+}
+
+.sidebar__list {
+    width: 200px;
+    position: fixed;
+    height: 100%;
+}
+
+.sidebar__list .sidebar__link {
+    display: block;
+    color: black;
+    font-style: italic;
+    font-weight: 500px;
+    padding: 23px 15px;
+    text-decoration: none;
+}
+
+.sidebar__link.active {
+    background-color: #04aa6d;
+    color: white;
+}
+
+.sidebar__list a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+}
+
+@media screen and (min-width: 705px) {
+    .sidebar__link {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar__list {
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .sidebar__list a {
+        float: left;
+    }
+
+    .sidebar__link {
+        font-size: 24px;
+    }
+
+    div.content {
+        margin-left: 0;
+    }
+
+    .header__title {
+        margin-bottom: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .sidebar__list a {
+        text-align: center;
+        float: none;
+    }
+
+    .sidebar__list {
+        display: block;
+    }
+}
+
+.card__item {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    width: 500;
+    height: 400;
+}
+
+.visible {
+    display: flex;
+}
+
+.card__img {
+    margin-bottom: 25px;
+    max-width: 100%;
+    max-height: 100%;
+}
+.card__title {
+    font-style: italic;
+    font-size: 32px;
+    color: #ffffff;
+    background: #2196f3;
+    opacity: 0.8;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
