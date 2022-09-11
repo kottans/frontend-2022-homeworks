@@ -85,3 +85,4 @@ addFriends(9, 1, 2);
  inhabitants.forEach((creature) => creature.printInhabitant());
  
  
+ 
