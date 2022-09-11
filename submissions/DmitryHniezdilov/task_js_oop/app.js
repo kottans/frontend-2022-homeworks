@@ -1,55 +1,77 @@
 "use strict";
 
-document.body.innerHTML = `
+const initialInterfaceMarkup = () => {
+  document.body.innerHTML = `
     <h1 class='title'>Frogger Game</h1>
     <div class='info-wrap'>
-        <p><span>Level: </span><span class='js-info-level'>1</span></p>
-        <p><span>Speed: </span><span class='js-info-speed'>x1</span></p>
+      <p><span>Level: </span><span class='js-info-level'>1</span></p>
+      <p><span>Speed: </span><span class='js-info-speed'>x1</span></p>
     </div>
     <p class='popup js-popup'></p>
-`;
+  `;
+};
 
-const fieldWidth = 404,
-  fieldHeight = 404,
-  cellWidth = 101,
-  rowHeight = 83,
-  playerImg = "images/char-boy.png",
-  enemyImg = "images/enemy-bug.png",
-  heightLinesOfEnemies = {
-    1: 228,
-    2: 145,
-    3: 62,
+initialInterfaceMarkup();
+
+const BLOCK_WIDTH = 101,
+  BLOCK_HEIGHT = 83,
+  BLOCKS_NUMBER = {
+    x: 5,
+    y: 6,
   },
-  speedIncrease = 0.2,
-  minSpeedOfEnemy = 50,
-  maxSpeedOfEnemy = 300,
-  elementPopupMessage = document.querySelector(".js-popup"),
-  elementInfoLevel = document.querySelector(".js-info-level"),
-  elementInfoSpeed = document.querySelector(".js-info-speed"),
-  getRandomArbitrary = function (min, max) {
-    return Math.random() * (max - min) + min;
-  };
+  FIELD_WIDTH = BLOCK_WIDTH * BLOCKS_NUMBER.x,
+  FIELD_HEIGHT = BLOCK_HEIGHT * BLOCKS_NUMBER.y,
+  ORIGIN_COORDINATE_CHARACTERS = {
+    x: 0,
+    y: -20,
+  },
+  PLAYER_CONF = {
+    img: "images/char-boy.png",
+    initialBlock: {
+      x: 3,
+      y: 6,
+    },
+    get initialPositionX() {
+      return (
+        ORIGIN_COORDINATE_CHARACTERS.x + BLOCK_WIDTH * (this.initialBlock.x - 1)
+      );
+    },
+    get initialPositionY() {
+      return (
+        ORIGIN_COORDINATE_CHARACTERS.y + BLOCK_WIDTH * (this.initialBlock.y - 1)
+      );
+    },
+  },
+  ENEMIES_CONF = {
+    img: "images/enemy-bug.png",
+    initialRows: [2, 3, 4],
+    amountOfEnemies: [2, 2, 1],
+    speedIncrease: 0.2,
+    minSpeedOfEnemy: 50,
+    maxSpeedOfEnemy: 300,
+  },
+  ELEMENT_POPUP_MESSAGE = document.querySelector(".js-popup"),
+  ELEMENT_INFO_LEVEL = document.querySelector(".js-info-level"),
+  ELEMENT_INFO_SPEED = document.querySelector(".js-info-speed"),
+  getRandomArbitrary = (min, max) => Math.random() * (max - min) + min;
 
 let currentLevel = 1,
   speedMultiplicator = 1,
   isFreeze = false;
 
-const Enemy = function (x, y, currentMinSpeedOfEnemy, currentMaxSpeedOfEnemy) {
+const Enemy = function (x, y, minSpeed, maxSpeed) {
   this.x = x;
   this.y = y;
-  this.sprite = enemyImg;
-  this.speed = getRandomArbitrary(
-    currentMinSpeedOfEnemy,
-    currentMaxSpeedOfEnemy
-  );
+  this.sprite = ENEMIES_CONF.img;
+  this.speed = getRandomArbitrary(minSpeed, maxSpeed);
 };
 
 Enemy.prototype.update = function (dt) {
   if (!isFreeze) {
     this.x += this.speed * dt;
 
-    if (this.x > fieldWidth + cellWidth) {
-      this.x = -cellWidth;
+    if (this.x > FIELD_WIDTH) {
+      this.x = -BLOCK_WIDTH;
     }
 
     this.checkCollision();
@@ -62,18 +84,18 @@ Enemy.prototype.render = function () {
 
 Enemy.prototype.checkCollision = function () {
   if (
-    player.y - 10 == this.y &&
-    player.x <= Math.floor(this.x) + cellWidth / 1.3 &&
-    player.x >= Math.floor(this.x) - cellWidth / 1.3
+    player.y === this.y &&
+    player.x <= Math.floor(this.x) + BLOCK_WIDTH / 1.3 &&
+    player.x >= Math.floor(this.x) - BLOCK_WIDTH / 1.3
   ) {
     endOfGame("lose");
   }
 };
 
 const Player = function () {
-  this.x = fieldWidth / 2;
-  this.y = fieldHeight;
-  this.sprite = playerImg;
+  this.x = PLAYER_CONF.initialPositionX;
+  this.y = PLAYER_CONF.initialPositionY;
+  this.sprite = PLAYER_CONF.img;
   this.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   };
@@ -84,38 +106,41 @@ const Player = function () {
     if (!isFreeze) {
       switch (key) {
         case "left":
-          this.x += -cellWidth;
+          this.x += -BLOCK_WIDTH;
           break;
         case "up":
-          this.y += -rowHeight;
+          this.y += -BLOCK_HEIGHT;
           break;
         case "right":
-          this.x += cellWidth;
+          this.x += BLOCK_WIDTH;
           break;
         case "down":
-          this.y += rowHeight;
+          this.y += BLOCK_HEIGHT;
           break;
       }
       this.checkWin();
     }
   };
   this.checkExitFromField = function () {
-    if (this.x < 0) {
+    if (this.x < ORIGIN_COORDINATE_CHARACTERS.x) {
       this.x = 0;
-    } else if (this.x > fieldWidth) {
-      this.x = fieldWidth;
-    } else if (this.y < -11) {
-      this.y = -11;
-    } else if (this.y > fieldHeight) {
-      this.y = fieldHeight;
+    } else if (this.x > FIELD_WIDTH - BLOCK_WIDTH) {
+      this.x = FIELD_WIDTH - BLOCK_WIDTH;
+    } else if (this.y < ORIGIN_COORDINATE_CHARACTERS.y) {
+      this.y = ORIGIN_COORDINATE_CHARACTERS.y;
+    } else if (
+      this.y >
+      ORIGIN_COORDINATE_CHARACTERS.y + FIELD_HEIGHT - BLOCK_HEIGHT
+    ) {
+      this.y = ORIGIN_COORDINATE_CHARACTERS.y + FIELD_HEIGHT - BLOCK_HEIGHT;
     }
   };
   this.returnToStart = function () {
-    this.x = fieldWidth / 2;
-    this.y = fieldHeight;
+    this.x = PLAYER_CONF.initialPositionX;
+    this.y = PLAYER_CONF.initialPositionY;
   };
   this.checkWin = function () {
-    if (this.y < 0) {
+    if (this.y < PLAYER_CONF.initialBlock.y) {
       endOfGame("win");
     }
   };
@@ -123,44 +148,50 @@ const Player = function () {
 
 const allEnemies = [];
 
-const startPositionOfEnemies = function (i, n) {
+const startPositionOfEnemies = (i, n) => {
   if (i === 1) {
-    return getRandomArbitrary(-cellWidth, cellWidth * 2);
+    return getRandomArbitrary(-BLOCK_WIDTH, BLOCK_WIDTH * 2);
   } else if (i === 2 && n === 2) {
-    return getRandomArbitrary(-fieldWidth, -cellWidth);
+    return getRandomArbitrary(-FIELD_WIDTH, -BLOCK_WIDTH);
   } else if (i === 2) {
-    return getRandomArbitrary((-fieldWidth + cellWidth) / 2, -cellWidth);
-  } else if (i === 3) {
-    return getRandomArbitrary((-fieldWidth + cellWidth) / 2, -cellWidth);
+    return getRandomArbitrary((-FIELD_WIDTH + BLOCK_WIDTH) / 2, -BLOCK_WIDTH);
   } else {
     return 0;
   }
 };
 
-const createEnemies = function (n, row) {
-  const heightOfLine = heightLinesOfEnemies[row],
-    currentMinSpeedOfEnemy = minSpeedOfEnemy * speedMultiplicator,
-    currentMaxSpeedOfEnemy = maxSpeedOfEnemy * speedMultiplicator;
+const createEnemies = () => {
+  const currentMinSpeedOfEnemy =
+      ENEMIES_CONF.minSpeedOfEnemy * speedMultiplicator,
+    currentMaxSpeedOfEnemy = ENEMIES_CONF.maxSpeedOfEnemy * speedMultiplicator;
 
-  for (let i = 1; i <= n; i++) {
-    const startPositionX = startPositionOfEnemies(i, n);
+  ENEMIES_CONF.initialRows.forEach((row, idx) => {
+    const amountEnemiesOnRow = ENEMIES_CONF.amountOfEnemies[idx],
+      startPositionY =
+        ORIGIN_COORDINATE_CHARACTERS.y + BLOCK_HEIGHT * (row - 1);
 
-    allEnemies.push(
-      new Enemy(
-        startPositionX,
-        heightOfLine,
-        currentMinSpeedOfEnemy,
-        currentMaxSpeedOfEnemy
-      )
-    );
-  }
+    const createEnemy = (i) => () => {
+      if (i > 0) {
+        const startPositionX = startPositionOfEnemies(i, amountEnemiesOnRow);
+        allEnemies.push(
+          new Enemy(
+            startPositionX,
+            startPositionY,
+            currentMinSpeedOfEnemy,
+            currentMaxSpeedOfEnemy
+          )
+        );
+        createEnemy(i - 1)();
+      }
+    };
+
+    createEnemy(amountEnemiesOnRow)();
+  });
 };
 
-const updateEnemies = function () {
+const updateEnemies = () => {
   allEnemies.length = 0;
-  createEnemies(1, 1);
-  createEnemies(2, 2);
-  createEnemies(2, 3);
+  createEnemies();
 };
 
 updateEnemies();
@@ -168,7 +199,7 @@ updateEnemies();
 const player = new Player();
 
 document.addEventListener("keyup", function (e) {
-  var allowedKeys = {
+  const allowedKeys = {
     37: "left",
     38: "up",
     39: "right",
@@ -180,27 +211,27 @@ document.addEventListener("keyup", function (e) {
 
 function endOfGame(result) {
   const updateMarkupInfo = (popupText) => {
-    elementPopupMessage.innerText = popupText;
-    elementInfoLevel.innerText = currentLevel;
-    elementInfoSpeed.innerText = `x${speedMultiplicator}`;
-    elementPopupMessage.classList.add("is-active");
+    ELEMENT_POPUP_MESSAGE.innerText = popupText;
+    ELEMENT_INFO_LEVEL.innerText = currentLevel;
+    ELEMENT_INFO_SPEED.innerText = `x${speedMultiplicator}`;
+    ELEMENT_POPUP_MESSAGE.classList.add("is-active");
   };
 
   isFreeze = true;
-  if (result == "win") {
+  if (result === "win") {
     currentLevel++;
-    speedMultiplicator = +(speedMultiplicator + speedIncrease).toFixed(1);
-
+    speedMultiplicator = +(
+      speedMultiplicator + ENEMIES_CONF.speedIncrease
+    ).toFixed(1);
     updateMarkupInfo("You Win");
-  } else if (result == "lose") {
+  } else if (result === "lose") {
     currentLevel = 1;
     speedMultiplicator = 1;
-
     updateMarkupInfo("You Lose");
   }
 
   setTimeout(() => {
-    elementPopupMessage.classList.remove("is-active");
+    ELEMENT_POPUP_MESSAGE.classList.remove("is-active");
     updateEnemies();
     player.returnToStart();
     isFreeze = false;
