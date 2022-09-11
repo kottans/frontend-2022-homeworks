@@ -8,8 +8,7 @@ function handleHeaderClick() {
 function handleNavLinkClick({ target }) {
     const navLink = target.closest('.nav__link');
 
-    if (navLink) {
-        if (ACTIVE_EL_ID !== navLink.id) {
+        if (navLink && ACTIVE_EL_ID !== navLink.id) {
             if (ACTIVE_EL_ID) {
                 document.querySelector('#' + ACTIVE_EL_ID).classList.remove('active');
             };
@@ -18,7 +17,6 @@ function handleNavLinkClick({ target }) {
             showArticle(navLink);
         };
         NAV_EL.classList.remove('nav__full');
-    }
 };
 
 function createNavList({ items, parentEl, defaultId }) {
