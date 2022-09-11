@@ -1,22 +1,115 @@
-const entity = {
-  width: 80,
-  height: 60,
+
+const tileWidth = 100;
+const tileHeight = 83;
+const numberOfRows = 6;
+const numberOfColumns = 5;
+const fieldWidth = numberOfColumns * tileWidth;
+const fieldHeight = numberOfRows * tileHeight;
+const fieldBottomGap = 100;
+const emenyRowsModifier = 0.66;
+
+const firstEnemyRow = Math.round(tileHeight * emenyRowsModifier);
+const secondEnemyRow = Math.round(tileHeight + tileHeight * emenyRowsModifier);
+const thirdEnemyRow = Math.round(tileHeight * 2 + tileHeight * emenyRowsModifier);
+
+const entityWidth = 80;
+const entityHeight = 70;
+
+const playerStartingPositionX = tileWidth * 2; 
+const playerStartingPositionY = fieldHeight - fieldBottomGap;
+
+
+const ScoreBoard = function(score, scoreMax) {
+  this.score = score;
+  this.scoreMax = scoreMax;
+}
+
+ScoreBoard.prototype.update = function () {
+  scoreTitle.textContent = `Current score is: ${(this.score += 1)}`;
+
+  if (this.score > this.scoreMax) {
+    this.scoreMax = this.score;
+    maxScoreTitle.textContent = `Your max score is: ${this.scoreMax}`;
+  }
 };
 
-const Enemy = function (yAxisPosition, moveSpeed, width, height) {
-  this.xAxisPosition = -80;
+const scoreBoard = new ScoreBoard(0, 0);
+
+
+const Entity = function (xAxisPosition, yAxisPosition, sprite) {
+  this.xAxisPosition = xAxisPosition;
   this.yAxisPosition = yAxisPosition;
-  this.moveSpeed = moveSpeed;
-  this.width = width;
-  this.height = height;
-  this.sprite = "images/enemy-bug.png";
+  this.width = entityWidth;
+  this.height = entityHeight;
+  this.sprite = sprite;
+}
+
+const Player = function (xAxisPosition, yAxisPosition, sprite, width, height) {
+  Entity.call(this, xAxisPosition, yAxisPosition, sprite, width, height)
+  this.moveXAxis = tileWidth;
+  this.moveYAxis = tileHeight;
 };
+
+Player.prototype = Object.create(Entity.prototype);
+
+Player.prototype.update = function () {
+  if (player.yAxisPosition < 0) {
+    this.respawn();
+    scoreBoard.update();
+  }
+};
+
+Player.prototype.render = function () {
+  ctx.drawImage(
+    Resources.get(this.sprite),
+    this.xAxisPosition,
+    this.yAxisPosition
+  );
+};
+
+Player.prototype.respawn = function () {
+  this.xAxisPosition = playerStartingPositionX;
+  this.yAxisPosition = playerStartingPositionY;
+};
+
+Player.prototype.handleInput = function (key) {
+  switch (key) {
+    case "up":
+      this.yAxisPosition -= this.moveYAxis;
+      break;
+    case "down":
+      if (this.yAxisPosition + this.moveYAxis <= fieldHeight - fieldBottomGap) {
+        this.yAxisPosition += this.moveYAxis;
+      }
+      break;
+    case "left":
+      if (this.xAxisPosition - this.moveXAxis >= 0) {
+        this.xAxisPosition -= this.moveXAxis;
+      }
+      break;
+    case "right":
+      if (this.xAxisPosition + this.moveXAxis < fieldWidth) {
+        this.xAxisPosition += this.moveXAxis;
+      }
+      break;
+  }
+};
+
+const player = new Player(playerStartingPositionX, playerStartingPositionY, "images/char-boy.png");
+
+const Enemy = function (xAxisPosition, yAxisPosition, sprite, moveSpeed, width, height, player) {
+  Entity.call(this, xAxisPosition, yAxisPosition, sprite, width, height)
+  this.moveSpeed = moveSpeed;
+  this.player = player;
+};
+
+Enemy.prototype = Object.create(Entity.prototype);
 
 Enemy.prototype.update = function (dt) {
   this.xAxisPosition += this.moveSpeed * dt;
 
-  if (this.xAxisPosition >= ctx.canvas.width) {
-    this.xAxisPosition = -80;
+  if (this.xAxisPosition >= fieldWidth) {
+    this.xAxisPosition = -this.width;
   }
 
   this.checkCollision();
@@ -31,108 +124,40 @@ Enemy.prototype.render = function () {
 };
 
 Enemy.prototype.checkCollision = function () {
+
   if (
     player.xAxisPosition < this.xAxisPosition + this.width &&
     player.width + player.xAxisPosition > this.xAxisPosition &&
     player.yAxisPosition < this.yAxisPosition + this.height &&
     player.yAxisPosition + player.height > this.yAxisPosition
   ) {
-    player.score = 0;
-    scoreTitle.textContent = `Current score is: ${player.score}`;
+    
     player.respawn();
+    scoreBoard.score = 0;
+    scoreTitle.textContent = `Current score is: ${scoreBoard.score}`;
   }
 };
 
 const enemyStats = [
   {
-    yAxisPosition: 60,
+    yAxisPosition: firstEnemyRow,
     moveSpeed: 180,
   },
   {
-    yAxisPosition: 140,
-    moveSpeed: 140,
+    yAxisPosition: secondEnemyRow,
+    moveSpeed: 150,
   },
   {
-    yAxisPosition: 220,
-    moveSpeed: 100,
+    yAxisPosition: thirdEnemyRow,
+    moveSpeed: 120,
   },
 ];
 
-const Player = function (xAxisPosition, yAxisPosition) {
-  this.xAxisPosition = xAxisPosition;
-  this.yAxisPosition = yAxisPosition;
-  this.moveXAxis = 100;
-  this.moveYAxis = 90;
-  this.sprite = "images/char-boy.png";
-  this.score = 0;
-  this.scoreMax = 0;
-};
-
-Player.prototype = entity;
-
-Player.prototype.update = function () {
-  if (player.yAxisPosition < 0) {
-    player.respawn();
-    player.win();
-  }
-};
-
-Player.prototype.win = function () {
-  scoreTitle.textContent = `Current score is: ${(this.score += 1)}`;
-
-  if (this.score > this.scoreMax) {
-    this.scoreMax = this.score;
-    maxScoreTitle.textContent = `Your max score is: ${this.scoreMax}`;
-  }
-};
-
-Player.prototype.render = function () {
-  ctx.drawImage(
-    Resources.get(this.sprite),
-    this.xAxisPosition,
-    this.yAxisPosition
-  );
-};
-
-Player.prototype.handleInput = function () {};
-
-Player.prototype.respawn = function () {
-  this.xAxisPosition = 200;
-  this.yAxisPosition = 400;
-};
-
-Player.prototype.handleInput = function (key) {
-  switch (key) {
-    case "up":
-      this.yAxisPosition -= this.moveYAxis;
-      break;
-    case "down":
-      this.yAxisPosition += this.moveYAxis;
-      if (this.yAxisPosition > 450) {
-        this.yAxisPosition = 400;
-      }
-      break;
-    case "left":
-      this.xAxisPosition -= this.moveXAxis;
-      if (this.xAxisPosition < 0) {
-        this.xAxisPosition = 0;
-      }
-      break;
-    case "right":
-      this.xAxisPosition += this.moveXAxis;
-      if (this.xAxisPosition > 450) {
-        this.xAxisPosition = 400;
-      }
-      break;
-  }
-};
 
 const allEnemies = enemyStats.map(
   ({ yAxisPosition, moveSpeed }) =>
-    new Enemy(yAxisPosition, moveSpeed, entity.width, entity.height)
+    new Enemy(-entityWidth, yAxisPosition, "images/enemy-bug.png", moveSpeed)
 );
-
-const player = new Player(200, 400);
 
 document.addEventListener("keyup", function (e) {
   var allowedKeys = {
@@ -149,8 +174,8 @@ const scoreWrapper = document.createElement("div");
 scoreWrapper.classList.add("score__wrapper");
 const scoreTitle = document.createElement("span");
 const maxScoreTitle = document.createElement("span");
-maxScoreTitle.textContent = `Your max score is: ${player.scoreMax}`;
-scoreTitle.textContent = `Current score is: ${player.score}`;
+maxScoreTitle.textContent = `Your max score is: ${scoreBoard.scoreMax}`;
+scoreTitle.textContent = `Current score is: ${scoreBoard.score}`;
 
 scoreWrapper.append(scoreTitle);
 scoreWrapper.append(maxScoreTitle);
