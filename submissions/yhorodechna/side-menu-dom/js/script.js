@@ -1,38 +1,12 @@
-let _navEl;
-const getNavElement = () => {
-    if (!_navEl) {
-        _navEl = document.querySelector('#nav');
-    };
-    return _navEl;
-};
+let NAV_EL;
 let ACTIVE_EL_ID;
 
-function findHeaderLinkOrNavLink(clickedElement) {
-    let res;
-    let current = clickedElement;
-    while (!res && current) {
-        const { className } = current;
-        if (className) {
-            if (className.includes('nav__link')) {
-                res = {
-                    navLink: current
-                }
-                continue;
-            }
-            else if (className.includes('header__link')) {
-                res = {
-                    headerLink: current
-                }
-                continue;
-            }
-        }
-        current = current.parentNode;
-    }
-    return res;
+function handleHeaderClick() {
+    NAV_EL.classList.add('nav__full');
 };
 
-function handleContainerClick({ target }) {
-    const { navLink, headerLink } = findHeaderLinkOrNavLink(target);
+function handleNavLinkClick({ target }) {
+    const navLink = target.closest('.nav__link');
 
     if (navLink) {
         if (ACTIVE_EL_ID !== navLink.id) {
@@ -43,39 +17,46 @@ function handleContainerClick({ target }) {
             navLink.classList.add('active');
             showArticle(navLink);
         };
-        getNavElement().classList.remove('nav__full');
-    } else if (headerLink) {
-        getNavElement().classList.add('nav__full');
-    };
+        NAV_EL.classList.remove('nav__full');
+    }
 };
 
 function createNavList({ items, parentEl, defaultId }) {
     ACTIVE_EL_ID = defaultId;
-    findHeaderLinkOrNavLink();
 
-    const navElements = items.map((item) =>
+    const navElementsHtml = items.map((item) =>
         `<li class="nav__item">
             <a id="${item.id}" href="#" class="nav__link ${defaultId === item.id ? 'active' : ''}">
                 <span class="nav__text">${item.title}</span> 
             </a>
         </li>`
     );
-    const html = `
+    const headerAndNavHtml = `
         <header class="header">
-            <a class="header__link" alt="">
+            <a id="headerLink" class="header__link" alt="">
                 <img src="img/logo.png" alt="" class="img__btn">
             </a>
             <h1 class="header__title">The Houses of Hogwarts</h1>
         </header>
         <nav id="nav" class="nav">
-            <ul class="nav__list">${navElements.join('')}</ul>
+            <ul id="navList" class="nav__list">${navElementsHtml.join('')}</ul>
         </nav>`;
 
     const container = document.createElement("div");
     container.className = 'container';
-    container.innerHTML = html;
-    container.addEventListener("click", handleContainerClick);
+    container.innerHTML = headerAndNavHtml;
     parentEl.appendChild(container);
+
+    const headerLinkEl = document.querySelector("#headerLink");
+    const navListEl = document.querySelector("#navList");
+    NAV_EL = document.querySelector('#nav');
+
+    if (headerLinkEl) {
+        headerLinkEl.addEventListener("click", handleHeaderClick);
+    }
+    if (navListEl) {
+        navListEl.addEventListener("click", handleNavLinkClick);
+    }
 };
 
 function showArticle({ id }) {
