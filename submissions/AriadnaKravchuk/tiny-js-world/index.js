@@ -53,10 +53,10 @@ const catWoman = {
    gender: "female",
    legs: 2,
    hands: 2,
-   saying: cat.saying,
    friends: ["Cake", "Dominica"]
 };
 
+Object.setPrototypeOf(catWoman, cat);
 // ======== OUTPUT ========
 
 const inhabitants = [dog, cat, man, woman, catWoman];
