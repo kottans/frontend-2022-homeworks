@@ -24,7 +24,16 @@ body {
     font-family: Verdana, sans-serif;
     align-items: center;
     justify-content: center;
+}
 
+.menu_item_img {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu_item_img:focus+* .menu_img {
+    background-color: #78DBE2;
 }
 
 .menu_item a,
@@ -71,24 +80,20 @@ body {
     display: grid;
     margin-bottom: 16px;
     width: 300px;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3fr);
     grid-template-rows: auto;
     grid-gap: 15px;
     grid-template-areas:
-        "q w e"
-        "a s d"
-        "z x c"
-        "r t y"
+        "calendar mail news"
+        "maps files contacts"
+        "translation videos search"
+        "photos apps documents"
     ;
 }
 
 .popup_menu_item {
     text-align: center;
     z-index: 100;
-}
-
-.menu_img:hover {
-    background-color: #FDF5E6;
 }
 
 .menu_img {
@@ -99,9 +104,12 @@ body {
     border-radius: 50%;
 }
 
-.menu_item a:focus+.menu_img {
-    background-color: #78DBE2;
-    border-radius: 10%;
+.menu_img:hover {
+    background-color: #FDF5E6;
+}
+
+.menu_img::focus {
+    background-color: #FDF550;
 }
 
 .menu_item a:focus {
@@ -162,8 +170,8 @@ input[type="checkbox"]:checked~.popup_menu_last {
     display: grid;
     text-decoration: none;
     grid-template-areas:
-        "q w e"
-        "a s d"
+        "chat classroom collection"
+        "mars blogs promos"
     ;
     margin-bottom: 16px;
     width: 300px;
