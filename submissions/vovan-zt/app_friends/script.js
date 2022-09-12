@@ -14,8 +14,8 @@ let sortedDataBase = []
 const message = {
     loading: 'loading...',
     failure: 'Something went wrong, please reload this page',
-    spinner: '../img/icons/spinner.gif',
-    fail: '../img/icons/fail2.png',
+    spinner: 'img/icons/spinner.gif',
+    fail: 'img/icons/fail2.png',
 }
 
 let statusMessage
