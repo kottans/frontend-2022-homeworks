@@ -7,7 +7,6 @@ body {
     margin: 0 auto;
     overflow: hidden;
 }
-
 .header {
     width: 100%;
     height: 50px;
@@ -23,19 +22,11 @@ body {
     user-select: none;
 }
 .main {
+    position: relative;
+    width: 80%;
     height: 100%;
-    padding: 0px 20px 20px 20px;
+    margin: 0 auto;
 }
-.level__one {
-    width: 450px;
-}
-.level__two {
-    width: 550px;
-}
-.level__three {
-    width: 660px;
-}
-
 .main__game-board,
 .main__won-message {
     margin: 0 auto;
@@ -47,24 +38,30 @@ body {
     font-size: 20px;
     user-select: none;
 }
-.hide {
-    position: absolute;
-    left: -1000px;
+.main__won-message.hide {
+    display: none;
+}
+.won-message.hide {
+    display: none;
+}
+.main__level.hide {
+    display: none;
 }
 .main__game-board {
+    padding: 0px 20px 20px 20px;
     height: auto;
     border: 1px solid #000;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 5px;
     align-items: center;
     background-color: #a45c40;
 }
-
 .flip-container {
     perspective: 1000px;
+    margin: 8px;
 }
 .flip-container.active .flipper {
     transform: rotateY(180deg);
@@ -77,7 +74,6 @@ body {
     height: 160px;
     user-select: none;
 }
-
 .card,
 .back__text {
     font-family: "Special Elite", cursive;
@@ -97,9 +93,6 @@ body {
 .card:hover {
     color: rgba(0, 0, 0);
     transition: all linear 0.3s;
-}
-.flip-container {
-    margin: 2px;
 }
 .flipper {
     transition: 0.6s;
@@ -136,14 +129,17 @@ body {
     opacity: 0;
     transition: all linear 0.5s;
 }
-
 .main__won-message {
-    width: 500px;
-    height: 500px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 .won__message {
     background-color: #a45c40be;
-    border: 2px solid #000;
+    border: 1px solid #000;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -159,16 +155,6 @@ body {
     font-family: "Fredericka the Great", cursive;
     font-size: 20px;
 }
-
-.won__level {
-    margin: 90px 0px 0px 0px;
-    padding: 10px;
-}
-.won__moves {
-}
-.won__accuracy {
-}
-
 .won__button {
     background-color: #e4b7a0;
     border-radius: 0px 0px 10px 10px;
@@ -184,14 +170,8 @@ body {
     transition: all linear 0.3s;
 }
 @media (min-width: 50px) {
-    .level__one {
-        width: 180px;
-    }
-    .level__two {
-        width: 220px;
-    }
-    .level__three {
-        width: 220px;
+    .main{
+        width: 100%;
     }
     .card,
     .flip-container,
@@ -199,10 +179,6 @@ body {
     .back {
         width: 46px;
         height: 60px;
-    }
-    .main__won-message {
-        width: 200px;
-        height: 200px;
     }
     .header__title {
         font-size: 20px;
@@ -218,17 +194,14 @@ body {
     .won__level {
         margin: 10px 0px 0px 0px;
     }
+    .flip-container {
+        margin: 2px;
+    }
 }
 
 @media (min-width: 330px) {
-    .level__one {
-        width: 230px;
-    }
-    .level__two {
-        width: 230px;
-    }
-    .level__three {
-        width: 280px;
+    .main{
+        width: 100%;
     }
     .card,
     .flip-container,
@@ -236,10 +209,6 @@ body {
     .back {
         width: 60px;
         height: 80px;
-    }
-    .main__won-message {
-        width: 300px;
-        height: 300px;
     }
     .card,
     .back__text {
@@ -249,20 +218,14 @@ body {
     .main__level {
         font-size: 16px;
     }
-    .won__level {
-        margin: 30px 0px 0px 0px;
+    .flip-container {
+        margin: 2px;
     }
 }
 
 @media (min-width: 492px) {
-    .level__one {
-        width: 300px;
-    }
-    .level__two {
-        width: 400px;
-    }
-    .level__three {
-        width: 400px;
+    .main{
+        width: 100%;
     }
     .card,
     .flip-container,
@@ -271,31 +234,21 @@ body {
         width: 88px;
         height: 110px;
     }
-    .main__won-message {
-        width: 400px;
-        height: 400px;
-    }
     .card,
     .back__text {
-        padding: 10px;
         font-size: 110px;
     }
     .main__level {
         font-size: 16px;
     }
-    .won__level {
-        margin: 60px 0px 0px 0px;
+    .flip-container {
+        margin: 8px;
     }
 }
+
 @media (min-width: 892px) {
-    .level__one {
-        width: 450px;
-    }
-    .level__two {
-        width: 550px;
-    }
-    .level__three {
-        width: 660px;
+    .main{
+        width: 80%;
     }
     .card,
     .flip-container,
@@ -303,10 +256,6 @@ body {
     .back {
         width: 120px;
         height: 160px;
-    }
-    .main__won-message {
-        width: 500px;
-        height: 500px;
     }
     .card,
     .back__text {
@@ -319,7 +268,7 @@ body {
     .main__level {
         font-size: 20px;
     }
-    .won__level {
-        margin: 90px 0px 0px 0px;
+    .flip-container {
+        margin: 8px;
     }
 }

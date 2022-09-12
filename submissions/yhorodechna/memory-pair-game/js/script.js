@@ -1,155 +1,185 @@
-
-const LEVEL_ONE = [...DATA.levelOne];
-const LEVEL_TWO = [...DATA.levelOne, ...DATA.levelTwo];
-const LEVEL_THREE = [...DATA.levelOne, ...DATA.levelTwo, ...DATA.levelThree];
-
 const MAIN = document.querySelector('#main');
 const MAIN_GAME_BOARD_EL = document.querySelector('#main__game-board');
 const MAIN_LEVEL = document.querySelector('#main__level');
-const MAIN_WON_MESSAGE = document.querySelector('#main__won-message');
+const MAIN_WON_MESSAGE_EL = document.querySelector('#main__won-message');
 
-let LEVEL = 1;
-let ALL_MOVES = 0;
-let CORRECT_MOVES = 0;
-let ACCURACY;
-let ACTIVE_CARDS = [];
-let HIDDEN_CARDS = 0;
+const ESTATE = {
+    question: 'question',
+    number: 'number',
+    hidden: 'hidden',
+}
 
-function startGame() {
-    MAIN_GAME_BOARD_EL.classList.remove('hide')
-    MAIN_WON_MESSAGE.classList.add('hide')
-    MAIN_LEVEL.innerHTML = `Level ${LEVEL}`
-    ACTIVE_CARDS = [];
-    HIDDEN_CARDS = 0
-    while (MAIN_GAME_BOARD_EL.firstChild) {
-        MAIN_GAME_BOARD_EL.removeChild(MAIN_GAME_BOARD_EL.firstChild)
+class Card {
+    constructor({ num, id, state }) {
+        this.num = num;
+        this.id = id;
+        this.state = state;
     };
-    while (MAIN_GAME_BOARD_EL.firstChild) {
-        MAIN_WON_MESSAGE.removeChild(MAIN_WON_MESSAGE.firstChild)
+    getClassName() {
+        if (this.state === ESTATE.hidden) {
+            return 'hidden';
+        };
+        if (this.state === ESTATE.number) {
+            return 'active';
+        };
+        return '';
     };
-    if (LEVEL === 1) {
-        fillGameBoard(LEVEL_ONE);
-        MAIN_GAME_BOARD_EL.classList.add('level__one')
-    };
-    if (LEVEL === 2) {
-        fillGameBoard(LEVEL_TWO);
-        MAIN_GAME_BOARD_EL.classList.add('level__two')
-        MAIN_GAME_BOARD_EL.classList.remove('level__one')
-    };
-    if (LEVEL >= 3) {
-        fillGameBoard(LEVEL_THREE);
-        MAIN_GAME_BOARD_EL.classList.remove('level__one')
-        MAIN_GAME_BOARD_EL.classList.remove('level__two')
-        MAIN_GAME_BOARD_EL.classList.add('level__three')
-    };
-};
 
-function createGameCard({ num, id, mainGameBoardEl }) {
-    const gameCardHtml = `
-    <div id=${id} class="flip-container">
-        <div class="flipper">
-            <div class="front">
-                <span class="card">?</span> 
-            </div>
-            <div class="back">
-                <span class="back__text">${num}</span> 
-            </div>
-        </div>
-    </div>
-        `;
-    mainGameBoardEl.innerHTML += gameCardHtml;
-};
-
-function createPlayerWonMessage({ level, allMoves, accuracy, mainWonMessage }) {
-    const mainWonHtml = `
-        <div class="won__message">
-            <span class="won__level" >Level ${level} Completed!</span>
-            <span class="won__moves" > You do ${allMoves} moves</span>
-            <span class="won__accuracy" > Your accuracy ${accuracy}% </span>
-            <button class="won__button" ><span class="won__button-text" >Go to the next level</span></button>
-        </div>
-        `;
-    mainWonMessage.innerHTML = mainWonHtml;
-};
-
-function fillGameBoard(data) {
-    let dataCards = [];
-    for (let i = 0; i < data.length; i++) {
-        let numberOfSimilarCards = 2;
-        while (numberOfSimilarCards != 0) {
-            dataCards.push({ num: data[i].num, id: data[i].id });
-            numberOfSimilarCards--;
+    setState(newState) {
+        if (this.state !== newState) {
+            const currentEl = document.getElementById(this.id);
+            if (currentEl.classList.contains(this.getClassName())) {
+                currentEl.classList.remove(this.getClassName());
+            };
+            this.state = newState;
+            if (this.getClassName()) {
+                currentEl.classList.add(this.getClassName());
+            };
         };
     };
-    dataCards.sort(() => Math.random() - 0.5)
-    for (let i = 0; i < dataCards.length; i++) {
-        createGameCard({
-            num: dataCards[i].num,
-            id: dataCards[i].id,
-            mainGameBoardEl: MAIN_GAME_BOARD_EL
-        })
+
+    render() {
+        return `
+            <div id=${this.id} class="flip-container ${this.getClassName()}">
+                <div class="flipper">
+                    <div class="front">
+                        <span class="card">?</span> 
+                    </div>
+                    <div class="back">
+                        <span class="back__text">${this.num}</span> 
+                    </div>
+                </div>
+            </div>
+        `;
     };
 };
 
-function onClick(event) {
-    const cards = document.querySelectorAll('.flip-container');
-    let current = event.target;
-
-    function removeActiveClass() {
-        cards.forEach(card => card.classList.remove('active'))
-        ACTIVE_CARDS = [];
-    };
-
-    function addHiddenClass() {
-        ACTIVE_CARDS.forEach(card => card.classList.add('hidden'))
-        ACTIVE_CARDS = [];
-        HIDDEN_CARDS += 2;
-
-        function hideGameBoard() {
-            MAIN_GAME_BOARD_EL.classList.add('hide');
-        }
-        if (HIDDEN_CARDS === cards.length) {
-            MAIN_WON_MESSAGE.classList.remove('hide');
-            ACCURACY = Math.floor((100 * CORRECT_MOVES) / ALL_MOVES);
-            MAIN_LEVEL.innerHTML = '';
-            hideGameBoard();
-            createPlayerWonMessage({
-                level: LEVEL,
-                allMoves: ALL_MOVES,
-                accuracy: ACCURACY,
-                mainWonMessage: MAIN_WON_MESSAGE
-            });
-            return;
-        };
-    };
-    while (current) {
-        if (current.className && current.className.includes('back') || current.className && current.className.includes('active')) {
-            return;
-        } else if (current.className && current.className.includes('flip-container')) {
-            if (ACTIVE_CARDS.length < 2) {
-                current.classList.add('active');
-                ACTIVE_CARDS.push(current);
-            };
-            if (ACTIVE_CARDS.length === 2 && ACTIVE_CARDS[0].id === ACTIVE_CARDS[1].id) {
-                ALL_MOVES++;
-                CORRECT_MOVES++;
-                setTimeout(addHiddenClass, 1000);
-                return;
-            };
-            if (ACTIVE_CARDS.length === 2 && ACTIVE_CARDS[0].id !== ACTIVE_CARDS[1].id) {
-                ALL_MOVES++;
-                setTimeout(removeActiveClass, 1000);
-                return;
-            };
-        } else if (current.className && current.className.includes('won__button')) {
-            LEVEL++;
-            startGame()
-            return;
-        }
-        current = current.parentNode;
+class CardList {
+    constructor({ size }) {
+        this.size = size;
+        this.cards = [];
     }
+    init() {
+        for (let i = 0; i < this.size; i++) {
+            this.cards.push(new Card({
+                num: Math.floor(i / 2),
+                id: i.toString(),
+                state: ESTATE.question
+            }));
+        };
+        this.cards.sort(() => Math.random() - 0.5);
+    };
+    render() {
+        return this.cards.map(card => card.render()).join('');
+    };
+    getCardsByState(state) {
+        const filteredCards = this.cards.filter(card => card.state === state);
+        return filteredCards;
+    };
 };
 
-MAIN.addEventListener("click", onClick);
-startGame()
+class Game {
+    constructor(mainGameBoardEl) {
+        this.mainGameBoardEl = mainGameBoardEl;
+        this.size = 6;
+        this.level = 1;
+        this.activeCards = [];
+        this.allMoves = 0;
+        this.correctMoves = 0;
+        this.accuracy = 100;
+    };
 
+    startGame() {
+        this.allMoves = 0;
+        this.correctMoves = 0;
+        this.accuracy = 100;
+        this.createLevelMessage();
+        MAIN_WON_MESSAGE_EL.classList.add('hide');
+        MAIN_GAME_BOARD_EL.classList.remove('hide');
+        this.mainGameBoardEl.innerHTML = '';
+        this.cardList = new CardList({ size: this.size, mainGameBoardEl: this.mainGameBoardEl });
+        this.cardList.init();
+        this.mainGameBoardEl.innerHTML = this.cardList.render();
+    };
+
+    createPlayerWonMessage() {
+        MAIN_LEVEL.classList.add('hide');
+        MAIN_WON_MESSAGE_EL.classList.remove('hide');
+        this.accuracy = Math.floor((100 * this.correctMoves) / this.allMoves);
+        const mainWonHtml = `
+            <div class="won__message">
+                <span class="won__level" >Level ${this.level} Completed!</span>
+                <span class="won__moves" > You do ${this.allMoves} moves</span>
+                <span class="won__accuracy" > Your accuracy ${this.accuracy}% </span>
+                <button class="won__button" ><span class="won__button-text" >Go to the next level</span></button>
+            </div>
+            `;
+        MAIN_GAME_BOARD_EL.classList.add('hide');
+        MAIN_WON_MESSAGE_EL.innerHTML = mainWonHtml;
+    };
+    
+    createLevelMessage() {
+        MAIN_LEVEL.classList.remove('hide');
+        const levelHtml = `
+        <p class="main__level-text">Level ${this.level}</p>
+        `;
+        MAIN_LEVEL.innerHTML = levelHtml;
+    };
+
+    makeActiveCardsHidden() {
+        this.activeCards.forEach(card => {
+            card.setState(ESTATE.hidden);
+        });
+        this.activeCards = [];
+        this.correctMoves++;
+        this.allMoves++;
+        let numberOfHiddenCards = this.cardList.getCardsByState(ESTATE.hidden).length;
+        if (this.cardList.size == numberOfHiddenCards) {
+            setTimeout(this.createPlayerWonMessage.bind(this), 500);
+        };
+    };
+
+    makeActiveCardsVisibleWithQuestionSign() {
+        this.activeCards.forEach(card => {
+            card.setState(ESTATE.question);
+        });
+        this.activeCards = [];
+        this.allMoves++;
+    };
+
+    onClick({ target }) {
+        const flipContainer = target.closest('.flip-container');
+        const wonButton = target.closest('.won__button');
+        if (flipContainer && this.activeCards.length < 2) {
+            const currentCard = this.cardList.cards.find(card => card.id === flipContainer.id);
+
+            if (currentCard.state === ESTATE.question) {
+                this.activeCards.push(currentCard);
+                currentCard.setState(ESTATE.number);
+
+                const [firstCard, secondCard] = this.activeCards;
+                if (this.activeCards.length === 2 && firstCard.num === secondCard.num) {
+                    setTimeout(this.makeActiveCardsHidden.bind(this), 500);
+                    return;
+                }
+                else if (this.activeCards.length === 2 && firstCard.num !== secondCard.num) {
+                    setTimeout(this.makeActiveCardsVisibleWithQuestionSign.bind(this), 500);
+                    return;
+                };
+            };
+        } else if (wonButton) {
+            this.level++;
+            if (this.size < 18) {
+                this.size += 4;
+            } else {
+                this.size = 20;
+            }
+            this.startGame();
+            return;
+        };
+    };
+};
+
+const GAME = new Game(MAIN_GAME_BOARD_EL);
+GAME.startGame();
+MAIN.addEventListener("click", GAME.onClick.bind(GAME));
