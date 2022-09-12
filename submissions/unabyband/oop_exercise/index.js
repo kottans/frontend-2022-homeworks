@@ -9,7 +9,7 @@
 // Define your objects here
 
 class Inhabitant {
-  constructor (species, name, gender, limbs, saying, friends = 'Cats have no friends!') {
+  constructor (species, name, gender, limbs, saying, friends) {
     this.species = species;
     this.name = name;
     this.gender = gender;
@@ -19,7 +19,7 @@ class Inhabitant {
   }
 
   printInhabitant () {
-    print(`${this.species}; <strong>${this.name}</strong>; ${this.gender}; ${this.limbs.join('; ')}; <em>${this.saying}</em>; ${this.friends}`);
+    print(`${this.species}; <strong>${this.name}</strong>; ${this.gender}; ${this.limbs.join('; ')}; <em>${this.saying}</em>; ${this.friends ? this.friends.map(elem => elem.name).join(', ') : 'Cats have no friends'}`);
   }
 }
 
@@ -68,9 +68,9 @@ const inhabitants = [
  function addFriends(...arguments) {
   let friendsList = [];
   for(let i = 1; i < arguments.length; i++) {
-    friendsList.push(inhabitants[arguments[i]].name);
+    friendsList.push(inhabitants[arguments[i]]);
   }
-  inhabitants[arguments[0]].friends = friendsList.join(', ');
+  inhabitants[arguments[0]].friends = friendsList;
  }
 
 addFriends(0, 3, 7);
@@ -82,6 +82,6 @@ addFriends(5, 2, 6, 9);
 addFriends(8, 4);
 addFriends(9, 1, 2);
 
- inhabitants.forEach((creature) => creature.printInhabitant());
+inhabitants.forEach((creature) => creature.printInhabitant());
  
- 
+
