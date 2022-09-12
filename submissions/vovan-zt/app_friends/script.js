@@ -135,7 +135,7 @@ function inputSearchName(dataArray) {
 }
 
 function compareAge(firstUser, secondUser) {
-    return firstUser.dob.age - secondUser.dob.age
+    return firstUser.dob.age <= secondUser.dob.age ? -1 : 1
 }
 
 function compareName(firstUser, secondUser) {
