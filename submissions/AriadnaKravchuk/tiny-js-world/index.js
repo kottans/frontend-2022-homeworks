@@ -57,6 +57,7 @@ const catWoman = {
 };
 
 Object.setPrototypeOf(catWoman, cat);
+
 // ======== OUTPUT ========
 
 const inhabitants = [dog, cat, man, woman, catWoman];
