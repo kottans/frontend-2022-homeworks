@@ -255,6 +255,10 @@ ul li{list-style: none;}
 	line-height: 2rem;
 }
 
+.default {
+	list-style-type: none;
+}
+
 .btn {
 	height: 50px;
 	width: 150px;
@@ -266,6 +270,18 @@ ul li{list-style: none;}
 	align-items: center;
 	color: white;
 	transition: 0.5s;
+}
+
+.flex {
+	display: flex;
+}
+
+.buttons__grid {
+	display: grid;
+	max-width: 380px;
+	gap: 15px;
+	justify-content: space-between;
+	align-items:center;
 }
 
 .btn:hover {
