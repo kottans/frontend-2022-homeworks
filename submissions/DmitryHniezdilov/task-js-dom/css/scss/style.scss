@@ -48,12 +48,9 @@ $colorBtnHov: rgba(227, 90, 37, 0.5);
     left: 0;
     height: 65%;
     user-select: none;
-  }
-
-  &__bcg-img {
-    object-fit: contain;
-    width: 100%;
-    height: auto;
+    background-image: url("../img/bcg-mountain.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   &__inner {
@@ -98,6 +95,8 @@ $colorBtnHov: rgba(227, 90, 37, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0;
+  user-select: none;
 
   &__logo {
     display: inline-block;
@@ -162,6 +161,7 @@ $colorBtnHov: rgba(227, 90, 37, 0.5);
     border: none;
     transition: ease 0.25s;
     text-align: left;
+    user-select: none;
     cursor: pointer;
 
     &:hover,
@@ -273,11 +273,18 @@ $colorBtnHov: rgba(227, 90, 37, 0.5);
   }
 
   &__info-text {
+    display: inline;
     font-size: 18px;
     line-height: 1.3;
 
-    strong {
-      font-size: inherit;
+    &--title {
+      font-weight: 600;
+    }
+
+    &--plot {
+      display: inline-block;
+      margin-bottom: 10px;
+      text-align: justify;
     }
   }
 }
@@ -297,6 +304,10 @@ $colorBtnHov: rgba(227, 90, 37, 0.5);
       "top"
       "img-wrap"
       "info-wrap";
+
+    &__img {
+      max-height: none;
+    }
   }
 }
 

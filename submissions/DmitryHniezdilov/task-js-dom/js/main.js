@@ -7,83 +7,81 @@ const elemMenu = document.querySelector(".js-elem-menu");
 const elemContent = document.querySelector(".js-elem-content");
 
 const createMenuMarkup = (data) => {
-  const menuListItems = data.map((item) => {
-    return `
-                <li class="menu__item" >
-                    <button class="menu__btn" type="button" data-item-id="${item["id"]}">${item["Title"]}</button>
-                </li>
-            `;
+  const menuMarkup = document.createElement("ul");
+  menuMarkup.classList.add("menu__list");
+
+  data.forEach((item) => {
+    const menuItem = document.createElement("li");
+    menuItem.classList.add("menu__item");
+    menuItem.innerHTML = `<button class="menu__btn" type="button" data-item-id="${item["id"]}">${item["Title"]}</button>`;
+    menuMarkup.appendChild(menuItem);
   });
 
-  return `
-            <ul class="menu__list">
-                ${menuListItems}
-            </ul>
-        `;
+  return menuMarkup;
 };
 
-const changeMinToHm = (min) => {
-  const MIN = Number(min.split(" ")[0]);
-  let h = Math.floor(MIN / 60);
-  let m = Math.abs(MIN % 60);
+const changeMinToHm = (minutes) => {
+  const MIN = Number(minutes.split(" ")[0]);
+  let hour = Math.floor(MIN / 60);
+  let min = Math.abs(MIN % 60);
 
-  return h < 0 ? `${m}m` : `${h}h ${m}m`;
+  return hour < 0 ? `${min}m` : `${hour}h ${min}m`;
 };
 
 const createСontentMarkup = (item = defaultContentItem) => {
-  const detailsList = item["details"]
-    ? Object.keys(item["details"]).map((key) => {
-        const value =
-          key === "Runtime"
-            ? changeMinToHm(item["details"][key])
-            : item["details"][key];
+  const createDetailsList = () => {
+    let detailsItems = "";
+    Object.keys(item["details"]).forEach((key) => {
+      const value =
+        key === "Runtime"
+          ? changeMinToHm(item["details"][key])
+          : item["details"][key];
 
-        return `
-                    <li class="content__info-item">
-                        <span class="content__info-text"><strong>${key}: </strong>${value}</span>
-                    </li>
-                `;
-      })
-    : "";
+      detailsItems += `
+        <div class="content__info-item">
+          <dt class="content__info-text content__info-text--title">${key}: </dt>
+          <dd class="content__info-text">${value}</dd>
+        </div>
+      `;
+    });
+    return '<dl class="content__info-list">' + detailsItems + "</dl>";
+  };
 
-  return `
-            <header class="content__top">
-                <h1 class="content__title">${item["Title"]}</h1>
-            </header>
-            <div class="content__img-wrap">
-                <figure class="content__img-inner">
-                    <img class="content__img" src="./img/${item["Poster"]}" alt="Poster ${item["Title"]}">
-                </figure>
-            </div>
-            <div class="content__info-wrap">
-                <ul class="content__info-list">
-                    <li class="content__info-item">
-                        <span class="content__info-text content__info-text--plot">${item["Plot"]}</span>
-                    </li>
-                    ${detailsList}
-                </ul>
-            </div>
-        `;
+  const contentMarkup = `
+    <header class="content__top">
+      <h1 class="content__title">${item["Title"]}</h1>
+    </header>
+    <div class="content__img-wrap">
+      <figure class="content__img-inner">
+        <img class="content__img" src="./img/${item["Poster"]}" 
+          alt="Poster ${item["Title"]}">
+      </figure>
+    </div>
+    <div class="content__info-wrap">
+      <p class="content__info-text content__info-text--plot">${item["Plot"]}</p>
+      ${item["details"] ? createDetailsList() : ""}
+    </div>
+  `;
+
+  return contentMarkup;
 };
 
 const createInitialMarkup = () => {
-  elemMenu.innerHTML += createMenuMarkup(dataList);
-  elemContent.innerHTML += createСontentMarkup();
+  elemMenu.appendChild(createMenuMarkup(dataList));
+  elemContent.innerHTML = createСontentMarkup();
 };
 
 createInitialMarkup();
 
 const deleteActiveClass = () =>
-  elemMenu
-    .querySelectorAll(".is-active")
-    .forEach((item) => item.classList.remove("is-active"));
+  elemMenu.querySelector(".is-active")?.classList.remove("is-active");
 
 const addActiveClass = ({ target }) => target.classList.add("is-active");
 
 const getItemId = ({ target }) => target.getAttribute("data-item-id");
 
 const getContentItem = (event) =>
-  dataList.filter((item) => item["id"] === getItemId(event))[0];
+  dataList.find((item) => item["id"] === getItemId(event));
 
 const updateContent = (item) => {
   elemContent.innerHTML = null;
@@ -106,6 +104,8 @@ elemLogo.addEventListener("click", (event) => {
   const isPrevent = elemMenu.querySelectorAll(".is-active");
 
   isPrevent
-    ? (updateContent(defaultContentItem), deleteActiveClass())
+    ? (event.preventDefault(),
+      updateContent(defaultContentItem),
+      deleteActiveClass())
     : event.preventDefault();
 });
