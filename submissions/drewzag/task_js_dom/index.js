@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         main.innerHTML = `<div class="main__logo">
       <img src=${team.img} alt="${team.team} logo" class="logo" />
     </div>
-      <p class="main__desc">${team.desc}`
+      <p class="main__desc">${team.desc}</p>`
       })
       list.classList.remove('show__list')
     }
