@@ -36,7 +36,7 @@ const body = document.querySelector("body");
 const skinsList = document.createElement("ul");
 skinsList.classList.add("skins__list");
 body.prepend(skinsList);
-skinsList.prepend(...skinsListCreator());
+skinsList.prepend(...createSkinsList());
 
 let score = 0;
 
@@ -45,7 +45,7 @@ result.classList.add("show__result");
 skinsList.after(result);
 result.innerHTML = `Score: ${score}`;
 
-function skinsListCreator() {
+function createSkinsList() {
   return skins.map((playerSkin) => {
     const { id, img } = playerSkin;
     const listItem = document.createElement("li");
@@ -60,15 +60,12 @@ function skinsListCreator() {
   });
 }
 
-let playerSprite = "images/char-cat-girl.png";
+function changeSkin({ target }) {
+  const { img: playerSkin } = skins.find((skin) => skin.id === target.id);
+  player.sprite = playerSkin;
+}
 
-skinsList.addEventListener("click", function ({ target }) {
-  skins.forEach((skin) => {
-    if (skin.id === target.id) {
-      playerSprite = skin.img;
-    }
-  });
-});
+skinsList.addEventListener("click", changeSkin);
 
 const Enemy = function (x, y, speed) {
   this.x = x;
@@ -116,6 +113,7 @@ Enemy.prototype.render = function () {
 const Player = function (x, y) {
   this.x = x;
   this.y = y;
+  this.sprite = "images/char-cat-girl.png";
 };
 
 Player.prototype.update = function () {};
@@ -127,14 +125,14 @@ Player.prototype.reset = function () {
 };
 
 Player.prototype.render = function () {
-  ctx.drawImage(Resources.get(playerSprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 const player = new Player(PLAYER_START_POSITION_X, PLAYER_START_POSITION_Y);
 
 const allEnemies = ENEMIES_START_POSITION_Y.map((yPosition) => {
   const xPosition = Math.floor(Math.random() * -200);
-  return (enemy = new Enemy(xPosition, yPosition, ENEMY_START_SPEED));
+  return new Enemy(xPosition, yPosition, ENEMY_START_SPEED);
 });
 
 Player.prototype.handleInput = function (pressedKey) {
