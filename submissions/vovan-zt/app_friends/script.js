@@ -11,7 +11,32 @@ const myForm = document.querySelector('.form'),
 let dataBase = []
 let sortedDataBase = []
 
+const message = {
+    loading: 'loading...',
+    failure: 'Something went wrong, please reload this page',
+    spinner: '../img/icons/spinner.gif',
+    fail: '../img/icons/fail2.png',
+}
+
+let statusMessage
+
+function showLoadingStatus(picture, textPicture) {
+    statusMessage = document.createElement('div')
+    statusMessage.classList.add('status')
+
+    let statusImg = document.createElement('img')
+    statusImg.setAttribute('src', `${picture}`)
+    statusMessage.appendChild(statusImg)
+
+    let textMessage = document.createElement('div')
+    textMessage.textContent = `${textPicture}`
+    statusMessage.appendChild(textMessage)
+
+    content.appendChild(statusMessage)
+}
+
 async function getResponse() {
+    showLoadingStatus(message.spinner, message.loading)
     try {
         const response = await fetch(url)
         const data = await response.json()
@@ -19,15 +44,18 @@ async function getResponse() {
         dataBase = [...results]
         sortedDataBase = [...dataBase]
         showCards(dataBase)
+        statusMessage.remove()
     } catch (e) {
         console.error(e)
+        statusMessage.remove()
+        showLoadingStatus(message.fail, message.failure)
     }
 }
 
-function createCards({ picture, name, dob, gender, location, email, cell }) {
+function createCards(user) {
     let colorGender = ''
     let bgcolorName = ''
-    if (gender == 'female') {
+    if (user.gender == 'female') {
         colorGender = 'color_violet'
         bgcolorName = 'bgcolor_violet'
     }
@@ -35,32 +63,32 @@ function createCards({ picture, name, dob, gender, location, email, cell }) {
     return `
    <article class="cards__wrapper"> 
         <div class="cards__wrapper-name ${bgcolorName}">
-        <h3> ${name.first} ${name.last}</h3>
+        <h3> ${user.name.first} ${user.name.last}</h3>
         </div>
 
         <div class="cards__wrapper-photo">
-            <img src=${picture.large} alt="">
+            <img src=${user.picture.large} alt="">
         </div>
 
         <div class="cards__wrapper-years">
-        I have ${dob.age} years old
+        I have ${user.dob.age} years old
         </div>
 
         <div class="cards__wrapper-email">
-            <a href='mailto:${email}'>${email}</a>
+            <a href='mailto:${user.email}'>${user.email}</a>
         </div>
 
         <div class="cards__wrapper-phone">
-            <a  href="tel:+ ${cell}"> ${cell}</a>
+            <a  href="tel:+ ${user.cell}"> ${user.cell}</a>
         </div>
 
         <div class="cards__wrapper-city">
-            ${location.city}
+            ${user.location.city}
         </div>
 
         <hr class="devider">
 
-        <div class="cards__wrapper-gender ${colorGender}">${gender}</div>
+        <div class="cards__wrapper-gender ${colorGender}">${user.gender}</div>
    </article>
  `
 }
@@ -68,22 +96,10 @@ function createCards({ picture, name, dob, gender, location, email, cell }) {
 function showCards(dataBase) {
     const cardSection = document.createElement('div')
     cardSection.classList.add('cards')
-
-    const cardsHTML = dataBase
-        .map(({ picture, name, dob, gender, location, email, cell }) => {
-            return createCards({
-                picture,
-                name,
-                dob,
-                gender,
-                location,
-                email,
-                cell,
-            })
-        })
-        .join('')
-
-    cardSection.innerHTML = cardsHTML
+    cardSection.innerHTML = dataBase.reduce(
+        (acc, user) => (acc += createCards(user)),
+        ''
+    )
     content.append(cardSection)
 }
 
@@ -118,13 +134,16 @@ function inputSearchName(dataArray) {
     })
 }
 
-const compareAge = (firstUser, secondUser) =>
-    firstUser.dob.age - secondUser.dob.age
+function compareAge(firstUser, secondUser) {
+    return firstUser.dob.age - secondUser.dob.age
+}
 
-const compareName = (firstUser, secondUser) =>
-    firstUser.name.first.toLowerCase() <= secondUser.name.first.toLowerCase()
+function compareName(firstUser, secondUser) {
+    return firstUser.name.first.toLowerCase() <=
+        secondUser.name.first.toLowerCase()
         ? -1
         : 1
+}
 
 function sortingUsers(dataArray) {
     if (myForm.sorting.value === 'ageUp') {
@@ -141,15 +160,11 @@ function sortingUsers(dataArray) {
 }
 
 function filterByGender(dataArray) {
-    if (myForm.male.checked) {
-        return dataArray.filter((user) => user.gender === 'male')
-    }
-    if (myForm.female.checked) {
-        return dataArray.filter((user) => user.gender === 'female')
-    }
-    if (myForm.all.checked) {
+    const genderValue = myForm.gender.value
+    if (genderValue === 'all') {
         return dataArray
     }
+    return dataArray.filter((user) => user.gender === `${genderValue}`)
 }
 
 function resetFilters() {

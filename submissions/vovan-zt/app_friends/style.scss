@@ -235,6 +235,14 @@ label {
 	}
 }
 
+.status {
+	width: 300px;
+	font-size: 20px;
+	color:#c7c9cc;
+	margin: 0 auto;
+	text-align: center;
+}
+
 @media  (max-width: 500px) {
 	.container {
 		&__active {
@@ -242,11 +250,9 @@ label {
 		}
 
 	}
-
 	.header {
 		&__title {
 			font-size: 35px;
 		}
 	}
-	
 }
