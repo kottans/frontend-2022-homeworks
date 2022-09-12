@@ -1,17 +1,29 @@
-*{
+* {
 	padding: 0;
 	margin: 0;
 	border: 0;
 }
-*,*:before,*:after{
+
+*,
+*:before,
+*:after {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
-:focus,:active{outline: none;}
-a:focus,a:active{outline: none;}
 
-html,body{
+:focus,
+:active {
+	outline: none;
+}
+
+a:focus,
+a:active {
+	outline: none;
+}
+
+html,
+body {
 	height: 100%;
 	width: 100%;
 	font-size: 100%;
@@ -23,8 +35,14 @@ html,body{
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-a, a:visited{text-decoration: none;}
-ul li{list-style: none;}
+a,
+a:visited {
+	text-decoration: none;
+}
+
+ul li {
+	list-style: none;
+}
 
 /*-------------------- */
 
@@ -45,6 +63,7 @@ ul li{list-style: none;}
 .link:hover {
 	text-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
 }
+
 .link:focus {
 	box-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
 }
@@ -53,7 +72,7 @@ ul li{list-style: none;}
 	margin: 0 20px;
 }
 
-.navigation__list{
+.navigation__list {
 	display: flex;
 	align-items: center;
 }
@@ -84,31 +103,33 @@ ul li{list-style: none;}
 }
 
 .menu {
-	width: 	275px;
+	width: 275px;
 	height: 352px;
 	background-color: white;
 	border: 1px solid rgba(0, 0, 255, .2);
-    position: relative;
-	cursor:default;
+	position: relative;
+	cursor: default;
 	overflow-y: scroll;
-	scrollbar-gutter: stable; 
+	scrollbar-gutter: stable;
 }
 
 .context__menu::before {
-    content: ''; 
-    position: absolute;
-    right: 15px; top: -10px;
-    border: 10px solid transparent;
-    border-bottom: 10px solid rgba(0, 0, 255, .2);
-}
-   
-.context__menu::after {
-	content: ''; 
+	content: '';
 	position: absolute;
-	right: 15px; top: -10px;
+	right: 15px;
+	top: -10px;
+	border: 10px solid transparent;
+	border-bottom: 10px solid rgba(0, 0, 255, .2);
+}
+
+.context__menu::after {
+	content: '';
+	position: absolute;
+	right: 15px;
+	top: -10px;
 	border: 10px solid transparent;
 	border-bottom: 10px solid rgb(255, 255, 255);
-	top: -9px; 
+	top: -9px;
 }
 
 .checkbox {
@@ -118,12 +139,12 @@ ul li{list-style: none;}
 	-moz-appearance: none;
 }
 
-.checkbox:checked + .context__menu{
-	display:block;
+.checkbox:checked+.context__menu {
+	display: block;
 }
 
 
-   /* Context menu */
+/* Context menu */
 
 .menu__item {
 	width: 70px;
@@ -141,7 +162,7 @@ ul li{list-style: none;}
 .menu__link {
 	display: grid;
 	gap: 10px;
-	align-items:center;
+	align-items: center;
 	justify-items: center;
 	width: 70px;
 	height: 70px;
@@ -161,7 +182,8 @@ ul li{list-style: none;}
 	font-size: 12px;
 }
 
-.main__menu, .more__menu {
+.main__menu,
+.more__menu {
 	display: grid;
 	gap: 5px 5px;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -183,8 +205,8 @@ ul li{list-style: none;}
 	cursor: pointer;
 	font-size: 15px;
 	display: flex;
-	align-items:center;
-	justify-content:center;
+	align-items: center;
+	justify-content: center;
 }
 
 .btn__evenmore:focus {
@@ -213,63 +235,61 @@ ul li{list-style: none;}
 	display: none;
 }
 
-.checkbox__more:checked ~.more  {
-	display:block;
+.checkbox__more:checked~.more {
+	display: block;
 }
 
-.checkbox__more:checked ~.btn__more {
-	display:none;
+.checkbox__more:checked~.btn__more {
+	display: none;
 }
 
 
 /* mobile */
 
-@media only screen
+@media only screen and (min-width: 320px) and (max-width: 767px) {
 
-and (min-width: 320px)
-and (max-width: 767px) {
+	.header {
+		padding: 0 10px;
+	}
 
-.header {
-	padding: 0 10px;
-}	
+	.link {
+		font-size: 12px;
+	}
 
-.link {
-	font-size: 12px;
-}
+	.nav_item {
+		margin: 0 5px;
+	}
 
-.nav_item {
-    margin: 0 5px;
-}
+	.nav_img {
+		width: 15px;
+	}
 
-.nav_img {
-	width: 15px;
-}
+	.context__menu {
+		padding-top: 10px;
+		right: 47px;
+	}
 
-.context__menu {
-	padding-top: 10px;
-	right: 47px;
-}
+	.icon {
+		width: 30px;
+		height: 30px;
+	}
 
-.icon {
-	width: 30px;
-	height: 30px;
-}
+	.icon__name {
+		font-size: 8px;
+	}
 
-.icon__name {
-	font-size: 8px;
-}
+	.menu__link {
+		width: 50px;
+		height: 50px;
+	}
 
-.menu__link {
-	width: 50px;
-	height: 50px;
-}
-.menu__item {
-	width: 50px;
-	height: 50px;
-}
+	.menu__item {
+		width: 50px;
+		height: 50px;
+	}
 
-.menu {
-	width: 230px;
-    height: 272px;
-}
+	.menu {
+		width: 230px;
+		height: 272px;
+	}
 }
