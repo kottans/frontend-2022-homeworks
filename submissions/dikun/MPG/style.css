@@ -3,6 +3,10 @@
 	margin: 0px;
 	border: 0px;
   font-family: 'Roboto Condensed', sans-serif;
+  -webkit-user-select: none;  
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 *,
@@ -55,7 +59,7 @@ h6 {
   overflow: hidden;	
   background-color: #263238;
   color: #fff;
-  overflow: auto;
+  overflow: auto;  
 }
 
 .wrapper > main {
@@ -122,19 +126,17 @@ h6 {
   padding: 0 10px;
   display: flex;
   flex-flow: row wrap;
-  perspective: 1000px;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
+  perspective: 1000px;  
 }
 
 .card {
+  position: relative;
   width: calc(25% - 10px);
   height: calc(33.333% - 10px);  
-  margin: 5px;  
-  position: relative;
+  margin: 5px; 
   transition: transform 0.5s;
-  transform-style: preserve-3d;
+  transform-style: preserve-3d;  
+  cursor: pointer;  
 }
 
 .card.flip {
@@ -152,7 +154,10 @@ h6 {
   padding: 10px;
   background-color: #fff;
   border-radius: 5px;
-  backface-visibility: hidden;  
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; 
+  -moz-backface-visibility: hidden; 
+  -ms-backface-visibility: hidden;
 }
 
 .front {
@@ -163,6 +168,11 @@ h6 {
 .back {
   z-index: 2;
   transform: rotateY(0deg);
+  user-select: none;
+  -webkit-user-select: none;   
+  -moz-user-select: none;      
+  -ms-user-select: none;
+  -webkit-user-drag: none;
 }
 
 .footer {
