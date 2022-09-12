@@ -6,8 +6,8 @@ const Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.x = -95;
-    this.y = this.positionMaker();
-    this.speed = this.speedMaker(200, 450);
+    this.y = this.positionEnemyMaker();
+    this.speed = this.speedEnemyMaker(200, 450);
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -22,10 +22,10 @@ Enemy.prototype.update = function(dt) {
     }
     else {
         this.x = -95;
-        this.y = this.positionMaker();
-        this.speed = this.speedMaker(200, 450);
+        this.y = this.positionEnemyMaker();
+        this.speed = this.speedEnemyMaker(200, 450);
     }
-    this.lossReset();
+    this.checkCollisions();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -33,20 +33,20 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Enemy.prototype.positionMaker = function() {
+Enemy.prototype.positionEnemyMaker = function() {
     const allowedPositions = [47, 129, 211]; 
     return allowedPositions[Math.floor(Math.random() * allowedPositions.length)]; 
 }
 
-Enemy.prototype.speedMaker = function(maxSpeed, minSpeed) {
+Enemy.prototype.speedEnemyMaker = function(maxSpeed, minSpeed) {
     return Math.floor(Math.random() * (maxSpeed - minSpeed)) + minSpeed; 
 }
 
-Enemy.prototype.lossReset = function() {
-    if (player.y < this.y + player.shiftY && 
-        player.y + player.shiftY > this.y &&
-        player.x < this.x + player.shiftX && 
-        player.x + player.shiftX > this.x) {
+Enemy.prototype.checkCollisions = function() {
+    if (player.y < this.y + player.collisionAreaHeight && 
+        player.y + player.collisionAreaHeight > this.y &&
+        player.x < this.x + player.collisionAreaWidth && 
+        player.x + player.collisionAreaWidth > this.x) {
             player.x = player.columnWidth * 2; 
             player.y = player.rowHeight * 5;
     }
@@ -59,9 +59,9 @@ const Player = function() {
     this.rowHeight = 75;
     this.columnWidth = 101;
     this.gameAreaHeight = this.rowHeight * 4;
-    this.gameAresWidth = this.columnWidth * 4;
-    this.shiftX = 60;
-    this.shiftY = 7;
+    this.gameAreaWidth = this.columnWidth * 4;
+    this.collisionAreaWidth = 60;
+    this.collisionAreaHeight = 7;
     this.x = this.columnWidth * 2;
     this.y = this.rowHeight * 5;
     this.sprite = 'images/char-boy.png';
@@ -90,14 +90,14 @@ Player.prototype.handleInput = function(direction) {
         if (direction == 'left' && this.x > 0) {
             this.x -= this.columnWidth;
         }
-        else if (direction == 'right' && this.x < this.gameAresWidth) {
+        else if (direction == 'right' && this.x < this.gameAreaWidth) {
             this.x += this.columnWidth;
         }
         else if (direction == 'up' && this.y > 0) {
-            this.y -= this.rowHeight + this.shiftY;
+            this.y -= this.rowHeight + this.collisionAreaHeight;
         }
         else if (direction == 'down' && this.y < this.gameAreaHeight) {
-            this.y += this.rowHeight + this.shiftY;
+            this.y += this.rowHeight + this.collisionAreaHeight;
         }
     
         this.winReset();   
