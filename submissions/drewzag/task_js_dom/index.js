@@ -1,10 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const handleErrors = (response) => {
+    if (!response.ok) {
+      throw Error(response.statusText)
+    }
+    return response
+  }
+
   const getData = async () =>
     fetch('/src/data.json')
-      .then((res) => {
-        if (res.ok) return res.json()
-        else throw new Error('Something went wrong')
-      })
+      .then(handleErrors)
+      .then((res) => res.json())
       .catch((error) => {
         console.log(error)
       })
@@ -15,13 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuIcon = document.querySelector('div.menu__icon')
 
   getData().then((res) => {
-    res.forEach((el) => {
-      const li = document.createElement('li')
-      li.classList.add('list__item')
-      li.textContent = el.team
-      list.appendChild(li)
-      li.addEventListener('click', onClickHandlerItem)
-    })
+    res &&
+      res.forEach((el) => {
+        const li = document.createElement('li')
+        li.classList.add('list__item')
+        li.textContent = el.team
+        list.appendChild(li)
+        li.addEventListener('click', onClickHandlerItem)
+      })
   })
 
   const onClickHandlerItem = (event) => {
