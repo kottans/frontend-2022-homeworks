@@ -1,8 +1,8 @@
 import clubs from './json.js';
 import removeMenu from './mobile.js';
 
-const appClub = document.getElementById('main');
-const appUl = document.getElementById('menu');
+const appClub = document.querySelector('.main');
+const appUl = document.querySelector('.menu');
 
 const createCardClub = (clubs) =>{
     const {
@@ -28,11 +28,11 @@ const createCardClub = (clubs) =>{
 };
 
 const createUl = (clubs) =>{
-    const { name } = clubs;
+    const { name, id } = clubs;
     const clubUl = document.createElement('li');
 
     clubUl.insertAdjacentHTML('afterbegin', `
-        <a href="#" class="menu_el">${name}</a>
+        <a href="#" class="menu_el" id="${id}">${name}</a>
     `);
 
     return clubUl;
@@ -40,20 +40,19 @@ const createUl = (clubs) =>{
 
 const listClub = document.querySelector('.menu');
 
-listClub.addEventListener('click', (e) =>{
-    const target = e.target;
+listClub.addEventListener('click', ({target}) =>{
     if (target.classList.contains('menu_el')){
-        const clubName = target.textContent;
+        const clubName = target.id;
         removeMenu();
         appClub.textContent = '';
-        const clubCards = clubs.filter(club => club.name === clubName).map(createCardClub);
+        const clubCards = clubs.filter(club => club.id === clubName).map(createCardClub);
         appClub.append(...clubCards);
     }
 });
 
 const renderItems = (clubs) =>{
     appClub.textContent = '';
-    const clubCards = clubs.filter(club => club.name === "Milan").map(createCardClub);
+    const clubCards = clubs.filter(club => club.id === '0').map(createCardClub);
     appClub.append(...clubCards);
 
     const clubLi = clubs.map(createUl);
@@ -61,5 +60,3 @@ const renderItems = (clubs) =>{
 };
 
 renderItems(clubs);
-
-

@@ -3,15 +3,16 @@ const menu = document.querySelector('.nav');
 const iconClose = document.querySelector('.icon-close');
 
 const addMenu = () =>{
-    menu.style.left = '0%';
+    menu.classList.add('active_menu')
 };
 
 const removeMenu = () =>{
-    menu.style.left = '-100%';
+    menu.classList.remove('active_menu')
 };
 
 iconMenu.addEventListener('click', addMenu);
 iconClose.addEventListener('click', removeMenu);
 
 export default removeMenu;
+
 
