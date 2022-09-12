@@ -138,69 +138,43 @@ const animalList = [
   },
 ];
 
-const codeTemplate = `
-        <div class="img">
-          <div class="img__column">
-            <img
-              src="${animalList[0].src}" alt="${animalList[0].alt}"
-            />
-            <img
-              src="${animalList[10].src}" alt="${animalList[10].alt}"
-            />
-            <img
-              src="${animalList[22].src}" alt="${animalList[22].alt}"
-            />
-          </div>
-          <div class="img__column">
-            <img
-            src="${animalList[21].src}" alt="${animalList[21].alt}"
-            />
-            <img
-              src="${animalList[14].src}" alt="${animalList[14].alt}"
-            />
-            <img
-              src="${animalList[3].src}" alt="${animalList[3].alt}"
-            />
-          </div>
-          <div class="img__column">
-            <img
-              src="${animalList[6].src}" alt="${animalList[6].alt}"
-            />
-            <img
-              src="${animalList[16].src}" alt="${animalList[16].alt}"
-            />
-            <img
-            src="${animalList[8].src}" alt="${animalList[8].alt}"
-            />
-          </div>
-        </div>`;
-
-render(codeTemplate, document.querySelector("main"));
-
-const imgHtml = document.querySelectorAll("img");
-imgHtml.forEach((element) => element.classList.add("img__js"));
-
 const popupIcon = document.querySelector("#popup");
-popupIcon.addEventListener("click", showPopup);
-
 const menuList = document.querySelector(".navigation");
-menuList.addEventListener("click", changeImagesByClick);
+const mainContent = document.querySelector('.img');
 
-function render(codeTemplate, placeholder) {
-  placeholder.innerHTML = codeTemplate;
-}
+const getRandomSpecies = (speciesList) => speciesList.sort(() => 0.5 - Math.random());
+const initValueList = getRandomSpecies(animalList).slice(0, 9);
 
-function changeImagesByClick(event) {
-  const imgFiltreById = animalList.filter(
-    (kindOfAnimal) => kindOfAnimal.species === event.target.id
-  );
 
-  for (let i = 0; i < imgHtml.length; i++) {
-    imgHtml[i].setAttribute("src", imgFiltreById[i].src);
-    imgHtml[i].setAttribute("alt", imgFiltreById[i].alt);
+function changeImagesByClick({ target }){
+  if(target.dataset.id) {
+    const targetSpecies = animalList.filter(animal => animal.species == target.dataset.id);
+    render(targetSpecies);
   }
 }
 
 function showPopup() {
   menuList.classList.toggle("navigation__none");
 }
+
+function render(speciesList) {
+  const template = speciesList.reduce((gap, species, key) => {
+    if(key === 0 || key % 3) {
+      gap += `<img class="img__js" src="${species.src}" alt="${species.alt}"></img>`;
+    } else {
+      gap += `</div><div class='img__column'><img class="img__js" src="${species.src}" alt="${species.alt}"></img>`;
+    }
+    return gap;
+  }, "<div class='img__column'>");
+  
+  mainContent.innerHTML = template + "</div>";
+}
+
+function init() {
+  popupIcon.addEventListener("click", showPopup);
+  menuList.addEventListener("click", changeImagesByClick);
+
+  render(initValueList)
+}
+
+window.addEventListener('DOMContentLoaded', init);
