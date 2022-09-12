@@ -1,0 +1,79 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+.container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: grid;
+  grid-template: repeat(3, 150px) / repeat(4, 150px);
+  gap: 5px;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 648px) {
+  .wrapper {
+    grid-template: repeat(4, 150px) / repeat(3, 150px);
+  }
+}
+
+@media only screen and (max-width: 468px) {
+  .wrapper {
+    grid-template: repeat(6, 150px) / repeat(2, 150px);
+  }
+}
+
+.card {
+  position: relative;
+  transition: all 0.4s linear;
+  transform-style: preserve-3d;
+}
+
+.card,
+.back,
+.front {
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.back,
+.front {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.front {
+  z-index: 2;
+  background: #e2e2e2 url('./img/catBlack.svg') no-repeat center center /
+    contain;
+}
+
+.back {
+  transform: rotateY(180deg);
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #e2e2e2;
+}
+
+.selected {
+  transform: rotateY(180deg);
+}
+
+.match .front {
+  background: white;
+}
