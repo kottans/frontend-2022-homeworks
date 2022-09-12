@@ -45,6 +45,7 @@ a:hover {
 .menu__icon {
   display: none;
   height: 30px;
+  width: 30px;
 }
 
 .nav {
@@ -84,7 +85,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
+  overflow: auto;
   box-shadow: 0 0 5px rgb(255, 255, 255);
 }
 
@@ -129,15 +130,15 @@ a:hover {
     display: block;
     position: relative;
     cursor: pointer;
+    float: right;
   }
 
   .menu__icon span,
   .menu__icon::before,
   .menu__icon::after {
-    right: 0;
     position: absolute;
     height: 10%;
-    width: 10%;
+    width: 100%;
     transition: all 0.3s ease 0s;
     background-color: #fff;
   }
