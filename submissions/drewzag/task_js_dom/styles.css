@@ -126,17 +126,21 @@ a:hover {
     overflow: visible;
   }
 
-  div.menu__icon {
+  .menu__icon {
     display: block;
     position: relative;
     cursor: pointer;
     float: right;
+    border: none;
+    background: none;
+    margin-right: 20px;
   }
 
   .menu__icon span,
   .menu__icon::before,
   .menu__icon::after {
     position: absolute;
+    right: 5%;
     height: 10%;
     width: 100%;
     transition: all 0.3s ease 0s;

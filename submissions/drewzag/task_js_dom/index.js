@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const list = document.querySelector('.list')
   const main = document.querySelector('.main')
   const h1 = document.querySelector('h1')
-  const menuIcon = document.querySelector('div.menu__icon')
+  const menuIcon = document.querySelector('.menu__icon')
 
   getData().then((res) => {
     const container = document.createDocumentFragment()
