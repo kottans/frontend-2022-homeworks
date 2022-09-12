@@ -1,26 +1,35 @@
-const OFFSET_X = 101;
-const OFFSET_Y = 83;
-const START_PLAYER_X = 202;
-const START_PLAYER_Y = 405;
-const START_OFFSET_ENEMY_Y = OFFSET_Y / 4;
-const SPEED_ENEMY = 50;
-const OVERLAP = 0.8;
-const MAXIMUN_ENEMY = 5;
-const COLLUMN_CANVAS = 5;
+const GAME_CONF = {
+    OffsetX : 101,
+    OffsetY : 83,
+    overlap : 0.8,
+    collumn : 5,
+    countWinner : 0,
+    countСheckmate : 0,
+};
+
+const PLAYER_CONF = {
+    startX: 202,
+    startY: 405,
+};
+
+const ENEMY_CONF = {
+    startY: GAME_CONF.OffsetY / 4,
+    speed: 50,
+    maximumCount: 5,    
+};
+
 let allEnemies = [];
-let countWinner = 0;
-let countСheckmate = 0;
 
 let Enemy = function (x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-    this.speed = SPEED_ENEMY * (1 + Math.random() * 4);
+    this.speed = ENEMY_CONF.speed * (1 + Math.random() * 4);
 };
 
 Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
-    this.x > OFFSET_X * 5 ? this.x = -OFFSET_X : false;
+    this.x > GAME_CONF.OffsetX * GAME_CONF.collumn ? this.x = -GAME_CONF.OffsetX : false;
     this.collision();
     this.winner();
 };
@@ -30,24 +39,24 @@ Enemy.prototype.render = function () {
 };
 
 function createEnems() {
-    allEnemies = [...Array(Math.floor((3 + Math.random() * (MAXIMUN_ENEMY - 2))))].map((_, i) =>
-        i = new Enemy(-OFFSET_X, OFFSET_Y * Math.floor(Math.random() * 3 + 1) - START_OFFSET_ENEMY_Y, SPEED_ENEMY));
+    allEnemies = [...Array(Math.floor((3 + Math.random() * (ENEMY_CONF.maximumCount - 2))))].map((_, i) =>
+        i = new Enemy(-GAME_CONF.OffsetX, GAME_CONF.OffsetY * Math.floor(Math.random() * 3 + 1) - ENEMY_CONF.startY, ENEMY_CONF.speed));
 };
 
 createEnems();
 
 Enemy.prototype.collision = function () {
-    ((player.x < this.x + OFFSET_X * OVERLAP) &&
-        (player.x > this.x - OFFSET_X * OVERLAP) &&
-        (player.y < this.y + OFFSET_Y * OVERLAP) &&
-        (player.y > this.y - OFFSET_Y * OVERLAP)) ? (player.x = START_PLAYER_X, player.y = START_PLAYER_Y, createEnems(), countСheckmate += 1) : false;
+    ((player.x < this.x + GAME_CONF.OffsetX * GAME_CONF.overlap) &&
+        (player.x > this.x - GAME_CONF.OffsetX * GAME_CONF.overlap) &&
+        (player.y < this.y + GAME_CONF.OffsetY * GAME_CONF.overlap) &&
+        (player.y > this.y - GAME_CONF.OffsetY * GAME_CONF.overlap)) ? (player.x = PLAYER_CONF.startX, player.y = PLAYER_CONF.startY, createEnems(), GAME_CONF.countСheckmate += 1) : false;
 };
 
 Enemy.prototype.winner = function () {
-    player.y < 0 ? (player.x = START_PLAYER_X, player.y = START_PLAYER_Y, createEnems(), countWinner += 1) : false;
+    player.y < 0 ? (player.x = PLAYER_CONF.startX, player.y = PLAYER_CONF.startY, createEnems(), GAME_CONF.countWinner += 1) : false;
 };
 
-let Player = function (x = START_PLAYER_X, y = START_PLAYER_Y) {
+let Player = function (x = PLAYER_CONF.startX, y = PLAYER_CONF.startY) {
     this.sprite = "images/char-boy.png";
     this.x = x;
     this.y = y;
@@ -60,7 +69,7 @@ Player.prototype.update = function () {
     this.offsetMaxY = 400;
 };
 
-Player.prototype.render = function () {
+Player.prototype.countWinnerСheckmate = function () {
     ctx.textAlign = "center";
     ctx.font = "Bold 77px Arial";
     ctx.fillStyle = "greenyellow";
@@ -68,10 +77,14 @@ Player.prototype.render = function () {
     ctx.shadowOffsetX = 3;
     ctx.shadowOffsetY = 3;
     ctx.shadowBlur = 3;
-    ctx.fillText(countWinner, Math.floor(OFFSET_X * 1.5), 117);
+    ctx.fillText(GAME_CONF.countWinner, Math.floor(GAME_CONF.OffsetX * 1.5), 117);
     ctx.fillStyle = "red";
-    ctx.fillText(countСheckmate, Math.floor(OFFSET_X * 3.5), 117);
+    ctx.fillText(GAME_CONF.countСheckmate, Math.floor(GAME_CONF.OffsetX * 3.5), 117);
+};
+
+Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    this.countWinnerСheckmate();
 };
 
 let player = new Player();
@@ -82,12 +95,12 @@ document.addEventListener('keyup', e => {
 
 Player.prototype.handleInput = function (keyPress) {
     keyPress == 'ArrowLeft' && this.x > this.offsetMinX ?
-        this.x -= OFFSET_X : false;
+        this.x -= GAME_CONF.OffsetX : false;
     keyPress == 'ArrowRight' && this.x < this.offsetMaxX ?
-        this.x += OFFSET_X : false;
+        this.x += GAME_CONF.OffsetX : false;
     keyPress == 'ArrowUp' && this.y > this.offsetMinY ?
-        this.y -= OFFSET_Y : false;
+        this.y -= GAME_CONF.OffsetY : false;
     keyPress == 'ArrowDown' && this.y < this.offsetMaxY ?
-        this.y += OFFSET_Y : false;
+        this.y += GAME_CONF.OffsetY : false;
 }
 
