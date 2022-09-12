@@ -5,7 +5,7 @@
    Web app: https://conversee12.github.io/a-tiny-JS-world/
    */
 
-const Man = {
+const man = {
    species: 'human',
    name: 'Vasyl',
    gender: 'male',
@@ -14,7 +14,7 @@ const Man = {
    saying: 'Nothing can stop an idea whose time has come!',
 };
 
-const Woman = {
+const woman = {
    species: 'human',
    name: 'Oksana',
    gender: 'female',
@@ -23,7 +23,7 @@ const Woman = {
    saying: 'What\'s up?',
 };
 
-const Dog = {
+const dog = {
    species: 'dog',
    name: 'Reks',
    gender: 'male',
@@ -32,7 +32,7 @@ const Dog = {
    saying: 'Hav-Hav',
 };
 
-const Cat = {
+const cat = {
    species: 'cat',
    name: 'Pushok',
    gender: 'male',
@@ -40,10 +40,8 @@ const Cat = {
    hands: 0,
    saying: 'Meow',
 };
-const tinyWorld = [Man, Woman, Dog, Cat];
+const inhabitants = [man, woman, dog, cat];
 
-let newArrayWorld = tinyWorld.map((residents) => residents.species + '; ' + residents.name + '; ' + residents.gender + '; ' + residents.legs + '; ' + residents.hands + '; ' + residents.saying);
+const inhabitantDescription = ["species", "name", "gender", "legs", "hands", "saying"];
 
-for (key of newArrayWorld) {
-   print(key);
-};
+inhabitants.forEach(residents => print(inhabitantDescription.map(property => residents[property]).join("; ")));
