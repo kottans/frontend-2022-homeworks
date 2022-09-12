@@ -55,7 +55,8 @@ const catWoman = {
 // ======== OUTPUT ========
 
 const inhabitants = [dog, cat, woman, man, catWoman]
+const specs = ['species', 'name', 'gender', 'legs', 'hands', 'saying']
 
-const printInhabitants = (inhabitants) => Object.values(inhabitants).join('; ')
+const printInhabitant = (inhabitant) => specs.map((spec) => inhabitant[spec])
 
-inhabitants.forEach((el) => print(printInhabitants(el), 'div'))
+inhabitants.forEach((inhabitant) => print(printInhabitant(inhabitant), 'div'))
