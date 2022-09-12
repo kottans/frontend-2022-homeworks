@@ -54,7 +54,7 @@ let flippedCards = [];
 gameContainer.addEventListener("click", ({ target }) => {
   if (lockBoard) return;
   const parentTarget = target.closest(".game__card");
-  if (parentTarget !== null) {
+  if (parentTarget) {
     parentTarget.classList.add("flip");
 
     flippedCards.push(parentTarget);
@@ -102,6 +102,14 @@ function checkForWin() {
       alert("U WIN!");
       flippedCards = [];
       numberOfMatches = 0;
+      startNewGame();
     }, 1000);
   }
+}
+
+function startNewGame() {
+  gameContainer.innerHTML = "";
+
+  shuffleCards(gameCards);
+  gameContainer.innerHTML = gameCards.concat(gameCards).join("");
 }
