@@ -20,34 +20,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuIcon = document.querySelector('div.menu__icon')
 
   getData().then((res) => {
+    const container = document.createDocumentFragment()
     res &&
       res.forEach((el) => {
         const li = document.createElement('li')
         li.classList.add('list__item')
         li.textContent = el.team
-        list.appendChild(li)
-        li.addEventListener('click', onClickHandlerItem)
+        container.appendChild(li)
       })
   })
 
   const onClickHandlerItem = (event) => {
-    const listItem = document.querySelectorAll('.list__item')
-    h1.remove()
-    listItem.forEach((el) => el.classList.remove('active'))
-    event.target.classList.add('active')
-    getData().then((res) => {
-      const team = res.find((el) => el.team === event.target.textContent)
-      main.innerHTML = `<div class="main__logo">
-      <img src=${team.img} alt="" class="logo" />
+    if (event.target && event.target.nodeName == 'LI') {
+      const listItem = document.querySelectorAll('.list__item')
+      h1.remove()
+      listItem.forEach((el) => el.classList.remove('active'))
+      event.target.classList.add('active')
+      getData().then((res) => {
+        const team = res.find((el) => el.team === event.target.textContent)
+        main.innerHTML = `<div class="main__logo">
+      <img src=${team.img} alt="${team.team} logo" class="logo" />
     </div>
       <p class="main__desc">${team.desc}`
-    })
-    list.classList.remove('show__list')
+      })
+      list.classList.remove('show__list')
+    }
   }
 
   const onShowMenu = () => {
     list.classList.toggle('show__list')
   }
 
+  list.addEventListener('click', onClickHandlerItem)
   menuIcon.addEventListener('click', onShowMenu)
 })

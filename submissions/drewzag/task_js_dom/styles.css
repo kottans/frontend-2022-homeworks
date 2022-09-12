@@ -50,7 +50,7 @@ a:hover {
 .nav {
   border-radius: 30px;
   margin: 20px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .list {
