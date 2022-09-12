@@ -32,43 +32,54 @@ const ul = document.createElement('ul')
 ul.classList.add('sidenav--ul')
 main.insertAdjacentElement('beforebegin', ul)
 
-for (let i=0; i<data.length; i++){
+data.forEach((datapiece)=> {
 	let sidenavLi = document.createElement('li')
 	sidenavLi.classList.add('sidenav--li')
-
+	
 	ul.appendChild(sidenavLi)
-	sidenavLi.setAttribute('id', data[i].number-1)
+	sidenavLi.setAttribute('id', datapiece.number-1)
 	const img = document.createElement('img')
 	img.classList.add('li--img')
-	img.setAttribute('src', data[i].img )
-	img.setAttribute('alt', data[i].text )
+	img.setAttribute('src', datapiece.img )
+	img.setAttribute('alt', datapiece.text )
 	sidenavLi.appendChild(img)
+
+} )
+
+ul.onclick = function(event) {
+	let li = event.target.closest('li')
+	if(!li) return;
+	handleClick(li.id)
+}
+function handleClick(){
+	text = data[li.id].content
+	content.innerHTML = text
 }
 
-document.getElementById('0').addEventListener ('click', ()=> {
-	text= data[0].content
-	content.innerHTML = text
-	})
-document.getElementById('1').addEventListener ('click', ()=> {
-	text= data[1].content
-	content.innerHTML = text
-	})
-document.getElementById('2').addEventListener ('click', ()=> {
-	text= data[2].content
-	content.innerHTML = text
-	})
-document.getElementById('3').addEventListener ('click', ()=> {
-	text= data[3].content
-	content.innerHTML = text
-	})
-document.getElementById('4').addEventListener ('click', ()=> {
-	text= data[4].content
-	content.innerHTML = text
-	})
-document.getElementById('5').addEventListener ('click', ()=> {
-	text= data[5].content
-	content.innerHTML = text
-	})
+// document.getElementById('0').addEventListener ('click', ()=> {
+// 	text= data[0].content
+// 	content.innerHTML = text
+// 	})
+// document.getElementById('1').addEventListener ('click', ()=> {
+// 	text= data[1].content
+// 	content.innerHTML = text
+// 	})
+// document.getElementById('2').addEventListener ('click', ()=> {
+// 	text= data[2].content
+// 	content.innerHTML = text
+// 	})
+// document.getElementById('3').addEventListener ('click', ()=> {
+// 	text= data[3].content
+// 	content.innerHTML = text
+// 	})
+// document.getElementById('4').addEventListener ('click', ()=> {
+// 	text= data[4].content
+// 	content.innerHTML = text
+// 	})
+// document.getElementById('5').addEventListener ('click', ()=> {
+// 	text= data[5].content
+// 	content.innerHTML = text
+// 	})
 
 
 
