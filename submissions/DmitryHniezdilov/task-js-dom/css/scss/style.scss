@@ -27,7 +27,7 @@ $colorBtnHov: rgba(227, 90, 37, 0.5);
   background: $colorSelection;
 }
 
-.wrapper {
+.body {
   min-height: 100vh;
   overflow: hidden;
   display: flex;
@@ -38,37 +38,29 @@ $colorBtnHov: rgba(227, 90, 37, 0.5);
 
   background: radial-gradient(circle at top, $bcgWhite, transparent 50%),
     linear-gradient(to bottom, $bcgBlueFill 0%, transparent 70%),
-    linear-gradient(to top, transparent, rgba($bcgWhite, 0.3) 70%), $bcgBlue;
+    linear-gradient(to top, transparent, rgba($bcgWhite, 0.3) 70%),
+    url("../img/bcg-mountain.webp"), $bcgBlue;
   animation: bg 30s infinite;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
 
-  &__bcg-box {
-    position: absolute;
-    right: 0;
-    bottom: -20px;
-    left: 0;
-    height: 65%;
-    user-select: none;
-    background-image: url("../img/bcg-mountain.webp");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
+.wrapper {
+  max-height: 100vh;
+  position: relative;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
 
-  &__inner {
-    max-height: 100vh;
-    position: relative;
-    overflow-y: auto;
-    scrollbar-gutter: stable;
-  }
-
-  &__inner::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     width: 4px;
   }
 
-  &__inner::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track {
     box-shadow: transparent;
   }
 
-  &__inner::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background-color: $bcgBlue;
     border-radius: 2px;
   }

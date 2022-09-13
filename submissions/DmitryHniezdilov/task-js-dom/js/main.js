@@ -29,21 +29,21 @@ const changeMinToHm = (minutes) => {
 };
 
 const createСontentMarkup = (item = defaultContentItem) => {
-  const createDetailsList = () => {
-    let detailsItems = "";
-    Object.keys(item["details"]).forEach((key) => {
-      const value =
-        key === "Runtime"
-          ? changeMinToHm(item["details"][key])
-          : item["details"][key];
+  const details = item["details"];
 
-      detailsItems += `
+  const createDetailsList = () => {
+    let detailsItems = Object.keys(details).reduce((acc, key) => {
+      const value =
+        key === "Runtime" ? changeMinToHm(details[key]) : details[key];
+
+      return (acc += `
         <div class="content__info-item">
           <dt class="content__info-text content__info-text--title">${key}: </dt>
           <dd class="content__info-text">${value}</dd>
         </div>
-      `;
-    });
+      `);
+    }, "");
+
     return '<dl class="content__info-list">' + detailsItems + "</dl>";
   };
 
@@ -59,7 +59,7 @@ const createСontentMarkup = (item = defaultContentItem) => {
     </div>
     <div class="content__info-wrap">
       <p class="content__info-text content__info-text--plot">${item["Plot"]}</p>
-      ${item["details"] ? createDetailsList() : ""}
+      ${details ? createDetailsList() : ""}
     </div>
   `;
 
