@@ -7,7 +7,7 @@
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
-class Inhabitants {
+class Inhabitant {
 	constructor(species, name, legs, gender, talk) {
 		this. species = species;
 		this.name = name;
@@ -16,45 +16,57 @@ class Inhabitants {
 		this.talk = talk;
 	}
 
-	inhabitantsDescr() {
-		return ["species", "name", "gender", "legs", "talk"]		       
+	inhabitantDescr() {
+		return ['species', 'name', 'gender', 'legs', 'talk']		       
            .map(property => this[property])
            .join("; ");
 	}
 }
 
-class Dog extends Inhabitants {
-	constructor (name, gender, talk) {
-		super('dog', name, 4, gender, talk);
+class Dog extends Inhabitant {
+	constructor (name, gender) {
+		super('dog', name, 4, gender, 'woof!');
 	}
 }
 
-class Cat extends Inhabitants {
-	constructor(name, gender, talk) {
-		super('cat', name, 4, gender, talk);
+class Cat extends Inhabitant {
+	constructor(name, gender) {
+		super('cat', name, 4, gender, 'meow!');
 	}
 }
 
-class Human extends Inhabitants {
+class Catwoman extends Cat { 
+  constructor(name, gender) {
+		super(name, gender);
+    this.species = 'catwoman';
+    this.legs = 2;
+    this.hands = 2;
+	}
+  inhabitantDescr() {
+    return `${super.inhabitantDescr()}; ${this.hands}`;
+  }
+}
+
+class Human extends Inhabitant {
 	constructor(name, gender, talk,) {
 		super('human', name, 2, gender, talk);
 		this.hands = 2;
 	}
 
-  inhabitantsDescr() {
-    return `${super.inhabitantsDescr()}; ${this.hands}`;
+  inhabitantDescr() {
+    return `${super.inhabitantDescr()}; ${this.hands}`;
   }
 }
 
-const dog = new Dog('Bim', 'male', 'woof!');
-const cat = new Cat('Tom', 'male', "meow!");
-const man = new Human('Jack', 'male', "Captain Jack Sparrow!");
-const woman = new Human('Elizabeth', 'female', "He's A Pirate.");
-const catwoman = new Human('Lisa', 'female', cat.talk);
+const dog = new Dog('Bim', 'male');
+const cat = new Cat('Tom', 'male');
+const man = new Human('Jack', 'male', 'Captain Jack Sparrow!');
+const woman = new Human('Elizabeth', 'female', 'He is a Pirate.');
+const catwoman = new Catwoman('Lisa', 'female');
 const inhabitants = [dog, cat, man, woman, catwoman];
 
 
-inhabitants.forEach((resident) => print(resident.inhabitantsDescr()));
+inhabitants.forEach((resident) => print(resident.inhabitantDescr()));
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
