@@ -34,7 +34,7 @@ const bear = {
   saying: "Think, think, think!",
 };
 
-const men = {
+const man = {
   species: "human",
   name: "Artur",
   gender: "male",
@@ -43,7 +43,7 @@ const men = {
   saying: "Do not borrow tomorrow's troubles today.",
 };
 
-const women = {
+const woman = {
   species: "human",
   name: "Marilyn",
   gender: "female",
@@ -52,12 +52,12 @@ const women = {
   saying: "A career is born in public – talent in privacy.",
 };
 
-const listOfInhabitants = [dog, cat, bear, men, women];
+const listOfInhabitants = [dog, cat, bear, man, woman];
 
 // ======== OUTPUT ========
 
-listOfInhabitants.forEach(
-  ({ species, name, gender, legs, hands, saying } = item) => {
-    print(`${species}; ${name}; ${gender}; ${legs}; ${hands}; ${saying}`);
-  }
-);
+listOfInhabitants.forEach((item) => {
+  const separator = "; ";
+  const listOfValues = Object.values(item).join(separator);
+  print(listOfValues);
+});
