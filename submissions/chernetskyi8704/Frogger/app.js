@@ -16,14 +16,17 @@ const FIELD_SIZE_LIMIT = {
 const PLAYER_CONF = {
   initialPosition: {
     x: 202,
-    y: 395,
+    y: 401,
   },
   speed: {
-    min: 75,
+    min: 72,
     max: 150,
   },
   step: 15,
-  minDistanceToCollision: 80,
+  minDistanceToCollision: {
+    height: 75,
+    width: 80,
+  },
   sprite: "images/char-boy.png",
 };
 
@@ -76,10 +79,10 @@ Enemy.prototype.update = function (dt) {
 
 Enemy.prototype.collision = function () {
   if (
-    this.x + PLAYER_CONF.minDistanceToCollision > player.x &&
-    this.x < player.x + PLAYER_CONF.minDistanceToCollision &&
-    this.y + PLAYER_CONF.minDistanceToCollision > player.y &&
-    this.y < player.y + PLAYER_CONF.minDistanceToCollision
+    this.x + PLAYER_CONF.minDistanceToCollision.width > player.x &&
+    this.x < player.x + PLAYER_CONF.minDistanceToCollision.width &&
+    this.y + PLAYER_CONF.minDistanceToCollision.height > player.y &&
+    this.y < player.y + PLAYER_CONF.minDistanceToCollision.height
   ) {
     score = 0;
     player.resetInitialPosition();
