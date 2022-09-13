@@ -52,7 +52,7 @@ img {
   border-top-right-radius: 9px;
 }
 
-.allHumans {
+.all_humans {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
