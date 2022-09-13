@@ -184,3 +184,9 @@ input[type="checkbox"]:checked~.lable__more {
     display: none;
     visibility: visible;
 }
+
+@media screen and (max-width:375px) {
+    .menu_item {
+        padding-right: 15px;
+        padding-left: 10px;
+}
