@@ -151,7 +151,7 @@ h6 {
 
 .content-wrapper {
     text-align: center;
-    margin-top: 28%;
+    padding-top: 28%;
 }
 
 .content-title {
@@ -173,7 +173,7 @@ h6 {
 }
 
 @media(max-width:768px) {
-    .side-menu_content {
+    #side-menu_content {
         flex-direction: column;
         width: 100%;
         height: 100%;
@@ -211,7 +211,7 @@ h6 {
 
     .content-wrapper {
         text-align: center;
-        margin-top: 15%;
+        padding-top: 15%;
     }
 
     .content-title {
