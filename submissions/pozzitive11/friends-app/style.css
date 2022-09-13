@@ -1,3 +1,12 @@
+/*
+зрозуміліший інпут 
+змінити гендер
+змінити коректність сайдбару (розмір заголовків, розмір відступів)
+змінити інпут(без прколюх з неймом)
+додати зрозумідий плейсхолдер
+розмір шрифтів у хедері
+змінити колір хедеру та йсайдбару
+у адаптиві далі відсунути кнопку, додати фон */
 * {
   margin: 0;
   padding: 0;
@@ -63,6 +72,7 @@ body {
 }
 
 /* Header */
+
 .header {
   padding: 30px 0;
   font-family: "DynaPuff", cursive;
@@ -70,37 +80,39 @@ body {
 
 .header__inner {
   position: relative;
-  background-color: #6867ac;
+  background-color: #7e7db7;
   border-radius: 15px;
   width: 100%;
   text-align: center;
   color: #000;
+  padding: 10px 0;
 }
 
 .title {
   margin: 0;
   font-size: 45px;
-  line-height: 60px;
+  line-height: 50px;
   position: relative;
 }
 
 .slogan {
   text-align: center;
   margin: 0;
-  font-size: 35px;
-  line-height: 47px;
+  font-size: 29px;
+  line-height: 42px;
   position: relative;
 }
 
 .slogan span {
   bottom: 10px;
-  padding-left: 20px;
+  padding-left: 10px;
   position: absolute;
   font-size: 13px;
   line-height: 18px;
 }
 
 /* Sidebar */
+
 .sidebar {
   background-color: #6867ac;
   border-radius: 15px;
@@ -112,11 +124,13 @@ body {
 }
 
 /* Form */
+
 .filter__type {
   color: #fff;
   font-size: 22px;
   line-height: 27px;
   margin-bottom: 15px;
+  opacity: 0.5;
 }
 
 .form__label {
@@ -126,23 +140,14 @@ body {
   cursor: pointer;
 }
 
+.form__field--name {
+  margin-bottom: 20px;
+}
+
 .form__list {
   margin-bottom: 20px;
   display: flex;
   justify-content: space-around;
-}
-
-.form__input--name {
-  border-radius: 5px;
-  width: 100%;
-  height: 30px;
-  padding: 0 20px;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 20px;
-  appearance: none;
-  border: none;
-  background-color: #fff;
 }
 
 .form__button {
@@ -164,7 +169,6 @@ body {
 .form__button:hover {
   background-color: #490047;
 }
-
 /* Users */
 .users {
   grid-column: 9 span;
@@ -232,70 +236,48 @@ body {
 }
 
 /* Input  */
-
 .form__list--filter {
   position: relative;
-  padding: 15px 0 0;
-  width: 100%;
-  margin-bottom: 15px;
 }
 
-.form__field {
+.form__field--name {
+  display: block;
+  margin: 0;
+  padding: 10px;
+  color: inherit;
+  width: 100%;
   font-family: inherit;
-  width: 100%;
-  border: 0;
-  border-bottom: 2px solid #fff;
-  outline: 0;
-  font-size: 21px;
-  color: #fff;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
+  font-weight: inherit;
+  font-size: inherit;
+  border: none;
+  border-radius: 0.4rem;
 }
 
-.form__field::placeholder {
-  color: transparent;
+.form__field--name::placeholder {
+  color: #b0bec5;
 }
 
-.form__field:placeholder-shown ~ .form__label--name {
-  font-size: 21px;
-  cursor: text;
-  top: 20px;
+.form__field--name:focus {
+  outline: none;
+  box-shadow: 0.2rem 0.8rem 1.6rem #5e35b1;
 }
 
 .form__label--name {
-  position: absolute;
-  top: 0;
   display: block;
-  transition: 0.2s;
-  font-size: 16px;
-  color: #fff;
-}
-
-.form__field:focus {
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  border-color: #fff;
-  border-image-slice: 1;
-}
-
-.form__field:focus ~ .form__label--name {
   position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 16px;
+  bottom: 50%;
+  left: 1rem;
   color: #fff;
-  font-weight: 700;
+  opacity: 0;
 }
 
-.form__field:required,
-.form__field:invalid {
-  box-shadow: none;
+.form__field--name:placeholder-shown + .form__label--name {
+  visibility: hidden;
+  z-index: -1;
 }
 
 /* Radio buttons */
+
 .radio__input {
   opacity: 0;
   position: absolute;
@@ -317,7 +299,7 @@ body {
 .burger {
   position: absolute;
   left: 35px;
-  top: 70px;
+  top: 35px;
   z-index: 30;
   display: none;
   width: 30px;
@@ -390,6 +372,7 @@ body {
     top: 100px;
     z-index: 1000;
     overflow-y: auto;
+    /* width: 100%; */
     transform: translateX(-200%);
     transition: transform 0.6s ease-in-out;
   }
@@ -406,7 +389,11 @@ body {
 }
 
 @media (max-width: 576px) {
-  .slogan span {
+  .title {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  .slogan {
     display: none;
   }
   .users__list {
@@ -414,7 +401,7 @@ body {
   }
 
   .burger {
-    top: 75px;
-    left: 30px;
+    top: 17px;
+    left: 11px;
   }
 }
