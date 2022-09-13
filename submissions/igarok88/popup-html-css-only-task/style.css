@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+body {
+  max-width: 800px;
+  padding: 50px;
+  margin: 0 auto;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+h1 {
+  text-align: left;
+  margin: 20px 0;
+}
+.popup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.popup__btn-check-input {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.popup__btn-check-box-icon {
+  cursor: pointer;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  border-radius: 0.05em;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image: url(https://github.com/kottans/frontend/blob/2022_UA/img/popup-button.png?raw=true);
+}
+.popup__btn-check-box-icon:hover {
+  background-color: #1114a75b;
+}
+
+.popup__btn-check-input:focus + .popup__label .popup__btn-check-box-icon {
+  box-shadow: 0 0 0 0.1em #000;
+}
+
+.popup__btn-check-input:focus + .popup__label_btn-more {
+  box-shadow: 0 0 0 0.1em #000;
+}
+
+.popup__window {
+  width: 320px;
+  max-height: 516px;
+  display: none;
+  flex-direction: column;
+}
+
+.popup__links {
+  display: flex;
+  overflow: hidden;
+  padding: 16px;
+  padding-bottom: 30px;
+  flex-wrap: wrap;
+  border: 1px solid #c3c3c3;
+  top: 50px;
+  position: relative;
+  order: 1;
+}
+
+.popup__links li {
+  display: flex;
+  border-radius: 5px;
+}
+.popup__link img {
+  margin-left: auto;
+  margin-right: auto;
+}
+.popup__link {
+  margin: 19px;
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+}
+.popup__links li:hover {
+  background-color: #1114a75b;
+}
+
+.popup__btn-check-input:checked ~ .popup__window {
+  display: flex;
+}
+.popup__label_btn-more {
+  cursor: pointer;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #1824d18e;
+  order: 2;
+  z-index: 2;
+  position: relative;
+  top: 50px;
+}
+.popup__label_btn-more:hover {
+  background-color: #1114a75b;
+}
+
+.popup__btn-check-input:checked ~ .popup__links {
+  overflow: auto;
+}
+
+.popup__btn-more-text2 {
+  display: none;
+}
+.popup__btn-check-input:checked
+  + .popup__label_btn-more
+  .popup__btn-more-text1 {
+  display: none;
+}
+.popup__btn-check-input:checked
+  + .popup__label_btn-more
+  .popup__btn-more-text2 {
+  display: block;
+}
