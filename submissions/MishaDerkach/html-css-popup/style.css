@@ -224,4 +224,54 @@ ul {
     display: flex;
 }
 
+/* Media */
+
+@media (max-width: 400px) {
+
+    .header {
+        margin-top: 10px;
+    }
+    
+    .nav {
+        padding: 5px 5px;
+    }
+    
+    .nav-list {
+        gap: 10px;
+    }
+
+    .nav-list__link {
+        font-size: 0.8em;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    
+    .popup-button {
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .content {
+        max-width: 150px;
+        max-height: 350px;
+        font-size: 0.5em;
+    }
+
+    .content-list, .subcontent-list {
+        gap: 10px;
+    }
+
+    .content-list__link {
+        width: 55px;
+    }
+
+    .content-list__image {
+        width: 30px;
+        height: 30px;
+    }
+
+    .more-button {
+        height: 30px;
+    }
+}
 
