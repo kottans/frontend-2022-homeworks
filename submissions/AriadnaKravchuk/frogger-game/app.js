@@ -85,7 +85,7 @@ function showCounter() {
     alert(`Your score\nWin: ${winScore} Lose: ${loseScore}`);
 }
 
-var Enemy = function (x, y, speed, player) {
+const Enemy = function (x, y, speed, player) {
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -121,7 +121,7 @@ Enemy.prototype.collision = function () {
     }
 };
 
-var Player = function (x, y) {
+const Player = function (x, y) {
     this.x = x;
     this.y = y;
     this.sprite = SKIN.BOY;
@@ -161,7 +161,7 @@ function checkRock(player, allRocks) {
     if (!isRock) player.y -= STEP.Y;
 }
 
-var Rock = function (x, y) {
+const Rock = function (x, y) {
     this.x = x;
     this.y = y;
     this.sprite = "images/Rock.png";
