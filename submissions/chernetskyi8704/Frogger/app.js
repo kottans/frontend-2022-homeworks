@@ -1,28 +1,47 @@
-const TILE_WIDTH = 101;
-const TILE_HEIGHT = 83;
+const TILE_SIZE = {
+  height: 83,
+  width: 101,
+};
 
-const FILED_WIDTH = TILE_WIDTH * 5;
-const FILED_HEIGHT = TILE_HEIGHT * 6;
+const FILED_SIZE = {
+  height: TILE_SIZE.height * 6,
+  width: TILE_SIZE.width * 5,
+};
 
-const PLAYER_WIDTH = 66;
-const PLAYER_HEIGHT = 75;
+const FIELD_SIZE_LIMIT = {
+  height: FILED_SIZE.height - TILE_SIZE.height,
+  width: FILED_SIZE.width - TILE_SIZE.width,
+};
 
-const PLAYER_START_X = 202;
-const PLAYER_START_Y = 395;
+const PLAYER_CONF = {
+  initialPosition: {
+    x: 202,
+    y: 395,
+  },
+  speed: {
+    min: 75,
+    max: 150,
+  },
+  step: 15,
+  minDistanceToCollision: 80,
+  sprite: "images/char-boy.png",
+};
 
-const ENEMY_START_LOCATION = -TILE_WIDTH;
-const MIN_DISTANCE_TO_COLLISION = 80;
-
-const PLAYER_STEP = 15;
-const MIN_SPEED = 100;
-const MAX_SPEED = 150;
-
-const FIELD_LIMIT_HEIGHT = FILED_WIDTH - PLAYER_WIDTH - PLAYER_STEP;
-const FILED_LIMIT_WIDTH = FILED_HEIGHT - PLAYER_HEIGHT - PLAYER_STEP;
+const ENEMY_CONF = {
+  initialPosition: {
+    x: -TILE_SIZE.width,
+    y: {
+      enemy1: 63,
+      enemy2: 147,
+      enemy3: 230,
+    },
+  },
+  sprite: "images/enemy-bug.png",
+};
 
 let score = 0;
 // Enemies our player must avoid
-let Enemy = function (x, y) {
+const Enemy = function (x, y) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
   this.x = x;
@@ -30,13 +49,15 @@ let Enemy = function (x, y) {
   this.speed = this.randomSpeed();
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
-  this.sprite = "images/enemy-bug.png";
+  this.sprite = ENEMY_CONF.sprite;
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.randomSpeed = function () {
-  return Math.floor(Math.random() * MAX_SPEED) + MIN_SPEED;
+  return (
+    Math.floor(Math.random() * PLAYER_CONF.speed.max) + PLAYER_CONF.speed.min
+  );
 };
 
 Enemy.prototype.update = function (dt) {
@@ -45,8 +66,8 @@ Enemy.prototype.update = function (dt) {
   // all computers.
   this.x += this.speed * dt;
 
-  if (this.x > FILED_WIDTH) {
-    this.x = ENEMY_START_LOCATION;
+  if (this.x > FILED_SIZE.width) {
+    this.x = ENEMY_CONF.initialPosition.x;
     this.speed = this.randomSpeed();
   }
 
@@ -55,14 +76,13 @@ Enemy.prototype.update = function (dt) {
 
 Enemy.prototype.collision = function () {
   if (
-    this.x + MIN_DISTANCE_TO_COLLISION > player.x &&
-    this.x < player.x + MIN_DISTANCE_TO_COLLISION &&
-    this.y + MIN_DISTANCE_TO_COLLISION > player.y &&
-    this.y < player.y + MIN_DISTANCE_TO_COLLISION
+    this.x + PLAYER_CONF.minDistanceToCollision > player.x &&
+    this.x < player.x + PLAYER_CONF.minDistanceToCollision &&
+    this.y + PLAYER_CONF.minDistanceToCollision > player.y &&
+    this.y < player.y + PLAYER_CONF.minDistanceToCollision
   ) {
     score = 0;
-    player.x = PLAYER_START_X;
-    player.y = PLAYER_START_Y;
+    player.resetInitialPosition();
   }
 };
 
@@ -74,10 +94,10 @@ Enemy.prototype.render = function () {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-let Player = function (x, y) {
+const Player = function (x, y) {
   this.x = x;
   this.y = y;
-  this.sprite = "images/char-boy.png";
+  this.sprite = PLAYER_CONF.sprite;
 };
 
 Player.prototype.update = function () {};
@@ -86,39 +106,50 @@ Player.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Player.prototype.resetInitialPosition = function () {
+  player.x = PLAYER_CONF.initialPosition.x;
+  player.y = PLAYER_CONF.initialPosition.y;
+};
+
 Player.prototype.handleInput = function (keyPressed) {
   if (keyPressed === "left" && this.x > 0) {
-    this.x -= PLAYER_STEP;
+    this.x -= PLAYER_CONF.step;
   }
-  if (keyPressed === "right" && this.x < FILED_LIMIT_WIDTH) {
-    this.x += PLAYER_STEP;
+  if (keyPressed === "right" && this.x < FIELD_SIZE_LIMIT.width) {
+    this.x += PLAYER_CONF.step;
   }
   if (keyPressed === "up" && this.y > 0) {
-    this.y -= PLAYER_STEP;
+    this.y -= PLAYER_CONF.step;
   }
-  if (keyPressed === "down" && this.y < FIELD_LIMIT_HEIGHT) {
-    this.y += PLAYER_STEP;
+  if (keyPressed === "down" && this.y < FIELD_SIZE_LIMIT.height) {
+    this.y += PLAYER_CONF.step;
   }
   if (this.y < 0) {
     setTimeout(function () {
       score += 1;
       alert(`Well done 🎉 Your score is ${score}!`);
-      player.x = PLAYER_START_X;
-      player.y = PLAYER_START_Y;
-    }, 300);
+      player.resetInitialPosition();
+    }, 100);
   }
 };
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const player = new Player(PLAYER_START_X, PLAYER_START_Y);
+const player = new Player(
+  PLAYER_CONF.initialPosition.x,
+  PLAYER_CONF.initialPosition.y
+);
 
-let allEnemies = [];
+const allEnemies = [];
 
-const allEnemyLocations = [63, 147, 230];
+const allEnemiesInitialPositionsY = [
+  ENEMY_CONF.initialPosition.y.enemy1,
+  ENEMY_CONF.initialPosition.y.enemy2,
+  ENEMY_CONF.initialPosition.y.enemy3,
+];
 
-allEnemyLocations.forEach(function (currentEnemyLocation) {
-  let enemy = new Enemy(ENEMY_START_LOCATION, currentEnemyLocation);
+allEnemiesInitialPositionsY.forEach(function (currentEnemyPositionY) {
+  let enemy = new Enemy(ENEMY_CONF.initialPosition.x, currentEnemyPositionY);
   allEnemies.push(enemy);
 });
 
