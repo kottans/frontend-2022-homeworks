@@ -25,7 +25,7 @@ const footer = document.createElement('footer')
 footer.classList.add('footer')
 main.appendChild(footer)
 
-
+let li
 content.innerHTML = text
 
 const ul = document.createElement('ul')
@@ -43,11 +43,10 @@ data.forEach((datapiece)=> {
 	img.setAttribute('src', datapiece.img )
 	img.setAttribute('alt', datapiece.text )
 	sidenavLi.appendChild(img)
-
 } )
 
 ul.onclick = function(event) {
-	let li = event.target.closest('li')
+	li = event.target.closest('li')
 	if(!li) return;
 	handleClick(li.id)
 }
@@ -55,31 +54,4 @@ function handleClick(){
 	text = data[li.id].content
 	content.innerHTML = text
 }
-
-// document.getElementById('0').addEventListener ('click', ()=> {
-// 	text= data[0].content
-// 	content.innerHTML = text
-// 	})
-// document.getElementById('1').addEventListener ('click', ()=> {
-// 	text= data[1].content
-// 	content.innerHTML = text
-// 	})
-// document.getElementById('2').addEventListener ('click', ()=> {
-// 	text= data[2].content
-// 	content.innerHTML = text
-// 	})
-// document.getElementById('3').addEventListener ('click', ()=> {
-// 	text= data[3].content
-// 	content.innerHTML = text
-// 	})
-// document.getElementById('4').addEventListener ('click', ()=> {
-// 	text= data[4].content
-// 	content.innerHTML = text
-// 	})
-// document.getElementById('5').addEventListener ('click', ()=> {
-// 	text= data[5].content
-// 	content.innerHTML = text
-// 	})
-
-
 
