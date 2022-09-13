@@ -36,7 +36,7 @@ const cards = [
 	},
 	{
 		id: 5,
-		header: 'Башня бога>',
+		header: 'Башня бога',
 		img: './images/tower-of-god.jpg',
 		subHeader: 'Краткое описание',
 		description: `Многие авантюристы наслышаны о существовании великой башни Бога, но мало кто из них осмеливался разыскать и забраться в неё. Каждому известно, что под этим мистическим построением находится дьявольская ловушка, которая похожа на тюрьму. Вот только никто не знает, что в этой ловушке долгое время живёт необычный парень по имени Баам. Парнишка свыкся со своим заключением, и он не помнит, как и когда попал в это жуткое место. За долгое время пребывания в тюрьме Баам мог бы сойти с ума от одиночества, но у него была подруга Рейчел. Вместе ребята научились преодолевать не только скуку, но и нашли способ, как выбраться из заточения. Вот только Баам не хотел покидать ловушку, ведь путь на свободу лежал через башню Бога, но преодолеть её не удавалось ещё никому. В один прекрасный день парнишка обнаружил пропажу Рейчел и он понял, что подруга отправилась в башню. Легенды гласят, что тот, кто доберётся до верхушки мистической башни, получит великую награду. У Баам не было другого выхода, кроме как пойти на поиски Рейчел, ведь девчонка находится в большой опасности.
@@ -87,7 +87,7 @@ function createCards(id, header, img, subHeader, description) {
 		</li>
 		`
 	cardsList.innerHTML = cardsHTML;
-};
+}
 
 function showCard(event) {
 	if (event.target.tagName !== 'BUTTON') return false;
@@ -96,15 +96,15 @@ function showCard(event) {
 	createCards(id, header, img, subHeader, description);
 	const homeScreen = document.querySelector('.home-screen');
 	homeScreen.classList.add('display-none');
-};
+}
 function hidingBurger(event) {
 	if (event.target.tagName !== 'BUTTON') return false;
 	if (iconMenu.classList.contains('_active')) {
 		iconMenu.classList.remove('_active');
 		buttons.classList.remove('_active');
 		document.body.classList.remove('_lock');
-	};
-};
+	}
+}
 
 const buttons = document.querySelector('nav');
 buttons.addEventListener('click', hidingBurger);
@@ -121,6 +121,6 @@ const homeScreenDescription = document.querySelector('.home-screen__description'
 function changeValueParagraph() {
 	if (document.documentElement.clientWidth < 850) {
 		homeScreenDescription.innerHTML = 'Кликай на значок меню справа вверху!)'
-	};
-};
+	}
+}
 changeValueParagraph();
