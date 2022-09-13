@@ -1,12 +1,14 @@
+const defaultPlayerX = 204,
+      defaultPlayerY = 409;
+
 // Enemy
 
-let Enemy = class Enemy {
-    constructor(speed, x, y) {
-        this.x = x;
-        this.y = y;
-        this.speed = speed;
-        this.sprite = 'images/enemy-bug.png'; 
-    };
+const Enemy = function(speed, x, y) {
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.sprite = 'images/enemy-bug.png'; 
+
 };
 
 Enemy.prototype.update = function(dt) {
@@ -18,8 +20,8 @@ Enemy.prototype.update = function(dt) {
 
     if (Math.abs(player.x - this.x) < 60 && Math.abs(player.y - this.y) < 60) {
         alert("Чао, лузер)");
-        player.x = 204;
-        player.y = 409;
+        player.x = defaultPlayerX;
+        player.y = defaultPlayerY;
 
     }
 };
@@ -30,19 +32,17 @@ Enemy.prototype.render = function() {
 
 // Player
 
-let Player = class Player {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.sprite = 'images/char-boy.png';
-    }
+const Player = function(x, y) {
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/char-boy.png';
 };
 
 Player.prototype.update = function() {
     if (this.y < 0 && this.y > -12) {
         alert("Вітаннячка! Ви виграли!")
-        this.x = 204;
-        this.y = 409;
+        this.x = defaultPlayerX;
+        this.y = defaultPlayerY;
     }
 };
 
@@ -72,19 +72,19 @@ Player.prototype.handleInput = function(key) {
       
         if (this.y > 409 || this.x < 0 || this.x > 408) {
             alert("Не виходь за межі поля!");
-            this.x = 204;
-            this.y = 409;
+            this.x = defaultPlayerX;
+            this.y = defaultPlayerY;
         }
     }
 };
 
 // Initialization characters
 
-let player = new Player(204, 409);
-let enemy1 = new Enemy((Math.random() * (200 - 60) + 60), -50, 230);
-let enemy2 = new Enemy((Math.random() * (200 - 60) + 60), -150, 146);
-let enemy3 = new Enemy((Math.random() * (200 - 60) + 60), -80, 63);
-let enemy4 = new Enemy((Math.random() * (200 - 60) + 60), -200, 313);
+const player = new Player(204, 409);
+const enemy1 = new Enemy((Math.random() * (200 - 60) + 60), -50, 230);
+const enemy2 = new Enemy((Math.random() * (200 - 60) + 60), -150, 146);
+const enemy3 = new Enemy((Math.random() * (200 - 60) + 60), -80, 63);
+const enemy4 = new Enemy((Math.random() * (200 - 60) + 60), -200, 313);
 
 const allEnemies = [
     enemy1,
