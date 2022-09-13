@@ -102,10 +102,10 @@ const cat = new Cat("Cake", GENDER.FEMALE, "meow!", 4);
 const man = new Man("Dominic", "Hello!", 2, 2);
 const woman = new Woman("Dominica", "Hello!", 2, 1);
 
-dog.addFriends("Cake");
-cat.addFriends("Pie", "Selina");
-man.addFriends("Dominica");
-woman.addFriends("Dominic", "Selina");
+dog.addFriends(cat);
+cat.addFriends(dog);
+man.addFriends(woman);
+woman.addFriends(man);
 
 // ======== OUTPUT ========
 
