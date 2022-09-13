@@ -1,26 +1,45 @@
-const CHAR_GIRL = "images/char-cat-girl.png",
-    CHAR_BOY = "images/char-boy.png",
-    START_X = 200,
-    START_Y = 375,
-    MIN_X = 0,
-    MAX_X = 400,
-    MIN_Y = 375,
-    MAX_Y = -25,
-    STEP_X = 100,
-    STEP_Y = 80,
-    HALF_SIZE_X = 50,
-    HALF_SIZE_Y = 40,
-    MIN_SPEED = 400,
-    MAX_SPEED = 700,
-    TIME_TIMEOUT = 200,
+const SKIN = {
+    GIRL: "images/char-cat-girl.png",
+    BOY: "images/char-boy.png"
+};
+
+const SPEED = {
+    MIN: 400,
+    MAX: 700
+};
+
+const STEP = {
+    X: 100,
+    Y: 80,
+    HALF_X: 50,
+    HALF_Y: 40,
+};
+
+const BORDER = {
+    MIN_X: 0,
+    MAX_X: 400,
+    MIN_Y: 375,
+    MAX_Y: -25
+};
+
+const PLAYER_POSITION = {
+    START_X: 200,
+    START_Y: 375
+};
+
+const TIME_TIMEOUT = 200,
     ALL_X = [
-        MIN_X,
-        MIN_X + STEP_X,
-        MIN_X + STEP_X * 2,
-        MIN_X + STEP_X * 3,
-        MAX_X,
+        BORDER.MIN_X,
+        BORDER.MIN_X + STEP.X,
+        BORDER.MIN_X + STEP.X * 2,
+        BORDER.MIN_X + STEP.X * 3,
+        BORDER.MAX_X,
     ],
-    ENEMIES_Y = [MAX_Y + STEP_Y * 3, MAX_Y + STEP_Y * 2, MAX_Y + STEP_Y];
+    ENEMIES_Y = [
+        BORDER.MAX_Y + STEP.Y * 3, 
+        BORDER.MAX_Y + STEP.Y * 2, 
+        BORDER.MAX_Y + STEP.Y
+    ];
 
 let winScore = 0,
     loseScore = 0,
@@ -35,10 +54,10 @@ Array.prototype.getNumFromArray = function () {
     return this[Math.floor(Math.random() * this.length)];
 };
 
-function changeChar() {
-    const body = document.querySelector("body");
+function changeChar(player) {
+    const BODY = document.querySelector("body");
 
-    body.innerHTML = `<div class="choice">
+    BODY.innerHTML = `<div class="choice">
                     <p class="choice__title">${"Select character"}</p>
                     <div class="choice__buttons">
                     <button class="choice__button button-boy">${"Boy"}</button>
@@ -46,14 +65,14 @@ function changeChar() {
                     </div>
                     </div>`;
 
-    const buttonBoy = document.querySelector(".button-boy");
-    buttonBoy.addEventListener("click", () => {
-        player.sprite = CHAR_BOY;
+    const BUTTON_BOY = document.querySelector(".button-boy");
+    BUTTON_BOY.addEventListener("click", () => {
+        player.sprite = SKIN.BOY;
     });
 
-    const buttonGirl = document.querySelector(".button-girl");
-    buttonGirl.addEventListener("click", () => {
-        player.sprite = CHAR_GIRL;
+    const BUTTON_GIRL = document.querySelector(".button-girl");
+    BUTTON_GIRL.addEventListener("click", () => {
+        player.sprite = SKIN.GIRL;
     });
 }
 
@@ -72,38 +91,42 @@ var Enemy = function (x, y, speed, player) {
 Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
 
-    if (this.x > MAX_X + STEP_X) {
-        this.x = -STEP_X;
-        this.speed = getNumFromArea(MAX_SPEED, MIN_SPEED);
+    if (this.x > BORDER.MAX_X + STEP.X) {
+        this.x = -STEP.X;
+        this.speed = getNumFromArea(SPEED.MAX, SPEED.MIN);
     }
 
-    if (
-        this.x > player.x - HALF_SIZE_X &&
-        this.x < player.x + HALF_SIZE_X &&
-        this.y > player.y - HALF_SIZE_Y &&
-        this.y < player.y + HALF_SIZE_Y
-    ) {
-        loseScore++;
-        showCounter();
-        main();
-    }
+    this.collision();
 };
 
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Enemy.prototype.collision = function () {
+    if (
+        this.x > player.x - STEP.HALF_X &&
+        this.x < player.x + STEP.HALF_X &&
+        this.y > player.y - STEP.HALF_Y &&
+        this.y < player.y + STEP.HALF_Y
+    ) {
+        loseScore++;
+        showCounter();
+        loadGame();
+    }
+};
+
 var Player = function (x, y) {
     this.x = x;
     this.y = y;
-    this.sprite = CHAR_BOY;
+    this.sprite = SKIN.BOY;
 };
 
 Player.prototype.update = function () {
-    if (this.y == MAX_Y) {
+    if (this.y === BORDER.MAX_Y) {
         winScore++;
         setTimeout(showCounter, TIME_TIMEOUT);
-        main();
+        loadGame();
     }
 };
 
@@ -112,27 +135,26 @@ Player.prototype.render = function () {
 };
 
 Player.prototype.handleInput = function (keyPress, allRocks) {
-    if (keyPress == "left" && this.x != MIN_X) {
-        this.x -= STEP_X;
-    } else if (keyPress == "up" && this.y != MAX_Y) {
-        let isOutside = false;
-
-        allRocks.forEach((rock) => {
-            if (this.y == rock.y + STEP_Y && this.x == rock.x) {
-                isOutside = true;
-                return isOutside;
-            }
-        });
-
-        if (!isOutside) {
-            this.y -= STEP_Y;
-        }
-    } else if (keyPress == "right" && this.x != MAX_X) {
-        this.x += STEP_X;
-    } else if (keyPress == "down" && this.y != MIN_Y) {
-        this.y += STEP_Y;
+    if (keyPress === "left" && this.x !== BORDER.MIN_X) {
+        this.x -= STEP.X;
+    } else if (keyPress === "up" && this.y !== BORDER.MAX_Y) {
+        checkRock(this, allRocks);
+    } else if (keyPress === "right" && this.x !== BORDER.MAX_X) {
+        this.x += STEP.X;
+    } else if (keyPress === "down" && this.y !== BORDER.MIN_Y) {
+        this.y += STEP.Y;
     }
 };
+
+function checkRock(player, allRocks) {
+    let isRock = false;
+
+    allRocks.forEach((rock) => {
+        if (player.y === rock.y + STEP.Y && player.x === rock.x) isRock = true;
+    });
+
+    if (!isRock) player.y -= STEP.Y;
+}
 
 var Rock = function (x, y) {
     this.x = x;
@@ -144,24 +166,24 @@ Rock.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-changeChar();
-const player = new Player();
+let player = new Player();
+changeChar(player);
 
-function main() {
-    player.x = START_X;
-    player.y = START_Y;
+function loadGame() {
+    player.x = PLAYER_POSITION.START_X;
+    player.y = PLAYER_POSITION.START_Y;
 
     allEnemies = [];
     allRocks = [];
 
-    ENEMIES_Y.forEach((enemyY) => {
-        enemy = new Enemy(
-            ALL_X.getNumFromArray(),
-            enemyY,
-            getNumFromArea(MAX_SPEED, MIN_SPEED),
-        );
-        allEnemies.push(enemy);
-    });
+    ENEMIES_Y.forEach(enemyY => 
+        allEnemies.push(
+            new Enemy(
+                ALL_X.getNumFromArray(), 
+                enemyY, getNumFromArea(SPEED.MAX, SPEED.MIN)
+            )
+        )
+    );
 
     const ROCKS_X = [
         ALL_X.getNumFromArray(),
@@ -170,13 +192,12 @@ function main() {
         ALL_X.getNumFromArray(),
     ];
 
-    ROCKS_X.forEach((rockX) => {
-        rock = new Rock(rockX, MAX_Y, player);
-        allRocks.push(rock);
-    });
+    ROCKS_X.forEach(rockX => 
+        allRocks.push(new Rock(rockX, BORDER.MAX_Y, player))
+    );
 }
 
-main();
+loadGame();
 
 document.addEventListener("keyup", function (e) {
     var allowedKeys = {
