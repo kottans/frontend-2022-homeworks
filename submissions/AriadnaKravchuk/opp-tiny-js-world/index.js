@@ -25,10 +25,21 @@ class Inhabitant {
       this.gender = gender;
       this.saying = saying;
       this.friends = [];
+      this.attributes = [];
    }
 
    addFriends(...friend) {
       if (!this.friends.includes(friend)) this.friends.push(friend);
+   }
+
+   printAttributes() {
+      this.friends.forEach((objFriends) => 
+         this.attributes.push(
+            String(objFriends.map((friend) => friend.name))
+         )
+      );
+
+      print(this.attributes.join("; "));
    }
 }
 
@@ -37,17 +48,14 @@ class Human extends Inhabitant {
       super(species, name, gender, saying);
       this.legs = legs;
       this.hands = hands;
-   }
-
-   printAttributes() {
-      print([
+      this.attributes = [
          this.species,
          this.name,
          this.gender,
          this.saying,
          this.legs,
          this.hands
-      ].join("; "));
+      ];
    }
 }
 
@@ -55,16 +63,13 @@ class Animal extends Inhabitant {
    constructor(species, name, gender, saying, paws) {
       super(species, name, gender, saying);
       this.paws = paws;
-   }
-   
-   printAttributes() {
-      print([
+      this.attributes = [
          this.species,
-         this.name, 
-         this.gender, 
-         this.saying, 
+         this.name,
+         this.gender,
+         this.saying,
          this.paws
-      ].join("; ")); 
+      ];
    }
 }
 
