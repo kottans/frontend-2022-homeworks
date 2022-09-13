@@ -10,17 +10,6 @@ const resetBtn = document.querySelector(".form__button");
 
 const burgerBtn = document.querySelector(".burger");
 const sidebar = document.querySelector(".sidebar");
-const wrapper = document.querySelector(".wrapper");
-
-function closeModal() {
-  modal.classList.add("hide");
-  modal.classList.remove("show");
-}
-
-function openModal() {
-  modal.classList.add("show");
-  modal.classList.remove("hide");
-}
 
 burgerBtn.addEventListener("click", (e) => {
   burgerBtn.classList.toggle("active");
@@ -32,7 +21,7 @@ const statusMessage = {
   failure: "Technical problems, try again later",
 };
 
-let loadingMessage = document.createElement("img");
+const loadingMessage = document.createElement("img");
 function showLoadingStatus() {
   loadingMessage.src = statusMessage.loading;
   loadingMessage.classList.add("status-block");
@@ -54,7 +43,10 @@ function loadUsersData() {
       showCards(users);
       loadingMessage.remove();
     })
-    .catch(() => showErrorStauts());
+    .catch(() => {
+      loadingMessage.remove();
+      showErrorStauts();
+    });
 }
 
 function showErrorStauts() {
@@ -62,7 +54,6 @@ function showErrorStauts() {
   errorMessage.classList.add("error-block");
   errorMessage.innerHTML = `${statusMessage.failure}`;
 
-  console.log(statusMessage.failure);
   cardsList.append(errorMessage);
 }
 
