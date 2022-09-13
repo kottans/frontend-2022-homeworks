@@ -15,6 +15,7 @@ const STATE = {
     statusGame : false,
     loop: null,
     combinationCounter: 6,
+    isInteractive: true,
 }
 
 const generateGame = () => {
@@ -91,7 +92,9 @@ const flipCard = (target) => {
 }
 
 const checkCard = (target, parentElement) => {
-    STATE.flipElementIdArray.push(target.dataset.id);
+    if (STATE.flipElementIdArray.length < 2){
+        STATE.flipElementIdArray.push(target.dataset.id);
+    }
 
     if (!STATE.cardOne){
         return STATE.cardOne = parentElement;
@@ -101,32 +104,35 @@ const checkCard = (target, parentElement) => {
     if (STATE.flipElementIdArray.length === 2 && STATE.flipElementIdArray[0] === STATE.flipElementIdArray[1]){
         STATE.flipElementIdArray.length = 0;
         --STATE.combinationCounter;
+        STATE.isInteractive = false;
         setTimeout(() => {
             STATE.cardOne.innerHTML='';
             STATE.cardTwo.innerHTML='';
             STATE.cardOne = undefined;
+            STATE.isInteractive = true;
         }, 1000)
     }
 
     if ((STATE.flipElementIdArray.length === 2 && STATE.flipElementIdArray[0] !== STATE.flipElementIdArray[1])){
         STATE.flipElementIdArray.length = 0;
+        STATE.isInteractive = false;
         setTimeout(() => {
             STATE.cardOne.classList.remove('rotate_card');
             STATE.cardTwo.classList.remove('rotate_card');
             STATE.cardOne = undefined;
+            STATE.isInteractive = true;
         }, 1000)
     }
 
     if (STATE.combinationCounter === 0){
         clearInterval(STATE.loop);
-        console.log(STATE.loop);
     }
 }
  
 SELECTORS.flipContainer.addEventListener('click', function (event) {
     const eventTarget = event.target;
     const eventParent = eventTarget.parentElement;
-    if (event.target.closest('.front')){
+    if (event.target.closest('.front') && STATE.isInteractive){
         flipCard(eventParent.parentElement);
         checkCard(eventTarget, eventParent.parentElement);
         if (STATE.totalFlips === 1){
@@ -134,4 +140,3 @@ SELECTORS.flipContainer.addEventListener('click', function (event) {
         }
     }
 })
-
