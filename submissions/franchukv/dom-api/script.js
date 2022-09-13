@@ -1,12 +1,10 @@
 const mainContent = document.querySelector('.content');
-const navigation = document.querySelector('.cards');
 const startHeader = document.querySelector('.header');
 const startNav = document.querySelector('.menu');
 const resetBtn = document.querySelector('.reset-btn');
 const burgenBtn = document.querySelector('.burger');
 const burgenIcon = document.querySelector('.burger-icon');
 const footer = document.querySelector('.footer');
-
 
 const data = {
     'Sky Diving': {
@@ -41,19 +39,18 @@ function createSideNavigation() {
     }
 
     startNav.classList.add('side-menu');
+    resetBtn.classList.add('active');
 
     startHeader.classList.remove('active');
     startNav.classList.remove('start-menu');
-    resetBtn.classList.remove('non-active');
     burgenBtn.classList.remove('non-active');
     mainContent.classList.remove('non-active');
 }
 
 function goToStartPage() {
     startHeader.classList.add('active');
-    startNav.classList.add('_start--marker');
-    startNav.classList.add('start-menu');
-    resetBtn.classList.add('non-active');
+    startNav.classList.add('_start--marker', 'start-menu');
+    resetBtn.classList.remove('active');
     burgenBtn.classList.add('non-active');
     mainContent.classList.add('non-active');
 
@@ -61,6 +58,7 @@ function goToStartPage() {
     burgenIcon.classList.remove('burger-icon--active');
     document.body.classList.remove('_scroll-lock');
     footer.classList.remove('footer--element-end');
+    unsetCurrentNavItem();
 }
 
 function burgerHandler() {
@@ -70,22 +68,31 @@ function burgerHandler() {
     document.body.classList.toggle('_scroll-lock');
 }
 
+function unsetCurrentNavItem() {
+    let navItems = document.getElementsByClassName('cards__title');
+
+    for (var i = 0; i < navItems.length; i++) {
+        navItems[i].classList.remove('cards__item--current');
+    }
+}
+
 function navigationHandler(event) {
+    unsetCurrentNavItem();
+    event.target.classList.add('cards__item--current');
+
     if (startHeader.classList.contains('active') && startNav.classList.contains('start-menu')) {
         createSideNavigation();
         createContent(event.target.textContent);
     }
 
     if (startNav.classList.contains('_start--marker')) {
-        startNav.classList.remove('side-menu--active');
-        startNav.classList.remove('_start--marker');
+        startNav.classList.remove('side-menu--active', '_start--marker');
         burgenBtn.classList.remove('burger--white');
         burgenIcon.classList.remove('burger-icon--active');
     }
 
     if (startNav.classList.contains('side-menu--active')) {
-        startNav.classList.remove('side-menu--active');
-        startNav.classList.remove('_start-marker');
+        startNav.classList.remove('side-menu--active', '_start-marker');
         burgenBtn.classList.remove('burger--white');
         document.body.classList.remove('_scroll-lock');
         burgenIcon.classList.remove('burger-icon--active');
@@ -95,40 +102,35 @@ function navigationHandler(event) {
 }
 
 function createNavigation(item) {
+
+    let temporaryContainer = document.createElement('ul');
+    temporaryContainer.classList.add('cards', 'cards-menu');
+
     for (item in data) {
         let navItem = document.createElement('li');
         navItem.classList.add('cards__item');
 
-        let h3 = document.createElement('h3');
-        h3.classList.add('cards__title');
-        h3.textContent = item;
-        navItem.appendChild(h3);
+        let link = document.createElement('a');
+        link.classList.add('cards__title');
+        link.textContent = item;
+        navItem.appendChild(link);
 
-        navigation.append(navItem);
+        temporaryContainer.append(navItem);
     }
+
+    startNav.append(temporaryContainer);
 }
 
 function createContent(item) {
-    mainContent.innerHTML = '';
-
-    const img = document.createElement('img');
-    img.classList.add('content-img');
-    img.setAttribute('src', data[item].img);
-    mainContent.append(img);
-
-    const title = document.createElement('h2');
-    title.classList.add('content-title');
-    title.textContent = item;
-    mainContent.append(title);
-
-    const text = document.createElement('div');
-    text.classList.add('content-text');
-    text.innerHTML = data[item].text;
-    mainContent.append(text);
+    mainContent.innerHTML = `
+        <img class="content-img" src="${data[item].img}">
+        <h2 class="content-title">${item}</h2>
+        <div class="content-text">${data[item].text}</div>`;
 }
 
 function main() {
     createNavigation();
+    const navigation = document.querySelector('.cards');
     navigation.addEventListener('click', navigationHandler);
     resetBtn.addEventListener('click', goToStartPage);
     burgenBtn.addEventListener('click', burgerHandler);
