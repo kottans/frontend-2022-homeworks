@@ -1,5 +1,3 @@
-// ======== OBJECTS DEFINITIONS ========
-
 const human = {
    species: 'human',
    legs: 2,
@@ -47,11 +45,12 @@ const inhabitants = [
    cat
 ];
 
+const inhabitantProperties = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
+const delimiter = '; ';
 function getInhabitantInfo(inhabitant) {
-   return `${inhabitant.species}; ${inhabitant.name}; ${inhabitant.gender}; ${inhabitant.legs}; ${inhabitant.hands}; ${inhabitant.saying}`;
+   const  values = inhabitantProperties.map((key) => inhabitant[key]);
+   return values.join(delimiter);
 }
 
-// ======== OUTPUT ========
-
 inhabitants.forEach((inhabitant) =>
-   print(getInhabitantInfo(inhabitant)))
+   print(getInhabitantInfo(inhabitant)));
