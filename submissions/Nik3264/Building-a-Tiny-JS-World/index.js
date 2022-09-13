@@ -22,40 +22,47 @@ const dog = {
    gender: 'male',
    legs: 4,
    hands: 0,
-   saying: 'mi-mi!'
+   saying: 'mioueui-mi-mi!'
  };
+
  const catwoman = {
+  __proto__: cat, 
    species: 'catwoman',
-   name: 'Toby',
+   name: 'Tina',
    gender: 'male',
    legs: 4,
    hands: 0,
-   saying: cat.saying
+   saying:cat.saying
  };
+
  const men = {
    species: 'men',
-   name: 'Toby',
+   name: 'Nik',
    gender: 'male',
    legs: 2,
    hands: 2,
    saying: 'hello!'
  };
+
  const woman = {
    species: 'woman',
    name: 'Tyna',
    gender: 'female',
    legs: 2,
    hands: 2,
-   saying: 'wo hei!'
+   saying: 'wo hei! Hello!'
  };
 
- const arr = [dog, cat, catwoman, men, woman];
+ const inhabitants = [dog, cat, catwoman, men, woman];
 
- const str = arr.map(el=>{
-  el.name=`<strong>${el.name}</strong>`;
-   return Object.values(el).join(', ');
+ const listInhabitants = inhabitants.map(inhabitant => {
+    inhabitant.name = `<strong>${inhabitant.name}</strong>`;
+
+    return  Object.keys(inhabitant).map(property => {
+        return inhabitant[property];
+    }).join(', ');       
  });
- print(str.join(";\n"));
+ print(listInhabitants.join(";\n"));
  
 // ======== OUTPUT ========
 /* Use print(message) for output.
