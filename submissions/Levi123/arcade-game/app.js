@@ -97,9 +97,9 @@ class Enemy {
     }
 };
 
-let createEnemies = [0,1,2,2]
-let allEnemies = createEnemies.map((valueY) => {
-    return enemy = new Enemy(DEFAULT_ENEMY.positionX, (DEFAULT_MAP.heightBlock * valueY) + 60, player);
+let rowForEnemy = [0,1,2,2]
+let allEnemies = rowForEnemy.map((row) => {
+    return enemy = new Enemy(DEFAULT_ENEMY.positionX, (DEFAULT_MAP.heightBlock * row) + 60, player);
 });
 
 document.addEventListener('keyup', function(e) {
