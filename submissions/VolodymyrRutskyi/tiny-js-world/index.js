@@ -49,3 +49,4 @@ const inhabitants = [dog, cat, woman, man];
 inhabitants.forEach((inhabitant) =>
   print(inhabitant.showProps())
 );
+
