@@ -1,4 +1,4 @@
-const postsLst = [
+const postsList = [
     {
         id: '1',
         topzoneImg:'./img/2.png',
