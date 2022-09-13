@@ -7,8 +7,12 @@ class MyInhabitant {
       this.saying = saying;
    }
 
+   static inhabitantProperties = ['species', 'name', 'gender', 'limbs', 'saying'];
+   static delimiter = '; ';
+
    getInhabitantInfo() {
-      return `${this.species}; ${this.name}; ${this.gender}; ${this.limbs.join('; ')}; ${this.saying}`;
+      const values = MyInhabitant.inhabitantProperties.map((key) => this[key]);
+      return values.join(MyInhabitant.delimiter);
    }
 }
 
