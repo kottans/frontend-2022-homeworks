@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 const postsList  = [
+||||||| 76728da
+const postsLst = [
+=======
+const postsList = [
+>>>>>>> 2707486fe7b80d419dcc0d7f8c3d8c626d02b823
     {
         id: '1',
         topzoneImg:'./img/2.png',
@@ -45,8 +51,16 @@ btnContainer.addEventListener('click', targetContent );
 
 function targetContent ({ target }) {
     if (target.id) {
+<<<<<<< HEAD
         const contant = postsList.find((post) => post.id === target.id);
         mainContainer.innerHTML = postGenerator(contant);
+||||||| 76728da
+        const contant = postsLst.find((pos) => pos.id === target.id);
+        mainContainer.innerHTML = post(contant);
+=======
+        const contant = postsList.find((post) => post.id === target.id);
+        mainContainer.innerHTML = post(contant);
+>>>>>>> 2707486fe7b80d419dcc0d7f8c3d8c626d02b823
     }
 };
 
