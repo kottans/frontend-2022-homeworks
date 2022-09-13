@@ -48,20 +48,17 @@ const menu = document.querySelector(".sidebar__menu");
 const main = document.querySelector(".main");
 const menuItems = (item, menuList) => {
   item.map(function (item) {
-    menuList.insertAdjacentHTML(
-      "beforeend",
-      `<li class="sidebar__menu__item"><button class="sidebar__btn" data-company = ${item.id} >${item.title}</button></li>`
-    );
+    let sideWrap = document.createElement('div');
+    sideWrap.innerHTML = (`<li class="sidebar__menu__item"><button class="sidebar__btn" data-company = ${item.id}>${item.title}</button></li>`);
+    menuList.append(sideWrap)
   });
 };
 const content = (i = 1, arr = companies) => {
-  const selectedSeason = arr.filter((item) => item.id == i);
-  const { title } = selectedSeason[0];
-  const { description } = selectedSeason[0];
-  const { image } = selectedSeason[0];
+  const selectedCompany = arr.find((item) => item.id == i);
+  const { title, image, description, } = selectedCompany;
   main.innerHTML = `
         <h1 class="main__title" >${title}</h1>
-        <div class="main__description" >${description}</div>
+        <p class="main__description" >${description}</p>
         <img  class="main__img" src=${image} alt=${title}>
     `;
 };
