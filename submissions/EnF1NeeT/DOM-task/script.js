@@ -45,7 +45,7 @@ btnContainer.addEventListener('click', addContent);
 
 function addContent({ target }) {
     if (target.id) {
-        const contant = postsLst.find((pos) => pos.id === target.id);
+        const contant = postsList.find((post) => post.id === target.id);
         mainContainer.innerHTML = post(contant);
     }
 };
