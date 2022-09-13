@@ -80,7 +80,7 @@ Player.prototype.handleInput = function(key) {
 
 // Initialization characters
 
-const player = new Player(204, 409);
+const player = new Player(defaultPlayerX, defaultPlayerY);
 const enemy1 = new Enemy((Math.random() * (200 - 60) + 60), -50, 230);
 const enemy2 = new Enemy((Math.random() * (200 - 60) + 60), -150, 146);
 const enemy3 = new Enemy((Math.random() * (200 - 60) + 60), -80, 63);
