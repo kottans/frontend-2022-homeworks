@@ -39,7 +39,13 @@ const TIME_TIMEOUT = 200,
         BORDER.MAX_Y + STEP.Y * 3, 
         BORDER.MAX_Y + STEP.Y * 2, 
         BORDER.MAX_Y + STEP.Y
-    ];
+    ],
+    ROCKS_Y = [
+        BORDER.MAX_Y,
+        BORDER.MAX_Y,
+        BORDER.MAX_Y,
+        BORDER.MAX_Y
+    ]
 
 let winScore = 0,
     loseScore = 0,
@@ -56,7 +62,6 @@ Array.prototype.getNumFromArray = function () {
 
 function changeChar(player) {
     const BODY = document.querySelector("body");
-
     BODY.innerHTML = `<div class="choice">
                     <p class="choice__title">${"Select character"}</p>
                     <div class="choice__buttons">
@@ -185,15 +190,8 @@ function loadGame() {
         )
     );
 
-    const ROCKS_X = [
-        ALL_X.getNumFromArray(),
-        ALL_X.getNumFromArray(),
-        ALL_X.getNumFromArray(),
-        ALL_X.getNumFromArray(),
-    ];
-
-    ROCKS_X.forEach(rockX => 
-        allRocks.push(new Rock(rockX, BORDER.MAX_Y, player))
+    ROCKS_Y.forEach(rockY => 
+        allRocks.push(new Rock(ALL_X.getNumFromArray(), rockY, player))
     );
 }
 
