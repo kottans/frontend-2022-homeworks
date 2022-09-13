@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body,
+button,
+input {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 1rem;
+}
+body {
+  color: hsl(0, 0%, 0%);;
+  font-size: 1rem;
+  background-color: hsl(180, 16%, 90%);
+}
+h1, h2, h3 {
+  font-weight: 900;
+}
+ul {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 20vh;
+}
+.score{
+  margin-top: 30px;
+}
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 80vh;
+}
+.board-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 580px;
+  height: 580px;
+  border: 3px solid black;
+  border-radius: 20px;
+  padding: 10px;
+}
+.card{
+  width: 130px;
+  height: 130px;
+  position: relative;
+  perspective: 1000px;
+  transition: 1s;
+}
+.front, .back{
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  left: 0;
+  top: 0;
+  border: 3px solid black;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  backface-visibility: hidden;
+}
+.back{
+  transform: rotateY(180deg);
+}
+.card, .hover .front {
+  transform: rotateY(-180deg);
+}
+.card, .hover .back {
+  transform: rotateY(0deg);
+}
+.front img, .back img{
+  width: 130px;
+  height: 124px;
+  border-radius: 20px;
+}
+.hide{
+  opacity: 0;
+}
+.restart-view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.restart{
+  display: inline-block;
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  border: 3px solid black;
+  border-radius: 20px;
+  transition: 1s;
+  text-transform: uppercase;
+}
+.restart:hover{
+  font-size: 25px;
+}
+
+@media (max-width: 600px){
+  .board-grid{
+    width: 280px;
+    height: 280px;
+    gap: 5px;
+  }
+  .card{
+    width: 60px;
+    height: 60px;
+  }
+  .front, .back{
+    width: 60px;
+    height: 60px;
+    
+  }
+  .front img, .back img{
+    width: 70px;
+    height: 54px;
+    border-radius: 20px;
+  }
+}
+
