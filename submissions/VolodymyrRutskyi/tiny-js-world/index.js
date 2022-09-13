@@ -40,3 +40,12 @@ class Cat extends Inhabitant{
    }
 }
 
+const dog = new Dog('Timmy', 'male');
+const cat = new Cat('Mars', 'male');
+const woman = new Woman('Sarah', 'female', 'Hello, my name is Sarah!');
+const man = new Man('Kevin', 'male', 'Hello, my name is Kevin!');
+const inhabitants = [dog, cat, woman, man]; 
+
+inhabitants.forEach((inhabitant) =>
+  print(inhabitant.showProps())
+);
