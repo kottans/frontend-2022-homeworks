@@ -1,7 +1,7 @@
 const iconMenu = document.querySelector(".menu__btn");
 const menuBody = document.querySelector(".sidebar");
 if (iconMenu) {
-  iconMenu.addEventListener("click", function (e) {
+  iconMenu.addEventListener("click", function () {
     document.body.classList.toggle("_lock");
     iconMenu.classList.toggle("_active");
     menuBody.classList.toggle("_active");
@@ -46,14 +46,14 @@ const companies = [
 ];
 const menu = document.querySelector(".sidebar__menu");
 const main = document.querySelector(".main");
-const menuItems = (item, menuList) => {
+const addmenuItems = (item, menuList) => {
   item.map(function (item) {
-    let sideWrap = document.createElement('div');
-    sideWrap.innerHTML = (`<li class="sidebar__menu__item"><button class="sidebar__btn" data-company = ${item.id}>${item.title}</button></li>`);
-    menuList.append(sideWrap)
+    let sideWrap = document.createElement('template');
+    sideWrap.innerHTML = `<li class="sidebar__menu__item"><button class="sidebar__btn" data-company = ${item.id}>${item.title}</button></li>`;
+    menuList.append(sideWrap.content);
   });
 };
-const content = (i = 1, arr = companies) => {
+const addcontent = (i = 1, arr = companies) => {
   const selectedCompany = arr.find((item) => item.id == i);
   const { title, image, description, } = selectedCompany;
   main.innerHTML = `
@@ -64,8 +64,8 @@ const content = (i = 1, arr = companies) => {
 };
 const changeContent = (e) => {
   let btn = e.target;
-  content(btn.dataset.company);
+  addcontent(btn.dataset.company);
 };
 menu.addEventListener("click", changeContent);
-menuItems(companies, menu);
-content();
+addmenuItems(companies, menu);
+addcontent();
