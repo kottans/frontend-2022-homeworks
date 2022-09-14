@@ -15,6 +15,8 @@ class Store {
   constructor(url) {
     this.url = url
     this.persons = null
+    this.errorCount = 0
+    this.maxErrorCount = 50
   }
 
   async init() {
@@ -28,6 +30,11 @@ class Store {
         .then(response => response.results)
     }
     catch (err) {
+      if (this.errorCount < this.maxErrorCount) {
+        this.errorCount++
+        console.log(err)
+        return this.getData() // When an error is received from the server, the function is called again (CORS error)
+      }
       console.log(err)
       return Promise.reject(err)
     }
