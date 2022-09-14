@@ -29,7 +29,7 @@ function createBoard (arr){
         card.setAttribute('data-name', `${item[1]}`)
         card.innerHTML = `
             <div class="front">
-                <img src="${imagesArchived.front}" alt="cute-cat">
+                <img src="${imagesArchived.front}" alt="cute-cat" draggable="false">
             </div>
             <div class="back">
                 <img src="${item[0]}" alt="${item[1]}">
@@ -68,8 +68,11 @@ function openingCard (){
 
 function match (firstCard, secondCard){
     if (firstCard.dataset.name === secondCard.dataset.name){
-        firstCard.classList.add('hide');
-        secondCard.classList.add('hide');
+        setTimeout(() => {
+            firstCard.classList.add('hide');
+            secondCard.classList.add('hide');
+        }, 400);
+        
         winCount += 1;
     }
     if (winCount === 8){
