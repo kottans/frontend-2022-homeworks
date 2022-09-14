@@ -110,7 +110,10 @@ body {
 .title {
   margin: 20px 0;
   color: #00b5cc;
-  text-shadow: 2px 2px 2px #b5dc2c,  0 2px 2px #b5dc2c,  -2px 0 2px #b5dc2c,  0 -2px 2px #b5dc2c;
+  text-shadow: 2px 2px 2px #b5dc2c, 
+ 0 2px 2px #b5dc2c, 
+ -2px 0 2px #b5dc2c, 
+ 0 -2px 2px #b5dc2c;
   font-size: 20px;
   text-align: center;
   text-transform: uppercase; }
@@ -229,3 +232,6 @@ body {
     .main__img {
       margin-top: 150px;
       width: 170px; } }
+
+
+      
