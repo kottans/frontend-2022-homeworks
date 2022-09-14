@@ -60,7 +60,10 @@ const Enemy = function(x, y, speed) {
 Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt + levelSpeed;
 
-    if (this.x > INIT_VAL.canvasWidth) {
+    if (this.x > INIT_VAL.canvasWidth
+        || !playerOptionDiv.classList.contains('hide')
+        || lostMessage.classList.contains('active_message')
+        || winMessage.classList.contains('active_message')) {
         this.x = INIT_VAL.enemyX;
     };
 
@@ -135,27 +138,33 @@ Player.prototype.upLevel = function() {
 const player = new Player(INIT_VAL.playerX, INIT_VAL.playerY);
 
 Player.prototype.handleInput = function(allowedKeys) {
-    if (allowedKeys === 'left' && this.x > 0) {
-        this.x -= INIT_VAL.stepX;
+    if (!lostMessage.classList.contains('active_message')
+        && !winMessage.classList.contains('active_message')
+        && playerOptionDiv.classList.contains('hide')) {
+            
+        if (allowedKeys === 'left' && this.x > 0) {
+            this.x -= INIT_VAL.stepX;
+        };
+
+        if (allowedKeys === 'right' && this.x < INIT_VAL.canvasWidth - INIT_VAL.stepX ) {
+            this.x += INIT_VAL.stepX;
+        };
+
+        if (allowedKeys === 'up' && this.y > 0) {
+            this.y -= INIT_VAL.stepY;
+        };
+
+        if (allowedKeys === 'down' && this.y < INIT_VAL.playerY) {
+            this.y += INIT_VAL.stepY;
+        };
+
+        if (this.y < 0) {
+            player.upLevel() 
+        };
     };
 
-    if (allowedKeys === 'right' && this.x < INIT_VAL.canvasWidth - INIT_VAL.stepX ) {
-        this.x += INIT_VAL.stepX;
-    };
-    
-    if (allowedKeys === 'up' && this.y > 0) {
-        this.y -= INIT_VAL.stepY;
-    };
-
-    if (allowedKeys === 'down' && this.y < INIT_VAL.playerY) {
-        this.y += INIT_VAL.stepY;
-    };
-
-    if (this.y < 0) {
-        player.upLevel() 
-    };
-
-    if (allowedKeys === 'Enter') {
+    if (allowedKeys === 'Enter' && lostMessage.classList.contains('active_message') 
+        || allowedKeys === 'Enter' && winMessage.classList.contains('active_message')) {
         player.resetGame();
         lostMessage.classList.remove('active_message');
         winMessage.classList.remove('active_message');
