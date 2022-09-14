@@ -35,7 +35,7 @@ class Inhabitant {
    printAttributes() {
       this.friends.forEach((objFriends) => {
          print(this.attributes.join("; ") + "; " +
-            String(objFriends.map((friend) => friend.name))
+            objFriends.map((friend) => friend.name)
          )
       });
    }
