@@ -53,6 +53,7 @@ img {
 }
 
 .checkbox__label {
+  display: block;
   cursor: pointer;
 }
 
@@ -73,10 +74,10 @@ img {
   appearance: none;
 }
 
-#checkbox:checked ~ .checkbox__label > div,
-#checkbox:active ~ .checkbox__label > div,
-.checkbox__label > div:hover,
-.checkbox__label > div:focus,
+#checkbox:checked ~ .checkbox__label,
+#checkbox:active ~ .checkbox__label,
+.checkbox__label:hover,
+.checkbox__label:focus,
 .bell:hover,
 .bell:focus {
   background-color: white;
