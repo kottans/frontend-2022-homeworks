@@ -1,11 +1,11 @@
-const preloader = document.querySelector('.preloader__content');
+const preloader = document.querySelector('.preloader');
 
 const getPeopleInfo = async (url) => {
     try {
-        preloader.classList.add('preloader__content_active');
+        preloader.classList.add('preloader_active');
         const res = await fetch(url);
 
-        await preloader.classList.remove('preloader__content_active');
+        await preloader.classList.remove('preloader_active');
         return await res.json();
     } catch (error) {
         return await getPeopleInfo(url);

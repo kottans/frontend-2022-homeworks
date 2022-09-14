@@ -3,23 +3,23 @@
     height: 100%;
     position: fixed;
     top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease all;
+    &_active {
+        visibility: visible;
+        opacity: 1;
+        transition: 0.3s ease all;
+        span {
+            animation: preloader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        }
+    }
     &__content {
         position: fixed;
         display: flex;
         top: 50%;
         left: 50%;
         transform: translateX(-40px);
-        visibility: hidden;
-        opacity: 0;
-        transition: 0.3s ease all;
-        &_active {
-            visibility: visible;
-            opacity: 1;
-            transition: 0.3s ease all;
-            span {
-                animation: preloader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-            }
-        }
         span {
             transform-origin: 40px 40px;
             &:after {
