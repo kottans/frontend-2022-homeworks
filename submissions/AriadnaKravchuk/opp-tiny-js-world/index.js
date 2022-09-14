@@ -29,15 +29,21 @@ class Inhabitant {
    }
 
    addFriends(...friend) {
-      if (!this.friends.includes(friend)) this.friends.push(friend);
+      for (let i = 0; i < friends.length; i++) {
+         if (!this.friends.includes(friends[i])) {
+            this.friends.push(friends[i]);
+         }
+      }
    }
 
    printAttributes() {
-      this.friends.forEach((objFriends) => {
-         print(this.attributes.join("; ") + "; " +
-            objFriends.map((friend) => friend.name)
-         )
-      });
+      let friendsNames = [];
+
+      for (let i = 0; i < this.friends.length; i++) {
+         friendsNames.push(this.friends[i]["name"]);
+      }
+
+      print(this.attributes.join("; ") + "; " + friendsNames.join(", "));
    }
 }
 
