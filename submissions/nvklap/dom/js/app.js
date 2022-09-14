@@ -1,15 +1,15 @@
+const initTaskmasterData = {
+  title: 'Taskmaster',
+  img: './img/series-promo.jpg',
+  alt: 'Series promo picture',
+  series: 'TV series',
+  cast: ['Alex Horne', 'Greg Davies'],
+  text: [
+    "Taskmaster is a British comedy panel game show created by comedian and musician Alex Horne and presented by both Horne and Greg Davies. In the programme a group of five celebrities – mainly comedians – attempt to complete a series of challenges, with Horne acting as umpire in each challenge and Davies judging the work and awarding points based on contestants' performances. The concept for the programme was first created by Horne for the Edinburgh Festival Fringe in 2010; he later secured a deal with Dave to adapt it for television with the first episode premiering in 2015. After the ninth series in 2019 the programme was acquired by Channel 4 who commissioned six new series to be broadcast over the following three years.",
+  ],
+};
+
 const taskmasterData = [
-  {
-    id: 0,
-    title: 'Taskmaster',
-    img: './img/series-promo.jpg',
-    alt: 'Series promo picture',
-    series: 'TV series',
-    cast: ['Alex Horne', 'Greg Davies'],
-    text: [
-      "Taskmaster is a British comedy panel game show created by comedian and musician Alex Horne and presented by both Horne and Greg Davies. In the programme a group of five celebrities – mainly comedians – attempt to complete a series of challenges, with Horne acting as umpire in each challenge and Davies judging the work and awarding points based on contestants' performances. The concept for the programme was first created by Horne for the Edinburgh Festival Fringe in 2010; he later secured a deal with Dave to adapt it for television with the first episode premiering in 2015. After the ninth series in 2019 the programme was acquired by Channel 4 who commissioned six new series to be broadcast over the following three years.",
-    ],
-  },
   {
     id: 1,
     title: 'Melon Buffet',
@@ -295,7 +295,7 @@ function toggleMenu() {
 }
 
 function createContentImg(src, alt) {
-  img = document.createElement('img');
+  const img = document.createElement('img');
   img.classList.add('content-img');
   img.setAttribute('src', src);
   img.setAttribute('alt', alt);
@@ -308,7 +308,7 @@ function createContentImg(src, alt) {
 function createContentHeading(tag, className, text) {
   const heading = document.createElement(tag);
   heading.classList.add(className);
-  heading.innerText = text;
+  heading.textContent = text;
   return heading;
 }
 
@@ -321,7 +321,7 @@ function createContentList(castArr) {
     lastName = lastName.join(' ');
     const span = document.createElement('span');
     span.classList.add('red');
-    span.innerText = firstName;
+    span.textContent = firstName;
     const li = document.createElement('li');
     li.classList.add('cast-item');
     li.append(span);
@@ -336,14 +336,13 @@ function createContentText(paragraphsArr) {
   paragraphsArr.forEach((text) => {
     const pTag = document.createElement('p');
     pTag.classList.add('content-text');
-    pTag.innerText = text;
+    pTag.textContent = text;
     paragraphsWrapper.append(pTag);
   });
   return paragraphsWrapper;
 }
 
-function createContent([{ img, alt, title, series, cast, text }]) {
-  const contentImg = createContentImg(img, alt);
+function createContentBody(title, series, cast, text) {
   const contentTitle = createContentHeading('h2', 'content-title', title);
   const contentSubtitle = createContentHeading(
     'h3',
@@ -353,13 +352,21 @@ function createContent([{ img, alt, title, series, cast, text }]) {
   const contentCastList = createContentList(cast);
   const contentTexts = createContentText(text);
 
-  return [
-    contentImg,
+  const contentBody = document.createElement('div');
+  contentBody.classList.add('content-body');
+  contentBody.append(
     contentTitle,
     contentSubtitle,
     contentCastList,
-    contentTexts,
-  ];
+    contentTexts
+  );
+  return contentBody;
+}
+
+function createContent({ img, alt, title, series, cast, text }) {
+  const contentImg = createContentImg(img, alt);
+  const contentBody = createContentBody(title, series, cast, text);
+  return [contentImg, contentBody];
 }
 
 function addTemplateToDom(parent, template) {
@@ -367,9 +374,8 @@ function addTemplateToDom(parent, template) {
   parent.append(...template);
 }
 
-function initContent(parent, seriesData) {
-  const initSeries = seriesData.filter((series) => series.id === initSeriesId);
-  const htmlTemplate = createContent(initSeries);
+function initContent(parent, initSeriesData) {
+  const htmlTemplate = createContent(initSeriesData);
   addTemplateToDom(parent, htmlTemplate);
 }
 
@@ -379,7 +385,7 @@ function showContent({ target }) {
       ({ id }) => id === Number(target.getAttribute('data-set'))
     );
 
-    const htmlTemplate = createContent(seriesFiltred);
+    const htmlTemplate = createContent(...seriesFiltred);
     addTemplateToDom(contentWrapper, htmlTemplate);
 
     if (document.querySelector('.active')) {
@@ -394,7 +400,7 @@ function showContent({ target }) {
 }
 
 addNavigation(taskmasterData);
-initContent(contentWrapper, taskmasterData);
+initContent(contentWrapper, initTaskmasterData);
 
 const navList = document.querySelector('.series-list');
 navList.addEventListener('click', showContent);

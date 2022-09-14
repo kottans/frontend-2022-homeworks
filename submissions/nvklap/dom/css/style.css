@@ -1,6 +1,17 @@
 @font-face {
   font-family: 'Veteran Typewriter';
-  src: url('../fonts/veteran\ typewriter.ttf') format('truetype');
+  src: url('../fonts/veteran-typewriter.ttf') format('truetype');
+}
+
+:root {
+  --black: #000;
+  --black-transparent: rgba(0, 0, 0, 0.3);
+  --black-transparent-dark: rgba(0, 0, 0, 0.6);
+  --grey: #d4c9c1;
+  --red: #9b011b;
+  --red-bright: #b8001f;
+  --white: #fff;
+  --white-transparent: rgba(255, 255, 255, 0.2);
 }
 
 *,
@@ -37,7 +48,7 @@ ul {
 }
 
 .header {
-  background-color: #9b011b;
+  background-color: var(--red);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +58,7 @@ ul {
 }
 
 .title {
-  color: #fff;
+  color: var(--white);
   font-size: 40px;
   font-weight: 400;
   letter-spacing: 2px;
@@ -74,17 +85,17 @@ ul {
   max-width: 250px;
   padding: 15px 0;
   border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--black-transparent);
   transition: left 500ms;
 }
 
 .series-link {
-  color: #fff;
+  color: var(--white);
   display: block;
   line-height: 2;
   padding: 0 35px 0 35px;
   position: relative;
-  text-decoration-color: rgba(0, 0, 0, 0);
+  text-decoration-color: transparent;
   transition: background-color 200ms;
 }
 
@@ -105,8 +116,8 @@ ul {
 }
 
 .series-link:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  text-decoration-color: rgba(255, 255, 255, 1);
+  background-color: var(--white-transparent);
+  text-decoration-color: var(--white);
 }
 
 .series-link:hover::after {
@@ -114,18 +125,18 @@ ul {
 }
 
 .content {
-  background-color: #d4c9c1;
+  background-color: var(--grey);
   flex: 1 1 75%;
-  padding: 10px;
   text-align: center;
 }
 
-.content-figure {
-  margin: -10px -10px 10px;
+.content-body {
+  padding: 10px;
 }
 
 .content-img {
-  max-width: 100%;
+  aspect-ratio: 24 / 11;
+  width: 100%;
 }
 
 .content-title {
@@ -133,8 +144,8 @@ ul {
 }
 
 .content-subtitle {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--black);
+  color: var(--white);
   display: inline-block;
   font-weight: 400;
   letter-spacing: 4px;
@@ -154,7 +165,7 @@ ul {
 }
 
 .red {
-  color: #b8001f;
+  color: var(--red-bright);
   display: block;
   font-weight: 800;
 }
@@ -167,8 +178,8 @@ ul {
 }
 
 .footer {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
+  background-color: var(--black-transparent-dark);
+  color: var(--white);
   grid-column: 1/4;
   line-height: 1.8;
   text-align: center;
@@ -206,7 +217,7 @@ ul {
   }
 
   .series-list {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--black-transparent-dark);
     position: absolute;
     top: 60px;
     left: -200px;
@@ -215,6 +226,7 @@ ul {
   .show {
     left: 0;
     width: 100%;
+    z-index: 1;
   }
 
   .cast-list {
