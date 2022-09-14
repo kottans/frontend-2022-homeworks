@@ -5,6 +5,7 @@
 @import "menu.css";
 @import "friends.css";
 @import "pagination.css";
+@import "error.css";
 
 :root {
   --color-background: #E6E6E6;
@@ -14,6 +15,7 @@
   --color-man-hover: #56A4C4;
   --color-woman: #ED7EAF;
   --color-woman-hover: #C45888;
+  --color-error: #c71647;
 }
 
 html {
@@ -28,7 +30,8 @@ body {
   color: var(--color-primary);
   padding: 10px;
   user-select: none;
-  line-height: 1.5
+  line-height: 1.5;
+  font-weight: 400;
 }
 * {
   box-sizing: border-box;

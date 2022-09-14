@@ -1,12 +1,25 @@
-import store from './store.js'
+import Store from './store.js'
 import CustomRange from './range.js'
 import Friends from './friends.js'
 import Filters from "./filters.js";
 import Pagination from './pagination.js'
+import Error from './error.js'
 
 const GLOB = {}
 
 function initGlob() {
+  GLOB.config = {
+    base: new URL('https://randomuser.me/api/'),
+    inc: 'dob,gender,name,phone,location,picture,login',
+    nat: 'us,de,fr,gb,ua,us,ca',
+    results: 240,
+    getUrl() {
+      this.base.searchParams.set('inc', this.inc)
+      this.base.searchParams.set('nat', this.nat)
+      this.base.searchParams.set('results', this.results)
+      return this.base
+    }
+  }
   GLOB.baseURL = new URL(window.location.href)
   GLOB.cardsOnPage = 24
   GLOB.duration = 300
@@ -44,10 +57,7 @@ function initGlob() {
     e.preventDefault()
     GLOB.toggleClass(GLOB.reloadDataIcon, 'rotate-360')
     setTimeout(() => {GLOB.toggleClass(GLOB.reloadDataIcon, 'rotate-360')}, 300)
-    store.init().then(() => {
-      GLOB.friends.reloadPersons(store.persons)
-      GLOB.filters.filterFriendsByURL(GLOB.baseURL)
-    })
+    initFriends()
   })
 
   GLOB.formFilters.addEventListener('change', (e) => {
@@ -95,7 +105,7 @@ function fadeOut(element, duration, delay) {
     easing: 'ease-out'
   })
   animation.addEventListener('finish', function() {
-    element.style.display = 'none'
+    element.remove()
   })
 }
 
@@ -111,10 +121,15 @@ function initPagination() {
 }
 
 function initFriends() {
-  store.init().then(() => {
-    GLOB.friends = new Friends(store.persons, GLOB)
+  const store = new Store(GLOB.config.getUrl())
+    store.init().then((response) => {
+    GLOB.friends = new Friends(response, GLOB)
     GLOB.filters.filterFriendsByURL(GLOB.baseURL)
   })
+    .catch(() => {
+      const errorDOMElement = new Error('Server error. Please try again later.').showError()
+      setTimeout(() => fadeOut(errorDOMElement, 500, GLOB.delay), 5000)
+    })
 }
 
 function initFilters() {
