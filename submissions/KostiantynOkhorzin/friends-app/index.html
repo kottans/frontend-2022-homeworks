@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends App</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <a href="#" class="header__logo">Friends App</a>
+        </header>
+        <main class="container">
+            <form class="form">
+                <div class="filter-gender">
+                    <div class="filter-gender__btn">
+                        <input class="filter-gender__input" id="all" type="radio" name="gender" value="all" checked>
+                        <label class="filter-gender__label" for="all">All</label>
+                    </div>
+                    <div class="filter-gender__btn">
+                        <input class="filter-gender__input" id="male" type="radio" name="gender" value="male">
+                        <label class="filter-gender__label" for="male">Male</label>
+                    </div>
+                    <div class="filter-gender__btn">
+                        <input class="filter-gender__input" id="female" type="radio" name="gender" value="female">
+                        <label class="filter-gender__label" for="female">Female</label>
+                    </div>
+                </div>
+                <div class="filter-age">
+                    <span class="filter-age__text">Filter by age:</span>
+                    <input class="filter-age__input" type="tel" placeholder="min" maxlength="2" name="min-age">
+                    <input class="filter-age__input" type="tel" placeholder="max" maxlength="2" name="max-age">
+                </div>
+                <div class="sort">
+                    <span class="sort__text">Sort by name:</span>
+                    <div class="sort__btn">
+                        <input class="sort__input" id="a-z" type="radio" name="sort" value="a-z">
+                        <label class="sort__label" for="a-z">
+                            <svg class="sort__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <path
+                                    d="M183.6 469.6C177.5 476.2 169 480 160 480s-17.5-3.8-23.6-10.4l-88-96c-11.9-13-11.1-33.3 2-45.2s33.3-11.1 45.2 2L128 365.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V365.7l32.4-35.4c11.9-13 32.2-13.9 45.2-2s13.9 32.2 2 45.2l-88 96zM320 320c0-17.7 14.3-32 32-32H480c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9L429.3 416H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H352c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9L402.7 352H352c-17.7 0-32-14.3-32-32zM416 32c12.1 0 23.2 6.8 28.6 17.7l64 128 16 32c7.9 15.8 1.5 35-14.3 42.9s-35 1.5-42.9-14.3L460.2 224H371.8l-7.2 14.3c-7.9 15.8-27.1 22.2-42.9 14.3s-22.2-27.1-14.3-42.9l16-32 64-128C392.8 38.8 403.9 32 416 32zM395.8 176h40.4L416 135.6 395.8 176z"
+                                    fill="#BF3807" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="sort__btn">
+                        <input class="sort__input" id="z-a" type="radio" name="sort" value="z-a">
+                        <label class="sort__label" for="z-a">
+                            <svg class="sort__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <path
+                                    d="M183.6 42.4C177.5 35.8 169 32 160 32s-17.5 3.8-23.6 10.4l-88 96c-11.9 13-11.1 33.3 2 45.2s33.3 11.1 45.2-2L128 146.3V448c0 17.7 14.3 32 32 32s32-14.3 32-32V146.3l32.4 35.4c11.9 13 32.2 13.9 45.2 2s13.9-32.2 2-45.2l-88-96zM320 64c0 17.7 14.3 32 32 32h50.7l-73.4 73.4c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H429.3l73.4-73.4c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8H352c-17.7 0-32 14.3-32 32zm96 192c-12.1 0-23.2 6.8-28.6 17.7l-64 128-16 32c-7.9 15.8-1.5 35 14.3 42.9s35 1.5 42.9-14.3l7.2-14.3h88.4l7.2 14.3c7.9 15.8 27.1 22.2 42.9 14.3s22.2-27.1 14.3-42.9l-16-32-64-128C439.2 262.8 428.1 256 416 256zM395.8 400L416 359.6 436.2 400H395.8z"
+                                    fill="#BF3807" />
+                            </svg>
+                        </label>
+                    </div>
+                </div>
+                <div class="sort">
+                    <span class="sort__text">Sort by age:</span>
+                    <div class="sort__btn">
+                        <input class="sort__input" id="1-9" type="radio" name="sort" value="1-9">
+                        <label class="sort__label" for="1-9">
+                            <svg class="sort__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <path
+                                    d="M352 64c0 17.7 14.3 32 32 32h16v64H384c-17.7 0-32 14.3-32 32s14.3 32 32 32h48 48c17.7 0 32-14.3 32-32s-14.3-32-32-32H464V64c0-17.7-14.3-32-32-32H384c-17.7 0-32 14.3-32 32zM160 480c9 0 17.5-3.8 23.6-10.4l88-96c11.9-13 11.1-33.3-2-45.2s-33.3-11.1-45.2 2L192 365.7V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V365.7L95.6 330.4c-11.9-13-32.2-13.9-45.2-2s-13.9 32.2-2 45.2l88 96C142.5 476.2 151 480 160 480zM445.7 364.9c-4.2 2-8.8 3.1-13.7 3.1c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32c0 12.8-7.5 23.8-18.3 28.9zm-40.7 54.9l-6.8 9.2c-10.5 14.2-7.5 34.2 6.7 44.8s34.2 7.5 44.8-6.7l48.8-65.8c14-18.9 21.5-41.7 21.5-65.2c0-48.6-39.4-88-88-88s-88 39.4-88 88c0 39.2 25.6 72.4 61.1 83.8z"
+                                    fill="#BF3807" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="sort__btn">
+                        <input class="sort__input" id="9-1" type="radio" name="sort" value="9-1">
+                        <label class="sort__label" for="9-1">
+                            <svg class="sort__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <path
+                                    d="M160 32c9 0 17.5 3.8 23.6 10.4l88 96c11.9 13 11.1 33.3-2 45.2s-33.3 11.1-45.2-2L192 146.3V448c0 17.7-14.3 32-32 32s-32-14.3-32-32V146.3L95.6 181.6c-11.9 13-32.2 13.9-45.2 2s-13.9-32.2-2-45.2l88-96C142.5 35.8 151 32 160 32zM352 320c0-17.7 14.3-32 32-32h48c17.7 0 32 14.3 32 32v96h16c17.7 0 32 14.3 32 32s-14.3 32-32 32H432 384c-17.7 0-32-14.3-32-32s14.3-32 32-32h16V352H384c-17.7 0-32-14.3-32-32zm93.7-171.1c10.8-5.1 18.3-16.2 18.3-28.9c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32c4.9 0 9.6-1.1 13.7-3.1zm-40.7 54.9C369.6 192.4 344 159.2 344 120c0-48.6 39.4-88 88-88s88 39.4 88 88c0 23.5-7.5 46.3-21.5 65.2L449.7 251c-10.5 14.2-30.6 17.2-44.8 6.7s-17.2-30.6-6.7-44.8l6.8-9.2z"
+                                    fill="#BF3807" />
+                            </svg>
+                        </label>
+                    </div>
+                </div>
+                <div class="search">
+                    <input class="search__input" type="text" placeholder="Search name..." name="search">
+                    <div class="search__btn">
+                        <img class='search__icon' src="img/search.svg" alt="">
+                    </div>
+                </div>
+                <button class="form__btn" type="reset">Reset all</button>
+            </form>
+            <ul class="list"></ul>
+        </main>
+        <footer class="footer">
+            <a href="#" class="footer__messege"> Kottans Front-End 2022 </a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
