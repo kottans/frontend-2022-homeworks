@@ -8,8 +8,6 @@
     text-decoration: none;
   }
   
-  .visualy_hidden:not(:focus):not(:active),
-  input[type="checkbox"].visualy_hidden,
   .visualy_hidden {
     position: absolute;
     width: 1px;
