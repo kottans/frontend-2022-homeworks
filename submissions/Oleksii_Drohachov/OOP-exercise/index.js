@@ -1,17 +1,11 @@
 class Creature {
-  constructor(name, gender, saying, friends) {
+  constructor(species, name, gender, saying, friends) {
+    this.species = species;
     this.name = name;
     this.gender = gender;
     this.saying = saying;
     this.friends = friends;
-    this.propsArray = [
-      "species",
-      "name",
-      "gender",
-      "saying",
-      "friends",
-      "legs",
-    ];
+    this.propsArray = ["species", "name", "gender", "saying", "friends"];
   }
   output = () => {
     return this.propsArray
@@ -24,18 +18,23 @@ class Creature {
   };
 }
 
-class Animal extends Creature {
-  constructor(name, gender, saying, friends) {
-    super(name, gender, saying, friends);
-    this.legs = 4;
+class Mammal extends Creature {
+  constructor(species, name, gender, saying, friends, legs) {
+    super(species, name, gender, saying, friends);
+    this.legs = legs;
+    this.propsArray = [...this.propsArray, "legs"];
   }
 }
 
-class Human extends Creature {
+class Animal extends Mammal {
+  constructor(species, name, gender, saying, friends) {
+    super(species, name, gender, saying, friends, 4);
+  }
+}
+
+class Human extends Mammal {
   constructor(name, gender, saying, friends) {
-    super(name, gender, saying, friends);
-    this.species = "human";
-    this.legs = 2;
+    super("human", name, gender, saying, friends, 2);
     this.hands = 2;
     this.propsArray = [...this.propsArray, "hands"];
   }
@@ -43,15 +42,13 @@ class Human extends Creature {
 
 class Dog extends Animal {
   constructor(name, gender, saying, friends) {
-    super(name, gender, saying, friends);
-    this.species = "dog";
+    super("dog", name, gender, saying, friends);
   }
 }
 
 class Cat extends Animal {
   constructor(name, gender, saying, friends) {
-    super(name, gender, saying, friends);
-    this.species = "cat";
+    super("cat", name, gender, saying, friends);
   }
 }
 
