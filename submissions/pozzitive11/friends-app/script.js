@@ -45,15 +45,16 @@ function loadUsersData() {
     })
     .catch(() => {
       loadingMessage.remove();
-      showErrorStauts();
+      showErrorStautus();
     });
 }
 
-function showErrorStauts() {
+function showErrorStautus() {
   const errorMessage = document.createElement("div");
   errorMessage.classList.add("error-block");
   errorMessage.innerHTML = `${statusMessage.failure}`;
 
+  console.log(statusMessage.failure);
   cardsList.append(errorMessage);
 }
 
@@ -66,25 +67,17 @@ function showCards(cards) {
 function createCard({ picture, name, dob, gender, location }) {
   const userCard = document.createElement("li");
   userCard.classList.add("user__item");
-
+  let userGender;
+  if (gender === "male") userGender = "user__gender--male";
+  if (gender === "female") userGender = "user__gender--female";
   userCard.innerHTML = `
+    <h4 class="user__gender ${userGender}">${gender}</h4>
     <img class="user__img" src="${picture.large}" alt="User photo" />
     <p class="user__name">${name.first} ${name.last}</p>
     <p class="user__age">Age: <span class="user__age-span">${dob.age}</span></p>
     <p class="user__location">${location.country}</p>`;
 
-  addGenderHeader(gender, userCard);
   cardsList.append(userCard);
-}
-
-function addGenderHeader(gender, card) {
-  const friendGender = document.createElement("div");
-  if (gender === "male") {
-    friendGender.innerHTML = `<h4 class="user__gender user__gender--male">${gender}</h4>`;
-  } else {
-    friendGender.innerHTML = `<h4 class="user__gender user__gender--female">${gender}</h4>`;
-  }
-  card.prepend(friendGender);
 }
 
 const compareByName = (firstUser, secondUser) =>
@@ -98,8 +91,8 @@ const compareByGender = (user, type) => user.gender === type;
 
 function filterBySearch(arr, target) {
   return arr.filter((user) => {
-    const fullName = `${user.name.first} ${user.name.last}`;
-    return fullName.toLowerCase().includes(target.toLowerCase());
+    const fullName = `${user.name.first} ${user.name.last}`.toLowerCase();
+    return fullName.includes(target.toLowerCase());
   });
 }
 
