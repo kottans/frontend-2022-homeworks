@@ -1,22 +1,25 @@
 ﻿'use strict'
 
 const cards = [
-    { name: 'naruto', image: 'img/1.png' },
-    { name: 'uchiha', image: 'img/2.png' },
-    { name: 'sai', image: 'img/3.png' },
-    { name: 'kakashi', image: 'img/4.png' },
-    { name: 'minato', image: 'img/5.png' },
-    { name: 'zetsu', image: 'img/6.png' },
+    { name: 'naruto', image: 'img/7.png' },
+    { name: 'uchiha', image: 'img/8.png' },
+    { name: 'sai', image: 'img/9.png' },
+    { name: 'kakashi', image: 'img/10.png' },
+    { name: 'minato', image: 'img/11.png' },
+    { name: 'zetsu', image: 'img/12.png' },
 ]
 
 cards.push(...cards)
-cards.sort(() => {
-    return 0.5 - Math.random()
-})
+
+const sortingCards = (cards) => {
+    cards.sort(() => {
+        return 0.5 - Math.random()
+    })
+}
 
 const container = document.querySelector('.container')
 
-const generateCards = (name, image) => {
+const generateCards = ({ name, image }) => {
     return `
             <div class ="hide-swap">
                 <div class="c1" data-card='${name}'></div>
@@ -25,62 +28,87 @@ const generateCards = (name, image) => {
         `
 }
 
-const cardsDiv = document.createElement('div')
-cardsDiv.classList.add('wrapper')
-
-const cardsHTML = cards
-    .map((card) => {
-        return generateCards(card.name, card.image, card.alt)
-    })
-    .join('')
-
-cardsDiv.innerHTML = cardsHTML
-container.append(cardsDiv)
+const showCards = (dataBase) => {
+    sortingCards(cards)
+    const cardsDiv = document.createElement('div')
+    cardsDiv.classList.add('wrapper')
+    cardsDiv.innerHTML = dataBase.reduce(
+        (acc, card) => (acc += generateCards(card)),
+        ''
+    )
+    container.append(cardsDiv)
+}
+showCards(cards)
 
 const cardsList = document.querySelectorAll('.hide-swap')
 const wrapper = document.querySelector('.wrapper')
 
-let cardFirst = []
+let cardsVisible = []
 
-function cancelCardActive() {
+const cancelCardActive = () => {
     cardsList.forEach((card) => {
         card.classList.remove('active')
     })
 }
 
-function removeClassVisible() {
+const removeClassVisible = () => {
     cardsList.forEach((card) => {
         card.classList.remove('visible')
     })
 }
 
-function resetCards() {
+const messageVictory = () => {
+    const messageBlock = document.createElement('div')
+    messageBlock.classList.add('victory')
+    messageBlock.innerHTML = `
+            <h2 class= "victory__title">Сongratulations you won</h2>
+            <div class= "victory__descr">press reset to start over</div>
+            <button class= "victory__btn">Reset</button>
+
+    `
+    container.append(messageBlock)
+}
+
+const resetGame = () => {
+    const resetBtn = document.querySelector('.victory__btn')
+    resetBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        location.reload()
+    })
+}
+
+const resetCards = () => {
     const cardsLength = document.querySelectorAll('.visible').length
     if (cardsLength == 12) {
-        setTimeout(() => alert('You win'), 400)
-        setTimeout(() => removeClassVisible(), 500)
-        setTimeout(() => cancelCardActive(), 600)
-        cards.sort(() => 0.5 - Math.random(), 700)
+        setTimeout(() => cancelCardActive(), 300)
+        setTimeout(() => removeClassVisible(), 400)
+        setTimeout(() => messageVictory(), 1500)
+        setTimeout(() => resetGame(), 1700)
     }
 }
 
-function changeCard() {
-    if (cardFirst.length == 2 && cardFirst[0] == cardFirst[1]) {
+const changeCard = () => {
+    console.log(cardsVisible)
+    if (cardsVisible.length == 2 && cardsVisible[0] == cardsVisible[1]) {
+        cardsVisible = []
         cardsList.forEach((item) => {
             if (item.classList.contains('active')) {
                 item.classList.add('visible')
             }
         })
-    } else if (cardFirst.length > 2) {
-        cardFirst = []
-        cancelCardActive()
+    } else if (
+        cardsVisible.length == 2 &&
+        cardsVisible[0] !== cardsVisible[1]
+    ) {
+        cardsVisible = []
+        setTimeout(() => cancelCardActive(), 600)
     }
 }
 
-function showContent({ target }) {
+const showContent = ({ target }) => {
     if (!target.parentElement.classList.contains('container')) {
         target.parentElement.classList.toggle('active')
-        cardFirst.push(target.dataset.card)
+        cardsVisible.push(target.dataset.card)
         changeCard()
         resetCards()
     }
