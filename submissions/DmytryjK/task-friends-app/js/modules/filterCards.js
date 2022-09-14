@@ -33,8 +33,7 @@ function filterCards() {
             slider = rangeSlider(minMaxNumber(fetchCardsCopy, 'min'), minMaxNumber(fetchCardsCopy, 'max'));
 
             filters(fetchCardsCopy);
-        })
-        .catch(err => console.log(err));
+        });
 
     function filters(cards) {
         let isEventSearchFilterIsDone = false;
