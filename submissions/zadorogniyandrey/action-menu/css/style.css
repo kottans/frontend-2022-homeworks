@@ -108,15 +108,18 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     padding: 0 10px;
 }
 .sidebar__menu{
-   padding: 30px 20px; 
+   padding: 30px 0; 
 }
 .sidebar__menu__item{
     margin-bottom: 20px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.sidebar__menu__item:hover{
+    background-color:rgb(160, 191, 236);
 }
 .sidebar__menu__item:hover > .sidebar__btn{
     transition: 0.1s;
-}
-.sidebar__menu__item:hover > .sidebar__btn{
     color: rgb(237, 243, 187);
 }
 .sidebar__btn{
