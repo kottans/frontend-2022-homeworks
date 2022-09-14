@@ -5,11 +5,6 @@ export default class Friends {
     this.personsEdit = [...this.persons]
   }
 
-  reloadPersons(persons) {
-    this.persons = persons
-    this.personsEdit = [...this.persons]
-  }
-
   renderFriends(persons = this.personsEdit, page = this.GLOB.currentPage) {
     this.GLOB.friendsContainer.classList.toggle('opacity-0')
 
@@ -45,6 +40,19 @@ export default class Friends {
           </div>
         </div>
       </div>
+    `
+  }
+
+  removeFriends() {
+    this.GLOB.friendsContainer.innerHTML = ''
+    for (let i = 0; i < this.GLOB.cardsOnPage; i++) {
+      this.GLOB.friendsContainer.innerHTML += this.getEmptyCardTemplate()
+    }
+  }
+
+  getEmptyCardTemplate() {
+    return `
+    <div class="card blinker"></div>
     `
   }
 }

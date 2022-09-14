@@ -57,6 +57,7 @@ function initGlob() {
     e.preventDefault()
     GLOB.toggleClass(GLOB.reloadDataIcon, 'rotate-360')
     setTimeout(() => {GLOB.toggleClass(GLOB.reloadDataIcon, 'rotate-360')}, 300)
+    GLOB.friends.removeFriends()
     initFriends()
   })
 
