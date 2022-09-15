@@ -11,43 +11,59 @@ const alphabetRadioBtns = document.querySelectorAll('input[name="alphabet"]');
 
 const requestURL = 'https://randomuser.me/api/?results=12&exc=location,login,registered,cell,id,nat';
 
-async function sendRequest (url) {
-    return await fetch(url).then(response => {
+function sendRequest (url) { 
+    return fetch(url).then(response => {
         return response.json();
     }).catch(err => {
         alert('Something went wrong, try again!');
         console.error(err);
+        location.reload();
     });
 }
 
 let initialFriendsArr;
 
 sendRequest(requestURL)
-.then(async (serverData) => {
-    initialFriendsArr = await serverData.results;
-    generateUsers(initialFriendsArr);
+.then((serverData) => {
+  initialFriendsArr = serverData.results;
+  initialFriendsArr = createFriendsCopy(initialFriendsArr);
+  generateUsers(initialFriendsArr);
 })
 .catch((err) => {
     console.log(err);
 });
 
+function createFriendsCopy(friends) {
+    const temp = [];
+    friends.forEach(friend => {
+        temp.push({
+          fullName: `${friend.name.first} ${friend.name.last}`,
+          picture: friend.picture.large,
+          email: friend.email,
+          phone: friend.phone,
+          gender: friend.gender,
+          age: friend.dob.age,
+        });
+    })
+    return temp;
+}
 // generating html list
 
-function createElement(userData) {
+function createElement({fullName, picture, email, phone, gender, age}) {
     return `
     <li class='list-item'>
         <div class='user-top'>
-            <img src='${userData.picture.large}'>
-            <h2 userData-name='${`${userData.name.first} ${userData.name.last}`}'>${userData.name.first} ${userData.name.last}</h2>
-            <p>${userData.email}</p>
-            <p>${userData.phone}</p>
+            <img src='${picture}'>
+            <h2 userData-name="${fullName}">${fullName}</h2>
+            <p>${email}</p>
+            <p>${phone}</p>
         </div>
         <div class='user-bottom'>
-            <p data-gender='${userData.gender}'>${userData.gender}</p>
-            <p data-age='${userData.dob.age}'>${userData.dob.age}</p>
+            <p data-gender='${gender}'>${gender}</p>
+            <p data-age='${age}'>${age}</p>
         </div>
     </li>
-    `
+    `;
 }
 
 const generateUsers = (users) => {
@@ -70,8 +86,8 @@ function handleSorting(friends) {
 
     friends = sortByInput(friends);
     friends = sortByGender(friends);
-    friends = sortByAge(friends);
-    friends = sortByName(friends)
+    sortByAge(friends);
+    sortByName(friends)
     friends = resetToInitial(friends);
 
     generateUsers(friends);
@@ -117,15 +133,12 @@ searchBar.addEventListener('input', ({target}) => {
 function sortByInput(friendsCopy) {
     if (searchInputValue !== '') {
 
-        let filteredFriends = [];
-
-        friendsCopy.forEach(friend => {
-            const friendFullName = `${friend.name.first} ${friend.name.last}`.toLowerCase();
-            if (friendFullName.search(searchInputValue) !== -1) {
-                filteredFriends.push(friend);
-            }
+        const filteredFriends = friendsCopy.filter(({fullName}) => {
+            fullName = fullName.toLowerCase();
+            if (fullName.search(searchInputValue) !== -1) return true;
         });
         friendsCopy = [...filteredFriends];
+
     } else {
         friendsCopy = [...initialFriendsArr];
     }
@@ -136,10 +149,7 @@ function sortByGender(friendsCopy) {
     switch(selectedGender) {
         case 'male':
         case 'female':
-            let filteredGendersArr = [];
-            filteredGendersArr = friendsCopy.filter(friend => friend.gender === selectedGender);
-            friendsCopy = [...filteredGendersArr];
-            return friendsCopy;
+            return friendsCopy.filter(friend => friend.gender === selectedGender);
         case 'all':
         default:
             return friendsCopy;
@@ -148,44 +158,28 @@ function sortByGender(friendsCopy) {
 
 function sortByAge(friendsCopy) {
     if (selectedAgeDirection) {
-        friendsCopy.sort((firstFriend, secondFriend) => {
-            return secondFriend.dob.age - firstFriend.dob.age;
-        });
-        switch(selectedAgeDirection) {
-            case 'ageDown':
-                return friendsCopy;
-            case 'ageUp':
-                return friendsCopy.reverse();
-        }
+
+        friendsCopy.sort(({age: a}, {age: b}) => b - a)
+        if (selectedAgeDirection === "ageUp") friendsCopy.reverse();
+
     } else {
         ageRadioBtns.forEach(radioBtn => {
             radioBtn.checked = false;
         });
     }
-    
-    return friendsCopy;
 }
 
 function sortByName(friendsCopy) {
     if (selectedAlphabetDirection) {
-        
-        function sortArr(a, b) {
-            return a.name.first > b.name.first ? 1 : -1;
-        }
-        
-        friendsCopy.sort(sortArr);
-        switch(selectedAlphabetDirection) {
-            case 'AZ':
-                return friendsCopy;
-            case 'ZA':
-                return friendsCopy.reverse();
-        }
+
+        friendsCopy.sort(({ fullName: a }, { fullName: b}) =>  a > b);
+        if (selectedAlphabetDirection === "ZA") friendsCopy.reverse();
+
     } else {
         alphabetRadioBtns.forEach(radioBtn => {
             radioBtn.checked = false;
         });
     }
-    return friendsCopy;
 }
 
 function resetToInitial(friendsCopy) {
@@ -194,7 +188,7 @@ function resetToInitial(friendsCopy) {
         selectedGender = null;
         selectedAgeDirection = null;
         selectedAlphabetDirection = null;
-
+        searchBar.value = '';
         allRadioBtns.forEach(radioBtn => {
             radioBtn.checked = false;
         });

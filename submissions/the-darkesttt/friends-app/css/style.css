@@ -19,8 +19,9 @@ body {
     max-width: 1300px;
     margin: 50px auto;
     padding: 0 15px;
-    display: grid;
-    grid-template-columns: [sort-bar] 1fr [users] 2fr;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
 }
 
 /* sort-bar ----------------------------------- */
@@ -33,23 +34,24 @@ body {
 .sort-bar {
     background-color: var(--accent-color);
     color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    position: fixed;
+}
 
-    grid-area: sort-bar;
+.sort-bar__inner {
+    width: 100%;
     display: flex;
+    height: 400px;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    
-    border-radius: 5%;
-    padding: 50px;
-    text-align: center;
-
-    max-width: 400px;
-    height: 532px;
 }
 
-.sort-bar > * {
-    width: 100%;
+.sort-bar__toggle,
+#sortBarCheck {
+    display: none;
 }
 
 .sort-bar__search {
@@ -87,8 +89,7 @@ body {
 /* users --------------------------------------- */
 
 .users-list {
-    
-    grid-area: users;
+    flex: 0 1 66%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -96,6 +97,8 @@ body {
     width: 100%;
     list-style: none;
     gap: 30px;
+    margin-left: 30%;
+    margin-bottom: 15px;
 }
 
 .list-item {
@@ -144,15 +147,92 @@ body {
     display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+    .users-list {
+        justify-content: flex-end;
+    }
+    .list-item {
+        width: 222px;
+    }
+}
+
+@media screen and (max-width: 889px) {
     .wrapper {
-        display: flex;
         flex-direction: column;
+        margin: 0 auto;
     }
 
     .sort-bar {
+        position: static;
+        margin: 25px 0;
         width: 100%;
-        max-width: none;
-        margin-bottom: 50px;
+    }
+
+    .sort-bar__toggle,
+    #sortBarCheck {
+        display: block;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: calc(25px + (60px - 30px)/2);
+        right: 50px;
+    }
+    
+    .sort-bar__toggle {
+        pointer-events: none;
+    }
+    
+    .sort-bar__toggle span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        position: absolute;
+        transition: .3s;
+    }
+    
+    .sort-bar__toggle span:nth-child(1) {
+        top: 5px;
+    }
+    
+    .sort-bar__toggle span:nth-child(2) {
+        top: 15px;
+    }
+    
+    .sort-bar__toggle span:nth-child(3) {
+        top: 25px;
+    }
+    
+    #sortBarCheck {
+        opacity: 0;
+    }
+    
+    #sortBarCheck:checked ~ .sort-bar__inner {
+        display: flex;
+        margin-top: 30px;
+    }
+    
+    #sortBarCheck:checked ~ .sort-bar__toggle span:nth-child(1)  {
+        transform: rotate(45deg);
+        top: 14px;
+    }
+    
+    #sortBarCheck:checked ~ .sort-bar__toggle span:nth-child(2)  {
+        opacity: 0;
+    }
+    
+    #sortBarCheck:checked ~ .sort-bar__toggle span:nth-child(3)  {
+        transform: rotate(-45deg);
+        top: 14px;
+    }
+
+    .sort-bar__inner {
+        height: 450px;
+        display: none;
+    }
+
+    .users-list {
+        margin-left: 0;
+        justify-content: center;
     }
 }
