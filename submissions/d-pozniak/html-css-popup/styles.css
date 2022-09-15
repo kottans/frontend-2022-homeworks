@@ -1,6 +1,7 @@
 @font-face {
     font-family: Antic;
-    src: url(../fonts/AnticSlab-Regular.ttf);
+    src: url(../fonts/AnticSlab-Regular.woff),
+    url(../fonts/AnticSlab-Regular.woff2);
 }
 *,
 *:before,
@@ -26,9 +27,12 @@ nav {
 svg {
     fill: #68838b;
 }
+body {
+    font-family: Antic, Arial, sans-serif;
+}
 
 /* HEADER */
-.header {
+.page-header {
     background: linear-gradient(180deg, rgba(191, 239, 255, 0.3), transparent);
 }
 .main-nav {
@@ -41,16 +45,18 @@ svg {
     padding: 0 10px;
 }
 .logo-wrapper {
+    margin: 0 15px;
+}
+.logo-link--wrapper {
     display: flex;
     align-items: center;
-    margin: 0 15px;
+    text-decoration: none;
 }
 .logo-img {
     fill: #68838b;
 }
 .logo-title {
     font-size: 54px;
-    font-family: Antic, Arial, sans-serif;
     margin-left: 20px;
     color: #68838b;
 }
@@ -138,7 +144,6 @@ svg {
     justify-content: center;
 }
 .more-label {
-    font-family: Antic, Arial, sans-serif;
     font-size: 24px;
     margin-top: 30px;
     color: #68838b;
@@ -167,7 +172,6 @@ svg {
 }
 .link-even--more {
     text-decoration: none;
-    font-family: Antic, Arial, sans-serif;
     font-size: 24px;
     color: #68838b;
 }
@@ -176,21 +180,26 @@ svg {
 .popup-menu--item:focus-within .card-image > svg,
 .popup-menu--item:hover .card-image > svg,
 .item-wrapper:hover svg.nav-svg,
-.item-wrapper:focus-within svg.nav-svg {
+.logo-link--wrapper:hover .logo-img > svg,
+.item-wrapper:focus-within svg.nav-svg,
+.logo-wrapper:focus-within .logo-img > svg {
     fill: #f08080;
 }
 .popup-menu--item:focus-within .card-subtitle,
 .more-section:focus-within .more-label,
 .more-link--wrapper:focus-within .link-even--more,
+.logo-wrapper:focus-within .logo-title,
 .popup-menu--item:hover .card-subtitle,
 .more-section:hover .more-label,
-.more-link--wrapper:hover .link-even--more {
+.more-link--wrapper:hover .link-even--more,
+.logo-link--wrapper:hover .logo-title {
     color: #f08080;
 }
 .popup-menu--item:focus-within .popup-item--card,
 .more-section:focus-within .more-label,
 .more-link--wrapper:focus-within .link-even--more,
-.item-wrapper:focus-within svg.nav-svg {
+.item-wrapper:focus-within svg.nav-svg,
+.logo-wrapper:focus-within {
     outline: 2px solid #f08080;
     border-radius: 8px;
 }
