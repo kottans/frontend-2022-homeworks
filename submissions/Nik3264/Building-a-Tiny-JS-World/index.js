@@ -8,62 +8,65 @@
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 const dog = {
-   species: 'dog',
-   name: 'Toby',
-   gender: 'male',
-   legs: 4,
-   hands: 0,
-   saying: 'woof-woof!'
- };
+  species: "dog",
+  name: "Toby",
+  gender: "male",
+  legs: 4,
+  hands: 0,
+  saying: "woof-woof!",
+};
 
- const cat = {
-   species: 'cat',
-   name: 'Vasya',
-   gender: 'male',
-   legs: 4,
-   hands: 0,
-   saying: 'mioueui-mi-mi!'
- };
+const cat = {
+  species: "cat",
+  name: "Vasya",
+  gender: "male",
+  legs: 4,
+  hands: 0,
+  saying: "mioueui-mi-mi!",
+};
 
- const catwoman = {
-  __proto__: cat, 
-   species: 'catwoman',
-   name: 'Tina',
-   gender: 'male',
-   legs: 4,
-   hands: 0,
-   saying:cat.saying
- };
+const catwoman = {
+  __proto__: cat,
+  species: "catwoman",
+  name: "Tina",
+  gender: "male",
+  legs: 4,
+  hands: 0,
+};
 
- const men = {
-   species: 'men',
-   name: 'Nik',
-   gender: 'male',
-   legs: 2,
-   hands: 2,
-   saying: 'hello!'
- };
+const men = {
+  species: "men",
+  name: "Nik",
+  gender: "male",
+  legs: 2,
+  hands: 2,
+  saying: "hello!",
+};
 
- const woman = {
-   species: 'woman',
-   name: 'Tyna',
-   gender: 'female',
-   legs: 2,
-   hands: 2,
-   saying: 'wo hei! Hello!'
- };
+const woman = {
+  species: "woman",
+  name: "Tyna",
+  gender: "female",
+  legs: 2,
+  hands: 2,
+  saying: "wo hei! Hello!",
+};
 
- const inhabitants = [dog, cat, catwoman, men, woman];
+const properties = ["spesies", "name", "gender", "legs", "hands", "saying"];
+const inhabitants = [dog, cat, catwoman, men, woman];
 
- const listInhabitants = inhabitants.map(inhabitant => {
-    inhabitant.name = `<strong>${inhabitant.name}</strong>`;
+cat.saying = "This is working! Test2!! Is this correct now?";
 
-    return  Object.keys(inhabitant).map(property => {
-        return inhabitant[property];
-    }).join(', ');       
- });
- print(listInhabitants.join(";\n"));
- 
+const listInhabitants = inhabitants.map((inhabitant) => {
+  inhabitant.name = `<strong>${inhabitant.name}</strong>`;
+  return properties
+    .map((property) => {
+      return inhabitant[property];
+    })
+    .join(", ");
+});
+print(listInhabitants.join(";\n"));
+
 // ======== OUTPUT ========
 /* Use print(message) for output.
    Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
@@ -82,5 +85,3 @@ const dog = {
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
 */
-
-
