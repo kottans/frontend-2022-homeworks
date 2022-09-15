@@ -4,7 +4,7 @@ const sidebar = document.querySelector(".sidebar");
 const searchInput = document.querySelector(".search__input");
 
 const createFriend = ({ gender, fullName, age, face, nat }) => {
-  const textHtml = `
+  return `
             <div class="friend">
                 <div class="friend-picture-sex">
                     <img src="${face}" alt="" class="friend-picture">
@@ -28,26 +28,32 @@ const createFriend = ({ gender, fullName, age, face, nat }) => {
                     </div>
                 </div>
             </div>`;
-  friendsContainer.insertAdjacentHTML("beforeend", textHtml);
 };
-const getFriendsData = async (url) => {
+const getFriendsData = async (url, requestCounter = 0) => {
+  if (requestCounter > 4) {
+    alert("GO AWAY");
+    location.reload();
+  }
   try {
     const response = await fetch(url);
     const { results } = await response.json();
     return results;
   } catch (err) {
-    alert("Try again please");
     console.log(err);
+    getFriendsData(url, requestCounter + 1);
   }
 };
-const setFriendsDataToHtml = (friends) =>
-  friends.forEach((friend) => createFriend(friend));
+const setFriendsDataToHtml = (friends) => {
+  friendsContainer.innerHTML = "";
+  let temp = "";
+  friends.forEach((friend) => (temp += createFriend(friend)));
+  friendsContainer.insertAdjacentHTML("beforeend", temp);
+};
 
-const initialFriends = getFriendsData(FRIEND_URL);
+let initialFriends = getFriendsData(FRIEND_URL);
 
-let friendsObj;
 (async () => {
-  friendsObj = [...(await initialFriends)].map((friend) => {
+  initialFriends = [...(await initialFriends)].map((friend) => {
     return {
       gender: friend.gender,
       fullName: `${friend.name.first} ${friend.name.last}`,
@@ -56,11 +62,12 @@ let friendsObj;
       nat: friend.nat,
     };
   });
-  setFriendsDataToHtml(friendsObj);
+  setFriendsDataToHtml(initialFriends);
 })();
-// actualy I could use this code below, but I prefer IIFE here, because fetch called once
+// I prefer IIFE here, because fetch called once
 let sex;
 let headerInputValue = "";
+let friendsCopy;
 
 const filterSex = (friends, sex) => {
   if (sex === "male" || sex === "female") {
@@ -85,26 +92,25 @@ const sortAge = (friends, direction) => {
   friends.sort(({ age: a }, { age: b }) => a - b);
   if (direction === "up") friends.reverse();
 };
+
 const handleFilters = (friends) => {
-  friendsContainer.innerHTML = "";
   friends = filterSex(friends, sex);
   friends = filterByInput(friends, headerInputValue);
   setFriendsDataToHtml(friends);
 };
-let friendsCopy;
 
 sidebar.addEventListener("click", ({ target }) => {
-  friendsCopy = [...friendsObj];
+  friendsCopy = [...initialFriends];
+
   if (target.closest(".search")) return;
   if (target.closest(".sex-icon")) sex = target.dataset.id;
-  if (target.closest(".age-icon"))
-    sortAge(friendsCopy, target.dataset.direction);
-  if (target.closest(".name-icon"))
-    sortName(friendsCopy, target.dataset.direction);
+  if (target.closest(".age-icon")) sortAge(friendsCopy, target.dataset.direction);
+  if (target.closest(".name-icon")) sortName(friendsCopy, target.dataset.direction);
   if (target.closest(".icon-hover")) handleFilters(friendsCopy);
 });
+
 searchInput.addEventListener("input", ({ target }) => {
-  friendsCopy = [...friendsObj];
+  friendsCopy = [...initialFriends];
   headerInputValue = target.value;
   handleFilters(friendsCopy);
 });
