@@ -58,6 +58,7 @@ a {
     height: 50px;
 }
 
+.tribute a:hover,
 .item:hover,
 .item:focus {
     outline: #a18484 2px;
@@ -133,7 +134,8 @@ a {
     color: #2c2b2b;
     font-size: 0.7em;
     margin-top: 5px;
-    padding: 1px 2px;
+    padding: 2px;
+    border: 1px solid transparent;
 }
 
 .tribute a:focus {
