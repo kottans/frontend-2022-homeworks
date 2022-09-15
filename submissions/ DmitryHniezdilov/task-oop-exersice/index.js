@@ -1,6 +1,5 @@
 /* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
    Complete the below for code reviewers' convenience:
-
    Code repository: https://github.com/DmitryHniezdilov/task-a-tiny-JS-world/tree/gh-pages
    Web app: https://dmitryhniezdilov.github.io/task-a-tiny-JS-world/
    */
@@ -16,14 +15,16 @@ class Inhabitant {
     this.gender = gender;
     this.saying = saying || `Hello, I'm ${this.name}`;
     this.friends = [];
+    this.props = ["species", "name", "gender", "saying", "friends"];
   }
 
   addFriends(...newFriends) {
     this.friends = [...this.friends, ...newFriends];
   }
 
-  printEntries() {
-    const stringOfEntries = Object.entries(this).reduce((str, [key, value]) => {
+  printProps() {
+    const stringOfEntries = this.props.reduce((str, key) => {
+      const value = this[key];
       if (!value) return str;
       const isValueArray = Array.isArray(value);
       if (isValueArray && !value.length) return str;
@@ -42,6 +43,7 @@ class Human extends Inhabitant {
     super("human", name, gender, saying);
     this.legs = 2;
     this.hands = 2;
+    this.props = [...this.props, "legs", "hands"];
   }
 }
 
@@ -61,6 +63,7 @@ class Animal extends Inhabitant {
   constructor(species, name, gender, saying) {
     super(species, name, gender, saying);
     this.paws = 4;
+    this.props = [...this.props, "paws"];
   }
 }
 
@@ -80,6 +83,7 @@ class CharacterAnimal extends Inhabitant {
   constructor(species, name, gender, saying) {
     super(species, name, gender, saying);
     this.paws = 4;
+    this.props = [...this.props, "paws"];
   }
 }
 
@@ -147,4 +151,4 @@ const listOfInhabitants = [
 
 // ======== OUTPUT ========
 
-listOfInhabitants.forEach((inhabitant) => inhabitant.printEntries());
+listOfInhabitants.forEach((inhabitant) => inhabitant.printProps());
