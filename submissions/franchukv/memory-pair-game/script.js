@@ -12,6 +12,7 @@ const memoryGame = document.querySelector('.memory-game');
 const popup = document.querySelector('.popup');
 const popupBg = document.querySelector('.popup-background');
 const backsideImg = 'img/backside.png';
+const numberOfCards = 12;
 
 let gameData;
 let mainPopupBtn;
@@ -21,105 +22,20 @@ let firstCard, secondCard;
 let matchCounter = 0;
 let clickCounter = 0;
 
-(function createFirstSreen() {
-    popup.innerHTML = '';
+function getShuffledCards(cards, numberOfCards) {
+    let temporaryArray = [...cards].sort(() => 0.5 - Math.random());
+    let resultArray = [];
 
-    const popupTitle = document.createElement('h1');
-    popupTitle.classList.add('popup__title');
-    popupTitle.textContent = 'Memory - Pair Game inspired by Civilization 5';
-    popup.append(popupTitle);
+    for (let i = 0; i < (numberOfCards / 2); i++) {
+        resultArray.push(temporaryArray[i]);
+    }
 
-    const popupBtn = document.createElement('span');
-    popupBtn.classList.add('popup__btn');
-    popupBtn.textContent = 'Start Game';
-    popup.append(popupBtn);
-
-    addEventListenerToPopupBtn();
-})();
-
-function finishTheGame() {
-    popup.classList.remove('popup--non-active');
-    popupBg.classList.add('transparent-bg');
-
-    popup.innerHTML = '';
-
-    const popupTitle = document.createElement('h1');
-    popupTitle.classList.add('popup__title');
-    popupTitle.textContent = 'Victory!';
-    popup.append(popupTitle);
-
-    const popupClickCounter = document.createElement('p');
-    popupClickCounter.classList.add('popup__click-counter');
-    popupClickCounter.textContent = `You won this game for ${clickCounter} clicks.`;
-    popup.append(popupClickCounter);
-
-    const popupBtn = document.createElement('span');
-    popupBtn.classList.add('popup__btn');
-    popupBtn.textContent = 'Start New Game';
-    popup.append(popupBtn);
-
-    addEventListenerToPopupBtn();
+    return [...resultArray, ...resultArray].sort(() => 0.5 - Math.random()).map((title) => ({ title }));
 }
 
 function addEventListenerToPopupBtn() {
     mainPopupBtn = document.querySelector('.popup__btn');
     mainPopupBtn.addEventListener('mouseup', initializeGame);
-}
-
-function getShuffledArray(arr) {
-    let tempArr = [...arr].sort(() => 0.5 - Math.random());
-    let resultArr = [];
-
-    for (let i = 0; i < 6; i++) {
-        resultArr.push(tempArr[i]);
-    }
-
-    return [...resultArr, ...resultArr].sort(() => 0.5 - Math.random()).map((title) => ({ title }));
-}
-
-function createHeader() {
-    popup.classList.add('popup--non-active');
-    popup.innerHTML = '';
-
-    const headerContainer = document.createElement('div');
-    headerContainer.classList.add('header__container');
-    header.append(headerContainer);
-
-    const headerTitle = document.createElement('h2');
-    headerTitle.classList.add('header__title');
-    headerTitle.textContent = '"Those who cannot remember the past are condemned to repeat it."';
-    headerContainer.append(headerTitle);
-
-    const headerSubtitle = document.createElement('p');
-    headerSubtitle.classList.add('header__subtitle');
-    headerSubtitle.textContent = 'George Santayana';
-    headerContainer.append(headerSubtitle);
-}
-
-function addCardToBoard(card) {
-    const memoryCard = document.createElement('div');
-    memoryCard.classList.add('memory-card');
-    memoryCard.setAttribute('data-civilization', gameData[card].title);
-    memoryGame.append(memoryCard);
-
-    const backside = document.createElement('img');
-    backside.classList.add('backside');
-    backside.setAttribute('src', backsideImg);
-    memoryCard.append(backside);
-
-    const frontsideBlock = document.createElement('div');
-    frontsideBlock.classList.add('frontside');
-    memoryCard.append(frontsideBlock);
-
-    const frontsideImg = document.createElement('img');
-    frontsideImg.classList.add('frontside-img');
-    frontsideImg.setAttribute('src', `img/${gameData[card].title}.webp`);
-    frontsideBlock.append(frontsideImg);
-
-    const frontsideTitle = document.createElement('span');
-    frontsideTitle.classList.add('frontside-title');
-    frontsideTitle.innerHTML = gameData[card].title;
-    frontsideBlock.append(frontsideTitle);
 }
 
 function checkForMatch() {
@@ -139,7 +55,7 @@ function disableCards() {
     firstCard.removeEventListener('mouseup', flipCards);
     secondCard.removeEventListener('mouseup', flipCards);
 
-    resetBoard();
+    restoreGameBoard();
 }
 
 function unflipCards() {
@@ -149,11 +65,11 @@ function unflipCards() {
         firstCard.classList.remove('memory-card--flipped');
         secondCard.classList.remove('memory-card--flipped');
 
-        resetBoard();
+        restoreGameBoard();
     }, 1000);
 }
 
-function resetBoard() {
+function restoreGameBoard() {
     [isFlipped, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
 }
@@ -192,20 +108,70 @@ function checkWin() {
     }, 1000);
 }
 
+function createHeader() {
+    popup.classList.add('popup--non-active');
+    popup.innerHTML = '';
+
+    header.innerHTML = `
+    <div class="header__container">
+        <h2 class="header__title">"Those who cannot remember the past are condemned to repeat it."</h2>
+        <p class="header__subtitle">George Santayana</p>
+    </div>
+    `;
+}
+
+function createCardsBoard(numberOfCards) {
+    const memoryCardsBoard = document.createElement('div');
+    memoryCardsBoard.classList.add('memory-board');
+
+    for (let i = 0; i < numberOfCards; i++) {
+        memoryCardsBoard.innerHTML += `
+        <div class="memory-card" data-civilization="${gameData[i].title}">
+            <img class="backside" src="${backsideImg}">
+            <div class="frontside">
+                <img class="frontside-img" src="img/${gameData[i].title}.webp">
+                <span class="frontside-title">${gameData[i].title}</span>
+            </div>
+        </div>
+        `;
+    }
+
+    memoryGame.append(memoryCardsBoard);
+}
+
 function initializeGame() {
     if (popupBg.classList.contains('transparent-bg')) {
         popupBg.classList.remove('transparent-bg');
         resetGameBoard();
     }
 
-    gameData = getShuffledArray(data);
+    gameData = getShuffledCards(data, numberOfCards);
 
     createHeader();
 
-    for (let i = 0; i < 12; i++) {
-        addCardToBoard(i);
-    }
+    createCardsBoard(numberOfCards);
 
     const memoryCards = document.querySelectorAll('.memory-card');
     memoryCards.forEach(card => card.addEventListener('mouseup', flipCards));
 }
+
+function finishTheGame() {
+    popup.classList.remove('popup--non-active');
+    popupBg.classList.add('transparent-bg');
+    popup.innerHTML = `
+        <h1 class="popup__title">Victory!</h1>
+        <p class="popup__click-counter">You won this game for ${clickCounter} clicks.</p>
+        <span class="popup__btn">Start New Game</span>
+    `;
+
+    addEventListenerToPopupBtn();
+}
+
+(() => {
+    popup.innerHTML = `
+        <h1 class="popup__title">Memory - Pair Game inspired by Civilization 5</h1>
+        <span class="popup__btn">Start Game</span>
+    `;
+
+    addEventListenerToPopupBtn();
+})();
