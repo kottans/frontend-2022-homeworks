@@ -1,7 +1,7 @@
 import Request from './request.js'
 import CustomRange from './range.js'
 import Friends from './friends.js'
-import Filters from "./filters.js";
+import Filters from './filters.js'
 import Pagination from './pagination.js'
 import Error from './error.js'
 
