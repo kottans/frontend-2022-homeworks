@@ -262,25 +262,40 @@ const taskmasterData = [
 const navWrapper = document.querySelector('.series-nav');
 const contentWrapper = document.querySelector('.content');
 const btnMore = document.querySelector('.btn-more');
-const initSeriesId = 0;
+
+addNavigation(taskmasterData);
+const navList = document.querySelector('.series-list');
 
 function addNavigation(seriesData) {
-  const ul = document.createElement('ul');
-  ul.classList.add('series-list');
-  seriesData
-    .filter(({ id }) => id !== initSeriesId)
-    .forEach(({ series, id }) => {
-      const link = document.createElement('a');
-      link.classList.add('series-link');
-      link.setAttribute('href', '#');
-      link.setAttribute('data-set', id);
-      link.textContent = series;
-      const li = document.createElement('li');
-      li.classList.add('series-item');
-      li.append(link);
-      ul.append(li);
-    });
-  navWrapper.append(ul);
+  const nav = createNavigation(seriesData);
+  navWrapper.append(nav);
+}
+
+function createHtmlElement(tagName, className, text) {
+  const htmlElement = document.createElement(tagName);
+  htmlElement.classList.add(className);
+  if (text !== undefined) {
+    htmlElement.textContent = text;
+  }
+  return htmlElement;
+}
+
+function createNavLink(id, series) {
+  const link = createHtmlElement('a', 'series-link', series);
+  link.setAttribute('href', '#');
+  link.setAttribute('data-set', id);
+  return link;
+}
+
+function createNavigation(seriesData) {
+  const ul = createHtmlElement('ul', 'series-list');
+  seriesData.forEach(({ series, id }) => {
+    const link = createNavLink(id, series);
+    const li = createHtmlElement('li', 'series-item');
+    li.append(link);
+    ul.append(li);
+  });
+  return ul;
 }
 
 function toggleMenu() {
@@ -295,65 +310,49 @@ function toggleMenu() {
 }
 
 function createContentImg(src, alt) {
-  const img = document.createElement('img');
-  img.classList.add('content-img');
+  const img = createHtmlElement('img', 'content-img');
   img.setAttribute('src', src);
   img.setAttribute('alt', alt);
   const figure = document.createElement('figure');
-  figure.classList.add('content-figure');
   figure.append(img);
   return figure;
 }
 
-function createContentHeading(tag, className, text) {
-  const heading = document.createElement(tag);
-  heading.classList.add(className);
-  heading.textContent = text;
-  return heading;
-}
-
 function createContentList(castArr) {
-  const ul = document.createElement('ul');
-  ul.classList.add('cast-list');
-  castArr.forEach((player) => {
-    player = player.split(' ');
-    let [firstName, ...lastName] = player;
-    lastName = lastName.join(' ');
-    const span = document.createElement('span');
-    span.classList.add('red');
-    span.textContent = firstName;
-    const li = document.createElement('li');
-    li.classList.add('cast-item');
-    li.append(span);
-    li.append(lastName);
+  const ul = createHtmlElement('ul', 'cast-list');
+  castArr.forEach((playerFullName) => {
+    const [firstName, lastName] = divideName(playerFullName);
+    const span = createHtmlElement('span', 'red', firstName);
+    const li = createHtmlElement('li', 'cast-item');
+    li.append(span, lastName);
     ul.append(li);
   });
   return ul;
 }
 
+function divideName(fullName) {
+  fullName = fullName.split(' ');
+  let [firstName, ...lastName] = fullName;
+  lastName = lastName.join(' ');
+  return [firstName, lastName];
+}
+
 function createContentText(paragraphsArr) {
   const paragraphsWrapper = document.createElement('div');
   paragraphsArr.forEach((text) => {
-    const pTag = document.createElement('p');
-    pTag.classList.add('content-text');
-    pTag.textContent = text;
+    const pTag = createHtmlElement('p', 'content-text', text);
     paragraphsWrapper.append(pTag);
   });
   return paragraphsWrapper;
 }
 
 function createContentBody(title, series, cast, text) {
-  const contentTitle = createContentHeading('h2', 'content-title', title);
-  const contentSubtitle = createContentHeading(
-    'h3',
-    'content-subtitle',
-    series
-  );
+  const contentTitle = createHtmlElement('h2', 'content-title', title);
+  const contentSubtitle = createHtmlElement('h3', 'content-subtitle', series);
   const contentCastList = createContentList(cast);
   const contentTexts = createContentText(text);
 
-  const contentBody = document.createElement('div');
-  contentBody.classList.add('content-body');
+  const contentBody = createHtmlElement('div', 'content-body');
   contentBody.append(
     contentTitle,
     contentSubtitle,
@@ -374,24 +373,29 @@ function addTemplateToDom(parent, template) {
   parent.append(...template);
 }
 
-function initContent(parent, initSeriesData) {
-  const htmlTemplate = createContent(initSeriesData);
+function showContent(parent, seriesData) {
+  const htmlTemplate = createContent(seriesData);
   addTemplateToDom(parent, htmlTemplate);
 }
 
-function showContent({ target }) {
+function getTargetSeries(seriesData, htmlElement, attribute) {
+  return seriesData.find(
+    ({ id }) => id === Number(htmlElement.getAttribute(attribute))
+  );
+}
+
+function toggleLinkClassName(currentLink, className) {
+  if (document.querySelector(`.${className}`)) {
+    document.querySelector(`.${className}`).classList.remove(className);
+  }
+  currentLink.classList.add(className);
+}
+
+function navListHandler({ target }) {
   if (target.className.includes('series-link')) {
-    const seriesFiltred = taskmasterData.filter(
-      ({ id }) => id === Number(target.getAttribute('data-set'))
-    );
-
-    const htmlTemplate = createContent(...seriesFiltred);
-    addTemplateToDom(contentWrapper, htmlTemplate);
-
-    if (document.querySelector('.active')) {
-      document.querySelector('.active').classList.remove('active');
-    }
-    target.classList.add('active');
+    const targetSeries = getTargetSeries(taskmasterData, target, 'data-set');
+    showContent(contentWrapper, targetSeries);
+    toggleLinkClassName(target, 'active');
   }
 
   if (navList.className.includes('show')) {
@@ -399,9 +403,7 @@ function showContent({ target }) {
   }
 }
 
-addNavigation(taskmasterData);
-initContent(contentWrapper, initTaskmasterData);
+showContent(contentWrapper, initTaskmasterData);
 
-const navList = document.querySelector('.series-list');
-navList.addEventListener('click', showContent);
+navList.addEventListener('click', navListHandler);
 btnMore.addEventListener('click', toggleMenu);
