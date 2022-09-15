@@ -1,7 +1,6 @@
 /* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
    Complete the below for code reviewers' convenience:
-
-   Code repository: https://github.com/DmitryHniezdilov/task-a-tiny-JS-world/tree/gh-pages
+   Code repository: https://github.com/DmitryHniezdilov/task-a-tiny-JS-world/tree/task-a-tiny-JS-world
    Web app: https://dmitryhniezdilov.github.io/task-a-tiny-JS-world/
    */
 
@@ -57,7 +56,9 @@ const listOfInhabitants = [dog, cat, bear, man, woman];
 // ======== OUTPUT ========
 
 listOfInhabitants.forEach((item) => {
-  const separator = "; ";
-  const listOfValues = Object.values(item).join(separator);
+  const listOfProps = ["species", "name", "gender", "legs", "hands", "saying"];
+  const listOfValues = listOfProps.reduce((str, prop) => {
+    return (str += `${item[prop]}; `);
+  }, "");
   print(listOfValues);
 });
