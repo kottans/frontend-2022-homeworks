@@ -49,7 +49,9 @@ const catWoman = {
   gender: 'female',
   legs: 2,
   hands: 2,
-  saying: cat.saying,
+  get saying() {
+    return cat.saying
+  },
 }
 
 // ======== OUTPUT ========
