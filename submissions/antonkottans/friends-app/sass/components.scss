@@ -1,0 +1,221 @@
+$sort-button-background: #ff4081;
+$sort-button-background-hover: #ff5495;
+$filter-button-background-hover: #5365c9;
+$filter-button-background: #3f51b5;
+$menu-background: #88ccff;
+$body-background: #014546;
+$dark-gradient-color: #001d1e;
+$light-gradient-color: #014546;
+$light-gradient-color-hover: #236768;
+$text-color: #cccccc;
+$inputs-background-color: rgba(200, 200, 200, 0.5);
+$radio-pagination-color: #62ba85;
+$radio-pagination-color-checked: #a6fec9;
+$radio-pagination-background-color-checked: #003435;
+$radio-pagination-color-hover: #84dca7;
+
+.body {
+  background-color: $body-background;
+}
+
+.label-open-filters {
+  color: $radio-pagination-color;
+  background: $radio-pagination-background-color-checked;
+  width: max-content;
+  margin: auto;
+  border-radius: 10px;
+  padding: 5px;
+  letter-spacing: 0.15em;
+
+  &:hover {
+    color: $radio-pagination-color-hover;
+    cursor: pointer;
+  }
+}
+
+.controls-layout-container {
+  background: no-repeat url("../img/leaf.svg"),
+    linear-gradient($dark-gradient-color 0%, $light-gradient-color 100%),
+    $menu-background;
+  border-radius: 10px;
+
+  .sort-menu {
+    .sort-menu-label {
+      color: $text-color;
+      user-select: none;
+    }
+
+    [id$="descending"] {
+      background: center / 40px 20px no-repeat
+          url("../img/descending-sort-svgrepo-com.svg"),
+        $light-gradient-color;
+    }
+
+    [id$="ascending"] {
+      background: center / 40px 20px no-repeat
+          url("../img/ascending-sort-svgrepo-com.svg"),
+        $light-gradient-color;
+    }
+
+    .selected {
+      box-shadow: 0px 0px 10px $sort-button-background;
+    }
+
+    .sort-menu-button {
+      border: none;
+      border-radius: 5px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $light-gradient-color-hover;
+      }
+    }
+  }
+
+  .filter-menu {
+    .age-input,
+    .name-input {
+      background-color: $inputs-background-color;
+      color: $text-color;
+      font-weight: 600;
+      border: none;
+      border-radius: 3px;
+
+      &::placeholder {
+        color: $text-color;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .name-filter-instruction,
+    .age-filter-instruction,
+    .sex-filter-instruction {
+      color: $text-color;
+      user-select: none;
+    }
+
+    .age-input {
+      text-align: center;
+    }
+
+    .sex-filter-container {
+      .radio-container {
+        .radio-sex-input {
+          opacity: 0.5;
+          cursor: pointer;
+        }
+
+        .sex-filter-label {
+          color: $text-color;
+          user-select: none;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .age-input {
+      -moz-appearance: textfield;
+      -webkit-appearance: textfield;
+      appearance: textfield;
+    }
+
+    .age-input::-webkit-outer-spin-button,
+    .age-input::-webkit-inner-spin-button {
+      display: none;
+    }
+
+    .button-filter {
+      background-color: $light-gradient-color;
+      border: none;
+      border-radius: 5px;
+      color: $text-color;
+      letter-spacing: 0.05em;
+      user-select: none;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $light-gradient-color-hover;
+      }
+    }
+  }
+}
+
+.friends-container {
+  overflow: hidden;
+
+  .loading-container {
+    .loading-text {
+      color: white;
+      font-size: 30px;
+    }
+
+    .in-progress {
+      background-color: $dark-gradient-color;
+    }
+
+    .loading-dot {
+      background-color: $menu-background;
+    }
+  }
+
+  .portrait {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .friend-container {
+    background: linear-gradient(
+        black 0%,
+        $dark-gradient-color 10%,
+        $light-gradient-color 100%
+      ),
+      white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px $dark-gradient-color;
+    color: $text-color;
+
+    .name,
+    .email,
+    .tel {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: white;
+      text-decoration: none;
+    }
+
+    .name {
+      font-size: 20px;
+    }
+  }
+}
+
+.radio-nav-container {
+  .pagination-dots {
+    color: $radio-pagination-color;
+    cursor: default;
+  }
+
+  .checked {
+    background-color: $radio-pagination-background-color-checked;
+    font-weight: 600;
+  }
+
+  .radio-nav-label {
+    border-radius: 5px;
+    color: $radio-pagination-color;
+
+    &:hover {
+      cursor: pointer;
+      color: $radio-pagination-color-hover;
+    }
+  }
+}
+
