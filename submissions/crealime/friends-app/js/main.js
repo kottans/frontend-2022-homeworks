@@ -1,4 +1,4 @@
-import Store from './store.js'
+import Request from './request.js'
 import CustomRange from './range.js'
 import Friends from './friends.js'
 import Filters from "./filters.js";
@@ -122,12 +122,13 @@ function initPagination() {
 }
 
 function initFriends() {
-  const store = new Store(GLOB.config.getUrl())
-    store.init().then((response) => {
+  const request = new Request(GLOB.config.getUrl())
+  request.init().then((response) => {
     GLOB.friends = new Friends(response, GLOB)
     GLOB.filters.filterFriendsByURL(GLOB.baseURL)
   })
     .catch(() => {
+      GLOB.friends = new Friends([], GLOB)
       const errorDOMElement = new Error('Server error. Please try again later.').showError()
       setTimeout(() => fadeOut(errorDOMElement, 500, GLOB.delay), 5000)
     })
