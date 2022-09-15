@@ -7,6 +7,11 @@ class Inhabitant {
       this.friends = friends
       this.say = say
    }
+   inhabitantSpeech(creatureText, nameText, genderText, legsText, friendsText, sayText) { 
+      return `${creatureText}${this.creature}` + `${nameText}${this.name}` +
+         `${genderText}${this.gender}` + `${legsText}${this.legs}` +
+         `${friendsText}${this.friends}` + `${sayText}${this.say}`
+   }
 }
 
 class Animal extends Inhabitant{
@@ -14,9 +19,8 @@ class Animal extends Inhabitant{
       super(creature, name, gender, 4, friends, say);
    }
    inhabitantSpeech() {
-      return`Sup, i am a ` + this.creature + `, my name is ` + this.name +
-         `, i am cool ` + this.gender + `, with all of my ` + this.legs +
-         ` legs and my friends ` + this.friends + ` I want ` + this.say
+      return super.inhabitantSpeech(`Sup, i am a `, `, my name is `, `, i am cool `, `. With all of my `,
+      ` legs and my friends, `, ` I want `) 
    }
 }
 
@@ -37,10 +41,9 @@ class Human extends Inhabitant{
       super("Human", name, gender, 2, friends, say);
       this.hands = 2
    }
-   inhabitantSpeech() {
-      return `Hi, i am a ` + this.creature + `, my name is ` + this.name +
-         `, i am nice ` + this.gender + `, with my ` + this.hands + ` hands, ` +
-         this.legs + ` legs and my friends ` + this.friends + ` I want ` + this.say
+   inhabitantSpeech(handsText) {
+      return super.inhabitantSpeech(`Hi, i am a `, `, my name is `, `, i am nice `, `. With my ` + this.hands +
+      ` hands, `, ` legs and my friends, `, ` I want `)
    }
 }
    
