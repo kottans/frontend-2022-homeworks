@@ -1,0 +1,277 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    outline: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.content::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Header */
+
+.header {
+    position: relative;
+    width: 90%;
+
+    margin: 20px auto;
+
+    background-color: #0099ff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px 0 rgb(195, 195, 195);
+}
+
+/* Navigation */
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 5px 10px;
+}
+
+.nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-list__link {
+    display: block;
+    padding: 10px;
+
+    border-radius: 10px;
+
+    transition: 0.5s all;
+}
+
+.nav-list__link:hover, .nav-list__link:focus {
+    background-color: #fff;
+    color: rgb(116, 115, 115);
+}
+
+.nav-list__image {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+/* Popup */
+
+.popup-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.popup-button {
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s all;
+}
+
+.popup-input:hover + .popup-button, .popup-input:focus + .popup-button {
+    background-color: #fff;
+}
+
+#popup-button:checked ~ .content {
+    display: flex;
+}
+
+/* Content */
+
+.content {
+    display: none;
+
+    position: absolute;
+    top: 120%;
+    right: 0;
+
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding: 10px;
+
+    max-width: 350px;
+    max-height: 450px;
+
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px 0 rgb(195, 195, 195);
+
+    font-size: 0.8em;
+
+    overflow-y: scroll;
+}
+
+.content-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+
+    margin-bottom: 10px;
+}
+
+.content-list__link {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    width: 90px;
+
+    padding: 10px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    transition: 0.5s all;
+}
+
+.content-list__link:hover, .content-list__link:focus {
+    background-color: rgb(234, 233, 233);
+}
+
+.content-list__image {
+    width: 40px;
+    height: 40px;
+}
+
+.content-list__title {
+    color: rgb(116, 115, 115);
+    font-weight: 600;
+    text-align: center;
+}
+
+/* More */
+
+.more-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.more-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 80%;
+    height: 50px;
+
+    cursor: pointer;
+
+    background-color: rgb(217, 217, 217);
+    border-radius: 10px;
+
+    color: #fff;
+    font-size: 1.5em;
+    transition: 0.5s all;
+}
+
+.more-input:hover + .more-button, .more-input:focus + .more-button {
+    background-color: rgb(195, 195, 195);
+    text-decoration: underline;
+}
+
+#more-button:checked ~ .more-button {
+    display: none;
+}
+
+/* Subcontent */
+
+.subcontent-list {
+    display: none;
+
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+#more-button:checked ~ .subcontent-list {
+    display: flex;
+}
+
+/* Media */
+
+@media (max-width: 400px) {
+
+    .header {
+        margin-top: 10px;
+    }
+    
+    .nav {
+        padding: 5px 5px;
+    }
+    
+    .nav-list {
+        gap: 10px;
+    }
+
+    .nav-list__link {
+        font-size: 0.8em;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    
+    .popup-button {
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .content {
+        max-width: 150px;
+        max-height: 350px;
+        font-size: 0.5em;
+    }
+
+    .content-list, .subcontent-list {
+        gap: 10px;
+    }
+
+    .content-list__link {
+        width: 55px;
+    }
+
+    .content-list__image {
+        width: 30px;
+        height: 30px;
+    }
+
+    .more-button {
+        height: 30px;
+    }
+}
+
