@@ -52,8 +52,9 @@ body {
 
 .menu_item {
     display: inline;
-    position: relative;
-    margin-right: 25px;  
+    margin-right: 15px;
+    justify-self: center;
+    align-self: center;    
 }
 
 .menu_item_link {
@@ -89,8 +90,8 @@ body {
 .popup_wrapper {
     display: none;
     position: absolute;
-    top: 50px;
-    right: -15px;
+    top: 75px;
+    right: 17px;
     overflow: hidden;
     width: 280px;
     height: 350px;
@@ -225,7 +226,7 @@ body {
 .popup_list_sequel {
     display: none;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .checkbox_sequel:checked ~ .popup_list_sequel {
@@ -237,6 +238,10 @@ body {
 .checkbox_sequel:focus ~ label .popup_sequel_more,
 .popup_sequel_more:hover {
     background-color: #252424;
+}
+
+.checkbox_sequel:checked ~ label .popup_sequel_more {
+    display: none;
 }
 
 .popup_sequel_more {
