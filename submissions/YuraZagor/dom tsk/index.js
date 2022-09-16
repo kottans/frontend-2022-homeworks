@@ -29,7 +29,7 @@ ul.classList.add('sidenav--ul')
 main.insertAdjacentElement('beforebegin', ul)
 
 data.forEach((datapiece)=> {
-	let sidenavLi = document.createElement('li')
+	const sidenavLi = document.createElement('li')
 	sidenavLi.classList.add('sidenav--li')
 	
 	ul.appendChild(sidenavLi)
