@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-list__item">
+                    <a href="#" class="nav-list__link">Mail</a>
+                </li>
+                <li class="nav-list__item">
+                    <a href="#" class="nav-list__link">Images</a>
+                </li>
+                <li class="nav-list__item popup">
+                    <input type="checkbox" id="popup-button" class="popup-input">
+                    <label for="popup-button" class="popup-button">
+                        <img src="popup-icons/popup-button.png" class="popup-icon">
+                    </label>
+
+                    <div class="content">
+                        <ul class="content-list">
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/apps.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Apps</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/blogs.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Blogs</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/calendar.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Calendar</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/chat.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Chat</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/classroom.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Classroom</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/collection.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Collection</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/contacts.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Contacts</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/files.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Files</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/mail.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Mail</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <input type="checkbox" id="more-button" class="more-input">
+                        <label for="more-button" class="more-button">
+                            <span class="more-title">More</span>
+                        </label>
+                        <ul class="subcontent-list">
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/maps.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Maps</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/mars.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Mars</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/news.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">News</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/photos.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Photos</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/promo.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Promo</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/search.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Search</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/translation.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Translations</span>
+                                </a>
+                            </li>
+                            <li class="content-list__item">
+                                <a href="#" class="content-list__link">
+                                    <img src="popup-icons/videos.png" class="content-list__image" alt="">
+                                    <span class="content-list__title">Videos</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-list__item">
+                    <a href="#" class="nav-list__link nav-list__bell">
+                        <img src="popup-icons/bell.png" alt="Your Message" class="nav-list__image">
+                    </a>
+                </li>
+                <li class="nav-list__item">
+                    <a href="#" class="nav-list__link nav-list__profile">
+                        <img src="popup-icons/profile.png" alt="Your Profile" class="nav-list__image">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+</body>
+</html>
+

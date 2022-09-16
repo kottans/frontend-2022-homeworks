@@ -1,0 +1,290 @@
+html{
+    box-sizing: border-box;
+}
+
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+body{
+    font-family: Roboto, sans-serif;
+    line-height: 1.3;
+    font-weight: 400;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+button{
+    cursor: pointer;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, p{
+    margin: 0;
+}
+
+.container{
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    position: relative;
+}
+
+.menu_li{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.menu_li{
+    border: 1px solid transparent;
+    height: 35px;
+}
+
+.menu_li > .menu_a:hover{
+    border: 1px solid #e5e5e5;
+    padding: 5px 6px;
+}
+
+.menu_a:focus {
+    border: 2px solid #a6c8ff;
+}
+
+.menu_li > .menu_a:hover:focus {
+    padding: 5px;
+    border: 2px solid #a6c8ff;
+}
+
+.menu_a{
+    display: flex;
+    align-items: center;
+    height: 35px;
+    padding: 5px;
+    border: 2px solid transparent;
+}
+
+.menu_li > .checkbox{
+    width: 35px;
+    height: 35px;
+}
+
+.menu_label{
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    border: 1px solid transparent;
+}
+
+.menu_li > .checkbox:hover{
+    border: 1px solid #e5e5e5;
+}
+
+.menu_li > .checkbox:focus {
+    border: 2px solid #a6c8ff;
+}
+
+.menu_li > .checkbox:hover:focus {
+    border: 2px solid #a6c8ff;
+}
+
+.checkbox, .checkbox_more{
+    appearance: none;
+    position: absolute;
+}
+
+.checkbox:checked ~ .popup, .checkbox_more:checked ~ .popup_more{
+    display: flex;
+}
+
+.checkbox:checked ~ .menu_label{
+    border: 2px solid #a6c8ff;
+}
+
+.menu_img{
+    width: 25px;
+}
+
+.popup{
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 310px;
+    height: 463px;
+    overflow: auto;
+    flex-flow: wrap;
+    gap: 0 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+}
+
+.popup_a, .popup_more_a{
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.popup_img{
+    max-width: 45px;
+    max-height: 45px;
+    margin: 10px auto 0;
+}
+
+.popup_p, .popup_more_p{
+    margin: 10px auto;
+}
+
+.popup_li{
+    border: 1px solid transparent;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+}
+
+.popup_a{
+    border: 2px solid transparent;
+}
+
+.popup_a:hover, .popup_more_a:hover{
+    border: 1px solid #e5e5e5;
+}
+
+.popup_a:hover .popup_p{
+    margin-bottom: 11px;
+}
+
+.popup_a:focus, .popup_more_a:focus, .checkbox_more:focus{
+    border: 2px solid #a6c8ff;
+}
+
+.popup_a:focus .popup_p{
+    margin-bottom: 10px;
+}
+
+.popup_a, .popup_more_a{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 90px;
+    height: 90px;
+}
+
+.more{
+    height: 40px;
+    margin: 0;
+}
+
+.checkbox_more_label{
+    position: absolute;
+    left: 3px;
+    width: calc(100% - 8px);
+    height: 40px;
+}
+
+.checkbox_more{
+    display: flex;
+    width: 306px;
+    height: 44px;
+    z-index: 0;
+}
+
+.checkbox_more:focus-visible{
+    outline: 0;
+}
+
+.checkbox_more_span{
+    position: absolute;
+    top: 2px;
+    width: 100%;
+    height: 40px;
+    background: #e5e5e5;
+    padding: 10px 0;
+    text-align: center;
+    border: 2px solid #e5e5e5;
+}
+
+.checkbox_more:checked ~ .checkbox_more_label{
+    display: none;
+}
+
+.checkbox_more:checked{
+    display: none;
+}
+
+.checkbox_more:checked:focus, .checkbox_more:checked:focus-visible{
+    border: none;
+    outline: 0;
+}
+
+.checkbox_more_span:hover{
+    background: #c4c4c4;
+    border: 1px solid transparent;
+}
+
+.popup_more{
+    display: none;
+    flex-flow: wrap;
+    width: 292px;
+    gap: 0 10px;
+    z-index: 20;
+}
+
+.popup_more_li{
+    margin-bottom: 10px;
+}
+
+.popup_more_img{
+    max-width: 45px;
+    max-height: 45px;
+    margin: 10px auto 0;
+}
+
+.popup_more_a{
+    border: 2px solid transparent;
+}
+
+.popup_more_a:hover > .popup_more_p{
+    margin-bottom: 11px;
+}
+
+.popup_more_a:focus > .popup_more_p{
+    margin-bottom: 10px;
+}
+
+@media (max-width: 620px) {
+    .container{
+        padding: 0 10px;
+    }
+
+    .popup{
+        right: -5px;
+    }
+}
+
