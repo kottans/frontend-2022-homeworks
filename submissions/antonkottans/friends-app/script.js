@@ -416,10 +416,10 @@ const getFilteredStorage = (filter = state.friendsFilter) => {
   };
 
   const filterByAge = (friends) => {
+    if (filter.ageFilterRange.max - filter.ageFilterRange.min < 0) {
+      return [];
+    }
     return friends.filter((friend) => {
-      if (filter.ageFilterRange.max - filter.ageFilterRange.min <= 0) {
-        return friends;
-      }
       return (
         friend.dob.age >= filter.ageFilterRange.min &&
         friend.dob.age <= filter.ageFilterRange.max
@@ -507,14 +507,16 @@ const addEventListeners = () => {
     .querySelector(".age-filter-container")
     .addEventListener("input", ({ target }) => {
       if (target.matches(".age-input")) {
-        if (target.getAttribute("id") === "start-age")
+        if (target.id === "start-age"){
           state.friendsFilter.ageFilterRange.min = target.value
             ? +target.value
-            : state.friendsFilter.MIN_AGE;
-        else if (target.getAttribute("id") === "end-age")
+            : constants.MIN_AGE;
+        }
+        else if (target.id === "end-age"){
           state.friendsFilter.ageFilterRange.max = target.value
             ? +target.value
-            : state.friendsFilter.MAX_AGE;
+            : constants.MAX_AGE;
+        }
         updateContentAccordingToActiveFilters({ page: 1 });
       }
     });
