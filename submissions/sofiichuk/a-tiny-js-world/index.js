@@ -44,13 +44,14 @@ const catWoman = {
     gender: 'undefined',
     legs: 'undefined',
     hands: 'undefined',
-    saying: cat.saying,
     friends: 'undefined'
 };
+
+Object.setPrototypeOf(catWoman, cat);
 
 const creatures = [man, woman, dog, cat, catWoman];
 const creatureProps = ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends'];
 
 creatures.map((creature) => {
-    print(creatureProps.map((prop) => creature[prop]).join(","));
+    print(creatureProps.map((prop) => creature[prop]).join(";"));
 });
