@@ -1,0 +1,192 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    top: 30%;
+    list-style: none;
+}
+
+.menu_item {
+    padding: 20px;
+    font-family: Verdana, sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu_item_img {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu_item_img:focus+* .menu_img {
+    background-color: #78DBE2;
+}
+
+.menu_item a,
+.popup_menu_item {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.header_menu_input,
+.wrap__check__input,
+.popup_menu_more {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+    appearance: none;
+}
+
+.popup_menu_wrap,
+.menu_label_more {
+    display: none;
+}
+
+.header_menu_input:checked~.popup_menu_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.popup_menu_wrap {
+    position: absolute;
+    right: 5vh;
+    top: 85px;
+    padding: 15px;
+    z-index: 10;
+    width: 340px;
+    max-height: 560px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #e0e0e0;
+    box-shadow: 0 1px 6px rgb(32 33 36 / 20%);
+}
+
+.popup_menu {
+    list-style: none;
+    display: grid;
+    margin-bottom: 16px;
+    width: 300px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 15px;
+    grid-template-areas:
+        "calendar mail news"
+        "maps files contacts"
+        "translation videos search"
+        "photos apps documents"
+    ;
+}
+
+.popup_menu_item {
+    text-align: center;
+    z-index: 5;
+}
+
+.menu_img {
+    width: 2.5em;
+    height: 2.5em;
+    padding: 5px;
+    margin-top: -6px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.menu_img:hover {
+    background-color: #FDF5E6;
+}
+
+.header_menu_input:focus+* .menu_img {
+    background-color: #78DBE2;
+}
+
+.menu_item a:hover {
+    background-color: #FDF5E6;
+    border-radius: 10%;
+}
+
+.menu_item a:focus {
+    background-color: #78DBE2;
+    border-radius: 10%;
+}
+
+.header_menu_label {
+    padding-top: 12px;
+}
+
+.lable__more {
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.lable__more:hover {
+    background-color: #FDF5E6;
+}
+
+input[type="checkbox"]:focus~.lable__more {
+    background-color: #78DBE2;
+}
+
+.line {
+    display: none;
+    align-content: center;
+}
+
+.final_words {
+    display: none;
+}
+
+.final_words {
+    margin: 5px 0 5px 0;
+}
+
+input[type="checkbox"]:checked~.line,
+:checked~.final_words {
+    display: block;
+    visibility: visible;
+    margin: 20px 0 20px 0;
+    text-align: center;
+}
+
+input[type="checkbox"]:checked~.popup_menu_last {
+    display: grid;
+    text-decoration: none;
+    grid-template-areas:
+        "chat classroom collection"
+        "mars blogs promos"
+    ;
+    margin-bottom: 16px;
+    width: 300px;
+    grid-template-rows: auto;
+    grid-gap: 15px;
+}
+
+input[type="checkbox"]:checked~.lable__more {
+    display: none;
+    visibility: visible;
+}
+
+@media screen and (max-width:375px) {
+    .menu_item {
+        padding-right: 15px;
+        padding-left: 10px;
+}
