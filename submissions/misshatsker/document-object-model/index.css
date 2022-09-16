@@ -2,6 +2,9 @@
   --orange: #FF9F00;
   --dark: #333;
   --darkblue: #2E4960;
+  --white: #ffffff;
+  --whiteSmoke: #f4f4f4;
+  --lightRain: #EFF0F6;
 }
 
 body {
@@ -41,7 +44,7 @@ body {
 .header .menu-item .link:hover,
 .header .menu-btn:hover,
 .active-menu-item .link {
-  background-color: #f4f4f4;
+  background-color: var(--whiteSmoke);
 }
 
 .header .logo {
@@ -109,24 +112,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: var(--white);
   margin-top: 58px;
   min-height: calc(100vh - 58px);
 }
 
 .media-animal {
   height: 300px;
-  width: 350px;
+  width: 400px;
   margin-right: 25px;
+  margin-left: 25px;
   border-radius: 10px;
 }
 
 .animal-main-page {
   display: flex;
-  background-color: #EFF0F6;
+  background-color: var(--lightRain);
   max-width: 700px;
   min-height: 300px;
   border-radius: 10px;
+  margin-right: 25px;
 }
 
 .media-animal,
