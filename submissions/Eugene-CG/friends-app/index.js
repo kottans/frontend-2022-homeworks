@@ -2,7 +2,6 @@ const FRIEND_URL = `https://randomuser.me/api/?results=30&nat=us,fr,nl,nz&inc=na
 const friendsContainer = document.querySelector(".friends-container");
 const sidebar = document.querySelector(".sidebar");
 const searchInput = document.querySelector(".search__input");
-
 const createFriend = ({ gender, fullName, age, face, nat }) => {
   return `
             <div class="friend">
@@ -66,6 +65,8 @@ let initialFriends = getFriendsData(FRIEND_URL);
 })();
 // I prefer IIFE here, because fetch called once
 let sex;
+let ageDirection;
+let nameDirection;
 let headerInputValue = "";
 let friendsCopy;
 
@@ -85,10 +86,12 @@ const filterByInput = (friends, value) => {
   return filteredFriends;
 };
 const sortName = (friends, direction) => {
+  if (!direction) return;
   friends.sort(({ fullName: a }, { fullName: b }) => a.localeCompare(b));
   if (direction === "up") friends.reverse();
 };
 const sortAge = (friends, direction) => {
+  if (!direction) return;
   friends.sort(({ age: a }, { age: b }) => a - b);
   if (direction === "up") friends.reverse();
 };
@@ -96,16 +99,32 @@ const sortAge = (friends, direction) => {
 const handleFilters = (friends) => {
   friends = filterSex(friends, sex);
   friends = filterByInput(friends, headerInputValue);
+  sortAge(friends, ageDirection);
+  sortName(friends, nameDirection);
   setFriendsDataToHtml(friends);
 };
 
 sidebar.addEventListener("click", ({ target }) => {
   friendsCopy = [...initialFriends];
-
+  if (target.closest(".reset-btn")) {
+    setFriendsDataToHtml(friendsCopy);
+    searchInput.value = "";
+    ageDirection = null;
+    nameDirection = null;
+    sex = null;
+    headerInputValue = "";
+    return;
+  }
   if (target.closest(".search")) return;
   if (target.closest(".sex-icon")) sex = target.dataset.id;
-  if (target.closest(".age-icon")) sortAge(friendsCopy, target.dataset.direction);
-  if (target.closest(".name-icon")) sortName(friendsCopy, target.dataset.direction);
+  if (target.closest(".age-icon")) {
+    ageDirection = target.dataset.direction;
+    nameDirection = null;
+  }
+  if (target.closest(".name-icon")) {
+    nameDirection = target.dataset.direction;
+    ageDirection = null;
+  }
   if (target.closest(".icon-hover")) handleFilters(friendsCopy);
 });
 
