@@ -29,7 +29,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const menuItem = document.querySelectorAll(".menu__item"),
     menu = document.querySelector(".menu"),
-    contentItem = document.querySelector(".item");
+    menuBurger = document.querySelector(".menu__burger"),
+    content = document.querySelector(".content"),
+    contentItem = document.querySelector(".group-info");
 
   function hideMenuItemsActive() {
     menuItem.forEach((element) => {
@@ -45,6 +47,7 @@ window.addEventListener("DOMContentLoaded", () => {
     node.classList.add(classItem);
     node.innerText = text;
     node.src = src;
+    console.log(node);
     return node;
   }
 
@@ -52,50 +55,54 @@ window.addEventListener("DOMContentLoaded", () => {
     const header = document.createElement("h2"),
       img = document.createElement("img"),
       paragraph = document.createElement("p");
-
     parent.innerHTML = "";
-    parent.appendChild(
+    parent.append(
       renderNode(
         (node = header),
-        (classItem = "item__header"),
+        (classItem = "group-info__header"),
         (text = rockGroupsDescriptions[i].header)
-      )
-    );
-    parent.appendChild(
+      ),
       renderNode(
         (node = img),
-        (classItem = "item__src"),
+        (classItem = "group-info__src"),
         (text = ""),
         (src = rockGroupsDescriptions[i].src)
-      )
-    );
-    parent.appendChild(
+      ),
       renderNode(
         (node = paragraph),
-        (classItem = "item__text"),
+        (classItem = "group-info__text"),
         (text = rockGroupsDescriptions[i].text)
       )
     );
   }
 
-  hideMenuItemsActive();
   showMenuItemActive(0);
   renderContent(0, contentItem);
 
   menu.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    console.log(event.target);
     const target = event.target;
-
-    if (target && target.classList.contains("menu__item")) {
+    if (target.classList.contains("menu__item")) {
       menuItem.forEach((element, i) => {
         if (target === element) {
           hideMenuItemsActive();
           showMenuItemActive(i);
           renderContent(i, contentItem);
         }
+        if (window.innerWidth < 481) {
+          menu.classList.add("slide__left");
+          content.classList.add("content__100");
+          menuBurger.classList.remove("hidden");
+        } else {
+          menu.classList.remove("slide__left");
+          content.classList.remove("content__100");
+          menuBurger.classList.add("hidden");
+        }
       });
     }
+  });
+
+  menuBurger.addEventListener("click", (event) => {
+    menu.classList.remove("slide__left");
+    menuBurger.classList.add("hidden");
   });
 });
