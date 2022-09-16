@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>Friends App</title>
+</head>
+<body class="body">
+  <div class="loader-wrapper" id="loader">
+    <div class="loader"></div>
+  </div>
+  <header class="header">
+    <h1 class="title">friends App</h1>
+  </header>
+  <main class="main">
+    <form class="filter-form noselect" id="filterForm" onsubmit="event.preventDefault();">
+      <div class="search-container">
+        <input class="search" type="search" name="search" id="searchByName" placeholder="Search by name">
+      </div>
+      <span class="additional-text">Additional filters:</span>
+      By name:<br>
+      <div class="name-sorters">
+        <label class="option-label">
+          A-Z
+          <input type="radio" class="radio-input" name="nameOrAgeSort" value="nameAsc">
+          <span class="option-button"></span>
+        </label>
+        <label class="option-label">
+          Z-A
+          <input type="radio" class="radio-input" name="nameOrAgeSort" value="nameDesc">
+          <span class="option-button"></span>
+        </label>
+      </div>
+      By age:<br>
+      <div class="age-sorters">
+        <label class="option-label">
+          Age min
+          <input type="radio" class="radio-input" name="nameOrAgeSort" value="ageAsc">
+          <span class="option-button"></span>
+        </label>
+        <label class="option-label">
+          Age max
+          <input type="radio" class="radio-input" name="nameOrAgeSort" value="ageDesc">
+          <span class="option-button"></span>
+        </label>
+      </div>
+      Gender:<br>
+      <div class="gender-filters">
+        <label class="option-label">
+          Male
+          <input type="radio" class="radio-input" name="genderSort" value="male">
+          <span class="option-button"></span>
+        </label>
+        <label class="option-label">
+          Female
+          <input type="radio" class="radio-input" name="genderSort" value="female">
+          <span class="option-button"></span>
+        </label>
+        <label class="option-label">
+          Both
+          <input type="radio" class="radio-input" name="genderSort" value="both" checked>
+          <span class="option-button"></span>
+        </label>
+      </div>
+      <button class="reset-button" id="resetFilter" type="button">Reset</button>
+    </form>
+    <ul class="all-users" id="allUsers"></ul>
+  </main>
+  <script src="./js/index.js"></script>
+</body>
+</html>
