@@ -7,7 +7,27 @@
     font-family: 'Titillium Web', sans-serif;
 }
 
+:root {
+    --black: #15151E;
+    --white: #ffff;
+    --grey: #67676d;
+    --red: #E10600;
+    --alfaRomeo: #C92D4B;
+    --alphaTauri: #5E8FAA;
+    --alpine: #2293D1;
+    --astonMartin: #358C75;
+    --ferrari: #F91536;
+    --haas: #B6BABD;
+    --mcLaren: #F58020;
+    --mercedes: #6CD3BF;
+    --redBull: #3671C6;
+    --williams: #37BEDD;
+}
+
 html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-image: url(./teams_img/ferrari-sf15-t-formula-1-f1.jpg);
     background-repeat: no-repeat;
     background-position: center center;
@@ -17,19 +37,19 @@ html {
     -o-background-size: cover;
     background-size: cover;
     min-width: 375px;
-    max-width: 1540px;
 }
 
 @media screen and (max-width: 760px) {
     html {
         background-image: none;
-        background-color: #15151E;
+        background-color: var(--black);
     }
 }
 
 body {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: flex-start;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -40,13 +60,6 @@ body::-webkit-scrollbar {
   max-width: 0;
 }
 
-@media screen and (max-width: 1500px) {
-    body {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-
 @media screen and (max-width: 760px) {
     body {
         padding: 100px;
@@ -55,24 +68,16 @@ body::-webkit-scrollbar {
 
 .header-container {
     display: inline-flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    color: #ffff;
-    background-color: #E10600;
+    flex-basis: 100%;
+    color: var(--white);
+    background-color: var(--red);
     font-style: italic;
     font-size: 22px;
     opacity: 90%;
-    margin: 20px;
-    max-width: 700px;
-}
-
-@media screen and (max-width: 1500px) {
-    .header-container {
-        flex-basis: 100%;
-        margin-bottom: 0;
-        max-width: 100%;
-        padding: 0;
-    }
+    margin: 20px 20px 0px 20px;
+    max-width: 100%;
 }
 
 @media screen and (max-width: 1350px) {
@@ -137,9 +142,6 @@ body::-webkit-scrollbar {
 }
 
 .menu-container {
-    position: absolute;
-    left: 0px;
-    top: 120px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: repeat(5,1fr);
@@ -147,22 +149,12 @@ body::-webkit-scrollbar {
     align-items: center;
     justify-content: center;
     align-content: center;
-    background-color: #15151E;
+    background-color: var(--black);
     text-decoration: none;
     list-style: none;
     opacity: 90%;
-    margin: 0px 20px;
-    padding: 30px 97px;
-}
-
-@media screen and (max-width: 1500px) {
-    .menu-container {
-        position: relative;
-        left: 0;
-        top: 0;
-        margin: 20px;
-        padding: 20px;
-    }
+    margin: 20px;
+    padding: 20px;
 }
 
 @media screen and (max-width: 1350px) {
@@ -176,7 +168,7 @@ body::-webkit-scrollbar {
 
 .menu-team {
     display: block;
-    border: 2px solid #67676d;
+    border: 2px solid var(--grey);
     border-top: 0;
     border-left: 0;
     border-bottom-right-radius: 10px;
@@ -243,7 +235,7 @@ body::-webkit-scrollbar {
     position: relative;
     display: block;
     font-size: 18px;
-    color: white;
+    color: var(--white);
     font-weight: 400;
     line-height: 18px;
     text-decoration: none;
@@ -346,7 +338,7 @@ body::-webkit-scrollbar {
         display: block;
         width: 100%;
         height: 3px;
-        background-color: #ffff;
+        background-color: var(--white);
         transition: .25s;
     }
     .bar::before {
@@ -365,7 +357,7 @@ body::-webkit-scrollbar {
         top: -100%;
         width: 100%;
         height: 100%;
-        background-color: #15151E;
+        background-color: var(--black);
         transition: .4s;
         opacity: 95%;
         z-index: 99;
@@ -409,7 +401,7 @@ body::-webkit-scrollbar {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #ffff;
+    color: var(--white);
     max-width: 740px;
 }
 
@@ -426,7 +418,7 @@ body::-webkit-scrollbar {
     justify-content: space-evenly;
     align-items: center;
     font-size: larger;
-    border: 1px solid #67676d;
+    border: 1px solid var(--grey);
     margin: 20px 20px;
     max-width: 330px;
     padding-bottom: 10px;
@@ -467,7 +459,7 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     text-align: justify;
-    background-color: #15151E;
+    background-color: var(--black);
     font-size: 16px;
     opacity: 90%;
     text-indent: 25px;
@@ -487,41 +479,41 @@ body::-webkit-scrollbar {
 }
 
 #alfa-romeo {
-    color: #C92D4B;
+    color: var(--alfaRomeo);
 }
 
 #alphatauri {
-    color: #5E8FAA;
+    color: var(--alphaTauri);
 }
 
 #alpine {
-    color: #2293D1;
+    color: var(--alpine);
 }
 
 #aston-martin {
-    color: #358C75;
+    color: var(--astonMartin);
 }
 
 #ferrari {
-    color: #F91536;
+    color: var(--ferrari);
 }
 
 #haas {
-    color: #B6BABD;
+    color: var(--haas);
 }
 
 #mclaren {
-    color: #F58020;
+    color: var(--mcLaren);
 }
 
 #mercedes {
-    color: #6CD3BF;
+    color: var(--mercedes);
 }
 
 #red-bull {
-    color: #3671C6;
+    color: var(--redBull);
 }
 
 #williams {
-    color: #37BEDD;
+    color: var(--williams);
 }
