@@ -1,64 +1,62 @@
 (function() {
     //vars
-    const data = [
-        {
-            menu : ['Stats', 'Users', 'Exit'],
-            stats : [
-                {
-                    downloads : '232',
-                    uploads : '22',
-                    rating : '5'
-                },
-                {
-                    downloads : '232',
-                    uploads : '22',
-                    rating : '5'
-                },
-                {
-                    downloads : '232',
-                    uploads : '22',
-                    rating : '5'
-                },
-                {
-                    downloads : '232',
-                    uploads : '22',
-                    rating : '5'
-                },
-                {
-                    downloads : '232',
-                    uploads : '22',
-                    rating : '5'
-                }
-            ],
-            users : [
-                {
-                    firstName : 'Mark',
-                    lastName : 'Lorem',
-                    position : 'Owner'
-                },
-                {
-                    firstName : 'Otto',
-                    lastName : 'Ipsum',
-                    position : 'QA'
-                },
-                {
-                    firstName : 'Alex',
-                    lastName : 'Dorom',
-                    position : 'Back end dev'
-                },
-                {
-                    firstName : 'Harry',
-                    lastName : 'Potter',
-                    position : 'Front end dev'
-                },
-                {
-                    firstName : 'Lussie',
-                    lastName : 'Gussie',
-                    position : 'Team Lead'
-                }
-            ]
-        }
-    ];
+    const data = {
+        menu : ['Stats', 'Users', 'Exit'],
+        stats : [
+            {
+                downloads : '232',
+                uploads : '22',
+                rating : '5'
+            },
+            {
+                downloads : '232',
+                uploads : '22',
+                rating : '5'
+            },
+            {
+                downloads : '232',
+                uploads : '22',
+                rating : '5'
+            },
+            {
+                downloads : '232',
+                uploads : '22',
+                rating : '5'
+            },
+            {
+                downloads : '232',
+                uploads : '22',
+                rating : '5'
+            }
+        ],
+        users : [
+            {
+                firstName : 'Mark',
+                lastName : 'Lorem',
+                position : 'Owner'
+            },
+            {
+                firstName : 'Otto',
+                lastName : 'Ipsum',
+                position : 'QA'
+            },
+            {
+                firstName : 'Alex',
+                lastName : 'Dorom',
+                position : 'Back end dev'
+            },
+            {
+                firstName : 'Harry',
+                lastName : 'Potter',
+                position : 'Front end dev'
+            },
+            {
+                firstName : 'Lussie',
+                lastName : 'Gussie',
+                position : 'Team Lead'
+            }
+        ]
+    };
 
     //helpers
     const generateTable = (table, data) => {
@@ -100,42 +98,42 @@
     let ul = document.createElement('ul');
     ul.classList.add('sidebar');
 
-    data[0].menu.forEach(item => {
+    data.menu.forEach(item => {
         let li = document.createElement('li');
-        ul.appendChild(li);
+        
         li.classList.add('sidebar__item');
-
         li.innerHTML += '<a class="sidebar__link" href="#">' + item + '</a>';
+
+        ul.append(li);
     });
 
     document.getElementById('app__side').appendChild(nav).appendChild(ul);
 
     // init data
-    document.querySelectorAll('a.sidebar__link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            //remove active from all links
-            document.querySelectorAll('a.sidebar__link').forEach(linkInner => {
-                linkInner.classList.remove('sidebar__link_active');
-            });
+    document.getElementById('app__side').addEventListener('click', (e) => {
+        const value = e.preventDefault();
 
-            link.classList.add('sidebar__link_active');
-
-            let linkUrl = link.innerHTML.toLowerCase();
-            let statsTable = document.createElement('table');
-
-            if(data[0][linkUrl]) {
-                generateTable(statsTable, data[0][linkUrl]);
-
-                document.getElementById('app__content').innerHTML = null;
-                document.getElementById('app__content').appendChild(statsTable);
-            }
+        //remove active from all links
+        document.querySelectorAll('a.sidebar__link').forEach(linkInner => {
+            linkInner.classList.remove('sidebar__link_active');
         });
+
+        e.target.classList.add('sidebar__link_active');
+
+        let linkUrl = e.target.innerHTML.toLowerCase();
+        let statsTable = document.createElement('table');
+
+        if(data[linkUrl]) {
+            generateTable(statsTable, data[linkUrl]);
+
+            document.getElementById('app__content').innerHTML = null;
+            document.getElementById('app__content').append(statsTable);
+        }
     });
 
     //default data
     let statsTable2 = document.createElement('table');
-    generateTable(statsTable2, data[0].stats);
+    generateTable(statsTable2, data.stats);
 
     document.getElementById('app__content').appendChild(statsTable2);
 
