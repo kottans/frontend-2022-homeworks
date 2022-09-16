@@ -175,6 +175,16 @@ body {
   width: var(--full-size-percent);
   height: var(--full-size-percent);
 }
+.reset-btn {
+  width: 50%;
+  height: 50px;
+  margin-top: 10px;
+  margin-left: 25%;
+  border-radius: 30px;
+  font-size: var(--common-text-size);
+  background-color: var(--white-color);
+  box-shadow: 0 0 10px 1px #000;
+}
 @media (max-width: 1544px) {
   .friends-container {
     grid-template-columns: repeat(3, 32.333%);
