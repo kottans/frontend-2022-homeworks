@@ -49,8 +49,9 @@ const catWoman = {
   gender: "female",
   legs: 2,
   hands: 2,
-  saying: cat.saying,
 };
+
+catWoman.__proto__ = cat;
 
 const inhabitants = [dog, cat, man, woman, catWoman];
 inhabitants.map(({species, name, gender, legs, hands, saying}) => {
