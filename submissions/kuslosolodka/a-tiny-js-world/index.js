@@ -36,9 +36,9 @@ const cat_woman = {
   gender: "female",
   legs: 2,
   hands: 2,
-  saying: cat.saying,
 };
 
+Object.setPrototypeOf(cat_woman, cat);
 const inhabitants = [dog, cat, woman, man, cat_woman];
 const keys = ["species", "name", "gender", "legs", "hands", "saying", "friend"];
 
