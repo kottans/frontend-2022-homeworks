@@ -1,7 +1,6 @@
 import { data } from './data.js'  
 
 const body = document.querySelector('body')
-let text = data[0].content
 
 const div = document.createElement('div')
 div.classList.add('wrapper')
@@ -25,9 +24,6 @@ const footer = document.createElement('footer')
 footer.classList.add('footer')
 main.appendChild(footer)
 
-let li
-content.innerHTML = text
-
 const ul = document.createElement('ul')
 ul.classList.add('sidenav--ul')
 main.insertAdjacentElement('beforebegin', ul)
@@ -37,21 +33,25 @@ data.forEach((datapiece)=> {
 	sidenavLi.classList.add('sidenav--li')
 	
 	ul.appendChild(sidenavLi)
-	sidenavLi.setAttribute('id', datapiece.number-1)
+	sidenavLi.setAttribute('id', datapiece.id)
 	const img = document.createElement('img')
 	img.classList.add('li--img')
 	img.setAttribute('src', datapiece.img )
-	img.setAttribute('alt', datapiece.text )
+	img.setAttribute('alt', datapiece.description )
 	sidenavLi.appendChild(img)
 } )
 
+let contentText = data[0].text
+content.innerHTML = contentText
+
 ul.onclick = function(event) {
-	li = event.target.closest('li')
-	if(!li) return;
-	handleClick(li.id)
+	if(!event.target.closest('li')) return;
+	handleClick(event.target.closest('li').id)
 }
-function handleClick(){
-	text = data[li.id].content
-	content.innerHTML = text
+function handleClick(targetID){
+	const dice = data.filter(item => item.id === targetID);
+	const { text } = dice[0];
+	content.innerHTML = text;
 }
+
 
