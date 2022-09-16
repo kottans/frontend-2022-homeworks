@@ -5,7 +5,7 @@
     margin-top: 10px;
     padding: 10px;
 
-    text-shadow: var(--default-shadow)
+    text-shadow: var(--default-white-shadow)
 }
 
 .footer-box {
@@ -20,7 +20,7 @@
 
 .footer-link:hover .github-img,
 .footer-link:focus .github-img {
-    fill: var(--hover-focus-color);
+    fill: var(--hover-focus);
 }
 
 .footer-text {

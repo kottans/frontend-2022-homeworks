@@ -8,7 +8,7 @@
     text-align: center;
     padding: 30px 0px 30px 0px;
     margin-left: 10px;
-    text-shadow: var(--default-shadow);
+    text-shadow: var(--default-white-shadow);
 
     @media screen and (max-width: 530px) {
         padding: 15px 0px 15px 0px;
@@ -34,4 +34,8 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }

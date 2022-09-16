@@ -4,7 +4,7 @@ const movieList = document.querySelector(".list-movie");
 const movieBox = document.querySelector(".movie-box");
 
 const getMarkupTemplate = (movie) => {
-  return `<img class="img-poster" src=${movie.Poster} alt="poster">
+  return `<img class="img-poster" src=${movie.Poster} alt="${movie.Title}">
           <div class="description-box">
             <h2 class="description-text description-title"> ${movie.Title}</h2>
             <p class="description-text"><span class="description-text-span">Genre:</span> ${movie.Genre}</p>
@@ -24,16 +24,15 @@ const getMarkupTemplate = (movie) => {
 };
 
 const onClick = ({ target }) => {
-  if (target.nodeName !== "BUTTON") {
-    return;
-  }
+  const currentMovie = movies.find((el) => target.id === el.imdbID);
 
-  const [currentMovie] = movies.filter((el) => target.id === el.imdbID);
-  movieBox.innerHTML = getMarkupTemplate(currentMovie);
+  if (currentMovie) {
+    movieBox.innerHTML = getMarkupTemplate(currentMovie);
+  }
 };
 
-const getMarkupMoviesList = (arr) => {
-  return arr
+const getMarkupMovies = (movies) => {
+  return movies
     .map(
       ({ Title, imdbID }) =>
         `<li class="list-movie-item"><button id=${imdbID} class="list-movie-btn"><span class="list-movie-btn-text">${Title}</span></button></li>`
@@ -42,7 +41,8 @@ const getMarkupMoviesList = (arr) => {
 };
 
 movieList.addEventListener("click", onClick);
-movieList.innerHTML = getMarkupMoviesList(movies);
+movieList.innerHTML = getMarkupMovies(movies);
 
-const getRandomInteger = () => Math.floor(0 + Math.random() * (9 + 1 - 0));
+const getRandomInteger = () => Math.floor(Math.random() * 10);
+
 movieBox.innerHTML = getMarkupTemplate(movies[getRandomInteger()]);
