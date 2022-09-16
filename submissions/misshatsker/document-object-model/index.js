@@ -68,9 +68,6 @@ function changeMainPageInfo(animal) {
     weight.textContent = animal.weight;
 }
 
-changeMainPageInfo(animals[0]);
-appendMenuItems();
-
 menuIcon.onclick = () => {
     if (getIsMenuOpened()) {
         closeMenu();
@@ -91,25 +88,26 @@ function closeMenu() {
     menuIcon.classList.remove('opened');
 }
 
-function appendMenuItems() {
-    let previousLiEl = null;
-
-    for (let i = 0; i < animals.length; i++) {
-        const animal = animals[i];
+function createMenuItems(animals) {
+    return animals.map((animal, i) => {
         const animalTitle = animal.title;
 
-        let liEl = document.createElement('li');
+        const liEl = document.createElement('li');
         liEl.className = "menu-item";
-        if (i === 0) {
-            liEl.classList.add("active-menu-item");
-            previousLiEl = liEl;
-        }
-
         liEl.innerHTML = `<a class="link" href="#${animalTitle}">${animalTitle}</a>`;
         liEl.dataset.index = i;
-        menu.append(liEl);
-    }
 
+        return liEl;
+    });
+}
+
+function appendMenuItems(menuItems) {
+    const firstItem = menuItems[0];
+    firstItem.classList.add("active-menu-item");
+
+    let previousLiEl = firstItem;
+
+    menu.append(...menuItems);
     menu.onclick = (event) => {
         const liEl = event.target.parentElement;
         if (liEl === previousLiEl) {
@@ -132,3 +130,6 @@ function appendMenuItems() {
         previousLiEl = liEl;
     }
 }
+
+changeMainPageInfo(animals[0]);
+appendMenuItems(createMenuItems(animals));
