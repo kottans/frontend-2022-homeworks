@@ -40,6 +40,9 @@ body{
     justify-content: center;
     background-color: #100818;
 }
+.container__title{
+    display: none;
+}
 
 /* ------------------------------------------------------Menu----------------------------------------- */
 .container__block-menu{
