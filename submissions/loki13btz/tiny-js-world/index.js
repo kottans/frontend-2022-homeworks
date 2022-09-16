@@ -6,7 +6,7 @@
    */
 
 // ======== OBJECTS DEFINITIONS ========
-// Define your objects here
+
 const dog = {
   species: "dog",
   name: "Toby",
@@ -15,6 +15,7 @@ const dog = {
   hands: 0,
   saying: "woof-woof!",
 };
+
 const cat = {
   species: "cat",
   name: "Onyx",
@@ -23,37 +24,38 @@ const cat = {
   hands: 0,
   saying: "meoooooow!",
 };
+
 const man = {
   species: "human",
   name: "Tom",
   gender: "male",
-  legs: 4,
-  hands: 0,
+  legs: 2,
+  hands: 2,
   saying: "Hello, I am Tom!",
 };
+
 const woman = {
   species: "human",
   name: "Jiny",
   gender: "female",
-  legs: 4,
-  hands: 0,
+  legs: 2,
+  hands: 2,
   saying: "Have a good day!",
 };
+
 const catWoman = {
-  species: "hulf-human",
+  species: "half-human",
   name: "Lisa",
   gender: "female",
-  legs: 4,
-  hands: 0,
+  legs: 2,
+  hands: 2,
   saying: cat.saying,
 };
-const arr = [dog, cat, man, woman, catWoman];
-// ... other objects ...
-arr.forEach((element) => {
-  print(Object.values(element).join(';'));
-});
 
-// ... other print-outs ...
+const inhabitants = [dog, cat, man, woman, catWoman];
+inhabitants.map(({species, name, gender, legs, hands, saying}) => {
+  print([species, name, gender, legs, hands, saying].join(';'));
+});
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
