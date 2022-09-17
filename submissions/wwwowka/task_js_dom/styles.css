@@ -1,0 +1,239 @@
+@media screen and (min-width: 900px) {
+  .conteiner {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .content {
+    position: relative;
+    padding: 0 20px 0 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 50px minmax(450px, 45vh) 20vh auto;
+    grid-gap: 5px;
+  }
+
+  .content__title {
+    display: block;
+    grid-column-end: span 3;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .content__foto1 {
+    grid-column-end: span 3;
+  }
+
+  .content__foto1 img {
+    border-radius: 50px 50px 5px 5px;
+  }
+
+  .content__foto2 img {
+    border-radius: 5px 5px 5px 50px;
+  }
+
+  .content__foto3 img {
+    border-radius: 5px 5px 5px 5px;
+  }
+
+  .content__foto4 img {
+    border-radius: 5px 5px 50px 5px;
+  }
+
+  .content__text {
+    grid-column-end: span 3;
+    text-align: center;
+    margin: 2em;
+    font-size: 1.5em;
+  }
+
+  .menu {
+    float: left;
+    width: 160px;
+    padding-top: 90px;
+  }
+
+  .menu__list {
+    list-style: none;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+@media screen and (max-width: 899px) {
+
+
+  .conteiner {
+    position: relative;
+    margin: auto;
+  }
+
+  .content {
+    position: relative;
+    padding: 0 20px 0 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 50px 1fr 1fr auto;
+    grid-gap: 5px;
+  }
+
+  .content__title {
+    display: block;
+    grid-column-end: span 2;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .content__foto1 img {
+    border-radius: 50px 5px 5px 5px;
+  }
+
+  .content__foto2 img {
+    border-radius: 5px 50px 5px 5px;
+  }
+
+  .content__foto3 img {
+    border-radius: 5px 5px 5px 50px;
+  }
+
+  .content__foto4 img {
+    border-radius: 5px 5px 50px 5px;
+  }
+
+
+  .content__text {
+    grid-column-end: span 2;
+    text-align: center;
+    margin: 2em;
+    font-size: 1.5em;
+  }
+
+  .menu {
+    float: left;
+    width: 130px;
+    padding-top: 90px;
+  }
+
+  .menu__list {
+    padding-inline-start: 5px;
+    list-style: none;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+
+  .conteiner {
+    position: relative;
+    margin: auto;
+  }
+
+  .content {
+    position: relative;
+    padding: 20px 20px 0 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 1fr 1fr 1fr auto;
+    grid-gap: 5px;
+  }
+
+  .content__title {
+    display: block;
+    grid-column-end: span 1;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .content__foto1 img {
+    border-radius: 50px 50px 5px 5px;
+  }
+
+  .content__foto2 img {
+    border-radius: 5px 5px 5px 5px;
+  }
+
+  .content__foto3 img {
+    border-radius: 5px 5px 5px 5px;
+  }
+
+  .content__foto4 img {
+    border-radius: 5px 5px 50px 50px;
+  }
+
+
+  .content__text {
+    text-align: center;
+    grid-column-end: span 1;
+    margin: 2em;
+    font-size: 1.5em;
+  }
+
+  .menu {
+    float: none;
+    width: 100%;
+    padding-top: 5px;
+  }
+
+  .menu__item a {
+    padding-left: 12%;
+  }
+}
+
+.logo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 3em;
+  color: #152916;
+  border-radius: 50px 50px 50px 50px;
+  border: #008800 solid 2px;
+  padding: 15px;
+  margin: 30px;
+  width: fit-content;
+}
+
+.menu__link::before {
+  content: "";
+  background-image: url(img/menu__item.svg);
+  background-size: contain;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  top: 0.1rem;
+  margin-right: 0.2rem;
+
+}
+
+.menu__link {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  padding: 12px 0;
+  border-bottom: 1px solid #efefef;
+}
+
+
+.content__title h2 {
+  text-align: center;
+  margin: auto;
+  font-size: 2em;
+}
+
+
+img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 800px;
+  object-fit: cover;
+}
+
+.footer{
+  text-align: center;
+  font-size: 0.7em;
+}
