@@ -72,6 +72,10 @@ body{
     width: 30px;
     height: 30px;
 }
+.active{
+    background-color: #100818;
+    color: #cfced1;
+}
 
 /* ------------------------------------------------------Content----------------------------------------- */
 .container__block-content{
