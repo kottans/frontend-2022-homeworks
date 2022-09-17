@@ -68,7 +68,7 @@ img {
 }
 
 .hiden {
-    opacity: 0;
+    opacity: 50%;
 }
 
 .buttonBlock {
@@ -107,3 +107,4 @@ img {
         width: 100px;
     }
 }
+

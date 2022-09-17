@@ -15,6 +15,7 @@ class SummaryModel extends BaseModel {
 
     startNewGame() {
         this.attributes.totalScore = 0;
+        localStorage.setItem(`totalScore${this.level}`, JSON.stringify(this.attributes.totalScore));
         this.publish(CHANGE_DATA);
     }
 
