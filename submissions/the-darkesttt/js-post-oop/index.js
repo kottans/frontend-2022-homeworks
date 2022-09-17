@@ -8,72 +8,85 @@
 // ======== OBJECTS DEFINITIONS ========
 
 class Creature {
-   species;
-   name;
-   gender;
-   saying;
-   legs;
 
-   constructor( name, gender, saying, legs) {
+   constructor( name, gender, saying, species) {
       this.name = name;
       this.gender = gender;
       this.saying = saying;
-      this.legs = legs;
+      this.species = species;
    }
 
-   showValues(inhabitant) {
+   showValues() {
       const valueKeys = [
          'species',
          'name',
          'gender',
-         'saying',
-         'legs',
+         'saying'
       ];
       const inhabitantValues = valueKeys.map((key) => {
-         return `${inhabitant[valueKeys[valueKeys.indexOf(key)]]}`;
+         return `${this[key]}`;
       });
-      return print(inhabitantValues.join('; '));
+      return inhabitantValues;
    }
 }
 
 class Animal extends Creature {
-   constructor(name, gender, saying, legs) {
-      super(name, gender, saying, legs);
+   constructor(name, gender, saying, paws, species) {
+      super(name, gender, saying, species);
+      this.paws = paws;
+   }
+
+   showValues() {
+      const valueKeys = [
+         'paws'
+      ];
+      let inhabitantValues = valueKeys.map((key) => {
+         return `${this[key]}`;
+      });
+      let inhabitantValuesNew = super.showValues().concat(inhabitantValues);
+      return print(inhabitantValuesNew.join('; '));
    }
 }
 
 class Cat extends Animal {
-   constructor(name, gender, saying, legs) {
-      super(name, gender, saying, legs);
-      this.species = 'cat';
+   constructor(name, gender, saying) {
+      super(name, gender, saying, 4, 'cat');
    }
 }
 
 class Dog extends Animal {
-   constructor(name, gender, saying, legs) {
-      super(name, gender, saying, legs);
-      this.species = 'dog';
+   constructor(name, gender, saying) {
+      super(name, gender, saying, 4, 'dog');
    }
 }
 
 class Human extends Creature {
-   hands;
+   constructor(name, gender, saying) {
+      super(name, gender, saying, 'homosapien');
+      this.hands = 2;
+      this.legs = 2;
+   }
 
-   constructor(name, gender, saying, legs, hands) {
-      super(name, gender, saying);
-      this.species = 'human';
-      this.hands = hands;
-      this.legs = legs;
+   showValues() {
+      const valueKeys = [
+         'legs',
+         'hands',
+      ];
+      let inhabitantValues = valueKeys.map((key) => {
+         return `${this[key]}`;
+      });
+      let inhabitantValuesNew = super.showValues().concat(inhabitantValues);
+      return print(inhabitantValuesNew.join('; '));
    }
 }
 
 const inhabitants = [
-   new Dog('Robert', 'male', 'BARK!', 4),
-   new Cat('Lily', 'female', 'meooow!', 4),
-   new Human('Charlie', 'female', 'Hi John!', 2, 2),
-   new Human('John', 'male', 'Hi Charlie!', 2, 2),
+   new Dog('Robert', 'male', 'BARK!'),
+   new Cat('Lily', 'female', 'meooow!'),
+   new Human('Charlie', 'female', 'Hi John!'),
+   new Human('John', 'male', 'Hi Charlie!'),
 ];
 
 inhabitants.forEach((inhabitant) => {
-   inhabitant.showValues(inhabitant);
+   inhabitant.showValues();
 });
