@@ -4,8 +4,8 @@ const initialInterfaceMarkup = () => {
   document.body.innerHTML = `
     <h1 class='title'>Frogger Game</h1>
     <div class='info-wrap'>
-      <p><span>Level: </span><span class='js-info-level'>1</span></p>
-      <p><span>Speed: </span><span class='js-info-speed'>x1</span></p>
+    <p><span>Level: </span><span class='js-info-level'>1</span></p>
+    <p><span>Speed: </span><span class='js-info-speed'>x1</span></p>
     </div>
     <p class='popup js-popup'></p>
   `;
@@ -13,36 +13,31 @@ const initialInterfaceMarkup = () => {
 
 initialInterfaceMarkup();
 
-const BLOCK_WIDTH = 101,
-  BLOCK_HEIGHT = 83,
-  BLOCKS_NUMBER = {
+const allEnemies = [];
+let IS_FREEZE = false;
+
+const config = {
+  BLOCK_WIDTH: 101,
+  BLOCK_HEIGHT: 83,
+  BLOCKS_NUMBER: {
     x: 5,
     y: 6,
   },
-  FIELD_WIDTH = BLOCK_WIDTH * BLOCKS_NUMBER.x,
-  FIELD_HEIGHT = BLOCK_HEIGHT * BLOCKS_NUMBER.y,
-  ORIGIN_COORDINATE_CHARACTERS = {
+  get FIELD_WIDTH() {
+    return this.BLOCK_WIDTH * this.BLOCKS_NUMBER.x;
+  },
+  ORIGIN_COORDINATE_CHARACTERS: {
     x: 0,
     y: -20,
   },
-  PLAYER_CONF = {
+  PLAYER_CONF: {
     img: "images/char-boy.png",
     initialBlock: {
       x: 3,
       y: 6,
     },
-    get initialPositionX() {
-      return (
-        ORIGIN_COORDINATE_CHARACTERS.x + BLOCK_WIDTH * (this.initialBlock.x - 1)
-      );
-    },
-    get initialPositionY() {
-      return (
-        ORIGIN_COORDINATE_CHARACTERS.y + BLOCK_WIDTH * (this.initialBlock.y - 1)
-      );
-    },
   },
-  ENEMIES_CONF = {
+  ENEMIES_CONF: {
     img: "images/enemy-bug.png",
     initialRows: [2, 3, 4],
     amountOfEnemies: [2, 2, 1],
@@ -50,28 +45,85 @@ const BLOCK_WIDTH = 101,
     minSpeedOfEnemy: 50,
     maxSpeedOfEnemy: 300,
   },
-  ELEMENT_POPUP_MESSAGE = document.querySelector(".js-popup"),
-  ELEMENT_INFO_LEVEL = document.querySelector(".js-info-level"),
-  ELEMENT_INFO_SPEED = document.querySelector(".js-info-speed"),
-  getRandomArbitrary = (min, max) => Math.random() * (max - min) + min;
-
-let currentLevel = 1,
-  speedMultiplicator = 1,
-  isFreeze = false;
-
-const Enemy = function (x, y, minSpeed, maxSpeed) {
-  this.x = x;
-  this.y = y;
-  this.sprite = ENEMIES_CONF.img;
-  this.speed = getRandomArbitrary(minSpeed, maxSpeed);
+  STATE: {
+    currentLevel: 1,
+    speedMultiplicator: 1,
+  },
+  END_OF_GAME_WIN: "win",
+  END_OF_GAME_LOSE: "lose",
+  PRINT_MESSAGE_WIN: "You Win",
+  PRINT_MESSAGE_LOSE: "You Lose",
+  ELEMENT_POPUP_MESSAGE: document.querySelector(".js-popup"),
+  ELEMENT_INFO_LEVEL: document.querySelector(".js-info-level"),
+  ELEMENT_INFO_SPEED: document.querySelector(".js-info-speed"),
+  POPUP_MESSAGE_ACTIVE_CLASS: "is-active",
 };
 
+const Character = function (config, imgUrl) {
+  this.config = config;
+  this.sprite = imgUrl;
+};
+
+Character.prototype.endOfGame = function (result, config) {
+  const {
+    POPUP_MESSAGE_ACTIVE_CLASS,
+    ELEMENT_POPUP_MESSAGE,
+    ELEMENT_INFO_LEVEL,
+    ELEMENT_INFO_SPEED,
+    END_OF_GAME_WIN,
+    END_OF_GAME_LOSE,
+    PRINT_MESSAGE_WIN,
+    PRINT_MESSAGE_LOSE,
+    ENEMIES_CONF,
+    STATE,
+  } = config;
+
+  const updateMarkupInfo = (popupText) => {
+    ELEMENT_POPUP_MESSAGE.innerText = popupText;
+    ELEMENT_INFO_LEVEL.innerText = STATE.currentLevel;
+    ELEMENT_INFO_SPEED.innerText = `x${STATE.speedMultiplicator}`;
+    ELEMENT_POPUP_MESSAGE.classList.add(POPUP_MESSAGE_ACTIVE_CLASS);
+  };
+
+  IS_FREEZE = true;
+  if (result === END_OF_GAME_WIN) {
+    STATE.currentLevel++;
+    STATE.speedMultiplicator = +(
+      STATE.speedMultiplicator + ENEMIES_CONF.speedIncrease
+    ).toFixed(1);
+    updateMarkupInfo(PRINT_MESSAGE_WIN);
+  } else if (result === END_OF_GAME_LOSE) {
+    STATE.currentLevel = 1;
+    STATE.speedMultiplicator = 1;
+    updateMarkupInfo(PRINT_MESSAGE_LOSE);
+  }
+
+  setTimeout(() => {
+    ELEMENT_POPUP_MESSAGE.classList.remove(POPUP_MESSAGE_ACTIVE_CLASS);
+    this.resetGame();
+    IS_FREEZE = false;
+  }, 900);
+};
+
+const Enemy = function (x, y, minSpeed, maxSpeed, config) {
+  Character.call(this, config, config.ENEMIES_CONF.img);
+  this.ENEMIES_CONF = config.ENEMIES_CONF;
+  this.FIELD_WIDTH = config.FIELD_WIDTH;
+  this.BLOCK_WIDTH = config.BLOCK_WIDTH;
+  this.BLOCK_HEIGHT = config.BLOCK_HEIGHT;
+  this.x = x;
+  this.y = y;
+  this.speed = this.getRandomArbitrary(minSpeed, maxSpeed);
+};
+
+Enemy.prototype = Object.create(Character.prototype);
+
 Enemy.prototype.update = function (dt) {
-  if (!isFreeze) {
+  if (!IS_FREEZE) {
     this.x += this.speed * dt;
 
-    if (this.x > FIELD_WIDTH) {
-      this.x = -BLOCK_WIDTH;
+    if (this.x > this.FIELD_WIDTH) {
+      this.x = -this.BLOCK_WIDTH;
     }
 
     this.checkCollision();
@@ -85,85 +137,39 @@ Enemy.prototype.render = function () {
 Enemy.prototype.checkCollision = function () {
   if (
     player.y === this.y &&
-    player.x <= Math.floor(this.x) + BLOCK_WIDTH / 1.3 &&
-    player.x >= Math.floor(this.x) - BLOCK_WIDTH / 1.3
+    player.x <= Math.floor(this.x) + this.BLOCK_WIDTH / 1.3 &&
+    player.x >= Math.floor(this.x) - this.BLOCK_WIDTH / 1.3
   ) {
-    endOfGame("lose");
+    this.endOfGame(config.END_OF_GAME_LOSE, config);
   }
 };
 
-const Player = function () {
-  this.x = PLAYER_CONF.initialPositionX;
-  this.y = PLAYER_CONF.initialPositionY;
-  this.sprite = PLAYER_CONF.img;
-  this.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-  };
-  this.update = function () {
-    this.checkExitFromField();
-  };
-  this.handleInput = function (key) {
-    if (!isFreeze) {
-      switch (key) {
-        case "left":
-          this.x += -BLOCK_WIDTH;
-          break;
-        case "up":
-          this.y += -BLOCK_HEIGHT;
-          break;
-        case "right":
-          this.x += BLOCK_WIDTH;
-          break;
-        case "down":
-          this.y += BLOCK_HEIGHT;
-          break;
-      }
-      this.checkWin();
-    }
-  };
-  this.checkExitFromField = function () {
-    if (this.x < ORIGIN_COORDINATE_CHARACTERS.x) {
-      this.x = 0;
-    } else if (this.x > FIELD_WIDTH - BLOCK_WIDTH) {
-      this.x = FIELD_WIDTH - BLOCK_WIDTH;
-    } else if (this.y < ORIGIN_COORDINATE_CHARACTERS.y) {
-      this.y = ORIGIN_COORDINATE_CHARACTERS.y;
-    } else if (
-      this.y >
-      ORIGIN_COORDINATE_CHARACTERS.y + FIELD_HEIGHT - BLOCK_HEIGHT
-    ) {
-      this.y = ORIGIN_COORDINATE_CHARACTERS.y + FIELD_HEIGHT - BLOCK_HEIGHT;
-    }
-  };
-  this.returnToStart = function () {
-    this.x = PLAYER_CONF.initialPositionX;
-    this.y = PLAYER_CONF.initialPositionY;
-  };
-  this.checkWin = function () {
-    if (this.y < PLAYER_CONF.initialBlock.y) {
-      endOfGame("win");
-    }
-  };
+Enemy.prototype.getRandomArbitrary = function (min, max) {
+  return Math.random() * (max - min) + min;
 };
 
-const allEnemies = [];
-
-const startPositionOfEnemies = (i, n) => {
+Enemy.prototype.startPositionOfEnemies = function (i, n) {
   if (i === 1) {
-    return getRandomArbitrary(-BLOCK_WIDTH, BLOCK_WIDTH * 2);
+    return this.getRandomArbitrary(-this.BLOCK_WIDTH, this.BLOCK_WIDTH * 2);
   } else if (i === 2 && n === 2) {
-    return getRandomArbitrary(-FIELD_WIDTH, -BLOCK_WIDTH);
+    return this.getRandomArbitrary(-this.FIELD_WIDTH, -this.BLOCK_WIDTH);
   } else if (i === 2) {
-    return getRandomArbitrary((-FIELD_WIDTH + BLOCK_WIDTH) / 2, -BLOCK_WIDTH);
+    return this.getRandomArbitrary(
+      (-this.FIELD_WIDTH + this.BLOCK_WIDTH) / 2,
+      -this.BLOCK_WIDTH
+    );
   } else {
     return 0;
   }
 };
 
-const createEnemies = () => {
+Enemy.prototype.createEnemies = function (config) {
+  const { ENEMIES_CONF, STATE, ORIGIN_COORDINATE_CHARACTERS, BLOCK_HEIGHT } =
+    config;
   const currentMinSpeedOfEnemy =
-      ENEMIES_CONF.minSpeedOfEnemy * speedMultiplicator,
-    currentMaxSpeedOfEnemy = ENEMIES_CONF.maxSpeedOfEnemy * speedMultiplicator;
+      ENEMIES_CONF.minSpeedOfEnemy * STATE.speedMultiplicator,
+    currentMaxSpeedOfEnemy =
+      ENEMIES_CONF.maxSpeedOfEnemy * STATE.speedMultiplicator;
 
   ENEMIES_CONF.initialRows.forEach((row, idx) => {
     const amountEnemiesOnRow = ENEMIES_CONF.amountOfEnemies[idx],
@@ -172,13 +178,17 @@ const createEnemies = () => {
 
     const createEnemy = (i) => () => {
       if (i > 0) {
-        const startPositionX = startPositionOfEnemies(i, amountEnemiesOnRow);
+        const startPositionX = this.startPositionOfEnemies(
+          i,
+          amountEnemiesOnRow
+        );
         allEnemies.push(
           new Enemy(
             startPositionX,
             startPositionY,
             currentMinSpeedOfEnemy,
-            currentMaxSpeedOfEnemy
+            currentMaxSpeedOfEnemy,
+            config
           )
         );
         createEnemy(i - 1)();
@@ -189,14 +199,95 @@ const createEnemies = () => {
   });
 };
 
-const updateEnemies = () => {
+Enemy.prototype.updateEnemies = function (config) {
   allEnemies.length = 0;
-  createEnemies();
+  this.createEnemies(config);
 };
 
-updateEnemies();
+Enemy.prototype.resetGame = function () {
+  this.updateEnemies(config);
+  player.goToStart();
+};
 
-const player = new Player();
+const Player = function (config) {
+  Character.call(this, config, config.PLAYER_CONF.img);
+  this.PLAYER_CONF = config.PLAYER_CONF;
+  this.FIELD_WIDTH = config.FIELD_WIDTH;
+  this.BLOCK_WIDTH = config.BLOCK_WIDTH;
+  this.BLOCK_HEIGHT = config.BLOCK_HEIGHT;
+  this.ORIGIN_COORDINATE_CHARACTERS = config.ORIGIN_COORDINATE_CHARACTERS;
+  this.INITIAL_POSITION_X =
+    this.ORIGIN_COORDINATE_CHARACTERS.x +
+    this.BLOCK_WIDTH * (this.PLAYER_CONF.initialBlock.x - 1);
+  this.INITIAL_POSITION_Y =
+    this.ORIGIN_COORDINATE_CHARACTERS.y +
+    this.BLOCK_HEIGHT * (this.PLAYER_CONF.initialBlock.y - 1);
+  this.x = this.INITIAL_POSITION_X;
+  this.y = this.INITIAL_POSITION_Y;
+};
+
+Player.prototype = Object.create(Character.prototype);
+
+Player.prototype.render = function () {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+Player.prototype.update = function () {
+  this.checkExitFromField();
+};
+
+Player.prototype.handleInput = function (key) {
+  if (!IS_FREEZE) {
+    switch (key) {
+      case "left":
+        this.x += -this.BLOCK_WIDTH;
+        break;
+      case "up":
+        this.y += -this.BLOCK_HEIGHT;
+        break;
+      case "right":
+        this.x += this.BLOCK_WIDTH;
+        break;
+      case "down":
+        this.y += this.BLOCK_HEIGHT;
+        break;
+    }
+    this.checkWin();
+  }
+};
+
+Player.prototype.checkExitFromField = function () {
+  if (this.x < this.ORIGIN_COORDINATE_CHARACTERS.x) {
+    this.x = 0;
+  } else if (this.x > this.FIELD_WIDTH - this.BLOCK_WIDTH) {
+    this.x = this.FIELD_WIDTH - this.BLOCK_WIDTH;
+  } else if (this.y < this.ORIGIN_COORDINATE_CHARACTERS.y) {
+    this.y = this.ORIGIN_COORDINATE_CHARACTERS.y;
+  } else if (this.y > this.INITIAL_POSITION_Y) {
+    this.y = this.INITIAL_POSITION_Y;
+  }
+};
+
+Player.prototype.checkWin = function () {
+  if (this.y === this.ORIGIN_COORDINATE_CHARACTERS.y) {
+    this.endOfGame(config.END_OF_GAME_WIN, config);
+  }
+};
+
+Player.prototype.goToStart = function () {
+  this.x = this.INITIAL_POSITION_X;
+  this.y = this.INITIAL_POSITION_Y;
+};
+
+Player.prototype.resetGame = function () {
+  initEnemy.updateEnemies(config);
+  this.goToStart();
+};
+
+const initEnemy = new Enemy(0, 0, 0, 0, config);
+initEnemy.updateEnemies(config);
+
+const player = new Player(config);
 
 document.addEventListener("keyup", function (e) {
   const allowedKeys = {
@@ -208,32 +299,3 @@ document.addEventListener("keyup", function (e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
-
-function endOfGame(result) {
-  const updateMarkupInfo = (popupText) => {
-    ELEMENT_POPUP_MESSAGE.innerText = popupText;
-    ELEMENT_INFO_LEVEL.innerText = currentLevel;
-    ELEMENT_INFO_SPEED.innerText = `x${speedMultiplicator}`;
-    ELEMENT_POPUP_MESSAGE.classList.add("is-active");
-  };
-
-  isFreeze = true;
-  if (result === "win") {
-    currentLevel++;
-    speedMultiplicator = +(
-      speedMultiplicator + ENEMIES_CONF.speedIncrease
-    ).toFixed(1);
-    updateMarkupInfo("You Win");
-  } else if (result === "lose") {
-    currentLevel = 1;
-    speedMultiplicator = 1;
-    updateMarkupInfo("You Lose");
-  }
-
-  setTimeout(() => {
-    ELEMENT_POPUP_MESSAGE.classList.remove("is-active");
-    updateEnemies();
-    player.returnToStart();
-    isFreeze = false;
-  }, 900);
-}
