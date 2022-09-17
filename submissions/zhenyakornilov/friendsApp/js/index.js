@@ -8,7 +8,6 @@ const resetFilter = document.getElementById("resetFilter");
 const loader = document.getElementById("loader");
 
 let users = [];
-let usersCopy = [];
 let genderFilterValue = "";
 let nameOrAgeSortValue = "";
 
@@ -20,8 +19,8 @@ function handleErrors(response) {
 async function fetchUsers(url) {
   try {
     const res = await fetch(url);
-    errorHandledResponse = handleErrors(res);
-    usersData = await errorHandledResponse.json();
+    errorCheck = handleErrors(res);
+    usersData = await errorCheck.json();
     return usersData.results;
   } catch (err) {
     console.error(err);
@@ -62,9 +61,9 @@ function renderUsers(usersData) {
 }
 
 function sortByName(firstUser, secondUser) {
-  const firtUserFullName = `${firstUser.name.first} ${firstUser.name.last}`;
+  const firstUserFullName = `${firstUser.name.first} ${firstUser.name.last}`;
   const secondUserFullName = `${secondUser.name.first} ${secondUser.name.last}`;
-  return firtUserFullName.localeCompare(secondUserFullName);
+  return firstUserFullName.localeCompare(secondUserFullName);
 }
 
 function sortByAge(firstUser, secondUser) {
@@ -95,14 +94,11 @@ function sortByNameOrAge(sortValue, usersToSort) {
 }
 
 function filterByGender(filterValue, usersToFilter) {
-  let filteredUsers = [...usersToFilter];
+  const filteredUsers = [...usersToFilter];
   if (filterValue === "both") {
     return filteredUsers;
   } else if (filterValue === "male" || filterValue === "female") {
-    filteredUsers = filteredUsers.filter(
-      ({ gender }) => gender === `${filterValue}`
-    );
-    return filteredUsers;
+    return filteredUsers.filter(({ gender }) => gender === `${filterValue}`);
   }
 }
 
@@ -120,7 +116,7 @@ function searchByUserName() {
   });
 }
 
-function applySelectedFilters({ target }) {
+function applyFilters({ target }) {
   if (target.name === "nameOrAgeSort") {
     nameOrAgeSortValue = target.value;
   }
@@ -129,12 +125,12 @@ function applySelectedFilters({ target }) {
     genderFilterValue = target.value;
   }
 
-  renderByAppliedFilters(genderFilterValue, nameOrAgeSortValue);
+  renderByFilters(genderFilterValue, nameOrAgeSortValue);
   searchByUserName();
 }
 
-function renderByAppliedFilters(filterValue, sortValue) {
-  let usersToRender = [...usersCopy];
+function renderByFilters(filterValue, sortValue) {
+  let usersToRender = [...users];
   if (genderFilterValue) {
     usersToRender = filterByGender(filterValue, usersToRender);
   }
@@ -145,9 +141,9 @@ function renderByAppliedFilters(filterValue, sortValue) {
   renderUsers(usersToRender);
 }
 
-function resetForm() {
-  renderUsers(users);
-  usersCopy = [...users];
+function resetForm(fetchedUsers) {
+  renderUsers(fetchedUsers);
+  users = [...fetchedUsers];
   filterForm.reset();
 }
 
@@ -156,10 +152,9 @@ async function main() {
   removeLoader();
   renderUsers(fakeUsers);
   users = [...fakeUsers];
-  usersCopy = [...users];
 
-  filterForm.addEventListener("input", applySelectedFilters);
-  resetFilter.addEventListener("click", resetForm);
+  filterForm.addEventListener("input", applyFilters);
+  resetFilter.addEventListener("click", () => resetForm(fakeUsers));
 }
 
 document.addEventListener("DOMContentLoaded", main);
