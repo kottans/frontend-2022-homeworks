@@ -260,7 +260,6 @@ const timer = document.querySelector(".main__timer");
 
 rowFirst.style.width = "100%";
 rowSecond.style.width = "100%";
-
 let chosenCards = [];
 let cardsLocked = false;
 let card;
@@ -269,10 +268,13 @@ let secondCard;
 let numOfMatch = 0;
 let playerHealth = 100;
 let iaHealth = 100;
+let iaDamage = 6.25;
 let playerDamage;
 let startCount = false;
 let count;
 let second = 60;
+let resultGame = ["YOU WIN", "YOU LOSE", "BORING"];
+[youWin, youLose, boring] = resultGame;
 
 const flipCard = ({ target }) => {
     if (cardsLocked) return;
@@ -342,7 +344,7 @@ const noMatch = () => {
 };
 
 const playerHealthLine = () => {
-    playerHealth = playerHealth - 6.25;
+    playerHealth = playerHealth - iaDamage;
     rowFirst.style.width = `${playerHealth}%`;
     resetLose();
 };
@@ -426,38 +428,37 @@ const countdown = () => {
 
 const resetWin = () => {
     if (Math.floor(iaHealth) === 0) {
-        clearTimeout(count);
         mainImg.classList.add("_toasty");
         mainAudio.innerHTML = `<audio src="media/toasty.mp3" type="audio/mpeg" autoplay>
                                  </audio>`;
         setTimeout(() => {
-            mainTitle.textContent = `YOU WIN`;
-            mainTitle.classList.add("_game-over");
             mainImg.classList.remove("_toasty");
-        }, 1200);
+        }, 1000);
+        gameOver(youWin);
         reloadPage();
     }
 };
 
 const resetLose = () => {
     if (playerHealth === 0) {
-        clearTimeout(count);
-        setTimeout(() => {
-            cardsLocked = true;
-            mainTitle.textContent = `YOU LOSE`;
-            mainTitle.classList.add("_game-over");
-        }, 1200);
+        gameOver(youLose);
         reloadPage();
     }
 };
 
 const resetBoring = () => {
+    cardsLocked = true;
+    gameOver(boring);
+    reloadPage();
+};
+
+const gameOver = (result) => {
+    clearTimeout(count);
     setTimeout(() => {
         cardsLocked = true;
-        mainTitle.textContent = `BORING`;
+        mainTitle.textContent = `${result}`;
         mainTitle.classList.add("_game-over");
     }, 1200);
-    reloadPage();
 };
 
 const reloadPage = () => {
@@ -467,7 +468,3 @@ const reloadPage = () => {
 };
 
 list.addEventListener("click", flipCard);
-
-
-
-
