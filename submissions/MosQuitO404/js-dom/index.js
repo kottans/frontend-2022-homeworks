@@ -1,11 +1,13 @@
 import { teamsData, teamsProperties } from "./data.js";
 
-// Hamburger menu
-
 const hamb = document.querySelector('#hamb');
 const popup = document.querySelector('#popup');
+const menu = document.querySelector('#menu');
 const popupMenu = document.querySelector('#menu').cloneNode(1);
+const placeholder = document.querySelector('#main-container');
 const body = document.body;
+
+// Hamburger menu
 
 hamb.addEventListener('click', hambHandler);
     
@@ -21,7 +23,7 @@ function renderPopup() {
     popup.append(popupMenu);
 }
 
-// Create teams
+// Teams creation
 
 class Team {
     constructor(teamTitle, firstPilotName, secondPilotName, firstPilotFlagImage, secondPilotFlagImage, firstPilotImage, secondPilotImage, teamInfo) {
@@ -33,80 +35,49 @@ class Team {
         this.firstPilotImage = firstPilotImage;
         this.secondPilotImage = secondPilotImage;
         this.teamInfo = teamInfo;
-        // this.html = `<div class="pilots-container">
-        //             <div class="pilot-wrapper">
-        //                 <span id="first-pilot-name" class="pilot-name"><h3>${this.firstPilotName}</h3></span>
-        //                 <span id="first-pilot-flag"><img class="flag-img" src="${this.firstPilotFlagImage}" alt=""></span>
-        //                 <img id="first-pilot" class="pilot-img" src="${this.firstPilotImage}" alt="">
-        //             </div>
-        //             <div class="pilot-wrapper">
-        //                 <span id="second-pilot-name" class="pilot-name"><h3>${this.secondPilotName}</h3></span>
-        //                 <span id="second-pilot-flag"><img class="flag-img" src="${this.secondPilotFlagImage}" alt=""></span>
-        //                 <img id="second-pilot" class="pilot-img" src="${this.secondPilotImage}" alt="">
-        //             </div>
-        //             <div class="team-info-container">${this.teamInfo}</div>
-        //         </div>`
+        this.html = `<div class="pilots-container">
+                        <div class="pilot-wrapper">
+                            <span class="pilot-name"><h3>${this.firstPilotName}</h3></span>
+                            <img class="flag-img" src="${this.firstPilotFlagImage}" alt="">
+                            <span class="pilot-img-wrapper"><img class="pilot-img" src="${this.firstPilotImage}" alt=""></span>
+                        </div>
+                        <div class="pilot-wrapper">
+                            <span class="pilot-name"><h3>${this.secondPilotName}</h3></span>
+                            <img class="flag-img" src="${this.secondPilotFlagImage}" alt="">
+                            <span class="pilot-img-wrapper"><img class="pilot-img" src="${this.secondPilotImage}" alt=""></span>
+                        </div>
+                    </div>
+                    <div class="team-info-container">${this.teamInfo}</div>`;
     }
 
-    get checkTeamExemplar() {
-        console.log(this);
+    get htmlRender() {
+        placeholder.innerHTML = this.html;
     }
-//     get htmlRender() {
-//         const placeholder = document.querySelector('#main-container');
-//         const menu = document.querySelector('#menu');
-        
-//         menu.addEventListener('click', (e) => {
-//             e.preventDefault();
-//             const parent = e.target.closest('.menu-team');
-//             if (parent.dataset.action === this.teamTitle) {
-//                 placeholder.innerHTML = '';
-//                 return placeholder.innerHTML = this.html;
-//             }
-//         });
-//         popupMenu.addEventListener('click', (e) => {
-//             e.preventDefault();
-//             const parent = e.target.closest('.menu-team');
-//             if (parent.dataset.action === this.teamTitle) {
-//                 placeholder.innerHTML = '';
-//                 return placeholder.innerHTML = this.html;
-//             }
-//             function hambClose() { 
-//                 popup.classList.toggle('open');
-//                 hamb.classList.toggle('active');
-//                 body.classList.toggle('noscroll')
-//             }
-//             setTimeout(hambClose, 500);
-//         }); 
-//     }
+}
+
+//Menus's eventListeners
+
+menu.addEventListener('click', generateTeamHandler);
+popupMenu.addEventListener('click', generateTeamHandler);
+
+function generateTeamHandler(e) {
+    e.preventDefault();
+    const parent = e.target.closest('.menu-team');
+    if (parent) {
+        const actionTeam = teamsData.filter(team => team['teamTitle'] === parent.dataset.action);
+        new Team(...generatePropertiesValue(...actionTeam, teamsProperties)).htmlRender;
+    }
+    if (popup.classList.contains('open')) {
+        setTimeout(hambClose, 500);
+    }
 }
 
 function generatePropertiesValue(team, teamsProperties) { 
     return teamsProperties.map(property => team[property]);
 }
 
-//EventListeners
-
-const menu = document.querySelector('#menu');
-menu.addEventListener('click', (e) => {
-    e.preventDefault();
-    const parent = e.target.closest('.menu-team');
-    if (parent) {
-        const actionTeam = teamsData.filter(team => team['teamTitle'] === parent.dataset.action);
-        new Team(...generatePropertiesValue(...actionTeam, teamsProperties)).checkTeamExemplar;
-    }
-});
-        
-        // popupMenu.addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     const parent = e.target.closest('.menu-team');
-        //     if (parent.dataset.action === this.teamTitle) {
-        //         placeholder.innerHTML = '';
-        //         return placeholder.innerHTML = this.html;
-        //     }
-        //     function hambClose() { 
-        //         popup.classList.toggle('open');
-        //         hamb.classList.toggle('active');
-        //         body.classList.toggle('noscroll')
-        //     }
-        //     setTimeout(hambClose, 500);
-        // });
+function hambClose() { 
+    popup.classList.toggle('open');
+    hamb.classList.toggle('active');
+    body.classList.toggle('noscroll')
+}

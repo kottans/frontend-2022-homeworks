@@ -410,6 +410,7 @@ body::-webkit-scrollbar {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    min-height: 400px;
 }
 
 .pilot-wrapper {
@@ -420,28 +421,41 @@ body::-webkit-scrollbar {
     font-size: larger;
     border: 1px solid var(--grey);
     margin: 20px 20px;
-    max-width: 330px;
+    width: 330px;
+    min-height: 360px;
+    padding-top: 10px;
     padding-bottom: 10px;
 }
 
 @media screen and (max-width: 760px) {
     .main-container {
-        max-width: 360px;
-        min-width: 360px;
+        width: 360px;
     }
     .pilot-wrapper {
         margin-top: 0;
-        max-width: 360px;
+        width: 360px;
+        min-height: 400px;
         margin-left: 0;
         margin-right: 0;
+        padding-top: 0;
         padding-bottom: 0;
     }
 }
 
+.pilot-name {
+    flex-basis: 75%;
+    text-align: center;
+    height: 34.4px;
+}
+
 .flag-img {
-    padding: 10px 0px;
     width: 40px;
     vertical-align: middle;
+}
+
+.pilot-img-wrapper {
+    width: 300px;
+    height: 300px;
 }
 
 .pilot-img {
@@ -449,9 +463,15 @@ body::-webkit-scrollbar {
 }
 
 @media screen and (max-width: 760px) {
+    .pilot-img-wrapper {
+        width: 340px;
+        height: 340px;
+    }
+    .pilot-name {
+        flex-basis: 81%;
+    }
     .pilot-img {
-        max-width: 350px;
-        padding: 10px;
+        max-width: 340px;
     }
 }
 
@@ -470,8 +490,7 @@ body::-webkit-scrollbar {
 
 @media screen and (max-width: 760px) {
     .team-info-container {
-        max-width: 360px;
-        min-width: 360px;
+        width: 360px;
         background-color: unset;
         margin-left: 0;
         margin-right: 0;
