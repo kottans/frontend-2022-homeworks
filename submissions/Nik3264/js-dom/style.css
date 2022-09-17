@@ -15,8 +15,8 @@
 
 @keyframes fade {
   0% {
-    transform: translateX(25px);
-    opacity: 0.5;
+    transform: translateY(-25px);
+    opacity: 0.75;
   }
   100% {
     transform: translateX(0);
