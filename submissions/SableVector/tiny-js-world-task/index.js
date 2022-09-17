@@ -75,17 +75,8 @@ const inhabitants = {
 inhabitants.catwoman.saying = inhabitants.cat.saying;
 
 for (let person in inhabitants) {
-   const message = getPersonData(inhabitants[person]);
+   const { name, species, hands, legs, gender, saying } = inhabitants[person];
+   const message = name + '; ' + species + '; ' + hands + '; ' + legs + '; ' + gender + '; ' + saying + ';';
 
-   print(message, 'h2');
-}
-
-function getPersonData(person) {
-   let str = '';
-
-   for (let option in person) {
-      str += person[option] + '; ';
-   }
-
-   return str;
+   print(message, 'h3');
 }
