@@ -48,7 +48,7 @@ const inhabitants = {
       saying: 'meow-meow!'
    },
    woman: {
-      species: 'woman',
+      species: 'human',
       hands: 2,
       legs: 2,
       name: 'Jenny',
@@ -56,7 +56,7 @@ const inhabitants = {
       saying: 'Hello Jenny'
    },
    man: {
-      species: 'man',
+      species: 'human',
       hands: 2,
       legs: 2,
       name: 'John',
