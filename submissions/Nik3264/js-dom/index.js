@@ -33,6 +33,8 @@ window.addEventListener("DOMContentLoaded", () => {
     content = document.querySelector(".content"),
     contentItem = document.querySelector(".group-info");
 
+  const widthScreenMobile=768;
+
   function hideMenuItemsActive() {
     menuItem.forEach((element) => {
       element.classList.remove("menu__item__active");
@@ -88,7 +90,7 @@ window.addEventListener("DOMContentLoaded", () => {
           showMenuItemActive(i);
           renderContent(i, contentItem);
         }
-        if (window.innerWidth < 481) {
+        if (window.innerWidth <= widthScreenMobile) {
           menu.classList.add("slide__left");
           content.classList.add("content__100");
           menuBurger.classList.remove("hidden");
