@@ -18,7 +18,7 @@ const cat = {
    saying: 'Meeeow!',
 };
 
-const women = {
+const woman = {
    species: 'human',
    name: 'Gwen',
    gender: 'female',
@@ -36,16 +36,13 @@ const man = {
    saying: 'What\'s up?'
 };
 
-const catWomen = {
-   species: 'cat-human',
-   name: 'Dita',
-   gender: 'female',
-   legs: 2,
-   hands: 2,
-   saying: cat.saying
-};
+const catWoman = Object.create(cat);
+catWoman.species = 'cat-human';
+catWoman.name = 'Dita';
+catWoman.legs = 2;
+catWoman.hands = 2;
 
-const inhabitants = [dog, cat, women, man, catWomen];
+const inhabitants = [dog, cat, woman, man, catWoman];
 const inhabitantsKeys = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
 
 inhabitants.forEach(inhabitant => {print(inhabitantsKeys.map(key => inhabitant[key]).join('; '))});
