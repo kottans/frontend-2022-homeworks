@@ -1,7 +1,7 @@
 @font-face {
     font-family: Antic;
-    src: url(../fonts/AnticSlab-Regular.woff),
-    url(../fonts/AnticSlab-Regular.woff2);
+    src: url(../fonts/AnticSlab-Regular.woff2),
+    url(../fonts/AnticSlab-Regular.woff);
 }
 *,
 *:before,
