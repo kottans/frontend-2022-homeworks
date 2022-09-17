@@ -417,4 +417,14 @@ a, button, input {
     width: 100px;
     height: 100px;
   }
+
+  .status-message__title {
+    font-size: 25px;
+    line-height: 120%;
+  }
+
+  .status-message__descr {
+    font-size: 20px;
+    line-height: 150%;
+  }
 }

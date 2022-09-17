@@ -159,7 +159,7 @@ function getChosenFriends(friends) {
   if (state.filter.minAge) {
     modifiedFriends = filterByMinAge(modifiedFriends);
   }
-  if (state.filter.maxAge && state.filter.maxAge > state.filter.minAge) {
+  if (state.filter.maxAge && state.filter.maxAge >= state.filter.minAge) {
     modifiedFriends = filterByMaxAge(modifiedFriends);
   }
 
