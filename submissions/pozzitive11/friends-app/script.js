@@ -1,18 +1,14 @@
 let users = [];
 const cardsList = document.querySelector(".users__list");
+const form = document.querySelector(".form");
 
-const sortAgeBlock = document.querySelector(".sort-age");
-const sortNameBlock = document.querySelector(".sort-name");
-const filterGenderBlock = document.querySelector(".sort-gender");
+const resetButton = document.querySelector(".form__button");
 
-const searchInput = document.querySelector("#search-input");
-const resetBtn = document.querySelector(".form__button");
-
-const burgerBtn = document.querySelector(".burger");
+const burgerButton = document.querySelector(".burger");
 const sidebar = document.querySelector(".sidebar");
 
-burgerBtn.addEventListener("click", (e) => {
-  burgerBtn.classList.toggle("active");
+burgerButton.addEventListener("click", () => {
+  burgerButton.classList.toggle("active");
   sidebar.classList.toggle("sidebar--visible");
 });
 
@@ -21,12 +17,12 @@ const statusMessage = {
   failure: "Technical problems, try again later",
 };
 
-const loadingMessage = document.createElement("img");
+const loadingAnimation = document.createElement("img");
 function showLoadingStatus() {
-  loadingMessage.src = statusMessage.loading;
-  loadingMessage.classList.add("status-block");
+  loadingAnimation.src = statusMessage.loading;
+  loadingAnimation.classList.add("status-block");
 
-  cardsList.insertAdjacentElement("afterend", loadingMessage);
+  cardsList.insertAdjacentElement("afterend", loadingAnimation);
 }
 
 function loadUsersData() {
@@ -40,12 +36,13 @@ function loadUsersData() {
     })
     .then((responseJson) => {
       users = responseJson.results;
-      showCards(users);
-      loadingMessage.remove();
+      createCards(users);
     })
     .catch(() => {
-      loadingMessage.remove();
       showErrorStautus();
+    })
+    .finally(() => {
+      loadingAnimation.remove();
     });
 }
 
@@ -54,30 +51,23 @@ function showErrorStautus() {
   errorMessage.classList.add("error-block");
   errorMessage.innerHTML = `${statusMessage.failure}`;
 
-  console.log(statusMessage.failure);
   cardsList.append(errorMessage);
 }
 
-function showCards(cards) {
-  cards.forEach(({ picture, name, dob, gender, location }) => {
-    createCard({ picture, name, dob, gender, location });
-  });
-}
-
-function createCard({ picture, name, dob, gender, location }) {
-  const userCard = document.createElement("li");
-  userCard.classList.add("user__item");
-  let userGender;
-  if (gender === "male") userGender = "user__gender--male";
-  if (gender === "female") userGender = "user__gender--female";
-  userCard.innerHTML = `
-    <h4 class="user__gender ${userGender}">${gender}</h4>
-    <img class="user__img" src="${picture.large}" alt="User photo" />
-    <p class="user__name">${name.first} ${name.last}</p>
-    <p class="user__age">Age: <span class="user__age-span">${dob.age}</span></p>
-    <p class="user__location">${location.country}</p>`;
-
-  cardsList.append(userCard);
+function createCards(cards) {
+  cardsList.innerHTML = "";
+  cardsList.innerHTML = cards
+    .map(
+      ({ picture, name, dob, gender, location }) =>
+        `<li class="user__item">
+          <h4 class="user__gender user__gender--${gender}">${gender}</h4>
+          <img class="user__img" src="${picture.large}" alt="User photo" />
+          <p class="user__name">${name.first} ${name.last}</p>
+          <p class="user__age">Age: <span class="user__age-span">${dob.age}</span></p>
+          <p class="user__location">${location.country}</p>
+        </li>`
+    )
+    .join("");
 }
 
 const compareByName = (firstUser, secondUser) =>
@@ -87,67 +77,52 @@ const compareByName = (firstUser, secondUser) =>
 const compareByAge = (firstUser, secondUser) =>
   firstUser.dob.age - secondUser.dob.age;
 
-const compareByGender = (user, type) => user.gender === type;
-
-function filterBySearch(arr, target) {
-  return arr.filter((user) => {
+function filterByName(names, target) {
+  return names.filter((user) => {
     const fullName = `${user.name.first} ${user.name.last}`.toLowerCase();
     return fullName.includes(target.toLowerCase());
   });
 }
 
-function filterUsers({ target }) {
+function handleUsers({ target }) {
   let resultUsers = [...users];
-  if (searchInput.value !== "") {
-    resultUsers = filterBySearch(resultUsers, searchInput.value);
+  if (form.search.value !== "") {
+    resultUsers = filterByName(resultUsers, form.search.value);
   }
 
-  if (target.checked) {
-    switch (form.gender.value) {
-      case "male":
-        resultUsers = resultUsers.filter((user) =>
-          compareByGender(user, "male")
-        );
-        break;
-      case "female":
-        resultUsers = resultUsers.filter((user) =>
-          compareByGender(user, "female")
-        );
-        break;
-      case "all":
-        resultUsers;
-        break;
-    }
-
-    if (target.value === "age-up") {
+  switch (form.sort.value) {
+    case "age-up":
       resultUsers.sort((a, b) => compareByAge(b, a));
-    } else if (target.value === "age-down") {
+      break;
+    case "age-down":
       resultUsers.sort((a, b) => compareByAge(a, b));
-    }
-
-    if (target.value === "name-up") {
+      break;
+    case "name-up":
       resultUsers.sort((a, b) => compareByName(b, a));
-    } else if (target.value === "name-down") {
+      break;
+    case "name-down":
       resultUsers.sort((a, b) => compareByName(a, b));
-    }
+      break;
+    default:
+      break;
   }
 
-  cardsList.innerHTML = "";
-  showCards(resultUsers);
+  resultUsers =
+    form.gender.value === "male" || form.gender.value === "female"
+      ? resultUsers.filter((user) => user.gender === form.gender.value)
+      : resultUsers;
+
+  createCards(resultUsers);
 }
 
 function resetFilters() {
   resultUsers = [...users];
-  cardsList.innerHTML = "";
-  showCards(resultUsers);
+  createCards(resultUsers);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   loadUsersData();
 
-  sortNameBlock.addEventListener("click", filterUsers);
-  sortAgeBlock.addEventListener("click", filterUsers);
-  filterGenderBlock.addEventListener("click", filterUsers);
-  searchInput.addEventListener("input", filterUsers);
-  resetBtn.addEventListener("click", resetFilters);
+  form.addEventListener("input", handleUsers);
+  resetButton.addEventListener("click", resetFilters);
 });
