@@ -10,6 +10,7 @@
 	background: url(../img/bgmain.jpg)  center (center / cover) no-repeat;
 	height: 100vh;
 	position: relative;
+	margin: 0 auto;
 }
 
 .header {
@@ -28,13 +29,12 @@
 	display: grid;
 	justify-content: center;
 	grid-template-columns: repeat(4, 200px);
-	grid-template-rows: repeat(3, 200px);
+	gap: 10px;
+	grid-template-rows: repeat(3, 275px);
 	perspective: 1000px;
-	//position: relative;
 }
 
 .hide-swap {
-	border: 1px solid rgb(87, 44, 44);
 	border-radius: 5px;
 	transition: 0.8s;
 	transform-style: preserve-3d;
@@ -49,7 +49,7 @@
 .c1 {
 	z-index: 2;
 	width: 200px;
-	height: 200px;
+	height: 275px;
 	backface-visibility: hidden;
 	border-radius: 5px;
 	position: absolute;
@@ -76,7 +76,7 @@
 
 .c2 {
 	width: 200px;
-	height: 200px;
+	height: 275px;
 	backface-visibility: hidden;
 	border-radius: 5px;
 	position: absolute;
@@ -103,7 +103,7 @@
 	align-items:center;
 	position: absolute;
     top: 50px;
-	//z-index: 99;
+
 
 	&__title {
 		font-size: 36px;
@@ -132,24 +132,27 @@
 	.wrapper {
 		width: 400px;
 		grid-template-columns: repeat(4, 100px);
-		grid-template-rows: repeat(3, 100px);
+		grid-template-rows: repeat(3, 150px);
 
 	}
 	.c1, .c2  {
 		width: 100px;
-		height: 100px;
+		height: 150px;
 	}
 }
 
-@media  (max-width: 375px) {
+@media  (max-width: 535px) {
 	.wrapper {
 		width: 300px;
 		grid-template-columns: repeat(4, 75px);
-		grid-template-rows: repeat(3, 75px);
+		grid-template-rows: repeat(3, 115px);
 
 	}
 	.c1, .c2  {
 		width: 75px;
-		height: 75px;
+		height: 115px;
+	}
+	.victory {
+		top: 90px;
 	}
 }
