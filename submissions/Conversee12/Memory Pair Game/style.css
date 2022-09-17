@@ -79,6 +79,7 @@ body {
 
 .game__win {
   display: none;
+  z-index: 5;
   position: absolute;
   margin: 240px 120px;
   width: 500px;
