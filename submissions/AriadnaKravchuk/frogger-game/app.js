@@ -61,8 +61,8 @@ Array.prototype.getNumFromArray = function () {
 };
 
 function changeChar(player) {
-    const BODY = document.querySelector("body");
-    BODY.innerHTML = `<div class="choice">
+    const body = document.querySelector("body");
+    body.innerHTML = `<div class="choice">
                     <p class="choice__title">${"Select character"}</p>
                     <div class="choice__buttons">
                     <button class="choice__button button-boy">${"Boy"}</button>
@@ -70,13 +70,13 @@ function changeChar(player) {
                     </div>
                     </div>`;
 
-    const BUTTON_BOY = document.querySelector(".button-boy");
-    BUTTON_BOY.addEventListener("click", () => {
+    const buttonBoy = document.querySelector(".button-boy");
+    buttonBoy.addEventListener("click", () => {
         player.sprite = SKIN.BOY;
     });
 
-    const BUTTON_GIRL = document.querySelector(".button-girl");
-    BUTTON_GIRL.addEventListener("click", () => {
+    const buttonGirl = document.querySelector(".button-girl");
+    buttonGirl.addEventListener("click", () => {
         player.sprite = SKIN.GIRL;
     });
 }
