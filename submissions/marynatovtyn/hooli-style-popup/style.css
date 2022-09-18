@@ -7,6 +7,7 @@
 body {
     font-family: 'Noto Sans';
     font-size: 18px;
+    background-color: #EEE2DC;
 }
 
 .wrapper {
@@ -64,7 +65,7 @@ a {
 }
 
 .header__link:focus {
-    outline: 0;
+    outline: none;
 }
 
 .link:hover,
@@ -206,7 +207,6 @@ a {
 }
 
 .more__list {
-    /* display: grid; */
     display: none;
     grid-template: repeat(2, 1fr) / repeat(3, 1fr);
     gap: 10px;
@@ -215,22 +215,18 @@ a {
     align-items: center;
 }
 
-::-webkit-scrollbar {
+.header__popup::-webkit-scrollbar {
     width: 5px;
 }
 
-::-webkit-scrollbar-track {
+.header__popup::-webkit-scrollbar-track {
     background-color: #BAB2B5;
     border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb {
+.header__popup::-webkit-scrollbar-thumb {
     background-color: #9c9195;
     border-radius: 5px;
-}
-
-.main {
-    background-color: #EEE2DC;
 }
 
 @media screen and (max-width: 650px) {
