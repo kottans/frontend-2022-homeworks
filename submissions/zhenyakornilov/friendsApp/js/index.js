@@ -144,6 +144,8 @@ function renderByFilters(filterValue, sortValue) {
 function resetForm(fetchedUsers) {
   renderUsers(fetchedUsers);
   users = [...fetchedUsers];
+  genderFilterValue = "";
+  nameOrAgeSortValue = "";
   filterForm.reset();
 }
 
