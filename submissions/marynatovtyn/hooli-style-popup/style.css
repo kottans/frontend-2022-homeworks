@@ -23,8 +23,8 @@ a {
 
 .header {
     display: grid;
-	grid-template: 60px / repeat(2, 1fr);
-	justify-items: end;
+    grid-template: 60px / repeat(2, 1fr);
+    justify-items: end;
     align-items: center;
     background-color: #bab2b5;
 }
@@ -35,8 +35,8 @@ a {
 }
 
 .header__list {
-	display: flex;
-    justify-content: end; 
+    display: flex;
+    justify-content: end;
     align-items: center;
     position: relative;
 }
