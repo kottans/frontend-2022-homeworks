@@ -101,9 +101,13 @@ function createMenuItems(menuItems) {
 createMenuItems(content);
 
 function showArticles(id, menuItem, img, description) {
-  const article = `<h1 id = "coffee${id}" class="main-content__header">${menuItem}</h1>
+  const article = `
+	<h1 id = "coffee${id}" class="main-content__header">${menuItem}</h1>
 	<img class = "main-content__image" src="${img}" alt="cup of ${menuItem}" />
-	<p class="main-content__description">${description}</p>`;
+	<p class="main-content__description">${description}</p>
+	<div id="scrollTop" class="scroll-to-top-btn scroll-to-top-btn_hide">
+		<a class="scroll-to-top__icon" href="#main-header">^</a>
+	</div>`;
   mainContent.innerHTML = article;
 }
 
