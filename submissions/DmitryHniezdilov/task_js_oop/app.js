@@ -4,8 +4,8 @@ const initialInterfaceMarkup = () => {
   document.body.innerHTML = `
     <h1 class='title'>Frogger Game</h1>
     <div class='info-wrap'>
-    <p><span>Level: </span><span class='js-info-level'>1</span></p>
-    <p><span>Speed: </span><span class='js-info-speed'>x1</span></p>
+      <p><span>Level: </span><span class='js-info-level'>1</span></p>
+      <p><span>Speed: </span><span class='js-info-speed'>x1</span></p>
     </div>
     <p class='popup js-popup'></p>
   `;
@@ -14,7 +14,7 @@ const initialInterfaceMarkup = () => {
 initialInterfaceMarkup();
 
 const allEnemies = [];
-let IS_FREEZE = false;
+let isFreeze = false;
 
 const config = {
   BLOCK_WIDTH: 101,
@@ -85,7 +85,7 @@ Character.prototype.endOfGame = function (result, config) {
     ELEMENT_POPUP_MESSAGE.classList.add(POPUP_MESSAGE_ACTIVE_CLASS);
   };
 
-  IS_FREEZE = true;
+  isFreeze = true;
   if (result === END_OF_GAME_WIN) {
     STATE.currentLevel++;
     STATE.speedMultiplicator = +(
@@ -101,7 +101,7 @@ Character.prototype.endOfGame = function (result, config) {
   setTimeout(() => {
     ELEMENT_POPUP_MESSAGE.classList.remove(POPUP_MESSAGE_ACTIVE_CLASS);
     this.resetGame();
-    IS_FREEZE = false;
+    isFreeze = false;
   }, 900);
 };
 
@@ -119,7 +119,7 @@ const Enemy = function (x, y, minSpeed, maxSpeed, config) {
 Enemy.prototype = Object.create(Character.prototype);
 
 Enemy.prototype.update = function (dt) {
-  if (!IS_FREEZE) {
+  if (!isFreeze) {
     this.x += this.speed * dt;
 
     if (this.x > this.FIELD_WIDTH) {
@@ -148,18 +148,16 @@ Enemy.prototype.getRandomArbitrary = function (min, max) {
   return Math.random() * (max - min) + min;
 };
 
-Enemy.prototype.startPositionOfEnemies = function (i, n) {
+Enemy.prototype.startPositionOfEnemies = function (i) {
   if (i === 1) {
     return this.getRandomArbitrary(-this.BLOCK_WIDTH, this.BLOCK_WIDTH * 2);
-  } else if (i === 2 && n === 2) {
-    return this.getRandomArbitrary(-this.FIELD_WIDTH, -this.BLOCK_WIDTH);
   } else if (i === 2) {
-    return this.getRandomArbitrary(
-      (-this.FIELD_WIDTH + this.BLOCK_WIDTH) / 2,
-      -this.BLOCK_WIDTH
-    );
+    return this.getRandomArbitrary(-this.FIELD_WIDTH, -this.BLOCK_WIDTH);
   } else {
-    return 0;
+    return this.getRandomArbitrary(
+      -this.FIELD_WIDTH,
+      this.config.ORIGIN_COORDINATE_CHARACTERS.x
+    );
   }
 };
 
@@ -178,10 +176,7 @@ Enemy.prototype.createEnemies = function (config) {
 
     const createEnemy = (i) => () => {
       if (i > 0) {
-        const startPositionX = this.startPositionOfEnemies(
-          i,
-          amountEnemiesOnRow
-        );
+        const startPositionX = this.startPositionOfEnemies(i);
         allEnemies.push(
           new Enemy(
             startPositionX,
@@ -237,7 +232,7 @@ Player.prototype.update = function () {
 };
 
 Player.prototype.handleInput = function (key) {
-  if (!IS_FREEZE) {
+  if (!isFreeze) {
     switch (key) {
       case "left":
         this.x += -this.BLOCK_WIDTH;
