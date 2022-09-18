@@ -82,7 +82,7 @@ const cards = [
 	},
 	{
 		id: 5,
-		header: 'Башня бога>',
+		header: 'Башня бога',
 		img: './images/tower-of-god.jpg',
 		subHeader: 'Краткое описание',
 		description: [
