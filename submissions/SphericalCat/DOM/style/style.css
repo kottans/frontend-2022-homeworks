@@ -86,6 +86,7 @@ body{
         width: 100%;
         object-fit: contain;
         border-radius: 0;
+        border: none;
     }
 
     .head{
