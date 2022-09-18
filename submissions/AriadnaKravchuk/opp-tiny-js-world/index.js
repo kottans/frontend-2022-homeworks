@@ -18,6 +18,11 @@ const GENDER = {
    FEMALE: "female"
 }
 
+const SAYING = {
+   DOG: "woof-woof!",
+   CAT: "meow!"
+}
+
 class Inhabitant {
    constructor(species, name, gender, saying) {
       this.species = species;
@@ -78,14 +83,14 @@ class Animal extends Inhabitant {
 }
 
 class Dog extends Animal {
-   constructor(name, gender, saying, paws) {
-      super(SPECIES.DOG, name, gender, saying, paws);
+   constructor(name, gender, paws) {
+      super(SPECIES.DOG, name, gender, SAYING.DOG, paws);
    }
 }
 
 class Cat extends Animal {
-   constructor(name, gender, saying, paws) {
-      super(SPECIES.CAT, name, gender, saying, paws);
+   constructor(name, gender, paws) {
+      super(SPECIES.CAT, name, gender, SAYING.CAT, paws);
    }
 }
 
@@ -97,12 +102,12 @@ class Man extends Human {
 
 class Woman extends Human {
    constructor(name, saying, legs, hands) {
-      super(SPECIES.HUMAN, name, GENDER.FIMALE, saying, legs, hands);
+      super(SPECIES.HUMAN, name, GENDER.FEMALE, saying, legs, hands);
    }
 }
 
-const dog = new Dog("Pie", GENDER.MALE, "woof-woof!", 4);
-const cat = new Cat("Cake", GENDER.FEMALE, "meow!", 4);
+const dog = new Dog("Pie", GENDER.MALE, 4);
+const cat = new Cat("Cake", GENDER.FEMALE, 4);
 const man = new Man("Dominic", "Hello!", 2, 2);
 const woman = new Woman("Dominica", "Hello!", 2, 1);
 
