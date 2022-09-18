@@ -14,7 +14,7 @@
       </header>
       <div class="wrapper">
         <aside class="menu">
-          <form class="form">
+          <form id="form" class="form">
             <div class="form-group">
               <label for="search">Search User</label>
               <input
@@ -30,9 +30,10 @@
               <p class="form-group-title">Gender Filtering</p>
               <label>
                 <input
+                  id="all"
                   class="radio-button"
                   type="radio"
-                  name="sex"
+                  name="filter"
                   value="all"
                   checked
                 />
@@ -44,7 +45,7 @@
                   id="male"
                   class="radio-button"
                   type="radio"
-                  name="sex"
+                  name="filter"
                   value="male"
                 />
                 Male
@@ -54,7 +55,7 @@
                   id="female"
                   class="radio-button"
                   type="radio"
-                  name="sex"
+                  name="filter"
                   value="female"
                 />
                 Female
@@ -67,7 +68,7 @@
                   class="radio-button"
                   type="radio"
                   id="age-down"
-                  name="age"
+                  name="sort"
                   value="age-down"
                 />
                 Age ↓
@@ -77,7 +78,7 @@
                   class="radio-button"
                   type="radio"
                   id="age-up"
-                  name="age"
+                  name="sort"
                   value="age-up"
                 />
                 Age ↑
@@ -90,7 +91,7 @@
                   class="radio-button"
                   type="radio"
                   id="name-down"
-                  name="age-name"
+                  name="sort"
                   value="name-down"
                 />
                 A-Z
@@ -100,7 +101,7 @@
                   class="radio-button"
                   type="radio"
                   id="name-up"
-                  name="age-name"
+                  name="sort"
                   value="name-up"
                 />
                 Z-A
@@ -111,7 +112,7 @@
             </div>
           </form>
         </aside>
-        <main id="main-content" class="content-column"></main>
+        <main id="content" class="content-column"></main>
       </div>
       <footer class="footer">
         <span>Friends App©2022</span>

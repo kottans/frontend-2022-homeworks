@@ -1,130 +1,105 @@
-const CONTAINER = document.getElementById('main-content');
-const FORM = document.querySelector('.form');
-const MALE = document.getElementById('male');
-const FEMALE = document.getElementById('female');
-const SEARCH_FIELD = document.getElementById('search-field');
+const URL =
+  'https://randomuser.me/api/?results=40&nat=gb,us,ua&inc=name,location,picture,dob,gender,phone';
+const content = document.getElementById('content');
+const FORM = document.getElementById('form');
+const searchField = document.getElementById('search-field');
 const RESET = document.getElementById('reset-button');
-let nameNum = 0;
-let ageNum = 0;
-let usersCollection = [];
 
-fetch('https://randomuser.me/api/?results=40&nat=gb,us,es')
-  .then((response) => response.json())
-  .then((data) => {
-    usersCollection = data.results;
-    printUsers(usersCollection);
-  });
+let usersData = [];
 
-function printUsers(usersCollection) {
-  let block = document.createDocumentFragment();
-  usersCollection.forEach(function (user) {
-    let card = document.createElement('div');
-    card.classList.add('cards');
-    block.appendChild(card);
+document.addEventListener('DOMContentLoaded', getData);
+FORM.addEventListener('input', () => showContent(usersData));
 
-    let userImage = document.createElement('img');
-    userImage.classList.add('user-pic');
-    userImage.setAttribute('src', user.picture.large);
-    card.appendChild(userImage);
+async function getData() {
+  try {
+    const response = await fetch(URL);
+    if (!response.ok) {
+      throw new Error('Network response was not OK');
+    }
+    const data = await response.json();
 
-    let userName = document.createElement('p');
-    userName.classList.add('user-name');
-    userName.innerHTML = `${user.name.first} ${user.name.last}, ${user.dob.age}`;
-    card.appendChild(userName);
-
-    let userData = document.createElement('p');
-    userData.classList.add('user-data');
-    userData.innerHTML = `from ${user.location.city}`;
-    card.appendChild(userData);
-
-    let userPhone = document.createElement('p');
-    userPhone.classList.add('user-phone');
-    userPhone.innerHTML = user.phone;
-    card.appendChild(userPhone);
-  });
-  CONTAINER.appendChild(block);
-}
-
-FORM.addEventListener('click', function () {
-  switch (event.target.value) {
-    case 'all':
-    case 'male':
-    case 'female':
-      handleInput(usersCollection);
-      break;
-    case 'age-down':
-      if (!ageNum || ageNum === 1) {
-        usersCollection.sort(function (a, b) {
-          return a.dob.age - b.dob.age;
-        });
-        handleInput(usersCollection.reverse());
-        nameNum = 0;
-        ageNum = 2;
-      }
-      break;
-    case 'age-up':
-      if (!ageNum || ageNum === 2) {
-        usersCollection.sort(function (a, b) {
-          return a.dob.age - b.dob.age;
-        });
-        handleInput(usersCollection);
-        nameNum = 0;
-        ageNum = 1;
-      }
-      break;
-    case 'name-down':
-      if (!nameNum || nameNum === 1) {
-        usersCollection = sortName(usersCollection);
-        handleInput(usersCollection);
-        ageNum = 0;
-        nameNum = 2;
-      }
-      break;
-    case 'name-up':
-      if (!nameNum || nameNum === 2) {
-        usersCollection = sortName(usersCollection);
-        handleInput(usersCollection.reverse());
-        ageNum = 0;
-        nameNum = 1;
-      }
-      break;
+    usersData = data.results;
+    showContent(usersData);
+  } catch (err) {
+    console.error('Error: ', err);
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
   }
-});
-
-function sortName(usersCollection) {
-  usersCollection.sort(function (a, b) {
-    let nameA = a.name.first.toLowerCase(),
-      nameB = b.name.first.toLowerCase();
-    if (nameA < nameB) return -1;
-    if (nameA > nameB) return 1;
-    return 0;
-  });
-  return usersCollection;
 }
 
-function handleInput(usersCollection) {
-  let userArrayLocal = [];
-  usersCollection.forEach(function (user) {
-    if (!FEMALE.checked) if (user.gender === 'female') return;
-    if (!MALE.checked) if (user.gender === 'male') return;
-    if (
-      !`${user.name.first} ${user.name.last}`.includes(
-        SEARCH_FIELD.value.trim().toLowerCase()
-      )
+function showContent(data) {
+  content.innerHTML = createCardUser(filterDataUser(data));
+}
+
+function filterDataUser(data) {
+  const sortedAge = sortAge(data);
+  const sortedName = sortName(sortedAge);
+  const filteringGender = filterGender(sortedName);
+  const searchingName = searchName(filteringGender);
+  return searchingName;
+}
+
+function searchName(data) {
+  if (searchField.value) {
+    return usersData.filter((user) =>
+      (user.name.first + ' ' + user.name.last)
+        .toLowerCase()
+        .includes(searchField.value.toLowerCase())
+    );
+  }
+  return data;
+}
+
+function sortAge(data) {
+  if (FORM.sort.value === 'age-up') {
+    return usersData.sort((userFirst, userSecond) =>
+      userFirst.dob.age < userSecond.dob.age ? -1 : 1
+    );
+  }
+  if (FORM.sort.value === 'age-down') {
+    return usersData.sort((userFirst, userSecond) =>
+      userFirst.dob.age < userSecond.dob.age ? 1 : -1
+    );
+  }
+  return data;
+}
+
+function sortName(data) {
+  if (FORM.sort.value === 'name-down') {
+    return usersData.sort((userFirst, userSecond) =>
+      userFirst.name.first < userSecond.name.first ? -1 : 1
+    );
+  }
+  if (FORM.sort.value === 'name-up') {
+    return usersData.sort((userFirst, userSecond) =>
+      userFirst.name.first > userSecond.name.first ? -1 : 1
+    );
+  }
+  return data;
+}
+
+function filterGender(data) {
+  return data.filter(
+    (user) => user.gender === FORM.filter.value || FORM.filter.value === 'all'
+  );
+}
+
+function createCardUser(data) {
+  return data
+    .map(
+      ({ picture, name, dob, phone, location }) =>
+        `<div class="cards">
+				<img class="user-pic" src="${picture.large}" alt="${name.first} ${name.last}">
+				<p class="user-name">${name.first} ${name.last}, ${dob.age}</p>
+				<p class="user-data">from ${location.city}</p>
+				<p class="user-phone">${phone}</p>
+			</div>`
     )
-      return;
-    userArrayLocal.push(user);
-  });
-
-  CONTAINER.innerHTML = '';
-  printUsers(userArrayLocal);
+    .join('');
 }
-
-SEARCH_FIELD.addEventListener('input', function () {
-  handleInput(usersCollection);
-});
 
 RESET.addEventListener('click', function () {
   FORM.reset();
-  printUsers(usersCollection);
+  content.innerHTML = createCardUser(usersData);
 });
