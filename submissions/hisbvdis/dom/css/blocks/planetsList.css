@@ -1,0 +1,29 @@
+.planetsList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+
+  padding: 20px;
+  margin: 0;
+
+  list-style: none;
+}
+
+.planetsList__item {
+  flex: 0 0 auto;
+}
+
+.planetsList__img {
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+@media (min-width: 768px) {
+  .planetsList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

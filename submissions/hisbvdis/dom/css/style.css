@@ -1,0 +1,8 @@
+@import "./base/globals.css";
+
+@import "./layout/page.css";
+@import "./layout/header.css";
+@import "./layout/nav.css";
+@import "./layout/main.css";
+
+@import "./blocks/planetsList.css";
