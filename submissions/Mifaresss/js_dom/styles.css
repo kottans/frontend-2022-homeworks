@@ -47,6 +47,9 @@
 		color: #e5ede2;
 		text-align: center;
 	}
+	.home-screen__description::after {
+		content: 'Кликай на пункты меню слева!)';
+	}
 	.display-none {
 		display: none;
 	}
@@ -186,6 +189,9 @@
 		.main__container {
 			padding-top: 7px;
 		}
+		.home-screen__title {
+			font-size: 24px;
+		}
 	}
 	
 	@media (max-width: 850px) {
@@ -293,6 +299,9 @@
 		 .home-screen__img {
 			display: none;
 		 }
+		 .home-screen__description::after {
+			content: 'Кликай на значок меню справа вверху!)';
+		}
 	}
 	
 	@media (max-width: 500px) {
@@ -325,8 +334,8 @@
 			font-size: 16px;
 		}
 		.home-screen__title {
-			font-size: 28px;
-			padding: 0 10px;
+			font-size: 24px;
+			padding: 0 15px;
 		 }
 	}
 	
