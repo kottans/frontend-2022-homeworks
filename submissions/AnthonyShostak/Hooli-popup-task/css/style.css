@@ -50,10 +50,11 @@ a {
     box-sizing: border-box;
     justify-content: center;
     margin-left: -7px;
+    cursor: pointer;
 }
 .popup {
     display: none;
-    max-height: 350px;
+    max-height: 300px;
     position: absolute;
     margin-right: -52px;
     overflow-y: auto;
@@ -139,19 +140,7 @@ a {
     text-align: center;
     border-radius: 10px;
     border: 1px solid lightcyan;
-}
-.less {
-    display: none;
-}
-.checkbox__more:checked ~ .less {
-    box-sizing: border-box;
-    display: block;
-    align-self: center;
-    background: linear-gradient(to right, lightblue, lightgreen);
-    width: 243px;
-    text-align: center;
-    border-radius: 10px;
-    border: 1px solid lightcyan;
+    cursor: pointer;
 }
 .checkbox__more:checked ~ .more {
     display: none;
@@ -190,4 +179,3 @@ a {
     border-radius: 10px;
     border: 3px solid #D0D0D0;
 }
-
