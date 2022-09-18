@@ -1,5 +1,3 @@
-
-
 const postsList  = [
     {
         id: '1',
@@ -43,7 +41,7 @@ const postsList  = [
 const btnContainer = document.querySelector('.friends');
 const mainContainer = document.querySelector('.posts');
 
-btnContainer.addEventListener('click', targetContent );
+btnContainer.addEventListener('click', targetContent);
 
 function targetContent ({ target }) {
     if (target.id) {
@@ -52,16 +50,16 @@ function targetContent ({ target }) {
     }
 };
 
-
+let list = '';
 function postGenerator({nickname, topzoneImg, imageList}, list) {
-    for (let i=0; i<imageList.length; i++) {
-        list += `<article class="post">
+    return imageList.map(image => {
+        return `<article class="post">
                 <div class="topzone">
                     <img class="topzoneImg" src="${topzoneImg}" alt="postImg">
                     <p>${nickname}</p>
                 </div>
                 <div class="postImg">
-                    <img src="${imageList[i]}" class="postImg" alt="postImg">
+                    <img src="${image}" class="postImg" alt="postImg">
                 </div>
                 <div class="actionZone">
                     <button class="btn">
@@ -78,7 +76,5 @@ function postGenerator({nickname, topzoneImg, imageList}, list) {
                     </button>
                 </div>
                 <div class="postTime">posted <time datetime="24.5.3222">posted 5h ago</time></div>
-                </article>`
-        };
-    return list;
+                </article>`; }).join('');
 };
