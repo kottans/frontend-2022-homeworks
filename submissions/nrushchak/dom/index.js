@@ -30,52 +30,56 @@ const overview = `
   </div>
 `;
 
-const navBarItemsList = document.getElementsByClassName("navBar")[0].children;
+
+const navBarItemsList = document.getElementById("navBar");
 const mobileNavBarItemsList =
-  document.getElementsByClassName("mobileNavBar")[0].children;
+  document.getElementById("mobileNavBar");
 const content = document.getElementById("content");
 const menu = document.getElementById("menu");
 const mobileNavBar = document.getElementById("mobileNavBar");
 
 content.innerHTML = overview;
 
-navBarItemsList[0]?.addEventListener("click", () => {
-  content.innerHTML = overview;
+navBarItemsList.addEventListener("click", ({target}) => {
+  let id = target.closest('a')?.id;
+
+  if(!id) return;
+
+  changeContent(id);
+
 });
 
-mobileNavBarItemsList[0]?.addEventListener("click", () => {
-  content.innerHTML = overview;
+mobileNavBarItemsList.addEventListener("click", ({target}) => {
+  let id = target.id.split('').pop();
+
+  if(target.tagName !== "A") return;
+
+  changeContent(id);
+
   mobileNavBar.classList.toggle("change");
   menu.classList.toggle("change");
 });
 
-const changeContent = (htmlEl, dataSource, isMobile) => {
-  htmlEl?.addEventListener("click", () => {
+const changeContent = (id) => {
+
+  const elData = data[id-1];
+
+  if (+id === 0) {
+    content.innerHTML = overview;
+  } else {
     content.innerHTML = `
       <div class="pageContent">
-        <h1>${dataSource?.title}</h1>
+        <h1>${elData?.title}</h1>
         <figure class="pageImage">
-          <img src=${dataSource?.imgUrl} alt=${dataSource?.alt}>
-          <figcaption>${dataSource?.title} by ${dataSource?.imgAuthor}</figcaption>
+          <img src=${elData?.imgUrl} alt=${elData?.alt}>
+          <figcaption>${elData?.title} by ${elData?.imgAuthor}</figcaption>
         </figure>
-        <p class="pageDescription" >${dataSource?.description}</p>
+        <p class="pageDescription" >${elData?.description}</p>
       </div>
     `;
+  }
 
-    if (isMobile) {
-      mobileNavBar.classList.toggle("change");
-      menu.classList.toggle("change");
-    }
-  });
 };
-
-for (let i = 1; i <= navBarItemsList.length; i++) {
-  changeContent(navBarItemsList[i], data[i - 1], false);
-}
-
-for (let i = 1; i <= mobileNavBarItemsList.length; i++) {
-  changeContent(mobileNavBarItemsList[i], data[i - 1], true);
-}
 
 menu.addEventListener("click", () => {
   menu.classList.toggle("change");
