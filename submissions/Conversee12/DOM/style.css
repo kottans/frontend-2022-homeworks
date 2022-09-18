@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap");
 
+:root {
+  --bg-color: #0b0e14;
+  --btn-color: deeppink;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -10,7 +15,7 @@
 body {
   display: flex;
   flex-direction: column;
-  background: #0b0e14;
+  background: var(--bg-color);
   margin: 10px 0;
 }
 
@@ -38,10 +43,10 @@ main {
   margin-left: 100px;
 }
 
-.buttons {
+.button {
   border: none;
   background-color: transparent;
-  color: deeppink;
+  color: var(--btn-color);
   height: 100px;
   width: 300px;
   position: relative;
@@ -52,45 +57,45 @@ main {
   cursor: pointer;
 }
 
-.buttons::before,
-.buttons::after {
+.button::before,
+.button::after {
   position: absolute;
   top: 0;
   left: 0;
   content: "";
   display: block;
-  background-color: deeppink;
+  background-color: var(--btn-color);
   transition: all 250ms ease-in-out;
 }
 
-.buttons::before {
+.button::before {
   width: 2px;
   height: 100px;
-  box-shadow: 298px 0 deeppink;
+  box-shadow: 298px 0 var(--btn-color);
 }
 
-.buttons::after {
+.button::after {
   height: 2px;
   width: 300px;
-  box-shadow: 0 98px deeppink;
+  box-shadow: 0 98px var(--btn-color);
 }
 
-.buttons:hover {
+.button:hover {
   font-size: 2em;
   transition: all 250ms ease-in-out;
 }
 
-.buttons:hover::before {
+.button:hover::before {
   left: -10px;
-  box-shadow: 318px 0 deeppink;
+  box-shadow: 318px 0 var(--btn-color);
 }
 
-.buttons:hover::after {
+.button:hover::after {
   top: -10px;
-  box-shadow: 0 118px deeppink;
+  box-shadow: 0 118px var(--btn-color);
 }
 
-.buttons:last-child {
+.button:last-child {
   margin-bottom: 50px;
 }
 
@@ -121,7 +126,7 @@ main {
 .section__text {
   margin-top: 50px;
   font-size: 1.5rem;
-  color: deeppink;
+  color: var(--btn-color);
   font-style: italic;
   line-height: 1.9em;
   word-spacing: 3px;
@@ -130,13 +135,13 @@ main {
 
 .section__info {
   font-size: 1.5rem;
-  color: deeppink;
+  color: var(--btn-color);
 }
 
 .section__song {
   margin-top: 85px;
   font-size: 1.5rem;
-  color: deeppink;
+  color: var(--btn-color);
   word-spacing: 6px;
   margin-bottom: 20px;
 }
@@ -151,36 +156,36 @@ main {
     margin-top: 50px;
   }
 
-  .buttons {
+  .button {
     height: 60px;
     width: 300px;
   }
 
-  .buttons::before {
+  .button::before {
     width: 2px;
     height: 60px;
-    box-shadow: 298px 0 deeppink;
+    box-shadow: 298px 0 var(--btn-color);
   }
 
-  .buttons::after {
+  .button::after {
     height: 2px;
     width: 300px;
-    box-shadow: 0 58px deeppink;
+    box-shadow: 0 58px var(--btn-color);
   }
 
-  .buttons:hover {
+  .button:hover {
     font-size: 2em;
     transition: all 250ms ease-in-out;
   }
 
-  .buttons:hover::before {
+  .button:hover::before {
     left: -8px;
-    box-shadow: 318px 0 deeppink;
+    box-shadow: 318px 0 var(--btn-color);
   }
 
-  .buttons:hover::after {
+  .button:hover::after {
     top: -8px;
-    box-shadow: 0 78px deeppink;
+    box-shadow: 0 78px var(--btn-color);
   }
 }
 
@@ -302,40 +307,40 @@ main {
     margin-left: 0;
   }
 
-  .buttons {
+  .button {
     height: 40px;
     width: 140px;
     font: 1rem sans-serif;
     margin-bottom: 10px;
   }
 
-  .buttons::before {
+  .button::before {
     width: 2px;
     height: 40px;
-    box-shadow: 138px 0 deeppink;
+    box-shadow: 138px 0 var(--btn-color);
   }
 
-  .buttons::after {
+  .button::after {
     height: 2px;
     width: 140px;
-    box-shadow: 0 38px deeppink;
+    box-shadow: 0 38px var(--btn-color);
   }
 
-  .buttons:hover {
+  .button:hover {
     font-size: 1.15em;
   }
 
-  .buttons:hover::before {
+  .button:hover::before {
     left: -6px;
-    box-shadow: 150px 0 deeppink;
+    box-shadow: 150px 0 var(--btn-color);
   }
 
-  .buttons:hover::after {
+  .button:hover::after {
     top: -6px;
-    box-shadow: 0 50px deeppink;
+    box-shadow: 0 50px var(--btn-color);
   }
 
-  .buttons:last-child {
+  .button:last-child {
     margin-bottom: 5px;
   }
 
@@ -392,36 +397,36 @@ main {
     margin-left: 0px;
   }
 
-  .buttons {
+  .button {
     height: 25px;
     width: 130px;
     font-size: 0.7rem;
   }
 
-  .buttons::before {
+  .button::before {
     width: 2px;
     height: 25px;
-    box-shadow: 128px 0 deeppink;
+    box-shadow: 128px 0 var(--btn-color);
   }
 
-  .buttons::after {
+  .button::after {
     height: 2px;
     width: 130px;
-    box-shadow: 0 23px deeppink;
+    box-shadow: 0 23px var(--btn-color);
   }
 
-  .buttons:hover {
+  .button:hover {
     font-size: 0.9em;
   }
 
-  .buttons:hover::before {
+  .button:hover::before {
     left: -4px;
-    box-shadow: 137px 0 deeppink;
+    box-shadow: 137px 0 var(--btn-color);
   }
 
-  .buttons:hover::after {
+  .button:hover::after {
     top: -4px;
-    box-shadow: 0 32px deeppink;
+    box-shadow: 0 32px var(--btn-color);
   }
 
   .section__song {
