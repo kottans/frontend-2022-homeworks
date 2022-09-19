@@ -106,15 +106,12 @@ li {
     margin-bottom: 20px;
 }
 
-.more:checked + .popup-more {
+.more:checked + .more-label {
     display: none;
 }
 
 .more-menu {
     display: none;
-    margin-top: 50px;
-    border-top: 5px dashed rgba(233, 15, 15, 0.478);
-    padding-top: 50px;
 }
 
 .more-label {
@@ -133,4 +130,13 @@ li {
     text-align: center;
     text-decoration: none;
     color: rgb(168, 49, 158);
+}
+
+@media (min-width: 375px) {
+    .menu, .more-menu {
+        width: 300px;
+    }
+    .menu-list {
+        gap: 5px;
+    }
 }
