@@ -38,7 +38,8 @@ const turtles = [
             Leonardo is the leader, as well as the most mature and disciplined of the Turtles. Like his brothers, he is named 
             after an Italian Renaissance artist, in this case, Leonardo da Vinci. In the original comics, all four of 
             the Turtles wear red masks, but for the creators to tell them apart, 
-            he was written and redrawn to have an ocean-blue mask.`
+            he was written and redrawn to have an ocean-blue mask.`,
+            ``
         ]
     },
     {
@@ -83,7 +84,6 @@ const turtles = [
             His ninja skills are the lowest of the four turtles; as he relies on gadgets over combat skills. Like all of the brothers, 
             he is named after a Renaissance artist; in this case, he is named after Italian sculptor Donatello. 
             He is the favorite turtle of co-creator Peter Laird, who served as the basis of Donatello's personality.`,
-
             ``
         ]
     },
@@ -107,7 +107,6 @@ const turtles = [
             His name was originally spelled "Michaelangelo" by the original creators, possibly misspelling his namesake's name wrong 
             by confusion with "Michael". In the Mirage comics, all four of the Turtles wear red masks, but to tell them apart, 
             he was given an orange mask instead.`,
-
             ``
         ]
     },
@@ -121,7 +120,6 @@ const turtles = [
             the Turtles, as well as their adoptive father. In some incarnations—including the original comics—he was the pet rat of 
             martial artist Hamato Yoshi (Japanese: 濱戸義), while in others he is a mutated or reincarnated Yoshi himself. 
             The character was originally a parody of the Marvel Comics character Stick.`,
-
             ``,
             ``
         ]
@@ -165,11 +163,8 @@ function getContentOnclick(target) {
         }
       })
     return target.innerText === turtle.title;
-
   });
-
     getContent(turtleHtml);
-
 }
 
 menu.addEventListener('click', (event) => {
