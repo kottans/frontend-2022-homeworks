@@ -106,8 +106,13 @@ li {
     display: block;
 }
 
-input[class='popup__menu__more__input'] + label div:after{content:'More';}
-input[class='popup__menu__more__input']:checked + label div:after{content:'Less';}
+input[class='popup__menu__more__input'] + label span:after {
+    content: 'More';
+}
+
+input[class='popup__menu__more__input']:checked + label span:after {
+    content: 'Less';
+}
 
 .popup__menu__wrapper {
     box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
@@ -127,7 +132,6 @@ input[class='popup__menu__more__input']:checked + label div:after{content:'Less'
 
 .popup__menu, .popup__menu__more {
     padding: 15px;
-    /*border: 1px solid red;*/
 
     display: grid;
     grid-template: auto/ 1fr 1fr 1fr;
@@ -143,6 +147,7 @@ input[class='popup__menu__more__input']:checked + label div:after{content:'Less'
     text-decoration: none;
     color: #445162;
 }
+
 .popup__menu__item a:hover,
 .popup__menu__item a:focus-within {
     opacity: 0.6;
@@ -165,6 +170,7 @@ input[class='popup__menu__more__input']:checked + label div:after{content:'Less'
     flex-direction: row;
     justify-content: center;
     padding: 5px;
+    margin: 10px;
 }
 
 .more-button:hover,
@@ -197,7 +203,9 @@ input[class='popup__menu__more__input']:checked + label div:after{content:'Less'
 .more_button_focus a:focus-within,
 .header__item:focus-within,
 li.popup__menu__item a:focus-within,
-.popup__menu__more__input:focus-within + label > div
+.popup__menu__more__input:focus-within + label > span
 {
     outline: 2px solid #1d8bf5;
 }
+
+
