@@ -40,7 +40,7 @@ body {
         &__image {
           vertical-align: middle;
           padding-bottom: 4px;
-          height: fill-available;
+          height: inherit;
         }
       }
     }
@@ -69,7 +69,6 @@ body {
   position: absolute;
   margin-left: -12px;
   margin-top: -30px;
-  clip-path: polygon;
   transform: rotate(45deg);
 }
 
@@ -160,7 +159,6 @@ body {
   width: 1px;
   height: 1px;
   overflow: hidden;
-  clip: rect(0 0 0 0);
 }
 
 .header__nav__list__item__label:hover,
