@@ -48,7 +48,9 @@ function onFriendCardClick({ target }) {
             PREVIOUS_ACTIVE_CARD = undefined;
         } PREVIOUS_ACTIVE_CARD = currentCard
     }
-    currentCard.classList.toggle('active');
+    if (currentCard) {
+        currentCard.classList.toggle('active');
+    }
 };
 
 MAIN_EL.addEventListener('click', onFriendCardClick);
