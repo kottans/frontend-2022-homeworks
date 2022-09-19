@@ -4,41 +4,58 @@ const cardsField = document.querySelector('.contentWrapper')
 const formWrapper = document.querySelector('.searchFormWrapper')
 const form = document.querySelector('.searchForm')
 const searchIput = document.querySelector('#searchName')
-const burgerMenu = document.querySelector('.burgerForForm')
+const burgerMenu = document.querySelector('.burgerBtn')
 const paginationList = document.querySelector('.paginationList')
 
 let users = []
 const numberUsersOnPage = 24
+let numberOfFetchRequests = 0
 
 document.addEventListener("DOMContentLoaded", loadData)
-form.addEventListener('input', () => renderPageContent(1))
+form.addEventListener('input', () => renderPageContent(currentPage = 1))
 form.addEventListener("submit", (e) => e.preventDefault())
 burgerMenu.addEventListener('click', searchFormSwitch)
-paginationList.addEventListener('click', changePage)
-
+paginationList.addEventListener('click', handleChangePage)
 
 async function loadData() {
     try {
+        numberOfFetchRequests++
         const response = await fetch(url)
         if (!response.ok) {
             throw new Error(`http status ${response.status}`)
         }
         const data = await response.json()
         users = data.results
-        renderPageContent(1)
+        renderPageContent(currentPage = 1)
+        activateInputs()
     }
     catch (e) {
         console.error(`FRIENDS ERROR: ${e}`)
         let secondsToReload = 5
-        setInterval(() => {
+        const interval = setInterval(() => {
             cardsField.innerHTML =
                 `<div class="error">
-                <p>Somthing went wrong</p>
-                <p>The page will reload in ${secondsToReload} sec</p>
-            </div>`
-            if (--secondsToReload === -1) { location.reload() }
+                    <p>Somthing went wrong</p>
+                    <p>The page will reload in ${secondsToReload} sec</p>
+                </div>`
+            if (--secondsToReload < 0) {
+                clearInterval(interval)
+                secondsToReload = 5
+                loadData()
+            }
+            if (numberOfFetchRequests > 5) {
+                clearInterval(interval)
+                cardsField.innerHTML =
+                    `<div class="error">
+                        <p>Somthing went wrong</p>
+                        <p>Please reload the page in a few minutes.</p>
+                    </div>`
+            }
         }, 1000)
     }
+}
+function activateInputs() {
+    formWrapper.classList.add('input-active')
 }
 function renderPageContent(currentPage) {
     const usersForRender = prepairUsersForRender()
@@ -47,43 +64,41 @@ function renderPageContent(currentPage) {
 }
 function prepairUsersForRender() {
     const searchedByName = searchByName(users)
-    const sortedByAge = sortingUsersByAge(searchedByName)
-    const sortedByAlphabet = sortingUsersByAlphabet(sortedByAge)
-    const filteredByGender = filterByGender(sortedByAlphabet)
+    const filteredByGender = filterByGender(searchedByName)
+    sortUsers(filteredByGender)
     return filteredByGender
 }
 function searchByName(users) {
-    if (form.searchName.value) {
-        return users.filter(user =>
-            (user.name.first + ' ' + user.name.last).toLowerCase()
-                .includes(form.searchName.value.toLowerCase()))
+    if (!form.searchName.value) {
+        return users
     }
-    return users
+    return users.filter(user =>
+        `${user.name.first} ${user.name.last}`.toLowerCase()
+            .includes(form.searchName.value.toLowerCase()))
 }
-function sortingUsersByAge(users) {
-    if (form.sort.value === 'ageUp') {
-        return users.sort((userA, userB) =>
-            userA.dob.age < userB.dob.age ? -1 : 1)
+function sortUsers(users) {
+    function sortOrder(a, b) {
+        return a < b ? -1 : 1
     }
-    if (form.sort.value === 'ageDown') {
-        return users.sort((userA, userB) =>
-            userA.dob.age < userB.dob.age ? 1 : -1)
+    switch (form.sort.value) {
+        case 'ageUp':
+            return users.sort((userA, userB) => sortOrder(userA.dob.age, userB.dob.age))
+        case 'ageDown':
+            return users.sort((userA, userB) => sortOrder(userB.dob.age, userA.dob.age))
+        case 'az':
+            return users.sort((userA, userB) =>
+                sortOrder(`${userA.name.first} ${userA.name.last}`, `${userB.name.first} ${userB.name.last}`))
+        case 'za':
+            return users.sort((userA, userB) =>
+                sortOrder(`${userB.name.first} ${userB.name.last}`, `${userA.name.first} ${userA.name.last}`))
     }
-    return users
-}
-function sortingUsersByAlphabet(users) {
-    if (form.sort.value === 'az') {
-        return users.sort((userA, userB) =>
-            userA.name.first < userB.name.first ? -1 : 1)
-    } if (form.sort.value === 'za') {
-        return users.sort((userA, userB) =>
-            userA.name.first > userB.name.first ? 1 : -1)
-    }
-    return users
 }
 function filterByGender(users) {
+    if (form.gender.value === 'all') {
+        return users
+    }
     return users.filter(user =>
-        user.gender === form.gender.value || form.gender.value === 'all'
+        user.gender === form.gender.value
     )
 }
 function preparCardsToRender(users) {
@@ -113,8 +128,10 @@ function preparCardsToRender(users) {
 function renderCards(cards) {
     cardsField.innerHTML = cards
 }
-function searchFormSwitch() {
-    formWrapper.style.display = burgerMenu.burgerInput.checked ? 'block' : 'none'
+function searchFormSwitch(event) {
+    event.stopPropagation()
+    burgerMenu.classList.toggle('burgerBtn-active')
+    formWrapper.classList.toggle('searchFormWrapper-action')
 }
 function createPaginationList(users, currentPage) {
     numberOfPages = users.length / numberUsersOnPage
@@ -124,7 +141,7 @@ function createPaginationList(users, currentPage) {
     }
     const currentListOfPages = listOfPages.map((page) =>
         `<li class="listItem ${parseInt(page) === parseInt(currentPage) ? "currentPage" : ""}">
-        <a class="listItemA">${page}</a></li>`)
+        <a class="listItemA" data-id="${page}">${page}</a></li>`)
     if (currentPage === 1) {
         paginationList.innerHTML = currentListOfPages
             .slice(currentPage - 1, currentPage + 7).join('')
@@ -137,19 +154,23 @@ function createPaginationList(users, currentPage) {
         paginationList.innerHTML = currentListOfPages
             .slice(currentPage - 3, currentPage + 5).join('')
     }
-    if (currentPage > 3) {
+    if (currentPage === 4) {
+        paginationList.innerHTML = currentListOfPages
+            .slice(currentPage - 4, currentPage + 4).join('')
+    }
+    if (currentPage > 4) {
         paginationList.innerHTML = `${currentListOfPages
             .slice(0, 1)}<span>...</span>${currentListOfPages
-                .slice(currentPage - 3, currentPage + 5).join('')}`
+                .slice(currentPage - 3, currentPage + 3).join('')}`
     }
 }
 function getUsersForCurrentPage(users, currentPage) {
     return users
         .slice(numberUsersOnPage * (currentPage - 1), numberUsersOnPage * currentPage)
 }
-function changePage({ target }) {
+function handleChangePage({ target }) {
     if (target.closest('.listItemA')) {
-        currentPage = parseInt(target.innerHTML)
+        currentPage = parseInt(target.dataset.id)
         renderPageContent(currentPage)
     }
 }

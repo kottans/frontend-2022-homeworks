@@ -1,3 +1,13 @@
+input,
+label {
+    pointer-events: none;
+}
+
+.input-active input,
+.input-active label {
+    pointer-events: all;
+}
+
 .inputWrapper {
     position: relative;
     margin-right: 15px;
@@ -56,7 +66,7 @@
     transform: scale(1);
 }
 
-.conteiner {
+.container {
     display: flex;
     flex-direction: column;
 }
@@ -74,7 +84,7 @@
         margin-left: 0;
     }
 
-    .conteiner {
+    .container {
         align-items: flex-end;
     }
 
@@ -86,6 +96,10 @@
 .label,
 .searchForm input {
     cursor: pointer;
+}
+
+.searchForm .searchField {
+    cursor: text;
 }
 
 .searchByName {
@@ -109,6 +123,10 @@
     padding: 7px 0;
     background: transparent;
     transition: border-color 0.2s;
+}
+
+p {
+    cursor: default;
 }
 
 .formLabel {
@@ -139,14 +157,19 @@
     font-weight: 700;
 }
 
-.burgerLabel {
+.burgerBtn {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 70px;
     cursor: pointer;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    z-index: 7;
 }
 
-.burgerLabel span {
+.burgerBtn span {
     background: #0f66f1;
     border-radius: 10px;
     height: 7px;
@@ -166,21 +189,17 @@ span:nth-of-type(3) {
     width: 75%;
 }
 
-.burgerInput {
-    display: none;
-}
-
-.burgerInput:checked~span:nth-of-type(1) {
+.burgerBtn-active span:nth-of-type(1) {
     transform-origin: bottom;
     transform: rotatez(45deg) translate(8px, 0px)
 }
 
-.burgerInput:checked~span:nth-of-type(2) {
+.burgerBtn-active span:nth-of-type(2) {
     transform-origin: top;
     transform: rotatez(-45deg)
 }
 
-.burgerInput:checked~span:nth-of-type(3) {
+.burgerBtn-active span:nth-of-type(3) {
     transform-origin: bottom;
     width: 50%;
     transform: translate(30px, -11px) rotatez(45deg);

@@ -227,6 +227,9 @@ main>.content {
         line-height: 1.5;
         z-index: 3;
     }
+    .searchFormWrapper-action{
+        display: block;
+    }
 
     .searchForm {
         width: 100%;
@@ -254,4 +257,5 @@ main>.content {
         left: 20px;
         top: 20px;
     }
+    
 }
