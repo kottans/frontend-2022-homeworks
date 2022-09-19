@@ -9,18 +9,17 @@ $light-gradient-color: #014546;
 $light-gradient-color-hover: #236768;
 $text-color: #cccccc;
 $inputs-background-color: rgba(200, 200, 200, 0.5);
-$radio-pagination-color: #62ba85;
-$radio-pagination-color-checked: #a6fec9;
-$radio-pagination-background-color-checked: #003435;
-$radio-pagination-color-hover: #84dca7;
+$pagination-color: #62ba85;
+$pagination-background-color-active: #003435;
+$pagination-color-hover: #84dca7;
 
 .body {
   background-color: $body-background;
 }
 
 .label-open-filters {
-  color: $radio-pagination-color;
-  background: $radio-pagination-background-color-checked;
+  color: $pagination-color;
+  background: $pagination-background-color-active;
   width: max-content;
   margin: auto;
   border-radius: 10px;
@@ -28,7 +27,7 @@ $radio-pagination-color-hover: #84dca7;
   letter-spacing: 0.15em;
 
   &:hover {
-    color: $radio-pagination-color-hover;
+    color: $pagination-color-hover;
     cursor: pointer;
   }
 }
@@ -103,7 +102,7 @@ $radio-pagination-color-hover: #84dca7;
 
     .sex-filter-container {
       .radio-container {
-        .radio-sex-input {
+        .sex-input {
           opacity: 0.5;
           cursor: pointer;
         }
@@ -197,24 +196,31 @@ $radio-pagination-color-hover: #84dca7;
   }
 }
 
-.radio-nav-container {
+.nav-container {
   .pagination-dots {
-    color: $radio-pagination-color;
+    color: $pagination-color;
+    line-height: 24px;
     cursor: default;
   }
 
-  .checked {
-    background-color: $radio-pagination-background-color-checked;
+  .active {
+    background-color: $pagination-background-color-active;
     font-weight: 600;
   }
 
-  .radio-nav-label {
+  .nav-list-item {
     border-radius: 5px;
-    color: $radio-pagination-color;
+  }
+
+  .pagination-link {
+    color: $pagination-color;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 24px;
 
     &:hover {
       cursor: pointer;
-      color: $radio-pagination-color-hover;
+      color: $pagination-color-hover;
     }
   }
 }

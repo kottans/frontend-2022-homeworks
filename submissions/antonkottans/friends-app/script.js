@@ -9,9 +9,9 @@ const pipe = (...arrayOfFunctions) => {
 };
 
 const nodes = {
-  paginationRadioButtons: null,
+  paginationListItems: null,
   containerForFriendsNode: null,
-  radioNavContainer: null,
+  navContainer: null,
 };
 
 const constants = {
@@ -29,6 +29,7 @@ const state = {
     nameFilter: "",
     sexFilter: "all",
   },
+  amountOfPages: null,
 };
 
 const resetFilters = () => {
@@ -70,7 +71,7 @@ const getNearestNaturalNumbers = (
   if (!(amountOfNumbersToReturnOdd % 2)) amountOfNumbers -= 1;
   const centralNumber = parseInt(currentNumber);
   let amountOfNumbers = parseInt(amountOfNumbersToReturnOdd);
-  let numbersArr = [currentNumber];
+  let numbersArr = [centralNumber];
   const ifShouldReturnFirstNumbers =
     centralNumber - ((amountOfNumbers - 1) / 2 + 1) <= 0;
   const ifShouldReturnLastNumbers =
@@ -104,19 +105,21 @@ const createPagesNavigation = ({ totalPages, currentPage }) => {
       paginationSize: 9,
       currentPage,
     });
-    container.querySelectorAll(".radio-nav-label").forEach((labelNode) => {
-      if (
-        visiblePaginationElements.paginationPageNumbers.includes(
-          +labelNode.textContent
-        )
-      )
-        labelNode.classList.remove("hidden-page-number");
-    });
     container
-      .querySelector(".radio-nav-label:first-of-type")
+      .querySelectorAll(".nav-list-item")
+      .forEach((paginationListItem) => {
+        if (
+          visiblePaginationElements.paginationPageNumbers.includes(
+            +paginationListItem.children[0].textContent
+          )
+        )
+          paginationListItem.classList.remove("hidden-page-number");
+      });
+    container
+      .querySelector(".nav-list-item:first-of-type")
       .classList.remove("hidden-page-number");
     container
-      .querySelector(".radio-nav-label:last-of-type")
+      .querySelector(".nav-list-item:last-of-type")
       .classList.remove("hidden-page-number");
     if (visiblePaginationElements.visibleDots.left)
       container.querySelector(".left-dots").classList.remove("hidden");
@@ -130,114 +133,103 @@ const createPagesNavigation = ({ totalPages, currentPage }) => {
     paginationSize,
     currentPage,
   }) => {
-    const totalRadioLabels =
-      navContainer.querySelectorAll(".radio-nav-label").length;
+    const totalPaginationLinks =
+      navContainer.querySelectorAll(".pagination-link").length;
     let visibleDots = { left: false, right: false };
     const paginationPageNumbers = getNearestNaturalNumbers(
       currentPage,
       paginationSize,
-      totalRadioLabels
+      totalPaginationLinks
     );
     let onlyRightDotsNeeded = false;
     let onlyLeftDotsNeeded = false;
-    if (totalRadioLabels < paginationSize + 2) {
+    if (totalPaginationLinks < paginationSize + 2) {
       return { paginationPageNumbers, visibleDots };
     } else {
       onlyRightDotsNeeded = currentPage <= 6;
-      onlyLeftDotsNeeded = currentPage >= totalRadioLabels - 5;
+      onlyLeftDotsNeeded = currentPage >= totalPaginationLinks - 5;
     }
     if (onlyRightDotsNeeded) {
       visibleDots.right = true;
     } else if (onlyLeftDotsNeeded) {
       visibleDots.left = true;
-    } else if (totalRadioLabels > paginationSize + 2)
+    } else if (totalPaginationLinks > paginationSize + 2)
       visibleDots = { left: true, right: true };
     return { paginationPageNumbers, visibleDots };
   };
 
   const createContainer = () => {
-    const radioContainerNode = document.createElement("div");
-    radioContainerNode.classList.add("radio-nav-container");
-    nodes.radioNavContainer = radioContainerNode;
-    return radioContainerNode;
+    const containerNode = document.createElement("nav");
+    containerNode.classList.add("nav-container");
+    nodes.navContainer = containerNode;
+    return containerNode;
   };
 
-  const addLabels = (container) => {
-    container.append(
-      ...[...new Array(totalPages)]
-        .map((_) => document.createElement("label"))
-        .map((labelNode, i) => {
-          labelNode.setAttribute("for", `radio-${i + 1}`);
-          labelNode.classList.add(`radio-nav-label`, "hidden-page-number");
-          if (i + 1 === currentPage) labelNode.classList.add("checked");
-          labelNode.innerText = i + 1;
-          return labelNode;
-        })
+  const addList = (container) => {
+    const paginationList = document.createElement("ol");
+    paginationList.classList.add("pagination-list");
+    container.append(paginationList);
+    return container;
+  };
+
+  const addListItemAndLink = (container) => {
+    container.querySelector(".pagination-list").append(
+      ...[...new Array(totalPages)].map((_, i) => {
+        const listItemNode = document.createElement("li");
+        const linkNode = document.createElement("a");
+        listItemNode.classList.add("nav-list-item", "hidden-page-number");
+        linkNode.classList.add("pagination-link");
+        linkNode.setAttribute("href", `${i + 1}`);
+        if (i + 1 === +currentPage) {
+          listItemNode.classList.add("active");
+        }
+        linkNode.innerText = i + 1;
+        listItemNode.append(linkNode);
+        return listItemNode;
+      })
     );
     return container;
   };
 
-  const addThreeDots = (container) => {
-    const leftDots = document.createElement("span");
-    const rightDots = document.createElement("span");
-    leftDots.textContent = "...";
-    leftDots.classList.add("pagination-dots", "hidden");
-    leftDots.classList.add("left-dots");
-    rightDots.textContent = "...";
-    rightDots.classList.add("pagination-dots", "hidden");
-    rightDots.classList.add("right-dots");
-    container.insertBefore(leftDots, container.childNodes[1]);
-    container.insertBefore(
-      rightDots,
-      container.childNodes[container.childNodes.length - 1]
+  const addEventHandler = (container) => {
+    container.addEventListener("click", (event) => {
+      if (!event.target.matches(".pagination-link")) return undefined;
+      event.preventDefault();
+      window.location.hash = `#${event.target.getAttribute("href")}`;
+      document.querySelector(".active").classList.remove("active");
+      event.target.closest(".nav-list-item").classList.add("active");
+    });
+    return container;
+  };
+
+  const addThreeLinkDots = (container) => {
+    const leftdotsListItem = document.createElement("li");
+    const rightdotsListItem = document.createElement("li");
+    const navList = container.querySelector(".pagination-list");
+    leftdotsListItem.classList.add("pagination-dots", "hidden");
+    rightdotsListItem.classList.add("pagination-dots", "hidden");
+    leftdotsListItem.textContent = "...";
+    rightdotsListItem.textContent = "...";
+    leftdotsListItem.classList.add("left-dots");
+    rightdotsListItem.classList.add("right-dots");
+    navList.insertBefore(leftdotsListItem, navList.childNodes[1]);
+    navList.insertBefore(
+      rightdotsListItem,
+      navList.childNodes[navList.childNodes.length - 1]
     );
     return container;
   };
 
-  const addInputs = (container) => {
-    nodes.paginationRadioButtons = [...new Array(totalPages)].map((_, i) => {
-      const inputNode = document.createElement("input");
-      inputNode.setAttribute("type", "radio");
-      inputNode.setAttribute("name", "page-nav");
-      inputNode.setAttribute("id", `radio-${i + 1}`);
-      inputNode.classList.add("radio-nav-input");
-      return inputNode;
-    });
-    container.append(...nodes.paginationRadioButtons);
-    return container;
-  };
-
-  const addEvent = (container) => {
-    container.addEventListener("click", ({ target }) => {
-      if (target.matches(".radio-nav-input")) {
-        nodes.paginationRadioButtons.forEach((node) =>
-          node.classList.remove("checked")
-        );
-        document
-          .querySelector(`[for=${target.getAttribute("id")}]`)
-          .classList.add("checked");
-
-        updateVisibilityOfPaginationElements(nodes.radioNavContainer);
-        updateContentAccordingToActiveFilters({
-          page: parseInt(target.id.slice(6)),
-        });
-      }
-    });
-    return container;
-  };
-
-  const setCheckedFirstRadio = (container) => {
-    container.querySelector(`input:first-of-type`).checked = true;
-    return container;
-  };
+  if (+window.location.hash.slice(1) !== currentPage) {
+    window.location.hash = `#${currentPage}`;
+  }
 
   return pipe(
     createContainer,
-    addLabels,
-    addThreeDots,
-    addInputs,
-    addEvent,
-    setCheckedFirstRadio,
+    addList,
+    addListItemAndLink,
+    addThreeLinkDots,
+    addEventHandler,
     updateVisibilityOfPaginationElements
   );
 };
@@ -269,10 +261,10 @@ const createAndShowPage = (
     );
   }, 0);
   if (totalPages === 0) {
-    document.querySelector(".radio-nav-container").innerHTML = "";
-  } else if (document.querySelector(".radio-nav-container"))
+    document.querySelector(".nav-container").innerHTML = "";
+  } else if (document.querySelector(".nav-container"))
     document
-      .querySelector(".radio-nav-container")
+      .querySelector(".nav-container")
       .replaceWith(createPagesNavigation({ totalPages, currentPage }));
   else {
     document
@@ -467,10 +459,10 @@ const getFilteredStorage = (filter = state.friendsFilter) => {
 
   return pipe(
     cloneFriends,
-    filterByAge, 
-    filterByName, 
-    filterBySex, 
-    sortByAge, 
+    filterByAge,
+    filterByName,
+    filterBySex,
+    sortByAge,
     sortByName
   );
 };
@@ -484,6 +476,9 @@ const updateContentAccordingToActiveFilters = ({ page = 1 }) => {
       nodes.containerForFriendsNode.clientWidth,
       filteredfriendsStorage.length
     );
+  if (totalPages != state.amountOfPages) {
+    state.amountOfPages = totalPages;
+  }
   createAndShowPage(
     page,
     amountOfFriendsPerPage,
@@ -507,12 +502,11 @@ const addEventListeners = () => {
     .querySelector(".age-filter-container")
     .addEventListener("input", ({ target }) => {
       if (target.matches(".age-input")) {
-        if (target.id === "start-age"){
+        if (target.id === "start-age") {
           state.friendsFilter.ageFilterRange.min = target.value
             ? +target.value
             : constants.MIN_AGE;
-        }
-        else if (target.id === "end-age"){
+        } else if (target.id === "end-age") {
           state.friendsFilter.ageFilterRange.max = target.value
             ? +target.value
             : constants.MAX_AGE;
@@ -561,6 +555,12 @@ const addEventListeners = () => {
         updateContentAccordingToActiveFilters({ page: 1 });
     });
   window.addEventListener("resize", resizeThrottler, false);
+  window.addEventListener("hashchange", ({ newURL }) => {
+    const hash = new URL(newURL).hash.slice(1);
+    if (hash > 0 && hash <= state.amountOfPages) {
+      updateContentAccordingToActiveFilters({ page: hash });
+    }
+  });
 };
 
 const resizeThrottler = (() => {
@@ -578,7 +578,7 @@ const resizeThrottler = (() => {
 document.addEventListener("DOMContentLoaded", (event) => {
   addEventListeners();
   nodes.containerForFriendsNode = document.querySelector(".friends-container");
-  nodes.radioNavContainer = document.querySelector(".radio-nav-container");
+  nodes.navContainer = document.querySelector(".nav-container");
   downloadFriends({});
 });
 
