@@ -11,18 +11,9 @@
   z-index: 1000;
 }
 #preloader.hide-preloader {
-  animation: hidePreloader 1s;
-}
-#preloader.preloader-hidden {
-  display: none;
-}
-@keyframes hidePreloader {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  opacity: 0;
+  z-index: 1;
+  transition: all linear 1s;
 }
 .loading img {
   display: flex;
@@ -285,6 +276,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 20px 20px 70px 20px;
+  z-index: 2;
 }
 .no-results {
   background: url(../img/no-results.png) 0 0/20% auto no-repeat;

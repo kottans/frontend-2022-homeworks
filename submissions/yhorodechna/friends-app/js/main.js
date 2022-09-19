@@ -1,5 +1,4 @@
-const MAIN = document.querySelector('#main');
-const PRELOADER = document.querySelector('#preloader');
+const PRELOADER_EL = document.querySelector('#preloader');
 const DEFAULT_SETTINGS = {
     userName: '',
     nationalityList: [
@@ -53,10 +52,9 @@ function onSettingsChange({ settings }) {
 initFriendsAsync({
     onFriendsLoaded: ({ friends }) => {
         FRIENDS = friends;
-        PRELOADER.classList.add('hide-preloader');
-        setInterval(function () {
-            PRELOADER.classList.add('preloader-hidden');
-        }, 990);
+        if (FRIENDS) {
+            PRELOADER_EL.classList.add('hide-preloader');
+        }
         initSettings({
             settings: DEFAULT_SETTINGS,
             onSettingsChange
