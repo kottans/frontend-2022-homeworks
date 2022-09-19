@@ -34,7 +34,7 @@ header {
     list-style: none;
 }
 
-.navigation-list > li:not(:last-child) {
+.navigation-list-item:not(:last-child) {
     margin-right: 15px;
 }
 
@@ -52,7 +52,7 @@ header {
     outline: green solid 2px;
 }
 
-.navigation-link img {
+.navigation-icon {
     max-width: 100%;
     max-height: 100%;
 }
@@ -117,7 +117,7 @@ header {
 
 }
 
-.options-item > a {
+.options-item-link {
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -132,14 +132,14 @@ header {
     outline: green solid 2px;
 }
 
-.options-image {
+.options-image-wrap {
     width: 100%;
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.options-image img {
+.options-image {
     max-width: 100%;
     max-height: 60px;
 }
