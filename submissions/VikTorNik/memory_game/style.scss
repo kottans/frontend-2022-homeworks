@@ -1,0 +1,200 @@
+@import "null_style.scss";
+
+$header-height: 5vh;
+$footer-height: 4vh;
+$main-height: 100vh - $footer-height - $header-height;
+$menu-width: 14vw;
+$main-width: 100vw - $menu-width;
+
+$color-dark: rgb(6, 61, 63);
+$color-light: rgb(68, 202, 206);
+$color-fon: rgb(6, 61, 63);
+
+:root {
+    --columns-card: 0;
+    --rows-card: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "footer footer";
+    grid-template-rows: $header-height $main-height $footer-height;
+    grid-template-columns: $menu-width $main-width;
+}
+
+#pageHeader {
+    grid-area: header;
+}
+
+#pageNav {
+    grid-area: nav;
+}
+
+#pageMain {
+    grid-area: main;
+}
+
+#pageFooter {
+    grid-area: footer;
+}
+
+.nav {
+    background-color: rgb(6, 61, 63);
+    color: rgb(156, 250, 242);
+    font-weight: 700;
+}
+
+.nav__div {
+    display: block;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.nav__div-menu {
+    cursor: pointer;
+    line-height: 3.0rem;
+    padding: 1.6rem 1.6rem;
+    border-width: 1.6rem 1.6rem 1.6rem 1.6rem;
+    border-color: $color-dark;
+    border-style: solid;
+    background-color: rgb(22, 169, 174);
+}
+
+.nav__div-menu:hover {
+    color: rgb(240, 209, 56);
+    background-color: rgb(10, 110, 100);
+}
+
+.main {
+    background-color: rgb(243, 221, 161);
+}
+
+.main__div {
+    display: grid;    
+    grid-template-columns: repeat(var(--columns-card), 1fr);
+    grid-template-rows: repeat(var(--rows-card), 1fr);
+
+    .div__card {
+        width: calc($main-width / var(--columns-card));
+        height: calc($main-height / var(--rows-card));        
+        position: relative;
+
+        .card-face,
+        .card-back,
+        .card-checked,
+        .card-off-checked {
+            $square-image: min(calc($main-width / var(--columns-card)) * .92, calc($main-height / var(--rows-card)) * .92);
+            width: $square-image;
+            height: $square-image;            
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
+        }
+
+        .card-back:hover {
+            border-color: $color-light;
+            border-style: solid;
+            border-width: .65rem;
+        }
+
+        .card-checked {
+            opacity: 0.3;
+            border-color: rgb(248, 94, 5);
+            border-style: solid;
+            border-width: .65rem;
+        }
+
+        .card-face {
+            border-color: $color-light;
+            border-style: solid;
+            border-width: .75rem;
+        }
+    }
+}
+
+.footer,
+.header {
+    background-color: $color-light;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-shadow: .3rem .3rem 1.0rem rgb(7, 68, 64);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.header {
+    text-transform: uppercase;
+    font-size: 2.3rem;
+    color: rgb(213, 242, 242);
+}
+
+.git:hover {
+    color: rgb(26, 41, 215);
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 26%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    html {
+        font-size: 31%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    html {
+        font-size: 42%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (min-width: 1200px) {
+    html {
+        font-size: 66%;
+    }
+}
+
+@media all and (orientation: portrait) {
+    $header-height: 4vh;
+    $menu-width: 17vw;
+
+    .main__div {
+        grid-template-columns: repeat(var(--rows-card), 1fr);
+        grid-template-rows: repeat(var(--columns-card), 1fr);
+
+        .div__card {
+            width: calc($main-width / var(--rows-card));
+            height: calc($main-height / var(--columns-card));
+
+            .card-face,
+            .card-back,
+            .card-checked,
+            .card-off-checked {
+                $square-image: min(calc($main-width / var(--rows-card)) * 0.95, calc($main-height / var(--columns-card)) * 0.95);
+                width: $square-image;
+                height: $square-image;
+            }
+        }
+    }
+}
+
