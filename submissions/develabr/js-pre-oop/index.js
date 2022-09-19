@@ -8,15 +8,13 @@ const cat = {
   friends: "cats don't needs any friends",
 };
 
-const catWoman = {
-  species: 'human',
-  name: 'Catwoman',
-  gender: 'female',
-  legs: 2,
-  hands: 2,
-  saying: cat.saying,
-  friends: cat.name,
-};
+const catWoman = Object.create(cat);
+catWoman.species = 'human';
+catWoman.name = 'Catwoman';
+catWoman.gender = 'female';
+catWoman.legs = 2;
+catWoman.hands = 2;
+catWoman.friends = cat.name;
 
 const woman = {
   species: 'human',
@@ -50,7 +48,7 @@ const dog = {
 
 const persons = [dog, cat, man, woman, catWoman];
 
-const attr = [
+const attributes = [
   'species',
   'name',
   'gender',
@@ -60,12 +58,8 @@ const attr = [
   'friends',
 ];
 
-function tellMeAboutYou(obj) {
-  const arr = [];
-  attr.map((key) => {
-    obj[key] && arr.push(obj[key]);
-  });
-  return arr.join('; ') + '.';
+function personInfoItems(obj) {
+  return attributes.map((key) => obj[key]).join('; ') + '.';
 }
 
-persons.map((item) => print(tellMeAboutYou(item)));
+persons.map((item) => print(personInfoItems(item)));
