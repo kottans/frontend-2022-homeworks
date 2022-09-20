@@ -154,5 +154,5 @@ function multipleCreation(num, species, gender, name, saying, friend, legsPaws, 
 
 creation('human', 'female', womanName, womanSay, tomCatName);
 creation('human', 'male', manName, manSay, heDogName);
-creation('dog', 'male', heDogName, dogSay, [womanName, manName, sheDogName]);
+creation('dog', 'male', heDogName, dogSay, [womanName, manName, sheDogName].join(', '));
 creation('cat', 'female', kittyName, catSay, womanName);
