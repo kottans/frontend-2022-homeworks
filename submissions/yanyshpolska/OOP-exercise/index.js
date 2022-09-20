@@ -14,35 +14,41 @@ class Inhabitant {
     this.sex = sex;
   }
   getInfo() {
-    return Object.values(this).join(", ");
+    return [this.name, this.type, this.saying, this.sex];
   }
 }
 
 class Human extends Inhabitant {
   hands = 2;
   legs = 2;
-  constructor(name, saying, sex) {
-    super(name, saying, sex);
+  constructor(name, type, saying, sex) {
+    super(name, type, saying, sex);
+  }
+  getInfo() {
+    return [...super.getInfo(), this.hands, this.legs];
   }
 }
 
 class Animal extends Inhabitant {
   tail = 1;
   legs = 4;
-  constructor(name, saying, sex) {
-    super(name, saying, sex);
+  constructor(name, type, saying, sex) {
+    super(name, type, saying, sex);
+  }
+  getInfo() {
+    return [...super.getInfo(), this.tail, this.legs];
   }
 }
 
 class Cat extends Animal {
-  constructor(name, saying, sex, legs, tail) {
-    super(name, saying, sex, legs, tail);
+  constructor(name, type, saying, sex, legs, tail) {
+    super(name, type, saying, sex, legs, tail);
   }
 }
 
 class Dog extends Animal {
-  constructor(name, saying, sex, legs, tail) {
-    super(name, saying, sex, legs, tail);
+  constructor(name, type, saying, sex, legs, tail) {
+    super(name, type, saying, sex, legs, tail);
   }
 }
 
@@ -55,5 +61,5 @@ const womanCat = new Human("Jess", catFlow.saying, "female");
 const inhabitants = [manTom, womanAnn, catFlow, dogBobik, womanCat];
 
 inhabitants.map((inhabitant) => {
-  print(inhabitant.getInfo());
+  print(inhabitant.getInfo().join(", "));
 });
