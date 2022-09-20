@@ -45,10 +45,10 @@ const man = {
 };
 
 // ======== OUTPUT ========
-const inhabitants = [dog, cat, woman, man];
+const inhabitantsList = [dog, cat, woman, man];
 
-const keys = ["species", "name", "gender", "legs", "hands", "saying"];
+const inhabitantKeys = ["species", "name", "gender", "legs", "hands", "saying"];
 
-inhabitants.map((inhabitant) => {
-   print(keys.map((key) => inhabitant[key]).join(', '), 'div');
+inhabitantsList.map((inhabitant) => {
+   print(inhabitantKeys.map((key) => inhabitant[key]).join(', '), 'div');
 });
