@@ -36,7 +36,8 @@ inputElement.innerHTML =
     <label for="species">It will be </label>
 	  <select name="species" id="species">
       <option value="human">Human</option>
-      <option value="animal">Animal</option>
+      <option value="cat">Cat</option>
+      <option value="dog">dog</option>
 	  </select>
   </section>
 
@@ -108,7 +109,7 @@ class Inhabitant {
     this.friend=friend;
   }
   depict(){
-    return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}; ${this.friend}`
+    return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}; ${this.friend};`
   };
   populate(){
     inhabitants.push(this);
@@ -123,7 +124,7 @@ class Animal extends Inhabitant{
     this.tail=tail;
   };
   depict(){
-    return `${this.species}; ${this.name}; ${this.gender}; ${this.paws}; ${this.tail}; ${this.saying}; ${this.friend}`
+    return `${this.species}; ${this.name}; ${this.gender}; ${this.paws}; ${this.tail}; ${this.saying}; ${this.friend};`
   };
 };
 
@@ -134,7 +135,7 @@ class Human extends Inhabitant{
     this.hands=hands;
   };
   depict(){
-    return `${this.species}; ${this.name}; ${this.gender}; ${this.legs}; ${this.hands}; ${this.saying}; ${this.friend}`
+    return `${this.species}; ${this.name}; ${this.gender}; ${this.legs}; ${this.hands}; ${this.saying}; ${this.friend};`
   };
 };
 
@@ -150,3 +151,8 @@ function multipleCreation(num, species, gender, name, saying, friend, legsPaws, 
   };
   
 };
+
+creation('human', 'female', womanName, womanSay, tomCatName);
+creation('human', 'male', manName, manSay, heDogName);
+creation('dog', 'male', heDogName, dogSay, [womanName, manName, sheDogName]);
+creation('cat', 'female', kittyName, catSay, womanName);
