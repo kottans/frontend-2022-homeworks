@@ -45,13 +45,6 @@ const cat_woman = {
 };
 
 const inhabitants = [dog, cat, woman, man, cat_woman,];
-let printArr = [];
 
-for (let i = 0; i< inhabitants.length; i++) {
-  printArr.push([]);
-  for (let key in inhabitants[i]){
-     printArr[i].push(inhabitants[i][key])
-  };
-};
+inhabitants.forEach( inhabitant => print(`(${inhabitant.species}; ${inhabitant.name}; ${inhabitant.gender}; ${inhabitant.legs}; ${inhabitant.hands}; ${inhabitant.saying}; ${inhabitant.friend}`),'div');
 
-printArr.forEach( item => print(item.join('; '),'div') );
