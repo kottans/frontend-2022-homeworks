@@ -1,6 +1,11 @@
-let allEnemies = [];
-let allSpeeds = [200, 250, 350];
-let rangeY = [73, 156, 239];
+const allEnemies = [];
+const allSpeeds = [200, 250, 350];
+const rangeY = [73, 156, 239];
+const cellX = 101;
+const cellY = 83;
+const playerStartX = 202;
+const playerStartY = 405;
+const fieldWidth = 505;
 
 function Player(x, y, sprite) {
     this.x = x;
@@ -15,7 +20,7 @@ Player.prototype.render = function() {
 Player.prototype.update = function() {
 };
 
-let player = new Player ( 202, 405, 'images/char-boy.png' );
+const player = new Player ( playerStartX, playerStartY, 'images/char-boy.png' );
 
 function Enemy(x, y, sprite, speedX) {
     Player.call(this, x, y, sprite);
@@ -26,16 +31,15 @@ Enemy.prototype = Object.create(Player.prototype);
 
 Enemy.prototype.update = function(dt){
     this.x += this.speedX * dt;
-    if (this.x > 505){
+    if (this.x > fieldWidth){
         this.x = -55;
         this.speedX = allSpeeds[Math.floor(Math.random()*3)];
     };
     if (this.y === player.y){
         if ((this.x - player.x < 40 ) && (player.x - this.x < 40 )) {
-            player.x = 202;
-            player.y = 405;
-        };
-    
+            player.x = playerStartX;
+            player.y = playerStartY;
+        };    
     };
 };
 
@@ -49,24 +53,24 @@ player.handleInput = function (direction) {
     switch (direction) {
         case 'left':
             if (this.x > 0){
-                this.x -= 101 
+                this.x -= cellX 
             };
             break;
         case 'up':
-            this.y -= 83;
+            this.y -= cellY;
             if(this.y < 50){
-                this.x = 202;
-                this.y = 405;
+                this.x = playerStartX;
+                this.y = playerStartY;
             }
             break;
         case 'right':
             if (this.x < 400){
-                this.x += 101
+                this.x += cellX
             };
             break;
         case 'down':
             if (this.y < 400){
-                this.y += 83 
+                this.y += cellY 
             };
             break;
         default:
