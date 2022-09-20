@@ -16,8 +16,8 @@ const Enemy = function(field, initialX, initialY, speed, player){
   this.y = initialY;
   this.speed = speed;
   this.player = player;
-  this.enemyHeight = 40;
-  this.enemyWidth = 83;
+  this.height = 40;
+  this.width = 83;
   this.field = field;
 }
 
