@@ -4,10 +4,11 @@ class Inhabitant {
         this.name = name;
         this.gender = gender;
         this.greeting = greeting;
+        this.inhabitantProps = ['species', 'name', 'gender', 'greeting'];
     }
 
-    valuesToString(inhabitantProps) {
-        return inhabitantProps
+    valuesToString() {
+        return this.inhabitantProps
             .filter((prop) => this[prop])
             .map((prop) => this[prop])
             .join('; ') + ';';
@@ -20,12 +21,22 @@ class Human extends Inhabitant {
         this.legs = 2;
         this.hands = 2;
     }
+
+    valuesToString() {
+        this.inhabitantProps.push('legs', 'hands');
+        return super.valuesToString();
+    }
 }
 
 class Animal extends Inhabitant {
     constructor(name, gender, greeting) {
         super(name, gender, greeting);
         this.paws = 4;
+    }
+
+    valuesToString() {
+        this.inhabitantProps.push('paws');
+        return super.valuesToString();
     }
 }
 
