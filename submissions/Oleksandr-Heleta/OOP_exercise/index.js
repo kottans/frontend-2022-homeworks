@@ -14,15 +14,10 @@ class Inhabitants {
       this.gender = gender;
       this.legs = legs;
       this.say = say;
-      this.propertiesOrder = ['species', 'name', 'gender', 'legs', 'say']
-   }
-
-   addProperty(property, order) {
-      this.propertiesOrder.splice(order, 0, property);
    }
 
    createString() {
-      return this.propertiesOrder.map((property) => this[property] || 'none');
+      return `${this.species}, ${this.name}, ${this.gender}, ${this.legs}, ${this.say};`;
    }
 }
 
@@ -30,7 +25,10 @@ class Human extends Inhabitants {
    constructor(name, gender, say) {
       super('human', name, gender, 2, say);
       this.hands = 2;
-      this.addProperty('hands', 4);
+   }
+
+   createString() {
+      return `${this.species}, ${this.name}, ${this.gender}, ${this.legs}, ${this.hands}, ${this.say};`;
    }
 }
 
@@ -47,16 +45,20 @@ class Dog extends Animal {
 }
 
 class Cat extends Animal {
+   static say = 'moew';
    constructor(name, gender) {
-      super('cat', name, gender, "meow");
+      super('cat', name, gender, Cat.say);
+
+   }
+
+   static sayingPhrase(phrase) {
+      return Cat.say = phrase || 'meow';
    }
 }
 
 class CatWoman extends Human {
    constructor(name, gender) {
-      super(name, gender)
-      this.mutation = new Cat();
-      this.say = this.mutation.say
+      super(name, gender, Cat.say)
    }
 }
 
@@ -67,9 +69,15 @@ const cat = new Cat('Kitty', "female");
 const man = new Human('John', "male", "Hello Jenny!");
 const woman = new Human('Jenny', "female", "Hi John!");
 
-const catWoman = new CatWoman('Jenny', "female");
+const catWoman = new CatWoman('JennyCat', "female");
 
-const persons = [dog, cat, man, woman, catWoman];
+
+Cat.sayingPhrase('mi');
+
+const catWomanTwo = new CatWoman('Cat', "female");
+const catTwo = new Cat('Ben', 'male');
+
+const persons = [dog, cat, man, woman, catWoman, catWomanTwo, catTwo];
 
 function createString(persons) {
    return persons.map((person) => person.createString()).join('\n');
@@ -97,5 +105,4 @@ function createString(persons) {
 
 
 print(createString(persons));
-
 
