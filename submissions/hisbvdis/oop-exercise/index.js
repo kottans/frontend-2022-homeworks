@@ -39,14 +39,14 @@ class Human extends Creature {
 }
 
 class Woman extends Human {
-  constructor(name) {
-    super(name, "female", "Where have you been all night?");
+  constructor(name, saying) {
+    super(name, "female", saying);
   }
 }
 
 class Man extends Human {
-  constructor(name) {
-    super(name, "male", "Bring me some more beer");
+  constructor(name, saying) {
+    super(name, "male", saying);
   }
 }
 
@@ -71,8 +71,13 @@ class Cat extends Animal {
 
 const dog = new Dog("Snoop", "male");
 const cat = new Cat("Kitty", "female");
-const woman = new Woman("Bella", "female");
-const man = new Man("Vasya", "male");
+
+const woman1 = new Woman("Bella", "Honey, i'm home!!!");
+const woman2 = new Woman("Lisa", "Where have you been all night?");
+const woman3 = new Woman("Margareth", "Mom told me...");
+
+const man1 = new Man("Vasya", "Bring me some more beer");
+const man2 = new Man("Vasya", "If a little, then maybe");
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -93,6 +98,6 @@ const man = new Man("Vasya", "male");
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-const inhabitants = [dog, cat, woman, man];
+const inhabitants = [dog, cat, woman1, woman2, woman3, man1, man2];
 
 inhabitants.forEach((instance) => print(instance.getProps()));
