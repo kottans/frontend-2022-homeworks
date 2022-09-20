@@ -14,6 +14,15 @@ class Inhabitants {
       this.gender = gender;
       this.legs = legs;
       this.say = say;
+      this.propertiesOrder = ['species', 'name', 'gender', 'legs', 'say']
+   }
+
+   addProperty(property, order) {
+      this.propertiesOrder.splice(order, 0, property);
+   }
+
+   createString() {
+      return this.propertiesOrder.map((property) => this[property] || 'none');
    }
 }
 
@@ -21,6 +30,7 @@ class Human extends Inhabitants {
    constructor(name, gender, say) {
       super('human', name, gender, 2, say);
       this.hands = 2;
+      this.addProperty('hands', 4);
    }
 }
 
@@ -31,32 +41,38 @@ class Animal extends Inhabitants {
 }
 
 class Dog extends Animal {
-   constructor(name, gender, say) {
-      super('dog', name, gender, say);
+   constructor(name, gender) {
+      super('dog', name, gender, "bark");
    }
 }
 
 class Cat extends Animal {
-   constructor(name, gender, say) {
-      super('cat', name, gender, say);
+   constructor(name, gender) {
+      super('cat', name, gender, "meow");
    }
 }
 
-const dog = new Dog('Bob', "male", "bark");
-const cat = new Cat('Kitty', "female", "meow");
+class CatWoman extends Human {
+   constructor(name, gender) {
+      super(name, gender)
+      this.mutation = new Cat();
+      this.say = this.mutation.say
+   }
+}
+
+
+const dog = new Dog('Bob', "male");
+const cat = new Cat('Kitty', "female");
 
 const man = new Human('John', "male", "Hello Jenny!");
 const woman = new Human('Jenny', "female", "Hi John!");
 
-const catWoman = new Human('Jenny', "female", cat.say);
+const catWoman = new CatWoman('Jenny', "female");
 
 const persons = [dog, cat, man, woman, catWoman];
-const properties = ['species', 'name', 'gender', 'legs', 'hands', 'say']
 
-function createString(persons, properties) {
-   return persons.map((person) =>
-      properties.map((property) => person[property] || 'none').join('; ')
-   ).join('\n');
+function createString(persons) {
+   return persons.map((person) => person.createString()).join('\n');
 }
 
 
@@ -80,6 +96,6 @@ function createString(persons, properties) {
    */
 
 
-print(createString(persons, properties));
+print(createString(persons));
 
 
