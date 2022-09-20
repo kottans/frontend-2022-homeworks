@@ -11,6 +11,7 @@ const sidebar = document.querySelector(".sidebar");
 burgerButton.addEventListener("click", () => {
   burgerButton.classList.toggle("active");
   sidebar.classList.toggle("sidebar--visible");
+  document.body.classList.toggle("hidden");
 });
 
 const statusMessage = {

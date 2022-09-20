@@ -14,14 +14,6 @@ body {
   font-family: "DynaPuff", cursive;
 }
 
-.hide {
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
 .site-container {
   background-color: #68a7ad;
   min-height: 100vh;
@@ -60,6 +52,10 @@ body {
 .status-block {
   margin: 0 auto;
   display: block;
+}
+
+.hidden{
+  overflow: hidden;
 }
 
 /* Header */
