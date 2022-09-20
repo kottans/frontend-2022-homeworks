@@ -8,7 +8,7 @@ import {print} from './js/lib.js';
 
 // ======== OBJECTS DEFINITIONS ========
 
-const knopa = {
+const cat = {
   name: 'Knopa',
   gender: 'female',
   species: 'animal',
@@ -17,7 +17,7 @@ const knopa = {
   saying: "miay!"
 };
 
-const bubluk = {
+const dog = {
   name: 'Bubluk',
   gender: 'male',
   species: 'animal',
@@ -26,7 +26,7 @@ const bubluk = {
   saying: "woof-woof!"
 };
 
-const olena = {
+const woman = {
   name: 'Olena',
   saying: 'Hello there',
   gender: 'female',
@@ -35,7 +35,7 @@ const olena = {
   legs: 2,
 };
 
-const kostia = {
+const man = {
   name: 'Kostia',
   saying: 'Hi, folks!',
   gender: 'male',
@@ -44,7 +44,7 @@ const kostia = {
   legs: 2,
 };
 
-const inhabitants = [knopa, bubluk, olena, kostia];
+const inhabitants = [cat, dog, woman, man];
 const inhabitantKeys = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
 
 inhabitants.forEach((inhabitant) => {
