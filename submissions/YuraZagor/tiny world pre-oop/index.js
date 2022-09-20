@@ -2,8 +2,8 @@ const dog = {
   species: "dog",
   name: "JEff",
   gender: "male",
-  legs: 4,
-  hands: 0,
+  paws: 4,
+  tail: 1,
   saying: "bow-wwou!",
   friend: 'everyone',
 };
@@ -11,8 +11,8 @@ const cat = {
   species: "cat",
   name: "Klizma",
   gender: "female",
-  legs: 4,
-  hands: 0,
+  paws: 4,
+  tail: 1,
   saying: "meaaawurrr!",
   friend: 0,
 };
@@ -46,5 +46,5 @@ const cat_woman = {
 
 const inhabitants = [dog, cat, woman, man, cat_woman,];
 
-inhabitants.forEach( inhabitant => print(`(${inhabitant.species}; ${inhabitant.name}; ${inhabitant.gender}; ${inhabitant.legs}; ${inhabitant.hands}; ${inhabitant.saying}; ${inhabitant.friend}`),'div');
+inhabitants.forEach( inhabitant => print(`(${inhabitant.species}; ${inhabitant.name}; ${inhabitant.gender}; ${inhabitant.legs ? inhabitant.legs : inhabitant.paws}; ${inhabitant.hands ? inhabitant.hands : inhabitant.tail}; ${inhabitant.saying}; ${inhabitant.friend}`),'div');
 
