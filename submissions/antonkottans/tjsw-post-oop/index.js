@@ -1,3 +1,6 @@
+const KEYS_VALUE_SEPARATOR = ": ";
+const PROPS_SEPARATOR = "; ";
+
 class Creature {
   constructor({ name, gender, friends = [], species, saying }) {
     this.name = name;
@@ -7,20 +10,24 @@ class Creature {
     this.saying = saying;
   }
 
-  propsToString() {
-    return `Name: ${this.name}; Species:${this.species}; Gender:${
-      this.gender
-    }; Saying:${this.saying}; Friends:${this.friendsNameToString()}`;
+  createArrayOfProps() {
+    return [
+      this.name,
+      this.species,
+      this.gender,
+      this.saying,
+      this.friendsToString(),
+    ];
   }
 
-  friendsNameToString() {
-    return this.friends.length === 0
-      ? "no friends"
-      : this.friends.map((friend) => friend.name).join(", ");
+  friendsToString() {
+    return this.friends.length
+      ? this.friends.map((friend) => friend.name).join(", ")
+      : "no friends";
   }
 
   addFriends(...newFriends) {
-    this.friends = [...this.friends, ...newFriends];
+    return (this.friends = [...this.friends, ...newFriends]);
   }
 }
 
@@ -30,8 +37,19 @@ class Animal extends Creature {
     this.paws = paws;
   }
 
-  propsToString() {
-    return `${super.propsToString()}; Paws: ${this.paws}`;
+  createArrayOfProps() {
+    return [...super.createArrayOfProps(), this.paws];
+  }
+}
+
+class AnimalWithTail extends Animal {
+  constructor({ name, gender, friends, paws, species, saying, tail }) {
+    super({ name, gender, friends, paws, species, saying, tail });
+    this.tail = tail;
+  }
+
+  createArrayOfProps() {
+    return [...super.createArrayOfProps(), this.tail];
   }
 }
 
@@ -42,23 +60,18 @@ class Human extends Creature {
     this.hands = hands;
   }
 
-  propsToString() {
-    return `${super.propsToString()}; Legs: ${this.legs}; Hands: ${this.hands}`;
+  createArrayOfProps() {
+    return [...super.createArrayOfProps(), this.legs, this.hands];
   }
 }
 
-class Dog extends Animal {
+class Dog extends AnimalWithTail {
   constructor({ name, gender, friends, paws, tail = "ordinary tail", saying }) {
     super({ name, gender, friends, paws, tail, species: "dog", saying });
-    this.tail = tail;
-  }
-
-  propsToString() {
-    return `${super.propsToString()}; Tail: ${this.tail}`;
   }
 }
 
-class Cat extends Animal {
+class Cat extends AnimalWithTail {
   constructor({
     name,
     gender,
@@ -69,11 +82,6 @@ class Cat extends Animal {
   }) {
     super({ name, gender, friends, paws, tail, species: "cat", saying });
     this.saying = saying;
-    this.tail = tail;
-  }
-
-  propsToString() {
-    return `${super.propsToString()}; Tail: ${this.tail}`;
   }
 }
 
@@ -94,13 +102,14 @@ class CatWoman extends Human {
       legs,
       hands,
       species: "cat-woman",
+      tail,
     });
     this.tail = tail;
     this.saying = saying;
   }
 
-  propsToString() {
-    return `${super.propsToString()}; Tail: ${this.tail}`;
+  createArrayOfProps() {
+    return [...super.createArrayOfProps(), this.tail];
   }
 }
 
@@ -151,5 +160,7 @@ Jenny.addFriends(Tom, Felix);
 
 const inhabitants = [Rex, Felix, Jenny, Tom, Halle];
 
-inhabitants.forEach((inhabitant) => print(inhabitant.propsToString()));
+inhabitants.forEach((inhabitant) =>
+  print(inhabitant.createArrayOfProps().join(PROPS_SEPARATOR))
+);
 
