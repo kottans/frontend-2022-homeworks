@@ -4,26 +4,33 @@ const CANVAS = {
     height: 605,
     cellHeight: 83,
     cellWidth: 101,
+    stoneBlockPositionStart: 63
 };
-/* The function RESET_ENEMIES_SPEED add for each enemy random speed. This function is used in class Enemy 
-to reset the speed of each enemy when a player loses */
 const RESET_ENEMIES_SPEED = function () {
     for (let i = 0; i < allEnemies.length; i++) {
-        allEnemies[i].speed = Math.floor(Math.random() * (100 - 40)) + 40;
+        allEnemies[i].resetSpeed();
     }
 };
-class Enemy {
-    constructor({ x, y, speed, boardWidth, player, width, height, resetEnemiesSpeed }) {
+class Creature {
+    constructor({ x, y, boardWidth, width, height, score }) {
         this.x = x;
         this.y = y;
-        this.speed = speed;
-        this.defaultSpeed = speed;
         this.boardWidth = boardWidth;
-        this.width = width - 20;
-        this.height = height - 20;
+        this.width = width;
+        this.height = height;
+        this.score = score
+    }
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    };
+}
+class Enemy extends Creature {
+    constructor({ x, y, boardWidth, player, width, height, score, resetEnemiesSpeed }) {
+        super({ x, y, boardWidth, width: width - 20, height: height - 20, score })
+        this.speed = Math.floor(Math.random() * (100 - 40)) + 40;
+        this.defaultSpeed = this.speed;
         this.player = player;
         this.sprite = 'images/enemy-bug.png';
-        this.score = 0;
         this.resetEnemiesSpeed = resetEnemiesSpeed
     };
     /* Method  update contains :
@@ -32,7 +39,7 @@ class Enemy {
         checks if enemy goes out of bounds game board and return it to beginning,
         increases speed of enemies when the player passes the level
      */
-    update = function (dt) {
+    update(dt) {
         this.x += dt * this.speed;
         this.handleCollision();
         if (this.x >= this.boardWidth) {
@@ -43,9 +50,9 @@ class Enemy {
             this.speed += 40;
         };
     };
-    render = function () {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    };
+    resetSpeed() {
+        this.speed = Math.floor(Math.random() * (100 - 40)) + 40;
+    }
     /* Method handleCollision checks collision enemy with player.
     when they collide the following actions take place :
         resets score ,
@@ -67,23 +74,15 @@ class Enemy {
         };
     };
 };
-class Player {
-    constructor({ boardWidth, boardHeight, stepX, stepY, score }) {
+class Player extends Creature {
+    constructor({ x, y, boardWidth, boardHeight, stepX, stepY, score }) {
+        super({ x, y, boardWidth, width: 50, height: 50, score })
         this.sprite = 'images/char-boy.png';
-        this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.stepX = stepX;
         this.stepY = stepY;
-        this.height = 50;
-        this.width = 50;
-        this.score = score;
-        this.x = this.boardWidth - 3 * this.stepX;
-        this.y = this.boardHeight - 2.5 * this.stepY;
     }
     update = function (dt) {
-    };
-    render = function (dt) {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
     /* Method resetPosition reset player position */
     resetPosition() {
@@ -122,6 +121,8 @@ class Player {
     };
 };
 const player = new Player({
+    x: CANVAS.width - 3 * CANVAS.cellWidth,
+    y: CANVAS.height - 2.5 * CANVAS.cellHeight,
     boardWidth: CANVAS.width,
     boardHeight: CANVAS.height,
     boardWidth: CANVAS.width,
@@ -132,17 +133,16 @@ const player = new Player({
 const allEnemies = [];
 for (let i = 0; i < 3; i++) {
     allEnemies.push(new Enemy({
-        x: CANVAS.width - 6 * CANVAS.cellWidth,
-        y: CANVAS.height - (4.5 + i) * CANVAS.cellHeight,
-        speed: Math.floor(Math.random() * (100 - 40)) + 40,
+        x: CANVAS.width - CANVAS.cellWidth,
+        y: CANVAS.stoneBlockPositionStart + i * CANVAS.cellHeight,
         boardWidth: CANVAS.width,
         player: player,
         width: CANVAS.cellWidth,
         height: CANVAS.cellHeight,
-        resetEnemiesSpeed: RESET_ENEMIES_SPEED,
+        score: 0,
+        resetEnemiesSpeed: RESET_ENEMIES_SPEED
     }));
 };
-console.log(allEnemies)
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
