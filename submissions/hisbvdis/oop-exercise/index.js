@@ -34,7 +34,10 @@ class Human extends Creature {
   constructor(name, gender, saying) {
     super("human", name, gender, saying, 2);
     this.hands = 2;
-    this.props = this.props.concat({prop: "hands", preface: "I have hands:"});
+    this.props = [
+      ...this.props,
+      { prop: "hands", preface: "I have hands:" },
+    ]
   }
 }
 
