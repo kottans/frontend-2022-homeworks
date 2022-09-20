@@ -16,13 +16,13 @@ const Enemy = function(field, initialX, initialY, speed, player){
   this.y = initialY;
   this.speed = speed;
   this.player = player;
-  this.enemyHeight = 40;
-  this.enemyWidth = 83;
+  this.height = 40;
+  this.width = 83;
   this.field = field;
 }
 
 Enemy.prototype.update = function(dt) {
-  if (this.x >= this.field.height + this.enemyWidth) {
+  if (this.x >= this.field.width + this.width) {
     this.x = this.initialX;
   }
 
