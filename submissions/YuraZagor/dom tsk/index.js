@@ -39,18 +39,15 @@ data.forEach((datapiece)=> {
 	sidenavLi.appendChild(img);
 } );
 
-let contentText = data[0].text;
-content.innerHTML = contentText;
+const [{ text }] = data;
+content.innerHTML = text;
 
 ul.onclick = function(event) {
 	if(!event.target.closest('li')) return;
-	handleClick(event.target.closest('li').id);
+	handleClick(event.target.closest('li').id)
 };
-
 function handleClick(targetID){
 	const dice = data.filter(item => item.id === targetID);
-	const { text } = dice[0];
+	const [{ text }] = dice;
 	content.innerHTML = text;
 };
-
-
