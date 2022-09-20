@@ -47,4 +47,10 @@ cat_woman.friend = woman.name;
 
 cat_woman.saying = cat.saying;
 
-inhabitants.forEach( inhabitant => print(`(${inhabitant.species}; ${inhabitant.name}; ${inhabitant.gender}; ${inhabitant.legs ? inhabitant.legs : inhabitant.paws}; ${inhabitant.hands ? inhabitant.hands : inhabitant.tail}; ${inhabitant.saying}; ${inhabitant.friend}`),'div');
+for (let inhabitant in inhabitants){
+  const {species, name, gender, legs, paws, hands, tail, saying, friend} = inhabitants[inhabitant]
+
+  let textToPrint = `(${species}; ${name}; ${gender}; ${legs ? legs : paws}; ${hands ? hands : tail}; ${saying}; ${friend}`
+
+  print(textToPrint,'div')
+};
