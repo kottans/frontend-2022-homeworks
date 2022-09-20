@@ -48,9 +48,9 @@ cat_woman.friend = woman.name;
 cat_woman.saying = cat.saying;
 
 for (let inhabitant in inhabitants){
-  const {species, name, gender, legs, paws, hands, tail, saying, friend} = inhabitants[inhabitant]
+  const {species, name, gender, legs, paws, hands, tail, saying, friend} = inhabitants[inhabitant];
 
-  let textToPrint = `(${species}; ${name}; ${gender}; ${legs ? legs : paws}; ${hands ? hands : tail}; ${saying}; ${friend}`
+  let textToPrint = `${species}; ${name}; ${gender}; ${legs ? legs : paws}; ${hands ? hands : tail}; ${saying}; ${friend}`;
 
-  print(textToPrint,'div')
+  print(textToPrint,'div');
 };
