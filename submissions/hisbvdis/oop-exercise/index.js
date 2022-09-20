@@ -39,6 +39,10 @@ class Human extends Creature {
       { prop: "hands", preface: "I have hands:" },
     ]
   }
+
+  getProps() {
+    return super.getProps()
+  }
 }
 
 class Woman extends Human {
