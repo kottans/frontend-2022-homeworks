@@ -1,20 +1,18 @@
 const dog = {
   species: "dog",
-  name: "JEff",
+  name: "Jeff",
   gender: "male",
   paws: 4,
   tail: 1,
   saying: "bow-wwou!",
-  friend: 'everyone',
 };
 const cat = {
   species: "cat",
-  name: "Klizma",
+  name: "Lucky",
   gender: "female",
   paws: 4,
   tail: 1,
   saying: "meaaawurrr!",
-  friend: 0,
 };
 const woman = {
   species: "human",
@@ -23,7 +21,6 @@ const woman = {
   legs: 2,
   hands: 2,
   saying: "Are U hungry, dear?",
-  friend: 'dog'
 };
 const man = {
   species: "human",
@@ -32,19 +29,22 @@ const man = {
   legs: 2,
   hands: 2,
   saying: "Wanna beer with ice-cream!",
-  friend: "Maria"
 };
 const cat_woman = {
-  species: "catmandu",
+  species: "human",
   name: "Anabelle",
   gender: "female",
   legs: 2,
   hands: 2,
-  saying: cat.saying,
-  friend: "Grumio"
 };
-
 const inhabitants = [dog, cat, woman, man, cat_woman,];
 
-inhabitants.forEach( inhabitant => print(`(${inhabitant.species}; ${inhabitant.name}; ${inhabitant.gender}; ${inhabitant.legs ? inhabitant.legs : inhabitant.paws}; ${inhabitant.hands ? inhabitant.hands : inhabitant.tail}; ${inhabitant.saying}; ${inhabitant.friend}`),'div');
+dog.friend = [man.name, woman.name, cat.name].join(", ");
+cat.friend = woman.name;
+woman.friend = cat.name;
+man.friend = [woman.name, dog.name].join(", ");
+cat_woman.friend = woman.name;
 
+cat_woman.saying = cat.saying;
+
+inhabitants.forEach( inhabitant => print(`(${inhabitant.species}; ${inhabitant.name}; ${inhabitant.gender}; ${inhabitant.legs ? inhabitant.legs : inhabitant.paws}; ${inhabitant.hands ? inhabitant.hands : inhabitant.tail}; ${inhabitant.saying}; ${inhabitant.friend}`),'div');
