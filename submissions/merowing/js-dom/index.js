@@ -1,4 +1,4 @@
-let data = [
+const data = [
     {
         image: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSyXO9PGwU8Y2lv7JONiXLR7jHW4e8PyiCE6lTIVzWrZ8NvKpms",
         name: "Harry Potter and the Goblet of Fire",
@@ -133,43 +133,47 @@ let data = [
     }
 ];
 
-let movieTopBlock = document.querySelector("#menu");
+const mainMenu = document.querySelector("#mainMenu");
+const block = document.querySelector(".blockOfContent");
+const documentBody = document.body;
 
 // appending names of movies from database to main menu
-let itemsMenuFragment = document.createDocumentFragment();
-for(let i = 0; i < data.length; i++) {
+const namesOfMovies = data.reduce((prev, current, index) => {
     let liItem = document.createElement("li");
-    if(i === 0) liItem.setAttribute("class", "active");
-    liItem.innerText = data[i].name;
-    itemsMenuFragment.appendChild(liItem);
-}
-movieTopBlock.querySelector("ul").appendChild(itemsMenuFragment);
+    if(index === 0) liItem.setAttribute("class", "active");
+    liItem.innerText = current.name;
+    prev.appendChild(liItem);
+
+    return prev;
+}, document.createDocumentFragment());
+
+mainMenu.querySelector("ul").appendChild(namesOfMovies);
 // ---
 
 let prevActiveMovieIndex = 0;
-movieTopBlock.addEventListener("click", e => {
-    let ind = [...movieTopBlock.querySelectorAll("li")].indexOf(e.target);
+mainMenu.addEventListener("click", e => {
+    const ind = [...mainMenu.querySelectorAll("li")].indexOf(e.target);
 
     if(ind === prevActiveMovieIndex) return;
 
-    movieTopBlock.querySelectorAll("li")[ind].setAttribute("class", "active");
-    movieTopBlock.querySelectorAll("li")[prevActiveMovieIndex].removeAttribute("class");
+    mainMenu.querySelectorAll("li")[ind].classList.add('active');
+    mainMenu.querySelectorAll("li")[prevActiveMovieIndex].classList.remove('active');
     prevActiveMovieIndex = ind;
 
-    if(document.body.offsetWidth <= 560) checkMobileMenu();
+    if(documentBody.offsetWidth <= 560) checkMobileMenu();
     window.scrollTo(0, 0);
 
     loadMovie(ind);
 });
 
 function loadMovie(movieId = 0) {
-    let movie = data[movieId];
-    let block = document.querySelector(".block");
+    const movie = data[movieId];
 
     if(movieId > data.length - 1 || !data.length) {
-        alert("data empty!");
+        alert("data not found!");
         return;
     }
+
     block.innerHTML = "";
     let htmlBlock = `
         <div class="mobile-title">${movie.name}</div>
@@ -193,15 +197,14 @@ function loadMovie(movieId = 0) {
 loadMovie();
 
 // mobile menu block
-let mobileMenu = document.querySelector("#mobileButton-menu");
-let leftMenu = document.querySelector(".left-menu"); // visible when mobile device in horizontal position
+const mobileMenu = document.querySelector("#mobileButton-menu");
+const leftMenu = document.querySelector(".left-menu"); // visible when mobile device in horizontal position
 
 let show = false;
-leftMenu.addEventListener("click", (e) => {
-    
+leftMenu.addEventListener("click", e => {
     if(!show) {
-        movieTopBlock.setAttribute("style", "display:block; max-width:340px;");
-        document.body.style.overflow = "hidden";
+        mainMenu.classList.add('landscape');
+        documentBody.classList.add('hidden');
         show = true;
     }else {
         clearLeftMenuStyle();
@@ -209,27 +212,26 @@ leftMenu.addEventListener("click", (e) => {
 
     e.stopPropagation();
 });
-document.body.addEventListener("click", () => {
-    clearLeftMenuStyle();
-})
+documentBody.addEventListener("click", () => clearLeftMenuStyle());
 
 function clearLeftMenuStyle() {
     if(show) {
-        menu.removeAttribute("style");
-        document.body.removeAttribute("style");
+        mainMenu.classList.remove('mobile');
+        mainMenu.classList.remove('landscape');
+        documentBody.classList.remove('hidden');
         show = false;
     }
 }
 
 function checkMobileMenu() {
-    if(!menu.getAttribute("class")) {
-        menu.setAttribute("class", "mobile");
+    if(!mainMenu.classList.contains('mobile')) {
+        mainMenu.classList.add('mobile');
         mobileMenu.innerText = "close";
-        document.body.style.overflow = "hidden";
+        documentBody.classList.add('hidden');
     }else {
-        menu.removeAttribute("class");
+        mainMenu.classList.remove('mobile');
         mobileMenu.innerText = "menu";
-        document.body.removeAttribute("style");
+        documentBody.classList.remove('hidden');
     }
 }
 

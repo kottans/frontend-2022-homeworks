@@ -10,7 +10,7 @@ body {
   display: flex;
   position: relative;
 }
-#menu {
+#mainMenu {
   max-width:340px;
   min-width:200px;
   min-height: 100%;
@@ -79,10 +79,10 @@ main {
   width:100%;
   font-size: 1.2em;
 }
-.block {
+.blockOfContent {
   margin: 40px 20px 0;
 }
-.block img {
+.blockOfContent img {
   width: 260px;
 }
 .description {
@@ -131,8 +131,16 @@ main {
   top: 0;
   font: normal 20px Arial, Verdana;
 }
+#mainMenu.landscape {
+  display: block;
+  max-width: 340px;
+}
+body.hidden {
+  overflow: hidden;
+}
+
 /* for main menu */
-#menu.mobile {
+#mainMenu.mobile {
   position: fixed;
   min-width:100%;
   display: block;
@@ -187,7 +195,7 @@ main {
     width: 400px;
   }
 
-  #menu {
+  #mainMenu {
     display: none;
     max-width:240px;
   }
@@ -207,7 +215,7 @@ main {
   }
 }
 @media all and (max-width:560px) {
-  #menu {
+  #mainMenu {
     display: none;
   }
   #right-column {
@@ -220,7 +228,7 @@ main {
     display: block;
     line-height: 54px;
   }
-  .block {
+  .blockOfContent {
     margin-top: 100px;
   }
   nav {
@@ -235,7 +243,7 @@ main {
   }
 }
 @media all and (max-width:512px) {
-  #menu {
+  #mainMenu {
     display: none;
   }
   #right-column {
@@ -251,7 +259,7 @@ main {
     display: block;
     line-height: 54px;
   }
-  .block {
+  .blockOfContent {
     margin-top:80px;
   }
   .block-info, .description {
@@ -275,7 +283,7 @@ main {
     max-width: 1200px;
     margin: 0 auto;
   }
-  .block img {
+  .blockOfContent img {
     width: 300px;
   }
 }
