@@ -1,4 +1,4 @@
-var Enemy = function(x, y, speed) {
+const Enemy = function(x, y, speed) {
 
     this.x = x;
     this.y = y;
@@ -32,7 +32,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-var Player = function(playerPosition) {
+const Player = function(playerPosition) {
     this.x = playerPosition.x;
     this.y = playerPosition.y;
 
@@ -73,22 +73,23 @@ const defaultPlayerLocation = { x: 202, y: 392 };
 const player = new Player(defaultPlayerLocation, 'images/char-boy.png');
 
 const enemyLocations = [60, 143, 226]; // Y coordinates of each enemy position
+
+const randomNumber = (min = 200, max = 500) => {
+    return Math.round(Math.random() * (max - min) + min);
+};
+
 const allEnemies = enemyLocations.map(location => {
     let speed = randomNumber();
     return new Enemy(-101, location, speed);
 });
 
-function randomNumber(min = 200, max = 500) {
-    return Math.round(Math.random() * (max - min) + min);
-}
-
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
+    const allowedKeys = {
+        'ArrowLeft': 'left',
+        'ArrowUp': 'up',
+        'ArrowRight': 'right',
+        'ArrowDown': 'down'
     };
 
-    player.handleInput(allowedKeys[e.keyCode]);
+    player.handleInput(allowedKeys[e.key]);
 });
