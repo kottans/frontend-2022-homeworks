@@ -1,9 +1,10 @@
 'use strict'
 
-function hiddenHomeScreen(event) {
-	if (event.target.tagName !== 'BUTTON') return false;
-	const homeScreen = document.querySelector('.home-screen');
-	homeScreen.classList.add('display-none');
+function hiddenHomeScreen({ target }) {
+	if (target.classList.contains('menu__btn')) {
+		const homeScreen = document.querySelector('.home-screen');
+		homeScreen.classList.add('display-none');
+	}
 }
 
 function createCards(id, header, img, subHeader, description) {
