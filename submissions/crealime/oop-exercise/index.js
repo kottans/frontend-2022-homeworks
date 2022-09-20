@@ -38,6 +38,10 @@ class Cat extends Inhabitant {
     super('cat', name, gender, 'Meow-meow!')
     this.legs = legs
   }
+
+  static say() {
+    return 'Meow-meow!'
+  }
 }
 
 class Human extends Inhabitant {
@@ -55,7 +59,7 @@ class Human extends Inhabitant {
 
 class CatWoman extends Inhabitant {
   constructor(name, surname) {
-    super('cat-woman', name, 'female', new Cat().saying)
+    super('cat-woman', name, 'female', Cat.say())
     this.surname = surname
     this.legs = 2
     this.hands = 2
