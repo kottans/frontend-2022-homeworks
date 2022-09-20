@@ -9,59 +9,40 @@
 class Inhabitant {
   constructor(name, saying, sex) {
     this.name = name;
+    this.type = this.constructor.name;
     this.saying = saying;
     this.sex = sex;
   }
   getInfo() {
-    return this.name + ", " + this.saying + ", " + this.sex;
+    return Object.values(this).join(", ");
   }
 }
 
 class Human extends Inhabitant {
   hands = 2;
   legs = 2;
-  constructor(...args) {
-    super(...args);
-  }
-  getInfo() {
-    return (
-      super.getInfo() +
-      ", " +
-      this.hands +
-      ", " +
-      this.legs +
-      ", " +
-      this.constructor.name
-    );
+  constructor(name, saying, sex) {
+    super(name, saying, sex);
   }
 }
 
 class Animal extends Inhabitant {
   tail = 1;
   legs = 4;
-  constructor(...args) {
-    super(...args);
-  }
-  getInfo() {
-    return super.getInfo() + ", " + this.legs + ", " + this.tail;
+  constructor(name, saying, sex) {
+    super(name, saying, sex);
   }
 }
 
 class Cat extends Animal {
-  constructor(...args) {
-    super(...args);
-  }
-  getInfo() {
-    return super.getInfo() + ", " + this.constructor.name;
+  constructor(name, saying, sex, legs, tail) {
+    super(name, saying, sex, legs, tail);
   }
 }
 
 class Dog extends Animal {
-  constructor(...args) {
-    super(...args);
-  }
-  getInfo() {
-    return super.getInfo() + ", " + this.constructor.name;
+  constructor(name, saying, sex, legs, tail) {
+    super(name, saying, sex, legs, tail);
   }
 }
 
