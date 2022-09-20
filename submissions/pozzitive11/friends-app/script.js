@@ -1,4 +1,5 @@
 let users = [];
+let resultUsers;
 const cardsList = document.querySelector(".users__list");
 const form = document.querySelector(".form");
 
@@ -29,7 +30,7 @@ function loadUsersData() {
   showLoadingStatus();
 
   fetch(
-    "https://randomuser.me/api/?results=20&nat=us,ua,de&inc=picture,name,dob,gender,location"
+    "https://randomuser.me/api/?results=20&inc=picture,name,dob,gender,location"
   )
     .then((response) => {
       if (response.ok) return response.json();
@@ -84,8 +85,8 @@ function filterByName(names, target) {
   });
 }
 
-function handleUsers({ target }) {
-  let resultUsers = [...users];
+function filterUsers() {
+  resultUsers = [...users];
   if (form.search.value !== "") {
     resultUsers = filterByName(resultUsers, form.search.value);
   }
@@ -103,16 +104,12 @@ function handleUsers({ target }) {
     case "name-down":
       resultUsers.sort((a, b) => compareByName(a, b));
       break;
-    default:
-      break;
   }
 
   resultUsers =
     form.gender.value === "male" || form.gender.value === "female"
       ? resultUsers.filter((user) => user.gender === form.gender.value)
       : resultUsers;
-
-  createCards(resultUsers);
 }
 
 function resetFilters() {
@@ -123,6 +120,9 @@ function resetFilters() {
 document.addEventListener("DOMContentLoaded", function () {
   loadUsersData();
 
-  form.addEventListener("input", handleUsers);
+  form.addEventListener("input", (e) => {
+    filterUsers();
+    createCards(resultUsers);
+  });
   resetButton.addEventListener("click", resetFilters);
 });

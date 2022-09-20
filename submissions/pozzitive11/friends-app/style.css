@@ -358,6 +358,7 @@ body {
   }
 
   .sidebar {
+    overflow: auto;
     position: fixed;
     left: 0;
     top: 100px;
