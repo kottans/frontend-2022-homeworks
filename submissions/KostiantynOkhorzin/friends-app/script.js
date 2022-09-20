@@ -85,7 +85,7 @@ function createFullName(firstName, lastName) {
 }
 
 function searchName(friends) {
-  return friends.filter(friend => createFullName(friend.name.first, friend.name.last).includes(state.search));
+  return friends.filter(friend => createFullName(friend.name.first, friend.name.last).startsWith(state.search));
 }
 
 function filterByGender(friends) {

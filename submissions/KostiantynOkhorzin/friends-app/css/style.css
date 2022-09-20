@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   border: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 *, *:before, *:after {
@@ -59,10 +60,6 @@ img {
 
 a, button, input {
   outline: none;
-}
-
-* {
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .wrapper {
