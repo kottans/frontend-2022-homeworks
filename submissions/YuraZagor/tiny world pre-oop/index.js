@@ -47,10 +47,10 @@ cat_woman.friend = woman.name;
 
 cat_woman.saying = cat.saying;
 
-for (let inhabitant in inhabitants){
-  const {species, name, gender, legs, paws, hands, tail, saying, friend} = inhabitants[inhabitant];
-
+inhabitants.forEach((inhabitant)=>{
+  const {species, name, gender, legs, paws, hands, tail, saying, friend} = inhabitant;
   let textToPrint = `${species}; ${name}; ${gender}; ${legs ? legs : paws}; ${hands ? hands : tail}; ${saying}; ${friend}`;
 
   print(textToPrint,'div');
-};
+});
+
