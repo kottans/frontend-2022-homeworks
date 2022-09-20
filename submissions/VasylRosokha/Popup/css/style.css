@@ -77,6 +77,7 @@ li {
     background-color:rgb(222, 215, 215);
     height: 450px;
     overflow-y: auto;
+    overflow-x:hidden;
     width: 350px;
 }
 
@@ -84,7 +85,7 @@ li {
 .more-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 5px;
 }
 
 .menu-item-link,
@@ -97,6 +98,10 @@ li {
     font-weight: 400;
     text-decoration: none;
     color: #000;
+}
+
+.more-link {
+    width: 70px;
 }
 
 .menu-item-img {
@@ -136,7 +141,7 @@ li {
     .menu, .more-menu {
         width: 300px;
     }
-    .menu-list {
+    .menu-list, .more-list {
         gap: 5px;
     }
 }
