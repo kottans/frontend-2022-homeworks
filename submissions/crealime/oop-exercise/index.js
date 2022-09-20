@@ -35,7 +35,7 @@ class Dog extends Inhabitant {
 
 class Cat extends Inhabitant {
   constructor(name, gender, legs) {
-    super('cat', name, gender, 'Meow-meow!')
+    super('cat', name, gender, Cat.say())
     this.legs = legs
   }
 
