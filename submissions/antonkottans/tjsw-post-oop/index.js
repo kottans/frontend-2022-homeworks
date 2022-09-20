@@ -44,7 +44,7 @@ class Animal extends Creature {
 
 class AnimalWithTail extends Animal {
   constructor({ name, gender, friends, paws, species, saying, tail }) {
-    super({ name, gender, friends, paws, species, saying, tail });
+    super({ name, gender, friends, paws, species, saying });
     this.tail = tail;
   }
 
@@ -102,7 +102,6 @@ class CatWoman extends Human {
       legs,
       hands,
       species: "cat-woman",
-      tail,
     });
     this.tail = tail;
     this.saying = saying;
