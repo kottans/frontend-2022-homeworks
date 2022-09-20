@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 function hiddenHomeScreen(event) {
 	if (event.target.tagName !== 'BUTTON') return false;
@@ -12,21 +12,22 @@ function createCards(id, header, img, subHeader, description) {
 	<h2 class="sub-title">${header}</h2>
 	<img src="${img}" alt="${header}" class="main__img">
 	<h3 class="title-description">${subHeader}</h3>
-	<p class="title-description__text">${description.join('<p class="title-description__text">')}</p>
+	${description.map(desc => `<p class="title-description__text">${desc}</p>`).join('')}
 	</li>
 	`
 	cardsList.innerHTML = cardsHTML;
 }
 
-function showCard(event) {
-	if (event.target.tagName !== 'BUTTON') return false;
-	const filterClass = event.target.dataset.f;
-	const { id, header, img, subHeader, description } = cards.find(card => card.id == filterClass);
+function showCard({ target }) {
+	if (target.classList.contains('menu__btn')) {
+		const filterClass = target.dataset.f;
+		const { id, header, img, subHeader, description } = cards.find(card => card.id == filterClass);
 
-	createCards(id, header, img, subHeader, description);
+		createCards(id, header, img, subHeader, description);
+	}
 }
 
-function workBurger() {
+function toggleBurgerMenu() {
 	burger.classList.toggle('_active');
 	navigation.classList.toggle('_active');
 	document.body.classList.toggle('_lock');
@@ -133,7 +134,7 @@ const navigation = document.querySelector('nav');
 const burger = document.querySelector('.icon-menu');
 
 burger.addEventListener('click', () => {
-	workBurger();
+	toggleBurgerMenu();
 });
 navigation.addEventListener('click', (event) => {
 	showCard(event);
