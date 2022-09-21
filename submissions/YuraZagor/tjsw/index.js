@@ -113,7 +113,7 @@ class Inhabitant {
 };
 
 class Animal extends Inhabitant{
-  constructor( species, gender, name = sheDogName, saying = dogSay, friend = womanName, paws=4, tail=1 ){
+  constructor( species, gender, name = dogName, saying = dogSay, friend = womanName, paws=4, tail=1 ){
     super(species, gender, name, saying, friend);
     this.paws=paws;
     this.tail=tail;
