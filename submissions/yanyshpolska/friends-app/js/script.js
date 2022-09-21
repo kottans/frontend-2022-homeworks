@@ -46,7 +46,7 @@ function doFiltering() {
     ? (resultingFriendsSet = initialFriendsSet)
     : (resultingFriendsSet = filterGender(initialFriendsSet, gender));
 
-  resultingFriendsSet = searchNameinArray(resultingFriendsSet);
+  resultingFriendsSet = searchNameInArray(resultingFriendsSet);
   sortingArray(resultingFriendsSet);
 }
 
@@ -83,7 +83,7 @@ function filterGender(friendsArray, gender) {
   return friendsArray.filter((user) => user.gender === gender);
 }
 
-function searchNameinArray(friendsArray) {
+function searchNameInArray(friendsArray) {
   const searchNameFilter = document.querySelector(".options__search");
 
   return friendsArray.filter(
