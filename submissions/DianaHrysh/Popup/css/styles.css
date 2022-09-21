@@ -1,0 +1,120 @@
+ body {
+ 	font-size: 16px;
+ }
+
+ * {
+ 	box-sizing: border-box;
+ }
+
+ .navigation-list {
+ 	list-style-type: none;
+ 	display: grid;
+ 	grid-template-columns: repeat(5, 2em);
+ 	justify-content: end;
+ 	grid-column-gap: 1.5em;
+    align-items: center;
+ }
+
+ img {
+ 	width: 100%;
+ 	display: block;
+ }
+
+
+.check, 
+.label-more {
+	display: block;
+}
+
+.navigation-bar {
+   position: relative;
+}
+
+.drop-down-menu-list,
+.menu-list-more {
+  display: grid;
+  grid-template-columns: repeat(3, 3em);
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+  list-style-type: none;
+  position: relative;
+  background: lightgrey;
+  padding: 0;
+}
+
+.menu { 
+ display: none;
+ position: absolute;
+ border: 0.1em solid;
+ background: lightgrey;
+ top: 3em;
+ left: 70em;
+ padding: 2em;
+ text-align: center;
+ color: darkslategray;
+ box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+ overflow: scroll;
+ height: 29em;
+}
+
+.checkbox-input, 
+.checkbox-input-more{ 
+ appearance: none;
+ -webkit-appearance: none; 
+ position: absolute;
+}
+ 
+.checkbox-input:checked ~ .menu, 
+.checkbox-input-more:checked ~ .menu-more {
+ display: block;
+}
+
+.label-more {
+ padding: 0.3em;
+ background-color: darkgray;
+ margin: 0.9em 0 0.9em 0;
+ width: 100%;
+ display: block;
+}
+
+.menu-more {
+ display: none;
+ margin-top: 2em;
+ padding-top: 2em;
+ border-top: 0.1em solid; 
+}
+
+.even-more {
+ display: block;
+ padding-top: 3em;
+}
+
+.checkbox-input-more:checked + .label-more {
+   display: none;
+}
+
+.blue:focus-within,
+.navigation-item:focus-within {
+ outline: 3px solid skyblue;
+}
+
+.checkbox-input-more:focus ~ .label-more {
+ outline: 3px solid skyblue;
+}
+
+.blue:hover,
+.navigation-item:hover {
+ outline: 3px solid darkgray;
+}
+
+.checkbox-input-more:hover ~ .label-more {
+ outline: 3px solid darkgray;
+}
+
+
+
+
+
+
+
+
