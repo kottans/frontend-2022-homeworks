@@ -23,6 +23,9 @@ input:focus {
   outline: none;
   border: 2px solid #684a4a;
 }
+input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
 .header {
   max-width: 1000px;
   margin: auto;
@@ -49,7 +52,7 @@ input:focus {
   display: flex;
   flex-direction: column;
 }
-.options__sorting-item {
+.options__group-item {
   width: 150px;
   display: flex;
   justify-content: space-between;
@@ -58,10 +61,11 @@ input:focus {
   color: #e73535;
 }
 
-.options__name {
+.options__option-name {
   padding-top: 10px;
   font-size: 24px;
   margin-bottom: 10px;
+  user-select: none;
 }
 .options__sorting-radio {
   position: absolute;
@@ -90,6 +94,7 @@ input:focus {
   grid-template-columns: repeat(3, 32%);
   gap: 0.5rem;
   padding: 0.5rem 0 0 0.5rem;
+  margin-bottom: 0.5rem;
 }
 .user {
   width: 100%;
