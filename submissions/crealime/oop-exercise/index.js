@@ -66,9 +66,18 @@ class CatWoman extends Inhabitant {
   }
 
   getFullName() {
-    return `${this.name} ${this.surname}`
+    return `${super.getFullName()} ${this.surname}`
   }
 }
+
+const fullInfo =  {
+  sayFullInfo() {
+    return `${this.saying} My name is ${this.getFullName()} and I am a ${this.species}. My gender is ${this.gender}. I have ${this.hands || 0} ${this.hands === 1 ? 'hand' : 'hands'} and ${this.legs || 0} ${this.legs === 1 ? 'leg' : 'legs'}. I have ${this.friends.length} ${this.friends.length === 1 ? 'friend' : 'friends'}${this.friends.length > 0 ? ': ' + this.friends.map(friend => friend.name).join(', ') : ''}.`
+  }
+}
+
+Object.assign(Human.prototype, fullInfo)
+Object.assign(CatWoman.prototype, fullInfo)
 
 const dog = new Dog('Marley', 'male', 4)
 const cat = new Cat('Sophie', 'female', 4)
@@ -83,19 +92,42 @@ man.friends.push(dog, woman)
 woman.friends.push(cat, man)
 catWoman.friends.push(cat)
 
-const secretSociety = []
-const allInhabitant = [dog, cat, man, woman, catWoman, pirate]
 
-function addToSociety(society, member) {
-  society.push(member.id)
+const allInhabitants = [dog, cat, man, woman, catWoman, pirate]
+
+class Society {
+  constructor() {
+    if (typeof Society.instance === 'object') {
+      return Society.instance
+    }
+    this.members = []
+    Society.instance = this
+    return Society.instance
+  }
+
+  addToSociety(member) {
+    this.members.push(member.id)
+  }
+
+  #isInSociety(inhabitants) {
+    return inhabitants.filter(inhabitant => this.members.includes(inhabitant.id)).map(inhabitant => inhabitant.name)
+  }
+
+  getMembersOfSociety(inhabitants) {
+    const names = this.#isInSociety(inhabitants)
+
+    if (names.length === 0) return 'Perhaps the secret society is too secret'
+
+    const textAfterNames = names.length === 1 ? 'in a secret society...' : 'are in a secret society...'
+
+    return `${names.join(', ')} ${textAfterNames}`
+  }
 }
 
-addToSociety(secretSociety, catWoman)
-addToSociety(secretSociety, pirate)
+const secretSociety = new Society()
 
-function isInSociety(society, members) {
-  return members.filter(member => society.includes(member.id)).map(member => member.name)
-}
+secretSociety.addToSociety(catWoman)
+secretSociety.addToSociety(pirate)
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -126,18 +158,17 @@ function getFullInfo(inhabitant) {
   return `${getAcquaintance} ${getGender} ${getLimbs} ${getFriends} ${getSaying}`
 }
 
-allInhabitant.forEach(inhabitant => {
+allInhabitants.forEach(inhabitant => {
   print(getFullInfo(inhabitant))
 })
 
-function getMembersOfSociety() {
-  const names = isInSociety(secretSociety, allInhabitant)
-  let textAfterNames = ''
-  if (names.length === 1) textAfterNames = 'in a secret society...'
-  if (names.length > 1) textAfterNames = 'are in a secret society...'
+print(' ')
 
-  return `${names.join(', ')} ${textAfterNames}`
-}
+allInhabitants.forEach(inhabitant => {
+  if ('sayFullInfo' in inhabitant) {
+    print(inhabitant.sayFullInfo())}
+})
 
 print(' ')
-print(getMembersOfSociety())
+
+print(secretSociety.getMembersOfSociety(allInhabitants))
