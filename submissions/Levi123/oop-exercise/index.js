@@ -5,6 +5,15 @@ class Entity {
       this.gender = gender;
       this.saying = saying;
    }
+
+   getProps (){
+      return [
+         this.name,
+         this.species,
+         this.gender,
+         this.saying,
+      ]
+   }
 }
 
 class Human extends Entity {
@@ -12,6 +21,10 @@ class Human extends Entity {
       super(name, 'Human', gender, saying);
       this.legs = 2;
       this.hands = 2;
+   }
+
+   getProps (){
+      return super.getProp().concat([this.legs, this.hands])
    }
 }
 
@@ -25,6 +38,10 @@ class Animal extends Entity {
    constructor(name, gender, saying){
       super(name, 'Animal', gender, saying);
       this.paws = 4;
+   }
+
+   getProps (){
+      return super.getProp().concat([this.paws])
    }
 }
 
@@ -59,19 +76,7 @@ const man = new Man('Johny', 'Hellllllooooo!')
 const catWoman = new CatWoman('Kitty')
 
 const allResidents = [woman, man, dog, cat, catWoman]
-const allProp = ['name', 'species', 'gender', 'saying', 'legs', 'hands', 'paws']
 
-
-function toPrint (arrayAllResidents) {
-   const propToPrint = allProp.filter((propOfObj) => arrayAllResidents[propOfObj] !== undefined)
-      .map((propOfObj) => arrayAllResidents[propOfObj]).join('; ');
-   print(propToPrint);
-}
-
-function printAllObjects(arrayAllObjects){
-   arrayAllObjects.forEach((characters) => {
-      toPrint(characters);
-   })
-}
-
-printAllObjects(allResidents);
+allResidents.forEach((resident) => 
+   print(resident.getProps().join('; '))
+);
