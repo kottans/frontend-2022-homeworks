@@ -41,6 +41,7 @@ const config = {
     img: "images/enemy-bug.png",
     initialRows: [2, 3, 4],
     amountOfEnemies: [2, 2, 1],
+    overlapRatio: 1.3,
     speedIncrease: 0.2,
     minSpeedOfEnemy: 50,
     maxSpeedOfEnemy: 300,
@@ -59,12 +60,12 @@ const config = {
   POPUP_MESSAGE_ACTIVE_CLASS: "is-active",
 };
 
-const Character = function (config, imgUrl) {
+const Character = function (imgUrl) {
   this.config = config;
   this.sprite = imgUrl;
 };
 
-Character.prototype.endOfGame = function (result, config) {
+Character.prototype.endOfGame = function (result) {
   const {
     POPUP_MESSAGE_ACTIVE_CLASS,
     ELEMENT_POPUP_MESSAGE,
@@ -76,7 +77,7 @@ Character.prototype.endOfGame = function (result, config) {
     PRINT_MESSAGE_LOSE,
     ENEMIES_CONF,
     STATE,
-  } = config;
+  } = this.config;
 
   const updateMarkupInfo = (popupText) => {
     ELEMENT_POPUP_MESSAGE.innerText = popupText;
@@ -105,12 +106,12 @@ Character.prototype.endOfGame = function (result, config) {
   }, 900);
 };
 
-const Enemy = function (x, y, minSpeed, maxSpeed, config) {
-  Character.call(this, config, config.ENEMIES_CONF.img);
-  this.ENEMIES_CONF = config.ENEMIES_CONF;
-  this.FIELD_WIDTH = config.FIELD_WIDTH;
-  this.BLOCK_WIDTH = config.BLOCK_WIDTH;
-  this.BLOCK_HEIGHT = config.BLOCK_HEIGHT;
+const Enemy = function (x, y, minSpeed, maxSpeed, img) {
+  Character.call(this, img);
+  this.ENEMIES_CONF = this.config.ENEMIES_CONF;
+  this.FIELD_WIDTH = this.config.FIELD_WIDTH;
+  this.BLOCK_WIDTH = this.config.BLOCK_WIDTH;
+  this.BLOCK_HEIGHT = this.config.BLOCK_HEIGHT;
   this.x = x;
   this.y = y;
   this.speed = this.getRandomArbitrary(minSpeed, maxSpeed);
@@ -137,10 +138,12 @@ Enemy.prototype.render = function () {
 Enemy.prototype.checkCollision = function () {
   if (
     player.y === this.y &&
-    player.x <= Math.floor(this.x) + this.BLOCK_WIDTH / 1.3 &&
-    player.x >= Math.floor(this.x) - this.BLOCK_WIDTH / 1.3
+    player.x <=
+      Math.floor(this.x) + this.BLOCK_WIDTH / this.ENEMIES_CONF.overlapRatio &&
+    player.x >=
+      Math.floor(this.x) - this.BLOCK_WIDTH / this.ENEMIES_CONF.overlapRatio
   ) {
-    this.endOfGame(config.END_OF_GAME_LOSE, config);
+    this.endOfGame(config.END_OF_GAME_LOSE);
   }
 };
 
@@ -149,9 +152,16 @@ Enemy.prototype.getRandomArbitrary = function (min, max) {
 };
 
 Enemy.prototype.startPositionOfEnemies = function (i) {
-  if (i === 1) {
-    return this.getRandomArbitrary(-this.BLOCK_WIDTH, this.BLOCK_WIDTH * 2);
-  } else if (i === 2) {
+  const numberOfStartBlock = 2;
+  const numberOfFirstEnemy = 1;
+  const numberOfSecondEnemy = 1;
+
+  if (i === numberOfFirstEnemy) {
+    return this.getRandomArbitrary(
+      -this.BLOCK_WIDTH,
+      this.BLOCK_WIDTH * numberOfStartBlock
+    );
+  } else if (i === numberOfSecondEnemy) {
     return this.getRandomArbitrary(-this.FIELD_WIDTH, -this.BLOCK_WIDTH);
   } else {
     return this.getRandomArbitrary(
@@ -161,9 +171,9 @@ Enemy.prototype.startPositionOfEnemies = function (i) {
   }
 };
 
-Enemy.prototype.createEnemies = function (config) {
-  const { ENEMIES_CONF, STATE, ORIGIN_COORDINATE_CHARACTERS, BLOCK_HEIGHT } =
-    config;
+Enemy.prototype.createEnemies = function () {
+  const { ENEMIES_CONF, ORIGIN_COORDINATE_CHARACTERS, BLOCK_HEIGHT, STATE } =
+    this.config;
   const currentMinSpeedOfEnemy =
       ENEMIES_CONF.minSpeedOfEnemy * STATE.speedMultiplicator,
     currentMaxSpeedOfEnemy =
@@ -183,7 +193,7 @@ Enemy.prototype.createEnemies = function (config) {
             startPositionY,
             currentMinSpeedOfEnemy,
             currentMaxSpeedOfEnemy,
-            config
+            ENEMIES_CONF.img
           )
         );
         createEnemy(i - 1)();
@@ -194,23 +204,32 @@ Enemy.prototype.createEnemies = function (config) {
   });
 };
 
-Enemy.prototype.updateEnemies = function (config) {
+Enemy.prototype.updateEnemies = function () {
   allEnemies.length = 0;
-  this.createEnemies(config);
+  this.createEnemies();
 };
 
 Enemy.prototype.resetGame = function () {
-  this.updateEnemies(config);
+  this.updateEnemies();
   player.goToStart();
 };
 
-const Player = function (config) {
-  Character.call(this, config, config.PLAYER_CONF.img);
-  this.PLAYER_CONF = config.PLAYER_CONF;
-  this.FIELD_WIDTH = config.FIELD_WIDTH;
-  this.BLOCK_WIDTH = config.BLOCK_WIDTH;
-  this.BLOCK_HEIGHT = config.BLOCK_HEIGHT;
-  this.ORIGIN_COORDINATE_CHARACTERS = config.ORIGIN_COORDINATE_CHARACTERS;
+const EnemiesFactory = function () {
+  Enemy.call(this);
+};
+
+EnemiesFactory.prototype = Object.create(Enemy.prototype);
+
+const enemiesFactory = new EnemiesFactory();
+enemiesFactory.createEnemies();
+
+const Player = function (img) {
+  Character.call(this, img);
+  this.PLAYER_CONF = this.config.PLAYER_CONF;
+  this.FIELD_WIDTH = this.config.FIELD_WIDTH;
+  this.BLOCK_WIDTH = this.config.BLOCK_WIDTH;
+  this.BLOCK_HEIGHT = this.config.BLOCK_HEIGHT;
+  this.ORIGIN_COORDINATE_CHARACTERS = this.config.ORIGIN_COORDINATE_CHARACTERS;
   this.INITIAL_POSITION_X =
     this.ORIGIN_COORDINATE_CHARACTERS.x +
     this.BLOCK_WIDTH * (this.PLAYER_CONF.initialBlock.x - 1);
@@ -265,7 +284,7 @@ Player.prototype.checkExitFromField = function () {
 
 Player.prototype.checkWin = function () {
   if (this.y === this.ORIGIN_COORDINATE_CHARACTERS.y) {
-    this.endOfGame(config.END_OF_GAME_WIN, config);
+    this.endOfGame(config.END_OF_GAME_WIN);
   }
 };
 
@@ -275,14 +294,11 @@ Player.prototype.goToStart = function () {
 };
 
 Player.prototype.resetGame = function () {
-  initEnemy.updateEnemies(config);
+  enemiesFactory.updateEnemies();
   this.goToStart();
 };
 
-const initEnemy = new Enemy(0, 0, 0, 0, config);
-initEnemy.updateEnemies(config);
-
-const player = new Player(config);
+const player = new Player(config.PLAYER_CONF.img);
 
 document.addEventListener("keyup", function (e) {
   const allowedKeys = {
