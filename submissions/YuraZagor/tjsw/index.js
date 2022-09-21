@@ -108,7 +108,7 @@ vasya.populate()
 creation('human', womanName, animalName, 'male' );
 creation('human', randomSelect(womanNamesArr), animalName, 'female' );
 creation('dog', animalName, 'male', animalName);
-creation('cat', animalName, 'female', animalName);
+creation('cat', randomSelect(animalNamesArr), 'female', animalName);
 multipleCreation(4, 'human' )
 
 
