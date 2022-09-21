@@ -1,51 +1,71 @@
-var leftSide = 0;
-var rightSide = 500;
-var topSide = 0;
-var bottomSide = 500;
-var initialGroundY = 60;
+const leftSide = 0;
+const topSide = 0;
+const rightSide = 500;
+const bottomSide = 500;
 
-var Enemy = function(x, y, speed) {
-    this.sprite = 'images/enemy-bug.png';
+const initialGroundY = 60;
+const tileHeight = 80;
+
+const enemySprite = 'images/enemy-bug.png';
+const enemyWidth = 80;
+const enemyHeight = 70;
+const enemyMinSpeed = 100;
+const enemyMaxSpeed = 300;
+const enemyMinX = -rightSide;
+const enemyMaxX = enemyWidth - rightSide;
+
+const playerSprite = 'images/char-princess-girl.png';
+const playerWidth = 70;
+const playerHeight = 70;
+const playerSpeed = 75;
+const playerInitialX = 200;
+const playerInitialY = 400;
+
+const Character = function(x, y, speed, sprite) {
+    this.sprite = sprite;
     this.speed = speed;
     this.x = x;
     this.y = y;
 };
 
+Character.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+const Enemy = function(...args) {
+    Character.call(this, ...args);
+};
+
 Enemy.prototype.update = function(dt) {
-    var shift = this.speed * dt;
+    const shift = this.speed * dt;
     this.x = this.x + shift;
     if (this.x >= rightSide) {
         this.x = -this.width;
     }
 };
 
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+Enemy.prototype.width = enemyWidth;
+Enemy.prototype.height = enemyHeight;
+
+Object.setPrototypeOf(Enemy.prototype, Character.prototype);
+
+const Player = function(...args) {
+    Character.call(this, ...args);
 };
 
-Enemy.prototype.width = 80;
-Enemy.prototype.height = 70;
-
-var Player = function(x, y, speed) {
-    this.sprite = 'images/char-princess-girl.png';
-    this.speed = speed;
-    this.x = x;
-    this.y = y;
-};
-
-Player.prototype.width = 70;
-Player.prototype.height = 70;
+Player.prototype.width = playerWidth;
+Player.prototype.height = playerHeight;
 
 Player.prototype.update = function() {
     const isOverlapDetected = allEnemies.some((enemy) => {
         return checkIsOverlap(
             {
-                x: player.x,
-                y: player.y
+                x: this.x,
+                y: this.y
             },
             {
-                x: player.x + player.width,
-                y: player.y + player.height
+                x: this.x + this.width,
+                y: this.y + this.height
             },
             {
                 x: enemy.x,
@@ -61,10 +81,6 @@ Player.prototype.update = function() {
     if (isOverlapDetected) {
         gameOver(false);
     }
-}
-
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
 Player.prototype.handleInput = function(action) {
@@ -103,31 +119,30 @@ Player.prototype.setPosition = function(x, y) {
     this.y = y;
 }
 
+Object.setPrototypeOf(Player.prototype, Character.prototype);
+
 function getRandomNumberFromARange(min, max) {
     return (Math.random() * (max - min)) + min;
 }
 
 function createRandomEnemy(row) {
-    var x = getRandomNumberFromARange(-400, -100);
-    var y = initialGroundY + row * 80;
-    var speed = getRandomNumberFromARange(100, 300);
+    const x = getRandomNumberFromARange(enemyMinX, enemyMaxX);
+    const y = initialGroundY + row * tileHeight;
+    const speed = getRandomNumberFromARange(enemyMinSpeed, enemyMaxSpeed);
 
-    return new Enemy(x, y, speed);
+    return new Enemy(x, y, speed, enemySprite);
 }
 
-var allEnemies = [
+const allEnemies = [
     createRandomEnemy(0),
     createRandomEnemy(1), 
     createRandomEnemy(2)
 ];
 
-var initialPlayerX = 200;
-var initialPlayerY = 400;
-var playerSpeed = 75;
-var player = new Player(initialPlayerX, initialPlayerY, playerSpeed);
+const player = new Player(playerInitialX, playerInitialY, playerSpeed, playerSprite);
 
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
@@ -151,8 +166,8 @@ function checkIsOverlap(l1, r1,  l2,  r2) {
     return true;
 }
 
-var wins = 0;
-var losses = 0;
+let wins = 0;
+let losses = 0;
 
 function gameOver(isWin) {
     if (isWin) {
@@ -162,7 +177,7 @@ function gameOver(isWin) {
     }
 
     scoreEl.innerText = `${wins}:${losses}`;
-    player.setPosition(initialPlayerX, initialPlayerY);
+    player.setPosition(playerInitialX, playerInitialY);
 }
 
 const scoreEl = document.createElement('div');
