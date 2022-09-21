@@ -49,9 +49,9 @@ cat_woman.saying = cat.saying;
 
 inhabitants.forEach((inhabitant)=>{
   const {species, name, gender, legs, paws, hands, tail, saying, friend} = inhabitant;
-  const printArr = [species, name, gender, legs ? legs : paws, hands ? hands : tail, saying, friend]
+  const inhabitantRepresentationArr = [species, name, gender, legs ? legs : paws, hands ? hands : tail, saying, friend]
 
-  print(printArr.join('; '),'div')
+  printinhabitantRepresentationArr ('; '),'div')
 })
 
 
