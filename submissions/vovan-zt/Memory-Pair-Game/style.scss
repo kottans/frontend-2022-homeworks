@@ -39,7 +39,7 @@
 	transition: 0.8s;
 	transform-style: preserve-3d;
 	position: relative;
-	z-index: 99;
+	z-index: 3;
 }
 
 .active {
@@ -48,8 +48,8 @@
 
 .c1 {
 	z-index: 2;
-	width: 200px;
-	height: 275px;
+	width: 100%;
+	height: 100%;
 	backface-visibility: hidden;
 	border-radius: 5px;
 	position: absolute;
@@ -75,15 +75,14 @@
 }
 
 .c2 {
-	width: 200px;
-	height: 275px;
+	width: 100%;
+	height: 100%;
 	backface-visibility: hidden;
 	border-radius: 5px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	transform: rotateY(180deg);
-	cursor: pointer;
 }
 
 .visible {
@@ -103,19 +102,15 @@
 	align-items:center;
 	position: absolute;
     top: 50px;
-
-
 	&__title {
 		font-size: 36px;
 		margin-bottom: 20px;
 		text-align: center;
 	}
-
-	&__descr {
+	&__desc {
 		font-size: 24px;
 		margin-bottom: 20px;
 	}
-
 	&__btn {
 		width: 300px;
 		height: 60px;
@@ -125,7 +120,6 @@
 		border-radius:5px;
 		cursor: pointer;
 	}
-	
 }
 
 @media  (max-width: 768px) {
