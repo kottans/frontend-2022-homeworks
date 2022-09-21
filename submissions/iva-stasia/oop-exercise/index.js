@@ -55,18 +55,11 @@ class Cat extends Animal {
    }
 };
 
-class CatWoman extends Woman {
-   constructor({species = 'Cat-Human', name, gender, legs, saying = cat.saying, hands}) {
-      super({species, name, gender, legs, saying, hands})
-   }
-};
-
 const man = new Man({name: 'Leon', saying: 'Glad to see you'});
 const woman = new Woman({name: 'Matilda', saying: 'Hello'});
 const dog = new Dog({name: 'Pretty', gender: 'male', saying: 'Woof-woof'});
 const cat = new Cat({name: 'Kitty', gender: 'female', saying: 'Meeeow'});
-const catWomen = new CatWoman({name: 'Selina'});
 
-const inhabitants = [dog, cat, woman, man, catWomen];
+const inhabitants = [dog, cat, woman, man];
 
 inhabitants.forEach(inhabitant => {print(inhabitant.toPrint())});
