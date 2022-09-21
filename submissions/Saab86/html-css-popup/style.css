@@ -188,13 +188,3 @@ a:hover {
 .products__checkbox-more:checked~.products__more-label {
 	display: none;
 }
-
-.footer {
-	width: 100%;
-	height: 80px;
-	position: absolute;
-	bottom: 0;
-	color: #fff;
-	background: rgb(119, 87, 87);
-	text-align: center;
-}
