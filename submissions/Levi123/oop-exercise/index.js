@@ -1,3 +1,11 @@
+// class Animal {
+//    constructor (species, name, gender){
+//       this.species = species;
+//       this.name = name;
+//       this.gender = gender;
+//    }
+// }
+
 class Entity {
    constructor (name, species, gender, saying){
       this.name = name;
@@ -24,7 +32,7 @@ class Human extends Entity {
    }
 
    getProps (){
-      return super.getProp().concat([this.legs, this.hands])
+      return super.getProps().concat([this.legs, this.hands])
    }
 }
 
@@ -41,7 +49,7 @@ class Animal extends Entity {
    }
 
    getProps (){
-      return super.getProp().concat([this.paws])
+      return super.getProps().concat([this.paws])
    }
 }
 
