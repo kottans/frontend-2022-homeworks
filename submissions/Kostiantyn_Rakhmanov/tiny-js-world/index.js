@@ -1,7 +1,6 @@
 import { print } from './js/lib.js';
 
-const inhabitants = [
-{
+const dog = {
       species: 'dog',
       name: 'Toby',
       gender: 'male',
@@ -9,8 +8,8 @@ const inhabitants = [
       hands: 0,
       saying: 'woof-woof',
       friends: ['Mary', 'John'],
-      },
-{
+   };
+const cat = {
       species: 'cat',
       name: 'Alice',
       gender: 'male',
@@ -18,8 +17,8 @@ const inhabitants = [
       hands: 0,
       saying: 'meow',
       friends: ['Mary', 'John'],
-   },
-{
+   };
+const woman = {
       species: 'woman',
       name: 'Mary',
       gender: 'female',
@@ -27,8 +26,8 @@ const inhabitants = [
       hands: 2,
       saying: 'Hi, John!',
       friends: ['John', 'Alice', 'Toby'],
-   },
-{
+   };
+const man = {
       species: 'man',
       name: 'John',
       gender: 'male',
@@ -36,17 +35,11 @@ const inhabitants = [
       hands: 2,
       saying: 'Hi, Mary!',
       friends: ['Mary', 'Toby', 'Alice'],
-   },
-];
+   };
 
-for (let i = 0; i < inhabitants.length; i++) {
-   const species = inhabitants[i].species;
-   const name = inhabitants[i].name;
-   const gender = inhabitants[i].gender;
-   const legs = inhabitants[i].legs;
-   const hands = inhabitants[i].hands;
-   const saying = inhabitants[i].saying;
-   const friends = inhabitants[i].friends;
+const inhabitants = [dog, cat, woman, man];
+const props = ['Inhabitant', 'name', 'gender', 'legs', 'hands', 'saying', 'friends'];
 
-   print('Inhabitant:' + species + '; name:' + name + '; gender:' + gender + '; legs:' + legs + '; hands:' + hands + '; saying:' + saying + '; friends:' + friends);
-}
+inhabitants.forEach((item) => {
+   print(props.map((key) => item[key]).join('; '));
+});
