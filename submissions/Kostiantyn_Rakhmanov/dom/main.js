@@ -29,13 +29,13 @@ const section = document.querySelector('.section');
 
 menu.addEventListener("click", ({ target }) => {
     const itemId = target.parentElement.id;
-    item = alfas[itemId]
-        section.innerHTML = `
-        <img class="article__img" src="${item.img}" alt="Alfa Romeo">
-        <h2 class="article__title" id="article__title">${item.model}</h2>
-        <p class="article__price">${item.price}</p>
-        <article class="article__text" id="article__text">
-        <p>${item.description}</p>
-        </article>
-        `;
+    let alfa = alfas.filter(item => (item.id == itemId))
+    section.innerHTML = `
+            <img class="article__img" src="${alfa[0].img}" alt="Alfa Romeo">
+            <h2 class="article__title" id="article__title">${alfa[0].model}</h2>
+            <p class="article__price">${alfa[0].price}</p>
+            <article class="article__text" id="article__text">
+            <p>${alfa[0].description}</p>
+            </article>
+            `;
 });
