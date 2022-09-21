@@ -17,7 +17,7 @@ class Inhabitants {
    }
 
    createString() {
-      return `${this.species}, ${this.name}, ${this.gender}, ${this.legs}, ${this.say};`;
+      return [this.species, this.name, this.gender, this.legs, this.say];
    }
 }
 
@@ -28,7 +28,9 @@ class Human extends Inhabitants {
    }
 
    createString() {
-      return `${this.species}, ${this.name}, ${this.gender}, ${this.legs}, ${this.hands}, ${this.say};`;
+      const superArr = [...super.createString()];
+      superArr.splice(4, 0, this.hands);
+      return superArr;
    }
 }
 
@@ -47,18 +49,19 @@ class Dog extends Animal {
 class Cat extends Animal {
    static say = 'moew';
    constructor(name, gender) {
-      super('cat', name, gender, Cat.say);
-
+      super('cat', name, gender);
+      this.say = Cat.sayingPhrase();
    }
 
-   static sayingPhrase(phrase) {
-      return Cat.say = phrase || 'meow';
+   static sayingPhrase() {
+      console.log(this.say)
+      return this.say;
    }
 }
 
 class CatWoman extends Human {
    constructor(name, gender) {
-      super(name, gender, Cat.say)
+      super(name, gender, Cat.sayingPhrase())
    }
 }
 
@@ -71,16 +74,10 @@ const woman = new Human('Jenny', "female", "Hi John!");
 
 const catWoman = new CatWoman('JennyCat', "female");
 
-
-Cat.sayingPhrase('mi');
-
-const catWomanTwo = new CatWoman('Cat', "female");
-const catTwo = new Cat('Ben', 'male');
-
-const persons = [dog, cat, man, woman, catWoman, catWomanTwo, catTwo];
+const persons = [dog, cat, man, woman, catWoman];
 
 function createString(persons) {
-   return persons.map((person) => person.createString()).join('\n');
+   return persons.map((person) => person.createString().join('; ')).join('\n');
 }
 
 
