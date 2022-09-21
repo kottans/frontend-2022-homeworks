@@ -34,13 +34,13 @@ class Human extends Creature {
   constructor(name, gender, saying) {
     super("human", name, gender, saying, 2);
     this.hands = 2;
+  }
+
+  getProps() {
     this.props = [
       ...this.props,
       { prop: "hands", preface: "I have hands:" },
     ]
-  }
-
-  getProps() {
     return super.getProps()
   }
 }
