@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 6.25%
+}
+
+body {
+  min-inline-size: 320px;
+
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 18rem;
+  line-height: 1.15;
+
+  overflow-y: scroll;
+  background-color: #000000;
+}
+
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+a,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd,
+input {
+  margin: unset;
+}

@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans';
+    font-size: 18px;
+    background-color: #EEE2DC;
+}
+
+.wrapper {
+	display: grid;
+	min-height: 100vh;
+	grid-template: minmax(50px, auto) 1fr / 1fr;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(94, 77, 159);
+}
+
+.header {
+    display: grid;
+    grid-template: 60px / repeat(2, 1fr);
+    justify-items: end;
+    align-items: center;
+    background-color: #bab2b5;
+}
+
+.header__menu {
+    grid-column: 2 / 3;
+    width: 100%;
+}
+
+.header__list {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    position: relative;
+}
+
+.header__item {
+    display: block;
+    margin-right: 15px;
+    justify-self: center;
+    align-self: center;
+}
+
+.header__item,
+.popup__item, 
+.more__item {
+    list-style: none;
+}
+
+.link {
+    display: block;
+}
+
+.header__link {
+    display: block;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.header__link:focus {
+    outline: none;
+}
+
+.link:hover,
+.link:focus,
+.link:active {
+    background-color: #EEE2DC;
+    border-radius: 5%;
+}
+
+.link-round:hover,
+.link-round:focus,
+.link-round:active {
+    background-color: #EEE2DC;
+    border-radius: 50%;
+}
+
+.img {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.header__profile {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    align-self: center;
+}
+
+.checkbox__button{
+    display: block;
+    cursor: pointer;
+    padding: 5px
+}
+
+.checkbox,
+.checkbox-more {
+    cursor: pointer;
+    position: absolute;
+    appearance: none;
+}
+
+.checkbox:focus ~ .checkbox__button,
+.checkbox:hover ~ .checkbox__button,
+.checkbox:active ~ .checkbox__button {
+    background-color: #EEE2DC;
+    border-radius: 5%;
+}
+
+.checkbox:checked ~ .popup {
+    display: grid;
+}
+
+.popup {
+    display: none;
+    grid-template: 1fr 40px 1fr / 1fr;
+    position: absolute;
+    width: 350px;
+    height: 480px;
+    overflow-y: scroll;
+    right: 50px;
+    top: 75px;
+    background-color: #EEE2DC;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.popup__list {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(3, 1fr);
+    gap: 10px;
+    padding: 5px;
+    justify-items: center;
+    align-items: center;
+}
+
+.popup__item, .more__item {
+    display: block;
+    align-content: center;
+    width: 85px;
+    height: 100px;
+}
+
+.popup__link, .more__link {
+    display: block;
+    height: 100%;
+    padding: 10px;
+}
+
+.popup__link:focus,
+.popup__link:active,
+.popup__link:hover,
+.more__link:focus,
+.more__link:active,
+.more__link:hover {
+    background-color: #e2d3d9;
+    border-radius: 5px;
+    outline: 0;
+}
+
+.link__img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.link__text {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.checkbox-more__label {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    color: rgb(94, 77, 159);
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.checkbox-more:focus ~ .checkbox-more__label,
+.checkbox-more:active ~ .checkbox-more__label,
+.checkbox-more:hover ~ .checkbox-more__label {
+    background-color: #e2d3d9;
+    outline: 0;
+}
+
+.checkbox-more:checked ~ .more__list {
+    display: grid;
+}
+
+.checkbox-more:checked ~ .checkbox-more__label {
+    display: none;
+}
+
+.more__list {
+    display: none;
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    justify-items: center;
+    align-items: center;
+}
+
+.header__popup::-webkit-scrollbar {
+    width: 5px;
+}
+
+.header__popup::-webkit-scrollbar-track {
+    background-color: #BAB2B5;
+    border-radius: 5px;
+}
+
+.header__popup::-webkit-scrollbar-thumb {
+    background-color: #9c9195;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 650px) {
+    .popup {
+        right: 10px;
+    }
+}
