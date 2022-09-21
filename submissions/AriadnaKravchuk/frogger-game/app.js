@@ -110,10 +110,10 @@ Enemy.prototype.render = function () {
 
 Enemy.prototype.collision = function () {
     if (
-        this.x > player.x - STEP.HALF_X &&
-        this.x < player.x + STEP.HALF_X &&
-        this.y > player.y - STEP.HALF_Y &&
-        this.y < player.y + STEP.HALF_Y
+        this.x > this.player.x - STEP.HALF_X &&
+        this.x < this.player.x + STEP.HALF_X &&
+        this.y > this.player.y - STEP.HALF_Y &&
+        this.y < this.player.y + STEP.HALF_Y
     ) {
         loseScore++;
         showCounter();
@@ -184,8 +184,8 @@ function loadGame() {
     ENEMIES_Y.forEach(enemyY => 
         allEnemies.push(
             new Enemy(
-                ALL_X.getNumFromArray(), 
-                enemyY, getNumFromArea(SPEED.MAX, SPEED.MIN)
+                ALL_X.getNumFromArray(), enemyY,
+                getNumFromArea(SPEED.MAX, SPEED.MIN), player
             )
         )
     );
