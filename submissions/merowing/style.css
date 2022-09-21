@@ -22,64 +22,64 @@ main {
     transform: rotateY(180deg);
 }
 .fruit-1 {
-    background:url('./images/fruit-1.png');
+    background: url('./images/fruit-1.png');
 }
 .fruit-2 {
-    background:url('./images/fruit-2.png');
+    background: url('./images/fruit-2.png');
 }
 .fruit-3 {
-    background:url('./images/fruit-3.png');
+    background: url('./images/fruit-3.png');
 }
 .fruit-4 {
-    background:url('./images/fruit-4.png');
+    background: url('./images/fruit-4.png');
 }
 .fruit-5 {
-    background:url('./images/fruit-5.png');
+    background: url('./images/fruit-5.png');
 }
 .fruit-6 {
-    background:url('./images/fruit-6.png');
+    background: url('./images/fruit-6.png');
 }
 .fruit-7 {
-    background:url('./images/fruit-7.png');
+    background: url('./images/fruit-7.png');
 }
 .fruit-8 {
-    background:url('./images/fruit-8.png');
+    background: url('./images/fruit-8.png');
 }
 .fruit-9 {
-    background:url('./images/fruit-9.png');
+    background: url('./images/fruit-9.png');
 }
 .fruit-10 {
-    background:url('./images/fruit-10.png');
+    background: url('./images/fruit-10.png');
 }
 .fruit-11 {
-    background:url('./images/fruit-11.png');
+    background: url('./images/fruit-11.png');
 }
 .fruit-12 {
-    background:url('./images/fruit-12.png');
+    background: url('./images/fruit-12.png');
 }
 .fruit-13 {
-    background:url('./images/fruit-13.png');
+    background: url('./images/fruit-13.png');
 }
 .fruit-14 {
-    background:url('./images/fruit-14.png');
+    background: url('./images/fruit-14.png');
 }
 .fruit-15 {
-    background:url('./images/fruit-15.png');
+    background: url('./images/fruit-15.png');
 }
 .fruit-16 {
-    background:url('./images/fruit-16.png');
+    background: url('./images/fruit-16.png');
 }
 .fruit-17 {
-    background:url('./images/fruit-17.png');
+    background: url('./images/fruit-17.png');
 }
 .fruit-18 {
-    background:url('./images/fruit-18.png');
+    background: url('./images/fruit-18.png');
 }
 .fruit-19 {
-    background:url('./images/fruit-19.png');
+    background: url('./images/fruit-19.png');
 }
 .fruit-20 {
-    background:url('./images/fruit-20.png');
+    background: url('./images/fruit-20.png');
 }
 
 .card {
@@ -170,21 +170,21 @@ main {
 
 /* for mobile devices */
 @media only screen 
-and (min-device-width : 280px) 
-and (max-device-width : 670px) 
+and (min-width : 280px) 
+and (max-width : 670px) 
 and (orientation : portrait) {
     #fruits {
         grid-template-columns: repeat(2, 50%);
         max-width: 600px;
     }
     .card {
-        width: 240px;
-        height: 240px;
+        width: 100px;
+        height: 100px;
     }
 }
 @media only screen 
-and (min-device-width : 280px) 
-and (max-device-width : 670px) 
+and (min-width : 280px) 
+and (max-width : 670px) 
 and (orientation : landscape) {
     #fruits {
         grid-template-columns: repeat(4, 25%);
@@ -196,36 +196,22 @@ and (orientation : landscape) {
     }
 }
 @media only screen 
-and (min-device-width : 360px) 
-and (max-device-width : 740px) 
+and (min-width : 360px) 
+and (max-width : 740px) 
 and (orientation : portrait) {
     #fruits {
         grid-template-columns: repeat(2, 50%);
-        max-width: 800px;
-        margin-top: 80px;
+        margin-top: 20px;
     }
     .card {
-        width: 280px;
-        height: 280px;
-    }
-}
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 670px) 
-and (orientation : portrait) {
-    #fruits {
-        grid-template-columns: repeat(2, 50%);
-        max-width: 800px;
-    }
-    .card {
-        width: 240px;
-        height: 240px;
+        width: 90px;
+        height: 90px;
     }
 }
 
 @media only screen 
-and (min-device-width : 500px) 
-and (max-device-width : 760px) 
+and (min-width : 500px) 
+and (max-width : 760px) 
 and (orientation : portrait) {
     #fruits {
         grid-template-columns: repeat(3, 33%);
@@ -238,8 +224,8 @@ and (orientation : portrait) {
 }
 
 @media only screen 
-and (min-device-width : 380px) 
-and (max-device-width : 800px) 
+and (min-width : 380px) 
+and (max-width : 800px) 
 and (orientation : portrait) {
     #fruits {
         grid-template-columns: repeat(2, 50%);
@@ -251,36 +237,62 @@ and (orientation : portrait) {
     }
 }
 @media only screen 
-and (min-device-width : 400px) 
-and (max-device-width : 900px) 
+and (min-width : 400px) 
+and (max-width : 900px) 
 and (orientation : portrait) {
     #fruits {
         grid-template-columns: repeat(2, 50%);
-        max-width: 800px;
-    }
-    .card {
-        width: 300px;
-        height: 300px;
-    }
-}
-@media only screen 
-and (min-device-width : 400px) 
-and (max-device-width : 920px) 
-and (orientation : landscape) {
-    #fruits {
-        grid-template-columns: repeat(4, 25%);
-        max-width: 700px;
-        grid-row-gap: 10px;
     }
     .card {
         width: 110px;
         height: 110px;
     }
 }
+@media only screen 
+and (min-width : 400px) 
+and (max-width : 920px) 
+and (orientation : landscape) {
+    #fruits {
+        grid-template-columns: repeat(4, 25%);
+        grid-row-gap: 10px;
+        margin-top: 10px;
+        max-width: 700px;
+    }
+    .card {
+        width: 100px;
+        height: 100px;
+    }
+}
 
 @media only screen 
-and (min-device-width : 760px) 
-and (max-device-width : 1200px) 
+and (min-width : 375px) 
+and (max-width : 670px) 
+and (orientation : portrait) {
+    #fruits {
+        grid-template-columns: repeat(3, 33.3%);
+    }
+    .card {
+        width: 80px;
+        height: 80px;
+    }
+}
+@media only screen 
+and (min-width : 375px) 
+and (max-width : 670px) 
+and (orientation : landscape) {
+    #fruits {
+        grid-template-columns: repeat(4, 25%);
+        margin: 10px auto;
+        max-width: 600px;
+    }
+    .card {
+        width: 100px;
+        height: 100px;
+    }
+}
+@media only screen 
+and (min-width : 760px) 
+and (max-width : 1200px) 
 and (orientation : portrait) {
     #fruits {
         grid-template-columns: repeat(3, 33%);
