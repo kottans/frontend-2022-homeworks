@@ -10,7 +10,7 @@ class Inhabitant {
    }
 
    toPrint() {
-      return `${this.species}. ${this.saying}! My name's ${this.name} and I'm ${this.gender}. I have ${this.legs} legs.`
+      return `${this.species}. ${this.saying.words}! My name's ${this.name} and I'm ${this.gender}. I have ${this.legs} legs.`
    }
 };
 
@@ -55,11 +55,21 @@ class Cat extends Animal {
    }
 };
 
-const man = new Man({name: 'Leon', saying: 'Glad to see you'});
-const woman = new Woman({name: 'Matilda', saying: 'Hello'});
-const dog = new Dog({name: 'Pretty', gender: 'male', saying: 'Woof-woof'});
-const cat = new Cat({name: 'Kitty', gender: 'female', saying: 'Meeeow'});
+const say = {
+   cat: {words: 'Meeeow'},
+   dog: {words: 'Woof-woof'},
+   woman: {words: 'Hello'},
+   man: {words: 'Glad to see you'},
+};
 
-const inhabitants = [dog, cat, woman, man];
+const man = new Man({name: 'Leon', saying: say.man});
+const woman = new Woman({name: 'Matilda', saying: say.woman});
+const dog = new Dog({name: 'Pretty', gender: 'male', saying: say.dog});
+const cat = new Cat({name: 'Kitty', gender: 'female', saying: say.cat});
+const catwoman = Object.assign(new Woman({name: 'Selina'}), {saying: cat.saying});
+
+const inhabitants = [dog, cat, woman, man, catwoman];
+
+cat.saying.words = 'Mrr... Meeeow';
 
 inhabitants.forEach(inhabitant => {print(inhabitant.toPrint())});
