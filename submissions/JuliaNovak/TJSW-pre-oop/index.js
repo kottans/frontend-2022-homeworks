@@ -36,14 +36,9 @@ const man = {
    saying: "Heyyo!",
 };
 
-const catWoman = {
-   species: "cat-woman",
-   name: "Ro",
-   gender: "female",
-   legs: 2,
-   hands: 2,
-   saying: cat.saying,
-};
+const catWoman = Object.create(cat);
+catWoman.species = "catWoman";
+(catWoman.name = "Ro"), (catWoman.legs = 2), (catWoman.hands = 2);
 
 // ======== OUTPUT ========
 
