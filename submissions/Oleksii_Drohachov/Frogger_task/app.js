@@ -1,11 +1,11 @@
-const tileWidth = 100;
+const tileWidth = 101;
 const tileHeight = 83;
 const numberOfRows = 6;
 const numberOfColumns = 5;
 const fieldWidth = numberOfColumns * tileWidth;
 const fieldHeight = numberOfRows * tileHeight;
 const fieldBottomGap = 100;
-const emenyRowsModifier = 0.75;
+const enemyRowsOffset = 19;
 const baseEnemySpeed = 180;
 const enemySpeedModifier = 1 / 6;
 
@@ -163,10 +163,8 @@ Enemy.prototype.checkCollision = function () {
 const allEnemies = giveMeEnemies(3);
 
 function giveMeEnemies(numberOfEnemies) {
-  return Array.from(Array(numberOfEnemies).keys()).map((_, i) => {
-    const yAxisPosition = Math.round(
-      tileHeight * i + tileHeight * emenyRowsModifier
-    );
+  return [...Array(numberOfEnemies).keys()].map((_, i) => {
+    const yAxisPosition = tileHeight * i + tileHeight - enemyRowsOffset;
     const moveSpeed = Math.round(
       baseEnemySpeed * (1 - enemySpeedModifier * [i])
     );
