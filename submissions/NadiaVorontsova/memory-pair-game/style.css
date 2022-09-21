@@ -50,7 +50,7 @@ body {
     margin-top: 5%;
     padding: 2% 5%;
     letter-spacing: 1px;
-    transition: .6s;
+    transition: .5s;
 }
 
 .modal_btn:hover {
