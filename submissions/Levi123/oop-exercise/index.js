@@ -30,13 +30,13 @@ class Human extends Mammals {
 
 class Woman extends Human {
    constructor(name, saying){
-      super(name, 'Woman', saying)
+      super(name, 'Female', saying)
    }
 }
 
 class Animal extends Mammals {
-   constructor(name, gender, saying){
-      super(name, 'Animal', gender, saying);
+   constructor(name, species, gender, saying){
+      super(name, species, gender, saying);
       this.paws = 4;
    }
 
@@ -47,7 +47,7 @@ class Animal extends Mammals {
 
 class Man extends Human {
    constructor(name, saying){
-      super(name, 'Man', saying)
+      super(name, 'Male', saying)
    }
 }
 
@@ -59,13 +59,13 @@ class CatWoman extends Woman {
 
 class Dog extends Animal {
    constructor(name, gender, saying){
-      super(name, gender, saying)
+      super(name, 'Dog', gender, saying)
    }
 } 
 
 class Cat extends Animal {
    constructor(name, gender, saying){
-      super(name, gender, saying)
+      super(name, 'Cat', gender, saying)
    }
 }
 
