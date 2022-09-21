@@ -37,11 +37,7 @@ class Human extends Creature {
   }
 
   getProps() {
-    this.props = [
-      ...this.props,
-      { prop: "hands", preface: "I have hands:" },
-    ]
-    return super.getProps()
+    return super.getProps().concat(`; I have hands: ${this.hands}`)
   }
 }
 
