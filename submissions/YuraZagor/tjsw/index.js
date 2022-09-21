@@ -7,10 +7,8 @@ let womanSay = 'Are_U_hungry,_dear?';
 
 let womanName = 'Maria';
 let manName = 'Grumio';
-let heDogName = 'Happy';
-let sheDogName = 'Panda';
-let tomCatName = 'Lucky';
-let kittyName = 'Sweety';
+let dogName = 'Happy';
+let catName = 'Lucky';
 
 const inputElement = document.createElement('form');
 inputElement.classList.add('input--form');
@@ -71,10 +69,8 @@ inputElement.innerHTML =
 	  <select name="friend" id="friend">
     <option value=${manName}>${manName}</option>
     <option value=${womanName}>${womanName}</option>
-    <option value=${heDogName}>${heDogName}</option>
-    <option value=${sheDogName}>${sheDogName}</option>
-    <option value=${tomCatName}>${tomCatName}</option>
-    <option value=${kittyName}>${kittyName}</option>
+    <option value=${dogName}>${dogName}</option>
+    <option value=${catName}>${catName}</option>
 	  </select>
   </section>
 
@@ -83,7 +79,6 @@ inputElement.innerHTML =
 	  <input type='submit' value='Create!'>
   </section>
   `
-
 const form = document.getElementById('form');
 form.addEventListener('submit', useFormValue);
 function useFormValue(event) {
@@ -109,7 +104,7 @@ class Inhabitant {
     this.friend=friend;
   }
   depict(){
-    return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}; ${this.friend};`
+    return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}; ${this.friend}`
   };
   populate(){
     inhabitants.push(this);
@@ -124,18 +119,18 @@ class Animal extends Inhabitant{
     this.tail=tail;
   };
   depict(){
-    return `${this.species}; ${this.name}; ${this.gender}; ${this.paws}; ${this.tail}; ${this.saying}; ${this.friend};`
+    return `${this.species}; ${this.name}; ${this.gender}; ${this.paws}; ${this.tail}; ${this.saying}; ${this.friend}`
   };
 };
 
 class Human extends Inhabitant{
-  constructor( species, gender, name = manName, saying = manSay, friend=sheDogName, legs=2, hands=2 ){
+  constructor( species, gender, name = manName, saying = manSay, friend=dogName, legs=2, hands=2 ){
     super(species, gender, name, saying, friend);
     this.legs=legs;
     this.hands=hands;
   };
   depict(){
-    return `${this.species}; ${this.name}; ${this.gender}; ${this.legs}; ${this.hands}; ${this.saying}; ${this.friend};`
+    return `${this.species}; ${this.name}; ${this.gender}; ${this.legs}; ${this.hands}; ${this.saying}; ${this.friend}`
   };
 };
 
@@ -148,11 +143,11 @@ function creation(species, gender, name, saying, friend, legsPaws, handsTail){
 function multipleCreation(num, species, gender, name, saying, friend, legsPaws, handsTail){
   for (let i = 0; i<num; i++){
     creation(species, gender, name, saying, friend, legsPaws, handsTail)
-  };
-  
+  };  
 };
 
-creation('human', 'female', womanName, womanSay, tomCatName);
-creation('human', 'male', manName, manSay, heDogName);
-creation('dog', 'male', heDogName, dogSay, [womanName, manName, sheDogName].join(', '));
-creation('cat', 'female', kittyName, catSay, womanName);
+creation('human', 'female', womanName, womanSay, catName);
+creation('human', 'male', manName, manSay, dogName);
+creation('dog', 'male', dogName, dogSay, [womanName, manName, dogName].join(', '));
+creation('cat', 'female', catName, catSay, womanName);
+multipleCreation(4, 'human', 'male')
