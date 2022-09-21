@@ -1,61 +1,37 @@
-const inhabitantDefaultProperties = {
-  species: "No species",
-  name: "No name",
-  gender: "No gender",
-  saying: "Hello",
-  friends: "",
-};
-
-const humanDefaultProperties = {
-  hands: 2,
-  legs: 2,
-};
-
-const petsDefaultProperties = {
-  paws: 4,
-};
-
 class Inhabitant {
-  static worldPopulation = [];
   constructor({
-    species,
-    name,
-    gender,
-    saying,
-    friends,
-  } = inhabitantDefaultProperties) {
-    this.species = species ?? inhabitantDefaultProperties.species;
-    this.name = name ?? inhabitantDefaultProperties.name;
-    this.gender = gender ?? inhabitantDefaultProperties.gender;
-    this.saying = saying ?? inhabitantDefaultProperties.saying;
-    this.friends = friends ?? inhabitantDefaultProperties.friends;
-    Inhabitant.worldPopulation.push(this);
+    species = "No species",
+    name = "No name",
+    gender = "No gender",
+    saying = "Hello",
+    friends = [],
+  }) {
+    this.species = species;
+    this.name = name;
+    this.gender = gender;
+    this.saying = saying;
+    this.friends = friends;
   }
 
-  addFriend({ name }) {
-    this.friends += name + "; ";
+  addFriend(person) {
+    this.friends.push(person);
   }
 
   introduceYourSelf() {
-    if (this.friends === "") {
+    if (this.friends.length === 0) {
       this.friends = "Looking for friends!";
+      return `<strong>${this.saying}! My name is ${this.name}. Species: ${this.species}. Gender: ${this.gender}. Friends: ${this.friends} </strong>`;
     }
-    return `<strong>${this.saying}! My name is ${this.name}. Species: ${this.species}. Gender: ${this.gender}. Friends: ${this.friends} </strong>`;
+    const friendsName = this.friends.map((friend) => friend.name).join(", ");
+    return `<strong>${this.saying}! My name is ${this.name}. Species: ${this.species}. Gender: ${this.gender}. Friends: ${friendsName}. </strong>`;
   }
 }
 
 class Human extends Inhabitant {
-  constructor({
-    name,
-    gender,
-    saying,
-    legs,
-    hands,
-    friends,
-  } = humanDefaultProperties) {
+  constructor({ name, gender, saying, legs = 2, hands = 2, friends }) {
     super({ species: "human", name, gender, saying, friends });
-    this.hands = hands ?? humanDefaultProperties.hands;
-    this.legs = legs ?? humanDefaultProperties.legs;
+    this.hands = hands;
+    this.legs = legs;
   }
   introduceYourSelf() {
     return (
@@ -78,16 +54,9 @@ class Woman extends Human {
 }
 
 class Pets extends Inhabitant {
-  constructor({
-    species,
-    name,
-    gender,
-    paws,
-    saying,
-    friends,
-  } = petsDefaultProperties) {
+  constructor({ species, name, gender, paws = 4, saying, friends }) {
     super({ species, name, gender, saying, friends });
-    this.paws = paws ?? petsDefaultProperties.paws;
+    this.paws = paws;
   }
   introduceYourSelf() {
     return (
@@ -103,11 +72,15 @@ class Cat extends Pets {
       species: "cat",
       name,
       gender,
-      paws,
       saying,
+      paws,
       friends,
     });
-    Cat.meow = this.saying;
+    Cat.meow = saying;
+    this.saying = Cat.getMeow();
+  }
+  static getMeow() {
+    return this.meow;
   }
 }
 
@@ -118,8 +91,8 @@ class Dog extends Pets {
       species: "dog",
       name,
       gender,
-      paws,
       saying,
+      paws,
       friends,
     });
     Dog.bark = this.saying;
@@ -129,7 +102,7 @@ class Dog extends Pets {
 class CatWoman extends Woman {
   constructor({ name, saying = "", friends, legs, hands }) {
     super({ name, saying, friends, legs, hands });
-    this.saying = Cat.meow + " " + saying;
+    this.saying = Cat.getMeow() + " " + saying;
   }
 }
 
@@ -144,14 +117,20 @@ womanMartina.addFriend(dogPako);
 catwomanNerea.addFriend(catLalo);
 catwomanNerea.addFriend(manJose);
 
+const worldPopulation = [
+  manJose,
+  womanMartina,
+  catLalo,
+  dogPako,
+  catwomanNerea,
+];
+
 function showWorldPopulation() {
-  const inhabitantNames = Inhabitant.worldPopulation.map(
-    (inhabitant) => inhabitant.name
-  );
+  const inhabitantNames = worldPopulation.map((inhabitant) => inhabitant.name);
   print(
-    `<strong>Population: ${Inhabitant.worldPopulation.length} inhabitants! It is: ${inhabitantNames}</strong>`
+    `<strong>Population: ${worldPopulation.length} inhabitants! It is: ${inhabitantNames}</strong>`
   );
-  Inhabitant.worldPopulation.forEach((inhabitant) =>
+  worldPopulation.forEach((inhabitant) =>
     print(inhabitant.introduceYourSelf())
   );
 }
