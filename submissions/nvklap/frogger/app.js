@@ -12,7 +12,9 @@ const ENEMY_SETTINGS = {
   WIDTH: 80,
   START_X: -101,
   END_X: 500,
-  ROWS_Y: [50, 220, 135],
+  START_Y: 50,
+  STEP_Y: 85,
+  ROWS_QUANTITY: 3,
 };
 
 const PLAYER_SETTINGS = {
@@ -53,11 +55,11 @@ Enemy.prototype.update = function (dt) {
 
 Enemy.prototype.checkCollision = function () {
   if (
-    player.x < this.x + ENEMY_SETTINGS.WIDTH &&
-    this.x < player.x + PLAYER_SETTINGS.WIDTH &&
+    this.player.x < this.x + ENEMY_SETTINGS.WIDTH &&
+    this.x < this.player.x + PLAYER_SETTINGS.WIDTH &&
     this.y === this.player.y
   ) {
-    player.resetToInitPosition();
+    this.player.resetToInitPosition();
   }
 };
 
@@ -114,9 +116,17 @@ function randomizeSpeed({ SPEED_MAX, SPEED_MIN }) {
   return Math.floor(Math.random() * SPEED_MAX) + SPEED_MIN;
 }
 
+function getEnemyRows({ ROWS_QUANTITY, START_Y, STEP_Y }) {
+  return Array(ROWS_QUANTITY)
+    .fill(START_Y)
+    .map((row, rowIndex) => {
+      return row + rowIndex * STEP_Y;
+    });
+}
+
 const player = new Player(PLAYER_SETTINGS.START_X, PLAYER_SETTINGS.START_Y);
 
-const allEnemies = ENEMY_SETTINGS.ROWS_Y.map(
+const allEnemies = getEnemyRows(ENEMY_SETTINGS).map(
   (startY) =>
     new Enemy(
       ENEMY_SETTINGS.START_X,
