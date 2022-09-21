@@ -57,28 +57,7 @@ Player.prototype.width = playerWidth;
 Player.prototype.height = playerHeight;
 
 Player.prototype.update = function() {
-    const isOverlapDetected = allEnemies.some((enemy) => {
-        return checkIsOverlap(
-            {
-                x: this.x,
-                y: this.y
-            },
-            {
-                x: this.x + this.width,
-                y: this.y + this.height
-            },
-            {
-                x: enemy.x,
-                y: enemy.y
-            },
-            {
-                x: enemy.x + enemy.width,
-                y: enemy.y + enemy.height
-            }
-        );
-    });
-
-    if (isOverlapDetected) {
+    if (checkPlayerOverlapWithEnemies(this)) {
         gameOver(false);
     }
 }
@@ -164,6 +143,29 @@ function checkIsOverlap(l1, r1,  l2,  r2) {
     }
 
     return true;
+}
+
+function checkPlayerOverlapWithEnemies(player) {
+    return allEnemies.some((enemy) => {
+        return checkIsOverlap(
+            {
+                x: player.x,
+                y: player.y
+            },
+            {
+                x: player.x + player.width,
+                y: player.y + player.height
+            },
+            {
+                x: enemy.x,
+                y: enemy.y
+            },
+            {
+                x: enemy.x + enemy.width,
+                y: enemy.y + enemy.height
+            }
+        );
+    });
 }
 
 let wins = 0;
