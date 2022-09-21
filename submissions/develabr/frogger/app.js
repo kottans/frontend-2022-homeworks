@@ -1,28 +1,35 @@
+const config = {
+  widthCell: 101,
+  heightCell: 83,
+};
+
 let score = 0;
 
 class Enemy {
-  constructor(x, y, speed) {
+  constructor(x, y, speed, player) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
     this.width = 80;
-    this.height = 80;
+    this.height = 40;
     this.speed = speed;
+    this.player = player;
   }
   update(dt) {
     this.x += this.speed * dt;
-
-    if (this.x > 510) {
-      this.x = -70;
+    if (this.x > ctx.canvas.width) {
+      this.x = -config.widthCell;
     }
-
+    this.collisions();
+  }
+  collisions() {
     if (
-      player.x + this.width > this.x &&
-      player.x < this.x + this.width &&
-      player.y + this.height > this.y &&
-      player.y < this.y + this.height
+      this.player.x + this.width > this.x &&
+      this.player.x < this.x + this.width &&
+      this.player.y + this.height > this.y &&
+      this.player.y < this.y + this.height
     ) {
-      player.toStart();
+      this.player.toStart();
     }
   }
   render() {
@@ -49,19 +56,21 @@ class Player {
   handleInput(key) {
     switch (key) {
       case 'left':
-        if (this.x > 0) this.x -= 101;
+        if (this.x > 0) this.x -= config.widthCell;
         break;
 
       case 'up':
-        if (this.y > 0) this.y -= 83;
+        if (this.y > 0) this.y -= config.heightCell;
         break;
 
       case 'right':
-        if (this.x < 404) this.x += 101;
+        if (this.x < ctx.canvas.width - config.widthCell)
+          this.x += config.widthCell;
         break;
 
       case 'down':
-        if (this.y < 405) this.y += 83;
+        if (this.y < ctx.canvas.height - config.heightCell * 2 - 35)
+          this.y += config.heightCell;
         break;
 
       default:
@@ -69,8 +78,8 @@ class Player {
     }
   }
   toStart() {
-    this.x = 202;
-    this.y = 405;
+    this.x = config.widthCell * 2;
+    this.y = ctx.canvas.height - config.heightCell * 2 - 35;
   }
 }
 
@@ -83,26 +92,31 @@ function scoreBoard() {
   ctx.fillText(score, 270, 50);
 }
 
+let player = new Player(202, 405);
+
 const enemyConf = [
   {
     x: 0,
     y: 220,
     speed: 150,
+    player,
   },
   {
     x: 0,
     y: 140,
     speed: 200,
+    player,
   },
   {
     x: 0,
     y: 50,
     speed: 300,
+    player,
   },
 ];
-let allEnemies = enemyConf.map(({ x, y, speed }) => new Enemy(x, y, speed));
-
-let player = new Player(202, 405);
+let allEnemies = enemyConf.map(
+  ({ x, y, speed, player }) => new Enemy(x, y, speed, player)
+);
 
 document.addEventListener('keyup', function (e) {
   const allowedKeys = {
