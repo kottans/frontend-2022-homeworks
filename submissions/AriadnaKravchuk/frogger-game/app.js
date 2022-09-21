@@ -191,7 +191,7 @@ function loadGame() {
     );
 
     ROCKS_Y.forEach(rockY => 
-        allRocks.push(new Rock(ALL_X.getNumFromArray(), rockY, player))
+        allRocks.push(new Rock(ALL_X.getNumFromArray(), rockY))
     );
 }
 
