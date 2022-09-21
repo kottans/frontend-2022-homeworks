@@ -24,9 +24,10 @@ class Inhabitant {
 
   saying() {
     return ["Saying"].map(
-      (data) =>
+      (propertyOfTheInhabitant) =>
         ` ${
-          this.makeStringRedAndBold(data) + this.addRedBoldCollon(":")
+          this.makeStringRedAndBold(propertyOfTheInhabitant) +
+          this.addRedBoldCollon(":")
         } ${this.makeStringBold(this.Saying)}` +
         this.addBoldAndRedSemicolon(";")
     );
@@ -36,10 +37,11 @@ class Inhabitant {
     return (
       ["Species", "Name", "Gender"]
         .map(
-          (data) =>
+          (propertyOfTheInhabitant) =>
             `${
-              this.makeStringRedAndBold(data) + this.addRedBoldCollon(":")
-            } ${this[data].bold()}`
+              this.makeStringRedAndBold(propertyOfTheInhabitant) +
+              this.addRedBoldCollon(":")
+            } ${this[propertyOfTheInhabitant].bold()}`
         )
         .join(this.addBoldAndRedSemicolon("; ")) +
       this.addBoldAndRedSemicolon(";")
@@ -58,10 +60,11 @@ class Human extends Inhabitant {
       `${super.displayData()} ` +
       ["Hands", "Legs"]
         .map(
-          (data) =>
+          (propertyOfTheInhabitant) =>
             `${
-              this.makeStringRedAndBold(data) + this.addRedBoldCollon(":")
-            } ${this[data].bold()}`
+              this.makeStringRedAndBold(propertyOfTheInhabitant) +
+              this.addRedBoldCollon(":")
+            } ${this[propertyOfTheInhabitant].bold()}`
         )
         .join(this.addBoldAndRedSemicolon(";")) +
       this.addBoldAndRedSemicolon("; ") +
@@ -96,10 +99,11 @@ class Dog extends Animal {
       `${super.displayData()} ` +
       ["Paws", "Tail"]
         .map(
-          (data) =>
+          (propertyOfTheInhabitant) =>
             `${
-              this.makeStringRedAndBold(data) + this.addRedBoldCollon(":")
-            } ${this[data].bold()}`
+              this.makeStringRedAndBold(propertyOfTheInhabitant) +
+              this.addRedBoldCollon(":")
+            } ${this[propertyOfTheInhabitant].bold()}`
         )
         .join(this.addBoldAndRedSemicolon("; ")) +
       this.addBoldAndRedSemicolon(";") +
@@ -120,10 +124,11 @@ class Cat extends Animal {
       `${super.displayData()} ` +
       ["Paws", "Tail"]
         .map(
-          (data) =>
+          (propertyOfTheInhabitant) =>
             `${
-              this.makeStringRedAndBold(data) + this.addRedBoldCollon(":")
-            } ${this[data].bold()}`
+              this.makeStringRedAndBold(propertyOfTheInhabitant) +
+              this.addRedBoldCollon(":")
+            } ${this[propertyOfTheInhabitant].bold()}`
         )
         .join(this.addBoldAndRedSemicolon("; ")) +
       this.addBoldAndRedSemicolon(";") +
@@ -144,10 +149,11 @@ class Hamster extends Animal {
       `${super.displayData()} ` +
       ["Paws", "Tail"]
         .map(
-          (data) =>
+          (propertyOfTheInhabitant) =>
             `${
-              this.makeStringRedAndBold(data) + this.addRedBoldCollon(":")
-            } ${this[data].bold()}`
+              this.makeStringRedAndBold(propertyOfTheInhabitant) +
+              this.addRedBoldCollon(":")
+            } ${this[propertyOfTheInhabitant].bold()}`
         )
         .join(this.addBoldAndRedSemicolon("; ")) +
       this.addBoldAndRedSemicolon(";") +
@@ -166,10 +172,11 @@ class Snake extends Animal {
       `${super.displayData()} ` +
       ["Tail"]
         .map(
-          (data) =>
+          (propertyOfTheInhabitant) =>
             `${
-              this.makeStringRedAndBold(data) + this.addRedBoldCollon(":")
-            } ${this[data].bold()}`
+              this.makeStringRedAndBold(propertyOfTheInhabitant) +
+              this.addRedBoldCollon(":")
+            } ${this[propertyOfTheInhabitant].bold()}`
         )
         .join(this.addBoldAndRedSemicolon("; ")) +
       this.addBoldAndRedSemicolon(";") +
@@ -187,6 +194,6 @@ const snake = new Snake("Nagini", "Female", "Ssssssss");
 
 const allInhabitants = [man, woman, dog, cat, hamster, snake];
 
-allInhabitants.map((inhabitan) => {
-  print(inhabitan.displayData());
+allInhabitants.map((inhabitant) => {
+  print(inhabitant.displayData());
 });
