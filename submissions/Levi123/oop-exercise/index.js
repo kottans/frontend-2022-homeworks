@@ -1,12 +1,4 @@
-// class Animal {
-//    constructor (species, name, gender){
-//       this.species = species;
-//       this.name = name;
-//       this.gender = gender;
-//    }
-// }
-
-class Entity {
+class Mammals {
    constructor (name, species, gender, saying){
       this.name = name;
       this.species = species;
@@ -24,7 +16,7 @@ class Entity {
    }
 }
 
-class Human extends Entity {
+class Human extends Mammals {
    constructor (name, gender, saying){
       super(name, 'Human', gender, saying);
       this.legs = 2;
@@ -42,7 +34,7 @@ class Woman extends Human {
    }
 }
 
-class Animal extends Entity {
+class Animal extends Mammals {
    constructor(name, gender, saying){
       super(name, 'Animal', gender, saying);
       this.paws = 4;
