@@ -50,8 +50,7 @@ function targetContent ({ target }) {
     }
 };
 
-let list = '';
-function postGenerator({nickname, topzoneImg, imageList}, list) {
+function postGenerator({nickname, topzoneImg, imageList}) {
     return imageList.map(image => {
         return `<article class="post">
                 <div class="topzone">
