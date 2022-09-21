@@ -9,6 +9,7 @@ const Enemy = function(horizontalMove, verticalPosition, speed) {
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
 };
+
 let winsCounter = 0;
 let speedIncreaser = 100;
 let mainMessage = "";
@@ -24,6 +25,7 @@ const playerStartVertical = 405;
 const playerHorizontalStep = 102;
 const playerVerticalStep = 83;
 const maxRounds = 12;
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 // You should multiply any movement by the dt parameter
@@ -35,25 +37,31 @@ Enemy.prototype.update = function(dt) {
         this.horizontalMove = enemyStartPosition;
         this.speed = speedIncreaser + Math.floor(Math.random() * 222);
     };
+    this.checkCollision(player);
+};
+
+// Draw the enemy on the screen, required method for game
+Enemy.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.horizontalMove, this.verticalPosition);
+};
+
+Enemy.prototype.checkCollision = function (player) {
     if (player.horizontalPosition < this.horizontalMove + enemyWidth &&
         player.horizontalPosition + enemyWidth > this.horizontalMove &&
         player.verticalPosition < this.verticalPosition + enemyHeight &&
         player.verticalPosition + enemyHeight > this.verticalPosition) 
-        {
+        { 
         if (winsCounter > 0) {
             winsCounter -= 1;
-        } else {
+        } else { 
             winsCounter = 0;
             speedIncreaser = 100;
         }
             player.horizontalPosition = playerStartHorizontal;
             player.verticalPosition = playerStartVertical;
-        };
+    };
 };
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.horizontalMove, this.verticalPosition);
-};
+
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -62,12 +70,8 @@ const Player = function (horizontalPosition, verticalPosition) {
     this.verticalPosition = verticalPosition;
     this.sprite = 'images/char-boy.png'
 };
-Player.prototype.update = function (dt) {
-};
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.horizontalPosition, this.verticalPosition);
-};
-Player.prototype.handleInput = function (keyPress) {
+
+Player.prototype.update = function (keyPress) {
     if (keyPress == 'left' && this.horizontalPosition > 0) {
         this.horizontalPosition -= playerHorizontalStep;
     };
@@ -80,6 +84,19 @@ Player.prototype.handleInput = function (keyPress) {
     if (keyPress == 'down' && this.verticalPosition < playerStartVertical) {
         this.verticalPosition += playerVerticalStep;
     };  
+};
+
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.horizontalPosition, this.verticalPosition);
+};
+
+Player.prototype.handleInput = function (keyPress) {
+    this.keyPress = keyPress;
+    player.update(this.keyPress);
+    player.calculateResult();
+};
+
+Player.prototype.calculateResult = function () {
     if (this.verticalPosition < 0) {
         let speedMessage = "";         
         winsCounter += 1;
@@ -99,14 +116,17 @@ Player.prototype.handleInput = function (keyPress) {
         }
     };
 };
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 enemyLocation.forEach(function (locationY) {
     enemy = new Enemy(0, locationY, speedIncreaser);
     allEnemies.push(enemy);
 });
+
 // Place the player object in a variable called player
 let player = new Player(playerStartHorizontal, playerStartVertical);
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(event) {
