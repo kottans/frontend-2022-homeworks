@@ -67,15 +67,15 @@ Enemy.prototype.update = function(dt) {
         this.x = INIT_VAL.enemyX;
     };
 
-    this.checkCollision();
+    this.checkCollision(player);
 };
 
-Enemy.prototype.checkCollision = function() {
+Enemy.prototype.checkCollision = function(player) {
     if (player.x < this.x + INIT_VAL.collision &&
         player.x + INIT_VAL.collision > this.x &&
         player.y < this.y + INIT_VAL.collision &&
         INIT_VAL.collision + player.y > this.y) {
-            player.resetGame();
+            player.resetPlayer();
     };
 };
 
@@ -86,8 +86,8 @@ Enemy.prototype.render = function() {
 const allEnemies = [];
 
 INIT_VAL.enemyY.forEach(y => {
-    let enemySpeed = Math.round(Math.random() * INIT_VAL.enemyMaxspeed + INIT_VAL.enemyMinSpeed);
-    let enemy = new Enemy(INIT_VAL.enemyX, y, enemySpeed);
+    const enemySpeed = Math.round(Math.random() * INIT_VAL.enemyMaxspeed + INIT_VAL.enemyMinSpeed);
+    const enemy = new Enemy(INIT_VAL.enemyX, y, enemySpeed);
     allEnemies.push(enemy);
 });
 
@@ -113,8 +113,7 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.resetGame = function() {
-    allEnemies.forEach(enemy => enemy.x = INIT_VAL.enemyX);
+Player.prototype.resetPlayer = function() {
     this.x = INIT_VAL.playerX;
     this.y = INIT_VAL.playerY;
     levelSpeed = 0;
@@ -159,13 +158,13 @@ Player.prototype.handleInput = function(allowedKeys) {
         };
 
         if (this.y < 0) {
-            player.upLevel() 
+            this.upLevel() 
         };
     };
 
     if (allowedKeys === 'Enter' && lostMessage.classList.contains('active_message') 
         || allowedKeys === 'Enter' && winMessage.classList.contains('active_message')) {
-        player.resetGame();
+        this.resetPlayer();
         lostMessage.classList.remove('active_message');
         winMessage.classList.remove('active_message');
     };
