@@ -1,38 +1,35 @@
 class Inhabitants {
-  constructor(species, name, gender) {
+  constructor(species, name, gender, saying) {
     this.species = species;
     this.name = name;
     this.gender = gender;
+    this.saying = saying;
   }
 
   showProperties() {
-    return `${this.species}; ${this.name}; ${this.gender}`;
+    return [this.species, this.name, this.gender];
   }
 }
 
 class Human extends Inhabitants {
   constructor(name, gender, saying) {
-    super("human", name, gender);
+    super("human", name, gender, saying);
     this.hands = 2;
     this.legs = 2;
-    this.saying = saying;
   }
 
   showProperties() {
-    return `${super.showProperties()}; ${this.hands}; ${this.legs}; ${
-      this.saying
-    }`;
+    return [...super.showProperties(), this.hands, this.legs, this.saying];
   }
 }
 
 class Animal extends Inhabitants {
   constructor(species, name, gender, saying) {
-    super(species, name, gender);
+    super(species, name, gender, saying);
     this.paws = 4;
-    this.saying = saying;
   }
   showProperties() {
-    return `${super.showProperties()}; ${this.paws}; ${this.saying}`;
+    return [...super.showProperties(), this.paws, this.saying];
   }
 }
 
@@ -57,5 +54,5 @@ const woman = new Human("Anna", "female", "Good luck!");
 const inhabitants = [dog, cat, catWoman, man, woman];
 
 inhabitants.forEach(function (inhabitant) {
-  print(inhabitant.showProperties());
+  print(inhabitant.showProperties().join("; "));
 });
