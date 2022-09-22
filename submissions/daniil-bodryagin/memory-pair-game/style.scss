@@ -9,7 +9,7 @@ body {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  background: url('../img/bg.jpg') center / cover no-repeat;
+  background: linear-gradient(to bottom right, #009746, #feed01, #d4609f, #01a0e2);
   font-family: 'Jost', sans-serif;
   font-weight: bold;
 
@@ -46,6 +46,7 @@ body {
     padding: .8em 1.5em;
     text-align: center;
     background-color: #009746;
+    cursor: pointer;
   }
 }
 
@@ -64,6 +65,7 @@ body {
   height: 25%;
   transition: transform 0.6s, top 1s, left 1s;
   transform-style: preserve-3d;
+  cursor: pointer;
 
   &__shirt,
   &__face {
