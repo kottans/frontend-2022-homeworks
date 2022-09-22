@@ -28,9 +28,7 @@ class Human extends Inhabitants {
    }
 
    createArray() {
-      const superArr = [...super.createArray()];
-      superArr.splice(4, 0, this.hands);
-      return superArr;
+      return [...super.createArray(), this.hands];
    }
 }
 
@@ -47,23 +45,31 @@ class Dog extends Animal {
 }
 
 class Cat extends Animal {
-   static say = 'moew';
+   static #say = 'mimi';
    constructor(name, gender) {
       super('cat', name, gender);
-      this.say = Cat.sayingPhrase();
+      this._say = 'meow';
    }
 
-   static sayingPhrase() {
-      return this.say;
+   set say(phrase) {
+      return this._say = phrase;
+   }
+
+   get say() {
+      return this._say;
+   }
+
+   static get say() {
+      return Cat.#say;
    }
 }
 
 class CatWoman extends Human {
-   constructor(name, gender) {
-      super(name, gender, Cat.sayingPhrase())
+   constructor(name, gender, say) {
+      super(name, gender, say)
    }
-}
 
+}
 
 const dog = new Dog('Bob', "male");
 const cat = new Cat('Kitty', "female");
@@ -71,7 +77,7 @@ const cat = new Cat('Kitty', "female");
 const man = new Human('John', "male", "Hello Jenny!");
 const woman = new Human('Jenny', "female", "Hi John!");
 
-const catWoman = new CatWoman('JennyCat', "female");
+const catWoman = new CatWoman('JennyCat', "female", cat.say);
 
 const persons = [dog, cat, man, woman, catWoman];
 
