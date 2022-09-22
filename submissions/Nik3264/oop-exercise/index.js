@@ -1,8 +1,8 @@
 /* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
    Complete the below for code reviewers' convenience:
 
-   Code repository: _https://github.com/Nik3264/a-tiny-JS-world_
-   Web app: _https://nik3264.github.io/a-tiny-JS-world/_
+   Code repository: _https://github.com/Nik3264/OOP-exercise_
+   Web app: _https://nik3264.github.io/OOP-exercise/_
    */
 
 // ======== OBJECTS DEFINITIONS ========
