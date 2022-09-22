@@ -46,7 +46,7 @@ const gameBox = document.querySelector('.game-box');
 const shuffleArray = (arr) => {
     const arrayCopy = JSON.parse(JSON.stringify(arr));
 
-    return arrayCopy.sort(() => 0.5 - Math.random())
+    return arrayCopy.sort(() => 0.5 - Math.random());
 };
 
 const createCards = (array) => array.map((picture) => {
@@ -130,6 +130,12 @@ const checkBoard = () => {
         }, 50);
     }
 };
+const checkFlippedCards = () => {
+    const flippedCards = [...document.querySelectorAll('.card-container')]
+        .filter((card) => card.classList.contains('flipped'));
+
+    return flippedCards.length >= 2
+};
 
 const flipCard = (card) => {
     toggleCssClasses(card, ['flipped']);
@@ -163,7 +169,11 @@ const flipCard = (card) => {
 function addEventListenerToCard(arrayOfCards) {
     arrayOfCards.forEach((card) => {
         card.addEventListener('click', () => {
-            flipCard(card, 'character');
+            const isFlipped = checkFlippedCards();
+
+            if (!isFlipped) {
+                flipCard(card);
+            }
         });
     });
 }
