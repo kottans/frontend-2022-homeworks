@@ -87,8 +87,8 @@ body {
 }
 
 .popup-button__input {
-   appearance: none;
    position: absolute;
+   opacity: 0;
 }
 
 .popup-button__lable {
@@ -156,8 +156,8 @@ body {
 }
 
 .more-input {
-   appearance: none;
    position: absolute;
+   opacity: 0;
 }
 
 .more-label {
