@@ -10,17 +10,17 @@ export const renderSpinner = () => {
       </div>`;
 };
 
-export const renderCards = (arr) => {
+export const renderCards = (people) => {
   const cardsWrapper = document.createElement('div');
   cardsWrapper.id = 'cards-wrapper';
-  if (!arr.length) {
+  if (!people.length) {
     cardsWrapper.insertAdjacentHTML(
       'beforeend',
       `<p class="nobody-message">Ooops!!! It looks like you filtered out everyone!</p>`
     );
   } else {
-    arr.forEach((item) => {
-      const { age, gender, email, title, name, picture, phone } = item;
+    people.forEach((person) => {
+      const { age, gender, email, title, name, picture, phone } = person;
       cardsWrapper.insertAdjacentHTML(
         'beforeend',
         `<article class='card' data-gender="${gender}">

@@ -8,9 +8,9 @@ export const handleMenuButtonClick = ({ target }) => {
   document.getElementById('aside').classList.toggle('hidden');
 };
 
-const toggleFocusOfGroupOfButtons = (element, buttonClass) => {
+const toggleFocusOfGroupOfButtons = (currentButton, buttonClass) => {
   document.querySelectorAll(`.${buttonClass}`).forEach((button) => {
-    if (element === button) {
+    if (currentButton === button) {
       button.classList.add('is-pressed');
     } else {
       button.classList.remove('is-pressed');
@@ -19,10 +19,11 @@ const toggleFocusOfGroupOfButtons = (element, buttonClass) => {
 };
 
 const handleGroupOfButtons = ({ target }, buttonClass) => {
-  const element = target.tagName === 'IMG' ? target.parentElement : target;
-  if (element.classList.contains('is-pressed')) return;
-  toggleFocusOfGroupOfButtons(element, buttonClass);
-  const value = element.dataset.type.split(' ');
+  const currentButton =
+    target.tagName === 'IMG' ? target.parentElement : target;
+  if (currentButton.classList.contains('is-pressed')) return;
+  toggleFocusOfGroupOfButtons(currentButton, buttonClass);
+  const value = currentButton.dataset.type.split(' ');
   if (value[0] === 'filter') {
     state.filter[value[1]] = value[2];
   }
@@ -51,12 +52,14 @@ export const handleMinAndMaxAgeInput = ({ target }) => {
   const current = target.id.split('-')[0];
   const opposite = current === 'max' ? 'min' : 'max';
   const newValue = target.value;
-  const valueToUse =
-    newValue < target.min
-      ? target.min
-      : newValue > target.max
-      ? target.max
-      : newValue;
+  let valueToUse;
+  if (newValue < target.min) {
+    valueToUse = target.min;
+  } else if (newValue > target.max) {
+    valueToUse = target.max;
+  } else {
+    valueToUse = newValue;
+  }
   target.setAttribute('value', valueToUse);
   document
     .getElementById(`${opposite}-age-input`)
