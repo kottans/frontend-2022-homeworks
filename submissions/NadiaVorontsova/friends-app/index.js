@@ -90,7 +90,7 @@ const sortUsers = (id, listOfUsers) => {
         default:
             break;
     }
-    copyListOfUsers = filterByGender(id, copyListOfUsers);
+    copyListOfUsers = filterByGender(idgender, copyListOfUsers);
     renderUsers(copyListOfUsers);
 };
 
