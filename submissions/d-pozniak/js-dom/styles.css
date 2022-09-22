@@ -31,10 +31,11 @@ body {
             transparent,
             rgba(143, 188, 143, 0.8)
     );
+    margin-bottom: 20px;
 }
 .page-header {
     padding: 15px 10px;
-    margin: 0 auto 20px;
+    margin: 0 auto;
     max-width: 1560px;
     min-width: 80%;
 }
@@ -75,6 +76,9 @@ body {
     min-width: 80%;
     padding: 0 10px;
 }
+.side-menu {
+    margin-right: 10px;
+}
 .nav-list {
     list-style: none;
 }
@@ -92,6 +96,7 @@ body {
 }
 .main-content--wrapper {
     width: 80%;
+    margin-bottom: 20px;
 }
 .main-content {
     display: flex;
@@ -140,15 +145,10 @@ body {
     background-color: rgba(143, 188, 143, 0.8);
 }
 @media (max-width: 720px) {
-    .page-wrapper {
-        padding: 0 8px;
+    .header-wrapper {
+        background: rgba(143, 188, 143, 0.8);
     }
     .page-header {
-        background-image: linear-gradient(
-                to left,
-                transparent,
-                rgba(143, 188, 143, 0.8)
-        );
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -178,5 +178,6 @@ body {
         width: 100%;
         height: 100vh;
         padding: 10px;
+        margin: 0;
     }
 }
