@@ -1,10 +1,10 @@
 // Enemies our player must avoid
-const INITIAL_POSITION_PLAYER_X = 203;
-const INITIAL_POSITION_ENEMIES_X = -200;
-const INITIAL_POSITION_ENEMY_ONE_Y = 62;
-const INITIAL_POSITION_ENEMY_TWO_Y = 145;
-const INITIAL_POSITION_ENEMY_THREE_Y = 228;
-const INITIAL_POSITION_PLAYER_Y = 390;
+const POSITION_PLAYER_X = 203;
+const POSITION_PLAYER_Y = 390;
+const POSITION_ENEMIES_X = -200;
+const POSITION_ENEMY_ONE_Y = 62;
+const POSITION_ENEMY_TWO_Y = 145;
+const POSITION_ENEMY_THREE_Y = 228;
 const BLOCK_HEIGHT = 83;
 const BLOCK_WIDTH = 101;
 const MIN_SPEED = 100;
@@ -17,21 +17,21 @@ var Enemy = function (x, y) {
   this.sprite = "images/enemy-bug.png";
 };
 
-Enemy.prototype.update = function (dt) {
+Enemy.prototype.update = function (dt, gamer) {
   this.x += this.speed * dt;
 
   if (this.x > 500) {
-    this.x = INITIAL_POSITION_ENEMIES_X;
+    this.x = POSITION_ENEMIES_X;
     this.speed = this.randomInteger();
   }
 
   if (
-    player.y < this.y + 50 &&
-    player.y + 50 > this.y &&
-    player.x < this.x + 75 &&
-    player.x + 75 > this.x
+    gamer.y < this.y + 50 &&
+    gamer.y + 50 > this.y &&
+    gamer.x < this.x + 75 &&
+    gamer.x + 75 > this.x
   ) {
-    Player.prototype.initialPositionPlayer();
+    gamer.initialPositionPlayer();
   }
 };
 
@@ -43,18 +43,9 @@ Enemy.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const enemyOne = new Enemy(
-  INITIAL_POSITION_ENEMIES_X,
-  INITIAL_POSITION_ENEMY_ONE_Y
-);
-const enemyTwo = new Enemy(
-  INITIAL_POSITION_ENEMIES_X,
-  INITIAL_POSITION_ENEMY_TWO_Y
-);
-const enemyThree = new Enemy(
-  INITIAL_POSITION_ENEMIES_X,
-  INITIAL_POSITION_ENEMY_THREE_Y
-);
+const enemyOne = new Enemy(POSITION_ENEMIES_X, POSITION_ENEMY_ONE_Y);
+const enemyTwo = new Enemy(POSITION_ENEMIES_X, POSITION_ENEMY_TWO_Y);
+const enemyThree = new Enemy(POSITION_ENEMIES_X, POSITION_ENEMY_THREE_Y);
 
 const allEnemies = [enemyOne, enemyTwo, enemyThree];
 
@@ -65,8 +56,8 @@ var Player = function (x, y) {
 };
 
 Player.prototype.initialPositionPlayer = function () {
-  player.x = INITIAL_POSITION_PLAYER_X;
-  player.y = INITIAL_POSITION_PLAYER_Y;
+  player.x = POSITION_PLAYER_X;
+  player.y = POSITION_PLAYER_Y;
 };
 
 Player.prototype.update = function (dt) {
@@ -103,7 +94,7 @@ Player.prototype.handleInput = function (keyPressed) {
   }
 };
 
-const player = new Player(INITIAL_POSITION_PLAYER_X, INITIAL_POSITION_PLAYER_Y);
+const player = new Player(POSITION_PLAYER_X, POSITION_PLAYER_Y);
 
 document.addEventListener("keyup", function (e) {
   var allowedKeys = {
