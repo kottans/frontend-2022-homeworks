@@ -59,49 +59,23 @@ const catWoman = {
 };
 
 const population = [man, woman, cat, dog, catWoman];
-const populationProperties = [
-  "species",
-  "name",
-  "hands",
-  "legs",
-  "gender",
-  "saying",
-  "friends",
-];
 
-const printPopulation = (inhabitantes, inhabitantProperties) => {
-  inhabitantes.forEach((inhabitant) =>
-    print(
-      inhabitantProperties
-        .map((property) =>
-          property === "name"
-            ? `<strong>${inhabitant[property]}</strong>`
-            : property === "saying"
-            ? `<em>"${inhabitant[property]}"</em>`
-            : inhabitant[property]
-        )
-        .join("; ")
-    )
+const printPopulation = (inhabitantes) => {
+  print(
+    inhabitantes
+      .map(({ species, name, hands, legs, gender, saying, friends }) =>
+        [
+          species,
+          `<strong>${name}</strong>`,
+          hands,
+          legs,
+          gender,
+          `<em>"${saying}"</em>`,
+          friends.join(", "),
+        ].join("; ")
+      )
+      .join("\n")
   );
 };
 
-printPopulation(population, populationProperties);
-
-// ======== OUTPUT ========
-/* Use print(message) for output.
-   Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
-
-   Message can contain HTML markup. You may also tweak index.html and/or styles.css.
-   However, please, REFRAIN from improving visuals at least until your code is reviewed
-   so code reviewers might focus on a single file that is index.js.
-   */
-
-/* Print examples:
-   print('ABC');
-   print('<strong>ABC</strong>');
-   print('<strong>ABC</strong>', 'div');
-
-   print('human; John; male; 2; 2; Hello world!; Rex, Tom, Jenny');
-   print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
-   print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
-   */
+printPopulation(population);
