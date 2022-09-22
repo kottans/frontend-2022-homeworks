@@ -136,15 +136,14 @@ Enemy.prototype.render = function () {
 };
 
 Enemy.prototype.checkCollision = function () {
-  if (
+  const isCollision =
     player.y === this.y &&
     player.x <=
       Math.floor(this.x) + this.BLOCK_WIDTH / this.ENEMIES_CONF.overlapRatio &&
     player.x >=
-      Math.floor(this.x) - this.BLOCK_WIDTH / this.ENEMIES_CONF.overlapRatio
-  ) {
-    this.endOfGame(config.END_OF_GAME_LOSE);
-  }
+      Math.floor(this.x) - this.BLOCK_WIDTH / this.ENEMIES_CONF.overlapRatio;
+
+  isCollision && this.endOfGame(config.END_OF_GAME_LOSE);
 };
 
 Enemy.prototype.getRandomArbitrary = function (min, max) {
