@@ -27,27 +27,35 @@ let movesCounter;
 
 const queue = {
   cards: [],
+
   isFull() {
     return this.cards.length > 1;
   },
+
   clear() {
     this.cards = [];
   },
+
   addCard(card) {
     this.cards.push(card);
   },
-  unflipAndDeleteOldestCard() {
-    this.cards[0]?.closest('.flipper').classList.remove('is-flipped');
-    this.cards.shift();
+
+  unflipCards() {
+    this.cards.forEach((card) => {
+      card.closest('.flipper').classList.remove('is-flipped');
+    });
   },
+
   isCardFlipped(card) {
     return card?.closest('.flipper').classList.contains('is-flipped');
   },
+
   containsTwoFlippedCards() {
     return (
       this.isCardFlipped(this.cards[0]) && this.isCardFlipped(this.cards[1])
     );
   },
+
   containsTwoCardsOfSameKind() {
     return (
       this.cards[0].closest('.flip-container').dataset.hero ===
@@ -56,6 +64,7 @@ const queue = {
         this.cards[1].closest('.flip-container').dataset.id
     );
   },
+
   hideEqualCards() {
     this.cards.forEach((card) =>
       card.closest('.flipper').classList.add('hidden')
@@ -115,28 +124,27 @@ const makeDefeatedHeroOpaque = (queue) => {
 
 const isClickedItemACard = (item) => item.classList.contains('cardback');
 const flipCard = (card) => card.closest('.flipper').classList.add('is-flipped');
-const unflipCardAfterTwoSeconds = (card) =>
-  setTimeout(() => {
-    card.closest('.flipper').classList.remove('is-flipped');
-  }, 2000);
 
 const handleClick = ({ target }) => {
-  if (!isClickedItemACard(target)) return;
+  if (!isClickedItemACard(target) || queue.isFull()) return;
   movesCounter++;
-  if (queue.isFull()) {
-    queue.unflipAndDeleteOldestCard();
-  }
   flipCard(target);
   queue.addCard(target);
-  unflipCardAfterTwoSeconds(target);
-  if (queue.containsTwoFlippedCards() && queue.containsTwoCardsOfSameKind()) {
+  if (queue.isFull()) {
     setTimeout(() => {
-      queue.hideEqualCards();
-      makeDefeatedHeroOpaque(queue.cards);
-      queue.clear();
-      if (++pairsCounter === 6) {
-        endGame();
+      if (
+        queue.containsTwoFlippedCards() &&
+        queue.containsTwoCardsOfSameKind()
+      ) {
+        queue.hideEqualCards();
+        makeDefeatedHeroOpaque(queue.cards);
+        if (++pairsCounter === 6) {
+          endGame();
+        }
+      } else {
+        queue.unflipCards();
       }
+      queue.clear();
     }, 700);
   }
 };
