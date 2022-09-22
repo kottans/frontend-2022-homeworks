@@ -1,0 +1,64 @@
+{
+    "usersPerPage": 12,
+    "fetchOptions": {
+        "baseURL": "https://randomuser.me/api/",
+        "userFields": {
+            "gender": true,
+            "name": true,
+            "location": true,
+            "email": false,
+            "login": true,
+            "registered": false,
+            "dob": true,
+            "phone": false,
+            "cell": false,
+            "id": true,
+            "picture": true,
+            "nat": false
+        },
+        "nations": ["ua"],
+        "numberOfTotalUsers": 5000
+    },
+    "filtersFields": ["gender", "age"],
+    "fieldsForSearchText": ["first", "last", "city", "username"],
+    "sortTypeDecrypter": {
+        "name_asc": ["last", 1],
+        "name_des": ["last", -1],
+        "login_asc": ["username", 1],
+        "login_des": ["username", -1],
+        "age_asc": ["age", 1],
+        "age_des": ["age", -1]
+    },
+    "themes": {
+        "dark": {
+            "bcg-main": "rgb(37,43,48)",
+            "glare": "rgb(15,80,126)",
+            "shadow": "black",
+            "elements": "rgb(31,20,0)",
+            "font-color": "rgb(204,133,0)",
+            "logo-icon": "url('./icons/dark/kottans_icon.png')",
+            "chat-icon": "url('./icons/dark/icon-chat.png')",
+            "add-icon": "url('./icons/dark/icon-add-friend.png')",
+            "preview-icon": "url('./icons/dark/icon-preview.png')",
+            "hidden-icon": "url('./icons/dark/icon-hidden.png')",
+            "filters-menu-icon": "url('./icons/dark/icon-filters.png')",
+            "sort-asc": "url('./icons/dark/icon-graph-up.png')",
+            "sort-des": "url('./icons/dark/icon-graph-down.png')"
+        },
+        "light": {
+            "bcg-main": "rgb(211,211,211)",
+            "glare": "white",
+            "shadow": "rgb(5,28,44)",
+            "elements": "rgb(237,155,7)",
+            "font-color": "black",
+            "logo-icon": "url('./icons/light/kottans_icon.png')",
+            "chat-icon": "url('./icons/light/icon-chat.png')",
+            "add-icon": "url('./icons/light/icon-add-friend.png')",
+            "preview-icon": "url('./icons/light/icon-preview.png')",
+            "hidden-icon": "url('./icons/light/icon-hidden.png')",
+            "filters-menu-icon": "url('./icons/light/icon-filters.png')",
+            "sort-asc": "url('./icons/light/icon-graph-up.png')",
+            "sort-des": "url('./icons/light/icon-graph-down.png')"
+        }
+    }
+}
