@@ -209,28 +209,6 @@ body::-webkit-scrollbar {
     }
 }
 
-.menu-team:focus .car-img {
-    transform: translateX(20px);
-}
-
-@media screen and (max-width: 1350px) {
-    .menu-team:focus .car-img {
-        transform: translateX(15px);
-    }
-}
-
-.menu-team:focus {
-    border-color: currentColor;
-    transform: translateX(10px);
-    outline: none;
-}
-
-@media screen and (max-width: 1350px) {
-    .menu-team:focus {
-        transform: translateX(5px);
-    }
-}
-
 .menu-team-title {
     position: relative;
     display: block;
