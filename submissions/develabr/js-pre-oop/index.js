@@ -5,7 +5,7 @@ const cat = {
   legs: 4,
   hands: 0,
   saying: 'meow!',
-  friends: "cats don't needs any friends",
+  friends: ["cats don't needs any friends"],
 };
 
 const catWoman = Object.create(cat);
@@ -14,7 +14,7 @@ catWoman.name = 'Catwoman';
 catWoman.gender = 'female';
 catWoman.legs = 2;
 catWoman.hands = 2;
-catWoman.friends = cat.name;
+catWoman.friends = [cat.name];
 
 const woman = {
   species: 'human',
@@ -58,8 +58,8 @@ const attributes = [
   'friends',
 ];
 
-function personInfoItems(obj) {
-  return attributes.map((key) => obj[key]).join('; ') + '.';
+function personInfoItems(person) {
+  return attributes.map((key) => person[key]).join('; ') + '.';
 }
 
-persons.map((item) => print(personInfoItems(item)));
+persons.map((person) => print(personInfoItems(person)));
