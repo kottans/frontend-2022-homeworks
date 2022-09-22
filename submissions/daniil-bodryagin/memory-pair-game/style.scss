@@ -1,0 +1,178 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: url('../img/bg.jpg') center / cover no-repeat;
+  font-family: 'Jost', sans-serif;
+  font-weight: bold;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+.start-screen {
+  position: absolute;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #01a0e2;
+
+  &.hidden {
+    display: none;
+  }
+
+  &__title {
+    margin: 0;
+    text-align: center;
+  }
+
+  &__text {
+    text-align: center;
+  }
+
+  &__button {
+    padding: .8em 1.5em;
+    text-align: center;
+    background-color: #009746;
+  }
+}
+
+.table {
+  position: relative;
+  width: 100vmin;
+  height: 100vmin;
+  perspective: 1000px;
+}
+
+.card {
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  width: 25%;
+  height: 25%;
+  transition: transform 0.6s, top 1s, left 1s;
+  transform-style: preserve-3d;
+
+  &__shirt,
+  &__face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 3%;
+    backface-visibility: hidden;
+  }
+
+  &__shirt {
+    z-index: 2;
+	  transform: rotateY(0deg);
+  }
+
+  &__face {
+    transform: rotateY(-180deg);
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.flipped {
+  transform: rotateY(-180deg);
+}
+
+.c1r1 {
+  top: 0%;
+  left: 0%;
+}
+
+.c2r1 {
+  top: 0%;
+  left: 25%;
+}
+
+.c3r1 {
+  top: 0%;
+  left: 50%;
+}
+
+.c4r1 {
+  top: 0%;
+  left: 75%;
+}
+
+.c1r2 {
+  top: 25%;
+  left: 0%;
+}
+
+.c2r2 {
+  top: 25%;
+  left: 25%;
+}
+
+.c3r2 {
+  top: 25%;
+  left: 50%;
+}
+
+.c4r2 {
+  top: 25%;
+  left: 75%;
+}
+
+.c1r3 {
+  top: 50%;
+  left: 0%;
+}
+
+.c2r3 {
+  top: 50%;
+  left: 25%;
+}
+
+.c3r3 {
+  top: 50%;
+  left: 50%;
+}
+
+.c4r3 {
+  top: 50%;
+  left: 75%;
+}
+
+.c1r4 {
+  top: 75%;
+  left: 0%;
+}
+
+.c2r4 {
+  top: 75%;
+  left: 25%;
+}
+
+.c3r4 {
+  top: 75%;
+  left: 50%;
+}
+
+.c4r4 {
+  top: 75%;
+  left: 75%;
+}
