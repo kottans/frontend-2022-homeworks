@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;    
+}
+
+@media (min-width: 767px) {
+    .wrapper {
+        margin: 0px auto;
+        padding: 0px 15px;        
+    }   
+}
+
+@media (min-width: 992px) {
+    .wraper {
+        margin: 0px auto;
+        padding: 0px 15px;        
+    }
+}
+
+@media (max-width: 992px) {
+    .img {
+        min-width: 100%;
+        min-height: 60%;
+    }
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;    
+    text-transform: uppercase;
+    flex-wrap: wrap;
+}
+
+.burger-menu__button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 30;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: lightblue;
+    transition: 0.4s;
+}
+
+.burger-menu__button:hover .burger-menu__lines {
+    filter: brightness(0.7);
+}
+
+.burger-menu__lines, 
+.burger-menu__lines::before,
+.burger-menu__lines::after {
+    position: absolute;
+    width: 40px;
+    height: 6px;
+    background-color: white;
+}
+
+.burger-menu__lines {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.burger-menu__lines::before {
+    content: '';
+    top: -12px;
+}
+.burger-menu__lines::after {
+    content: '';
+    top: 12px;
+}
+
+.burger-menu_active .burger-menu__button,
+.burger-menu_active .burger-menu__lines {
+    background-color: transparent;
+}
+
+.burger-menu_active .burger-menu__lines::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.burger-menu_active .burger-menu__lines::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.burger-menu__nav {
+    padding-top: 80px;
+    position: fixed;
+    z-index: 20;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    background-color: lightblue;
+    overflow-y: auto;
+    left: -100%;
+    transition: 0.5s;
+}
+
+.burger-menu_active .burger-menu__nav {
+    left: 0;
+}
+
+.burger-menu__link {
+    padding: 30px;
+    font-family: sans-serif;
+    font-size: 20rev;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.burger-menu__link:hover {
+    filter: brightness(0.7);
+}
+
+.burger-menu__overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.burger-menu_active .burger-menu__overlay {
+    display: block;    
+}
+
+.img {
+    max-width: 70%;
+    height: auto;
+    position:relative;
+}
