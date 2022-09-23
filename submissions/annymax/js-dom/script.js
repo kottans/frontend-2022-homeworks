@@ -57,7 +57,7 @@ const basketPlayers = [
   (born August 23, 1978, Philadelphia, Pennsylvania, U.S.—died January 26, 2020, Calabasas, California), 
   American professional basketball player, who helped lead the Los Angeles Lakers of the National 
   Basketball
-   Association (NBA) to five championships (2000–02 and 2009–10).`,
+   Association(NBA) to five championships (2000–02 and 2009–10).`,
   },
   {
     id: "6",
