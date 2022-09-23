@@ -9,17 +9,17 @@ let rule = 'none';
 async function getUserData() {
     try{
         const response = await fetch(url);
-        const data = await response.json();
-        data.results.map((user) => {
+        const receivedUsers = await response.json();
+        receivedUsers.results.map((usersFromResponse) => {
             userStorage.push({
-                firstName: user.name.first,
-                lastName: user.name.last,
-                picture: user.picture.large,
-                age: user.dob.age,
-                gender: user.gender,
-                country: user.location.country,
-                city: user.location.city,
-                email: user.email,
+                firstName: usersFromResponse.name.first,
+                lastName: usersFromResponse.name.last,
+                picture: usersFromResponse.picture.large,
+                age: usersFromResponse.dob.age,
+                gender: usersFromResponse.gender,
+                country: usersFromResponse.location.country,
+                city: usersFromResponse.location.city,
+                email: usersFromResponse.email,
             });
         });
         renderToPage(userStorage);    
@@ -29,69 +29,80 @@ async function getUserData() {
             location.reload();
         }, 2000);
     }
-  }
+}
 
-function createProfile(user) {
-    for(let i=0; i<user.length; i++) {
-        const card = document.querySelector('.usercards');
+function renderToPage(userProfiles) {
+    document.querySelectorAll('.user_profile').forEach((userProfile) => userProfile.remove());
+    createProfile(userProfiles);
+}
+
+function createProfile(userProfiles) {
+    const userCards = document.querySelector('.usercards');
+    userProfiles.forEach((userContent) => {
         let userProfile = document.createElement('div');
-        userProfile.innerHTML = `<label class="start_chat_button" for="start_chat" 
-            onclick="createChat('${user[i].picture}','${user[i].firstName}','${user[i].lastName}')">
-            <div class="material-symbols-outlined" id="start_chat">chat</div></label>
-            <img class="user_pic" src="${user[i].picture}" alt="Photo of user profile">
-            <div class="user_info">
-            <h1>${user[i].firstName} ${user[i].lastName}</h1>
-            <h2>${user[i].gender}, ${user[i].age}</h2>
-            <p>${user[i].city}, ${user[i].country}</p>
-            <span>${user[i].email}</span>
-            </div>`;
+        userProfile.innerHTML = 
+        `<label class="start_chat_button" for="start_chat" 
+            onclick="createChat('${userContent.picture}','${userContent.firstName}','${userContent.lastName}')">
+            <div class="material-symbols-outlined" id="start_chat">
+                chat
+            </div>
+        </label>
+        <img class="user_pic" src="${userContent.picture}" alt="Photo of user profile">
+        <div class="user_info">
+            <h1>
+                ${userContent.firstName} ${userContent.lastName}
+            </h1>
+            <h2>
+                ${userContent.gender}, ${userContent.age}
+            </h2>
+            <p>
+                ${userContent.city}, ${userContent.country}
+            </p>
+            <span>
+                ${userContent.email}
+            </span>
+        </div>`;
         userProfile.classList.add("user_profile");
-        userProfile.classList.add(`${user[i].gender}`);
-        card.append(userProfile);
-    }
+        userProfile.classList.add(`${userContent.gender}`);
+        userCards.append(userProfile);
+    });
 }
 
-function renderToPage(user) {
-    document.querySelectorAll('.user_profile').forEach((element) => element.remove());
-    createProfile(user);
-}
-
-function filterUsers(user, gender) {
+function filterUsers(userProfiles, gender) {
     if(gender == 'male') {
-        return user.filter(({gender}) => gender == 'male');
+        return userProfiles.filter(({gender}) => gender == 'male');
     } if (gender == 'female') {
-        return user.filter(({gender}) => gender == 'female');
+        return userProfiles.filter(({gender}) => gender == 'female');
     } else {
-        return user;
+        return userProfiles;
     }
 }
 
-function sortUsers(user, rule) {
+function sortUsers(userProfiles, rule) {
     if (rule == 'age_up') {
-        return user.sort(({age: a}, {age: b}) => a - b);   
+        return userProfiles.sort(({age: currentProfile}, {age: nextProfile}) => currentProfile - nextProfile);   
     } if (rule == 'age_down') {
-        return user.sort(({age: a}, {age: b}) => b - a);
+        return userProfiles.sort(({age: currentProfile}, {age: nextProfile}) => nextProfile - currentProfile);
     } if (rule == 'names_up') {
-        return user.sort(({firstName: a}, {firstName: b}) => a < b ? -1 : 1); 
+        return userProfiles.sort(({firstName: currentProfile}, {firstName: nextProfile}) => currentProfile < nextProfile ? -1 : 1); 
     } if (rule == 'names_down') {
-        return user.sort(({firstName: a}, {firstName: b}) => a > b ? -1 : 1);
+        return userProfiles.sort(({firstName: currentProfile}, {firstName: nextProfile}) => currentProfile > nextProfile ? -1 : 1);
     } else {
-        return user;
+        return userProfiles;
     }
 }
 
-function findUsers(user, stringValue) {
-    if(parseInt(stringValue, 10)) {
-        return user.filter(({age}) => age == parseInt(stringValue, 10));
+function findUsers(userProfiles, findString) {
+    if(parseInt(findString, 10)) {
+        return userProfiles.filter(({age}) => age == parseInt(findString, 10));
     } else {
-    return user.filter(({firstName, lastName}) => (firstName + ' ' + lastName)
-    .toLowerCase().includes(stringValue.toLowerCase()));
+    return userProfiles.filter(({firstName, lastName}) => (firstName + ' ' + lastName)
+    .toLowerCase().includes(findString.toLowerCase()));
     }
 }
-
 
 const filtering = document.querySelectorAll('.gender_check');
-filtering.forEach((element) => element.addEventListener('change', showFilteredUsers));
+filtering.forEach((genderCheck) => genderCheck.addEventListener('change', showFilteredUsers));
 
 function showFilteredUsers() {
     gender = this.value;
@@ -103,7 +114,7 @@ function showFilteredUsers() {
 }
 
 const sorting = document.querySelectorAll('.sort_check');
-sorting.forEach((element) => element.addEventListener('change', showSortedUsers));
+sorting.forEach((sortCheck) => sortCheck.addEventListener('change', showSortedUsers));
 
 function showSortedUsers() {
     rule = this.value;
@@ -118,27 +129,36 @@ function showFoundUsers () {
     renderToPage(findUsers(filterUsers(userStorage, gender), textValue));   
 }
 
-function createChat(userpic, userFirstName, userLastName) {
+function createChat(userPicture, userFirstName, userLastName) {
     if(document.querySelectorAll('.chat_window').length != 0) {
         removeChat();
     }
-        const card = document.querySelector('main');
-        let userChat = document.createElement('div');
-        
-        userChat.innerHTML = `<label class="hide_chat_button" for="hide_chat" onclick="removeChat()">
-            <div class="material-symbols-outlined" id='hide_chat'>close</div></label>
-            <img class="chat_thumbnail" src="${userpic}" alt="Photo of user profile"> 
-            <div class="chat_username">${userFirstName} ${userLastName}</div>
-            <div class="chat_area"></div>
-            <div class="message_area">
-            <input type="text" placeholder="Type your message here..." class="chat_input" id="chat_input">
-            <label class="send_message_button" for="send_message" onclick="printMessage">
-            <div class="material-symbols-outlined" id="send_message" >send</div></label>
-            </div>`;
-        userChat.classList.add("chat_window");
-        card.append(userChat);
-        let sendByEnter = document.querySelector('.chat_input');
-        sendByEnter = addEventListener('change', printMessage);
+    const userCards = document.querySelector('main');
+    let userChat = document.createElement('div');
+    userChat.innerHTML = 
+    `<label class="hide_chat_button" for="hide_chat" onclick="removeChat()">
+        <div class="material-symbols-outlined" id='hide_chat'>
+            close
+        </div>
+    </label>
+    <img class="chat_thumbnail" src="${userPicture}" alt="Photo of user profile"> 
+    <div class="chat_username">
+        ${userFirstName} ${userLastName}
+    </div>
+    <div class="chat_area">
+    </div>
+    <div class="message_area">
+        <input type="text" placeholder="Type your message here..." class="chat_input" id="chat_input">
+        <label class="send_message_button" for="send_message" onclick="printMessage">
+        <div class="material-symbols-outlined" id="send_message" >
+            send
+        </div>
+    </label>
+    </div>`;
+    userChat.classList.add("chat_window");
+    userCards.append(userChat);
+    let sendByEnter = document.querySelector('.chat_input');
+    sendByEnter = addEventListener('change', printMessage);
 }
 
 function removeChat() {
@@ -147,7 +167,7 @@ function removeChat() {
 
 function printMessage() {
     let message = document.getElementById('chat_input').value;
-    if(message != null) {
+    if(message) {
         let sendingTime = new Date();
         document.querySelector('.chat_area').innerHTML += 
         `<h3>You:</h3><h2>${message}</h2> \n Sent: ${sendingTime.toLocaleString()}`;   
