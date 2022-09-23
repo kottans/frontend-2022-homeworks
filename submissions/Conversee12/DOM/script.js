@@ -64,18 +64,16 @@ function initButtons(container) {
     button.classList.add("button");
     button.id = id;
     button.innerText = title;
-    button.addEventListener("click", ({ target }) => {
-      showMain(target);
-    });
     container.append(button);
   });
 }
 
 function showMain(target) {
-  const content = rockBands.filter(
+  const content = rockBands.find(
     (band) => target.id === band.id
   );
-  const [{ title, myBestSong, about, image }] = content;
+  console.log(content);
+  const { title, myBestSong, about, image } = content;
   const bandTitle = document.querySelector(".section__title");
   const bandImage = document.querySelector(".section__img");
   const bandInfo = document.querySelector(".section__text");
@@ -86,6 +84,10 @@ function showMain(target) {
   bandImage.src = image;
 }
 
-initButtons(document.querySelector(".sideBar"));
+const sideBar = document.querySelector(".sideBar");
+
+initButtons(sideBar);
+
+sideBar.addEventListener("click", ({ target }) => showMain(target));
 
 showMain(rockBands[0]);
