@@ -7,7 +7,7 @@ class Creature {
     this.friends = friends;
     this.args = ['species', 'name', 'gender', 'saying', 'friends'];
   }
-  tellMeAboutYou() {
+  personInfoItems() {
     return this.args.map((key) => this[key]).join('; ');
   }
 }
@@ -59,8 +59,8 @@ class Catwoman extends Human {
   }
 }
 
-const cat = new Cat('Kitty', 'female', "cats don't needs any friends");
-const catWoman = new Catwoman('Catwoman', cat.saying, cat.name);
+const cat = new Cat('Kitty', 'female', ["cats don't needs any friends"]);
+const catWoman = new Catwoman('Catwoman', cat.saying, [cat.name]);
 const woman = new Woman('Selina Kyle', 'Hello, Batman. Do you know Catwoman?', [
   cat.name,
   catWoman.name,
@@ -73,4 +73,4 @@ const dog = new Dog('Spike', 'male', [woman.name, man.name]);
 
 const persons = [dog, cat, man, woman, catWoman];
 
-persons.map((item) => print(item.tellMeAboutYou()));
+persons.map((person) => print(person.personInfoItems()));
