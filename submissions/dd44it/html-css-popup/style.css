@@ -105,7 +105,6 @@ img {
   overflow-x: hidden;
   transform-origin: 100% 100%;
   display: grid;
-  grid-column: 1fr 1fr 1fr;
 }
 .list_load,
 .popup_list_menu {
@@ -138,12 +137,15 @@ img {
   cursor: pointer;
   justify-self: center;
 }
+.popup-checkbox,
 .load-checkbox {
   display: none;
 }
+.popup_list,
 .list_load {
   display: none;
 }
+.popup-checkbox:checked ~ .popup_list,
 .load-checkbox:checked ~ .list_load {
   display: grid;
 }
@@ -152,17 +154,6 @@ img {
   max-height: 50px;
   margin: 0 auto;
   margin-bottom: 10px;
-}
-.toggle_popup[open] .popup_list {
-  animation: scale .25s ease;
-}
-@keyframes scale {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 .popup_menu__item img {
   height: 50px;
