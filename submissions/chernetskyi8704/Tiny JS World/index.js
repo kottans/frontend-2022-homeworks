@@ -16,7 +16,7 @@ class Inhabitant {
 
   displayData() {
     return ["species", "name", "gender", "saying"]
-      .map((data) => this[data])
+      .map((propertyOfTheInhabitant) => this[propertyOfTheInhabitant])
       .join("; ");
   }
 }
@@ -29,7 +29,14 @@ class Person extends Inhabitant {
   }
 
   displayData() {
-    return `${super.displayData()}; ${this.hands}; ${this.legs};`;
+    // return `${super.displayData()}; ${this.hands}; ${this.legs};`;
+    return (
+      `${super.displayData()}` +
+      ["hands", "legs"]
+        .map((propertyOfTheInhabitant) => this[propertyOfTheInhabitant])
+        .join("; ") +
+      ";"
+    );
   }
 }
 
@@ -41,23 +48,45 @@ class Animal extends Inhabitant {
   }
 
   displayData() {
-    return `${super.displayData()}; ${this.paws}; ${this.tail};`;
+    return (
+      `${super.displayData()}` +
+      ["paws", "tail"]
+        .map((propertyOfTheInhabitant) => this[propertyOfTheInhabitant])
+        .join("; ") +
+      ";"
+    );
   }
 }
 
-class Man extends Person {}
-class Woman extends Person {}
-class Dog extends Animal {}
-class Cat extends Animal {}
+class Man extends Person {
+  constructor(name, gender, saying, hands, legs) {
+    super("Man", name, gender, saying, hands, legs);
+  }
+}
+class Woman extends Person {
+  constructor(name, gender, saying, hands, legs) {
+    super("Woman", name, gender, saying, hands, legs);
+  }
+}
+class Dog extends Animal {
+  constructor(name, gender, saying, paws, tail) {
+    super("Dog", name, gender, saying, paws, tail);
+  }
+}
+class Cat extends Animal {
+  constructor(name, gender, saying, paws, tail) {
+    super("Cat", name, gender, saying, paws, tail);
+  }
+}
 
-const man = new Man("Man", "Dimitrij", "male", "Nice to meet you!", 2, 2);
-const woman = new Woman("Woman", "Kate", "male", "Have a good day!", 2, 2);
-const dog = new Dog("Dog", "Molly", "female", "WOOF-WOOF!", 4, 1);
-const cat = new Cat("Cat", "Whiskey", "female", "Meow!", 4, 1);
+const man = new Man("Dimitrij", "male", "Nice to meet you!", 2, 2);
+const woman = new Woman("Kate", "male", "Have a good day!", 2, 2);
+const dog = new Dog("Molly", "female", "WOOF-WOOF!", 4, 1);
+const cat = new Cat("Whiskey", "female", "Meow!", 4, 1);
 
 // ======== OUTPUT ========
 const allInhabitants = [man, woman, dog, cat];
 
-allInhabitants.map((inhabitan) => {
-  print(inhabitan.displayData());
+allInhabitants.map((inhabitant) => {
+  print(inhabitant.displayData());
 });
