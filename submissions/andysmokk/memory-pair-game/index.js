@@ -36,6 +36,15 @@ const currentCard = (e) => {
   clickedCard.classList.add("current");
 
   const clickedCards = document.querySelectorAll(".current");
+
+  clickedCards.forEach((card) => {
+    clickedCards.length < 2
+      ? (card.style.pointerEvents = "none")
+      : clickedCards.length === 2
+      ? (card.style.pointerEvents = "auto")
+      : clickedCards;
+  });
+
   const toggledCards = document.querySelectorAll(".toggleCard");
 
   clickedCards.forEach((clickedCard) => {
