@@ -6,17 +6,19 @@
    */
 
 class Character {
-  constructor(specie, name, gender, saying, friends, legs) {
-    this.specie = specie;
-    this.name = name;
-    this.gender = gender;
-    this.legs = legs;
-    this.saying = saying;
-    this.friends = friends;
+  constructor(parameters) {
+    ({
+      specie: this.specie,
+      name: this.name,
+      gender: this.gender,
+      legs: this.legs = 2,
+      saying: this.saying,
+      friends: this.friends = [],
+    } = parameters);
   }
 
-  props() {
-    return ['specie', 'name', 'gender', 'legs', 'hands', 'saying', 'friends']
+  getPresentationString() {
+    return ['specie', 'name', 'gender', 'legs', 'saying', 'friends']
       .map((prop) =>
         Array.isArray(this[prop]) ? this[prop].join(', ') : this[prop]
       )
@@ -26,48 +28,63 @@ class Character {
 }
 
 class Dog extends Character {
-  constructor(name, gender, saying, friends) {
-    super('dog', name, gender, saying, friends, 4);
+  constructor(parameters) {
+    super({ specie: 'dog', legs: 4, ...parameters });
   }
 }
 
-const beethoven = new Dog('Beethoven', 'male', 'woof', ['Clyde']);
+const beethoven = new Dog({
+  name: 'Beethoven',
+  gender: 'male',
+  saying: 'woof',
+  friends: ['Clyde'],
+});
 
 class Cat extends Character {
-  constructor(name, gender, saying, friends) {
-    super('cat', name, gender, saying, friends, 4);
+  constructor(parameters) {
+    super({ specie: 'cat', legs: 4, ...parameters });
   }
 }
 
-const grizabella = new Cat('Grizabella', 'female', 'meow', ['Bonnie']);
+const grizabella = new Cat({
+  name: 'Grizabella',
+  gender: 'female',
+  saying: 'meow',
+  friends: ['Bonnie'],
+});
 
 class Human extends Character {
-  constructor(name, gender, saying, friends) {
-    super('human', name, gender, saying, friends, 2);
+  constructor(parameters) {
+    super({ specie: 'human', ...parameters });
     this.hands = 2;
   }
-}
-
-const clyde = new Human('Clyde', 'male', 'Get rich or die trying!', [
-  'Bonnie',
-  'Beethoven',
-]);
-
-const bonnie = new Human(
-  'Bonnie',
-  'female',
-  'I have the right to not answer a questions!',
-  ['Clyde', 'Grizabella']
-);
-
-class CatWomen extends Human {
-  constructor(name, friends) {
-    super(name, 'female', grizabella.saying, friends);
+  getPresentationString() {
+    return `${super.getPresentationString()}; ${this.hands}`;
   }
 }
 
-const selina = new CatWomen('Selina', []);
+const clyde = new Human({
+  name: 'Clyde',
+  gender: 'male',
+  saying: 'Get rich or die trying!',
+  friends: ['Bonnie', 'Beethoven'],
+});
+
+const bonnie = new Human({
+  name: 'Bonnie',
+  gender: 'female',
+  saying: 'I have the right to not answer a questions!',
+  friends: ['Clyde', 'Grizabella'],
+});
+
+class CatWomen extends Human {
+  constructor(parameters) {
+    super({ gender: 'female', saying: grizabella.saying, ...parameters });
+  }
+}
+
+const selina = new CatWomen({ name: 'Selina' });
 
 [beethoven, grizabella, clyde, bonnie, selina].forEach((character) =>
-  print(character.props())
+  print(character.getPresentationString())
 );
