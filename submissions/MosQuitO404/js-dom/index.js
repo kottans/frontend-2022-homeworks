@@ -13,14 +13,18 @@ hamb.addEventListener('click', hambHandler);
     
 function hambHandler(e) {
     e.preventDefault();
-    popup.classList.toggle('open');
-    hamb.classList.toggle('active');
-    body.classList.toggle('noscroll')
+    hambClose()
     renderPopup();
 }
 
 function renderPopup() {
     popup.append(popupMenu);
+}
+
+function hambClose() { 
+    popup.classList.toggle('open');
+    hamb.classList.toggle('active');
+    body.classList.toggle('noscroll')
 }
 
 // Teams HTML creation
@@ -67,10 +71,4 @@ function generateTeamHandler(e) {
     if (popup.classList.contains('open')) {
         setTimeout(hambClose, 500);
     }
-}
-
-function hambClose() { 
-    popup.classList.toggle('open');
-    hamb.classList.toggle('active');
-    body.classList.toggle('noscroll')
 }
