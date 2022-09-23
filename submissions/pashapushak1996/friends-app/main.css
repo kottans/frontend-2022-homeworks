@@ -11,8 +11,8 @@ img {
 /*---Variables---*/
 
 :root {
-    --dark-blue-color: #12232E; /*Page background*/
-    --lighter-blue-color: #007CC7; /*Buttons*/
+    --dark-blue-color: #12232E;
+    --lighter-blue-color: #007CC7;
     --lightest-blue-color: #4DA8DA;
     --shadow-dark-blue: #203647;
     --orange: #ff1e00;
@@ -43,6 +43,10 @@ body {
 
 .aside {
     width: 35rem;
+}
+
+#aside-search {
+    display: none;
 }
 
 .aside__search {
@@ -108,7 +112,7 @@ body {
 .aside__icon input {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -1rem;
     opacity: 0;
     z-index: 2;
     width: 100%;
@@ -209,6 +213,7 @@ input[type=radio]:checked + img {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .header__search input {
@@ -286,6 +291,11 @@ input[type=radio]:checked + img {
 
 .user-card__email, .user-card__phone, .user-card__location {
     position: relative;
+}
+
+.user-card__email a, .user-card__phone a {
+    text-decoration: none;
+    color: var(--dark-blue-color);
 }
 
 .user-card__email img, .user-card__phone img {
@@ -378,6 +388,10 @@ input[type=radio]:checked + img {
         background-color: #12232E;
     }
 
+    #aside-search {
+        display: block;
+    }
+
     .aside.active {
         left: 0;
     }
@@ -409,6 +423,10 @@ input[type=radio]:checked + img {
         background-color: #12232E;
     }
 
+    #aside-search {
+        display: block;
+    }
+
     .aside.active {
         left: 0;
     }
@@ -436,6 +454,10 @@ input[type=radio]:checked + img {
     .aside__inner {
         padding: 1rem;
         background-color: #12232E;
+    }
+
+    #aside-search {
+        display: block;
     }
 
     .aside.active {

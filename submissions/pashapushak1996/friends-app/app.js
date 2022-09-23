@@ -115,8 +115,8 @@ const compareName = (userOne, userTwo) => {
 const sortUsers = (users) => {
     const sortingOption = document.querySelector('input[name=sort-options]:checked').value;
 
-    const sortBy = sortingOption.split('-').shift();
-    const orderBy = sortingOption.split('-').pop();
+    const sortBy = sortingOption.split('-')[0];
+    const orderBy = sortingOption.split('-')[1];
 
     if (!orderBy) {
         return users;
@@ -203,7 +203,7 @@ const searchByName = ({ target: { value } }) => {
             .pop()
             .toLowerCase();
 
-        const isVisible = firstName.startsWith(normalizedValue) || lastName.startsWith(normalizedValue);
+        const isVisible = firstName.includes(normalizedValue) || lastName.includes(normalizedValue);
 
         userCard.parentElement.parentElement.classList.toggle('none', !isVisible);
     });
@@ -226,11 +226,11 @@ const createUserCard = (user) => {
                              <div data-age="${ age }" class="user-card__age">I am ${ age } years old</div>
                              <div class="user-card__email">
                                 <img class="user-card__icon" src="./icons/email.png" alt="">
-                                <span>${ email }</span>
+                                <a href="mailto:${ email }">${ email }</a>
                              </div>
-                             <div class="user-card__phone">
+                             <div  class="user-card__phone">
                                 <img class="user-card__icon" src="./icons/phone.png" alt="">
-                                <span>${ phone }</span>
+                                <a href="tel:${ phone }">${ phone }</a>
                              </div>
                              <div class="user-card__location">
                                 <img class="user-card__icon" src="./icons/location.png" alt="">
