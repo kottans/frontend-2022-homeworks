@@ -11,10 +11,10 @@ class Inhabitants {
 }
 
 class Humans extends Inhabitants {
-   constructor(name, species, gender, saying, legs = 2, hands = 2) {
-      super(name, species, gender, saying);
-      this.legs = legs;
-      this.hands = hands;
+   constructor(name, gender, saying) {
+      super(name, 'human', gender, saying);
+      this.legs = 2;
+      this.hands = 2;
    }
    prepareforPrinting() {
       return `${super.prepareforPrinting()} ${this.legs}; ${this.hands}`;
@@ -22,9 +22,9 @@ class Humans extends Inhabitants {
 }
 
 class Animals extends Inhabitants {
-   constructor(name, species, gender, saying, legs = 4) {
+   constructor(name, species, gender, saying) {
       super(name, species, gender, saying);
-      this.legs = legs;
+      this.legs = 4;
    }
    prepareforPrinting() {
       return `${super.prepareforPrinting()} ${this.legs}`;
@@ -32,29 +32,29 @@ class Animals extends Inhabitants {
 }
 
 class Dog extends Animals {
-   constructor(name, species, gender, saying, legs) {
-      super(name, species, gender, saying, legs);
+   constructor(name, gender, saying) {
+      super(name, 'dog', gender, saying);
    }
 }
 class Cat extends Animals {
-   constructor(name, species, gender, saying, legs) {
-      super(name, species, gender, saying, legs);
+   constructor(name, gender, saying) {
+      super(name, 'cat', gender, saying);
    }
 }
 
-const AlexMan = new Humans('Alex', 'human', 'male', 'Call me Thirteenth!');
-const JohnMan = new Humans('John', 'human', 'male', 'My name is John');
-const HarryMan = new Humans('Harry', 'human', 'male', 'Where is my magic wand?');
+const AlexMan = new Humans('Alex', 'male', 'Call me Thirteenth!');
+const JohnMan = new Humans('John', 'male', 'My name is John');
+const HarryMan = new Humans('Harry', 'male', 'Where is my magic wand?');
 
-const AliceWomen = new Humans('Alice', 'human', 'female', 'I have special DNA');
-const EmmaWomen = new Humans('Emma', 'human', 'female', 'Who is there?');
-const StacyWomen = new Humans('Stacy', 'human', 'female', 'Hi!');
+const AliceWomen = new Humans('Alice', 'female', 'I have special DNA');
+const EmmaWomen = new Humans('Emma', 'female', 'Who is there?');
+const StacyWomen = new Humans('Stacy', 'female', 'Hi!');
 
-const BaxterDog = new Dog('Baxter', 'dog', 'male', 'Woof-woof!');
-const ArniDog = new Dog('Arni', 'dog', 'male', 'Woof-woof!');
+const BaxterDog = new Dog('Baxter', 'male', 'Woof-woof!');
+const ArniDog = new Dog('Arni', 'male', 'Woof-woof!');
 
-const LunyaCat = new Cat('Lunya', 'cat', 'female', 'Meeooow!');
-const TaychikCat = new Cat('Taychik', 'cat', 'male', 'Meeooow!');
+const LunyaCat = new Cat('Lunya', 'female', 'Meeooow!');
+const TaychikCat = new Cat('Taychik', 'male', 'Meeooow!');
 
 
 const inhabitants = [AlexMan, JohnMan, HarryMan, AliceWomen, EmmaWomen, StacyWomen, BaxterDog, ArniDog, LunyaCat, TaychikCat];
