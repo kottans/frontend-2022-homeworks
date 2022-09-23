@@ -63,34 +63,33 @@ const renderUsers = (listOfUsers) => {
 };
 
 let searchValue;
-let idgender;
 
-const sortUsers = (id, listOfUsers) => {
+const sortUsers = (value, listOfUsers) => {
     let copyListOfUsers = [...listOfUsers];
 
     copyListOfUsers = searchByName(copyListOfUsers);
 
-    switch (id) {
-        case 'search_age_up':
+    switch (value) {
+        case 'ageUp':
             copyListOfUsers.sort((first, next) => compareAge(first, next));
             break;
-        case 'search_age_down':
+        case 'ageDown':
             copyListOfUsers.sort((first, next) => compareAge(next, first));
             break;
-        case 'search_by_alphabet_up':
+        case 'alphabetUp':
             copyListOfUsers.sort((first, next) => compareName(first, next));
             break;
-        case 'search_by_alphabet_down':
+        case 'alphabetDown':
             copyListOfUsers.sort((first, next) => compareName(next, first));
             break;
         case 'male':
         case 'female':
-            idgender = id;
+            copyListOfUsers = filterByGender(value, copyListOfUsers);
             break;
         default:
             break;
     }
-    copyListOfUsers = filterByGender(idgender, copyListOfUsers);
+    
     renderUsers(copyListOfUsers);
 };
 
@@ -101,9 +100,9 @@ const searchByName = (users) => {
     return users;
 };
 
-const filterByGender = (gender, users) => {
-    if (gender === "male" || gender === "female") {
-        return users.filter((user) => user.gender === idgender);
+const filterByGender = (value, users) => {
+    if (value === "male" || value === "female") {
+        return users.filter((user) => user.gender === value);
     } else {
         return users;
     }
@@ -128,12 +127,12 @@ const filterContainer = document.querySelector('.container__filter');
 
 filterContainer.addEventListener("click", ({ target }) => {
     if (target.closest(".input__search__name")) return;
-    sortUsers(target.id, usersData);
+    sortUsers(target.value, usersData);
 });
 
 searchInput.addEventListener("input", ({ target }) => {
     searchValue = target.value.toLowerCase();
-    sortUsers(target.id, usersData);
+    sortUsers(target.value, usersData);
 });
 
 const reset = () => {
