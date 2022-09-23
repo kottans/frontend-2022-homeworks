@@ -1,0 +1,29 @@
+@media screen and (min-width: 461px) and (max-width: 1024px) and (not (orientation: landscape)) {
+  /* ------------MAIN--------------- */
+  .main__info {
+    width: 70%;
+  }
+  .main__info__name {
+    padding: 12px 0;
+  }
+  .main__info__figure {
+    margin: 16px 0;
+    width: 50%;
+  }
+  .main__info__personage table caption {
+    padding-bottom: 8px;
+  }
+  .main__info__text {
+    padding: 5%;
+    font-size: 1.1rem;
+  }
+  /* ------------NAVIGATION--------------- */
+
+  .main__navigation__menu {
+    width: 90%;
+    margin-top: 5%;
+  }
+  .main__navigation__menu__container {
+    padding: 10% 4%;
+  }
+}

@@ -1,0 +1,107 @@
+@media screen and (min-width: 461px) and (max-width: 1024px) and (orientation: landscape) {
+  /* ------------SWITCHER--------------- */
+  .switcher {
+    width: 4%;
+    left: 15px;
+  }
+  /* ------------MAIN--------------- */
+  .main__info {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .main__info__name {
+    width: 100%;
+    text-align: center;
+    padding: 0 0 1% 0;
+    font-size: 2rem;
+  }
+  .main__info__personage {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 60%;
+  }
+  .main__info__figure {
+    width: 40%;
+  }
+  .main__info__personage table {
+    width: 50%;
+  }
+  .main__info__personage table caption {
+    display: none;
+  }
+  .main__info__text {
+    width: 40%;
+    padding: 0 3% 0 0;
+    margin: 0;
+  }
+  /* ------------NAVIGATION--------------- */
+
+  .main__navigation__menu input {
+    left: 0;
+  }
+  /*Hamburger*/
+  .main__navigation__menu__burger {
+    left: -6px;
+  }
+  /*Menu list*/
+  .main__navigation__menu__container {
+    top: 0px;
+    width: 380px;
+    padding: 15% 2%;
+  }
+  .main__navigation__menu__list {
+    display: grid;
+    grid-template: auto / 1fr 1fr;
+    column-gap: 2%;
+  }
+  .main__navigation__menu__list__link {
+    font-size: 1.1rem;
+  }
+  .main__navigation__menu__container h2,
+  .main__navigation__menu__list__link {
+    margin-bottom: 10px;
+  }
+  /* ------------FOOTER--------------- */
+  footer {
+    margin-top: 1%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .wrapper {
+    justify-content: space-between;
+  }
+  .main__container {
+    height: 90%;
+  }
+  /* ------------NAVIGATION------------- */
+  .main__navigation__menu input {
+    top: 15px;
+    left: -10px;
+  }
+  /*Hamburger*/
+  .main__navigation__menu__burger {
+    top: 22px;
+  }
+  /*Menu list*/
+  .main__navigation__menu__container {
+    width: 420px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) and (min-height: 700px) {
+  /* ------------SWITCHER--------------- */
+  .switcher {
+    top: 20px;
+    left: 30px;
+  }
+  /* -------------MAIN------------------ */
+  .main__container {
+    padding: 30px;
+  }
+  .main__info__personage {
+    width: 100%;
+  }
+  .main__info__text {
+    width: 100%;
+  }
+}
