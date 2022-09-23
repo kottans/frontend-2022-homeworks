@@ -16,11 +16,10 @@ class Inhabitant {
       this.gender = gender;
       this.legs = legs;
       this.saying = saying;
-      this.properties = ['species', 'name', 'gender', 'legs', 'saying'];
    }
    
    get showProperties() {
-      return this.properties.map(property => this[property]).join('; ');
+      return ['species', 'name', 'gender', 'legs', 'saying'].map(property => this[property]).join('; ');
    }
 }
 
@@ -43,22 +42,25 @@ class Cat extends Animal {
 }
 
 class Human extends Inhabitant {
-   constructor(name, gender, saying) {
+   constructor(name, gender, hands, saying) {
       super('Human', name, gender, 2, saying);
-      this.hands = 2;
-      this.properties = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
+      this.hands = hands;
    }
+
+   get showProperties() {
+      return ['species', 'name', 'gender', 'legs', 'hands', 'saying'].map(property => this[property]).join('; ');
+   };
 }
 
 class Man extends Human {
    constructor(name, saying) {
-      super(name, 'male', saying);
+      super(name, 'male', 2, saying);
    }
 }
 
 class Woman extends Human {
    constructor(name, saying) {
-      super(name, 'female', saying);
+      super(name, 'female', 2, saying);
    }
 }
 
