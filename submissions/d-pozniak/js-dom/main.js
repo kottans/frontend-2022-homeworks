@@ -1,6 +1,6 @@
 "use strict";
 
-const Plants = [
+const PLANTS = [
     {
         id: "1",
         commonName: "Ficus",
@@ -51,7 +51,7 @@ const Plants = [
     },
 ];
 
-const Intro = {
+const INTRO = {
     heading: "Choose a plant that best suits you!",
     description:
         "Indoor plants are perfect items to welcome at home. They can purify the air, create a cozy atmosphere and help you relax after a long working day. Learn more about each popular plant, navigating through our menu. Don`t miss a chance to get a new source of greenery.",
@@ -74,7 +74,7 @@ function createTempImg(classNames, path, alt) {
 }
 
 function createListItems() {
-    const itemNames = Plants.map((element) => element.commonName);
+    const itemNames = PLANTS.map((element) => element.commonName);
     const navList = document.querySelector(".nav-list");
     for (let i = 1; i <= itemNames.length; i++) {
         const tempItem = createTempEl("li", ["nav-list--item"], itemNames[i - 1]);
@@ -92,15 +92,15 @@ function getElementsToModify() {
 
 function showIntroContent() {
     const [heading, description] = getElementsToModify();
-    const tempHeading = createTempEl("h2", ["content-heading"], Intro.heading);
-    const tempDescr = createTempEl("p", ["content-text"], Intro.description);
+    const tempHeading = createTempEl("h2", ["content-heading"], INTRO.heading);
+    const tempDescr = createTempEl("p", ["content-text"], INTRO.description);
     heading.appendChild(tempHeading);
     description.appendChild(tempDescr);
 }
 
 function showPlantInfo(e) {
     if (e.target !== e.currentTarget) {
-        const plantToShow = Plants.filter(
+        const plantToShow = PLANTS.filter(
             (plant) => plant.id === e.target.id[e.target.id.length - 1]
         )[0];
         const [heading, description] = getElementsToModify();
