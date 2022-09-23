@@ -71,11 +71,6 @@ const characters = [
 
 const menuLessBttn = document.querySelector('.nav_less_bttn');
 const menu = document.querySelector('.nav_bar');
-
-menuLessBttn.addEventListener('click', () => {
-  menu.classList.toggle('nav_narrow');
-});
-
 const tabs = document.querySelectorAll('.tab');
 const mainContent = document.querySelector('.main');
 
@@ -101,17 +96,24 @@ const generateContent = ({name, quote, description1, description2, description3,
   `;
 }
 
-mainContent.innerHTML = generateContent(characters.find(content => content['id'] === 1));
-
-menu.addEventListener('click', (event) => {
-  const tabActive = event.target.closest('.tab')
-  const tabId = +event.target.closest('.tab').dataset.tabTarget;
-
+menu.addEventListener('click', ({target}) => {
   tabs.forEach(tab => {
     tab.classList.remove('tab_active');
   });
 
-  tabActive.classList.add('tab_active');
-  mainContent.innerHTML = generateContent(characters.find(content => content['id'] === tabId));
-  menu.classList.add('nav_narrow');
-})
+  if (target.closest('.tab')) {
+    const tabId = target.closest('.tab').dataset.tabTarget;
+    target.closest('.tab').classList.add('tab_active');
+    mainContent.innerHTML = generateContent(characters.find(({id}) => id == tabId));
+    menu.classList.add('nav_narrow');
+  };
+  
+  if (target === menuLessBttn) {
+    menu.classList.toggle('nav_narrow');
+  };
+
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  mainContent.innerHTML = generateContent(characters[0]);
+});
