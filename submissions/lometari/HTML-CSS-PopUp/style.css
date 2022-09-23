@@ -68,6 +68,15 @@ body {
     box-shadow: 1px 3px 3px #a18484;
 }
 
+.label,
+.item:hover{
+    cursor: pointer;
+}
+.popUp:hover,
+.popUp_2:hover{
+    cursor: auto;
+}
+
 .checkBox:focus-visible~.label {
     outline: -webkit-focus-ring-color auto 1px;
     outline-offset: 7px;
