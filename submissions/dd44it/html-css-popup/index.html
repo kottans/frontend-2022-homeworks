@@ -7,6 +7,7 @@
   <link type="image/x-icon" rel="shortcut icon" href="img/favicon.png">
   <link rel="stylesheet" href="style.css">
   <title>popup</title>
+
 </head>
 <body>
   <div class="wrap-popup">
@@ -16,92 +17,114 @@
           <li class="header__item"> <a href="" class="header__link">Mail</a> </li>
           <li class="header__item"> <a href="" class="header__link">Images </a> </li>
           <li class="header__item">
-            <label for="popup" class="toggle_popup"> <img class="img-popup" src="img/popup.svg" alt="popup">  </label>
             <input type="checkbox" class="popup-checkbox" id="popup">
+            <label for="popup" class="toggle_popup"> 
+              <div class="wrap-popup-img">
+                <img class="img-popup" src="img/popup.svg" alt="">
+              </div>
+            </label>
             <div class="popup_list">
               <ul class="popup_list_menu">
                 <li class="menu-item">
-                  <a href="">
-                    <div class="img-wrapper">
-                      <img src="img/email_icon.svg"  alt="email_icon">
+                  <a href="" class="popup_list_link">
+                    <div class="link_wrap">
+                      <div class="img-wrapper">
+                        <img src="img/email_icon.svg"  alt="">
+                      </div>
+                      <span class="menu-item_name">Mail</span>
                     </div>
-                    <span class="menu-item_name">Mail</span>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="">
-                    <div class="img-wrapper">
-                      <img src="img/calendar_icon.svg" alt="calendar_icon">
+                  <a href="" class="popup_list_link">
+                    <div class="link_wrap">
+                      <div class="img-wrapper">
+                        <img src="img/calendar_icon.svg" alt="">
+                      </div>
+                      <span class="menu-item_name"> Calendar </span>
                     </div>
-                    <span class="menu-item_name"> Calendar </span>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="">
-                    <div class="img-wrapper">
-                      <img src="img/chatt_icon.svg" alt="chat">
+                  <a href="" class="popup_list_link">
+                    <div class="link_wrap">
+                      <div class="img-wrapper">
+                        <img src="img/chatt_icon.svg" alt="">
+                      </div>
+                      <span class="menu-item_name"> Chat </span>
                     </div>
-                    <span class="menu-item_name"> Chat </span>
                   </a>
                 </li>
                 <li class="menu-item">
-                 <a href="">
-                  <div class="img-wrapper">
-                    <img src="img/location_icon.svg" alt="location_icon">
-                  </div>
-                  <span class="menu-item_name">Map</span>
+                 <a href=""class="popup_list_link">
+                   <div class="link_wrap">
+                    <div class="img-wrapper">
+                      <img src="img/location_icon.svg" alt="">
+                    </div>
+                    <span class="menu-item_name">Map</span>
+                   </div>
                  </a> 
                 </li>
                 <li class="menu-item">
-                  <a href="">
-                    <div class="img-wrapper">
-                      <img src="img/photo_icon.svg" alt="photo_icon">
+                  <a href="" class="popup_list_link">
+                    <div class="link_wrap">
+                      <div class="img-wrapper">
+                        <img src="img/photo_icon.svg" alt="">
+                      </div>
+                      <span class="menu-item_name">Photo </span>
                     </div>
-                    <span class="menu-item_name">Photo </span>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="">
-                    <div class="img-wrapper">
-                      <img src="img/currency_icon.svg" alt="currency_icon">
+                  <a href="" class="popup_list_link">
+                    <div class="link_wrap">
+                      <div class="img-wrapper">
+                        <img src="img/currency_icon.svg" alt="">
+                      </div>
+                      <span class="menu-item_name">Currency </span>
                     </div>
-                    <span class="menu-item_name">Currency </span>
                   </a>
                 </li>
               </ul>
-              <label for="load" class="load-btn"> Load more </label>
               <input type="checkbox" class="load-checkbox" id="load">
+              <label for="load" class="load-btn"> Load more </label>
               <ul class="list_load">
                 <li class="menu-item">
-                  <a href="">
-                    <div class="img-wrapper">
-                      <img src="img/setting_icon.svg" alt="setting_icon">
+                  <a href="" class="popup_list_link">
+                    <div class="link_wrap">
+                      <div class="img-wrapper">
+                        <img src="img/setting_icon.svg" alt="">
+                      </div>
+                      <span class="menu-item_name"> Setting </span>
                     </div>
-                    <span class="menu-item_name"> Setting </span>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="">
-                    <div class="img-wrapper">
-                      <img src="img/notification_icon.svg" alt="notifications_icon">
+                  <a href="" class="popup_list_link">
+                    <div class="link_wrap">
+                      <div class="img-wrapper">
+                        <img src="img/notification_icon.svg" alt="">
+                      </div>
+                      <span class="menu-item_name"> Notifications </span>
                     </div>
-                    <span class="menu-item_name"> Notifications </span>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="">
-                    <div class="img-wrapper">
-                      <img src="img/timer_icon.svg" alt="timer_icon">
+                  <a href="" class="popup_list_link">
+                    <div class="link_wrap">
+                      <div class="img-wrapper">
+                        <img src="img/timer_icon.svg" alt="">
+                      </div>
+                      <span class="menu-item_name"> Timer </span>
                     </div>
-                    <span class="menu-item_name"> Timer </span>
                   </a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="header__item"> 
-            <button class="user-icon" title="kotanns user">
-              <img src="img/img-av-temp.png" alt="kottans user">
+            <button class="user-avatar" title="kotanns user">
+              <img src="img/img-av-temp.png" alt="">
             </button> 
           </li>
         </ul>
