@@ -1,15 +1,17 @@
 const cellWidth = 101;
 const cellHeigth = 83;
+const collisionDistance = 50;
+const topMargin = 25;
 
 // Enemies our player must avoid
-var Enemy = function (col, row) {
+let Enemy = function (col, row) {
   this.sprite = "images/enemy-bug.png";
   this.reset(col, row);
 };
 
 Enemy.prototype.reset = function (col, row) {
   this.x = col * cellWidth - 150;
-  this.y = row * cellHeigth - 25;
+  this.y = row * cellHeigth - topMargin;
   this.speed = Math.random() * 50 + 300;
 };
 
@@ -28,16 +30,16 @@ Enemy.prototype.render = function () {
 const Player = function (col, row) {
   this.sprite = "images/char-boy.png";
   this.x = col * cellWidth;
-  this.y = row * cellHeigth - 25;
+  this.y = row * cellHeigth - topMargin;
 };
 
 Player.prototype.reset = function(){
   player.x = 2 * cellWidth;
-  player.y = 5 * cellHeigth - 25;
+  player.y = 5 * cellHeigth - topMargin;
 }
 
 Player.prototype.update = function () {
-  if (this.y === -25) {
+  if (this.y === -topMargin) {
     this.reset();
   }
 };
@@ -77,8 +79,8 @@ const player = new Player(2, 5);
 function checkCollisions(enemies, player) {
   enemies.forEach((enemy) => {
     if (
-      enemy.x - 50 < player.x &&
-      player.x < enemy.x + 50 &&
+      enemy.x - collisionDistance < player.x &&
+      player.x < enemy.x + collisionDistance &&
       enemy.y === player.y
     ) {
       player.reset()
