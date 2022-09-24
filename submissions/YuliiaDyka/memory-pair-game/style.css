@@ -196,9 +196,16 @@ body {
 
 .card {
     position: relative;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    cursor: pointer;
 }
 
-.card__img,
+.card__face.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.back__side,
 .front__side {
     position: absolute;
     max-width: 100%;
@@ -207,11 +214,10 @@ body {
     top: 0;
     transition: 0.2s;
     backface-visibility: hidden;
-    cursor: pointer;
 }
 
-.card__img {
-    opacity: 0;
+.back__side {
+    transform: rotateY(180deg);
 }
 
 .front__side {
@@ -223,7 +229,19 @@ body {
     height: 120px;
     color: white;
     border-radius: 20px;
+}
 
+.rotate180 {
+    transform: rotateY(180deg);
+}
+
+.rotate360 {
+    transform: rotateY(360deg);
+}
+
+.hidden {
+    opacity: 0;
+    transition: 0.3s;
 }
 
 .footer {

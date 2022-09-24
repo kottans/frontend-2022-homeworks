@@ -19,20 +19,18 @@ restart.addEventListener("click", render);
 // function fliping cards & create arrays of opened cards
 
 function flipTheCard(e) {
-    if (e.target.className == "game__field" || e.target.className == "card__img") return;
+    if (e.target.className == "game__field" || e.target.className == "back__side") return;
     let frontSide = e.target;
     openedCards = document.querySelectorAll(".open__card");
     if (frontSide.tagName === "IMG" && openedCards.length < 2) {
         let openedCard = e.target.parentElement;
         openedCard.classList.add("open__card");
         openedCards = document.querySelectorAll(".open__card");
-        let backSide = e.target.previousElementSibling;
-        frontSide.style.transform = "rotateY(180deg)"
-        backSide.style.transform = "rotateY(360deg)"
-        backSide.style.opacity = "100";
+        let backSide = frontSide.previousElementSibling;
+        frontSide.classList.toggle("rotate180");
+        backSide.classList.toggle("rotate360");
         openedCardsSrc.push(backSide.src.slice(-6));
     };
-
     if (openedCards.length == 2) {
         checkThePairs();
     };
@@ -41,10 +39,6 @@ function flipTheCard(e) {
 // checking opened cards
 
 function checkThePairs() {
-    console.log(openedCards[0].firstElementChild.src);
-    console.log(openedCards[1].firstElementChild.src);
-    console.log(foldedPairs);
-
     if (openedCards[0].firstElementChild.src == openedCards[1].firstElementChild.src && foldedPairs < 6) {
         foldedPairs++;
         score.textContent = foldedPairs;
@@ -76,12 +70,11 @@ function checkThePairs() {
             restart.classList.add("btn__red");
         };
 
-
     } else if (openedCardsSrc[0] !== openedCardsSrc[1]) {
         setTimeout(() => openedCards.forEach(card => {
             card.classList.remove("open__card");
-            card.firstElementChild.style.transform = "rotateY(180deg)";
-            card.lastElementChild.style.transform = "rotateY(360deg)";
+            card.firstElementChild.classList.toggle('rotate360');
+            card.lastElementChild.classList.toggle("rotate180");
         }), 500);
             openedCards = document.querySelectorAll(".open__card");
             openedCardsSrc = [];
