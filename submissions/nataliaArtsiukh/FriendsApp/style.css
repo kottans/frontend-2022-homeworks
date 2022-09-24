@@ -1,0 +1,372 @@
+@font-face {
+    font-family: Friends;
+    src: url(./FRIENDS_.TTF);
+}
+
+:root {
+    --accent-color: #616cc2;
+    --form-bg:#616cc233;
+    --content-screen: 1200px;
+    height: 100%;
+}
+
+body {
+    width: var(--content-screen);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Boogaloo', sans-serif;
+} 
+
+
+.header {
+    width: var(--content-screen); 
+    padding: 2rem 0;
+    background-color: var(--accent-color);
+    position: fixed; 
+    z-index: 1;
+}
+
+.tittle {
+    margin: 0;
+    text-align: center;
+    font-family: Friends, sans-serif;
+}
+
+.main {
+    width: var(--content-screen); 
+    min-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 300px 3fr; 
+    border-left: .2em solid var(--accent-color);
+    border-right: .2em solid var(--accent-color);
+    box-sizing: border-box;
+}
+
+.side-bar {
+    width: 100%;
+    position: relative;
+}
+
+.form {
+    padding-top: 17rem;
+    position: sticky;
+    top: 0;
+}
+
+.form-label {
+    width: 33%;
+}
+
+.form-input {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+    background: var(--form-bg);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: .2rem solid var(--accent-color);
+    border-radius: .5rem;  
+    font-size: 1.5rem; 
+    font-family: 'Boogaloo', sans-serif;
+    box-sizing: border-box;
+ }
+
+ .form-input:focus {
+    outline: none;
+    box-shadow: 0 0 1rem var(--accent-color);
+ }
+
+.form-text:first-of-type {
+    margin-top: 0;
+}
+.form-text {
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.radio-container {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+input[type="radio"]{
+    position: absolute;
+    appearance: none;
+}
+
+.input-caption {
+    display: flex;
+    align-items: center;
+}
+
+.input-caption::before {
+    content: "";
+    width: 1.5rem; 
+    margin: 0 .5rem;
+    padding-bottom: 1.5rem;
+    display: inline-block;
+    background:var(--form-bg);
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.point{
+    width: 1rem; 
+    margin: .25rem 0 0 .75rem;
+    padding-bottom: 1rem;
+    display: none;
+    position:absolute;
+    left:0; 
+    top:0;
+    background:var(--accent-color);
+    transition:transform 1s;
+    border-radius:50%;
+    animation-timing-function: ease-in-out;
+    animation-duration:.3s;
+    animation-fill-mode: forwards;
+    transition: 0.2s left .05s ease-in-out;
+  }
+
+#male:checked  ~ .point{ 
+    display: inline;
+    animation-name: input; 
+    left:0; 
+}
+#female:checked  ~ .point{ 
+    display: inline;
+    animation-name: input; 
+    left:33%; 
+}
+#all:checked  ~ .point{ 
+    display: inline;
+    animation-name: input; 
+    left:66%; 
+}
+
+#foreward:checked  ~ .point{ 
+    display: inline;
+    animation-name: input; 
+    left:0%; 
+}
+#backward:checked  ~ .point{ 
+    display: inline;
+    animation-name: input; 
+    left:25%; 
+}
+#from-yang:checked  ~ .point{ 
+    display: inline;
+    animation-name: input; 
+    left:50%; 
+}
+#from-old:checked  ~ .point{ 
+    display: inline;
+    animation-name: input; 
+    left:75%; 
+}
+
+@keyframes input{ 30%, 70% { transform:scale(0.5); } }
+
+.main-section {
+    margin: 7.5rem 0 3rem 0;
+    padding: 2rem;
+    grid-column: 2;
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+    gap: 1rem;
+    border-left: .2em groove var(--accent-color);
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 1rem var(--accent-color);
+    border-radius: .5rem;
+}
+
+.card-img {
+    width: 45%;
+    margin: 1rem auto;
+    border-radius: 50%;
+    box-shadow: 0 0 1rem var(--accent-color);
+}
+
+.name {
+    margin: 0;
+    text-align: center;
+}
+
+.contacts, .age {
+    margin: 0;
+}
+
+.contacts:last-child {
+    margin-bottom: 1rem;
+}
+
+.pages {
+    width: 5rem;
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+
+.footer {
+    width: var(--content-screen);
+    margin: 0 auto;
+    padding: .5em 0;
+    background-color: var(--accent-color);
+    position: fixed;
+    bottom: 0;
+    box-sizing: border-box;
+}
+
+.quote {
+    margin: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: Friends, sans-serif;
+}
+
+@media (max-width: 1200px) {
+    :root {
+        --content-screen: 100vw;
+    }
+
+    .main-section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 981px) {
+    .main {
+        grid-template: auto auto / 100%;
+    }
+
+    .form {
+        position: static;
+        padding-top: 9rem;
+    }
+
+    .form-text {
+        margin: 2rem 0;
+    } 
+
+    .main-section {
+        margin-top: 1rem;
+        grid-column: 1;
+        border-left: none;
+        border-top: .2em groove var(--accent-color);
+    }
+
+    .radio-container {
+        width: 60%;
+        margin-left: 25%;
+    }
+
+    .radio-container:last-child {
+        margin-left: 23%;
+    }
+
+}
+
+@media (max-width: 680px) {
+    .header {
+        padding: 1rem 0;
+    }
+
+    .tittle {
+        font-size: 1.5rem;
+    }
+
+    .form {
+        padding-top: 6rem;
+    }
+
+    .main-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quote {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 490px) {
+    .header {
+        padding: 1rem 0;
+    }
+
+    .tittle {
+        font-size: 1rem;
+    }
+
+    .form {
+        padding-top: 5rem;
+    }
+
+    .radio-container {
+        width: 92%;
+        margin-left: 8%;
+    }
+
+    .radio-container:last-child {
+        margin-left: 4%;
+    }
+
+    .main-section {
+        grid-template-columns: 1fr;
+    }
+
+    .quote {
+        font-size: .8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .tittle {
+        font-size: .8rem;
+    }
+
+    .form {
+        padding-top: 5rem;
+    }
+
+    .form-text {
+        margin: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .form-input {
+        font-size: 1.3rem;
+    }
+
+    .radio-container {
+        margin-left: 0;
+    }
+
+    .radio-container:last-child {
+        margin-left: 0;
+    }
+
+    .input-caption {
+        font-size: .8rem;
+    }
+}
+
+@media (max-height: 768px) {
+    .form-text {
+        margin: 1rem;
+    }
+    .form {
+        padding-top: 9rem;
+    }
+}

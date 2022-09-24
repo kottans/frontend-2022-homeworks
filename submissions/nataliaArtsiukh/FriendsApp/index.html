@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Friends</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="tittle">The Ultimate Friends Machine</h1> 
+    </header>
+    <main class="main">
+        <aside class="side-bar">
+            <form action="#" class="form">
+                <p class="form-text">Find friends by name</p>
+                <input type="text" name="friend-name" placeholder="Type name" class="form-input">
+                <p class="form-text">Find friends by gender</p>
+                <div class="radio-container gender-filter">
+                    <label for="male" class="form-label male">
+                        <span class="input-caption">Male</span>
+                    </label>
+                    <input type="radio" name="gender" value="male" id="male">
+                    <label for="female" class="form-label female">
+                        <span class="input-caption">Female</span>
+                    </label>
+                    <input type="radio" name="gender" value="female" id="female">
+                    <label for="all" class="form-label all">
+                        <span class="input-caption">All</span>
+                    </label>
+                    <input type="radio" name="gender" value="all-friends" id="all">
+                    <span class="point"></span>
+                </div>
+                <p class="form-text">Sort friends</p>
+                <div class="radio-container sort">
+                    <label for="foreward" class="form-label foreward">
+                        <span class="input-caption">A-Z</span>
+                    </label>
+                    <input type="radio" name="order" value="foreward" id="foreward">
+                    <label for="backward" class="form-label backward">
+                        <span class="input-caption">Z-A</span>
+                    </label>
+                    <input type="radio" name="order" value="backward" id="backward">
+                    <label for="from-yang" class="form-label from-yang">
+                        <span class="input-caption">1-99</span>
+                    </label>
+                    <input type="radio" name="order" value="1-99" id="from-yang"> 
+                    <label for="from-old" class="form-label from-old">
+                        <span class="input-caption">99-1</span>
+                    </label>
+                    <input type="radio" name="order" value="99-1" id="from-old">
+                    <span class="point"></span>
+                </div>
+            </form>
+        </aside> 
+        <section class="main-section">
+        </section>
+    </main>
+    <footer class="footer">
+        <h3 class="quote"></h3>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>
