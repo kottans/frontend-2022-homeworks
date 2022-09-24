@@ -69,10 +69,11 @@ const characters = [
   }
 ];
 
-const menuLessBttn = document.querySelector('.nav_less_bttn');
+const menuSizeBttn = document.querySelector('.nav_less_bttn');
 const menu = document.querySelector('.nav_bar');
 const tabs = document.querySelectorAll('.tab');
 const mainContent = document.querySelector('.main');
+const [initialFirstHero] = characters;
 
 
 const generateContent = ({name, quote, description1, description2, description3, image, subtitle, extra}) => {
@@ -96,7 +97,7 @@ const generateContent = ({name, quote, description1, description2, description3,
   `;
 }
 
-menu.addEventListener('click', ({target}) => {
+const getContent = ({target}) => {
   tabs.forEach(tab => {
     tab.classList.remove('tab_active');
   });
@@ -107,13 +108,16 @@ menu.addEventListener('click', ({target}) => {
     mainContent.innerHTML = generateContent(characters.find(({id}) => id == tabId));
     menu.classList.add('nav_narrow');
   };
-  
-  if (target === menuLessBttn) {
+};
+
+const changeMenuSize = ({target}) => {
+  if (target === menuSizeBttn) {
     menu.classList.toggle('nav_narrow');
   };
-
-});
+};
 
 window.addEventListener('DOMContentLoaded', () => {
-  mainContent.innerHTML = generateContent(characters[0]);
+  menu.addEventListener('click', getContent);
+  menuSizeBttn.addEventListener('click', changeMenuSize)
+  mainContent.innerHTML = generateContent(initialFirstHero);
 });
