@@ -29,8 +29,8 @@ const section = document.querySelector('.section');
 
 menu.addEventListener("click", ({ target }) => {
     const itemId = target.parentElement.id;
-    const alfa = (alfas.filter(item => (item.id == itemId)));
-    const { 0: {img, model, price, description} } = alfa;
+    const alfa = alfas.filter(({ id }) => id == itemId);
+    const [ { img, model, price, description } ] = alfa;
     section.innerHTML = `
             <img class="article__img" src="${img}" alt="Alfa Romeo">
             <h2 class="article__title" id="article__title">${model}</h2>
