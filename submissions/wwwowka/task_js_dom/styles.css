@@ -10,7 +10,7 @@
     padding: 0 20px 0 50px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 50px minmax(450px, 45vh) 20vh auto;
+    grid-template-rows: 50px minmax(450px, 45vh)  minmax(200px, 20vh) auto;
     grid-gap: 5px;
   }
 
@@ -182,11 +182,11 @@
 .logo {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 3em;
+  font-size: 2.2em;
   color: #152916;
   border-radius: 50px 50px 50px 50px;
   border: #008800 solid 2px;
-  padding: 15px;
+  padding: 15px 10px;
   margin: 30px;
   width: fit-content;
 }

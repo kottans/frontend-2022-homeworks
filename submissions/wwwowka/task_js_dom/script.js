@@ -55,13 +55,19 @@ const menu = document.querySelector(".menu");
 const mainInner = document.querySelector(".content");
 
 function createContent({ name, image, article }) {
+    let i = 1;
+    const arrayImg = image
+    .map((img)=>
+     {
+        return `<div class="content__foto${i++}"><img src="${img}" alt="Фото ${name} ${i}"></div>`;
+     })
+    .join('');
+
+
     return (
         `<div class="content__title"><h2>${name}</h2></div>
-        <div class="content__foto1"><img src="${image[0]}" alt="Фото ${name} 1"></div>
-        <div class="content__foto2"><img src="${image[1]}" alt="Фото ${name} 2"></div>
-        <div class="content__foto3"><img src="${image[2]}" alt="Фото ${name} 3"></div>
-        <div class="content__foto4"><img src="${image[3]}" alt="Фото ${name} 4"></div>
-        <p class="content__text">${article}</p>`
+        ${arrayImg}
+       <p class="content__text">${article}</p>`
     );
 };
 
@@ -72,4 +78,6 @@ const changeContent = function (event) {
 
 menu.addEventListener("click", changeContent);
 
-mainInner.innerHTML = createContent(plant[1]);
+const defaultContent =  plant[0];
+
+mainInner.innerHTML = createContent(defaultContent);
