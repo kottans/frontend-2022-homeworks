@@ -38,8 +38,8 @@ const man = {
    };
 
 const inhabitants = [dog, cat, woman, man];
-const props = ['Inhabitant', 'name', 'gender', 'legs', 'hands', 'saying', 'friends'];
+const props = ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends'];
 
 inhabitants.forEach((item) => {
-   print(props.map((key) => item[key]).join('; '));
+   print(props.map((prop) => item[prop]).join('; '));
 });
