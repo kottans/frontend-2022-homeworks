@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM practice</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>What you know about Neumorphism</h1>
+    <div class="row">
+        <div id="menu" class="menu">
+            <ul class="count">
+                <li onclick="showitem(1)">
+                    What is it
+                </li>
+                <li onclick="showitem(2)">
+                    What about UI and UX
+                </li>
+                <li onclick="showitem(3)">
+                    Buttons
+                </li>
+                <li onclick="showitem(4)">
+                    Conclusion
+                </li>
+            </ul>
+        </div>
+        <div id="item" class="items">
+            <div class="center">
+                <p>Do you want to know more about Neumorphism? Click for learning</p>
+                <div class="arrow-left">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="progress">
+            <div class="loader">
+                <div class="loader_dot">
+                    <div class="prog">
+                    </div>
+                </div>
+            </div>
+            <div class="prog_title">progress</div>
+        </div>
+</div>
+
+
+
+
+
+
+<div class="hidden">
+    <div class="item1">
+        <h2>What is Neumorphism</h2>
+        <p>Neumorphism often referred to as Soft design, is a skeuomorphic design adaption coupled with flat design. It is a visual effect that mixes background colours, shadows, shapes, gradients, and highlights to achieve intense yet minimal real-life graphic effects on the user interface elements.</p>
+        <img src="images/neumorphism.png" alt="neumorphism">
+        <p class="content-right"><a href="" target="_blank">Learn more →</a></p>
+    </div>
+    <div class="item2">
+        <h2>What about UI and UX</h2>
+        <p>The main issue Neumorphism has in terms of accessibility is contrast; you'll notice that most Neumorphic designs use a grey-on-white colour scheme making it challenging for people to see if not implemented well, especially in bright light. </p>
+        <p>The image below displays an original Neumorphic design and the outcome under low vision.</p>
+        <img src="images/neumorphism_ui.png" alt="neumorphism">
+    </div>
+    <div class="item3">
+        <h2>Buttons</h2>
+        <p>You should consider the normal and hover/clicked state when making a Neumorphic button. I've demonstrated how to style a button using the Neumorphism technique in the code sample below:</p>
+        <div class="dark">
+            &lt;style&gt;<br>
+            body {<br>
+            background: #ccc;<br>
+            display: grid;<br>
+            place-items: center;<br>
+            }<br>
+            form {<br>
+            width: 250px;<br>
+            background: #ccc;<br>
+            border: none;<br>
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.5),<br>
+            -5px -5px 10px rgba(255, 255, 255, 0.6);<br>
+            padding: 20px;<br>
+            border-radius: 15px;<br>
+            display: flex;<br>
+            flex-direction: column;<br>
+            }<br>
+            &lt;/style&gt;<br>
+        </div>
+    </div>
+    <div class="item4">
+        <h2>Conclusion</h2>
+        <p>Using Neumorphism appropriately can produce mind-blowing results. You will have realistic-looking 3D effects, which improve your users' experience.</p>
+    </div>
+</div>
+
+<script src="js/scripts.js"></script>
+
+</body>
+</html>
