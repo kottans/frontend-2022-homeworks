@@ -1,5 +1,34 @@
-const defaultPlayerX = 204,
-      defaultPlayerY = 409;
+// Player constants
+const defaultPlayer = {
+    x: 204,
+    y: 409,
+};
+const stepSize = {
+    x: 102,
+    y: 84,
+}
+
+// Enemy constans
+const maxX = 500,
+      enemyStartX = -150,
+      affectedArea = 60,
+      numberofEnemies = 4;
+const enemyRows = [230, 146, 63, 313];
+const initialSpeed = {
+        max: 200,
+        min: 60,
+}
+
+
+// Game Constants
+const winningArea = {
+    borderTop: -12,
+    borderBottom: 0,
+};
+const playingArea = {
+    maxX: 408,
+    maxY: 409,
+}
 
 // Enemy
 
@@ -13,15 +42,15 @@ const Enemy = function(speed, x, y) {
 
 Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
-    if (this.x > 500) {
-        this.x = -100;
+    if (this.x > maxX) {
+        this.x = enemyStartX;
         this.speed += 1;
     }
 
-    if (Math.abs(player.x - this.x) < 60 && Math.abs(player.y - this.y) < 60) {
+    if (Math.abs(player.x - this.x) < affectedArea && Math.abs(player.y - this.y) < affectedArea) {
         alert("Чао, лузер)");
-        player.x = defaultPlayerX;
-        player.y = defaultPlayerY;
+        player.x = defaultPlayer.x;
+        player.y = defaultPlayer.y;
 
     }
 };
@@ -39,10 +68,10 @@ const Player = function(x, y) {
 };
 
 Player.prototype.update = function() {
-    if (this.y < 0 && this.y > -12) {
+    if (this.y < winningArea.borderBottom && this.y > winningArea.borderTop) {
         alert("Вітаннячка! Ви виграли!")
-        this.x = defaultPlayerX;
-        this.y = defaultPlayerY;
+        this.x = defaultPlayer.x;
+        this.y = defaultPlayer.y;
     }
 };
 
@@ -51,47 +80,44 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(key) {
-    if (this.x >= 0 && this.x <= 408 && this.y > 0 && this.y <= 409) {
+    if (this.x >= 0 && this.x <= playingArea.maxX && this.y > 0 && this.y <= playingArea.maxY) {
             switch (key) {
             case "left" : 
-            this.x -= 102;
+            this.x -= stepSize.x;
             break;
 
             case "right":
-            this.x += 102;
+            this.x += stepSize.x;
             break;   
             
             case "up":
-            this.y -= 84;
+            this.y -= stepSize.y;
             break; 
 
             case "down":
-            this.y += 84;
+            this.y += stepSize.y;
             break;     
         };
       
-        if (this.y > 409 || this.x < 0 || this.x > 408) {
+        if (this.y > playingArea.maxY || this.x < 0 || this.x > playingArea.maxX) {
             alert("Не виходь за межі поля!");
-            this.x = defaultPlayerX;
-            this.y = defaultPlayerY;
+            this.x = defaultPlayer.x;
+            this.y = defaultPlayer.y;
         }
     }
 };
 
+function getRandomSpeed(max, min) {
+    return Math.random() * (max - min) + min;
+}
+
 // Initialization characters
 
-const player = new Player(defaultPlayerX, defaultPlayerY);
-const enemy1 = new Enemy((Math.random() * (200 - 60) + 60), -50, 230);
-const enemy2 = new Enemy((Math.random() * (200 - 60) + 60), -150, 146);
-const enemy3 = new Enemy((Math.random() * (200 - 60) + 60), -80, 63);
-const enemy4 = new Enemy((Math.random() * (200 - 60) + 60), -200, 313);
-
-const allEnemies = [
-    enemy1,
-    enemy2,
-    enemy3,
-    enemy4,
-];
+const player = new Player(defaultPlayer.x, defaultPlayer.y);
+const allEnemies = [];
+for (let i = 0; i < numberofEnemies; i++) {
+    allEnemies[i] = new Enemy(getRandomSpeed(initialSpeed.max, initialSpeed.min), enemyStartX, enemyRows[i]);
+}
 
 // event listeners
 
