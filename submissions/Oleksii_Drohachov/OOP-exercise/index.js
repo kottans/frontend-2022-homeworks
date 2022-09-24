@@ -12,13 +12,15 @@ class Creature {
   }
 
   output() {
-    return `${this.name}; ${this.species}; ${this.gender}; ${this.saying}; ${this.friendsToString()}`;
+    const { name, species, gender, saying } = this;
+
+    return `${name}; ${species}; ${gender}; ${saying}; ${this.friendsToString()}`;
   }
 }
 
 class Mammal extends Creature {
   constructor(species, name, gender, saying, friends, legs) {
-    super(species, name, gender, saying, friends);git 
+    super(species, name, gender, saying, friends);
     this.legs = legs;
   }
   output() {
