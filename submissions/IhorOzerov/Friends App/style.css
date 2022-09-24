@@ -1,0 +1,24 @@
+body{
+    -moz-user-drag: none;
+        -webkit-user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin: 20px;
+}
+.list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+select{
+    cursor: pointer;
+}
+#searchFriend{
+    cursor: text;
+}
