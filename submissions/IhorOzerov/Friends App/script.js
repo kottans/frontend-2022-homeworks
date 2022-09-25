@@ -1,10 +1,21 @@
-const url = 'https://randomuser.me/api/?nat=ua&results=16&inc=gender,name,picture,dob,cell&noinfo';
+function handleErrors(response) {
+  if (!response.ok) {
+      throw Error(response.statusText);
+  }
+  return response;
+}
+
+const url = 'https://randomuser.me/api/?nat=ua&results=24&inc=gender,name,picture,dob,cell&noinfo';
+const respData = []
+
+const mainContainer = document.querySelector('.container')
 const listOfMembers = document.querySelector(".list");
 
-const respData = []
 const getData = (url) => {
+  
   try {
     fetch(url)  
+    .then(handleErrors)
       .then(response => response.json())
       .then((json) => {
         respData.push(...json.results);
@@ -13,6 +24,10 @@ const getData = (url) => {
   } catch (err) {
     alert("Try again please");
      console.log(err);
+     mainContainer.innerHTML = `
+     <img class="err" src="./images/err.png" alt="error">
+     <p class="myGender">Something wrong with connect, try to refresh the page</p>
+     `
   }
 }
 getData(url);
@@ -27,53 +42,71 @@ function getPeoples(respData) {
       <p class="myGender">${user.gender}</p>
       <p class="myName">${user.name.first} ${user.name.last}</p>
       <p class="myAge">${user.dob.age}</p>
-      <a href="tel:${user.cell}">${user.cell}</a>`
+      <a href="tel:${user.cell.replace(/[A-Z]/, Math.floor(Math.random()*9))}">
+      ${user.cell.replace(/[A-Z]/, Math.floor(Math.random()*9))}</a>`
   });
 }
 
-const refresh = () => { listOfMembers.innerHTML = ''; }
-
-const selector = document.querySelector('#sex');
-selector.addEventListener("change", sortMembers);
-
-const ageSelector = document.querySelector("#age");
-ageSelector.addEventListener("change", sortMembers);
-
 const findThat = document.querySelector("#searchFriend");
-findThat.addEventListener("input", sortMembers);
-
+const genderSelector = document.querySelector('#sex');
+const ageSelector = document.querySelector("#age");
 const namesSort = document.querySelector('#namesSort');
+
+findThat.addEventListener("input", sortMembers);
+genderSelector.addEventListener("change", sortMembers);
+ageSelector.addEventListener("change", sortMembers);
 namesSort.addEventListener("change", sortMembers);
 
 function sortMembers() {
   let sortedMembers = [...respData]
 
-  if (selector.value === "All") {
+  sortedMembers = sortedMembers.filter(element => `${element.name.first}${element.name.last}`
+  .toLowerCase()
+  .includes(findThat.value.trim()));
+  
+  if (genderSelector.value === "All") {
     sortedMembers;
-  } else if (selector.value === "Female") {
+  } else if (genderSelector.value === "Female") {
     sortedMembers = sortedMembers.filter(element => element.gender === "female")
   } else {
     sortedMembers = sortedMembers.filter(element => element.gender === "male")
   }
 
   if (ageSelector.value === 'upAge') {
-    sortedMembers = sortedMembers.sort((a,b) => a.dob.age == b.dob.age ? 0 : a.dob.age < b.dob.age ? -1 : 1);
+    sortedMembers = sortedMembers.sort((a,b) => sortingAge(a, b) );
   } else if (ageSelector.value === 'downAge') {
-    sortedMembers = sortedMembers.sort((b,a) => a.dob.age == b.dob.age ? 0 : a.dob.age < b.dob.age ? -1 : 1);
+    sortedMembers = sortedMembers.sort((a, b) => sortingAge(b, a) );
   } else {
     sortedMembers;
   }
-
-  sortedMembers = sortedMembers.filter(element => `${element.name.first}${element.name.last}`.includes(findThat.value.trim()));
 
   if (namesSort.value === 'AtoZ') {
-    sortedMembers = sortedMembers.sort((a,b) => a.name.first == b.name.first ? 0 : a.name.first < b.name.first ? -1 : 1);
+    sortedMembers = sortedMembers.sort((a, b) => sortingNames(a, b));
   } else if (namesSort.value === 'ZtoA') {
-    sortedMembers = sortedMembers.sort((b, a) => a.name.first == b.name.first ? 0 : a.name.first < b.name.first ? -1 : 1);
+    sortedMembers = sortedMembers.sort((a, b) => sortingNames(b, a));
   } else {
     sortedMembers;
   }
-  console.log(sortedMembers)
-  refresh();
+
+  listOfMembers.innerHTML = '';
   getPeoples(sortedMembers)
+
+  disable(ageSelector, namesSort);
+  disable(namesSort,ageSelector);
+}
+
+function sortingNames(a, b){
+ return a.name.first == b.name.first ? 0 : a.name.first < b.name.first ? -1 : 1;
+}
+
+function sortingAge(a, b){
+  return a.dob.age - b.dob.age;
+}
+
+function disable(a, b){
+  if (a.value !== "default") {
+   b.setAttribute('disabled', 'disabled')
+   } else if(a.value === "default"){
+    b.removeAttribute('disabled', 'disabled')
+   }
 }
