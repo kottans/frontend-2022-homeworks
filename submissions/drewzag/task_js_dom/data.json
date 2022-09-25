@@ -1,0 +1,32 @@
+[
+  {
+    "id": "den",
+    "team": "Denver Broncos",
+    "img": "assets/den.webp",
+    "desc": "The Denver Broncos are a professional American football franchise based in Denver. The Broncos compete in the National Football League (NFL) as a member club of the league's American Football Conference (AFC) West division. The team is headquartered in Dove Valley, Colorado and plays home games at Empower Field at Mile High in Denver, Colorado. The team began play in 1960 as a charter member of the American Football League (AFL) and joined the NFL as part of the merger in 1970. The Broncos are owned by the Walton-Penner group and play home games at Empower Field at Mile High; prior to this, the club played its home games at Mile High Stadium from 1960 to 2000."
+  },
+  {
+    "id": "la",
+    "team": "Los Angeles Rams",
+    "img": "assets/la.webp",
+    "desc": "The Los Angeles Rams are a professional American football team based in the Los Angeles metropolitan area. The Rams compete in the National Football League (NFL) as a member of the National Football Conference (NFC) West division. The Rams play their home games at SoFi Stadium in Inglewood, which they share with the Los Angeles Chargers. The franchise was founded in 1936 as the Cleveland Rams in Cleveland, Ohio. The franchise won the 1945 NFL Championship Game, then moved to Los Angeles in 1946, making way for Paul Brown's Cleveland Browns of the All-America Football Conference and becoming the only NFL championship team to play the following season in another city. The club played its home games at the Los Angeles Memorial Coliseum until 1980, when it moved into a reconstructed Anaheim Stadium in Orange County, California. The Rams made their first Super Bowl appearance at the end of the 1979 NFL season, losing Super Bowl XIV to the Pittsburgh Steelers, 31–19."
+  },
+  {
+    "id": "lv",
+    "team": "Las Vegas Raiders",
+    "img": "assets/lv.webp",
+    "desc": "The Las Vegas Raiders are a professional American football team based in the Las Vegas metropolitan area. The Raiders compete in the National Football League (NFL) as a member club of the league's American Football Conference (AFC) West division. The club plays its home games at Allegiant Stadium in Paradise, Nevada, and is headquartered in Henderson, Nevada. Founded on January 30, 1960, and originally based in Oakland, California, the Raiders played their first regular season game on September 11, 1960, as a charter member of the American Football League (AFL). They moved to the NFL with the AFL-NFL merger in 1970. The team departed Oakland to play in Los Angeles from the 1982 season through the 1994 season before returning to Oakland at the start of the 1995 season. On March 27, 2017, NFL team owners voted nearly unanimously to approve the Raiders' application to relocate to Las Vegas. Nearly three years later, on January 22, 2020, the Raiders moved to Las Vegas."
+  },
+  {
+    "id": "ne",
+    "team": "New England Patriots",
+    "img": "assets/ne.webp",
+    "desc": "The New England Patriots are a professional American football team based in the Greater Boston area. They compete in the National Football League (NFL) as a member club of the league's American Football Conference (AFC) East division. The Patriots play home games at Gillette Stadium in Foxborough, Massachusetts, which is 22 miles (35 km) southwest of downtown Boston. The franchise is owned by Robert Kraft, who purchased the team in 1994. Since then, the Patriots have become one of the most successful franchises in NFL history, and have sold out every preseason, regular season, and playoff home game. As of 2022, the Patriots are the ninth most valuable sports team in the world. Founded in 1959 by Boston businessman Billy Sullivan as the Boston Patriots, the team was a charter member of the American Football League (AFL) before joining the NFL in 1970 through the AFL-NFL merger. The Patriots played their home games at various stadiums throughout Boston until the franchise moved to Foxborough in 1971. As part of the move, the team changed its name to the New England Patriots. Home games were played at Foxboro Stadium until 2002 when the stadium was demolished alongside the opening of Gillette Stadium. The team began utilizing Gillette Stadium for home games the same year."
+  },
+  {
+    "id": "sea",
+    "team": "Seattle Seahawks",
+    "img": "assets/sea.webp",
+    "desc": "The Seattle Seahawks are a professional American football team based in Seattle. The Seahawks compete in the National Football League (NFL) as a member club of the league's National Football Conference (NFC) West, which they joined in 2002. The club entered the NFL as an expansion team in 1976. From 1977 to 2001, Seattle was assigned to the American Football Conference (AFC) West. They have played their home games at Lumen Field in Seattle's SoDo neighborhood since 2002, having previously played home games in the Kingdome (1976-1999) and Husky Stadium (1994 and 2000-2001). The Seahawks are currently coached by Pete Carroll. Seahawks fans have been referred to collectively as the '12th Man, 12th Fan or 12s.' The team's fans twice set the Guinness World Record for the loudest crowd noise at a sporting event within the span of a few months, first registering 136.6 decibels during a game against the San Francisco 49ers in September 2013, and later registering 137.6 dB during a Monday Night Football game against the New Orleans Saints that December. As the only NFL team based in the Pacific Northwest region of North America, the Seahawks attract support from the wider geographical area that includes some parts of the U.S. states of Alaska, Idaho, Montana, Oregon, and Utah, as well as the Canadian provinces of Alberta, British Columbia, and Saskatchewan."
+  }
+]
