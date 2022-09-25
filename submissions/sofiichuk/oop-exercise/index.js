@@ -1,29 +1,47 @@
 class Animal {
-    constructor(species, name, gender, legs, arms, saying) {
-        this.species = species;
+    constructor(name, gender, saying) {
         this.name = name;
         this.gender = gender;
-        this.legs = legs;
-        this.arms = arms;
         this.saying = saying;
     }
 }
 
 class Human extends Animal {
-    constructor(species = 'human', name, gender, legs = 2, arms = 2, saying) {
-        super(species, name, gender, legs, arms, saying)
+    constructor(name, gender, saying, legs = 2, arms = 2) {
+        super(name, gender, saying);
+        this.legs = legs;
+        this.arms = arms;
+    }
+}
+
+class Pet extends Animal {
+    constructor(name, gender, saying, legs = 4) {
+        super(name, gender, saying);
+        this.legs = legs;
     }
 }
 
 class Man extends Human {
-    constructor(name, gender = 'male', legs, arms, saying = 'hi') {
-        super('human', name, gender, legs, arms, saying)
+    constructor(name, gender = 'male', saying = 'hi', legs, arms) {
+        super(name, gender, saying, legs, arms);
     }
 }
 
 class Woman extends Human {
-    constructor(name, gender = 'female', legs, arms, saying = 'hello') {
-        super('human', name, gender, legs, arms, saying)
+    constructor(name, gender = 'female', saying = 'hello', legs, arms) {
+        super(name, gender, saying, legs, arms);
+    }
+}
+
+class Dog extends Pet {
+    constructor(name, gender, saying = 'woof', legs) {
+        super(name, gender, saying, legs);
+    }
+}
+
+class Cat extends Pet {
+    constructor(name, gender, saying = 'meow', legs) {
+        super(name, gender, saying, legs);
     }
 }
 
@@ -34,20 +52,6 @@ const Harry = new Man('Harry');
 const Polly = new Woman('Polly');
 const Molly = new Woman('Molly');
 const Mary = new Woman('Mary');
-
-class Dog extends Animal {
-    constructor(name, gender, legs = 4, arms, saying = 'woof') {
-        super('dog', name, gender, legs, arms, saying)
-        delete this.arms
-    }
-}
-
-class Cat extends Animal {
-    constructor(name, gender, legs = 4, arms, saying = 'meow') {
-        super('cat', name, gender, legs, arms, saying)
-        delete this.arms
-    }
-}
 
 const Buddy = new Dog('Buddy', 'male');
 const Betty = new Dog('Betty', 'female');
