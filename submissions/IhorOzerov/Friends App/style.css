@@ -1,24 +1,215 @@
+@font-face {
+    font-family: 'Kennebunkport';
+    src: URL('./kennebunkport.ttf') format('truetype');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body{
     -moz-user-drag: none;
-        -webkit-user-drag: none;
-        user-select: none;
-        -moz-user-select: none;
-        -webkit-user-select: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    font-size: 16px;
+    background: linear-gradient(0.25turn, #e49b10, #c0198b);
+    font-family: 'Kennebunkport', sans-serif;
 }
-.container{
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    margin: 20px;
+
+.header{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+    padding: 10px;
 }
-.list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+
+.buttons{
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.buttons__sorting{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 23vw;
+}
+
+label{
+    height: 50px;
+    letter-spacing: 0.2rem;
+    font-size: 1.2rem;
+}
+
+input[type='search']{
+    border: none;
+    border-radius: 8px;
+    height: 30px;
+    width: 15vw;
+    min-width: 180px;
+    margin: 5px;
+    cursor: text;
+    box-shadow: 1px 1px #d8c5be;
+    background-color: #d8c5be;
+}
+
+input[type='search']::placeholder{
+    font-family: 'Kennebunkport', sans-serif;
+    letter-spacing: .25rem;
 }
 
 select{
     cursor: pointer;
+    margin: 5px;
+    width: 8vw;
+    min-width: 90px;
+    text-align: center;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px #d8c5be;
+    border-radius: 7px;
+    background-color: #d8c5be;
+    font-family: 'Kennebunkport', sans-serif;
+    letter-spacing: 0.12rem;
+    height: 30px;
 }
-#searchFriend{
-    cursor: text;
+
+option{
+    border-radius: 10px;
+    color: #c0198b;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.list {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.human{
+    margin: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: aliceblue;
+    position: relative;
+    letter-spacing: 0.2rem;
+    border-radius: 20px;
+}
+
+.color{
+    background-color: #2d8b57;
+    top: 0;
+    height: 85px;
+    width: 101%;
+    position: absolute;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+img{
+    z-index: 1;
+    position: relative;
+}
+
+p{
+    margin-bottom: 7px;
+}
+
+.errorScreen{
+    background-color: #edd5a0;
+    height: 100vh;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.errorText{
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+    padding: 30px;
+}
+
+.errorImage{
+    width: 43vw;
+}
+
+@media (max-width: 1200px) {
+    .list {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .buttons__sorting{
+        width: auto;
+    }
+}
+@media (max-width: 1000px) {
+    .list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width: 800px) {
+    .list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    label{
+        font-size: 1.2rem;
+    }
+    .buttons{
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+    .buttons__sorting{
+        display: flex;
+        justify-content: space-around;
+        width: 90vw;
+        margin: 10px;
+    }
+    select{
+        height: 30px;
+        width: 130px;
+    }
+    input[type='search']{
+        width: 160px;
+        height: 30px;
+    }
+}
+@media (max-width: 400px) {
+    .list {
+        grid-template-columns: 1fr;
+    }
+    .buttons{
+        flex-wrap: wrap;
+    }
+    select{
+        height: 40px;
+        width: 100px;
+    }
+    input[type='search']{
+        width: 120px;
+        height: 40px;
+    }
+    .buttons__sorting{
+        margin: 30px -10px;
+    }
+    .list{
+        padding-top: 40px;
+    }
 }
