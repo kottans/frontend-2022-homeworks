@@ -24,9 +24,9 @@ const getData = (url) => {
   } catch (err) {
     alert("Try again please");
      console.log(err);
-     mainContainer.innerHTML = `
-     <img class="err" src="./images/err.png" alt="error">
-     <p class="myGender">Something wrong with connect, try to refresh the page</p>
+     mainContainer.innerHTML = `<div class="errorScreen">
+     <p class="errorText">Something wrong with connect, try to refresh the page</p>
+     <img class="errorImage" src="./images/err.png" alt="error"></div>
      `
   }
 }
@@ -39,6 +39,7 @@ function getPeoples(respData) {
     listOfMembers.appendChild(newCard);
     newCard.innerHTML = `
       <img class="myFace" src="${user.picture.large}" alt="myFace">
+      <div class="color"></div>
       <p class="myGender">${user.gender}</p>
       <p class="myName">${user.name.first} ${user.name.last}</p>
       <p class="myAge">${user.dob.age}</p>
