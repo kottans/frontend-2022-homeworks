@@ -91,6 +91,10 @@ body {
   transform: rotateY(180deg);
 }
 
+.disable__click {
+  pointer-events: none;
+}
+
 .rules__overlay {
   width: 100%;
   height: 100%;

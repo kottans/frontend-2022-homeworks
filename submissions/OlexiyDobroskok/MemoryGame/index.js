@@ -67,9 +67,10 @@ gameStatusInfo.classList.add("text__info");
 wrap.before(gameStatusInfo);
 
 const rulesBtn = document.querySelector(".rules__btn");
-rulesBtn.addEventListener("click", closePopupWindow);
 const winBtn = document.querySelector(".win__btn");
+rulesBtn.addEventListener("click", closePopupWindow);
 winBtn.addEventListener("click", closePopupWindow);
+playArea.addEventListener("click", searchPair);
 
 function newGame() {
   showGameStatus();
@@ -109,13 +110,13 @@ function makePlayArea(deck) {
     closeCard.draggable = false;
     closeCard.src = card.closeCard;
     gameCard.append(closeCard);
-    gameCard.addEventListener("click", searchPair);
     return gameCard;
   });
 }
 
 function searchPair({ target }) {
   let chosenCard = target.closest("li");
+  if (!chosenCard) return;
   if (previousCard !== chosenCard && sumFlippedCards < 2) {
     chosenCard.classList.add("flipped");
     sumFlippedCards++;
@@ -145,8 +146,7 @@ function getPairCards() {
     for (let gameCard of playArea.children) {
       if (gameCard.classList.contains("flipped")) {
         gameCard.classList.remove("flipped");
-        gameCard.classList.add("check");
-        gameCard.removeEventListener("click", searchPair);
+        gameCard.classList.add("check", "disable__click");
         sumFlippedCards = 0;
         while (gameCard.firstChild) {
           gameCard.removeChild(gameCard.firstChild);
@@ -212,17 +212,21 @@ function showWhoAreYou(nameCharacter) {
     (character) => character.name === nameCharacter
   );
   const winOverlay = document.querySelector(".win__overlay");
-  winOverlay.classList.toggle("hide__popup");
   const winTitle = document.querySelector(".win__title");
-  winTitle.innerHTML = `Congratulations!<br/>All pairs founded! Used attempts: ${attempt}`;
   const winText = document.querySelector(".win__text");
-  winText.innerHTML = `You&rsquo;re &laquo;${nameCharacter}&raquo;`;
   const winImg = document.querySelector(".win__img");
+  winOverlay.classList.toggle("hide__popup");
+  winTitle.innerHTML = `Congratulations!<br/>All pairs founded! Used attempts: ${attempt}`;
+  winText.innerHTML = `You&rsquo;re &laquo;${nameCharacter}&raquo;`;
   winImg.src = characterFace;
+  winBtn.classList.remove("disable__click");
 }
 
 function closePopupWindow({ target }) {
+  const btn = target.closest("button");
+  if (!btn) return;
   const popupOverlay = target.closest("div");
   popupOverlay.classList.toggle("hide__popup");
+  btn.classList.add("disable__click");
   newGame();
 }
