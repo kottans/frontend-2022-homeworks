@@ -1,0 +1,74 @@
+{
+  "horror_page": [
+    {
+      "movie_id": 1,
+      "movie_name": "10 CLOVERFIELD LANE",
+      "movie_year": "2016",
+      "images": {
+        "webp": "./assets/CLOVERFIELD_LANE.webp"
+      },
+      "description": "After getting in a car accident, a woman is held in a shelter with two men, who claim the outside world is affected by a widespread chemical attack",
+      "rating_imdb": "7.2"
+    },
+    {
+      "movie_id": 2,
+      "movie_name": "AS ABOVE, SO BELOW",
+      "movie_year": "2014",
+      "images": {
+        "webp": "./assets/AS_ABOVE_SO_BELOW.webp"
+      },
+      "description": "When a team of explorers ventures into the catacombs that lie beneath the streets of Paris, they uncover the dark secret that lies within this city of the dead.",
+      "rating_imdb": "6.2"
+    },
+    {
+      "movie_id": 3,
+      "movie_name": "Devil",
+      "movie_year": "2010",
+      "images": {
+        "webp": "./assets/ddevil.webp"
+      },
+      "description": "A group of people trapped in a elevator realizes that the devil is among them.",
+      "rating_imdb": "6.2"
+    },
+    {
+      "movie_id": 4,
+      "movie_name": "THE EXORCISM OF EMILY ROSE",
+      "movie_year": "2005",
+      "images": {
+        "webp": "./assets/THE_EXORCISM_OF_EMILY_ROSE.webp"
+      },
+      "description": "When a younger girl called Emily Rose (Carpenter) dies, everyone puts blame on the exorcism which was performed on her by Father Moore (Wilkinson) prior to her death. The priest is arrested on suspicion of murder. The trail begins with lawyer Erin Bruner (Linney) representing Moore, but it is not going to be easy, as no one wants to believe what Father Moore says is true.",
+      "rating_imdb": "6.7"
+    },
+    {
+      "movie_id": 5,
+      "movie_name": "IT",
+      "movie_year": "1990",
+      "images": {
+        "webp": "./assets/it.webp"
+      },
+      "description": "In 1960, a group of social outcasts who are bullied by a gang of greasers led by Henry Bowers are also tormented by an evil demon who can shape-shift into a clown and feed on children's fears and kill them. After defeating the demonic clown as kids, it resurfaces 30 years later and they must finish it off as adults once again.",
+      "rating_imdb": "6.9"
+    },
+    {
+      "movie_id": 6,
+      "movie_name": "POSSESSION",
+      "movie_year": "1981",
+      "images": {
+        "webp": "./assets/POSSESSION.webp"
+      },
+      "description": "A young woman left her family for an unspecified reason. The husband determines to find out the truth and starts following his wife. At first, he suspects that a man is involved. But gradually, he finds out more and more strange behaviors and bizarre incidents that indicate something more than a possessed love affair.",
+      "rating_imdb": "7.4"
+    },
+    {
+      "movie_id": 7,
+      "movie_name": "SAW",
+      "movie_year": "2004",
+      "images": {
+        "webp": "./assets/saw.webp"
+      },
+      "description": "Obsessed with teaching his victims the value of life, a deranged, sadistic serial killer abducts the morally wayward. Once captured, they must face impossible choices in a horrific game of survival. The victims must fight to win their lives back, or die trying...",
+      "rating_imdb": "7.6"
+    }
+  ]
+}
