@@ -1,56 +1,49 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8" />
   <title>Вивчаємо JS</title>
   <link href='https://fonts.googleapis.com/css?family=MedievalSharp' rel='stylesheet'>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <div class="container">
+    <div class="header">Friends App</div>
     <div class="buttons">
-     <form action="#" id="mainForm">
-      <label>Find your friEND:
-<br>
-      <input type="search" id="searchFriend" maxlength = 15 placeholder="Write here name" autocomplete="off" >
-      </label>
-<br><br><br>
-        <label>Choose gender
-<br>
-          <select id="sex" autocomplete="off">
+
+        <label>Find your friend <br>
+            <input type="search" id="searchFriend" maxlength = 15 placeholder="   Write name here " autocomplete="off" >
+        </label>
+
+        <label>Choose gender <br>
+          <select id="sex" autocomplete="off" name="filter">
             <option value="All" >All</option>
             <option value="Male" >Male</option>
             <option value="Female" >Female</option>
           </select>
         </label>
-<br><br><br>
-        <label> Choose age 
-<br>
-          <select id="age" autocomplete="off">
-            <option value="default">By default</option>
-            <option value="upAge">upAge</option>
-            <option value="downAge">downAge</option>
-          </select>
-        </label>
 
-        <p> or </p>
-
-        <label> Sorted by names
-<br>
-          <select id="namesSort" autocomplete="off">
-            <option value="default">By default</option>
-            <option value="AtoZ">A to Z</option>
-            <option value="ZtoA">Z to A</option>
-          </select>
-        </label>
-      </form>
+      <div class="buttons__sorting">
+          <label> Choose age <br>
+            <select id="age" autocomplete="off" name="filter">
+              <option value="default">By default</option>
+              <option value="upAge">upAge</option>
+              <option value="downAge">downAge</option>
+            </select>
+          </label>
+      <span> or </span>
+          <label> Sort by names <br>
+            <select id="namesSort" autocomplete="off">
+              <option value="default">By default</option>
+              <option value="AtoZ">A to Z</option>
+              <option value="ZtoA">Z to A</option>
+            </select>
+          </label>
+      </div>
     </div>
-    <div class="list"></div>
+    <div class="list">
+    </div>
   </div>
-
   <script src="script.js"></script>
 </body>
-
 </html>
