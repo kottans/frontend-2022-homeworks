@@ -1,40 +1,42 @@
 class Inhabitant{
-   constructor(species, name, gender, saying){
+   constructor(species, name, gender, saying, legs){
       this.species = species;
       this.name = name;
       this.gender = gender;
       this.saying = saying;
-      this.properties = ['species', 'name', 'gender', 'saying'];
+      this.legs = legs;
+      this.friends = 0;
+   }
+
+   getProperties(){
+      return 'species, name, gender, saying, legs, friends';
    }
 
    addFriends(friendsList){
-      this.friends = friendsList;
-      this.properties.push('friends');
+      this.friends = friendsList.map(friend => friend.name).join(', ');
    }
 
    toString(){
-      return this.properties.map(property => {
-         return (Array.isArray(this[property])) ?
-            (`<strong>${property}</strong>: ${this[property].join(", ")}`) :
-            (`<strong>${property}</strong>: ${this[property]}`)
-      }).join(", ");
+      return this.getProperties().split(', ').map(property => {
+         return `<strong>${property}</strong>: ${this[property]}`;
+      }).join('; ');
    }
 }
 
 class Animal extends Inhabitant{
    constructor(species, name, gender, saying){
-      super(species, name, gender, saying);
-      this.legs = 4;
-      this.properties.push('legs');
+      super(species, name, gender, saying, 4);
    }
 }
 
 class Human extends Inhabitant{
    constructor(name, gender, saying){
-      super('human', name, gender, saying);
-      this.legs = 2;
+      super('human', name, gender, saying, 2);
       this.hands = 2;
-      this.properties.push('legs', 'hands');
+   }
+
+   getProperties(){
+      return super.getProperties() + ', hands';
    }
 }
 
@@ -62,12 +64,10 @@ class Man extends Human{
    }
 }
 
-class CatWoman extends Cat{
+class CatWoman extends Woman{
    constructor(name){
-      super(name, 'female');
+      super(name, new Cat().saying)
       this.species = 'cat-woman';
-      this.legs = 2;
-      this.hands = 2;
    }
 }
 
@@ -75,9 +75,9 @@ const dog = new Dog('Bima', 'female');
 const cat = new Cat('Jessy', 'female');
 const man = new Man('Ash Lynx', 'Stay with me... I won\'t ask "forever." Just for now, Eiji.');
 const woman = new Woman('Temari', 'Amazing. This slacker-clown outsmarted me!');
-const catWoman = new CatWoman('Hello Kitty')
+const catWoman = new CatWoman('Hello Kitty');
 
-dog.addFriends([cat.name, 'Yasya']);
-woman.addFriends(['Shikamaru']);
+dog.addFriends([cat, man]);
+woman.addFriends([dog, catWoman]);
 
 [dog, cat, man, woman, catWoman].forEach(inhabitant => print(inhabitant.toString()));
