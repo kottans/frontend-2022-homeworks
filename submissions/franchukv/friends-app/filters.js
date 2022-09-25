@@ -31,6 +31,8 @@ function orderBy(order) {
 }
 
 function uncheckFilter() {
+    document.getElementsByName('search')[0].value = '';
+
     document.getElementsByName('gender')[0].checked = false;
     document.getElementsByName('gender')[1].checked = false;
     document.getElementsByName('gender')[2].checked = true;

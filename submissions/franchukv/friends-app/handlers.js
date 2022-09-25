@@ -8,7 +8,7 @@ import {
     bottomMenuFilterButton,
     bottomMenuFilter,
     bottomMenuOptionsButton,
-    toTopButton
+    toTopButton,
 } from './constants.js';
 
 import {
@@ -60,7 +60,7 @@ function handlerFilter() {
             </div>`;
 
         users.innerHTML = '';
-        users.innerHTML += endWarning;
+        users.innerHTML = endWarning;
 
         return;
     }

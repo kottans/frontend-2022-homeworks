@@ -15,7 +15,6 @@ const usersLimitAcceptButton = document.querySelector('#usersLimitAcceptButton')
 const usersLimitInput = document.querySelector('#usersLimitInput');
 const usersLimitResetButton = document.querySelector('#usersLimitResetButton');
 
-
 export {
     users,
     filterForm,
@@ -32,5 +31,5 @@ export {
     bottomMenuFilter,
     bottomMenuOptionsButton,
     sideBarOptionsButton,
-    toTopButton
+    toTopButton,
 };

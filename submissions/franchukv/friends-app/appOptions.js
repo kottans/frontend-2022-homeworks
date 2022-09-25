@@ -1,7 +1,7 @@
 import { usersLimitInput, usersLimitAcceptButton, usersLimitResetButton } from './constants.js';
 import { renderFirstScreen, } from './render.js';
 
-const defaultLimitOfUsers = 20;
+const defaultLimitOfUsers = 200;
 const usersPerPage = 20;
 let limitOfUsers = defaultLimitOfUsers;
 

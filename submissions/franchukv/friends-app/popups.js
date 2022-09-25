@@ -44,6 +44,7 @@ function createChatPopup(avatar, name, age, gender, city, country, status) {
         </div>
         <form id="chatForm" onsubmit="return false">
             <input id="messagesInput" type="text" placeholder="Send a message" autocomplete="off">
+            <button type="submit" id="messagesSendButton"></button>
         </form>
     </div>`;
 
