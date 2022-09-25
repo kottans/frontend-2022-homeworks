@@ -55,19 +55,21 @@ const menu = document.querySelector(".menu");
 const mainInner = document.querySelector(".content");
 
 function createContent({ name, image, article }) {
-    let i = 1;
     const arrayImg = image
-    .map((img)=>
+    .map((img, imgkey)=>
      {
-        return `<div class="content__foto${i++}"><img src="${img}" alt="Фото ${name} ${i}"></div>`;
+        return `<div class="content__foto${++imgkey}">
+                        <img src="${img}" alt="Фото ${name} ${imgkey}">
+                  </div>`;
      })
     .join('');
 
-
     return (
-        `<div class="content__title"><h2>${name}</h2></div>
-        ${arrayImg}
-       <p class="content__text">${article}</p>`
+        `<div class="content__title">
+            <h2>${name}</h2>
+          </div>
+          ${arrayImg}
+          <p class="content__text">${article}</p>`
     );
 };
 
