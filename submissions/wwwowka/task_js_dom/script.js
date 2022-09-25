@@ -78,6 +78,6 @@ const changeContent = function (event) {
 
 menu.addEventListener("click", changeContent);
 
-const defaultContent =  plant[0];
+const [ defaultContent ] =  plant;
 
 mainInner.innerHTML = createContent(defaultContent);
