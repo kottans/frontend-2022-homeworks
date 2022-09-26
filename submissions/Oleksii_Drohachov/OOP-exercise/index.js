@@ -7,30 +7,20 @@ class Creature {
     this.friends = friends;
   }
 
-  friendsToString() {
-    return this.friends.join(", ");
-  }
-
   output() {
-    const { name, species, gender, saying } = this;
+    const { name, species, gender, saying, friends } = this;
 
-    return `${name}; ${species}; ${gender}; ${saying}; ${this.friendsToString()}`;
+    return `${name}; ${species}; ${gender}; ${saying}; ${friends.join(", ")}`;
   }
 }
 
 class Mammal extends Creature {
-  constructor(species, name, gender, saying, friends, legs) {
+  constructor(species, name, gender, saying, friends) {
     super(species, name, gender, saying, friends);
-    this.legs = legs;
+    this.legs = 4;
   }
   output() {
     return `${super.output()}; ${this.legs}`;
-  }
-}
-
-class Animal extends Mammal {
-  constructor(species, name, gender, saying, friends) {
-    super(species, name, gender, saying, friends, 4);
   }
 }
 
@@ -44,33 +34,15 @@ class Human extends Mammal {
   }
 }
 
-class Dog extends Animal {
+class Dog extends Mammal {
   constructor(name, gender, saying, friends) {
     super("dog", name, gender, saying, friends);
   }
 }
 
-class Cat extends Animal {
+class Cat extends Mammal {
   constructor(name, gender, saying, friends) {
     super("cat", name, gender, saying, friends);
-  }
-}
-
-class Man extends Human {
-  constructor(name, saying, friends) {
-    super(name, "male", saying, friends);
-  }
-}
-
-class Woman extends Human {
-  constructor(name, saying, friends) {
-    super(name, "female", saying, friends);
-  }
-}
-
-class CatWoman extends Human {
-  constructor(name, friends) {
-    super(name, "female", sonya.saying, friends);
   }
 }
 
@@ -80,17 +52,19 @@ const barbos = new Dog("Barbos", "male", "gav-gav kaje pes", [
 const sonya = new Cat("Sonya", "female", "meow-meow, skinbag...", [
   "definitely nobody except her own slaves",
 ]);
-const oleksii = new Man("Oleksii", "Wanna be frontend ninja in future!", [
-  "Alex",
+const oleksii = new Human(
+  "Oleksii",
+  "male",
+  "Wanna be frontend ninja in future!",
+  ["Alex", "Victoria", "every lovely kottan on the course"]
+);
+const victoria = new Human(
   "Victoria",
-  "every lovely kottan on the course",
-]);
-const victoria = new Woman(
-  "Victoria",
+  "female",
   "When will you bring the money to home, honey?",
   ["Natasha", "Katya", "Lada"]
 );
-const anjela = new CatWoman("Anjela", [
+const anjela = new Human("Anjela", "female", sonya.saying, [
   "definitely nobody except her own slaves, she's a cat, you know...",
 ]);
 
