@@ -45,10 +45,10 @@ const man = {
 };
 
 const inhabitants = [cat, dog, woman, man];
-const inhabitantKeys = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
+const inhabitantProperties = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
 
 inhabitants.forEach((inhabitant) => {
   print(
-    inhabitantKeys.map((key) => inhabitant[key] ?? 'N/A').join('; ')
+    inhabitantProperties.map((inhabitantProperty) => inhabitant[inhabitantProperty] ?? 'N/A').join('; ')
   )
 });
