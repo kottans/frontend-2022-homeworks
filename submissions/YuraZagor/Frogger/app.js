@@ -1,5 +1,8 @@
 const allEnemies = [];
-const allSpeeds = [200, 250, 350];
+const speedLow = 200;
+const speedMedium = 275;
+const speedHigh = 350;
+const allSpeeds = [speedLow, speedMedium, speedHigh];
 const enemyRestartX = -55;
 const collisionOffset = 40
 const cellX = 101;
