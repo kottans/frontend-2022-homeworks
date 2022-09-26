@@ -3,11 +3,12 @@
 // we've provided one for you to get started
 // The image/sprite for our enemies, this uses
 // a helper we've provided to easily load images
-const Enemy = function(horizontalMove, verticalPosition, speed) {
+const Enemy = function(horizontalMove, verticalPosition, speed, playerForCollisions) {
     this.horizontalMove = horizontalMove;
     this.verticalPosition = verticalPosition;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
+    this.player = playerForCollisions;
 };
 
 let winsCounter = 0;
@@ -117,15 +118,15 @@ Player.prototype.calculateResult = function () {
     };
 };
 
+// Place the player object in a variable called player
+let player = new Player(playerStartHorizontal, playerStartVertical);
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 enemyLocation.forEach(function (locationY) {
-    enemy = new Enemy(0, locationY, speedIncreaser);
+    enemy = new Enemy(0, locationY, speedIncreaser, player);
     allEnemies.push(enemy);
 });
-
-// Place the player object in a variable called player
-let player = new Player(playerStartHorizontal, playerStartVertical);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
