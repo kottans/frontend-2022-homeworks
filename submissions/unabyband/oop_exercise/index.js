@@ -9,29 +9,30 @@
 // Define your objects here
 
 class Inhabitant {
-  constructor (species, name, gender, limbs, saying, friends) {
+  constructor (species, name, gender, legs, hands, saying, friends) {
     this.species = species;
-    this.name = name;
+    this.name = `<strong>${name}</strong>`;
     this.gender = gender;
-    this.limbs = limbs;
-    this.saying = saying;
+    this.legs = legs;
+    this.hands = hands;
+    this.saying = `<em>${saying}</em>`;
     this.friends = friends;
   }
 
   printInhabitant () {
-    print(`${this.species}; <strong>${this.name}</strong>; ${this.gender}; ${this.limbs.join('; ')}; <em>${this.saying}</em>; ${this.friends ? this.friends.map(elem => elem.name).join(', ') : 'Cats have no friends'}`);
+    print((Object.values(this)).join("; "));
   }
 }
 
 class Human extends Inhabitant {
   constructor (name, gender, saying, friends) {
-    super('human', name, gender, [2, 2], saying, friends);
+    super('human', name, gender, 2, 2, saying, friends);
   }
 }
 
 class Animal extends Inhabitant {
   constructor (name, gender, saying, friends) {
-    super('animal', name, gender, [4], saying, friends);
+    super('animal', name, gender, 4, 0, saying, friends);
   }
 }
 
@@ -43,44 +44,22 @@ class Dog extends Animal {
 
 class Cat extends Animal {
   constructor (name, gender) {
-    super(name, gender, 'Meow!');
+    super(name, gender, 'Meow!', 'Cats have no friends');
   }
 }
 
 const inhabitants = [
-  new Human('Jenny', 'female', "Hi all, I'm Jenny"),
-  new Human('Alice', 'female', "Whats up! Alice's here"),
-  new Human('Eva', 'female', "Hello, I am Eva"),
-  new Human('John', 'male', "Cheers, It's a John"),
-  new Human('Bob', 'male', "Peace folks, I'm Bob"),
-  new Human('Adam', 'male', "I am Adam, Hi buds!"),
+  new Human('Jenny', 'female', "Hi all, I'm Jenny", 'John, Molly'),
+  new Human('Alice', 'female', "Whats up! Alice's here", 'Bob, Adam, Tom'),
+  new Human('Eva', 'female', "Hello, I am Eva", 'Adam, Tom, Lizzy'),
+  new Human('John', 'male', "Cheers, It's a John", 'Jenny, Molly'),
+  new Human('Bob', 'male', "Peace folks, I'm Bob", 'Alice, Adam, Tom, Rex'),
+  new Human('Adam', 'male', "I am Adam, Hi buds!", 'Eva, Tom, Lizzy'),
   new Cat('Tom', 'male'),
   new Cat('Molly', 'female'),
-  new Dog('Rex', 'male'),
-  new Dog('Lizzy', 'female') 
+  new Dog('Rex', 'male', 'Bob'),
+  new Dog('Lizzy', 'female', 'Eva, Adam') 
  ];
- 
- /*Here's my function for adding friends to inhabitants, 
- the first argument is index of subject at inhabitants array
- all next arguments are indexes of his friends.
- I know, it's optional, but hoping my solution is not too primitive*/
-
- function addFriends(...arguments) {
-  let friendsList = [];
-  for(let i = 1; i < arguments.length; i++) {
-    friendsList.push(inhabitants[arguments[i]]);
-  }
-  inhabitants[arguments[0]].friends = friendsList;
- }
-
-addFriends(0, 3, 7);
-addFriends(1, 4, 5, 6);
-addFriends(2, 5, 6, 9);
-addFriends(3, 0, 7);
-addFriends(4, 1, 5, 6, 8);
-addFriends(5, 2, 6, 9);
-addFriends(8, 4);
-addFriends(9, 1, 2);
 
 inhabitants.forEach((creature) => creature.printInhabitant());
  
