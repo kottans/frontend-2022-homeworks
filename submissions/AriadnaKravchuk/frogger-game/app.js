@@ -60,7 +60,7 @@ Array.prototype.getNumFromArray = function () {
     return this[Math.floor(Math.random() * this.length)];
 };
 
-function changeChar(player) {
+function changeCharacter(player) {
     const body = document.querySelector("body");
     body.innerHTML = `<div class="choice">
                     <p class="choice__title">${"Select character"}</p>
@@ -85,12 +85,11 @@ function showCounter() {
     alert(`Your score\nWin: ${winScore} Lose: ${loseScore}`);
 }
 
-const Enemy = function (x, y, speed, player) {
+const Enemy = function (x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
     this.sprite = "images/enemy-bug.png";
-    this.player = player;
 };
 
 Enemy.prototype.update = function (dt) {
@@ -100,31 +99,18 @@ Enemy.prototype.update = function (dt) {
         this.x = -STEP.X;
         this.speed = getNumFromArea(SPEED.MAX, SPEED.MIN);
     }
-
-    this.collision();
 };
 
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Enemy.prototype.collision = function () {
-    if (
-        this.x > this.player.x - STEP.HALF_X &&
-        this.x < this.player.x + STEP.HALF_X &&
-        this.y > this.player.y - STEP.HALF_Y &&
-        this.y < this.player.y + STEP.HALF_Y
-    ) {
-        loseScore++;
-        showCounter();
-        loadGame();
-    }
-};
-
-const Player = function (x, y) {
+const Player = function (x, y, allEnemies, allRocks) {
     this.x = x;
     this.y = y;
     this.sprite = SKIN.BOY;
+    this.allEnemies = allEnemies;
+    this.allRocks = allRocks;
 };
 
 Player.prototype.update = function () {
@@ -133,17 +119,34 @@ Player.prototype.update = function () {
         setTimeout(showCounter, TIME_TIMEOUT);
         loadGame();
     }
+
+    this.checkEnemy();
+};
+
+Player.prototype.checkEnemy = function () {
+    this.allEnemies.forEach((enemy) => {
+        if (
+            enemy.x > this.x - STEP.HALF_X &&
+            enemy.x < this.x + STEP.HALF_X &&
+            enemy.y > this.y - STEP.HALF_Y &&
+            enemy.y < this.y + STEP.HALF_Y
+        ) {
+            loseScore++;
+            showCounter();
+            loadGame();
+        }
+    });
 };
 
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function (keyPress, allRocks) {
+Player.prototype.handleInput = function (keyPress) {
     if (keyPress === "left" && this.x !== BORDER.MIN_X) {
         this.x -= STEP.X;
     } else if (keyPress === "up" && this.y !== BORDER.MAX_Y) {
-        checkRock(this, allRocks);
+        this.checkRock();
     } else if (keyPress === "right" && this.x !== BORDER.MAX_X) {
         this.x += STEP.X;
     } else if (keyPress === "down" && this.y !== BORDER.MIN_Y) {
@@ -151,15 +154,15 @@ Player.prototype.handleInput = function (keyPress, allRocks) {
     }
 };
 
-function checkRock(player, allRocks) {
+Player.prototype.checkRock = function () {
     let isRock = false;
 
-    allRocks.forEach((rock) => {
-        if (player.y === rock.y + STEP.Y && player.x === rock.x) isRock = true;
+    this.allRocks.forEach((rock) => {
+        if (this.y === rock.y + STEP.Y && this.x === rock.x) isRock = true;
     });
 
-    if (!isRock) player.y -= STEP.Y;
-}
+    if (!isRock) this.y -= STEP.Y;
+};
 
 const Rock = function (x, y) {
     this.x = x;
@@ -172,7 +175,7 @@ Rock.prototype.render = function () {
 };
 
 let player = new Player();
-changeChar(player);
+changeCharacter(player);
 
 function loadGame() {
     player.x = PLAYER_POSITION.START_X;
@@ -185,7 +188,7 @@ function loadGame() {
         allEnemies.push(
             new Enemy(
                 ALL_X.getNumFromArray(), enemyY,
-                getNumFromArea(SPEED.MAX, SPEED.MIN), player
+                getNumFromArea(SPEED.MAX, SPEED.MIN)
             )
         )
     );
@@ -193,6 +196,9 @@ function loadGame() {
     ROCKS_Y.forEach(rockY => 
         allRocks.push(new Rock(ALL_X.getNumFromArray(), rockY))
     );
+
+    player.allEnemies = allEnemies;
+    player.allRocks = allRocks;
 }
 
 loadGame();
@@ -205,5 +211,5 @@ document.addEventListener("keyup", function (e) {
         40: "down",
     };
 
-    player.handleInput(allowedKeys[e.keyCode], allRocks);
+    player.handleInput(allowedKeys[e.keyCode]);
 });
