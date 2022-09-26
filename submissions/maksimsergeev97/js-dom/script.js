@@ -5,42 +5,17 @@ window.addEventListener("DOMContentLoaded", () => {
   
     function showMenuBurger() {
       menuBurger.classList.add("menu__burger__active");
-      menuBtn.style.display = "none";
+      menuBtn.classList.add("hide_element");
     }
   
     function hideMenuBurger() {
       menuBurger.classList.remove("menu__burger__active");
-      menuBtn.style.display = "block";
+      menuBtn.classList.remove("hide_element");
     }
   
-    menuBtn.addEventListener("click", () => {
-      showMenuBurger();
-    });
+    menuBtn.addEventListener("click", showMenuBurger);
   
-    menuBtnClose.addEventListener("click", () => {
-      hideMenuBurger();
-    });
-  
-    function addEventForItem(selector) {
-      const links = document.querySelectorAll(selector);
-      const mainBlock = document.querySelector(".main");
-      links.forEach((item, i) => {
-        item.addEventListener("click", () => {
-          fetch("js/base.json")
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => {
-              changeContent(data[i]);
-            });
-          mainBlock.scrollTop = 0;
-          hideMenuBurger();
-        });
-      });
-    }
-  
-    addEventForItem(".menu__item");
-    addEventForItem(".menu__burger__item");
+    menuBtnClose.addEventListener("click", hideMenuBurger);
   
     function changeContent(item) {
       const mainBlock = document.querySelector(".main");
@@ -49,8 +24,45 @@ window.addEventListener("DOMContentLoaded", () => {
                                  <p class="subtitle">inhabitants of the planet: ${item.subtitle}</p>
                                  <p class="descr">${item.descr}</p>`;
     }
+
+    function getData (item) {
+      fetch("js/base.json")
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              changeContent(data[item]);
+            }).catch((error) => {
+              console.log(error);
+            })
+    }
+
+    function renderContent (selector, target) {
+      const items = document.querySelectorAll(selector);
+      items.forEach((item,i) => {
+        if (target == item && target.tagName == "LI") {
+          getData(i);
+          hideMenuBurger();
+        } else {
+          return;
+        };
+      });
+    };
+
+    function addEventClick (menuSelector, itemsSelector) {
+      const menu = document.querySelector(menuSelector)
+      menu.addEventListener('click', (e) => {
+        const target = e.target;
+        renderContent(itemsSelector, target);
+      });
+    }
+
+    addEventClick(".menu__list", ".menu__item");
+    addEventClick(".menu__burger__list", ".menu__burger__item")
+
   });
-  
+
+
 
 
   
