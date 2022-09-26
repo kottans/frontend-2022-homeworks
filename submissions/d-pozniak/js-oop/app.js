@@ -1,14 +1,14 @@
 const X_STEP = 101,
     Y_STEP = 83,
     Y_SHIFT = 20,
-    LAST_COLMN = 5,
+    LAST_COL = 5,
     LAST_ROW = 5,
-    FIELD_WIDTH = LAST_COLMN * X_STEP,
+    FIELD_WIDTH = LAST_COL * X_STEP,
     EPS = 0.3;
 
-const setYCoordByRowNum = (rowNo = LAST_ROW, num = Y_STEP, shift = Y_SHIFT) =>
+const setYByRowNum = (rowNo = LAST_ROW, num = Y_STEP, shift = Y_SHIFT) =>
     rowNo * num - shift;
-const setXCoordByColNum = (colNo = -1, cellWidth = X_STEP) => colNo * cellWidth;
+const setXByColNum = (colNo = -1, cellWidth = X_STEP) => colNo * cellWidth;
 const getRandInclusive = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -28,14 +28,7 @@ const Character = function (xCoord, yCoord, spritePath) {
     this.sprite = spritePath;
 };
 
-const Enemy = function (
-    xCoord,
-    yCoord,
-    spritePath,
-    player,
-    minSpeed = 150,
-    maxSpeed = 700
-) {
+const Enemy = function (xCoord, yCoord, spritePath, player, minSpeed = 150, maxSpeed = 700) {
     Character.call(this, xCoord, yCoord, spritePath);
     this.player = player;
     this.minSpeed = minSpeed;
@@ -51,7 +44,7 @@ Enemy.prototype.update = function (dt) {
 };
 Enemy.prototype.restart = function () {
     this.speed = getRandInclusive(this.minSpeed, this.maxSpeed);
-    this.x = setXCoordByColNum();
+    this.x = setXByColNum();
 };
 Enemy.prototype.collidedWith = function () {
     if (
@@ -77,8 +70,8 @@ Player.prototype.update = function () {
     }
 };
 Player.prototype.restart = function () {
-    this.x = setXCoordByColNum(Math.floor(LAST_COLMN / 2));
-    this.y = setYCoordByRowNum();
+    this.x = setXByColNum(Math.floor(LAST_COL / 2));
+    this.y = setYByRowNum();
 };
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -91,14 +84,14 @@ Player.prototype.handleInput = function (direction) {
                 : this.x;
     this.y =
         direction === "up" && this.y > Y_SHIFT ? this.y - Y_STEP
-            : direction === "down" && this.y < setYCoordByRowNum()
+            : direction === "down" && this.y < setYByRowNum()
                 ? this.y + Y_STEP
                 : this.y;
 };
 
 const PLAYER_INFO = {
-    xInit: setXCoordByColNum(Math.floor(LAST_COLMN / 2)),
-    yInit: setYCoordByRowNum(),
+    xInit: setXByColNum(Math.floor(LAST_COL / 2)),
+    yInit: setYByRowNum(),
     sprite: "images/char-cat-girl.png",
 };
 const player = new Player(...Object.values(PLAYER_INFO));
@@ -111,8 +104,8 @@ for (let i = 1; i <= ROWS_WITH_ENEM; i++) {
     for (let j = 0; j < getRandInclusive(MIN_ROW_ENEM, MAX_ROW_ENEM); j++) {
         allEnemies.push(
             new Enemy(
-                setXCoordByColNum(),
-                setYCoordByRowNum(i),
+                setXByColNum(),
+                setYByRowNum(i),
                 "images/enemy-bug.png",
                 player
             )
