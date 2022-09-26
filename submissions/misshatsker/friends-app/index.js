@@ -22,11 +22,23 @@ function getUserFromRandomUserAPI (randomUser) {
     }
 }
 
+function checkResponseStatus(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+}
+
 async function fetchRandomUsers() {
-    const response = await fetch(url);
-    const data = await response.json();
-    const randomUsers = data.results;
-    return randomUsers.map(getUserFromRandomUserAPI);
+    try {
+        const response = await fetch(url);
+        const validatedResponse = checkResponseStatus(response);
+        const data = await validatedResponse.json();
+        const randomUsers = data.results;
+        return randomUsers.map(getUserFromRandomUserAPI);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 function getFilteredUsers(users, inputValue, ageFilterValue, genderFilterValue) {
