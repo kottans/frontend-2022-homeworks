@@ -8,7 +8,7 @@ userCardParentELement.insertAdjacentHTML('beforeend',
 );
 
 const loading = document.querySelector('.loading');
-const loadingPage = () => {
+const showLoadingError = () => {
     loading.innerHTML = '';
     loading.classList.remove("loading");
     loading.classList.add("error__message");
@@ -23,7 +23,7 @@ const getUsersData = async (url) => {
         const result = await response.json();
         prepareUsersData(result.results);
     } catch (err) {
-        loadingPage();
+        showLoadingError();
     }
 };
 
@@ -42,9 +42,14 @@ const prepareUsersData = (data) => {
         }
         usersData = [...usersData, userInfo];
     });
-    userCardParentELement.removeChild(loading);
-    renderUsers(usersData);
+   
+    handlePrimaryResponseData(usersData);
 };
+
+const handlePrimaryResponseData = (data) => {
+    userCardParentELement.removeChild(loading);
+    renderUsers(data);
+}
 
 const renderUsers = (listOfUsers) => {
     userCardParentELement.innerHTML = "";
@@ -63,6 +68,7 @@ const renderUsers = (listOfUsers) => {
 };
 
 let searchValue;
+let genderId;
 
 const sortUsers = (value, listOfUsers) => {
     let copyListOfUsers = [...listOfUsers];
@@ -84,12 +90,15 @@ const sortUsers = (value, listOfUsers) => {
             break;
         case 'male':
         case 'female':
-            copyListOfUsers = filterByGender(value, copyListOfUsers);
+        case 'all':
+            genderId = value;
             break;
         default:
             break;
     }
-    
+
+    copyListOfUsers = filterByGender(genderId, copyListOfUsers);
+
     renderUsers(copyListOfUsers);
 };
 
@@ -100,9 +109,9 @@ const searchByName = (users) => {
     return users;
 };
 
-const filterByGender = (value, users) => {
-    if (value === "male" || value === "female") {
-        return users.filter((user) => user.gender === value);
+const filterByGender = (genderId, users) => {
+    if (genderId === "male" || genderId === "female") {
+        return users.filter((user) => user.gender === genderId);
     } else {
         return users;
     }
@@ -117,8 +126,7 @@ const compareName = (firstUser, nextUser) => {
 };
 
 const radioGender = document.querySelectorAll("input[name='search_by_gender']");
-const radioAge = document.querySelectorAll("input[name='search_age']");
-const radioAlphabet = document.querySelectorAll("input[name='search_by_alphabet']");
+const radioSort = document.querySelectorAll("input[name='sort']");
 
 const searchInput = document.querySelector(".input__search__name");
 const resetBtn = document.querySelector(".reset__button");
@@ -138,8 +146,7 @@ searchInput.addEventListener("input", ({ target }) => {
 const reset = () => {
     searchValue = '';
     searchInput.value = '';
-    radioAge.forEach(radio => radio.checked = false);
-    radioAlphabet.forEach(radio => radio.checked = false);
+    radioSort.forEach(radio => radio.checked = false);
     radioGender.forEach(radio => radio.checked = false);
 };
 
