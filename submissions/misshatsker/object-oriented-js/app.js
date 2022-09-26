@@ -21,19 +21,21 @@ const playerSpeed = 75;
 const playerInitialX = 200;
 const playerInitialY = 400;
 
-const Character = function(x, y, speed, sprite) {
+const Character = function(x, y, speed, sprite, width, height) {
     this.sprite = sprite;
     this.speed = speed;
     this.x = x;
     this.y = y;
+    this.width = width;
+    this.height = height;
 };
 
 Character.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const Enemy = function(...args) {
-    Character.call(this, ...args);
+const Enemy = function(x, y, speed, sprite, width, height) {
+    Character.call(this, x, y, speed, sprite, width, height);
 };
 
 Enemy.prototype.update = function(dt) {
@@ -44,20 +46,15 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
-Enemy.prototype.width = enemyWidth;
-Enemy.prototype.height = enemyHeight;
-
 Object.setPrototypeOf(Enemy.prototype, Character.prototype);
 
-const Player = function(...args) {
-    Character.call(this, ...args);
+const Player = function(x, y, speed, sprite, width, height, enemies) {
+    Character.call(this, x, y, speed, sprite, width, height);
+    this.enemies = enemies;
 };
 
-Player.prototype.width = playerWidth;
-Player.prototype.height = playerHeight;
-
 Player.prototype.update = function() {
-    if (checkPlayerOverlapWithEnemies(this)) {
+    if (this.checkPlayerOverlapWithEnemies()) {
         gameOver(false);
     }
 }
@@ -93,6 +90,29 @@ Player.prototype.handleInput = function(action) {
     }
 }
 
+Player.prototype.checkPlayerOverlapWithEnemies = function() {
+    return this.enemies.some((enemy) => {
+        return checkIsOverlap(
+            {
+                x: this.x,
+                y: this.y
+            },
+            {
+                x: this.x + this.width,
+                y: this.y + this.height
+            },
+            {
+                x: enemy.x,
+                y: enemy.y
+            },
+            {
+                x: enemy.x + enemy.width,
+                y: enemy.y + enemy.height
+            }
+        );
+    });
+}
+
 Player.prototype.setPosition = function(x, y) {
     this.x = x;
     this.y = y;
@@ -109,16 +129,25 @@ function createRandomEnemy(row) {
     const y = initialGroundY + row * tileHeight;
     const speed = getRandomNumberFromARange(enemyMinSpeed, enemyMaxSpeed);
 
-    return new Enemy(x, y, speed, enemySprite);
+    return new Enemy(x, y, speed, enemySprite, enemyWidth, enemyHeight);
 }
 
-const allEnemies = [
-    createRandomEnemy(0),
-    createRandomEnemy(1), 
-    createRandomEnemy(2)
-];
+function createRandomEnemies(amount) {
+    return new Array(amount).fill(null).map((elem, i) => createRandomEnemy(i));
+}
 
-const player = new Player(playerInitialX, playerInitialY, playerSpeed, playerSprite);
+const amountOfEnemies = 3;
+const allEnemies = createRandomEnemies(amountOfEnemies);
+
+const player = new Player(
+    playerInitialX,
+    playerInitialY,
+    playerSpeed,
+    playerSprite,
+    playerWidth,
+    playerHeight,
+    allEnemies
+);
 
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {
@@ -143,29 +172,6 @@ function checkIsOverlap(l1, r1,  l2,  r2) {
     }
 
     return true;
-}
-
-function checkPlayerOverlapWithEnemies(player) {
-    return allEnemies.some((enemy) => {
-        return checkIsOverlap(
-            {
-                x: player.x,
-                y: player.y
-            },
-            {
-                x: player.x + player.width,
-                y: player.y + player.height
-            },
-            {
-                x: enemy.x,
-                y: enemy.y
-            },
-            {
-                x: enemy.x + enemy.width,
-                y: enemy.y + enemy.height
-            }
-        );
-    });
 }
 
 let wins = 0;
