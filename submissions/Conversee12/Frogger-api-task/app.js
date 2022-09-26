@@ -1,4 +1,18 @@
 // Enemy
+const InitialPosition_X = 202;
+const InitialPosition_Y = 400;
+const Start_X = -100;
+const End_X = 510;
+const PlayerWidth = 80;
+const PlayerHeight = 60;
+const StartPositionEnemy_Y = [56, 140, 223];
+const StartPositionEnemy_X = 0;
+const PlayerStep_X = 101;
+const PlayerStep_Y = 89;
+const BorderRight = BorderTop = 400;
+const BorderLeft = BorderBottom = 0;
+let allEnemies = [];
+
 const Enemy = function (x, y, speed) {
     this.x = x;
     this.y = y;
@@ -12,15 +26,15 @@ let multiplierSpeed = 300;
 
 Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
-    if (this.x > 510) {
-        this.x = -100;
-        this.speed = 200 + Math.floor(Math.random() * multiplierSpeed)
+    if (this.x > End_X) {
+        this.x = Start_X;
+        this.speed = speedLevel + Math.floor(Math.random() * multiplierSpeed)
     }
 
-    if (this.x < player.x + 80 && this.y < player.y + 60 && this.x + 80 > player.x && this.y + 60 > player.y) {
+    if (this.x < player.x + PlayerWidth && this.y < player.y + PlayerHeight && this.x + PlayerWidth > player.x && this.y + PlayerHeight > player.y) {
         setTimeout(function () {
-            player.x = 202;
-            player.y = 400;
+            player.x = InitialPosition_X;
+            player.y = InitialPosition_Y;
             multiplierSpeed = 300;
             countLevels = 1;
             paragraph.innerText = `Your level: ${countLevels}`
@@ -32,12 +46,14 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-let allEnemies = [];
-let eachEnemies = [56, 140, 223];
-eachEnemies.forEach(function (Y) {
-    enemy = new Enemy(0, Y, speedLevel);
-    allEnemies.push(enemy);
-})
+function createEnemy(amount) {
+    for (let i = 0; i <= amount; i++) {
+        enemy = new Enemy(StartPositionEnemy_X, StartPositionEnemy_Y[i], speedLevel);
+        allEnemies.push(enemy);
+    }
+}
+
+createEnemy(3);
 
 // Player
 const Player = function (x, y) {
@@ -54,25 +70,25 @@ Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-let player = new Player(202, 400);
+let player = new Player(InitialPosition_X, InitialPosition_Y);
 
 Player.prototype.handleInput = function (keyPress) {
-    if (keyPress === 'left' && this.x > 0) {
-        this.x -= 101;
+    if (keyPress === 'left' && this.x > BorderLeft) {
+        this.x -= PlayerStep_X;
     }
-    if (keyPress === 'right' && this.x < 400) {
-        this.x += 101;
+    if (keyPress === 'right' && this.x < BorderRight) {
+        this.x += PlayerStep_X;
     }
-    if (keyPress === 'up' && this.y > 0) {
-        this.y -= 89;
+    if (keyPress === 'up' && this.y > BorderBottom) {
+        this.y -= PlayerStep_Y;
     }
-    if (keyPress === 'down' && this.y < 400) {
-        this.y += 89;
+    if (keyPress === 'down' && this.y < BorderTop) {
+        this.y += PlayerStep_Y;
     }
     if (this.y < 0) {
-        setTimeout(function () {
-            player.x = 202;
-            player.y = 400;
+        setTimeout(() => {
+            this.x = InitialPosition_X;
+            this.y = InitialPosition_Y;
         }, 300);
 
         if (prompt('You win, want to play next level?', 'yes') === 'yes') {
