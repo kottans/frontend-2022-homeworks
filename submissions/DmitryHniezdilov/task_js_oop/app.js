@@ -72,7 +72,7 @@ Character.prototype.unFreeze = function () {
   this.isFreeze = false;
 };
 
-const Enemy = function (x, y, speed, config, endOfGame) {
+const Enemy = function (x, y, speed, config, endOfGame, player) {
   Character.call(this, config.ENEMIES_CONF.img);
   this.config = config;
   this.STATE = config.STATE;
@@ -85,6 +85,7 @@ const Enemy = function (x, y, speed, config, endOfGame) {
   this.y = y;
   this.speed = speed;
   this.endOfGame = endOfGame;
+  this.player = player;
 };
 
 Enemy.prototype = Object.create(Character.prototype);
@@ -94,18 +95,19 @@ Enemy.prototype.render = function () {
 };
 
 Enemy.prototype.update = function (dt) {
-  !this.isFreeze &&
-    ((this.x += this.speed * dt),
-    this.x > this.FIELD_WIDTH && (this.x = -this.BLOCK_WIDTH),
-    this.checkCollision());
+  if (!this.isFreeze) {
+    this.x += this.speed * dt;
+    this.x > this.FIELD_WIDTH && (this.x = -this.BLOCK_WIDTH);
+    this.checkCollision();
+  }
 };
 
 Enemy.prototype.checkCollision = function () {
   const isCollision =
-    player.y === this.y &&
-    player.x <=
+    this.player.y === this.y &&
+    this.player.x <=
       Math.floor(this.x) + this.BLOCK_WIDTH / this.ENEMIES_CONF.overlapRatio &&
-    player.x >=
+    this.player.x >=
       Math.floor(this.x) - this.BLOCK_WIDTH / this.ENEMIES_CONF.overlapRatio;
 
   isCollision && this.endOfGame.updateGame(this.END_OF_GAME_LOSE);
@@ -272,7 +274,7 @@ EndOfGame.prototype.restartGame = function () {
   }, 900);
 };
 
-const createEnemies = (config, endOfGame) => {
+const createEnemies = (config, endOfGame, player) => {
   const {
     ENEMIES_CONF,
     ORIGIN_COORDINATE_CHARACTERS,
@@ -322,7 +324,8 @@ const createEnemies = (config, endOfGame) => {
             startPositionY,
             setSpeed(),
             config,
-            endOfGame
+            endOfGame,
+            player
           )
         );
         createEnemy(i - 1)();
@@ -335,7 +338,7 @@ const createEnemies = (config, endOfGame) => {
 
 const endOfGame = new EndOfGame(config);
 const player = new Player(config, endOfGame);
-createEnemies(config, endOfGame);
+createEnemies(config, endOfGame, player);
 
 document.addEventListener("keyup", function (e) {
   const allowedKeys = {
