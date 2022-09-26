@@ -2,7 +2,7 @@
    Complete the below for code reviewers' convenience:
    Code repository: https://github.com/DmitryHniezdilov/task-a-tiny-JS-world/tree/gh-pages
    Web app: https://dmitryhniezdilov.github.io/task-a-tiny-JS-world/
-   */
+*/
 
 // ======== OBJECTS DEFINITIONS ========
 
@@ -15,26 +15,33 @@ class Inhabitant {
     this.gender = gender;
     this.saying = saying || `Hello, I'm ${this.name}`;
     this.friends = [];
-    this.props = ["species", "name", "gender", "saying", "friends"];
   }
 
   addFriends(...newFriends) {
     this.friends = [...this.friends, ...newFriends];
   }
 
-  printProps() {
-    const stringOfEntries = this.props.reduce((str, key) => {
-      const value = this[key];
-      if (!value) return str;
-      const isValueArray = Array.isArray(value);
-      if (isValueArray && !value.length) return str;
-      if (isValueArray) {
-        const listOfFriends = value.map((friend) => friend.name).join(", ");
-        return (str += `${key}: ${listOfFriends}; `);
-      }
-      return (str += `${key}: ${value}; `);
-    }, "");
-    print(stringOfEntries);
+  printProps(
+    speciesDesc = "Hello, I am ",
+    nameDesc = ", my name is ",
+    genderDesc = ", I am cool ",
+    friendsDesc = ". My good friends ",
+    sayingDesc = ". My speech:",
+    ending = "."
+  ) {
+    const speciesText = this.species ? `${speciesDesc}${this.species}` : "";
+    const nameText = this.name ? `${nameDesc}${this.name}` : "";
+    const genderText = this.gender ? `${genderDesc}${this.gender}` : "";
+    const listOfFriends = this.friends.length
+      ? this.friends.map((friend) => friend.name).join(", ")
+      : "";
+    const friendsText = this.friends.length
+      ? `${friendsDesc}${listOfFriends}`
+      : "";
+    const sayingText = `${sayingDesc} "${this.saying}"`;
+    const sentence =
+      speciesText + nameText + genderText + friendsText + sayingText + ending;
+    print(sentence);
   }
 }
 
@@ -43,7 +50,17 @@ class Human extends Inhabitant {
     super("human", name, gender, saying);
     this.legs = 2;
     this.hands = 2;
-    this.props = [...this.props, "legs", "hands"];
+  }
+
+  printProps() {
+    super.printProps(
+      "Hi, I am ",
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      `. I have ${this.legs} legs and ${this.hands} hands.`
+    );
   }
 }
 
@@ -57,13 +74,34 @@ class Woman extends Human {
   constructor(name, saying) {
     super(name, "female", saying);
   }
+
+  printProps() {
+    super.printProps(
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined
+    );
+  }
 }
 
 class Animal extends Inhabitant {
   constructor(species, name, gender, saying) {
     super(species, name, gender, saying);
     this.paws = 4;
-    this.props = [...this.props, "paws"];
+  }
+
+  printProps() {
+    super.printProps(
+      undefined,
+      undefined,
+      undefined,
+      ". My friends ",
+      undefined,
+      `. I have ${this.paws} paws.`
+    );
   }
 }
 
@@ -83,7 +121,17 @@ class CharacterAnimal extends Inhabitant {
   constructor(species, name, gender, saying) {
     super(species, name, gender, saying);
     this.paws = 4;
-    this.props = [...this.props, "paws"];
+  }
+
+  printProps() {
+    super.printProps(
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      ". I like to say ",
+      `. I have ${this.paws} paws.`
+    );
   }
 }
 
@@ -116,6 +164,7 @@ const Elena = new Woman("Elena");
 const Alina = new Woman("Alina");
 const Halle = new CatWoman("Halle");
 
+Hachiko.addFriends(Murka, Togo);
 Winnie.addFriends(
   Murka,
   Tom,
