@@ -6,15 +6,13 @@
    */
 
 class Character {
-  constructor(parameters) {
-    ({
-      specie: this.specie,
-      name: this.name,
-      gender: this.gender,
-      legs: this.legs = 2,
-      saying: this.saying,
-      friends: this.friends = [],
-    } = parameters);
+  constructor({ specie, name, gender, legs = 2, saying, friends = [] }) {
+    this.specie = specie;
+    this.name = name;
+    this.gender = gender;
+    this.legs = legs;
+    this.saying = saying;
+    this.friends = friends;
   }
 
   getPresentationString() {
@@ -28,8 +26,8 @@ class Character {
 }
 
 class Dog extends Character {
-  constructor(parameters) {
-    super({ specie: 'dog', legs: 4, ...parameters });
+  constructor({ name, gender, saying, friends }) {
+    super({ specie: 'dog', name, gender, legs: 4, saying, friends });
   }
 }
 
@@ -41,8 +39,8 @@ const beethoven = new Dog({
 });
 
 class Cat extends Character {
-  constructor(parameters) {
-    super({ specie: 'cat', legs: 4, ...parameters });
+  constructor({ name, gender, saying, friends }) {
+    super({ specie: 'cat', name, gender, legs: 4, saying, friends });
   }
 }
 
@@ -54,8 +52,8 @@ const grizabella = new Cat({
 });
 
 class Human extends Character {
-  constructor(parameters) {
-    super({ specie: 'human', ...parameters });
+  constructor({ name, gender, saying, friends }) {
+    super({ specie: 'human', name, gender, saying, friends });
     this.hands = 2;
   }
   getPresentationString() {
@@ -78,8 +76,8 @@ const bonnie = new Human({
 });
 
 class CatWomen extends Human {
-  constructor(parameters) {
-    super({ gender: 'female', saying: grizabella.saying, ...parameters });
+  constructor({ name, friends }) {
+    super({ name, gender: 'female', saying: grizabella.saying, friends });
   }
 }
 
