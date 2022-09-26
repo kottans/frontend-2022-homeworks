@@ -68,26 +68,24 @@ wrap.before(gameStatusInfo);
 
 const rulesBtn = document.querySelector(".rules__btn");
 const winBtn = document.querySelector(".win__btn");
-rulesBtn.addEventListener("click", closePopupWindow);
-winBtn.addEventListener("click", closePopupWindow);
+rulesBtn.addEventListener("click", popupHendler);
+winBtn.addEventListener("click", popupHendler);
 playArea.addEventListener("click", searchPair);
 
 function newGame() {
   showGameStatus();
-  playArea.append(...makePlayArea(makeGameDeck(deckMoneyHeist)));
+  playArea.innerHTML = makePlayArea(makeGameDeck(deckMoneyHeist)).join("");
 }
 
 function makeGameDeck(deck) {
-  if (deck.length < 6) {
-    return;
-  }
+  if (deck.length < 6) return;
   const initialDeck = shuffle(deck).slice(0, 6);
   const doubleDeck = [...initialDeck, ...initialDeck];
   return shuffle(doubleDeck);
 }
 
 function showGameStatus() {
-  gameStatusInfo.innerHTML = `Pairs found: ${numberOfPairs} / ${maxPairs} Attempt: ${attempt}`;
+  gameStatusInfo.textContent = `Pairs found: ${numberOfPairs} / ${maxPairs} Attempt: ${attempt}`;
 }
 
 function shuffle(deck) {
@@ -98,19 +96,11 @@ function shuffle(deck) {
 
 function makePlayArea(deck) {
   return deck.map((card) => {
-    const gameCard = document.createElement("li");
-    gameCard.classList.add("card__item");
-    const openCard = document.createElement("img");
-    openCard.classList.add("opened__card");
-    openCard.draggable = false;
-    openCard.src = card.openCard;
-    gameCard.append(openCard);
-    const closeCard = document.createElement("img");
-    closeCard.classList.add("closed__card");
-    closeCard.draggable = false;
-    closeCard.src = card.closeCard;
-    gameCard.append(closeCard);
-    return gameCard;
+    return `
+    <li class="card__item">
+      <img src="${card.openCard}" alt="" class="opened__card" draggable="false">
+      <img src="${card.closeCard}" alt="" class="closed__card" draggable="false">
+    </li>`;
   });
 }
 
@@ -120,8 +110,9 @@ function searchPair({ target }) {
   if (previousCard !== chosenCard && sumFlippedCards < 2) {
     chosenCard.classList.add("flipped");
     sumFlippedCards++;
+
     if (selectedCards.length < 2) {
-      selectedCards.push(chosenCard.firstChild.src);
+      selectedCards.push(chosenCard.firstElementChild.src);
       const [firstCard, secondCard] = selectedCards;
       if (selectedCards.length === 2 && firstCard === secondCard) {
         getPairCards();
@@ -222,7 +213,7 @@ function showWhoAreYou(nameCharacter) {
   winBtn.classList.remove("disable__click");
 }
 
-function closePopupWindow({ target }) {
+function popupHendler({ target }) {
   const btn = target.closest("button");
   if (!btn) return;
   const popupOverlay = target.closest("div");
