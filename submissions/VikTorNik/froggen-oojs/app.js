@@ -35,8 +35,6 @@ const Enemy = function (x, y, sprite, speed, player) {
     this.speed = speed;
     this.player = player;
 }
-// Enemy.prototype = Object.create(Elementary.prototype);
-// Enemy.prototype.constructor = Enemy;
 
 Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
@@ -68,21 +66,26 @@ Player.prototype.update = function () {
     this.offsetMaxX = PLAYER_CONF.offsetMaxX;
     this.offsetMinY = PLAYER_CONF.offsetMinY;
     this.offsetMaxY = PLAYER_CONF.offsetMaxY;
-    this.winner();
+    this.checkVictory();
 };
 
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    this.countWinnerСheckmate();
+    this.outputGameResult();
 };
 
-Player.prototype.winner = function () {
-    this.y < 0
-        ? (this.x = PLAYER_CONF.startX, this.y = PLAYER_CONF.startY, GAME_CONF.countWinner += 1)
-        : false;
+Player.prototype.checkVictory = function () {
+    if (this.y < 0) {
+        this.x = PLAYER_CONF.startX;
+        this.y = PLAYER_CONF.startY;
+        GAME_CONF.countWinner += 1;
+    }
+    // this.y < 0
+    //     ? (this.x = PLAYER_CONF.startX, this.y = PLAYER_CONF.startY, GAME_CONF.countWinner += 1)
+    //     : false;
 };
 
-Player.prototype.countWinnerСheckmate = function () {
+Player.prototype.outputGameResult = function () {
     ctx.textAlign = "center";
     ctx.font = "Bold 77px Arial";
     ctx.fillStyle = "greenyellow";
