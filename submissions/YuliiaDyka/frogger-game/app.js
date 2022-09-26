@@ -12,13 +12,14 @@ const stepSize = {
 const maxX = 500,
       enemyStartX = -150,
       affectedArea = 60,
-      numberofEnemies = 4;
-const enemyRows = [230, 146, 63, 313];
+      numberOfEnemies = 4,
+      firstEnemyRow = 63,
+      enemyRows = [];
+
 const initialSpeed = {
         max: 200,
         min: 60,
 }
-
 
 // Game Constants
 const winningArea = {
@@ -28,6 +29,12 @@ const winningArea = {
 const playingArea = {
     maxX: 408,
     maxY: 409,
+}
+const rowHeight = 83;
+
+// enemy rows calculation
+for (let i = 0; i < numberOfEnemies; i++) {
+    enemyRows.push(firstEnemyRow + rowHeight * i);
 }
 
 // Enemy
@@ -46,14 +53,16 @@ Enemy.prototype.update = function(dt) {
         this.x = enemyStartX;
         this.speed += 1;
     }
-
-    if (Math.abs(player.x - this.x) < affectedArea && Math.abs(player.y - this.y) < affectedArea) {
-        alert("Чао, лузер)");
-        player.x = defaultPlayer.x;
-        player.y = defaultPlayer.y;
-
-    }
+    this.isCollision(player);
 };
+
+Enemy.prototype.isCollision = function(incomePlayer) {
+    if (Math.abs(incomePlayer.x - this.x) < affectedArea && Math.abs(incomePlayer.y - this.y) < affectedArea) {
+        alert("Чао, лузер)");
+        incomePlayer.x = defaultPlayer.x;
+        incomePlayer.y = defaultPlayer.y;
+    }
+}
 
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -68,11 +77,6 @@ const Player = function(x, y) {
 };
 
 Player.prototype.update = function() {
-    if (this.y < winningArea.borderBottom && this.y > winningArea.borderTop) {
-        alert("Вітаннячка! Ви виграли!")
-        this.x = defaultPlayer.x;
-        this.y = defaultPlayer.y;
-    }
 };
 
 Player.prototype.render = function() {
@@ -92,6 +96,11 @@ Player.prototype.handleInput = function(key) {
             
             case "up":
             this.y -= stepSize.y;
+            if (this.y < winningArea.borderBottom && this.y > winningArea.borderTop) {
+                alert("Вітаннячка! Ви виграли!")
+                this.x = defaultPlayer.x;
+                this.y = defaultPlayer.y;
+            }
             break; 
 
             case "down":
@@ -115,9 +124,9 @@ function getRandomSpeed(max, min) {
 
 const player = new Player(defaultPlayer.x, defaultPlayer.y);
 const allEnemies = [];
-for (let i = 0; i < numberofEnemies; i++) {
-    allEnemies[i] = new Enemy(getRandomSpeed(initialSpeed.max, initialSpeed.min), enemyStartX, enemyRows[i]);
-}
+for (let i = 0; i < numberOfEnemies; i++) {
+    allEnemies.push(new Enemy(getRandomSpeed(initialSpeed.max, initialSpeed.min), enemyStartX, enemyRows[i]));
+};
 
 // event listeners
 
