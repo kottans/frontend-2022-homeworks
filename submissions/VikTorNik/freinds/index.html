@@ -13,17 +13,11 @@
 <body>
     <div class="wrapper">
         <nav id="pageNav" class="nav">
-            <div class="nav__div nav__local">
-                <input type="text" size="4" autofocus value="" id="input-name" class="nav-filter">
-                <label for="input-name" class="nav-caption"></label>
-            </div>
             <div class="nav__div nav__server">
+                <p class="nav-caption">download friends</p>
                 <div>
-                    <p class="nav-caption">Selection</p>
-                </div>
-                <div>
-                    <input type="number" min="1" max="100" step="1" value="10" id="check-totalFriend" class="nav-filter">
-                    <label for="check-totalFriend"><img height="30rem" src="img/freinds.png"></label>                    
+                    <input type="number" min="1" max="100" step="1" value="7" id="check-totalFriend" class="nav-filter">
+                    <label for="check-totalFriend"><img height="30rem" src="img/freinds.png"></label>
                 </div>
                 <div class="more-collumn">
                     <div>
@@ -34,7 +28,6 @@
                         <label for="check-female"><img img height="25rem" src="img/woman.png"></label>
                     </div>
                 </div>
-
                 <div class="more-collumn">
                     <div>
                         <input type="checkbox" id="check-UA" class="nav-filter">
@@ -61,6 +54,10 @@
                         <label for="check-US"><img height="25rem" src="img/usa.png"></label>
                     </div>
                 </div>
+            </div>
+
+            <div class="nav__div nav__local">
+                <p class="nav-caption">Filter by age</p>
                 <div class="more-collumn">
                     <div>
                         <img height="50rem" src="img/from.png">
@@ -71,6 +68,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="nav__div nav__local">
+                <p class="nav-caption">Filter by name</p>
+                <input type="text" size="4" autofocus value="" placeholder="name" id="input-name" class="nav-filter">
+                <label for="input-name" class="nav-caption"><img height="30rem" src="img/search.png"></label>
+            </div>
+
             <div class="nav__div nav__local">
                 <p class="nav-caption">Sorting</p>
                 <div class="control">
@@ -117,8 +121,10 @@
                         <input type="checkbox" id="check-email" class="nav-filter">
                         <label for="check-email"><img height="30rem" src="img/email.png"></label>
                     </div>
-                </div>                
+                </div>
             </div>
+
+
         </nav>
 
         <main id="pageMain" class="main">
@@ -129,4 +135,3 @@
 </body>
 
 </html>
-

@@ -22,6 +22,13 @@ body {
     grid-template-areas:
         "nav main";
     grid-template-columns: $menu-width $main-width;
+    //grid-template-rows: 500px;
+    //document.body.scrollHeight;
+
+    // grid-template-rows: none;
+    // grid-auto-rows: min-content;
+    //    grid-auto-rows: max-content;
+    //    grid-auto-rows: auto;
 }
 
 #pageNav {
@@ -33,28 +40,26 @@ body {
 }
 
 .nav {
-    background-color: $color-fon;
-    color: rgb(156, 250, 242);
-    font-weight: 700;    
+    background-color: rgb(0, 121, 125);
+    color: rgb(145, 240, 230);
+    font-weight: 700;
+    padding-top: 7px;
 }
 
-.nav__div {    
+.nav__div {
     display: block;
     font-size: 1.5rem;
-    line-height: 3.6rem;
+    line-height: 3.4rem;
     padding: 0.7rem 1.8rem;
-    box-shadow: .4vw .5vw 1vw rgb(47, 134, 118);
-    margin: 1.5vh 1vw 2.6vh 1vw;
+    margin: 1.5vh 1.1vw 2.2vh 1.1vw;
     border-radius: .5vw;
-    border: .15rem solid;
-    border-color: $color-dark;
-    background-color: rgb(22, 169, 174);    
+    background-color: rgb(255, 255, 255, 0.35);
 
     .more-collumn {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 100%;        
+        width: 100%;
     }
 
     .nav-filter {
@@ -84,7 +89,7 @@ body {
     }
 
     .nav-caption {
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: 600;
         text-transform: uppercase;
     }
@@ -98,21 +103,22 @@ body {
     display: grid;
     grid-template-columns: repeat(var(--columns-card), 1fr);
     grid-template-rows: repeat(var(--rows-card), 1fr);
+    padding: 10px;
 
     .div__card {
         display: flex;
-        background-color: rgb(234, 202, 135);
-        border: 0.3rem solid;
+        background-color: rgba(255, 255, 255, 0.5);
         border-color: $color-dark;
         border-radius: .9rem;
-        box-shadow: .4vw .5vw 1vw $color-dark;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         margin: 1.2vh .6vw;
 
         .card-image {
             float: left;
-            padding: 1.5vh .8vw;
+            padding: 13px;
 
             .card-photo {
+                border-radius: 6px;
                 width: 10rem;
                 height: 10rem;
             }
@@ -120,8 +126,17 @@ body {
 
         .card-text {
             padding: 1.5vh .1vw;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 600;
+
+            p:first-child {
+                font-size: 2.5rem;
+                opacity: 1;
+            }
+
+            p {
+                opacity: 0.5;
+            }
         }
     }
 
@@ -207,4 +222,3 @@ body {
         grid-template-columns: $menu-width $main-width;
     }
 }
-
