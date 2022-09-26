@@ -1,3 +1,11 @@
+/* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
+   Complete the below for code reviewers' convenience:
+
+   Code repository: https://github.com/OlexiyDobroskok/a-tiny-JS-world
+   Web app: https://olexiydobroskok.github.io/a-tiny-JS-world/
+   */
+
+// ======== OBJECTS DEFINITIONS ========
 class Inhabitant {
   constructor({
     species = "No species",
@@ -18,12 +26,12 @@ class Inhabitant {
   }
 
   introduceYourSelf() {
-    if (this.friends.length === 0) {
-      this.friends = "Looking for friends!";
-      return `<strong>${this.saying}! My name is ${this.name}. Species: ${this.species}. Gender: ${this.gender}. Friends: ${this.friends} </strong>`;
+    const template = `<strong>${this.saying}! My name is ${this.name}. Species: ${this.species}. Gender: ${this.gender}.`;
+    if (this.friends.length !== 0) {
+      const friendsName = this.friends.map((friend) => friend.name).join(", ");
+      return template + `Friends: ${friendsName}.`;
     }
-    const friendsName = this.friends.map((friend) => friend.name).join(", ");
-    return `<strong>${this.saying}! My name is ${this.name}. Species: ${this.species}. Gender: ${this.gender}. Friends: ${friendsName}. </strong>`;
+    return template + `Friends: Looking for friends!`;
   }
 }
 
