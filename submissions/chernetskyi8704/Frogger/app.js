@@ -44,11 +44,12 @@ const ENEMY_CONF = {
 
 let score = 0;
 // Enemies our player must avoid
-const Enemy = function (x, y) {
+const Enemy = function (x, y, player) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
   this.x = x;
   this.y = y;
+  this.player = player;
   this.speed = this.randomSpeed();
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
@@ -79,13 +80,13 @@ Enemy.prototype.update = function (dt) {
 
 Enemy.prototype.collision = function () {
   if (
-    this.x + PLAYER_CONF.minDistanceToCollision.width > player.x &&
-    this.x < player.x + PLAYER_CONF.minDistanceToCollision.width &&
-    this.y + PLAYER_CONF.minDistanceToCollision.height > player.y &&
-    this.y < player.y + PLAYER_CONF.minDistanceToCollision.height
+    this.x + PLAYER_CONF.minDistanceToCollision.width > this.player.x &&
+    this.x < this.player.x + PLAYER_CONF.minDistanceToCollision.width &&
+    this.y + PLAYER_CONF.minDistanceToCollision.height > this.player.y &&
+    this.y < this.player.y + PLAYER_CONF.minDistanceToCollision.height
   ) {
     score = 0;
-    player.resetInitialPosition();
+    this.player.resetInitialPosition();
   }
 };
 
@@ -110,8 +111,8 @@ Player.prototype.render = function () {
 };
 
 Player.prototype.resetInitialPosition = function () {
-  player.x = PLAYER_CONF.initialPosition.x;
-  player.y = PLAYER_CONF.initialPosition.y;
+  this.x = PLAYER_CONF.initialPosition.x;
+  this.y = PLAYER_CONF.initialPosition.y;
 };
 
 Player.prototype.handleInput = function (keyPressed) {
@@ -152,7 +153,11 @@ const allEnemiesInitialPositionsY = [
 ];
 
 allEnemiesInitialPositionsY.forEach(function (currentEnemyPositionY) {
-  let enemy = new Enemy(ENEMY_CONF.initialPosition.x, currentEnemyPositionY);
+  let enemy = new Enemy(
+    ENEMY_CONF.initialPosition.x,
+    currentEnemyPositionY,
+    player
+  );
   allEnemies.push(enemy);
 });
 
