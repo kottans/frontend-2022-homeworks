@@ -2,9 +2,10 @@ const cardsContainer = document.querySelector(".cards__container");
 const openFilterContainerBtn = document.querySelector(".open__filter__btn");
 const filterContainer = document.querySelector(".filter__container");
 const searchInput = document.querySelector(".search__input");
-const applyFiltersBtn = document.querySelector(".apply__filters_btn");
+const resetFiltersBtn = document.querySelector(".apply__filters_btn");
 const sortingRadioBtns = document.querySelectorAll('input[name="sorting"]');
 const filterRadioBtns = document.querySelectorAll('input[name="filter"]');
+const sortingForm = document.querySelector(".sorting__container");
 
 let initialPersonsData = [];
 let personsToRender = [];
@@ -12,7 +13,8 @@ let personsToRender = [];
 cardsContainer.addEventListener("click", handleCardClick);
 openFilterContainerBtn.addEventListener("click", handleFilterBtnClick);
 searchInput.addEventListener("input", handleNameSearch);
-applyFiltersBtn.addEventListener("click", applyFilters);
+sortingForm.addEventListener("change", handleSortAndFilter);
+resetFiltersBtn.addEventListener("click", resetFilters);
 
 getData();
 
@@ -110,12 +112,12 @@ function renderPersonsCards(arrayOfPersons) {
       element: personCard,
     };
   });
-
+  cardsContainer.innerHTML = "";
   cardsContainer.append(cardsWrapper);
 }
 
 function handleCardClick({ target }) {
-  const neededElement = target.closest('.person__card');
+  const neededElement = target.closest(".person__card");
   neededElement.classList.toggle("person__card_spreaded");
 }
 
@@ -133,59 +135,71 @@ function handleNameSearch({ target }) {
   });
 }
 
-function applyFilters() {
-  let genderFilter;
-  filterRadioBtns.forEach((radio) => {
-    if (radio.checked) genderFilter = radio.value;
-  });
-  let ageOrNameSort;
-  sortingRadioBtns.forEach((radio) => {
-    if (radio.checked) ageOrNameSort = radio.value;
-  });
+function handleSortAndFilter() {
+  let genderFilter = [...filterRadioBtns].find((radio) => {
+    if (radio.checked) return radio;
+  }).value;
+  let ageOrNameSort = [...sortingRadioBtns].find((radio) => {
+    if (radio.checked) return radio;
+  }).value;
 
   let sortedArray = [...initialPersonsData];
 
-  sortedArray = filteringByGender();
-  sortedArray = sortingByAgeOrName();
+  searchInput.value = "";
 
-  personsToRender = [];
-  cardsContainer.innerHTML = "";
+  renderPersonsCards(
+    sortedArray
+      .filter(
+        (() => {
+          switch (genderFilter) {
+            case "randomGender":
+              return (person) => person.gender;
+            case "female":
+              return (person) => person.gender === "female";
+            case "male":
+              return (person) => person.gender === "male";
+            default:
+              break;
+          }
+        })()
+      )
+      .sort(
+        (() => {
+          switch (ageOrNameSort) {
+            case "youngerSort":
+              return (a, b) => a.age - b.age;
+            case "elderSort":
+              return (a, b) => b.age - a.age;
+            case "randomSort":
+              return () => {
+                return 0.5 - Math.random();
+              };
+            case "ascendingSort":
+              return (a, b) => a.firstName.localeCompare(b.firstName);
+            case "descendingSort":
+              return (a, b) => b.firstName.localeCompare(a.firstName);
+            default:
+              break;
+          }
+        })()
+      )
+  );
+}
 
-  renderPersonsCards(sortedArray);
+function resetFilters() {
+  sortingRadioBtns.forEach((radio) => {
+    radio.checked = false;
+  });
+  filterRadioBtns.forEach((radio) => {
+    radio.checked = false;
+  });
 
-  function filteringByGender() {
-    switch (genderFilter) {
-      case "randomGender":
-        return sortedArray;
-      case "female":
-        return sortedArray.filter((person) => person.gender === "female");
-      case "male":
-        return sortedArray.filter((person) => person.gender === "male");
-      default:
-        break;
-    }
-  }
+  searchInput.value = "";
 
-  function sortingByAgeOrName() {
-    switch (ageOrNameSort) {
-      case "youngerSort":
-        return sortedArray.sort((a, b) => a.age - b.age);
-      case "elderSort":
-        return sortedArray.sort((a, b) => a.age - b.age).reverse();
-      case "randomSort":
-        return sortedArray.sort(function () {
-          return 0.5 - Math.random();
-        });
-      case "ascendingSort":
-        return sortedArray.sort((a, b) =>
-          a.firstName.localeCompare(b.firstName)
-        );
-      case "descendingSort":
-        return sortedArray
-          .sort((a, b) => a.firstName.localeCompare(b.firstName))
-          .reverse();
-      default:
-        break;
-    }
-  }
+  const baseSortRadio = document.querySelector('input[value="randomSort"]');
+  baseSortRadio.checked = true;
+  const baseFilterRadio = document.querySelector('input[value="randomGender"]');
+  baseFilterRadio.checked = true;
+
+  renderPersonsCards(initialPersonsData);
 }
