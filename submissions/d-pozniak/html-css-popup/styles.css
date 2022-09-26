@@ -1,0 +1,219 @@
+@font-face {
+    font-family: Antic;
+    src: url(../fonts/AnticSlab-Regular.woff2),
+    url(../fonts/AnticSlab-Regular.woff);
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+html,
+body,
+div,
+span,
+a,
+img,
+footer,
+header,
+nav {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+:focus {
+    outline: 0;
+}
+svg {
+    fill: #68838b;
+}
+body {
+    font-family: Antic, Arial, sans-serif;
+}
+
+/* HEADER */
+.page-header {
+    background: linear-gradient(180deg, rgba(191, 239, 255, 0.3), transparent);
+}
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+    max-width: 1560px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.logo-wrapper {
+    margin: 0 15px;
+}
+.logo-link--wrapper {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.logo-img {
+    fill: #68838b;
+}
+.logo-title {
+    font-size: 54px;
+    margin-left: 20px;
+    color: #68838b;
+}
+.nav-list {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: flex-end;
+}
+.item-wrapper {
+    margin: 0 15px;
+}
+.popup-label {
+    cursor: pointer;
+    display: block;
+}
+
+/* POPUP */
+.nav-list {
+    position: relative;
+}
+.popup-input {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+}
+.popup-menu--wrapper {
+    display: none;
+}
+
+/* checked POPUP */
+.popup-input:checked ~ .popup-menu--wrapper {
+    display: block;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    padding: 30px;
+    margin: 10px 15px;
+    overflow-y: scroll;
+    height: 516px;
+}
+.popup-menu--wrapper::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+}
+.popup-menu--wrapper::-webkit-scrollbar {
+    width: 5px;
+}
+.popup-menu--wrapper::-webkit-scrollbar-thumb {
+    background-color: #68838b;
+    border-radius: 10px;
+}
+.popup-menu {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(3, 70px);
+    grid-auto-flow: row;
+    grid-gap: 30px;
+    justify-items: center;
+    align-items: center;
+}
+.popup-item--card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.card-subtitle {
+    padding-top: 5px;
+    color: #68838b;
+    font-family: Arial, sans-serif;
+}
+.more-menu--wrapper {
+    display: none;
+}
+.card-image img {
+    width: 60px;
+}
+
+/* more checked */
+.more-section {
+    display: flex;
+    justify-content: center;
+}
+.more-label {
+    font-size: 24px;
+    margin-top: 30px;
+    color: #68838b;
+    cursor: pointer;
+}
+.more-input {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+}
+.more-input:checked ~ .more-menu--wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.more-input:checked ~ .more-label {
+    display: none;
+}
+.popup-menu.more {
+    border-top: 1px solid #68838b;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.more-link--wrapper {
+    margin-top: 30px;
+}
+.link-even--more {
+    text-decoration: none;
+    font-size: 24px;
+    color: #68838b;
+}
+
+/* Interaction */
+.popup-menu--item:focus-within .card-image > svg,
+.popup-menu--item:hover .card-image > svg,
+.item-wrapper:hover svg.nav-svg,
+.logo-link--wrapper:hover .logo-img > svg,
+.item-wrapper:focus-within svg.nav-svg,
+.logo-wrapper:focus-within .logo-img > svg {
+    fill: #f08080;
+}
+.popup-menu--item:focus-within .card-subtitle,
+.more-section:focus-within .more-label,
+.more-link--wrapper:focus-within .link-even--more,
+.logo-wrapper:focus-within .logo-title,
+.popup-menu--item:hover .card-subtitle,
+.more-section:hover .more-label,
+.more-link--wrapper:hover .link-even--more,
+.logo-link--wrapper:hover .logo-title {
+    color: #f08080;
+}
+.popup-menu--item:focus-within .popup-item--card,
+.more-section:focus-within .more-label,
+.more-link--wrapper:focus-within .link-even--more,
+.item-wrapper:focus-within svg.nav-svg,
+.logo-wrapper:focus-within {
+    outline: 2px solid #f08080;
+    border-radius: 8px;
+}
+/* Adaptive attempt */
+@media (max-width: 840px) {
+    .logo-title {
+        font-size: 40px;
+    }
+}
+@media (max-width: 650px) {
+    .logo-title,
+    .nav-list--item:nth-child(1),
+    .nav-list--item:nth-child(2),
+    .nav-list--item:nth-child(4) {
+        display: none;
+    }
+}
