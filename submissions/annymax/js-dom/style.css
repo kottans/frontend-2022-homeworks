@@ -22,7 +22,7 @@ html {
 
 .body {
   display: flex;
-  background-image: url("../images/arena.jpg");
+  background-image: url("../images/arena2.jpg");
   background-size: 100%;
   display: flex;
   flex-direction: column;
@@ -45,19 +45,22 @@ html {
   flex-direction: column;
 }
 
+.button {
+  background-color: var(--main-color);
+  margin-left: 15px;
+}
+
+.image-ball {
+  max-width: 70px;
+  max-height: 70px;
+}
+
 .nav {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   list-style: none;
-}
-
-.image-ball {
-  max-width: 70px;
-  max-height: 70px;
-  margin-top: 30px;
-  margin-left: 30px;
 }
 
 .site-title {
@@ -141,7 +144,7 @@ html {
   font-weight: 800;
   border-radius: 10px;
   padding: 15px;
-  opacity: 75%;
+  opacity: 80%;
 }
 
 .image-ball:hover,
@@ -162,6 +165,16 @@ html {
 }
 
 @media (max-width: 827px) {
+  .body {
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .main{
+    height: 100vh;
+  }
+
   .menu-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -178,7 +191,17 @@ html {
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 560px) {
+.body {
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main{
+  height: 100vh;
+}
+
   .menu-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
