@@ -37,7 +37,7 @@ Enemy.prototype.update = function(dt) {
         this.horizontalMove = enemyStartPosition;
         this.speed = speedIncreaser + Math.floor(Math.random() * 222);
     };
-    this.checkCollision(player);
+    this.checkCollision();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -45,7 +45,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.horizontalMove, this.verticalPosition);
 };
 
-Enemy.prototype.checkCollision = function (player) {
+Enemy.prototype.checkCollision = function () {
     if (player.horizontalPosition < this.horizontalMove + enemyWidth &&
         player.horizontalPosition + enemyWidth > this.horizontalMove &&
         player.verticalPosition < this.verticalPosition + enemyHeight &&
