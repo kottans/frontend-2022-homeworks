@@ -47,13 +47,16 @@ Enemy.prototype.update = function(dt){
         this.x = enemyRestartX;
         this.speedX = allSpeeds[Math.floor(Math.random()*3)];
     };
+    this.checkColision()
+};
+Enemy.prototype.checkColision = function(){
     if (this.y === player.y){
         if ((this.x - player.x < collisionOffset ) && (player.x - this.x < collisionOffset )) {
             player.x = playerStartX;
             player.y = playerStartY;
         };    
     };
-};
+}
 
 function addBug() {
     rangesY.forEach ( (levelMark)=>  allEnemies
