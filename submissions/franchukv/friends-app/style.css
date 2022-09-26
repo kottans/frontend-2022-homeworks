@@ -138,6 +138,7 @@ body {
 }
 
 .popup-closer {
+    user-select: none;
     content: '';
     position: absolute;
     display: block;
@@ -343,6 +344,7 @@ body {
 }
 
 #messagesSendButton {
+    user-select: none;
     cursor: pointer;
     position: absolute;
     border: none;
@@ -479,6 +481,7 @@ body {
 }
 
 .order-by__label {
+    user-select: none;
     text-align: center;
     border-radius: 5px;
     font-size: 13px;
@@ -518,6 +521,7 @@ body {
 }
 
 .gender__label {
+    user-select: none;
     width: 32%;
     flex-basis: 32%;
     border-radius: 5px;
@@ -535,6 +539,7 @@ body {
 }
 
 #resetButton {
+    user-select: none;
     cursor: pointer;
     width: 100%;
     height: 40px;
@@ -551,6 +556,7 @@ body {
 }
 
 .options-button {
+    user-select: none;
     border: none;
     display: flex;
     justify-content: center;
@@ -685,6 +691,7 @@ body {
 }
 
 #usersLimitResetButton {
+    user-select: none;
     cursor: pointer;
     flex-basis: 49%;
     width: 49%;
@@ -702,6 +709,7 @@ body {
 }
 
 #usersLimitAcceptButton {
+    user-select: none;
     cursor: pointer;
     flex-basis: 49%;
     width: 49%;
@@ -872,8 +880,39 @@ body {
     opacity: .7;
 }
 
+@media(max-width: 5000px) {
+    .user-card {
+        width: calc(8.333% - 14px);
+    }
 
-@media(min-width: 2000px) {
+    .ph-container {
+        width: calc(8.333% - 14px);
+    }
+}
+
+@media(max-width: 4321px) {
+    .user-card {
+        width: calc(10% - 14px);
+    }
+
+    .ph-container {
+        width: calc(10% - 14px);
+    }
+}
+
+
+@media(max-width: 3385px) {
+    .user-card {
+        width: calc(14.28% - 14px);
+    }
+
+    .ph-container {
+        width: calc(14.28% - 14px);
+    }
+}
+
+
+@media(max-width: 2560px) {
     .user-card {
         width: calc(16.666% - 14px);
     }
@@ -925,6 +964,7 @@ body {
     }
 
     .to-top-button {
+        user-select: none;
         border: none;
         position: fixed;
         border-radius: 5px;
@@ -989,6 +1029,7 @@ body {
     }
 
     .bottom-menu-button {
+        user-select: none;
         border: none;
         display: flex;
         justify-content: center;
