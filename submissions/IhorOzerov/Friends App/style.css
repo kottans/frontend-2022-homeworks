@@ -11,9 +11,9 @@
 body{
     -moz-user-drag: none;
     -webkit-user-drag: none;
-    user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
+    user-select: none;
     font-size: 16px;
     background: linear-gradient(0.25turn, #e49b10, #c0198b);
     font-family: 'Kennebunkport', sans-serif;
@@ -37,20 +37,13 @@ body{
     text-align: center;
 }
 
-.buttons__sorting{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 23vw;
-}
-
-label{
+.searchLabel{
     height: 50px;
     letter-spacing: 0.2rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
-input[type='search']{
+#searchFriend{
     border: none;
     border-radius: 8px;
     height: 30px;
@@ -62,16 +55,16 @@ input[type='search']{
     background-color: #d8c5be;
 }
 
-input[type='search']::placeholder{
+#searchFriend::placeholder{
     font-family: 'Kennebunkport', sans-serif;
     letter-spacing: .25rem;
 }
 
-select{
+.searchSelector{
     cursor: pointer;
     margin: 5px;
-    width: 8vw;
-    min-width: 90px;
+    width: 15vw;
+    min-width: 100px;
     text-align: center;
     border: none;
     background-color: rgb(255, 255, 255);
@@ -79,13 +72,16 @@ select{
     border-radius: 7px;
     background-color: #d8c5be;
     font-family: 'Kennebunkport', sans-serif;
-    letter-spacing: 0.12rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.13rem;
     height: 30px;
 }
 
-option{
+.searchSelector option{
     border-radius: 10px;
     color: #c0198b;
+    font-size: 1.3rem;
+    text-align: center;
 }
 
 a{
@@ -109,23 +105,24 @@ a{
     border-radius: 20px;
 }
 
-.color{
+.profileColor{
     background-color: #2d8b57;
     top: 0;
     height: 85px;
-    width: 101%;
+    width: 100%;
     position: absolute;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
-img{
+.myFace{
     z-index: 1;
     position: relative;
 }
 
-p{
+.myData{
     margin-bottom: 7px;
+    font-size: 1.1rem;
 }
 
 .errorScreen{
@@ -155,61 +152,100 @@ p{
         width: auto;
     }
 }
-@media (max-width: 1000px) {
+
+@media (max-width: 1000px)  {
     .list {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
 @media (max-width: 800px) {
     .list {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-@media (max-width: 600px) {
-    .list {
-        grid-template-columns: repeat(2, 1fr);
+
+@media (max-width: 600px)  {
+    .header{
+        padding-bottom: 0;
     }
-    label{
+    .list {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 30px 5px 5px 10px;
+    }
+    .searchLabel{
         font-size: 1.2rem;
+        padding: 10px;
     }
     .buttons{
         flex-wrap: wrap;
-        margin-bottom: 40px;
+        margin-bottom: 55px;
     }
-    .buttons__sorting{
-        display: flex;
-        justify-content: space-around;
-        width: 90vw;
-        margin: 10px;
-    }
-    select{
+    .searchSelector{
         height: 30px;
         width: 130px;
     }
-    input[type='search']{
-        width: 160px;
-        height: 30px;
+    #searchFriend{
+        width: 80vw;
+        height: 35px;
+    }
+    .human{
+        height: 150px;
+        width: 28vw;
+        font-size: .8rem;
+        font-weight: 500;
+        margin: 10px 3px;
+    }
+    .myFace{
+        height: 75px;
+    }
+    .myData{
+        margin: 2px 4px;
+        max-width: 90vw;
+        font-size: 3vw;
+    }
+    .profileColor{
+        height: 50px;
     }
 }
+
 @media (max-width: 400px) {
-    .list {
-        grid-template-columns: 1fr;
+    .header{
+        padding-bottom: 0;
     }
     .buttons{
         flex-wrap: wrap;
     }
-    select{
+    .searchSelector{
         height: 40px;
         width: 100px;
     }
-    input[type='search']{
-        width: 120px;
+    #searchFriend{
+        width: 80vw;
         height: 40px;
     }
-    .buttons__sorting{
-        margin: 30px -10px;
+    .searchLabel{
+        margin: 3px;
     }
-    .list{
-        padding-top: 40px;
+    .list {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 40px 5px 5px 10px;
+    }
+    .human{
+        height: 150px;
+        width: 28vw;
+        font-size: .6rem;
+        font-weight: 600;
+        margin: 10px 3px;
+    }
+    .myFace{
+        height: 60px;
+    }
+    .myData{
+        margin: 6px 4px;
+        max-width: 90vw;
+    }
+    .profileColor{
+        height: 45px;
     }
 }
