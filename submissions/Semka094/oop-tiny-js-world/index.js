@@ -59,31 +59,31 @@ class Dog extends Animal {
   }
 }
 
-const knopa = new Cat({
+const cat = new Cat({
   name: 'Knopa',
   gender: 'female',
 });
 
-const bubluk = new Dog({
+const dog = new Dog({
   name: 'Bubluk',
   gender: 'male',
 });
 
-const olena = new Woman({
+const woman = new Woman({
   name: 'Olena',
   saying: 'Hello there'
 });
 
-const kostia = new Man({
+const man = new Man({
   name: 'Kostia',
   saying: 'Hi, folks!'
 });
 
-const inhabitants = [knopa, bubluk, olena, kostia];
-const inhabitantKeys = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
+const inhabitants = [cat, dog, woman, man];
+const inhabitantProperties = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
 
 inhabitants.forEach((inhabitant) => {
   console.log(
-    inhabitantKeys.map((key) => inhabitant[key] ?? 'N/A').join('; ')
+    inhabitantProperties.map((inhabitantProperty) => inhabitant[inhabitantProperty] ?? 'N/A').join('; ')
   )
 });
