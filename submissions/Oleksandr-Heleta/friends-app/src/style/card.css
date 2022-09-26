@@ -11,7 +11,8 @@
     letter-spacing: 1px;
 }
 
-.card:hover {
+.card:hover,
+.card:focus {
     height: 350px;
     margin-top: 100px;
 }
@@ -29,7 +30,8 @@
     transition: 0.5s;
 }
 
-.card:hover .card-img {
+.card:hover .card-img,
+.card:focus .card-img {
     width: 250px;
     height: 250px;
 
@@ -86,3 +88,4 @@
 .card-location {
     padding: 2px;
 }
+

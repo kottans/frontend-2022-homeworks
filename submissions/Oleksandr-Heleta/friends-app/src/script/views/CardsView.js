@@ -12,7 +12,6 @@ class CardsView extends BaseView {
         this.userCard = new CardView();
         this.template = '';
         this.className = 'main';
-
     }
 
 
@@ -21,32 +20,26 @@ class CardsView extends BaseView {
     }
 
     render() {
+        if (this.cardsModel.error) {
+
+            return `<h3 class="loading">Error<br>${this.cardsModel.error} </h3>`;
+        }
         if (this.cardsModel.attributes) {
             let str = '<ul class="friends">';
             str += this.cardsModel.attributes
-                .map((attributes, index) => new CardView(attributes))
+                .map((user, index) => new CardView(user))
                 .map((card) => card.render())
                 .join('');
             str += '</ul>'
-            // if (this.cardsModel.attributes.length > 10) {
-            // const lengthArr = this.cardsModel.attributes.length / 10;
-            // const buttons = new Array(lengthArr)
-            // .map((element, index) => element = `<button id="${index}" class="form-button button" >${index}</button>`)
-            // .join('');
-            // console.log(buttons);
-            // str += `<div>${buttons}</div>`;
-            // }
             return str;
         } else {
-            this.cardsModel.createUserList();
+
             return '<h3 class="loading"> Loading...</h3>'
         }
     }
 
     afterRender() {
-
-
-
+        window.onload = this.controller.onLoad.bind(this.controller);
     }
 
     afterUpdate() {
@@ -55,3 +48,4 @@ class CardsView extends BaseView {
 }
 
 export default CardsView
+

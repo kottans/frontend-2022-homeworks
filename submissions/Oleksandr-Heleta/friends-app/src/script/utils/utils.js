@@ -1,3 +1,11 @@
+const ABC_Ascending = 'abcAscending',
+    ABC_Descending = 'abcDescending',
+    AGE_Ascending = 'ageAscending',
+    AGE_Descending = 'ageDescending',
+    BOTH = 'both';
+
+
+
 function templateStr(tpl, attributes) {
     for (var i in attributes) {
         if (attributes.hasOwnProperty(i)) {
@@ -9,13 +17,23 @@ function templateStr(tpl, attributes) {
     return tpl;
 };
 
-async function request(URL, func) {
-    const response = await fetch(URL);
-    const users = await response.json().results;
-
-    console.log(users)
-    return func(users);
-
+function sortStr(firstStr, secondStr) {
+    var nameA = firstStr.toLowerCase(), nameB = secondStr.toLowerCase()
+    if (nameA < nameB)
+        return -1
+    if (nameA > nameB)
+        return 1
+    return 0
 }
 
-export { templateStr, request };
+
+export {
+    templateStr,
+    sortStr,
+    ABC_Ascending,
+    ABC_Descending,
+    AGE_Ascending,
+    AGE_Descending,
+    BOTH
+};
+

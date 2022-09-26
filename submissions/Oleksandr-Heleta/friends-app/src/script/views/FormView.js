@@ -6,6 +6,14 @@ import abcDescending from '../../assets/descending_sort_abc.png';
 import numbAscending from '../../assets/sort_ascending_numbers.png';
 import numbDescending from '../../assets/sort_descending_numbers.png';
 
+import {
+    ABC_Ascending,
+    ABC_Descending,
+    AGE_Ascending,
+    AGE_Descending,
+    BOTH
+} from "../utils/utils";
+
 import BaseView from "./BaseView";
 import Controller from "../utils/Controler";
 import FormModel from "../models/FormModel";
@@ -33,7 +41,7 @@ class FormView extends BaseView {
     afterRender() {
         const form = document.querySelector(".form");
         form.addEventListener('submit', this.controller.onSubmitForm.bind(this.controller))
-        form.addEventListener('click', this.controller.onCheck.bind(this.controller))
+        form.addEventListener('click', this.controller.onClick.bind(this.controller))
         form.addEventListener('input', this.controller.onInput.bind(this.controller))
 
     }
@@ -51,11 +59,11 @@ class FormView extends BaseView {
          <h3 class="form-subtitle">filter</h3>
          <div class="form-box">
              <div class="form-group">
-                 <input type="number" name="findAge" id="minAge" class="form-input" placeholder=" ">
+                 <input type="number" name="findAge" id="minAge" class="form-input" placeholder=" " min="0" max="100">
                  <label for="minAge" class="form-label">min age</label>
              </div>
              <div class="form-group">
-                 <input type="number" name="findAge" id="maxAge" class="form-input" placeholder=" ">
+                 <input type="number" name="findAge" id="maxAge" class="form-input" placeholder=" " min="0" max="100">
                  <label for="maxAge" class="form-label">max age</label>
              </div>
          </div>
@@ -73,7 +81,7 @@ class FormView extends BaseView {
                  </label>
              </div>
              <div class="form-group">
-                 <input class="form-checkbox" type="radio" name="gender" id="both" value="both" checked >
+                 <input class="form-checkbox" type="radio" name="gender" id="both" value=${BOTH} checked >
                  <label class="form-checkbox_lable button" for="both">
                      <img class="form-img" src=${both} alt="">
                  </label>
@@ -83,13 +91,13 @@ class FormView extends BaseView {
          <div class="form-box">
              <h3 class="form-subtitle">by name</h3>
              <div class="form-group">
-                 <input class="form-checkbox" type="radio" name="sort" id="abcAscending" value="abcAscending" checked>
+                 <input class="form-checkbox" type="radio" name="sort" id="abcAscending" value=${ABC_Ascending} checked>
                  <label class="form-checkbox_lable button" for="abcAscending">
                      <img class="form-img" src=${abcAscending} alt="">
                  </label>
              </div>
              <div class="form-group">
-                 <input class="form-checkbox" type="radio" name="sort" id="abcDescending" value="abcDescending">
+                 <input class="form-checkbox" type="radio" name="sort" id="abcDescending" value=${ABC_Descending}>
                  <label class="form-checkbox_lable button" for="abcDescending">
                      <img class="form-img" src=${abcDescending} alt="">
                  </label>
@@ -98,20 +106,22 @@ class FormView extends BaseView {
          <div class="form-box">
              <h3 class="form-subtitle">by age</h3>
              <div class="form-group">
-                 <input class="form-checkbox" type="radio" name="sort" id="ageAscending" value="ageAscending">
+                 <input class="form-checkbox" type="radio" name="sort" id="ageAscending" value=${AGE_Ascending}>
                  <label class="form-checkbox_lable button" for="ageAscending">
                      <img class="form-img" src=${numbAscending} alt="">
                  </label>
              </div>
              <div class="form-group">
-                 <input class="form-checkbox" type="radio" name="sort" id="ageDescending" value="ageDescending">
+                 <input class="form-checkbox" type="radio" name="sort" id="ageDescending" value=${AGE_Descending}>
                  <label class="form-checkbox_lable button" for="ageDescending">
                      <img class="form-img" src=${numbDescending} alt="">
                  </label>
              </div>
          </div>
-         <button class="form-button button" type="submit">submit</button>
+         <button class="form-button button" type="reset" id="reset">reset</button>
+         <button class="form-button button" type="submit" id="submit">submit</button>
      </form > `;
 }
 
 export default FormView
+

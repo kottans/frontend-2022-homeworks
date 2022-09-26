@@ -1,5 +1,9 @@
 import FormModel from "../models/FormModel";
 import CardsModel from "../models/CardsModel";
+import {
+    ABC_Ascending,
+    BOTH
+} from "../utils/utils";
 
 class Controller {
     constructor() {
@@ -7,21 +11,35 @@ class Controller {
         this.cardsModel = new CardsModel();
     }
 
-    setDataFromForm(event) {
-        const formElement = event.target.closest('.form');
-        const formData = {
-            name: formElement.findName.value.trim(),
-            minAge: +formElement.minAge.value || undefined,
-            maxAge: +formElement.maxAge.value || undefined,
-            gender: formElement.gender.value,
-            sort: formElement.sort.value,
-        };
-
-        this.cardsModel.findAndSort(formData);
+    getDOMelem(event, selector) {
+        return event.target.closest(selector);
     }
 
-    onOpenMobileMenu(event) {
-        const menuBtn = event.target;
+    resetForm(event) {
+        const { findName, minAge, maxAge, gender, sort } = this.getDOMelem(event, '.form');
+        findName.value = '';
+        minAge.value = '';
+        maxAge.value = '';
+        gender.value = BOTH;
+        sort.value = ABC_Ascending;
+        this.setRequirementsFromForm(event);
+    }
+
+    setRequirementsFromForm(event) {
+        const { findName, minAge, maxAge, gender, sort } = this.getDOMelem(event, '.form');
+        const formRequirements = {
+            name: findName.value.trim(),
+            minAge: +minAge.value || undefined,
+            maxAge: +maxAge.value || undefined,
+            gender: gender.value,
+            sort: sort.value
+        };
+
+        this.cardsModel.findAndSort(formRequirements);
+    }
+
+    onOpenMobileMenu() {
+        const menuBtn = document.querySelector('.mob_menu');
         document.body.classList.toggle('lock');
         const aside = document.querySelector('.aside');
         aside.classList.toggle('active');
@@ -30,28 +48,49 @@ class Controller {
 
     onSubmitForm(event) {
         event.preventDefault();
+        this.setRequirementsFromForm(event);
+    }
 
-        this.setDataFromForm(event);
+    onClick(event) {
+        if (this.getDOMelem(event, '.form-checkbox')) {
+            this.onCheck(event);
+        }
+        if (this.getDOMelem(event, '.form-button')) {
+            switch (this.getDOMelem(event, '.form-button').id) {
+                case 'submit':
+                    if (this.getDOMelem(event, '.active')) {
+                        this.onOpenMobileMenu();
+                    }
+                    break;
+                case 'reset':
+                    this.resetForm(event);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     onCheck(event) {
-        if (event.target.closest('.form-checkbox')) {
-            const checkBox = event.target.closest('.form-checkbox');
-            this.setDataFromForm(event);
-            checkBox.checked = true;
-        }
+        const checkBox = this.getDOMelem(event, '.form-checkbox');
+        this.setRequirementsFromForm(event);
+        checkBox.checked = true;
     }
 
     onInput(event) {
-        const input = event.target.closest('.form-input');
+        const input = this.getDOMelem(event, '.form-input');
         if (input) {
-            // console.log(input.value);
-            this.setDataFromForm(event);
+            this.setRequirementsFromForm(event);
 
         }
+    }
+
+    onLoad() {
+        this.cardsModel.createUserList();
     }
 
 
 };
 
 export default Controller
+

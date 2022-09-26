@@ -27,7 +27,6 @@ a:visited {
 #root {
     display: grid;
     grid-template-columns: 25% 75%;
-
 }
 
 .header {
@@ -38,7 +37,6 @@ a:visited {
     z-index: 2;
     height: 100px;
     box-shadow: 0 4px 16px #ccc;
-
 }
 
 .header-title {
@@ -64,7 +62,6 @@ a:visited {
 
 .main {
     grid-column: 2/3;
-
 }
 
 .friends {
@@ -123,7 +120,6 @@ a:visited {
     }
 
     .aside {
-
         pointer-events: none;
         position: fixed;
         top: 100px;
@@ -147,3 +143,4 @@ a:visited {
         grid-template-columns: repeat(1, 1fr);
     }
 }
+

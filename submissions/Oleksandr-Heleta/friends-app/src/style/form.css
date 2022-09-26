@@ -28,6 +28,7 @@
 .form-group {
     position: relative;
     margin: 0 5px 24px 5px;
+
 }
 
 .form-box {
@@ -47,6 +48,7 @@
 
 .form-input {
     width: 100%;
+    min-width: 100px;
     padding-bottom: 10px;
     border: none;
     border-bottom: 1px solid #e0e0e0;
@@ -60,8 +62,11 @@
 }
 
 .form-button {
+    margin: 10px 0;
     padding: 10px 20px;
     width: 100%;
+    font-family: sans-serif;
+    color: #000;
 }
 
 .form-input:focus~.form-label,
@@ -94,3 +99,4 @@
 .form-checkbox:checked~.form-checkbox_lable {
     background-color: rgba(0, 113, 240, 0.7);
 }
+

@@ -5,8 +5,11 @@ class BaseModel extends PubSub {
 
     }
 
-    clear() {
-        throw new Error('Need to override clear method');
+    clear(response, reject) {
+        if (!response.ok) {
+            throw Error(response.status);
+        }
+        return response;
     }
 };
 
