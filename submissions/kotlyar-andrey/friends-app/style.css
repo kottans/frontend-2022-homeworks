@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 10px;
+  text-align: center;
+  font-size: 36px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.message {
+  font-size: 36px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  color: #772299;
+  border: 1px solid #772299;
+}
+
+.loading {
+  color: #772299;
+  border: 1px solid #772299;
+}
+
+.error {
+  color: #ff7777;
+  border: 1px solid #ff7777;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.friends-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 10px;
+  width: 75%;
+}
+
+.menu {
+  width: 25%;
+  padding: 10px;
+  margin: 10px 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form {
+  display: block;
+  width: 100%;
+  text-align: center;
+  position: sticky;
+  top: 2px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ddaaff;
+  border: 2px solid #772299;
+}
+
+.form__title {
+  font-size: 18px;
+  margin-top: 16px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  display: block;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px 0 4px 0;
+  border-bottom: 2px solid #000;
+  color: #000;
+  margin-bottom: 10px;
+  background-color: #ddaaff;
+  text-align: center;
+}
+
+input[type="text"]:focus {
+  border-bottom: 2px solid #772299;
+  color: #772299;
+}
+
+.card-wrapper {
+  margin: 10px;
+  width: 250px;
+}
+
+.card {
+  background-color: #ddaaff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card__header {
+  background-color: #772299;
+  color: #f0f0f0;
+  padding: 4px 10px;
+  text-align: center;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card__content {
+  padding: 6px 10px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.card__photo {
+  border-radius: 50%;
+}
+
+.card__toolbar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #772299;
+}
+
+.card__toolbar a {
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  padding: 2px;
+  font-size: 18px;
+  color: #f0f0f0;
+}
+
+.card__toolbar a:hover {
+  background-color: #550077;
+}
+
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .menu {
+    width: 98%;
+    margin: 0 auto;
+  }
+
+  .friends-list {
+    width: 98%;
+  }
+}
