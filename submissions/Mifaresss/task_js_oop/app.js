@@ -5,26 +5,20 @@ const ROWS = 6;
 const FIELD_WIDTH = CELL_WIDTH * COLUMNS;
 const FIELD_HEIGHT = CELL_HEIGHT * ROWS;
 
-const PLAYER_START_POSITION_X = 202;
-const PLAYER_START_POSITION_Y = 385;
-const PLAYER_STEP_LENGTH_X = 101;
-const PLAYER_STEP_LENGTH_Y = 83;
+const PLAYER_WIDTH = 77;
+const PLAYER_HEIGHT = 64;
+const PLAYER_START_POSITION_X = CELL_WIDTH * Math.floor(COLUMNS / 2);
+const PLAYER_START_POSITION_Y = PLAYER_HEIGHT * ROWS;
 const AVAILABLE_PLACES_FOR_PLAYER = {
-	minX: PLAYER_START_POSITION_X - PLAYER_STEP_LENGTH_X * 2,
-	maxX: PLAYER_START_POSITION_X + PLAYER_STEP_LENGTH_X * 2,
-	minY: PLAYER_START_POSITION_Y - PLAYER_STEP_LENGTH_Y * 5,
+	minX: PLAYER_START_POSITION_X - CELL_WIDTH * 2,
+	maxX: PLAYER_START_POSITION_X + CELL_WIDTH * 2,
+	minY: PLAYER_START_POSITION_Y - CELL_HEIGHT * 5,
 	maxY: PLAYER_START_POSITION_Y
 }
-const PLAYER_WIDTH = 77;
-const PLAYER_HEIGHT = 66;
 
 const ENEMIES_SPEED = { min: 100, max: 350 };
 const ENEMIES_START_POSITION_X = -100;
-const ENEMIES_START_POSITION_Y = {
-	first: 60,
-	second: 143,
-	third: 226,
-}
+const ENEMIES_START_POSITION_Y = [60, 143, 226];
 
 
 const Character = function (x, y, sprite) {
@@ -41,8 +35,8 @@ Character.prototype.render = function () {
 // ============================ Player ============================
 const Player = function (x, y, sprite) {
 	Character.call(this, x, y, sprite)
-	this.stepLengthX = PLAYER_STEP_LENGTH_X;
-	this.stepLengthY = PLAYER_STEP_LENGTH_Y;
+	this.stepLengthX = CELL_WIDTH;
+	this.stepLengthY = CELL_HEIGHT;
 }
 Player.prototype = Object.create(Character.prototype)
 Player.prototype.update = function (dt) {
@@ -53,7 +47,7 @@ Player.prototype.goToStart = function () {
 		setTimeout(() => {
 			this.x = PLAYER_START_POSITION_X;
 			this.y = PLAYER_START_POSITION_Y;
-		}, 300);
+		}, 400);
 	}
 }
 Player.prototype.handleInput = function (allowedKey) {
@@ -73,7 +67,7 @@ const player = new Player(PLAYER_START_POSITION_X, PLAYER_START_POSITION_Y, 'ima
 
 
 // ============================ Enemies ============================
-const Enemy = function (x, y, sprite) {
+const Enemy = function (x, y, sprite, player) {
 	Character.call(this, x, y, sprite)
 	this.speed = getRandomSpeed(ENEMIES_SPEED.min, ENEMIES_SPEED.max);
 	this.player = player;
@@ -108,11 +102,11 @@ function createEnemies(num) {
 	if (num >= 10) return false;
 	for (let i = 1; i <= num; i++) {
 		let positionY = 0;
-		if (i == 1 || i == 4 || i == 7) positionY = ENEMIES_START_POSITION_Y.first;
-		if (i == 2 || i == 5 || i == 8) positionY = ENEMIES_START_POSITION_Y.second;
-		if (i == 3 || i == 6 || i == 9) positionY = ENEMIES_START_POSITION_Y.third;
+		if (i == 1 || i == 4 || i == 7) positionY = ENEMIES_START_POSITION_Y[0];
+		if (i == 2 || i == 5 || i == 8) positionY = ENEMIES_START_POSITION_Y[1];
+		if (i == 3 || i == 6 || i == 9) positionY = ENEMIES_START_POSITION_Y[2];
 
-		allEnemies.push(new Enemy(ENEMIES_START_POSITION_X, positionY, 'images/enemy-bug.png'));
+		allEnemies.push(new Enemy(ENEMIES_START_POSITION_X, positionY, 'images/enemy-bug.png', player));
 	}
 }
 createEnemies(3);
