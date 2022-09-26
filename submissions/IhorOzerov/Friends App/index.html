@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Вивчаємо JS</title>
   <link href='https://fonts.googleapis.com/css?family=MedievalSharp' rel='stylesheet'>
   <link rel="stylesheet" href="style.css">
@@ -9,40 +10,28 @@
 <body>
   <div class="container">
     <div class="header">Friends App</div>
-    <div class="buttons">
-
-        <label>Find your friend <br>
-            <input type="search" id="searchFriend" maxlength = 15 placeholder="   Write name here " autocomplete="off" >
-        </label>
-
-        <label>Choose gender <br>
-          <select id="sex" autocomplete="off" name="filter">
-            <option value="All" >All</option>
-            <option value="Male" >Male</option>
-            <option value="Female" >Female</option>
-          </select>
-        </label>
-
-      <div class="buttons__sorting">
-          <label> Choose age <br>
-            <select id="age" autocomplete="off" name="filter">
-              <option value="default">By default</option>
-              <option value="upAge">upAge</option>
-              <option value="downAge">downAge</option>
+      <div class="buttons">
+          <label class="searchLabel">Find your friend <br>
+              <input type="search" id="searchFriend" maxlength = 15 placeholder="   Write name here " autocomplete="off" >
+          </label>
+          <label class="searchLabel">Choose gender <br>
+            <select class="searchSelector" id="sex" autocomplete="off">
+              <option value="All" >All</option>
+              <option value="Male" >M a l e</option>
+              <option value="Female" >F e m a l e</option>
             </select>
           </label>
-      <span> or </span>
-          <label> Sort by names <br>
-            <select id="namesSort" autocomplete="off">
+          <label class="searchLabel"> Sort<br>
+            <select class="searchSelector" id="ageAndName" autocomplete="off">
               <option value="default">By default</option>
+              <option value="upAge">Yonger first</option>
+              <option value="downAge">Older first</option>
               <option value="AtoZ">A to Z</option>
               <option value="ZtoA">Z to A</option>
             </select>
           </label>
       </div>
-    </div>
-    <div class="list">
-    </div>
+    <div class="list"></div>
   </div>
   <script src="script.js"></script>
 </body>
