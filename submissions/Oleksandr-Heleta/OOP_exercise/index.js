@@ -45,11 +45,14 @@ class Dog extends Animal {
 }
 
 class Cat extends Animal {
-   static #say = 'mimi';
-   constructor(name, gender) {
+   static #say;
+   constructor(name, gender, _say = 'meow') {
       super('cat', name, gender);
-      this._say = 'meow';
+      this._say = _say;
+      Cat.#say = this._say;
+      this._say = Cat.say;
    }
+
 
    set say(phrase) {
       return this._say = phrase;
@@ -60,24 +63,25 @@ class Cat extends Animal {
    }
 
    static get say() {
-      return Cat.#say;
+      return this.#say;
    }
 }
 
 class CatWoman extends Human {
-   constructor(name, gender, say) {
-      super(name, gender, say)
+   constructor(name, gender) {
+      super(name, gender)
+      this.say = Cat.say;
    }
 
 }
 
 const dog = new Dog('Bob', "male");
-const cat = new Cat('Kitty', "female");
+const cat = new Cat('Kitty', "female", 'mimi');
 
 const man = new Human('John', "male", "Hello Jenny!");
 const woman = new Human('Jenny', "female", "Hi John!");
 
-const catWoman = new CatWoman('JennyCat', "female", cat.say);
+const catWoman = new CatWoman('JennyCat', "female");
 
 const persons = [dog, cat, man, woman, catWoman];
 
