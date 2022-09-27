@@ -1,7 +1,8 @@
 //const
 const CELL_WIDTH = 101,
-    CELL_HEIGHT = 83;
-let Enemy = function(y, index, player) {
+    CELL_HEIGHT = 83,
+    ALL_ENEMIES = [50, 60, 30];
+const Enemy = function(y, index, player) {
     this.sprite = 'images/enemy-bug.png';
     this.x = -CELL_WIDTH;
     this.y = CELL_HEIGHT - 23 + index * CELL_HEIGHT;
@@ -17,6 +18,10 @@ Enemy.prototype.update = function(dt) {
         this.speed = speedGenerator();
     }
 
+    this.collisionsCheck();
+};
+
+Enemy.prototype.collisionsCheck = function() {
     //check if enemy hit
     if (this.x + CELL_WIDTH - 20 >= player.x 
         && this.x < player.x + CELL_WIDTH - 20
@@ -25,15 +30,15 @@ Enemy.prototype.update = function(dt) {
                 player.winCount--;
             }
             player.reset();
-	}
-};
+    }
+}
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-let Player = function(x, y) {
+const Player = function(x, y) {
     this.sprite = 'images/char-boy.png';
     this.x = x;
     this.y = y;
@@ -62,7 +67,7 @@ Player.prototype.update = function() {
 Player.prototype.reset = function() {
     this.x = CELL_WIDTH * 2;
     this.y = CELL_HEIGHT * 6;
-    let score = document.querySelector('.score strong');
+    const score = document.querySelector('.score strong');
     score.innerHTML = this.winCount;
 };
 
@@ -74,11 +79,9 @@ Player.prototype.handleInput = function(allowedKey) {
     switch (allowedKey) {
         case 'down':
             this.y += CELL_HEIGHT;
-            console.log(this.y)
             break;
         case 'up':
             this.y -= CELL_HEIGHT;
-            console.log(this.y)
             break;
         case 'left':
             this.x -= CELL_WIDTH;
@@ -90,18 +93,18 @@ Player.prototype.handleInput = function(allowedKey) {
     }
 };
 
-let speedGenerator = () => {
+const speedGenerator = () => {
     return Math.floor(Math.random() * 150 + 100)
 }
 
-let allEnemies = [50, 60, 30].map(
+const allEnemies = ALL_ENEMIES.map(
     (posY, index) => (posY = new Enemy(posY, index, Player))
 );
 // Place the player object in a variable called player
-let player = new Player(CELL_WIDTH * 2 , CELL_HEIGHT * 6);
+const player = new Player(CELL_WIDTH * 2 , CELL_HEIGHT * 6);
 
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
@@ -112,8 +115,8 @@ document.addEventListener('keyup', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', function(){
-    let canvas = document.querySelector('canvas').parentNode;
-    let div = document.createElement('div');
+    const canvas = document.querySelector('canvas').parentNode;
+    const div = document.createElement('div');
 
     div.className = 'score';
     div.innerHTML = `User Score: <strong>0</strong>`;
