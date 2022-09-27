@@ -48,7 +48,7 @@ class Human extends Inhabitant {
    }
 
    get showProperties() {
-      return ['species', 'name', 'gender', 'legs', 'hands', 'saying'].map(property => this[property]).join('; ');
+      return `${super.showProperties}; ${this.hands}`;
    };
 }
 
