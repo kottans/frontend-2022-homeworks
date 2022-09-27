@@ -6,13 +6,17 @@ const INIT_VAL = {
     stepX: 101,
     stepY: 85,
     enemyX: -101,
-    enemyY: [63, 147, 230],
+    enemyY: 63,
     enemyMinSpeed: 100,
     enemyMaxspeed: 200,
+    enemyQty: [1, 2, 3],
     collision: 75,
     canvasWidth: 505,
     canvasHeight: 606,
 };
+
+const ENEMIES_Y = INIT_VAL.enemyQty.map(enemyNumber =>
+    INIT_VAL.enemyY + INIT_VAL.stepY * INIT_VAL.enemyQty.indexOf(enemyNumber));
 
 const allPlayerSprites = [
     'images/char-boy.png',
@@ -22,8 +26,6 @@ const allPlayerSprites = [
 
 let levelSpeed = 0;
 let level = 0;
-
-/*---------- DOM elements ----------*/
 
 const body = document.body;
 
@@ -48,11 +50,10 @@ playerOptionDiv.innerHTML =
         <img src='images/char-princess-girl.png' class='player_img' data-player-num = '2' />
     `;
 
-/*---------- Enemy ----------*/
-
-const Enemy = function(x, y, speed) {
+const Enemy = function(x, y, player, speed) {
     this.x = x;
     this.y = y;
+    this.player = player;    
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
 };
@@ -67,15 +68,15 @@ Enemy.prototype.update = function(dt) {
         this.x = INIT_VAL.enemyX;
     };
 
-    this.checkCollision(player);
+    this.checkCollision();
 };
 
-Enemy.prototype.checkCollision = function(player) {
-    if (player.x < this.x + INIT_VAL.collision &&
-        player.x + INIT_VAL.collision > this.x &&
-        player.y < this.y + INIT_VAL.collision &&
-        INIT_VAL.collision + player.y > this.y) {
-            player.resetPlayer();
+Enemy.prototype.checkCollision = function() {
+    if (this.player.x < this.x + INIT_VAL.collision &&
+        this.player.x + INIT_VAL.collision > this.x &&
+        this.player.y < this.y + INIT_VAL.collision &&
+        INIT_VAL.collision + this.player.y > this.y) {
+            this.player.resetPlayer();
     };
 };
 
@@ -84,14 +85,6 @@ Enemy.prototype.render = function() {
 };
 
 const allEnemies = [];
-
-INIT_VAL.enemyY.forEach(y => {
-    const enemySpeed = Math.round(Math.random() * INIT_VAL.enemyMaxspeed + INIT_VAL.enemyMinSpeed);
-    const enemy = new Enemy(INIT_VAL.enemyX, y, enemySpeed);
-    allEnemies.push(enemy);
-});
-
-/*---------- Player ----------*/
 
 const Player = function(x, y) {
     this.x = x;
@@ -135,6 +128,12 @@ Player.prototype.upLevel = function() {
 };
 
 const player = new Player(INIT_VAL.playerX, INIT_VAL.playerY);
+
+ENEMIES_Y.forEach(y => {
+    const enemySpeed = Math.round(Math.random() * INIT_VAL.enemyMaxspeed + INIT_VAL.enemyMinSpeed);
+    const enemy = new Enemy(INIT_VAL.enemyX, y, player, enemySpeed);
+    allEnemies.push(enemy);
+});
 
 Player.prototype.handleInput = function(allowedKeys) {
     if (!lostMessage.classList.contains('active_message')
