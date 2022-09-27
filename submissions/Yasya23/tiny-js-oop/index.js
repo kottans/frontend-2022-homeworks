@@ -7,7 +7,7 @@ class Inhabitants {
   }
 
   showProperties() {
-    return [this.species, this.name, this.gender];
+    return [this.species, this.name, this.gender, this.saying];
   }
 }
 
@@ -19,7 +19,12 @@ class Human extends Inhabitants {
   }
 
   showProperties() {
-    return [...super.showProperties(), this.hands, this.legs, this.saying];
+    return [
+      ...super.showProperties().slice(0, 3),
+      this.hands,
+      this.legs,
+      ...super.showProperties().slice(3, 4),
+    ];
   }
 }
 
@@ -29,7 +34,11 @@ class Animal extends Inhabitants {
     this.paws = 4;
   }
   showProperties() {
-    return [...super.showProperties(), this.paws, this.saying];
+    return [
+      ...super.showProperties().slice(0, 3),
+      this.paws,
+      ...super.showProperties().slice(3, 4),
+    ];
   }
 }
 
@@ -53,6 +62,6 @@ const woman = new Human("Anna", "female", "Good luck!");
 
 const inhabitants = [dog, cat, catWoman, man, woman];
 
-inhabitants.forEach(function (inhabitant) {
-  print(inhabitant.showProperties().join("; "));
-});
+inhabitants.forEach((inhabitant) =>
+  print(inhabitant.showProperties().join("; "))
+);
