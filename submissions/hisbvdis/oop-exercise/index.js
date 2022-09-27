@@ -55,8 +55,7 @@ class Man extends Human {
 
 class Animal extends Creature {
   constructor(species, name, gender, saying) {
-    super(species, name, gender, saying);
-    this.legs = 4;
+    super(species, name, gender, saying, 4);
   }
 }
 
