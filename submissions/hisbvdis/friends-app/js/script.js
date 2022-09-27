@@ -1,5 +1,5 @@
 import { getUserList } from "./randomuser.service.js";
-const dataArr = await getUserList().then(data => data);
+const users = await getUserList().then(data => data);
 
 const listElem = document.querySelector("[data-user-list]");
 const searchElem = document.querySelector("[data-search-input]");
@@ -50,7 +50,7 @@ function renderUserList(mode) {
   }
   
   listElem.innerHTML = "";
-  let newArr = dataArr;
+  let newArr = users;
   
   newArr = newArr.filter(({name}) => name.toLowerCase().includes(searchValue.toLowerCase()));
 
