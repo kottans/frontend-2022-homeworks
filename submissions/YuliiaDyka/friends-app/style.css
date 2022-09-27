@@ -400,9 +400,9 @@ input[type="radio"]:checked + .radio__label {
     align-items:center;
     justify-content: center;
     bottom: -40px;
-    right: 13%;
+    right: 0;
     background-color: #fbfbfb63;
-    width: 500px;
+    width: 75%;
     height: 50px;
     border-radius: 50px;
     backdrop-filter: blur(5px);
@@ -417,9 +417,9 @@ input[type="radio"]:checked + .radio__label {
     align-items:center;
     justify-content: center;
     bottom:0;
-    right: 13%;
+    right: 0;
     background-color: #fbfbfb63;
-    width: 500px;
+    width: 75%;
     height: 50px;
     border-radius: 50px;
     backdrop-filter: blur(5px);
