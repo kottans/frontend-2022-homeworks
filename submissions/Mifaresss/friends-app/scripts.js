@@ -61,8 +61,9 @@ const state = {
 };
 
 const form = document.querySelector('.filter');
-form.addEventListener('change', filterData);
-form.addEventListener('submit', filterPeopleByName)
+form.addEventListener('input', filterData);
+const resetButton = document.querySelector('.filter-reset__button')
+resetButton.addEventListener('click', resetFilters);
 
 function getCurrentInputId(elements) {
 	const currentInput = Array.from(elements).find(selectedInput => selectedInput.checked);
@@ -85,7 +86,11 @@ function filterData({currentTarget}) {
 	}
 	
 	const filteredPeople = filterByGender(sortedPeople);
-	renderPeople(filteredPeople);
+	
+	const currentInputNameValue = currentTarget.elements.name.value;
+	const filteredByName = filterByName(currentInputNameValue, filteredPeople);
+	
+	renderPeople(filteredByName);
 }
 
 function filterByGender(people) {
@@ -113,17 +118,14 @@ function sortByAlphabet(people) {
 	return people;
 }
 
-
-function filterPeopleByName({currentTarget}) {
-	const currentInputNameValue = currentTarget.elements.name.value;
-	const filteredByName = filterByName(currentInputNameValue, receivedPeople);
-	renderPeople(filteredByName)
-	currentTarget.elements.name.value = '';
-}
-
 function filterByName(data, people) {
 	let copyPeople = people.filter(human => {
 		return human.name.first.toLowerCase().includes(data.toLowerCase());
 	})
 	return copyPeople;
+}
+
+function resetFilters() {
+	form.reset();
+	renderPeople(receivedPeople)
 }

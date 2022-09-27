@@ -75,8 +75,6 @@ body {
 
 
 
-
-
 /* ========================================== Form Styles ========================================== */
 .filter {
 	width: 100%;
@@ -100,6 +98,7 @@ body {
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0);
+	border-radius: 3px;
 	backdrop-filter: blur(10px);
 	top: 0;
 	left: 0;
@@ -189,7 +188,27 @@ body {
 	background-color: rgba(125, 129, 134, 0.331);
 	outline: 3px solid rgba(202, 202, 202, 0.657);
 }
-
+/* ================== ResetButton Styles ================== */
+.filter-reset {
+	display: flex;
+	flex: 1 1 auto;
+}
+.filter-reset__button {
+	font-size: 18px;
+	flex: 1 1 auto;
+	padding: 15px 5px;
+	border: 2px solid var(--border-main-color);
+	background-color: transparent;
+	color: var(--filters-main-color);
+	border-radius: 5px;
+	transition: all .2s;
+}
+.filter-reset__button:hover {
+	background-color: rgba(125, 129, 134, 0.331);
+}
+.filter-reset__button:active {
+	outline: 3px solid rgba(202, 202, 202, 0.657);
+}
 
 
 
@@ -323,6 +342,9 @@ body {
 	.filter-gender__all {
 		padding: 0 5px;
 	}
+	.filter-reset__button {
+		padding: 10px 10px;
+	}
 	/* ===== Filter OnLy By Age Styles ===== */
 	.sort-by-age__span {
 		display: none;
@@ -388,6 +410,9 @@ body {
 	.filter-sorter__input:checked ~ .filter-sorter__label {
     outline: 2px solid rgb(202, 202, 202);
 	}	
+	.filter-reset__button {
+		padding: 9px 10px;
+	}
 }
 @media (max-width: 400px) {
 	body {
@@ -403,6 +428,24 @@ body {
 	}
 	.filter-name {
 		gap: 6px;
+	}
+	.filter::before {
+		content: '';
+		position: absolute;
+		width: 63.21px;
+		height: 32.86px;
+		background-color: rgba(0, 0, 0, 0);
+		backdrop-filter: blur(10px);
+		bottom: -38px;
+		right: -2px;
+		border-radius: 5px;
+		z-index: -5;
+	}
+	.filter-reset__button {
+		position: absolute;
+		bottom: -38px;
+		right: -2px;
+		padding: 1px 5px;
 	}
 	.people {
 		margin-top: 15px;
