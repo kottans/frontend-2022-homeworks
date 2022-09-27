@@ -33,9 +33,9 @@ Enemy.prototype.update = function (dt) {
     }
 
     if (this.x < this.player.x + PlayerWidth && this.y < this.player.y + PlayerHeight && this.x + PlayerWidth > this.player.x && this.y + PlayerHeight > this.player.y) {
-        setTimeout(function () {
-            player.x = InitialPosition_X;
-            player.y = InitialPosition_Y;
+        setTimeout(() => {
+            this.player.x = InitialPosition_X;
+            this.player.y = InitialPosition_Y;
             multiplierSpeed = 300;
             countLevels = 1;
             paragraph.innerText = `Your level: ${countLevels}`
