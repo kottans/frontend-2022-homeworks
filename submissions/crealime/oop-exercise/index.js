@@ -12,31 +12,54 @@ function getRandomId() {
 }
 
 class Inhabitant {
-  constructor(species, name, gender, saying) {
+  constructor(species, name, gender, legs, saying) {
     this.id = getRandomId()
     this.species = species
     this.name = name
     this.gender = gender
+    this.legs = legs
     this.saying = saying
     this.friends = []
   }
 
-  getFullName() {
-    return this.name
+  addFriends(...newFriends) {
+    this.friends = [...this.friends, ...newFriends]
+  }
+
+  getAcquaintanceInfo() {
+    return `This is ${this.name} and ${this.gender === 'male' ? 'he' : 'she'} is a ${this.species}.`
+  }
+
+  getGenderInfo() {
+    return `${this.gender === 'male' ? 'His' : 'Her'} gender is ${this.gender}.`
+  }
+
+  getLimbsInfo() {
+    return `${this.gender === 'male' ? 'He' : 'She'} have ${this.legs || 0} ${this.legs === 1 ? 'leg' : 'legs'}.`
+  }
+
+  getFriendsInfo() {
+    return `${this.name} have ${this.friends.length} ${this.friends.length === 1 ? 'friend' : 'friends'}${this.friends.length > 0 ? ': ' + this.friends.map(friend => friend.name).join(', ') : ''}.`
+  }
+
+  getSayingInfo() {
+    return `${this.gender === 'male' ? 'He' : 'She'} usually says hello like this: ${this.saying}`
+  }
+
+  getFullInfo() {
+    return `${this.getAcquaintanceInfo()} ${this.getGenderInfo()} ${this.getLimbsInfo()} ${this.getFriendsInfo()} ${this.getSayingInfo()}`
   }
 }
 
 class Dog extends Inhabitant {
   constructor(name, gender, legs) {
-    super('dog', name, gender, 'Woof-woof!')
-    this.legs = legs
+    super('dog', name, gender, legs, 'Woof-woof!')
   }
 }
 
 class Cat extends Inhabitant {
   constructor(name, gender, legs) {
-    super('cat', name, gender, Cat.say())
-    this.legs = legs
+    super('cat', name, gender, legs, Cat.say())
   }
 
   static say() {
@@ -46,38 +69,39 @@ class Cat extends Inhabitant {
 
 class Human extends Inhabitant {
   constructor(name, surname, gender, legs, hands, saying) {
-    super('human', name, gender, saying)
+    super('human', name, gender, legs, saying)
     this.surname = surname
-    this.legs = legs
     this.hands = hands
   }
 
-  getFullName() {
-    return `${super.getFullName()} ${this.surname}`
+  getAcquaintanceInfo() {
+    return super.getAcquaintanceInfo().replace(this.name, this.name + ' ' + this.surname)
+  }
+
+  getLimbsInfo() {
+    return `${this.gender === 'male' ? 'He' : 'She'} have ${this.hands || 0} ${this.hands === 1 ? 'hand' : 'hands'} and ${this.legs || 0} ${this.legs === 1 ? 'leg' : 'legs'}.`
+  }
+
+  sayFullInfo() {
+    return `${this.saying} My name is ${this.name} ${this.surname} and I am a ${this.species}. My gender is ${this.gender}. I have ${this.hands || 0} ${this.hands === 1 ? 'hand' : 'hands'} and ${this.legs || 0} ${this.legs === 1 ? 'leg' : 'legs'}. I have ${this.friends.length} ${this.friends.length === 1 ? 'friend' : 'friends'}${this.friends.length > 0 ? ': ' + this.friends.map(friend => friend.name).join(', ') : ''}.`
   }
 }
 
 class CatWoman extends Inhabitant {
   constructor(name, surname) {
-    super('cat-woman', name, 'female', Cat.say())
+    super('cat-woman', name, 'female', 2, Cat.say())
     this.surname = surname
-    this.legs = 2
     this.hands = 2
   }
 
-  getFullName() {
-    return `${super.getFullName()} ${this.surname}`
+  getAcquaintanceInfo() {
+    return `This is ${this.name} ${this.surname} and she is a ${this.species}.`
+  }
+
+  getLimbsInfo() {
+    return `She have ${this.hands} hands and ${this.legs} legs.`
   }
 }
-
-const fullInfo =  {
-  sayFullInfo() {
-    return `${this.saying} My name is ${this.getFullName()} and I am a ${this.species}. My gender is ${this.gender}. I have ${this.hands || 0} ${this.hands === 1 ? 'hand' : 'hands'} and ${this.legs || 0} ${this.legs === 1 ? 'leg' : 'legs'}. I have ${this.friends.length} ${this.friends.length === 1 ? 'friend' : 'friends'}${this.friends.length > 0 ? ': ' + this.friends.map(friend => friend.name).join(', ') : ''}.`
-  }
-}
-
-Object.assign(Human.prototype, fullInfo)
-Object.assign(CatWoman.prototype, fullInfo)
 
 const dog = new Dog('Marley', 'male', 4)
 const cat = new Cat('Sophie', 'female', 4)
@@ -86,12 +110,11 @@ const woman = new Human('Emily', 'Brown', 'female', 2, 2, 'Hi all!')
 const pirate = new Human('John', 'Silver', 'male', 1, 2, 'Give no quarter!')
 const catWoman = new CatWoman('Selina', 'Kyle')
 
-dog.friends.push(cat, man)
-cat.friends.push(dog, woman, catWoman)
-man.friends.push(dog, woman)
-woman.friends.push(cat, man)
-catWoman.friends.push(cat)
-
+dog.addFriends(cat, man)
+cat.addFriends(dog, woman, catWoman)
+man.addFriends(dog, woman)
+woman.addFriends(cat, man)
+catWoman.addFriends(cat)
 
 const allInhabitants = [dog, cat, man, woman, catWoman, pirate]
 
@@ -148,18 +171,8 @@ secretSociety.addToSociety(pirate)
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-function getFullInfo(inhabitant) {
-  const getAcquaintance = `This is ${inhabitant.getFullName()} and ${inhabitant.gender === 'male' ? 'he' : 'she'} is a ${inhabitant.species}.`
-  const getGender = `${inhabitant.gender === 'male' ? 'His' : 'Her'} gender is ${inhabitant.gender}.`
-  const getLimbs = `${inhabitant.gender === 'male' ? 'He' : 'She'} have ${inhabitant.hands || 0} ${inhabitant.hands === 1 ? 'hand' : 'hands'} and ${inhabitant.legs || 0} ${inhabitant.legs === 1 ? 'leg' : 'legs'}.`
-  const getFriends = `${inhabitant.name} have ${inhabitant.friends.length} ${inhabitant.friends.length === 1 ? 'friend' : 'friends'}${inhabitant.friends.length > 0 ? ': ' + inhabitant.friends.map(friend => friend.name).join(', ') : ''}.`
-  const getSaying = `${inhabitant.gender === 'male' ? 'He' : 'She'} usually says hello like this: ${inhabitant.saying}`
-
-  return `${getAcquaintance} ${getGender} ${getLimbs} ${getFriends} ${getSaying}`
-}
-
 allInhabitants.forEach(inhabitant => {
-  print(getFullInfo(inhabitant))
+  print(inhabitant.getFullInfo())
 })
 
 print(' ')
