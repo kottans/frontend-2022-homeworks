@@ -55,10 +55,12 @@ function renderUserList(mode) {
     newArr = newArr.filter(({gender}) => gender === genderValue);
   }
 
+  const fragment = new DocumentFragment();
+
   newArr.forEach(({name, age, gender, photo, email, phone}) => {
-    listElem.insertAdjacentHTML(
-      "beforeend",
-      `
+    const listItem = document.createElement("li");
+
+    listItem.innerHTML = `
       <li class="users__item  user  ${gender === "female" && "user--female"}">
         <p class="user__name">${name}</p>
         <div class="user__info">
@@ -69,9 +71,12 @@ function renderUserList(mode) {
         </div>
         <p class="user__gender">${gender}</p>
       </li>
-    `
-    );
+    `;
+
+    fragment.append(listItem);
   })
+
+  listElem.append(fragment);
 }
 
 
