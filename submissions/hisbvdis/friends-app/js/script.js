@@ -6,10 +6,7 @@ const searchElem = document.querySelector("[data-search-input]");
 const sortElem = document.querySelector("[data-sort-select]");
 const filtersFormElem = document.querySelector("[data-filters-form]");
 
-let urlSearchParams = 
-  window.location.search === ""
-  ? {}
-  : new URLSearchParams(window.location.search);
+let urlSearchParams = new URLSearchParams(window.location.search);
 
 let searchValue = urlSearchParams.get("search") || "";
 searchElem.value = searchValue;
@@ -40,7 +37,7 @@ filtersFormElem.addEventListener("change", (evt) => {
 renderUserList(true);
 
 function renderUserList(isFirstRender = false) {
-  if (ifFirstRender) {
+  if (isFirstRender) {
     updateURL();
   }
   
