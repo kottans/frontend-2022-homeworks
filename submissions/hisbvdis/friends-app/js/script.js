@@ -45,19 +45,19 @@ function renderUserList(mode) {
   }
   
   listElem.innerHTML = "";
-  let newArr = users;
+  let clonedUsers = users;
   
-  newArr = newArr.filter(({name}) => name.toLowerCase().includes(searchValue.toLowerCase()));
+  clonedUsers = clonedUsers.filter(({name}) => name.toLowerCase().includes(searchValue.toLowerCase()));
 
-  newArr = sortArray(newArr, sortValue);
+  clonedUsers = sortArray(clonedUsers, sortValue);
 
   if (genderValue !== "all") {
-    newArr = newArr.filter(({gender}) => gender === genderValue);
+    clonedUsers = clonedUsers.filter(({gender}) => gender === genderValue);
   }
 
   const fragment = new DocumentFragment();
 
-  newArr.forEach(({name, age, gender, photo, email, phone}) => {
+  clonedUsers.forEach(({name, age, gender, photo, email, phone}) => {
     const listItem = document.createElement("li");
 
     listItem.innerHTML = `
