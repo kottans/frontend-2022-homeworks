@@ -35,32 +35,41 @@
 	perspective: 1000px;
 }
 
-.hide-swap {
+.card {
 	border-radius: 5px;
 	transition: 0.8s;
 	transform-style: preserve-3d;
 	position: relative;
 	z-index: 3;
+	&__front-side  {
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		backface-visibility: hidden;
+		border-radius: 5px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: rotateY(0deg);	
+		cursor: pointer;
+		background: linear-gradient(149deg, rgba(24,187,156,1) 0%, rgba(106,57,175,1) 42%, rgba(187,24,148,1) 72%, rgba(115,53,134,1) 100%);
+		animation: gradient 15s infinite linear; 
+		background-size: 400%; 
+	}
+	&__back-side  {
+		width: 100%;
+		height: 100%;
+		backface-visibility: hidden;
+		border-radius: 5px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: rotateY(180deg);
+	}
 }
 
 .active {
 	transform: rotateY(180deg);
-}
-
-.c1 {
-	z-index: 2;
-	width: 100%;
-	height: 100%;
-	backface-visibility: hidden;
-	border-radius: 5px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	transform: rotateY(0deg);	
-	cursor: pointer;
-	background: linear-gradient(149deg, rgba(24,187,156,1) 0%, rgba(106,57,175,1) 42%, rgba(187,24,148,1) 72%, rgba(115,53,134,1) 100%);
-    animation: gradient 15s infinite linear; 
-    background-size: 400%; 
 }
 
 @keyframes gradient {
@@ -74,16 +83,7 @@
         background-position: 80% 0%;
     }
 }
-.c2 {
-	width: 100%;
-	height: 100%;
-	backface-visibility: hidden;
-	border-radius: 5px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	transform: rotateY(180deg);
-}
+
 .visible {
 	visibility: hidden;
 }
@@ -160,6 +160,7 @@
 		grid-template-rows: repeat(3, 100px);
 	}
 }
+
 
 @media screen and (max-height: 800px) and (orientation: landscape) { 
 	.wrapper {
