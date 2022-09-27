@@ -5,7 +5,6 @@ const menuButton = document.querySelector(".header__button");
 const menu = document.querySelector(".menu");
 const resetButton = document.querySelector(".reset");
 
-/// menu  actions
 const onEscapeClose = ({ code }) => {
   if (code === "Escape") {
     menuClose();
@@ -39,9 +38,8 @@ const fetchUsers = async () => {
   return users;
 };
 
-const renderUsers = (data) => {
-  console.log("go to render ", data);
-  const markup = data
+const renderUsers = (usersData) => {
+  const markup = usersData
     .map(
       ({
         email,
@@ -93,25 +91,37 @@ const sortUsers = (users, { target }) => {
 
 const sortByAge = (users) => {
   if (formAll.sorter.value === "ascending") {
-    return users.sort((firstUser, secondUser) => firstUser.dob.age - secondUser.dob.age);
+    return users.sort(
+      (firstUser, secondUser) => firstUser.dob.age - secondUser.dob.age
+    );
   } else if (formAll.sorter.value === "descending") {
-    return users.sort((firstUser, secondUser) => secondUser.dob.age - firstUser.dob.age);
+    return users.sort(
+      (firstUser, secondUser) => secondUser.dob.age - firstUser.dob.age
+    );
   } else {
     return users;
   }
 };
 
 const compareName = (firstUser, secondUser) => {
-  const nameToSortFirst = (firstUser.name.first + firstUser.name.last).toLowerCase();
-  const nameToSortSecond = (secondUser.name.first + secondUser.name.last).toLowerCase();
+  const nameToSortFirst = (
+    firstUser.name.first + firstUser.name.last
+  ).toLowerCase();
+  const nameToSortSecond = (
+    secondUser.name.first + secondUser.name.last
+  ).toLowerCase();
   return nameToSortFirst.localeCompare(nameToSortSecond);
 };
 
 const sortByName = (users) => {
   if (formAll.sorter.value === "ascending") {
-    return users.sort((firstUser, secondUser) => compareName(firstUser, secondUser));
+    return users.sort((firstUser, secondUser) =>
+      compareName(firstUser, secondUser)
+    );
   } else if (formAll.sorter.value === "descending") {
-    return users.sort((firstUser, secondUser) => compareName(secondUser, firstUser));
+    return users.sort((firstUser, secondUser) =>
+      compareName(secondUser, firstUser)
+    );
   } else {
     return users;
   }
@@ -154,7 +164,9 @@ const showUsers = async () => {
 showUsers();
 
 resetButton.addEventListener("click", () => {
-  document.querySelectorAll("input").forEach((input) => (input.checked = false));
+  document
+    .querySelectorAll("input")
+    .forEach((input) => (input.checked = false));
   formAll.search.value = "";
   renderUsers(copyOfUsers);
 });
