@@ -1,26 +1,29 @@
-class Creature {
-  constructor(species, name, gender, saying, friends) {
+class Mammal {
+  constructor(species, name, gender, saying, friends, legs) {
     this.species = species;
     this.name = name;
     this.gender = gender;
     this.saying = saying;
     this.friends = friends;
+    this.legs = legs;
+    this.propsArray = [
+      "name",
+      "species",
+      "gender",
+      "saying",
+      "friends",
+      "legs",
+    ];
   }
 
   output() {
-    const { name, species, gender, saying, friends } = this;
-
-    return `${name}; ${species}; ${gender}; ${saying}; ${friends.join(", ")}`;
-  }
-}
-
-class Mammal extends Creature {
-  constructor(species, name, gender, saying, friends) {
-    super(species, name, gender, saying, friends);
-    this.legs = 4;
-  }
-  output() {
-    return `${super.output()}; ${this.legs}`;
+    return this.propsArray
+      .map((property) =>
+        Array.isArray(this[property])
+          ? this[property].join(", ")
+          : this[property]
+      )
+      .join("; ");
   }
 }
 
@@ -36,13 +39,13 @@ class Human extends Mammal {
 
 class Dog extends Mammal {
   constructor(name, gender, saying, friends) {
-    super("dog", name, gender, saying, friends);
+    super("dog", name, gender, saying, friends, 4);
   }
 }
 
 class Cat extends Mammal {
   constructor(name, gender, saying, friends) {
-    super("cat", name, gender, saying, friends);
+    super("cat", name, gender, saying, friends, 4);
   }
 }
 
