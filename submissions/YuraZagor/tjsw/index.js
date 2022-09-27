@@ -40,6 +40,14 @@ class Inhabitant {
     this.friend=friend;
     this.gender=gender;
   }
+  accountInhabitants(){
+    inhabitants.push(this);
+  }
+  commonProperties(){
+    const { species, name, saying, friend, gender} = this
+    const commonProperties = [species, name, saying, friend, gender]
+    return commonProperties    
+  }
 };
 
 class Animal extends Inhabitant{
@@ -49,10 +57,10 @@ class Animal extends Inhabitant{
     this.tail=tail;
   };
   populate(){
-    const { species, name, saying, friend, gender, paws, tail} = this
-    const inhabitantProperties = [species, name, saying, friend, gender, paws, tail]
-    print(inhabitantProperties.join('; '),'div');
-    inhabitants.push(this);
+    const { paws, tail} = this
+    const speciesProperties = [ paws, tail]
+    print(this.commonProperties().concat(speciesProperties).join('; '),'div');
+    this.accountInhabitants()
   };
 };
 
@@ -75,10 +83,10 @@ class Human extends Inhabitant{
     this.hands=hands;
   };
   populate(){
-    const { species, gender, name, saying, friend, legs, hands} = this
-    const inhabitantProperties = [species, gender, name, saying, friend, legs, hands]
-    print(inhabitantProperties.join('; '),'div');
-    inhabitants.push(this);
+    const { legs, hands} = this
+    const speciesProperties = [ legs, hands]
+    print(this.commonProperties().concat(speciesProperties).join('; '),'div');
+    this.accountInhabitants()
   };
 };
 
