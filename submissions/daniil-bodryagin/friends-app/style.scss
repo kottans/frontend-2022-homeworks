@@ -1,0 +1,526 @@
+$xxs: 360px;
+$sm: 576px;
+$lg: 980px;
+$metalGradient: linear-gradient(#24153c, #0839f7 15%, #7795f7 33%, #e8eefc 48%, #080530 49%, #710092 63%, #fb25e5 81%, #fffaff 100%);
+$opaqueGradient: linear-gradient(to bottom left, #6a0a75a8, #0152c7a8, #071828a8);
+$mainColor: #ff69b4;
+$accentColor: #fff;
+$shadowColor: #000;
+
+@font-face {
+  font-family: 'Streamster';
+  src: url('../fonts/Streamster.ttf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Hauser';
+  src: url('../fonts/Hauser Condensed Bold.otf');
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Neon';
+  src: url('../fonts/Neon.ttf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Neon', serif;
+  font-size: 16px;
+  color: #ff69b4;
+  background: url('../img/bg.jpg') center / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.blocked {
+  overflow: hidden;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+
+  &__container {
+    max-width: $lg;
+    height: 3.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: .8rem .8rem;
+    box-shadow: 0px 0px 1px 1px $accentColor, 0px 0px 3px 2px #0839f7, inset 0px 0px 1px 1px $accentColor, inset 0px 0px 3px 2px #0839f7;
+    background: linear-gradient(to right, $shadowColor, transparent), url('../img/header-bg.jpg') center / cover no-repeat;
+
+    @media (min-width: $xxs) and (min-height: $xxs) {
+      padding: 1rem 1rem;
+      height: 5rem;
+    }
+
+    @media (min-width: $sm) and (min-height: $sm) {
+      padding: 1rem 2rem;
+      height: 7rem;
+    }
+  }
+
+  &__title {
+    font-family: 'Hauser', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 1.6rem;
+    margin: 0;
+    background: $metalGradient;
+    color: #ff69b4;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @media (min-width: $xxs) and (min-height: $xxs) {
+      font-size: 3rem;
+      line-height: 2.4rem;
+    }
+
+    @media (min-width: $sm) and (min-height: $sm) {
+      font-size: 5rem;
+      line-height: 4rem;
+    }  
+  }
+
+  &__accent {
+    display: inline-block;
+    font-family: 'Streamster', sans-serif;
+    font-size: 1.2rem;
+    margin-left: -1.2rem;
+    background: none;
+    text-shadow: 1px 1px 3px #ff69b4;
+    -webkit-background-clip: padding-box;
+    -webkit-text-fill-color: #ff69b4;
+    transform: rotate(-10deg) translateY(.5rem);
+
+    @media (min-width: $xxs) and (min-height: $xxs) {
+      font-size: 1.8rem;
+      margin-left: -1.8rem;
+    }
+
+    @media (min-width: $sm) and (min-height: $sm) {
+      font-size: 3rem;
+      margin-left: -3rem;
+    } 
+  }
+
+  &__button {
+    align-self: center;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    padding: .1rem .3rem;
+    font-size: 1rem;
+    text-shadow: 1px 1px $shadowColor;
+    background: $opaqueGradient;
+    box-shadow: 1px 1px 2px 1px #ff69b4;
+    cursor: pointer;
+
+    @media (min-width: $xxs){
+      font-size: 1.2rem;
+    }
+
+    @media (min-width: $sm) {
+      display: none;
+    }
+  }
+}
+
+.app {
+  display: flex;
+  max-width: $lg;
+  min-height: 100vh;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-top: 3.7rem;
+
+  @media (min-width: $xxs) and (min-height: $xxs) {
+    padding-top: 5rem;
+  }
+
+  @media (min-width: $sm) and (min-height: $sm) {
+    padding-top: 7rem;
+  }
+}
+
+.options {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  max-height: 100vh;
+  box-sizing: border-box;
+  padding: 4.5rem 2rem 1rem;
+  overflow: auto;
+  background: url('../img/aside-bg.png') center / cover no-repeat,  $shadowColor;
+  z-index: 1;
+  transition: right 1s;
+
+  @media (min-width: $xxs) and (min-height: $xxs) {
+    padding: 6rem 2rem 1rem;
+  }
+
+  @media (min-width: $sm) {
+    position: sticky;
+    flex: 0 0 250px;
+    top: 3.5rem;
+    padding: 1rem 2rem;
+    order: 1;
+    background: url('../img/aside-bg.png') center / cover no-repeat;
+  }
+
+  @media (min-width: $sm) and (min-height: $xxs) {
+    top: 5rem;
+  }
+
+  @media (min-width: $sm) and (min-height: $sm) {
+    top: 7rem;
+  }
+
+  &-hidden {
+    right: -280px;
+    transition: right 1s;
+    @media (min-width) {
+      right: 0px;
+    }
+  }
+
+  &__title {
+    margin: 1rem 0 .2rem 1rem;
+    font-size: 1.5rem;
+    color: $accentColor;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__label {
+    cursor: pointer;
+  }
+
+  &__filter-caption {
+    margin: .6rem 0 .3rem 1rem;    
+  }
+
+  &__input {
+    padding: .3rem;
+    border: none;
+    background: linear-gradient(to left bottom, #3a0836, $shadowColor);
+    color: #ff69b4;
+    caret-color: #ff69b4;
+    outline: none;
+    transform: skewX(-15deg);
+    box-shadow: none;
+    transition: box-shadow .8s;
+
+    &::placeholder {
+      color: #ff69b4;
+      opacity: .6;
+    }
+
+    &:not(:placeholder-shown) {
+      box-shadow: 0px 1px #ff69b4;
+    }
+
+    &:focus {
+      box-shadow: 1px 1px 4px #ff69b4,  -1px -1px 4px #ff69b4, 
+            inset 1px 1px 4px #ff69b4, inset -1px -1px 4px #ff69b4;
+      transition: box-shadow .8s;
+    }
+    
+    &-small {
+      display: inline-block;
+      width: 2rem;
+      margin-left: .5rem;
+      margin-right: .5rem;
+    }
+  }
+
+  &__select {
+    padding: .3rem;
+    border: none;
+    background: linear-gradient(to left bottom, #3a0836, $shadowColor);
+    outline: none;
+    font-family: 'Neon', serif;
+    color: #ff69b4;
+    transform: skewX(-15deg);
+  }
+
+  &__radio {
+    appearance: none;
+
+    &:checked::before {
+      background: url('../img/radio-checked.png') center / contain no-repeat;
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-bottom: -.3rem;
+      background: url('../img/radio.png') center / contain no-repeat;
+      cursor: pointer;
+    }
+  }
+}
+
+.feed {
+  position: relative;
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $sm) {
+    flex: 1 0 350px;
+  }
+
+  &__container {
+    flex-grow: 1;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(330px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: .8rem;
+    box-sizing: border-box;
+    padding: 1rem;
+  }
+
+  &__pages {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(transparent, #0839f7a8, transparent);
+    box-shadow: inset 3px 0px #ff69b4, inset -3px 0px #ff69b4;
+
+    &-hidden {
+      display: none;
+    }
+  }
+
+  &__page {
+    margin: 0 .5rem;
+    padding: .6rem;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px $shadowColor;
+    cursor: pointer;
+
+    &:hover {
+      text-shadow: 2px 2px $shadowColor, 0px 0px 15px $accentColor;
+    }
+
+    &-current {
+      color: $accentColor;
+    }
+  }
+}
+
+.card {
+  position: relative;
+  box-sizing: border-box;
+  padding: .5rem;
+  background: $opaqueGradient;
+  box-shadow: 1px 1px 2px 1px #ff69b4;
+  overflow: hidden;
+  transform: none;
+  transition: transform .3s ease;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    width: 50%;
+    background: linear-gradient(to right, transparent, #ffcee798 47%, transparent 48%, $accentColor 69%);
+    opacity: .6;
+    transform: skew(-20deg);
+  }
+
+  &:hover {
+    transform: scale(1.01) translateY(-2px);
+    transition: transform .3s ease;
+  }
+
+  &:hover:after {
+    animation: blink .5s forwards;
+  }
+
+  @keyframes blink {
+    100% {
+      left: 200%;
+    }
+  }
+
+  &__img {
+    border: 2px solid $accentColor;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    box-shadow: 0px 0px 3px 3px #800080;
+    filter: hue-rotate(10deg) saturate(200%) brightness(0.8);
+  }
+
+  &__nick {
+    margin: .2rem 0;
+    font-family: 'Hauser', sans-serif;
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: $accentColor;
+    text-shadow: 1px 1px $shadowColor;
+  }
+
+  &__member-name {
+    margin: -.5rem 1rem 0 0;
+    text-align: right;
+    font-family: 'Streamster', serif;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    letter-spacing: .08rem;
+    text-shadow: 1px 1px $shadowColor;
+  }
+
+  &__age{
+    margin: 0;
+    font-size: 1.3rem;
+    text-shadow: 1px 1px $shadowColor;
+  }
+
+  &__city {
+    margin: 0 0 .5rem;
+    font-size: 1.3rem;
+    text-shadow: 1px 1px $shadowColor;
+  }
+
+  &__phone {
+    margin: 0;
+  }
+
+  &__link {
+    display: block;
+    background: linear-gradient(to right, $accentColor 140px, transparent 200px);
+    font-style: italic;
+    color: $accentColor;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__email {
+    max-width: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  &__honor {
+    margin: .5rem 0 0;
+    text-shadow: 1px 1px $shadowColor;
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  &__title {
+    margin: 0;
+    font-family: 'Hauser', sans-serif;
+    font-size: 3rem;
+    letter-spacing: .2rem;
+    color: $accentColor;
+    text-shadow: 1px 1px $shadowColor;
+  }
+
+  &__accent {
+    margin: -0.5rem -2rem .5rem .5rem;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-family: 'Streamster', sans-serif;
+    text-shadow: 1px 1px $shadowColor;
+  }
+
+  &__triangle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../img/loading.png') center / contain no-repeat;
+    animation: loading 5s infinite linear;
+
+    &-outer {
+      width: 20vw;
+      height: 20vw;
+    }
+
+    &-middle {
+      width: 10vw;
+      height: 10vw;
+    }
+
+    &-inner {
+      width: 5vw;
+      height: 5vw;
+    }
+  }
+
+  @keyframes loading {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 15%;
+
+  &__text {
+    position: relative;
+    padding: 2rem;
+    font-size: 1.5rem;
+    color: $accentColor;
+    background-color: $shadowColor;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: $metalGradient;
+    }
+
+    &:before {
+      left: -2px;
+    }
+
+    &:after {
+      right: 2px;
+    }
+  }
+}
