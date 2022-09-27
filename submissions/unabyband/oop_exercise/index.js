@@ -20,7 +20,8 @@ class Inhabitant {
   }
 
   printInhabitant () {
-    print((Object.values(this)).join("; "));
+    const arr = [this.species, this.name, this.legs, this.hands, this.saying, this.friends];
+    print(arr.join('; '));
   }
 }
 
