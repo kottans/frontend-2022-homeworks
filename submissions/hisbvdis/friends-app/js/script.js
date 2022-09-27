@@ -6,34 +6,34 @@ const searchElem = document.querySelector("[data-search-input]");
 const sortElem = document.querySelector("[data-sort-select]");
 const filtersFormElem = document.querySelector("[data-filters-form]");
 
-let searchParams = 
+let urlSearchParams = 
   window.location.search === ""
   ? {}
   : new URLSearchParams(window.location.search);
 
-let searchValue = searchParams.get("search") || "";
+let searchValue = urlSearchParams.get("search") || "";
 searchElem.value = searchValue;
-let sortValue = searchParams.get("sort") || "default";
+let sortValue = urlSearchParams.get("sort") || "default";
 sortElem.value = sortValue;
-let genderValue = searchParams.get("gender") || "all";
+let genderValue = urlSearchParams.get("gender") || "all";
 filtersFormElem.gender.value = genderValue;
 
 searchElem.addEventListener("input", (evt) => {
   searchValue = evt.target.value;
-  searchParams.search = searchValue;
+  urlSearchParams.search = searchValue;
   renderUserList();
 });
 
 sortElem.addEventListener("change", (evt) => {
   sortValue = evt.target.value;
-  searchParams.sort = sortValue;
+  urlSearchParams.sort = sortValue;
   renderUserList();
 });
 
 filtersFormElem.addEventListener("change", (evt) => {
   if (evt.target.name !== "gender") return;
   genderValue = evt.target.value;
-  searchParams.gender = genderValue;
+  urlSearchParams.gender = genderValue;
   renderUserList();
 })
 
@@ -112,7 +112,7 @@ function sortArray(arr, method) {
 
 
 function updateURL() {
-  const searchParams = Object.entries(searchParams)
+  const searchParams = Object.entries(urlSearchParams)
     .map(([key, value]) => `${key}=${value}`)
     .join("&");
 
