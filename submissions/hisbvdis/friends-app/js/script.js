@@ -6,39 +6,34 @@ const searchElem = document.querySelector("[data-search-input]");
 const sortElem = document.querySelector("[data-sort-select]");
 const filtersFormElem = document.querySelector("[data-filters-form]");
 
-let urlSearchParams =
-  location.search === ""
-    ? {}
-    : location.search
-        .slice(1)
-        .split("&")
-        .map((item) => item.split("="))
-        .filter(([_, value]) => value !== "")
-        .reduce((accum, [key, value]) => ({ ...accum, [key]: value }), {});
+let searchParams = 
+  window.location.search === ""
+  ? {}
+  : new URLSearchParams(window.location.search);
 
-let searchValue = urlSearchParams.search || "";
+let searchValue = searchParams.get("search") || "";
 searchElem.value = searchValue;
-let sortValue = urlSearchParams.sort || "default";
+let sortValue = searchParams.get("sort") || "default";
 sortElem.value = sortValue;
-let genderValue = urlSearchParams.gender || "all";
+let genderValue = searchParams.get("gender") || "all";
 filtersFormElem.gender.value = genderValue;
 
 searchElem.addEventListener("input", (evt) => {
   searchValue = evt.target.value;
-  urlSearchParams.search = searchValue;
+  searchParams.search = searchValue;
   renderUserList();
 });
 
 sortElem.addEventListener("change", (evt) => {
   sortValue = evt.target.value;
-  urlSearchParams.sort = sortValue;
+  searchParams.sort = sortValue;
   renderUserList();
 });
 
 filtersFormElem.addEventListener("change", (evt) => {
   if (evt.target.name !== "gender") return;
   genderValue = evt.target.value;
-  urlSearchParams.gender = genderValue;
+  searchParams.gender = genderValue;
   renderUserList();
 })
 
@@ -112,7 +107,7 @@ function sortArray(arr, method) {
 
 
 function updateURL() {
-  const searchParams = Object.entries(urlSearchParams)
+  const searchParams = Object.entries(searchParams)
     .map(([key, value]) => `${key}=${value}`)
     .join("&");
 
