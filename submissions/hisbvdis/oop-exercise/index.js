@@ -12,8 +12,9 @@ class Creature {
     this.species = species;
     this.name = name;
     this.gender = gender;
-    this.legs = legs;
     this.saying = saying;
+    this.legs = legs;
+    
     this.props = [
       { prop: "species", preface: "I am a" },
       { prop: "name", preface: "My name is" },
