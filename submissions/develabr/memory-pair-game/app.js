@@ -59,11 +59,17 @@ const match = () => {
   });
 };
 
+const winAlert = () => {
+  alert('Graduation!!! You win.');
+  window.location.reload();
+};
+
 let firstGuess = '';
 let secondGuess = '';
 let count = 0;
 let previousTarget = null;
-let delay = 1200;
+let delay = 700;
+let matched = 0;
 
 const resetGuesses = () => {
   firstGuess = '';
@@ -81,7 +87,7 @@ wrapper.addEventListener('click', (event) => {
   const clicked = event.target;
 
   if (
-    clicked.nodeName === 'SECTION' ||
+    clicked.nodeName === 'section' ||
     clicked === previousTarget ||
     clicked.parentNode.classList.contains('selected') ||
     clicked.parentNode.classList.contains('match')
@@ -102,6 +108,10 @@ wrapper.addEventListener('click', (event) => {
     if (firstGuess && secondGuess) {
       if (firstGuess === secondGuess) {
         setTimeout(match, delay);
+        matched += 2;
+        if (cardsMix.length == matched) {
+          setTimeout(winAlert, 1500);
+        }
       }
       setTimeout(resetGuesses, delay);
     }
