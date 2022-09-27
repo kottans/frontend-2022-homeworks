@@ -39,12 +39,12 @@ for (let i = 0; i < numberOfEnemies; i++) {
 
 // Enemy
 
-const Enemy = function(speed, x, y) {
+const Enemy = function(speed, x, y, player) {
     this.x = x;
     this.y = y;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png'; 
-
+    this.player = player;
 };
 
 Enemy.prototype.update = function(dt) {
@@ -53,14 +53,14 @@ Enemy.prototype.update = function(dt) {
         this.x = enemyStartX;
         this.speed += 1;
     }
-    this.isCollision(player);
+    this.isCollision();
 };
 
-Enemy.prototype.isCollision = function(incomePlayer) {
-    if (Math.abs(incomePlayer.x - this.x) < affectedArea && Math.abs(incomePlayer.y - this.y) < affectedArea) {
+Enemy.prototype.isCollision = function() {
+    if (Math.abs(this.player.x - this.x) < affectedArea && Math.abs(this.player.y - this.y) < affectedArea) {
         alert("Чао, лузер)");
-        incomePlayer.x = defaultPlayer.x;
-        incomePlayer.y = defaultPlayer.y;
+        this.player.x = defaultPlayer.x;
+        this.player.y = defaultPlayer.y;
     }
 }
 
@@ -125,7 +125,7 @@ function getRandomSpeed(max, min) {
 const player = new Player(defaultPlayer.x, defaultPlayer.y);
 const allEnemies = [];
 for (let i = 0; i < numberOfEnemies; i++) {
-    allEnemies.push(new Enemy(getRandomSpeed(initialSpeed.max, initialSpeed.min), enemyStartX, enemyRows[i]));
+    allEnemies.push(new Enemy(getRandomSpeed(initialSpeed.max, initialSpeed.min), enemyStartX, enemyRows[i], player));
 };
 
 // event listeners
