@@ -50,8 +50,6 @@ cat_woman.saying = cat.saying;
 inhabitants.forEach((inhabitant)=>{
   const {species, name, gender, legs, paws, hands, tail, saying, friend} = inhabitant;
   const inhabitantProperties = [species, name, gender, legs ? legs : paws, hands ? hands : tail, saying, friend]
-
-  inhabitantProperties('; '),'div')
+  const inhabitantPropertiesList = inhabitantProperties.join('; ')
+  print(inhabitantPropertiesList, 'div')
 })
-
-
