@@ -46,14 +46,18 @@ function takeData({ target }) {
     document.querySelector(".main-img-this")
         .setAttribute('src', thisUrl);
 
+    document.querySelector(".main-img-this")
+        .setAttribute('alt', thisTitle);
+
     document.querySelector(".main-text-span")
-        .textContent = thisText;
+        .innerHTML = thisText;
 
     document.querySelector(".main-title")
-        .textContent = thisTitle;
+        .innerHTML = thisTitle;
     document.querySelector(".hidden")
         .setAttribute('class', 'keywords');
 };
+
 function more(event) {
 
     if (document.querySelector(".menu-ul").getAttribute('class') == 'menu-ul') {
@@ -64,6 +68,7 @@ function more(event) {
             .setAttribute('class', 'menu-ul');
     };
 };
+
 document.querySelector('.menu-ul')
     .addEventListener("click", takeData);
 
