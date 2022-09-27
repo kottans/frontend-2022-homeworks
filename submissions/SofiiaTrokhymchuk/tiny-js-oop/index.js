@@ -5,20 +5,24 @@ class Inhabitant{
       this.gender = gender;
       this.saying = saying;
       this.legs = legs;
-      this.friends = 0;
+      this.friends = [];
    }
 
    getProperties(){
-      return 'species, name, gender, saying, legs, friends';
+      return ['species', 'name', 'gender', 'saying', 'legs', 'friends'];
    }
 
    addFriends(friendsList){
-      this.friends = friendsList.map(friend => friend.name).join(', ');
+      this.friends = this.friends.concat(friendsList);
+   }
+
+   friendsToString(){
+      return this.friends.length === 0 ? '0' : this.friends.map(friend => friend.name).join(', ');
    }
 
    toString(){
-      return this.getProperties().split(', ').map(property => {
-         return `<strong>${property}</strong>: ${this[property]}`;
+      return this.getProperties().map(property => {
+         return `<strong>${property}</strong>: ${property === 'friends' ? this.friendsToString() : this[property]}`;
       }).join('; ');
    }
 }
@@ -36,7 +40,7 @@ class Human extends Inhabitant{
    }
 
    getProperties(){
-      return super.getProperties() + ', hands';
+      return super.getProperties().concat('hands');
    }
 }
 
@@ -79,5 +83,6 @@ const catWoman = new CatWoman('Hello Kitty');
 
 dog.addFriends([cat, man]);
 woman.addFriends([dog, catWoman]);
+woman.addFriends([cat]);
 
 [dog, cat, man, woman, catWoman].forEach(inhabitant => print(inhabitant.toString()));
