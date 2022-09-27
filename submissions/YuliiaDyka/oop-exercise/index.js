@@ -1,40 +1,44 @@
 class LivingBeing {
-   constructor(species, name, gender, saying) {
+   constructor(species, name, gender, saying, legs) {
       this.species = species;
       this.name = name;
       this.gender = gender;
       this.saying = saying;
+      this.legs = legs;
    };
 
    showProperties() {
-      return Object.getOwnPropertyNames(this).map(prop => this[prop]).join('; ');
+      return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}; ${this.legs}`;
    }
 };
 
 class Human extends LivingBeing {
-   constructor(name, gender, saying) {
-      super("Human", name, gender, saying);
-      this.legs = 2;
+   constructor(name, gender, saying, legs) {
+      super("Human", name, gender, saying, legs);
       this.hands = 2;
    };
+
+   showProperties() {
+      return super.showProperties() + `; ${this.hands}`;
+   }
+
 };
 
 class Animal extends LivingBeing {
-   constructor(species, name, gender, saying) {
-      super(species, name, gender, saying);
-      this.legs = 4;
+   constructor(species, name, gender, saying, legs) {
+      super(species, name, gender, saying, legs);
    };
 };
 
 class Cat extends Animal {
-   constructor(name, gender) {
-      super("Kitty", name, gender, "Meooow!");
+   constructor(name, gender, legs) {
+      super("Kitty", name, gender, "Meooow!", legs);
    };
 };
 
 class Dog extends Animal {
-   constructor(name, gender) {
-      super("Puppy", name, gender, "Woof!");
+   constructor(name, gender, legs) {
+      super("Puppy", name, gender, "Woof!", legs);
    };
 };
 
@@ -45,13 +49,17 @@ class CatWoman extends Cat {
       this.legs = 2;
       this.hands = 2;
    };
+
+   showProperties() {
+      return super.showProperties() + `; ${this.hands}`;
+   }
 };
 
 const 
-man = new Human('Joe', 'male', 'How you doing?'),
-woman = new Human('Monica', 'female', 'I know!'),
-cat = new Cat('Taras', 'male'),
-dog = new Dog('Chappy', 'male'),
+man = new Human('Joe', 'male', 'How you doing?', 2),
+woman = new Human('Monica', 'female', 'I know!', 2),
+cat = new Cat('Taras', 'male', 4),
+dog = new Dog('Chappy', 'male', 4),
 catWoman = new CatWoman('Halle Berry'),
 livingBeings = [man, woman, cat, dog, catWoman];
 
