@@ -115,6 +115,11 @@ function compareUsersByName(reverse = false) {
   };
 }
 
+function compareUsersByAge(reverse = false) {
+  return (user1, user2) =>
+    reverse ? user2.dob.age - user1.dob.age : user1.dob.age - user2.dob.age;
+}
+
 function sortUsers(users) {
   if (!formState.sort) return users;
 
@@ -124,9 +129,9 @@ function sortUsers(users) {
     case "nameDescending":
       return users.sort(compareUsersByName(true));
     case "ageAscending":
-      return users.sort((user1, user2) => user1.dob.age - user2.dob.age);
+      return users.sort(compareUsersByAge());
     case "ageDescending":
-      return users.sort((user1, user2) => user2.dob.age - user1.dob.age);
+      return users.sort(compareUsersByAge(true));
     default:
       return users;
   }
