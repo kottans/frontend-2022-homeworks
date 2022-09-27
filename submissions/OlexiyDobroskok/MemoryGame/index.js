@@ -68,8 +68,8 @@ wrap.before(gameStatusInfo);
 
 const rulesBtn = document.querySelector(".rules__btn");
 const winBtn = document.querySelector(".win__btn");
-rulesBtn.addEventListener("click", popupHendler);
-winBtn.addEventListener("click", popupHendler);
+rulesBtn.addEventListener("click", popupHandler);
+winBtn.addEventListener("click", popupHandler);
 playArea.addEventListener("click", searchPair);
 
 function newGame() {
@@ -213,7 +213,7 @@ function showWhoAreYou(nameCharacter) {
   winBtn.classList.remove("disable__click");
 }
 
-function popupHendler({ target }) {
+function popupHandler({ target }) {
   const btn = target.closest("button");
   if (!btn) return;
   const popupOverlay = target.closest("div");
