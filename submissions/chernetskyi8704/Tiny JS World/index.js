@@ -49,8 +49,8 @@ class Inhabitant {
   }
 }
 class Human extends Inhabitant {
-  constructor(Species, Name, Gender, Saying) {
-    super(Species, Name, Gender, Saying);
+  constructor(Name, Gender, Saying) {
+    super("Homo sapiens", Name, Gender, Saying);
     this.Hands = "2";
     this.Legs = "2";
   }
@@ -76,14 +76,14 @@ class Human extends Inhabitant {
 class Animal extends Inhabitant {}
 
 class Man extends Human {
-  constructor(Name, Gender, Saying) {
-    super("Man🤵", Name, Gender, Saying);
+  constructor(Name, Saying) {
+    super(Name, "Man🤵", Saying);
   }
 }
 
 class Woman extends Human {
-  constructor(Name, Gender, Saying) {
-    super("Woman👩", Name, Gender, Saying);
+  constructor(Name, Saying) {
+    super(Name, "Woman👩", Saying);
   }
 }
 
