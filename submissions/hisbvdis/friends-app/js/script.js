@@ -1,5 +1,5 @@
 import { getUserList } from "./randomuser.service.js";
-const users = await getUserList().then(data => data);
+const users = await getUserList();
 
 const listElem = document.querySelector("[data-user-list]");
 const searchElem = document.querySelector("[data-search-input]");
