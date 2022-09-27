@@ -13,7 +13,9 @@ class Inhabitant {
       this.saying = saying;
    }
    get tinyWorld() {
-      return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}`;
+      const { species, name, gender, saying } = this;
+      const PropertiesInhabitant = [species, name, gender, saying];
+      return PropertiesInhabitant;
    }
 }
 
@@ -24,7 +26,9 @@ class Human extends Inhabitant {
       this.legs = 2;
    }
    get tinyWorld() {
-      return `${this.species}; ${this.name}; ${this.gender}; ${this.hands}; ${this.legs}; ${this.saying}`;
+      const { hands, legs } = this;
+      const PropertiesHuman = [hands, legs];
+      return super.tinyWorld.concat(PropertiesHuman);
    }
 }
 
@@ -34,7 +38,9 @@ class Animal extends Inhabitant {
       this.paws = 4;
    }
    get tinyWorld() {
-      return `${this.species}; ${this.name}; ${this.gender}; ${this.paws}; ${this.saying}`;
+      const { paws } = this;
+      const PropertiesAnimal = [paws];
+      return super.tinyWorld.concat(PropertiesAnimal);
    }
 }
 
@@ -65,4 +71,4 @@ class Dog extends Animal {
 const inhabitants = [new Man("Vasyl", "Nothing can stop an idea whose time has come!"), new Woman("Oksana", "What's up?"),
 new Cat("Pushok", "male"), new Dog("Reks", "male")];
 
-inhabitants.forEach(residents => print(residents.tinyWorld));
+inhabitants.forEach(residents => print(residents.tinyWorld.join("; ")));
