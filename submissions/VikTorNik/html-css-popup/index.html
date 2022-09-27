@@ -14,150 +14,135 @@
         <header class="header">
             <nav class="nav">
                 <ul class="nav__menu">
-                    <li><a href="#">File</a></li>
-                    <li><a href="#">Edit</a></li>
-                    <li><a href="#">View</a></li>
-                    <li><a href="#">Run </a></li>
-                    <li><a href="#">Info</a></li>
-                    <li><a href="#">Help</a></li>
-                    <li class="nav__popup">
-
+                    <li class="li-menu"><a class="item-menu" href="#">File</a></li>
+                    <li class="li-menu"><a class="item-menu" href="#">Edit</a></li>
+                    <li class="li-menu"><a class="item-menu" href="#">View</a></li>
+                    <li class="li-menu"><a class="item-menu" href="#">Run </a></li>
+                    <li class="li-menu"><a class="item-menu" href="#">Info</a></li>
+                    <li class="li-menu"><a class="item-menu" href="#">Help</a></li>
+                    <li class="li-menu">
                         <input type="checkbox" id="checkbox-base" class="checkbox-base">
                         <label for="checkbox-base" class="label__base">
-                            <img src="img/popup-button.png" alt="Popup-button">
+                            <img class="img-menu" src="img/popup-button.png" alt="Additional popup menu">
                         </label>
-
                         <div class="content">
-                            <div class="content__base">
-
-                                <div class="content-button">
-                                    <a class="content__application" href="#">
-                                        <img src="img/apps.png" alt="Application">
-                                        <p>Application</p>
-                                    </a>
+                            <ul>
+                                <div class="content__base">
+                                    <li class="content-button">
+                                        <a class="content__application" href="#">
+                                            <img src="img/apps.png" alt="Additional applications">
+                                            <p>Application</p>
+                                        </a>
+                                    </li>
+                                    <li class="content-button">
+                                        <a class="content__application" href="#">
+                                            <img src="img/blogs.png" alt="Application Blogs">
+                                            <p>Blogs</p>
+                                        </a>
+                                    </li>
+                                    <li class="content-button">
+                                        <a class="content__application" href="#">
+                                            <img src="img/calendar.png" alt="Application Calendar">
+                                            <p>Calendar</p>
+                                        </a>
+                                    </li>
+                                    <li class="content-button">
+                                        <a class="content__application" href="#">
+                                            <img src="img/chat.png" alt="User chat">
+                                            <p>Chat</p>
+                                        </a>
+                                    </li>
+                                    <li class="content-button">
+                                        <a class="content__application" href="#">
+                                            <img src="img/classroom.png" alt="Application Classroom">
+                                            <p>Classroom</p>
+                                        </a>
+                                    </li>
+                                    <li class="content-button">
+                                        <a class="content__application" href="#">
+                                            <img src="img/collection.png" alt="Collection images">
+                                            <p>Collection</p>
+                                        </a>
+                                    </li>
+                                    <li class="content-button">
+                                        <a class="content__application" href="#">
+                                            <img src="img/contacts.png" alt="User contacts">
+                                            <p>Contacts</p>
+                                        </a>
+                                    </li>
+                                    <li class="content-button">
+                                        <a class="content__application" href="#">
+                                            <img src="img/documents.png" alt="Application Documents">
+                                            <p>Documents</p>
+                                        </a>
+                                    </li>
+                                    <li class="content-button">
+                                        <a class="content__application" href="#">
+                                            <img src="img/files.png" alt="File work application">
+                                            <p>Files</p>
+                                        </a>
+                                    </li>
                                 </div>
-
-                                <div class="content-button">
-                                    <a class="content__application" href="#">
-                                        <img src="img/blogs.png" alt="Blogs">
-                                        <p>Blogs</p>
-                                    </a>
-                                </div>
-
-                                <div class="content-button">
-                                    <a class="content__application" href="#">
-                                        <img src="img/calendar.png" alt="Calendar">
-                                        <p>Calendar</p>
-                                    </a>
-                                </div>
-
-                                <div class="content-button">
-                                    <a class="content__application" href="#">
-                                        <img src="img/chat.png" alt="Chat">
-                                        <p>Chat</p>
-                                    </a>
-                                </div>
-
-                                <div class="content-button">
-                                    <a class="content__application" href="#">
-                                        <img src="img/classroom.png" alt="Classroom">
-                                        <p>Classroom</p>
-                                    </a>
-                                </div>
-
-                                <div class="content-button">
-                                    <a class="content__application" href="#">
-                                        <img src="img/collection.png" alt="Collection">
-                                        <p>Collection</p>
-                                    </a>
-                                </div>
-
-                                <div class="content-button">
-                                    <a class="content__application" href="#">
-                                        <img src="img/contacts.png" alt="Contacts">
-                                        <p>Contacts</p>
-                                    </a>
-                                </div>
-
-                                <div class="content-button">
-                                    <a class="content__application" href="#">
-                                        <img src="img/documents.png" alt="Documents">
-                                        <p>Documents</p>
-                                    </a>
-                                </div>
-
-                                <div class="content-button">
-                                    <a class="content__application" href="#">
-                                        <img src="img/files.png" alt="Files">
-                                        <p>Files</p>
-                                    </a>
-                                </div>
-                            </div>
-
+                            </ul>
                             <input type="checkbox" id="checkbox-additional" class="checkbox-additional">
                             <label for="checkbox-additional" class="label-additional">More</label>
-
-                            <div class="content__additional">
-
-                                <div class="content-button-add">
+                            <ul class="content__additional">
+                                <li class="content-button-add">
                                     <a class="content__application" href="#">
-                                        <img src="img/mail.png" alt="Mail">
+                                        <img src="img/mail.png" alt="Mail Application">
                                         <p>Mail</p>
                                     </a>
-                                </div>
-
-                                <div class="content-button-add">
+                                </li>
+                                <li class="content-button-add">
                                     <a class="content__application" href="#">
-                                        <img src="img/maps.png" alt="Maps">
+                                        <img src="img/maps.png" alt="Map search">
                                         <p>Maps</p>
                                     </a>
-                                </div>
-
-                                <div class="content-button-add">
+                                </li>
+                                <li class="content-button-add">
                                     <a class="content__application" href="#">
-                                        <img src="img/mars.png" alt="Mars">
+                                        <img src="img/mars.png" alt="Mars Application">
                                         <p>Mars</p>
                                     </a>
-                                </div>
-
-                                <div class="content-button-add">
+                                </li>
+                                <li class="content-button-add">
                                     <a class="content__application" href="#">
-                                        <img src="img/news.png" alt="News">
+                                        <img src="img/news.png" alt="News reading">
                                         <p>News</p>
                                     </a>
-                                </div>
-
-                                <div class="content-button-add">
+                                </li>
+                                <li class="content-button-add">
                                     <a class="content__application" href="#">
-                                        <img src="img/photos.png" alt="Photos">
+                                        <img src="img/photos.png" alt="Photo gallery">
                                         <p>Photos</p>
                                     </a>
-                                </div>
-
-                                <div class="content-button-add">
+                                </li>
+                                <li class="content-button-add">
                                     <a class="content__application" href="#">
-                                        <img src="img/promo.png" alt="Promo">
-                                        <p>Photos</p>
+                                        <img src="img/promo.png" alt="New promotions">
+                                        <p>Promo</p>
                                     </a>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                         </div>
                     </li>
+                </ul>
+                </li>
                 </ul>
             </nav>
         </header>
 
         <main class="main">
             <div>
-                <a href="https://github.com/kottans" target="_blank">
-                    <img class="main__animated" src="img/logo.png" alt="Kottans">
+                <a href="https://github.com/kottans" tabindex="-1" target="_blank">
+                    <img class="main__animated" width="250" src="img/logo.png" alt="Best Frontend Learning School">
                 </a>
             </div>
         </main>
 
         <footer class="footer">
             <div class="footer__div">
-                <p>&copy; 2022 • HTML і CSS практика: Hooli-style Popup by <a class="footer__git"
+                <p>&copy; 2022 • HTML і CSS практика: Hooli-style Popup by <a class="footer__git" tabindex="-1"
                         href="https://github.com/VikTorNik" target="_blank">VikTorNik</a> </p>
             </div>
         </footer>
