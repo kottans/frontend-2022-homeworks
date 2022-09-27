@@ -42,8 +42,6 @@ const citiesPhotos = [
     cityPhoto: "./img/cities/zaporijja.jpg",
   },
 ];
-const url =
-  "https://randomuser.me/api/?results=100&inc=gender,name,nat,dob,location,email,phone,picture&nat=us,ua,ch,gb";
 
 async function getData(url) {
   const responceData = await fetch(url);
@@ -52,40 +50,42 @@ async function getData(url) {
 }
 
 async function waitData() {
+  const url =
+    "https://randomuser.me/api/?results=100&inc=gender,name,nat,dob,location,email,phone,picture&nat=us,ua,ch,gb";
   try {
     data = await getData(url);
+    const preloaderEl = document.getElementById("preloader");
+    preloaderEl.classList.add("hidden");
+    preloaderEl.classList.remove("visible");
     return data;
   } catch {
-    showOrHideErrorMsg();
+    toggleErrorMessage();
     console.log(error);
   }
 }
 
 let friendsIdList = [];
-let firstPageValue = 0;
+let pageValue = 0;
 const personsList = document.querySelector(".person__list");
 const pageList = document.createElement("ul");
 pageList.classList.add("page__list");
 personsList.after(pageList);
 
 const personsData = waitData();
+
 personsData.then(({ results: persons }) => {
-  const preloaderEl = document.getElementById("preloader");
-  preloaderEl.classList.add("hidden");
-  preloaderEl.classList.remove("visible");
   persons.forEach((person, personPosition) => {
     person.cityImg = shuffle(citiesPhotos)[0];
     person.id = personPosition;
   });
   sort.byAlphabet(persons);
-  pageList.append(...createPageList(persons));
+  pageList.innerHTML = createPageList(persons).join("");
   updatePersonsList(persons);
 });
 
 const filterBtns = document.querySelector(".filter__btns");
 const surnameFilter = document.querySelector(".surname__filter");
 const ageFilter = document.querySelector(".age__filter__by__number");
-const resetBtn = document.querySelector(".reset__filter__btn");
 const filterMenu = document.querySelector("#filter__menu");
 const filterForm = document.querySelector(".filter__form");
 const filterMenuBtn = document.querySelector(".filter__btn");
@@ -114,8 +114,8 @@ personsData.then(({ results: persons }) => {
       myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
     )
   );
-  filterForm.addEventListener("click", () =>
-    actionsServiceBtnFilterMenu(
+  filterMenu.addEventListener("click", () =>
+    filterBtnsHandler(
       event,
       myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
     )
@@ -124,29 +124,22 @@ personsData.then(({ results: persons }) => {
     createDetailedPersonsInfo(event, persons)
   );
   detailedPersonInfo.addEventListener("click", () =>
-    actionsBtnDetailedPersonsMenu(
+    detailedInfoBtnsHandler(
       event,
       myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
     )
   );
-  btnsArea.addEventListener("click", () =>
-    changingPersonDisplayModes(event, persons)
-  );
+  btnsArea.addEventListener("click", () => changeDisplayMode(event, persons));
 });
 
-errorArea.addEventListener("click", actionsOnError);
+errorArea.addEventListener("click", errorHandler);
 
 function createPersonsList(persons) {
   const convertedPersonsData = convertPersonsData(persons);
   if (convertedPersonsData.length === 0) {
-    const personsListMessage = document.createElement("p");
-    personsListMessage.classList.add("list__message");
-    personsListMessage.innerText =
-      "We found nothing matching your search... =(";
-    personsList.append(personsListMessage);
     return convertedPersonsData;
   }
-  return convertedPersonsData[firstPageValue].map(
+  return convertedPersonsData[pageValue].map(
     ({
       id,
       gender,
@@ -161,40 +154,30 @@ function createPersonsList(persons) {
           return "";
         }
       }
-      const personItem = document.createElement("li");
-      personItem.classList.add("person__item");
-      personItem.id = id;
-      const personBg = document.createElement("img");
-      personBg.classList.add("person__bg");
-      personBg.src = cityPhoto;
-      personItem.append(personBg);
-      const personPhoto = document.createElement("img");
-      personPhoto.classList.add("person__photo");
-      personPhoto.src = photo;
-      personBg.after(personPhoto);
-      const personName = document.createElement("h3");
-      personName.classList.add("person__name");
-      personName.innerText = `${firstName} ${surName}`;
-      personPhoto.after(personName);
-      const personAge = document.createElement("span");
-      personAge.classList.add("person__text__age");
-      personAge.innerText = age;
-      personName.after(personAge);
-      const personGender = document.createElement("span");
-      personGender.classList.add("person__text__gender");
-      personGender.innerText = gender;
-      personAge.after(personGender);
-      if (repeatId !== undefined) {
-        personItem.setAttribute("data-friend", true);
-        const inFriendsIcon = document.createElement("i");
-        inFriendsIcon.classList.add("infriends__icon");
-        const iconImg = document.createElement("img");
-        iconImg.classList.add("icon__img__infriends");
-        iconImg.src = "./img/friends__ico/in__friends.png";
-        inFriendsIcon.append(iconImg);
-        personGender.after(inFriendsIcon);
-      }
-      return personItem;
+      const personCard =
+        repeatId === undefined
+          ? `
+      <li id='${id}'class="person__item">
+        <img src="${cityPhoto}" alt="" class="person__bg">
+        <img src="${photo}" alt="" class="person__photo">
+        <h2 class="person__name">${firstName} ${surName}</h2>
+        <span class="person__text__age">${age}</span>
+        <span class="person__text__gender">${gender}</span>
+      </li>
+      `
+          : `
+      <li id="${id}" class="person__item" data-friend="true">
+         <img src="${cityPhoto}" alt="" class="person__bg" />
+         <img src="${photo}" alt="" class="person__photo" />
+         <h2 class="person__name">${firstName} ${surName}</h2>
+         <span class="person__text__age">${age}</span>
+         <span class="person__text__gender">${gender}</span>
+         <i class="infriends__icon"
+           ><img src="./img/friends__ico/in__friends.png" alt="" class="icon__img__infriends"
+         /></i>
+     </li>
+      `;
+      return personCard;
     }
   );
 }
@@ -202,13 +185,14 @@ function createPersonsList(persons) {
 function createPageList(persons) {
   const convertedPersonsData = convertPersonsData(persons);
   return convertedPersonsData.map((page, number) => {
-    const pageNumber = document.createElement("li");
-    if (firstPageValue == number) {
-      pageNumber.classList.add("page__number", "chosen__page");
-    }
-    pageNumber.classList.add("page__number");
-    pageNumber.setAttribute("data-page-value", number);
-    pageNumber.innerText = number + 1;
+    const pageNumber =
+      pageValue == number
+        ? `<li class="page__number chosen__page" data-page-value="${number}">${
+            number + 1
+          }</li>`
+        : `<li class="page__number" data-page-value="${number}">${
+            number + 1
+          }</li>`;
     return pageNumber;
   });
 }
@@ -216,7 +200,7 @@ function createPageList(persons) {
 function showPage({ target }, persons) {
   const selectedPage = target.closest("li");
   if (!selectedPage) return;
-  firstPageValue = selectedPage.dataset.pageValue;
+  pageValue = selectedPage.dataset.pageValue;
   showFilteredPersons(persons);
 }
 
@@ -227,9 +211,9 @@ function createDetailedPersonsInfo({ target }, persons) {
   if (filterMenu.classList.value === "filter__menu") {
     filterMenu.classList.remove("filter__menu");
     filterMenu.classList.add("filter__menu__hide");
-    changeFilterMenuBtnName();
+    changeSideBtnName();
   }
-  if (detailedPersonInfo.classList.value.includes("hide__person__info")) {
+  if (detailedPersonInfo.classList.contains("hide__person__info")) {
     detailedPersonInfo.classList.remove("hide__person__info");
   }
   const {
@@ -278,15 +262,14 @@ function createDetailedPersonsInfo({ target }, persons) {
     iconInFriends.classList.remove("hide__btn");
     addFriendBtn.classList.add("hide__btn");
     deleteFriendBtn.classList.remove("hide__btn");
-  }
-  if (activePerson.dataset.friend !== "true") {
+  } else {
     iconInFriends.classList.add("hide__btn");
     addFriendBtn.classList.remove("hide__btn");
     deleteFriendBtn.classList.add("hide__btn");
   }
 }
 
-function actionsBtnDetailedPersonsMenu({ target }, persons) {
+function detailedInfoBtnsHandler({ target }, persons) {
   const activeBtn = target.closest(".friend__btn");
   const addFriendBtn = target.closest(".add__friend");
   const deleteFriendBtn = target.closest(".delete__friend");
@@ -317,24 +300,24 @@ function actionsBtnDetailedPersonsMenu({ target }, persons) {
   }
 }
 
-function changingPersonDisplayModes({ target }, persons) {
+function changeDisplayMode({ target }, persons) {
   const myFriendsBtn = target.closest(".my__friends__btn");
-  const allPeoplesBtn = target.closest(".all__persons__btn");
-  if (!myFriendsBtn && !allPeoplesBtn) return;
+  const allPeopleBtn = target.closest(".all__persons__btn");
+  if (!myFriendsBtn && !allPeopleBtn) return;
   if (!!myFriendsBtn) {
     friendsList = friendsIdList.map((friendId) =>
       persons.find((person) => person.id == friendId)
     );
-    const allPeoplesBtn = document.querySelector(".all__persons__btn");
-    allPeoplesBtn.classList.remove("select__btn");
+    const allPeopleBtn = document.querySelector(".all__persons__btn");
+    allPeopleBtn.classList.remove("select__btn");
     myFriendsBtn.classList.add("select__btn");
     myFriendsBtn.setAttribute("data-friends-btn", "open");
     renderPersonsList(friendsList);
     updateVisualPageToDefaultSettings();
   }
-  if (!!allPeoplesBtn) {
+  if (!!allPeopleBtn) {
     const myFriendsBtn = document.querySelector(".my__friends__btn");
-    allPeoplesBtn.classList.add("select__btn");
+    allPeopleBtn.classList.add("select__btn");
     myFriendsBtn.classList.remove("select__btn");
     myFriendsBtn.setAttribute("data-friends-btn", "close");
     renderPersonsList(persons);
@@ -346,25 +329,23 @@ function updateVisualPageToDefaultSettings() {
   filterMenu.classList.remove("filter__menu__hide");
   filterMenu.classList.add("filter__menu");
   detailedPersonInfo.classList.add("hide__person__info");
-  changeFilterMenuBtnName();
+  changeSideBtnName();
 }
 
-function actionsServiceBtnFilterMenu({ target }, persons) {
-  const activeBtn = target.closest("button");
-  if (!activeBtn) return;
-  if (activeBtn.type !== "reset") {
-    event.preventDefault();
+function filterBtnsHandler({ target }, persons) {
+  const resetBtn = target.closest(".reset__filter__btn");
+  const sideBtn = target.closest(".filter__btn");
+  if (!resetBtn && !sideBtn) return;
+  if (!!sideBtn) {
     filterMenu.classList.toggle("filter__menu__hide");
     filterMenu.classList.toggle("filter__menu");
-    changeFilterMenuBtnName();
+    changeSideBtnName();
   }
-  if (activeBtn.type === "reset") {
-    resetForm(persons);
-  }
+  if (!!resetBtn) resetForm(persons);
 }
 
 function renderPersonsList(persons) {
-  firstPageValue = 0;
+  pageValue = 0;
   showFilteredPersons(persons);
 }
 
@@ -498,23 +479,26 @@ function filterAge(persons, value) {
     return true;
   });
 }
-function showOrHideErrorMsg() {
+function toggleErrorMessage() {
   const errorWindow = document.querySelector(".error__wrap__hide");
   errorWindow.classList.toggle("error__wrap__show");
 }
 
 function updatePersonsList(persons) {
   deleteFirstChildsElements(personsList);
-  personsList.append(...createPersonsList(persons));
+  personsList.innerHTML =
+    persons.length > 0
+      ? createPersonsList(persons).join("")
+      : `<p class="list__message">We found nothing matching your search... =(</p>`;
 }
 
 function updatePageList(persons) {
   deleteFirstChildsElements(pageList);
-  pageList.append(...createPageList(persons));
+  pageList.innerHTML = createPageList(persons).join("");
 }
 
 function resetForm(persons) {
-  firstPageValue = 0;
+  pageValue = 0;
   sort.byAlphabet(persons);
   updatePageList(persons);
   updatePersonsList(persons);
@@ -547,7 +531,7 @@ function deleteFirstChildsElements(element) {
 function getValueRadioBtn(name) {
   const radioBtn = document.querySelectorAll("input[name=" + name + "]");
   for (let btn of radioBtn) {
-    if (btn.checked) {
+    if (!!btn.checked) {
       return btn.value;
     }
   }
@@ -558,7 +542,7 @@ function getValueInputField(className) {
   return inputField.value;
 }
 
-function changeFilterMenuBtnName() {
+function changeSideBtnName() {
   const hideFilterBtn = document.querySelector(".hide__filter__btn");
   const showFilterBtn = document.querySelector(".show__filter__btn");
   if (filterMenu.classList.value === "filter__menu") {
@@ -571,10 +555,10 @@ function changeFilterMenuBtnName() {
   }
 }
 
-function actionsOnError({ target }) {
+function errorHandler({ target }) {
   let btn = target.closest("button");
   if (!btn) return;
-  if (btn.value === "cancel") showOrHideErrorMsg();
-  showOrHideErrorMsg();
+  if (btn.value === "cancel") toggleErrorMessage();
+  toggleErrorMessage();
   waitData();
 }
