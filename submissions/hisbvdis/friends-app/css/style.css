@@ -1,6 +1,6 @@
 @import "./globals/variables.css";
 @import "./globals/globals.css";
-@import "./globals/srOnly.css";
+@import "./globals/sr-only.css";
 
 @import "./layout/header.css";
 @import "./layout/main.css";

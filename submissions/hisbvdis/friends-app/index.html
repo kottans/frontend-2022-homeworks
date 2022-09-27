@@ -14,13 +14,13 @@
   <main class="main">
 
     <form class="search" role="search" aria-labelledby="search-form-header">
-      <h2 class="srOnly" id="search-form-header">Friends search</h2>
-      <label class="srOnly" for="search-input">Search bar</label>
+      <h2 class="sr-only" id="search-form-header">Friends search</h2>
+      <label class="sr-only" for="search-input">Search bar</label>
       <input class="search__input" type="search" id="search-input" placeholder="Search by name..."  data-search-input/>
     </form>
 
     <form class="filters" aria-labelledby="filters-form-header" data-filters-form>
-      <h2 class="srOnly" id="filters-form-header">Friends filters</h2>
+      <h2 class="sr-only" id="filters-form-header">Friends filters</h2>
       <fieldset class="filters__fieldset">
         <label class="filters__title" for="sort-select">Sort by:</label>
         <select name="sort" id="sort-select" data-sort-select>
@@ -49,7 +49,7 @@
     </form>
 
     <section class="users" aria-labelledby="users-section-header">
-      <h2 class="srOnly" id="users-section-header">Friends list</h2>
+      <h2 class="sr-only" id="users-section-header">Friends list</h2>
       <ul class="users__list"  data-user-list></ul>
     </section>
 
