@@ -119,7 +119,6 @@ function filterPeopleByName({currentTarget}) {
 	const filteredByName = filterByName(currentInputNameValue, receivedPeople);
 	renderPeople(filteredByName)
 	currentTarget.elements.name.value = '';
-	console.log(currentTarget.elements.gender)
 }
 
 function filterByName(data, people) {
