@@ -37,10 +37,10 @@ filtersFormElem.addEventListener("change", (evt) => {
   renderUserList();
 })
 
-renderUserList("first");
+renderUserList(true);
 
-function renderUserList(mode) {
-  if (mode !== "first") {
+function renderUserList(isFirstRender = false) {
+  if (ifFirstRender) {
     updateURL();
   }
   
