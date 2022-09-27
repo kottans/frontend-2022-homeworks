@@ -1,21 +1,12 @@
 class Creature {
-  constructor(species, name, gender, leg, hands, saying, friends) {
+  constructor(species, name, gender, legs, saying, friends) {
     this.species = species;
     this.name = name;
     this.gender = gender;
-    this.leg = leg;
-    this.hands = hands;
+    this.legs = legs;
     this.saying = saying;
     this.friends = friends;
-    this.features = [
-      'species',
-      'name',
-      'gender',
-      'leg',
-      'hands',
-      'saying',
-      'friends',
-    ];
+    this.features = ['species', 'name', 'gender', 'saying', 'friends', 'legs'];
   }
   personInfoItems() {
     return this.features.map((feature) => this[feature]).join('; ');
@@ -24,13 +15,17 @@ class Creature {
 
 class Animal extends Creature {
   constructor(species, name, gender, saying, friends) {
-    super(species, name, gender, 4, 0, saying, friends);
+    super(species, name, gender, 4, saying, friends);
   }
 }
 
 class Human extends Creature {
   constructor(name, gender, saying, friends) {
-    super('human', name, gender, 2, 2, saying, friends);
+    super('human', name, gender, 2, saying, friends);
+    this.hands = 2;
+  }
+  personInfoItems() {
+    return super.personInfoItems() + `, ${this.hands}`;
   }
 }
 
