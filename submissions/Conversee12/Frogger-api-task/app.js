@@ -13,11 +13,12 @@ const BorderRight = BorderTop = 400;
 const BorderLeft = BorderBottom = 0;
 let allEnemies = [];
 
-const Enemy = function (x, y, speed) {
+const Enemy = function (x, y, speed, player) {
     this.x = x;
     this.y = y;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
+    this.player = player;
 };
 
 let countLevels = 1;
@@ -31,7 +32,7 @@ Enemy.prototype.update = function (dt) {
         this.speed = speedLevel + Math.floor(Math.random() * multiplierSpeed)
     }
 
-    if (this.x < player.x + PlayerWidth && this.y < player.y + PlayerHeight && this.x + PlayerWidth > player.x && this.y + PlayerHeight > player.y) {
+    if (this.x < this.player.x + PlayerWidth && this.y < this.player.y + PlayerHeight && this.x + PlayerWidth > this.player.x && this.y + PlayerHeight > this.player.y) {
         setTimeout(function () {
             player.x = InitialPosition_X;
             player.y = InitialPosition_Y;
@@ -45,15 +46,6 @@ Enemy.prototype.update = function (dt) {
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
-function createEnemy(amount) {
-    for (let i = 0; i <= amount; i++) {
-        enemy = new Enemy(StartPositionEnemy_X, StartPositionEnemy_Y[i], speedLevel);
-        allEnemies.push(enemy);
-    }
-}
-
-createEnemy(3);
 
 // Player
 const Player = function (x, y) {
@@ -71,6 +63,14 @@ Player.prototype.render = function () {
 };
 
 let player = new Player(InitialPosition_X, InitialPosition_Y);
+
+function createEnemy(amount) {
+    for (let i = 0; i <= amount; i++) {
+        enemy = new Enemy(StartPositionEnemy_X, StartPositionEnemy_Y[i], speedLevel, player);
+        allEnemies.push(enemy);
+    }
+};
+createEnemy(3);
 
 Player.prototype.handleInput = function (keyPress) {
     if (keyPress === 'left' && this.x > BorderLeft) {
