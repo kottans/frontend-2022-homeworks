@@ -1,8 +1,5 @@
-// Основа адреса для краткости
 const baseURL = "https://randomuser.me/api?results=100";
-// const baseURL = "../../assets/data.json";
 
-// Базовая функция получения данных из API
 const getData = async (url) => {
   const response = await fetch(url);
   if (!response.ok) {
@@ -12,13 +9,11 @@ const getData = async (url) => {
   return data;
 }
 
-// Функция получения списка пользователей (с помощью "базовой функции")
 export const getUserList = async () => {
   const data = await getData(`${baseURL}`);
   return data.results.map(convertUserData);
 }
 
-// Функция преобразования сложных данных из ответа в удобный объект
 const convertUserData = (obj) => {
   return {
     name: obj.name.first + " " + obj.name.last,
