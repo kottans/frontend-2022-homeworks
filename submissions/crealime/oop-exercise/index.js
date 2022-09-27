@@ -7,6 +7,16 @@
 
 // ======== OBJECTS DEFINITIONS ========
 
+const pronounsHisHer = {
+  male: 'His',
+  female: 'Her'
+}
+
+const pronounsHeShe = {
+  male: 'He',
+  female: 'She'
+}
+
 function getRandomId() {
   return  new Date().getTime() + '_' + Math.floor(10000 + Math.random() * (99999 + 1 - 10000))
 }
@@ -27,15 +37,15 @@ class Inhabitant {
   }
 
   getAcquaintanceInfo() {
-    return `This is ${this.name} and ${this.gender === 'male' ? 'he' : 'she'} is a ${this.species}.`
+    return `This is ${this.name} and ${pronounsHeShe[this.gender].toLowerCase()} is a ${this.species}.`
   }
 
   getGenderInfo() {
-    return `${this.gender === 'male' ? 'His' : 'Her'} gender is ${this.gender}.`
+    return `${pronounsHisHer[this.gender]} gender is ${this.gender}.`
   }
 
   getLimbsInfo() {
-    return `${this.gender === 'male' ? 'He' : 'She'} have ${this.legs || 0} ${this.legs === 1 ? 'leg' : 'legs'}.`
+    return `${pronounsHeShe[this.gender]} have ${this.legs || 0} ${this.legs === 1 ? 'leg' : 'legs'}.`
   }
 
   getFriendsInfo() {
@@ -43,7 +53,7 @@ class Inhabitant {
   }
 
   getSayingInfo() {
-    return `${this.gender === 'male' ? 'He' : 'She'} usually says hello like this: ${this.saying}`
+    return `${pronounsHeShe[this.gender]} usually says hello like this: ${this.saying}`
   }
 
   getFullInfo() {
@@ -79,7 +89,7 @@ class Human extends Inhabitant {
   }
 
   getLimbsInfo() {
-    return `${this.gender === 'male' ? 'He' : 'She'} have ${this.hands || 0} ${this.hands === 1 ? 'hand' : 'hands'} and ${this.legs || 0} ${this.legs === 1 ? 'leg' : 'legs'}.`
+    return `${pronounsHeShe[this.gender]} have ${this.hands || 0} ${this.hands === 1 ? 'hand' : 'hands'} and ${this.legs || 0} ${this.legs === 1 ? 'leg' : 'legs'}.`
   }
 
   sayFullInfo() {
