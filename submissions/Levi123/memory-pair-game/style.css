@@ -78,7 +78,7 @@
 
 /* flip speed goes here */
 .flipper {
-	transition: 0.6s;
+	transition: 0.3s;
 	transform-style: preserve-3d;
         display: flex;
     justify-content: center;

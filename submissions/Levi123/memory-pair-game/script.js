@@ -93,8 +93,11 @@ const flipCard = (target) => {
 
 const checkCard = (target, parentElement) => {
     if (STATE.flipElementIdArray.length < 2){
+        STATE.isInteractive = false;
         STATE.flipElementIdArray.push(target.dataset.id);
+        console.log(STATE.flipElementIdArray)
     }
+    STATE.isInteractive = true;
 
     if (!STATE.cardOne){
         return STATE.cardOne = parentElement;
@@ -140,3 +143,4 @@ SELECTORS.flipContainer.addEventListener('click', function (event) {
         }
     }
 })
+
