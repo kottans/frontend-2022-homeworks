@@ -1,40 +1,50 @@
 const STATES = {
-    personData : [],
-    sortedPersonData : [],
-    filtersData: [],
-    filterType: '',
+    defaultPersonsData : [],
+    sortedPersonsData : [],
+    dataToSort: [],
+    sortType: '',
     genderType: '',
 }
 const SELECTORS = {
     dataList : document.querySelector('.content__list'),
-    radioButtons: document.getElementsByName('sort-az-age'),
-    radioButtonsGender: document.getElementsByName('sort-gender'),
+    radioButtons: document.querySelectorAll('.filter__radio'),
     clearFilterButton: document.querySelector('.search__button'),
     nameSearch: document.querySelector('.form__name'),
 }
 
-async function getPersonData() {
-    const response = await fetch('https://randomuser.me/api/?results=20&inc=gender,name,email,phone,picture,dob');
-    const data = await response.json();
-
-    STATES.personData = data.results.map((personDataElement) => ({
-        fullName: `${personDataElement.name.first} ${personDataElement.name.last}`,
-        age: personDataElement.dob.age,
-        mail: personDataElement.email,
-        gender: personDataElement.gender,
-        phone: personDataElement.phone,
-        photo: personDataElement.picture.medium,
-    }));
-    STATES.sortedPersonData = [...STATES.personData];
-    renderDataContent(STATES.personData);
+function handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
 }
-getPersonData();
 
-const renderDataContent = (arrayForFilter) => {
+async function getUserData() {
+    const response = await fetch('https://randomuser.me/api/?results=20&inc=gender,name,email,phone,picture,dob')
+    const checkedResponse = handleErrors(response);
+    const data = await checkedResponse.json();
+    getRequiredData(data);
+}
+getUserData();
+
+const getRequiredData = (usersData) => {
+    STATES.defaultPersonsData = usersData.results.map((personsDataElement) => ({
+        fullName: `${personsDataElement.name.first} ${personsDataElement.name.last}`,
+        age: personsDataElement.dob.age,
+        mail: personsDataElement.email,
+        gender: personsDataElement.gender,
+        phone: personsDataElement.phone,
+        photo: personsDataElement.picture.medium,
+    }));
+    STATES.sortedPersonsData = [...STATES.defaultPersonsData];
+    renderDataContent(STATES.defaultPersonsData);
+}
+
+const renderDataContent = (dataToRender) => {
     SELECTORS.dataList.innerHTML = '';
-    arrayForFilter.forEach((element) => {
+    dataToRender.forEach((element) => {
         let {fullName, age, mail, phone, photo} = element;
-        let list = `
+        SELECTORS.dataList.innerHTML += `
         <li class="content__element" data-person-name="${fullName}">
             <img src="${photo}" alt="photo profile" class="element__photo">
             <div class="element__details">
@@ -45,72 +55,62 @@ const renderDataContent = (arrayForFilter) => {
                 <button type="button" class="button__add">Add to friend</button>
             </div>
         </li>`
-        SELECTORS.dataList.innerHTML += list;
-        SELECTORS.personName = document.querySelectorAll('.element__name');
     })
 }
 
-const filterGender = (filter) => {
-    STATES.sortedPersonData = STATES.personData.filter((person) => person.gender === filter);
-    renderDataContent(STATES.sortedPersonData);
+const filterGender = (genderType) => {
+    STATES.sortedPersonsData = STATES.defaultPersonsData.filter((person) => person.gender === genderType);
+    renderDataContent(STATES.sortedPersonsData);
 }
 
-const filterName = (arrayForFilter, filterContent) => {
-    arrayForFilter = arrayForFilter.filter((element) => element.fullName.toLowerCase().includes(filterContent.toLowerCase()));
-    renderDataContent(arrayForFilter);
+const filterName = (dataToFilter, filterContent) => {
+    dataToFilter = dataToFilter.filter((element) => element.fullName.toLowerCase().includes(filterContent.toLowerCase()));
+    renderDataContent(dataToFilter);
 }
 
-const applySortingFilters = () => {
-    STATES.filtersData.forEach((filterType) => {
-        switch(filterType) {
-            case 'az':
-                console.log(filterType);
-                STATES.sortedPersonData = STATES.sortedPersonData.sort(( a, b ) => a.fullName > b.fullName ? 1 : -1);
+const applySorting = () => {
+    STATES.dataToSort.forEach((sortType) => {
+        switch(sortType) {
+            case 'ascending':
+                STATES.sortedPersonsData = STATES.sortedPersonsData.sort(( a, b ) => a.fullName > b.fullName ? 1 : -1);
                 break;
-            case 'za':
-                STATES.sortedPersonData = STATES.sortedPersonData.sort(( a, b ) => a.fullName < b.fullName ? 1 : -1);
+            case 'descending':
+                STATES.sortedPersonsData = STATES.sortedPersonsData.sort(( a, b ) => a.fullName < b.fullName ? 1 : -1);
                 break;
             case 'ageUp':
-                STATES.sortedPersonData = STATES.sortedPersonData.sort(( a, b ) => a.age > b.age ? 1 : -1);
+                STATES.sortedPersonsData = STATES.sortedPersonsData.sort(( a, b ) => a.age > b.age ? 1 : -1);
                 break;
             case 'ageDown':
-                STATES.sortedPersonData = STATES.sortedPersonData.sort(( a, b ) => a.age < b.age ? 1 : -1);
+                STATES.sortedPersonsData = STATES.sortedPersonsData.sort(( a, b ) => a.age < b.age ? 1 : -1);
                 break;
         }
     })
-    renderDataContent(STATES.sortedPersonData);
+    renderDataContent(STATES.sortedPersonsData);
 }
 
 for (const radioButton of SELECTORS.radioButtons) {
     radioButton.addEventListener('change', function(event) {
-        STATES.filterType = event.target.dataset.sortType;
-        STATES.filtersData.push(STATES.filterType);
-        applySortingFilters();
-        SELECTORS.nameSearch.value !== '' ? filterName(STATES.sortedPersonData, SELECTORS.nameSearch.value) : false;
-    });
-}
+        if (radioButton.name === 'sort-az-age'){
+            STATES.sortType = event.target.dataset.sortType;
+            STATES.dataToSort.push(STATES.sortType);
+        }
 
-for (const radioButton of SELECTORS.radioButtonsGender) {
-    radioButton.addEventListener('change', function(event) {
-        STATES.genderType = event.target.dataset.sortType;
-        filterGender(STATES.genderType);
-        applySortingFilters();
-        SELECTORS.nameSearch.value !== '' ? filterName(STATES.sortedPersonData, SELECTORS.nameSearch.value) : false;
-    })
+        if (radioButton.name === 'filter-gender'){
+            STATES.genderType = event.target.dataset.sortType;
+            filterGender(STATES.genderType);
+        }
+        applySorting();
+        SELECTORS.nameSearch.value !== '' ? filterName(STATES.sortedPersonsData, SELECTORS.nameSearch.value) : false;
+    });
 }
 
 SELECTORS.clearFilterButton.addEventListener('click', function(){
     for (const radioButton of SELECTORS.radioButtons){
         radioButton.checked = false;
     }
-
-    for (const radioButton of SELECTORS.radioButtonsGender){
-        radioButton.checked = false;
-    }
-
-    renderDataContent(STATES.personData);
+    renderDataContent(STATES.defaultPersonsData);
 });
 
 SELECTORS.nameSearch.addEventListener('input', function(){
-    filterName(STATES.sortedPersonData, this.value);
+    filterName(STATES.sortedPersonsData, this.value);
 })
