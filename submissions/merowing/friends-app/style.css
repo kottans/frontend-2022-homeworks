@@ -41,8 +41,8 @@ footer span {
     box-sizing: border-box;
     padding: 0 10px;
     overflow: auto;
-    /* -webkit-user-select: none;
-    user-select: none; */
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .friendlist {
@@ -275,15 +275,15 @@ fieldset label[for="desc"]::before {
 }
 .friendcard-birth {
     font-style: italic;
-    color: #ccc;
+    color: #2c2c2c;
     padding-top: 10px;
 }
 .friendcard-id {
     position: absolute;
     right: 17px;
-    bottom: 12px;
+    top: 12px;
     font: 700 16px Arial;
-    color: whitesmoke;
+    color: #ccc;
 }
 .friendcard-gender-female,
 .friendcard-gender-male {
@@ -291,7 +291,7 @@ fieldset label[for="desc"]::before {
     background-position: 0px 0px;
     background-size: cover;
     position: absolute;
-    top: 9px;
+    top: 12px;
     left: 13px;
     width: 17px;
     height: 28px;
@@ -409,7 +409,6 @@ fieldset label[for="desc"]::before {
     margin: 3px 0;
 }
 .mobile-search {
-    background-color: white;
     height: 54px;
     display: flex;
     justify-content: center;
@@ -524,7 +523,7 @@ div.mobile-reset {
 }
 
 /* media queries */
-@media screen and (max-device-aspect-ratio: 1/1) and (min-width: 360px) and (max-width: 420px) {
+@media screen and (max-aspect-ratio: 1/1) and (min-width: 360px) and (max-width: 420px) {
     .friendlist {
         margin: 0;
         padding: 0;
@@ -536,12 +535,8 @@ div.mobile-reset {
     }
     .friendlist > ul > li {
         width: 100%;
-        border-top: 1px solid lightgray;
+        border-bottom: 1px solid lightgray;
     }
-    .friendlist > ul > li:first-child {
-        border-top: 0;
-    }
-
     .friendcard {
         display: flex;
         flex-direction: column;
@@ -565,16 +560,12 @@ div.mobile-reset {
     .friendcard-birth {
         flex: 25%;
     }
-    .friendcard-id {
-        top: 14px;
-        bottom: 0;
-    }
 
     .pagination {
         display: none;
     }
     #wrap {
-        padding: 74px 0 74px 0;
+        padding: 74px 0;
     }
     fieldset label {
         font-size: 16px;
@@ -587,7 +578,6 @@ div.mobile-reset {
         left: 16px;
         font-size: 20px;
     }
-
     .filter {
         background-color: white;
         width: 100%;
@@ -658,7 +648,7 @@ div.mobile-reset {
         color: white;
     }
 }
-@media screen and (min-device-aspect-ratio: 1/1) and (orientation: landscape) and (max-width: 920px) and (max-height: 420px) {
+@media screen and (min-aspect-ratio: 1/1) and (orientation: landscape) and (max-width: 920px) and (max-height: 420px) {
     #wrap {
         padding: 74px 0;
     }
@@ -730,9 +720,7 @@ div.mobile-reset {
     .friendcard-name {
         flex: 1;
     }
-    .friendcard-id {
-        display: none;
-    }
+    
     .friendcard-birth .age {
         display: block;
     }
@@ -742,12 +730,10 @@ div.mobile-reset {
 
     .mobile-top {
         display: flex;
-        background: none;
     }
     .mobile-menu {
         padding: 0;
         align-items: center;
-        background-color: white;
     }
     .mobile-search .search {
         text-align: center;

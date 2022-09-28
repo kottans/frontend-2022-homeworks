@@ -34,7 +34,7 @@
                     </ul>
                 </div>
                 <div class="filter-search">
-                    <input type="text" class="search" placeholder="Search by name...">
+                    <input type="text" class="search" name="searchValue" placeholder="Search by name...">
                     <div class="search-clear"></div>
                 </div>
                 <ul>
@@ -57,17 +57,17 @@
                     </li>
                     <li class="sortby">
                         <div class="filter-title">Sort by</div>
-                        <fieldset id="sort">
+                        <fieldset id="sortby">
                             <div>
-                                <input type="radio" id="age" name="sort" value="age">
+                                <input type="radio" id="age" name="sortby" value="age">
                                 <label for="age">Age</label>
                             </div>
                             <div>
-                                <input type="radio" id="name" name="sort" value="name">
+                                <input type="radio" id="name" name="sortby" value="name">
                                 <label for="name">Name</label>
                             </div>
                             <div>
-                                <input type="radio" id="none1" name="sort" value="-1" checked>
+                                <input type="radio" id="none1" name="sortby" value="-1" checked>
                                 <label for="none1">None</label>
                             </div>
                         </fieldset>
@@ -91,9 +91,9 @@
                     <li class="ages">
                         <div class="filter-title">Select an age</div>
                         <div class="filter-ages">
-                            <select name="age-min" aria-label="age-min">
+                            <select name="ageMin" aria-label="age-min">
                             </select>
-                            <select name="age-max" aria-label="age-min">
+                            <select name="ageMax" aria-label="age-max">
                             </select>
                         </div>
                     </li>
