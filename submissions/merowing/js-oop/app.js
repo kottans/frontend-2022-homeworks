@@ -49,6 +49,8 @@ const FIELD = {
     this.positionX = x;
     this.positionY = y;
     this.speed = speed;
+
+    this.player = player;
   
     this.sprite = ENEMY_OPTIONS.SPRITE;
   };
@@ -71,12 +73,12 @@ const FIELD = {
   Enemy.prototype.collision = function () {
     if (
       this.positionX + ENEMY_OPTIONS.WIDTH - ENEMY_OPTIONS.TRIGGER.RIGHT >
-        player.positionX &&
-      this.positionX - ENEMY_OPTIONS.TRIGGER.LEFT < player.positionX &&
-      this.positionY - player.positionY === 0
+        this.player.positionX &&
+      this.positionX - ENEMY_OPTIONS.TRIGGER.LEFT < this.player.positionX &&
+      this.positionY - this.player.positionY === 0
     ) {
-      player.positionX = CHARACTER.POSITION_X;
-      player.positionY = CHARACTER.POSITION_Y;
+      this.player.positionX = CHARACTER.POSITION_X;
+      this.player.positionY = CHARACTER.POSITION_Y;
     }
   };
   
