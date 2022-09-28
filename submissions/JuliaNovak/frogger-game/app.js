@@ -80,39 +80,40 @@ Player.prototype.update = function () {
 Player.prototype.render = function () {
    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
 Player.prototype.handleInput = function (key) {
-   const cellX = 101;
-   const cellY = 83;
+   const xCell = 101;
+   const yCell = 83;
    switch (key) {
       case "left":
          if (this.x > 0) {
-            this.x -= cellX;
+            this.x -= xCell;
             this.render();
          }
          break;
       case "right":
-         if (this.x < y) {
-            this.x += cellX;
+         if (this.x < defaultY) {
+            this.x += xCell;
             this.render();
          }
          break;
       case "up":
          if (this.y > 0) {
-            this.y -= cellY;
+            this.y -= yCell;
             this.render();
          }
          break;
       case "down":
-         if (this.y < y) {
-            this.y += cellY;
+         if (this.y < defaultY) {
+            this.y += yCell;
             this.render();
          }
          break;
    }
    if (this.y < 0) {
       setTimeout(() => {
-         this.x = x;
-         this.y = y;
+         this.x = defaultX;
+         this.y = defaultY;
          this.render();
       }, 700);
    }
@@ -120,7 +121,9 @@ Player.prototype.handleInput = function (key) {
 
 // Now instantiate Player.
 // Place the player object in a variable called player
-let player = new Player(200, 400);
+const defaultX = 200;
+const defaultY = 400;
+let player = new Player(defaultX, defaultY);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
