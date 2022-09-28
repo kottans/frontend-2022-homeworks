@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DOM-F1</title>
+</head>
+<body>
+    <header class="header-container">
+        <span class="header-logo-wrapper"><img class="logo-img" src="teams_img/F1-icon-square.png" alt="Formula 1 logo"></span>
+        <span class="header-title"><h1>Racing Teams 2022</h1></span>
+        <div class="hamb-wrapper">
+           <div class="hamb">
+                <div class="hamb-field" id="hamb">
+                    <span class="bar"></span>
+                </div>
+           </div>
+        </div>
+    </header>
+    <div class="popup" id="popup"></div>
+    <menu class="menu-container" id="menu">
+        <li class="menu-team" id="alfa-romeo" data-action="alfa-romeo">
+            <span class="menu-team-title">Alfa Romeo</span>
+            <span class="menu-team-img-wrapper"><img class="car-img" src="./teams_img/alfa-romeo.png" alt="alfa-romeo bolide
+                "></span>
+        </li>
+        <li class="menu-team" id="alphatauri" data-action="alphatauri">
+            <span class="menu-team-title">AlphaTauri</span>
+            <span class="menu-team-img-wrapper"><img class="car-img" src="./teams_img/alphatauri.png" alt="alphatauri bolide
+                "></span>
+        </li>
+        <li class="menu-team" id="alpine" data-action="alpine">
+            <span class="menu-team-title">Alpine</span>
+            <span class="menu-team-img-wrapper"><img class="car-img" src="./teams_img/alpine.png" alt="alpine bolide
+                "></span>
+        </li>
+        <li class="menu-team" id="aston-martin" data-action="aston-martin">
+            <span class="menu-team-title">Aston Martin</span>
+            <span class="menu-team-img-wrapper"><img class="car-img" src="./teams_img/aston-martin.png" alt="aston-martin bolide
+                "></span>
+        </li>
+        <li class="menu-team" id="ferrari" data-action="ferrari">
+            <span class="menu-team-title">Ferrari</span>
+            <span class="menu-team-img-wrapper"><img class="car-img" src="./teams_img/ferrari.png" alt="ferrari bolide
+                "></span>
+        </li>
+        <li class="menu-team" id="haas" data-action="haas">
+            <span class="menu-team-title">Haas</span>
+            <span class="menu-team-img-wrapper"><img class="car-img" src="./teams_img/haas.png" alt="haas bolide
+                "></span>
+        </li>
+        <li class="menu-team" id="mclaren" data-action="mclaren">
+            <span class="menu-team-title">McLaren</span>
+            <span class="menu-team-img-wrapper"><img class="car-img" src="./teams_img/mclaren.png" alt="mclaren bolide
+                "></span>
+        </li>
+        <li class="menu-team" id="mercedes" data-action="mercedes">
+            <span class="menu-team-title">Mercedes</span>
+            <span class="menu-team-img-wrapper"><img class="car-img" src="./teams_img/mercedes.png" alt="mercedes bolide
+                "></span>
+        </li>
+        <li class="menu-team" id="red-bull" data-action="red-bull">
+            <span class="menu-team-title">Red Bull</span>
+            <span class="menu-team-img-wrapper"><img class="car-img" src="./teams_img/red-bull.png" alt="red-bull bolide
+                "></span>
+        </li>
+        <li class="menu-team" id = williams data-action="williams">
+            <span class="menu-team-title">Williams</span>
+            <span class="menu-team-img-wrapper"><img class="car-img" src="./teams_img/williams.png" alt="williams bolide
+                "></span>
+        </li>
+    </menu>
+    <main class="main-container" id="main-container">
+        <div class="pilots-container">
+            <div class="pilot-wrapper">
+                <span class="pilot-name"><h3>Valtteri Bottas</h3></span>
+                <img class="flag-img" src="./teams_img/flags/finland.gif" alt="finland flag">
+                <span class="pilot-img-wrapper"><img class="pilot-img" src="./teams_img/teams_pilots/alfa-romeo/Valtteri-Bottas.jpg" alt="first pilot Valtteri-Bottas"></span>
+            </div>
+            <div class="pilot-wrapper">
+                <span class="pilot-name"><h3>Zhou Guanyu</h3></span>
+                <img class="flag-img" src="./teams_img/flags/china.jpg" alt="china flag">
+                <span class="pilot-img-wrapper"><img class="pilot-img" src="./teams_img/teams_pilots/alfa-romeo/Zhou-Guanyu.jpg" alt="second pilot Zhou-Guanyu"></span>
+            </div>
+        </div>
+        <div class="team-info-container">
+            <h3>In profile</h3>
+            <p>The name Alfa Romeo boasts Formula 1 connections dating back to the championship`s inception in 1950. Fast forward to the 21st century and Italian flare combines with Swiss sensibilities in a new era for the team formerly known as Sauber.</p>
+            <p>Having enjoyed considerable success in world sportscars, where he helped nurture the emerging talents of future F1 stars Michael Schumacher and Heinz-Harald Frentzen, Peter Sauber guided his eponymous squad into F1 in 1993.</p>
+            <p>The team has since established itself as a mainstay of the grid, becoming race winners under BMW`s brief ownership, and developing a well-earned reputation not only for producing competitive cars, but also for developing young drivers.</p>
+        </div>
+    </main>
+    <script type="module" src="index.js"></script>
+</body>
+</html>

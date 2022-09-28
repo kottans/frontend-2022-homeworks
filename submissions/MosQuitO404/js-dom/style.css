@@ -1,0 +1,516 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+:root {
+    --black: #15151E;
+    --white: #ffff;
+    --grey: #67676d;
+    --red: #E10600;
+    --alfaRomeo: #C92D4B;
+    --alphaTauri: #5E8FAA;
+    --alpine: #2293D1;
+    --astonMartin: #358C75;
+    --ferrari: #F91536;
+    --haas: #B6BABD;
+    --mcLaren: #F58020;
+    --mercedes: #6CD3BF;
+    --redBull: #3671C6;
+    --williams: #37BEDD;
+}
+
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./teams_img/ferrari-sf15-t-formula-1-f1.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-width: 375px;
+}
+
+@media screen and (max-width: 760px) {
+    html {
+        background-image: none;
+        background-color: var(--black);
+    }
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  max-width: 0;
+}
+
+@media screen and (max-width: 760px) {
+    body {
+        padding: 100px;
+    }
+}
+
+.header-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 100%;
+    color: var(--white);
+    background-color: var(--red);
+    font-style: italic;
+    font-size: 22px;
+    opacity: 90%;
+    margin: 20px 20px 0px 20px;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 1350px) {
+    .header-container {
+        font-size: 20px;
+        max-width: 700px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .header-container {
+        position: fixed;
+        justify-content: space-between;
+        max-width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 20px;
+        opacity: 100%;
+        z-index: 100;
+    }
+}
+
+.header-title {
+    white-space: nowrap;
+    text-align: center;
+    margin: 0px 124px 0px 50px;
+}
+
+@media screen and (max-width: 760px) {
+    .header-title {
+        white-space: normal;
+        text-align: center;
+        font-size: 12px;
+        line-height: 30px;
+        margin: 0;
+    }
+}
+
+.logo-img {
+    max-width: 80px;
+    vertical-align: middle;
+    margin: 0px 40px;
+}
+
+@media screen and (max-width: 760px) {
+    .logo-img {
+        margin-left: 7px;
+        margin-right: 0;
+    }
+}
+
+.hamb-wrapper {
+    display: none;
+}
+
+.popup {
+    display: none;
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(5,1fr);
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--black);
+    text-decoration: none;
+    list-style: none;
+    opacity: 90%;
+    margin: 20px;
+    padding: 20px;
+}
+
+@media screen and (max-width: 1350px) {
+    .menu-container {
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(3,1fr);
+        padding: 10px;
+        margin-bottom: 0;
+    }
+}
+
+.menu-team {
+    display: block;
+    border: 2px solid var(--grey);
+    border-top: 0;
+    border-left: 0;
+    border-bottom-right-radius: 10px;
+    transition: all .2s ease-out;
+    margin: 10px 15px;
+    max-width: 230px;
+}
+
+@media screen and (max-width: 1350px) {
+    .menu-team {
+        margin: 10px;
+        max-width: 150px;    
+    }
+    .menu-team:nth-child(9) {
+        grid-column-start: 2;
+    }
+}
+
+.menu-team:hover .car-img {
+    transform: translateX(20px);
+}
+
+@media screen and (max-width: 1350px) {
+    .menu-team:hover .car-img {
+        transform: translateX(15px);
+    }
+}
+
+.menu-team:hover {
+    border-color: currentColor;
+    cursor: pointer;
+    transform: translateX(10px);
+}
+
+@media screen and (max-width: 1350px) {
+    .menu-team:hover {
+        transform: translateX(5px);
+    }
+}
+
+.menu-team-title {
+    position: relative;
+    display: block;
+    font-size: 18px;
+    color: var(--white);
+    font-weight: 400;
+    line-height: 18px;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1350px) {
+    .menu-team-title {
+        font-size: 14px;
+        line-height: 14px;
+    }
+}
+
+.menu-team-title::after {
+    position: absolute;
+    content: '+';
+    right: 10px;
+    top: 0;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 1350px) {
+    .menu-team-title::after {
+        right: 5px;
+        font-weight: 400;
+    }
+}
+
+.menu-team-img-wrapper {
+    display: inline-block;
+    position: relative;
+    padding-right: 66px;
+}
+
+@media screen and (max-width: 1350px) {
+    .menu-team-img-wrapper {
+        padding-right: 40px;
+    }
+}
+
+.menu-team-img-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 17px;
+    left: 0;
+    background: currentColor;
+    width: 50px;
+    height: 16px;
+}
+
+@media screen and (max-width: 1350px) {
+    .menu-team-img-wrapper::before {
+        top: 12px;
+        width: 30px;
+        height: 11px;
+    }
+}
+
+.car-img {
+    max-width: 155px;
+    position: relative;
+    transition: all .2s ease-out;
+}
+
+@media screen and (max-width: 1350px) {
+    .car-img {
+        max-width: 110px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    body .menu-container {
+        display: none;
+    }
+    body.noscroll {
+        overflow: hidden;
+    }
+    .hamb-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        height: 80px;
+    }
+    .hamb-field {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right:0;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 1;
+        margin: 25px;
+    }
+    .bar,
+    .bar::before,
+    .bar::after {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: var(--white);
+        transition: .25s;
+    }
+    .bar::before {
+        content: '';
+        top: -8px;
+    }
+    .bar::after {
+        content: '';
+        top: 8px;
+    }
+    .popup {
+        display: flex;
+        position: fixed;
+        justify-content: center;
+        align-items: flex-start;
+        top: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: var(--black);
+        transition: .4s;
+        opacity: 95%;
+        z-index: 99;
+        padding-top: 100px;
+        overflow: auto;
+    }
+    .popup.open {
+        top: 0%;
+    }
+    .popup .menu-container {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(5,1fr);
+        margin: 0;
+    }
+    .popup .menu-team:nth-child(9) {
+        grid-column-start: 1;
+    }
+    .popup .menu-team {
+        margin: 15px 10px;
+        max-width: 135px;    
+    }
+    .popup .menu-team-img-wrapper {
+        padding-right: 24px;
+    }
+    .hamb-field.active .bar {
+        transform: rotate(45deg);
+    }
+    .hamb-field.active .bar::before {
+        top: 0%;
+        transform: rotate(0);
+    }
+    .hamb-field.active .bar::after {
+        top: 0%;
+        transform: rotate(90deg);
+    }
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    max-width: 740px;
+}
+
+.pilots-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.pilot-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: larger;
+    border: 1px solid var(--grey);
+    margin: 20px 20px;
+    width: 330px;
+    min-height: 360px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media screen and (max-width: 760px) {
+    .main-container {
+        width: 360px;
+    }
+    .pilot-wrapper {
+        margin-top: 0;
+        width: 360px;
+        min-height: 400px;
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.pilot-name {
+    flex-basis: 75%;
+    text-align: center;
+    height: 34.4px;
+}
+
+.flag-img {
+    width: 40px;
+    vertical-align: middle;
+}
+
+.pilot-img-wrapper {
+    width: 300px;
+    height: 300px;
+}
+
+.pilot-img {
+    max-width: 300px;
+}
+
+@media screen and (max-width: 760px) {
+    .pilot-img-wrapper {
+        width: 340px;
+        height: 340px;
+    }
+    .pilot-name {
+        flex-basis: 81%;
+    }
+    .pilot-img {
+        max-width: 340px;
+    }
+}
+
+.team-info-container {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    background-color: var(--black);
+    font-size: 16px;
+    opacity: 90%;
+    text-indent: 25px;
+    max-width: 700px;
+    padding: 10px;
+    margin: 0px 20px;
+}
+
+@media screen and (max-width: 760px) {
+    .team-info-container {
+        width: 360px;
+        background-color: unset;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+#alfa-romeo {
+    color: var(--alfaRomeo);
+}
+
+#alphatauri {
+    color: var(--alphaTauri);
+}
+
+#alpine {
+    color: var(--alpine);
+}
+
+#aston-martin {
+    color: var(--astonMartin);
+}
+
+#ferrari {
+    color: var(--ferrari);
+}
+
+#haas {
+    color: var(--haas);
+}
+
+#mclaren {
+    color: var(--mcLaren);
+}
+
+#mercedes {
+    color: var(--mercedes);
+}
+
+#red-bull {
+    color: var(--redBull);
+}
+
+#williams {
+    color: var(--williams);
+}
