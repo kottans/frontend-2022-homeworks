@@ -23,19 +23,19 @@ getUsersData(API_URL)
 
 toggleDisabedOnForm(true);
 
-form.addEventListener('input', ({ target }) => {
-  if (target.tagName === 'INPUT') {
-    usersDataCopy = [...usersData];
-    uncheckPrevSortParameter(target.name);
-    const usersHandled = handleUsers(usersDataCopy, getFormData());
-    renderUsersCards(usersHandled);
-  }
-});
+form.addEventListener('input', handleInputEvent);
+form.addEventListener('reset', handleResetEvent);
 
-form.addEventListener('reset', () => {
+function handleInputEvent() {
+  usersDataCopy = [...usersData];
+  const usersHandled = handleUsers(usersDataCopy, getFormData());
+  renderUsersCards(usersHandled);
+}
+
+function handleResetEvent() {
   usersDataCopy = [...usersData];
   renderUsersCards(usersDataCopy);
-});
+}
 
 async function getUsersData(url) {
   const response = await fetch(url);
@@ -130,16 +130,6 @@ function createUserCard(user) {
   `;
 }
 
-function uncheckPrevSortParameter(currParameter) {
-  if (currParameter === 'age' || currParameter === 'name-order') {
-    const prevParameter = currParameter === 'age' ? 'name-order' : 'age';
-    const inputs = document.querySelectorAll(`input[name='${prevParameter}']`);
-    inputs.forEach((input) => {
-      input.checked = false;
-    });
-  }
-}
-
 function getFormData() {
   const formData = new FormData(form);
   const search = formData
@@ -147,21 +137,14 @@ function getFormData() {
     .replace(/\s+/g, ' ')
     .trim()
     .toLowerCase();
+  const sortBy = formData.get('sort-type');
   const gender = formData.get('gender');
-  const sortBy = getSortType(formData);
 
   return {
     search,
     sortBy,
     gender,
   };
-}
-
-function getSortType(formData) {
-  const nameOrder = formData.get('name-order');
-  const ageOrder = formData.get('age');
-  if (nameOrder === null && ageOrder === null) return undefined;
-  return nameOrder !== null ? nameOrder : ageOrder;
 }
 
 function handleUsers(users, { search, sortBy, gender }) {
@@ -186,17 +169,17 @@ function filterUsersByGender(users, genderFilter) {
 
 function sortUsers(users, sortType) {
   switch (sortType) {
-    case undefined:
+    case null:
       return users;
-    case 'ascending':
+    case 'name-ascending':
       return users.sort(compareNames);
-    case 'descending':
+    case 'name-descending':
       return users.sort((currentUser, nextUser) =>
         compareNames(nextUser, currentUser)
       );
-    case 'younger':
+    case 'age-ascending':
       return users.sort(compareAges);
-    case 'older':
+    case 'age-descending':
       return users.sort((currentUser, nextUser) =>
         compareAges(nextUser, currentUser)
       );

@@ -309,7 +309,7 @@ body {
     grid-template-columns:
       minmax(20px, auto) minmax(300px, 1000px)
       minmax(20px, auto);
-    grid-template-rows: auto auto minmax(10px, 20px);
+    grid-template-rows: auto 1fr minmax(10px, 20px);
   }
 
   .aside {
