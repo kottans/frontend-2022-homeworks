@@ -109,3 +109,4 @@ document.addEventListener('keyup', function(e) {
 });
 
 const titleGameRef = document.querySelector('.levelGame');
+
