@@ -46,7 +46,7 @@ const woman = {
    hair: "red"
 };
 const catWomen = {
-   species: "human",
+   species: "superhuman",
    name: "Belatris",
    gender: "female",
    legs: 2,
@@ -54,19 +54,22 @@ const catWomen = {
    saying: cat.saying,
    hair: "brown"
 };
+const inhabitantAttributes = [
+   'species', 'name', 'gender', 'legs', 'hands', 'saying', 'hair'
+];
+
+const inhabitantList = [man, woman, cat, dog, catWomen];
 
 // ======== OUTPUT ========
 
-const list = [man, woman, cat, dog, catWomen]
-
-function addInformation(somebody) {
+function showInformation(somebody) {
    let result = [];
 
-   for (let i in somebody) {
-      result.push(`${i}: ${somebody[i]};`);
-   }
+   inhabitantAttributes.map(attribute => {
+      result.push(somebody[attribute]);
+   });
 
-   return result.join(' ');
+   return result.join('; ');
 }
 
-list.forEach(inhabitant => print(addInformation(inhabitant)))
+inhabitantList.forEach(inhabitant => print(showInformation(inhabitant)));
