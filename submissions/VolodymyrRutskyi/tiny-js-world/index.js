@@ -54,3 +54,4 @@ console.log(inhabitants)
 inhabitants.forEach((inhabitant) =>
   print(inhabitant.showProps())
 );
+
