@@ -32,7 +32,22 @@ Enemy.prototype.render = function () {
 
 // Now instantiate your Enemy.
 // Place all enemy objects in an array called allEnemies
-const allEnemies = [new Enemy(0, 63), new Enemy(-30, 145), new Enemy(-50, 230)];
+const generateEnemies = function (numberOfEnemies) {
+   const allEnemies = [];
+   for (let i = 0; i < numberOfEnemies; i++) {
+      const initialPositionX = 0;
+      const initialPositionY = 63;
+      const yDistanceBetwEnemies = 84;
+      allEnemies.push(
+         new Enemy(
+            initialPositionX,
+            initialPositionY + i * yDistanceBetwEnemies
+         )
+      );
+   }
+   return allEnemies;
+};
+const allEnemies = generateEnemies(3);
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -43,23 +58,25 @@ let Player = function (x, y) {
    this.sprite = "images/char-cat-girl.png";
 };
 
-Player.prototype.update = function () {
-   this.collide();
-};
-Player.prototype.collide = function () {
-   const collisionPx = 80;
+const calculatePositions = function (data) {
    allEnemies.forEach((enemy) => {
+      const xCollisionPoint = 80;
+      const yCollisionPoint = 60;
       if (
-         this.x < enemy.x + collisionPx &&
-         this.x + collisionPx > enemy.x &&
-         this.y < enemy.y + collisionPx &&
-         collisionPx + this.y > enemy.y
+         data.x < enemy.x + xCollisionPoint &&
+         data.x + xCollisionPoint > enemy.x &&
+         data.y < enemy.y + yCollisionPoint &&
+         yCollisionPoint + data.y > enemy.y
       ) {
-         this.x = 200;
-         this.y = 400;
+         data.x = 200;
+         data.y = 400;
       }
    });
 };
+Player.prototype.update = function () {
+   calculatePositions(this);
+};
+
 Player.prototype.render = function () {
    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
