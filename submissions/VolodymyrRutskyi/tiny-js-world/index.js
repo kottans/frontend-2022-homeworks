@@ -1,11 +1,10 @@
 class Inhabitant {
-   constructor(species, name, gender, legs, saying){
+   constructor(species, name, gender, saying){
       this.species = species;
       this.name = name;
       this.gender = gender;
-      this.legs = legs;
       this.saying = saying;
-      this.props = ['species', 'name', 'gender', 'legs', 'saying']
+      this.props = ['species', 'name', 'gender', 'saying']
    }
    showProps() {
       return this.props.map(prop => this[prop]).join('; ');
@@ -14,9 +13,10 @@ class Inhabitant {
 
 class Human extends Inhabitant{
    constructor (name, gender, saying){
-      super('human', name, gender, 2, saying);
+      super('human', name, gender, saying);
       this.hands = 2;
-      this.props = [...this.props, 'hands']
+      this.legs = 2;
+      this.props = [...this.props, 'hands', 'legs']
    }
 }
 class Woman extends Human{
@@ -31,12 +31,16 @@ class Man extends Human{
 }
 class Dog extends Inhabitant{
    constructor(name, gender){
-      super('dog', name, gender, 4, 'woof-woof')
+      super('dog', name, gender, 'woof-woof');
+      this.legs = 4;
+      this.props = [...this.props, 'legs']
    }
 }
 class Cat extends Inhabitant{
    constructor(name, gender){
-      super('cat', name, gender, 4, 'meow-meow')
+      super('cat', name, gender, 'meow-meow');
+      this.legs = 4;
+      this.props = [...this.props, 'legs']
    }
 }
 
@@ -49,4 +53,3 @@ const inhabitants = [dog, cat, woman, man];
 inhabitants.forEach((inhabitant) =>
   print(inhabitant.showProps())
 );
-
