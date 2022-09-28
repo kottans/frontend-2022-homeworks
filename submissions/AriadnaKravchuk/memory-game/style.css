@@ -185,7 +185,8 @@ body,
     transform: translateY(-0.063rem);
 }
 
-.details__button:hover {
+.details__button:hover,
+.details__button:active {
     background-color: #588b8d;
 }
 
@@ -327,7 +328,8 @@ body,
     border-radius: 5px;
 }
 
-.popup__button:hover {
+.popup__button:hover,
+.popup__button:active {
     background-color: var(--popup-button-color-hover);
 }
 
