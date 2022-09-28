@@ -109,10 +109,6 @@ function sortArray(arr, method) {
 
 
 function updateURL() {
-  // const searchParams = Object.keys(urlSearchParams)
-  //   .map(([key, value]) => `${key}=${value}`)
-  //   .join("&");
-
   let urlString = "?";
   for (let [key, value] of urlSearchParams.entries()) {
     urlString += `&${key}=${value}`;
