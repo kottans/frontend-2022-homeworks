@@ -1,7 +1,7 @@
 const url = 'https://randomuser.me/api/?results=50';
 
 
-let newUsers = '';
+let sortedUsers = '';
 const cardsContainer = document.querySelector('.cards--container');
 const sortInput = document.querySelectorAll('.checkbox--icon');
 
@@ -58,11 +58,11 @@ function createCard({ picture, name, dob, cell, gender, location }) {
 const enableInputsToSort = (data) => {
   sortInput.forEach((el) =>
     el.addEventListener('click', () => {
-      newUsers = sortUsers(data, el.id);
+      sortedUsers = sortUsers(data, el.id);
       if (el.checked && el.classList.contains('gender')) {
-        newUsers = filterByGender(newUsers, el.id);
+        sortedUsers = filterByGender(sortedUsers, el.id);
       }
-      fillCardContainer(newUsers);
+      fillCardContainer(sortedUsers);
     })
   );
 };
@@ -94,15 +94,15 @@ function filterByGender(data, id) {
 
 const searchInput = document.querySelector('#user--names');
 const searchByUserName = (data) => {
-  newUsers = [...data];
+  sortedUsers = [...data];
   searchInput.addEventListener('input', () => {
-    newUsers = data.filter((user) => user.name.first.toLowerCase().includes(searchInput.value.toLowerCase()) || user.name.last.toLowerCase().includes(searchInput.value.toLowerCase()));
-    if (newUsers.length === 0) {
+    sortedUsers = data.filter((user) => user.name.first.toLowerCase().includes(searchInput.value.toLowerCase()) || user.name.last.toLowerCase().includes(searchInput.value.toLowerCase()));
+    if (sortedUsers.length === 0) {
       document.querySelector('.cards--container').innerHTML = `
         <h2 class="no-matches-title">No corresponding user, try some other variants ...</h2>
       `;
     } else {
-      fillCardContainer(newUsers);
+      fillCardContainer(sortedUsers);
     }
   });
 };
@@ -116,3 +116,4 @@ const resetUsers = (data) => {
    document.getElementById('empty').checked = true
   });
 };
+
