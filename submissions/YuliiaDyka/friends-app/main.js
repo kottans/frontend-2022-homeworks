@@ -1,6 +1,5 @@
 "use strict"
 
-const url = "https://randomuser.me/api/?results=200";
 let requestErrorsCounter = 0;
 const cardsSection = document.querySelector('.grid__wrapper');
 const firstScreen = document.querySelector('.form__wrapper');
@@ -30,7 +29,9 @@ mainScreen.addEventListener('mousemove', showBotoomMenu);
 aside.addEventListener('input', getFiltredUsersByAgeRange);
 search.addEventListener('input', searchName);
 resetFormBtn.addEventListener('click', resetForm);
-firstScreenForm.addEventListener('submit', function(e) {
+firstScreenForm.addEventListener('submit', getDataFromFirstForm);
+
+function getDataFromFirstForm(e) {
     e.preventDefault(); 
     filters.sex = document.querySelector('input[name="sex"]:checked').id;
     filters.minAge = document.querySelector('input[id="input-min"]').value;
@@ -62,9 +63,12 @@ firstScreenForm.addEventListener('submit', function(e) {
         break;
     };
     getUsers();
-});
+    firstScreen.style.display = "none";
+    aside.style.display = "block";
+};
 
 function getUsers() {
+    const url = "https://randomuser.me/api/?results=200";
     const promise = fetch(url);
     return promise
         .then(data => data.json())
@@ -72,8 +76,6 @@ function getUsers() {
             allUsers = [...users.results];
             filtredUsers = filterByAge(filterBySex(allUsers));
             renderCards(filtredUsers);
-            firstScreen.style.display = "none";
-            aside.style.display = "block";
         })
         .catch(function() {
             requestErrorsCounter++;
@@ -83,7 +85,7 @@ function getUsers() {
                 console.log(Error("Помилка серверу. Перезапустіть сторінку."))
             }
         });
-}
+};
 
 function renderCards(usersArr) {
     cardsSection.innerHTML = "";
@@ -93,7 +95,6 @@ function renderCards(usersArr) {
 };
 
 // sorting & filters
-
 function getFiltredUsersByAgeRange(e) {
     if (e.target.id == "aside_input-min" || e.target.id == "aside_input-max") {
         filters.minAge = document.querySelector('input[id="aside_input-min"]').value;
@@ -142,7 +143,6 @@ function getFiltredUsers(e) {
             default:
             break;
     }
-
     filtredUsers = filterBySex(filterByAge(allUsers));
     filters.name ? searchName() : filtredUsers;
     renderCards(filtredUsers);

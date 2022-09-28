@@ -356,6 +356,55 @@ input[type="radio"]:checked + .radio__label {
     transform: scale(1.05);
 }
 
+.card:hover::before,
+.card:hover::after {
+    animation: scale 0.5s forwards;
+}
+
+@keyframes scale {
+    0% {
+        opacity: 0;
+        transform: scale(1.5)
+    }; 
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    };
+}
+
+.card:hover::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+    background-image: url("img/heart.png");
+    background-size: 35px 35px;
+    background-position: center;
+    background-repeat: no-repeat;
+    left: 20px;
+    top: 20px;
+
+}
+
+.card:hover::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+    background-image: url("img/chat.png");
+    background-size: 35px 35px;
+    background-position: center;
+    background-repeat: no-repeat;
+    right: 20px;
+    top: 20px;
+    z-index: 1;
+
+}
+
 .user__photo {
     position: relative;
     width: 95%;
@@ -391,7 +440,7 @@ input[type="radio"]:checked + .radio__label {
     bottom: 4px;
     font-size: 20px;
 }
-/* footer section */
+/* bottom section */
 
 .bottom__menu {
     grid-area: footer;
@@ -406,7 +455,7 @@ input[type="radio"]:checked + .radio__label {
     height: 50px;
     border-radius: 50px;
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(22, 24, 48, 0.2);
     transition: 0.5s;
 }
 
@@ -421,9 +470,12 @@ input[type="radio"]:checked + .radio__label {
     background-color: #fbfbfb63;
     width: 75%;
     height: 50px;
-    border-radius: 50px;
+    border-radius: 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(99, 99, 99, 0.3);
 }
 
 .nav__list {
@@ -734,6 +786,37 @@ and (max-width: 767px) {
         width: 310px;
         margin: 15px auto;
         margin-top: -80px;
+    }
+
+    .card:hover::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 20%;
+        background-image: url("img/heart.png");
+        background-size: 20px 20px;
+        background-position: center;
+        background-repeat: no-repeat;
+        left: 10px;
+        top: 10px;
+    }
+    
+    .card:hover::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 20%;
+        background-image: url("img/chat.png");
+        background-size: 20px 20px;
+        background-position: center;
+        background-repeat: no-repeat;
+        right: 10px;
+        top: 10px;
+        z-index: 1;
     
     }
 
@@ -954,5 +1037,3 @@ and (max-width: 767px) {
         margin: 0 10px;
     }
 }
-
-
