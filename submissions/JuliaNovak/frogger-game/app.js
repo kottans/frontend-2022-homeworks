@@ -41,63 +41,64 @@ let Player = function (x, y) {
    this.x = x;
    this.y = y;
    this.sprite = "images/char-cat-girl.png";
-   Player.prototype.update = function () {
-      this.collide();
-   };
-   Player.prototype.collide = function () {
-      const collisionPx = 80;
-      allEnemies.forEach((enemy) => {
-         if (
-            this.x < enemy.x + collisionPx &&
-            this.x + collisionPx > enemy.x &&
-            this.y < enemy.y + collisionPx &&
-            collisionPx + this.y > enemy.y
-         ) {
-            this.x = 200;
-            this.y = 400;
-         }
-      });
-   };
-   Player.prototype.render = function () {
-      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-   };
-   Player.prototype.handleInput = function (key) {
-      const cellX = 101;
-      const cellY = 83;
-      switch (key) {
-         case "left":
-            if (this.x > 0) {
-               this.x -= cellX;
-               this.render();
-            }
-            break;
-         case "right":
-            if (this.x < y) {
-               this.x += cellX;
-               this.render();
-            }
-            break;
-         case "up":
-            if (this.y > 0) {
-               this.y -= cellY;
-               this.render();
-            }
-            break;
-         case "down":
-            if (this.y < y) {
-               this.y += cellY;
-               this.render();
-            }
-            break;
+};
+
+Player.prototype.update = function () {
+   this.collide();
+};
+Player.prototype.collide = function () {
+   const collisionPx = 80;
+   allEnemies.forEach((enemy) => {
+      if (
+         this.x < enemy.x + collisionPx &&
+         this.x + collisionPx > enemy.x &&
+         this.y < enemy.y + collisionPx &&
+         collisionPx + this.y > enemy.y
+      ) {
+         this.x = 200;
+         this.y = 400;
       }
-      if (this.y < 0) {
-         setTimeout(() => {
-            this.x = x;
-            this.y = y;
+   });
+};
+Player.prototype.render = function () {
+   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+Player.prototype.handleInput = function (key) {
+   const cellX = 101;
+   const cellY = 83;
+   switch (key) {
+      case "left":
+         if (this.x > 0) {
+            this.x -= cellX;
             this.render();
-         }, 700);
-      }
-   };
+         }
+         break;
+      case "right":
+         if (this.x < y) {
+            this.x += cellX;
+            this.render();
+         }
+         break;
+      case "up":
+         if (this.y > 0) {
+            this.y -= cellY;
+            this.render();
+         }
+         break;
+      case "down":
+         if (this.y < y) {
+            this.y += cellY;
+            this.render();
+         }
+         break;
+   }
+   if (this.y < 0) {
+      setTimeout(() => {
+         this.x = x;
+         this.y = y;
+         this.render();
+      }, 700);
+   }
 };
 
 // Now instantiate Player.
