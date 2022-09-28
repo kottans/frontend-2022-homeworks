@@ -1,95 +1,145 @@
-const Enemy = function(x, y, speed) {
-
-    this.x = x;
-    this.y = y;
+const FIELD = {
+    WIDTH: 505,
+    HEIGHT: 475,
+    EDGE: 0,
+    CELL_WIDTH: 101,
+    CELL_HEIGHT: 83,
+    WATER_BLOCK_HEIGHT: 83,
+  };
+  
+  const CHARACTER = {
+    POSITION_X: 202,
+    POSITION_Y: 392,
+    STEP: {
+      X: 101,
+      Y: 83,
+    },
+    HEIGHT: 101,
+    SPRITE: "images/char-boy.png",
+  };
+  
+  const ENEMY_OPTIONS = {
+    POSITION: [
+      {
+        X: -101,
+        Y: 60,
+      },
+      {
+        X: -101,
+        Y: 143,
+      },
+      {
+        X: -101,
+        Y: 226,
+      },
+    ],
+    SPEED: {
+      MIN: 200,
+      MAX: 500,
+    },
+    TRIGGER: {
+      LEFT: 30,
+      RIGHT: 30,
+    },
+    WIDTH: 101,
+    SPRITE: "images/enemy-bug.png",
+  };
+  
+  const Enemy = function (x, y, speed) {
+    this.positionX = x;
+    this.positionY = y;
     this.speed = speed;
-
-    this.sprite = 'images/enemy-bug.png';
-
-};
-
-Enemy.prototype.update = function(dt) {
-
-    if(this.x > 505) {
-        this.x = -101;
-        this.y = enemyLocations[randomNumber(0, 2)]; // change enemy location
-        this.speed = randomNumber();
+  
+    this.sprite = ENEMY_OPTIONS.SPRITE;
+  };
+  
+  Enemy.prototype.update = function (dt) {
+    if (this.positionX > FIELD.WIDTH) {
+      this.positionX = -FIELD.CELL_WIDTH;
+      this.positionY =
+        ENEMY_OPTIONS.POSITION[
+          randomNumber(0, ENEMY_OPTIONS.POSITION.length - 1)
+        ].Y;
+      this.speed = randomNumber(ENEMY_OPTIONS.SPEED.MIN, ENEMY_OPTIONS.SPEED.MAX);
     }
-
-    if(
-        this.x + 51 > player.x && // enemy in front of player
-        this.x - player.x <= 51 && // enemy behind of player
-        this.y - player.y === 0 // enemy and player on the same line
+  
+    this.positionX += this.speed * dt;
+  
+    this.collision();
+  };
+  
+  Enemy.prototype.collision = function () {
+    if (
+      this.positionX + ENEMY_OPTIONS.WIDTH - ENEMY_OPTIONS.TRIGGER.RIGHT >
+        player.positionX &&
+      this.positionX - ENEMY_OPTIONS.TRIGGER.LEFT < player.positionX &&
+      this.positionY - player.positionY === 0
     ) {
-        player.x = defaultPlayerLocation.x;
-        player.y = defaultPlayerLocation.y;
-    }else {
-        this.x += this.speed * dt;
+      player.positionX = CHARACTER.POSITION_X;
+      player.positionY = CHARACTER.POSITION_Y;
     }
-};
-
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-const Player = function(playerPosition) {
-    this.x = playerPosition.x;
-    this.y = playerPosition.y;
-
-    this.character = 'images/char-boy.png';
-};
-
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.character), this.x, this.y);
-};
-
-Player.prototype.update = function() {
-    
-    // Player reached the water
-    if(this.y < 0) {
-        this.x = defaultPlayerLocation.x;
-        this.y = defaultPlayerLocation.y;
+  };
+  
+  Enemy.prototype.render = function () {
+    ctx.drawImage(Resources.get(this.sprite), this.positionX, this.positionY);
+  };
+  
+  const Player = function (x, y) {
+    this.positionX = x;
+    this.positionY = y;
+  
+    this.sprite = CHARACTER.SPRITE;
+  };
+  
+  Player.prototype.render = function () {
+    ctx.drawImage(Resources.get(this.sprite), this.positionX, this.positionY);
+  };
+  
+  Player.prototype.update = function () {
+    if (this.positionY + CHARACTER.HEIGHT < FIELD.WATER_BLOCK_HEIGHT) {
+      this.positionX = CHARACTER.POSITION_X;
+      this.positionY = CHARACTER.POSITION_Y;
     }
-};
-
-Player.prototype.handleInput = function(keyCode) {
-
-    if(keyCode === 'left' && this.x > 0) {
-            this.x -= 101;
+  };
+  
+  Player.prototype.handleInput = function (keyCode) {
+    if (keyCode === "left" && this.positionX > FIELD.EDGE) {
+      this.positionX -= CHARACTER.STEP.X;
     }
-    if(keyCode === 'right' && this.x < 404) {
-            this.x += 101;
+    if (keyCode === "right" && this.positionX < FIELD.WIDTH - FIELD.CELL_WIDTH) {
+      this.positionX += CHARACTER.STEP.X;
     }
-    if(keyCode === 'up' && this.y > 0) {
-            this.y -= 83;
+    if (keyCode === "up" && this.positionY > FIELD.EDGE) {
+      this.positionY -= CHARACTER.STEP.Y;
     }
-    if(keyCode === 'down' && this.y < 392) {
-            this.y += 83;
+    if (keyCode === "down" && this.positionY < FIELD.HEIGHT - FIELD.CELL_HEIGHT) {
+      this.positionY += CHARACTER.STEP.Y;
     }
-
-};
-
-const defaultPlayerLocation = { x: 202, y: 392 };
-const player = new Player(defaultPlayerLocation, 'images/char-boy.png');
-
-const enemyLocations = [60, 143, 226]; // Y coordinates of each enemy position
-
-const randomNumber = (min = 200, max = 500) => {
+  };
+  
+  const player = new Player(
+    CHARACTER.POSITION_X,
+    CHARACTER.POSITION_Y,
+    CHARACTER.SPRITE
+  );
+  
+  const randomNumber = (min, max) => {
     return Math.round(Math.random() * (max - min) + min);
-};
-
-const allEnemies = enemyLocations.map(location => {
-    let speed = randomNumber();
-    return new Enemy(-101, location, speed);
-});
-
-document.addEventListener('keyup', function(e) {
+  };
+  
+  const allEnemies = ENEMY_OPTIONS.POSITION.map((position) => {
+    let speed = randomNumber(ENEMY_OPTIONS.SPEED.MIN, ENEMY_OPTIONS.SPEED.MAX);
+    return new Enemy(position.X, position.Y, speed);
+  });
+  
+  document.addEventListener("keyup", function (e) {
     const allowedKeys = {
-        'ArrowLeft': 'left',
-        'ArrowUp': 'up',
-        'ArrowRight': 'right',
-        'ArrowDown': 'down'
+      ArrowLeft: "left",
+      ArrowUp: "up",
+      ArrowRight: "right",
+      ArrowDown: "down",
     };
-
+  
     player.handleInput(allowedKeys[e.key]);
-});
+  });
+  
