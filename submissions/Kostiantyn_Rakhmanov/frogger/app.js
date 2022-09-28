@@ -1,4 +1,38 @@
- let Enemy = function(x, y, speed) {
+// Enemies our player must avoid
+const X_ENEMY = {
+    min: -100,
+    max: 510,
+};
+
+const ENEMY_SPEED = {
+    min: 50,
+    max: 100,
+};
+const ENEMY_LOCATIONS_Y = [60, 145, 225];
+
+const SECTION = {
+    width: 100,
+    height: 80,
+};
+
+const CANVAS = {
+    start: 0,
+    rows: 5,
+    columns: 4,
+};
+
+const CANVAS_WIDTH = SECTION.width * CANVAS.columns;
+const CANVAS_HEIGHT = SECTION.height * CANVAS.rows;
+
+const PLAYER_COORDS = {
+    x: 200,
+    y: 375,
+};
+const PLAYER_SHIFT = 60;
+const NEW_PLAYER_DELAY = 777;
+
+
+let Enemy = function(x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -6,19 +40,19 @@
 };
 
 Enemy.prototype.update = function(dt) {
+
     this.x += this.speed * dt;
 
-    if (this.x > 510) {
-        this.x = -100;
-        this.speed = 111 + Math.floor(Math.random() * 111);
+    if (this.x > X_ENEMY.max) {
+        this.x = X_ENEMY.min;
+        this.speed = ENEMY_SPEED.min + Math.floor(Math.random() * ENEMY_SPEED.max);
     }
-
-    if (player.x < this.x + 80 &&
-        player.x + 80 > this.x &&
-        player.y < this.y + 60 &&
-        60 + player.y > this.y) {
-            player.x = 205;
-            player.y = 405;
+    if (player.x < this.x + SECTION.height &&
+        player.x + SECTION.height > this.x &&
+        player.y < this.y + PLAYER_SHIFT &&
+        PLAYER_SHIFT + player.y > this.y) {
+            player.x = PLAYER_COORDS.x;
+            player.y = PLAYER_COORDS.y;
         }
 };
 
@@ -33,6 +67,7 @@ let Player = function(x, y) {
 };
 
 Player.prototype.update = function() {
+    
 };
 
 Player.prototype.render = function() {
@@ -40,38 +75,34 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(keyPress) {
-    if (keyPress == 'left' && this.x > 0) {
-        this.x -= 105;
+    if (keyPress == 'left' && this.x > CANVAS.columns) {
+        this.x -= SECTION.width;
     };
-    if (keyPress == 'right' && this.x < 400) {
-        this.x += 105;
+    if (keyPress == 'right' && this.x < CANVAS_WIDTH) {
+        this.x += SECTION.width;
     };
-    if (keyPress == 'up' && this.y > 0) {
-        this.y -= 85;
+    if (keyPress == 'up' && this.y > CANVAS.start) {
+        this.y -= SECTION.height;
     };
-    if (keyPress == 'down' && this.y < 350) {
-        this.y += 85;
+    if (keyPress == 'down' && this.y < CANVAS_WIDTH - PLAYER_SHIFT) {
+        this.y += SECTION.height;
     };
-    if (this.y < 0) {
+    if (this.y < CANVAS.start) {
         setTimeout(function() {
-            player.x = 200;
-            player.y = 375;
-        }, 777);
+            player.x = PLAYER_COORDS.x;
+            player.y = PLAYER_COORDS.y;
+        }, NEW_PLAYER_DELAY);
     };
 };
 
 let allEnemies = [];
 
-const ENEMY_LOCATIONS_Y = [60, 145, 225];
-
 ENEMY_LOCATIONS_Y.forEach(function (locationY) {
-    let enemy = new Enemy(0, locationY, 200);
+    let enemy = new Enemy(CANVAS.start, locationY, ENEMY_SPEED.max);
     allEnemies.push(enemy);
 });
 
-const PLAYER_X = 200;
-const PLAYER_Y = 375;
-let player = new Player(PLAYER_X, PLAYER_Y);
+let player = new Player(PLAYER_COORDS.x, PLAYER_COORDS.y);
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
