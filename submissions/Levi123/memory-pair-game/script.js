@@ -14,6 +14,7 @@ const STATE = {
     loop: null,
     combinationCounter: 6,
     isInteractive: true,
+    timeToAnimation : 1000,
 }
 
 const generateGame = () => {
@@ -82,7 +83,7 @@ const startGame = () => {
     STATE.loop = setInterval(() => {
         STATE.totalTime++
         timer.innerText = ` ${STATE.totalTime} sec`
-    }, 1000)
+    }, STATE.timeToAnimation)
 }
 
 const flipCard = (target) => {
@@ -113,7 +114,7 @@ const checkCard = (target, parentElement) => {
             STATE.cardTwo.innerHTML='';
             STATE.cardOne = null;
             STATE.isInteractive = true;
-        }, 1000)
+        }, STATE.timeToAnimation)
     }
 
     if ((STATE.flipElementIdArray.length === 2 && STATE.flipElementIdArray[0] !== STATE.flipElementIdArray[1])){
@@ -124,7 +125,7 @@ const checkCard = (target, parentElement) => {
             STATE.cardTwo.classList.remove('rotate_card');
             STATE.cardOne = null;
             STATE.isInteractive = true;
-        }, 1000)
+        }, STATE.timeToAnimation)
     }
 
     if (STATE.combinationCounter === 0){
