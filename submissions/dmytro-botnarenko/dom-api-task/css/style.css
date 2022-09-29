@@ -18,10 +18,6 @@ body {
   background-color: rgb(252, 233, 136);
 }
 
-body {
-  scrollbar-gutter: stable both-edges;
-}
-
 a {
   text-decoration: none;
 }
@@ -29,9 +25,7 @@ a {
 li {
   list-style: none;
 }
-footer {
-  text-align: center;
-}
+
 nav {
   user-select: none;
   -moz-user-select: none;
@@ -153,7 +147,9 @@ td {
   display: none;
 }
 /* ------------FOOTER--------------- */
-
+footer {
+  text-align: center;
+}
 .tooltip {
   cursor: pointer;
   position: relative;
@@ -319,15 +315,3 @@ td {
     height: 2.5rem;
   }
 }
-
-/* .wrapper {
-  background-color: #fff;
-}
-.main__container {
-  background-color: gainsboro;
-}
-footer {
-  background-color: #555;
-}
-.tooltip {
-} */
