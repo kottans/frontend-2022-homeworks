@@ -24,9 +24,7 @@ fetch("db.json").then(response => response.json()).then(dbJson => {
         reset()
         e.target.classList.add('active')
         list.classList.remove('active')
-
         const contentPage = dbJson.filter(item => e.target.textContent == item.title)
-        console.log(contentPage);
         h2.innerText = contentPage[0].title
         bodyContent.innerText = contentPage[0].text
     })
