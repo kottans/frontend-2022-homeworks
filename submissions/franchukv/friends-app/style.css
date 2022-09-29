@@ -1358,6 +1358,11 @@ body {
     overflow: hidden;
 }
 
+._filter-lock {
+    filter: grayscale(1);
+    pointer-events: none;
+}
+
 .bottom-menu-button--active {
     filter: brightness(80%);
     opacity: 1;
