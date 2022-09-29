@@ -15,6 +15,8 @@ const STATE = {
     combinationCounter: 6,
     isInteractive: true,
     timeToAnimation : 1000,
+    firstFlip: 1,
+    allCombinationsFound: 0,
 }
 
 const generateGame = () => {
@@ -76,7 +78,18 @@ const generateGame = () => {
     })
 }       
 
-generateGame();
+window.addEventListener('DOMContentLoaded', generateGame);
+
+const handlerCardClick = ({target}) => {
+    const eventParent = target.parentElement;
+    if (target.closest('.front') && STATE.isInteractive){
+        flipCard(eventParent.parentElement);
+        checkCard(target, eventParent.parentElement);
+        if (STATE.totalFlips === STATE.firstFlip){
+            startGame();
+        }
+    }
+}
 
 const startGame = () => {
     STATE.statusGame = true;
@@ -92,21 +105,8 @@ const flipCard = (target) => {
     flipCounter.innerText = ` ${STATE.totalFlips}`;
 }
 
-const checkCard = (target, parentElement) => {
-    if (STATE.flipElementIdArray.length < 2){
-        STATE.isInteractive = false;
-        STATE.flipElementIdArray.push(target.dataset.id);
-        console.log(STATE.flipElementIdArray)
-    }
-    STATE.isInteractive = true;
-
-    if (!STATE.cardOne){
-        return STATE.cardOne = parentElement;
-    }
-    STATE.cardTwo = parentElement;
-
-    if (STATE.flipElementIdArray.length === 2 && STATE.flipElementIdArray[0] === STATE.flipElementIdArray[1]){
-        STATE.flipElementIdArray.length = 0;
+const flipUnsameCards = () => {
+    STATE.flipElementIdArray.length = 0;
         --STATE.combinationCounter;
         STATE.isInteractive = false;
         setTimeout(() => {
@@ -115,10 +115,10 @@ const checkCard = (target, parentElement) => {
             STATE.cardOne = null;
             STATE.isInteractive = true;
         }, STATE.timeToAnimation)
-    }
+}
 
-    if ((STATE.flipElementIdArray.length === 2 && STATE.flipElementIdArray[0] !== STATE.flipElementIdArray[1])){
-        STATE.flipElementIdArray.length = 0;
+const hideSameCards = () => {
+    STATE.flipElementIdArray.length = 0;
         STATE.isInteractive = false;
         setTimeout(() => {
             STATE.cardOne.classList.remove('rotate_card');
@@ -126,22 +126,33 @@ const checkCard = (target, parentElement) => {
             STATE.cardOne = null;
             STATE.isInteractive = true;
         }, STATE.timeToAnimation)
+}
+
+const checkCard = (target, parentElement) => {
+    if (STATE.flipElementIdArray.length < 2){
+        STATE.isInteractive = false;
+        STATE.flipElementIdArray.push(target.dataset.id);
+    }
+    STATE.isInteractive = true;
+
+    if (!STATE.cardOne){
+        return STATE.cardOne = parentElement;
+    }
+    STATE.cardTwo = parentElement;
+
+    const [ firstFlipElement, secondFlipElement ] = STATE.flipElementIdArray;
+    if (STATE.flipElementIdArray.length === 2 && firstFlipElement === secondFlipElement){
+        flipUnsameCards();
     }
 
-    if (STATE.combinationCounter === 0){
+    if ((STATE.flipElementIdArray.length === 2 && firstFlipElement !== secondFlipElement)){
+        hideSameCards();
+    }
+
+    if (STATE.combinationCounter === STATE.allCombinationsFound){
         clearInterval(STATE.loop);
     }
 }
  
-flipContainer.addEventListener('click', function (event) {
-    const eventTarget = event.target;
-    const eventParent = eventTarget.parentElement;
-    if (event.target.closest('.front') && STATE.isInteractive){
-        flipCard(eventParent.parentElement);
-        checkCard(eventTarget, eventParent.parentElement);
-        if (STATE.totalFlips === 1){
-            startGame();
-        }
-    }
-})
+flipContainer.addEventListener('click', handlerCardClick);
 
