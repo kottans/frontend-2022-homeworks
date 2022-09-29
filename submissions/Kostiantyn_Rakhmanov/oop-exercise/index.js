@@ -50,8 +50,8 @@ class Man extends Human {
 
 const toby = new Dog ('Toby', 'male', 'woof-woof');
 const alice = new Cat ('Alice', 'female', 'meow');
-const mary = new Woman ('Mary', 'Hi, John');
-const john = new Man ('John', 'Hi, Mary');
+const mary = new Woman ('Mary', 'Hi, John!');
+const john = new Man ('John', 'Hi, Mary!');
 
 const inhabitants = [toby, alice, mary, john];
 const props = ['species', 'name', 'gender', 'legs', 'hands', 'saying'];
