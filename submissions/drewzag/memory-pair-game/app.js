@@ -18,6 +18,7 @@ const randomize = () => {
 const cardGenerator = () => {
   const cardData = randomize()
 
+  const cardsContainer = document.createDocumentFragment()
   cardData.forEach((item) => {
     const card = document.createElement('div')
     const face = document.createElement('img')
@@ -29,19 +30,19 @@ const cardGenerator = () => {
 
     face.src = item.imgSrc
 
-    section.appendChild(card)
-    card.appendChild(face)
-    card.appendChild(back)
+    card.append(face, back)
+    cardsContainer.appendChild(card)
 
-    card.addEventListener('click', (e) => {
+    card.addEventListener('click', ({ target }) => {
       card.classList.toggle('toggle')
-      checkCards(e)
+      checkCards(target)
     })
   })
+  section.appendChild(cardsContainer)
 }
 
-const checkCards = (e) => {
-  const clickedCards = e.target
+const checkCards = (target) => {
+  const clickedCards = target
   clickedCards.classList.toggle('flipped')
   const flippedCards = document.querySelectorAll('.flipped')
   const cards = document.querySelectorAll('.card')
@@ -51,10 +52,8 @@ const checkCards = (e) => {
     if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name'))
       flippedCards.forEach((card) => {
         card.classList.remove('flipped')
-        card.style.pointerEvents = 'none'
       })
     else {
-      console.log('wrong')
       flippedCards.forEach((card) => {
         card.classList.remove('flipped')
         setTimeout(() => card.classList.remove('toggle'), 1000)
