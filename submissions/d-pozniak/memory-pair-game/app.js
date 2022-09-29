@@ -70,7 +70,7 @@ function handleClicks(e) {
         }
     }
 }
-function changeCardTo(className) {
+function changeCardTo(classToAdd) {
     const [className, ...args] = [...arguments];
     args.forEach((e) => e.parentElement.classList.add(className));
 }
