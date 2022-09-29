@@ -1,0 +1,130 @@
+body {
+  background: url(./img/bg.jpg) no-repeat center top fixed;
+  background-size: cover;
+}
+
+.wrapper {
+  width: 800px;
+  margin: 50px auto;
+  padding: 0 30px;
+  background-color: rgba(172, 255, 47, 0.544);
+  border-radius: 5%;
+  min-height: 90vh;
+}
+
+.title__game {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 30px;
+  text-transform: uppercase;
+  color: rgb(123, 242, 127);
+  border-bottom: 2px solid rgb(11, 69, 4);
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.reset {
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+  text-transform: uppercase;
+  &:hover {
+    background: rgba(255, 251, 0, 0.5);
+    transition: all 1.6s ease;
+  }
+}
+
+.game {
+  &-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+  }
+  &-item {
+    cursor: pointer;
+    height: 200px;
+    margin: 5px;
+    padding-bottom: 50px;
+    & img {
+      border-radius: 10px;
+    }
+  }
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+
+  & .front,
+  .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  & .back {
+    z-index: 2;
+    transform: rotateY(0deg);
+  }
+
+  & .front {
+    transform: rotateY(180deg);
+    height: 100%;
+  }
+}
+
+.hide {
+  animation: fade 1s ease forwards;
+  z-index: 1;
+}
+
+.popup {
+  visibility: hidden;
+}
+
+.result {
+  font-size: 50px;
+  text-align: center;
+}
+
+footer {
+  top: 100%;
+  position: sticky;
+  text-align: center;
+  border-top: 1px solid #000;
+  & a {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    &:hover {
+      color: rgb(64, 64, 64);
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    width: 120%;
+  }
+
+  50% {
+    width: 220%;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    width: 70%;
+  }
+}
