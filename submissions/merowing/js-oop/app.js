@@ -45,12 +45,12 @@ const FIELD = {
     SPRITE: "images/enemy-bug.png",
   };
   
-  const Enemy = function (x, y, speed) {
+  const Enemy = function (x, y, speed, character) {
     this.positionX = x;
     this.positionY = y;
     this.speed = speed;
 
-    this.player = player;
+    this.character = character;
   
     this.sprite = ENEMY_OPTIONS.SPRITE;
   };
@@ -73,12 +73,12 @@ const FIELD = {
   Enemy.prototype.collision = function () {
     if (
       this.positionX + ENEMY_OPTIONS.WIDTH - ENEMY_OPTIONS.TRIGGER.RIGHT >
-        this.player.positionX &&
-      this.positionX - ENEMY_OPTIONS.TRIGGER.LEFT < this.player.positionX &&
-      this.positionY - this.player.positionY === 0
+        this.character.positionX &&
+      this.positionX - ENEMY_OPTIONS.TRIGGER.LEFT < this.character.positionX &&
+      this.positionY - this.character.positionY === 0
     ) {
-      this.player.positionX = CHARACTER.POSITION_X;
-      this.player.positionY = CHARACTER.POSITION_Y;
+      this.character.positionX = CHARACTER.POSITION_X;
+      this.character.positionY = CHARACTER.POSITION_Y;
     }
   };
   
@@ -131,7 +131,7 @@ const FIELD = {
   
   const allEnemies = ENEMY_OPTIONS.POSITION.map((position) => {
     let speed = randomNumber(ENEMY_OPTIONS.SPEED.MIN, ENEMY_OPTIONS.SPEED.MAX);
-    return new Enemy(position.X, position.Y, speed);
+    return new Enemy(position.X, position.Y, speed, player);
   });
   
   document.addEventListener("keyup", function (e) {
