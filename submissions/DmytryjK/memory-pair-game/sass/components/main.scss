@@ -58,6 +58,9 @@
         }
     }
     .active-card {
+        pointer-events: none;
+        opacity: 1;
+        visibility: visible;
         .main__card-front {
             transform: rotateY(0deg) perspective(600px) translate(0%, 0%);
             transition: 0.5s ease all;
@@ -68,6 +71,8 @@
             transition: 0.5s ease all;
         }
     }
+    .hide-card {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
-
-
