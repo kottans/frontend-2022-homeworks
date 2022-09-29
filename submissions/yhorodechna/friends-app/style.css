@@ -439,6 +439,7 @@ main {
   .header {
     width: 100%;
     left: 0;
+    border-bottom: 1px solid #95675b;
   }
   .header__text {
     font-size: 20px;

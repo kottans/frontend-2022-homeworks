@@ -53,6 +53,7 @@ function onSettingsOrPagingChange({ settings, page }) {
     const pagedFriends = filterByPagination({ items: filteredFriends, main: MAIN_CONTENT_EL, itemsPerPage: ITEMS_ON_PAGE, page: CURRENT_PAGE })
     renderFriends({ friends: pagedFriends })
     renderPagination({ total: filteredFriends.length, itemsPerPage: ITEMS_ON_PAGE });
+    document.getElementById('main').scrollTop = 0;
 }
 
 initPagination({ onPageChange: onSettingsOrPagingChange });
