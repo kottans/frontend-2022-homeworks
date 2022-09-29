@@ -7,14 +7,12 @@ class WorldInhabitant {
 	}
 
 	getMeaning() {
-		return ["species", "name", "gender", "saying"]
-			.map((property) => {
-				if (property === "species") {
-					return this[property].toUpperCase();
-				}
-				return this[property];
-			})
-			.join("; ");
+		return [
+			this.species.toUpperCase(),
+			this.name,
+			this.gender,
+			this.saying,
+		].join("; ");
 	}
 }
 class Human extends WorldInhabitant {
@@ -26,9 +24,12 @@ class Human extends WorldInhabitant {
 	}
 
 	getMeaning() {
-		return `${super.getMeaning()};I have ${this.legs} legs and ${
-			this.hands
-		} hands; ${this.friends ? this.friends.name : "no friends"}`;
+		return [
+			super.getMeaning(),
+			`I have ${this.legs} legs`,
+			`and ${this.hands} hands ;`,
+			Array.isArray(this.friends) ? this.friends.join(", ") : "no friends",
+		].join(" ");
 	}
 }
 class Man extends Human {
@@ -55,7 +56,10 @@ class Animal extends WorldInhabitant {
 	}
 
 	getMeaning() {
-		return `${super.getMeaning()}; animal has ${this.paws} paws`;
+		return [
+			super.getMeaning(),
+			`<strong> animal has ${this.paws} paws <strong>`,
+		];
 	}
 }
 class Dog extends Animal {
@@ -71,13 +75,13 @@ class Cat extends Animal {
 
 const woman = new Woman("Lena", "Hello!");
 
-const man = new Man("Jon", "I want to sleep!", woman);
-
 const cat = new Cat("Luna", "female");
 
-const dog = new Dog("Rasti", "male");
-
 const catWoman = new CatWoman("Selina");
+
+const man = new Man("Jon", "I want to sleep!", [woman.name, catWoman.name]);
+
+const dog = new Dog("Rasti", "male");
 
 [man, woman, catWoman, cat, dog].forEach((inhabitant) =>
 	print(inhabitant.getMeaning())
