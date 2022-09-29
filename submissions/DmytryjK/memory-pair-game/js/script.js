@@ -1,47 +1,55 @@
 const elementsOfCards = [
-    { hero : 'slark',
-      srcHero: 'images/images_cards/slark.jpg'
-    },
-    { hero : 'riki',
-      srcHero: 'images/images_cards/riki.jpg'
-    },
-    { hero : 'pa',
-      srcHero: 'images/images_cards/pa.jpg'
-    },
-    { hero : 'ember',
-      srcHero: 'images/images_cards/ember.jpg'
-    },
-    { hero : 'lancer',
-      srcHero: 'images/images_cards/lancer.jpg'
-    },
-    { hero : 'gyro',
-      srcHero: 'images/images_cards/gyro.jpg'
-    },
-    { hero : 'necr',
-      srcHero: 'images/images_cards/necr.jpg'
-    },
-    { hero : 'void',
-      srcHero: 'images/images_cards/void.jpg'
-    }
+  {
+    hero: 'slark',
+    srcHero: 'images/images_cards/slark.jpg'
+  },
+  {
+    hero: 'riki',
+    srcHero: 'images/images_cards/riki.jpg'
+  },
+  {
+    hero: 'pa',
+    srcHero: 'images/images_cards/pa.jpg'
+  },
+  {
+    hero: 'ember',
+    srcHero: 'images/images_cards/ember.jpg'
+  },
+  {
+    hero: 'lancer',
+    srcHero: 'images/images_cards/lancer.jpg'
+  },
+  {
+    hero: 'gyro',
+    srcHero: 'images/images_cards/gyro.jpg'
+  },
+  {
+    hero: 'necr',
+    srcHero: 'images/images_cards/necr.jpg'
+  },
+  {
+    hero: 'void',
+    srcHero: 'images/images_cards/void.jpg'
+  }
 ];
 
-const srcBg = 'images/back/dota_back.svg';
-let parrentCardBlock = document.querySelector('.main__cards');
-let winnerPopup = document.querySelector('.winMessage');
+const srcBg = 'images/back/dota_back.svg',
+  parrentCardBlock = document.querySelector('.main__cards'),
+  winnerPopup = document.querySelector('.winMessage');
 let doubleElementsOfCards = [];
 
 createElementsOfCards();
 
-let listCards = document.querySelectorAll('.main__card'),
-    activeCards = [],
-    numbersOfCloseCards = 0;
+let currentListCards = document.querySelectorAll('.main__card');
+let activeCards = [],
+  numbersOfCloseCards = 0;
 
-let currentTime = document.querySelector('.timer-current span'),
-    bestTime = document.querySelector('.timer-best span'),
-    minutes = 0, 
-    seconds = 0,
-    bestResultsSheet = [];
-let timerInterval;
+const currentTime = document.querySelector('.timer-current span'),
+  bestTime = document.querySelector('.timer-best span');
+let minutes = 0,
+  seconds = 0,
+  bestResultsSheet = [],
+  timerInterval = null;
 
 setTimeout(showAllCards, 400);
 setTimeout(hideAllCards, 2000);
@@ -52,123 +60,107 @@ if (localStorage.getItem('bestTime') !== null) {
 }
 
 parrentCardBlock.addEventListener('click', e => {
-    const parrentTarget = e.target.parentNode;
-    
-    if (parrentTarget.classList.contains('main__card')) {
-        parrentTarget.classList.add('active-card');
-        parrentTarget.style.cssText += 'pointer-events: none';
-        activeCards.push(parrentTarget);
+  const clickedTarget = e.target.parentNode;
+
+  if (clickedTarget.classList.contains('main__card')) {
+    clickedTarget.classList.add('active-card');
+    activeCards.push(clickedTarget);
+  }
+
+  if (activeCards.length >= 2) {
+
+    if (activeCards[0].getAttribute(["data-name"]) === activeCards[1].getAttribute(["data-name"]) &&
+      activeCards[0].getAttribute(["data-numbers"]) !== activeCards[1].getAttribute(["data-numbers"])) {
+      setTimeout(hideTwoCards, 600, activeCards);
+    } else {
+      setTimeout(closeTwoCards, 800, activeCards);
     }
 
-    if (activeCards.length >= 2) {
-        listCards.forEach(e => {
-            e.style.cssText += 'pointer-events: none';
+    if (numbersOfCloseCards === doubleElementsOfCards.length / 2 - 1) {
+      const buttonToContinue = document.querySelector('.click-to-continue');
+
+      winnerPopup.classList.add('winMessage__active');
+
+      localStorage.setItem('time', currentTime.innerText);
+      currentTime.innerText = localStorage.getItem('time');
+      bestResultsSheet.push(localStorage.getItem('time'));
+
+      if (bestResultsSheet.length > 1) {
+
+        bestTime.innerText = bestResultsSheet.reduce((prevItem, currentItem) => {
+          if (currentItem < prevItem) {
+            return currentItem;
+          } else {
+            return prevItem;
+          }
         });
 
-        if(activeCards[0].getAttribute(["data-name"]) === activeCards[1].getAttribute(["data-name"]) && activeCards[0].getAttribute(["data-numbers"]) !== activeCards[1].getAttribute(["data-numbers"])) {
-            setTimeout(hideTwoCards, 600, activeCards);
-        } else {
-            setTimeout(closeTwoCards, 800, activeCards);
-        }
-  
-        if (numbersOfCloseCards === doubleElementsOfCards.length / 2 - 1) {
-            const buttonToContinue = document.querySelector('.click-to-continue');
+      } else {
+        bestTime.innerText = localStorage.getItem('time');
+      }
 
-            winnerPopup.classList.add('winMessage__active');
+      localStorage.setItem('bestTime', bestTime.innerText);
+      clearInterval(timerInterval);
 
-            localStorage.setItem('time', currentTime.innerText);
-            currentTime.innerText = localStorage.getItem('time');
-            bestResultsSheet.push(localStorage.getItem('time'));
+      buttonToContinue.addEventListener('click', () => {
+        resetVariables();
+        createElementsOfCards();
+        currentListCards = document.querySelectorAll('.main__card');
+        resetTimer();
+        setTimeout(showAllCards, 400);
+        setTimeout(hideAllCards, 2000);
+      });
 
-            if (bestResultsSheet.length > 1) {
-              bestTime.innerText = bestResultsSheet.reduce((prevItem, currentItem) => {
-                if (currentItem < prevItem) {
-                  return currentItem;
-                } else {
-                  return prevItem;
-                }
-              });
-            } else {
-              bestTime.innerText = localStorage.getItem('time');
-            }
-
-            localStorage.setItem('bestTime', bestTime.innerText);
-            clearInterval(timerInterval);
-
-            buttonToContinue.addEventListener('click', () => {
-              winnerPopup.classList.remove('winMessage__active');
-
-              parrentCardBlock.innerHTML = "";
-              createElementsOfCards();
-
-              listCards = document.querySelectorAll('.main__card');
-              parrentCardBlock = document.querySelector('.main__cards');
-              winnerPopup = document.querySelector('.winMessage');
-              numbersOfCloseCards = 0;
-
-              resetTimer();
-
-              setTimeout(showAllCards, 400);
-              setTimeout(hideAllCards, 2000);
-            });
-        }
-        activeCards = [];
     }
+    activeCards = [];
+  }
 });
 
-function hideTwoCards(cards) {
-    cards.forEach(e => {
-        e.style.opacity = "0";
-        e.style.visibility = "hidden";
-    });
-    listCards.forEach(e => {
-      if (!e.style.visibility) {
-        e.style.cssText += 'pointer-events: auto';
-      }
-    });
+function hideTwoCards(activeCards) {
+  activeCards.forEach(activeCard => {
+    activeCard.classList.add('hide-card');
+  });
 
-    numbersOfCloseCards ++; 
+  numbersOfCloseCards++;
 }
 
-function closeTwoCards(cards) {
-    cards.forEach(e => {
-        e.classList.remove('active-card');
-    });
-    listCards.forEach(e => {
-      e.style.cssText += 'pointer-events: auto';
-    });
+function closeTwoCards(activeCards) {
+  activeCards.forEach(activeCard => {
+    activeCard.classList.remove('active-card');
+  });
 
-    activeCards = [];
+  activeCards = [];
 }
 
 function showAllCards() {
-  listCards.forEach(item => {
-    item.classList.add('active-card');
-    item.style.opacity = "1";
-    item.style.cssText = 'pointer-events: none';
+  currentListCards.forEach(card => {
+    card.classList.add('active-card');
   });
 }
 
 function hideAllCards() {
-  listCards.forEach(item => {
-    item.classList.remove('active-card');
-    item.style.cssText += 'pointer-events: auto';
+  currentListCards.forEach(card => {
+    card.classList.remove('active-card');
   });
+
   clearInterval(timerInterval);
   timerInterval = setInterval(timer, 1000);
 }
 
 function createElementsOfCards() {
-    doubleElementsOfCards = [...elementsOfCards, ...elementsOfCards];
-    doubleElementsOfCards.sort(() => Math.random() - 0.5);
-    for (let i = 0; i < (doubleElementsOfCards.length); i ++) {
-        parrentCardBlock.innerHTML += `
+  doubleElementsOfCards = [...elementsOfCards, ...elementsOfCards];
+  doubleElementsOfCards.sort(() => Math.random() - 0.5);
+
+  for (let i = 0; i < (doubleElementsOfCards.length); i++) {
+
+    parrentCardBlock.innerHTML += `
             <li class="main__card" data-name="${doubleElementsOfCards[i].hero}" data-numbers="${i}">
                 <img class="main__card-back" src="${srcBg}" alt="background_dota">
                 <img class="main__card-front" src="${doubleElementsOfCards[i].srcHero}" alt="${doubleElementsOfCards[i].hero}">
             </li>
         `;
-    }
+
+  }
 }
 
 function resetTimer() {
@@ -178,10 +170,10 @@ function resetTimer() {
 }
 
 function timer() {
-  seconds ++;
+  seconds++;
 
   if (seconds >= 60) {
-    minutes ++;
+    minutes++;
     seconds -= 60;
   }
 
@@ -194,4 +186,10 @@ function timer() {
   } else {
     currentTime.innerText = `${minutes} m : ${seconds} s`;
   }
+}
+
+function resetVariables() {
+  winnerPopup.classList.remove('winMessage__active');
+  parrentCardBlock.innerHTML = "";
+  numbersOfCloseCards = 0;
 }
