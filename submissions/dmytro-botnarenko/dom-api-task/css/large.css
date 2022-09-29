@@ -1,7 +1,4 @@
 @media screen and (min-width: 1025px) {
-  .wrapper {
-    padding: 2%;
-  }
   /* ------------SWITCHER--------------- */
   .switcher {
     width: 3%;
@@ -9,12 +6,8 @@
     left: 2%;
   }
   /* ------------MAIN--------------- */
-  .main__container {
-    padding-top: 0;
-  }
   .main__info {
     width: 75%;
-    justify-content: flex-start;
   }
   .main__info__name {
     font-size: 2.5rem;
@@ -27,6 +20,9 @@
   .main__info__figure {
     max-width: 30%;
   }
+  .main__info__figure__caption {
+    padding: 10px 0 0 0;
+  }
   .main__info__personage table {
     width: 50%;
     height: 70%;
@@ -36,11 +32,10 @@
   }
   .main__info__text {
     column-count: 2;
-    padding: 40px 25px 0 25px;
+    padding: 2% 2% 0 0;
   }
   /* ------------NAVIGATION--------------- */
   .main__navigation {
-    padding: 0 0 0 2%;
     width: 25%;
   }
   .main__navigation__menu__container {
@@ -65,36 +60,69 @@
 }
 
 @media screen and (min-width: 1600px) {
-  .main__container {
-    height: 90%;
+  .main__info__text {
+    padding-bottom: 10px;
   }
   .main__info__strip {
     display: flex;
-    align-items: center;
-    margin-top: 15px;
+    margin-top: auto;
+    margin-bottom: 20px;
+    justify-content: space-around;
   }
   .main__info__strip li {
     text-align: center;
   }
-  .main__info__strip__link__image {
-    width: 80%;
+  .main__info__strip__link {
+    border-radius: 3px;
+    box-shadow: rgb(156, 15, 2) 0px 0px 0px 3px, 
+                rgb(244, 165, 148) 0px 0px 0px 6px, 
+                  rgb(156, 15, 2) 0px 0px 0px 9px;
+    transition: background-color 0.55s;
   }
-  footer {
-    height: 10px;
+  .main__info__strip__link:hover {
+    background-color: rgb(156, 15, 2);
+  }
+  .main__info__strip__link__image {
+    width: 60%;
   }
 }
 
 @media screen and (min-width: 1600px) and (max-height: 900px) {
+  .main__info__figure__image {
+    max-height: 370px;
+  }
   .main__info__strip__link__image {
     width: 50%;
   }
 }
 
-@media screen and (min-height: 1200px) {
-  .main__info {
-    justify-content: space-around;
-  }
+@media screen and (min-width: 1025px) and (min-height: 1200px) {
   .main__navigation {
     justify-content: center;
+  }
+}
+
+@media screen and (min-width: 3440px) {
+  body {
+    font-size: calc(14px + 0.39vw);
+    line-height: calc(20px + 0.39vw);
+  }
+  .main__info__personage {
+    flex-grow: 1;
+  }
+  .main__info__figure__image {
+    max-height: 600px;
+  }
+  .main__info__text {
+    align-self: center;
+    column-count: 2;
+    column-gap: 3rem;
+    width: 70%;
+  }
+  .main__info__strip {
+    margin-top: 50px;
+  }
+  .main__info__strip__link__image {
+    width: 80%;
   }
 }

@@ -4,27 +4,29 @@ const rootElement = document.documentElement;
 const body = document.body;
 const modeSwitcher = document.querySelector(".switcher");
 const modeSwitcherImage = document.querySelector(".switcher__image");
-const menu = document.querySelector(".main__navigation__menu__list");
-const menuStrip = document.querySelector(".main__info__strip");
-const modeImages = ["img/moon-icon.svg", "img/sun-icon.svg"];
+const menus = [
+  document.querySelector(".main__navigation__menu__list"), 
+  document.querySelector(".main__info__strip"),
+];
+const modeIcons = ["img/moon-icon.svg", "img/sun-icon.svg"];
 const burger = document.querySelectorAll(".main__navigation__menu__burger");
 const mainName = document.querySelector(".main__info__name");
 const mainImage = document.querySelector(".main__info__figure__image");
-const mainImageCaptionLink = document.querySelector(
-  ".main__info__figure__caption__link"
-);
+const mainImageCaptionLink = document.querySelector(".main__info__figure__caption__link");
 const mainText = document.querySelector(".main__info__text");
 const mainTable = document.querySelectorAll("td");
+const mainStripLinks = document.querySelectorAll(".main__info__strip__link");
 
-let selectedA;
+let selectedLink;
 let modeCounter = 0;
 
+
 function changeModeImg() {
-  modeCounter = (modeCounter + 1) % modeImages.length;
-  modeSwitcherImage.src = modeImages[modeCounter];
+  modeCounter = (modeCounter + 1) % modeIcons.length;
+  modeSwitcherImage.src = modeIcons[modeCounter];
 }
 
-function burgerMode() {
+function changeBurgerMode() {
   for (let element of burger) {
     element.classList.toggle("dark-burger-mode");
   }
@@ -36,10 +38,45 @@ const darkMode = document
     rootElement.classList.toggle("dark-mode");
     body.classList.toggle("dark-mode");
     modeSwitcher.classList.toggle("dark-mode");
-    menu.classList.toggle("antidark-mode");
+    mainStripLinks.forEach((node) => {
+        node.classList.toggle("dark-strip-mode");
+      }
+    );
     changeModeImg();
-    burgerMode();
+    changeBurgerMode();
   });
+
+menus.forEach(
+  (element) => 
+    (element.onclick = (event) => {
+      const target = event.target.closest("a");
+      if (!target) return;
+      highlight(target);
+      let characterId = event.target.getAttribute("id").slice(1);
+      switchData(characterId);
+    })
+);
+
+function highlight(a) {
+  if (selectedLink) {
+    selectedLink.classList.remove("highlight");
+  }
+  selectedLink = a;
+  selectedLink.classList.add("highlight");
+}
+
+function switchData(characterId) {
+  const chosen = characters.filter((character) => character.id === characterId)[0];
+  mainName.innerHTML = chosen.name;
+  mainImage.setAttribute("src", chosen.img);
+  mainImage.setAttribute("alt", chosen.alt);
+  mainImageCaptionLink.setAttribute("href", chosen.source);
+  mainText.innerHTML = chosen.text;
+  for (const entry of mainTable.values()) {
+    let tableCell = entry.id;
+    entry.innerHTML = chosen[tableCell];
+  }
+}
 
 const characters = [
   {
@@ -59,7 +96,7 @@ const characters = [
   {
     id: "tom",
     name: "Tom",
-    fullname: 'Thomas Jasper "Tom" Cat Sr.',
+    fullname: "Thomas Jasper \"Tom\" Cat Sr.",
     species: "Cat",
     img: "img/tom_cat.webp",
     gender: "Male",
@@ -68,7 +105,7 @@ const characters = [
     dislikes: "Getting injured, being retaliated",
     source: "https://tomandjerry.fandom.com/wiki/Tom_Cat",
     alt: "Tom Cat",
-    text: 'Thomas “Tom” Cat (originally known as Jasper Cat in Puss Gets the Boot) is one of the two protagonists in Tom and Jerry, created by William Hanna and Joseph Barbera. He is a bluish-gray anthropomorphic domestic short-haired cat who first appeared in the 1940 animated short Puss Gets the Boot. Tom was originally known as Jasper during his debut in that short, however, beginning from his next appearance in The Midnight Snack and onwards his current name was used. In the fighting game MultiVersus, however, Tom\'s full name is said to be Thomas Jasper "Tom" Cat, Sr.',
+    text: "Thomas “Tom” Cat (originally known as Jasper Cat in Puss Gets the Boot) is one of the two protagonists in Tom and Jerry, created by William Hanna and Joseph Barbera. He is a bluish-gray anthropomorphic domestic short-haired cat who first appeared in the 1940 animated short Puss Gets the Boot. Tom was originally known as Jasper during his debut in that short, however, beginning from his next appearance in The Midnight Snack and onwards his current name was used. In the fighting game MultiVersus, however, Tom's full name is said to be Thomas Jasper \"Tom\" Cat, Sr.",
   },
   {
     id: "spike",
@@ -110,12 +147,12 @@ const characters = [
     dislikes: "Cats, Being Hungry",
     source: "https://tomandjerry.fandom.com/wiki/Nibbles_Mouse",
     alt: "Nibbles Mouse",
-    text: 'Nibbles "Tuffy" Mouse (also known as Tuffy Mouse) is the tritagonist from the Tom and Jerry franchise. He is the little grey, diaper-wearing orphan mouse whose cartoon debut came in the 1946 short The Milky Waif. Nibbles was later featured in the 1949 award-winning short The Little Orphan. Nibbles is wearing a diaper is due to the fact that he is a young mouse.',
+    text: "Nibbles \"Tuffy\" Mouse (also known as Tuffy Mouse) is the tritagonist from the Tom and Jerry franchise. He is the little grey, diaper-wearing orphan mouse whose cartoon debut came in the 1946 short The Milky Waif. Nibbles was later featured in the 1949 award-winning short The Little Orphan. Nibbles is wearing a diaper is due to the fact that he is a young mouse.",
   },
   {
     id: "mammy",
     name: "Mammy Two Shoes",
-    fullname: 'Mammy Two Shoes aka "Dinah"',
+    fullname: "Mammy Two Shoes aka \"Dinah\"",
     species: "Human",
     img: "img/mammy_two_shoes.webp",
     gender: "Female",
@@ -124,7 +161,7 @@ const characters = [
     dislikes: "Noise, Mice, Mess in the House",
     source: "https://tomandjerry.fandom.com/wiki/Mammy_Two_Shoes",
     alt: "Mammy Two Shoes",
-    text: 'Mammy Two Shoes (also known as Mammy, Mammy Two-Shoes, or Dinah in the 1940s Tom and Jerry comics) is a recurring disappeared in 19 of MGM\'s Tom and Jerry cartoons. She is a heavy-set, middle-aged African-American woman who often has to deal with the mayhem generated by the lead characters, but whether she is the owner of the home or merely the house-keeper is never really made clear. She is based on the "Mammy" archetype that was prevalent throughout the U.S. in the 19th and early 20th century, during which Tom & Jerry gained popularity.',
+    text: "Mammy Two Shoes (also known as Mammy, Mammy Two-Shoes, or Dinah in the 1940s Tom and Jerry comics) is a recurring disappeared in 19 of MGM\'s Tom and Jerry cartoons. She is a heavy-set, middle-aged African-American woman who often has to deal with the mayhem generated by the lead characters, but whether she is the owner of the home or merely the house-keeper is never really made clear. She is based on the \"Mammy\" archetype that was prevalent throughout the U.S. in the 19th and early 20th century, during which Tom & Jerry gained popularity.",
   },
   {
     id: "uncle",
@@ -152,42 +189,6 @@ const characters = [
     dislikes: "Dirt, Indifferent persons",
     source: "https://tomandjerry.fandom.com/wiki/Toodles_Galore",
     alt: "Toodles Galore",
-    text: 'Toodles Galore (also known as Toots in Tom and Jerry in New York) is a character in the Tom and Jerry series. She has white fur, wears a neck ribbon, and is considered attractive by other characters. Prior to her debut in the Tom and Jerry short Springtime for Thomas (1946), a white female cat resembling a prototype version of Toodles previously appeared (alongside a black alley cat resembling a prototype version of Butch Cat) in the one-shot MGM cartoon The Alley Cat (1941) directed by Hugh Harman. A character model sheet for the short refers to her as "The Lady Cat".',
+    text: "Toodles Galore (also known as Toots in Tom and Jerry in New York) is a character in the Tom and Jerry series. She has white fur, wears a neck ribbon, and is considered attractive by other characters. Prior to her debut in the Tom and Jerry short Springtime for Thomas (1946), a white female cat resembling a prototype version of Toodles previously appeared (alongside a black alley cat resembling a prototype version of Butch Cat) in the one-shot MGM cartoon The Alley Cat (1941) directed by Hugh Harman. A character model sheet for the short refers to her as \"The Lady Cat\".",
   },
 ];
-
-menu.onclick = function (event) {
-  let target = event.target.closest("a");
-  if (!target) return;
-  highlight(target);
-  let characterId = event.target.getAttribute("id");
-  switchData(characterId);
-};
-
-menuStrip.onclick = function (event) {
-  let target = event.target.closest("a");
-  if (!target) return;
-  let characterId = event.target.getAttribute("id").slice(1);
-  switchData(characterId);
-};
-
-function highlight(a) {
-  if (selectedA) {
-    selectedA.classList.remove("highlight");
-  }
-  selectedA = a;
-  selectedA.classList.add("highlight");
-}
-
-function switchData(characterId) {
-  let chosen = characters.filter((char) => char.id === characterId)[0];
-  mainName.innerHTML = chosen.name;
-  mainImage.setAttribute("src", chosen.img);
-  mainImage.setAttribute("alt", chosen.alt);
-  mainImageCaptionLink.setAttribute("href", chosen.source);
-  mainText.innerHTML = chosen.text;
-  for (const entry of mainTable.values()) {
-    let tdId = entry.id;
-    entry.innerHTML = chosen[tdId];
-  }
-}
