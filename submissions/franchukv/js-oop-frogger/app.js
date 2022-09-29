@@ -52,13 +52,14 @@ Player.prototype.handleInput = function (key) {
     }
 };
 
-const Enemy = function (x, y) {
+const Enemy = function (x, y, player) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
     this.width = 80;
     this.height = 40;
     this.speed = ENEMY_SPEED;
+    this.player = player;
 };
 
 
@@ -80,17 +81,17 @@ Enemy.prototype.setStartEnemiesPosition = function () {
     for (let i = 0; i < 3; i++) {
         let y = i * TILE_HEIGHT + 50;
         let x = i * -TILE_WIDTH;
-        allEnemies.push(new Enemy(x, y));
+        allEnemies.push(new Enemy(x, y, player));
     }
 };
 
 Enemy.prototype.checkCollision = function () {
     if (
         (
-            player.y > this.y - this.height &&
-            this.x + this.width > player.x &&
-            player.x + player.width > this.x &&
-            player.y - player.height < this.y
+            this.player.y > this.y - this.height &&
+            this.x + this.width > this.player.x &&
+            this.player.x + this.player.width > this.x &&
+            this.player.y - this.player.height < this.y
         )
     ) {
 
