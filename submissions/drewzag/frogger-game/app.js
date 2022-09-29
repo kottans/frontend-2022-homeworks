@@ -9,12 +9,14 @@ const ENEMY_MIN_SPEED = 100
 const ENEMY_MAX_SPEED = 400
 const ENEMY_SIZE_X = 48
 const ENEMY_SIZE_Y = 48
+const ENEMY_SPRITE = 'images/enemy-bug.png'
 
 const PLAYER_START_COL = 2
 const PLAYER_START_ROW = 5
 const PLAYER_SIZE_Y = 35
 const PLAYER_START_X = CELL_X_SIZE * PLAYER_START_COL
 const PLAYER_START_Y = CELL_Y_SIZE * PLAYER_START_ROW - PLAYER_SIZE_Y
+const PLAYER_SPRITE = 'images/char-boy.png'
 
 let isFreeze = false
 
@@ -65,7 +67,7 @@ const Character = function (x, y, sprite) {
   this.sprite = sprite
 }
 
-var Enemy = function (x, y, sprite, speed, player) {
+const Enemy = function (x, y, sprite, speed, player) {
   Character.call(this, x, y, sprite)
   this.speed = speed
   this.player = player
@@ -96,7 +98,7 @@ Enemy.prototype.collisions = function () {
   }
 }
 
-var Player = function (x, y, sprite) {
+const Player = function (x, y, sprite) {
   Character.call(this, x, y, sprite)
 }
 
@@ -133,26 +135,21 @@ Player.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
 }
 
-const player = new Player(PLAYER_START_X, PLAYER_START_Y, 'images/char-boy.png')
+const player = new Player(PLAYER_START_X, PLAYER_START_Y, PLAYER_SPRITE)
 const allEnemies = []
 for (let i = 0; i < 3; i++) {
   let count = i
   if (i >= 3) {
     count = randomNumber(0, 2)
   }
+  const ENEMY_AMOUNT = count * CELL_Y_SIZE + ENEMY_SIZE_Y
   allEnemies.push(
-    new Enemy(
-      0,
-      count * CELL_Y_SIZE + ENEMY_SIZE_Y,
-      'images/enemy-bug.png',
-      randomNumber(ENEMY_MIN_SPEED, ENEMY_MAX_SPEED),
-      player
-    )
+    new Enemy(0, ENEMY_AMOUNT, ENEMY_SPRITE, randomNumber(ENEMY_MIN_SPEED, ENEMY_MAX_SPEED), player)
   )
 }
 
 document.addEventListener('keyup', function (e) {
-  var allowedKeys = {
+  const allowedKeys = {
     37: 'left',
     38: 'up',
     39: 'right',
