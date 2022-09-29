@@ -16,38 +16,52 @@ class Inhabitant {
     this.saying = saying
   }
 
-  printInhabitants() {
-    print(Object.values(this).join('; '), 'div')
+  printInhabitants(args) {
+    const characteristics = ['species', 'name', 'gender', 'legs', 'saying']
+    if (args) {
+      characteristics.push(args)
+    }
+    print(characteristics.map((value) => this[value]).join('; '))
+  }
+}
+
+class Dog extends Inhabitant {
+  constructor(species, name, gender, legs, saying) {
+    super(species, name, gender, legs, saying)
+  }
+}
+
+class Cat extends Inhabitant {
+  constructor(species, name, gender, legs, saying) {
+    super(species, name, gender, legs, saying)
   }
 }
 
 class Human extends Inhabitant {
-  constructor(name, gender, legs, saying, hands) {
-    super('human', name, gender, legs, saying)
+  constructor(species, name, gender, legs, saying, hands) {
+    super(species, name, gender, legs, saying)
     this.hands = hands
   }
-}
-
-class PetHuman extends Human {
-  constructor(name, gender, legs, saying, hands) {
-    super(name, gender, legs, saying, hands)
-  }
-
   printInhabitants() {
-    const values = Object.values(this)
-    values.splice(4, 1, cat.saying)
-    print(values.join('; '), 'div')
+    super.printInhabitants(['hands'])
   }
 }
 
-const dog = new Inhabitant('dog', 'Jack', 'male', 4, 'Bark')
-const cat = new Inhabitant('cat', 'Tom', 'male', 4, 'Meow')
-const woman = new Human('Marry', 'female', 2, 'Hi, guys', 2)
-const man = new Human('Boris', 'male', 2, 'Dobriy den, everybody!', 2)
-const catWoman = new PetHuman('Cat Marry', 'female', 2, cat.saying, 2)
+class CatWoman extends Human {
+  constructor(species, name, gender, legs, saying, hands) {
+    super(species, name, gender, legs, saying, hands)
+  }
+  set saying(say) {}
+  get saying() {
+    return cat.saying
+  }
+}
 
-dog.printInhabitants()
-cat.printInhabitants()
-woman.printInhabitants()
-man.printInhabitants()
-catWoman.printInhabitants()
+const dog = new Dog('dog', 'Jack', 'male', 4, 'Bark')
+const cat = new Cat('cat', 'Tom', 'male', 4, 'Meow')
+const woman = new Human('human', 'Marry', 'female', 2, 'Hi, guys', 2)
+const man = new Human('human', 'Boris', 'male', 2, 'Dobriy den, everybody!', 2)
+const catWoman = new CatWoman('cat woman', 'Cat Marry', 'female', 2, cat.saying, 2)
+
+const inhabitants = [dog, cat, woman, man, catWoman]
+inhabitants.forEach((inhabitant) => inhabitant.printInhabitants())
