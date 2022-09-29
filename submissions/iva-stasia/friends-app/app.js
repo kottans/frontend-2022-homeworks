@@ -53,7 +53,7 @@ const createCards = (initialFriends) => {
     cardsContainer.innerHTML = htmlinitialFriendsData;
 };
 
-const changeFriends = ({target}) => {
+const chooseFriends = ({target}) => {
     const foundFriends = searchFriends(target.value);
     const filteredFriends = filter(foundFriends);
     const sortedFriends = sort(filteredFriends);
@@ -70,7 +70,7 @@ const filter = (friendsData) => {
         return friendsData.filter(friend => friend.gender === 'female');
     };
 
-    if (!sideBar[4].checked && !sideBar[5].checked) {
+    if (sideBar[6].checked) {
         return friendsData;
     };
 };
@@ -92,9 +92,7 @@ const sort = (friendsData) => {
         return friendsData.sort((a, b) => a.dob.age > b.dob.age ? -1 : 1);
     };
 
-    if (!sideBar[0].checked && !sideBar[1].checked && !sideBar[2].checked && !sideBar[3].checked) {
-        return friendsData
-    };  
+    return friendsData
 };
 
 const searchFriends = (value) => {
@@ -119,48 +117,50 @@ const resetAll = () => {
 };
 
 const openFilters = ({target}) => {
-    if (target.classList.contains('fa-filter')
-        || target.classList.contains('filter_btn')) {
+    const hasClass = (className) => target.classList.contains(className);
+    const searchBlock = document.querySelector('.search_block')
+
+    if (hasClass('fa-sliders') || hasClass('filter_btn')) {
         sideBar.classList.toggle('open');
         filtersHeader.classList.remove('open_search');
-        document.querySelector('.search_block').classList.remove('open_search');
+        searchBlock.classList.remove('open_search');
     };
 
-    if (target.classList.contains('fa-magnifying-glass')
-        || target.classList.contains('search_btn')) {
+    if (hasClass('fa-magnifying-glass') || hasClass('search_btn')) {
         filtersHeader.classList.toggle('open_search');
-        document.querySelector('.search_block').classList.toggle('open_search');
-        document.querySelector('.search_block').classList.remove('glass_bg');
+        searchBlock.classList.toggle('open_search');
+        searchBlock.classList.remove('glass_bg');
         sideBar.classList.remove('open');
     };
 };
 
+const processCardBtns = () => {
+    cardsContainer.addEventListener('click', ({target}) =>{
+        const hasClass = (className) => target.classList.contains(className);
+        const cardClassList = target.closest('.card').classList;
+
+        if (hasClass('follow_btn')) {
+            cardClassList.add('open_follow');
+            setTimeout(() => cardClassList.remove('open_follow'), 1500)
+        };
+
+        if (hasClass('phone') || hasClass('fa-phone')) {
+            cardClassList.add('open_phone');
+            setTimeout(() => cardClassList.remove('open_phone'), 1500);
+        };
+
+        if (hasClass('email') || hasClass('fa-envelope')) {
+            cardClassList.add('open_email');
+            setTimeout(() => cardClassList.remove('open_email'), 1500);
+        };
+    });
+};
+
 window.addEventListener('DOMContentLoaded', () => {
-    sideBar.addEventListener('input', changeFriends);
-    searchInput.addEventListener('input', changeFriends);
+    sideBar.addEventListener('change', chooseFriends);
+    searchInput.addEventListener('input', chooseFriends);
     resetBtn.addEventListener('click', resetAll);
     filtersHeader.addEventListener('click', openFilters);
   });
 
 getinitialFriends();
-
-const processCardBtns = () => {
-    cardsContainer.addEventListener('click', ({target}) =>{
-        if (target.classList.contains('follow_btn')) {
-            target.closest('.card').classList.add('open_follow');
-            setTimeout(() => target.closest('.card').classList.remove('open_follow'), 1500)
-        };
-
-        if (target.classList.contains('phone')
-            || target.classList.contains('fa-phone')) {
-            target.closest('.card').classList.add('open_phone');
-            setTimeout(() => target.closest('.card').classList.remove('open_phone'), 1500);
-        };
-
-        if (target.classList.contains('email')
-            || target.classList.contains('fa-envelope')) {
-            target.closest('.card').classList.add('open_email');
-            setTimeout(() => target.closest('.card').classList.remove('open_email'), 1500);
-        };
-    });
-};
