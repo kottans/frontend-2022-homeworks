@@ -11,16 +11,20 @@
 class Inhabitant {
   constructor (species, name, gender, legs, hands, saying, friends) {
     this.species = species;
-    this.name = `<strong>${name}</strong>`;
+    this.name = name;
     this.gender = gender;
     this.legs = legs;
     this.hands = hands;
-    this.saying = `<em>${saying}</em>`;
+    this.saying = saying;
     this.friends = friends;
   }
 
   printInhabitant () {
-    print([this.species, this.name, this.legs, this.hands, this.saying, this.friends].join('; '));
+    const nameToPrint = `<strong>${this.name}</strong>`;
+    const talkToPrint = `<em>${this.saying}</em>`;
+    const friendsToPrint = this.friends ? this.friends.map(friend => friend.name).join(', ') : 'Cats have no friends';
+
+    print([this.species, nameToPrint, this.legs, this.hands, talkToPrint, friendsToPrint].join('; '));
   }
 }
 
@@ -44,23 +48,44 @@ class Dog extends Animal {
 
 class Cat extends Animal {
   constructor (name, gender) {
-    super(name, gender, 'Meow!', 'Cats have no friends');
+    super(name, gender, 'Meow!');
   }
 }
 
 const inhabitants = [
-  new Human('Jenny', 'female', "Hi all, I'm Jenny", 'John, Molly'),
-  new Human('Alice', 'female', "Whats up! Alice's here", 'Bob, Adam, Tom'),
-  new Human('Eva', 'female', "Hello, I am Eva", 'Adam, Tom, Lizzy'),
-  new Human('John', 'male', "Cheers, It's a John", 'Jenny, Molly'),
-  new Human('Bob', 'male', "Peace folks, I'm Bob", 'Alice, Adam, Tom, Rex'),
-  new Human('Adam', 'male', "I am Adam, Hi buds!", 'Eva, Tom, Lizzy'),
+  new Human('Jenny', 'female', "Hi all, I'm Jenny"),
+  new Human('Alice', 'female', "Whats up! Alice's here"),
+  new Human('Eva', 'female', "Hello, I am Eva"),
+  new Human('John', 'male', "Cheers, It's a John"),
+  new Human('Bob', 'male', "Peace folks, I'm Bob"),
+  new Human('Adam', 'male', "I am Adam, Hi buds!"),
   new Cat('Tom', 'male'),
   new Cat('Molly', 'female'),
-  new Dog('Rex', 'male', 'Bob'),
-  new Dog('Lizzy', 'female', 'Eva, Adam') 
+  new Dog('Rex', 'male'),
+  new Dog('Lizzy', 'female') 
  ];
 
+ function addFriends (person, friendsList) {
+  let friendsStorage = [];
+  for (let i=0; i<friendsList.length; i++)
+  {
+    inhabitants.forEach(friend => {if(friend.name == friendsList[i]) {
+    friendsStorage.push(friend);
+  }});
+  }
+  inhabitants.forEach(inhabitant => {if(inhabitant.name == person) {
+    inhabitant.friends = friendsStorage;
+  }});
+}
+
+addFriends('Jenny', ['John', 'Molly']);
+addFriends('Alice', ['Bob', 'Adam', 'Tom']);
+addFriends('Eva', ['Adam', 'Tom', 'Lizzy']);
+addFriends('John', ['Jenny' ,'Molly' ,'Rex']);
+addFriends('Bob', ['Alice', 'Adam', 'Tom', 'Rex']);
+addFriends('Adam', ['Eva', 'Tom', 'Lizzy']);
+addFriends('Rex', ['Bob']);
+addFriends('Lizzy', ['Eva', 'Adam']);
+
 inhabitants.forEach((creature) => creature.printInhabitant());
- 
 
