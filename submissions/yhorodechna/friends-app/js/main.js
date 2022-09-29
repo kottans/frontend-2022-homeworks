@@ -12,11 +12,11 @@ const DEFAULT_SETTINGS = {
     sort: ESort.unsorted,
 }
 
-function filterFriends({ friends, settings }) {
+function filterBySettings({ friends, settings }) {
     let res = friends;
     if (settings.userName) {
         const friendNameInLowerCase = settings.userName.toLowerCase();
-        res = res.filter(friend => friend.name.toLowerCase().indexOf(friendNameInLowerCase) === 0)
+        res = res.filter(friend => friend.name.toLowerCase().indexOf(friendNameInLowerCase) >= 0)
     }
     res = res.filter(friend => settings.nationalityList.includes(friend.nat))
     if (settings.gender !== EGenderFilter.all) {
@@ -37,27 +37,37 @@ function filterFriends({ friends, settings }) {
         }
     }
     if (!res.length) {
-        MAIN_EL.classList.add('no-results')
+        MAIN_CONTENT_EL.classList.add('no-results')
     } else {
-        MAIN_EL.classList.remove('no-results')
+        MAIN_CONTENT_EL.classList.remove('no-results')
     }
     return res;
 }
 
 let FRIENDS = [];
-function onSettingsChange({ settings }) {
-    const filteredFriends = filterFriends({ friends: FRIENDS, settings })
-    renderFriends({ friends: filteredFriends })
+function onSettingsOrPagingChange({ settings, page }) {
+    if (settings) {
+        setPage(1);
+    }
+    const filteredFriends = filterBySettings({ friends: FRIENDS, settings: CURRENT_SETTINGS })
+    const pagedFriends = filterByPagination({ items: filteredFriends, main: MAIN_CONTENT_EL, itemsPerPage: ITEMS_ON_PAGE, page: CURRENT_PAGE })
+    renderFriends({ friends: pagedFriends })
+    renderPagination({ total: filteredFriends.length, itemsPerPage: ITEMS_ON_PAGE });
 }
+
+initPagination({ onPageChange: onSettingsOrPagingChange });
+
 initFriendsAsync({
     onFriendsLoaded: ({ friends }) => {
         FRIENDS = friends;
         if (FRIENDS) {
-            PRELOADER_EL.classList.add('hide-preloader');
+            PRELOADER_EL.classList.add('preloader-hide');
+            setTimeout(() => { PRELOADER_EL.classList.add('preloader-remove') }, 1000)
         }
         initSettings({
             settings: DEFAULT_SETTINGS,
-            onSettingsChange
+            onSettingsChange: ({ settings }) => onSettingsOrPagingChange({ settings })
         });
     }
 });
+

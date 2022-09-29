@@ -1,4 +1,4 @@
-const MAIN_EL = document.querySelector("#main");
+const MAIN_CONTENT_EL = document.querySelector("#main__content");
 let PREVIOUS_ACTIVE_CARD;
 
 function getFriendItemHtml({ name, gender, email, age, phone, nat, image, birthDay, registered }) {
@@ -38,7 +38,7 @@ function renderFriends({ friends }) {
     const friendsHtml = friends.map(friend => {
         return getFriendItemHtml(friend);
     });
-    document.querySelector('#main').innerHTML = friendsHtml.join(' ');
+    MAIN_CONTENT_EL.innerHTML = friendsHtml.join(' ');
 };
 function onFriendCardClick({ target }) {
     const currentCard = target.closest('.flip-container');
@@ -53,4 +53,4 @@ function onFriendCardClick({ target }) {
     }
 };
 
-MAIN_EL.addEventListener('click', onFriendCardClick);
+MAIN_CONTENT_EL.addEventListener('click', onFriendCardClick);

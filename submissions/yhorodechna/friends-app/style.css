@@ -7,19 +7,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #95675be1;
-  z-index: 1000;
+  background: #95675b;
+  z-index: 100;
 }
-#preloader.hide-preloader {
-  opacity: 0;
-  z-index: 1;
-  transition: all linear 1s;
+.preloader.preloader-hide {
+  animation: hidePreloader 1s;
+}
+.preloader.preloader-remove {
+  display: none;
+}
+@keyframes hidePreloader {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 .loading img {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
 }
 .wrapper {
   position: relative;
@@ -142,6 +150,7 @@
   padding: 6px;
   margin: 0 auto;
   transition: 0.3s all linear;
+  text-align: center;
 }
 .nav__input-username:focus {
   border: 2px solid #95675b;
@@ -252,7 +261,8 @@
 .nav__form-reset:hover,
 .nav__checkbox-label:hover,
 .nav__radio-label:hover,
-.nav__form-ok:hover {
+.nav__form-ok:hover,
+.pagination__btn:hover {
   opacity: 80%;
   transition: 0.3s all linear;
   transform: scale(1.05);
@@ -265,18 +275,25 @@
 .nav__form-ok:active {
   transform: scale(1);
 }
-.main {
+main {
   position: absolute;
-  width: 70%;
-  top: 50px;
-  right: 5%;
-  justify-content: center;
-  margin: 0 auto;
-  overflow: auto;
+  width: 80%;
+  height: 100%;
+  right: 0px;
+  padding-top: 50px;
+  text-align: center;
   display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+.main__content {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  padding: 20px 20px 70px 20px;
-  z-index: 2;
+  padding: 20px 20px 20px 20px;
 }
 .no-results {
   background: url(../img/no-results.png) 0 0/20% auto no-repeat;
@@ -396,6 +413,25 @@
   font-size: 12px;
   color: rgb(70, 70, 70);
 }
+
+.main__pagination {
+  width: 100%;
+  height: 50px;
+  margin: 0px 0px 10px 0px;
+}
+.pagination__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 4px;
+  box-shadow: 2px 2px 5px #000;
+  background-color: #c4ac95;
+  font-size: 16px;
+  transition: 0.3s all linear;
+}
+.pagination__btn.active {
+  background-color: #95675b;
+}
 @media (max-width: 928px) {
   .preloader {
     width: 100%;
@@ -448,17 +484,16 @@
     margin: 0 auto;
   }
   .no-results {
-    background: url(../img/no-results.png) 0 0/50% auto no-repeat;
+    background: url(../img/no-results.png) 0 0/40% auto no-repeat;
     background-position: 50% 50%;
     height: 90%;
     opacity: 0.6;
   }
 }
 @media (max-width: 526px) {
-  .main {
+  .main__content {
     width: 100%;
     flex-direction: column;
-    padding: 20px;
   }
   .friend {
     max-width: 100%;

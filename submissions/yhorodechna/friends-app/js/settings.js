@@ -7,7 +7,7 @@ const HEADER_BUTTON_EL = document.querySelector('#header__btn');
 const NAV_EL = document.querySelector('#nav');
 const FORM_OK = document.querySelector('#nav__form-ok');
 
-let SETTINGS = {}
+let CURRENT_SETTINGS = {}
 let ON_SETTINGS_CHANGE = () => { };
 
 const ESort = {
@@ -31,36 +31,36 @@ const ENationality = {
 }
 
 function onNavInputClick({ target }) {
-    SETTINGS.userName = target.value;
-    ON_SETTINGS_CHANGE({ settings: SETTINGS })
+    CURRENT_SETTINGS.userName = target.value;
+    ON_SETTINGS_CHANGE({ settings: CURRENT_SETTINGS })
 }
 function onNavCheckboxNationalityClick({ target }) {
     if (target.checked) {
-        SETTINGS.nationalityList.push(target.name);
+        CURRENT_SETTINGS.nationalityList.push(target.name);
     }
     else {
-        SETTINGS.nationalityList = SETTINGS.nationalityList.filter(nationalityName => nationalityName !== target.name);
+        CURRENT_SETTINGS.nationalityList = CURRENT_SETTINGS.nationalityList.filter(nationalityName => nationalityName !== target.name);
     };
-    ON_SETTINGS_CHANGE({ settings: SETTINGS })
+    ON_SETTINGS_CHANGE({ settings: CURRENT_SETTINGS })
 };
 function onNavRadioGenderClick({ target }) {
-    SETTINGS.gender = target.value;
-    ON_SETTINGS_CHANGE({ settings: SETTINGS })
+    CURRENT_SETTINGS.gender = target.value;
+    ON_SETTINGS_CHANGE({ settings: CURRENT_SETTINGS })
 }
 function onNavSortClick({ target }) {
-    SETTINGS.sort = target.value;
-    ON_SETTINGS_CHANGE({ settings: SETTINGS })
+    CURRENT_SETTINGS.sort = target.value;
+    ON_SETTINGS_CHANGE({ settings: CURRENT_SETTINGS })
 }
 function onFormResetClick({ target }) {
-    SETTINGS = { ...DEFAULT_SETTINGS }
-    initSettings({ settings: SETTINGS, onSettingsChange: ON_SETTINGS_CHANGE })
+    CURRENT_SETTINGS = { ...DEFAULT_SETTINGS }
+    initSettings({ settings: CURRENT_SETTINGS, onSettingsChange: ON_SETTINGS_CHANGE })
     NAV_EL.classList.remove('visible');
     HEADER_BUTTON_EL.classList.remove('open')
 }
 
 function initSettings({ settings, onSettingsChange }) {
-    SETTINGS = { ...settings };
-    ON_SETTINGS_CHANGE = onSettingsChange;
+    CURRENT_SETTINGS = { ...settings };
+    ON_SETTINGS_CHANGE = onSettingsChange || ON_SETTINGS_CHANGE;
     const userNameEl = document.querySelector('#username');
     userNameEl.value = settings.userName;
 
@@ -80,7 +80,7 @@ function initSettings({ settings, onSettingsChange }) {
     sortList.forEach(radio => {
         radio.checked = settings.sort === radio.value;
     })
-    ON_SETTINGS_CHANGE({ settings: SETTINGS })
+    ON_SETTINGS_CHANGE({ settings: CURRENT_SETTINGS })
 }
 
 function onHeaderButtonClick({ target }) {
@@ -92,12 +92,13 @@ function onHeaderButtonClick({ target }) {
         NAV_EL.classList.remove('visible');
     }
 }
-function onFormOkClick({target}){
+function onFormOkClick({ target }) {
     NAV_EL.classList.remove('visible');
     HEADER_BUTTON_EL.classList.remove('open')
 }
 
 USER_NAME_EL.addEventListener('input', onNavInputClick);
+NAV_EL.addEventListener('submit', function (e) { e.preventDefault() });
 NATIONALITY_EL.addEventListener("change", onNavCheckboxNationalityClick);
 GENDER_EL.addEventListener("change", onNavRadioGenderClick);
 SORT_EL.addEventListener('input', onNavSortClick);

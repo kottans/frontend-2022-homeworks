@@ -41,12 +41,12 @@ function fetchFriends() {
     })
 };
 
-async function initFriendsAsync({onFriendsLoaded}) {
+async function initFriendsAsync({ onFriendsLoaded }) {
     const { data, error } = await fetchFriends();
     if (data) {
         const friends = createFriends(data);
         ALL_FRIENDS = friends;
-        onFriendsLoaded({friends})
+        onFriendsLoaded({ friends })
     }
     else {
         alert(error);
