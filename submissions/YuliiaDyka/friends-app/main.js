@@ -10,6 +10,8 @@ const search = document.querySelector('#search');
 const resetFormBtn = document.querySelector('.aside__button');
 const sortBtns = document.querySelectorAll('.sort');
 const navigation = document.querySelector('.bottom__menu');
+const loadingIcon = document.querySelector('.loading__animation');
+const submitBtn = document.querySelector('.submit');
 
 let min = document.querySelector('input[id="aside_input-min"]'); 
 let max = document.querySelector('input[id="aside_input-max"]');
@@ -33,6 +35,8 @@ firstScreenForm.addEventListener('submit', getDataFromFirstForm);
 
 function getDataFromFirstForm(e) {
     e.preventDefault(); 
+    submitBtn.classList.add('hidden');
+    loadingIcon.classList.add('visible');
     filters.sex = document.querySelector('input[name="sex"]:checked').id;
     filters.minAge = document.querySelector('input[id="input-min"]').value;
     filters.maxAge = document.querySelector('input[id="input-max"]').value;
@@ -63,8 +67,6 @@ function getDataFromFirstForm(e) {
         break;
     };
     getUsers();
-    firstScreen.style.display = "none";
-    aside.style.display = "block";
 };
 
 function getUsers() {
@@ -76,6 +78,7 @@ function getUsers() {
             allUsers = [...users.results];
             filtredUsers = filterByAge(filterBySex(allUsers));
             renderCards(filtredUsers);
+            firstScreen.classList.add("hidden");
         })
         .catch(function() {
             requestErrorsCounter++;
@@ -215,8 +218,7 @@ function resetForm() {
     min.value = filters.minAge;
     max.value = filters.maxAge;
     sortBtns.forEach(btn => {btn.classList.remove('sort_active')});
-    filtredUsers = allUsers.sort(() =>  Math.random() - 0.5);
-    renderCards(filtredUsers);
+    renderCards(allUsers);
 }
 
 function showFilters(e) {
