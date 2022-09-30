@@ -2,35 +2,18 @@ const CANVAS_HEIGHT = 606;
 const CANVAS_WIDTH = 505;
 const TILE_HEIGHT = 83;
 const TILE_WIDTH = 101;
-const ENEMY_SPEED = 80;
-const PLAYER_STAT = {
-    x: 202,
-    y: 380,
-    height: 40,
-    width: 40,
-};
 
 const Player = function () {
     this.sprite = 'images/char-boy.png';
-    this.x = PLAYER_STAT.x;
-    this.y = PLAYER_STAT.y;
-    this.height = PLAYER_STAT.height;
-    this.width = PLAYER_STAT.width;
-};
-
-Player.prototype.update = function () {
-    if (this.y < 0) {
-        this.resetPlayerPosition();
-    }
-};
-
-Player.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    this.x = 202;
+    this.y = 380;
+    this.height = 40;
+    this.width = 40;
 };
 
 Player.prototype.resetPlayerPosition = function () {
-    this.x = PLAYER_STAT.x;
-    this.y = PLAYER_STAT.y;
+    this.x = 202;
+    this.y = 380;
 };
 
 Player.prototype.handleInput = function (key) {
@@ -52,16 +35,37 @@ Player.prototype.handleInput = function (key) {
     }
 };
 
-const Enemy = function (x, y, player) {
+Player.prototype.update = function () {
+    if (this.y < 0) {
+        this.resetPlayerPosition();
+    }
+};
+
+Player.prototype.render = function () {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+const Enemy = function (x, y, speed, player) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
     this.width = 80;
     this.height = 40;
-    this.speed = ENEMY_SPEED;
+    this.speed = speed;
     this.player = player;
 };
 
+Enemy.prototype.checkCollision = function () {
+    if (
+        this.player.y > this.y - this.height &&
+        this.player.y - this.player.height < this.y &&
+        this.player.x + this.player.width > this.x &&
+        this.player.x < this.x + this.width
+    ) {
+
+        this.player.resetPlayerPosition();
+    }
+};
 
 Enemy.prototype.update = function (dt) {
     this.checkCollision();
@@ -77,33 +81,12 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Enemy.prototype.setStartEnemiesPosition = function () {
-    for (let i = 0; i < 3; i++) {
-        let y = i * TILE_HEIGHT + 50;
-        let x = i * -TILE_WIDTH;
-        allEnemies.push(new Enemy(x, y, player));
-    }
-};
-
-Enemy.prototype.checkCollision = function () {
-    if (
-        (
-            this.player.y > this.y - this.height &&
-            this.x + this.width > this.player.x &&
-            this.player.x + this.player.width > this.x &&
-            this.player.y - this.player.height < this.y
-        )
-    ) {
-
-        player.resetPlayerPosition();
-    }
-};
-
-const allEnemies = [];
-const enemy = new Enemy();
 const player = new Player();
-
-Enemy.prototype.setStartEnemiesPosition();
+const allEnemies = [
+    new Enemy(0, 55, 280, player),
+    new Enemy(0, 135, 150, player),
+    new Enemy(0, 220, 200, player)
+];
 
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
