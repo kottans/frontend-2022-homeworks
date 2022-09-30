@@ -3,17 +3,50 @@ const CANVAS_WIDTH = 505;
 const TILE_HEIGHT = 83;
 const TILE_WIDTH = 101;
 
-const Player = function () {
+const PLAYER_CONF = {
+    size: {
+        height: 40,
+        width: 40
+    },
+    position: {
+        x: 202,
+        y: 380
+    }
+}
+
+const EMENIES_CONF = {
+    size: {
+        height: 40,
+        width: 80
+    },
+    enemy: [{
+        x: 0,
+        y: 55,
+        speed: 280
+    },
+    {
+        x: 0,
+        y: 135,
+        speed: 150
+    },
+    {
+        x: 0,
+        y: 220,
+        speed: 200
+    }]
+}
+
+const Player = function ({ position, size }) {
     this.sprite = 'images/char-boy.png';
-    this.x = 202;
-    this.y = 380;
-    this.height = 40;
-    this.width = 40;
+    this.x = position.x;
+    this.y = position.y;
+    this.height = size.height;
+    this.width = size.width;
 };
 
-Player.prototype.resetPlayerPosition = function () {
-    this.x = 202;
-    this.y = 380;
+Player.prototype.resetPlayerPosition = function ({ position }) {
+    this.x = position.x;
+    this.y = position.y;
 };
 
 Player.prototype.handleInput = function (key) {
@@ -37,7 +70,7 @@ Player.prototype.handleInput = function (key) {
 
 Player.prototype.update = function () {
     if (this.y < 0) {
-        this.resetPlayerPosition();
+        this.resetPlayerPosition(PLAYER_CONF);
     }
 };
 
@@ -45,13 +78,13 @@ Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const Enemy = function (x, y, speed, player) {
+const Enemy = function ({ size }, enemy, player) {
     this.sprite = 'images/enemy-bug.png';
-    this.x = x;
-    this.y = y;
-    this.width = 80;
-    this.height = 40;
-    this.speed = speed;
+    this.height = size.height;
+    this.width = size.width;
+    this.x = enemy.x;
+    this.y = enemy.y;
+    this.speed = enemy.speed;
     this.player = player;
 };
 
@@ -63,7 +96,7 @@ Enemy.prototype.checkCollision = function () {
         this.player.x < this.x + this.width
     ) {
 
-        this.player.resetPlayerPosition();
+        this.player.resetPlayerPosition(PLAYER_CONF);
     }
 };
 
@@ -81,12 +114,13 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const player = new Player();
+const player = new Player(PLAYER_CONF);
 const allEnemies = [
-    new Enemy(0, 55, 280, player),
-    new Enemy(0, 135, 150, player),
-    new Enemy(0, 220, 200, player)
+    new Enemy(EMENIES_CONF, EMENIES_CONF.enemy[0], player),
+    new Enemy(EMENIES_CONF, EMENIES_CONF.enemy[1], player),
+    new Enemy(EMENIES_CONF, EMENIES_CONF.enemy[2], player),
 ];
+
 
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
