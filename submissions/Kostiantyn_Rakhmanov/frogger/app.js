@@ -1,4 +1,3 @@
-// Enemies our player must avoid
 const X_ENEMY = {
     min: -100,
     max: 510,
@@ -32,15 +31,15 @@ const PLAYER_SHIFT = 60;
 const NEW_PLAYER_DELAY = 777;
 
 
-let Enemy = function(x, y, speed) {
+let Enemy = function(x, y, speed, player) {
     this.x = x;
     this.y = y;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
+    this.player = player;
 };
 
 Enemy.prototype.update = function(dt) {
-
     this.x += this.speed * dt;
 
     if (this.x > X_ENEMY.max) {
@@ -88,7 +87,7 @@ Player.prototype.handleInput = function(keyPress) {
         this.y += SECTION.height;
     };
     if (this.y < CANVAS.start) {
-        setTimeout(function() {
+        setTimeout(() => {
             player.x = PLAYER_COORDS.x;
             player.y = PLAYER_COORDS.y;
         }, NEW_PLAYER_DELAY);
@@ -111,6 +110,5 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
