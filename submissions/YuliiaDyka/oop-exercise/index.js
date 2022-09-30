@@ -8,7 +8,13 @@ class LivingBeing {
    };
 
    showProperties() {
-      return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}; ${this.legs}`;
+      return [
+         this.species, 
+         this.name, 
+         this.gender, 
+         this.saying, 
+         this.legs,
+      ].join('; ');
    }
 };
 
@@ -19,7 +25,10 @@ class Human extends LivingBeing {
    };
 
    showProperties() {
-      return super.showProperties() + `; ${this.hands}`;
+      return [
+         super.showProperties(),
+         this.hands,
+      ].join('; ');
    }
 
 };
@@ -51,7 +60,10 @@ class CatWoman extends Cat {
    };
 
    showProperties() {
-      return super.showProperties() + `; ${this.hands}`;
+      return [
+         super.showProperties(),
+         this.hands,
+      ].join('; ');
    }
 };
 
