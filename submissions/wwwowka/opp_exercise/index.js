@@ -27,7 +27,6 @@ class Dog extends Inhabitant{
   constructor(name, gender, saying){
     super('dog', name, gender, saying);
     this.legs = 4;
-    this.hands = 0;
   }
 }
 
@@ -35,7 +34,6 @@ class Cat extends Inhabitant{
   constructor(name, gender, saying, friends){
     super('cat', name, gender, saying, friends);
     this.legs = 4;
-    this.hands = 0;
   }
 }
 
