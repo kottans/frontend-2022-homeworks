@@ -201,13 +201,16 @@ function searchName() {
         filtredUsers = filterBySex(filterByAge(allUsers));
         filtredUsers = filtredUsers.filter(user => filterByName(user, filters.name));
         if (filtredUsers.length) {
+            console.log(filtredUsers.length);
             header.classList.remove('no-results');
             renderCards(filtredUsers);
         } else {
+            console.log(filtredUsers.length);
             cardsSection.innerHTML = "";
             header.classList.add('no-results');
         }
     } else {
+        header.classList.remove('no-results');
         filtredUsers = filterBySex(filterByAge(allUsers));
         renderCards(filtredUsers);
     }
