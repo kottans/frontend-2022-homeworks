@@ -32,10 +32,10 @@ export class Options {
           </label>
           <h4 class="${this.className}__filter-caption">Age</h4>
           <label for="ageFrom" class="${this.className}__label">
-            from <input type="text" id="ageFrom" class="${this.className}__input ${this.className}__input-small" name="agefrom" placeholder="0">
+            from <input type="number" id="ageFrom" class="${this.className}__input ${this.className}__input-small" name="agefrom" placeholder="0">
           </label>
           <label for="ageTo" class="${this.className}__label">
-            to <input type="text" id="ageTo" class="${this.className}__input ${this.className}__input-small" name="ageto" placeholder="0">
+            to <input type="number" id="ageTo" class="${this.className}__input ${this.className}__input-small" name="ageto" placeholder="0">
           </label>
           <label for="email" class="${this.className}__label">
             <h4 class="${this.className}__filter-caption">Email</h4>
