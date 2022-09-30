@@ -11,6 +11,9 @@ const btn__home = document.querySelector('.home__btn');
 const checkboxes = document.querySelectorAll('.checkbox');
 const progressDig = document.querySelector('.progress__dig');
 const progressLine = document.querySelector('.progress');
+const totalProgress = 3;
+const defaultTitle = 'Welcome to Kottans!';
+const defaultId = 15;
 
 let currentTitle = title.textContent;
 let progressMax = checkboxes.length;
@@ -44,9 +47,6 @@ function getCurrrentContent(e) {
         case "INPUT":
         getCurrentProgress();
         break; 
-        
-        default:
-        return;
     };
 };
 
@@ -55,7 +55,7 @@ function getCurrentProgress() {
     checkboxes.forEach(item => { if (item.checked) { currentProgress++;}});
     progressDig.textContent = Math.floor((currentProgress / progressMax * 100)) + "%";
     progressLine.style.width = Math.floor((currentProgress / progressMax * 100)) + "%";  
-    if (currentProgress == 3) {
+    if (currentProgress == totalProgress) {
         alert("Вітаннячка, котан! Го на Стейдж 1)))")
     };
 };
@@ -64,7 +64,7 @@ function changePage(currentTitle, id) {
 const title = document.querySelector('.title__chapter');
 const description = document.querySelector('.description');
 
-let newTitle = document.createElement("h4");
+const newTitle = document.createElement("h4");
 newTitle.classList.add('title__chapter');
 newTitle.textContent = currentTitle;
 title.replaceWith(newTitle);
@@ -84,8 +84,8 @@ function renderPage(id) {
     const taskList = document.createElement("ol");
     taskList.classList.add('task');
 
-    const task = dataObj.filter(task => task.id == id);
-    const taskExesiceList = task[0].taskExesice.map(task => {
+    const [{ taskExesice }]= dataObj.filter(task => task.id == id);
+    const taskExesiceList = taskExesice.map(task => {
         const { taskText, url, urlText } = task;
         return`
                 <li class="task__item">
@@ -104,7 +104,7 @@ function goToHomePage() {
     nav_items.forEach(item => {
         item.classList.remove('selected');
     }); 
-    changePage('Welcome to Kottans!', 15);
+    changePage(defaultTitle, defaultId);
 
     document.querySelector('.task__item').classList.add('default');
     btn.classList.remove('hidden');
