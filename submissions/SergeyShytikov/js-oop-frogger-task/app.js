@@ -52,9 +52,9 @@ let levelCounter = 0;
 
 function resetEnemies() {
   if (levelCounter > 3) {
-    allEnemies.splice(0, allEnemies.length),
-      _allEnemies.splice(0, _allEnemies.length),
-      (levelCounter = 0);
+    allEnemies.length = 0;
+    _allEnemies.length = 0;
+    levelCounter = 0;
   }
 }
 
@@ -69,7 +69,7 @@ Player.prototype.update = function () {
     setTimeout(() => {
       this.x = X_START_POSITION_PLAYER;
       this.y = Y_START_POSITION_PLAYER;
-    }, "200");
+    }, 200);
   }
 };
 Player.prototype.resetPosition = function () {
