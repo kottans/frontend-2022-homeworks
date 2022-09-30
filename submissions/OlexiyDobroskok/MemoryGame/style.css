@@ -53,6 +53,10 @@ body {
   position: relative;
 }
 
+.increased__z-index {
+  z-index: 10;
+}
+
 .card__item {
   width: 125px;
   height: 170px;
@@ -91,39 +95,33 @@ body {
   transform: rotateY(180deg);
 }
 
-.disable__click {
-  pointer-events: none;
-}
-
-.rules__overlay {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(170, 204, 219, 0.281);
-  z-index: 5;
-  transition: all 0.5s ease 0s;
-}
-
-.rules {
-  width: 540px;
-  height: 580px;
+dialog {
+  display: block;
+  width: 550px;
+  height: 590px;
   position: fixed;
   right: 0px;
   bottom: 0px;
   top: 70px;
   left: 0px;
-  z-index: 10;
   background-color: rgb(0, 0, 0);
   margin: 0 auto;
+  padding: 0;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 47px 7px #b43c3c;
   -moz-box-shadow: 0px 0px 47px 7px #b43c3c;
   box-shadow: 0px 0px 47px 7px #b43c3c;
-  transition: all 0.5s ease 0s;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 1s;
+}
+
+dialog[open] {
+  opacity: 1;
+}
+
+dialog::backdrop {
+  background-color: rgba(170, 204, 219, 0.281);
 }
 
 .hide__popup {
@@ -203,37 +201,6 @@ body {
   padding-top: 10px;
 }
 
-.win__overlay {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(170, 204, 219, 0.281);
-  z-index: 5;
-  transition: all 1s ease 0s;
-}
-
-.win__window {
-  width: 540px;
-  height: 600px;
-  position: fixed;
-  right: 0px;
-  bottom: 0px;
-  top: 70px;
-  left: 0px;
-  z-index: 10;
-  background-color: black;
-  margin: 0 auto;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 47px 7px #b43c3c;
-  -moz-box-shadow: 0px 0px 47px 7px #b43c3c;
-  box-shadow: 0px 0px 47px 7px #b43c3c;
-  transition: all 1s ease 0s;
-}
-
 .win__title {
   font-size: 24px;
   line-height: 1.5em;
@@ -305,9 +272,9 @@ a {
 }
 
 @media (max-width: 576px) {
-  .rules {
-    width: 320px;
-    height: 470px;
+  dialog {
+    width: 330px;
+    height: 485px;
     top: 5px;
   }
 
@@ -379,12 +346,6 @@ a {
     border: solid 5px black;
   }
 
-  .win__window {
-    width: 320px;
-    height: 485px;
-    top: 5px;
-  }
-
   .win__title {
     font-size: 18px;
     line-height: 1.2em;
@@ -420,7 +381,7 @@ a {
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
-  .rules {
+  dialog {
     width: 440px;
     height: 490px;
     top: 50px;
@@ -492,12 +453,6 @@ a {
     border: solid 5px black;
   }
 
-  .win__window {
-    width: 440px;
-    height: 490px;
-    top: 50px;
-  }
-
   .win__title {
     font-size: 18px;
     line-height: 1.2em;
@@ -533,9 +488,9 @@ a {
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
-  .rules {
+  dialog {
     width: 480px;
-    height: 510px;
+    height: 530px;
     top: 50px;
   }
 
@@ -605,12 +560,6 @@ a {
     border: solid 5px black;
   }
 
-  .win__window {
-    width: 480px;
-    height: 530px;
-    top: 50px;
-  }
-
   .win__title {
     font-size: 18px;
     line-height: 1.2em;
@@ -675,9 +624,9 @@ a {
     border: solid 5px black;
   }
 
-  .rules {
+  dialog {
     width: 500px;
-    height: 245px;
+    height: 262px;
     top: 5px;
   }
 
@@ -714,12 +663,6 @@ a {
   .character__img {
     width: 50px;
     height: 80px;
-  }
-
-  .win__window {
-    width: 500px;
-    height: 262px;
-    top: 5px;
   }
 
   .win__title {

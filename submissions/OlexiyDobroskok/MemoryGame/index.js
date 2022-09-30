@@ -71,10 +71,14 @@ const winBtn = document.querySelector(".win__btn");
 rulesBtn.addEventListener("click", popupHandler);
 winBtn.addEventListener("click", popupHandler);
 playArea.addEventListener("click", searchPair);
+const rulesDialog = document.querySelector(".rules");
+
+rulesDialog.showModal();
 
 function newGame() {
   showGameStatus();
   playArea.innerHTML = makePlayArea(makeGameDeck(deckMoneyHeist)).join("");
+  setTimeout(() => playArea.classList.add("increased__z-index"), 800);
 }
 
 function makeGameDeck(deck) {
@@ -110,7 +114,6 @@ function searchPair({ target }) {
   if (previousCard !== chosenCard && sumFlippedCards < 2) {
     chosenCard.classList.add("flipped");
     sumFlippedCards++;
-
     if (selectedCards.length < 2) {
       selectedCards.push(chosenCard.firstElementChild.src);
       const [firstCard, secondCard] = selectedCards;
@@ -202,22 +205,21 @@ function showWhoAreYou(nameCharacter) {
   const [{ openCard: characterFace }] = deckMoneyHeist.filter(
     (character) => character.name === nameCharacter
   );
-  const winOverlay = document.querySelector(".win__overlay");
+  const winDialog = document.querySelector(".win__window");
   const winTitle = document.querySelector(".win__title");
   const winText = document.querySelector(".win__text");
   const winImg = document.querySelector(".win__img");
-  winOverlay.classList.toggle("hide__popup");
   winTitle.innerHTML = `Congratulations!<br/>All pairs founded! Used attempts: ${attempt}`;
   winText.innerHTML = `You&rsquo;re &laquo;${nameCharacter}&raquo;`;
   winImg.src = characterFace;
-  winBtn.classList.remove("disable__click");
+  playArea.classList.remove("increased__z-index");
+  winDialog.showModal();
 }
 
 function popupHandler({ target }) {
   const btn = target.closest("button");
   if (!btn) return;
-  const popupOverlay = target.closest("div");
-  popupOverlay.classList.toggle("hide__popup");
-  btn.classList.add("disable__click");
+  const dialogWindow = target.closest("dialog");
+  dialogWindow.close();
   newGame();
 }
