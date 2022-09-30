@@ -11,7 +11,6 @@ const nameRadio = document.querySelector('#alphabetical');
 const minAgeInput = document.querySelector('#min-age');
 const maxAgeInput = document.querySelector('#max-age');
 
-//Constants
 const baseUrl = 'https://randomuser.me/api/?results=20';
 
 const asidePanelOptions = {
@@ -110,7 +109,7 @@ const compareName = (userOne, userTwo) => {
     if (userOne.fullName.toLowerCase() < userTwo.fullName.toLowerCase()) {
         return 1;
     }
-}
+};
 
 const sortUsers = (users) => {
     const sortingOption = document.querySelector('input[name=sort-options]:checked').value;
@@ -126,12 +125,16 @@ const sortUsers = (users) => {
         case asidePanelOptions.AGE: {
             const sortedUsers = users.sort(compareAge);
 
-            return orderBy === asidePanelOptions.ASC ? sortedUsers : sortedUsers.reverse();
+            return orderBy === asidePanelOptions.ASC
+                ? sortedUsers
+                : sortedUsers.reverse();
         }
         case asidePanelOptions.NAME: {
             const sortedUsers = users.sort(compareName);
 
-            return orderBy === asidePanelOptions.ASC ? sortedUsers : sortedUsers.reverse();
+            return orderBy === asidePanelOptions.ASC
+                ? sortedUsers
+                : sortedUsers.reverse();
         }
 
         default: {
@@ -146,14 +149,14 @@ const filterByGender = (users) => {
     return gender !== 'all-genders'
         ? users.filter((user) => user.gender === gender)
         : users;
-}
+};
 
 const filterByAge = (users) => {
     const minAge = minAgeInput.value || 0;
     const maxAge = maxAgeInput.value || 200;
 
     return users.filter((user) => user.age >= Number(minAge) && user.age <= Number(maxAge));
-}
+};
 
 function applyOnClick() {
     content.innerHTML = '';
