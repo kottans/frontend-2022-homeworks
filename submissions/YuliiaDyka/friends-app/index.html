@@ -1,116 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="form__wrapper">
-        <div class="first__screen">
-            <form class="form_first-screen" name="firstScreenForm">
-                <h1 class="welcome__title" >Welcome to Friends App!</h1>
-                <h3 class="question">Who are you looking for?</h3>
-                <div class="radio__btns">
-                    <input type="radio" id="male" name="sex">
-                    <label class="radio__label" for="male">Male</label>
-                    <input type="radio" id="female" name="sex">
-                    <label class="radio__label" for="female">Female</label>
-                    <input type="radio" id="all" checked name="sex">
-                    <label class="radio__label" for="all">All</label><br>
-                </div>
-
-                <h3 class="question">How old are they?</h3>
-                <div class="age__input">
-                    <input type="number" class="input-min" id = "input-min" min="18" max="120" placeholder="min">
-                    <label class="number-min__label" for="input-min">min age is 18 |</label>
-                    <input type="number" class="input-max" id ="input-max" min="18" max="120" placeholder="max">
-                    <label class="number-max__label" for="input-max">| max age is 120</label>
-                </div>
-                <div class="submit">
-                    <input class = "submit_btn" type="submit" id="" value="Find!">
-                </div>
-                <div class="loading">
-                    <img src="img/loading.gif" alt="" class="loading__animation">
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <header class="header">
-            <h1 class="logo">Friends app</h1>
-            <div class="search">
-                <div class="search__input">
-                    <span class="search__icon"></span>
-                    <input type="search" id="search" placeholder=""/>
-                </div>
-            </div>
-        </header>
-        <div class="aside">
-            <div class="form_aside">
-                <h3 class="question _aside">Sex</h3>
-                <div class="radio__btns _aside">
-                    <input type="radio" id="male_aside" name="sex_aside">
-                    <label class="radio__label _aside" for="male_aside">Male</label>
-                    <input type="radio" id="female_aside" name="sex_aside">
-                    <label class="radio__label _aside" for="female_aside">Female</label>
-                    <input type="radio" id="all_aside" name="sex_aside">
-                    <label class="radio__label _aside" for="all_aside">All</label><br>
-                </div>
-    
-                <h3 class="question _aside">Age</h3>
-                <div class="age__input _aside">
-                    <input type="number" class="input-min _aside" id = "aside_input-min" min="18" max="120" placeholder="min">
-                    <label class="number-min__label _aside" for="aside_input-min">min age is 18 |</label>
-                    <input type="number" class="input-max _aside" id ="aside_input-max" min="18" max="120" placeholder="max">
-                    <label class="number-max__label _aside" for="aside_input-max">| max age is 120</label>
-                </div>
-                <h3 class="question _aside">Sorting</h3>
-                <div class="sorting">
-                    <div class="sort_list">
-                        <span class="hint">by name</span>
-                        <img src="img/a-to-z.png" alt="Sort from A to Z" id="a-z" class="sort a-to-z">
-                        <img src="img/z-to-a.png" alt="Sort from Z to A" id="z-a" class="sort z-to-a">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Friends App!</title>
+    </head>
+    <body>
+        <div class="form__wrapper">
+            <div class="first__screen">
+                <form class="form_first-screen" name="firstScreenForm">
+                    <h1 class="welcome__title" >Welcome to Friends App!</h1>
+                    <h3 class="question">Who are you looking for?</h3>
+                    <div class="radio__btns">
+                        <input type="radio" id="male" name="sex">
+                        <label class="radio__label" for="male">Male</label>
+                        <input type="radio" id="female" name="sex">
+                        <label class="radio__label" for="female">Female</label>
+                        <input type="radio" id="all" checked name="sex">
+                        <label class="radio__label" for="all">All</label><br>
                     </div>
-                    <div class="sort_list">
-                        <span class="hint">by age</span>
-                        <img src="img/sort-down.png" alt="Show in descending order" id="9-1" class="sort sort-down">
-                        <img src="img/sort-up.png" alt="Show in ascending order" id="1-9" class="sort sort-up">
+
+                    <h3 class="question">How old are they?</h3>
+                    <div class="age__input">
+                        <input type="number" class="input-min" id = "input-min" min="18" max="120" placeholder="min">
+                        <label class="number-min__label" for="input-min">min age is 18 |</label>
+                        <input type="number" class="input-max" id ="input-max" min="18" max="120" placeholder="max">
+                        <label class="number-max__label" for="input-max">| max age is 120</label>
+                    </div>
+                    <div class="submit">
+                        <input class = "submit_btn" type="submit" value="Find!">
+                    </div>
+                    <div class="loading">
+                        <img src="img/loading.gif" alt="" class="loading__animation">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <header class="header">
+                <h1 class="logo">Friends app</h1>
+                <div class="search">
+                    <div class="search__input">
+                        <span class="search__icon"></span>
+                        <input type="search" id="search">
                     </div>
                 </div>
-                <div class="submit__aside">
-                    <button class="aside__button">Reset my form</button>
+            </header>
+            <div class="aside">
+                <div class="form_aside">
+                    <h3 class="question _aside">Sex</h3>
+                    <div class="radio__btns _aside">
+                        <input type="radio" id="male_aside" name="sex_aside">
+                        <label class="radio__label _aside" for="male_aside">Male</label>
+                        <input type="radio" id="female_aside" name="sex_aside">
+                        <label class="radio__label _aside" for="female_aside">Female</label>
+                        <input type="radio" id="all_aside" name="sex_aside">
+                        <label class="radio__label _aside" for="all_aside">All</label><br>
+                    </div>
+        
+                    <h3 class="question _aside">Age</h3>
+                    <div class="age__input _aside">
+                        <input type="number" class="input-min _aside" id = "aside_input-min" min="18" max="120" placeholder="min">
+                        <label class="number-min__label _aside" for="aside_input-min">min age is 18 |</label>
+                        <input type="number" class="input-max _aside" id ="aside_input-max" min="18" max="120" placeholder="max">
+                        <label class="number-max__label _aside" for="aside_input-max">| max age is 120</label>
+                    </div>
+                    <h3 class="question _aside">Sorting</h3>
+                    <div class="sorting">
+                        <div class="sort_list">
+                            <span class="hint">by name</span>
+                            <img src="img/a-to-z.png" alt="Sort from A to Z" id="a-z" class="sort a-to-z">
+                            <img src="img/z-to-a.png" alt="Sort from Z to A" id="z-a" class="sort z-to-a">
+                        </div>
+                        <div class="sort_list">
+                            <span class="hint">by age</span>
+                            <img src="img/sort-down.png" alt="Show in descending order" id="9-1" class="sort sort-down">
+                            <img src="img/sort-up.png" alt="Show in ascending order" id="1-9" class="sort sort-up">
+                        </div>
+                    </div>
+                    <div class="submit__aside">
+                        <button class="aside__button">Reset my form</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <main class="main">
-            <div class="grid__wrapper">
+            <main class="main">
+                <div class="grid__wrapper">
+                </div>
+            </main>
+            <div class="bottom__menu">
+                <nav class="bottom__nav">
+                    <ul class="nav__list">
+                        <li><a class="nav__link" href="#">
+                            <img src="img/chat.png" alt="" class="link__img">
+                        </a></li>
+                        <li><a class="nav__link" href="#">
+                            <img src="img/heart.png" alt="" class="link__img">
+                        </a></li>
+                        <li><a class="nav__link" href="#">
+                            <img src="img/notification.png" alt="" class="link__img">
+                        </a></li>
+                        <li><a class="nav__link" href="#">
+                            <img src="img/settings.png" alt="" class="link__img">
+                        </a></li>
+                    </ul>
+                </nav>
             </div>
-        </main>
-        <div class="bottom__menu">
-            <nav class="bottom__nav">
-                <ul class="nav__list">
-                    <li><a class="nav__link" href="#">
-                        <img src="img/chat.png" alt="" class="link__img">
-                    </a></li>
-                    <li><a class="nav__link" href="#">
-                        <img src="img/heart.png" alt="" class="link__img">
-                    </a></li>
-                    <li><a class="nav__link" href="#">
-                        <img src="img/notification.png" alt="" class="link__img">
-                    </a></li>
-                    <li><a class="nav__link" href="#">
-                        <img src="img/settings.png" alt="" class="link__img">
-                    </a></li>
-                  </ul>
-            </nav>
         </div>
-    </div>
-</body>
-<script src="Card.js"></script>
-<script src="main.js"></script>
+        <script src="Card.js"></script>
+        <script src="main.js"></script>
+    </body>
 </html>
