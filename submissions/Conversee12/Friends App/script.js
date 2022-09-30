@@ -1,6 +1,7 @@
 const url = "https://randomuser.me/api/?results=20&nat=ua&inc=name,picture,dob,gender,location";
 const FormUsers = document.querySelector(".menu__form");
 let usersData = [];
+let initialUsersData = [];
 const searchInput = document.querySelector(".menu__input");
 const cards = document.querySelector(".cards");
 const resetUsers = document.querySelector(".menu__button_reset");
@@ -27,6 +28,7 @@ async function fetchHandler() {
     const response = await fetch(url);
     const data = await response.json();
     usersData = data.results;
+    initialUsersData = [...usersData];
     showMain(usersData);
   } catch (error) {
     alert("Error");
@@ -34,7 +36,7 @@ async function fetchHandler() {
 }
 
 function showMain(data) {
-  cards.innerHTML = renderUserData(filterUsers(data));
+  cards.innerHTML = renderUserData(SortBySearch(filterBySex(sortByName(sortByAge(data)))));
 }
 
 function renderUserData(data) {
@@ -51,14 +53,6 @@ function renderUserData(data) {
       </div>`
   )
     .join('');
-};
-
-function filterUsers(data) {
-  const SortAge = sortByAge(data);
-  const sortName = sortByName(SortAge);
-  const filterSex = filterBySex(sortName);
-  const sortSearch = SortBySearch(filterSex);
-  return sortSearch;
 };
 
 function filterBySex(data) {
@@ -104,5 +98,5 @@ FormUsers.addEventListener('click', preventMultiSort);
 fetchHandler();
 resetUsers.addEventListener("click", () => {
   FormUsers.reset();
-  cards.innerHTML = renderUserData(usersData);
+  cards.innerHTML = renderUserData(initialUsersData);
 });
