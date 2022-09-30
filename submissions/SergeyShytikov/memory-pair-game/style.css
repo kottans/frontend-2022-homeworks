@@ -8,6 +8,7 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
+  background-color: rgb(187, 228, 122);
 }
 
 .card-board {
@@ -45,6 +46,10 @@ body {
 .hidden {
   opacity: 0.1;
   pointer-events: none;
+}
+
+.card:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 820px) {

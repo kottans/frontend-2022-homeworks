@@ -23,7 +23,7 @@ cardLogos.forEach((logo) => {
   const face = document.createElement("img");
   const back = document.createElement("img");
   card.classList.add("card");
-  card.setAttribute("id", logo.name);
+  card.setAttribute("brand", logo.name);
   face.classList.add("face");
   face.setAttribute("alt", logo.name);
   back.classList.add("back");
@@ -47,9 +47,12 @@ const getFlipCard = ({ target }) => {
   card.classList.add("flipped");
   const flippedCards = document.querySelectorAll(".flipped");
   if (flippedCards.length === 2) {
-    isBoardFrezed = true;
+    let [flippedCardFirst, flippedCardSecond] = flippedCards;
+    let brandFirst = flippedCardFirst.attributes[1].textContent;
+    let brandSecond = flippedCardSecond.attributes[1].textContent,
+      isBoardFrezed = true;
     setTimeout(() => {
-      if (flippedCards[0].id === flippedCards[1].id) {
+      if (brandFirst === brandSecond) {
         flippedCards.forEach((card) => {
           card.classList.add("hidden"), card.classList.remove("flipped");
         });
