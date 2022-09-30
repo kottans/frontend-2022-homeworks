@@ -47,9 +47,6 @@ class Enemy {
     }
 }
 
-
-
-
 class Player {
     constructor(x, y) {
         this.x = x;
@@ -83,19 +80,14 @@ class Player {
     }
 }
 
-
-
-
 let allEnemies = [];
 
 enemy.localionY.forEach(function (locationY) {
-    enemyL = new Enemy(playArea.width, locationY,enemy.maxSpeed);
-    allEnemies.push(enemyL);
+    enemyUnit = new Enemy(playArea.width, locationY,enemy.maxSpeed);
+    allEnemies.push(enemyUnit);
 });
 
-
 let player = new Player(playerStarting.x, playerStarting.y);
-
 
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
