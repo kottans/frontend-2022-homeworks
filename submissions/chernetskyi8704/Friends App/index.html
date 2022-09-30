@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Friends App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="header__menu">
+          <ul class="header__list">
+            <li class="header__list_item">
+              <a
+                href="https://github.com/chernetskyi8704"
+                class="header__link"
+                target="_blank"
+              >
+                <img class="item_img-user" src="img/user.jpg" alt=""
+              /></a>
+            </li>
+            <li class="header__list_item">
+              <a href="" class="header__link">
+                <img class="item_img-nav" src="img/friends.png" alt="" /> </a
+              ><span class="likes_counter counter">+17</span>
+            </li>
+
+            <li class="header__list_item">
+              <a href="" class="header__link">
+                <img class="item_img-nav" src="img/love.png" alt="" /> </a
+              ><span class="likes_counter counter">+7</span>
+            </li>
+            <li class="header__list_item">
+              <a href="" class="header__link">
+                <img class="item_img-nav" src="img/email.png" alt="" /></a
+              ><span class="messages_counter counter">+7</span>
+            </li>
+            <li class="header__list_item">
+              <a href="" class="header__link">
+                <img class="item_img-nav" src="img/log-out.png" alt=""
+              /></a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main class="main">
+        <section class="main__filters">
+          <div class="filters">
+            <form class="filter_form">
+              <div class="filter_gender filter">
+                <fieldset class="fieldset_filter fieldset">
+                  <legend class="fieldset_name">Choose gender:</legend>
+                  <label id="label_age" class="label_filter">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="all"
+                      checked /><span>All</span><span></span
+                  ></label>
+                  <label id="label_age" class="label_filter"
+                    ><input
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      value="male" /><span>Male</span><span></span
+                  ></label>
+                  <label id="label_age" class="label_filter"
+                    ><input
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      value="female" /><span>Female</span><span></span
+                  ></label>
+                </fieldset>
+              </div>
+              <div class="search filter">
+                <fieldset class="fieldset_search fieldset">
+                  <legend class="fieldset_name">Search:</legend>
+                  <label id="label_search" class="label_search"
+                    ><input
+                      type="search"
+                      id="input_search"
+                      class="input_search"
+                      name="search"
+                      placeholder="Who are we looking for?"
+                  /></label>
+                </fieldset>
+              </div>
+              <div class="filter_alphabet filter">
+                <fieldset class="fieldset_sort fieldset">
+                  <legend class="fieldset_name">Sort by:</legend>
+                  <label id="label_alphabet" class="label_sort">
+                    <input
+                      type="radio"
+                      name="sort"
+                      value="A-z"
+                      class="radio" /><span>A-z</span><span></span
+                  ></label>
+                  <label id="label_alphabet" class="label_sort"
+                    ><input
+                      type="radio"
+                      name="sort"
+                      value="Z-a"
+                      class="radio" /><span>Z-a</span><span></span
+                  ></label>
+                  <label id="label_age" class="label_sort">
+                    <input
+                      type="radio"
+                      name="sort"
+                      value="0-9"
+                      class="radio" /><span>0-9</span><span></span
+                  ></label>
+                  <label id="label_age" class="label_sort"
+                    ><input
+                      type="radio"
+                      name="sort"
+                      value="9-0"
+                      class="radio" /><span>9-0</span><span></span
+                  ></label>
+                </fieldset>
+              </div>
+              <button type="reset" class="resetBtn">Reset</button>
+            </form>
+          </div>
+        </section>
+        <section class="main__content">
+          <ul class="users"></ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <a href="https://github.com/chernetskyi8704" class="footer_link"
+          >Dmytro Chernetskyi 2022©</a
+        >
+        <a
+          href="https://www.flaticon.com/free-icons/friends"
+          title="friends icons"
+          >Friends icons created by Freepik - Flaticon</a
+        >
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
