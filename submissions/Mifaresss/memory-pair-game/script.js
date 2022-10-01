@@ -56,31 +56,22 @@ function resetGame() {
 	const cardsWidthClassHidden = [];
 	cards.forEach(card => {
 		if (card.classList.contains('hidden')) {
-			cardsWidthClassHidden.push(card);
+			cardsWidthClassHidden.push(1);
 		}
 	})
 	if (cardsWidthClassHidden.length === 16) {
-		cards.forEach(card => {
-			card.classList.add('none');
-		})
 		setTimeout(() => {
-			const question = confirm('Вы выиграли! Желате начать заново?');
-			if (question) {
-				location.reload();
-			} else {
-				const instructions = document.createElement('li');
-				instructions.classList.add('instructions');
-				instructions.textContent = 'Чтобы начать игру заново, перезагрузите страницу';
-				const container = document.querySelector('.cards');
-				container.append(instructions);
-			}
-		}, 200)
+			alert('Поздравляю, Вы прошли игру!');
+			location.reload();
+		}, 1000)
 	}
 }
 
+function cardsShuffling(card) {
+	card.style.order = Math.floor(Math.random() * 16);
+}
 
 cards.forEach(card => {
 	card.addEventListener('click', flipCards);
-	// cards shuffling
-	card.style.order = Math.floor(Math.random() * 16);
+	cardsShuffling(card);
 })
