@@ -7,58 +7,75 @@
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
-const cat = {
-   species: 'cat',
-   name: 'Mars',
-   hands: undefined,
-   gender: 'male',
-   legs: 4,
-   saying: 'mmeeow',
+class Creature {
+  constructor(name, gender, saying, legs) {
+    this.name = name;
+    this.saying = saying;
+    this.gender = gender;
+    this.legs = legs;
+  }
+  say() {
+    return (
+      "Hi! I'm " +
+      this.species +
+      ". My name is " +
+      this.name +
+      ". My gender is " +
+      this.gender +
+      ". I've " +
+      this.legs +
+      " legs" +
+      " . I want to say " +
+      this.saying +
+      "."
+    );
+  }
 }
-const dog = {
-   species: 'dog',
-   name: 'Lord',
-   hands: undefined,
-   gender: 'male',
-   legs: 4,
-   saying: 'woofff!!!',
+
+//
+class Human extends Creature {
+  constructor(name, gender, saying, legs = 2) {
+    super(name, gender, saying, legs);
+    this.species = "human";
+  }
 }
-const man = {
-   species: 'human',
-   name: 'Ron',
-   hands: 2,
-   gender: 'male',
-   legs: 2,
-   saying: 'ahoj!',
+class Animal extends Creature {
+  constructor(name, gender, saying, legs = 4) {
+    super(name, gender, saying, legs);
+  }
 }
-const women = {
-   species: 'human',
-   name: 'Hermione',
-   hands: 2,
-   gender: 'female',
-   legs: 2,
-   saying: 'hello!',
+class Cat extends Animal {
+  constructor(name, gender, saying, legs) {
+    super(name, gender, saying, legs);
+    this.species = "cat";
+  }
 }
-dog.friendly = [man.name, women.name];
-cat.friendly = [women.name];
-women.friendly = [man.name, dog.name, cat.name];
-man.friendly = [dog.name, women.name];
+class Dog extends Animal {
+  constructor(name, gender, legs) {
+    super(name, gender, legs);
+    this.species = "dog";
+  }
+}
+class Man extends Human {
+  constructor(name, gender, saying, legs) {
+    super(name, gender, saying, legs);
+  }
+}
+class Woman extends Human {
+  constructor(name, gender, saying, legs) {
+    super(name, gender, saying, legs);
+  }
+}
+const cat = new Cat("Mars", "male", "mmeeow");
+const dog = new Dog("Sara", "female", "woofff!!!");
+const man = new Man("Ron", "male", "ahoj!");
+const woman = new Woman("Hermione", "female", "hiiii");
 
-
-const creatures = [man, dog, women, cat];
-
-const propertyOfInhabitants = ['species','name', 'hands', 'gender', 'legs', 'saying', ]
-
-const output = creatures.map(inhabitant => 
-   propertyOfInhabitants.map(property => inhabitant[property]
-      ).filter(element => element !== undefined).join('; ')
-      ).join('\n');
-      
-print(output);
-
+const creatures = [cat, dog, man, woman];
+console.log(creatures);
 
 // ======== OUTPUT ========
-
+creatures.forEach((creature) => print(creature.say()));
 
 /* Use print(message) for output.
    Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
@@ -77,5 +94,3 @@ print(output);
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
-
-
