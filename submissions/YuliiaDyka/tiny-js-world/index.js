@@ -7,51 +7,47 @@
 // ======== OBJECTS DEFINITIONS ========
 
 const man = {
-    species: 'Human',
-    name: 'Joe',
-    gender: 'male',
-    legs: 2,
-    hands: 2,
-    saying: 'How you doing?'
- };
- 
- const woman = {
-    species: 'Human',
-    name: 'Monica',
-    gender: 'female',
-    legs: 2,
-    hands: 2,
-    saying: 'I know!'
- };
- 
- const cat = {
-    species: 'cat',
-    name: 'Taras',
-    gender: 'male',
-    legs: 4,
-    hands: 0,
-    saying: 'Meeeeoow!'
- };
+   species: 'Human',
+   name: 'Joe',
+   gender: 'male',
+   legs: 2,
+   hands: 2,
+   saying: 'How you doing?'
+};
+const woman = {
+   species: 'Human',
+   name: 'Monica',
+   gender: 'female',
+   legs: 2,
+   hands: 2,
+   saying: 'I know!'
+};
+const cat = {
+   species: 'cat',
+   name: 'Taras',
+   gender: 'male',
+   legs: 4,
+   hands: 0,
+   saying: 'Meeeeoow!'
+};
+const dog = {
+   species: 'dog',
+   name: 'Chappy',
+   gender: 'male',
+   legs: 4,
+   hands: 0,
+   saying: 'Woooof!'
+};
 
- const dog = {
-    species: 'dog',
-    name: 'Chappy',
-    gender: 'male',
-    legs: 4,
-    hands: 0,
-    saying: 'Woooof!'
- };
- 
- const catWoman = Object.assign({}, cat);
- catWoman.species = 'Cat-woman';
- catWoman.name = 'Halle Berry';
- catWoman.gender = 'female';
- catWoman.legs = 2;
- catWoman.hands = 2;
- 
- const livingBeings = [man, woman, cat, dog, catWoman];
- 
- livingBeings.forEach(inhabitant => {
-    print([inhabitant.species, inhabitant.name, inhabitant.gender, inhabitant.legs, inhabitant.hands, inhabitant.saying].join("; "));
- });
- 
+const catWoman = Object.assign({}, cat);
+catWoman.species = 'Cat-woman';
+catWoman.name = 'Halle Berry';
+catWoman.gender = 'female';
+catWoman.legs = 2;
+catWoman.hands = 2;
+
+const livingBeings = [man, woman, cat, dog, catWoman];
+
+livingBeings.forEach(({species, name, gender, legs, hands, saying})=> {
+   print([species, name, gender, legs, hands, saying].join("; "));
+});
