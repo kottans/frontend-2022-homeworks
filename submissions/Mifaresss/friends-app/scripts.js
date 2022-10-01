@@ -1,13 +1,13 @@
 function getData() {
 	const requestURL = 'https://randomuser.me/api/?results=150&inc=name,gender,picture,dob';
 	return fetch(requestURL)
-	.then(response => {
-		if (!response.ok) {
-			throw Error(response.statusText);
-		}
-		return response.json();
-	})
-	.then(data => data.results)
+		.then(response => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		})
+		.then(data => data.results);
 }
 
 function createHuman(person) {
@@ -16,7 +16,7 @@ function createHuman(person) {
 	coloringCard(person, human);
 	human.innerHTML = `
 		<img class='people__img' src='${person.picture.large}'>
-		<h3 class='people__name'>My name ${person.name.first}</h3>	
+		<h3 class='people__name'>My name's ${person.name.first}</h3>	
 		<p class='people__age'>I am ${person.dob.age}</p>
 		<img class='people__gender' src='${convertGender(person)}'>
 	`
@@ -25,12 +25,15 @@ function createHuman(person) {
 
 const peopleList = document.querySelector('.people__list');
 let receivedPeople = [];
+let peopleForFilter = [];
 
 function createPeopleHTML() {
 	getData().then(people => {
-		receivedPeople = people.slice();
+		receivedPeople = [...people];
 		sortByAlphabet(receivedPeople);
-		renderPeople(receivedPeople);
+		peopleForFilter = [...people];
+		sortByAlphabet(peopleForFilter);
+		renderPeople(peopleForFilter);
 	})
 }
 createPeopleHTML();
@@ -61,7 +64,7 @@ const state = {
 };
 
 const form = document.querySelector('.filter');
-form.addEventListener('input', filterData);
+form.addEventListener('input', processMainData);
 const resetButton = document.querySelector('.filter-reset__button')
 resetButton.addEventListener('click', resetFilters);
 
@@ -71,24 +74,24 @@ function getCurrentInputId(elements) {
 	return currentInputId;
 }
 
-function filterData({currentTarget}) {
-	const currentInputSortingId = getCurrentInputId(currentTarget.elements.sorting);
-	state.sortBy = currentInputSortingId;
+function processMainData({currentTarget}) {
+	const InputSortingId = getCurrentInputId(currentTarget.elements.sorting);
+	state.sortBy = InputSortingId;
 	
-	const currentInputGenderId = getCurrentInputId(currentTarget.elements.gender);
-	state.filterGenderBy = currentInputGenderId;
+	const InputGenderId = getCurrentInputId(currentTarget.elements.gender);
+	state.filterGenderBy = InputGenderId;
 	
 	let sortedPeople;
 	if (state.sortBy == 'sort-by-age__ascending' || state.sortBy == 'sort-by-age__descending') {
-		sortedPeople = sortByAge(receivedPeople);
+		sortedPeople = sortByAge(peopleForFilter);
 	} else {
-		sortedPeople = sortByAlphabet(receivedPeople);
+		sortedPeople = sortByAlphabet(peopleForFilter);
 	}
 	
 	const filteredPeople = filterByGender(sortedPeople);
 	
-	const currentInputNameValue = currentTarget.elements.name.value;
-	const filteredByName = filterByName(currentInputNameValue, filteredPeople);
+	const InputNameValue = currentTarget.elements.name.value;
+	const filteredByName = filterByName(InputNameValue, filteredPeople);
 	
 	renderPeople(filteredByName);
 }
@@ -118,14 +121,14 @@ function sortByAlphabet(people) {
 	return people;
 }
 
-function filterByName(data, people) {
+function filterByName(inputNameValue, people) {
 	let copyPeople = people.filter(human => {
-		return human.name.first.toLowerCase().includes(data.toLowerCase());
+		return human.name.first.toLowerCase().includes(inputNameValue.toLowerCase());
 	})
 	return copyPeople;
 }
 
 function resetFilters() {
 	form.reset();
-	renderPeople(receivedPeople)
+	renderPeople(receivedPeople);
 }
