@@ -66,7 +66,8 @@ Stage 1 candidates PR review tracking.
 | 7.47 | [VladimirRutskiy](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AVladimirRutskiy)       | 
 | 7.48 | [vovan-zt](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Avovan-zt)                     | 
 | 7.49 | [Yanyshpolska](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYanyshpolska)             | 
-| 7.50 | [YarHadi](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYarHadi)                   |
-| 7.51 | [yhorodechna](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Ayhorodechna)               | 
-| 7.52 | [YuraZagor](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYuraZagor)                   | 
-| 7.53 | [zhenyakornilov](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Azhenyakornilov)         | 
+| 7.50 | [YarHadi](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYarHadi)                       |
+| 7.51 | [yhorodechna](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Ayhorodechna)               |
+| 7.52 | [Yuliiadd](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYuliiadd)                     | 
+| 7.53 | [YuraZagor](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYuraZagor)                   | 
+| 7.54 | [zhenyakornilov](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Azhenyakornilov)         | 
