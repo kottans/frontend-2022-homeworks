@@ -1,47 +1,49 @@
 const pictures = [
     {
-        "id": 1,
         "name": "Rick Sanchez",
         "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
     },
     {
-        "id": 2,
         "name": "Morty Smith",
         "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
     },
     {
-        "id": 3,
         "name": "Summer Smith",
         "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg"
     },
     {
-        "id": 4,
         "name": "Beth Smith",
         "image": "https://rickandmortyapi.com/api/character/avatar/4.jpeg"
     },
     {
-        "id": 5,
         "name": "Jerry Smith",
         "image": "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
     },
     {
-        "id": 6,
         "name": "Abadango Cluster Princess",
         "image": "https://rickandmortyapi.com/api/character/avatar/6.jpeg"
     },
     {
-        "id": 7,
         "name": "Abradolf Lincler",
         "image": "https://rickandmortyapi.com/api/character/avatar/7.jpeg"
     },
     {
-        "id": 8,
         "name": "Adjudicator Rick",
         "image": "https://rickandmortyapi.com/api/character/avatar/8.jpeg"
     }
 ];
 
+const countText = document.querySelector('.count');
+const popup = document.querySelector('.popup');
+const popupButton = document.querySelector('.popup_btn');
 const gameBox = document.querySelector('.game-box');
+
+let cards;
+let count = 0;
+let isFlippedCard = false;
+let firstCard;
+let secondCard;
+
 
 const shuffleArray = (arr) => {
     const arrayCopy = JSON.parse(JSON.stringify(arr));
@@ -51,7 +53,9 @@ const shuffleArray = (arr) => {
 
 const createCards = (array) => array.map((picture) => {
     const cardContainer = document.createElement('div');
-    cardContainer.classList = "card-container";
+
+    cardContainer.className = "card-container";
+
     cardContainer.setAttribute('data-character', picture.name);
 
     cardContainer.innerHTML = `
@@ -64,16 +68,6 @@ const createCards = (array) => array.map((picture) => {
 
     return cardContainer;
 });
-
-let cards;
-let count = 0;
-let isFlippedCard = false;
-let firstCard;
-let secondCard;
-
-const countText = document.querySelector('.count');
-const popup = document.querySelector('.popup');
-const popupButton = document.querySelector('.popup_btn');
 
 const startGame = () => {
     const shuffledArrayOne = shuffleArray(pictures);
@@ -88,32 +82,24 @@ const startGame = () => {
 
     countText.innerText = `Number of moves - ${ count }`;
 
-    addEventListenerToCard(cards);
+    gameBox.addEventListener('click', cardOnClick);
 };
 
 startGame();
 
-const toggleCssClasses = (item, classNames) => classNames.forEach((className) => item.classList.toggle(className));
-
-const removeCssClasses = (item, classNames) => {
-    classNames.forEach((className) => {
-        if (item.classList.contains(className)) {
-            item.classList.remove(className);
-        }
-    })
-};
+const toggleCssClass = (item, className) => item.classList.toggle(className);
 
 const checkPair = (firstCard, secondCard) => {
     const firstCardDataset = firstCard.dataset['character'];
     const secondCardDataset = secondCard.dataset['character'];
 
     if (firstCardDataset === secondCardDataset) {
-        toggleCssClasses(firstCard, ['none']);
-        toggleCssClasses(secondCard, ['none']);
+        toggleCssClass(firstCard, 'none');
+        toggleCssClass(secondCard, 'none');
     } else {
         setTimeout(() => {
-            toggleCssClasses(firstCard, ['flipped']);
-            toggleCssClasses(secondCard, ['flipped']);
+            toggleCssClass(firstCard, 'flipped');
+            toggleCssClass(secondCard, 'flipped');
         }, 1000);
     }
 
@@ -126,19 +112,20 @@ const checkBoard = () => {
 
     if (isBoardClear) {
         setTimeout(() => {
-            toggleCssClasses(popup, ['visible']);
+            toggleCssClass(popup, 'visible');
         }, 50);
     }
 };
+
 const checkFlippedCards = () => {
     const flippedCards = [...document.querySelectorAll('.card-container')]
-        .filter((card) => card.classList.contains('flipped'));
+        .filter((card) => card.classList.contains('flipped') && !card.classList.contains('none'));
 
     return flippedCards.length >= 2
 };
 
 const flipCard = (card) => {
-    toggleCssClasses(card, ['flipped']);
+    toggleCssClass(card, 'flipped');
 
     if (!isFlippedCard) {
         isFlippedCard = true;
@@ -149,14 +136,6 @@ const flipCard = (card) => {
 
     secondCard = card;
 
-    if (firstCard === secondCard) {
-        removeCssClasses(card, ['flipped']);
-
-        isFlippedCard = false;
-
-        return;
-    }
-
     count++;
 
     countText.innerText = `Number of moves - ${ count }`;
@@ -166,25 +145,28 @@ const flipCard = (card) => {
     checkBoard();
 };
 
-function addEventListenerToCard(arrayOfCards) {
-    arrayOfCards.forEach((card) => {
-        card.addEventListener('click', () => {
-            const isFlipped = checkFlippedCards();
+function cardOnClick({ target }) {
+    const card = target.closest('.card-container');
 
-            if (!isFlipped) {
-                flipCard(card);
-            }
-        });
-    });
+    if (!card) {
+        return;
+    }
+
+    const isFlipped = checkFlippedCards();
+
+    if (!isFlipped) {
+        flipCard(card);
+    }
 }
 
-popupButton.addEventListener('click', () => {
-        toggleCssClasses(popup, ['visible']);
+function popupBtnOnClick() {
+    toggleCssClass(popup, 'visible');
 
-        cards.forEach((card) => {
-            card.remove();
-        });
+    gameBox.innerHTML = '';
 
-        startGame();
-    }
-);
+    gameBox.removeEventListener('click', cardOnClick);
+
+    startGame();
+}
+
+popupButton.addEventListener('click', popupBtnOnClick);
