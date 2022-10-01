@@ -32,7 +32,6 @@ Stage 1 candidates PR review tracking.
 | 7.12 | [DmytryjK](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ADmytryjK)                     |
 | 7.13 | [Dovahkiin1991](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ADovahkiin1991)           |
 | 7.14 | [drewzag](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Adrewzag)                       |
-| 7.15 | [Eugene-CG](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AEugene-CG)                   |
 | 7.16 | [franchukv](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Afranchukv)                   |
 | 7.17 | [hisbvdis](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Ahisbvdis)                     |
 | 7.18 | [IhorOzerov](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AIhorOzerov)                 |
@@ -67,6 +66,7 @@ Stage 1 candidates PR review tracking.
 | 7.47 | [VladimirRutskiy](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AVladimirRutskiy)       | 
 | 7.48 | [vovan-zt](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Avovan-zt)                     | 
 | 7.49 | [Yanyshpolska](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYanyshpolska)             | 
-| 7.50 | [yhorodechna](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Ayhorodechna)               | 
-| 7.51 | [YuraZagor](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYuraZagor)                   | 
-| 7.52 | [zhenyakornilov](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Azhenyakornilov)         | 
+| 7.50 | [YarHadi](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYarHadi)                   |
+| 7.51 | [yhorodechna](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Ayhorodechna)               | 
+| 7.52 | [YuraZagor](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AYuraZagor)                   | 
+| 7.53 | [zhenyakornilov](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Azhenyakornilov)         | 
