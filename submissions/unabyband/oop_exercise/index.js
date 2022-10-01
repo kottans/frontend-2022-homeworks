@@ -23,8 +23,9 @@ class Inhabitant {
     const nameToPrint = `<strong>${this.name}</strong>`;
     const talkToPrint = `<em>${this.saying}</em>`;
     const friendsToPrint = this.friends ? this.friends.map(friend => friend.name).join(', ') : 'Cats have no friends';
+    const limbs = this.hands !=0 ? `On ${this.legs} legs and has ${this.hands} hands` : `On ${this.legs} paws`;
 
-    print([this.species, nameToPrint, this.legs, this.hands, talkToPrint, friendsToPrint].join('; '));
+    print([this.species, nameToPrint, this.gender, limbs, talkToPrint, friendsToPrint].join('; '));
   }
 }
 
@@ -35,20 +36,20 @@ class Human extends Inhabitant {
 }
 
 class Animal extends Inhabitant {
-  constructor (name, gender, saying, friends) {
-    super('animal', name, gender, 4, 0, saying, friends);
+  constructor (species, name, gender, saying, friends) {
+    super(species, name, gender, 4, 0, saying, friends);
   }
 }
 
 class Dog extends Animal {
   constructor (name, gender, friends) {
-    super(name, gender, 'Bark!', friends);
+    super('Dog', name, gender, 'Bark!', friends);
   }
 }
 
 class Cat extends Animal {
   constructor (name, gender) {
-    super(name, gender, 'Meow!');
+    super('Cat', name, gender, 'Meow!');
   }
 }
 
