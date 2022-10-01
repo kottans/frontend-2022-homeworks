@@ -125,24 +125,28 @@ const checkFlippedCards = () => {
 };
 
 const flipCard = (card) => {
-    toggleCssClass(card, 'flipped');
-
     if (!isFlippedCard) {
         isFlippedCard = true;
         firstCard = card;
+
+        toggleCssClass(card, 'flipped');
 
         return;
     }
 
     secondCard = card;
 
-    count++;
+    if (firstCard !== secondCard) {
+        toggleCssClass(card, 'flipped');
 
-    countText.innerText = `Number of moves - ${ count }`;
+        count++;
 
-    checkPair(firstCard, secondCard);
+        countText.innerText = `Number of moves - ${ count }`;
 
-    checkBoard();
+        checkPair(firstCard, secondCard);
+
+        checkBoard();
+    }
 };
 
 function cardOnClick({ target }) {
