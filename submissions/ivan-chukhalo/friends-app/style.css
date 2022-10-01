@@ -22,23 +22,22 @@ body{
     font-size: 48px;
 }
 
-/* ASIDE */
 .aside{
     grid-area: aside;
     background-color: #aaa;
     padding: 20px 10px;
 }
 
-.fns-section{
+.sorters{
     padding-bottom: 5px;
     border-bottom: 2px solid black;
     margin-bottom: 15px;
 }
 
 .sorters__sub-section{
+    width: 60%;
     display: flex;
     justify-content: right;
-    width: 60%;
     align-items: center;
 }
 
@@ -53,18 +52,11 @@ body{
     margin-right: 20px;
 }
 
-.sorters__buttons{  
-}
-
-.sorters__button{
-}
-
 .sorters__button{
     position: relative;
     width: 25px;
     height: 25px;
 }
-
 
 .sorters__icon{
     position: absolute;
@@ -76,12 +68,6 @@ body{
 
 .sorters__icon_ascending{
     transform: rotate(180deg) rotateY(180deg);
-}
-
-.sorters__icon_descending{
-}
-
-.sorters__icon_A-Z{
 }
 
 .sorters__icon_Z-A{
@@ -105,9 +91,6 @@ body{
     margin-bottom: 5px;
 }
 
-.sex-option{
-}
-
 .main{
     grid-area: main;
     display: flex;
@@ -129,12 +112,6 @@ body{
 
 .card__photo{
     width: 100%;
-}
-
-.card__info{
-}
-
-.info__component{
 }
 
 @media (max-width: 1024px){
