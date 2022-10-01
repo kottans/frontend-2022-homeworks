@@ -200,7 +200,9 @@ const searchByName = ({ target: { value } }) => {
 
         const isVisible = userFullName.includes(normalizedValue);
 
-        userCardName.parentElement.parentElement.classList.toggle('none', !isVisible);
+        const userCard = userCardName.closest('.user-card');
+
+        userCard.classList.toggle('none', !isVisible);
     });
 };
 
