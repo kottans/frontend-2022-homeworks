@@ -67,6 +67,7 @@ body {
 #btn {
 	width: 50px;
 	height: 50px;
+	cursor: pointer;
 }
 
 html.dark body {
@@ -128,6 +129,15 @@ html.light .page__theme {
 
 /* -------------------------------------- */
 
+.page__header {
+	display: flex;
+	margin-left: 20px;
+	background-color: rgba(74, 178, 243, 0.46);
+	border-radius: 5px 0 0 5px;
+	align-items: center;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+}
+
 #result {
     width: 100%;
     display: flex;
@@ -182,7 +192,61 @@ html.light .page__theme {
     font-size: 14px;
 }
 
-.title {
-    font-size: 35px;
-    color: blueviolet;
+.page__title {
+	font-size: 35px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.menu-sort {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-top: 18px;
+	margin-right: 20px;
+	width: 300px;
+	height: 400px;
+	background-color: rgba(142, 181, 181, 0.777);
+	border-radius: 5px;
+	border: 2px solid rgb(16, 15, 15);
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+}
+
+.page__content {
+	display: flex;
+}
+
+.bullet-sort {
+	height: 50px;
+	padding: 10px;
+    background-color: rgba(153, 83, 223, 0.817);
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+	align-items: center;
+	
+}
+
+.btn_sort {
+	margin: 5px;
+	width: 30px;
+	border-radius: 50%;
+	cursor: pointer;
+	color: black;
+	font-size: 15px;
+}
+
+.btn_sort-reset {
+	width: 50px;
+	height: 30px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.btn_sort-reset:hover {
+	background-color: rgba(255, 18, 18, 0.52);
+}
+
+.btn_sort:hover {
+	background-color: violet;
 }
