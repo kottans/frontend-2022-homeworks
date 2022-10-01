@@ -43,7 +43,6 @@ function createProfile(userProfiles) {
   userProfiles.forEach((userContent) => {
     let userProfile = document.createElement("div");
     let userName = [userContent.firstName, userContent.lastName].join(" ");
-    console.log(userName);
     userProfile.innerHTML = createUserTemplate(
       userContent.picture,
       userName,
