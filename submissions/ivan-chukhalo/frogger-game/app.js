@@ -36,7 +36,7 @@ function isOnWater(){
 }
 
 
-var Enemy = function(y) {                    
+var Enemy = function(y, hostileEntity) {                    
     this.sprite = 'images/enemy-bug.png';
     this.speedKoef = Math.floor(Math.random() * MAX_SPEED_MULTIPLIER_FOR_BUG - MIN_SPEED_MULTIPLIER_FOR_BUG) + MIN_SPEED_MULTIPLIER_FOR_BUG;  
     this.xInitial = -WIDTH_OF_GAME_SPRITES;
@@ -44,6 +44,7 @@ var Enemy = function(y) {
     this.x = this.xInitial;
     this.xAxisMax = WIDTH_OF_GAME_SPRITES * COLUMNS_ROWS_ON_GAME_FIELD;
     this.y = y;
+    this.hostileEntity = hostileEntity;
 };
 
 Enemy.prototype.doesHitPlayer = function (input_player){
@@ -104,10 +105,10 @@ Player.prototype.handleInput = function (direction){
 }
 
 
-for (let elem of AVAILABLE_ROWS_FOR_ENEMIES.concat(AVAILABLE_ROWS_FOR_ENEMIES)){
-    allEnemies.push(new Enemy(elem));
-}
 let player = new Player();
+for (let elem of AVAILABLE_ROWS_FOR_ENEMIES.concat(AVAILABLE_ROWS_FOR_ENEMIES)){
+    allEnemies.push(new Enemy(elem, player));
+}
 
 
 document.addEventListener('keyup', function(e) {
