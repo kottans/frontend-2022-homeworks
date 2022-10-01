@@ -130,5 +130,6 @@ function filterByName(inputNameValue, people) {
 
 function resetFilters() {
 	form.reset();
+	sortByAlphabet(peopleForFilter);
 	renderPeople(receivedPeople);
 }
