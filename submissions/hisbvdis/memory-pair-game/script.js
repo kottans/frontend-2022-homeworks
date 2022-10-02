@@ -9,7 +9,7 @@ document.addEventListener("click", forStartBtn_onDocument_Click_Handler);
 boardGrid.addEventListener("click", forCardFront_onBoardGrid_Click_Handler);
 
 
-function changeGameSide() {
+function changeBoardSide() {
   boardInner.classList.toggle("flipper__inner--flipped");
 }
 
@@ -79,7 +79,7 @@ function checkGameOver() {
   );
 
   if (resolvedCards.length === options.length * 2) {
-    changeGameSide();
+    changeBoardSide();
 
     const boardFront = document.querySelector(".board__side--front");
     boardFront.innerHTML = `
@@ -108,7 +108,7 @@ function forCardFront_onBoardGrid_Click_Handler(evt) {
 function forStartBtn_onDocument_Click_Handler(evt) {
   if (!evt.target.matches("[data-start-btn]")) return;
 
-  changeGameSide();
+  changeBoardSide();
   startNewGame();
 }
 
