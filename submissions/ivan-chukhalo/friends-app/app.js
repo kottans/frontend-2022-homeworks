@@ -12,14 +12,14 @@ class User {
         const CARD = document.createElement('div');
         CARD.setAttribute('class', 'card');
         // photo
-        const CARD__PHOTO = document.createElement('img');
-        CARD__PHOTO.src = this.photo;
-        CARD__PHOTO.setAttribute('alt', `There is ${this.firstName} ${this.lastName} in the picture`);
-        CARD__PHOTO.className = 'card__photo';
+        const CARD_PHOTO = document.createElement('img');
+        CARD_PHOTO.src = this.photo;
+        CARD_PHOTO.setAttribute('alt', `There is ${this.firstName} ${this.lastName} in the picture`);
+        CARD_PHOTO.className = 'card__photo';
         // name
-        const CARD__NAME = document.createElement('p');
-        CARD__NAME.className = 'card__info';
-        CARD__NAME.innerText = `${this.firstName} ${this.lastName}`;
+        const CARD_NAME = document.createElement('p');
+        CARD_NAME.className = 'card__info';
+        CARD_NAME.innerText = `${this.firstName} ${this.lastName}`;
         // age
         const AGE_SECTION = document.createElement('p');
         AGE_SECTION.className = 'card__info';
@@ -29,15 +29,15 @@ class User {
         SEX_SECTION.className = 'card__info';
         SEX_SECTION.innerText = this.sex;
         // phone 
-        const CARD__PHONE = document.createElement('p');
-        CARD__PHONE.className = 'card__info';
-        CARD__PHONE.innerText = this.phone;
+        const CARD_PHONE = document.createElement('p');
+        CARD_PHONE.className = 'card__info';
+        CARD_PHONE.innerText = this.phone;
         // appending element into card
-        CARD.appendChild(CARD__PHOTO)
-        CARD.appendChild(CARD__NAME);
+        CARD.appendChild(CARD_PHOTO)
+        CARD.appendChild(CARD_NAME);
         CARD.appendChild(AGE_SECTION);
         CARD.appendChild(SEX_SECTION);
-        CARD.appendChild(CARD__PHONE);
+        CARD.appendChild(CARD_PHONE);
         
         return CARD;
     }
@@ -45,23 +45,22 @@ class User {
 
 let users;
 let filteredUsers;
-// HTML ELEMENTS OF THE APP
 const ASIDE = document.getElementById('aside');
 const CARD_CONTAINER = document.querySelector('#main');
 // buttons and fields for sorting and filtering
-const BTN_SORT_BY_AGE_ASCENDING = document.getElementById('btn__sort_age__ascending');
-const BTN_SORT_BY_AGE_DESCENDING = document.getElementById('btn__sort_age__descending');
-const BTN_SORT_BY_NAME_ALPHA = document.getElementById('btn__sort_name__alphabetical');
-const BTN_SORT_BY_NAME_REVERSE = document.getElementById('btn__sort_name__alphabetical_reverse');
-const BTN_FILTER_BY_AGE = document.getElementById('btn__filter_by_age');
-const BTN_FILTER_BY_NAME = document.getElementById('btn__filter_by_name');
-const BTN_FILTER_BY_SEX = document.getElementById('btn__filter_by_sex');
-const BTN_NEW_QUERY = document.getElementById('btn_new_query');
-const INPUT_AGE_FIELD = document.getElementById('input_filter-by-age');
-const INPUT_NAME_FIELD = document.getElementById('input_filter-by-name');
-const BTN_RADIO_MALE = document.getElementById('sex-male');
-const BTN_RADIO_FEMALE = document.getElementById('sex-female');
-const BTN_RADIO_ALL = document.getElementById('sex-all');
+const BTN_SORT_BY_AGE_ASCENDING = document.getElementById('btn__sort-age_ascending');
+const BTN_SORT_BY_AGE_DESCENDING = document.getElementById('btn__sort-age_descending');
+const BTN_SORT_BY_NAME_ALPHA = document.getElementById('btn__sort-name_alphabetical');
+const BTN_SORT_BY_NAME_REVERSE = document.getElementById('btn__sort-name_alphabetical-reverse');
+const BTN_FILTER_BY_AGE = document.getElementById('btn__filter_by-age');
+const BTN_FILTER_BY_NAME = document.getElementById('btn__filter_by-name');
+const BTN_FILTER_BY_SEX = document.getElementById('btn__filter_by-sex');
+const BTN_NEW_QUERY = document.getElementById('btn_new-query');
+const INPUT_AGE_FIELD = document.getElementById('input__filter_by-age');
+const INPUT_NAME_FIELD = document.getElementById('input__filter_by-name');
+const BTN_RADIO_MALE = document.getElementById('sex_male');
+const BTN_RADIO_FEMALE = document.getElementById('sex_female');
+const BTN_RADIO_ALL = document.getElementById('sex_all');
 
 function renderCards(arrayOfUsers){
     CARD_CONTAINER.innerHTML = '';
@@ -175,4 +174,3 @@ ASIDE.addEventListener('click', event => {
         fetchData();
     }
 });
-
