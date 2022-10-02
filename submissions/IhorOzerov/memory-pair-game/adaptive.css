@@ -237,7 +237,7 @@
     }
 }
 
-@media (max-width: 369px) and (min-width: 300px) {
+@media (max-width: 369px) and (min-width: 280px) {
     body {
         background-size: auto;
     }
@@ -280,6 +280,6 @@
         margin-top: 15px;
     }
     .mainText span {
-        font-size: 38px;
+        font-size: 12vw;
     }
 }
