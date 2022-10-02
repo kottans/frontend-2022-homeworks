@@ -43,7 +43,7 @@ function renderGrid() {
         </div>
       </li>`
     );
-  })
+  });
 }
 
 
@@ -116,11 +116,9 @@ function forStartBtn_onDocument_Click_Handler(evt) {
 }
 
 
-function shuffleArray(o) {
-  for (
-    var j, x, i = o.length;
-    i;
-    j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x
-  );
-  return o;
+function shuffleArray(array) {
+  return array
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
 };
