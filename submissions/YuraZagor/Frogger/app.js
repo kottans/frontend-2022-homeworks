@@ -4,17 +4,17 @@ const speedMedium = 275;
 const speedHigh = 350;
 const allSpeeds = [speedLow, speedMedium, speedHigh];
 const enemyRestartX = -55;
-const collisionOffset = 40
+const collisionOffset = 40;
 const cellX = 101;
 const cellY = 83;
-const spriteRepositioningY = -10
+const spriteRepositioningY = -10;
 const playerStartX = 2*cellX;
 const playerStartY = 5*cellY + spriteRepositioningY ;
 const fieldWidth = 5*cellX;
 const fieldHight = 5*cellY;
-const row1 = cellY + spriteRepositioningY
-const row2 = 2*cellY + spriteRepositioningY
-const row3 = 3*cellY + spriteRepositioningY
+const row1 = cellY + spriteRepositioningY;
+const row2 = 2*cellY + spriteRepositioningY;
+const row3 = 3*cellY + spriteRepositioningY;
 const rangesY = [row1, row2, row3];
 
 function Character (x, y, sprite) {
@@ -40,7 +40,7 @@ Enemy.prototype.update = function(dt){
         this.speedX = allSpeeds[Math.floor(Math.random()*3)];
     };
     this.checkColision(player)
-}
+};
 Enemy.prototype.checkColision = function(checked){    
     if (this.y === checked.y){
         if ((this.x - checked.x < collisionOffset ) && (checked.x - this.x < collisionOffset )) {
@@ -48,7 +48,7 @@ Enemy.prototype.checkColision = function(checked){
             checked.y = playerStartY;
         };    
     };
-}
+};
 
 function addBug() {
     rangesY.forEach ( (levelMark)=>  allEnemies
@@ -63,7 +63,7 @@ function Player(x, y, sprite) {
 Player.prototype = Object.create(Character.prototype);
 
 Player.prototype.update = function(dt){
-}
+};
 
 Player.prototype.handleInput = function (direction) {
     switch (direction) {
