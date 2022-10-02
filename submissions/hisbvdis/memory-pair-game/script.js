@@ -17,11 +17,8 @@ function changeGameSide() {
 function startNewGame() {
   boardGrid.innerHTML = "";
   renderGrid();
-
   const cardFlippers = Array.from(boardGrid.querySelectorAll(".flipper__inner"));
-
   cardFlippers.forEach((cardInner) => flipCard(cardInner));
-
   setTimeout(() => {
     cardFlippers.forEach((cardInner) => flipCard(cardInner));
   }, 2000);
