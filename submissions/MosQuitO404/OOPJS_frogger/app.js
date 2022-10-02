@@ -112,13 +112,12 @@ const player = new Player();
 
 let allEnemies = [];
 function createEnemies(minEnemies, maxEnemies) {
-    for (let i = 0; i < Math.floor(Math.random() * (maxEnemies - minEnemies + 1)) + minEnemies; i++) {
+    const enemiesAmount = Math.floor(Math.random() * (maxEnemies - minEnemies + 1)) + minEnemies;
+    for (let i = 0; i < enemiesAmount; i++) {
         allEnemies.push(new Enemy(player));    
     }
 }
 createEnemies(3, 5);
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
