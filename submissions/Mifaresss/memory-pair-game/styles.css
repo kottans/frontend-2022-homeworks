@@ -23,6 +23,7 @@ body {
 	padding: 15px;
 	border-radius: 20px;
 	box-shadow: 0px 0px 20px rgba(255, 127, 80, 0.883);
+	user-select: none;
 }
 .cards__item {
 	width: calc(25% - 15px);
