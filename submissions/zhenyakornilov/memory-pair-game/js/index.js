@@ -45,7 +45,7 @@ function renderCards(cardsObj, cardsList) {
   cardsList.innerHTML = cardsHTML;
 }
 
-function sleep(milliseconds) {
+function timeout(milliseconds) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
@@ -87,10 +87,10 @@ cardsMenu.addEventListener("click", async function flipCards({ target }) {
       cardsBlocked = true;
 
       if (!isEqualCard(states.firstFlippedCard, states.secondFlippedCard)) {
-        await sleep(600).then(() => flipBack(states.currentCardPair));
+        await timeout(600).then(() => flipBack(states.currentCardPair));
         states.totalTries++;
       } else {
-        await sleep(600).then(() => {
+        await timeout(600).then(() => {
           states.firstFlippedCard.classList.add("matched");
           states.secondFlippedCard.classList.add("matched");
         });
@@ -103,7 +103,7 @@ cardsMenu.addEventListener("click", async function flipCards({ target }) {
     }
 
     if (states.cardsMatches === cards.length) {
-      await sleep(1000).then(() =>
+      await timeout(1000).then(() =>
         alert(`You found all pairs in ${states.totalTries} tries!`)
       );
       restartGame();
