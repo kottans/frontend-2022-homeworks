@@ -6,7 +6,7 @@
 body{
     overflow-y: hidden;
     background-image: url(./images/background.jpg);
-    background-repeat: round;
+    background-repeat: no-repeat;
     background-size: auto;
     display: flex;
     justify-content: center;
@@ -30,7 +30,6 @@ body{
     align-items: center;
     background-color:#ba5137;
     padding: 10px;
-  
     box-shadow: 1px 1px 2px #ba5137, -1px -1px 2px #ba5137;
     border-radius: 5px;
     margin-top: 85px;
@@ -58,8 +57,7 @@ body{
     transition: 0.2s;
 }
 
-.front,
-.back {
+.front,.back {
     backface-visibility: hidden;
     position: absolute;
     width: 100px;
