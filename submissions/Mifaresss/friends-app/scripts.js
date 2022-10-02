@@ -13,7 +13,7 @@ function getData() {
 function createHuman(person) {
 	const human = document.createElement('li');
 	human.classList.add('people__human');
-	coloringCard(person, human);
+	coloringCards(person, human);
 	human.innerHTML = `
 		<img class='people__img' src='${person.picture.large}'>
 		<h3 class='people__name'>My name's ${person.name.first}</h3>	
@@ -24,16 +24,14 @@ function createHuman(person) {
 }
 
 const peopleList = document.querySelector('.people__list');
+
 let receivedPeople = [];
-let peopleForFilter = [];
 
 function createPeopleHTML() {
 	getData().then(people => {
 		receivedPeople = [...people];
 		sortByAlphabet(receivedPeople);
-		peopleForFilter = [...people];
-		sortByAlphabet(peopleForFilter);
-		renderPeople(peopleForFilter);
+		renderPeople(receivedPeople);
 	})
 }
 createPeopleHTML();
@@ -44,14 +42,13 @@ function renderPeople(people) {
 	peopleList.append(...peopleHtml);
 }
 
-
-let newPersonGender;
 function convertGender(person) {
+	let newPersonGender;
 	if (person.gender == 'male') newPersonGender = './images/male-svgrepo-com.svg';
 	if (person.gender == 'female') newPersonGender = './images/female-svgrepo-com.svg';
 	return newPersonGender;
 }
-function coloringCard(person, human) {
+function coloringCards(person, human) {
 	if (person.gender == 'male') human.classList.add('people__human_male');
 	if (person.gender == 'female') human.classList.add('people__human_female');
 }
@@ -65,6 +62,7 @@ const state = {
 
 const form = document.querySelector('.filter');
 form.addEventListener('input', processMainData);
+
 const resetButton = document.querySelector('.filter-reset__button')
 resetButton.addEventListener('click', resetFilters);
 
@@ -83,9 +81,9 @@ function processMainData({currentTarget}) {
 	
 	let sortedPeople;
 	if (state.sortBy == 'sort-by-age__ascending' || state.sortBy == 'sort-by-age__descending') {
-		sortedPeople = sortByAge(peopleForFilter);
+		sortedPeople = sortByAge(receivedPeople);
 	} else {
-		sortedPeople = sortByAlphabet(peopleForFilter);
+		sortedPeople = sortByAlphabet(receivedPeople);
 	}
 	
 	const filteredPeople = filterByGender(sortedPeople);
@@ -99,12 +97,12 @@ function processMainData({currentTarget}) {
 function filterByGender(people) {
 	if (state.filterGenderBy === 'gender__all') return people;
 	return people.filter(human => {
-		if (human.gender == state.filterGenderBy) return human;
-	})
+		return human.gender == state.filterGenderBy;
+	});
 }
 
 function sortByAge(people) {
-	let copyPeople = [...people];
+	const copyPeople = [...people];
 	const sorterByAge = (a, b) => a.dob.age - b.dob.age;
 	if (state.sortBy == 'sort-by-age__ascending') {
 		copyPeople.sort(sorterByAge);
@@ -122,14 +120,14 @@ function sortByAlphabet(people) {
 }
 
 function filterByName(inputNameValue, people) {
-	let copyPeople = people.filter(human => {
+	return people.filter(human => {
 		return human.name.first.toLowerCase().includes(inputNameValue.toLowerCase());
-	})
-	return copyPeople;
+	});
 }
 
 function resetFilters() {
 	form.reset();
-	sortByAlphabet(peopleForFilter);
+	state.sortBy = 'by-alphabet__a-z';
+	sortByAlphabet(receivedPeople);
 	renderPeople(receivedPeople);
 }
