@@ -13,15 +13,15 @@
         <header class="header">
             <div class="header__container container">
                 <a class="header__logo" href="index.html">Friends App</a>
-                <div class="searsh">
-                    <input class="searsh__input" type="text" placeholder="Search by name..." name="search">
-                </div>
+                <form action="#" class="search">
+                    <input class="search__input" type="text" placeholder="Search by name..." name="search">
+                </form>
             </div>
         </header>
         <div class="content">
             <div class="content__container container">
                 <aside class="sidebar">
-                    <div class="sidebar__inner">
+                    <form action="#" class="sidebar__inner">
                         <div class="select">
                             <label class="select__label" for="select__filter">Choose gender</label>
                             <select class="select__inner" id="select__filter">
@@ -33,14 +33,14 @@
                         <div class="select">
                             <label class="select__label" for="select__sort">Choose a sort</label>
                             <select class="select__inner" id="select__sort">
-                                <option value="age-down">Age down</option>
                                 <option value="age-up">Age up</option>
-                                <option value="fullname-down">Name down</option>
+                                <option value="age-down">Age down</option>
                                 <option value="fullname-up">Name up</option>
+                                <option value="fullname-down">Name down</option>
                             </select>
                         </div>
-                        <button class="sidebar__button">Reset</button>
-                    </div>
+                        <button class="sidebar__button" type="reset">Reset</button>
+                    </form>
                 </aside>
                 <main class="main">
                     <div class="main__inner">

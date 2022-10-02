@@ -16,6 +16,8 @@ button {
 
 a {
     text-decoration: none;
+    color: inherit;
+    font-family: inherit;
 }
 
 html,
@@ -56,7 +58,7 @@ body,
     font-weight: 600;
 }
 
-.searsh__input {
+.search__input {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     padding: 8px 13px;
     border-radius: 10px;
@@ -120,11 +122,11 @@ body,
     text-transform: uppercase;
     font-weight: 800;
     background-color: #fcfcfc;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
     margin: 30px 0 20px;
-    padding: 8px;
-    max-width: 100px;
-    width: 100%;
+    padding: 10px;
+    min-width: 100px;
+    width: fit-content;
     border-radius: 10px;
     cursor: pointer;
     color: rgb(22, 22, 22);

@@ -1,118 +1,117 @@
 function sortDown(friends, key) {
-    return friends.sort((firstFriends, secondFriends) => {
-        if (firstFriends[key] > secondFriends[key]) return 1;
-        if (firstFriends[key] < secondFriends[key]) return -1;
-        return 0;
-    });
+    return friends.sort((firstFriend, secondFriend) =>
+        firstFriend[key] < secondFriend[key] ? 1 : -1
+    );
 }
 
 function sortUp(friends, key) {
-    return friends.sort((firstFriends, secondFriends) => {
-        if (firstFriends[key] < secondFriends[key]) return 1;
-        if (firstFriends[key] > secondFriends[key]) return -1;
-        return 0;
-    });
+    return friends.sort((firstFriend, secondFriend) =>
+        firstFriend[key] > secondFriend[key] ? 1 : -1
+    );
 }
 
 function sortCards(friends) {
-    const selectedSort = document.querySelector("#select__sort").value;
-    let [key, diraction] = selectedSort.split("-");
-
-    friends = diraction === "up" ? sortUp(friends, key) : sortDown(friends, key);
-
-    createFriendsCards(friends);
-    return friends;
+    const [key, diraction] = document.querySelector("#select__sort").value.split("-");
+    return diraction === "up" ? sortUp(friends, key) : sortDown(friends, key);
 }
 
-function filterCards(friends, friendsCopy) {
+function filterCards(friends) {
     const selectedGender = document.querySelector("#select__filter").value;
 
-    if (selectedGender === "all") {
-        friendsCopy = [];
-        Object.assign(friendsCopy, friends);
-    } else {
-        friendsCopy = friends.filter((friend) => {
-            return friend.gender === selectedGender;
-        })
-    }
+    if (selectedGender === "all") return Object.assign([], friends);
 
-    sortCards(friendsCopy), createFriendsCards(friendsCopy);
-    return friendsCopy;
+    return friends.filter(({ gender }) => {
+        return gender === selectedGender;
+    });
 }
 
 function searchByFullname(friends) {
-    const searshInput = document.querySelector(".searsh__input").value;
-    const searchedFriends = [];
+    const searchInput = document.querySelector(".search__input").value;
 
-    for (let i = 0; i < friends.length; i++) {
-        if (friends[i].fullname.toUpperCase().indexOf(searshInput.toUpperCase()) > -1) {
-            searchedFriends.push(friends[i]);
-        }
-    }
-
-    createFriendsCards(searchedFriends);
+    return friends.filter(({ fullname }) => {
+        return fullname.toUpperCase().indexOf(searchInput.toUpperCase()) > -1;
+    });
 }
 
-function resetForm(friends) {
-    const gendersSelect = document.querySelector("#select__filter");
-    const sortSelect = document.querySelector("#select__sort");
-    const [[firstFilter], [firstSort]] = [gendersSelect.children, sortSelect.children];
+function resetForm() {
+    const [[firstFilter], [firstSort]] = [
+        document.querySelector("#select__filter").children,
+        document.querySelector("#select__sort").children,
+    ];
 
     firstFilter.selected, firstSort.selected = "selected";
-    filterCards(friends), sortCards(friends);
-    createFriendsCards(friends);
+    document.querySelector(".search").reset();
 }
 
-function processData(friends) {
-    let result = [];
+function processData(friendsData) {
+    let processedData = [];
 
-    friends.forEach((friend) => {
-        result.push({
-            age: friend.dob.age,
-            fullname: friend.name.first + " " + friend.name.last,
-            gender: friend.gender,
-            phone: friend.phone,
-            picture: friend.picture.large
+    friendsData.forEach((friendData) => {
+        processedData.push({
+            age: friendData.dob.age,
+            fullname: friendData.name.first + " " + friendData.name.last,
+            gender: friendData.gender,
+            phone: friendData.phone,
+            picture: friendData.picture.large
         });
     });
 
-    return result;
+    return processedData;
 }
 
 function createFriendsCards(friends) {
-    let cards = "";
+    let friendsCards = "";
     const mainInner = document.querySelector(".main__inner");
 
     friends.forEach(({age, fullname, gender, phone, picture}) => {
-        cards += `<div class="card">
-            <div class="card__inner">
-            <img src="${picture}" alt="" class="card__image">
-            <div class="card__name">${fullname}</div>
-            <div class="card__age-and-gender">${age}, ${gender}</div>
-            <div class="card__telephone">${phone}</div>
-            </div>
-            </div>`;
+        friendsCards += `<article class="card">
+                      <div class="card__inner">
+                          <img src="${picture}" alt="" class="card__image">
+                          <p class="card__name">${fullname}</p>
+                          <p class="card__age-and-gender">${age}, ${gender}</p>
+                          <a href="tel:${phone}" class="card__telephone">${phone}</a>
+                      </div>
+                  </article>`;
     });
 
-    mainInner.innerHTML = cards;
+    mainInner.innerHTML = friendsCards;
 }
 
-const searshInput = document.querySelector(".searsh__input");
-const gendersSelect = document.querySelector("#select__filter");
-const sortSelect = document.querySelector("#select__sort");
-const resetButton = document.querySelector(".sidebar__button");
 
 fetch("https://randomuser.me/api/?results=21&inc=dob,gender,name,phone,picture")
-.then((results) => {
-    return results.json();
-})
-.then((data) => {
-    const friends = processData(data.results);
-    let friendsCopy = [];
-    Object.assign(friendsCopy, friends);
-    createFriendsCards(friendsCopy), resetForm(friendsCopy);
-    searshInput.addEventListener("keyup", () => {searchByFullname(friendsCopy)});
-    gendersSelect.addEventListener("change", () => {friendsCopy = filterCards(friends, friendsCopy)});
-    sortSelect.addEventListener("change", () => {friendsCopy = sortCards(friendsCopy)});
-    resetButton.addEventListener("click", () => {resetForm(friends)});
-});
+    .then((results) => {
+        if (results.ok) return results.json();
+    })
+    .then((data) => {
+        const friends = sortCards(processData(data.results));
+        let friendsCopy = Object.assign([], friends);
+
+        createFriendsCards(friendsCopy);
+
+        document.querySelector(".search__input")
+            .addEventListener("keyup", () => {
+                friendsCopy = searchByFullname(friends);
+                createFriendsCards(friendsCopy);
+            });
+        document.querySelector("#select__filter")
+            .addEventListener("change", () => {
+                friendsCopy = searchByFullname(filterCards(friends));
+                createFriendsCards(sortCards(friendsCopy));
+            });
+        document.querySelector("#select__sort")
+            .addEventListener("change", () => {
+                friendsCopy = sortCards(friendsCopy);
+                createFriendsCards(friendsCopy);
+            });
+        document.querySelector(".sidebar__button")
+            .addEventListener("click", () => {
+                resetForm();
+                friendsCopy = filterCards(friends);
+                friendsCopy = sortCards(friendsCopy);
+                createFriendsCards(friendsCopy);
+            });
+    })
+    .catch(() => {
+        showErrorStautus();
+    });
+
