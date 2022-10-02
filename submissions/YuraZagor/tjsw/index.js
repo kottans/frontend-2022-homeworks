@@ -40,8 +40,8 @@ class Inhabitant {
     this.friend=friend;
     this.gender=gender;
   }
-  accountInhabitants(){
-    inhabitants.push(this);
+  accountInhabitants(habitat){
+    habitat.push(this);
   }
   commonProperties(){
     const { species, name, saying, friend, gender} = this
@@ -60,7 +60,7 @@ class Animal extends Inhabitant{
     const { paws, tail} = this
     const speciesProperties = [ paws, tail]
     print(this.commonProperties().concat(speciesProperties).join('; '),'div');
-    this.accountInhabitants()
+    this.accountInhabitants(inhabitants)
   };
 };
 
@@ -86,7 +86,7 @@ class Human extends Inhabitant{
     const { legs, hands} = this
     const speciesProperties = [ legs, hands]
     print(this.commonProperties().concat(speciesProperties).join('; '),'div');
-    this.accountInhabitants()
+    this.accountInhabitants(inhabitants)
   };
 };
 
@@ -97,10 +97,10 @@ class CatWoman extends Human{
 };
 
 function creation(className, name, friend, gender){
-  className.toLowerCase() === 'human' 
-  ? (new Human(name, friend, gender)).populate()
-  : className.toLowerCase() === 'catwoman' 
+  className.toLowerCase() === 'catwoman' 
   ? (new CatWoman(name, friend)).populate()
+  : className.toLowerCase() === 'human' 
+  ? (new Human(name, friend, gender)).populate()
   : className.toLowerCase() === 'cat' 
   ? (new Cat(name, friend, gender)).populate()
   : (new Dog(name, friend, gender)).populate()
