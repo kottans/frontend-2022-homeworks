@@ -1,7 +1,8 @@
 
 //const ITEMS_PER_PAGE = 10; feature pagination
 const usersList = [];
-let usersListTemp = usersList;
+let usersFilteredList = [];
+const nameInput = document.querySelector('.filter__block input');
 
 const callAPI = async () => {
     const data = await fetch('https://randomuser.me/api/?results=30&nat=ua');
@@ -19,22 +20,43 @@ const handleErrors = (response) => {
     return response;
 }
 
-async function getUsers() {
+const getUsers = async() => {
     try {
         const users = await callAPI();
         usersList.push(...users);
-        renderUsers(usersList);
+        renderUsers([]);
     } catch (e) {
         console.log(e);
     }
+}
+
+const getOpt = (name) => {
+    return document.querySelector(`.filter__block input[name="${name}"]:checked`);
 }
 
 const mainContainer = document.getElementById('main__content');
 let usersListContainer = document.createElement('div');
 usersListContainer.classList.add('users');
 
-const renderUsers = (usersList) => {
-    let users = usersList.map((user) => createUser(user)).join("");
+const renderUsers = (pipes, usersFiltered) => {
+    let users = pipes.reduce((list, func) => {
+        if (func.name.startsWith('filter')) { // Filter
+            return list.filter(func);
+        } else if (func.name.startsWith('sort')) { // Sort
+            return list.sort(func)
+        } else { // Do nothing
+            return list;
+        }
+    }, usersList);
+
+    usersFilteredList = users;
+    
+    if (usersFiltered) {
+        users = usersFiltered.map((user) => createUser(user)).join("");
+    } else {
+        users = users.map((user) => createUser(user)).join("");
+    }
+    
     usersListContainer.innerHTML = users;
     mainContainer.appendChild(usersListContainer);
 }
@@ -118,88 +140,137 @@ const renderUser = (user) => {
 
 // filters
 let filter = document.querySelector('.filter__block input');
-
-filter.addEventListener('input', (e) => {
+nameInput.addEventListener('input', (e) => {
     const value = e.preventDefault();
-    const searchValue = e.target.value.trim().toLowerCase();
-
-    if (searchValue !== '') {
-        const filteredFriends = usersList.filter((user) => {
-            return user.name.first.toLowerCase().indexOf(searchValue) > -1;
-        });
-        usersListTemp = [...filteredFriends];
-
-    } else {
-        usersListTemp = [...usersList];
+    const pipes = [filterByName];
+    
+    if (getOpt('alphabet')) {
+        pipes.push(sortByAlphabet);
+    }
+    if (getOpt('age')) {
+        pipes.push(sortByAge);
+    }
+    if (getOpt('gender')) {
+        pipes.push(filterByGender);
     }
 
-    renderUsers(usersListTemp);
+    renderUsers(pipes);
 });
 
 document.querySelectorAll('.filter__block input[type="radio"]').forEach((elem) => {
     elem.addEventListener("change", function(event) {
-        let checkedValue = event.target.id;
-        let filteredFriends = [];
 
         switch (event.target.name) {
             case 'alphabet':
                 uncheckRadio('age');
-
-                filteredFriends = usersListTemp.sort((a, b) => {
-                    const nameA = a.name.first.toUpperCase();
-                    const nameB = b.name.first.toUpperCase();
-                    if (nameA < nameB) {
-                        return -1;
-                    }
-                    if (nameA > nameB) {
-                        return 1;
-                    }
-
-                    return 0;
-                });
-
-                if (event.target.id == 'alphabetZA') {
-                    filteredFriends.reverse();
-                }
+                renderUsers([
+                    filterByName,
+                    filterByGender,
+                    sortByAlphabet
+                ]);
 
                 break;
             case 'gender':
-                if (event.target.id === 'male' || event.target.id === 'female') {
-                    filteredFriends = usersListTemp.filter(friend => friend.gender === event.target.id);
-                    
-                } else {
-                    filteredFriends = [...usersListTemp];
+                const pipes = [
+                    filterByName,
+                    filterByGender,
+                ];
+                if (getOpt('alphabet')) {
+                    pipes.push(sortByAlphabet);
                 }
+                if (getOpt('age')) {
+                    pipes.push(sortByAge);
+                }
+                renderUsers(pipes);
 
                 break;
             case 'age':
                 uncheckRadio('alphabet');
- 
-                filteredFriends = usersListTemp.sort((a, b) => a.dob.age - b.dob.age);
-
-                if (event.target.id == 'ageHighest') {
-                    filteredFriends.reverse();
-                }
-
+                renderUsers([
+                    filterByName,
+                    filterByGender,
+                    sortByAge
+                ]);
                 break;
             default:
-                filteredFriends = [...usersList];
+                // renderUsers();
         }
-
-        renderUsers(filteredFriends);
     });
 });
 
-// reset
+const filterByName = (user) => {
+    const searchValue = nameInput.value.trim().toLowerCase();
+    return user.name.first.toLowerCase().includes(searchValue);
+}
+
+const filterByGender = (user) => {
+    const genderRadioOpt = getOpt('gender');
+    if (!genderRadioOpt) { // Pass all if none gender checked
+        return true;
+    }
+
+    if (!['male', 'female'].includes(genderRadioOpt.id)) { // Pass all if 'all' gender checked
+        return true;
+    }
+
+    return genderRadioOpt.id === user.gender;
+}
+
+const sortByAlphabet = (a, b) => {
+    const alphabetRadioOpt = getOpt('alphabet');
+
+    if (alphabetRadioOpt) {
+        let isReversed = alphabetRadioOpt.id === 'alphabetZA';
+        const nameA = a.name.first.toUpperCase();
+        const nameB = b.name.first.toUpperCase();
+        let result;
+
+        // Compare
+        if (nameA < nameB) {
+            result = -1;
+        } else if (nameA > nameB) {
+            result = 1;
+        } else {
+            result = 0;
+        }
+
+        // Reverse if needed
+        if (isReversed) {
+            result *= -1;
+        }
+        return result;
+    }
+
+    return 0;
+}
+
+const sortByAge = (userA, userB) => {
+    const ageRadioOpt = getOpt('age');
+
+    if (ageRadioOpt) {
+        let isReversed = ageRadioOpt.id === 'ageHighest';
+        return isReversed
+            ? userB.dob.age - userA.dob.age
+            : userA.dob.age - userB.dob.age;
+    }
+
+    return 0;
+}
+
+//reset
 let filterReset = document.querySelector('.filter__block button');
+
 filterReset.addEventListener('click', (e) => {
     const value = e.preventDefault();
+    const genderAll = document.getElementById('genderAll');
+
     closeUser();
+    genderAll.checked = true;
     uncheckRadio('age');
     uncheckRadio('alphabet');
     filter.value = '';
 
-    renderUsers(usersList);
+    renderUsers([]);
 });
 
 //close user
@@ -223,9 +294,7 @@ mainContainer.addEventListener('click', (e) => {
             window.location.hash = id;
         } else {
             closeUser();
-            renderUsers(usersList);
         }
-        
     }
 });
 
@@ -237,11 +306,11 @@ window.addEventListener('hashchange', () => {
         });
         renderUser(singleUser[0]);
     } else {
-        renderUsers(usersList);
+        renderUsers([], usersFilteredList);
     }
 }, false);
 
-//helper
+//helpers
 const uncheckRadio = (name) => {
     let radioList = document.getElementsByName(name);
 
@@ -250,14 +319,14 @@ const uncheckRadio = (name) => {
     });
 }
 
-function arrayEquals(a, b) {
+const arrayEquals = (a, b) => {
     return Array.isArray(a) &&
       Array.isArray(b) &&
       a.length === b.length &&
       a.every((val, index) => val === b[index]);
 }
 
-// toggle theme
+//toggle theme
 const theme = document.querySelector('.header__toggle');
 const body = document.querySelector('body');
 
