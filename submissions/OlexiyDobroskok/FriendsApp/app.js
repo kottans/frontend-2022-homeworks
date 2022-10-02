@@ -59,7 +59,7 @@ async function waitData() {
     preloaderEl.classList.remove("visible");
     return data;
   } catch {
-    toggleErrorMessage();
+    errorWindow.showModal();
     console.log(error);
   }
 }
@@ -72,7 +72,6 @@ pageList.classList.add("page__list");
 personsList.after(pageList);
 
 const personsData = waitData();
-
 personsData.then(({ results: persons }) => {
   persons.forEach((person, personPosition) => {
     person.cityImg = shuffle(citiesPhotos)[0];
@@ -83,13 +82,12 @@ personsData.then(({ results: persons }) => {
   updatePersonsList(persons);
 });
 
-const filterBtns = document.querySelector(".filter__btns");
-const surnameFilter = document.querySelector(".surname__filter");
+const errorWindow = document.querySelector(".error");
+const nameFilter = document.querySelector(".name__filter");
 const ageFilter = document.querySelector(".age__filter__by__number");
 const filterMenu = document.querySelector("#filter__menu");
 const filterForm = document.querySelector(".filter__form");
 const filterMenuBtn = document.querySelector(".filter__btn");
-const errorArea = document.querySelector(".error__area");
 const detailedPersonInfo = document.querySelector(".detailed__person__info");
 const myFriendsBtn = document.querySelector(".my__friends__btn");
 const btnsArea = document.querySelector(".btns__area");
@@ -98,7 +96,7 @@ const iconInFriends = document.querySelector(".detailed__icon__infriends");
 let friendsList;
 
 personsData.then(({ results: persons }) => {
-  filterBtns.addEventListener("change", () =>
+  filterForm.addEventListener("change", () =>
     renderPersonsList(
       myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
     )
@@ -132,7 +130,7 @@ personsData.then(({ results: persons }) => {
   btnsArea.addEventListener("click", () => changeDisplayMode(event, persons));
 });
 
-errorArea.addEventListener("click", errorHandler);
+errorWindow.addEventListener("click", errorHandler);
 
 function createPersonsList(persons) {
   const convertedPersonsData = convertPersonsData(persons);
@@ -154,28 +152,24 @@ function createPersonsList(persons) {
           return "";
         }
       }
-      const personCard =
-        repeatId === undefined
-          ? `
-      <li id='${id}'class="person__item">
+      const personCard = `
+      <li id='${id}'class="person__item" ${
+        repeatId !== undefined ? ' data-friend="true"' : ""
+      }>
         <img src="${cityPhoto}" alt="" class="person__bg">
         <img src="${photo}" alt="" class="person__photo">
         <h2 class="person__name">${firstName} ${surName}</h2>
         <span class="person__text__age">${age}</span>
         <span class="person__text__gender">${gender}</span>
+        ${
+          repeatId !== undefined
+            ? `
+        <i class="infriends__icon">
+          <img src="./img/friends__ico/in__friends.png" alt="" class="icon__img__infriends">
+        </i>`
+            : ""
+        }
       </li>
-      `
-          : `
-      <li id="${id}" class="person__item" data-friend="true">
-         <img src="${cityPhoto}" alt="" class="person__bg" />
-         <img src="${photo}" alt="" class="person__photo" />
-         <h2 class="person__name">${firstName} ${surName}</h2>
-         <span class="person__text__age">${age}</span>
-         <span class="person__text__gender">${gender}</span>
-         <i class="infriends__icon"
-           ><img src="./img/friends__ico/in__friends.png" alt="" class="icon__img__infriends"
-         /></i>
-     </li>
       `;
       return personCard;
     }
@@ -185,20 +179,16 @@ function createPersonsList(persons) {
 function createPageList(persons) {
   const convertedPersonsData = convertPersonsData(persons);
   return convertedPersonsData.map((page, number) => {
-    const pageNumber =
-      pageValue == number
-        ? `<li class="page__number chosen__page" data-page-value="${number}">${
-            number + 1
-          }</li>`
-        : `<li class="page__number" data-page-value="${number}">${
-            number + 1
-          }</li>`;
+    const pageNumber = `
+    <li class="page__number"><a class="page__link${
+      pageValue == number ? " chosen__page" : ""
+    }" href="#" data-page-value="${number}">${number + 1}</a></li>`;
     return pageNumber;
   });
 }
 
 function showPage({ target }, persons) {
-  const selectedPage = target.closest("li");
+  const selectedPage = target.closest(".page__link");
   if (!selectedPage) return;
   pageValue = selectedPage.dataset.pageValue;
   showFilteredPersons(persons);
@@ -350,24 +340,35 @@ function renderPersonsList(persons) {
 }
 
 function showFilteredPersons(persons) {
-  validationOfEnteredData(surnameFilter, "[^a-z]");
+  validationOfEnteredData(nameFilter, "[^a-z]");
   validationOfEnteredData(ageFilter, "[^0-9]");
   let filteredPersonsByAge;
-  let filteredPersonsBySurname;
+  let filteredPersonsByName;
   let filteredPersonsByGender;
   const inputValueAge = getValueInputField("age__filter__by__number");
-  const inputValueSurname = getValueInputField("surname__filter");
-  if (inputValueAge !== "" && inputValueSurname !== "") {
-    filteredPersonsBySurname = filterSurname(persons, inputValueSurname);
-    filteredPersonsByAge = filterAge(filteredPersonsBySurname, inputValueAge);
+  const inputValueName = getValueInputField("name__filter");
+  const filterMethodValue = document.querySelector("#filter__method").value;
+  if (inputValueAge !== "" && inputValueName !== "") {
+    filteredPersonsByName =
+      filterMethodValue === "extended"
+        ? filterExtendedName(persons, inputValueName)
+        : filterMethodValue === "surname"
+        ? filterSurname(persons, inputValueName)
+        : filterFirstName(persons, inputValueName);
+    filteredPersonsByAge = filterAge(filteredPersonsByName, inputValueAge);
     filteredPersonsByGender = genderFilter(
       filteredPersonsByAge,
       getValueRadioBtn("gender__filter")
     );
-  } else if (inputValueSurname !== "") {
-    filteredPersonsBySurname = filterSurname(persons, inputValueSurname);
+  } else if (inputValueName !== "") {
+    filteredPersonsByName =
+      filterMethodValue === "extended"
+        ? filterExtendedName(persons, inputValueName)
+        : filterMethodValue === "surname"
+        ? filterSurname(persons, inputValueName)
+        : filterFirstName(persons, inputValueName);
     filteredPersonsByGender = genderFilter(
-      filteredPersonsBySurname,
+      filteredPersonsByName,
       getValueRadioBtn("gender__filter")
     );
   } else if (inputValueAge !== "") {
@@ -460,14 +461,35 @@ function filterSurname(persons, value) {
   });
 }
 
+function filterFirstName(persons, value) {
+  const searchOptions = new RegExp("^" + value, "i");
+  return persons.filter((person) => {
+    if (person.name.first.search(searchOptions) === -1) {
+      return false;
+    }
+    return true;
+  });
+}
+
+function filterExtendedName(persons, value) {
+  return persons.filter((person) =>
+    (person.name.first + person.name.last)
+      .toLowerCase()
+      .includes(value.toLowerCase())
+  );
+}
+
 function validationOfEnteredData(entryField, forbiddendValues) {
+  const maxLengthText = 12;
+  const maxLengthNumber = 2;
   const forbidden = new RegExp(forbiddendValues, "ig");
   if (entryField.value !== forbidden) {
     entryField.value = entryField.value.replace(forbidden, "");
   }
-  if (entryField.value.length > entryField.maxLength) {
-    entryField.value = entryField.value.slice(0, entryField.maxLength);
-  }
+  entryField.value = entryField.value.slice(
+    0,
+    entryField.type === "text" ? maxLengthText : maxLengthNumber
+  );
 }
 
 function filterAge(persons, value) {
@@ -478,10 +500,6 @@ function filterAge(persons, value) {
     }
     return true;
   });
-}
-function toggleErrorMessage() {
-  const errorWindow = document.querySelector(".error__wrap__hide");
-  errorWindow.classList.toggle("error__wrap__show");
 }
 
 function updatePersonsList(persons) {
@@ -548,8 +566,7 @@ function changeSideBtnName() {
   if (filterMenu.classList.value === "filter__menu") {
     showFilterBtn.classList.add("hide__btn");
     hideFilterBtn.classList.remove("hide__btn");
-  }
-  if (filterMenu.classList.value === "filter__menu__hide") {
+  } else {
     showFilterBtn.classList.remove("hide__btn");
     hideFilterBtn.classList.add("hide__btn");
   }
@@ -558,7 +575,10 @@ function changeSideBtnName() {
 function errorHandler({ target }) {
   let btn = target.closest("button");
   if (!btn) return;
-  if (btn.value === "cancel") toggleErrorMessage();
-  toggleErrorMessage();
-  waitData();
+  if (btn.value === "cancel") {
+    errorWindow.close();
+  } else {
+    errorWindow.close();
+    waitData();
+  }
 }

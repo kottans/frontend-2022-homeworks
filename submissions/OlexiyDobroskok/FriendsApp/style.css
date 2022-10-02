@@ -71,10 +71,10 @@ header h1 span:nth-child(2) {
   -ms-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-animation: load6 0.5s infinite ease;
-  animation: load6 1.5s linear;
+  animation: load 1.5s linear;
 }
 
-@-webkit-keyframes load6 {
+@-webkit-keyframes load {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
@@ -109,7 +109,7 @@ header h1 span:nth-child(2) {
       0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
   }
 }
-@keyframes load6 {
+@keyframes load {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
@@ -162,9 +162,6 @@ header h1 span:nth-child(2) {
   justify-content: flex-start;
   align-items: flex-end;
   margin-top: 60px;
-}
-
-.container:nth-child(3) {
   align-items: center;
 }
 
@@ -206,22 +203,39 @@ header h1 span:nth-child(2) {
 .filter__title {
   font-size: 16px;
   font-weight: 800;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
   color: rgb(12, 44, 131);
 }
 
-.surname__filter {
+.name__filter {
   display: block;
-  width: 180px;
+  width: 220px;
   height: 25px;
   font-size: 16px;
   font-weight: 600;
   text-align: center;
-  margin: 0 auto 20px;
+  margin: 0 auto 5px;
   border: none;
   border-bottom: solid 3px rgba(14, 78, 161, 0.9);
   background-color: rgba(69, 141, 235, 0.9);
+}
+
+#filter__method {
+  display: block;
+  height: 25px;
+  width: 220px;
+  height: 25px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto 20px;
+  background-color: rgb(65, 115, 223);
+  border: none;
+  border-radius: 5px;
+  color: rgb(12, 44, 131);
+}
+#filter__method:focus {
+  outline-color: rgba(14, 78, 161, 0.9);
 }
 
 .filter__wrap {
@@ -231,7 +245,7 @@ header h1 span:nth-child(2) {
   padding: 10px;
 }
 
-.surname__filter:focus,
+.name__filter:focus,
 .age__filter__by__number:focus {
   color: rgb(12, 44, 131);
   outline: none;
@@ -268,7 +282,7 @@ header h1 span:nth-child(2) {
 }
 
 .filter__gender > h4.filter__title {
-  margin: 0px 0px 20px;
+  margin: 0px 0px 10px;
 }
 
 .gender__label,
@@ -374,7 +388,7 @@ header h1 span:nth-child(2) {
 .detailed__photo {
   display: block;
   width: 150px;
-  height: 180px;
+  height: 160px;
   margin: 10px auto 20px auto;
   border-radius: 10px;
   pointer-events: none;
@@ -561,30 +575,38 @@ header h1 span:nth-child(2) {
 /*---------------Page---------------*/
 .page__list {
   position: absolute;
-  bottom: 10px;
+  width: 100%;
+  bottom: 0px;
   left: 0;
   right: 0;
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: rgb(65, 115, 223);
 }
 
-.page__number {
-  width: 10px;
-  height: 10px;
-  margin: 10px;
+.page__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 20px;
+  height: 35px;
+  margin: 10px 5px 5px;
   font-size: 18px;
   text-align: center;
   color: rgb(12, 44, 131);
+  text-decoration: none;
+}
+
+.chosen__page {
+  color: rgb(163, 57, 57);
+  text-decoration: underline;
 }
 
 .page__number:hover {
   cursor: pointer;
-}
-
-.chosen__page {
-  text-decoration: underline;
-  color: rgb(163, 57, 57);
 }
 
 .list__message {
@@ -595,23 +617,7 @@ header h1 span:nth-child(2) {
   grid-row: 3/-1;
 }
 
-.error__wrap__show {
-  display: block;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: rgba(9, 50, 87, 0.747);
-  transition: all 0.5s ease 0s;
-  opacity: 1;
-  visibility: visible;
-  z-index: 60;
-}
-
-.error__area {
+dialog {
   width: 40vw;
   height: 150px;
   position: fixed;
@@ -619,15 +625,18 @@ header h1 span:nth-child(2) {
   bottom: 0;
   left: 0;
   right: 0;
-  display: block;
   margin: 0 auto;
   padding: 5px;
-  z-index: 100;
+  border: none;
   border-radius: 5px;
   -webkit-box-shadow: 0px 0px 5px 10px rgba(177, 59, 59, 0.9);
   -moz-box-shadow: 0px 0px 5px 10px rgba(177, 59, 59, 0.9);
   box-shadow: 0px 0px 5px 10px rgba(177, 59, 59, 0.9);
   background-color: rgb(191, 196, 197);
+}
+
+dialog::backdrop {
+  background-color: rgba(170, 204, 219, 0.281);
 }
 
 .error__title {
@@ -701,7 +710,6 @@ footer {
   padding-top: 20px;
   justify-content: center;
   align-items: center;
-  z-index: 0;
 }
 
 @media (min-width: 992px) and (max-width: 1230px) {
@@ -732,7 +740,7 @@ footer {
   .detailed__photo {
     display: block;
     width: 120px;
-    height: 150px;
+    height: 130px;
   }
 
   .detailed__name {
@@ -744,6 +752,10 @@ footer {
   }
 
   /*------------Content------------*/
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   .app__content {
     width: 70%;
     margin: 0px 20px 0px 10px;
@@ -755,18 +767,13 @@ footer {
     grid-template-rows: repeat(5, 1fr);
   }
   .page__list {
-    position: relative;
-    margin: 0px auto;
-    display: block;
-    padding-top: 30px;
-    text-align: center;
+    position: sticky;
+    bottom: 0;
+    background-color: rgb(65, 115, 223);
   }
 
-  .page__number {
-    display: inline;
-    width: 100%;
-    height: 20px;
-    font-size: 18px;
+  .page__link {
+    margin: 5px 5px 5px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -844,28 +851,50 @@ footer {
   }
 
   .filter__btns {
-    width: 65%;
+    width: 55%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 20px;
   }
 
-  .surname__filter {
+  .name__filter {
+    order: 2;
     display: block;
-    width: 120px;
+    width: 170px;
     height: 25px;
     font-size: 14px;
     margin: 0 auto;
+  }
+
+  #filter__method {
+    order: 1;
+    width: 170px;
+    margin: 5px auto 10px;
+    font-size: 10px;
+  }
+
+  .reset__filter__btn {
+    order: 3;
+    position: relative;
+    width: 80px;
+    height: 50px;
+    margin-bottom: 50px;
   }
 
   .filter__wrap {
     width: 100%;
     margin: 0;
     padding: 10px;
+    justify-content: center;
+  }
+
+  .filter__age {
+    width: 100%;
   }
 
   .entry__field {
-    width: 35%;
+    width: 45%;
     padding: 0;
     margin: 0;
     display: flex;
@@ -875,6 +904,7 @@ footer {
   }
 
   .age__filter__by__number {
+    order: 0;
     display: block;
     width: 90px;
     height: 25px;
@@ -887,11 +917,7 @@ footer {
     flex-direction: row;
     width: 40px;
     height: 40px;
-    margin: 5px;
-  }
-
-  .filter__age {
-    width: 100%;
+    margin: 0px 20px 5px;
   }
 
   .filter__gender {
@@ -920,14 +946,7 @@ footer {
     flex-direction: row;
     width: 40px;
     height: 40px;
-    margin: 5px;
-  }
-
-  .reset__filter__btn {
-    position: relative;
-    width: 80px;
-    height: 50px;
-    margin-bottom: 50px;
+    margin: 0px 20px 5px;
   }
 
   .hide__btn {
@@ -972,7 +991,7 @@ footer {
 
   .detailed__photo {
     width: 80px;
-    height: 100px;
+    height: 90px;
     margin: 5px 10px 20px 5px;
     float: right;
   }
@@ -1086,11 +1105,11 @@ footer {
     height: 570px;
     border-radius: 10px;
     margin: 10px 20px 20px 15px;
-    padding: 10px;
     overflow-y: none;
   }
 
   .person__list {
+    margin-top: 10px;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
@@ -1137,22 +1156,19 @@ footer {
 
   /*---------------Page---------------*/
   .page__list {
-    position: relative;
-    margin: 0px auto;
-    display: block;
-    padding-top: 30px;
-    text-align: center;
-  }
-
-  .page__number {
-    display: inline;
     width: 100%;
-    height: 20px;
-    font-size: 16px;
+    position: sticky;
+    bottom: 0;
+    background-color: rgb(65, 115, 223);
+    margin-top: 20px;
   }
 
-  .error__area {
-    width: 90vw;
+  .page__link {
+    margin: 5px 5px 5px;
+  }
+
+  dialog {
+    width: 60vw;
   }
 }
 
@@ -1236,20 +1252,30 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 10px;
   }
 
-  .surname__filter {
+  .name__filter {
+    order: 2;
     display: block;
     width: 120px;
     height: 25px;
     font-size: 14px;
-    margin: 0 auto;
+    margin: 0 auto 5px;
+  }
+
+  #filter__method {
+    order: 1;
+    width: 120px;
+    font-size: 8px;
+    margin-bottom: 10px;
   }
 
   .filter__wrap {
     width: 100%;
     margin: 0;
     padding: 10px;
+    justify-content: center;
   }
 
   .entry__field {
@@ -1263,6 +1289,7 @@ footer {
   }
 
   .age__filter__by__number {
+    order: 0;
     display: block;
     width: 90px;
     height: 25px;
@@ -1275,7 +1302,7 @@ footer {
     flex-direction: row;
     width: 40px;
     height: 40px;
-    margin: 5px;
+    margin: 0px 20px 5px;
   }
 
   .filter__age {
@@ -1308,10 +1335,11 @@ footer {
     flex-direction: row;
     width: 40px;
     height: 40px;
-    margin: 5px;
+    margin: 0px 20px 5px;
   }
 
   .reset__filter__btn {
+    order: 3;
     position: relative;
     width: 80px;
     height: 50px;
@@ -1360,7 +1388,7 @@ footer {
 
   .detailed__photo {
     width: 80px;
-    height: 100px;
+    height: 90px;
     margin: 5px 10px 20px 5px;
     float: right;
   }
@@ -1469,12 +1497,16 @@ footer {
   }
 
   /*------------Content------------*/
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   .app__content {
     width: 95%;
-    height: 500px;
+    height: 540px;
     border-radius: 10px;
     margin: 10px 20px 20px 15px;
-    padding: 10px;
+    padding-top: 10px;
     overflow-y: auto;
   }
 
@@ -1529,22 +1561,19 @@ footer {
 
   /*---------------Page---------------*/
   .page__list {
-    position: relative;
-    margin: 0px auto;
-    display: block;
-    padding-top: 30px;
-    text-align: center;
-  }
-
-  .page__number {
-    display: inline;
     width: 100%;
-    height: 20px;
-    font-size: 16px;
+    position: sticky;
+    bottom: 0;
+    background-color: rgb(65, 115, 223);
+    margin-top: 20px;
   }
 
-  .error__area {
-    width: 90vw;
+  .page__link {
+    margin: 5px 5px 5px;
+  }
+
+  dialog {
+    width: 70vw;
   }
 }
 
@@ -1566,7 +1595,7 @@ footer {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
-    margin: 15px auto;
+    margin: 15px auto 0px;
   }
 
   .container:nth-child(2) {
@@ -1627,14 +1656,23 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 10px;
   }
 
-  .surname__filter {
+  .name__filter {
+    order: 2;
     display: block;
-    width: 120px;
+    width: 115px;
     height: 25px;
     font-size: 14px;
-    margin: 0 auto;
+    margin: 0 auto 3px;
+  }
+
+  #filter__method {
+    width: 115px;
+    font-size: 6px;
+    order: 1;
+    margin-bottom: 10px;
   }
 
   .filter__wrap {
@@ -1654,6 +1692,7 @@ footer {
   }
 
   .age__filter__by__number {
+    order: 0;
     display: block;
     width: 90px;
     height: 25px;
@@ -1703,6 +1742,7 @@ footer {
   }
 
   .reset__filter__btn {
+    order: 3;
     position: relative;
     width: 80px;
     height: 50px;
@@ -1746,12 +1786,12 @@ footer {
   .detailed__person__info {
     width: 90%;
     height: 200px;
-    margin: 40px 10px 30px 10px;
+    margin: 40px auto 30px auto;
   }
 
   .detailed__photo {
     width: 80px;
-    height: 100px;
+    height: 90px;
     margin: 5px 10px 20px 5px;
     float: right;
   }
@@ -1811,7 +1851,7 @@ footer {
   /*----------------btns--------------*/
   .btns__area {
     top: 270px;
-    margin-left: 5px;
+    left: 0%;
     width: 92%;
     height: 30px;
   }
@@ -1830,12 +1870,16 @@ footer {
   }
 
   /*------------Content------------*/
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   .app__content {
     width: 92%;
-    height: 280px;
+    height: 300px;
     border-radius: 10px;
-    margin: 30px 20px 20px 15px;
-    padding: 10px;
+    margin: 30px auto 10px;
+    padding-top: 5px;
     overflow-y: auto;
   }
 
@@ -1886,21 +1930,25 @@ footer {
 
   /*---------------Page---------------*/
   .page__list {
-    position: relative;
-    margin: 0px auto;
-    display: block;
-    padding-top: 30px;
-    text-align: center;
-  }
-
-  .page__number {
-    display: inline;
     width: 100%;
-    height: 20px;
-    font-size: 16px;
+    position: sticky;
+    bottom: 0;
+    background-color: rgb(65, 115, 223);
+    margin-top: 20px;
   }
 
-  .error__area {
-    width: 90vw;
+  .page__link {
+    height: 15px;
+    font-size: 10px;
+    margin: 5px 5px 5px;
+  }
+
+  dialog {
+    width: 80vw;
+  }
+  footer {
+    position: static;
+    padding-top: 10px;
+    height: 30px;
   }
 }
