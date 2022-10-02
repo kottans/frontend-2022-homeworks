@@ -1,13 +1,19 @@
-function compareKey(firstFriend, secondFriend, key) {
-    return firstFriend[key] - secondFriend[key];
+function sortDown(friends, key) {
+    return friends.sort((firstFriend, secondFriend) =>
+        firstFriend[key] < secondFriend[key] ? 1 : -1
+    );
+}
+
+function sortUp(friends, key) {
+    return friends.sort((firstFriend, secondFriend) =>
+        firstFriend[key] > secondFriend[key] ? 1 : -1
+    );
 }
 
 function sortCards(friends) {
     const [key, diraction] = document.querySelector("#select__sort").value.split("-");
 
-    return diraction === "up"
-        ? friends.sort((a, b) => compareKey(a, b, key))
-        : friends.sort((a, b) => compareKey(b, a, key));
+    return diraction === "up" ? sortUp(friends, key) : sortDown(friends, key);
 }
 
 function filterCards(friends) {
