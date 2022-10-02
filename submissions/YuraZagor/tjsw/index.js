@@ -1,6 +1,6 @@
-const manNamesArr = ['Vasil', 'Yurij', 'Zahar', 'Taras', 'Olexiy', 'Oleg', 'Mykola', 'Sashko', 'Sergij', 'Bohdan']
-const womanNamesArr = ['Hanna', 'Helena', 'Vasilisa', 'Yulya', 'Oksana', 'Olena', 'Olga', 'Myroslava', 'Svitlana', 'Bohdana']
-const animalNamesArr = ['Joy', 'Happy', 'Lucky', 'Puffy']
+const manNamesArr = ['Vasil', 'Yurij', 'Zahar', 'Taras', 'Olexiy', 'Oleg', 'Mykola', 'Sashko', 'Sergij', 'Bohdan'];
+const womanNamesArr = ['Hanna', 'Helena', 'Vasilisa', 'Yulya', 'Oksana', 'Olena', 'Olga', 'Myroslava', 'Svitlana', 'Bohdana'];
+const animalNamesArr = ['Joy', 'Happy', 'Lucky', 'Puffy'];
 
 let catSay = 'meau';
 let dogSay = 'woufff';
