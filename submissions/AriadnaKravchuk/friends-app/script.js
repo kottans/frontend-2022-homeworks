@@ -90,7 +90,7 @@ fetch("https://randomuser.me/api/?results=21&inc=dob,gender,name,phone,picture")
 
         document.querySelector(".search__input")
             .addEventListener("keyup", () => {
-                friendsCopy = searchByFullname(friends);
+                friendsCopy = searchByFullname(friendsCopy);
                 createFriendsCards(friendsCopy);
             });
         document.querySelector("#select__filter")
