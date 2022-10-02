@@ -1,10 +1,13 @@
-const backMedia = '/media/back.png';
+const backMedia = './media/back.png';
+
+const getMyCardMediaByTitle = (title) => `./media/${title}.png`;
 
 let previousCard = null;
 
 class MyCard {
-    constructor(media) {
-        this.media = media;
+    constructor(title) {
+        this.title = title;
+        this.media = getMyCardMediaByTitle(title);
 
         const cardEl = document.createElement('div');
         cardEl.className = 'memorygame-card';
@@ -12,31 +15,36 @@ class MyCard {
         this.cardEl = cardEl;
     }
 
-    appendCard() {
+    appendCard(parentEl) {
+        this.cardEl.innerHTML = this.getCardHTML();
+        this.cardEl.onclick = () => this.cardOnClick();
+
+        parentEl.append(this.cardEl);
+    }
+
+    isCardFound() {
+        return this.cardEl.classList.contains('cardFound');
+    }
+
+    getCardHTML() {
         const cardMedia = this.media;
 
-        const front = document.createElement('img');
-        front.className = 'front';
-
-        const back = document.createElement('img');
-        back.className = 'back';
-
-        front.src = cardMedia;
-        back.src = backMedia;
-
-        this.cardEl.append(front);
-        this.cardEl.append(back);
-        section.append(this.cardEl);
-
-        this.cardEl.onclick = () => this.cardOnClick();
+        return `
+            <img class="front" src="${cardMedia}" alt="${this.title}" />
+            <img class="back" src="${backMedia}" alt="back side" />
+        `
     }
 
     cardOnClick() {
+        if (this.isCardFound()) {
+            return;
+        }
+
         const currentCard = this;
         currentCard.cardFlip();
 
         if (previousCard) {
-            const isMatch = currentCard.media == previousCard.media;
+            const isMatch = currentCard.title === previousCard.title;
 
             if (isMatch) {
                 currentCard.cardFound();
@@ -70,8 +78,6 @@ class MyCard {
     }
 }
 
-const section = document.querySelector('.memorygame-area');
-
 const cardTitles = [
     'banana',
     'guitar',
@@ -83,13 +89,18 @@ const cardTitles = [
 
 const doubleArrayItems = (arr) => [...arr, ...arr];
 const shuffleArray = (arr) => arr.sort(() => 0.5 - Math.random());
-const getMyCardsFromTitles = (titles) =>
-    titles.map((title) => new MyCard(`/media/${title}.png`));
 
-const appendCards = (cards) => cards.forEach((card) => card.appendCard());
+const generateMyCardsFromTitels = (titles) => titles.map((title) => new MyCard(title));
+
+const section = document.querySelector('.memorygame-area');
+const appendCards = (cards) => {
+    const fragment = new DocumentFragment();
+    cards.forEach((card) => card.appendCard(fragment));
+    section.append(fragment);
+}
 
 appendCards(
-    getMyCardsFromTitles(
+    generateMyCardsFromTitels(
         shuffleArray(
             doubleArrayItems(
                 cardTitles
