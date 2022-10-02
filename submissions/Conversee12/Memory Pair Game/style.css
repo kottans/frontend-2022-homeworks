@@ -11,9 +11,7 @@
   user-select: none;
 }
 
-html,
 body {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   background-image: url("img/main.jpg");
@@ -44,8 +42,8 @@ body {
 
 .memory__card {
   border: 3px solid rgb(64, 19, 106);
-  width: calc(25% - 10px);
-  height: calc(33.333% -10px);
+  min-width: calc(25% - 10px);
+  min-height: calc(33.333% -10px);
   position: relative;
   margin: 5px;
   transform: scale(1);
@@ -110,7 +108,7 @@ body {
 
 .footer {
   align-self: center;
-  margin-bottom: 5px;
+  margin-top: 25px;
 }
 
 .footer a {
@@ -122,15 +120,20 @@ body {
 }
 
 @media (max-width:600px) {
+  html {
+    height: 100%;
+    display: flex;
+    align-items: center
+  }
 
   .container {
     height: 300px;
     width: 350px;
-    margin-top: 100px;
   }
 
   .header {
-    margin-top: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   .header p {
@@ -138,7 +141,7 @@ body {
   }
 
   .footer {
-    margin-bottom: 230px;
+    margin-top: 15px;
   }
 
   .footer a {
