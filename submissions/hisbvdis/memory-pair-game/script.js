@@ -53,7 +53,7 @@ function flipCard(cardInner) {
 
 
 function checkFlippedCards() {
-  score = score + 1;
+  score++;
 
   const isSame = flippedCards
     .map((elem) => elem.querySelector(".card__img").alt)
