@@ -16,6 +16,9 @@ const row1 = cellY + spriteRepositioningY;
 const row2 = 2*cellY + spriteRepositioningY;
 const row3 = 3*cellY + spriteRepositioningY;
 const rangesY = [row1, row2, row3];
+const bugSprite = 'images/enemy-bug.png';
+const playerSprite = 'images/char-boy.png';
+
 
 function Character (x, y, sprite) {
     this.x = x;
@@ -52,7 +55,7 @@ Enemy.prototype.checkColision = function(checked){
 
 function addBug() {
     rangesY.forEach ( (levelMark)=>  allEnemies
-    .push( new Enemy(0, levelMark, 'images/enemy-bug.png', allSpeeds[Math.floor(Math.random()*3)] )) 
+    .push( new Enemy(0, levelMark, bugSprite, allSpeeds[Math.floor(Math.random()*3)] )) 
     )
 };
 
@@ -103,6 +106,7 @@ document.addEventListener('keyup', function(e) {
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
-const player = new Player ( playerStartX, playerStartY, 'images/char-boy.png' ); 
+const player = new Player ( playerStartX, playerStartY, playerSprite ); 
+
 addBug()
 
