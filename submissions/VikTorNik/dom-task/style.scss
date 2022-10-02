@@ -1,10 +1,21 @@
-@import "null_style.scss";
-
-body {
-    height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+* {
+    margin: 0;
 }
+
+*:focus {
+    outline: none;
+}
+
+$color-back-header: rgb(68, 202, 206);
+$color-text-header: rgb(110, 251, 240);
+$color-menu-dark: rgb(6, 61, 63);
+$color-menu-item: rgb(29, 153, 157);
+$color-menu-hover-item: rgb(10, 110, 100);
+$color-menu-text: rgb(156, 250, 242);
+$color-menu-hover-text: rgb(240, 209, 56);
+$color-main: rgb(243, 221, 161);
+$color-table-title: rgb(242, 212, 102);
+$color-table-item: rgb(225, 205, 134);
 
 .wrapper {
     display: grid;
@@ -12,98 +23,125 @@ body {
         "header header"
         "nav main"
         "footer footer";
-    grid-template-rows: 50px 1fr 50px;
-    grid-template-columns: 300px 1fr;
+    grid-template-rows: 0.8fr 12fr 0.6fr;
+    grid-template-columns: 1fr 4fr;
     height: 100vh;
+    font: 1.6rem Arial, Helvetica, sans-serif;
 }
 
-#pageHeader {
+#user-pageHeader {
     grid-area: header;
 }
 
-#pageNav {
+#user-pageNav {
     grid-area: nav;
 }
 
-#pageMain {
+#user-pageMain {
     grid-area: main;
 }
 
-#pageFooter {
+#user-pageFooter {
     grid-area: footer;
 }
 
 .navigation {
-    background-color: rgb(6, 61, 63);
-    color: rgb(156, 250, 242);
+    background-color: $color-menu-dark;
+    color: $color-menu-text;
     font-weight: 700;
-}
-
-.nav__div {
-    display: block;
 }
 
 .nav__div-menu {
     cursor: pointer;
-    line-height: 20px;
-    padding: 25px 25px;
-    border-width: 15px 10px 0px 10px;
-    border-color: rgb(6, 61, 63);
-    border-style: solid;
-    background-color: rgb(22, 169, 174);
+    line-height: 1.8rem;
+    padding: 2.5rem;
+    border: 1.6rem $color-menu-dark solid;
+    background-color: $color-menu-item;
 }
 
 .nav__div-menu:hover {
-    color: rgb(240, 209, 56);
-    background-color: rgb(10, 110, 100);
+    color: $color-menu-hover-text;
+    background-color: $color-menu-hover-item;
 }
 
 .main {
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(243, 221, 161);
-    font-size: 20px;
-    font-weight: 600;
-    padding: 15px;
+    background-color: $color-main;
+    font-size: 1.5rem;
+    padding: 1.4rem;
 }
 
-.footer,
-.header {
-    background-color: rgb(68, 202, 206);
-    height: 50px;
-    font-weight: 700;
-    text-shadow: 3px 3px 10px rgb(7, 68, 64);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.main__td-title {
+    background: $color-table-title;
+    color: $color-menu-dark;
+    font-weight: 600;
+    padding: 1.4rem;
+    width: 15%;
+    vertical-align: top;
+}
+
+.main__td-text {
+    background: $color-table-item;
+    padding: 1.4rem;
+    width: 85%;
 }
 
 .header {
     text-transform: uppercase;
-    font-size: 30px;
-    color: rgb(110, 251, 240);
+    font-size: 2.6rem;;
+    color: $color-text-header;
 }
 
-.git:hover {
-    color: rgb(26, 41, 215);
+.footer,
+.header {
+    background-color: $color-back-header;
+    font-weight: 700;
+    text-shadow: 3px 3px 10px $color-menu-dark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/** Оформлення таблиці */
-table {    
-    width: 100%;
+.git {
+    text-decoration: none;
 }
 
-.main__td-title {    
-    width: 200px;
-    background:  rgb(242, 212, 102);
-    color: rgb(6, 61, 63);
-    padding: 20px;
-
+.git:hover,
+.git:focus {
+    color: white;
 }
 
-.main__td-text {    
-    background:  rgb(225, 205, 134);
-    padding: 20px;    
+@media (max-width: 480px) {
+    html {
+        font-size: 38%;
+    }
 }
 
+@media (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 47%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    html {
+        font-size: 54%;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+    html {
+        font-size: 60%;
+    }
+}
+
+@media (min-width: 1201px) {
+    html {
+        font-size: 70%;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    html {
+        font-size: 60%;
+    }
+}

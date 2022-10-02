@@ -1,123 +1,123 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const listBoosterCablesTitle = {
-        menu: "Назва",
+    const NAME_HEADERS_CABLES = {
+        name: "Назва",
         title: "Артикул",
-        clamps: "Крокодили",
+        clamps: "Тип крокодилів",
         areaCopper: "Переріз кабелю",
         length: "Довжина",
         amperage: "Струм",
-        image: "Зображення",
         desciptionOne: "Характеристики",
         desciptionTwo: "",
         desciptionThree: "",
+        price: "Ціна",
     };
 
-    const listBoosterCables = {
+    const LIST_DESCRIPTION_CABLES = {
         plasticSmallKG10: {
-            menu: "Пластик - 10 кв.мм - 2,8 м",
+            name: "Пластик - 10 кв.мм - 2,8 м",
             title: "Мідь 10 кв.мм - 2,8 м - 600А",
             clamps: "Пластикові, середні",
             areaCopper: "10 кв.мм",
             length: "2.8 метри",
             amperage: "600А",
-            image: "",
             desciptionOne: "Мідь повного перерізу 10 квадратів. Товарний вигляд – якісний товар – приємно взяти до рук. У комплекті - сучасна опрацьована пам'ятка з використання докладних пояснень і покрокових інструкцій. Мають малу вагу і не займають багато місця у багажнику. Основне призначення – легкові авто.",
             desciptionTwo: "Довжина кожного кабелю від одного крокодила до іншого крокодила - 2,8 метри. Кабель - КГ 1*10 - всередині міжний багатожильний провід загальним перетином 10 кв.мм., а зовні гумове обплетення, що не дубіє до -40 градусів. Виробник кабелю – завод КРОК (Запоріжжя). Більшість китайських проводів - товста оплітка, але тонкий кабель усередині і замість міді - пофарбований алюміній.",
             desciptionThree: "Кабель опресований мідними мідними наконечниками + термоусадка з клеєм для запобігання окисленню. Перемичка між половинками «крокодилів» – мідна плетінка. Вона забезпечуючи велику площу контакту у будь-якій формі клем автомобіля. Також це забезпечує рівномірний розподіл струму. Крокодили повністю ізольовані, що робить прикурювання помітно безпечнішим і мінімізує ризики короткого замикання.",
+            price: "830 грн.",
         },
         plasticBigKG16_3: {
-            menu: "Пластик - 16 кв.мм - 3,0 м",
+            name: "Пластик - 16 кв.мм - 3,0 м",
             title: "Мідь 16 кв.мм - 3,0 м - 1000А",
             clamps: "Пластикові, великі",
             areaCopper: "16 кв.мм",
             length: "3.0 метри",
             amperage: "1000А",
-            image: "",
             desciptionOne: "Мідь повного перерізу 16 квадратів. Товарний вигляд – якісний товар – приємно взяти до рук. У комплекті - сучасна опрацьована пам'ятка з використання докладних пояснень і покрокових інструкцій. Мають малу вагу і не займають багато місця у багажнику. Основне призначення – потужні легкові авто, джипи, мікроавтобуси.",
             desciptionTwo: "Довжина кожного кабелю від одного крокодила до іншого крокодила - 3,0 метри. Кабель - КГ 1*16 - всередині міжний багатожильний провід загальним перетином 10 кв.мм., а зовні гумове обплетення, що не дубіє до -40 градусів. Виробник кабелю – завод КРОК (Запоріжжя). Більшість китайських проводів - товста оплітка, але тонкий кабель усередині і замість міді - пофарбований алюміній.",
             desciptionThree: "Кабель опресований мідними мідними наконечниками + термоусадка з клеєм для запобігання окисленню. Перемичка між половинками «крокодилів» – мідна плетінка. Вона забезпечуючи велику площу контакту у будь-якій формі клем автомобіля. Також це забезпечує рівномірний розподіл струму. Крокодили повністю ізольовані, що робить прикурювання помітно безпечнішим і мінімізує ризики короткого замикання.",
+            price: "1220 грн.",
         },
         plasticBigKG25_4: {
-            menu: "Пластик - 25 кв.мм - 4,0 м",
+            name: "Пластик - 25 кв.мм - 4,0 м",
             title: "Мідь 25 кв.мм - 4,0 м - 1400А",
             clamps: "Пластикові, великі",
             areaCopper: "25 кв.мм",
             length: "4.0 метри",
             amperage: "1400А",
-            image: "",
             desciptionOne: "Мідь повного перерізу 25 квадратів. Товарний вигляд – якісний товар – приємно взяти до рук. У комплекті - сучасна опрацьована пам'ятка з використання докладних пояснень і покрокових інструкцій. Мають малу вагу і не займають багато місця у багажнику. Основне призначення – СТО, джипи, автобуси, вантажна та військова техніка.",
             desciptionTwo: "Довжина кожного кабелю від одного крокодила до іншого крокодила - 4,0 метри. Кабель - КГ 1*16 - всередині міжний багатожильний провід загальним перетином 10 кв.мм., а зовні гумове обплетення, що не дубіє до -40 градусів. Виробник кабелю – завод КРОК (Запоріжжя). Більшість китайських проводів - товста оплітка, але тонкий кабель усередині і замість міді - пофарбований алюміній.",
             desciptionThree: "Кабель опресований мідними мідними наконечниками + термоусадка з клеєм для запобігання окисленню. Перемичка між половинками «крокодилів» – мідна плетінка. Вона забезпечуючи велику площу контакту у будь-якій формі клем автомобіля. Також це забезпечує рівномірний розподіл струму. Крокодили повністю ізольовані, що робить прикурювання помітно безпечнішим і мінімізує ризики короткого замикання.",
+            price: "2050 грн.",
         },
         metalKG16_3: {
-            menu: "Метал - 16 кв.мм - 3,0 м",
+            name: "Метал - 16 кв.мм - 3,0 м",
             title: "Мідь 16 кв.мм - 3,0 м - 1000А",
             clamps: "Металеві",
             areaCopper: "16 кв.мм",
             length: "3.0 метри",
             amperage: "1000А",
-            image: "",
             desciptionOne: "Мідь повного перерізу 16 квадратів. Товарний вигляд – якісний товар – приємно взяти до рук. У комплекті - сучасна опрацьована пам'ятка з використання докладних пояснень і покрокових інструкцій. Мають малу вагу і не займають багато місця у багажнику. потужні легкові авто, джипи, мікроавтобуси.",
             desciptionTwo: "Довжина кожного кабелю від одного крокодила до іншого крокодила - 3,0 метри. Кабель - КГ 1*16 - всередині міжний багатожильний провід загальним перетином 10 кв.мм., а зовні гумове обплетення, що не дубіє до -40 градусів. Виробник кабелю – завод КРОК (Запоріжжя). Більшість китайських проводів - товста оплітка, але тонкий кабель усередині і замість міді - пофарбований алюміній.",
             desciptionThree: "Кабель опресований мідними мідними наконечниками + термоусадка з клеєм для запобігання окисленню. Перемичка між половинками «крокодилів» – мідна плетінка. Вона забезпечуючи велику площу контакту у будь-якій формі клем автомобіля. Також це забезпечує рівномірний розподіл струму. Крокодили повністю ізольовані, що робить прикурювання помітно безпечнішим і мінімізує ризики короткого замикання.",
+            price: "1070 грн.",
         },
     }
 
-    function visibleCurrentProduct(item) {
-        let parentDiv = document.createElement("div");
-        parentDiv.className = "main__div";
-        document.querySelector(".main__div").replaceWith(parentDiv);
-        let currentTable = ['<table>'];
-        [item].map(elem => {
-            for (let [key, value] of Object.entries(elem)) {
-                if (key != "menu") {
-                    currentTable.push(`<tr><td class="main__td-title">${listBoosterCablesTitle[key]}</td><td class="main__td-text">${value}</td></tr>`);
-                }
-            }
-        }
-        )
-        currentTable.push('</table>');
-        parentDiv.innerHTML = currentTable.join('');
+    function showHeader() {
+        const currentDiv = document.createElement("div");
+        currentDiv.innerHTML = "<p>Стартові пускові дроти прикурювання</p>";
+        document.querySelector(".header__div").append(currentDiv);
     }
 
-    function visibleMenu() {
-        [listBoosterCables].map(elem => {
-            let currentDiv;
-            for (let [key, value] of Object.entries(elem)) {
-                currentDiv = document.createElement("div");
+    function showMenu() {
+        [LIST_DESCRIPTION_CABLES].map(menuItem => {
+            for (let [fieldMenu, nameMenu] of Object.entries(menuItem)) {
+                const currentDiv = document.createElement("div");
                 currentDiv.className = "nav__div-menu";
-                currentDiv.innerText = value.menu;
-                /* own variable to update the output when a key is pressed */
-                currentDiv.dataset.typeProduct = key;
+                currentDiv.innerText = nameMenu.name;
+                /* custom variable to update the output when a menu is selected */
+                currentDiv.dataset.typeProduct = fieldMenu;
                 document.querySelector(".nav__div").append(currentDiv);
             }
         }
         )
     }
 
-    function visibleFooter() {
-        let currentDiv = document.createElement("div");
+    function showCurrentProduct(currentCable) {
+        const parentDiv = document.createElement("div");
+        parentDiv.className = "main__div";
+        document.querySelector(".main__div").replaceWith(parentDiv);
+        const currentTable = ["<table>"];
+        [currentCable].map(rowDescription => {
+            for (let [header, description] of Object.entries(rowDescription)) {
+                if (header != "menu") {
+                    currentTable.push(`<tr><td class="main__td-title">${NAME_HEADERS_CABLES[header]}
+                    </td><td class="main__td-text">${description}</td></tr>`);
+                }
+            }
+        }
+        )
+        currentTable.push("</table>");
+        parentDiv.innerHTML = currentTable.join('');
+    }
+
+    function showFooter() {
+        const currentDiv = document.createElement("div");
         currentDiv.innerHTML = '<p>2022 • Document Object Model by <a class="git" href="https://github.com/VikTorNik" target="_blank">VikTorNik</a> </p>';
         document.querySelector(".footer__div").append(currentDiv);
     }
 
-    function visibleHeader() {
-        let currentDiv = document.createElement("div");
-        currentDiv.innerHTML = '<p>Стартові пускові дроти прикурювання</p>';
-        document.querySelector(".header__div").append(currentDiv);
-    }
+    showHeader();
+    showMenu();
+    showFooter();
 
-    visibleHeader()
-    visibleMenu();
-    visibleFooter();
-
-    [...document.querySelectorAll(".nav__div-menu")].map(elem => {
-        elem.addEventListener("click", (event) => {
-            const target = event.target.dataset.typeProduct
-            visibleCurrentProduct(listBoosterCables[target]);
+    [...document.querySelectorAll(".nav__div-menu")].map(selectMenuItem => {
+        selectMenuItem.addEventListener("click", ({ target }) => {
+            const currentProduct = target.dataset.typeProduct;
+            showCurrentProduct(LIST_DESCRIPTION_CABLES[currentProduct]);
         });
-    })
+    });
 
     document.querySelector(".nav__div-menu").click();
 });
