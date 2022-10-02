@@ -34,7 +34,7 @@ function renderGrid() {
           <div class="card__side  card__side--front  flipper__side  flipper__side--front"  data-card-front>
             ?
           </div>
-          <div class="card__side  card__side--front  flipper__side  flipper__side--back">
+          <div class="card__side  card__side--back  flipper__side  flipper__side--back">
             <img class="card__img" src="img/${option}.png" width="100" height="100" alt="${option}"/>
           </div>
         </div>

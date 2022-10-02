@@ -1,6 +1,6 @@
 .flipper {
-  block-size: 100px;
-
+  aspect-ratio: 1 / 1;
+  
   perspective: 1000px;
 }
 
