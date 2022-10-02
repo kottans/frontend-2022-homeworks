@@ -12,7 +12,7 @@ const playerStartX = 2*cellX;
 const playerStartY = 5*cellY + spriteRepositioningY ;
 const fieldWidth = 5*cellX;
 const fieldHight = 5*cellY;
-const rangesY = [1, 2, 3].map(item => indexOf(item)*cellY+spriteRepositioningY);
+const rangesY = [1, 2, 3].map(item => item*cellY+spriteRepositioningY);
 const bugSprite = 'images/enemy-bug.png';
 const playerSprite = 'images/char-boy.png';
 
@@ -38,16 +38,15 @@ Enemy.prototype.update = function(dt){
         this.x = enemyRestartX;
         this.speedX = allSpeeds[Math.floor(Math.random()*3)];
     };
-    this.checkColision(target)
+    this.checkColision(player)
 };
-Enemy.prototype.checkColision = function(target){
-    
-    if (this.y === target.y){
-        if ((this.x - target.x < collisionOffset ) && (target.x - this.x < collisionOffset )) {
-            target.x = playerStartX;
-            target.y = playerStartY;
-        };    
-    };
+Enemy.prototype.checkColision = function(target){   
+
+    if ((this.x - target.x < collisionOffset ) && (target.x - this.x < collisionOffset )) {
+        target.x = playerStartX;
+        target.y = playerStartY;
+    };    
+
 };
 
 function addBug() {
