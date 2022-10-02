@@ -8,7 +8,8 @@
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 class Creature {
-  constructor(name, gender, saying, legs) {
+  constructor(species, name, gender, saying, legs) {
+    this.species = species;
     this.name = name;
     this.saying = saying;
     this.gender = gender;
@@ -35,25 +36,22 @@ class Creature {
 //
 class Human extends Creature {
   constructor(name, gender, saying, legs = 2) {
-    super(name, gender, saying, legs);
-    this.species = "human";
+    super("human", name, gender, saying, legs);
   }
 }
 class Animal extends Creature {
-  constructor(name, gender, saying, legs = 4) {
-    super(name, gender, saying, legs);
+  constructor(species, name, gender, saying, legs = 4) {
+    super(species, name, gender, saying, legs);
   }
 }
 class Cat extends Animal {
   constructor(name, gender, saying, legs) {
-    super(name, gender, saying, legs);
-    this.species = "cat";
+    super("cat", name, gender, saying, legs);
   }
 }
 class Dog extends Animal {
   constructor(name, gender, legs) {
-    super(name, gender, legs);
-    this.species = "dog";
+    super("dog", name, gender, legs);
   }
 }
 class Man extends Human {
