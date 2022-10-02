@@ -53,8 +53,8 @@ function checkFlippedCards() {
   score++;
 
   const isSame = flippedCards
-    .map((elem) => elem.querySelector(".card__img").alt)
-    .every((name, _, arr) => name === arr[0]);
+    .map((card) => card.querySelector(".card__img").src)
+    .every((src, _, arr) => src === arr[0]);
   
   setTimeout(() => {
     if (isSame) {
