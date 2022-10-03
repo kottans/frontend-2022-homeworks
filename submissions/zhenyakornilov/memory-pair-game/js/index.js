@@ -9,7 +9,7 @@ const states = {
   currentCardPair: [],
   totalTries: 0,
 };
-const allCards = shuffleCards([...cards, ...cards]);
+let allCards = shuffleCards([...cards, ...cards]);
 renderCards(allCards, cardsMenu);
 
 function shuffleCards(cardsArr) {
@@ -67,6 +67,7 @@ function restartGame() {
   states.secondFlippedCard = null;
   states.totalTries = 0;
   totalTriesCounter.innerHTML = `Total tries: ${states.totalTries}`
+  allCards = shuffleCards([...cards, ...cards]);
   renderCards(allCards, cardsMenu);
 }
 
