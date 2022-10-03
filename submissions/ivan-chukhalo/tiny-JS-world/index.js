@@ -57,7 +57,7 @@ let michaelScott = new Human ('Michael Scott', 'Male', [janLevinson], "That's wh
 let theirDog = new Dog ('Sobachka', 'Female', [janLevinson]);
 let theirCat = new Cat ('Kytsya', 'Female', [janLevinson, theirDog]);
 
-print(janLevinson.getInfo());
-print(michaelScott.getInfo());
-print(theirDog.getInfo());
-print(theirCat.getInfo());
+const listOfCreatures = [janLevinson, michaelScott, theirDog, theirCat];
+listOfCreatures.forEach((el) => {
+  print(el.getInfo());
+});
