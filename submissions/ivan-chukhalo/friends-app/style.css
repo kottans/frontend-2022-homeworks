@@ -103,6 +103,7 @@ body{
 
 .btn-filter:hover{
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .sex-options{
@@ -113,6 +114,7 @@ body{
 
 .sex-option:hover label{
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .main{
