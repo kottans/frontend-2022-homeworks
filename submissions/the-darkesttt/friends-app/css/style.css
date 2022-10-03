@@ -10,6 +10,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #e0dff5;
     overflow-y: scroll;
@@ -17,7 +21,7 @@ body {
 
 .wrapper {
     max-width: 1300px;
-    margin: 50px auto;
+    margin: 0px auto;
     padding: 0 15px;
     display: flex;
     justify-content: flex-start;
@@ -28,7 +32,7 @@ body {
 
 .sort-bar,
 .list-item {
-    box-shadow: 4px 4px 26px 0px rgba(141, 134, 201, 0.2);
+    box-shadow: 5px 4px 26px 2px rgba(141, 134, 201, 0.2);
 }
 
 .sort-bar {
@@ -38,6 +42,7 @@ body {
     padding: 30px;
     text-align: center;
     position: fixed;
+    margin-top: 50px;
 }
 
 .sort-bar__inner {
@@ -88,8 +93,16 @@ body {
 
 /* users --------------------------------------- */
 
-.users-list {
+.content {
     flex: 0 1 66%;
+    margin-left: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.users-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -97,13 +110,12 @@ body {
     width: 100%;
     list-style: none;
     gap: 30px;
-    margin-left: 30%;
-    margin-bottom: 15px;
+    margin-top: 50px;
 }
 
 .list-item {
     width: 250px;
-    min-height: 350px;
+    min-height: 370px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -146,6 +158,46 @@ body {
 .list-item--hide {
     display: none;
 }
+
+/* pagination ------------------------------- */
+
+.pagination-list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    gap: 8px;
+}
+
+.pagination-list li {
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border: 1px solid var(--accent-color);
+    border-radius: 3px;
+    
+}
+
+.pagination-list li a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.pagination-list li.selected-page a {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.pagination-list li a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* media queries ---------------------------- */
 
 @media screen and (max-width: 1024px) {
     .users-list {
@@ -231,8 +283,11 @@ body {
         display: none;
     }
 
-    .users-list {
+    .content {
         margin-left: 0;
+    }
+
+    .users-list {
         justify-content: center;
     }
 }
