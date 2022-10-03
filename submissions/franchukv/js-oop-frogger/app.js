@@ -20,17 +20,17 @@ const ENEMIES_CONF = {
         width: 80
     },
     enemies: [{
-        x: 0,
+        x: -80,
         y: 55,
         speed: 280
     },
     {
-        x: 0,
+        x: -80,
         y: 135,
         speed: 150
     },
     {
-        x: 0,
+        x: -80,
         y: 220,
         speed: 200
     }]
@@ -70,7 +70,7 @@ Player.prototype.handleInput = function (key) {
 
 Player.prototype.update = function () {
     if (this.y < 0) {
-        this.resetPlayerPosition(PLAYER_CONF);
+        setTimeout(() => { this.resetPlayerPosition(PLAYER_CONF); }, 200);
     }
 };
 
@@ -104,7 +104,7 @@ Enemy.prototype.update = function (dt) {
     this.checkCollision();
 
     if (this.x >= CANVAS_WIDTH) {
-        this.x = 0;
+        this.x = -80;
     }
 
     this.x += this.speed * dt;
