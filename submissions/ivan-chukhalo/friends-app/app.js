@@ -46,7 +46,6 @@ let users;
 let filteredUsers;
 const ASIDE = document.getElementById('aside');
 const CARD_CONTAINER = document.querySelector('#main');
-// buttons and fields for sorting and filtering
 const BTN_SORT_BY_AGE_ASCENDING = document.getElementById('btn__sort-age_ascending');
 const BTN_SORT_BY_AGE_DESCENDING = document.getElementById('btn__sort-age_descending');
 const BTN_SORT_BY_NAME_ALPHA = document.getElementById('btn__sort-name_alphabetical');
