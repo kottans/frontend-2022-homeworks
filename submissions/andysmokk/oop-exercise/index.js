@@ -112,8 +112,8 @@ const batMan = new SuperHuman(
   "I can fly"
 );
 
-const inhabitantes = [man, cat, catWoman, woman, batMan, dog];
+const inhabitants = [man, cat, catWoman, woman, batMan, dog];
 
-inhabitantes.forEach((inhabitant) =>
+inhabitants.forEach((inhabitant) =>
   print(inhabitant.showPropertiesInhabitant().join("; "))
 );
