@@ -129,18 +129,27 @@ function getSortedUsersByAge(incomeUsers, eventTarget) {
 
 function getFilteredByName(incomeUsers){
     let filterValueName = INPUT_NAME_FIELD.value;
-    let filteredByNameUsers = incomeUsers.filter(el => {
-        return el.name.first.toLowerCase().includes(filterValueName.toLowerCase()) || el.name.last.toLowerCase().includes(filterValueName.toLowerCase());
-    });
-    return filteredByNameUsers;
+    if (filterValueName){
+        let filteredByNameUsers = incomeUsers.filter(el => {
+            return el.name.first.toLowerCase().includes(filterValueName.toLowerCase()) || el.name.last.toLowerCase().includes(filterValueName.toLowerCase());
+        });
+        return filteredByNameUsers;
+    } else{
+        return users;
+    }
 }
 
 function getFilteredByAge(incomeUsers){
     let filterValueAge = INPUT_AGE_FIELD.value;
-    let filteredByAgeUsers = incomeUsers.filter(el => {
-        return el.dob.age === +filterValueAge;
-    });
-    return filteredByAgeUsers;
+    if (filterValueAge){
+        let filteredByAgeUsers = incomeUsers.filter(el => {
+            return el.dob.age === +filterValueAge;
+        });
+        return filteredByAgeUsers;
+    }
+    else {
+        return users;
+    }
 }
 
 function getFilteredBySex(incomeUsers){
