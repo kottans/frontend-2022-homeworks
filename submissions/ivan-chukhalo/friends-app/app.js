@@ -37,8 +37,7 @@ class User {
         CARD.appendChild(CARD_NAME);
         CARD.appendChild(AGE_SECTION);
         CARD.appendChild(SEX_SECTION);
-        CARD.appendChild(CARD_PHONE);
-        
+        CARD.appendChild(CARD_PHONE);        
         return CARD;
     }
 }
@@ -72,14 +71,18 @@ function renderCards(arrayOfUsers){
 
 const URL_API = 'https://randomuser.me/api/?results=24';
 const fetchData = async () => {
-    const response = await fetch(URL_API);
-    const jsonResponse = await response.json();
-    users = await jsonResponse.results;
-    filteredUsers = [...users];
-    renderCards(users);
+    try{
+        const response = await fetch(URL_API);
+        const jsonResponse = await response.json();
+        users = await jsonResponse.results;
+        filteredUsers = [...users];
+        renderCards(users);
+    }
+    catch (error){
+        alert('There is something wrong. Refresh the page or press "New query" button.');
+    }
 }
 fetchData();
-
 
 function getSortedUsersByName(incomeUsers, eventTarget) {
     console.log(incomeUsers);
@@ -101,7 +104,6 @@ function getSortedUsersByName(incomeUsers, eventTarget) {
         filteredUsers = [...sortedByNameUsers].reverse();
     }
     return filteredUsers;
-    
 }
 
 function getSortedUsersByAge(incomeUsers, eventTarget) {
@@ -123,7 +125,6 @@ function getSortedUsersByAge(incomeUsers, eventTarget) {
         filteredUsers = [...sortedByAgeUsers].reverse();
     }
     return filteredUsers;
-    
 }
 
 function getFilteredByName(incomeUsers){
