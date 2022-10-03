@@ -41,13 +41,14 @@ Enemy.prototype.update = function(dt){
     };
     this.checkColision()
 };
-Enemy.prototype.checkColision = function(){   
+Enemy.prototype.checkColision = function(){ 
+    if (this.y === player.y) {
 
-    if ((this.x - this.player.x < collisionOffset ) && (this.player.x - this.x < collisionOffset )) {
-        this.player.x = playerStartX;
-        this.player.y = playerStartY;
-    };    
-
+        if ((this.x - player.x < collisionOffset ) && (player.x - this.x < collisionOffset )) {
+            player.x = playerStartX;
+            player.y = playerStartY;
+        };    
+    }; 
 };
 
 function addBug() {
