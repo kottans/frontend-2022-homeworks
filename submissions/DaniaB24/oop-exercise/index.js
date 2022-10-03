@@ -62,7 +62,6 @@ const man = new Man("Ron", "ahoj");
 const woman = new Woman("Hermione", "hiiii");
 
 const creatures = [cat, dog, man, woman];
-console.log(creatures);
 
 // ======== OUTPUT ========
 creatures.forEach((creature) => print(creature.say()));
