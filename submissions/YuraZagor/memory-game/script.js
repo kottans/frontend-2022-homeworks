@@ -1,27 +1,27 @@
 const cardsArr = [{
-		id: 'azazaaza',
-		image: './img/azazaaza.PNG',
+	id: 'bilka',
+	image: './img/bilka.PNG',
 	},{
-		id: 'bear',
-		image: './img/bear.PNG',
+	id: 'bear',
+	image: './img/bear.PNG',
 	},{
-		id: 'fox',
-		image: './img/fox.PNG',
+	id: 'fox',
+	image: './img/fox.PNG',
 	},{
-		id: 'nebryti-ta-negoleni',
-		image: './img/nebryti-ta-negoleni.PNG',
+	id: 'nebryti-ta-negoleni',
+	image: './img/nebryti-ta-negoleni.PNG',
 	},{
-		id: 'rabbits',
-		image: './img/rabbits.PNG',
+	id: 'rabbits',
+	image: './img/rabbits.PNG',
 	},{
-		id: 'tiger',
-		image: './img/tiger.PNG',
+	id: 'tiger',
+	image: './img/tiger.PNG',
 	},
 ];
 
 const container = document.querySelector('.container');
 const playAgainEl = document.getElementById('play--again');
-playAgainEl.addEventListener('click', app);
+playAgainEl.addEventListener('click', gameStart);
 
 randomArr = [...cardsArr.concat(cardsArr)];
 
@@ -29,7 +29,7 @@ function randomizeCards(){
 	return randomArr.sort(function() { return 0.5 - Math.random() })
 };
 
-function gameStart() {
+function renderCards() {
 	randomArr.forEach((card)=>{
 		return (container.insertAdjacentHTML ("beforeend", `
 			<div class="card" data-definition = ${card.id} >
@@ -41,7 +41,7 @@ function gameStart() {
 	})
 };
 
-let gameArr = [];
+let openCards = [];
 let cardElem;
 let card1;
 let card2;
@@ -62,19 +62,19 @@ container.onclick = function(event) {
 };
 
 function showCard(cardElem){
-	if (gameArr.length > 1) { 
+	if (openCards.length > 1) { 
 		return;
 	};
 	cardElem.classList.add("open");
-	gameArr.push(cardElem);
-	if (gameArr.length > 1) {
+	openCards.push(cardElem);
+	if (openCards.length > 1) {
 		checkPair();
 	};	
 };
 
 function checkPair(){
-	card1 = gameArr[0];
-	card2 = gameArr[1];
+	card1 = openCards[0];
+	card2 = openCards[1];
 	setTimeout(() => {
 		card1.classList.remove("open");
 		card2.classList.remove("open");
@@ -83,9 +83,8 @@ function checkPair(){
 			card2.classList.add("hidden");
 			count ++;
 		};
-		gameArr = [];	
+		openCards = [];	
 		
-		console.log(count)
 		if (count === 6) {
 			count = 0;
 			playAgainEl.classList.remove('hide--message');
@@ -93,11 +92,11 @@ function checkPair(){
 	}, 700);
 };
 
-function app () {
+function gameStart () {
 	container.innerHTML = '';
 	playAgainEl.classList.add('hide--message');
-	randomizeCards()
-	gameStart()
+	randomizeCards();
+	renderCards();
 };
 
-app()
+gameStart()
