@@ -65,7 +65,7 @@ body{
     margin: 5px;
     width: 15vw;
     min-width: 100px;
-    text-align: center;
+    text-align: start;
     border: none;
     background-color: rgb(255, 255, 255);
     box-shadow: 1px 1px #d8c5be;
@@ -78,10 +78,8 @@ body{
 }
 
 .searchSelector option{
-    border-radius: 10px;
     color: #c0198b;
     font-size: 1.3rem;
-    text-align: center;
 }
 
 a{
@@ -141,7 +139,7 @@ a{
 }
 
 .errorImage{
-    width: 43vw;
+    width: 36vw;
 }
 
 @media (max-width: 1200px) {
