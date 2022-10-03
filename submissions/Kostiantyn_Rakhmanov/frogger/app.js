@@ -117,7 +117,7 @@ Player.prototype.handleInput = function (keyPress) {
 let allEnemies = [];
 
 ENEMY.locationsY.forEach(function (locationY) {
-    let enemy = new Enemy(CANVAS.start, locationY, ENEMY.speed.max);
+    let enemy = new Enemy(CANVAS.start, locationY, ENEMY.speed.max, PLAYER);
     allEnemies.push(enemy);
 });
 
