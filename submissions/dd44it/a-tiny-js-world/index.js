@@ -58,22 +58,20 @@ const dog = {
    "saying": "woof-woof"
 }
 
-const catWomen = {
-   "name": "Kira",
-   "species": "human",
-   "age": 35,
-   "hand": 2,
-   "leg": 2,
-   "gender": "female",
-   "saying": cat.saying
-}
+const catWomen = Object.create(cat);
+catWomen.name = "Kira";
+catWomen.species = "cat-human";
+catWomen.age = 35;
+catWomen.hand = 2;
+catWomen.leg = 2;
+catWomen.gender = "female";
 
 
 // ======== OUTPUT ========
 const listPerson = [man, women, cat, cow, catWomen, dog]
 
 function isHasHand(player){
-   return `${player.hand ? "I have " + player.hand + ' hand' : "I don't have hand but I have " + player.leg + " leg" }`
+   return `${player.hand ? "I have " + player.hand + ' hand and ' + player.leg + ' leg' : "I don't have hand but I have " + player.leg + " leg" }`
 }
 
 function showBioPlayer(player){
