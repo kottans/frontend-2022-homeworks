@@ -85,7 +85,6 @@ const fetchData = async () => {
 fetchData();
 
 function getSortedUsersByName(incomeUsers, eventTarget) {
-    console.log(incomeUsers);
     let sortedByNameUsers = [...incomeUsers].sort((previousEl, nextEl) => {;
         if (previousEl.name.first.toLowerCase() < nextEl.name.first.toLowerCase()) {
             return -1;
