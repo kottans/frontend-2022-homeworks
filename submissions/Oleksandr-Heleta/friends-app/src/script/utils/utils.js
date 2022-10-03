@@ -2,7 +2,8 @@ const ABC_Ascending = 'abcAscending',
     ABC_Descending = 'abcDescending',
     AGE_Ascending = 'ageAscending',
     AGE_Descending = 'ageDescending',
-    BOTH = 'both';
+    BOTH = 'both',
+    PAGE_LENGTH = 10;
 
 
 
@@ -34,6 +35,7 @@ export {
     ABC_Descending,
     AGE_Ascending,
     AGE_Descending,
-    BOTH
+    BOTH,
+    PAGE_LENGTH
 };
 

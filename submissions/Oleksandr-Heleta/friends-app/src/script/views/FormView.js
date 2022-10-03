@@ -119,7 +119,6 @@ class FormView extends BaseView {
              </div>
          </div>
          <button class="form-button button" type="reset" id="reset">reset</button>
-         <button class="form-button button" type="submit" id="submit">submit</button>
      </form > `;
 }
 

@@ -20,9 +20,10 @@ class CardsView extends BaseView {
     }
 
     render() {
-        if (this.cardsModel.error) {
+        const { error, attributes, pageButtons, page } = this.cardsModel;
+        if (error) {
 
-            return `<h3 class="loading">Error<br>${this.cardsModel.error} </h3>`;
+            return `<h3 class="loading">Error<br>${error} </h3>`;
         }
         if (this.cardsModel.attributes) {
             let str = '<ul class="friends">';
@@ -31,6 +32,13 @@ class CardsView extends BaseView {
                 .map((card) => card.render())
                 .join('');
             str += '</ul>'
+            if (page) {
+                str += '<div class="buttons-block">';
+                str += pageButtons.map(button => (button == page)
+                    ? `<button class="button active"  id=${button}>${button}</button>`
+                    : `<button class="button"  id=${button}>${button}</button>`).join('');
+                str += '</div>';
+            }
             return str;
         } else {
 
@@ -39,7 +47,12 @@ class CardsView extends BaseView {
     }
 
     afterRender() {
+        const buttons = document.querySelector(".buttons-block");
+        if (buttons) {
+            buttons.addEventListener('click', this.controller.onPage.bind(this.controller))
+        };
         window.onload = this.controller.onLoad.bind(this.controller);
+
     }
 
     afterUpdate() {

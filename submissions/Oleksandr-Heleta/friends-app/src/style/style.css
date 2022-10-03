@@ -62,6 +62,10 @@ a:visited {
 
 .main {
     grid-column: 2/3;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .friends {
@@ -69,6 +73,7 @@ a:visited {
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-items: center;
+    margin-bottom: 10px;
 }
 
 .button {
@@ -80,9 +85,23 @@ a:visited {
     transition: 0.3s;
 }
 
+.button.active,
 .button:focus,
 .button:hover {
     background-color: rgba(0, 113, 240, 0.7);
+}
+
+.buttons-block {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons-block .button {
+    margin: 5px 10px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
 }
 
 .loading {
@@ -143,4 +162,3 @@ a:visited {
         grid-template-columns: repeat(1, 1fr);
     }
 }
-

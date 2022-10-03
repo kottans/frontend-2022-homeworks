@@ -5,7 +5,8 @@ import {
     ABC_Descending,
     AGE_Ascending,
     AGE_Descending,
-    BOTH
+    BOTH,
+    PAGE_LENGTH
 } from "../utils/utils";
 
 
@@ -15,6 +16,9 @@ class CardsModel extends BaseModel {
         this.url = 'https://randomuser.me/api/?seed=foobar&results=100&inc=gender,name,email,dob,phone,picture,location';
         this.attributes = null;
         this.users = null;
+        this.pages = null;
+        this.page = null;
+        this.pageButtons = null;
         this.error = null;
         if (!CardsModel.instance) {
             CardsModel.instance = this;
@@ -25,7 +29,6 @@ class CardsModel extends BaseModel {
 
 
     createUserList() {
-
         fetch(this.url)
             .then((response, reject) => this.clear(response, reject))
             .then(response => response.json())
@@ -40,7 +43,6 @@ class CardsModel extends BaseModel {
     }
 
     setAtributes(users) {
-
         this.users = users.map((user) => {
             return {
                 image: user.picture.large,
@@ -61,9 +63,11 @@ class CardsModel extends BaseModel {
         if (!this.users) {
             this.createUserList()
         }
+        this.page = null;
         this.attributes = [... this.users];
         this.filter(name, minAge, maxAge, gender);
         this.sort(sort);
+        this.countPages();
         this.publish('changeData');
     }
 
@@ -107,6 +111,27 @@ class CardsModel extends BaseModel {
             default:
                 break;
         }
+    }
+    countPages() {
+        if (this.attributes.length > PAGE_LENGTH) {
+            this.pages = [...this.attributes];
+            this.page = 1;
+            const buttonsLength = Math.ceil(this.pages.length / PAGE_LENGTH);
+            this.pageButtons = new Array(buttonsLength).fill(0).map((button, index) => { return button = (index + 1) });
+            this.getPage(this.page, this.pages);
+
+        }
+    }
+    getPage(pageNumber, pages) {
+        const pageEnd = pageNumber * PAGE_LENGTH,
+            pageBegin = pageEnd - PAGE_LENGTH;
+        this.attributes = pages.slice(pageBegin, pageEnd);
+    }
+
+    switchPage(button) {
+        this.page = button;
+        this.getPage(button, this.pages);
+        this.publish('changeData');
     }
 }
 

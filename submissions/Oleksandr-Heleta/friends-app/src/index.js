@@ -20,6 +20,6 @@ class AppView {
     }
 }
 
-const appView = new AppView();
+var appView = new AppView();
 appView.render('root');
 
