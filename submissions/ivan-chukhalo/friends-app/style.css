@@ -8,10 +8,9 @@
 
 body{
     display: grid;
-    grid-template-columns: 0.2fr 0.8fr;
+    grid-template-columns: 1fr 4fr;
     grid-template-rows: 100px 1fr;
     grid-template-areas: "header header" "aside main";
-    padding-left: 20px;
     font-family: sans-serif;
 }
 
@@ -156,10 +155,31 @@ body{
     .card{
         width: calc(20% - 20px);
     }
+    .sorters__title{
+        font-size: 14px;
+    }
+    .sex{
+        font-size: 14px;
+    }
+    .sorters__sub-section{
+        width: 100%;
+    }
+    .sorters__title{
+        width: 100%;
+    }
+    .btn-filter{
+        width: 100%;
+    }
 }
 
 @media (max-width: 768px){
     .card{
         width: calc(33% - 20px);
+    }
+}
+
+@media (max-width: 425px){
+    .card__info{
+        font-size: 10px;
     }
 }
