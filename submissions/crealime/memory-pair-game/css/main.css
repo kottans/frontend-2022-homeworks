@@ -307,6 +307,11 @@ a:focus {
   text-align: center;
 }
 
+.footer__link {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
 @media screen and (orientation: portrait) {
   .num-12 {
     grid-template-columns: repeat(3, 1fr);

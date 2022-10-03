@@ -3,16 +3,24 @@ const TIMER = {
   time: 600,
   step: 50
 }
-const GAME_TIME = {
-  start: '',
-  end: '',
-  diff: '',
+const pair = []
+let numOfPairs = 0
+let pairCounter = 0
+let resultMessage = ''
+let main = document.querySelector('.main')
+
+class Time {
+  constructor() {
+    this.start = ''
+    this.end =  ''
+    this.diff =  ''
+  }
   setStartTime() {
     this.start = new Date().getTime() / 1000
-  },
+  }
   setEndTime() {
     this.end = new Date().getTime() / 1000
-  },
+  }
   setDiffTime() {
     const timeDiff = this.end - this.start
     let hours = String(Math.floor(timeDiff / 60 / 60))
@@ -22,16 +30,13 @@ const GAME_TIME = {
     let seconds = String(Math.floor(timeDiff % 60))
     if (seconds.length < 2) seconds = 0 + seconds
     this.diff = `${hours}:${minutes}:${seconds}`
-  },
+  }
   getDiffTime() {
     return this.diff
   }
 }
-const pair = []
-let numOfPairs = 0
-let pairCounter = 0
-let resultMessage = ''
-let main = document.querySelector('.main')
+
+const gameTime = new Time()
 
 function getStartPageTemplate() {
   return `
@@ -88,8 +93,8 @@ function getResultMessageTemplate(isBest) {
 
 function setTimeInLocaleStorage() {
   const bestTime = localStorage.getItem(`pairs-${numOfPairs}`) || null;
-  if (!bestTime || bestTime && GAME_TIME.getDiffTime().replace(/\D/g, '') < bestTime.replace(/\D/g, '')) {
-    localStorage.setItem(`pairs-${numOfPairs}`, GAME_TIME.getDiffTime())
+  if (!bestTime || bestTime && gameTime.getDiffTime().replace(/\D/g, '') < bestTime.replace(/\D/g, '')) {
+    localStorage.setItem(`pairs-${numOfPairs}`, gameTime.getDiffTime())
     resultMessage = getResultMessageTemplate(false)
   }
   else {
@@ -158,8 +163,8 @@ function flipCard(e) {
           cardDOMElement.classList.add('hidden')
         })
         if (pairCounter === 0) {
-          GAME_TIME.setEndTime()
-          GAME_TIME.setDiffTime()
+          gameTime.setEndTime()
+          gameTime.setDiffTime()
           setTimeInLocaleStorage()
           fadeOutFadeIn(initResultPage)
         }
@@ -217,20 +222,15 @@ function initStartPage() {
 
     if (link) {
       const numberOfPairs = link.dataset.pair
-      fadeOutFadeIn(initGame, numberOfPairs, isPreview) // Show game page with animation
+      fadeOutFadeIn(initGame, numberOfPairs, isPreview)
     }
   })
 }
 
 function initGame(num, preview) {
-
-  async function getImagesData(url) {
-    return await fetch(url).then(response => response.json())
-  }
-
-  getImagesData(URL)
+  fetch(URL).then(response => response.json())
     .then(data => {
-      GAME_TIME.setStartTime()
+      gameTime.setStartTime()
       pairCounter = num
       numOfPairs = num
       renderCards(data, num, preview)
@@ -239,7 +239,7 @@ function initGame(num, preview) {
 }
 
 function initResultPage() {
-  main.innerHTML = getResultPageTemplate(GAME_TIME.getDiffTime(), numOfPairs)
+  main.innerHTML = getResultPageTemplate(gameTime.getDiffTime(), numOfPairs)
 
   const resultPageLink = document.querySelector('.result-page__link')
 
