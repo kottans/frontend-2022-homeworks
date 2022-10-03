@@ -27,11 +27,12 @@ Stage 1 candidates PR review tracking.
 | 7.7  | [chernetskyi8704](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Achernetskyi8704)       | 
 | 7.8  | [Conversee12](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AConversee12)               | 
 | 7.9  | [crealime](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Acrealime)                     | 
-| 7.10 | [daniil-bodryagin](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Adaniil-bodryagin)     |
-| 7.11 | [deveLabR](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AdeveLabR)                     |
-| 7.12 | [DmytryjK](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ADmytryjK)                     |
-| 7.13 | [Dovahkiin1991](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ADovahkiin1991)           |
-| 7.14 | [drewzag](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Adrewzag)                       |
+| 7.10 | [DaniaB24](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ADaniaB24)                     |
+| 7.11 | [daniil-bodryagin](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Adaniil-bodryagin)     |
+| 7.12 | [deveLabR](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AdeveLabR)                     |
+| 7.13 | [DmytryjK](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ADmytryjK)                     |
+| 7.14 | [Dovahkiin1991](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ADovahkiin1991)           |
+| 7.15 | [drewzag](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Adrewzag)                       |
 | 7.16 | [franchukv](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Afranchukv)                   |
 | 7.17 | [hisbvdis](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Ahisbvdis)                     |
 | 7.18 | [IhorOzerov](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AIhorOzerov)                 |
