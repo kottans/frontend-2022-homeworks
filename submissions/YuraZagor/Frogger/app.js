@@ -13,8 +13,6 @@ const playerStartY = 5*cellY + spriteRepositioningY ;
 const fieldWidth = 5*cellX;
 const fieldHight = 5*cellY;
 const rangesY = [1, 2, 3].map(item => item*cellY+spriteRepositioningY);
-// const bugSprite = 'images/enemy-bug.png';
-// const playerSprite = 'images/char-boy.png';
 
 function Character (x, y, sprite) {
     this.x = x;
@@ -42,11 +40,11 @@ Enemy.prototype.update = function(dt){
     this.checkColision()
 };
 Enemy.prototype.checkColision = function(){ 
-    if (this.y === player.y) {
+    if (this.y === this.player.y) {
 
-        if ((this.x - player.x < collisionOffset ) && (player.x - this.x < collisionOffset )) {
-            player.x = playerStartX;
-            player.y = playerStartY;
+        if ((this.x - this.player.x < collisionOffset ) && (this.player.x - this.x < collisionOffset )) {
+            this.player.x = playerStartX;
+            this.player.y = playerStartY;
         };    
     }; 
 };
