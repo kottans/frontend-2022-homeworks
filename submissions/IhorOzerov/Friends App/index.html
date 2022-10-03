@@ -24,10 +24,14 @@
           <label class="searchLabel"> Sort<br>
             <select class="searchSelector" id="ageAndName" autocomplete="off">
               <option value="default">By default</option>
-              <option value="upAge">Yonger first</option>
-              <option value="downAge">Older first</option>
-              <option value="AtoZ">A to Z</option>
-              <option value="ZtoA">Z to A</option>
+                <optgroup label="Age">
+                  <option value="upAge">Yonger first</option>
+                  <option value="downAge">Older first</option>
+                </optgroup>
+                <optgroup label="Name">
+                  <option value="AtoZ">A to Z</option>
+                  <option value="ZtoA">Z to A</option>
+                </optgroup>
             </select>
           </label>
       </div>
