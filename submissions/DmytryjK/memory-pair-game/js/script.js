@@ -34,9 +34,12 @@ const elementsOfCards = [
 ];
 
 const srcBg = 'images/back/dota_back.svg',
-  parrentCardBlock = document.querySelector('.main__cards'),
-  winnerPopup = document.querySelector('.winMessage');
+      winnerPopup = document.querySelector('.winMessage'),
+      mainCardsBlock = document.querySelector('.main__cards-block');
 let doubleElementsOfCards = [];
+
+let parrentCardBlock = document.createElement('ul');
+parrentCardBlock.classList.add('main__cards');
 
 createElementsOfCards();
 
@@ -45,11 +48,14 @@ let activeCards = [],
   numbersOfCloseCards = 0;
 
 const currentTime = document.querySelector('.timer-current span'),
-  bestTime = document.querySelector('.timer-best span');
+      bestTime = document.querySelector('.timer-best span');
+
 let minutes = 0,
-  seconds = 0,
-  bestResultsSheet = [],
-  timerInterval = null;
+    seconds = 0,
+    bestResultsSheet = [],
+    timerInterval = null;
+
+const buttonToContinue = document.querySelector('.click-to-continue');
 
 setTimeout(showAllCards, 400);
 setTimeout(hideAllCards, 2000);
@@ -59,7 +65,7 @@ if (localStorage.getItem('bestTime') !== null) {
   bestResultsSheet.push(bestTime.innerText);
 }
 
-parrentCardBlock.addEventListener('click', e => {
+function onClickUserActions(e) {
   const clickedTarget = e.target.parentNode;
 
   if (clickedTarget.classList.contains('main__card')) {
@@ -71,13 +77,12 @@ parrentCardBlock.addEventListener('click', e => {
 
     if (activeCards[0].getAttribute(["data-name"]) === activeCards[1].getAttribute(["data-name"]) &&
       activeCards[0].getAttribute(["data-numbers"]) !== activeCards[1].getAttribute(["data-numbers"])) {
-      setTimeout(hideTwoCards, 600, activeCards);
+      setTimeout(hideActiveCards, 600, activeCards);
     } else {
-      setTimeout(closeTwoCards, 800, activeCards);
+      setTimeout(closeActiveCards, 800, activeCards);
     }
 
     if (numbersOfCloseCards === doubleElementsOfCards.length / 2 - 1) {
-      const buttonToContinue = document.querySelector('.click-to-continue');
 
       winnerPopup.classList.add('winMessage__active');
 
@@ -102,21 +107,22 @@ parrentCardBlock.addEventListener('click', e => {
       localStorage.setItem('bestTime', bestTime.innerText);
       clearInterval(timerInterval);
 
-      buttonToContinue.addEventListener('click', () => {
-        resetVariables();
-        createElementsOfCards();
-        currentListCards = document.querySelectorAll('.main__card');
-        resetTimer();
-        setTimeout(showAllCards, 400);
-        setTimeout(hideAllCards, 2000);
-      });
-
+      buttonToContinue.addEventListener('click', clickToContinue, false);
     }
     activeCards = [];
   }
-});
+}
 
-function hideTwoCards(activeCards) {
+function clickToContinue(buttonToContinue) {
+  resetVariables(buttonToContinue);
+  createElementsOfCards();
+  currentListCards = document.querySelectorAll('.main__card');
+  resetTimer();
+  setTimeout(showAllCards, 400);
+  setTimeout(hideAllCards, 2000);
+}
+
+function hideActiveCards(activeCards) {
   activeCards.forEach(activeCard => {
     activeCard.classList.add('hide-card');
   });
@@ -124,7 +130,7 @@ function hideTwoCards(activeCards) {
   numbersOfCloseCards++;
 }
 
-function closeTwoCards(activeCards) {
+function closeActiveCards(activeCards) {
   activeCards.forEach(activeCard => {
     activeCard.classList.remove('active-card');
   });
@@ -152,15 +158,16 @@ function createElementsOfCards() {
   doubleElementsOfCards.sort(() => Math.random() - 0.5);
 
   for (let i = 0; i < (doubleElementsOfCards.length); i++) {
-
     parrentCardBlock.innerHTML += `
-            <li class="main__card" data-name="${doubleElementsOfCards[i].hero}" data-numbers="${i}">
-                <img class="main__card-back" src="${srcBg}" alt="background_dota">
-                <img class="main__card-front" src="${doubleElementsOfCards[i].srcHero}" alt="${doubleElementsOfCards[i].hero}">
-            </li>
+        <li class="main__card" data-name="${doubleElementsOfCards[i].hero}" data-numbers="${i}">
+            <img class="main__card-back" src="${srcBg}" alt="background_dota">
+            <img class="main__card-front" src="${doubleElementsOfCards[i].srcHero}" alt="${doubleElementsOfCards[i].hero}">
+        </li>
         `;
-
   }
+
+  mainCardsBlock.append(parrentCardBlock);
+  parrentCardBlock.addEventListener('click', onClickUserActions, false);
 }
 
 function resetTimer() {
@@ -192,4 +199,6 @@ function resetVariables() {
   winnerPopup.classList.remove('winMessage__active');
   parrentCardBlock.innerHTML = "";
   numbersOfCloseCards = 0;
+  parrentCardBlock.removeEventListener('click', onClickUserActions, false);
+  buttonToContinue.removeEventListener('click', clickToContinue, false);
 }
