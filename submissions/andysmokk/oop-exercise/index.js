@@ -33,7 +33,6 @@ class Inhabitant {
         : property === "saying"
         ? valuesInhabitant.push(`<em>"${this[property]}"</em>`)
         : valuesInhabitant.push(this[property]);
-      return valuesInhabitant;
     });
 
     return valuesInhabitant;
