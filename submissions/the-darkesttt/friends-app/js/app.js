@@ -181,7 +181,7 @@ function sortByAge(friendsCopy) {
 function sortByName(friendsCopy) {
     if (selectedAlphabetDirection) {
 
-        friendsCopy.sort(({ fullName: a }, { fullName: b}) =>  a > b);
+        friendsCopy.sort(({ fullName: a }, { fullName: b}) =>  a > b ? 1 : -1);
         if (selectedAlphabetDirection === "ZA") friendsCopy.reverse();
 
     } else {
