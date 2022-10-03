@@ -1,10 +1,8 @@
 class GameManager {
-    deck = new Deck();
-    firstCard = null;
-    secondCard = null;
+    
     #attemptNumber = 0;
 
-    constructor(board, score, time) {
+    constructor(board) {
         if (typeof board === "string") {
             this.boardElement = document.querySelector(board);
         }
@@ -12,23 +10,17 @@ class GameManager {
             this.boardElement = board;
         }
 
-        if (typeof score === "string") {
-            this.scoreElement = document.querySelector(score);
-        }
-        else {
-            this.scoreElement = score;
-        }
-        if (typeof time === "string") {
-            this.timeElement = document.querySelector(time);
-        }
-        else {
-            this.timeElement = time;
-        }
+        this.deck = new Deck();
+        this.firstCard = null;
+        this.secondCard = null;
+        this.scoreElement = document.querySelector("#attemptNumOutput");
+        this.timeElement = document.querySelector('#timeOutput');
         this.gameInfo = document.querySelector('#gameInfo');
     }
 
     startGame() {
         this.attemptNumber = 0;
+        this.timeElement.innerHTML = '00:00:00';
         this.deck = new Deck();
         this.boardElement.innerHTML = '';
         this.shuffleAndDeal();
@@ -50,11 +42,12 @@ class GameManager {
 
     selectCard(card) {
         if(card == this.firstCard || card == this.secondCard) return;
+        
         card.flip();
+        
         if (this.firstCard && this.secondCard) {
             this.firstCard.flip();
             this.secondCard.flip();
-
             this.firstCard = this.secondCard = null;
         }
 
@@ -68,11 +61,12 @@ class GameManager {
             if (this.firstCard.img === card.img) {
                 this.deck.removeCard(this.firstCard);
                 this.deck.removeCard(this.secondCard);
-
                 this.firstCard = this.secondCard = null; 
             }
         }
+        
         if (this.deck.cards.length == 0) {
+            this.gameInfo.innerHTML = `Well done! You did it in ${this.#attemptNumber} attempts.<br>Your time ${this.timeElement.innerHTML}`;
             setTimeout(this.gameOver, 1000);
         }
     }
@@ -87,9 +81,8 @@ class GameManager {
         return this.#attemptNumber;
     }
 
-    set attemptNumber(value) {
-        this.#attemptNumber = value;
-        this.scoreElement.innerHTML = value;
-        this.gameInfo.innerHTML = `Well done! You did it in ${value} attempts.<br>Your time ${this.timeElement.innerHTML}`;
+    set attemptNumber(attempts) {
+        this.#attemptNumber = attempts;
+        this.scoreElement.innerHTML = attempts;
     }
 }

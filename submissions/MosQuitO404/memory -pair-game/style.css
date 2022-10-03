@@ -107,7 +107,13 @@ body {
     min-width: 460px;
 }
 
+#attemptNumOutput {
+    text-align: start;
+    width: 30px;
+}
+
 #timeOutput {
+    text-align: start;
     width: 100px;
 }
 
