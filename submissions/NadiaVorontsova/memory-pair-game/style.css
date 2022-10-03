@@ -270,21 +270,28 @@ body {
     }
 
     .memory-game {
-        grid-template: repeat(8, 130px)/repeat(2, 130px);
+        grid-template: repeat(4, 110px)/repeat(4, 100px);
         justify-content: center;
-        row-gap: 1%;
-        padding: 8% 5% 35% 5%;
+        row-gap: 4%;
+        padding: 8% 5% 20% 5%;
+    }
+
+    .card_front,
+    .card_back {
+        width: 100px;
+        height: 110px;
     }
 }
 
 @media(max-width:430px) {
     .wrapper {
-        margin: 8% 5%;
+        margin: 10% 5%;
         width: 90%;
+        padding-top: 12%;
     }
 
     .modal {
-        top: 25%;
+        top: 22%;
         left: 5%;
         width: 90%;
         height: 50%;
@@ -297,19 +304,19 @@ body {
 
     .main_title {
         font-size: 35px;
-        padding-bottom: 6%;
+        padding-bottom: 10%;
     }
 
     .memory-game {
-        grid-template: repeat(8, 130px)/repeat(2, 130px);
+        grid-template: repeat(4, 80px)/repeat(4, 70px);
         justify-content: center;
-        row-gap: 1%;
-        padding: 8% 5% 35% 5%;
+        row-gap: 4%;
+        padding: 8% 5% 20% 5%;
     }
 
     .card_front,
     .card_back {
-        width: 130px;
-        height: 130px;
+        width: 70px;
+        height: 80px;
     }
 }

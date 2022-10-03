@@ -29,9 +29,8 @@ const carCards = [{
 let sortedCards = [];
 
 const mixCards = (carCards) => (sortedCards = carCards.sort(() => 0.5 - Math.random()));
-mixCards([...carCards, ...carCards]);
 
-sortedCards.forEach((car) => createCardElement(car));
+const preparedToRenderCards = (mixedCards) => { mixedCards.forEach((car) => createCardElement(car)); };
 
 function createCardElement({ brand, image }) {
     return sectionElement.insertAdjacentHTML("beforeend", `
@@ -47,6 +46,8 @@ let lock = false;
 let clickedCardsArray = [];
 
 function startGame() {
+    mixCards([...carCards, ...carCards]);
+    preparedToRenderCards(sortedCards);
     sectionElement.addEventListener("click", ({ target }) => {
         if (target.closest(".card") == null || target.closest(".card") == undefined)
             return;
@@ -119,6 +120,7 @@ function restartGame() {
     modal.classList.remove("modal_show");
     turnedCards.forEach(card => {
         card.classList.remove("flip", "disableCard");
+        sectionElement.innerHTML = '';
         startGame();
     })
 };
