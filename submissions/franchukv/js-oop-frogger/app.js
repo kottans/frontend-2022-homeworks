@@ -14,12 +14,12 @@ const PLAYER_CONF = {
     }
 }
 
-const EMENIES_CONF = {
+const ENEMIES_CONF = {
     size: {
         height: 40,
         width: 80
     },
-    enemy: [{
+    enemies: [{
         x: 0,
         y: 55,
         speed: 280
@@ -78,13 +78,13 @@ Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const Enemy = function ({ size }, enemy, player) {
+const Enemy = function ({ size }, enemyProperties, player) {
     this.sprite = 'images/enemy-bug.png';
     this.height = size.height;
     this.width = size.width;
-    this.x = enemy.x;
-    this.y = enemy.y;
-    this.speed = enemy.speed;
+    this.x = enemyProperties.x;
+    this.y = enemyProperties.y;
+    this.speed = enemyProperties.speed;
     this.player = player;
 };
 
@@ -114,13 +114,15 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const player = new Player(PLAYER_CONF);
-const allEnemies = [
-    new Enemy(EMENIES_CONF, EMENIES_CONF.enemy[0], player),
-    new Enemy(EMENIES_CONF, EMENIES_CONF.enemy[1], player),
-    new Enemy(EMENIES_CONF, EMENIES_CONF.enemy[2], player),
-];
+function addEnemiesToInitArray() {
+    ENEMIES_CONF.enemies.forEach((enemy) => {
+        allEnemies.push(new Enemy(ENEMIES_CONF, enemy, player))
+    })
+}
 
+const player = new Player(PLAYER_CONF);
+const allEnemies = [];
+addEnemiesToInitArray();
 
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
