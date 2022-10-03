@@ -13,7 +13,10 @@ const
     LEVEL_BUTTONS = [12, 16, 20],
     CHANGE_DATA = 'changeData',
     GO_TO_MENU = 'goToMenu',
-    START_GAME = 'startGame';
+    START_GAME = 'startGame',
+    END = 'end',
+    NO_MACHING = 'noMaching',
+    MACHING = 'Maching';
 
 
 function templateStr(tpl, attributes) {

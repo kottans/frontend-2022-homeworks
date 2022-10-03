@@ -1,6 +1,11 @@
 class PubSub {
     constructor() {
         this.subscribers = [];
+        // if (!PubSub.instance) {
+        //     PubSub.instance = this;
+        // }
+
+        // return PubSub.instance;
     }
 
     subscribe(event, handler, context) {

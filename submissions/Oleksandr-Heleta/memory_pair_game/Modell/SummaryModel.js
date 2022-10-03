@@ -26,7 +26,7 @@ class SummaryModel extends BaseModel {
     }
 
     checkBestResult(status) {
-        if (status !== "end") { return; }
+        if (status !== END) { return; }
         if (this.attributes.totalScore < this.attributes.bestScore || this.attributes.bestScore === 0) {
             this.attributes.bestScore = this.attributes.totalScore;
             localStorage.setItem(`bestScore${this.level}`, JSON.stringify(this.attributes.bestScore));

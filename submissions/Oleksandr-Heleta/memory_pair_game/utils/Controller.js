@@ -7,16 +7,41 @@ class Controller {
     }
 
     onClickCard(event) {
-
+        const table = event.target.closest('.tablet');
         const card = event.target.closest('.tablet-item');
-        if (card.classList.contains('hiden')) return;
+        if (!card || card.classList.contains('hiden')) return;
         const cardId = card.id;
         const cardDataId = card.getAttribute('data-id');
         card.classList.toggle('hover');
 
-        const status = this.matrixModel.makeActionByClickCard(cardId, cardDataId);
+        const { status, firstId, secondId } = this.matrixModel.makeActionByClickCard(cardId, cardDataId);
         this.summaryModel.makeActionByClickCard(1);
-        this.summaryModel.checkBestResult(status);
+
+        switch (status) {
+            case END:
+                this.summaryModel.checkBestResult(status);
+                this.matrixModel.publish(CHANGE_DATA);
+                break;
+            case NO_MACHING:
+                table.removeEventListener('click', this.onClickCard);
+                setTimeout(() => {
+                    card.classList.toggle('hover');
+                    const secondCad = document.getElementById(secondId);
+                    secondCad.classList.toggle('hover');
+                }, 500);
+                setTimeout(() => {
+                    this.matrixModel.publish(CHANGE_DATA);
+                }, 1000);
+                break;
+            case MACHING:
+                table.removeEventListener('click', this.onClickCard);
+                setTimeout(() => {
+                    this.matrixModel.publish(CHANGE_DATA);
+                }, 500);
+                break;
+            default:
+                break;
+        }
     }
 
     onClickGameBtns(event) {

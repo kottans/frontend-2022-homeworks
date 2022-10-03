@@ -42,12 +42,23 @@ class MatrixModel extends BaseModel {
     }
 
     makeActionByClickCard(cardId, cardDataId) {
+        let result = {};
         if (this.cardToCompare) {
             if (this.cardToCompare.cardDataId === cardDataId && this.cardToCompare.cardId !== cardId) {
                 this.changeStatus('hiden', this.cardToCompare.cardId, cardId);
                 localStorage.setItem(`attributes${this.cardAmount}`, JSON.stringify(this.attributes));
+                result = {
+                    status: MACHING,
+                    firstId: cardId,
+                    secondId: this.cardToCompare.cardId
+                }
             } else {
                 this.changeStatus('hover', this.cardToCompare.cardId, cardId)
+                result = {
+                    status: NO_MACHING,
+                    firstId: cardId,
+                    secondId: this.cardToCompare.cardId
+                }
             }
             this.cardToCompare = null;
         } else {
@@ -56,11 +67,13 @@ class MatrixModel extends BaseModel {
                 cardDataId
             };
             this.changeStatus('', this.cardToCompare.cardId)
+            result = {
+                status: "continue",
+                firstId: cardId
+            }
         }
-        setTimeout(() => {
-            this.publish(CHANGE_DATA);
-        }, 1200);
-        if (this.attributes.every((card) => card.classList === 'hiden')) { return 'end'; }
+        if (this.attributes.every((card) => card.classList === 'hiden')) { result.status = END; }
+        return result;
     }
 
     changeStatus(cardClass, firstCardId, secondCardId) {
