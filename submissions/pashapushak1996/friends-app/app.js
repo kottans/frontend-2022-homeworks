@@ -261,5 +261,24 @@ searchButton.addEventListener('click', () => {
 
 headerButton.addEventListener('click', toggleFilterPanel);
 
+const ALLOWED_CHARS_REGEXP = new RegExp('\\d|\\.');
+
+const checkAllowedCharacters = (event) => {
+    if (event.ctrlKey
+        || event.altKey
+        || typeof event.key !== 'string'
+        || event.key.length !== 1) {
+        return;
+    }
+
+    if (!ALLOWED_CHARS_REGEXP.test(event.key)) {
+        event.preventDefault();
+    }
+};
+
+maxAgeInput.addEventListener("keydown", checkAllowedCharacters);
+
+minAgeInput.addEventListener("keydown", checkAllowedCharacters);
+
 init();
 
