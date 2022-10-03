@@ -179,6 +179,7 @@
 }
 .nav__checkbox-label,
 .nav__radio-label {
+  cursor: pointer;
   position: relative;
   transition: 0.3s all linear;
 }
@@ -226,14 +227,12 @@
 .nav__radio-text {
   position: absolute;
   z-index: 10;
-}
-.nav__checkbox-text {
-  top: 17px;
-  left: 14px;
-}
-.nav__radio-text {
-  top: 17px;
-  left: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 18px;
 }
 .nav__buttons {
   display: flex;
@@ -302,6 +301,7 @@ main {
   opacity: 0.7;
 }
 .friend {
+  cursor: pointer;
   background-color: #c4ac95;
   max-width: 250px;
   min-width: 150px;
@@ -404,6 +404,7 @@ main {
 .friend__phone {
   margin: 0px 0px 16px 0px;
   font-size: 15px;
+  word-wrap: break-word;
 }
 .friend__phone {
   flex: 1 1 auto;
