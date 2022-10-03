@@ -86,8 +86,9 @@ body{
 }
 
 .input{
-    width: 100%;
-    margin-bottom: 5px;
+    width: 30%;
+    margin: 0 auto 5px;
+    display: block;
 }
 
 .btn-filter{
@@ -151,6 +152,12 @@ body{
     border-top-right-radius: 2%;
 }
 
+@media (max-width: 1440px){
+    .input{
+        width: 100%;
+    }
+}
+
 @media (max-width: 1024px){
     .card{
         width: calc(20% - 20px);
@@ -179,6 +186,9 @@ body{
 }
 
 @media (max-width: 425px){
+    .card{
+        width: calc(50% - 20px);
+    }
     .card__info{
         font-size: 10px;
     }

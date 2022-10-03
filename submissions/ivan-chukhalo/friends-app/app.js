@@ -53,7 +53,7 @@ const BTN_SORT_BY_NAME_REVERSE = document.getElementById('btn__sort-name_alphabe
 const BTN_FILTER_BY_AGE = document.getElementById('btn__filter_by-age');
 const BTN_FILTER_BY_NAME = document.getElementById('btn__filter_by-name');
 const BTN_FILTER_BY_SEX = document.getElementById('btn__filter_by-sex');
-const BTN_NEW_QUERY = document.getElementById('btn_new-query');
+const BTN_RESET = document.getElementById('btn_reset');
 const INPUT_AGE_FIELD = document.getElementById('input__filter_by-age');
 const INPUT_NAME_FIELD = document.getElementById('input__filter_by-name');
 const BTN_RADIO_MALE = document.getElementById('sex_male');
@@ -178,7 +178,7 @@ ASIDE.addEventListener('click', event => {
     if (event.target === BTN_FILTER_BY_SEX){
         renderCards(getFilteredBySex(filteredUsers));
     }
-    if (event.target === BTN_NEW_QUERY){
-        fetchData();
+    if (event.target === BTN_RESET){
+        renderCards(users);
     }
 });
