@@ -1,6 +1,6 @@
-const manNamesArr = ['Vasil', 'Yurij', 'Zahar', 'Taras', 'Olexiy', 'Oleg', 'Mykola', 'Sashko', 'Sergij', 'Bohdan'];
-const womanNamesArr = ['Hanna', 'Helena', 'Vasilisa', 'Yulya', 'Oksana', 'Olena', 'Olga', 'Myroslava', 'Svitlana', 'Bohdana'];
-const animalNamesArr = ['Joy', 'Happy', 'Lucky', 'Puffy'];
+const manNamesArr = ['Vasil', 'Yurij', 'Zahar', 'Taras', 'Olexiy', 'Oleg', 'Mykola', 'Sashko', 'Sergij', 'Bohdan']
+const womanNamesArr = ['Hanna', 'Helena', 'Vasilisa', 'Yulya', 'Oksana', 'Olena', 'Olga', 'Myroslava', 'Svitlana', 'Bohdana']
+const animalNamesArr = ['Joy', 'Happy', 'Lucky', 'Puffy']
 
 let catSay = 'meau';
 let dogSay = 'woufff';
@@ -33,15 +33,16 @@ const inhabitants = [
 ];
 
 class Inhabitant {  
-  constructor(species, name, saying, friend, gender){
+  constructor(species, name, saying, friend, gender, habitat=inhabitants){
     this.species=species;
     this.name=name;
     this.saying = saying
     this.friend=friend;
     this.gender=gender;
+    this.habitat = habitat
   }
-  accountInhabitants(habitat){
-    habitat.push(this);
+  accountInhabitants(){
+    this.habitat.push(this);
   }
   commonProperties(){
     const { species, name, saying, friend, gender} = this
@@ -60,7 +61,7 @@ class Animal extends Inhabitant{
     const { paws, tail} = this
     const speciesProperties = [ paws, tail]
     print(this.commonProperties().concat(speciesProperties).join('; '),'div');
-    this.accountInhabitants(inhabitants)
+    this.accountInhabitants()
   };
 };
 
@@ -73,7 +74,6 @@ class Cat extends Animal{
   constructor( name=randomSelect(animalNamesArr), friend=randomSelect(inhabitants).name, gender='female' ){
     super('cat', name, catSay, friend, gender, 4, 1);
   };
-
 };
 
 class Human extends Inhabitant{
@@ -86,20 +86,12 @@ class Human extends Inhabitant{
     const { legs, hands} = this
     const speciesProperties = [ legs, hands]
     print(this.commonProperties().concat(speciesProperties).join('; '),'div');
-    this.accountInhabitants(inhabitants)
-  };
-};
-
-class CatWoman extends Human{
-  constructor( name=randomSelect(womanNamesArr), friend=randomSelect(inhabitants).name, ){
-    super(name, catSay, friend, 'female', 2, 2);
+    this.accountInhabitants()
   };
 };
 
 function creation(className, name, friend, gender){
-  className.toLowerCase() === 'catwoman' 
-  ? (new CatWoman(name, friend)).populate()
-  : className.toLowerCase() === 'human' 
+  className.toLowerCase() === 'human' 
   ? (new Human(name, friend, gender)).populate()
   : className.toLowerCase() === 'cat' 
   ? (new Cat(name, friend, gender)).populate()
@@ -127,7 +119,6 @@ inputElement.id = 'form';
 inputElement.innerHTML = 
 `
   <h3>Let's populate this tiny World!!!</h3>
-
   <section class="addNumber" >
     <label for="num">I wanna add inhabitants, say </label>
     <select name="num" id="num">
@@ -138,7 +129,6 @@ inputElement.innerHTML =
       <option value="5">5</option>
     </select>
   </section>
-
   <section class="species">
     <label for="species">It will be </label>
     <select name="species" id="species">
@@ -161,5 +151,4 @@ function useFormValue(event) {
   species = document.getElementById('species').value;
 
   multipleCreation(num, species);
-};  
-
+};
