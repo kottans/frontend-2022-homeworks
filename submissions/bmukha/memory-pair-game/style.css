@@ -162,7 +162,7 @@ body {
   opacity: 0.3;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 850px) {
   .main-wrapper {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr;

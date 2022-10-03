@@ -111,7 +111,7 @@ const init = () => {
 };
 
 const endGame = () => {
-  message.innerText = `Congratulation! You won in ${movesCounter} moves!`;
+  message.innerText = `Congratulations! You won in ${movesCounter} moves!`;
 };
 
 const makeDefeatedHeroOpaque = (queue) => {
