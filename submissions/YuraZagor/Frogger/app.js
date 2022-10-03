@@ -13,8 +13,8 @@ const playerStartY = 5*cellY + spriteRepositioningY ;
 const fieldWidth = 5*cellX;
 const fieldHight = 5*cellY;
 const rangesY = [1, 2, 3].map(item => item*cellY+spriteRepositioningY);
-const bugSprite = 'images/enemy-bug.png';
-const playerSprite = 'images/char-boy.png';
+// const bugSprite = 'images/enemy-bug.png';
+// const playerSprite = 'images/char-boy.png';
 
 function Character (x, y, sprite) {
     this.x = x;
@@ -26,9 +26,10 @@ Character.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y) 
 };
 
-function Enemy(x, y, sprite, speedX) {
-    Character.call(this, x, y, sprite);
+function Enemy(x, y, speedX, player) {
+    Character.call(this, x, y, 'images/enemy-bug.png');
     this.speedX = speedX;
+    this.player = player;
 };
 Enemy.prototype = Object.create(Character.prototype);
 
@@ -38,25 +39,25 @@ Enemy.prototype.update = function(dt){
         this.x = enemyRestartX;
         this.speedX = allSpeeds[Math.floor(Math.random()*3)];
     };
-    this.checkColision(player)
+    this.checkColision()
 };
-Enemy.prototype.checkColision = function(target){   
+Enemy.prototype.checkColision = function(){   
 
-    if ((this.x - target.x < collisionOffset ) && (target.x - this.x < collisionOffset )) {
-        target.x = playerStartX;
-        target.y = playerStartY;
+    if ((this.x - this.player.x < collisionOffset ) && (this.player.x - this.x < collisionOffset )) {
+        this.player.x = playerStartX;
+        this.player.y = playerStartY;
     };    
 
 };
 
 function addBug() {
     rangesY.forEach ( (levelMark)=>  allEnemies
-    .push( new Enemy(0, levelMark, bugSprite, allSpeeds[Math.floor(Math.random()*3)] )) 
+    .push( new Enemy(0, levelMark, allSpeeds[Math.floor(Math.random()*3)], player)) 
     )
 };
 
-function Player(x, y, sprite) {
-    Character.call(this, x, y, sprite);
+function Player(x, y) {
+    Character.call(this, x, y, 'images/char-boy.png');
 };
 
 Player.prototype = Object.create(Character.prototype);
@@ -102,7 +103,7 @@ document.addEventListener('keyup', function(e) {
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
-const player = new Player ( playerStartX, playerStartY, playerSprite ); 
+const player = new Player ( playerStartX, playerStartY ); 
 
 addBug()
 
