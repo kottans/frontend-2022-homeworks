@@ -66,6 +66,10 @@ body{
     height: 25px;
 }
 
+.sorters__button:hover{
+    cursor: pointer;
+}
+
 .sorters__icon{
     position: absolute;
     left:0; 
