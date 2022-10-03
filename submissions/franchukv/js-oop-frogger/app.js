@@ -12,7 +12,7 @@ const PLAYER_CONF = {
         x: 202,
         y: 380
     }
-}
+};
 
 const ENEMIES_CONF = {
     size: {
@@ -34,7 +34,7 @@ const ENEMIES_CONF = {
         y: 220,
         speed: 200
     }]
-}
+};
 
 const Player = function ({ position, size }) {
     this.sprite = 'images/char-boy.png';
@@ -116,8 +116,8 @@ Enemy.prototype.render = function () {
 
 function addEnemiesToInitArray() {
     ENEMIES_CONF.enemies.forEach((enemy) => {
-        allEnemies.push(new Enemy(ENEMIES_CONF, enemy, player))
-    })
+        allEnemies.push(new Enemy(ENEMIES_CONF, enemy, player));
+    });
 }
 
 const player = new Player(PLAYER_CONF);
