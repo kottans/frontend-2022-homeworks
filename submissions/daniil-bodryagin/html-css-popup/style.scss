@@ -22,6 +22,15 @@ body {
   position: fixed;
   width: 100%;
   background-color: $contrastColor;
+  font-size: 1em;
+
+  @media (min-width: $xs) {
+    font-size: 1.5em;
+  }
+
+  @media (min-width: $md) {
+    font-size: 1em;
+  }
 
   &__nav {
     width: 100%;
