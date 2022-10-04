@@ -10,7 +10,7 @@
 $header-height: 5vh;
 $footer-height: 4vh;
 $main-height: 100vh - $footer-height - $header-height;
-$menu-width: 14vw;
+$menu-width: 15vw;
 $main-width: 100vw - $menu-width;
 
 $color-back-header: rgb(68, 202, 206);
@@ -21,7 +21,7 @@ $color-menu-hover-item: rgb(10, 110, 100);
 $color-menu-text: rgb(156, 250, 242);
 $color-menu-hover-text: rgb(240, 209, 56);
 $color-main: rgb(245, 229, 185);
-$color-check-card: rgb(248, 94, 5);
+$color-check-card: rgb(220, 130, 12);
 
 :root {
     --columns-card: 0;
@@ -71,7 +71,7 @@ $color-check-card: rgb(248, 94, 5);
     cursor: pointer;
     border: .8rem $color-menu-dark solid;
     background-color: $color-menu-item;
-
+    transition: 0.25s;
 }
 
 .menu__title {
@@ -81,6 +81,7 @@ $color-check-card: rgb(248, 94, 5);
     padding: 1.2rem;
     line-height: 2.0rem;
     display: block;
+    text-align: center;
 }
 
 .menu__item:hover,
@@ -99,49 +100,50 @@ $color-check-card: rgb(248, 94, 5);
 
 .main__div {
     display: grid;
-    // формуємо сітку за кількістю рядків і колонок
     grid-template-columns: repeat(var(--columns-card), 1fr);
     grid-template-rows: repeat(var(--rows-card), 1fr);
 
     .div__card {
         width: calc($main-width / var(--columns-card));
         height: calc($main-height / var(--rows-card));
-        /* выравниванием изображения по центру */
         position: relative;
 
         .card-face,
         .card-back,
         .card-checked,
         .card-off-checked {
-            $square-image: min(calc($main-width / var(--columns-card)) * .9, calc($main-height / var(--rows-card)) * .9);
+            $square-image: min(calc($main-width / var(--columns-card)) * .85, calc($main-height / var(--rows-card)) * .85);
             width: $square-image;
             height: $square-image;
-            /* выравниванием изображения по центру */
-            margin: 0;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-right: -50%;
-            transform: translate(-50%, -50%)
-        }
-
-        .card-back:hover {
-            border-color: $color-back-header;
-            border-style: solid;
-            border-width: .65rem;
+            margin-left: calc(calc(calc($main-width / var(--columns-card)) - $square-image)/2);
+            margin-top: calc(calc(calc($main-height / var(--rows-card)) - $square-image)/2);
+            transition: 0.2s;
         }
 
         .card-checked {
             opacity: 0.3;
             border-color: $color-check-card;
             border-style: solid;
-            border-width: .65rem;
+            border-width: .45rem;
+            box-shadow: -2px 0px 30px -3px $color-check-card;
         }
 
         .card-face {
             border-color: $color-back-header;
             border-style: solid;
-            border-width: .75rem;
+            border-width: .45rem;
+        }
+
+        .card-back {
+            cursor: pointer;
+        }
+
+        .card-back:hover {
+            border-color: $color-back-header;
+            border-style: solid;
+            border-width: .2rem;
+            box-shadow: -2px 0px 30px -3px $color-menu-dark;
         }
     }
 }
@@ -154,12 +156,12 @@ $color-check-card: rgb(248, 94, 5);
 
 .footer,
 .header {
-    background-color: $color-back-header;    
+    background-color: $color-back-header;
     font-weight: 700;
     text-shadow: .3rem .3rem 1.0rem $color-menu-dark;
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
 }
 
 .footer {
@@ -222,11 +224,12 @@ $color-check-card: rgb(248, 94, 5);
             .card-back,
             .card-checked,
             .card-off-checked {
-                $square-image: min(calc($main-width / var(--rows-card)) * 0.95, calc($main-height / var(--columns-card)) * 0.95);
+                $square-image: min(calc($main-width / var(--rows-card)) * 0.93, calc($main-height / var(--columns-card)) * 0.93);
                 width: $square-image;
                 height: $square-image;
+                margin-left: calc(calc(calc($main-width / var(--rows-card)) - $square-image)/2);
+                margin-top: calc(calc(calc($main-height / var(--columns-card)) - $square-image)/2);
             }
         }
     }
 }
-
