@@ -34,6 +34,7 @@ Stage 1 candidates PR review tracking.
 | 7.14 | [Dovahkiin1991](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ADovahkiin1991)           |
 | 7.15 | [drewzag](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Adrewzag)                       |
 | 7.16 | [franchukv](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Afranchukv)                   |
+| 7.1x | [HelenGreent](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AHelenGreent)               |
 | 7.17 | [hisbvdis](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Ahisbvdis)                     |
 | 7.18 | [IhorOzerov](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AIhorOzerov)                 |
 | 7.19 | [iva-stasia](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Aiva-stasia)                 |
