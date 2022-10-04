@@ -31,7 +31,7 @@ class Inhabitant {
 
 class Human extends Inhabitant {
    constructor(species, name, gender, saying) {
-      super(species, name, gender);
+      super((species = "human"), name, gender);
       this.legs = 2;
       this.hands = 2;
       this.saying = saying;
@@ -66,8 +66,8 @@ class CatWoman extends Cat {
 
 const dog = new Dog("dog", "Toby", "male", "Woof!");
 const cat = new Cat("cat", "Lily", "female", "meow!");
-const woman = new Human("woman", "Linda", "female", "What a pretty kitten!");
-const man = new Human("man", "Jim", "male", "Heyyo!");
+const woman = new Human("Linda", "female", "What a pretty kitten!");
+const man = new Human("Jim", "male", "Heyyo!");
 const catWoman = new CatWoman("catWoman", "Ro", "female", cat.saying);
 
 // ======== OUTPUT ========
