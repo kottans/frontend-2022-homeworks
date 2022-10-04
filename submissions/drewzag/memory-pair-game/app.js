@@ -75,15 +75,13 @@ const restart = () => {
   const cardsList = randomize()
   const faces = document.querySelectorAll('.face')
   const cards = document.querySelectorAll('.card')
-  section.style.pointerEvents = 'none'
 
   cardsList.forEach((card, index) => {
     cards[index].classList.remove('toggle')
     setTimeout(() => {
-      cards[index].style.pointerEvents = 'all'
+      cards[index].addEventListener('click', onCardClickHandler)
       faces[index].src = card.imgSrc
       cards[index].setAttribute('name', card.id)
-      section.style.pointerEvents = 'all'
     }, 1000)
   })
   setTimeout(() => alert('Well Done!'), 100)
