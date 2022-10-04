@@ -21,7 +21,6 @@ class Inhabitant {
   }
 }
 
-//
 class Human extends Inhabitant {
   constructor(name, gender, saying, hands = 2) {
     super("human", name, gender, saying, 2);
@@ -56,6 +55,7 @@ class Woman extends Human {
     super(name, "female", saying);
   }
 }
+
 const cat = new Cat("Mars", "male", "mmeeow");
 const dog = new Dog("Sara", "female", "woofff");
 const man = new Man("Ron", "ahoj");
