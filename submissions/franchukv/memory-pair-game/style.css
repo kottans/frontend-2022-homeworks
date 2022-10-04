@@ -190,6 +190,7 @@ body {
 }
 
 .memory-card--flipped {
+    cursor: auto;
     transform: rotateY(-180deg);
 }
 
