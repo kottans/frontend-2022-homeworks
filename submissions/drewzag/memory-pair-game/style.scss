@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   user-select: none;
+  touch-action: manipulation;
 }
 
 body {
@@ -54,6 +55,9 @@ body {
   }
   .toggle {
     transform: rotateY(180deg);
+  }
+  .flipped {
+    pointer-events: none;
   }
 }
 
