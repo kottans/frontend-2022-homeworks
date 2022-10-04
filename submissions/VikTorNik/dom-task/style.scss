@@ -1,4 +1,5 @@
 * {
+    padding: 0;
     margin: 0;
 }
 
@@ -23,10 +24,10 @@ $color-table-item: rgb(225, 205, 134);
         "header header"
         "nav main"
         "footer footer";
-    grid-template-rows: 0.8fr 12fr 0.6fr;
-    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 0.8fr 12fr 0.5fr;
+    grid-template-columns: 1fr 5fr;
     height: 100vh;
-    font: 1.6rem Arial, Helvetica, sans-serif;
+    font: 1.7rem Arial, Helvetica, sans-serif;
 }
 
 #user-pageHeader {
@@ -47,21 +48,40 @@ $color-table-item: rgb(225, 205, 134);
 
 .navigation {
     background-color: $color-menu-dark;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 1.0rem;
+    font-size: 1.7rem;
+}
+
+.menu__item {
+    cursor: pointer;
+    border: .8rem $color-menu-dark solid;
+    background-color: $color-menu-item;
+
+}
+
+.menu__title {
     color: $color-menu-text;
     font-weight: 700;
+    text-transform: uppercase;
+    padding: 1.2rem;
+    line-height: 2.0rem;
+    display: block;
 }
 
-.nav__div-menu {
-    cursor: pointer;
-    line-height: 1.8rem;
-    padding: 2.5rem;
-    border: 1.6rem $color-menu-dark solid;
-    background-color: $color-menu-item;
-}
-
-.nav__div-menu:hover {
-    color: $color-menu-hover-text;
+.menu__item:hover,
+.menu__title:focus {
     background-color: $color-menu-hover-item;
+}
+
+.menu__item:hover .menu__title,
+.menu__title:focus {
+    color: $color-menu-hover-text;
 }
 
 .main {
@@ -87,7 +107,7 @@ $color-table-item: rgb(225, 205, 134);
 
 .header {
     text-transform: uppercase;
-    font-size: 2.6rem;;
+    font-size: 2.6rem;
     color: $color-text-header;
 }
 
@@ -101,7 +121,12 @@ $color-table-item: rgb(225, 205, 134);
     justify-content: center;
 }
 
-.git {
+.footer {
+    font-size: 1.3rem;
+}
+
+.git,
+.menu__title {
     text-decoration: none;
 }
 
