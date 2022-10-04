@@ -48,7 +48,10 @@ function startPlay() {
 }
 
 function selectCardOpen(event) {
-	if (event.target.nodeName !== "IMG") {
+	if (
+		event.target.nodeName !== "IMG" ||
+		event.target.classList.contains("active")
+	) {
 		return;
 	}
 	const cardId = event.target.closest("div[data-card]");
