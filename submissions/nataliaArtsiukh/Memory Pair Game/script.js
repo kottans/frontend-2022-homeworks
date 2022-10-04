@@ -13,27 +13,21 @@ const board = {
     },
     layOutCards: function() {
         this.cardURLs.forEach(cardURL => {
-            let card = document.createElement('div');
+            this.boardDiv.insertAdjacentHTML('beforeend', `
+                <div class="flipper">
+                    <div class="front">
+                        <img class="front-img" src="./img/front.jpg" draggable="false">
+                    </div>
+                    <div class="back">
+                        <img class="back-img" src="${cardURL}" draggable="false">
+                    </div>
+                </div>
+            `);
+            let card = document.querySelector('.flipper:last-child');
             this.cardDeck.push(card);
-            this.boardDiv.append(card);
-            card.classList.add('flipper');
-            let cardShirt = document.createElement('div');
-            card.append(cardShirt);
-            cardShirt.classList.add('front');
-            let cardShirtImg = document.createElement('img');
-            cardShirt.append(cardShirtImg);
-            cardShirtImg.classList.add('front-img');
-            cardShirtImg.setAttribute('src', './img/front.jpg');
-            cardShirtImg.setAttribute('draggable', 'false');
-            let cardFace = document.createElement('div');
-            card.append(cardFace);
-            cardFace.classList.add('back');
-            let cardFaceImg = document.createElement('img');
-            cardFace.append(cardFaceImg);
-            cardFaceImg.classList.add('back-img');
-            cardFaceImg.setAttribute('src', cardURL);
-            cardFaceImg.setAttribute('draggable', 'false');
         });
+        this.disappearedCardsCount = 0;
+        this.clickCounter = 0;
     }
 }
 
@@ -60,17 +54,20 @@ const makeDisappear = function(card) {
 }
 
 const createMessage = function() {
-    let finish = document.createElement('div');
-    board.boardDiv.append(finish);
-    finish.classList.add('finish');
-    let finishTitle = document.createElement('h2');
-    finish.append(finishTitle);
-    finishTitle.classList.add('finish-title');
-    finishTitle.textContent = 'You win!'
-    let finishText = document.createElement('p');
-    finish.append(finishText);
-    finishText.classList.add('finish-text');
-    finishText.textContent = `Your score is ${board.clickCounter} clicks.`;
+    board.boardDiv.insertAdjacentHTML('beforeend', `
+        <div class="finish hidden">
+            <h2 class="finish-title">You win!</h2>
+            <p class="finish-text"></p>
+            <div class="finish-button">Play again</div>
+        </div>
+    `);
+}
+
+const showMessage = function(score) {
+    let finishText = document.querySelector('.finish-text');
+    finishText.textContent = `Your score is ${score} clicks.`;
+    let finish = document.querySelector('.finish');
+    finish.classList.remove('hidden');
 }
 
 const clickHandler = function(e) {
@@ -88,7 +85,7 @@ const clickHandler = function(e) {
                 makeDisappear(currentCard);
                 board.disappearedCardsCount += 2;
                 if (board.disappearedCardsCount == board.cardURLs.length) {
-                    setTimeout(createMessage, 1000);
+                    setTimeout(showMessage, 1000, board.clickCounter);
                 }
             } else {
                 setTimeout(showShirt, 1000, board.openedCard);
@@ -101,6 +98,12 @@ const clickHandler = function(e) {
 }
 
 const main = function() {
+    board.boardDiv.innerHTML = '';
+    createMessage();
+    let finish = document.querySelector('.finish');
+    finish.classList.add('hidden');
+    const finishButton = document.querySelector('.finish-button');
+    finishButton.onclick = main;
     board.shuffleCards();
     board.layOutCards();
     board.boardDiv.onclick = clickHandler;

@@ -56,6 +56,10 @@ body {
     flex-direction: column;
 }
 
+.hidden {
+    display: none;
+}
+
 .finish-title {
     font-size: 4em;
     margin: .5em;
@@ -64,6 +68,19 @@ body {
 .finish-text {
     font-size: 2em;
     margin: 0;
+}
+
+.finish-button {
+    font-size: 1.5em;
+    margin-top: 1.5em;
+    padding: .5em;
+    border-radius: .5em;
+    cursor: pointer;
+    background-color: var(--selection-color);
+}
+
+.finish-button:hover {
+    color: var(--bg-color);
 }
 
 .flipper.flipped  {
