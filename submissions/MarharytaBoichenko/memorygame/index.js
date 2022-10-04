@@ -92,8 +92,10 @@ const closeCards = () => {
 
 const showCongrats = () => {
   setTimeout(() => {
+    console.log("openedPairs", openedPairs);
     if (openedPairs === 6) {
-      wrapper.innerHTML = `<div class="congrats"><div class="congrats__text">Congratulations! You have find all pairs in ${clickCount} clicks!
+      openedPairs = 0;
+      wrapper.innerHTML = `<div class="congrats"><div class="congrats__text">Congratulations! You have flipped ${clickCount} pairs!
       </div>
       <button type="button" class="restart">Restart</button></div>`;
       const restartButton = document.querySelector(".restart");

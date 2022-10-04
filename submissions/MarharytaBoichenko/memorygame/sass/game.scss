@@ -1,5 +1,5 @@
-$primaryColor: #000;
-$mainFont: "Merriweather", serif;
+$primaryColor: #02114f;
+$mainFont: "Nunito Sans", sans-serif;
 $bcgColor: #30c5f7;
 $bcgMenuColor: #ffffff;
 $btnColor: #f9d553;
@@ -21,23 +21,23 @@ body {
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .cards {
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
   row-gap: 15px;
   column-gap: 15px;
   justify-items: center;
-  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
+  user-select: none;
 }
 
 .cards__item {
@@ -149,11 +149,28 @@ body {
   align-items: center;
 }
 
+@media screen and (orientation: landscape) {
+  .title {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .cards {
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .congrats__text,
+  .instruction__text {
+    margin-bottom: 5px;
+    margin-top: 10%;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .cards {
-    width: 600px;
-    height: 600px;
-    column-gap: 0px;
+    width: 100%;
   }
 
   .title {
@@ -163,13 +180,13 @@ body {
   .flip-card,
   .cards__item--front,
   .cards__item--back {
-    width: 150px;
-    height: 150px;
+    width: 110px;
+    height: 110px;
   }
 
   .cards__image {
-    width: 150px;
-    height: 150px;
+    width: 110px;
+    height: 110px;
     object-fit: cover;
   }
 
@@ -192,12 +209,15 @@ body {
   .instruction__button {
     width: 120px;
     height: 50px;
+    font-size: 1.5rem;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .cards {
-    width: 800px;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
   }
 
   .title {
@@ -207,13 +227,13 @@ body {
   .flip-card,
   .cards__item--front,
   .cards__item--back {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
   }
 
   .cards__image {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
   }
 
