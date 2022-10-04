@@ -3,7 +3,7 @@ const ABC_Ascending = 'abcAscending',
     AGE_Ascending = 'ageAscending',
     AGE_Descending = 'ageDescending',
     BOTH = 'both',
-    PAGE_LENGTH = 10;
+    PAGE_LENGTH = 12;
 
 
 

@@ -14,8 +14,8 @@ class CardsModel extends BaseModel {
     constructor() {
         super();
         this.url = 'https://randomuser.me/api/?seed=foobar&results=100&inc=gender,name,email,dob,phone,picture,location';
-        this.attributes = null;
-        this.users = null;
+        this.attributes = [];
+        this.users = [];
         this.pages = null;
         this.page = null;
         this.pageButtons = null;
@@ -28,18 +28,18 @@ class CardsModel extends BaseModel {
     }
 
 
-    createUserList() {
+    createUserList(requirements) {
         fetch(this.url)
             .then((response, reject) => this.clear(response, reject))
             .then(response => response.json())
             .then(results => results.results)
             .then(users => this.setAtributes(users))
+            .then(() => this.findAndSort(requirements))
             .catch(err => {
                 this.error = err.message;
                 console.error(err);
                 this.publish('changeData');
-            });
-
+            })
     }
 
     setAtributes(users) {
@@ -55,13 +55,11 @@ class CardsModel extends BaseModel {
             };
         });
         this.error = null;
-        this.findAndSort({ gender: BOTH, sort: ABC_Ascending })
-
     }
 
     findAndSort({ name, minAge, maxAge, gender, sort }) {
-        if (!this.users) {
-            this.createUserList()
+        if (!this.users.length) {
+            this.createUserList({ name, minAge, maxAge, gender, sort });
         }
         this.page = null;
         this.attributes = [... this.users];

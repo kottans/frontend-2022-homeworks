@@ -6,7 +6,7 @@
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
-    transition: 0.5s;
+    transition: 0.1s ease-in;
     font-family: sans-serif;
     letter-spacing: 1px;
 }
@@ -27,7 +27,7 @@
     background-color: #0071f0;
     border-radius: 20px;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-    transition: 0.5s;
+    transition: 0.1s ease-in;
 }
 
 .card:hover .card-img,
@@ -51,7 +51,7 @@
     padding: 30px;
     text-align: center;
     width: 100%;
-    transition: 0.5s;
+    transition: 0.1s ease-in;
     transform: translateY(110px);
 }
 

@@ -22,11 +22,11 @@ class Controller {
         maxAge.value = '';
         gender.value = BOTH;
         sort.value = ABC_Ascending;
-        this.setRequirementsFromForm(event);
+        this.setRequirementsFromForm();
     }
 
-    setRequirementsFromForm(event) {
-        const { findName, minAge, maxAge, gender, sort } = this.getDOMelem(event, '.form');
+    getRequirementsFromForm() {
+        const { findName, minAge, maxAge, gender, sort } = document.body.querySelector('.form');
         const formRequirements = {
             name: findName.value.trim(),
             minAge: +minAge.value || undefined,
@@ -35,6 +35,11 @@ class Controller {
             sort: sort.value
         };
 
+        return formRequirements;
+    }
+
+    setRequirementsFromForm() {
+        const formRequirements = this.getRequirementsFromForm();
         this.cardsModel.findAndSort(formRequirements);
     }
 
@@ -48,7 +53,7 @@ class Controller {
 
     onSubmitForm(event) {
         event.preventDefault();
-        this.setRequirementsFromForm(event);
+        this.setRequirementsFromForm();
     }
 
     onClick(event) {
@@ -73,20 +78,22 @@ class Controller {
 
     onCheck(event) {
         const checkBox = this.getDOMelem(event, '.form-checkbox');
-        this.setRequirementsFromForm(event);
+        this.setRequirementsFromForm();
         checkBox.checked = true;
     }
 
     onInput(event) {
         const input = this.getDOMelem(event, '.form-input');
         if (input) {
-            this.setRequirementsFromForm(event);
+            this.setRequirementsFromForm();
 
         }
     }
 
     onLoad() {
-        this.cardsModel.createUserList();
+        const requirements = this.getRequirementsFromForm();
+        this.cardsModel.createUserList(requirements);
+
     }
 
     onPage({ target: button }) {
