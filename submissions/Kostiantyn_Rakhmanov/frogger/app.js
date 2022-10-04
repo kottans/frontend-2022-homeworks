@@ -17,7 +17,7 @@ const PLAYER = {
     startCoordY: 375,
     startLocationShift: 60,
     startDelay: 777,
-}
+};
 
 const ENEMY = {
     coordX: {
