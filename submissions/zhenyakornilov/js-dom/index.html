@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/269a1f5e0e.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/x-icon" href="images/museum-icon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Top Museums of Kyiv</title>
+</head>
+<body class="body">
+  <div class="wrapper">
+    <header class="header">
+      <span>
+        <button class="dropdown" id="dropdown-button">
+          <i class="dropdown-icon fa-solid fa-bars fa-lg"></i>
+        </button>
+      </span>
+      <h1 class="title">Top 5 Museums of Kyiv</h1>
+      <div>
+        <input class="check-switch" type="checkbox" id="switcher">
+        <label class="theme-switcher" for="switcher">
+          <i class="fa-solid fa-sun sun-icon"></i>
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <span class="circle"></span>
+        </label>
+      </div>
+    </header>
+    <nav class="sidebar">
+      <ul class="menu-items" id="menu"></ul>
+    </nav>
+    <main class="content">
+      <article class="content-body" id="content"></article>
+    </main>
+    <footer class="footer">
+      <a class="footer-link" href="https://github.com/zhenyakornilov" target="_blank">
+        <span>
+          <i class="fa-brands fa-github"></i> Yevhen Kornilov
+        </span>
+      </a>
+    </footer>
+  </div>
+  <script src="js/index.js" type="module"></script>
+</body>
+</html>

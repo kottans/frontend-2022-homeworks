@@ -1,0 +1,144 @@
+.header-container {
+    display: flex;
+    height: 90px;
+    background: rgba(1, 66, 85, 0.7);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nav-item {
+    margin: 10px 54px;
+  }
+  
+  .nav-text {
+    font-family: courier-prime, monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: rgb(255, 255, 255);
+  }
+  
+  .nav-text:hover {
+    color: rgb(240, 130, 1);
+    cursor: pointer;
+  }
+  
+  .main-body {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    padding-bottom: 25px;
+    background-image: url("../img/forest.webp");
+  }
+  
+  .main-content {
+    background: rgba(15, 43, 46, 0.8);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    width: 60em;
+    margin-top: 25px;
+    justify-content: center;
+  }
+  
+  .text-header {
+    font-family: courier-prime, monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    text-align: center;
+    margin: 10px auto;
+    color: rgb(255, 255, 255);
+  }
+  
+  .main-img {
+    display: block;
+    height: 425px;
+    margin: 20px auto;
+  }
+  
+  .main-text {
+    font-family: courier-prime, monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 28px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+  }
+  
+  @media screen and (max-width: 1100px) {
+    .header-container {
+      height: 70px;
+    }
+  
+    .nav-text {
+      font-size: 20px;
+    }
+    .nav-item {
+      margin: 10px 20px;
+    }
+  
+    .text-header {
+      font-size: 40px;
+    }
+  
+    .main-content {
+      width: 80%;
+      padding: 25px;
+    }
+  
+    .main-img {
+      margin: 10px auto;
+      max-height: 300px;
+    }
+  
+    .main-text {
+      font-size: 15px;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .header-container {
+      height: 50px;
+    }
+  
+    .nav-text {
+      font-size: 10px;
+    }
+    .nav-item {
+      margin: 10px 15px;
+    }
+  
+    .text-header {
+      font-size: 20px;
+    }
+  
+    .main-content {
+      width: 80%;
+      padding: 20px;
+    }
+  
+    .main-img {
+      margin: 5px auto;
+      max-height: 160px;
+    }
+  
+    .main-text {
+      font-size: 10px;
+    }
+  }
+  
+  

@@ -1,0 +1,147 @@
+/* base style */
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  font-family: "Montserrat", Helvetica, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+ul li {
+  list-style: none;
+}
+
+h1,
+h2 {
+  font-size: inherit;
+  font-weight: 400;
+}
+/* ============================================ */
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.header {
+  margin: 20px;
+}
+.header__title {
+  flex: 0 0 auto;
+  color: #684a4a;
+  text-shadow: 2px 2px 2px rgb(255, 255, 255);
+  font-size: 54px;
+  line-height: 140px;
+  background: url("../img/teas.jpg") 0 0 / cover no-repeat;
+  padding: 50px, 20px;
+}
+
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  margin: 0px 20px;
+}
+
+.menu__items {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px;
+}
+.menu__item {
+  user-select: none;
+  cursor: pointer;
+  color: #291e1e;
+  margin: 10px;
+  font-size: 24px;
+  width: 200px;
+}
+.menu__item:hover {
+  text-shadow: 2px 2px 2px rgb(87, 80, 80);
+}
+.more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 50px 20px;
+}
+.more__header {
+  font-size: 36px;
+  margin: 20px;
+}
+.more__picture {
+  max-height: 150px;
+}
+.more__about {
+  font-size: 24px;
+}
+.footer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 20px;
+}
+.footer__text {
+  text-align: center;
+  line-height: 50px;
+}
+@media (max-width: 750px) {
+  .more {
+    padding: 0px 20px 15px;
+  }
+}
+@media (max-width: 625px) {
+  .header__title {
+    font-size: 34px;
+    line-height: 90px;
+  }
+  .main {
+    flex-direction: column;
+  }
+  .more {
+    padding: 0px 10px 10px;
+  }
+  .menu__items {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .menu__item {
+    border: 1px solid #291e1e;
+    padding: 5px;
+    border-radius: 2px;
+    width: 135px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header__title {
+    font-size: 25px;
+    line-height: 65px;
+  }
+}

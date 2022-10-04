@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/css/styles.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <title>POPUP</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-flex-box">
+                <a class="logo-link logo-flex" href="./index.html" aria-label="paw">
+                    <div class="logo-box">
+                        <svg class="logo-img" width="40" height="40">
+                            <use href="./icons/sprite.svg#paw-solid"></use>
+                        </svg>
+                        <p class="logo-text">Kottans</p>
+                    </div>
+                </a>
+                <div class="right-menu-box">
+                    <nav class="navigation">
+                        <a class="link-envelope navigation-link" href="#" title="Mail" aria-label="envelope">
+                            <svg class="envelope-img" width="40" height="40">
+                                <use href="./icons/sprite.svg#envelope-solid"></use>
+                            </svg>
+                        </a>
+                        <a class="link-images navigation-link" href="#" title="Images" aria-label="images">
+                            <svg class="images-img" width="40" height="40">
+                                <use href="./icons/sprite.svg#images-solid"></use>
+                            </svg>
+                        </a>
+                    </nav>
+                    <div class="popup-menu-list">
+                        <input class="check-input" type="checkbox" id="menu">
+                        <label class="popup-menu" for="menu"></label>
+                        <div class="dropdown-content">
+                            <div class="polygon-blue"></div>
+                            <div class="polygon-white"></div>
+                            <ul class="dropdown-list">
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="calendar">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#calendar-days-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Calendar</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="mail">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#mail-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Mail</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="news">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#news-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">News</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="maps">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#maps-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Map</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="files">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#files-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Files</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="contacts">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#contacts-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Contacts</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="translation">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#translation-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Translate</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="videos">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#videos-brands"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Videos</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="search">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#search-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Search</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="photos">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#photos-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Photo</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="apps">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#apps-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Apps</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link" aria-label="documents">
+                                        <svg class="dropdown-img" width="40" height="40">
+                                            <use href="./icons/sprite.svg#documents-solid"></use>
+                                        </svg>
+                                        <span class="dropdown-text">Document</span>
+                                    </a>
+                                </li>
+                                <li class="dropdown-list-more-input">
+                                    <div>
+                                        <input class="more-input" type="checkbox" id="more">
+                                        <label class="more-label" for="more">More</label>
+                                        <ul class="dropdown-list-more">
+                                            <li class="dropdown-list-more-item">
+                                                <a href="#" class="dropdown-link" aria-label="chat">
+                                                    <svg class="dropdown-img" width="40" height="40">
+                                                        <use href="./icons/sprite.svg#chat-solid"></use>
+                                                    </svg>
+                                                    <span class="dropdown-text">Chat</span>
+                                                </a>
+                                            </li>
+                                            <li class="dropdown-list-more-item">
+                                                <a href="#" class="dropdown-link" aria-label="classroom">
+                                                    <svg class="dropdown-img" width="40" height="40">
+                                                        <use href="./icons/sprite.svg#classroom-solid"></use>
+                                                    </svg>
+                                                    <span class="dropdown-text">Classroom</span>
+                                                </a>
+                                            </li>
+                                            <li class="dropdown-list-more-item">
+                                                <a href="#" class="dropdown-link" aria-label="collection">
+                                                    <svg class="dropdown-img" width="40" height="40">
+                                                        <use href="./icons/sprite.svg#collection-solid"></use>
+                                                    </svg>
+                                                    <span class="dropdown-text">Collection</span>
+                                                </a>
+                                            </li>
+                                            <li class="dropdown-list-more-item">
+                                                <a href="#" class="dropdown-link" aria-label="mars">
+                                                    <svg class="dropdown-img" width="40" height="40">
+                                                        <use href="./icons/sprite.svg#mars-solid"></use>
+                                                    </svg>
+                                                    <span class="dropdown-text">Mars</span>
+                                                </a>
+                                            </li>
+                                            <li class="dropdown-list-more-item">
+                                                <a href="#" class="dropdown-link" aria-label="blogs">
+                                                    <svg class="dropdown-img" width="40" height="40">
+                                                        <use href="./icons/sprite.svg#blogs-solid"></use>
+                                                    </svg>
+                                                    <span class="dropdown-text">Blogs</span>
+                                                </a>
+                                            </li>
+                                            <li class="dropdown-list-more-item">
+                                                <a href="#" class="dropdown-link" aria-label="promo">
+                                                    <svg class="dropdown-img" width="40" height="40">
+                                                        <use href="./icons/sprite.svg#promo-solid"></use>
+                                                    </svg>
+                                                    <span class="dropdown-text">Promos</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="notification-list">
+                        <li>
+                            <a href="#" class="link-bell" aria-label="bell">
+                                <svg class="bell-img" width="30" height="30">
+                                    <use href="./icons/sprite.svg#bell-solid"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="link-avatar" href="#" aria-label="avatar">
+                                <svg class="avatar-img" width="33" height="33">
+                                    <use href="./icons/sprite.svg#avatar-solid"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+
+</html>
