@@ -82,14 +82,11 @@ const inhabitants = [
 
 //we're working with global array inhabitants, so I don't pass it into function as an argument
 function addFriends(person, friendsList) {
-  let friendsStorage = [];
-  for (let i = 0; i < friendsList.length; i++) {
-    friendsStorage.push(
-      inhabitants.find((friend) => friend.name == friendsList[i])
-    );
-  }
-  inhabitants.find((inhabitant) => inhabitant.name == person).friends =
-    friendsStorage;
+  const friendsStorage = [];
+  friendsList.forEach(friendName => {
+    friendsStorage.push(inhabitants.find((friend) => friend.name == friendName));
+  });
+  inhabitants.find((inhabitant) => inhabitant.name == person).friends = friendsStorage;
 }
 
 addFriends("Jenny", ["John", "Molly"]);
