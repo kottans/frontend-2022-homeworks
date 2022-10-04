@@ -22,11 +22,11 @@ searchElem.addEventListener("input", (evt) => {
 });
 
 const filtersForm = document.querySelector('.filters');
-filtersForm.addEventListener("change", ({target}) => {
-const {name, value} = target;
- if (!['sort', 'gender'].includes(name))) {
-     return
- }
+filtersForm.addEventListener("change", ({ target }) => {
+  const { name, value } = target;
+  if (!["sort", "gender"].includes(name)) {
+    return;
+  }
   urlSearchParams.set(name, value);
   renderUserList();
 });
