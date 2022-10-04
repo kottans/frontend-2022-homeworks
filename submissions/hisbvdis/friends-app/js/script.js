@@ -21,18 +21,15 @@ searchElem.addEventListener("input", (evt) => {
   renderUserList();
 });
 
-sortElem.addEventListener("change", (evt) => {
-  sortValue = evt.target.value;
-  urlSearchParams.set("sort", sortValue);
+const filtersForm = document.querySelector('.filters');
+filtersForm.addEventListener("change", ({target}) => {
+const {name, value} = target;
+ if (!['sort', 'gender'].includes(name))) {
+     return
+ }
+  urlSearchParams.set(name, value);
   renderUserList();
 });
-
-filtersFormElem.addEventListener("change", (evt) => {
-  if (evt.target.name !== "gender") return;
-  genderValue = evt.target.value;
-  urlSearchParams.set("gender", genderValue);
-  renderUserList();
-})
 
 renderUserList(true);
 
