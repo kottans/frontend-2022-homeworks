@@ -5,7 +5,6 @@ import { print } from './js/lib.js';
    Code repository: _put repo URL here_
    Web app: _put project's github pages URL here_
    */
-
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 
