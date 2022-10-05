@@ -1,6 +1,3 @@
-import { renderCards } from './renderers.js';
-import { state } from './app.js';
-
 export const handleMenuButtonClick = ({ target }) => {
   target.src.includes('bars-solid.svg')
     ? target.setAttribute('src', './img/xmark-solid.svg')
@@ -18,7 +15,7 @@ const toggleFocusOfGroupOfButtons = (currentButton, buttonClass) => {
   });
 };
 
-const handleGroupOfButtons = ({ target }, buttonClass) => {
+const handleGroupOfButtons = ({ target }, buttonClass, state) => {
   const currentButton =
     target.tagName === 'IMG' ? target.parentElement : target;
   if (currentButton.classList.contains('is-pressed')) return;
@@ -30,25 +27,44 @@ const handleGroupOfButtons = ({ target }, buttonClass) => {
   if (value[0] === 'sort') {
     state.sort = value[1];
   }
-  state.prepareArrayToRender();
-  renderCards(state.arrayToRender);
 };
 
-export const handleFilterByGenderButtonClick = (target) => {
-  handleGroupOfButtons(target, 'filter-gender-button');
+export const handleFilterByGenderButtonClick = (target, state) => {
+  handleGroupOfButtons(target, 'filter-gender-button', state);
 };
 
-export const handleSortButtonClick = (target) => {
-  handleGroupOfButtons(target, 'sort-button');
+export const handleSortButtonClick = (target, state) => {
+  handleGroupOfButtons(target, 'sort-button', state);
 };
 
-export const handleNameInputChange = ({ target }) => {
+export const handleResetButtonClick = (state) => {
+  const defaultGenderButton = document.querySelector(
+    `[data-type="filter gender all"]`
+  );
+  toggleFocusOfGroupOfButtons(defaultGenderButton, 'filter-gender-button');
+  state.filter.gender = 'all';
+
+  const minAgeField = document.getElementById('min-age-input');
+  minAgeField.value = state.filter.minAge = minAgeField.min;
+
+  const maxAgeField = document.getElementById('max-age-input');
+  maxAgeField.value = state.filter.maxAge = maxAgeField.max;
+
+  const nameInput = document.getElementById('name-input');
+  nameInput.value = state.filter.name = '';
+
+  const defaultSortButton = document.querySelector(
+    `[data-type="sort initial"]`
+  );
+  toggleFocusOfGroupOfButtons(defaultSortButton, 'sort-button');
+  state.sort = 'initial';
+};
+
+export const handleNameInputChange = ({ target }, state) => {
   state.filter.name = target.value;
-  state.prepareArrayToRender();
-  renderCards(state.arrayToRender);
 };
 
-export const handleMinAndMaxAgeInput = ({ target }) => {
+export const handleMinAndMaxAgeInput = ({ target }, state) => {
   const current = target.id.split('-')[0];
   const opposite = current === 'max' ? 'min' : 'max';
   const newValue = target.value;
@@ -65,6 +81,4 @@ export const handleMinAndMaxAgeInput = ({ target }) => {
     .getElementById(`${opposite}-age-input`)
     .setAttribute(`${current}`, valueToUse);
   state.filter[`${current}Age`] = valueToUse;
-  state.prepareArrayToRender();
-  renderCards(state.arrayToRender);
 };

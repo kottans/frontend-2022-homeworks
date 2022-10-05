@@ -4,13 +4,14 @@ import {
   handleSortButtonClick,
   handleNameInputChange,
   handleMinAndMaxAgeInput,
+  handleResetButtonClick,
 } from './eventHandlers.js';
 
 import { renderCards, renderSpinner } from './renderers.js';
 
 import { getPeopleFromResponse } from './fetchPeople.js';
 
-export const state = {
+const state = {
   initialArray: [],
   arrayToRender: [],
   filter: {
@@ -63,6 +64,10 @@ export const state = {
       })
       .sort(sortingOptions[this.sort]);
   },
+  renderCards() {
+    this.prepareArrayToRender();
+    renderCards(this.arrayToRender);
+  },
 };
 
 const setMinAndMaxAgeInStateFromArrayOfPeople = (people) => {
@@ -94,29 +99,40 @@ document.addEventListener('DOMContentLoaded', async () => {
   state.initialArray = await getPeopleFromResponse();
   setMinAndMaxAgeInStateFromArrayOfPeople(state.initialArray);
   setMinAndMaxValuesInFilterFields();
-  renderCards(state.initialArray);
-  document
-    .querySelectorAll('.filter-gender-button')
-    .forEach((button) =>
-      button.addEventListener('click', handleFilterByGenderButtonClick)
-    );
-  document
-    .querySelectorAll('.sort-button')
-    .forEach((button) =>
-      button.addEventListener('click', handleSortButtonClick)
-    );
+  state.renderCards();
+
+  document.querySelectorAll('.filter-gender-button').forEach((button) =>
+    button.addEventListener('click', (event) => {
+      handleFilterByGenderButtonClick(event, state);
+      state.renderCards();
+    })
+  );
+
+  document.querySelectorAll('.sort-button').forEach((button) => {
+    button.addEventListener('click', (event) => {
+      handleSortButtonClick(event, state);
+      state.renderCards();
+    });
+  });
 
   document
     .getElementById('menu-button')
     .addEventListener('click', handleMenuButtonClick);
 
-  document.getElementById('name-input').addEventListener('input', (event) => {
-    handleNameInputChange(event);
+  document.getElementById('reset-button').addEventListener('click', () => {
+    handleResetButtonClick(state);
+    state.renderCards();
   });
 
-  document
-    .querySelectorAll('.age-input')
-    .forEach((element) =>
-      element.addEventListener('input', handleMinAndMaxAgeInput)
-    );
+  document.getElementById('name-input').addEventListener('input', (event) => {
+    handleNameInputChange(event, state);
+    state.renderCards();
+  });
+
+  document.querySelectorAll('.age-input').forEach((element) =>
+    element.addEventListener('input', (event) => {
+      handleMinAndMaxAgeInput(event, state);
+      state.renderCards();
+    })
+  );
 });
