@@ -66,16 +66,17 @@ sortListAge.addEventListener('click', ({target}) => {
     if (target.classList.contains('sorts_options')) {
         sortAge.textContent = target.textContent;
         sortIdAge.value = target.dataset.sort;
-        filterByGender();
         sortName.textContent = 'Sort by Name';
         if (genders === 'all') {
             const newData = sortByAge();
             renderCards(newData);
         } else {
-            const newData = sortByAge();
-            renderCards(newData.filter(data => data.gender === genders));
+            const newData = sortByAge().filter(data => data.gender === genders);
+            renderCards(newData);
         }
-        removeMenu();
+        setTimeout(() => {
+            removeMenu();
+        }, 500);
         sortListAge.classList.remove('sorts_list_active');
     }
 });
@@ -89,16 +90,18 @@ sortListName.addEventListener('click', ({target}) => {
     if (target.classList.contains('sorts_options')) {
         sortName.textContent = target.textContent;
         sortIdName.value = target.dataset.sort;
-        filterByGender();
+        console.log(sortIdName.value);
         sortAge.textContent = 'Sort by Age';
         if (genders === 'all') {
             const newData = sortByName();
             renderCards(newData);
         } else {
-            const newData = sortByName();
-            renderCards(newData.filter(data => data.gender === genders));
+            const newData = sortByName().filter(data => data.gender === genders);
+            renderCards(newData);
         }
-        removeMenu();
+        setTimeout(() => {
+            removeMenu();
+        }, 500);
         sortListName.classList.remove('sorts_list_active');
     }
 });
@@ -107,73 +110,141 @@ filterIdGender.addEventListener('click', ({target}) => {
     if (target.classList.contains('gender')) {
         genders = target.value;
         const newData = filterByGender();
-        inputSearch.value = '';
         renderCards(newData);
-        removeMenu();
+        setTimeout(() => {
+            removeMenu();
+        }, 500);
     }
 });
 
 const sortByAge = () => {
-    switch (sortIdAge.value) {
-        case 'up':
-            return data.sort((a, b) => a.dob.age > b.dob.age ? 1 : -1);
-            break;
-        case 'down':
-            return data.sort((a, b) => b.dob.age > a.dob.age ? 1 : -1);
-            break;
-        default:
-            return data.sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? 1 : -1);
+    if (inputSearch.value.length !== 0) {
+        const fByG = filterByGender()
+        const sByF = fByG.filter(data => data.name.first.toLowerCase().includes(inputSearch.value.toLowerCase()));
+        switch (sortIdAge.value) {
+            case 'up':
+                return sByF.sort((a, b) => a.dob.age > b.dob.age ? 1 : -1);
+                break;
+            case 'down':
+                return sByF.sort((a, b) => b.dob.age > a.dob.age ? 1 : -1);
+                break;
+            default:
+                return sByF.sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? 1 : -1);
+        }
+    } else {
+        switch (sortIdAge.value) {
+            case 'up':
+                return data.sort((a, b) => a.dob.age > b.dob.age ? 1 : -1);
+                break;
+            case 'down':
+                return data.sort((a, b) => b.dob.age > a.dob.age ? 1 : -1);
+                break;
+            default:
+                return data;
+        }
     }
 };
 
 const sortByName = () => {
-    switch (sortIdName.value) {
-        case 'fromA':
-            return data.sort((a, b) => a.name.first > b.name.first ? 1 : -1);
-            break;
-        case 'fromZ':
-            return data.sort((a, b) => b.name.first > a.name.first ? 1 : -1);
-            break;
-        default:
-            return data.sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? 1 : -1);
+    if (inputSearch.value.length !== 0) {
+        const fByG = filterByGender();
+        const sByF = fByG.filter(data => data.name.first.toLowerCase().includes(inputSearch.value.toLowerCase()));
+        switch (sortIdName.value) {
+            case 'fromA':
+                return sByF.sort((a, b) => a.name.first > b.name.first ? 1 : -1);
+                break;
+            case 'fromZ':
+                return sByF.sort((a, b) => b.name.first > a.name.first ? 1 : -1);
+                break;
+            default:
+                return sByF.sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? 1 : -1);
+        }
+    } else {
+        switch (sortIdName.value) {
+            case 'fromA':
+                return data.sort((a, b) => a.name.first > b.name.first ? 1 : -1);
+                break;
+            case 'fromZ':
+                return data.sort((a, b) => b.name.first > a.name.first ? 1 : -1);
+                break;
+            default:
+                return data
+        }
     }
+
 };
 
 const filterByGender = () => {
-    switch (genders) {
-        case 'male':
-            return data.filter(data => data.gender === 'male');
-            break;
-        case 'female':
-            return data.filter(data => data.gender === 'female');
-            break;
-        default:
-            return data.sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? 1 : -1);
+    if (inputSearch.value.length > 0) {
+        const sByF = data.filter(data => data.name.first.toLowerCase().includes(inputSearch.value.toLowerCase()));
+        switch (genders) {
+            case 'male':
+                return sByF.filter(data => data.gender === 'male');
+                break;
+            case 'female':
+                return sByF.filter(data => data.gender === 'female');
+                break;
+            default:
+                return sByF
+        }
+    } else {
+        switch (genders) {
+            case 'male':
+                return data.filter(data => data.gender === 'male');
+                break;
+            case 'female':
+                return data.filter(data => data.gender === 'female');
+                break;
+            default:
+                return data
+        }
     }
 };
+
+const countFriends = document.querySelector('.count_friends');
+countFriends.textContent = '0';
 
 const searchName = () => {
     inputSearch.addEventListener('input', e => {
         e.preventDefault();
-        const searchOfName = data.filter(data => data.name.first.toLowerCase().includes(inputSearch.value.toLowerCase()));
-        inputAll.checked = true;
-        filterByGender();
-        if(inputSearch.value.length > 0) {
-            removeMenu();
+        if (inputSearch.value.length !== 0) {
+            const sortAge = sortByAge();
+            const fByG = filterByGender(sortAge);
+            const searchOfName = fByG.filter(data => data.name.first.toLowerCase().includes(inputSearch.value.toLowerCase()));
+            const countAll = searchOfName.map(e => e.name).length;
+            countFriends.textContent = `${countAll}`;
+            renderCards(searchOfName);
+            if(inputSearch.value.length > 0) {
+                setTimeout(() => {
+                    removeMenu();
+                }, 1000);
+            }
+        } else {
+            countFriends.textContent = '0';
+            if (genders === 'all') {
+                const sortAge = sortByAge();
+                const sortName = sortByName(sortAge);
+                renderCards(sortName);
+            } else {
+                const sortAge = sortByAge();
+                const sortName = sortByName(sortAge).filter(data => data.gender === genders);
+                renderCards(sortName);
+            }
         }
-        renderCards(searchOfName);
+
     });
 };
 
 const resetAll = () => {
     data = [...response.results];
     sortAge.textContent = 'Sort by Age';
+    sortIdAge.value = 'date';
     sortName.textContent = 'Sort by Name';
+    sortIdName.value = 'date';
     genders = 'all';
     filterByGender();
     inputAll.checked = true;
     inputSearch.value = '';
-    removeMenu();
     renderCards(data)
 };
 
