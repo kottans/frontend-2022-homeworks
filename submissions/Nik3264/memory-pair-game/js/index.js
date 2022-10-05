@@ -53,38 +53,41 @@ class Game {
     }
   }
 
-  markRemove() {
-    let isPossible = true;
-    while (isPossible && this.cardsPressed.length > 1) {
-      if (
-        this.cardsPressed[0].number === this.cardsPressed[1].number &&
-        this.cardsPressed[0].id !== this.cardsPressed[1].id
-      ) {
-        document
-          .getElementById(this.cardsPressed.shift().id)
-          .classList.add("hidden");
-        document
-          .getElementById(this.cardsPressed.shift().id)
-          .classList.add("hidden");
-      } else {
-        isPossible = false;
-      }
-    } //while
+  isRemove(id1, id2, cardNumber1, cardNumber2) {
+    return cardNumber1 === cardNumber2 && id1 !== id2;
   }
 
-  markRotate() {
-    if (this.cardsPressed.length > 1) {
-      setTimeout(() => {
-        if (this.cardsPressed.length > 1) {
-          document
-            .getElementById(this.cardsPressed.shift().id)
-            .classList.remove("round");
-          document
-            .getElementById(this.cardsPressed.shift().id)
-            .classList.remove("round");
-        }
-      }, 1000);
-    }
+  cardsRemove(id1, id2) {
+    setTimeout(() => {
+      document.getElementById(id1).classList.add("hidden");
+      document.getElementById(id2).classList.add("hidden");
+      if (this.isWin()) {
+        setTimeout(() => this.greetings(), 500);
+      }
+    }, 1000);
+  }
+
+  isRotate(cardNumber1, cardNumber2) {
+    return cardNumber1 !== cardNumber2;
+  }
+
+  cardsRotate(id1, id2) {
+    setTimeout(() => {
+      document.getElementById(id1).classList.remove("round");
+      document.getElementById(id2).classList.remove("round");
+    }, 1000);
+  }
+
+  cardPressedProcessing() {
+    while (this.cardsPressed.length > 1) {
+      let { id: id1, number: number1 } = this.cardsPressed.shift();
+      let { id: id2, number: number2 } = this.cardsPressed.shift();
+      if (this.isRemove(id1, id2, number1, number2)) {
+        this.cardsRemove(id1, id2);
+      } else if (this.isRotate(number1, number2)) {
+        this.cardsRotate(id1, id2);
+      }
+    } //while
   }
 
   greetings() {
@@ -136,7 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
   buttonNumber.addEventListener("click", () => {
     let game = document.querySelector(".game__wrap");
     game.innerHTML =
-      '<div class="game__number">Input number, please (<16)<input class="game__number__input"></div>';
+      '<div class="game__number">Enter an even number < 16 (odd will be rounded down)<input class="game__number__input"></div>';
     let newGameInput = document.querySelector(".game__number__input");
     newGameInput.focus();
     newGameInput.addEventListener("change", () => {
@@ -155,42 +158,11 @@ window.addEventListener("DOMContentLoaded", () => {
     let number = target.getAttribute("number");
     let id = target.getAttribute("id");
     this.cardsPressed.push({ number, id });
-
-    const cardChangeRequest = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        console.log("target внутри промиса до переворота", target);
-        if (target.getAttribute("number") != null) {
-          target.classList.toggle("round");
-        }
-        console.log("target внутри промиса после переворота", target);
-        resolve();
-      });
-    });
-
-    cardChangeRequest
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            this.markRemove(); //
-            resolve();
-          }, 1500);
-        });
-      })
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            this.markRotate();
-            resolve();
-          });
-        });
-      })
-      .then(() => {
-        setTimeout(() => {
-          if (this.isWin()) {
-            this.greetings();
-          }
-        }, 1500);
-      }); //promise
+    if (target.getAttribute("number") != null) {
+      target.classList.toggle("round");
+    }
+    this.cardPressedProcessing();
   }
+
   myGame.game.addEventListener("click", myListener.bind(myGame));
 });
