@@ -27,6 +27,10 @@ const ENEMY = {
         min: 50,
         max: 100,
     },
+    collision: {
+        x: 70,
+        y: 60,
+    },
     locationsY: [
         60,
         145,
@@ -34,7 +38,7 @@ const ENEMY = {
     ],
 };
 
-let Enemy = function (x, y, speed, player) {
+var Enemy = function (x, y, speed, player) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/enemy-bug.png';
@@ -48,24 +52,29 @@ Enemy.prototype.update = function (dt) {
         this.x = ENEMY.coordX.min;
         this.speed = ENEMY.speed.min + Math.floor(Math.random() * ENEMY.speed.max);
     }
-    if (player.x < this.x + CANVAS.section.width &&
-        player.x + CANVAS.section.width > this.x &&
-        player.y < this.y + PLAYER.startLocationShift &&
-        PLAYER.startLocationShift + player.y > this.y) {
-        player.x = PLAYER.startCoordX;
-        player.y = PLAYER.startCoordY;
-    }
+    this.checkCollision();
+};
 
+Enemy.prototype.checkCollision = function () {
+    if (this.player.x < this.x + ENEMY.collision.x &&
+        this.player.x + ENEMY.collision.x > this.x &&
+        player.y < this.y + ENEMY.collision.y &&
+        ENEMY.collision.y + player.y > this.y) {
+        this.player.toStart();
+    }
 };
 
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-let Player = function (x, y) {
+let Player = function (x, y, enemies) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/char-boy.png';
+    this.enemies = enemies;
+    this.startX = 200;
+    this.startY = 400;
 };
 
 Player.prototype.update = function () {
@@ -73,6 +82,11 @@ Player.prototype.update = function () {
 
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+Player.prototype.toStart = function () {
+    this.x = this.startX;
+    this.y = this.startY;
 };
 
 Player.prototype.handleInput = function (key) {
