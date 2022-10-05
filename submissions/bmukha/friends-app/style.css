@@ -27,6 +27,7 @@
 }
 
 body {
+  overflow-x: hidden;
   background: linear-gradient(
     rgb(var(--main-color)),
     rgb(var(--secondary-color))
@@ -36,7 +37,7 @@ body {
 .header {
   width: 100vw;
   height: var(--header-height);
-  padding: 2rem;
+  padding: 0 2rem;
   position: fixed;
   top: 0;
   display: flex;
@@ -70,9 +71,10 @@ body {
 
 #aside {
   width: var(--menu-width);
-  padding: 1rem;
+  height: calc(100% - var(--header-height) - var(--footer-height));
+  padding: 0.5rem 1rem;
   position: fixed;
-  top: calc(var(--header-height) + 30px);
+  top: var(--header-height);
   left: calc(-1 * var(--menu-width));
   background: linear-gradient(
     rgb(var(--secondary-color)),
@@ -86,6 +88,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
   font-family: var(--secondary-font);
   font-size: 1.5em;
+  z-index: 2;
 }
 
 #aside.hidden {
@@ -198,7 +201,8 @@ a {
 }
 
 .filter-gender-button,
-.sort-button {
+.sort-button,
+.reset-button {
   width: 50px;
   height: 50px;
   background: linear-gradient(
@@ -208,6 +212,15 @@ a {
   border-radius: 50%;
   border: 2px solid black;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+.reset-button {
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+  margin-bottom: 0.2rem;
+  font-family: inherit;
+  font-size: 1em;
 }
 
 .filter-gender-button-icon,
