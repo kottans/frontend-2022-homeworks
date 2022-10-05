@@ -123,7 +123,7 @@
     }
 }
 
-@media (max-width: 900px) and (max-height: 550px) {
+@media (max-width: 950px) and (max-height: 550px) {
     .main {
         padding: 5px;
         align-items: flex-start;
@@ -170,7 +170,7 @@
         }
     }
 }
-@media (max-width: 680px) and (orientation: landscape) {
+@media (max-width: 680px) and (max-height: 450px) {
     .main {
         .main__cards {
             width: 50%;
