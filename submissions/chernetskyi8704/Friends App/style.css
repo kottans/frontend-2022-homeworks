@@ -290,7 +290,7 @@ textarea,
   margin-left: 10px;
 }
 
-input[type="radio"] {
+.radioButton {
   width: 80px;
   height: 30px;
   border-radius: 10%;
@@ -301,17 +301,17 @@ input[type="radio"] {
   cursor: pointer;
 }
 
-input[type="radio"]:focus {
+.radioButton:focus {
   cursor: pointer;
   outline: none;
 }
 
-input[type="radio"]:checked {
+.radioButton:checked {
   background-color: rgb(157, 173, 177);
   cursor: pointer;
 }
 
-input[type="radio"]:checked ~ span:first-of-type {
+.radioButton:checked ~ span:first-of-type {
   color: white;
   cursor: pointer;
 }

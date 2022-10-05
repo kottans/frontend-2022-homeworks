@@ -3,6 +3,7 @@ const burgerImage = document.querySelector(".burger_img");
 const listOfUsers = document.querySelector(".users");
 const allFilters = document.querySelector(".main__filters");
 const filterButtons = document.querySelector(".filter__buttons");
+const filterForm = document.querySelector('.filter_form');
 const closeBurgerButton = document.querySelector(".close");
 const searchInput = document.querySelector('input[name="search"]');
 const usersURL =
@@ -196,23 +197,46 @@ const sortByAlphabets = (arrayOfUsers, sortingRules) => {
   return arrayOfUsers;
 };
 
+const resetFilters = ()=>{
+  const inputTypeIsGenderAll = document.querySelector('input[value="all"]');
+  const inputTypeIsGenderFemale = document.querySelector('input[value="female"]');
+  const inputTypeIsGenderMale = document.querySelector('input[value="male"]');
+  const inputSortAgeByIncreasing = document.querySelector('input[value="0-9"]');
+  const inputSortAgeByDescending = document.querySelector('input[value="9-0"]');
+  const inputSortNameByIncreasing = document.querySelector('input[value="A-z"]');
+  const inputSortNameByDescending = document.querySelector('input[value="Z-a"]');
+
+  displayAllUsers(allUsers);
+  sortingRules = {
+    filterByGenderIsChoosed: "all",
+    ageByIncreasingIsChecked: false,
+    ageByDescendingIsChecked: false,
+    nameByIncreasingIsChecked: false,
+    nameByDescendingIsChecked: false,
+  };
+  searchInput.value = "";
+  inputTypeIsGenderAll.checked = true;
+  inputTypeIsGenderFemale.checked = false;
+  inputTypeIsGenderMale.checked = false;
+  inputSortAgeByIncreasing.checked = false;
+  inputSortAgeByDescending.checked = false;
+  inputSortNameByIncreasing.checked = false;
+  inputSortNameByDescending.checked = false;
+};
+
 allFilters.addEventListener("input", function (e) {
   const target = e.target;
   dispalySortedUsers(target);
 });
 
+filterForm.addEventListener('submit', function(e){
+  e.preventDefault();
+})
+
 filterButtons.addEventListener("click", function (e) {
   const target = e.target;
   if (target.classList.contains("reset")) {
-    displayAllUsers(allUsers);
-    sortingRules = {
-      filterByGenderIsChoosed: "all",
-      ageByIncreasingIsChecked: false,
-      ageByDescendingIsChecked: false,
-      nameByIncreasingIsChecked: false,
-      nameByDescendingIsChecked: false,
-    };
-    searchInput.value = "";
+    resetFilters();
   } else if (target.classList.contains("close")) {
     document.body.classList.remove("_lock");
     burgerImage.classList.remove("_active");
