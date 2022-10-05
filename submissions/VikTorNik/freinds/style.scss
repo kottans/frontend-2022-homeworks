@@ -1,17 +1,24 @@
-@import "null_style.scss";
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*:focus {
+    outline: none;
+}
 
 $main-height: 100vh;
 $menu-width: 18vw;
-$main-width: 100vw - $menu-width - 1.2vw;
+$overmain-width: 2vw;
+$main-width: 100vw - $menu-width - $overmain-width;
 
-$color-dark: rgb(6, 61, 63);
-$color-light: rgb(68, 202, 206);
-$color-fon: rgb(6, 61, 63);
-
-:root {
-    --columns-card: 0;
-    --rows-card: 0;
-}
+$color-menu-dark: rgb(0, 121, 125);
+$color-menu-text: rgb(145, 240, 230);
+$color-menu-item: rgb(255, 255, 255, 0.35);
+$color-main: rgb(243, 221, 161);
+$color-card: rgba(255, 255, 255, 0.5);
+$color-card-hover: rgb(244, 227, 190);
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -20,28 +27,27 @@ body {
 .wrapper {
     display: grid;
     grid-template-areas:
-        "nav main";
-    grid-template-columns: $menu-width $main-width;
-    //grid-template-rows: 500px;
-    //document.body.scrollHeight;
-
-    // grid-template-rows: none;
-    // grid-auto-rows: min-content;
-    //    grid-auto-rows: max-content;
-    //    grid-auto-rows: auto;
+        "nav main overmain";
+    grid-template-rows: minmax(100vh, max-content);
+    grid-template-columns: $menu-width $main-width $overmain-width;
+    overflow-x: hidden;
 }
 
-#pageNav {
+#user-pageNav {
     grid-area: nav;
 }
 
-#pageMain {
+#user-pageMain {
     grid-area: main;
 }
 
+#user-overpageMain {
+    grid-area: overmain;    
+}
+
 .nav {
-    background-color: rgb(0, 121, 125);
-    color: rgb(145, 240, 230);
+    background-color: $color-menu-dark;
+    color: $color-menu-text;
     font-weight: 700;
     padding-top: 7px;
 }
@@ -49,11 +55,11 @@ body {
 .nav__div {
     display: block;
     font-size: 1.5rem;
-    line-height: 3.4rem;
+    line-height: 2.4rem;
     padding: 0.7rem 1.8rem;
     margin: 1.5vh 1.1vw 2.2vh 1.1vw;
     border-radius: .5vw;
-    background-color: rgb(255, 255, 255, 0.35);
+    background-color: $color-menu-item;
 
     .more-collumn {
         display: flex;
@@ -95,23 +101,22 @@ body {
     }
 }
 
-.main {
-    background-color: rgb(243, 221, 161);
+.main,
+.overmain {
+    background-color: $color-main;
 }
 
 .main__div {
     display: grid;
     grid-template-columns: repeat(var(--columns-card), 1fr);
-    grid-template-rows: repeat(var(--rows-card), 1fr);
-    padding: 10px;
+    grid-template-rows: repeat(auto-fit, 1fr);
 
     .div__card {
         display: flex;
-        background-color: rgba(255, 255, 255, 0.5);
-        border-color: $color-dark;
+        background-color: $color-card;        
         border-radius: .9rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        margin: 1.2vh .6vw;
+        margin: 20px 20px;
 
         .card-image {
             float: left;
@@ -141,7 +146,7 @@ body {
     }
 
     .div__card:hover {
-        background-color: rgb(244, 227, 190);
+        background-color: $color-card-hover;
     }
 }
 
@@ -150,11 +155,12 @@ body {
         font-size: 50%;
     }
 
-    $menu-width: 44vw;
-    $main-width: 100vw - $menu-width - 3.1vw;
+    $menu-width: 36vw;
+    $overmain-width: 4vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
 
     .wrapper {
-        grid-template-columns: $menu-width $main-width;
+        grid-template-columns: $menu-width $main-width $overmain-width;
     }
 }
 
@@ -163,11 +169,12 @@ body {
         font-size: 50%;
     }
 
-    $menu-width: 36vw;
-    $main-width: 100vw - $menu-width - 2.5vw;
+    $menu-width: 30vw;
+    $overmain-width: 2.5vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
 
     .wrapper {
-        grid-template-columns: $menu-width $main-width;
+        grid-template-columns: $menu-width $main-width $overmain-width;
     }
 }
 
@@ -177,10 +184,11 @@ body {
     }
 
     $menu-width: 28vw;
-    $main-width: 100vw - $menu-width - 1.9vw;
+    $overmain-width: 2vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
 
     .wrapper {
-        grid-template-columns: $menu-width $main-width;
+        grid-template-columns: $menu-width $main-width $overmain-width;
     }
 }
 
@@ -189,11 +197,12 @@ body {
         font-size: 58%;
     }
 
-    $menu-width: 20vw;
-    $main-width: 100vw - $menu-width - 1.3vw;
+    $menu-width: 26vw;
+    $overmain-width: 1.5vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
 
     .wrapper {
-        grid-template-columns: $menu-width $main-width;
+        grid-template-columns: $menu-width $main-width $overmain-width;
     }
 }
 
@@ -203,10 +212,11 @@ body {
     }
 
     $menu-width: 19vw;
-    $main-width: 100vw - $menu-width - 1.0vw;
+    $overmain-width: 1vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
 
     .wrapper {
-        grid-template-columns: $menu-width $main-width;
+        grid-template-columns: $menu-width $main-width $overmain-width;
     }
 }
 
@@ -216,9 +226,10 @@ body {
     }
 
     $menu-width: 26vw;
-    $main-width: 100vw - $menu-width - 1.0vw;
+    $overmain-width: 1vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
 
     .wrapper {
-        grid-template-columns: $menu-width $main-width;
+        grid-template-columns: $menu-width $main-width $overmain-width;
     }
 }

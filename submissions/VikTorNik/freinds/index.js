@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function readСhoiceForFiltre() {
+
         initFriends.filter.searchName = document.querySelector('#input-name').value;
 
         document.querySelector('#check-sort-nameABC').checked ? initFriends.sortCard.nameABC = true : initFriends.sortCard.nameABC = false;
@@ -209,12 +210,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function createMarkupCSS() {
-        initFriends.gridFriends.columns = Math.floor(document.querySelector(".main").clientWidth / initFriends.profileCard.width) - 2;
+        initFriends.gridFriends.columns = Math.floor(document.querySelector(".main").offsetWidth / initFriends.profileCard.width) - 2;
         initFriends.gridFriends.columns < 1 ? initFriends.gridFriends.columns = 1 : false;
-        initFriends.gridFriends.rows = Math.floor(document.querySelector(".main").clientHeight / initFriends.profileCard.height);
-        initFriends.gridFriends.rows < 1 ? initFriends.gridFriends.rows = 1 : false;
         document.documentElement.style.setProperty('--columns-card', initFriends.gridFriends.columns);
-        document.documentElement.style.setProperty('--rows-card', initFriends.gridFriends.rows);
     }
 
     function createDOM(dbFriends) {
@@ -223,12 +221,13 @@ document.addEventListener("DOMContentLoaded", () => {
             delete friend.dobDateForSort;
             filteredArray.push(friend);
             return filteredArray;
-        }, []);        
+        }, []);
+
         let parentDiv = document.createElement("div");
         parentDiv.className = "main__div";
         document.querySelector(".main__div").replaceWith(parentDiv);
         let fieldPlay = [];
-        
+
         dbVisible.map(card => {
             fieldPlay.push(`<div class="div__card">
             <div class="card-image">                
@@ -249,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         return dbVisible;
     }
-    
+
     ["click", "input"].forEach(event => {
         [...document.querySelectorAll(".nav__server")].map(elem => {
             elem.addEventListener(event, async () => {
@@ -260,10 +259,10 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         })
     });
-    
+
     ["click", "input"].forEach(event => {
         [...document.querySelectorAll(".nav__local")].map(elem => {
-            elem.addEventListener(event, async () => {                
+            elem.addEventListener(event, async () => {
                 await readСhoiceForFiltre();
                 createMarkupCSS();
                 createDOM(
@@ -281,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
-    
+
     document.querySelector(".nav__server").click();
 
     window.onresize = createMarkupCSS;
