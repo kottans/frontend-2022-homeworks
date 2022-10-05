@@ -19,7 +19,7 @@ restart.addEventListener("click", render);
 // function fliping cards & create arrays of opened cards
 
 function flipTheCard(e) {
-    if (e.target.className == "game__field" || e.target.className == "back__side") return;
+    if (e.target.className == "game__field" || e.target.className == "back__side rotate360" ) return;
     let frontSide = e.target;
     openedCards = document.querySelectorAll(".open__card");
     if (frontSide.tagName === "IMG" && openedCards.length < 2) {
@@ -46,7 +46,7 @@ function checkThePairs() {
             card.classList.remove("open__card");
         }));
         let pair = document.createElement("div");
-        for (let i=1; i<=2; i++) {
+        for (let i = 1; i <= 2; i++) {
             let miniCard = document.createElement("img");
             miniCard.classList.add('miniCard');
             miniCard.src = `img/${openedCardsSrc[1]}`;
@@ -66,7 +66,7 @@ function checkThePairs() {
         if (foldedPairs == 6) {
             field.classList.add('field__over');
             field.classList.remove('game__field');
-            field.innerHTML = `<span class = "game__over">GAME OVER!</span>`;
+            field.innerHTML = `<span class = "game__over">YOU WIN!</span>`;
             restart.classList.add("btn__red");
         };
 

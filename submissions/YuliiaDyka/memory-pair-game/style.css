@@ -9,12 +9,12 @@ body {
         315deg,
         rgba(101, 0, 94, 1) 3%,
         rgba(60, 132, 206, 1) 38%,
-        rgba(48, 238, 226, 1) 68%,
         rgba(255, 25, 25, 1) 98%
     );
-    animation: gradient 15s ease infinite;
+    animation: gradient 20s ease infinite;
     background-size: 400% 400%;
     background-attachment: fixed;
+    user-select: none;
 }
 
 @keyframes gradient {
@@ -72,9 +72,9 @@ body {
 .collection::after {
     content: "Your folded pairs will be here";
     color: rgba(247, 239, 250, 0.5);
-    font-size: 10px;
+    font-size: 13px;
     position: absolute;
-    bottom: 5px;
+    bottom: 0px;
 }
 
 .miniCard {
@@ -324,8 +324,8 @@ and (max-width: 767px) {
     }
 
     .collection::after {
-        bottom: -12px;
-        font-size: 8px;
+        bottom: -20px;
+        font-size: 12px;
     }
 
     .game__field {
