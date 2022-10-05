@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Montez';
-  src: local('Montez'), local('Montez-Regular'), url('../fonts/Montez.woff2') format('woff2'), url('../fonts/Montez.woff') format('woff'), url('../fonts/Montez.ttf') format('truetype');
+  src: local('Montez'), local('Montez-Regular'), url('../fonts/Montez.woff2') format('woff2'), url('../fonts/Montez.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  font-family: "Montez", sans-serif;
+  font-family: 'Montez', sans-serif;
   background: var(--color-background);
   color: var(--color-primary);
   user-select: none;

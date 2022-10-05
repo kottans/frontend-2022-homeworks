@@ -7,7 +7,7 @@ const pair = []
 let numOfPairs = 0
 let pairCounter = 0
 let resultMessage = ''
-let main = document.querySelector('.main')
+const main = document.querySelector('.main')
 
 class Time {
   constructor() {
@@ -102,7 +102,7 @@ function setTimeInLocaleStorage() {
   }
 }
 
-function fadeOutFadeIn(foo, num, preview) {
+function fadeOutFadeIn(newRenderFunction, num, preview) {
   const animation = main.animate([
     {opacity: 1},
     {opacity: 0}
@@ -112,7 +112,7 @@ function fadeOutFadeIn(foo, num, preview) {
   })
 
   animation.addEventListener('finish', function() {
-    foo(num, preview)
+    newRenderFunction(num, preview)
     main.animate([
       {opacity: 0},
       {opacity: 1}
@@ -228,7 +228,12 @@ function initStartPage() {
 }
 
 function initGame(num, preview) {
-  fetch(URL).then(response => response.json())
+  fetch(URL).then(response => {
+    if (!response.ok) {
+      return Promise.reject(response.statusText)
+    }
+    return response.json()
+  })
     .then(data => {
       gameTime.setStartTime()
       pairCounter = num
@@ -250,6 +255,5 @@ function initResultPage() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  main = document.querySelector('.main')
   initStartPage()
 })
