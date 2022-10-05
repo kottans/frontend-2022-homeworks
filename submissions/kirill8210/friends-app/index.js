@@ -158,6 +158,9 @@ const searchName = () => {
         const searchOfName = data.filter(data => data.name.first.toLowerCase().includes(inputSearch.value.toLowerCase()));
         inputAll.checked = true;
         filterByGender();
+        if(inputSearch.value.length > 0) {
+            removeMenu();
+        }
         renderCards(searchOfName);
     });
 };
