@@ -128,7 +128,7 @@ body {
   margin-bottom: 15px;
 }
 
-._block {
+._wrapperOfTheButton {
   position: relative;
   top: 160px;
 }
@@ -215,7 +215,7 @@ body {
     margin-bottom: 15px;
   }
 
-  ._block {
+  ._wrapperOfTheButton {
     top: 140px;
   }
 
