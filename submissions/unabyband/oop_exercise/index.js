@@ -9,12 +9,11 @@
 // Define your objects here
 
 class Inhabitant {
-  constructor(species, name, gender, legs, hands, saying, friends) {
+  constructor(species, name, gender, legs, saying, friends) {
     this.species = species;
     this.name = name;
     this.gender = gender;
     this.legs = legs;
-    this.hands = hands;
     this.saying = saying;
     this.friends = friends;
   }
@@ -24,18 +23,14 @@ class Inhabitant {
     const talkToPrint = `<em>${this.saying}</em>`;
     const friendsToPrint = this.friends
       ? this.friends.map((friend) => friend.name).join(", ")
-      : "Cats have no friends";
-    const limbs =
-      this.hands != 0
-        ? `On ${this.legs} legs and has ${this.hands} hands`
-        : `On ${this.legs} paws`;
+      : `${this.species} has no friends!`;
 
     print(
       [
         this.species,
         nameToPrint,
         this.gender,
-        limbs,
+        this.legs,
         talkToPrint,
         friendsToPrint,
       ].join("; ")
@@ -45,25 +40,28 @@ class Inhabitant {
 
 class Human extends Inhabitant {
   constructor(name, gender, saying, friends) {
-    super("human", name, gender, 2, 2, saying, friends);
+    const legs = 2;
+    const hands = 2;
+    super("human", name, gender, `On ${legs} legs and has ${hands} hands`, saying, friends);
   }
 }
 
 class Animal extends Inhabitant {
   constructor(species, name, gender, saying, friends) {
-    super(species, name, gender, 4, 0, saying, friends);
+    const paws = 4;
+    super(species, name, gender, `On ${paws} paws`, saying, friends);
   }
 }
 
 class Dog extends Animal {
   constructor(name, gender, friends) {
-    super("Dog", name, gender, "Bark!", friends);
+    super("dog", name, gender, "Bark!", friends);
   }
 }
 
 class Cat extends Animal {
   constructor(name, gender) {
-    super("Cat", name, gender, "Meow!");
+    super("cat", name, gender, "Meow!");
   }
 }
 
