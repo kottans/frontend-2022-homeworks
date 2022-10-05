@@ -4,6 +4,7 @@ let requestErrorsCounter = 0;
 const cardsSection = document.querySelector('.grid__wrapper');
 const firstScreen = document.querySelector('.form__wrapper');
 const mainScreen = document.querySelector('.wrapper');
+const header = document.querySelector('.header');
 const firstScreenForm = document.querySelector('.form_first-screen');
 const aside = document.querySelector('.aside');
 const search = document.querySelector('#search');
@@ -12,6 +13,7 @@ const sortBtns = document.querySelectorAll('.sort');
 const navigation = document.querySelector('.bottom__menu');
 const loadingIcon = document.querySelector('.loading__animation');
 const submitBtn = document.querySelector('.submit');
+
 
 let min = document.querySelector('input[id="aside_input-min"]'); 
 let max = document.querySelector('input[id="aside_input-max"]');
@@ -196,16 +198,13 @@ function sortByAge(arr) {
 
 function searchName() {
     filters.name = search.value.toLowerCase();
-    const header = document.querySelector('.header');
     if (filters.name) {
         filtredUsers = filterBySex(filterByAge(allUsers));
         filtredUsers = filtredUsers.filter(user => filterByName(user, filters.name));
         if (filtredUsers.length) {
-            console.log(filtredUsers.length);
             header.classList.remove('no-results');
             renderCards(filtredUsers);
         } else {
-            console.log(filtredUsers.length);
             cardsSection.innerHTML = "";
             header.classList.add('no-results');
         }
@@ -224,6 +223,8 @@ function resetForm() {
         maxAge: 120,
         sort: '',
     };
+    search.value = "";
+    header.classList.remove('no-results');
     document.querySelector('input[id="all_aside"]').checked = true;
     min.value = filters.minAge;
     max.value = filters.maxAge;
