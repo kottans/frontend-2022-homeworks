@@ -22,6 +22,7 @@ body {
 }
 
 .main-header h1 {
+  padding: 0.2em;
   margin: 0;
   color: white;
   font-size: 2.5em;
@@ -50,7 +51,6 @@ body {
   align-self: sticky;
   color: var(--green);
   background-color: var(--carrot);
-
   background-size: auto 100%;
   background-position: left top;
   background-repeat: no-repeat;
@@ -85,6 +85,7 @@ body {
   top: -40px;
   left: 40px;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .radio-control-label span {
@@ -104,6 +105,7 @@ body {
   padding: 5px;
   background-color: var(--light-carrot);
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .radio-control:checked {
@@ -168,6 +170,7 @@ body {
   font-size: 18px;
   height: 50px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .content {
@@ -252,6 +255,12 @@ body {
 }
 
 @media screen and (max-width: 800px) {
+  .form-parameters {
+    width: 25%;
+  }
+  .content {
+    width: 75%;
+  }
   .radio-control-label {
     font-size: 13px;
   }
@@ -262,12 +271,18 @@ body {
 }
 
 @media screen and (max-width: 675px) {
+  .main-header h1 {
+    padding: 0;
+  }
   .radio-control-label {
     font-size: 11px;
   }
 }
 
 @media screen and (max-width: 559px) {
+  .main-header {
+    font-size: 0.8em;
+  }
   .form-parameters {
     width: 30%;
   }
@@ -276,5 +291,29 @@ body {
   }
   .radio-control-label {
     font-size: 10px;
+  }
+  .input {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 388px) {
+  .form-parameters {
+    width: 30%;
+  }
+  .content {
+    width: 70%;
+  }
+  .radio-control-label {
+    font-size: 7px;
+  }
+  .input {
+    font-size: 14px;
+  }
+  #clear {
+    width: 20px;
+    height: 20px;
+    font-size: 25px;
+    line-height: 22px;
   }
 }

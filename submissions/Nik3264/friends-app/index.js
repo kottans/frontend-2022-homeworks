@@ -107,9 +107,9 @@ function sortAgeDown(listCard) {
   });
 }
 
-function clickHandler(){
+function clickHandler() {
   currentFrendsList = [...friendsList];
-  currentFrendsList = filterByInput(currentFrendsList); 
+  currentFrendsList = filterByInput(currentFrendsList);
   currentFrendsList = filterByGender(currentFrendsList);
   sortByNameAge(currentFrendsList);
   renderCard(currentFrendsList);
@@ -149,6 +149,11 @@ getResource(url).then((data) => {
   friendsList = data.results;
   currentFrendsList = [...friendsList];
   input.addEventListener("input", clickHandler);
+  input.addEventListener("keydown", (e) => {
+    if (e.key == "Enter") {
+      e.preventDefault();
+    }
+  });
   formParameters.addEventListener("click", clickHandler);
   renderCard(friendsList);
 });
