@@ -9,7 +9,7 @@ let response = [];
 const createCard = (data2) => {
     const { name, gender, email, phone, picture, dob } = data2;
 
-    const card = document.createElement('div');
+    const card = document.createElement('article');
     card.classList.add('card');
 
     let phones = Number(phone.replace(/\D+/g,''));
@@ -31,14 +31,14 @@ const createCard = (data2) => {
     }
 
     card.insertAdjacentHTML('afterbegin', ` 
-        <div class="card_name">${name.first} ${name.last}</div>
+        <h2 class="card_name">${name.first} ${name.last}</h2>
         <div>
             <div class="card_block_img"><img class="card_img" src="${picture.large}" alt="${name.first}"></div>
-            <div class="card_age">I am ${dob.age} years old</div>
-            <div class="card_email">${email}</div>
-            <div class="card_phone">${result}</div>
+            <p class="card_age">I am ${dob.age} years old</p>
+            <p class="card_email">${email}</p>
+            <p class="card_phone"><a href="tel:${phones}">${result}</a></p>
         </div>
-        <div class="card_human" id="card_human">${gender}</div>       
+        <p class="card_human" id="card_human">${gender}</p>       
     `);
 
     return card;
