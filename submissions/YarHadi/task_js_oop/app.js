@@ -110,8 +110,13 @@ const allEnemies = [];
 
 //Creating enemies
 
+const firstEnemyLine=60;
+const secondEnemyLine=140;
+const thirdEnemyLine=230;
+
+
 function createEnemies() {
-  const posEnemY = [60, 140, 230];
+  const posEnemY = [firstEnemyLine, secondEnemyLine, thirdEnemyLine];
   for (let y of posEnemY) {
     allEnemies.push(new Enemy(0, y));
   }
