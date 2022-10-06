@@ -59,9 +59,9 @@ const INPUT_NAME_FIELD = document.getElementById('input__filter_by-name');
 const BTN_RADIO_MALE = document.getElementById('sex_male');
 const BTN_RADIO_FEMALE = document.getElementById('sex_female');
 const BTN_RADIO_ALL = document.getElementById('sex_all');
-const INPUTS = document.querySelectorAll('input');
+const INPUTS = document.querySelectorAll('input'); 
 
-const URL_API = 'https://randomuser.me/api/?results=24';
+const URL_API = 'https://randomuser.me/api/?results=102';
 const fetchData = async () => {
     try{
         const response = await fetch(URL_API);
@@ -93,10 +93,12 @@ function resetInputs(){
             el.checked = false;
         }
     })
+    BTN_RADIO_ALL.checked = true;
+    filteredUsers = [...users];
 }
 
-function getSortedUsersByName(incomeUsers, eventTarget) {
-    let sortedByNameUsers = [...incomeUsers].sort((previousEl, nextEl) => {;
+function getSortedUsersByName(eventTarget) {
+    let sortedByNameUsers = [...filteredUsers].sort((previousEl, nextEl) => {;
         if (previousEl.name.first.toLowerCase() < nextEl.name.first.toLowerCase()) {
             return -1;
         }
@@ -116,8 +118,8 @@ function getSortedUsersByName(incomeUsers, eventTarget) {
     return filteredUsers;
 }
 
-function getSortedUsersByAge(incomeUsers, eventTarget) {
-    let sortedByAgeUsers = [...incomeUsers].sort((previousEl, nextEl) => {;
+function getSortedUsersByAge(eventTarget) {
+    let sortedByAgeUsers = filteredUsers.sort((previousEl, nextEl) => {;
         if (previousEl.dob.age < nextEl.dob.age) {
             return -1;
         }
@@ -137,66 +139,73 @@ function getSortedUsersByAge(incomeUsers, eventTarget) {
     return filteredUsers;
 }
 
-function getFilteredByName(incomeUsers){
+function getFilteredByName(){
     let filterValueName = INPUT_NAME_FIELD.value;
     if (filterValueName){
-        let filteredByNameUsers = incomeUsers.filter(el => {
+        let filteredByNameUsers = filteredUsers.filter(el => {
             return el.name.first.toLowerCase().includes(filterValueName.toLowerCase()) || el.name.last.toLowerCase().includes(filterValueName.toLowerCase());
         });
-        return filteredByNameUsers;
+        filteredUsers = [...filteredByNameUsers];
+        return filteredUsers;
     } else{
-        return users;
+        return filteredUsers;
     }
 }
 
-function getFilteredByAge(incomeUsers){
+function getFilteredByAge(){
     let filterValueAge = INPUT_AGE_FIELD.value;
     if (filterValueAge){
-        let filteredByAgeUsers = incomeUsers.filter(el => {
+        let filteredByAgeUsers = filteredUsers.filter(el => {
             return el.dob.age === +filterValueAge;
         });
-        return filteredByAgeUsers;
+        filteredUsers = [...filteredByAgeUsers];
+        return filteredUsers;
     }
     else {
-        return users;
+        return filteredUsers;
     }
 }
 
-function getFilteredBySex(incomeUsers){
+function getFilteredBySex(){
     if (BTN_RADIO_MALE.checked === true || BTN_RADIO_FEMALE.checked === true){
         let filterValueSex = BTN_RADIO_MALE.checked === true ? 'male' : 'female';
-        let filteredBySexUsers = incomeUsers.filter(el => {
+        let filteredBySexUsers = filteredUsers.filter(el => {
             return el.gender === filterValueSex;
         });
-        return filteredBySexUsers;
+        filteredUsers = [...filteredBySexUsers];
+        return filteredUsers;
     } else {
-        return incomeUsers;
+        return filteredUsers;
     }
 }
 
 ASIDE.addEventListener('click', event => {
     if (event.target.parentElement === BTN_SORT_BY_NAME_ALPHA || event.target.parentElement === BTN_SORT_BY_NAME_REVERSE){
-        renderCards(getSortedUsersByName(filteredUsers, event.target.parentElement));
-        resetInputs();
+        renderCards(getSortedUsersByName(event.target.parentElement));
     }
     if (event.target.parentElement === BTN_SORT_BY_AGE_ASCENDING || event.target.parentElement === BTN_SORT_BY_AGE_DESCENDING){
-        renderCards(getSortedUsersByAge(filteredUsers, event.target.parentElement));
-        resetInputs();
+        renderCards(getSortedUsersByAge(event.target.parentElement));
     }
     if (event.target === BTN_FILTER_BY_NAME){
-       renderCards(getFilteredByName(filteredUsers));
-       resetInputs();
+       renderCards(getFilteredByName());
     }
     if (event.target === BTN_FILTER_BY_AGE){
-        renderCards(getFilteredByAge(filteredUsers));
-        resetInputs();
+        renderCards(getFilteredByAge());
     }
     if (event.target === BTN_FILTER_BY_SEX){
         renderCards(getFilteredBySex(filteredUsers));
-        resetInputs();
     }
     if (event.target === BTN_RESET){
         resetInputs();
         renderCards(users);
+    }
+});
+
+ASIDE.addEventListener('keypress', event => {
+    if (event.key === 'Enter' && event.target === INPUT_AGE_FIELD) {
+        renderCards(getFilteredByAge());
+    };
+    if (event.key === 'Enter' && event.target === INPUT_NAME_FIELD) {
+        renderCards(getFilteredByName());
     }
 });
