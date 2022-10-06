@@ -1,0 +1,298 @@
+
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a, a:visited{text-decoration: none;}
+ul li{list-style: none;}
+
+/*-------------------- */
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	min-height: 80px;
+	box-shadow: 0px 2px 40px rgba(0, 0, 255, .2);
+	padding: 0 40px;
+}
+
+.logo {
+	display: flex;
+	align-items:center;
+}
+
+.logo__img {
+	height: 60px;
+}
+.logo__link:focus {
+	box-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
+}
+
+.link {
+	font-family: Verdana, sans-serif;
+	font-size: 20px;
+	color: black;
+}
+
+.link:hover {
+	text-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
+}
+.link:focus {
+	box-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
+}
+
+.nav_item {
+	margin: 0 20px;
+}
+
+.navigation__list{
+	display: flex;
+	align-items: center;
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.nav_img {
+	width: 30px;
+}
+
+.check {
+	cursor: pointer;
+}
+
+
+/* Popup */
+
+
+.popup:focus-within {
+	box-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
+}
+
+.context__menu {
+	display: none;
+	position: absolute;
+	padding-top: 10px;
+	right: 190px;
+}
+
+.menu {
+	width: 	275px;
+	height: 352px;
+	background-color: white;
+	border: 1px solid rgba(0, 0, 255, .2);
+    position: relative;
+	cursor:default;
+	overflow-y: scroll;
+	scrollbar-gutter: stable; 
+}
+
+.context__menu::before {
+    content: ''; 
+    position: absolute;
+    right: 15px; top: -10px;
+    border: 10px solid transparent;
+    border-bottom: 10px solid rgba(0, 0, 255, .2);
+}
+   
+.context__menu::after {
+	content: ''; 
+	position: absolute;
+	right: 15px; top: -10px;
+	border: 10px solid transparent;
+	border-bottom: 10px solid rgb(255, 255, 255);
+	top: -9px; 
+}
+
+.checkbox {
+	position: absolute;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.checkbox:checked + .context__menu{
+	display:block;
+}
+
+
+   /* Context menu */
+
+.menu__item {
+	width: 70px;
+	height: 70px;
+}
+
+.menu__item:hover {
+	border: 1px solid rgb(196, 196, 196);
+}
+
+.menu__item:focus {
+	border: 2px solid rgb(59, 56, 231);
+}
+
+.menu__link {
+	display: grid;
+	gap: 10px;
+	align-items:center;
+	justify-items: center;
+	width: 70px;
+	height: 70px;
+	color: black;
+}
+
+.menu__link:focus {
+	box-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
+}
+
+.icon {
+	width: 40px;
+	height: 40px;
+}
+
+.icon__name {
+	font-size: 12px;
+}
+
+.main__menu, .more__menu {
+	display: grid;
+	gap: 5px 5px;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 10px;
+	padding-left: 20px;
+
+}
+
+.more {
+	display: none;
+}
+
+.btn__more,
+.btn__evenmore {
+	width: 100%;
+	height: 35px;
+	background-color: rgb(237, 237, 237);
+	color: gray;
+	cursor: pointer;
+	font-size: 15px;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+}
+
+.btn__evenmore:focus {
+	box-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
+}
+
+.btn__evenmore {
+	background-color: rgb(206, 207, 252);
+	color: rgb(255, 255, 255);
+}
+
+.checkbox__more {
+	position: absolute;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 100%;
+	height: 35px;
+}
+
+.checkbox__more:focus {
+	box-shadow: rgba(0, 0, 255, .2) 1px 0 10px;
+}
+
+.checkbox__more:checked {
+	display: none;
+}
+
+.checkbox__more:checked ~.more  {
+	display:block;
+}
+
+.checkbox__more:checked ~.btn__more {
+	display:none;
+}
+
+
+/* mobile */
+
+@media only screen
+
+and (min-width: 320px)
+and (max-width: 767px) {
+
+.header {
+	padding: 0 10px;
+}	
+
+.logo__img {
+	height: 25px;
+}
+
+.link {
+	font-size: 12px;
+}
+
+.nav_item {
+    margin: 0 5px;
+}
+
+.nav_img {
+	width: 15px;
+}
+
+.context__menu {
+	padding-top: 10px;
+	right: 47px;
+}
+
+.icon {
+	width: 30px;
+	height: 30px;
+}
+
+.icon__name {
+	font-size: 8px;
+}
+
+.menu__link {
+	width: 50px;
+	height: 50px;
+}
+.menu__item {
+	width: 50px;
+	height: 50px;
+}
+
+.menu {
+	width: 230px;
+    height: 272px;
+}
+
+}
