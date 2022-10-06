@@ -1,13 +1,13 @@
-const fieldWidth=505,
-fieldHeight=606,
-columnsNumber=5,
-rowNumber=7,
-  cellWidth = fieldWidth/columnsNumber,
-  cellHeight = fieldHeight/rowNumber,
-  startPlayerX = fieldWidth/2-cellWidth/2,
-  startPlayerY = fieldHeight/2+cellHeight,
+const fieldWidth = 505,
+  fieldHeight = 606,
+  columnsNumber = 5,
+  rowNumber = 7,
+  cellWidth = fieldWidth / columnsNumber,
+  cellHeight = fieldHeight / rowNumber,
+  startPlayerX = fieldWidth / 2 - cellWidth / 2,
+  startPlayerY = fieldHeight / 2 + cellHeight,
   leftBorder = 0,
-  rightBorder = fieldWidth-cellWidth,
+  rightBorder = fieldWidth - cellWidth,
   topBorder = 0;
 
 // Enemies our player must avoid
@@ -30,7 +30,6 @@ var Enemy = function (x, y) {
 // Parameter: dt, a time delta between ticks
 
 Enemy.prototype.update = function (dt) {
-    
   // You should multiply any movement by the dt parameter
   // which will ensure the game runs at the same speed for
   // all computers.
@@ -114,20 +113,17 @@ const allEnemies = [];
 
 //Creating enemies
 
-const firstEnemyLine=60;
-const secondEnemyLine=140;
-const thirdEnemyLine=230;
-
-
+const firstEnemyLine = 60;
+const secondEnemyLine = 140;
+const thirdEnemyLine = 230;
 
 function createEnemies() {
   var enemyPositionX;
   const posEnemY = [firstEnemyLine, secondEnemyLine, thirdEnemyLine];
-  posEnemY.map(line => {
-    enemyPositionX=Math.random() * fieldWidth;
+  posEnemY.map((line) => {
+    enemyPositionX = Math.random() * fieldWidth;
     allEnemies.push(new Enemy(enemyPositionX, line));
-  }
-    )
+  });
 }
 
 createEnemies();
@@ -144,3 +140,4 @@ document.addEventListener("keyup", function (e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
+
