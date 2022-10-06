@@ -61,23 +61,25 @@ const cardArray = [
    },
 ];
 
-cardArray.sort(() => 0.5 - Math.random());
-
 const grid = document.querySelector(".grid");
 
-cardArray.forEach((card) => {
-   grid.innerHTML += `
-   <div class="flip-container"  id='${card.id}' name='${card.name}'>
-      <div class="flipper">
-         <div class="front">
-            <img src="images/blank.png"  id='${card.id}' name='${card.name}' alt="">
+function startNewGame() {
+   cardArray.sort(() => 0.5 - Math.random());
+   cardArray.forEach((card) => {
+      grid.innerHTML += `
+      <div class="flip-container"  id='${card.id}' name='${card.name}'>
+         <div class="flipper">
+            <div class="front">
+               <img src="images/blank.png"  id='${card.id}' name='${card.name}' alt="">
+            </div>
+            <div class="back">
+               <img src="images/${card.name}.png" alt="${card.name}" >
+            </div>
          </div>
-         <div class="back">
-            <img src="images/${card.name}.png" alt="${card.name}" >
-         </div>
-      </div>
-   </div>`;
-});
+      </div>`;
+   });
+}
+startNewGame();
 
 const flipContainer = document.querySelectorAll(".flip-container");
 let clickedCards = [];
@@ -128,7 +130,10 @@ function flipBack(e) {
 }
 
 function popWinWindow() {
-   alert("You won!");
+   let result = alert("You won!");
+   console.log(result);
+   startNewGame();
+   window.location.reload();
 }
 
 flipContainer.forEach((card) => card.addEventListener("click", flipCard));
