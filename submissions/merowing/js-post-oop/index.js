@@ -1,9 +1,10 @@
 import { print } from './js/lib.js';
 
 class Creature {
-   constructor(name, gender, say, friends) {
+   constructor(name, gender, legs, say, friends) {
       this.name = name;
       this.gender = gender;
+      this.legs = legs;
       this.say = say;
       this.friends = friends;
    }
@@ -20,20 +21,17 @@ class Creature {
 
 class Human extends Creature {
    constructor(name, gender, hands, legs, say) {
-      super(name, gender, say);
+      super(name, gender, legs, say);
       this.species = 'human';
       this.hands = hands;
-      this.legs = legs;
    }
 }
 
 class Animal extends Creature {
    constructor(name, gender, legs, say) {
-      super(name, gender);
+      super(name, gender, legs, say);
       this.species = 'animal';
       this.hands = 0;
-      this.legs = legs;
-      this.say = say;
    }
 }
 
