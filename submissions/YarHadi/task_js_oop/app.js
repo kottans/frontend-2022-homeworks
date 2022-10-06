@@ -8,7 +8,8 @@ const fieldWidth = 505,
   startPlayerY = fieldHeight / 2 + cellHeight,
   leftBorder = 0,
   rightBorder = fieldWidth - cellWidth,
-  topBorder = 0;
+  topBorder = 0,
+  playerHitbox=40;
 
 // Enemies our player must avoid
 
@@ -36,7 +37,7 @@ Enemy.prototype.update = function (dt) {
 
   this.x += this.speed * dt;
   if (this.x > ctx.canvas.width) {
-    this.x = 0;
+    this.x = leftBorder;
   }
 
   this.collision(player);
@@ -45,8 +46,8 @@ Enemy.prototype.update = function (dt) {
 Enemy.prototype.collision = function (player) {
   this.player = player;
   if (
-    Math.abs(this.x - this.player.x) < 40 &&
-    Math.abs(this.y - this.player.y) < 40
+    Math.abs(this.x - this.player.x) < playerHitbox &&
+    Math.abs(this.y - this.player.y) < playerHitbox
   ) {
     this.player.resetPlayer();
   }
