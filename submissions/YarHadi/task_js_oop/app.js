@@ -1,4 +1,5 @@
-const startPlayerX = 200,
+const fieldWidth=505,
+startPlayerX = 200,
   startPlayerY = 390,
   cellWidth = 101,
   cellHeight = 83,
@@ -114,9 +115,16 @@ const firstEnemyLine=60;
 const secondEnemyLine=140;
 const thirdEnemyLine=230;
 
+
+
 function createEnemies() {
+  var enemyPositionX;
   const posEnemY = [firstEnemyLine, secondEnemyLine, thirdEnemyLine];
-  posEnemY.map(line => allEnemies.push(new Enemy(0, line)));
+  posEnemY.map(line => {
+    enemyPositionX=Math.random() * fieldWidth;
+    allEnemies.push(new Enemy(enemyPositionX, line));
+  }
+    )
 }
 
 createEnemies();
