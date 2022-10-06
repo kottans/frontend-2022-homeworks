@@ -40,9 +40,8 @@ class Inhabitant {
 
 class Human extends Inhabitant {
   constructor(name, gender, saying, friends) {
-    const legs = 2;
-    const hands = 2;
-    super("human", name, gender, `On ${legs} legs and has ${hands} hands`, saying, friends);
+    const [legs, hands] = [`On 2 legs`, `Has 2 hands`];
+    super("human", name, gender, [legs, hands].join("; "), saying, friends);
   }
 }
 
