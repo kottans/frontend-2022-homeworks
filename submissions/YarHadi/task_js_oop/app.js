@@ -39,16 +39,14 @@ Enemy.prototype.update = function (dt) {
     this.x = 0;
   }
 
-  if (this.collision()) {
-    player.resetPlayer();
-  }
+  checkCollision(this.x, this.y);
 };
 
-Enemy.prototype.collision = function () {
-  if (Math.abs(this.x - player.x) < 40 && Math.abs(this.y - player.y) < 40) {
-    return 1;
+function checkCollision(enemyX, enemyY) {
+  if (Math.abs(enemyX - player.x) < 40 && Math.abs(enemyY - player.y) < 40) {
+    player.resetPlayer();
   }
-};
+}
 
 // Draw the enemy on the screen, required method for game
 
