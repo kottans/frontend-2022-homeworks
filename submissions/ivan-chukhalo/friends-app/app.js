@@ -59,14 +59,7 @@ const INPUT_NAME_FIELD = document.getElementById('input__filter_by-name');
 const BTN_RADIO_MALE = document.getElementById('sex_male');
 const BTN_RADIO_FEMALE = document.getElementById('sex_female');
 const BTN_RADIO_ALL = document.getElementById('sex_all');
-
-function renderCards(arrayOfUsers){
-    CARD_CONTAINER.innerHTML = '';
-    arrayOfUsers.forEach(user => {
-        const newUser = new User (user);
-        CARD_CONTAINER.appendChild(newUser.createCardElement());
-    })
-}
+const INPUTS = document.querySelectorAll('input');
 
 const URL_API = 'https://randomuser.me/api/?results=24';
 const fetchData = async () => {
@@ -82,6 +75,25 @@ const fetchData = async () => {
     }
 }
 fetchData();
+
+function renderCards(arrayOfUsers){
+    CARD_CONTAINER.innerHTML = '';
+    arrayOfUsers.forEach(user => {
+        const newUser = new User (user);
+        CARD_CONTAINER.appendChild(newUser.createCardElement());
+    })
+}
+
+function resetInputs(){
+    INPUTS.forEach( el => {
+        if (el.type === 'text' || el.type === 'number') {
+            el.value = '';
+        }
+        if (el.type === 'radio'){
+            el.checked = false;
+        }
+    })
+}
 
 function getSortedUsersByName(incomeUsers, eventTarget) {
     let sortedByNameUsers = [...incomeUsers].sort((previousEl, nextEl) => {;
@@ -165,20 +177,26 @@ function getFilteredBySex(incomeUsers){
 ASIDE.addEventListener('click', event => {
     if (event.target.parentElement === BTN_SORT_BY_NAME_ALPHA || event.target.parentElement === BTN_SORT_BY_NAME_REVERSE){
         renderCards(getSortedUsersByName(filteredUsers, event.target.parentElement));
+        resetInputs();
     }
     if (event.target.parentElement === BTN_SORT_BY_AGE_ASCENDING || event.target.parentElement === BTN_SORT_BY_AGE_DESCENDING){
         renderCards(getSortedUsersByAge(filteredUsers, event.target.parentElement));
+        resetInputs();
     }
     if (event.target === BTN_FILTER_BY_NAME){
        renderCards(getFilteredByName(filteredUsers));
+       resetInputs();
     }
     if (event.target === BTN_FILTER_BY_AGE){
         renderCards(getFilteredByAge(filteredUsers));
+        resetInputs();
     }
     if (event.target === BTN_FILTER_BY_SEX){
         renderCards(getFilteredBySex(filteredUsers));
+        resetInputs();
     }
     if (event.target === BTN_RESET){
+        resetInputs();
         renderCards(users);
     }
 });
