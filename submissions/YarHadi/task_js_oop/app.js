@@ -1,10 +1,13 @@
 const fieldWidth=505,
-startPlayerX = 200,
-  startPlayerY = 390,
-  cellWidth = 101,
-  cellHeight = 83,
+fieldHeight=606,
+columnsNumber=5,
+rowNumber=7,
+  cellWidth = fieldWidth/columnsNumber,
+  cellHeight = fieldHeight/rowNumber,
+  startPlayerX = fieldWidth/2-cellWidth/2,
+  startPlayerY = fieldHeight/2+cellHeight,
   leftBorder = 0,
-  rightBorder = 303,
+  rightBorder = fieldWidth-cellWidth,
   topBorder = 0;
 
 // Enemies our player must avoid
