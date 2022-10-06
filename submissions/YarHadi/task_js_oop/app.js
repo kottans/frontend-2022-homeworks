@@ -39,18 +39,20 @@ Enemy.prototype.update = function (dt) {
     this.x = 0;
   }
 
-  if (this.collision()) {
-    player.resetPlayer();
+  this.collision(player);
+};
+
+Enemy.prototype.collision = function (player) {
+  this.player = player;
+  if (
+    Math.abs(this.x - this.player.x) < 40 &&
+    Math.abs(this.y - this.player.y) < 40
+  ) {
+    this.player.resetPlayer();
   }
 };
 
-Enemy.prototype.collision = function () {
-  if (Math.abs(this.x - player.x) < 40 && Math.abs(this.y - player.y) < 40) {
-    return 1;
-  }
-};
-
-// Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen, required method for game6
 
 Enemy.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
