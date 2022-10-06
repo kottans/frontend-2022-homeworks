@@ -141,47 +141,49 @@ function showPreviewCards() {
 function flipCard(e) {
   const card = e.target.closest('.game__card')
 
-  if (card) {
-    const id = card.dataset.id
+  if (!card) return null
 
-    if (pair.length === 0) {
-      card.classList.toggle('flip')
-      pair.push(card)
-    }
-    else if (pair.some(cardInPair => cardInPair === card)) {
-      pair.forEach(cardInPair => {
-        cardInPair.classList.toggle('flip')
+  const id = card.dataset.id
+
+  if (pair.length === 0) {
+    card.classList.toggle('flip')
+    pair.push(card)
+  }
+  else if (pair.some(cardInPair => cardInPair === card)) {
+    pair.forEach(cardInPair => {
+      cardInPair.classList.toggle('flip')
+    })
+    pair.splice(0, 2)
+  }
+  else if (pair.length === 1 && pair[0].dataset.id === id) {
+    card.classList.toggle('flip')
+    pair.splice(0, 2)
+    pairCounter--
+    setTimeout(() => {
+      document.querySelectorAll(`.id-${id}`).forEach(cardDOMElement => {
+        cardDOMElement.classList.add('hidden')
       })
-      pair.splice(0, 2)
-    }
-    else if (pair.length === 1 && pair[0].classList.contains(`id-${id}`)) {
-      card.classList.toggle('flip')
-      pair.splice(0, 2)
-      pairCounter--
-      setTimeout(() => {
-        document.querySelectorAll(`.id-${id}`).forEach(cardDOMElement => {
-          cardDOMElement.classList.add('hidden')
-        })
-        if (pairCounter === 0) {
-          gameTime.setEndTime()
-          gameTime.setDiffTime()
-          setTimeInLocaleStorage()
-          fadeOutFadeIn(initResultPage)
-        }
-      }, TIMER.time)
-    }
-    else if (pair.length === 1 && pair[0] !== id) {
-      card.classList.toggle('flip')
-      pair.push(card)
-    }
-    else {
-      pair.forEach(cardDOMElement => {
-        cardDOMElement.classList.toggle('flip')
-      })
-      card.classList.toggle('flip')
-      pair.splice(0, 2)
-      pair.push(card)
-    }
+      if (pairCounter === 0) {
+        e.target.closest('.game').removeEventListener('click', flipCard)
+
+        gameTime.setEndTime()
+        gameTime.setDiffTime()
+        setTimeInLocaleStorage()
+        fadeOutFadeIn(initResultPage)
+      }
+    }, TIMER.time)
+  }
+  else if (pair.length === 1) {
+    card.classList.toggle('flip')
+    pair.push(card)
+  }
+  else {
+    pair.forEach(cardDOMElement => {
+      cardDOMElement.classList.toggle('flip')
+    })
+    card.classList.toggle('flip')
+    pair.splice(0, 2)
+    pair.push(card)
   }
 }
 
@@ -214,17 +216,21 @@ function initStartPage() {
 
   const startPageUl = document.querySelector('.start-page__ul')
 
-  startPageUl.addEventListener('click', function(e) {
-    e.preventDefault()
+  startPageUl.addEventListener('click', switchFromStartPage)
+}
 
-    const link = e.target.closest('.start-page__link') || null
-    const isPreview = document.querySelector('.start-page__checkbox').checked
+function switchFromStartPage (e) {
+  e.preventDefault()
 
-    if (link) {
-      const numberOfPairs = link.dataset.pair
-      fadeOutFadeIn(initGame, numberOfPairs, isPreview)
-    }
-  })
+  const link = e.target.closest('.start-page__link') || null
+  const isPreview = document.querySelector('.start-page__checkbox').checked
+
+  if (link) {
+    e.target.closest('.start-page__ul').removeEventListener('click', switchFromStartPage)
+
+    const numberOfPairs = link.dataset.pair
+    fadeOutFadeIn(initGame, numberOfPairs, isPreview)
+  }
 }
 
 function initGame(num, preview) {
@@ -248,12 +254,14 @@ function initResultPage() {
 
   const resultPageLink = document.querySelector('.result-page__link')
 
-  resultPageLink.addEventListener('click', function(e) {
-    e.preventDefault()
-    fadeOutFadeIn(initStartPage)
-  })
+  resultPageLink.addEventListener('click', switchFromResultPage)
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  initStartPage()
-})
+function switchFromResultPage (e) {
+  e.preventDefault()
+  e.target.removeEventListener('click', switchFromResultPage)
+
+  fadeOutFadeIn(initStartPage)
+}
+
+document.addEventListener("DOMContentLoaded", initStartPage)
