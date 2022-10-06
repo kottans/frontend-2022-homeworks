@@ -114,12 +114,9 @@ const firstEnemyLine=60;
 const secondEnemyLine=140;
 const thirdEnemyLine=230;
 
-
 function createEnemies() {
   const posEnemY = [firstEnemyLine, secondEnemyLine, thirdEnemyLine];
-  for (let y of posEnemY) {
-    allEnemies.push(new Enemy(0, y));
-  }
+  posEnemY.map(line => allEnemies.push(new Enemy(0, line)));
 }
 
 createEnemies();
