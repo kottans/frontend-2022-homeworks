@@ -70,7 +70,7 @@ body {
   top: 80px;
   right: -150px;
   width: 380px;
-  height: 310px;
+  height: 300px;
   overflow: scroll;
   overflow-x: hidden;
   border: 1px solid #7a7a52;
@@ -82,33 +82,41 @@ body {
 .header__input:checked ~ .popup {
   display: block;
 }
+
 .header__lists-popup {
   display: grid;
-  grid-template-columns: repeat(3, 100px);
+  grid-template-columns: repeat(3, 110px);
   grid-template-rows: repeat(1, 1fr);
-  gap: 1em;
+  gap: 15px;
   padding: 5px;
   align-items: end;
+  list-style-type: none;
 }
+
 .header__input-label {
   position: relative;
+}
+
+.popup__list {
+  padding: 5px;
+  width: 110px;
+  height: 60px;
+  text-align: center;
+  font-size: 16px;
 }
 
 .popup-img {
   display: block;
   max-width: 90%;
   max-height: 90%;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .popup__link {
-  padding: 5px;
-  width: 100px;
-  height: 60px;
-  text-align: center;
+  display: block;
   text-decoration: none;
-  font-size: 16px;
   color: #000;
+  padding: 3px;
 }
 
 .popup__link:focus,
@@ -128,20 +136,22 @@ body {
   border: 1px solid transparent;
 }
 
-.sub__check-label:focus,
-.sub__check-label:focus-within,
-.sub__check-label:hover {
-  border: 1px solid #7a7a52;
-}
-
 .sub__check-input {
   appearance: none;
   position: absolute;
+  margin-top: 29px;
+  border: 1px solid transparent;
+  width: 362px;
+  height: 27px;
 }
 
+.sub__check-input:focus,
+.sub__check-input:focus-within,
+.sub__check-input:hover {
+  border: 1px solid #7a7a52;
+}
 .sub__check-input:checked ~ .sub__lists-popup {
   display: block;
-  display: grid;
 }
 
 .sub__check-input:checked ~ .sub__check-label {
@@ -149,11 +159,16 @@ body {
 }
 
 .sub__lists-popup {
-  display: grid;
-  gap: 1em;
-  align-items: end;
   display: none;
-  grid-template-columns: repeat(3, 100px);
+  padding: 5px;
+}
+
+.sub__lists {
+  display: grid;
+  gap: 15px;
+  align-items: end;
+  list-style-type: none;
+  grid-template-columns: repeat(3, 110px);
   grid-template-rows: repeat(1, 1fr);
   padding-top: 30px;
   margin-top: 30px;
