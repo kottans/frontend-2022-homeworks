@@ -21,6 +21,7 @@ class Inhabitant {
   printInhabitant() {
     const nameToPrint = `<strong>${this.name}</strong>`;
     const talkToPrint = `<em>${this.saying}</em>`;
+    const legsToPrint = `On ${this.legs} legs`;
     const friendsToPrint = this.friends
       ? this.friends.map((friend) => friend.name).join(", ")
       : `${this.species} has no friends!`;
@@ -30,7 +31,7 @@ class Inhabitant {
         this.species,
         nameToPrint,
         this.gender,
-        this.legs,
+        legsToPrint,
         talkToPrint,
         friendsToPrint,
       ].join("; ")
@@ -40,15 +41,37 @@ class Inhabitant {
 
 class Human extends Inhabitant {
   constructor(name, gender, saying, friends) {
-    const [legs, hands] = [`On 2 legs`, `Has 2 hands`];
-    super("human", name, gender, [legs, hands].join("; "), saying, friends);
+    const legs = 2;
+    const hands = 2;
+    super("human", name, gender, legs, saying, friends);
+    this.hands = hands;
+  }
+
+  //Rewriting the parent class method for printing out the string which includes unique property 'hands' for Human
+  printInhabitant() {
+    const nameToPrint = `<strong>${this.name}</strong>`;
+    const legsToPrint = `On ${this.legs} legs`;
+    const handsToPrint = `Has ${this.hands} hands`;
+    const talkToPrint = `<em>${this.saying}</em>`;
+    const friendsToPrint = this.friends.map((friend) => friend.name).join(", ");
+
+    print(
+      [
+        this.species,
+        nameToPrint,
+        this.gender,
+        legsToPrint,
+        handsToPrint,
+        talkToPrint,
+        friendsToPrint,
+      ].join("; ")
+    );
   }
 }
 
 class Animal extends Inhabitant {
   constructor(species, name, gender, saying, friends) {
-    const paws = 4;
-    super(species, name, gender, `On ${paws} paws`, saying, friends);
+    super(species, name, gender, 4, saying, friends);
   }
 }
 
