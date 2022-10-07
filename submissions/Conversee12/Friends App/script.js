@@ -1,4 +1,3 @@
-const url = "https://randomuser.me/api/?results=20&nat=ua&inc=name,picture,dob,gender,location";
 const FormUsers = document.querySelector(".menu__form");
 let usersData = [];
 let initialUsersData = [];
@@ -24,6 +23,7 @@ const preventMultiSort = (e) => {
 }
 
 async function fetchHandler() {
+  const url = "https://randomuser.me/api/?results=20&nat=ua&inc=name,picture,dob,gender,location";
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -36,7 +36,7 @@ async function fetchHandler() {
 }
 
 function showMain(data) {
-  cards.innerHTML = renderUserData(SortBySearch(filterBySex(sortByName(sortByAge(data)))));
+  cards.innerHTML = renderUserData(filterBySearch(filterBySex(sortByName(sortByAge(data)))));
 }
 
 function renderUserData(data) {
@@ -81,14 +81,18 @@ function sortByName(data) {
   return data;
 };
 
-function SortBySearch(data) {
+const ChooseUsersByLetter = (user) =>
+  (user.name.first + ' ' + user.name.last)
+    .toLowerCase()
+    .includes(searchInput.value.toLowerCase());
+
+function filterBySearch(data) {
+  if (searchInput.value && FormUsers.filter_sex.value) {
+    return filterBySex(usersData.filter(ChooseUsersByLetter));
+  };
   if (searchInput.value) {
-    return usersData.filter((user) =>
-      (user.name.first + ' ' + user.name.last)
-        .toLowerCase()
-        .includes(searchInput.value.toLowerCase())
-    );
-  }
+    return usersData.filter(ChooseUsersByLetter);
+  };
   return data;
 };
 
