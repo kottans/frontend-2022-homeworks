@@ -18,6 +18,16 @@ body {
 	background-attachment: fixed;
 	background-position: top;
 }
+body::-webkit-scrollbar {
+	width: 13px;
+}
+body::-webkit-scrollbar-track {
+	background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(154,154,154,1) 40%, rgba(154,154,154,1) 50%, rgba(154,154,154,1) 60%, rgba(0,0,0,1) 60%, rgba(0,0,0,1) 100%);
+}
+body::-webkit-scrollbar-thumb {
+	background: linear-gradient(90deg, #f598a8, #b5b4af);
+	border-radius: 5px;
+}
 .wrapper {
 	display: flex;
 	flex-direction: column;
