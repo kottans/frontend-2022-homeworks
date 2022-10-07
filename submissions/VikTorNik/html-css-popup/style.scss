@@ -1,0 +1,267 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+$color-menu-dark: rgb(7, 68, 64);
+$color-menu-focus: rgb(189, 226, 234);
+$color-submenu: rgb(5, 37, 41);
+$color-submenu-fon: rgb(184, 242, 242);
+$color-submenu-focus: rgba(255, 255, 255, 0.5);
+$color-header: rgb(68, 202, 206);
+$color-mein: rgb(90, 161, 177);
+
+html,
+body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.8rem;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: $color-header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__menu {
+    display: flex;
+}
+
+.menu__item {
+    display: block;
+    border: 1px solid transparent;
+}
+
+.img-menu {
+    display: block;
+    margin: 5px 10px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.content-button,
+.menu-button {
+    display: block;
+}
+
+.content-button {
+    text-shadow: 3px 3px 8px $color-menu-dark;
+    text-transform: uppercase;
+    color: $color-submenu;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.img-popup {
+    display: block;
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 50px;
+}
+
+.label__base {
+    cursor: pointer;
+}
+
+.nav__popup {
+    display: none;
+    position: absolute;
+    top: 57px;
+    right: 10px;
+    width: 340px;
+    height: 270px;
+    overflow: auto;
+    border: 2px solid $color-header;
+    border-radius: 7px;
+    background-color: $color-submenu-fon;
+}
+
+.checkbox-base:checked~.nav__popup {
+    display: block;
+}
+
+.content__base {
+    padding: 7px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.content__additional {
+    display: none;
+}
+
+.label-additional {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 90%;
+    border: 2px solid $color-menu-dark;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: $color-header;
+    text-shadow: 3px 3px 8px $color-menu-dark;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.checkbox-base,
+.checkbox-additional {
+    appearance: none;
+    position: absolute;
+}
+
+.content__application {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 86px;
+    height: auto;
+    padding: 10px;
+    border: 1px solid transparent;
+    text-decoration: none;
+}
+
+.checkbox-additional:checked~.content__additional {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.checkbox-additional:checked+.label-additional,
+.checkbox-additional:checked {
+    display: none;
+}
+
+.content__application:focus,
+.content__application:hover {
+    background-color: $color-submenu-focus;
+    opacity: 0.8;
+}
+
+.menu__item:focus,
+.menu__item:hover {
+    opacity: 0.7;
+    transform: scale(1.25);
+}
+
+.checkbox-base:focus+.label__base>.img-menu,
+.checkbox-base:hover+.label__base>.img-menu {
+    opacity: 0.5;
+    transform: scale(1.1);
+    border: 2px solid $color-submenu-focus;
+    border-radius: 5px;
+}
+
+.more__input:focus+.more__label,
+.more__input:hover+.more__label {
+    box-shadow: 0 0 5px $color-submenu-focus;
+    background-color: $color-header;
+    background-color: $color-submenu-focus;
+    opacity: 0.2;
+}
+
+.checkbox-additional:focus+.label-additional,
+.checkbox-additional:hover+.label-additional {
+    height: 29px;
+    width: 88%;
+    background-color: $color-menu-focus;
+    font-size: 1.4rem;
+}
+
+.main {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-mein;
+}
+
+.main__kottans:focus,
+.main__animated:hover {
+    opacity: 0.2;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: $color-header;
+}
+
+.footer__div {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 3px 3px 10px $color-menu-dark;
+    text-align: center;
+}
+
+.footer__git {
+    text-decoration: none;
+}
+
+.footer__git:focus,
+.footer__git:hover {
+    color: $color-menu-focus;
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 44%;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    html {
+        font-size: 54%;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+    html {
+        font-size: 60%;
+    }
+}
+
+@media (min-width: 1201px) {
+    html {
+        font-size: 68%;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    html {
+        font-size: 60%;
+    }
+}
