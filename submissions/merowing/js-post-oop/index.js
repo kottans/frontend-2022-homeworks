@@ -1,21 +1,15 @@
 import { print } from './js/lib.js';
 
 class Creature {
-   constructor(name, gender, legs, say, friends) {
+   constructor(name, gender, legs, say) {
       this.name = name;
       this.gender = gender;
       this.legs = legs;
       this.say = say;
-      this.friends = friends;
-   }
-
-   getFriends() {
-      const stringOfFriends = this.friends.map(friend => friend.name).join(', ');
-      return (stringOfFriends) ? ` <strong>${stringOfFriends}</strong>` : '';
    }
 
    message() {
-      return `${this.species}; <strong>${this.name}</strong>; ${this.gender}; ${this.hands}; ${this.legs}; <em>${this.say}</em>;${this.getFriends()}`;
+      return `${this.species}; <strong>${this.name}</strong>; ${this.gender}; ${this.hands}; ${this.legs}; <em>${this.say}</em>;${this.friends}`;
    }
 }
 
@@ -25,6 +19,15 @@ class Human extends Creature {
       this.species = 'human';
       this.hands = hands;
    }
+
+   set friends(names) {
+      this._friends = names.map(friend => friend.name);
+   }
+
+   get friends() {
+      return ` <strong>${this._friends}</strong>`;
+   }
+
 }
 
 class Animal extends Creature {
@@ -32,6 +35,7 @@ class Animal extends Creature {
       super(name, gender, legs, say);
       this.species = 'animal';
       this.hands = 0;
+      this.friends = '';
    }
 }
 
@@ -41,7 +45,7 @@ class Cat extends Animal {
    }
 }
 
-class FairyTaleCat extends Cat {
+class FairyTaleCat extends Human {
    constructor(name, gender, hands, legs, say) {
       super(name, gender, legs, say);
       this.species = 'fairy tale human';
@@ -65,8 +69,6 @@ Anne.say = Tom.say;
 George.friends = [Samantha, Tom];
 Samantha.friends = [George, Allegra, Tom];
 Anne.friends = [Samantha, Tom];
-Tom.friends = [];
-Allegra.friends = [];
 
 const creatures = [George, Samantha, Tom, Allegra, Anne];
 
