@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <title>Popup-menu</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,64 +21,159 @@
                 <a href="#" class="header__link">Images</a>
               </li>
               <li class="header__list header__link">
-                <input type="checkbox" class="header__input" id="header__input" />
+                <input
+                  type="checkbox"
+                  class="header__input"
+                  id="header__input"
+                />
                 <label for="header__input" class="header__input-label">
-                  <img src="icon/menu.png" alt="menu" class="header__logo-menu" />
+                  <img
+                    src="icon/menu.png"
+                    alt="menu"
+                    class="header__logo-menu"
+                  />
                 </label>
-
                 <div class="popup">
-                  <div class="header__lists-popup">
-                    <a href="#" class="popup__link">
-                      <img class="popup-img" src="icon/Безпека.png" alt="Безпека" />Безпека</a>
-                    <a href="#" class="popup__link">
-                      <img class="popup-img" src="icon/Календар.png" alt="Календар" />Календар</a>
-                    <a href="#" class="popup__link">
-                      <img
-                        class="popup-img"
-                        src="icon/Калькулятор.png"
-                        alt="Калькулятор" />Калькулятор</a>
-                    <a href="#" class="popup__link">
-                      <img class="popup-img" src="icon/Контакти.png" alt="Контакти" />Контакти</a>
-                    <a href="#" class="popup__link">
-                      <img class="popup-img" src="icon/Контролер.png" alt="Контролер" />Контролер</a>
-                    <a href="#" class="popup__link">
-                      <img class="popup-img" src="icon/Мапа.png" alt="Мапа" />Мапа</a>
-                    <a href="" class="popup__link">
-                      <img class="popup-img" src="icon/Новини.png" alt="Новини" />Новини</a>
-                    <a href="#" class="popup__link">
-                      <img class="popup-img" src="icon/Нотатки.png" alt="Нотатки" />Нотатки</a>
-                    <a href="#" class="popup__link">
-                      <img
-                        class="popup-img"
-                        src="icon/Поділитися.png"
-                        alt="Поділитися" />Поділитися</a>
-                  </div>
-                  <input type="checkbox" class="sub__check-input" id="sub__input" />
+                  <ul class="header__lists-popup">
+                    <li class="popup__list">
+                      <a href="#" class="popup__link">
+                        <img
+                          class="popup-img"
+                          src="icon/Безпека.png"
+                          alt="Безпека"
+                        />Безпека</a
+                      >
+                    </li>
+                    <li class="popup__list">
+                      <a href="#" class="popup__link">
+                        <img
+                          class="popup-img"
+                          src="icon/Календар.png"
+                          alt="Календар"
+                        />Календар</a
+                      >
+                    </li>
+                    <li class="popup__list">
+                      <a href="#" class="popup__link">
+                        <img
+                          class="popup-img"
+                          src="icon/Калькулятор.png"
+                          alt="Калькулятор"
+                        />Калькулятор</a
+                      >
+                    </li>
+                    <li class="popup__list">
+                      <a href="#" class="popup__link">
+                        <img
+                          class="popup-img"
+                          src="icon/Контакти.png"
+                          alt="Контакти"
+                        />Контакти</a
+                      >
+                    </li>
+                    <li class="popup__list">
+                      <a href="#" class="popup__link">
+                        <img
+                          class="popup-img"
+                          src="icon/Контролер.png"
+                          alt="Контролер"
+                        />Контролер</a
+                      >
+                    </li>
+                    <li class="popup__list">
+                      <a href="#" class="popup__link">
+                        <img
+                          class="popup-img"
+                          src="icon/Мапа.png"
+                          alt="Мапа"
+                        />Мапа</a
+                      >
+                    </li>
+                    <li class="popup__list">
+                      <a href="" class="popup__link">
+                        <img
+                          class="popup-img"
+                          src="icon/Новини.png"
+                          alt="Новини"
+                        />Новини</a
+                      >
+                    </li>
+                    <li class="popup__list">
+                      <a href="#" class="popup__link">
+                        <img
+                          class="popup-img"
+                          src="icon/Нотатки.png"
+                          alt="Нотатки"
+                        />Нотатки</a
+                      >
+                    </li>
+                    <li class="popup__list">
+                      <a href="#" class="popup__link">
+                        <img
+                          class="popup-img"
+                          src="icon/Поділитися.png"
+                          alt="Поділитися"
+                        />Поділитися</a
+                      >
+                    </li>
+                  </ul>
+                  <input
+                    type="checkbox"
+                    class="sub__check-input"
+                    id="sub__input"
+                  />
                   <label for="sub__input" class="sub__check-label">
-                    <span>Більше</span>
+                    Більше
                   </label>
-
                   <div class="sub__lists-popup">
-                    <a href="#" class="popup__link">
-                      <img class="sub__popup-img" src="icon/Поради.png" alt="Поради" />Поради</a>
-                    <a href="#" class="popup__link">
-                      <img class="sub__popup-img" src="icon/Пошта.png" alt="Пошта" />Пошта</a>
-                    <a href="#" class="popup__link">
-                      <img
-                        class="sub__popup-img"
-                        src="icon/Месенджер.png"
-                        alt="Месенджер" />Месенджер</a>
-                    <a href="#" class="popup__link">
-                      <img
-                        class="sub__popup-img"
-                        src="icon/Синхронізація.png"
-                        alt="Синхронізація" />Синхронізація</a>
+                    <ul class="sub__lists">
+                      <li class="popup__list">
+                        <a href="#" class="popup__link">
+                          <img
+                            class="sub__popup-img"
+                            src="icon/Поради.png"
+                            alt="Поради"
+                          />Поради</a
+                        >
+                      </li>
+                      <li class="popup__list">
+                        <a href="#" class="popup__link">
+                          <img
+                            class="sub__popup-img"
+                            src="icon/Пошта.png"
+                            alt="Пошта"
+                          />Пошта</a
+                        >
+                      </li>
+                      <li class="popup__list">
+                        <a href="#" class="popup__link">
+                          <img
+                            class="sub__popup-img"
+                            src="icon/Месенджер.png"
+                            alt="Месенджер"
+                          />Месенджер</a
+                        >
+                      </li>
+                      <li class="popup__list">
+                        <a href="#" class="popup__link">
+                          <img
+                            class="sub__popup-img"
+                            src="icon/Синхронізація.png"
+                            alt="Синхронізація"
+                          />Синхронізація</a
+                        >
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </li>
               <li class="header__list">
                 <a href="#" class="header__link">
-                  <img class="notification" src="icon/bell.png" alt="Повідомлення" />
+                  <img
+                    class="notification"
+                    src="icon/bell.png"
+                    alt="Повідомлення"
+                  />
                 </a>
               </li>
               <li class="header__list">
