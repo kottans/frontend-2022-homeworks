@@ -1,3 +1,9 @@
+:root {
+  --light-color: #fff;
+  --dark--color: #333;
+  --card-color: #e2e2e2;
+}
+
 *,
 ::after,
 ::before {
@@ -8,7 +14,13 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(100vw - 85%);
 }
 
 .container {
@@ -57,8 +69,8 @@ body {
 
 .front {
   z-index: 2;
-  background: #e2e2e2 url('./img/catBlack.svg') no-repeat center center /
-    contain;
+  background: var(--card-color) url('./img/catBlack.svg') no-repeat center
+    center / contain;
 }
 
 .back {
@@ -67,13 +79,45 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-color: #e2e2e2;
+  background-color: var(--card-color);
 }
 
 .selected {
   transform: rotateY(180deg);
 }
 
-.match .front {
-  background: white;
+html.dark .match .front {
+  background: var(--dark-color);
+}
+
+html.light .match .front {
+  background: var(--light-color);
+}
+
+html.dark body {
+  background-color: var(--dark--color);
+  color: var(--light-color);
+}
+
+html.light body {
+  background-color: var(--light-color);
+  color: var(--dark--color);
+}
+
+.theme {
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+html.dark .theme {
+  background: url('./img/sun.svg') 0 0/100% no-repeat;
+  filter: invert(1);
+}
+
+html.light .theme {
+  background: url('./img/moon.svg') 0 0/100% no-repeat;
 }
