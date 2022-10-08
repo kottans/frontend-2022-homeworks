@@ -47,9 +47,8 @@ class Cat extends Animal {
 
 class FairyTaleCat extends Human {
    constructor(name, gender, hands, legs, say) {
-      super(name, gender, legs, say);
+      super(name, gender, hands, legs, say);
       this.species = 'fairy tale human';
-      this.hands = hands;
    }
 }
 
