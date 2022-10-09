@@ -1,15 +1,14 @@
-const playingField = {
-    width: 500,
-    height: 600
-};
-
 const cell = {
-    width: 100,
-    height: 85
+    width: 101,
+    height: 83
 };
 
-const river = {
-    height: 85
+const numberOfRows = 6;
+const numberOfColumns = 5;
+
+const playingField = {
+    width: cell.width * numberOfColumns, // 505
+    height: cell.height * numberOfRows // 498
 };
 
 const character = {
@@ -17,25 +16,45 @@ const character = {
     height: 60
 };
 
+const offsetToTheCenter = 23;
+
 const initialPlayerPosition = {
-    x: 200,
-    y: 385
+    x: 2 * cell.width, // 202
+    y: 5 * cell.height - offsetToTheCenter // 392
 };
+
+const initialEnemyPosition = {
+    x: -2 * cell.width, // -202
+    y: [1, 2, 3].map(rowNumber => rowNumber * cell.height - offsetToTheCenter) // 60, 143, 226
+};
+
+const minSpeed = 100;
+const maxSpeed = 500;
+const enemySpeed = Math.floor(Math.random() * (maxSpeed - minSpeed)) + minSpeed;
+const desynchronizedSpeed = [0, 100, 50].map(speedDelta => enemySpeed + speedDelta);
 
 let count = 0;
 
 // ===========================================================
 
 const score = document.createElement('h3');
+const speed = document.createElement('h4');
+const resetButton = document.createElement('button');
 score.textContent = 'your score is: 0';
-document.body.append(score);
+speed.textContent = `game speed is: ${enemySpeed}`;
+resetButton.textContent = 'reset speed';
+resetButton.addEventListener('click', location.reload.bind(location))
+document.body.append(score, resetButton, speed);
 
 // ===========================================================
 
 const Enemy = function (x, y, speed) {
     this.x = x;
     this.y = y;
+    this.width = character.width;
+    this.height = character.height;
     this.speed = speed;
+    this.rival = player;
     this.sprite = 'images/enemy-bug.png'
 };
 
@@ -43,17 +62,17 @@ Enemy.prototype.update = function (dt) {
     if (this.x <= playingField.width) {
         this.x = this.speed * dt + this.x;
     } else {
-        this.x = 0;
+        this.x = -2 * cell.width;
     }
     this.detectCollision();
 };
 
 Enemy.prototype.detectCollision = function () {
-    if (player.x <= this.x + character.width &&
-        player.x + character.width >= this.x &&
-        player.y <= this.y + character.height &&
-        player.y + character.height >= this.y) {
-        player.reset()
+    if (this.rival.x <= this.x + this.width &&
+        this.rival.x + this.width >= this.x &&
+        this.rival.y <= this.y + this.height &&
+        this.rival.y + this.height >= this.y) {
+        this.rival.reset()
     }
 };
 
@@ -76,7 +95,7 @@ Player.prototype.update = function () {
 };
 
 Player.prototype.scored = function () {
-    if (this.y < river.height) {
+    if (this.y < cell.height / 2) {
         count++;
         score.textContent = `your score is: ${count}`;
         this.x = initialPlayerPosition.x;
@@ -127,11 +146,10 @@ Player.prototype.handleInput = function (key) {
 
 const player = new Player(initialPlayerPosition.x, initialPlayerPosition.y);
 
-// const Enemy = function (x, y, speed)
-const enemy1 = new Enemy(0, 225, 100);
-const enemy2 = new Enemy(0, 142, 200);
-const enemy3 = new Enemy(0, 60, 150);
-const allEnemies = [enemy1, enemy2, enemy3];
+const allEnemies = new Array(3);
+for (let i = 0; i < allEnemies.length; i++) {
+    allEnemies[i] = new Enemy(initialEnemyPosition.x, initialEnemyPosition.y[i], desynchronizedSpeed[i]);
+}
 
 // ===========================================================
 
