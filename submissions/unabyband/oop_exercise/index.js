@@ -19,23 +19,17 @@ class Inhabitant {
   }
 
   printInhabitant() {
-    //I've decided to form friends parameter separately from others just in order to improve code reading
-    //But it also could be made directly in arguments of function like in the overridden method below
     const friendsToPrint = this.friends
       ? this.friends.map((friend) => friend.name).join(", ")
       : `${this.species} has no friends!`;
-  
-    this.printToPage(this.species, 
+    
+    return [this.species, 
       `<strong>${this.name}</strong>`, 
       this.gender, 
       `On ${this.legs} legs`, 
       `<em>${this.saying}</em>`, 
-      friendsToPrint);
+      friendsToPrint].join('; ');
   }  
-  
-  printToPage() {
-    print([...arguments].join("; "));
-  }
 }
 
 class Human extends Inhabitant {
@@ -47,13 +41,13 @@ class Human extends Inhabitant {
   }
 
   printInhabitant() {
-    super.printToPage(this.species,
+    return [this.species,
         `<strong>${this.name}</strong>`,
         this.gender,
         `On ${this.legs} legs`,
         `Has ${this.hands} hands`,
         `<em>${this.saying}</em>`,
-        this.friends.map((friend) => friend.name).join(", "));
+        this.friends.map((friend) => friend.name).join(", ")].join('; ');
   }
 }
 
@@ -105,5 +99,5 @@ addFriends("Adam", ["Eva", "Tom", "Lizzy"]);
 addFriends("Rex", ["Bob"]);
 addFriends("Lizzy", ["Eva", "Adam"]);
 
-inhabitants.forEach((creature) => creature.printInhabitant());
+inhabitants.forEach((creature) => print(creature.printInhabitant()));
 
