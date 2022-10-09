@@ -5,10 +5,10 @@ class Inhabitant {
 		this.legs = legs;
 		this.gender = gender;
 		this.saying = saying;
-		this.keys = ["species", "name", "gender", "saying", "legs"];
+		this.inhabitantProps = ["species", "name", "gender", "saying", "legs"];
 	}
 	inhabitantShowProps() {
-		return this.keys.map((key) => this[key]).join("; ");
+		return this.inhabitantProps.map((prop) => this[prop]).join("; ");
 	}
 }
 class Human extends Inhabitant {
