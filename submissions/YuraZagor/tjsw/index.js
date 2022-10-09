@@ -34,63 +34,62 @@ const inhabitants = [
 
 class Inhabitant {  
   constructor(species, name, saying, friend, gender, habitat=inhabitants){
-    this.species=species;
-    this.name=name;
+    this.species = species;
+    this.name = name;
     this.saying = saying
-    this.friend=friend;
-    this.gender=gender;
-    this.habitat = habitat
+    this.friend = friend;
+    this.gender = gender;
+    this.habitat = habitat;
   }
   accountInhabitants(){
     this.habitat.push(this);
-  }
+  };
   commonProperties(){
-    const { species, name, saying, friend, gender} = this
-    const commonProperties = [species, name, saying, friend, gender]
-    return commonProperties    
+    const { species, name, saying, friend, gender} = this;
+    return [species, name, saying, friend, gender]
   }
 };
 
 class Animal extends Inhabitant{
   constructor( species, name, saying, friend, gender, paws, tail ){
     super(species, name, saying, friend, gender);
-    this.paws=paws;
-    this.tail=tail;
+    this.paws = paws;
+    this.tail = tail;
   };
   populate(){
-    const { paws, tail} = this
-    const speciesProperties = [ paws, tail]
+    const { paws, tail} = this;
+    const speciesProperties = [ paws, tail];
     print(this.commonProperties().concat(speciesProperties).join('; '),'div');
     this.accountInhabitants()
   };
 };
 
 class Dog extends Animal{
-  constructor( name=randomSelect(animalNamesArr), friend=randomSelect(inhabitants).name, gender='male' ){
+  constructor( name=randomSelect(animalNamesArr), friend = randomSelect(inhabitants).name, gender = 'male' ){
     super('dog', name, dogSay, friend, gender, 4, 1);
   };
 };
 class Cat extends Animal{
-  constructor( name=randomSelect(animalNamesArr), friend=randomSelect(inhabitants).name, gender='female' ){
+  constructor( name = randomSelect(animalNamesArr), friend = randomSelect(inhabitants).name, gender = 'female' ){
     super('cat', name, catSay, friend, gender, 4, 1);
   };
 };
 
 class Human extends Inhabitant{
-  constructor( name=randomSelect(womanNamesArr), friend=randomSelect(inhabitants).name, gender='female', legs=2, hands=2){
+  constructor( name = randomSelect(womanNamesArr), friend = randomSelect(inhabitants).name, gender = 'female', legs = 2, hands = 2){
     super('human', name, humanSay, friend, gender);
-    this.legs=legs;
-    this.hands=hands;
+    this.legs = legs;
+    this.hands = hands;
   };
   populate(){
-    const { legs, hands} = this
-    const speciesProperties = [ legs, hands]
+    const { legs, hands} = this;
+    const speciesProperties = [ legs, hands];
     print(this.commonProperties().concat(speciesProperties).join('; '),'div');
     this.accountInhabitants()
   };
 };
 
-function creation(className, name, friend, gender){
+function createOne(className, name, friend, gender){
   className.toLowerCase() === 'human' 
   ? (new Human(name, friend, gender)).populate()
   : className.toLowerCase() === 'cat' 
@@ -98,19 +97,18 @@ function creation(className, name, friend, gender){
   : (new Dog(name, friend, gender)).populate()
 };
 
-function multipleCreation(num, species){
+function createMany(num, species){
   for (let i = 0; i<num; i++){
-    creation(species)
+    createOne(species)
   };  
 };
 const vasya = new Human ('Vasya', womanName, 'male' )
 vasya.populate()
-creation('human', womanName, animalName, 'male' );
-creation('human', randomSelect(womanNamesArr), animalName, 'female' );
-creation('dog', animalName, 'male', animalName);
-creation('cat', randomSelect(animalNamesArr), 'female', animalName);
-multipleCreation(4, 'human' )
-
+createOne('human', womanName, animalName, 'male' );
+createOne('human', randomSelect(womanNamesArr), animalName, 'female' );
+createOne('dog', animalName, 'male', animalName);
+createOne('cat', randomSelect(animalNamesArr), 'female', animalName);
+createMany(4, 'human' )
 
 const inputElement = document.createElement('form');
 inputElement.classList.add('input--form');
@@ -150,5 +148,5 @@ function useFormValue(event) {
   num = document.getElementById('num').value;
   species = document.getElementById('species').value;
 
-  multipleCreation(num, species);
+  createMany(num, species);
 };
