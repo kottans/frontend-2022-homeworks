@@ -1,23 +1,19 @@
 import { print } from './js/lib.js';
 
 class Creature {
-   constructor(name, gender, legs, say) {
+   constructor(name, gender, say) {
       this.name = name;
       this.gender = gender;
-      this.legs = legs;
       this.say = say;
-   }
-
-   message() {
-      return `${this.species}; <strong>${this.name}</strong>; ${this.gender}; ${this.hands}; ${this.legs}; <em>${this.say}</em>;${this.friends}`;
    }
 }
 
 class Human extends Creature {
    constructor(name, gender, hands, legs, say) {
-      super(name, gender, legs, say);
-      this.species = 'human';
+      super(name, gender, say);
       this.hands = hands;
+      this.legs = legs;
+      this.species = 'human';
    }
 
    set friends(names) {
@@ -28,33 +24,41 @@ class Human extends Creature {
       return ` <strong>${this._friends}</strong>`;
    }
 
+   message() {
+      return `${this.species}; <strong>${this.name}</strong>; ${this.gender}; ${this.hands}; ${this.legs}; <em>${this.say}</em>;${this.friends}`;
+   }
+
 }
 
 class Animal extends Creature {
-   constructor(name, gender, legs, say) {
-      super(name, gender, legs, say);
-      this.species = 'animal';
-      this.hands = 0;
-      this.friends = '';
+   constructor(name, gender, paws, say) {
+      super(name, gender, say);
+      this.paws = paws;
+   }
+
+   message() {
+      return `${this.species}; <strong>${this.name}</strong>; ${this.gender}; ${this.paws}; <em>${this.say}</em>;`;
    }
 }
 
 class Cat extends Animal {
-   constructor(name, gender, legs, say) {
-      super(name, gender, legs, say);
+   constructor(name, gender, paws, say) {
+      super(name, gender, paws, say);
+      this.species = 'cat';
    }
 }
 
 class FairyTaleCat extends Human {
    constructor(name, gender, hands, legs, say) {
       super(name, gender, hands, legs, say);
-      this.species = 'fairy tale human';
+      this.species = 'fairy tale';
    }
 }
 
 class Dog extends Animal {
-   constructor(name, gender, legs, say) {
-      super(name, gender, legs, say);
+   constructor(name, gender, paws, say) {
+      super(name, gender, paws, say);
+      this.species = 'dog';
    }
 }
 
