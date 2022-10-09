@@ -6,6 +6,7 @@ class Creature {
     this.gender = gender;
     this.legs = legs;
     this._friends = [];
+    this.species = this.constructor.name;
   }
 
   set friends(listOfFriends) {
@@ -17,7 +18,7 @@ class Creature {
   }
 
   toString() {
-    const {constructor: {name: species}, name, gender, legs, friends} = this;
+    const {species, name, gender, legs, friends} = this;
     return [species, name, gender, legs, friends].join('; ');
   }
 }
