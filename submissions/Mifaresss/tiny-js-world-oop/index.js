@@ -6,7 +6,7 @@ class Inhabitants {
       this.saying = saying;
    }
    prepareforPrinting() {
-      return `${this.name}; ${this.species}; ${this.gender}; ${this.saying};`
+      return [this.name, this.species, this.gender, this.saying].join('; ');
    }
 }
 
@@ -17,7 +17,7 @@ class Humans extends Inhabitants {
       this.hands = 2;
    }
    prepareforPrinting() {
-      return `${super.prepareforPrinting()} ${this.legs}; ${this.hands}`;
+      return [super.prepareforPrinting(), this.legs, this.hands].join('; ');
    }
 }
 
@@ -27,7 +27,7 @@ class Animals extends Inhabitants {
       this.legs = 4;
    }
    prepareforPrinting() {
-      return `${super.prepareforPrinting()} ${this.legs}`;
+      return [super.prepareforPrinting(), this.legs].join('; ');
    }
 }
 
