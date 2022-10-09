@@ -96,11 +96,6 @@ const iconInFriends = document.querySelector(".detailed__icon__infriends");
 let friendsList;
 
 personsData.then(({ results: persons }) => {
-  filterForm.addEventListener("change", () =>
-    renderPersonsList(
-      myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
-    )
-  );
   filterForm.addEventListener("input", () =>
     renderPersonsList(
       myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
