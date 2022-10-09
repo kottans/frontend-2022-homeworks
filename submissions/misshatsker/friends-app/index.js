@@ -5,10 +5,9 @@ const sectionDating = document.querySelector('.sectionDating');
 const sectionUsers = document.querySelector('.sectionUsers');
 const hamburger = document.querySelector('.hamburger');
 const findBtn = document.querySelector('.findBtn');
-const sortByAge = document.querySelector('.sortByAge');
-const sortByGender = document.querySelector('.sortByGender');
 const searchInput = document.querySelector('.searchInput');
 const filterBy = document.querySelector('.filterBy');
+const sortBy = document.querySelector('.sortBy');
 const asideSearchForm = document.querySelector('.asideSearchForm');
 
 function getUserFromRandomUserAPI (randomUser) {
@@ -56,6 +55,20 @@ function getFilteredUsers(users, inputValue, ageFilterValue, genderFilterValue) 
     return filteredUsers;
 }
 
+function getSortedUsers(users, ageSortValue) {
+    let sortedUsers = users;
+    if (ageSortValue) {
+        sortedUsers = sortedUsers.sort((user1, user2) => {
+            if (ageSortValue === 'asc') {
+                return user1.age - user2.age;
+            }
+            return user2.age - user1.age;
+        });
+    }
+
+    return sortedUsers;
+}
+
 function appendUserCards(users) {
     const userCards = users.map((user) => new UserCard(user));
     userCards.forEach((userCard) => userCard.append());  
@@ -65,16 +78,28 @@ async function init() {
     function rulesUpdated() {
         sectionUsers.innerHTML = null;
         appendUserCards(
-            getFilteredUsers(
-                users,
-                userInput.value,
-                ageFilter.value,
-                genderFilter.value
+            getSortedUsers(
+                getFilteredUsers(
+                    users,
+                    userInput.value,
+                    ageFilter.value,
+                    genderFilter.value
+                ),
+                ageSort.value
             )
         );
     }
 
     const userInput = new UserInput(searchInput, rulesUpdated);
+
+    const ageSort = new UserSort(
+        'years',
+        [
+            {id: 'asc', title: 'asc'},
+            {id: 'desc', title: 'desc'}
+        ],
+        rulesUpdated
+    );
 
     const ageFilter = new UserFilter(
         'age',
@@ -97,7 +122,7 @@ async function init() {
 
     asideSearchForm.onreset = () => {
         userInput.reset();
-        ageFilter.reset();
+        ageSort.reset();
         genderFilter.reset();
 
         rulesUpdated();
@@ -188,6 +213,59 @@ class UserFilter {
 
         div.innerHTML = this.getFilterHTMLCode();
         filterBy.append(div);
+    }
+
+    updateValue(newValue) {
+        this.value = newValue;
+        this.rulesUpdated(newValue);
+    }
+
+    reset() {
+        this.value = null;
+    }
+}
+
+class UserSort{
+    constructor(sortName, options, rulesUpdated) {
+        this.sortName = sortName;
+        this.options = options;
+        this.rulesUpdated = rulesUpdated;
+        this.value = null;
+
+        this.append();
+    }
+
+    getSortHTMLCode() {
+        const optionsElements = this.options.map((option) => {
+            return `
+                <div class="option">
+                    <input type="radio" id="${option.id}" name="${this.sortName}">
+                    <label class="radioButton" for="${option.id}">${option.title}</label>
+                </div>
+            `
+        });
+
+        return `
+            <div class="sortRule">
+                <p class="searchText">${this.sortName}:</p>
+                ${optionsElements.join('')}
+            </div>
+        `
+    }
+
+    append() {
+        const div = document.createElement('div');
+
+        div.onclick = (e) => {
+            const element = e.target;
+            const elementName = element.tagName.toLowerCase();
+            if (elementName === 'input') {
+                this.updateValue(element.id);
+            }
+        }
+
+        div.innerHTML = this.getSortHTMLCode();
+        sortBy.append(div);
     }
 
     updateValue(newValue) {
