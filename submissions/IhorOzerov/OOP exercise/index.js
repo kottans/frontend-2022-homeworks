@@ -67,7 +67,6 @@ class CatWoman extends Woman{
    }
 }
 
-//, 
 let Gangster = new Cat("Gangster", "male", "Yohanna and Vanessa");
 let Nancy = new Cat("Nancy", "female", "Gangster and Vanessa")
 let Gregory = new Man("Gregory", "Vanessa and Bandit");
