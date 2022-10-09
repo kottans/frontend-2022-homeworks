@@ -1,4 +1,3 @@
-const keys = ["species", "name", "gender", "saying", "legs"];
 class Inhabitant {
 	constructor(species, name, gender, legs, saying) {
 		this.species = species;
@@ -6,9 +5,10 @@ class Inhabitant {
 		this.legs = legs;
 		this.gender = gender;
 		this.saying = saying;
+		this.keys = ["species", "name", "gender", "saying", "legs"];
 	}
 	inhabitantShowProps() {
-		return keys.map((key) => this[key]).join("; ");
+		return this.keys.map((key) => this[key]).join("; ");
 	}
 }
 class Human extends Inhabitant {
