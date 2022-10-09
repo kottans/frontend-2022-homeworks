@@ -7,21 +7,24 @@
 }
 
 :root {
-    --start-page-title-font-size: 2.2rem;
+    --start-page-title-font-size: 2rem;
     --start-page-text-font-size: 1rem;
     --start-page-text-margin: 0.938rem 0 0;
     --start-page-subtitle-font-size: 1.2rem;
+    --start-page-text-width: 650px;
+    --details-group-width: 500px;
     --details-button-font-size: 0.875rem;
     --details-content-font-size: 1rem;
     --details-content-padding: 0.938rem;
     --start-page-copyright: 0.938rem;
-    --details-summary-padding: 1.25rem;
+    --details-summary-padding: 1rem;
     --details-summary-font-size: 1.125rem;
+    --game-page-gap: 0.625rem;
     --game-page-title-font-size: 2.75rem;
     --game-page-board-padding: 1.1rem;
     --game-page-board-gap: 0.5rem;
     --game-page-template: 6.3rem;
-    --game-page-border-settings: 0.313rem white solid;
+    --game-page-border-settings: 0.313rem #ffffff solid;
     --game-page-board-radius: 0.313rem;
     --game-page-board-margin: 0.313rem 0;
     --card-radius: 0.313rem;
@@ -29,8 +32,10 @@
     --status-board-gap: 0.625rem;
     --status-board-font-size: 1.5rem;
     --status-board-radius: 0.625rem;
-    --status-board-padding: 0.313rem 0.625rem;
+    --status-board-padding: 0.5rem 0.625rem;
     --status-board-margin: -1.4rem auto 0;
+    --status-board-height: 3.438rem;
+    --status-board-width: 18.8rem;
     --card-front-font-size: 3rem;
     --popup-title-font-size: 2rem;
     --popup-text-font-size: 1.125rem;
@@ -38,6 +43,10 @@
     --popup-button-font-size: 1rem;
     --popup-width: 400px;
     --popup-padding-horizontal: 1.563rem;
+}
+
+body {
+    background-color: #f5f5dc;
 }
 
 button {
@@ -61,7 +70,8 @@ button {
 .start-page__inner,
 .start-page,
 .popup,
-.card__front {
+.card__front,
+.game-page__inner {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,20 +121,18 @@ body,
 
 .details__summary,
 .details__content {
-    border: 0.063rem solid silver;
-    background: white;
+    border: 0.063rem solid #c0c0c0;
+    background: #ffffff;
 }
 
 .card__back, .flipped  {
-    transform: rotateY(180deg); 
-}
-
-.hidden {
-    display: none;
+    transform: rotateY(180deg);
 }
 
 .start-page {
-    background-color:beige;
+    width: 100%;
+    height: 100%;
+    background-color: #f5f5dc;
 }
 
 .start-page__inner {
@@ -139,7 +147,7 @@ body,
 
 .start-page__text {
     margin: var(--start-page-text-margin);
-    max-width: 700px;
+    max-width: var(--start-page-text-width);
     font-size: var(--start-page-text-font-size);
 }
 
@@ -150,7 +158,7 @@ body,
 }
 
 .details-group {
-    max-width: 500px;
+    max-width: var(--details-group-width);
     margin: 0 auto;
 }
 
@@ -165,9 +173,9 @@ body,
 .details__button {
     font-size: var(--details-button-font-size);
     text-transform: uppercase;
-    background-color: cadetblue;
+    background-color: #5f9ea0;
     padding: 0.688rem;
-    color: white;
+    color: #ffffff;
     border-radius: 0.25rem;
 }
 
@@ -211,13 +219,16 @@ body,
 
 .game-page {
     padding: 0.625rem 0;
+    gap: var(--game-page-gap);
     background-color: var(--game-page-background);
     font-family: var(--game-page-font-family);
     color: var(--game-page-font-color);
 }
 
 .game-page__title {
+    user-select: none;
     font-size: var(--game-page-title-font-size);
+    line-height: var(--game-page-title-font-size);
     font-family: inherit;
 }
 
@@ -246,6 +257,7 @@ body,
 
 .card__front,
 .card__back {
+    user-select: none;
     position: absolute;
     border-radius: var(--card-radius);
     -webkit-backface-visibility: hidden;
@@ -271,9 +283,11 @@ body,
 }
 
 .game__status-board {
-    width: fit-content;
+    user-select: none;
+    width: var(--status-board-width);
     gap: var(--status-board-gap);
     font-size: var(--status-board-font-size);
+    line-height: var(--status-board-font-size);
     font-family: inherit;
     background-color: var(--status-board-background);
     border: var(--game-page-border-settings);
@@ -295,8 +309,8 @@ body,
     padding: 1.563rem 1.125rem;
     max-width: var(--popup-width);
     align-items: center;
-    color: black;
-    background-color: white;
+    color: #000000;
+    background-color: #ffffff;
     border-radius: 1.25rem;
 }
 
@@ -322,7 +336,7 @@ body,
     max-width: 150px;
     padding: var(--popup-button-padding);
     font-size: var(--popup-button-font-size);
-    color: white;
+    color: #ffffff;
     font-family: inherit;
     background-color: var(--popup-button-color);
     border-radius: 5px;
@@ -333,49 +347,50 @@ body,
     background-color: var(--popup-button-color-hover);
 }
 
-:root body.gothic {
+:root .gothic {
     --popup-button-color: #32312D;
-    --game-page-background: whitesmoke;
-    --game-page-font-color: #32312D;
+    --game-page-background: #f5f5f5;
+    --game-page-font-color: #393939;
     --game-page-font-family: 'Rye', cursive;
-    --game-page-board-background: ivory;
+    --game-page-board-background: #fffff0;
     --card-front-background: #32312D;
-    --card-back-background: whitesmoke;
-    --status-board-background: ivory;
-    --game-page-border-settings: 0.313rem #32312D solid;
+    --card-back-background: #f5f5f5;
+    --status-board-background: #fffff0;
+    --game-page-border-settings: 0.313rem #393939 solid;
     --card-front-border: #20201e;
-    --card-back-border: lightgrey;
-    --card-front-color: ivory;
+    --card-back-border: #d3d3d3;
+    --card-front-color: #fffff0;
     --popup-button-color-hover: #3b3a35;
+    --status-board-font-size: 1.35rem;
 }
 
-:root body.daily-life {
+:root .daily-life {
     --popup-button-color: #45B649;
     --game-page-background: #DCE35B;
-    --game-page-font-color: white;
+    --game-page-font-color: #ffffff;
     --game-page-font-family: 'Capriola', sans-serif;
-    --game-page-board-background: beige;
+    --game-page-board-background: #f5f5dc;
     --card-front-background: #45B649;
     --card-back-background: #DCE35B;
     --status-board-background: #45B649;
     --card-front-border:#48a34b;
     --card-back-border: #d2d85a;
-    --card-front-color: white;
+    --card-front-color: #ffffff;
     --popup-button-color-hover: #46a049;
 }
 
-:root body.sailor-moon {
+:root .sailor-moon {
     --popup-button-color: #bba6c1;
     --game-page-background: #dbc5db;
-    --game-page-font-color: white;
+    --game-page-font-color: #ffffff;
     --game-page-font-family: 'Gotu', sans-serif;
-    --game-page-board-background: beige;
+    --game-page-board-background: #f5f5dc;
     --card-front-background: #bba6c1;
     --card-back-background: #dbc5db;
     --status-board-background: #bba6c1;
-    --card-front-border:#c7bac7;
+    --card-front-border: #c7bac7;
     --card-back-border: #d1c1d1;
-    --card-front-color: white;
+    --card-front-color: #ffffff;
     --popup-button-color-hover: #a494a8;
 }
 
@@ -387,44 +402,61 @@ body,
         --game-page-template: calc(25vw - var(--game-page-board-padding) * 2 / 4 - var(--game-page-board-gap) * 2 / 4 - 0.313rem - 0.625rem * 2 / 4);
         --game-page-board-radius: 1.3vw;
         --status-board-font-size: 5vw;
-        --status-board-padding: 0.25rem 0.328rem;
+        --status-board-padding: 0.438rem;
         --status-board-margin: -1.3rem auto 0;
+        --status-board-height: 11vw;
+        --status-board-width: 62vw;
         --card-front-font-size: 10vw;
         --popup-title-font-size: 1.75rem;
         --popup-text-font-size: 1rem;
         --popup-button-padding: 0.625rem;
         --popup-button-font-size: 0.875rem;
     }
+
+    :root .gothic {
+        --status-board-font-size: 4.7vw;
+        --game-page-border-settings: 0.313rem #393939 solid;
+    }
 }
 
 @media (max-width: 370px) {
     :root {
-        --start-page-title-font-size: 2rem;
-        --start-page-text-font-size: 0.875rem;
+        --game-page-gap: 0.313rem;
+        --start-page-title-font-size: 2.2rem;
+        --start-page-text-font-size: 1rem;
+        --start-page-subtitle-font-size: 1.1rem;
         --details-button-font-size: 0.625rem;
         --details-content-font-size: 0.938rem;
-        --status-board-font-size: 4vw;
+        --status-board-font-size: 4.2vw;
         --status-board-margin: -1.1rem auto 0;
+        --status-board-width: 57vw;
+        --status-board-padding: 0.30rem;
+    }
+
+    :root .gothic {
+        --status-board-font-size: 3.7vw;
     }
 }
 
 @media (min-width: 750px) and (min-height: 900px) {
     :root {
         --start-page-title-font-size: 2.7rem;
-        --start-page-text-font-size: 1.25rem;
+        --start-page-text-font-size: 1.3rem;
         --start-page-text-margin: 1.2rem 0 0;
         --start-page-subtitle-font-size: 1.7rem;
+        --start-page-text-width: 800px;
+        --details-group-width: 550px;
         --details-button-font-size: 0.875rem;
         --details-content-font-size: 1.125rem;
         --details-content-padding: 0.938rem;
         --start-page-copyright: 1.3rem;
-        --details-summary-padding: 1rem;
+        --details-summary-padding: 1.25rem;
         --details-summary-font-size: 1.4rem;
         --game-page-title-font-size: 3.7rem;
         --game-page-board-padding: 1.5rem;
         --game-page-board-gap: 1rem;
         --game-page-template: 9rem;
-        --game-page-border-settings: 0.625rem white solid;
+        --game-page-border-settings: 0.625rem #ffffff solid;
         --game-page-board-radius: 0.5rem;
         --game-page-board-margin: 0.313rem 0;
         --card-radius: 0.418rem;
@@ -432,17 +464,35 @@ body,
         --status-board-gap: 0.75rem;
         --status-board-font-size: 2rem;
         --status-board-radius: 0.8rem;
-        --status-board-padding: 0.4rem 0.75rem;
+        --status-board-padding: 0.65rem 0.75rem;
         --status-board-margin: -2rem auto 0;
-        --card-front-font-size: 3rem;
+        --status-board-height: 4.688rem;
+        --status-board-width: 25.625rem;
+        --card-front-font-size: 4.5rem;
         --popup-width: 450px;
         --popup-title-font-size: 2.6rem;
         --popup-text-font-size: 1.4rem;
         --popup-button-padding: 0.938rem;
-        --popup-button-font-size: 1rem;
+        --popup-button-font-size: 1.9rem;
     }
 
-    :root body.gothic {
+    :root .gothic {
         --status-board-margin: -1.6rem auto 0;
+        --status-board-font-size: 1.9rem;
+        --game-page-border-settings: 0.625rem #393939 solid;
+    }
+}
+
+@media (min-width: 1000px) and (min-height: 900px) {
+    :root {
+        --start-page-title-font-size: 3rem;
+        --start-page-text-font-size: 1.6rem;
+        --start-page-subtitle-font-size: 1.8rem;
+        --start-page-text-width: 950px;
+        --details-group-width: 650px;
+        --details-button-font-size: 1rem;
+        --details-content-font-size: 1.4rem;
+        --start-page-copyright: 1.5rem;
+        --details-summary-font-size: 1.5rem;
     }
 }
