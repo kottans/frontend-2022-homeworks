@@ -158,6 +158,10 @@ body {
   display: none;
 }
 
+.sub__check-input:checked {
+  display: none;
+}
+
 .sub__lists-popup {
   display: none;
   padding: 5px;
