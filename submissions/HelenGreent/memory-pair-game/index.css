@@ -56,6 +56,13 @@ body {
 
 .flip-card-front,
 .flip-card-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -64,9 +71,6 @@ body {
 
 .flip-card-back {
   transform: rotateY(180deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .flip-card_flipped {
@@ -81,6 +85,7 @@ body {
 
 .cover-img {
   width: 115px;
+  border-radius: 5px;
 }
 
 .words {
@@ -90,4 +95,26 @@ body {
 
 .word-description {
   font-weight: 100;
+}
+
+@media (max-width: 800px) {
+  .main {
+    width: 90%;
+  }
+
+  .game-descriptions {
+    margin-left: 10px;
+  }
+
+  .cards-wrapper {
+    display: flex;
+    justify-content: start;
+    background-color: transparent;
+  }
+
+  .flip-card {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #fefefe;
+  }
 }
