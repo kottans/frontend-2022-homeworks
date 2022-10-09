@@ -11,7 +11,7 @@
 class Animal {
   constructor({ species, name, gender, legs }) {
     this.species = species || "spesies not assigned";
-    this.name = name || "name not assigned";
+    this.name = name || "I have just been born. I haven't been called yet";
     this.gender = gender || "gender not assigned";
     this.legs = legs || "legs not assigned, may be 4";
     this.properties = ["species", "name", "gender", "legs"];
@@ -99,20 +99,40 @@ class Human extends Animal {
   }
 }
 
-function createInstance(classNam, number = 0) {
+function createInstance(className, number = 0) {
   const arrayOfInstans = [];
+
   for (let i = 0; i < number; i++) {
-    arrayOfInstans.push(Object.create(classNam));
+    let obj;
+    switch (className) {
+      case "cat":
+        obj = new Cat();
+        break;
+      case "dog":
+        obj = new Dog();
+        break;
+      case "man":
+        obj = new Human("", "male", "Доброго ранку! Ми з України!");
+        break;
+      case "woman":
+        obj = new Human("", "female");
+        break;
+      case "catwoman":
+        obj = new Catwoman("Judy");
+        break;
+    }
+    arrayOfInstans.push(obj);
   }
+
   return arrayOfInstans;
 }
 
 const inhabitants = [
-  ...createInstance(new Cat(), 2),
-  ...createInstance(new Dog(), 2),
-  ...createInstance(new Human("", "male","Доброго ранку! Ми з України!"), 3),
-  ...createInstance(new Human("", "female"), 3),
-  ...createInstance(new Catwoman("Judy"), 1),
+  ...createInstance("cat", 2),
+  ...createInstance("dog", 2),
+  ...createInstance("man", 3),
+  ...createInstance("woman", 3),
+  ...createInstance("catwoman", 1),
 ];
 
 print(
@@ -122,4 +142,3 @@ Cat.setSaying("Hello! I'm cat!");
 print(
   inhabitants.map((instance) => instance.getProperties().join("; ")).join("\n")
 );
-
