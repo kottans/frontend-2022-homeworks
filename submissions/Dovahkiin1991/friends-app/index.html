@@ -10,13 +10,20 @@
 </head>
 <body>
     <header class="header">
-        <a href="./">Friends App</a>
+        <div class="header__toggle-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <a href="./" class="header__logo">Friends App</a>
 
         <a href="#" class="header__toggle">Toggle Theme</a>
     </header>
 
     <div class="main">
-        <div class="main__sidebar">
+        <form class="main__sidebar">
             <div class="main__sidebar--inner">
                 <div class="main__sidebar--block">
                     <h4>Look for a friend:</h4>
@@ -38,17 +45,17 @@
                     <div class="filter">
                         <div class="filter__block">
                             <label for="genderAll">All:</label>
-                            <input type="radio" name="gender" id="genderAll" checked>
+                            <input type="radio" name="gender" value="genderAll" id="genderAll" checked>
                         </div>
     
                         <div class="filter__block">
-                            <label for="genderMale">Male:</label>
-                            <input type="radio" name="gender" id="male">
+                            <label for="male">Male:</label>
+                            <input type="radio" name="gender" value="male" id="male">
                         </div>
     
                         <div class="filter__block">
-                            <label for="genderFemale">Female:</label>
-                            <input type="radio" name="gender" id="female">
+                            <label for="female">Female:</label>
+                            <input type="radio" name="gender" value="female" id="female">
                         </div>
                     </div>
                 </div>
@@ -59,12 +66,12 @@
                     <div class="filter">
                         <div class="filter__block">
                             <label for="alphabetAZ">A-Z:</label>
-                            <input type="radio" name="alphabet" id="alphabetAZ">
+                            <input type="radio" name="filterSort" value="alphabetAZ" id="alphabetAZ" checked>
                         </div>
     
                         <div class="filter__block">
                             <label for="alphabetZA">Z-A:</label>
-                            <input type="radio" name="alphabet" id="alphabetZA">
+                            <input type="radio" name="filterSort" value="alphabetZA" id="alphabetZA">
                         </div>
                     </div>
                 </div>
@@ -75,12 +82,12 @@
                     <div class="filter">
                         <div class="filter__block">
                             <label for="ageLowest">From lowest:</label>
-                            <input type="radio" name="age" id="ageLowest">
+                            <input type="radio" name="filterSort" value="ageLowest" id="ageLowest">
                         </div>
     
                         <div class="filter__block">
                             <label for="ageHighest">From highest:</label>
-                            <input type="radio" name="age" id="ageHighest">
+                            <input type="radio" name="filterSort" value="ageHighest" id="ageHighest">
                         </div>
                     </div>
                 </div>
@@ -88,12 +95,16 @@
                 <div class="main__sidebar--block">
                     <div class="filter">
                         <div class="filter__block">
-                            <button>Reset</button>
+                            <input type="reset" value="Reset" name="reset">
+                        </div>
+
+                        <div class="filter__block">
+                            <input type="submit" value="Apply filters" name="submit">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
 
         <div class="main__content" id="main__content"></div>
     </div>

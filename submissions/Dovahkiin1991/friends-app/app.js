@@ -1,5 +1,3 @@
-
-//const ITEMS_PER_PAGE = 10; feature pagination
 const usersList = [];
 let usersFilteredList = [];
 const nameInput = document.querySelector('.filter__block input');
@@ -20,73 +18,63 @@ const handleErrors = (response) => {
     return response;
 }
 
-const getUsers = async() => {
+const getUsers = async () => {
     try {
         const users = await callAPI();
         usersList.push(...users);
-        renderUsers([]);
+        renderUsers(getSidebarOptions(), usersList);
     } catch (e) {
         console.log(e);
     }
 }
 
-const getOpt = (name) => {
-    return document.querySelector(`.filter__block input[name="${name}"]:checked`);
-}
-
 const mainContainer = document.getElementById('main__content');
-let usersListContainer = document.createElement('div');
+const usersListContainer = document.createElement('div');
 usersListContainer.classList.add('users');
 
-const renderUsers = (pipes, usersFiltered) => {
-    let users = pipes.reduce((list, func) => {
-        if (func.name.startsWith('filter')) { // Filter
-            return list.filter(func);
-        } else if (func.name.startsWith('sort')) { // Sort
-            return list.sort(func)
-        } else { // Do nothing
-            return list;
-        }
-    }, usersList);
-
-    usersFilteredList = users;
-    
-    if (usersFiltered) {
-        users = usersFiltered.map((user) => createUser(user)).join("");
-    } else {
-        users = users.map((user) => createUser(user)).join("");
-    }
-    
+const renderUsers = (filtersObject, usersArray) => {
+    let users = filterUsers(filtersObject, usersArray);
+    users = users.map((user) => createUser(user)).join("");
     usersListContainer.innerHTML = users;
+    mainContainer.innerHTML = '';
     mainContainer.appendChild(usersListContainer);
+    window.location.hash = '';
 }
 
 const createUser = (user) => {
+    let picture = user.picture.medium;
+    let name = user.name.first + ' ' + user.name.last;
+    let age = user.dob.age;
+    let location = user.location.country + ', ' + user.location.city;
+    let email = user.email;
+    let phone = user.phone;
+    let gender = user.gender;
+
     return `
         <div class="users__item">
             <div class="user">
                 <div class="user-block">
                     <div class="user-poster">
-                        <img src="${user.picture.medium}" alt="${user.name.first + ' ' + user.name.last}">
+                        <img src="${picture}" alt="${name}">
                     </div>
 
                     <div class="user-headings">
-                        <h5><strong>${user.name.first + ' ' + user.name.last}</strong></h5>
-                        <h6>${user.dob.age} years old</h6>
+                        <h5><strong>${name}</strong></h5>
+                        <h6>${age} years old</h6>
                     </div>
 
                     <div class="user-description">
-                        <p>${user.location.country + ', ' + user.location.city}</p>
+                        <p>${location}</p>
                         <p>
-                            <a href="mailto:${user.email}">${user.email}</a>
+                            <a href="mailto:${email}">${email}</a>
                         </p>
                         <p>
-                            <a href="tel:${user.phone}">${user.phone}</a>
+                            <a href="tel:${phone}">${phone}</a>
                         </p>
-                        <p class="uppercase">${user.gender}</p>
+                        <p class="uppercase">${gender}</p>
                     </div>
 
-                    <div class="user-button" data-id="${user.name.last.toLowerCase()}">
+                    <div class="user-button" data-id="${name.replace(/\s/g, '').toLowerCase()}">
                         View Profile
                     </div>
                 </div>
@@ -96,186 +84,165 @@ const createUser = (user) => {
 }
 
 const renderUser = (user) => {
-    let singleUser = `
-        <div class="user user--single">
+    let picture = user.picture.medium;
+    let name = user.name.first + ' ' + user.name.last;
+    let age = user.dob.age;
+    let birthDate = new Date(user.dob.date).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+    let country = user.location.country;
+    let state = user.location.state;
+    let city = user.location.city;
+    let email = user.email;
+    let phone = user.phone;
+    let gender = user.gender;
+
+    mainContainer.innerHTML = `
+        <div class="user user_single">
             <div class="user-block">
                 <div class="user-poster">
-                    <img src="${user.picture.medium}" alt="${user.name.first + ' ' + user.name.last}">
+                    <img src="${picture}" alt="${name}">
                 </div>
 
                 <div class="user-headings">
-                    <h5><strong>${user.name.first + ' ' + user.name.last}</strong></h5>
-                    <h6>${user.dob.age} years old</h6>
+                    <h5><strong>${name}</strong></h5>
+                    <h6>${age} years old</h6>
                 </div>
 
                 <div class="user-description">
                     <p><strong>User Location:</strong></p>
-                    <p>${new Date(user.dob.date).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) }</p>
+                    <p>${birthDate}</p>
                     <p>&nbsp;</p>
                     <p><strong>User Location:</strong></p>
-                    <p>${user.location.country}</p>
-                    <p>${user.location.state}</p>
-                    <p>${user.location.city}</p>
+                    <p>${country}</p>
+                    <p>${state}</p>
+                    <p>${city}</p>
                     <p>&nbsp;</p>
                     <p><strong>User Contacts:</strong></p>
                     <p>
-                        <a href="mailto:${user.email}">${user.email}</a>
+                        <a href="mailto:${email}">${email}</a>
                     </p>
                     <p>
-                        <a href="tel:${user.phone}">${user.phone}</a>
+                        <a href="tel:${phone}">${phone}</a>
                     </p>
                     <p>&nbsp;</p>
                     <p><strong>User Gender:</strong></p>
-                    <p class="uppercase">${user.gender}</p>
+                    <p class="uppercase">${gender}</p>
                 </div>
 
-                <div class="user-button user-button--close">
+                <div class="user-button user-button_close">
                     Back to Friends
                 </div>
             </div>
         </div>
     `;
-    mainContainer.innerHTML = singleUser;
 }
 
 // filters
-let filter = document.querySelector('.filter__block input');
-nameInput.addEventListener('input', (e) => {
-    const value = e.preventDefault();
-    const pipes = [filterByName];
-    
-    if (getOpt('alphabet')) {
-        pipes.push(sortByAlphabet);
-    }
-    if (getOpt('age')) {
-        pipes.push(sortByAge);
-    }
-    if (getOpt('gender')) {
-        pipes.push(filterByGender);
-    }
+const sidebarFilters = document.querySelector('.main__sidebar');
+sidebarFilters.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-    renderUsers(pipes);
+    renderUsers(getSidebarOptions(), usersList);
+
+    if (window.screen.width <= 992) {
+        toggleMenu();
+    }
 });
 
-document.querySelectorAll('.filter__block input[type="radio"]').forEach((elem) => {
-    elem.addEventListener("change", function(event) {
-
-        switch (event.target.name) {
-            case 'alphabet':
-                uncheckRadio('age');
-                renderUsers([
-                    filterByName,
-                    filterByGender,
-                    sortByAlphabet
-                ]);
-
-                break;
-            case 'gender':
-                const pipes = [
-                    filterByName,
-                    filterByGender,
-                ];
-                if (getOpt('alphabet')) {
-                    pipes.push(sortByAlphabet);
-                }
-                if (getOpt('age')) {
-                    pipes.push(sortByAge);
-                }
-                renderUsers(pipes);
-
-                break;
-            case 'age':
-                uncheckRadio('alphabet');
-                renderUsers([
-                    filterByName,
-                    filterByGender,
-                    sortByAge
-                ]);
-                break;
-            default:
-                // renderUsers();
-        }
+const getSidebarOptions = () => {
+    const formData = new FormData(sidebarFilters);
+    const filtersObject = {};
+    formData.forEach((value, key) => {
+        filtersObject[key] = value;
     });
-});
 
-const filterByName = (user) => {
-    const searchValue = nameInput.value.trim().toLowerCase();
-    return user.name.first.toLowerCase().includes(searchValue);
+    return filtersObject;
 }
 
-const filterByGender = (user) => {
-    const genderRadioOpt = getOpt('gender');
-    if (!genderRadioOpt) { // Pass all if none gender checked
-        return true;
-    }
+const filterUsers = (filtersObject, usersArray) => {
+    const pipes = [filterByName, filterByGender, sortBy];
+    const filterName = filtersObject.name;
+    const filterGender = filtersObject.gender;
+    const filterSort = filtersObject.filterSort;
 
-    if (!['male', 'female'].includes(genderRadioOpt.id)) { // Pass all if 'all' gender checked
-        return true;
-    }
-
-    return genderRadioOpt.id === user.gender;
-}
-
-const sortByAlphabet = (a, b) => {
-    const alphabetRadioOpt = getOpt('alphabet');
-
-    if (alphabetRadioOpt) {
-        let isReversed = alphabetRadioOpt.id === 'alphabetZA';
-        const nameA = a.name.first.toUpperCase();
-        const nameB = b.name.first.toUpperCase();
-        let result;
-
-        // Compare
-        if (nameA < nameB) {
-            result = -1;
-        } else if (nameA > nameB) {
-            result = 1;
-        } else {
-            result = 0;
+    let users = pipes.reduce((list, func) => {
+        switch (func.name) {
+            case 'filterByName':
+                return func(list, filterName);
+            case 'filterByGender':
+                return func(list, filterGender);
+            case 'sortBy':
+                return func(list, filterSort);
+            default:
+                return usersArray;
         }
+    }, usersArray);
 
-        // Reverse if needed
-        if (isReversed) {
-            result *= -1;
-        }
-        return result;
-    }
+    usersFilteredList = users;
 
-    return 0;
+    return users;
 }
 
-const sortByAge = (userA, userB) => {
-    const ageRadioOpt = getOpt('age');
-
-    if (ageRadioOpt) {
-        let isReversed = ageRadioOpt.id === 'ageHighest';
-        return isReversed
-            ? userB.dob.age - userA.dob.age
-            : userA.dob.age - userB.dob.age;
+const filterByName = (array, searchValue) => {
+    if (searchValue) {
+        searchValue = searchValue.trim().toLowerCase();
+        return array.filter(user => user.name.first.toLowerCase().includes(searchValue));
+    } else {
+        return array;
     }
-
-    return 0;
 }
 
-//reset
-let filterReset = document.querySelector('.filter__block button');
+const filterByGender = (array, filterOption) => {
+    if (filterOption !== 'genderAll') {
+        return array.filter(user => user.gender === filterOption);
+    } else {
+        return array;
+    }
+}
 
-filterReset.addEventListener('click', (e) => {
-    const value = e.preventDefault();
-    const genderAll = document.getElementById('genderAll');
+const sortBy = (array, sortValue) => {
+    if (sortValue.startsWith('alphabet')) {
+        return array.sort((a, b) => {
+            const nameA = a.name.first.toUpperCase();
+            const nameB = b.name.first.toUpperCase();
 
-    closeUser();
-    genderAll.checked = true;
-    uncheckRadio('age');
-    uncheckRadio('alphabet');
-    filter.value = '';
+            let isReversed = false;
+            let result;
 
-    renderUsers([]);
-});
+            if (sortValue == 'alphabetZA') {
+                isReversed = true;
+            }
+
+            // Compare
+            if (nameA < nameB) {
+                result = -1;
+            } else if (nameA > nameB) {
+                result = 1;
+            } else {
+                result = 0;
+            }
+
+            // Reverse if needed
+            if (isReversed) {
+                result *= -1;
+            }
+            return result;
+        });
+    } else {
+        return array.sort((a, b) => {
+            if (sortValue == 'ageLowest') {
+                return a.dob.age - b.dob.age;
+            } else {
+                return b.dob.age - a.dob.age;
+            }
+        });
+    }
+
+    return array;
+}
 
 //close user
 const closeUser = () => {
-    let singleUser = document.querySelector('.user--single');
+    let singleUser = document.querySelector('.user_single');
     
     if (singleUser) {
         singleUser.parentNode.removeChild(singleUser);
@@ -286,10 +253,10 @@ const closeUser = () => {
 
 //read more
 mainContainer.addEventListener('click', (e) => {
-    const value = e.preventDefault();
+    e.preventDefault();
 
     if(e.target.closest('.user-button')) {
-        if (!e.target.closest('.user-button').classList.contains('user-button--close')) {
+        if (!e.target.closest('.user-button').classList.contains('user-button_close')) {
             let id = e.target.closest('.user-button').dataset.id;
             window.location.hash = id;
         } else {
@@ -302,38 +269,36 @@ mainContainer.addEventListener('click', (e) => {
 window.addEventListener('hashchange', () => {
     if (window.location.hash) {
         const singleUser = usersList.filter((user) => {
-            return user.name.last.toLowerCase().indexOf(location.hash.split('#')[1]) > -1;
+            let name = user.name.first + user.name.last;
+            return name.toLowerCase().indexOf(location.hash.split('#')[1]) > -1;
         });
         renderUser(singleUser[0]);
     } else {
-        renderUsers([], usersFilteredList);
+        renderUsers(getSidebarOptions(), usersFilteredList);
     }
 }, false);
-
-//helpers
-const uncheckRadio = (name) => {
-    let radioList = document.getElementsByName(name);
-
-    radioList.forEach((title) => {
-        title.checked = false;
-    });
-}
-
-const arrayEquals = (a, b) => {
-    return Array.isArray(a) &&
-      Array.isArray(b) &&
-      a.length === b.length &&
-      a.every((val, index) => val === b[index]);
-}
 
 //toggle theme
 const theme = document.querySelector('.header__toggle');
 const body = document.querySelector('body');
 
 theme.addEventListener('click', (e) => {
-    const value = e.preventDefault();
+    e.preventDefault();
     body.classList.toggle('theme-dark');
 });
+
+//toggle menu
+const menuToggle = document .querySelector('.header__toggle-menu');
+
+menuToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleMenu();
+});
+
+const toggleMenu = () => {
+    menuToggle.classList.toggle('header__toggle-menu_open');
+    sidebarFilters.classList.toggle('main__sidebar_open');
+}
 
 //init
 getUsers();
