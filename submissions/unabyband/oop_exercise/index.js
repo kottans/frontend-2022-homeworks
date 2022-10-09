@@ -19,23 +19,22 @@ class Inhabitant {
   }
 
   printInhabitant() {
-    const nameToPrint = `<strong>${this.name}</strong>`;
-    const talkToPrint = `<em>${this.saying}</em>`;
-    const legsToPrint = `On ${this.legs} legs`;
+    //I've decided to form friends parameter separately from others just in order to improve code reading
+    //But it also could be made directly in arguments of function like in the overridden method below
     const friendsToPrint = this.friends
       ? this.friends.map((friend) => friend.name).join(", ")
       : `${this.species} has no friends!`;
-
-    print(
-      [
-        this.species,
-        nameToPrint,
-        this.gender,
-        legsToPrint,
-        talkToPrint,
-        friendsToPrint,
-      ].join("; ")
-    );
+  
+    this.printToPage(this.species, 
+      `<strong>${this.name}</strong>`, 
+      this.gender, 
+      `On ${this.legs} legs`, 
+      `<em>${this.saying}</em>`, 
+      friendsToPrint);
+  }  
+  
+  printToPage() {
+    print([...arguments].join("; "));
   }
 }
 
@@ -47,25 +46,14 @@ class Human extends Inhabitant {
     this.hands = hands;
   }
 
-  //Rewriting the parent class method for printing out the string which includes unique property 'hands' for Human
   printInhabitant() {
-    const nameToPrint = `<strong>${this.name}</strong>`;
-    const legsToPrint = `On ${this.legs} legs`;
-    const handsToPrint = `Has ${this.hands} hands`;
-    const talkToPrint = `<em>${this.saying}</em>`;
-    const friendsToPrint = this.friends.map((friend) => friend.name).join(", ");
-
-    print(
-      [
-        this.species,
-        nameToPrint,
+    super.printToPage(this.species,
+        `<strong>${this.name}</strong>`,
         this.gender,
-        legsToPrint,
-        handsToPrint,
-        talkToPrint,
-        friendsToPrint,
-      ].join("; ")
-    );
+        `On ${this.legs} legs`,
+        `Has ${this.hands} hands`,
+        `<em>${this.saying}</em>`,
+        this.friends.map((friend) => friend.name).join(", "));
   }
 }
 
@@ -100,7 +88,6 @@ const inhabitants = [
   new Dog("Lizzy", "female"),
 ];
 
-//we're working with global array inhabitants, so I don't pass it into function as an argument
 function addFriends(person, friendsList) {
   const friendsStorage = [];
   friendsList.forEach(friendName => {
