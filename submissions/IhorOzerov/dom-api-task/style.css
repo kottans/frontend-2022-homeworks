@@ -1,0 +1,98 @@
+body{
+    font-size: 20px;
+    display: flex;
+    padding-right: 40px;
+    background-color: #f4dec2;
+    font-family: 'Merienda';
+}
+
+ul{
+    padding: 0;
+}
+
+.nav_bar{
+    display: flex;
+    height: 100vh;
+    min-width: 20%;
+    padding-top: 40px;
+    justify-content: center;
+    text-align: center;
+    color: #9577f0;
+}
+
+.nav_list {
+    list-style: none;
+    height: 8vh;
+    font-size: 2vw;
+    font-weight: lighter;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav_list:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.content{
+    display: grid;
+    grid-template-rows: 1.5fr 1fr;
+    justify-content: center;
+}
+
+.image{
+    align-self: center;
+    justify-self: center;
+    max-height: 60vh;
+    max-width: 30vw;
+}
+
+.text{
+    text-align: center;
+    font-size: 1.7vw;
+    color: #359aae;
+    margin: 0 auto;
+}
+
+.text1{
+    color: #000; 
+}
+
+.text2{
+    color:#c6933e;
+}
+
+.text3{
+    color:#0dcef6;
+}
+
+.text4{
+    color:#5a3d41;
+}
+
+@media (max-width: 700px) and (min-width: 500px){
+    .text{
+        font-size: 2.5vw;
+    }
+    .nav_list{ 
+        font-size: 2.5vw;
+    }
+    .image{
+        max-width: 40vw;
+    }
+}
+
+@media (max-width: 501px) and (min-width: 300px){
+    .text{
+        font-size: 3.5vw;
+        margin-top: -2vh;
+    }
+    .nav_list{ 
+        font-size: 3.5vw;
+    }
+    .image{
+        max-width: 55vw;
+    }
+}

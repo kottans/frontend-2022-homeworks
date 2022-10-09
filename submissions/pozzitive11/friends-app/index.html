@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friends App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="site-container">
+    <header class="header">
+      <div class="container">
+        
+        <div class="header__inner">
+          <div class="burger">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+          </div>
+          <h1 class="title">Friends App</h1>
+          <h2 class="slogan">Find a friend! <span>*Cause I didn't find it</span></h2>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <div class="wrapper">
+          <aside class="sidebar">
+            <form action="#" class="form">
+              <div class="filter__type">Search by name:</div>
+              <div class="form__list form__list--filter">
+                <input type="input" class="form__field form__field--name" placeholder="Name" name="search" required id="search-input" />
+                <label for="name" class="form__label form__label--name">Name</label>
+              </div>
+
+              <div class="filter__type">Sort by name:</div>
+              <ul class="form__list sort-name">
+                <li class="form__item">
+                  <label class="form__label">
+                    <input type="radio" name="sort" class="radio__input" value="name-down">
+                    <span>
+                      <svg class="icon">
+                        <use xlink:href="sprite.svg#name-down"></use>
+                      </svg>
+                    </span>
+                  </label>
+                </li>
+                <li class="form__item">
+                  <label class="form__label">
+                    <input type="radio" name="sort" class="radio__input" value="name-up">
+                    <span>
+                      <svg class="icon">
+                        <use xlink:href="sprite.svg#name-up"></use>
+                      </svg>
+                    </span>
+                  </label>
+                </li>
+              </ul>
+
+              <div class="filter__type">Sort by age:</div>
+              <ul class="form__list sort-age">
+                <li class="form__item">
+                  <label class="form__label">
+                    <input type="radio" name="sort" class="radio__input" value="age-up">
+                    <span>
+                      <svg class="icon">
+                        <use xlink:href="sprite.svg#age-down"></use>
+                      </svg>
+                    </span>
+                  </label>
+                </li>
+                <li class="form__item">
+                  <label class="form__label">
+                    <input type="radio" name="sort" class="radio__input" value="age-down">
+                    <span>
+                      <svg class="icon">
+                        <use xlink:href="sprite.svg#age-up"></use>
+                      </svg>
+                    </span>
+                  </label>
+                </li>
+              </ul>
+
+              <div class="filter__type">Filter by gender:</div>
+              <ul class="form__list form__list--gender sort-gender">
+                <li class="form__item">
+                  <label class="form__label">
+                    <input type="radio" name="gender" class="radio__input" value="male">
+                    <span class="gender">
+                      <svg class="icon">
+                        <use xlink:href="sprite.svg#male"></use>
+                      </svg>
+                    </span>
+                  </label>
+                </li>
+                <li class="form__item">
+                  <label class="form__label">
+                    <input type="radio" name="gender" class="radio__input" value="female">
+                    <span class="gender">
+                      <svg class="icon icon--gender">
+                        <use xlink:href="sprite.svg#female"></use>
+                      </svg>
+                    </span>
+                  </label>
+                </li>
+                <li class="form__item">
+                  <label class="form__label">
+                    <input type="radio" name="gender" class="radio__input" value="all">
+                    <span>
+                      <svg class="icon">
+                        <use xlink:href="sprite.svg#all"></use>
+                      </svg>
+                    </span>
+                  </label>
+                </li>
+              </ul>
+              <button class="form__button" type="reset">Reset</button>
+            </form>
+          </aside>
+          <div class="users">
+            <ul class="users__list">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copy">
+        Created by <a href="https://github.com/Pozzitive11" target="_blank">Pozzitive11</a>
+      </p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

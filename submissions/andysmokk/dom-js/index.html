@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/css/styles.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>JS DOM</title>
+</head>
+
+<body>
+    <div class="overlay">
+        <header class="header">
+            <div class="container">
+                <div class="logo-box">
+                    <img class="logo-img" src="./images/imdb.png" alt="imdb-logo">
+                    <h1 class="header-title">Top 10 rated IMDB movies</h1>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="container">
+                <div class="main-box">
+                    <ul class="list-movie"></ul>
+                    <div class="movie-box"></div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-box">
+                    <a class="footer-link" href="https://github.com/andysmokk/js-dom">
+                        <svg class="github-img" width="40" height="40">
+                            <use href="./images/sprite.svg#github"></use>
+                        </svg>
+                    </a>
+                    <p class="footer-text">2022</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="./js/script.js"></script>
+</body>
+
+</html>
