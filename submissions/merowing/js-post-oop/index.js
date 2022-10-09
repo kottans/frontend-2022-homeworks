@@ -13,7 +13,6 @@ class Human extends Creature {
       super(name, gender, say);
       this.hands = hands;
       this.legs = legs;
-      this.species = 'human';
    }
 
    set friends(names) {
@@ -28,6 +27,20 @@ class Human extends Creature {
       return `${this.species}; <strong>${this.name}</strong>; ${this.gender}; ${this.hands}; ${this.legs}; <em>${this.say}</em>;${this.friends}`;
    }
 
+}
+
+class Man extends Human {
+   constructor(name, gender, hands, legs, say) {
+      super(name, gender, hands, legs, say);
+      this.species = 'man';
+   }
+}
+
+class Woman extends Human {
+   constructor(name, gender, hands, legs, say) {
+      super(name, gender, hands, legs, say);
+      this.species = 'woman';
+   }
 }
 
 class Animal extends Creature {
@@ -62,8 +75,8 @@ class Dog extends Animal {
    }
 }
 
-const George = new Human('George', 'male', 2, 2, 'Hello OOP World!');
-const Samantha = new Human('Samantha', 'female', 2, 2, 'Hi. my name is Sam!');
+const George = new Man('George', 'male', 2, 2, 'Hello OOP World!');
+const Samantha = new Woman('Samantha', 'female', 2, 2, 'Hi. my name is Sam!');
 const Tom = new Cat('Tom', 'male animal', 4, 'Meow-meow');
 const Allegra = new Dog('Allegra', 'female animal', 4, 'Woof-woof');
 const Anne = new FairyTaleCat('Anne', 'female', 2, 2, '');
