@@ -1,0 +1,212 @@
+.background {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+nav {
+  text-align: right;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.navLink {
+  vertical-align: middle;
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+.navLink .imgLink {
+  width: 30px;
+  height: 30px;
+}
+.navLink .avatar {
+  border-radius: 50%;
+}
+
+.burger {
+  position: relative;
+}
+.burger .input {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+.burger #burgerCheckbox:checked ~ .main {
+  display: flex;
+}
+
+.navLink:focus {
+  outline: 2px solid blue;
+}
+
+.popupContainer {
+  width: 350px;
+  height: 545px;
+  border: 1px solid grey;
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 30px 5px 0px 5px;
+  box-shadow: 0 0 15px grey;
+  position: absolute;
+  right: -26px;
+  top: 57px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+@media (max-width: 470px) {
+  .popupContainer {
+    right: -75px;
+  }
+}
+@media (max-width: 400px) {
+  .popupContainer {
+    width: 330px;
+    right: -100px;
+  }
+}
+
+.containerForItem {
+  list-style-type: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.visibleBlock {
+  display: flex;
+}
+
+.itemBlock {
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.itemPopup {
+  width: 70px;
+  padding: 15px;
+  font-family: "Roboto", Arial, sans-serif;
+  text-decoration: none;
+  color: black;
+}
+
+.imgBlock {
+  width: 70px;
+  height: 65px;
+}
+.imgBlock img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.itemName {
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.itemPopup:focus {
+  outline: 2px solid blue;
+}
+
+.popupContainer:nth-child(2):before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
+  transform: rotate(135deg);
+  position: absolute;
+  left: 253px;
+  top: -12px;
+  background: linear-gradient(to top right, rgb(204, 255, 255), rgb(204, 255, 255), rgb(204, 255, 255));
+  z-index: -1;
+}
+
+.popupContainer:nth-child(2)::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 15px 15px 15px;
+  border-color: transparent transparent rgb(204, 255, 255) transparent;
+  position: absolute;
+  left: 249px;
+  top: -15px;
+}
+
+li {
+  display: inline-block;
+}
+
+.burgerImg {
+  cursor: pointer;
+}
+
+#burgerCheckbox:checked ~ .burgerLabel:focus {
+  outline: 2px solid blue;
+}
+
+#burgerCheckbox:focus ~ .burgerLabel {
+  outline: 2px solid blue;
+}
+
+#burgerCheckbox:checked ~ .popupContainer {
+  display: none;
+}
+
+.navLink:hover,
+.itemPopup:hover {
+  outline: 1px solid gray;
+}
+
+.btnMore {
+  width: 103%;
+  text-align: center;
+  background-color: rgb(158, 158, 158);
+  padding: 10px 0;
+  position: relative;
+  margin-right: -10px;
+  margin-left: -5px;
+  cursor: pointer;
+}
+
+.btnMore:hover {
+  box-shadow: 0 0 10px rgb(127, 255, 212) inset;
+}
+
+.moreBlock {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-top: 1px solid grey;
+  padding: 20px 0;
+}
+
+.btnMore-checkbox:focus ~ .btnMore {
+  box-shadow: 0 0 10px rgb(127, 255, 212) inset;
+}
+
+.btnMore-checkbox:checked ~ .moreBlock {
+  display: flex;
+}
+
+.btnMore-checkbox:checked + .btnMore {
+  color: transparent;
+  background-color: rgb(204, 255, 255);
+}
+
+.btnMore-checkbox:checked ~ .main {
+  overflow-y: scroll;
+}
+
+ul {
+  list-style-type: none;
+}/*# sourceMappingURL=styles.css.map */

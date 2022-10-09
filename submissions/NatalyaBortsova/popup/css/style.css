@@ -1,0 +1,255 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+* {
+  outline: transparent;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background-color: transparent;
+}
+
+address {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #1b1a1a;
+}
+
+.container {
+  max-width: 1230px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.header {
+  position: relative;
+  padding: 30px 0;
+}
+
+.menu {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+.menu__list {
+  display: flex;
+  align-items: center;
+}
+.menu__item {
+  position: relative;
+}
+.menu__item:not(:last-child) {
+  margin-right: 15px;
+}
+.menu__item-checkbox {
+  cursor: pointer;
+  position: absolute;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.menu__item-checkbox:checked ~ .popup {
+  display: block;
+}
+.menu__item-checkbox:focus + .menu__item-label {
+  border: 1px solid #56b0ce;
+  border-radius: 3px;
+}
+.menu__item-checkbox:focus + .menu__item-label_more {
+  border: 1px solid #56b0ce;
+  border-radius: 3px;
+}
+.menu__item-check {
+  position: absolute;
+  width: 100%;
+  min-height: 30px;
+  display: block;
+}
+.menu__item-check_more {
+  min-height: 50px;
+}
+.menu__item-checkbox_more:checked ~ .popup__list_more {
+  display: grid;
+}
+.menu__item-checkbox_more:checked ~ .popup__bottom-link {
+  display: block;
+}
+.menu__item-checkbox_more:checked ~ .menu__item-label_more {
+  border: 1px solid transparent;
+  font-size: 0;
+  padding: 1px 0;
+  opacity: 0.5;
+}
+.menu__item-label {
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  border: 1px solid transparent;
+}
+.menu__item-label:hover img {
+  border: 1px solid #8e9395;
+  border-radius: 3px;
+}
+.menu__item-label_more {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(142, 147, 149, 0.5);
+  text-align: center;
+}
+
+.popup {
+  width: 470px;
+  height: 510px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  border-radius: 9px;
+  position: absolute;
+  z-index: 2;
+  top: 60px;
+  right: -60px;
+  overflow: auto;
+  display: none;
+}
+@media screen and (max-width: 576px) {
+  .popup {
+    width: 300px;
+    right: -90px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .popup {
+    width: 280px;
+    right: -90px;
+  }
+}
+.popup__list {
+  padding: 30px;
+  display: grid;
+  grid-template: auto/repeat(3, 33.3%);
+}
+@media screen and (max-width: 576px) {
+  .popup__list {
+    grid-template: auto/repeat(2, 50%);
+    padding: 10px;
+  }
+}
+.popup__list_more {
+  display: none;
+  grid-template: auto/repeat(3, 33.3%);
+}
+@media screen and (max-width: 576px) {
+  .popup__list_more {
+    grid-template: auto/repeat(2, 50%);
+  }
+}
+.popup__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.popup__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.popup__link img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.popup__name {
+  display: block;
+  padding-top: 15px;
+}
+.popup__bottom-link {
+  display: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(142, 147, 149, 0.1);
+  border: 1px solid transparent;
+  text-align: center;
+  transition: border 0.3s ease 0s;
+}
+.popup__bottom-link:focus {
+  border: 1px solid #56b0ce;
+}
+
+.animation {
+  cursor: pointer;
+  padding: 3px;
+  border: 1px solid transparent;
+  transition: border 0.3s ease 0s;
+}
+.animation:focus {
+  border: 1px solid #56b0ce;
+  border-radius: 3px;
+}
+.animation:hover {
+  border: 1px solid #8e9395;
+  border-radius: 3px;
+}
+
+.animation_icon {
+  padding: 10px 25px 3px;
+}/*# sourceMappingURL=style.css.map */

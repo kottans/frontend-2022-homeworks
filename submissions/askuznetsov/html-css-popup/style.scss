@@ -33,25 +33,12 @@ body {
         height: 24px;
         margin: 24px;
 
-        &:hover {
-          cursor: pointer;
-        }
-
         &__image {
           vertical-align: middle;
           padding-bottom: 4px;
           height: inherit;
+          height: 100%;
         }
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .header {
-    &__nav {
-      &__list {
-        justify-content: flex-start;
       }
     }
   }
@@ -62,23 +49,23 @@ body {
   line-height: 14px;
 }
 
-.arrow {
-  width: 12px;
-  height: 12px;
-  background-color: white;
-  position: absolute;
-  margin-left: -12px;
-  margin-top: -30px;
-  transform: rotate(45deg);
-}
-
 .popup {
   margin-top: 8px;
   background-color: white;
   padding: 24px;
   border-radius: 3px;
-
   display: none;
+
+  &::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    position: absolute;
+    margin-left: -12px;
+    margin-top: -30px;
+    transform: rotate(45deg);
+  }
 }
 
 .menu {
@@ -94,14 +81,14 @@ body {
     margin-bottom: 24px;
 
     &__link {
-      display: block;
       text-align: center;
       transition: all 0.3s ease-out;
+      border: 2px solid transparent;
+      padding: 3px;
+      border-radius: 10px;
 
       &__image {
-        align-self: center;
         margin-bottom: 8px;
-        width: auto;
         height: 42px;
       }
 
@@ -109,8 +96,6 @@ body {
       &:hover,
       &:active {
         border: $border-main;
-        padding: 3px;
-        border-radius: 10px;
         outline: transparent;
       }
     }
@@ -140,12 +125,6 @@ body {
 
   &:hover {
     cursor: pointer;
-  }
-}
-
-@media only screen and (max-width: 995px) {
-  .popup-svg {
-    order: 1;
   }
 }
 
@@ -188,15 +167,7 @@ body {
   display: none;
 }
 
-#more__checkbox:focus + .more__checkbox__label {
-  border: $border-main;
-  padding: 3px;
-  border-radius: 10px;
-  outline: transparent;
-
-  transition: all 0.3s ease-out;
-}
-
+#more__checkbox:focus + .more__checkbox__label,
 .more__checkbox__label:focus {
   border: $border-main;
   padding: 3px;
@@ -220,10 +191,28 @@ body {
   display: inline-block;
 }
 
+// RESPONSIVE
+
 @media only screen and (max-width: 500px) {
   .menu {
     &__item {
       width: 55%;
     }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .header {
+    &__nav {
+      &__list {
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 995px) {
+  .popup-svg {
+    order: 1;
   }
 }
