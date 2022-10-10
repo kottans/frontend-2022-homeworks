@@ -41,13 +41,7 @@ class Human extends Inhabitant {
   }
 
   printInhabitant() {
-    return [this.species,
-        `<strong>${this.name}</strong>`,
-        this.gender,
-        `On ${this.legs} legs`,
-        `Has ${this.hands} hands`,
-        `<em>${this.saying}</em>`,
-        this.friends.map((friend) => friend.name).join(", ")].join('; ');
+    return [super.printInhabitant(), `Has ${this.hands} hands`].join('; ');
   }
 }
 
