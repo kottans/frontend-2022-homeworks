@@ -27,12 +27,6 @@ let CreateInhabitantsOfTheWorld = function (name, gender, legs, hands, saying) {
    inhabitant.saying = saying;
    inhabitant.friends = [];
    return inhabitant;
-      // name,
-      // gender,
-      // legs,
-      // hands,
-      // saying,
-      // friends: [...people],
 }
 
 let dog = CreateInhabitantsOfTheWorld('Caesar', 'male', 4);
@@ -77,4 +71,3 @@ woman = woman.getWoman();
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-   
