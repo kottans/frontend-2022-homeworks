@@ -1,10 +1,11 @@
 import { print } from './js/lib.js';
 
 class Creature {
-  constructor ({name, gender, legs}) {
+  constructor ({name, gender, legs, phrase}) {
     this.name = name;
     this.gender = gender;
     this.legs = legs;
+    this.phrase = phrase;
     this._friends = [];
     this.species = this.constructor.name;
   }
@@ -18,66 +19,59 @@ class Creature {
   }
 
   toString() {
-    const {species, name, gender, legs, friends} = this;
-    return [species, name, gender, legs, friends].join('; ');
+    const {species, name, gender, legs, phrase, friends} = this;
+    return [species, name, gender, legs, phrase, friends].join('; ');
   }
 }
 
 class Human extends Creature {
   constructor ({name, gender, legs = 2, hands = 2, phrase = 'Hello!'}) {
-    super({name, gender, legs});
-    this.phrase = phrase;
+    super({name, gender, legs, phrase});
     this.hands = hands;
   }
 
   toString() {
-    const {hands, phrase} = this;
+    const {hands} = this;
     const creatureString = super.toString();
-    const [species, name, gender, legs, friends] = creatureString.split('; ');
+    const [species, name, gender, legs, phrase, friends] = creatureString.split('; ');
     return [species, name, gender, legs, hands, phrase, friends].join('; ');
   }
 }
 
 class Cat extends Creature {
   constructor ({name, gender, legs = 4}) {
-    super({name, gender, legs});
-    canMeow(this);
+    const phrase = Cat.getPhrase();
+    super({name, gender, legs, phrase});
   }
 
   toString() {
-    const {phrase} = this;
-    const creatureString = super.toString();
-    const [species, name, gender, legs, friends] = creatureString.split('; ');
-    return [species, name, gender, legs, phrase, friends].join('; ');
+    return super.toString();
   }
-}
 
-function canMeow(creature) {
-  creature.phrase = 'Meow';
+  static getPhrase() {
+    return 'Meow';
+  }
 }
 
 class Dog extends Creature {
   constructor ({name, gender, legs = 4}) {
-    super({name, gender, legs});
-    canWoof(this);
+    const phrase = Dog.getPhrase();
+    super({name, gender, legs, phrase});
   }
 
   toString() {
-    const {phrase} = this;
-    const creatureString = super.toString();
-    const [species, name, gender, legs, friends] = creatureString.split('; ');
-    return [species, name, gender, legs, phrase, friends].join('; ');
+    return super.toString();
   }
-}
 
-function canWoof(creature) {
-  creature.phrase = 'Woof-woof';
+  static getPhrase() {
+    return 'Woof-woof';
+  }
 }
 
 class Catwoman extends Human {
   constructor ({name, gender, legs, hands}) {
-    super({name, gender, legs, hands});
-    canMeow(this);
+    const phrase = Cat.getPhrase();
+    super({name, gender, legs, hands, phrase});
   }
 }
 
