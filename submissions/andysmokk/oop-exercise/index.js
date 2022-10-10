@@ -14,28 +14,27 @@ class Inhabitant {
     this.name = name;
     this.gender = gender;
     this.saying = saying;
-    this.friends = friends.join(", ");
+    this.friends = friends;
   }
 
   showPropertiesInhabitant() {
-    const valuesInhabitant = [];
     const propertiesInhabitant = [
-      "species",
-      "name",
-      "gender",
-      "saying",
-      "friends",
+      this.species,
+      this.name,
+      this.gender,
+      this.saying,
+      this.friends,
     ];
 
-    propertiesInhabitant.forEach((property) => {
-      property === "name"
-        ? valuesInhabitant.push(`<strong>${this[property]}</strong>`)
-        : property === "saying"
-        ? valuesInhabitant.push(`<em>"${this[property]}"</em>`)
-        : valuesInhabitant.push(this[property]);
-    });
-
-    return valuesInhabitant;
+    return propertiesInhabitant.map((property) =>
+      property === this.name
+        ? `<strong>${property}</strong>`
+        : property === this.saying
+        ? `<em>"${property}"</em>`
+        : Array.isArray(property)
+        ? property.join(", ")
+        : property
+    );
   }
 }
 
