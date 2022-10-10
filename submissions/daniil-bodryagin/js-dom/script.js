@@ -142,6 +142,7 @@ function selectArticle(event) {
 function toggleInterface(event) {
   components.$navigation.classList.toggle('hidden');
   components.$main.classList.toggle('hidden');
+  document.body.classList.toggle('blocked');
 }
 
 function toSnakeCase(string) {
