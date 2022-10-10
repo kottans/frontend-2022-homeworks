@@ -16,26 +16,6 @@ const Y_OF_GAME_FIELD_ROWS = [Y_OF_HIGHEST_ROW];
 })();
 const Y_OF_LOWEST_GAME_FIELD_ROW = Y_OF_GAME_FIELD_ROWS[4];
 
-function resetPlayer(){
-    player.x = player.xInitial;
-    player.y = player.yInitial;
-}
-
-function resetEnemies(){
-    allEnemies.forEach((el)=>{        
-        el.x = el.xInitial;
-        el.speedKoef = Math.floor(Math.random() * MAX_SPEED_MULTIPLIER_FOR_BUG - MIN_SPEED_MULTIPLIER_FOR_BUG) + MIN_SPEED_MULTIPLIER_FOR_BUG;  
-    })
-}
-
-function isOnWater(){                   
-    if (this.y === this.yAxisMin){
-        resetEnemies();
-        resetPlayer();
-    }
-}
-
-
 var Enemy = function(y, hostileEntity) {                    
     this.sprite = 'images/enemy-bug.png';
     this.speedKoef = Math.floor(Math.random() * MAX_SPEED_MULTIPLIER_FOR_BUG - MIN_SPEED_MULTIPLIER_FOR_BUG) + MIN_SPEED_MULTIPLIER_FOR_BUG;  
@@ -47,16 +27,15 @@ var Enemy = function(y, hostileEntity) {
     this.hostileEntity = hostileEntity;
 };
 
-Enemy.prototype.doesHitPlayer = function (input_player){
-    if (Math.abs(this.x - input_player.x) <= PLAYER_BUG_CENTERS_DISTANCE_OF_TOUCHING && this.y === input_player.y){   
-        resetPlayer();
-        resetEnemies();
+Enemy.prototype.doesHitPlayer = function (income_player){
+    if (Math.abs(this.x - income_player.x) <= PLAYER_BUG_CENTERS_DISTANCE_OF_TOUCHING && this.y === income_player.y){   
+        income_player.resetPlayer();
     }
 }
 
 Enemy.prototype.update = function(dt) {     
     this.x = this.x >= this.xAxisMax ? this.x = this.xInitial : this.x + dt * this.speedKoef;
-    this.doesHitPlayer(player);   
+    this.doesHitPlayer(this.hostileEntity);   
 };
 
 Enemy.prototype.render = function() {
@@ -88,7 +67,7 @@ Player.prototype.update = function (moveDirection){
     if (moveDirection === 'up' && this.y > this.yAxisMin ){
         this.y -= this.yStep;
         if (this.y === this.yAxisMin){
-            isOnWater.call(this);
+            this.isOnWater();
         }
     }
     if (moveDirection === 'down' && this.y < this.yAxisMax) {
@@ -104,7 +83,18 @@ Player.prototype.handleInput = function (direction){
     this.update(direction);
 }
 
+Player.prototype.resetPlayer = function(){
+    this.x = this.xInitial;
+    this.y = this.yInitial;
+}
 
+Player.prototype.isOnWater = function(){
+    if (this.y === this.yAxisMin){
+        this.resetPlayer();
+    }
+}
+
+    
 let player = new Player();
 for (let elem of AVAILABLE_ROWS_FOR_ENEMIES.concat(AVAILABLE_ROWS_FOR_ENEMIES)){
     allEnemies.push(new Enemy(elem, player));
