@@ -9,12 +9,13 @@
 // Define your objects here
 
 class Animal {
-  constructor({ species, name, gender, legs }) {
-    this.species = species || "spesies not assigned";
-    this.name = name || "I have just been born. I haven't been called yet";
-    this.gender = gender || "gender not assigned";
-    this.legs = legs || "legs not assigned, may be 4";
-    this.properties = ["species", "name", "gender", "legs"];
+  constructor(species, name, gender, legs, saying) {
+    this.species = species;
+    this.name = name;
+    this.gender = gender;
+    this.legs = legs;
+    this.saying = saying;
+    this.properties = ["species", "name", "gender", "legs", "saying"];
   }
 
   getProperties() {
@@ -25,54 +26,20 @@ class Animal {
 }
 
 class Dog extends Animal {
-  constructor(name, gender) {
-    super({ name, gender });
-    this.species = "dog";
-    this.legs = 4;
-    Dog.setSaying("gav-gav!");
-  }
-
-  static setSaying(saying) {
-    this._saying = saying;
-  }
-  static getSaying() {
-    return this._saying;
-  }
-  getProperties() {
-    return [
-      ...super.getProperties(),
-      `saying: <strong>${Dog.getSaying()}</strong>`,
-    ];
+  constructor({ name, gender }) {
+    super("dog", name, gender, 4, "gav-gav!");
   }
 }
-
 class Cat extends Animal {
-  constructor(name, gender) {
-    super({ name, gender });
-    this.species = "cat";
-    this.legs = 4;
-    Cat.setSaying("mio-mi!");
-  }
-
-  static setSaying(saying) {
-    this._saying = saying;
-  }
-  static getSaying() {
-    return this._saying;
-  }
-  getProperties() {
-    return [
-      ...super.getProperties(),
-      `saying: <strong>${Cat.getSaying()}</strong>`,
-    ];
+  constructor({ name, gender }) {
+    super("cat", name, gender, 4, "mio-mio!");
   }
 }
 
 class Catwoman extends Cat {
-  constructor(name) {
-    super(name);
+  constructor({ name }) {
+    super({ name, gender: "female" });
     this.species = "catwoman";
-    this.gender = "female";
     this.legs = 2;
     this.hands = 2;
   }
@@ -84,61 +51,130 @@ class Catwoman extends Cat {
 
 class Human extends Animal {
   constructor(name, gender, saying) {
-    super({ name, gender });
-    this.species = "men";
-    this.legs = 2;
+    super("human", name, gender, 2, saying);
     this.hands = 2;
-    this.saying = saying || "I may saying samething.";
   }
   getProperties() {
-    return [
-      ...super.getProperties(),
-      `hands: <strong>${this.hands}</strong>`,
-      `saying: <strong>${this.saying}</strong>`,
-    ];
+    return [...super.getProperties(), `hands: <strong>${this.hands}</strong>`];
   }
 }
 
-function createInstance(className, number = 0) {
-  const arrayOfInstans = [];
-
-  for (let i = 0; i < number; i++) {
-    let obj;
-    switch (className) {
-      case "cat":
-        obj = new Cat();
-        break;
-      case "dog":
-        obj = new Dog();
-        break;
-      case "man":
-        obj = new Human("", "male", "Доброго ранку! Ми з України!");
-        break;
-      case "woman":
-        obj = new Human("", "female");
-        break;
-      case "catwoman":
-        obj = new Catwoman("Judy");
-        break;
-    }
-    arrayOfInstans.push(obj);
+class Man extends Human {
+  constructor({ name, saying }) {
+    super(name, "male", saying);
   }
-
-  return arrayOfInstans;
 }
 
-const inhabitants = [
-  ...createInstance("cat", 2),
-  ...createInstance("dog", 2),
-  ...createInstance("man", 3),
-  ...createInstance("woman", 3),
-  ...createInstance("catwoman", 1),
+class Woman extends Human {
+  constructor({ name, saying }) {
+    super(name, "female", saying);
+  }
+}
+
+const inhabitantsList = [
+  {
+    numder: 2,
+    class: "cat",
+    props: [
+      {
+        name: "Murka",
+        gender: "female",
+      },
+      {
+        name: "Marsik",
+        gender: "male",
+      },
+    ],
+  },
+  {
+    numder: 2,
+    class: "dog",
+    props: [
+      {
+        name: "Alfa",
+        gender: "female",
+      },
+      {
+        name: "Dik",
+        gender: "male",
+      },
+    ],
+  },
+  {
+    numder: 3,
+    class: "woman",
+    props: [
+      {
+        name: "Lisa",
+        saying: "I like sun",
+      },
+      {
+        name: "Olga",
+        saying: "I like to speak about...",
+      },
+      {
+        name: "Nina",
+        saying: "I like shoping",
+      },
+    ],
+  },
+  {
+    numder: 3,
+    class: "man",
+    props: [
+      {
+        name: "Nik",
+        saying: "I like cars",
+      },
+      {
+        name: "Peter",
+        saying: "I like to trevel",
+      },
+      {
+        name: "Stive",
+        saying: "I like sport",
+      },
+    ],
+  },
+  {
+    numder: 1,
+    class: "catwoman",
+    props: [
+      {
+        name: "Judy",
+      },
+    ],
+  },
 ];
 
-print(
-  inhabitants.map((instance) => instance.getProperties().join("; ")).join("\n")
-);
-Cat.setSaying("Hello! I'm cat!");
+const inhabitants = inhabitantsList
+  .map((inhabitant) => {
+    let arrayOfObj = [];
+    for (let i = 0; i < inhabitant.numder; i++) {
+      let obj;
+      switch (inhabitant.class) {
+        case "cat":
+          obj = new Cat(inhabitant.props[i]);
+          break;
+        case "dog":
+          obj = new Dog(inhabitant.props[i]);
+          break;
+        case "man":
+          obj = new Man(inhabitant.props[i]);
+          break;
+        case "woman":
+          obj = new Woman(inhabitant.props[i]);
+          break;
+        case "catwoman":
+          obj = new Catwoman(inhabitant.props[i]);
+          break;
+      }
+      arrayOfObj.push(obj);
+    }
+    return arrayOfObj;
+  })
+  .flat();
+
 print(
   inhabitants.map((instance) => instance.getProperties().join("; ")).join("\n")
 );
