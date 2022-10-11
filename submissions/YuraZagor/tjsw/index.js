@@ -1,7 +1,7 @@
-const manNamesArr = ['Vasil', 'Yurij', 'Zahar', 'Taras', 'Olexiy', 'Oleg', 'Mykola', 'Sashko', 'Sergij', 'Bohdan']
-const womanNamesArr = ['Hanna', 'Helena', 'Vasilisa', 'Yulya', 'Oksana', 'Olena', 'Olga', 'Myroslava', 'Svitlana', 'Bohdana']
-const animalNamesArr = ['Joy', 'Happy', 'Lucky', 'Puffy']
-const genderArr = ['male', 'female']
+const manNamesArr = ['Vasil', 'Yurij', 'Zahar', 'Taras', 'Olexiy', 'Oleg', 'Mykola', 'Sashko', 'Sergij', 'Bohdan'];
+const womanNamesArr = ['Hanna', 'Helena', 'Vasilisa', 'Yulya', 'Oksana', 'Olena', 'Olga', 'Myroslava', 'Svitlana', 'Bohdana'];
+const animalNamesArr = ['Joy', 'Happy', 'Lucky', 'Puffy'];
+const genderArr = ['male', 'female'];
 
 let catSay = 'meau';
 let dogSay = 'woufff';
@@ -9,10 +9,11 @@ let humanSay = 'Glory to Ukraine!';
 
 function randomSelect(arr){
   return arr[Math.floor(Math.random()*arr.length)]
-}
-let manName = randomSelect(manNamesArr)
-let womanName = randomSelect(womanNamesArr)
-let animalName = randomSelect(animalNamesArr)
+};
+
+let manName = randomSelect(manNamesArr);
+let womanName = randomSelect(womanNamesArr);
+let animalName = randomSelect(animalNamesArr);
 
 const inhabitants = [
   { species: 'human', 
@@ -30,19 +31,29 @@ const inhabitants = [
     friend: 'Vasil',
     legs: 2,
     hands: 2,
-  },
-];
+  },];
+
+const dogsVolier = [{ 
+  species: 'Dog', 
+  gender: 'female',
+  name: 'Guffy',
+  saying: dogSay,
+  friend: randomSelect(inhabitants).name,
+  paws: 4,
+  tail: 1,
+},];
 
 class Inhabitant {  
-  constructor(species, name, saying, friend, gender){
+  constructor(species, name, saying, friend, gender, habitat = inhabitants){
     this.species = species;
     this.name = name;
     this.saying = saying
     this.friend = friend;
     this.gender = gender;
+    this.habitat = habitat;
   }
   accountInhabitants(){
-    inhabitants.push(this);
+    this.habitat.push(this);
   };
   commonProperties(){
     const { species, name, saying, friend, gender} = this;
@@ -67,8 +78,10 @@ class Animal extends Inhabitant{
 class Dog extends Animal{
   constructor( name, friend, gender ){
     super('dog', name, dogSay, friend, gender, 4, 1);
+    this.habitat = dogsVolier
   };
 };
+
 class Cat extends Animal{
   constructor( name, friend, gender){
     super('cat', name, catSay, friend, gender, 4, 1);
