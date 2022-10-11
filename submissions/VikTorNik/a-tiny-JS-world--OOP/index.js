@@ -1,8 +1,8 @@
 import { print } from './js/lib.js';
 
-class BasePerson {
-   constructor(person, name, gender, legs, voice) {
-      this.person = [person, 'Я відношуся до'];
+class BasePersonage {
+   constructor(personage, name, gender, legs, voice) {
+      this.personage = [personage, 'Я відношуся до'];
       this.name = [name, 'Мене звати'];
       this.gender = [gender, 'Я за статтю'];
       this.legs = [legs, "Я маю таку кількість ніг -"];
@@ -10,20 +10,20 @@ class BasePerson {
    }
 
    getPerformance() {
-      return ['person', 'name', 'gender', 'legs', 'voice']
+      return ['personage', 'name', 'gender', 'legs', 'voice']
          .map(prop => `${this[prop][1]} ${this[prop][0]}`).join('; ');
    }
 };
 
-class Animal extends BasePerson {
-   constructor(person, name, gender, voice) {
-      super(person, name, gender, 4, voice);
+class Animal extends BasePersonage {
+   constructor(personage, name, gender, voice) {
+      super(personage, name, gender, 4, voice);
    }
 }
 
 class ExtendedCats extends Animal {
-   constructor(person, name, gender) {
-      super(person, name, gender, 'Meow!');
+   constructor(personage, name, gender) {
+      super(personage, name, gender, 'Meow!');
    }
 }
 
@@ -51,12 +51,12 @@ class Dog extends Animal {
    }
 }
 
-class BasePersonHuman extends BasePerson {
+class BasePersonHuman extends BasePersonage {
    constructor(name, gender, voice) {
       super('human', name, gender, 2, voice);
       this.hands = [2, "Я маю таку кількість рук -"];
    }
-   
+
    getPerformance() {
       return `${super.getPerformance()}; ${this.hands[1]} ${this.hands[0]};`;
    }
@@ -89,7 +89,7 @@ const FICTIONALWORLD = [
    new Cat('Murchik', 'male'),
 ];
 
-FICTIONALWORLD.map(unitWorld => {
-   print(unitWorld.getPerformance());
+FICTIONALWORLD.forEach(personage => {
+   print(personage.getPerformance());
 });
 
