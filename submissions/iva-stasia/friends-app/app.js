@@ -5,6 +5,7 @@ const searchInput = document.querySelector('input[type=search]');
 const sideBar = document.querySelector('.filters');
 const resetBtn = document.querySelector('input[type=reset]');
 const filtersHeader = document.querySelector('.filter_header');
+const loader = document.querySelector('.loader');
 
 let initialFriends = [];
 let copyFriends = [];
@@ -17,7 +18,7 @@ const getinitialFriends = async () => {
         initialFriends = data.results;
         copyFriends = [...initialFriends]
         createCards(initialFriends);
-        processCardBtns()
+        hideLoader();
     } catch (e) {
         console.log(e);
         alert(`Oops, something's wrong. Please try again!`)
@@ -51,48 +52,42 @@ const createCards = (initialFriends) => {
     }).join('');
 
     cardsContainer.innerHTML = htmlinitialFriendsData;
+    processCardBtns();
 };
 
 const chooseFriends = ({target}) => {
     const foundFriends = searchFriends(target.value);
-    const filteredFriends = filter(foundFriends);
-    const sortedFriends = sort(filteredFriends);
+    const filteredFriends = filter(target.value, foundFriends);
+    const sortedFriends = sort(target.value, filteredFriends);
 
     createCards(sortedFriends);
 };
 
-const filter = (friendsData) => {
-    if (sideBar[4].checked) {
-        return friendsData.filter(friend => friend.gender === 'male');
-    };
-
-    if (sideBar[5].checked) {
-        return friendsData.filter(friend => friend.gender === 'female');
-    };
-
-    if (sideBar[6].checked) {
-        return friendsData;
-    };
+const filter = (value, friendsData) => {
+    return sideBar.filter.value == 'both_gender' 
+    ? friendsData
+    : friendsData.filter(friend => friend.gender == sideBar.filter.value);
 };
 
-const sort = (friendsData) => {
-    if (sideBar[0].checked) {
-        return friendsData.sort((a, b) => a.name.first < b.name.first ? -1 : 1);
+const sort = (value, friendsData) => {
+    switch (sideBar.sort.value) {
+        case 'name_increase':
+            friendsData.sort((a, b) => a.name.first < b.name.first ? -1 : 1);
+            break;
+        case 'name_decrease':
+            friendsData.sort((a, b) => a.name.first > b.name.first ? -1 : 1);
+            break;
+        case 'age_increase':
+            friendsData.sort((a, b) => a.dob.age < b.dob.age ? -1 : 1);
+            break;
+        case 'age_decrease':
+            friendsData.sort((a, b) => a.dob.age > b.dob.age ? -1 : 1);
+            break;
+        default:
+            friendsData;
     };
 
-    if (sideBar[1].checked) {
-        return friendsData.sort((a, b) => a.name.first > b.name.first ? -1 : 1);
-    };
-
-    if (sideBar[2].checked) {
-        return friendsData.sort((a, b) => a.dob.age < b.dob.age ? -1 : 1);
-    };
-
-    if (sideBar[3].checked) {
-        return friendsData.sort((a, b) => a.dob.age > b.dob.age ? -1 : 1);
-    };
-
-    return friendsData
+    return friendsData;
 };
 
 const searchFriends = (value) => {
@@ -154,6 +149,10 @@ const processCardBtns = () => {
             setTimeout(() => cardClassList.remove('open_email'), 1500);
         };
     });
+};
+
+const hideLoader = () => {
+    loader.classList.add('loader_hide');
 };
 
 window.addEventListener('DOMContentLoaded', () => {

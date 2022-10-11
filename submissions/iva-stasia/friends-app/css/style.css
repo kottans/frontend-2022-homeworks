@@ -56,6 +56,72 @@ body {
     text-shadow: 0px 0px 4px rgba(36, 32, 43, 0.2);
 }
 
+.loader {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    transition: all 2s ease-in-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader_hide {
+    animation: loader_hide 1s forwards;
+}
+
+@keyframes loader_hide {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.dot {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%);
+    animation: loader 1.2s ease-in-out infinite;
+}
+
+.dot1 {
+    left: 45%;
+    transform: translateX(-50%);
+}
+
+.dot2 {
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 0.2s;
+}
+
+.dot3 {
+    left: 55%;
+    transform: translateX(-50%);
+    animation-delay: 0.4s;
+}
+
+@keyframes loader {
+    0% {
+      opacity: 1;
+      top: 50%;
+    }
+    50% {
+      opacity: 0.3;
+      top: 45%;
+    }
+    100% {
+      opacity: 1;
+      top: 50%;
+    }
+  }
+
 .side_bar {
     position: fixed;
     height: 100%;
@@ -428,11 +494,20 @@ input[type="reset"]:hover {
 
 @media (max-width: 1023px) {
     body {
+        position: absolute;
         overflow-x: hidden;
     }
 
     .text {
         text-shadow: 0px 0px 6px rgba(36, 32, 43, 0.4);
+    }
+
+    .dot1 {
+        left: 35%;
+    }
+    
+    .dot3 {
+        left: 65%;
     }
 
     .side_bar {
