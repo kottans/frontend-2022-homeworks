@@ -86,7 +86,7 @@ const FICTIONALWORLD = [
    new Woman('Natali', 'Hello!'),
    new Woman('Lesia', 'Hey!'),
    new Dog('Bublyk', 'male'),
-   new Cat('<Murchik>', 'male'),
+   new Cat('Murchik', 'male'),
 ];
 
 FICTIONALWORLD.map(unitWorld => {
