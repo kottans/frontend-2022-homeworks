@@ -74,7 +74,7 @@ class Woman extends Human {
 const inhabitantsList = [
   {
     numder: 2,
-    class: "cat",
+    classDefinition: Cat,
     props: [
       {
         name: "Murka",
@@ -88,7 +88,7 @@ const inhabitantsList = [
   },
   {
     numder: 2,
-    class: "dog",
+    classDefinition: Dog,
     props: [
       {
         name: "Alfa",
@@ -102,7 +102,7 @@ const inhabitantsList = [
   },
   {
     numder: 3,
-    class: "woman",
+    classDefinition: Woman,
     props: [
       {
         name: "Lisa",
@@ -120,7 +120,7 @@ const inhabitantsList = [
   },
   {
     numder: 3,
-    class: "man",
+    classDefinition: Man,
     props: [
       {
         name: "Nik",
@@ -138,7 +138,7 @@ const inhabitantsList = [
   },
   {
     numder: 1,
-    class: "catwoman",
+    classDefinition: Catwoman,
     props: [
       {
         name: "Judy",
@@ -148,33 +148,16 @@ const inhabitantsList = [
 ];
 
 const inhabitants = inhabitantsList
-  .map((inhabitant) => {
+  .map((inhabitant) => {    
     let arrayOfObj = [];
     for (let i = 0; i < inhabitant.numder; i++) {
-      let obj;
-      switch (inhabitant.class) {
-        case "cat":
-          obj = new Cat(inhabitant.props[i]);
-          break;
-        case "dog":
-          obj = new Dog(inhabitant.props[i]);
-          break;
-        case "man":
-          obj = new Man(inhabitant.props[i]);
-          break;
-        case "woman":
-          obj = new Woman(inhabitant.props[i]);
-          break;
-        case "catwoman":
-          obj = new Catwoman(inhabitant.props[i]);
-          break;
-      }
+      let obj=new inhabitant.classDefinition(inhabitant.props[i]);
       arrayOfObj.push(obj);
     }
     return arrayOfObj;
   })
   .flat();
-
+  
 print(
   inhabitants.map((instance) => instance.getProperties().join("; ")).join("\n")
 );
