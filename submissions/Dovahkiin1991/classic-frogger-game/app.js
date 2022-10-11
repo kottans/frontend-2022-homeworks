@@ -1,11 +1,16 @@
 //const
 const CELL_WIDTH = 101,
     CELL_HEIGHT = 83,
-    ALL_ENEMIES = [50, 60, 30];
-const Enemy = function(y, index, player) {
+    PLAYER_SPRITE_EMPTY_SPACE = 19,
+    PLAYER_Y_CENTER_SHIFT = 32,
+    ENEMY_Y_CENTER_SHIFT = 23,
+    ENEMIES_COUNT = 3,
+    allEnemies = [];
+
+const Enemy = function(enemyRowPosition, player) {
     this.sprite = 'images/enemy-bug.png';
     this.x = -CELL_WIDTH;
-    this.y = CELL_HEIGHT - 23 + index * CELL_HEIGHT;
+    this.y = CELL_HEIGHT - ENEMY_Y_CENTER_SHIFT + enemyRowPosition * CELL_HEIGHT;
     this.speed = speedGenerator();
     this.player = player;
 };
@@ -13,23 +18,24 @@ const Enemy = function(y, index, player) {
 Enemy.prototype.update = function(dt) {
     this.x += dt * this.speed;
 
-    if (this.x > 505) {
+    if (this.x > CELL_WIDTH * 5) {
         this.x = -CELL_WIDTH;
         this.speed = speedGenerator();
     }
 
-    this.collisionsCheck();
+    this.collisionsCheck(player);
 };
 
-Enemy.prototype.collisionsCheck = function() {
+Enemy.prototype.collisionsCheck = function(player) {
     //check if enemy hit
-    if (this.x + CELL_WIDTH - 20 >= player.x 
-        && this.x < player.x + CELL_WIDTH - 20
-        && this.y === player.y + 9) {
-            if (player.winCount > 0) {
-                player.winCount--;
-            }
-            player.reset();
+    if (this.x + CELL_WIDTH >= player.x + PLAYER_SPRITE_EMPTY_SPACE
+        && this.x < player.x + CELL_WIDTH - PLAYER_SPRITE_EMPTY_SPACE
+        && this.y + ENEMY_Y_CENTER_SHIFT === player.y + PLAYER_Y_CENTER_SHIFT) {
+
+        if (player.winCount > 0) {
+            player.winCount--;
+        }
+        player.reset();
     }
 }
 
@@ -46,8 +52,8 @@ const Player = function(x, y) {
 };
 
 Player.prototype.update = function() {
-    if(this.y > 383) {
-        this.y = 383;
+    if(this.y > CELL_HEIGHT * 5 - PLAYER_Y_CENTER_SHIFT) {
+        this.y = CELL_HEIGHT * 5 - PLAYER_Y_CENTER_SHIFT;
     }
 
     if(this.y < 0) {
@@ -59,8 +65,8 @@ Player.prototype.update = function() {
         this.x = 0;
     }
 
-    if (this.x > 402) {
-        this.x = 402;
+    if (this.x >= CELL_WIDTH * 4) {
+        this.x = CELL_WIDTH * 4;
     }
 };
 
@@ -97,9 +103,11 @@ const speedGenerator = () => {
     return Math.floor(Math.random() * 150 + 100)
 }
 
-const allEnemies = ALL_ENEMIES.map(
-    (posY, index) => (posY = new Enemy(posY, index, Player))
-);
+//generate enemies
+for (let i = 0; i < ENEMIES_COUNT; i++ ) {
+    allEnemies.push(new Enemy(i, Player));
+}
+
 // Place the player object in a variable called player
 const player = new Player(CELL_WIDTH * 2 , CELL_HEIGHT * 6);
 
