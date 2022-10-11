@@ -91,10 +91,10 @@ class Human extends Inhabitant{
 
 function createOne(className, name, friend, gender){
   className.toLowerCase() === 'human' 
-  ? (new Human(name = randomSelect(womanNamesArr), friend = friend = randomSelect(inhabitants).name, gender = 'female')).populate()
+  ? (new Human(name = randomSelect(womanNamesArr), friend = randomSelect(inhabitants).name, gender = 'female')).populate()
   : className.toLowerCase() === 'cat' 
-  ? (new Cat(name = randomSelect(animalNamesArr), friend = friend = randomSelect(inhabitants).name, gender = randomSelect(genderArr))).populate()
-  : (new Dog(name = randomSelect(animalNamesArr), friend = friend = randomSelect(inhabitants).name, gender = randomSelect(genderArr))).populate()
+  ? (new Cat(name = randomSelect(animalNamesArr), friend = randomSelect(inhabitants).name, gender = randomSelect(genderArr))).populate()
+  : (new Dog(name = randomSelect(animalNamesArr), friend = randomSelect(inhabitants).name, gender = randomSelect(genderArr))).populate()
 };
 
 function createMany(num, species){
@@ -102,6 +102,7 @@ function createMany(num, species){
     createOne(species)
   };  
 };
+
 const vasya = new Human ('Vasya', womanName, 'male' );
 vasya.populate();
 createOne('human', womanName, animalName, 'male' );
