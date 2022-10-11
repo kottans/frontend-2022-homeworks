@@ -2,11 +2,16 @@ import { print } from './js/lib.js';
 
 class BasePerson {
    constructor(person, name, gender, legs, voice) {
-      this.person = person;
-      this.name = name;
-      this.gender = gender;
-      this.legs = legs;
-      this.voice = voice;
+      this.person = [person, 'Я відношуся до'];
+      this.name = [name, 'Мене звати'];
+      this.gender = [gender, 'Я за статтю'];
+      this.legs = [legs, "Я маю таку кількість ніг -"];
+      this.voice = [voice, 'Я кажу'];
+   }
+
+   getPerformance() {
+      return ['person', 'name', 'gender', 'legs', 'voice']
+         .map(prop => `${this[prop][1]} ${this[prop][0]}`).join('; ');
    }
 };
 
@@ -25,8 +30,12 @@ class ExtendedCats extends Animal {
 class CatWoman extends ExtendedCats {
    constructor(name, gender) {
       super('cat-woman', name, gender);
-      this.hands = 2;
-      this.legs = 2;
+      this.hands = [2, "Я маю таку кількість рук -"];
+      this.legs[0] = 2;
+   }
+
+   getPerformance() {
+      return `${super.getPerformance()}; ${this.hands[1]} ${this.hands[0]};`;
    }
 }
 
@@ -42,17 +51,14 @@ class Dog extends Animal {
    }
 }
 
-class Say extends BasePerson {
-   constructor() {
-      super('Я відношуся до', 'Мене звати', 'Я', 'ноги', 'Я кажу');
-      this.hands = 'руки';
-   }
-}
-
 class BasePersonHuman extends BasePerson {
    constructor(name, gender, voice) {
       super('human', name, gender, 2, voice);
-      this.hands = 2;
+      this.hands = [2, "Я маю таку кількість рук -"];
+   }
+   
+   getPerformance() {
+      return `${super.getPerformance()}; ${this.hands[1]} ${this.hands[0]};`;
    }
 }
 
@@ -73,18 +79,17 @@ const FICTIONALWORLD = [
    new Woman('Olena', 'Slava Ukraine!'),
    new Dog('Buran', 'male'),
    new Cat('Yana', 'female'),
-   new CatWoman('Selina Kyle', 'female')];
+   new CatWoman('Selina Kyle', 'female'),
 
-const DESCRIPTION = new Say();
+   new Man('Petr', 'Hello!'),
+   new Man('Mark', 'Hey!'),
+   new Woman('Natali', 'Hello!'),
+   new Woman('Lesia', 'Hey!'),
+   new Dog('Bublyk', 'male'),
+   new Cat('<Murchik>', 'male'),
+];
 
 FICTIONALWORLD.map(unitWorld => {
-   let storyYourself = [];
-   unitWorld.hasOwnProperty('voice') ? storyYourself.push(`${unitWorld.voice}`) : false;
-   unitWorld.hasOwnProperty('name') ? storyYourself.push(`${DESCRIPTION.name} ${unitWorld.name}.`) : false;
-   unitWorld.hasOwnProperty('gender') ? storyYourself.push(`${DESCRIPTION.gender} ${unitWorld.gender}.`) : false;
-   unitWorld.hasOwnProperty('person') ? storyYourself.push(`${DESCRIPTION.person} ${unitWorld.person}.`) : false;
-   unitWorld.hasOwnProperty('hands') ? storyYourself.push(`У мене ${unitWorld.hands} ${DESCRIPTION.hands}.`) : false;
-   unitWorld.hasOwnProperty('legs') ? storyYourself.push(`У мене ${unitWorld.legs} ${DESCRIPTION.legs}.`) : false;
-   print(storyYourself.join(' '));
+   print(unitWorld.getPerformance());
 });
 
