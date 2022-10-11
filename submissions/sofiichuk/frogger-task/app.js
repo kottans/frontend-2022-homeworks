@@ -12,7 +12,7 @@ const playingField = {
 };
 
 const character = {
-    width: 60,
+    width: 75,
     height: 60
 };
 
@@ -28,8 +28,8 @@ const initialEnemyPosition = {
     y: [1, 2, 3].map(rowNumber => rowNumber * cell.height - offsetToTheCenter) // 60, 143, 226
 };
 
-const minSpeed = 100;
-const maxSpeed = 500;
+const minSpeed = 1;
+const maxSpeed = 1000;
 const enemySpeed = Math.floor(Math.random() * (maxSpeed - minSpeed)) + minSpeed;
 const desynchronizedSpeed = [0, 100, 50].map(speedDelta => enemySpeed + speedDelta);
 
@@ -48,13 +48,11 @@ document.body.append(score, resetButton, speed);
 
 // ===========================================================
 
-const Enemy = function (x, y, speed) {
+const Enemy = function (x, y, speed, player) {
     this.x = x;
     this.y = y;
-    this.width = character.width;
-    this.height = character.height;
     this.speed = speed;
-    this.rival = player;
+    this.player = player;
     this.sprite = 'images/enemy-bug.png'
 };
 
@@ -68,11 +66,11 @@ Enemy.prototype.update = function (dt) {
 };
 
 Enemy.prototype.detectCollision = function () {
-    if (this.rival.x <= this.x + this.width &&
-        this.rival.x + this.width >= this.x &&
-        this.rival.y <= this.y + this.height &&
-        this.rival.y + this.height >= this.y) {
-        this.rival.reset()
+    if (this.player.x <= this.x + character.width &&
+        this.player.x + character.width >= this.x &&
+        this.player.y <= this.y + character.height &&
+        this.player.y + character.height >= this.y) {
+        this.player.reset()
     }
 };
 
@@ -148,7 +146,7 @@ const player = new Player(initialPlayerPosition.x, initialPlayerPosition.y);
 
 const allEnemies = new Array(3);
 for (let i = 0; i < allEnemies.length; i++) {
-    allEnemies[i] = new Enemy(initialEnemyPosition.x, initialEnemyPosition.y[i], desynchronizedSpeed[i]);
+    allEnemies[i] = new Enemy(initialEnemyPosition.x, initialEnemyPosition.y[i], desynchronizedSpeed[i], player);
 }
 
 // ===========================================================
