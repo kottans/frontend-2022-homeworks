@@ -14,7 +14,7 @@ class Inhabitants {
     this.saying = saying;
   }
 
-  getArrValues() {
+  getInhabitantProps() {
     return [this.species, this.name, this.gender, this.legs, this.saying];
   }
 }
@@ -25,7 +25,7 @@ class Human extends Inhabitants {
     this.hands = hands;
   }
 
-  getArrValues() {
+  getInhabitantProps() {
     return [
       this.species,
       this.name,
@@ -45,5 +45,5 @@ const man = new Human("man", "Ihor", "male", 2, 2, "Hello Yulia!");
 const inhabitants = [dog, cat, woman, man];
 
 inhabitants.forEach((obj) => {
-  print(obj.getArrValues().join("; "));
+  print(obj.getInhabitantProps().join("; "));
 });
