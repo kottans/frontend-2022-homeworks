@@ -31,6 +31,7 @@
     }
 
     let flippedCards = [];
+    let blockClick = false;
     let matchCount = 0;
     let score = 0;
     let scoreElem = document.getElementsByTagName('h3');
@@ -39,12 +40,12 @@
     board.classList.add('game-list');
 
     // make grid
-    const generateBoard = (e) => {
+    const generateBoard = () => {
         board.innerHTML = '';
         generateBoardItems();
         matchCount = 0;
         score++;
-        scoreElem[0].innerHTML = 'Youre score - ' + score;
+        scoreElem[0].innerHTML = 'Your score - ' + score;
     }
 
     const generateBoardItems = () => {
@@ -69,8 +70,8 @@
     generateBoardItems();
 
     const flipCard = (e) => {
-        e.target.closest('.game-list__item').classList.add('game-list__item--show');
         flippedCards.push(e.target.closest('.game-list__item'));
+        e.target.closest('.game-list__item').classList.add('game-list__item--show');
     }
 
     const checkCards = (firstCard, secondCard) => {
@@ -78,9 +79,13 @@
             setTimeout(function(){
                 firstCard.classList.remove('game-list__item--show');
                 secondCard.classList.remove('game-list__item--show');
+                blockClick = false;
             }, 600);
         } else {
             matchCount++;
+            setTimeout(function(){
+                blockClick = false;
+            }, 600);
         }
 
         flippedCards = [];
@@ -94,13 +99,16 @@
     }
     
     board.addEventListener('click', (e) => {
-        const value = e.preventDefault();
+        e.preventDefault();
+
+        if (blockClick === true) {return};
 
         if(!e.target.closest('.game-list__item').classList.contains('game-list__item--show')) {
             flipCard(e);
         }
 
         if (flippedCards.length == 2) {
+            blockClick = true;
             checkCards(flippedCards[0], flippedCards[1]);
         }
     });
