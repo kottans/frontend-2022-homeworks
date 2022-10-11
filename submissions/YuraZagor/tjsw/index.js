@@ -1,6 +1,7 @@
 const manNamesArr = ['Vasil', 'Yurij', 'Zahar', 'Taras', 'Olexiy', 'Oleg', 'Mykola', 'Sashko', 'Sergij', 'Bohdan']
 const womanNamesArr = ['Hanna', 'Helena', 'Vasilisa', 'Yulya', 'Oksana', 'Olena', 'Olga', 'Myroslava', 'Svitlana', 'Bohdana']
 const animalNamesArr = ['Joy', 'Happy', 'Lucky', 'Puffy']
+const genderArr = ['male', 'female']
 
 let catSay = 'meau';
 let dogSay = 'woufff';
@@ -33,16 +34,15 @@ const inhabitants = [
 ];
 
 class Inhabitant {  
-  constructor(species, name, saying, friend, gender, habitat=inhabitants){
+  constructor(species, name, saying, friend, gender){
     this.species = species;
     this.name = name;
     this.saying = saying
     this.friend = friend;
     this.gender = gender;
-    this.habitat = habitat;
   }
   accountInhabitants(){
-    this.habitat.push(this);
+    inhabitants.push(this);
   };
   commonProperties(){
     const { species, name, saying, friend, gender} = this;
@@ -65,18 +65,18 @@ class Animal extends Inhabitant{
 };
 
 class Dog extends Animal{
-  constructor( name=randomSelect(animalNamesArr), friend = randomSelect(inhabitants).name, gender = 'male' ){
+  constructor( name, friend, gender ){
     super('dog', name, dogSay, friend, gender, 4, 1);
   };
 };
 class Cat extends Animal{
-  constructor( name = randomSelect(animalNamesArr), friend = randomSelect(inhabitants).name, gender = 'female' ){
+  constructor( name, friend, gender){
     super('cat', name, catSay, friend, gender, 4, 1);
   };
 };
 
 class Human extends Inhabitant{
-  constructor( name = randomSelect(womanNamesArr), friend = randomSelect(inhabitants).name, gender = 'female', legs = 2, hands = 2){
+  constructor( name, friend, gender, legs = 2, hands = 2){
     super('human', name, humanSay, friend, gender);
     this.legs = legs;
     this.hands = hands;
@@ -91,10 +91,10 @@ class Human extends Inhabitant{
 
 function createOne(className, name, friend, gender){
   className.toLowerCase() === 'human' 
-  ? (new Human(name, friend, gender)).populate()
+  ? (new Human(name = randomSelect(womanNamesArr), friend = friend = randomSelect(inhabitants).name, gender = 'female')).populate()
   : className.toLowerCase() === 'cat' 
-  ? (new Cat(name, friend, gender)).populate()
-  : (new Dog(name, friend, gender)).populate()
+  ? (new Cat(name = randomSelect(animalNamesArr), friend = friend = randomSelect(inhabitants).name, gender = randomSelect(genderArr))).populate()
+  : (new Dog(name = randomSelect(animalNamesArr), friend = friend = randomSelect(inhabitants).name, gender = randomSelect(genderArr))).populate()
 };
 
 function createMany(num, species){
@@ -102,13 +102,13 @@ function createMany(num, species){
     createOne(species)
   };  
 };
-const vasya = new Human ('Vasya', womanName, 'male' )
-vasya.populate()
+const vasya = new Human ('Vasya', womanName, 'male' );
+vasya.populate();
 createOne('human', womanName, animalName, 'male' );
 createOne('human', randomSelect(womanNamesArr), animalName, 'female' );
 createOne('dog', animalName, 'male', animalName);
 createOne('cat', randomSelect(animalNamesArr), 'female', animalName);
-createMany(4, 'human' )
+createMany(4, 'human' );
 
 const inputElement = document.createElement('form');
 inputElement.classList.add('input--form');
