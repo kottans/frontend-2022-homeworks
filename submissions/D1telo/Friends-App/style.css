@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Alkalami&family=Bungee+Spice&display=swap');
+
 * {
     font-weight: 300;
     font-style: normal;
     box-sizing: border-box;
     --text-color: #e9ecf0;
     --main-color: #010101;
-    --men-color: #3a9191;;
+    --men-color: #3a9191;
+    ;
     --border-color: #110404;
     --custom-red: #ff6aa8;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
 }
@@ -35,7 +38,14 @@ li {
     list-style: none;
 }
 
-h1, h2, h3, h4, h5, h6, p, figure {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
     margin: 0;
 }
 
@@ -51,6 +61,7 @@ a {
 a:active {
     text-decoration: none;
 }
+
 a:active,
 a:focus,
 a:visited {
@@ -66,7 +77,8 @@ p {
     line-height: 1.5;
 }
 
-.header, .footer {
+.header,
+.footer {
     font-family: 'Bungee Spice';
     background-color: #3a9191;
     padding: 1em 0;
@@ -114,6 +126,7 @@ p {
 .main-sidebar-closed {
     display: none;
 }
+
 .main-filter {
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -133,6 +146,7 @@ p {
     width: 100%;
     padding: 2em 1em 2em 25%;
 }
+
 .main-content__wrap {
     display: flex;
     flex-wrap: wrap;
@@ -164,7 +178,7 @@ p {
 
 .content-item-thumb-male {
     border: 2px solid var(--border-color);
-    background-color: var(--men-color) ;
+    background-color: var(--men-color);
 }
 
 .content-item-thumb-female {
@@ -179,9 +193,11 @@ p {
     margin: 0 auto 1em;
     overflow: hidden;
 }
+
 .content-item-thumb img {
     border-radius: 25%;
 }
+
 .content-item-name {
     text-transform: uppercase;
     margin-bottom: .5em;
@@ -263,9 +279,9 @@ p {
     position: absolute;
     left: -9999px;
 }
-[type="radio"]:checked + label,
-[type="radio"]:not(:checked) + label
-{
+
+[type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label {
     position: relative;
     padding-left: 28px;
     cursor: pointer;
@@ -274,8 +290,9 @@ p {
     color: var(--main-color);
     font-size: .875em;
 }
-[type="radio"]:checked + label:before,
-[type="radio"]:not(:checked) + label:before {
+
+[type="radio"]:checked+label:before,
+[type="radio"]:not(:checked)+label:before {
     content: '';
     position: absolute;
     left: 0;
@@ -286,8 +303,9 @@ p {
     border-radius: 4px;
     background: #fff;
 }
-[type="radio"]:checked + label:after,
-[type="radio"]:not(:checked) + label:after {
+
+[type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after {
     content: '';
     width: 10px;
     height: 10px;
@@ -297,12 +315,14 @@ p {
     left: 5px;
     transition: all .4s ease-in-out;
 }
-[type="radio"]:not(:checked) + label:after {
+
+[type="radio"]:not(:checked)+label:after {
     opacity: 0;
     -webkit-transform: scale(0);
     transform: scale(0);
 }
-[type="radio"]:checked + label:after {
+
+[type="radio"]:checked+label:after {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -311,8 +331,7 @@ p {
 
 
 .footer p,
-a.footer-link
-{
+a.footer-link {
     color: #c8d6e5;
 }
 
@@ -420,20 +439,23 @@ a.footer-link
 }
 
 
-@media screen and (max-width: 860px){
+@media screen and (max-width: 860px) {
 
     .main {
         flex-direction: column;
     }
+
     .main-content {
         padding: 2em 1em;
     }
+
     .main-sidebar {
         width: 100%;
         position: relative;
         top: 0;
         padding: 2em 1em 0;
     }
+
     .main-filter {
         position: relative;
     }
@@ -446,12 +468,15 @@ a.footer-link
         display: flex;
         margin-bottom: 1em;
     }
+
     .main-filter__item {
         flex: 1;
     }
+
     .main-filter__item {
         margin-bottom: 0;
     }
+
     .main-filter__item:last-of-type {
         margin-bottom: 0;
     }
@@ -478,18 +503,21 @@ a.footer-link
     .main-content__wrap {
         margin-left: 0;
     }
+
     .main-content__item {
         width: 100%;
         margin-left: 0;
     }
 }
+
 @media screen and (max-width: 350px) {
 
     .user-search {
         width: 90%;
     }
+
     .main-filter-wrap {
         flex-direction: column;
     }
-    
+
 }
