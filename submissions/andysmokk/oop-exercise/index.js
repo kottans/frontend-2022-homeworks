@@ -21,22 +21,14 @@ class Inhabitant {
   showPropertiesInhabitant() {
     const propertiesInhabitant = [
       this.species,
-      this.name,
+      `<strong>${this.name}</strong>`,
       this.legs,
       this.gender,
-      this.saying,
-      this.friends,
+      `<em>${this.saying}</em>`,
+      this.friends.join(", "),
     ];
 
-    return propertiesInhabitant.map((property) =>
-      property === this.name
-        ? `<strong>${property}</strong>`
-        : property === this.saying
-        ? `<em>"${property}"</em>`
-        : Array.isArray(property)
-        ? property.join(", ")
-        : property
-    );
+    return propertiesInhabitant;
   }
 }
 
