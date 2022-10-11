@@ -45,12 +45,12 @@ const catWomen = {
   saying: cat.saying,
 };
 
-const myInhabitantsNames = [man, woman, dog, cat, catWomen];
+const myInhabitants = [man, woman, dog, cat, catWomen];
 
 const orderOfKeys = ["species", "name", "gender", "legs", "hands", "saying"];
 
-const allInhabitants = myInhabitantsNames.map((myInhabitantsNames) =>
-  orderOfKeys.map((key) => myInhabitantsNames[key])
+const allInhabitants = myInhabitants.map((myInhabitants) =>
+  orderOfKeys.map((key) => myInhabitants[key])
 );
 
 allInhabitants.forEach((arrayOfValues) => print(arrayOfValues.join("; ")));
