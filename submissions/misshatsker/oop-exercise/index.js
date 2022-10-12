@@ -1,30 +1,35 @@
 class MyInhabitant {
-   constructor(species, name, gender, limbs, saying) {
+   static inhabitantProperties = ['species', 'name', 'gender', 'saying'];
+   static delimiter = '; ';
+
+   constructor(species, name, gender, saying) {
       this.species = species;
       this.name = name;
       this.gender = gender;
-      this.limbs = limbs;
       this.saying = saying;
+      this.properties = [...MyInhabitant.inhabitantProperties];
    }
 
-   static inhabitantProperties = ['species', 'name', 'gender', 'limbs', 'saying'];
-   static delimiter = '; ';
-
    getInhabitantInfo() {
-      const values = MyInhabitant.inhabitantProperties.map((key) => this[key]);
+      const values = this.properties.map((key) => this[key]);
       return values.join(MyInhabitant.delimiter);
    }
 }
 
 class Human extends MyInhabitant {
    constructor(name, gender, saying) {
-      super('human', name, gender, [2, 2], saying);
+      super('human', name, gender, saying);
+      this.hands = 2;
+      this.legs = 2;
+      this.properties.push('hands', 'legs');
    }
 }
 
 class Animal extends MyInhabitant {
    constructor(name, gender, saying) {
-      super('animal', name, gender, [4], saying);
+      super('animal', name, gender, saying);
+      this.legs = 4;
+      this.properties.push('legs');
    }
 }
 
