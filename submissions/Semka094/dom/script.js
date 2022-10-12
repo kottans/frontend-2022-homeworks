@@ -107,17 +107,16 @@ const data = {
 
 document.getElementById('menu').addEventListener('click', (e) => {
   const menuId = e.target.dataset.id;
-  const menuEntity = data[menuId];
+  const { sections } = data[menuId];
 
-  const pageSectionsHtml = menuEntity.sections.map(({title, items}) => {
+  const pageSectionsHtml = sections.map(({title, items}) => {
     const titleHtml = title ? `<h3>${title}</h3>` : '';
     const textHtml = items.map((text) => `<p>${text}</p>`).join('');
 
     return `${titleHtml}${textHtml}`
-  });
+  }).join('');
 
 
   const contentElement = document.getElementById('content');
-  contentElement.innerHTML = pageSectionsHtml.join('');
+  contentElement.innerHTML = pageSectionsHtml;
 });
-
