@@ -1,21 +1,16 @@
-const positions = [
-  'c1r1',
-  'c2r1',
-  'c3r1',
-  'c4r1',
-  'c1r2',
-  'c2r2',
-  'c3r2',
-  'c4r2',
-  'c1r3',
-  'c2r3',
-  'c3r3',
-  'c4r3',
-  'c1r4',
-  'c2r4',
-  'c3r4',
-  'c4r4'
-];
+const FIELD_SIZE = 4;
+const PERCENTS_PER_CARD = 100 / FIELD_SIZE;
+const FLIP_DURATION = 400;
+const PAUSE_FOR_MEMORIZATION = 400;
+const CARD_LAYING_INTERVAL = 100;
+const CARD_ANIMATION_DURATION = 300;
+
+const positions = Array.from(new Array(FIELD_SIZE), (el, row) => {
+  return Array.from(new Array(FIELD_SIZE), (el, col) => {
+    return {row, col};
+  });
+}).flat();
+
 const faces = [
   {cardName: 'a', link: './img/au.jpg'},
   {cardName: 'a', link: './img/au.jpg'},
@@ -36,10 +31,6 @@ const faces = [
 ];
 const shirt = './img/shirt.jpg';
 
-const FLIP_DURATION = 600;
-const PAUSE_FOR_MEMORIZATION = 800;
-const CARD_LAYING_INTERVAL = 100;
-
 function shuffle(array) {
   const shaffledArray = array.slice();
   for (let i = shaffledArray.length - 1; i > 0; i--) {
@@ -57,9 +48,14 @@ function closeCard($card) {
   $card.classList.remove('flipped');
 }
 
-function hideCard($card) {
-  const className = $card.dataset.cardPosition;
-  $card.classList.remove(className);
+function animateCard($card, direction) {
+  const row = $card.dataset.row;
+  const col = $card.dataset.col;
+  const animation = [
+    {top: `-${PERCENTS_PER_CARD}%`, left: `-${PERCENTS_PER_CARD}%`},
+    {top: `${row * PERCENTS_PER_CARD}%`, left: `${col * PERCENTS_PER_CARD}%`}
+  ];
+  $card.animate(animation, {duration: CARD_ANIMATION_DURATION, direction: direction, fill: 'forwards'});
 }
 
 class Table {
@@ -78,15 +74,15 @@ class Table {
     this.startScreen.hide();
     let currentLayout = shuffle(faces);
     let currentOrder = shuffle(positions);
-    this.createCards(currentLayout);
-    this.startGame(currentOrder);
+    this.createCards(currentLayout, currentOrder);
+    this.startGame();
   }
 
-  createCards(cards) {
+  createCards(cards, order) {
     this.$table.innerHTML = '';
-    cards.forEach(({cardName, link}) => {
+    cards.forEach(({cardName, link}, i) => {
       this.$table.insertAdjacentHTML('beforeend', `
-        <div class="card" data-card-name="${cardName}">
+        <div class="card" data-card-name="${cardName}" data-row="${order[i].row}" data-col="${order[i].col}">
           <div class="card__shirt">
             <img src="${shirt}" alt="" class="card__img">
           </div>
@@ -98,13 +94,12 @@ class Table {
     })
   }
 
-  async startGame(order){
+  async startGame(){
     const $cards = document.querySelectorAll('.card');
-    for (let i = 0; i < $cards.length; i++) {
+    for (let $card of $cards) {
       await new Promise(resolve => 
         setTimeout(() => {
-          $cards[i].classList.add(order[i]);
-          $cards[i].setAttribute('data-card-position', order[i]);
+          animateCard($card, 'normal');
           resolve();
         }, CARD_LAYING_INTERVAL))
     }
@@ -112,7 +107,7 @@ class Table {
     this.$table.addEventListener('mousedown', (event) => event.preventDefault());
   }
 
-  async makeTurn({target}) {
+  makeTurn({target}) {
     const $currentCard = target.closest('.card');
     if (!$currentCard) return;
     if (!this.$firstCard) {
@@ -124,18 +119,15 @@ class Table {
         this.$secondCard = $currentCard;
         openCard($currentCard);
         this.clicks++;
-        await new Promise(resolve => {
-          setTimeout(this.compareCards.bind(this), FLIP_DURATION);
-          resolve();
-        });      
+        setTimeout(this.compareCards.bind(this), FLIP_DURATION);      
       }
     }
   }
 
   compareCards() {
     if (this.$firstCard.dataset.cardName == this.$secondCard.dataset.cardName) {
-      hideCard(this.$firstCard);
-      hideCard(this.$secondCard);
+      animateCard(this.$firstCard, 'reverse');
+      animateCard(this.$secondCard, 'reverse');
       this.$firstCard = null;
       this.$secondCard= null;
       this.hiddenCards += 2;
