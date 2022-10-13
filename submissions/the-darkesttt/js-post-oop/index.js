@@ -15,6 +15,10 @@ class Creature {
       this.saying = saying;
       this.species = species;
    }
+
+   showValues() {
+      return `${this.species}; ${this.name}; ${this.gender}; ${this.saying};`;
+   }
 }
 
 class Animal extends Creature {
@@ -23,8 +27,8 @@ class Animal extends Creature {
       this.paws = paws;
    }
 
-   showValues() {
-      return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}; ${this.paws}`
+   showValuesWithSuper() {
+      return `${super.showValues()} ${this.paws};`
    }
 }
 
@@ -47,8 +51,8 @@ class Human extends Creature {
       this.legs = 2;
    }
 
-   showValues() {
-      return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}; ${this.legs}; ${this.hands}`
+   showValuesWithSuper() {
+      return `${super.showValues()} ${this.legs}; ${this.hands};`;
    }
 }
 
@@ -60,5 +64,5 @@ const inhabitants = [
 ];
 
 inhabitants.forEach((inhabitant) => {
-   print(inhabitant.showValues());
+   print(inhabitant.showValuesWithSuper());
 });
