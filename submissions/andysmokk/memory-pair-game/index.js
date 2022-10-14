@@ -6,7 +6,7 @@ const randomSorting = (cards) => {
 
 const cardsBox = document.querySelector(".card-box-list");
 
-const cardsRender = (cards) => {
+const renderCards = (cards) => {
   randomSorting(cards);
 
   cardsBox.innerHTML = cards
@@ -24,15 +24,15 @@ const cardsRender = (cards) => {
     card.addEventListener("click", (e) => {
       card.classList.toggle("toggleCard");
 
-      currentCard(e);
+      flipCard(e);
     });
   });
 };
 
-cardsRender(cardsData);
+renderCards(cardsData);
 
-const currentCard = (e) => {
-  const clickedCard = e.target;
+const flipCard = ({ target }) => {
+  const clickedCard = target;
   clickedCard.classList.add("current");
 
   const clickedCards = document.querySelectorAll(".current");
@@ -61,7 +61,7 @@ const currentCard = (e) => {
 
     if (toggledCards.length === 18) {
       setTimeout(() => {
-        cardsRender(cardsData);
+        renderCards(cardsData);
       }, 1000);
     }
   });
