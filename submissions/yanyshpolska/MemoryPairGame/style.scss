@@ -47,7 +47,6 @@ input {
     @media (max-width: 900px) {
       font-size: 1em;
       padding: 0.3em;
-      // margin-bottom: 0.5em;
     }
   }
   @media (max-width: 500px) {
@@ -68,10 +67,6 @@ input {
     width: 12vw;
     height: 12vw;
     margin-bottom: 1vw;
-    //  @media (max-width: 800px) {
-    //    width: 19vw;
-    //    height: 19vw;
-    //  }
     @media (max-width: 500px) {
       width: 28vw;
       height: 28vw;
@@ -93,14 +88,10 @@ input {
   &__card-back {
     transform: rotateY(180deg);
   }
-  //   @media (max-width: 800px) {
-  //     grid-template-columns: repeat(4, 1fr);
-  //   }
   @media (max-width: 500px) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 .modal {
   position: absolute;
   left: 25%;
