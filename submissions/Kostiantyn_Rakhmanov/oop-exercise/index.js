@@ -18,19 +18,18 @@ class Inhabitant {
 class Animal extends Inhabitant {
    constructor(species, name, gender, legs, saying) {
       super(species, name, gender, legs, saying);
-      this.legs = 4;
    }
 }
 
 class Dog extends Animal {
-   constructor(name, gender, saying) {
-      super('dog', name, gender, saying);
+   constructor(name, gender, saying, legs = 4) {
+      super('dog', name, gender, saying, legs);
    }
 }
 
 class Cat extends Animal {
-   constructor(name, gender, saying) {
-      super('cat', name, gender, saying);
+   constructor(name, gender, saying, legs = 4) {
+      super('cat', name, gender, saying, legs);
    }
 }
 
