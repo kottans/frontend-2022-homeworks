@@ -30,12 +30,6 @@ class Inhabitant {
       this.gender = gender;
       this.saying = saying;
       this.friends = [];
-      this.attributes = [
-         this.species,
-         this.name,
-         this.gender,
-         this.saying
-      ];
    }
 
    addFriends(...friends) {
@@ -49,17 +43,13 @@ class Inhabitant {
    }
 
    getAttributes() {
-      return this.attributes;
-   }
-
-   printAttributes() {
-      print(this.getAttributes().join("; ") + "; " + this.getFriendsNames().join(", "));
+      return [this.species, this.name, this.gender, this.saying];
    }
 }
 
 class Human extends Inhabitant {
-   constructor(species, name, gender, saying, legs, hands) {
-      super(species, name, gender, saying);
+   constructor(name, gender, saying, legs, hands) {
+      super(SPECIES.HUMAN, name, gender, saying);
       this.legs = legs;
       this.hands = hands;
    }
@@ -94,13 +84,13 @@ class Cat extends Animal {
 
 class Man extends Human {
    constructor(name, saying, legs, hands) {
-      super(SPECIES.HUMAN, name, GENDER.MALE, saying, legs, hands);
+      super(name, GENDER.MALE, saying, legs, hands);
    }
 }
 
 class Woman extends Human {
    constructor(name, saying, legs, hands) {
-      super(SPECIES.HUMAN, name, GENDER.FEMALE, saying, legs, hands);
+      super(name, GENDER.FEMALE, saying, legs, hands);
    }
 }
 
@@ -120,5 +110,8 @@ woman.addFriends(man, dog, dog);
 const inhabitants = [dog, cat, man, woman];
 
 inhabitants.forEach((inhabitant) => {
-   inhabitant.printAttributes();
+   print([
+      ...inhabitant.getAttributes(),
+      inhabitant.getFriendsNames().join(", ")
+   ].join("; "));
 });
