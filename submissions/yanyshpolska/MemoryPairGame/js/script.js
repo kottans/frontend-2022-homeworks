@@ -49,11 +49,13 @@ function initGame() {
     const cardBack = document.createElement("img");
     cardBack.classList.add("game__card-back");
     cardBack.setAttribute("alt", `card`);
+    cardBack.setAttribute("draggable", "false");
 
     const cardFront = document.createElement("img");
     cardFront.classList.add("game__card-front");
     cardFront.setAttribute("alt", "???");
     cardFront.setAttribute("src", "./img/back.jpg");
+    cardFront.setAttribute("draggable", "false");
 
     gameCard.append(cardBack);
     gameCard.append(cardFront);
