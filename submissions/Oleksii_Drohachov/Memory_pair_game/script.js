@@ -10,6 +10,8 @@ renderModal(
 );
 
 function renderModal(titleText, btnText) {
+  modal.innerHTML = "";
+
   const modalWrapper = document.createElement("div");
   modalWrapper.classList.add("modal__wrapper");
   const modalTitle = document.createElement("p");
@@ -45,7 +47,6 @@ function renderModalAfterWin() {
 
 function hideModal() {
   modal.classList.remove("shown");
-  modal.innerHTML = "";
 }
 
 function startGame() {
@@ -63,20 +64,8 @@ function prepareGame() {
       path: "img/Beast.jpg",
     },
     {
-      name: "beast",
-      path: "img/Beast.jpg",
-    },
-    {
       name: "death",
       path: "img/Death.jpg",
-    },
-    {
-      name: "death",
-      path: "img/Death.jpg",
-    },
-    {
-      name: "fire",
-      path: "img/Fire.jpg",
     },
     {
       name: "fire",
@@ -87,32 +76,20 @@ function prepareGame() {
       path: "img/Life.jpg",
     },
     {
-      name: "life",
-      path: "img/Life.jpg",
-    },
-    {
       name: "light",
       path: "img/Light.jpg",
-    },
-    {
-      name: "light",
-      path: "img/Light.jpg",
-    },
-    {
-      name: "metal",
-      path: "img/Metal.jpg",
     },
     {
       name: "metal",
       path: "img/Metal.jpg",
     },
   ];
-  let shuffled = [...cardsArray];
+  const shuffled = [...cardsArray, ...cardsArray];
   shuffled.sort(function () {
     return 0.5 - Math.random();
   });
   let score = 0;
-  let guessedCardPairs = 0;
+  let guessedCardPairs = [];
 
   renderScoreAndReset();
   renderCards(shuffled);
@@ -159,24 +136,30 @@ function prepareGame() {
   }
 
   function cardsHandler() {
-    const cards = document.querySelectorAll(".card");
-    cards.forEach((card) => card.addEventListener("click", flipCard));
+    gameboard.addEventListener("click", ({ target }) => {
+      if (
+        target.parentElement.classList.contains("card") &&
+        !guessedCardPairs.includes(target.parentElement.dataset.name)
+      ) {
+        flipCard(target.parentElement);
+      }
+    });
 
     let hasFlipped = false;
     let lockBoard = false;
     let firstCard, secondCard;
 
-    function flipCard() {
+    function flipCard(card) {
       if (lockBoard) return;
-      if (this === firstCard) return;
+      if (card === firstCard) return;
 
-      this.classList.add("flip");
+      card.classList.add("flip");
 
       if (!hasFlipped) {
         hasFlipped = true;
-        firstCard = this;
+        firstCard = card;
       } else {
-        secondCard = this;
+        secondCard = card;
         compareCards();
       }
     }
@@ -190,15 +173,21 @@ function prepareGame() {
     }
 
     function disableCards() {
-      firstCard.removeEventListener("click", flipCard);
-      secondCard.removeEventListener("click", flipCard);
+      lockBoard = true;
 
-      resetBoard();
-      guessedCardPairs++;
+      setTimeout(() => {
+        firstCard.classList.add("disabled");
+        secondCard.classList.add("disabled");
 
-      if (guessedCardPairs === 6) {
-        setTimeout(renderModalAfterWin(), 2000);
-      }
+        guessedCardPairs = [...guessedCardPairs, firstCard.dataset.name];
+
+        resetBoard();
+
+        if (guessedCardPairs.length === 6) {
+          guessedCardPairs = [];
+          renderModalAfterWin();
+        }
+      }, 1000);
     }
 
     function unFlipCards() {
@@ -209,7 +198,7 @@ function prepareGame() {
         secondCard.classList.remove("flip");
 
         resetBoard();
-      }, 1500);
+      }, 1000);
     }
 
     function resetBoard() {
