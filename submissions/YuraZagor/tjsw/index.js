@@ -96,24 +96,26 @@ class Human extends Inhabitant{
   };
 };
 
-function createOne(className, name, friend, gender){
-  className.toLowerCase() === 'human' 
-  ? (new Human(name = randomSelect(womanNames), friend = randomSelect(inhabitants).name, gender = 'female')).populate()
-  : className.toLowerCase() === 'cat' 
-  ? (new Cat(name = randomSelect(animalNames), friend = randomSelect(inhabitants).name, gender = randomSelect(genders))).populate()
-  : (new Dog(name = randomSelect(animalNames), friend = randomSelect(inhabitants).name, gender = randomSelect(genders))).populate()
+function createInstance (className, name, friend, gender){
+  if (className.toLowerCase() === 'human') {
+    (new Human(name = randomSelect(womanNames), friend = randomSelect(inhabitants).name, gender = 'female')).populate()
+  } else if (className.toLowerCase() === 'cat') {
+     (new Cat(name = randomSelect(animalNames), friend = randomSelect(inhabitants).name, gender = randomSelect(genders))).populate()
+  } else {
+    (new Dog(name = randomSelect(animalNames), friend = randomSelect(inhabitants).name, gender = randomSelect(genders))).populate()
+  }
 };
 
 function createMany(num, species){
   for (let i = 0; i<num; i++){
-    createOne(species)
+    createInstance (species)
   };  
 };
 
-createOne('human', manName, animalName, 'male' );
-createOne('human', randomSelect(womanNames), animalName, 'female' );
-createOne('dog', animalName, 'male', animalName);
-createOne('cat', randomSelect(animalNames), 'female', animalName);
+createInstance ('human', manName, animalName, 'male' );
+createInstance ('human', randomSelect(womanNames), animalName, 'female' );
+createInstance ('dog', animalName, 'male', animalName);
+createInstance ('cat', randomSelect(animalNames), 'female', animalName);
 createMany(4, 'human' );
 
 const inputElement = document.createElement('form');
