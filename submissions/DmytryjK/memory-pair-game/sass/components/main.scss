@@ -75,4 +75,7 @@
         opacity: 0;
         visibility: hidden;
     }
+    .pointer-events {
+        pointer-events: none;
+    }
 }

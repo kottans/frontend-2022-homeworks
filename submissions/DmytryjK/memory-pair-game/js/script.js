@@ -75,6 +75,10 @@ function onClickUserActions(e) {
   }
 
   if (activeCards.length >= 2) {
+    
+    currentListCards.forEach(card => {
+      card.classList.add('pointer-events');
+    });
 
     if (activeCards[0].getAttribute(["data-name"]) === activeCards[1].getAttribute(["data-name"]) &&
       activeCards[0].getAttribute(["data-numbers"]) !== activeCards[1].getAttribute(["data-numbers"])) {
@@ -82,7 +86,6 @@ function onClickUserActions(e) {
     } else {
       setTimeout(closeActiveCards, 800, activeCards);
     }
-
     activeCards = [];
   }
 }
@@ -101,6 +104,13 @@ function hideActiveCards(activeCards) {
   activeCards.forEach(activeCard => {
     activeCard.classList.add('hide-card');
   });
+
+  currentListCards.forEach(card => {
+    if (!card.style.visibility) {
+      card.classList.remove('pointer-events');
+    }
+  });
+
   numbersOfHideCards++;
   checkOnVictory();
 }
@@ -109,6 +119,11 @@ function closeActiveCards(activeCards) {
   activeCards.forEach(activeCard => {
     activeCard.classList.remove('active-card');
   });
+
+  currentListCards.forEach(card => {
+    card.classList.remove('pointer-events');
+  });
+
   activeCards = [];
 }
 
