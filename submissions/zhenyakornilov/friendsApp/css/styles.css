@@ -28,7 +28,7 @@ button {
   outline: inherit;
 }
 
-.noselect {
+.no-select {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -46,7 +46,7 @@ button {
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   margin-bottom: 20px;
   box-shadow: 0 0 4px 0 #2e2e2e;
   z-index: 7;
@@ -60,6 +60,8 @@ button {
 
 .main {
   display: flex;
+  width: 82%;
+  margin: auto;
 }
 
 .loader-wrapper {
@@ -298,6 +300,7 @@ button {
   .main {
     flex-wrap: wrap;
     flex-direction: column;
+    width: 100%;
   }
 
   .filter-form {
