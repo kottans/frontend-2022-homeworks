@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a class='header__a' href="https://kottans.org/" target="_blank">Kottans</a>
+        </header>
+
+        <main class="mainBlock">
+            <div class="asideBlock">
+                <form name="age" id="ageForm">
+                    <div class="asideBlock__items">
+                        <p>By Age</p>
+                        <input type="radio" name="sort" id="ageMore">
+                        <label for="ageMore">Age < </label>
+                        <input type="radio" name="sort" id="ageLess">
+                        <label for="ageLess">Age > </label>
+                    </div>
+                    <div class="asideBlock__items">
+                        <p>By Last Name</p>
+                        <input type="radio" name="sort" id="lastAToZ">
+                        <label for="lastAToZ">A-Z</label>
+                        <input type="radio" name="sort" id="lastZToA">
+                        <label for="lastZToA">Z-A</label>
+                    </div>
+                </form>
+    
+                <form name="gender" id="genderForm">
+                    <div class="asideBlock__items">
+                        <input type="radio" id="male"
+                        name="gender">
+                        <label for="male" class="gender">Male</label>
+                    
+                        <input type="radio" id="female"
+                        name="gender">
+                        <label for="female">Female</label>
+                    
+                        <input type="radio" id="all"
+                        name="gender" checked>
+                        <label for="all">All</label>
+                    </div>
+                </form>
+
+                <div class="asideBlock__items">
+                    <p>Search: </p>
+                    <input type="text" name="search" id="search">
+                </div>
+    
+                <div class="asideBlock__items">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+            <article class="articleBlock"></article>
+        </main>
+        <footer class="footer">
+            <a class="footer__a" href="https://kottans.org/" target="_blank">Kottans</a>
+        </footer>        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
