@@ -44,21 +44,28 @@ const dogsVolier = [{
 },];
 
 class Inhabitant {  
-  constructor(species, name, saying, friend, gender, habitat = inhabitants){
+  constructor(species, name, saying, friend, gender, habitat = inhabitants,  ...speciesProperties){
     this.species = species;
     this.name = name;
-    this.saying = saying
+    this.saying = saying;
     this.friend = friend;
     this.gender = gender;
     this.habitat = habitat;
+    this.speciesProperties = speciesProperties;
   }
-  accountInhabitants(){
+  registerInItsHabitat(){
     this.habitat.push(this);
   };
-  commonProperties(){
+  getCommonProperties(){
     const { species, name, saying, friend, gender} = this;
     return [species, name, saying, friend, gender]
-  }
+  };
+
+  populate(){
+    print(this.getCommonProperties().concat(this.speciesProperties).join('; '),'div');
+    this.registerInItsHabitat()
+  };
+
 };
 
 class Animal extends Inhabitant{
@@ -67,14 +74,7 @@ class Animal extends Inhabitant{
     this.paws = paws;
     this.tail = tail;
   };
-  populate(){
-    const { paws, tail} = this;
-    const speciesProperties = [ paws, tail];
-    print(this.commonProperties().concat(speciesProperties).join('; '),'div');
-    this.accountInhabitants()
-  };
 };
-
 class Dog extends Animal{
   constructor( name, friend, gender ){
     super('dog', name, dogSay, friend, gender, 4, 1);
@@ -93,12 +93,6 @@ class Human extends Inhabitant{
     super('human', name, humanSay, friend, gender);
     this.legs = legs;
     this.hands = hands;
-  };
-  populate(){
-    const { legs, hands} = this;
-    const speciesProperties = [ legs, hands];
-    print(this.commonProperties().concat(speciesProperties).join('; '),'div');
-    this.accountInhabitants()
   };
 };
 
