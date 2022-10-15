@@ -15,7 +15,7 @@ doc.querySelector(".game_field").addEventListener("click", (e) => {
     }
 });
 
-makeMenuAndListeners(themesDataPath);
+makeMenuAndListeners();
 
 function gameStart() {
     foundPairs = 0;
@@ -30,22 +30,22 @@ function renderGameField(numberOfCards) {
     gameField.classList.remove("field4x3");
     switch (numberOfCards) {
         case 6:
-            gameField.classList.add('field3x2');
+            gameField.classList.add("field3x2");
             break;
         case 12:
-            gameField.classList.add('field4x3');
+            gameField.classList.add("field4x3");
             break;
         default:
             break;
     }
     gameField.innerHTML = new Array(numberOfCards)
         .fill(0)
-        .reduce((innerhtml, curr,  i) => {
-            return innerhtml +=`<div class="game_card" data-card_id="${i}">
+        .reduce((innerhtml, curr, i) => {
+            return (innerhtml += `<div class="game_card" data-card_id="${i}">
                 <img src="./images/bg-hearts.png" alt="" class="card_face card_face_front">
                 <img src="#" alt="" class="card_face card_face_back">
             </div>
-        `;
+        `);
         }, "");
 }
 
@@ -96,7 +96,7 @@ function matchFound(firstCard, secondCard) {
 function winCheck() {
     if (foundPairs === cardsSet.length / 2) {
         setTimeout(() => {
-            showWinWindow("show");
+            toggleWinWindow();
         }, 1000);
     }
 }
@@ -131,7 +131,7 @@ function generateCardsSet(sizeOfSet, highestNumber) {
     cardsSet = mixedSetOfPairs;
 }
 
-function changeCardFace (card) {
+function changeCardFace(card) {
     if (card.classList.contains("flipped")) {
         card.querySelector(".card_face_back").src =
             themesData[themeIndex].pictures[cardsSet[+card.dataset.card_id]];
