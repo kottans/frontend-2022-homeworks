@@ -1,8 +1,28 @@
 const mainContainer = document.querySelector(".container");
 const modal = document.querySelector(".modal__container");
-const modalBtn = document.querySelector(".modal__btn");
 const gameboard = document.querySelector(".gameboard");
 const scoreCount = document.querySelector(".score__container");
+
+// creating modal window
+const modalWrapper = document.createElement("div");
+modalWrapper.classList.add("modal__wrapper");
+const modalTitle = document.createElement("p");
+modalTitle.classList.add("modal__title");
+
+const modalBtn = document.createElement("button");
+modalBtn.classList.add("modal__btn");
+
+modalBtn.addEventListener("click", startGame);
+const closeBtn = document.createElement("button");
+closeBtn.classList.add("modal__btn");
+closeBtn.textContent = "NO, THANKS";
+closeBtn.addEventListener("click", hideModal);
+
+modalWrapper.append(modalTitle);
+modalWrapper.append(modalBtn);
+modalWrapper.append(closeBtn);
+
+modal.append(modalWrapper);
 
 renderModal(
   "You are welcome, my friend ! Wanna play some memory game to endure your mind and become more powerfull ? Try to find pairs of cards as fast as you can! Tap the button to begin... ",
@@ -10,39 +30,9 @@ renderModal(
 );
 
 function renderModal(titleText, btnText) {
-  modal.innerHTML = "";
-
-  const modalWrapper = document.createElement("div");
-  modalWrapper.classList.add("modal__wrapper");
-  const modalTitle = document.createElement("p");
-  modalTitle.classList.add("modal__title");
   modalTitle.textContent = titleText;
-  const modalBtn = document.createElement("button");
-  modalBtn.classList.add("modal__btn");
   modalBtn.textContent = btnText;
-  modalBtn.addEventListener("click", startGame);
-  const closeBtn = document.createElement("button");
-  closeBtn.classList.add("modal__btn");
-  closeBtn.textContent = "NO, THANKS";
-  closeBtn.addEventListener("click", hideModal);
-
-  modalWrapper.append(modalTitle);
-  modalWrapper.append(modalBtn);
-  modalWrapper.append(closeBtn);
-
-  modal.append(modalWrapper);
   modal.classList.add("shown");
-}
-
-function renderModalForReset() {
-  renderModal("Are you sure, you want to restart the game?", "RESET");
-}
-
-function renderModalAfterWin() {
-  renderModal(
-    "Good job my friend! You became even stronger! Want to start one more time?",
-    "RESET"
-  );
 }
 
 function hideModal() {
@@ -52,8 +42,7 @@ function hideModal() {
 function startGame() {
   scoreCount.innerHTML = "";
   gameboard.innerHTML = "";
-  modal.innerHTML = "";
-  modal.classList.remove("shown");
+  hideModal();
   prepareGame();
 }
 
@@ -102,7 +91,9 @@ function prepareGame() {
     scoreSpan.classList.add("score__span");
     scoreSpan.textContent = `Number of tries: ${score}`;
     const resetBtn = document.createElement("button");
-    resetBtn.addEventListener("click", renderModalForReset);
+    resetBtn.addEventListener("click", () =>
+      renderModal("Are you sure, you want to restart the game?", "RESET")
+    );
     resetBtn.classList.add("reset__btn");
     resetBtn.textContent = "RESTART";
     scoreCount.append(scoreSpan);
@@ -185,7 +176,10 @@ function prepareGame() {
 
         if (guessedCardPairs.length === 6) {
           guessedCardPairs = [];
-          renderModalAfterWin();
+          renderModal(
+            "Good job my friend! You became even stronger! Want to start one more time?",
+            "RESET"
+          );
         }
       }, 1000);
     }
