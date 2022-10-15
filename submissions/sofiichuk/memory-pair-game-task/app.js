@@ -1,6 +1,6 @@
 let firstCard, secondCard;
-let clickedAtLeastOnce = false;
-let boardLocked = false;
+let thereWasFirstClick = false;
+let boardIsLocked = false;
 
 const cards = document.querySelectorAll('.card');
 
@@ -11,17 +11,17 @@ cards.forEach(card => {
 });
 
 function showHiddenPic() {
-    if (boardLocked) return;
+    if (boardIsLocked) return;
     if (this === firstCard) return;
 
     this.classList.add('selectedCard');
 
-    if (!clickedAtLeastOnce) {
+    if (!thereWasFirstClick) {
         firstCard = this;
-        clickedAtLeastOnce = true;
+        thereWasFirstClick = true;
     } else {
         secondCard = this;
-        clickedAtLeastOnce = false;
+        thereWasFirstClick = false;
 
         checkForMatch();
     }
@@ -34,17 +34,17 @@ function checkForMatch() {
 }
 
 function disableCards() {
-    boardLocked = true;
+    boardIsLocked = true;
 
     setTimeout(() => {
         firstCard.removeEventListener('click', showHiddenPic);
         secondCard.removeEventListener('click', showHiddenPic);
-        boardLocked = false;
+        boardIsLocked = false;
     }, 1000)
 }
 
 function hidePics() {
-    boardLocked = true;
+    boardIsLocked = true;
 
     setTimeout(() => {
         firstCard.classList.remove('selectedCard');
@@ -52,6 +52,6 @@ function hidePics() {
 
     setTimeout(() => {
         secondCard.classList.remove('selectedCard');
-        boardLocked = false;
+        boardIsLocked = false;
     }, 1500);
 }
