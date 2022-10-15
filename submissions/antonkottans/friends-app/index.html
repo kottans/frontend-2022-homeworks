@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Friends App</title>
+    <script src="./script.js"></script>
+  </head>
+  <body class="body">
+    <label for="burger-checkbox" class="label-open-filters">
+      Open filters
+    </label>
+    <input type="checkbox" class="burger-checkbox" id="burger-checkbox" />
+    <aside class="controls-layout-container">
+      <div class="sort-menu">
+        <span class="sort-menu-label">BY AGE:</span>
+        <button class="sort-menu-button" id="age-ascending"></button>
+        <button class="sort-menu-button" id="age-descending"></button>
+        <span class="sort-menu-label">BY NAME:</span>
+        <button class="sort-menu-button" id="name-ascending"></button>
+        <button class="sort-menu-button" id="name-descending"></button>
+      </div>
+      <div class="filter-menu">
+        <div class="age-filter-container">
+          <input
+            class="age-input"
+            type="number"
+            id="start-age"
+            placeholder="from" />
+          <input
+            class="age-input"
+            type="number"
+            id="end-age"
+            placeholder="to" />
+          <span class="age-filter-instruction"
+            >Enter lowest and highest age</span
+          >
+        </div>
+        <div class="name-filter-container">
+          <input
+            type="text"
+            class="name-input"
+            id="name-input"
+            placeholder="name" />
+          <span class="name-filter-instruction">Just enter name</span>
+        </div>
+        <div class="sex-filter-container">
+          <div class="radio-container">
+            <input
+              type="radio"
+              class="radio-sex-input"
+              name="radiobutton-sex"
+              value="male"
+              id="male" />
+            <label class="sex-filter-label" for="male">Male</label>
+            <input
+              type="radio"
+              class="radio-sex-input"
+              name="radiobutton-sex"
+              value="female"
+              id="female" />
+            <label class="sex-filter-label" for="female"> Female </label>
+            <input
+              type="radio"
+              class="radio-sex-input"
+              name="radiobutton-sex"
+              value="all"
+              id="all"
+              checked />
+            <label class="sex-filter-label" for="all">All</label>
+          </div>
+          <span class="sex-filter-instruction">Choose sex</span>
+        </div>
+        <button class="button-filter" id="reset">RESET</button>
+        <button class="button-filter confirm" id="confirm">
+          Confirm changes
+        </button>
+      </div>
+    </aside>
+    <main class="main"><div class="friends-container"></div></main>
+  </body>
+</html>
+

@@ -1,0 +1,65 @@
+/* Box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Размер шрифта 1rem=1px */
+/* "rem" - если в браузере изменён размер шрифта по умолчанию, чтобы сохранялись пропорции */
+:root { font-size: 6.25% }
+/* body  { font-size: 16rem } */
+
+
+body {
+  /* Запретить ширину меньше 320px */
+  min-inline-size: 320px;
+  
+  /* Шрифт без засечек */
+  font-family: sans-serif;
+  /* Стандартный размер браузеров 16px = 16rem */
+  font-size: 16rem;
+  /* Межстрочный интервал (из Normalize) */
+  line-height: 1.15;
+  
+  /* По умолчанию прокрутка у всех страниц */
+  overflow-y: scroll;
+}
+
+
+/* Размеры изображений */
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+
+/* Отключение миганий в Chrome */
+a,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Курсор "рука" для активных кнопок */
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+
+/* Убрать внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd,
+input {
+  margin: unset;
+}
