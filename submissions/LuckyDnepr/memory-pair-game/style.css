@@ -1,0 +1,421 @@
+@font-face {
+    font-family: "Mono";
+    src: url(./assets/SpaceMono-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Mono", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ffeee4;
+}
+
+.fader {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.733);
+    z-index: 1000;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    height: calc(100vh - 4px);
+    /* border: 1px solid green; */
+}
+
+.header {
+    height: 3em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    text-shadow: 3px 3px 5px steelblue;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 5em);
+}
+
+.nav {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 20% auto 20%;
+    grid-template-areas:
+        "fieldsize fieldsize"
+        "themes themeImage"
+        "startbtn startbtn";
+}
+
+.nav_menu {
+    display: flex;
+    border: 1px solid steelblue;
+    border-radius: 10px;
+    margin: 1em;
+}
+
+.fieldsize {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    grid-area: fieldsize;
+}
+
+.themes {
+    flex-direction: column;
+    grid-area: themes;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_menu input[type="radio"] {
+    appearance: none;
+    position: fixed;
+    width: 0;
+}
+
+.nav_menu label {
+    display: inline-block;
+    background-color: #ddd;
+    padding: 10px 20px;
+    margin: 1em 0;
+    font-family: "Mono", sans-serif, Arial;
+    font-size: 16px;
+    border: 2px solid grey;
+    text-align: center;
+    border-radius: 5px 20px 5px 20px;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+
+.nav_menu label:hover {
+    box-shadow: 5px 5px 10px steelblue;
+}
+
+.fieldsize label {
+    width: 30%;
+}
+
+.themes label {
+    width: 70%;
+}
+
+.nav_menu input[type="radio"]:checked + label {
+    background-color: rgba(70, 131, 180, 0.3);
+    border-color: steelblue;
+    text-shadow: 3px 3px 3px papayawhip;
+    box-shadow: 5px 5px 10px steelblue;
+    font-weight: bolder;
+}
+
+.theme_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50%;
+    min-height: 80%;
+    border: 1px solid steelblue;
+    border-radius: 10px;
+    margin: 1em;
+    grid-area: themeImage;
+}
+
+.theme_image_img {
+    height: 80%;
+    width: auto;
+    margin: 1em;
+}
+
+.start-game {
+    width: calc(100% - 2em);
+    margin: 1em;
+    background-color: #ddd;
+    border: 2px solid steelblue;
+    border-radius: 5px 20px 5px 20px;
+    justify-self: center;
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: bolder;
+    border-color: steelblue;
+    text-shadow: 3px 3px 3px papayawhip;
+    transition: all linear 0.2s;
+    cursor: pointer;
+    grid-area: startbtn;
+}
+
+.start-game:hover {
+    box-shadow: 5px 5px 10px steelblue;
+}
+
+.start-game:active {
+    box-shadow: none;
+    border: 4px solid steelblue;
+}
+
+.footer {
+    height: 2em;
+    text-align: center;
+    font-size: smaller;
+}
+
+.game_field {
+    display: grid;
+    width: 75%;
+    margin: auto;
+    gap: 5px;
+}
+
+.game_field.field3x2 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.game_field.field4x3 {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.game_card {
+    aspect-ratio: 0.7 / 1;
+    width: 90%;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    background: radial-gradient(rgba(70, 131, 180, 0.541), white);
+    border: 3px solid black;
+    border-radius: 10px;
+    transition: transform 0.75s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    user-select: none;
+}
+
+.card_face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 260px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    object-fit: contain;
+}
+
+.card_face:hover {
+    border: 3px solid steelblue;
+    background: radial-gradient(rgba(37, 157, 255, 0.705), white);
+    border-radius: 10px;
+}
+
+.card_face_front {
+    width: 100%;
+    color: #ff5700;
+}
+.card_face_back {
+    height: 100%;
+    transform: rotateY(180deg);
+}
+
+.game_card.flipped {
+    transform: rotateY(180deg);
+}
+
+.game_card.pair {
+    box-shadow: 5px 5px 5px #ff5700, -5px -5px 5px #ff5700;
+}
+
+.modal {
+    border: 2px solid #ff5500;
+    border-radius: 15px;
+    background-color: #6926052d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    height: 15em;
+    position: absolute;
+    margin: auto;
+    top: 35%;
+    left: 37.5%;
+    z-index: 1500;
+}
+
+.win_text {
+    margin: 0.5em 0;
+    color: white;
+}
+
+.buttons {
+    color: black;
+    width: 80%;
+    height: 3em;
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    border: 2px solid #692705;
+    border-radius: 10px;
+    background-color: white;
+    transition: all linear 0.2s;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    box-shadow: 5px 5px 3px rgba(255, 255, 255, 0.473);
+    text-shadow: 1px 1px 2px grey;
+}
+
+.coauthorlink {
+    font-size: smaller;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px red;
+}
+
+.coauthorlink:hover:before {
+    content: "View ";
+    position: relative;
+}
+
+.hide {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+    .wrapper {
+        width: 95%;
+    }
+    .nav_menu label {
+        padding: 15px 5px;
+        font-size: 10px;
+    }
+    .game_field {
+        width: auto;
+    }
+    .game_field.field3x2 {
+        grid-template-columns: repeat(3, 30vw);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    .game_field.field4x3 {
+        grid-template-columns: repeat(4, 22.5vw);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .modal {
+        width: 80%;
+        left: 10%;
+        top: 20%;
+    }
+}
+
+@media only screen and (min-width: 769px) and (orientation: portrait) {
+    .wrapper {
+        width: 95%;
+    }
+    .nav_menu label {
+        padding: 30px 5px;
+        font-size: x-large;
+        font-size: 16px;
+    }
+    .start-game {
+        padding: 30px 5px;
+        font-size: x-large;
+    }
+    .game_field {
+        width: auto;
+    }
+    .game_field.field3x2 {
+        grid-template-columns: repeat(3, 30vw);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    .game_field.field4x3 {
+        grid-template-columns: repeat(4, 22.5vw);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1024px) and (orientation: landscape) {
+    .wrapper {
+        width: 95%;
+        height: 80vh;
+    }
+    .main {
+        height: 100%;
+    }
+    .nav_menu label {
+        font-size: 10px;
+    }
+    .nav {
+        grid-template-rows: 25% auto 20%;
+        grid-template-columns: 2fr 4fr 2fr;
+        grid-template-areas:
+            "fieldsize themeImage themes"
+            "fieldsize themeImage themes"
+            "startbtn startbtn startbtn";
+    }
+    .fieldsize {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .fieldsize label {
+        width: 60%;
+    }
+    .themes label {
+        width: 60%;
+    }
+    .theme_image {
+        margin: 0.2em;
+    }
+    .nav_menu {
+        margin: 0.2em;
+    }
+    .nav_menu label {
+        margin: 0.2em;
+    }
+    .start-game {
+        margin: 0.2em;
+    }
+    .game_field {
+        width: auto;
+        margin-top: 2em;
+    }
+    .game_field.field3x2 {
+        grid-template-columns: repeat(3, 30vw);
+        grid-template-rows: repeat(2, 40vh);
+    }
+    .game_field.field4x3 {
+        grid-template-columns: repeat(4, 22.5vw);
+        grid-template-rows: repeat(3, 28vh);
+    }
+
+    .game_card {
+        width: auto;
+        margin: 0.1em;
+    }
+    .modal {
+        width: 60%;
+        left: 20%;
+        top: 20%;
+    }
+}
