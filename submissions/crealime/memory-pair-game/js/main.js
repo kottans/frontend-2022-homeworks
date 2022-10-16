@@ -219,7 +219,7 @@ function initStartPage() {
   startPageUl.addEventListener('click', switchFromStartPage)
 }
 
-function switchFromStartPage (e) {
+function switchFromStartPage(e) {
   e.preventDefault()
 
   const link = e.target.closest('.start-page__link') || null
@@ -257,10 +257,9 @@ function initResultPage() {
   resultPageLink.addEventListener('click', switchFromResultPage)
 }
 
-function switchFromResultPage (e) {
+function switchFromResultPage(e) {
   e.preventDefault()
-  e.target.removeEventListener('click', switchFromResultPage)
-
+  e.currentTarget.removeEventListener('click', switchFromResultPage)
   fadeOutFadeIn(initStartPage)
 }
 
