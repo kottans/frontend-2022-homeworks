@@ -86,9 +86,7 @@ class Player {
   }
 
   lose() {
-    setTimeout(() => {
-      this.resetPosition();
-    }, 100);
+    this.resetPosition();
     alert("Game over. Try again!");
   }
 
