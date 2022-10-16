@@ -28,15 +28,15 @@ const cards = [
 ];
 
 const gameBoard = document.querySelector('.game_board');
-const clickBoard = document.querySelector('.clicks_qty');
-const resetBttn = document.querySelector('.reset_bttn');
-const playBttns = document.querySelectorAll('.play_bttn');
+const clicksBoard = document.querySelector('.clicks_qty');
+const resetBtn = document.querySelector('.reset_btn');
+const playBtns = document.querySelectorAll('.play_btn');
 const winMessage = document.querySelector('.win_message');
 const startMessage = document.querySelector('.start_message');
 const clickQty = document.querySelector('.click_counter');
 
-let boardLocked = true;
-let flippedCardsName = [];
+let isBoardLocked = true;
+let flippedCardsNames = [];
 let flippedCards = [];
 let foundCardsQty = 0;
 let clickCounter = 0;
@@ -63,23 +63,23 @@ generateCards();
 generateCards(cards.length);
 
 function flipCard() {
-    gameBoard.addEventListener('click', (event) => {
-        if (boardLocked || event.target === gameBoard) return;
+    gameBoard.addEventListener('click', ({ target }) => {
+        if (isBoardLocked || target === gameBoard) return;
 
         if (flippedCards.length < 2) {
-            const currentCard = event.target.closest('.card_container');
+            const currentCard = target.closest('.card_container');
             const cardName = currentCard.getAttribute('data-name');
 
             currentCard.classList.add('flipped_card', 'locked');
             flippedCards.push(currentCard);
-            flippedCardsName.push(cardName);
+            flippedCardsNames.push(cardName);
             
             clickCounter++;
-            clickBoard.innerText = `${clickCounter}`;
+            clicksBoard.innerText = `${clickCounter}`;
         };
 
         if (flippedCards.length === 2) {
-            boardLocked = true;
+            isBoardLocked = true;
             setTimeout(checkMatch, 500);
         };
     });
@@ -88,14 +88,14 @@ function flipCard() {
 flipCard();
 
 function checkMatch() {
-    if (flippedCardsName[0] !== flippedCardsName[1]) {
+    if (flippedCardsNames[0] !== flippedCardsNames[1]) {
         setTimeout(() => 
         flippedCards.forEach(card => card.classList.remove('flipped_card', 'locked')), 200);
         setTimeout(resetBoard, 200);
         return;
     };
 
-    if (flippedCardsName[0] === flippedCardsName[1]) {
+    if (flippedCardsNames[0] === flippedCardsNames[1]) {
         flippedCards.forEach(card => card.classList.add('found_locked'));
         foundCardsQty++;
         checkWin();        
@@ -105,9 +105,9 @@ function checkMatch() {
 };
 
 function resetBoard() {
-    flippedCardsName = [];
+    flippedCardsNames = [];
     flippedCards = [];
-    boardLocked = false;
+    isBoardLocked = false;
 };
 
 function checkWin() {
@@ -124,17 +124,17 @@ function resetGame() {
     resetBoard();
     foundCardsQty = 0;
     clickCounter = 0;
-    clickBoard.innerText = `${clickCounter}`;
+    clicksBoard.innerText = `${clickCounter}`;
     gameBoard.innerHTML = '';
     generateCards();
     generateCards(cards.length);
 };
 
-resetBttn.addEventListener('click', () => {
+resetBtn.addEventListener('click', () => {
     resetGame();
 });
 
-playBttns.forEach(bttn => bttn.addEventListener('click', () => {
+playBtns.forEach(btn => btn.addEventListener('click', () => {
     resetGame();
     startMessage.classList.remove('show_message');
     winMessage.classList.remove('show_message');
