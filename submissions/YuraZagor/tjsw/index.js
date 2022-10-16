@@ -11,66 +11,26 @@ function randomSelect(arr){
   return arr[Math.floor(Math.random()*arr.length)]
 };
 
-let manName = randomSelect(manNames);
-let womanName = randomSelect(womanNames);
-let animalName = randomSelect(animalNames);
-
-const inhabitants = [
-  { species: 'human', 
-    gender: 'male',
-    name: 'Vasil',
-    saying: 'Slava natsiyi',
-    friend: 'Hanna',
-    legs: 2,
-    hands: 2,
-  },
-  { species: 'human', 
-    gender: 'female',
-    name: 'Hanna',
-    saying: 'Smert vorogam',
-    friend: 'Vasil',
-    legs: 2,
-    hands: 2,
-  },];
-
-const dogsVolier = [{ 
-  species: 'Dog', 
-  gender: 'female',
-  name: 'Guffy',
-  saying: dogSay,
-  friend: randomSelect(inhabitants).name,
-  paws: 4,
-  tail: 1,
-},];
+let newInhabitants = [];
 
 class Inhabitant {  
-  constructor(species, name, saying, friend, gender, habitat = inhabitants,  ...speciesProperties){
+  constructor(species, name, saying, friend, gender, ...speciesProperties){
     this.species = species;
     this.name = name;
     this.saying = saying;
     this.friend = friend;
     this.gender = gender;
-    this.habitat = habitat;
     this.speciesProperties = speciesProperties;
-  }
-  registerInItsHabitat(){
-    this.habitat.push(this);
   };
-  getCommonProperties(){
+  getInhabitantPropertiesList(){
     const { species, name, saying, friend, gender} = this;
-    return [species, name, saying, friend, gender]
+    return [species, name, saying, friend, gender].concat(this.speciesProperties).join('; ')
   };
-
-  populate(){
-    print(this.getCommonProperties().concat(this.speciesProperties).join('; '),'div');
-    this.registerInItsHabitat()
-  };
-
 };
 
 class Animal extends Inhabitant{
   constructor( species, name, saying, friend, gender, paws, tail){
-    super(species, name, saying, friend, gender);
+    super(species, name, saying, friend, gender, paws, tail);
     this.paws = paws;
     this.tail = tail;
   };
@@ -78,7 +38,6 @@ class Animal extends Inhabitant{
 class Dog extends Animal{
   constructor( name, friend, gender ){
     super('dog', name, dogSay, friend, gender, 4, 1);
-    this.habitat = dogsVolier
   };
 };
 
@@ -90,71 +49,40 @@ class Cat extends Animal{
 
 class Human extends Inhabitant{
   constructor( name, friend, gender, legs = 2, hands = 2){
-    super('human', name, humanSay, friend, gender);
+    super('human', name, humanSay, friend, gender, legs, hands);
     this.legs = legs;
     this.hands = hands;
   };
 };
 
-function createInstance (className, name, friend, gender){
-  if (className.toLowerCase() === 'human') {
-    (new Human(name = randomSelect(womanNames), friend = randomSelect(inhabitants).name, gender = 'female')).populate()
-  } else if (className.toLowerCase() === 'cat') {
-     (new Cat(name = randomSelect(animalNames), friend = randomSelect(inhabitants).name, gender = randomSelect(genders))).populate()
-  } else {
-    (new Dog(name = randomSelect(animalNames), friend = randomSelect(inhabitants).name, gender = randomSelect(genders))).populate()
-  }
+function createInstance (Class, name, friend, gender){
+  if (name, friend, gender){
+    return new Class(name, friend, gender)
+  };
+  if (Class === Human) {
+    return new Human(
+      name = randomSelect(womanNames), 
+      friend = newInhabitants.length === 0 ? randomSelect(animalNames) : randomSelect(newInhabitants).name,
+      gender = 'female')
+  } else if (Class === Cat) {
+    return new Cat(
+      name = randomSelect(animalNames), 
+      friend = newInhabitants.length === 0 ? randomSelect(animalNames) : randomSelect(newInhabitants).name, 
+      gender= randomSelect(genders))
+ } else {
+    return new Dog(
+      name = randomSelect(animalNames), 
+      friend = newInhabitants.length === 0 ? randomSelect(animalNames) : randomSelect(newInhabitants).name, 
+      randomSelect(genders))
+ };
 };
 
-function createMany(num, species){
-  for (let i = 0; i<num; i++){
-    createInstance (species)
-  };  
-};
+newInhabitants = [
+  createInstance (Human), 
+  createInstance (Human),
+  createInstance (Human, 'Maria', 'FriendlyFriend', 'female' ),
+  createInstance (Dog),
+  createInstance (Cat),
+];
+newInhabitants.forEach(inhabitant => print(inhabitant.getInhabitantPropertiesList(), 'div'))
 
-createInstance ('human', manName, animalName, 'male' );
-createInstance ('human', randomSelect(womanNames), animalName, 'female' );
-createInstance ('dog', animalName, 'male', animalName);
-createInstance ('cat', randomSelect(animalNames), 'female', animalName);
-createMany(4, 'human' );
-
-const inputElement = document.createElement('form');
-inputElement.classList.add('input--form');
-document.getElementById('main').appendChild(inputElement);
-inputElement.id = 'form';
-inputElement.innerHTML = 
-`
-  <h3>Let's populate this tiny World!!!</h3>
-  <section class="addNumber" >
-    <label for="num">I wanna add inhabitants, say </label>
-    <select name="num" id="num">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-  </section>
-  <section class="species">
-    <label for="species">It will be </label>
-    <select name="species" id="species">
-      <option value="human">Human</option>
-      <option value="cat">Cat</option>
-      <option value="dog">dog</option>
-    </select>
-  </section>
-    
-  <section class="submission">
-    <input type='submit' value='Create!'>
-  </section>
-  `
-const form = document.getElementById('form');
-form.addEventListener('submit', useFormValue);
-function useFormValue(event) {
-  event.preventDefault();
-   
-  num = document.getElementById('num').value;
-  species = document.getElementById('species').value;
-
-  createMany(num, species);
-};
