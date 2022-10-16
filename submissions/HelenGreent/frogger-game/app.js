@@ -6,7 +6,7 @@ class Enemy {
     this.x = x;
     this.y = y;
     this.speedX = speedX;
-    this.height = 82;
+    this.height = 40;
     this.width = 101;
     this.player = player;
     this.sprite = "images/enemy-bug.png";
@@ -112,7 +112,7 @@ const player = new Player(playerConfiguration);
 const enemyFirstConfiguration = {
   x: 100,
   y: 60,
-  speedX: 140,
+  speedX: 200,
   initialWidth: 400,
   player,
 };
@@ -120,7 +120,7 @@ const enemyFirstConfiguration = {
 const enemySecondConfiguration = {
   x: 100,
   y: 145,
-  speedX: 150,
+  speedX: 180,
   initialWidth: 400,
   player,
 };
@@ -128,7 +128,7 @@ const enemySecondConfiguration = {
 const enemyThirdConfiguration = {
   x: 100,
   y: 230,
-  speedX: 100,
+  speedX: 150,
   initialWidth: 400,
   player,
 };
