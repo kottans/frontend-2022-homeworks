@@ -108,11 +108,11 @@ function resetCardsStage() {
     });
 }
 
-function generateCardsSet(sizeOfSet, highestNumber) {
+function generateCardsSet(sizeOfSet, size) {
     let mixedSetOfPairs = [],
         setOfPairs = [];
     for (let i = 0; i < sizeOfSet / 2; i++) {
-        const randomNumber = Math.floor(Math.random() * highestNumber);
+        const randomNumber = Math.floor(Math.random() * size);
         if (!setOfPairs.includes(randomNumber)) {
             setOfPairs.push(randomNumber, randomNumber);
         } else {

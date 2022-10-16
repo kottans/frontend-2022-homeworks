@@ -1,14 +1,21 @@
 async function makeMenuAndListeners() {
     switchMenuAndGameField();
     await readThemes(themesDataPath);
-    renderMenu();
-    addMenuItemsEventListeners();
+    if (themesData) {
+        renderMenu();
+        addMenuItemsEventListeners();    
+    }
 }
 
 async function readThemes(path) {
     try {
         const response = await fetch(path);
-        themesData = await response.json();
+        if (response.ok) {
+            themesData = await response.json();
+        } else {
+            alert("Something wrong with internet connection or server don't answer. Please, try later.");
+            throw new Error (`${path} fetch error.`);
+        }
     } catch (error) {
         console.log(error);
     }

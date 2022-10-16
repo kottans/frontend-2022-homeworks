@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: #ffeee4;
+    background-color: rgb(255, 238, 228);
 }
 
 .fader {
@@ -18,7 +18,7 @@ body {
     width: 100vw;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.733);
-    z-index: 1000;
+    z-index: 10;
 }
 
 .wrapper {
@@ -27,7 +27,6 @@ body {
     width: 60%;
     margin: auto;
     height: calc(100vh - 4px);
-    /* border: 1px solid green; */
 }
 
 .header {
@@ -40,7 +39,7 @@ body {
 }
 
 .title {
-    text-shadow: 3px 3px 5px steelblue;
+    text-shadow: 3px 3px 5px rgb(70, 130, 180);
 }
 
 .main {
@@ -64,7 +63,7 @@ body {
 
 .nav_menu {
     display: flex;
-    border: 1px solid steelblue;
+    border: 1px solid rgb(70, 130, 180);
     border-radius: 10px;
     margin: 1em;
 }
@@ -83,43 +82,40 @@ body {
     align-items: center;
 }
 
-.nav_menu input[type="radio"] {
+.nav_menu_item {
     appearance: none;
     position: fixed;
     width: 0;
 }
 
-.nav_menu label {
+.nav_menu_item_label {
+    width: 30%;
     display: inline-block;
-    background-color: #ddd;
+    background-color: rgb(221, 221, 221);
     padding: 10px 20px;
     margin: 1em 0;
     font-family: "Mono", sans-serif, Arial;
     font-size: 16px;
-    border: 2px solid grey;
+    border: 2px solid rgb(128, 128, 128);
     text-align: center;
     border-radius: 5px 20px 5px 20px;
     cursor: pointer;
     transition: all linear 0.2s;
 }
 
-.nav_menu label:hover {
-    box-shadow: 5px 5px 10px steelblue;
+.nav_menu_item_label:hover {
+    box-shadow: 5px 5px 10px rgb(70, 130, 180);
 }
 
-.fieldsize label {
-    width: 30%;
-}
-
-.themes label {
+.themes .nav_menu_item_label {
     width: 70%;
 }
 
-.nav_menu input[type="radio"]:checked + label {
-    background-color: rgba(70, 131, 180, 0.3);
-    border-color: steelblue;
-    text-shadow: 3px 3px 3px papayawhip;
-    box-shadow: 5px 5px 10px steelblue;
+.nav_menu_item:checked + label {
+    background-color: rgba(70, 131, 180, 0.302);
+    border-color: rgb(70, 130, 180);
+    text-shadow: 3px 3px 3px rgb(255, 239, 213);
+    box-shadow: 5px 5px 10px rgb(70, 130, 180);
     font-weight: bolder;
 }
 
@@ -144,27 +140,27 @@ body {
 .start-game {
     width: calc(100% - 2em);
     margin: 1em;
-    background-color: #ddd;
-    border: 2px solid steelblue;
+    background-color: rgb(221, 221, 221);
+    border: 2px solid rgb(70, 130, 180);
     border-radius: 5px 20px 5px 20px;
     justify-self: center;
     text-transform: uppercase;
     font-size: large;
     font-weight: bolder;
-    border-color: steelblue;
-    text-shadow: 3px 3px 3px papayawhip;
+    border-color: rgb(70, 130, 180);
+    text-shadow: 3px 3px 3px rgb(255, 239, 213);
     transition: all linear 0.2s;
     cursor: pointer;
     grid-area: startbtn;
 }
 
 .start-game:hover {
-    box-shadow: 5px 5px 10px steelblue;
+    box-shadow: 5px 5px 10px rgb(70, 130, 180);
 }
 
 .start-game:active {
     box-shadow: none;
-    border: 4px solid steelblue;
+    border: 4px solid rgb(70, 130, 180);
 }
 
 .footer {
@@ -201,7 +197,7 @@ body {
     justify-content: center;
     justify-self: center;
     background: radial-gradient(rgba(70, 131, 180, 0.541), white);
-    border: 3px solid black;
+    border: 3px solid #000000;
     border-radius: 10px;
     transition: transform 0.75s;
     transform-style: preserve-3d;
@@ -214,7 +210,7 @@ body {
     width: 100%;
     height: 100%;
     line-height: 260px;
-    color: white;
+    color: #ffffff;
     text-align: center;
     font-weight: bold;
     font-size: 40px;
@@ -224,7 +220,7 @@ body {
 }
 
 .card_face:hover {
-    border: 3px solid steelblue;
+    border: 3px solid rgb(70, 130, 180);
     background: radial-gradient(rgba(37, 157, 255, 0.705), white);
     border-radius: 10px;
 }
@@ -249,7 +245,7 @@ body {
 .modal {
     border: 2px solid #ff5500;
     border-radius: 15px;
-    background-color: #6926052d;
+    background-color: rgba(105, 38, 5, 0.176);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -259,38 +255,40 @@ body {
     margin: auto;
     top: 35%;
     left: 37.5%;
-    z-index: 1500;
+    z-index: 15;
 }
 
 .win_text {
+    font-size: 24px;
+    font-weight: 600;
     margin: 0.5em 0;
     color: white;
 }
 
 .buttons {
-    color: black;
+    color: #000000;
     width: 80%;
     height: 3em;
     font-size: 1.2em;
     margin: 0.5em 0;
-    border: 2px solid #692705;
+    border: 2px solid rgb(105, 39, 5);
     border-radius: 10px;
-    background-color: white;
+    background-color: #ffffff;
     transition: all linear 0.2s;
     cursor: pointer;
 }
 
 .buttons:hover {
     box-shadow: 5px 5px 3px rgba(255, 255, 255, 0.473);
-    text-shadow: 1px 1px 2px grey;
+    text-shadow: 1px 1px 2px rgb(128, 128, 128);
 }
 
 .coauthorlink {
     font-size: smaller;
     text-decoration: none;
-    color: white;
+    color: rgb(255, 255, 255);
     cursor: pointer;
-    text-shadow: 2px 2px 2px red;
+    text-shadow: 2px 2px 2px rgb(255, 0, 0);
 }
 
 .coauthorlink:hover:before {
@@ -306,7 +304,7 @@ body {
     .wrapper {
         width: 95%;
     }
-    .nav_menu label {
+    .nav_menu_item_label {
         padding: 15px 5px;
         font-size: 10px;
     }
@@ -333,7 +331,7 @@ body {
     .wrapper {
         width: 95%;
     }
-    .nav_menu label {
+    .nav_menu_item_label {
         padding: 30px 5px;
         font-size: x-large;
         font-size: 16px;
@@ -363,7 +361,7 @@ body {
     .main {
         height: 100%;
     }
-    .nav_menu label {
+    .nav_menu_item_label {
         font-size: 10px;
     }
     .nav {
@@ -378,10 +376,10 @@ body {
         flex-direction: column;
         justify-content: space-evenly;
     }
-    .fieldsize label {
+    .fieldsize .nav_menu_item_label {
         width: 60%;
     }
-    .themes label {
+    .themes .nav_menu_item_label {
         width: 60%;
     }
     .theme_image {
@@ -390,7 +388,7 @@ body {
     .nav_menu {
         margin: 0.2em;
     }
-    .nav_menu label {
+    .nav_menu_item_label {
         margin: 0.2em;
     }
     .start-game {
