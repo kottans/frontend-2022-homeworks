@@ -1,7 +1,7 @@
 (function() {
     //vars
     const data = {
-        menu : ['Stats', 'Users', 'Exit'],
+        menu : ['Stats', 'Users', 'Big Data'],
         stats : [
             {
                 downloads : '232',
@@ -55,86 +55,189 @@
                 lastName : 'Gussie',
                 position : 'Team Lead'
             }
+        ],
+        bigdata : [
+            {
+                "get": "energy",
+                "pitch": "difficult",
+                "basket": 813996226,
+                "hunter": true,
+                "third": -1001012644.0587597,
+                "low": "whistle",
+                "unusual": "saved",
+                "corn": -169536990.83476973,
+                "solution": true,
+                "salt": false,
+                "join": "afraid"
+            },
+            {
+                "get": "energy",
+                "pitch": "difficult",
+                "basket": 813996226,
+                "hunter": true,
+                "third": -1001012644.0587597,
+                "low": "whistle",
+                "unusual": "saved",
+                "corn": -169536990.83476973,
+                "solution": true,
+                "salt": false,
+                "join": "afraid"
+            },
+            {
+                "get": "energy",
+                "pitch": "difficult",
+                "basket": 813996226,
+                "hunter": true,
+                "third": -1001012644.0587597,
+                "low": "normal",
+                "unusual": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet, aperiam autem, doloribus ducimus facilis fuga officiis pariatur qui soluta, temporibus voluptatem. Itaque officia, totam? Doloremque enim eos fugiat porro!",
+                "corn": -169536990.83476973,
+                "solution": true,
+                "salt": false,
+                "join": "afraid"
+            },
+            {
+                "get": "energy",
+                "pitch": "easy",
+                "basket": 813996226,
+                "hunter": true,
+                "third": -1001012644.0587597,
+                "low": "whistle",
+                "unusual": "saved",
+                "corn": -169536990.83476973,
+                "solution": true,
+                "salt": false,
+                "join": "afraid"
+            },
+            {
+                "get": "energy",
+                "pitch": "difficult",
+                "basket": 813996226,
+                "hunter": false,
+                "third": -1001012644.0587597,
+                "low": "whistle",
+                "unusual": "saved",
+                "corn": -169536990.83476973,
+                "solution": true,
+                "salt": false,
+                "join": "afraid"
+            },
+            {
+                "get": "energy",
+                "pitch": "difficult",
+                "basket": 813996226,
+                "hunter": false,
+                "third": -1001012644.0587597,
+                "low": "whistle",
+                "unusual": "saved",
+                "corn": -169536990.83476973,
+                "solution": true,
+                "salt": false,
+                "join": "afraid"
+            },
+            {
+                "get": "energy",
+                "pitch": "difficult",
+                "basket": 813996226,
+                "hunter": true,
+                "third": -1001012644.0587597,
+                "low": "whistle",
+                "unusual": "saved",
+                "corn": -169536990.83476973,
+                "solution": false,
+                "salt": false,
+                "join": "afraid"
+            }
         ]
     };
 
+    const appContainer = document.getElementById('app__content');
+    const appSidebar = document.getElementById('app__side');
+    const statsContainer = document.createElement('div');
+    statsContainer.classList.add('table-container');
+
     //helpers
     const generateTable = (table, data) => {
-        let thead = table.createTHead();
-        let tbody = table.createTBody();
-        let rowHead = thead.insertRow();
+        const thead = table.createTHead();
+        const tbody = table.createTBody();
+        const rowHead = thead.insertRow();
         let titles = '';
 
         //Generate Headings
-        for (let [index, element] of data.entries()) {
+        for (const [index, element] of data.entries()) {
             titles = Object.keys(element);
         }
 
         //add titles to head
         for (let i = 0; i < titles.length; i++) {
-            let cell = rowHead.insertCell(i);
+            const cell = rowHead.insertCell(i);
             cell.innerHTML = titles[i].split(/(?=[A-Z])/).join(' ');
         }
 
-        let cell1 = rowHead.insertCell(0);
+        const cell1 = rowHead.insertCell(0);
         cell1.innerHTML = '#';
 
         //Generate Body
-        for (let [index, element] of data.entries()) {
-            let row = tbody.insertRow();
-            let numberRow = row.insertCell();
+        for (const [index, element] of data.entries()) {
+            const row = tbody.insertRow();
+            const numberRow = row.insertCell();
             numberRow.append(index + 1);
 
             for (key in element) {
-                let cell = row.insertCell();
-                let text = document.createTextNode(element[key]);
+                const cell = row.insertCell();
+                const text = document.createTextNode(element[key]);
                 cell.appendChild(text);
             }
         }
     }
 
     // init menu
-    let nav = document.createElement('nav'); 
-    let ul = document.createElement('ul');
+    const nav = document.createElement('nav');
+    const ul = document.createElement('ul');
     ul.classList.add('sidebar');
 
-    data.menu.forEach(item => {
-        let li = document.createElement('li');
+    data.menu.forEach((item, index) => {
+        const li = document.createElement('li');
         
         li.classList.add('sidebar__item');
-        li.innerHTML += '<a class="sidebar__link" href="#">' + item + '</a>';
+        li.innerHTML += `
+            <span class="sidebar__link ${index===0 ? 'sidebar__link_active' : ''}" data-item="${item.toLowerCase().replace(/ /g,'')}">${item}</span>`;
 
         ul.append(li);
     });
 
-    document.getElementById('app__side').appendChild(nav).appendChild(ul);
+    appSidebar.appendChild(nav).appendChild(ul);
 
     // init data
-    document.getElementById('app__side').addEventListener('click', (e) => {
-        const value = e.preventDefault();
+    appSidebar.addEventListener('click', (e) => {
+        e.preventDefault();
 
-        //remove active from all links
-        document.querySelectorAll('a.sidebar__link').forEach(linkInner => {
-            linkInner.classList.remove('sidebar__link_active');
-        });
+        if (e.target.classList.contains('sidebar__link')) {
+            //remove active from all links
+            document.querySelectorAll('.sidebar__link').forEach(linkInner => {
+                linkInner.classList.remove('sidebar__link_active');
+            });
 
-        e.target.classList.add('sidebar__link_active');
+            e.target.classList.add('sidebar__link_active');
+        }
 
-        let linkUrl = e.target.innerHTML.toLowerCase();
-        let statsTable = document.createElement('table');
+        const linkUrl = e.target.getAttribute("data-item");
+
+        const statsTable = document.createElement('table');
 
         if(data[linkUrl]) {
             generateTable(statsTable, data[linkUrl]);
-
-            document.getElementById('app__content').innerHTML = null;
-            document.getElementById('app__content').append(statsTable);
+            statsContainer.innerHTML = null;
+            statsContainer.append(statsTable);
+            appContainer.append(statsContainer);
         }
     });
 
     //default data
-    let statsTable2 = document.createElement('table');
-    generateTable(statsTable2, data.stats);
+    const statsTableDefault = document.createElement('table');
+    generateTable(statsTableDefault, data.stats);
 
-    document.getElementById('app__content').appendChild(statsTable2);
+    statsContainer.append(statsTableDefault);
+    appContainer.append(statsContainer);
 
 })();
