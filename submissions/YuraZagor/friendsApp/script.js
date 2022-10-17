@@ -23,7 +23,7 @@ const fetchUsers = async () => {
   }
 };
 
-async function friendsLoad(inputValue) {
+async function interactiveFriendsLoad(inputValue) {
   const loadedResults = await fetchUsers();
   searchByUserName(loadedResults);
   
@@ -52,12 +52,12 @@ async function friendsLoad(inputValue) {
     }; 
   fillCardContainer(forPrintData)
 };  
-friendsLoad();
+interactiveFriendsLoad();
   
 inputsForm.onclick = function(event){
   let input = event.target.closest('input');
   if (!input) return;
-  friendsLoad(input.value);
+  interactiveFriendsLoad(input.value);
 };
 
 function fillCardContainer(data) {
