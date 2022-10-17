@@ -1,0 +1,294 @@
+@import url("./fonts/fonts.css");
+@import url("./reset.css");
+
+$font-head: 'Big Shoulders Stencil Text';
+$font-text: 'Delius';
+$font-menu: 'Covered By Your Grace';
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    background: rgba(128, 128, 128, 0.37);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url("./img/bg-main.jpg");
+    background-size: cover;
+    backdrop-filter: blur(3px);
+    font-family: $font-text;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 60px;
+    font-family: $font-head;
+    text-shadow: -2px 2px 5px white;
+}
+
+header {
+    font-family: $font-head;
+
+    & a {
+        color: rgba(255, 255, 255, 0.4);
+        transition: all 2s ease-out;
+
+        &:hover {
+            color: rgb(255, 255, 255);
+            text-shadow: 0 10px black;
+        }
+
+        &:active {
+            color: black;
+            text-shadow: 0 0 5px white;
+        }
+    }
+
+    & h1 {
+        font-size: 120px;
+        margin: 50px;
+        margin-bottom: 80px;
+        padding: 20px;
+        border: 10px double black;
+        background: rgba(6, 0, 0, 0.655);
+        transition: all 2s ease-out;
+        border-radius: 30%;
+
+        &:hover {
+            font-size: 130px;
+        }
+
+        animation: shadow 2s infinite;
+    }
+}
+
+section {
+    &.main {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        max-width: 80%;
+        flex: 1;
+        background: rgba(255, 255, 255, 0.586);
+        border-radius: 20px;
+        flex: 1 0 auto;
+    }
+}
+
+
+
+.menu {
+    padding: 30px;
+    padding-top: 50px;
+    border-right: 3px dotted black;
+    width: 30%;
+    height: 100vh;
+    align-items: center;
+
+    &__list {
+        padding: 0px 5px;
+    }
+
+    &__item {
+        font-family: $font-menu;
+        font-size: 40px;
+        cursor: pointer;
+        transition: all 0.5s ease-in;
+
+        &:hover {
+            padding-left: 5px;
+            text-shadow: 0 0 2px #fbff07;
+
+        }
+
+        &.active {
+            color: rgb(255, 254, 254);
+            text-shadow: 0 0 5px black;
+        }
+    }
+}
+
+.content {
+    width: 70%;
+    margin: 30px;
+
+    &-body {
+        padding-top: 30px;
+    }
+}
+
+footer {
+    flex-shrink: 1;
+    background: grey;
+}
+
+@keyframes shadow {
+    from {
+        box-shadow: 0 5px rgb(255, 0, 0);
+    }
+
+    30% {
+        box-shadow: 0 5px #af007e;
+    }
+
+    60% {
+        box-shadow: 0 5px #fbff07;
+    }
+
+    to {
+        box-shadow: 0 5px #0013e6;
+    }
+}
+
+@media (max-width: 1320px) {
+    header {
+        & h1 {
+            font-size: 80px;
+            margin: 30px;
+            margin-bottom: 40px;
+
+            &:hover {
+                font-size: 100px;
+            }
+        }
+    }
+
+    .menu__item {
+        font-size: 1.9em;
+    }
+}
+
+
+@media (max-width: 990px) {
+    header {
+        & h1 {
+            font-size: 60px;
+            margin: 30px;
+            margin-bottom: 40px;
+
+            &:hover {
+                font-size: 70px;
+            }
+        }
+    }
+
+    .menu {
+        padding: 10px;
+        padding-top: 50px;
+    }
+
+}
+
+@media (max-width: 770px) {
+    body {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    header {
+        padding-bottom: 10px;
+
+        & h1 {
+            font-size: 45px;
+            margin: 5px;
+
+            &:hover {
+                font-size: 50px;
+            }
+        }
+    }
+
+    section {
+        &.main {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            max-width: none;
+        }
+    }
+
+    .menu {
+        padding: 5px;
+        padding-top: 10px;
+        height: auto;
+        border: none;
+        width: 100%;
+
+        &__list {
+            padding: 0px 5px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        &__item {
+            font-size: 25px;
+            cursor: pointer;
+            transition: all 0.5s ease-in;
+
+            &:hover {
+                padding-left: 5px;
+                text-shadow: 0 0 2px #fbff07;
+            }
+
+            &.active {
+                color: rgb(255, 254, 254);
+                text-shadow: 0 0 5px black;
+            }
+        }
+    }
+
+    .content {
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 10px;
+
+        &-body {
+            padding-top: 10px;
+            text-align: justify;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        font-size: 12px;
+    }
+
+    header {
+        padding-bottom: 10px;
+
+        h1 {
+            font-size: 20px;
+            margin: 5px;
+
+            &:hover {
+                font-size: 23px;
+            }
+        }
+    }
+
+    section {
+        &.main {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            max-width: none;
+        }
+    }
+
+    .menu {
+        &__item {
+            font-size: 12px;
+        }
+    }
+}
