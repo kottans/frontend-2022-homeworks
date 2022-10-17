@@ -16,7 +16,7 @@
 	background-color: rgb(199, 198, 198);
 }
 
-.form{
+.forms--div{
 	display: flex;
 	justify-content: center;
 	justify-content: space-around;
@@ -26,6 +26,7 @@
 	border: 1px solid rgb(248, 246, 246);
 }
 
+
 .age--sorting,
 .gender--sorting, 
 .name--sorting,
@@ -33,10 +34,9 @@
 .main-search,
 .upper,
 .lower
- {
+{
 	border: 1px solid rgb(248, 246, 246);
 	display: flex;
-
 	justify-content: center;
 	align-items: center;
 	user-select: none;
@@ -94,11 +94,15 @@
 	color: white;
 }
 
+label, .reset--button{
+	cursor: pointer;
+} 
+
 .user-info{
 	display: flex;
 	flex-direction: column;
 	justify-items: space-between;
-
+	
 }
 .user-location{
 	color:rgb(28, 101, 104);
