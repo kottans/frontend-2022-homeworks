@@ -188,6 +188,10 @@ function createChat(userPicture, userFullName) {
   userChat.innerHTML = createChatTemplate(userPicture, userFullName);
   userChat.classList.add("chat_window");
   userCards.append(userChat);
+  sendMessage();
+}
+
+function sendMessage () {
   let sendByEnter = document.querySelector(".chat_input");
   sendByEnter = addEventListener("change", printMessage);
 }
