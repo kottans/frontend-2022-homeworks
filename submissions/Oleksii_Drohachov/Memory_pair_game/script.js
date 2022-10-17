@@ -3,7 +3,13 @@ const modal = document.querySelector(".modal__container");
 const gameboard = document.querySelector(".gameboard");
 const scoreCount = document.querySelector(".score__container");
 
-// creating modal window
+let score = 0;
+let guessedCardPairs = [];
+let hasFlipped = false;
+let lockBoard = false;
+let firstCard, secondCard;
+
+// creating Modal window
 const modalWrapper = document.createElement("div");
 modalWrapper.classList.add("modal__wrapper");
 const modalTitle = document.createElement("p");
@@ -24,10 +30,27 @@ modalWrapper.append(closeBtn);
 
 modal.append(modalWrapper);
 
+// creating Score table
+const scoreSpan = document.createElement("span");
+scoreSpan.classList.add("score__span");
+scoreSpan.textContent = `Number of tries: ${score}`;
+const resetBtn = document.createElement("button");
+resetBtn.addEventListener("click", () =>
+  renderModal("Are you sure, you want to restart the game?", "RESET")
+);
+resetBtn.classList.add("reset__btn");
+resetBtn.textContent = "RESTART";
+scoreCount.append(scoreSpan);
+scoreCount.append(resetBtn);
+
 renderModal(
   "You are welcome, my friend ! Wanna play some memory game to endure your mind and become more powerfull ? Try to find pairs of cards as fast as you can! Tap the button to begin... ",
   "START THE GAME"
 );
+
+function updateScore() {
+  scoreSpan.textContent = `Number of tries: ${score}`;
+}
 
 function renderModal(titleText, btnText) {
   modalTitle.textContent = titleText;
@@ -40,13 +63,16 @@ function hideModal() {
 }
 
 function startGame() {
-  scoreCount.innerHTML = "";
+  guessedCardPairs = [];
   gameboard.innerHTML = "";
+  score = 0;
+  updateScore();
   hideModal();
-  prepareGame();
+  prepareGameBoardLayOut();
+  gameboard.addEventListener("click", cardsHandler);
 }
 
-function prepareGame() {
+function prepareGameBoardLayOut() {
   const cardsArray = [
     {
       name: "beast",
@@ -77,32 +103,8 @@ function prepareGame() {
   shuffled.sort(function () {
     return 0.5 - Math.random();
   });
-  let score = 0;
-  let guessedCardPairs = [];
 
-  renderScoreAndReset();
   renderCards(shuffled);
-  cardsHandler();
-
-  const scoreSpan = document.querySelector(".score__span");
-
-  function renderScoreAndReset() {
-    const scoreSpan = document.createElement("span");
-    scoreSpan.classList.add("score__span");
-    scoreSpan.textContent = `Number of tries: ${score}`;
-    const resetBtn = document.createElement("button");
-    resetBtn.addEventListener("click", () =>
-      renderModal("Are you sure, you want to restart the game?", "RESET")
-    );
-    resetBtn.classList.add("reset__btn");
-    resetBtn.textContent = "RESTART";
-    scoreCount.append(scoreSpan);
-    scoreCount.append(resetBtn);
-  }
-
-  function updateScore() {
-    scoreSpan.textContent = `Number of tries: ${score}`;
-  }
 
   function renderCards(arr) {
     const cardWrapper = document.createElement("div");
@@ -125,79 +127,70 @@ function prepareGame() {
     });
     gameboard.append(cardWrapper);
   }
+}
 
-  function cardsHandler() {
-    gameboard.addEventListener("click", ({ target }) => {
-      if (
-        target.parentElement.classList.contains("card") &&
-        !guessedCardPairs.includes(target.parentElement.dataset.name)
-      ) {
-        flipCard(target.parentElement);
+function cardsHandler({ target }) {
+  const clickedCard = target.closest(".card");
+  if (!clickedCard || guessedCardPairs.includes(clickedCard.dataset.name))
+    return;
+  flipCard(clickedCard);
+
+  function flipCard(card) {
+    if (lockBoard) return;
+    if (card === firstCard) return;
+
+    card.classList.add("flip");
+
+    if (!hasFlipped) {
+      hasFlipped = true;
+      firstCard = card;
+    } else {
+      secondCard = card;
+      compareCards();
+    }
+  }
+
+  function compareCards() {
+    score++;
+    updateScore();
+    firstCard.dataset.name === secondCard.dataset.name
+      ? disableCards()
+      : unFlipCards();
+  }
+
+  function disableCards() {
+    lockBoard = true;
+
+    setTimeout(() => {
+      firstCard.classList.add("disabled");
+      secondCard.classList.add("disabled");
+
+      guessedCardPairs = [...guessedCardPairs, firstCard.dataset.name];
+
+      resetBoard();
+
+      if (guessedCardPairs.length === 6) {
+        renderModal(
+          "Good job my friend! You became even stronger! Want to start one more time?",
+          "RESET"
+        );
       }
-    });
+    }, 1000);
+  }
 
-    let hasFlipped = false;
-    let lockBoard = false;
-    let firstCard, secondCard;
+  function unFlipCards() {
+    lockBoard = true;
 
-    function flipCard(card) {
-      if (lockBoard) return;
-      if (card === firstCard) return;
+    setTimeout(() => {
+      firstCard.classList.remove("flip");
+      secondCard.classList.remove("flip");
 
-      card.classList.add("flip");
+      resetBoard();
+    }, 1000);
+  }
 
-      if (!hasFlipped) {
-        hasFlipped = true;
-        firstCard = card;
-      } else {
-        secondCard = card;
-        compareCards();
-      }
-    }
-
-    function compareCards() {
-      score++;
-      updateScore();
-
-      let comparison = firstCard.dataset.name === secondCard.dataset.name;
-      comparison ? disableCards() : unFlipCards();
-    }
-
-    function disableCards() {
-      lockBoard = true;
-
-      setTimeout(() => {
-        firstCard.classList.add("disabled");
-        secondCard.classList.add("disabled");
-
-        guessedCardPairs = [...guessedCardPairs, firstCard.dataset.name];
-
-        resetBoard();
-
-        if (guessedCardPairs.length === 6) {
-          guessedCardPairs = [];
-          renderModal(
-            "Good job my friend! You became even stronger! Want to start one more time?",
-            "RESET"
-          );
-        }
-      }, 1000);
-    }
-
-    function unFlipCards() {
-      lockBoard = true;
-
-      setTimeout(() => {
-        firstCard.classList.remove("flip");
-        secondCard.classList.remove("flip");
-
-        resetBoard();
-      }, 1000);
-    }
-
-    function resetBoard() {
-      [hasFlipped, lockBoard] = [false, false];
-      [firstCard, secondCard] = [null, null];
-    }
+  function resetBoard() {
+    [hasFlipped, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
   }
 }
