@@ -23,7 +23,7 @@ Enemy.prototype.update = function(dt) {
         this.speed = speedGenerator();
     }
 
-    this.collisionsCheck(player);
+    this.collisionsCheck(this.player);
 };
 
 Enemy.prototype.collisionsCheck = function(player) {
@@ -57,8 +57,8 @@ Player.prototype.update = function() {
     }
 
     if(this.y < 0) {
-        player.winCount++;
-        player.reset();
+        this.winCount++;
+        this.reset();
     }
 
     if (this.x < 0) {
@@ -103,13 +103,13 @@ const speedGenerator = () => {
     return Math.floor(Math.random() * 150 + 100)
 }
 
-//generate enemies
-for (let i = 0; i < ENEMIES_COUNT; i++ ) {
-    allEnemies.push(new Enemy(i, Player));
-}
-
 // Place the player object in a variable called player
 const player = new Player(CELL_WIDTH * 2 , CELL_HEIGHT * 6);
+
+//generate enemies
+for (let i = 0; i < ENEMIES_COUNT; i++ ) {
+    allEnemies.push(new Enemy(i, player));
+}
 
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {
