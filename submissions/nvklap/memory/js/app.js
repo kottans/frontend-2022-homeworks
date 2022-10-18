@@ -1,36 +1,36 @@
 const cardsData = [
   {
     id: 1,
-    imgSrc: './img/cards/wizard.png',
+    imgSrc: './img/cards/wizard.png'
   },
   {
     id: 2,
-    imgSrc: './img/cards/bouncer.png',
+    imgSrc: './img/cards/bouncer.png'
   },
   {
     id: 3,
-    imgSrc: './img/cards/shane.png',
+    imgSrc: './img/cards/shane.png'
   },
   {
     id: 4,
-    imgSrc: './img/cards/elliott.png',
+    imgSrc: './img/cards/elliott.png'
   },
   {
     id: 5,
-    imgSrc: './img/cards/sandy.png',
+    imgSrc: './img/cards/sandy.png'
   },
   {
     id: 6,
-    imgSrc: './img/cards/marnie.png',
+    imgSrc: './img/cards/marnie.png'
   },
   {
     id: 7,
-    imgSrc: './img/cards/sam.png',
+    imgSrc: './img/cards/sam.png'
   },
   {
     id: 8,
-    imgSrc: './img/cards/robin.png',
-  },
+    imgSrc: './img/cards/robin.png'
+  }
 ];
 
 const contentWrapper = document.querySelector('.content');
@@ -78,9 +78,7 @@ function compareChosenCards(queue) {
 
 function manageChosenCards(queue, className, doMatch) {
   setTimeout(() => {
-    queue.forEach((card) => {
-      card.classList.toggle(className);
-    });
+    queue.forEach((card) => card.classList.toggle(className));
     queue.splice(0, queue.length);
 
     if (doMatch) {
@@ -130,9 +128,7 @@ function createCardBoard(deckData) {
 }
 
 function shuffleCardDeck(deck) {
-  deck.sort(function () {
-    return 0.5 - Math.random();
-  });
+  deck.sort(() => 0.5 - Math.random());
 }
 
 function showCardBoard(deck) {
