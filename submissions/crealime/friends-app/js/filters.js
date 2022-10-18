@@ -63,12 +63,12 @@ export default class Filters {
     this.setHistory()
   }
 
-  sortPersons(sortFoo) {
-    this.GLOB.friends.personsEdit = this.GLOB.friends.personsEdit.sort(sortFoo)
+  sortPersons(sortFunction) {
+    this.GLOB.friends.personsEdit = this.GLOB.friends.personsEdit.sort(sortFunction)
   }
 
-  filterPersons(filterFoo) {
-    this.GLOB.friends.personsEdit = this.GLOB.friends.personsEdit.filter(filterFoo)
+  filterPersons(filterFunction) {
+    this.GLOB.friends.personsEdit = this.GLOB.friends.personsEdit.filter(filterFunction)
   }
 
   filterFriendsByURL(url) {
