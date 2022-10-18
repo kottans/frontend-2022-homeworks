@@ -62,7 +62,6 @@ $color-table-item: rgb(225, 205, 134);
     cursor: pointer;
     border: .8rem $color-menu-dark solid;
     background-color: $color-menu-item;
-
 }
 
 .menu__title {
@@ -135,38 +134,40 @@ $color-table-item: rgb(225, 205, 134);
     color: white;
 }
 
-@media (max-width: 480px) {
+$one-px : 0.06em;
+$bp-small-0 : 10em;
+$bp-small-1 : 22em; //320
+$bp-small-2 : 30em; //480
+$bp-med-1 : 40em;
+$bp-med-2 : 45em; //768
+$bp-large-1 : 50em;
+$bp-large-2 : 55em;
+$bp-xl-1 : 60em; // 992
+$bp-xl-2 : 67em; // 
+$bp-xl-3 : 75em; // 1200
+
+$screen-resolution-range: (
+    $bp-small-0 : $bp-small-1 - $one-px,
+    $bp-small-1 : $bp-small-2 - $one-px,
+    $bp-small-2 : $bp-med-1 - $one-px,
+    $bp-med-1 : $bp-med-2 - $one-px,
+    $bp-med-2 : $bp-large-1 - $one-px,
+    $bp-large-1 : $bp-large-2 - $one-px,
+    $bp-large-2 : $bp-xl-1 - $one-px,
+    $bp-xl-1 : $bp-xl-2 - $one-px,
+    $bp-xl-2 : $bp-xl-3 - $one-px,
+    $bp-xl-3 : $bp-xl-3 + $bp-xl-3,    
+);
+
+@mixin html-font ($font-size) {
     html {
-        font-size: 38%;
+        font-size: $font-size;
     }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
-    html {
-        font-size: 47%;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 992px) {
-    html {
-        font-size: 54%;
-    }
-}
-
-@media (min-width: 993px) and (max-width: 1200px) {
-    html {
-        font-size: 60%;
-    }
-}
-
-@media (min-width: 1201px) {
-    html {
-        font-size: 70%;
-    }
-}
-
-@media (max-width: 768px) and (orientation: landscape) {
-    html {
-        font-size: 60%;
+@each $min-width,
+$max-width in $screen-resolution-range {
+    @media all and (min-width: $min-width) and (max-width: $max-width) {
+        @include html-font (calc($min-width/ 100));
     }
 }
