@@ -1,3 +1,24 @@
+const buttonSwitch = document.querySelector('.switcher-theme__input');
+buttonSwitch.addEventListener('click', toggleClass);
+
+function toggleClass({ currentTarget }) {
+	const inputStatus = currentTarget.checked;
+	if (inputStatus) {
+		document.body.classList.add('dark-theme');
+	} else {
+		document.body.classList.remove('dark-theme');
+	}
+	localStorage.setItem('Theme', inputStatus);
+}
+function savesThemeSelection() {
+	if (localStorage.getItem('Theme') == 'true') {
+		document.body.classList.add('dark-theme');
+		buttonSwitch.checked = 'true';
+	}
+}
+savesThemeSelection();
+
+
 const cards = document.querySelectorAll('.cards__item');
 
 let hasFlippedCards = false;

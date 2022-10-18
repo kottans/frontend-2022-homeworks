@@ -1,15 +1,69 @@
+/* ====================================== Common Styles ====================================== */
 * {
 	box-sizing: border-box;
 }
 body {
-	overflow: hidden;
-	background: radial-gradient(circle at 50% -20.71%, #ffff99 0, #ffff7d 16.67%, #ffff5f 33.33%, #f2f23c 50%, #cfe503 66.67%, #abd800 83.33%, #85cd00 100%);
+	font-family: Roboto, sans-serif;
+	margin: 0;
+	background: linear-gradient(90deg, #aea4e3, #d3ffe8);
 }
+
+/* ====================================== Switcher Styles ====================================== */
+.switcher-theme {
+	position: absolute;
+	top: 23px;
+	left: calc(50% - 150px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	width: 300px;
+}
+.switcher-theme__description {
+	font-weight: 500;
+	color: #8a81b7;
+	order: 1;
+}
+.switcher-theme__input {
+	position: relative;
+	width: 42px;
+	height: 21px;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #bcbbbb;
+	box-shadow: 0 0 4px #bcbbbb;
+	border-radius: 30px;
+	cursor: pointer;
+	order: 2;
+}
+.switcher-theme__input:before {
+	content: '';
+	position: absolute;
+	top: -2px;
+	width: 25px;
+	height: 25px;
+	background-color: #e8b6a4;
+	border-radius: 50%;
+	box-shadow: 0 0 3px #debbae;
+}
+.switcher-theme__input:checked:before {
+	left: 19px;
+	background-color: #3b5f4c;
+	box-shadow: 0 0 3px #406652;
+}
+.switcher-theme__input:checked ~ .switcher-theme__description {
+	color: #bcbbbb;
+}
+.dark-theme {
+	background: linear-gradient(90deg, #2f2b41, #263d31);
+}
+
+/* ====================================== Main Structure Styles ====================================== */
 .container {
 	max-width: 100vh;
 	height: 100%;
 	margin: 0 auto;
-	padding: 40px 20px;
+	padding: 70px 20px 40px 20px;
 }
 .cards {
 	width: 100%;
@@ -54,6 +108,9 @@ body {
 }
 
 @media (max-width: 500px) {
+	.switcher-theme {
+		top: 177px;
+	}
 	.container {
 		margin-top: 150px;
 		height: 60%;
