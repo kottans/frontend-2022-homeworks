@@ -5,32 +5,40 @@ const playerHight = 60;
 const playerWidth = 80;
 const playerMoveX  = 102;
 const playerMoveY  = 83;
+const enemyRestartX = -50;
+const enemyY = 60;
+const enemyMinSpeed = 50;
+const enemyMaxSpeed = 250;
 
-const Enemy = function(x, y, speed) {
+const Enemy = function (x, y, speed, player) {
     this.x = x;
     this.y = y;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
+    this.player = player;
 };
 
 Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
 
     if (this.x > fieldX) {
-        this.x = -50;
-        this.speed = 50 + Math.floor(Math.random() * 200);
+        this.x = enemyRestartX;
+        this.speed = enemyMinSpeed + Math.floor(Math.random() * (enemyMaxSpeed - enemyMinSpeed));
     }
+    this.colision()
+};
 
-    if (player.x < this.x + playerWidth &&
-        player.x + playerWidth > this.x &&
-        player.y < this.y + playerHight &&
-        playerHight + player.y > this.y) {
-        player.x = playerX;
-        player.y = playerY;
+Enemy.prototype.colision = function () {
+    if (this.player.x < this.x + playerWidth &&
+        this.player.x + playerWidth > this.x &&
+        this.player.y < this.y + playerHight &&
+        playerHight + this.player.y > this.y) {
+        this.player.x = playerX;
+        this.player.y = playerY;
     }
 };
 
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -42,27 +50,28 @@ const avatarPlayer = [
     'images/char-princess-girl.png',
 ];
 
-const avatar = function () {
-    return avatarPlayer[Math.floor(Math.random()*avatarPlayer.length)]
-};
+class Player {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.sprite = 'images/char-boy.png';
+    }
+    getAvatar() {
+        return avatarPlayer[Math.floor(Math.random()*avatarPlayer.length)]
+    }
+}
 
-const Player = function(x, y) {
-    this.x = x;
-    this.y = y;
-    this.sprite = 'images/char-boy.png';
-};
-
-Player.prototype.update = function(){
+Player.prototype.update = function () {
     if (this.y < 0) {
         setTimeout(() => {
             this.x = playerX;
             this.y = playerY;
-            this.sprite = avatar();
+            this.sprite = player.getAvatar();
         }, 50);
     }
 };
 
-Player.prototype.render = function(){
+Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -81,16 +90,29 @@ Player.prototype.handleInput = function (allowKeys) {
     }
 };
 
+const player = new Player(playerX, playerY);
+
 const allEnemies = [];
+const enemyLocation = [];
+const enemyAmount = 3;
+const arrEnemy = [];
 
-const enemyLocation = [63, 147, 230];
+for (let i = 0; i < enemyAmount; i++){
+    arrEnemy.push(i)
+}
 
-enemyLocation.forEach(function (locationY) {
-    const enemy = new Enemy(0, locationY, 50 + Math.floor(Math.random() * 200));
+const getEnemyLocation = (arr) => {
+    arr.reduce((acc) => {
+        enemyLocation.push(acc);
+        return acc + playerMoveY;
+    }, enemyY);
+};
+getEnemyLocation(arrEnemy);
+
+enemyLocation.map( locationY => {
+    const enemy = new Enemy(0, locationY, enemyMinSpeed + Math.floor(Math.random() * (enemyMaxSpeed - enemyMinSpeed)), player);
     allEnemies.push(enemy);
 });
-
-const player = new Player(playerX, playerY);
 
 document.addEventListener('keyup', function(e) {
     let allowedKeys = {
