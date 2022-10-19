@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    let initFriends = {
+    const initFriends = {
         profileCard: {
             width: 270,
             height: 100,
@@ -10,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
             rows: 0,
         },
         randomuser: {
-            base: 'https://randomuser.me/api/',
+            base: "https://randomuser.me/api/",
             get fullUrl() {
                 return new URL(`${this.base}${this.search}`);
             },
@@ -21,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
             gender: [],
             nat: [],
             inc: [],
-            exc: ['login', 'registered', 'id'],
+            exc: ["login", "registered", "id"],
         },
         filter: {
             searchName: "",
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 max: 0,
                 currentMin: 0,
                 currentMax: 0,
-            }
+            },
         },
         sortCard: {
             nameABC: false,
@@ -47,83 +46,96 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     let dateFriendsServer = {};
+    
+    filterBeforeServer = () => {
+        initFriends.randomuser.results = document.querySelector("#check-totalFriend").value;
 
-    function filterBeforeServer() {
-        initFriends.randomuser.results = document.querySelector('#check-totalFriend').value;
+        fixationСhoice = (choice, arrayChoice, stringChoice) => {
+            if (document.querySelector(choice).checked) {
+                arrayChoice.push(stringChoice);
+            }
+        };
 
         const buttonGender = [];
-        document.querySelector('#check-male').checked ? buttonGender.push('male') : false;
-        document.querySelector('#check-female').checked ? buttonGender.push('female') : false;
+        fixationСhoice("#check-male", buttonGender, "male");
+        fixationСhoice("#check-female", buttonGender, "female");
         initFriends.randomuser.gender = buttonGender;
 
         const buttonNation = [];
-        document.querySelector('#check-UA').checked ? buttonNation.push('UA') : false;
-        document.querySelector('#check-ES').checked ? buttonNation.push('ES') : false;
-        document.querySelector('#check-GB').checked ? buttonNation.push('GB') : false;
-        document.querySelector('#check-NO').checked ? buttonNation.push('NO') : false;
-        document.querySelector('#check-CA').checked ? buttonNation.push('CA') : false;
-        document.querySelector('#check-US').checked ? buttonNation.push('US') : false;
+        fixationСhoice("#check-UA", buttonNation, "UA");
+        fixationСhoice("#check-ES", buttonNation, "ES");
+        fixationСhoice("#check-GB", buttonNation, "GB");
+        fixationСhoice("#check-NO", buttonNation, "NO");
+        fixationСhoice("#check-CA", buttonNation, "CA");
+        fixationСhoice("#check-US", buttonNation, "US");
         initFriends.randomuser.nat = buttonNation;
-    }
-
+    };
+    
     async function readDateServer() {
         const response = await fetch(initFriends.randomuser.fullUrl);
-        response.ok ? dateFriendsServer = await response.json()
+        response.ok
+            ? (dateFriendsServer = await response.json())
             : alert("Error HTTP: " + response.status);
+    }
+    
+    updateForm = () => {
+        initFriends.filter.age.min = Math.min(
+            ...dateFriendsServer.results.map((friends) => friends.dob.age)
+        );
+        initFriends.filter.age.max = Math.max(
+            ...dateFriendsServer.results.map((friends) => friends.dob.age)
+        );
+
+        document.querySelector("#check-minAge").min = initFriends.filter.age.min;
+        document.querySelector("#check-minAge").max = initFriends.filter.age.max;
+        document.querySelector("#check-minAge").value = initFriends.filter.age.min;
+        document.querySelector("#check-maxAge").min = initFriends.filter.age.min;
+        document.querySelector("#check-maxAge").max = initFriends.filter.age.max;
+        document.querySelector("#check-maxAge").value = initFriends.filter.age.max;
     };
+    
+    readСhoiceForFiltre = () => { 
+        initFriends.filter.searchName =
+            document.querySelector("#input-name").value;
+        
+        initFriends.sortCard.nameABC = document.querySelector("#check-sort-nameABC").checked;
+        initFriends.sortCard.nameZYX = document.querySelector("#check-sort-nameZYX").checked;
+        initFriends.sortCard.dobMinMax = document.querySelector("#check-sort-dobMinMax").checked;
+        initFriends.sortCard.dobMaxMin = document.querySelector("#check-sort-dobMaxMin").checked;
+        
+        initFriends.showCardInfo.location = document.querySelector("#check-location").checked;
+        initFriends.showCardInfo.email = document.querySelector("#check-email").checked;
+        initFriends.showCardInfo.phone = document.querySelector("#check-phone").checked;
+        initFriends.showCardInfo.cell = document.querySelector("#check-cell").checked;
+        
+        const currentSelectorMin = document.querySelector("#check-minAge");
+        const currentSelectorMax = document.querySelector("#check-maxAge");
 
-    function updateForm() {
-        initFriends.filter.age.min = Math.min(...dateFriendsServer.results.map(friends => friends.dob.age));
-        initFriends.filter.age.max = Math.max(...dateFriendsServer.results.map(friends => friends.dob.age));
+        initFriends.filter.age.currentMin = currentSelectorMin.value;
+        initFriends.filter.age.currentMax = currentSelectorMax.value;
 
-        document.querySelector('#check-minAge').min = initFriends.filter.age.min;
-        document.querySelector('#check-minAge').max = initFriends.filter.age.max;
-        document.querySelector('#check-minAge').value = initFriends.filter.age.min;
+        currentSelectorMin.addEventListener("click", () => {
+            if (currentSelectorMin.value > initFriends.filter.age.currentMax) {
+                currentSelectorMin.value = initFriends.filter.age.currentMax;
+            }
+        });
 
-        document.querySelector('#check-maxAge').min = initFriends.filter.age.min;
-        document.querySelector('#check-maxAge').max = initFriends.filter.age.max;
-        document.querySelector('#check-maxAge').value = initFriends.filter.age.max;
-    }
-
-    function readСhoiceForFiltre() {
-
-        initFriends.filter.searchName = document.querySelector('#input-name').value;
-
-        document.querySelector('#check-sort-nameABC').checked ? initFriends.sortCard.nameABC = true : initFriends.sortCard.nameABC = false;
-        document.querySelector('#check-sort-nameZYX').checked ? initFriends.sortCard.nameZYX = true : initFriends.sortCard.nameZYX = false;
-        document.querySelector('#check-sort-dobMinMax').checked ? initFriends.sortCard.dobMinMax = true : initFriends.sortCard.dobMinMax = false;
-        document.querySelector('#check-sort-dobMaxMin').checked ? initFriends.sortCard.dobMaxMin = true : initFriends.sortCard.dobMaxMin = false;
-
-        document.querySelector('#check-location').checked ? initFriends.showCardInfo.location = true : initFriends.showCardInfo.location = false;
-        document.querySelector('#check-email').checked ? initFriends.showCardInfo.email = true : initFriends.showCardInfo.email = false;
-        document.querySelector('#check-phone').checked ? initFriends.showCardInfo.phone = true : initFriends.showCardInfo.phone = false;
-        document.querySelector('#check-cell').checked ? initFriends.showCardInfo.cell = true : initFriends.showCardInfo.cell = false;
-
-        initFriends.filter.age.currentMin = document.querySelector('#check-minAge').value;
-        initFriends.filter.age.currentMax = document.querySelector('#check-maxAge').value;
-        document.querySelector("#check-minAge").
-            addEventListener("click", (event) => {
-                document.querySelector('#check-minAge').value > initFriends.filter.age.currentMax ?
-                    document.querySelector('#check-minAge').value = initFriends.filter.age.currentMax : false;
-            });
-        document.querySelector("#check-maxAge").
-            addEventListener("click", (event) => {
-                document.querySelector('#check-maxAge').value < initFriends.filter.age.currentMin ?
-                    document.querySelector('#check-maxAge').value = initFriends.filter.age.currentMin : false;
-            });
-        initFriends.filter.age.currentMin = document.querySelector('#check-minAge').value;
-        initFriends.filter.age.currentMax = document.querySelector('#check-maxAge').value;
-    }
-
-    function createDateForVisible(dbFriends) {
-        let dbScreen = [];
+        currentSelectorMax.addEventListener("click", () => {
+            if (currentSelectorMax.value < initFriends.filter.age.currentMin) {
+                currentSelectorMax.value = initFriends.filter.age.currentMin;
+            }
+        });
+    };
+    
+    createDateForVisible = (dbFriends) => {        
+        const dbScreen = [];
         dbScreen.length = 0;
-        [...dbFriends.results].map(elem => {
+        [...dbFriends.results].forEach((elem) => {
             dbScreen.push({
                 picture: elem.picture.large,
-                name: [elem.name.title, elem.name.first, elem.name.last].join(' '),
-                nameForSort: [elem.name.last, elem.name.first].join(' '),
-                dobDate: (new Date(elem.dob.date)).toString().substring(4, 15),
+                name: [elem.name.title, elem.name.first, elem.name.last].join(" "),
+                nameForSort: [elem.name.last, elem.name.first].join(" "),
+                dobDate: new Date(elem.dob.date).toString().substring(4, 15),
                 dobDateForSort: new Date(elem.dob.date),
                 dobAge: elem.dob.age,
                 gender: elem.gender,
@@ -136,99 +148,128 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
         return dbScreen;
-    }
+    };
 
-    function filtrationName(dbFriends) {
-        return [...dbFriends].filter(elem =>
-            elem.name.indexOf(initFriends.filter.searchName) !== -1)
-    }
-
-    function filtrationAge(dbFriends) {
-        return [...dbFriends].filter(elem => ((initFriends.filter.age.currentMin <= elem.dobAge)
-            && (initFriends.filter.age.currentMax >= elem.dobAge)))
-    }
-
-    function filtrationFieldLocation(dbFriends) {
-        return initFriends.showCardInfo.location ? [...dbFriends]
+    filtrationName = (dbFriends) => {
+        return [...dbFriends].filter(
+            (elem) =>
+                elem.name.toLowerCase().indexOf(initFriends.filter.searchName.toLowerCase()) !== -1
+        );
+    };
+    
+    filtrationAge = (dbFriends) => {
+        return [...dbFriends].filter(
+            (elem) =>
+                initFriends.filter.age.currentMin <= elem.dobAge &&
+                initFriends.filter.age.currentMax >= elem.dobAge
+        );
+    };
+    
+    filtrationFieldLocation = (dbFriends) => {
+        return initFriends.showCardInfo.location
+            ? [...dbFriends]
             : [...dbFriends].reduce((filteredArray, friend) => {
                 delete friend.locationCity;
                 delete friend.locationCountry;
                 filteredArray.push(friend);
                 return filteredArray;
             }, []);
-    }
-
-    function filtrationFieldEmail(dbFriends) {
-        return initFriends.showCardInfo.email ? [...dbFriends]
+    };
+    
+    filtrationFieldEmail = (dbFriends) => {
+        return initFriends.showCardInfo.email
+            ? [...dbFriends]
             : [...dbFriends].reduce((filteredArray, friend) => {
                 delete friend.email;
                 filteredArray.push(friend);
                 return filteredArray;
             }, []);
-    }
-
-    function filtrationFieldPhone(dbFriends) {
-        return initFriends.showCardInfo.phone ? [...dbFriends]
+    };
+    
+    filtrationFieldPhone = (dbFriends) => {
+        return initFriends.showCardInfo.phone
+            ? [...dbFriends]
             : [...dbFriends].reduce((filteredArray, friend) => {
                 delete friend.phone;
                 filteredArray.push(friend);
                 return filteredArray;
             }, []);
-    }
-
-    function filtrationFieldCell(dbFriends) {
-        return initFriends.showCardInfo.cell ? [...dbFriends]
+    };
+    
+    filtrationFieldCell = (dbFriends) => {
+        return initFriends.showCardInfo.cell
+            ? [...dbFriends]
             : [...dbFriends].reduce((filteredArray, friend) => {
                 delete friend.cell;
                 filteredArray.push(friend);
                 return filteredArray;
             }, []);
-    }
-
-    function sortNameABC(dbFriends) {
-        return initFriends.sortCard.nameABC ?
-            [...dbFriends].sort((a, b) => a.nameForSort > b.nameForSort ? 1 : -1)
+    };
+    
+    sortNameABC = (dbFriends) => {
+        return initFriends.sortCard.nameABC
+            ? [...dbFriends].sort((a, b) =>
+                a.nameForSort > b.nameForSort ? 1 : -1
+            )
             : [...dbFriends];
-    }
-
-    function sortNameZYX(dbFriends) {
-        return initFriends.sortCard.nameZYX ?
-            [...dbFriends].sort((a, b) => a.nameForSort < b.nameForSort ? 1 : -1)
+    };
+    
+    sortNameZYX = (dbFriends) => {
+        return initFriends.sortCard.nameZYX
+            ? [...dbFriends].sort((a, b) =>
+                a.nameForSort < b.nameForSort ? 1 : -1
+            )
             : [...dbFriends];
-    }
-
-    function sortDobMinMax(dbFriends) {
-        return initFriends.sortCard.dobMinMax ?
-            [...dbFriends].sort((a, b) => a.dobDateForSort.getTime() > b.dobDateForSort.getTime() ? 1 : -1)
+    };
+    
+    sortDobMinMax = (dbFriends) => {
+        return initFriends.sortCard.dobMinMax
+            ? [...dbFriends].sort((a, b) =>
+                a.dobDateForSort.getTime() > b.dobDateForSort.getTime()
+                    ? 1
+                    : -1
+            )
             : [...dbFriends];
-    }
-
-    function sortDobMaxMin(dbFriends) {
-        return initFriends.sortCard.dobMaxMin ?
-            [...dbFriends].sort((a, b) => a.dobDateForSort.getTime() < b.dobDateForSort.getTime() ? 1 : -1)
+    };
+    
+    sortDobMaxMin = (dbFriends) => {
+        return initFriends.sortCard.dobMaxMin
+            ? [...dbFriends].sort((a, b) =>
+                a.dobDateForSort.getTime() < b.dobDateForSort.getTime()
+                    ? 1
+                    : -1
+            )
             : [...dbFriends];
-    }
-
-    function createMarkupCSS() {
-        initFriends.gridFriends.columns = Math.floor(document.querySelector(".main").offsetWidth / initFriends.profileCard.width) - 2;
-        initFriends.gridFriends.columns < 1 ? initFriends.gridFriends.columns = 1 : false;
-        document.documentElement.style.setProperty('--columns-card', initFriends.gridFriends.columns);
-    }
-
-    function createDOM(dbFriends) {
-        let dbVisible = [...dbFriends].reduce((filteredArray, friend) => {
+    };
+    
+    createMarkupCSS = () => {
+        initFriends.gridFriends.columns =
+            Math.floor(
+                document.querySelector(".main").offsetWidth /
+                initFriends.profileCard.width
+            ) - 2;
+        initFriends.gridFriends.columns < 1
+            ? (initFriends.gridFriends.columns = 1)
+            : false;
+        document.documentElement.style.setProperty(
+            "--columns-card",
+            initFriends.gridFriends.columns
+        );
+    };
+    
+    createDOM = (dbFriends) => {        
+        const dbVisible = [...dbFriends].reduce((filteredArray, friend) => {
             delete friend.nameForSort;
             delete friend.dobDateForSort;
             filteredArray.push(friend);
             return filteredArray;
-        }, []);
-
-        let parentDiv = document.createElement("div");
+        }, []);        
+        const parentDiv = document.createElement("div");
         parentDiv.className = "main__div";
         document.querySelector(".main__div").replaceWith(parentDiv);
-        let fieldPlay = [];
-
-        dbVisible.map(card => {
+        const fieldPlay = [];
+        
+        dbVisible.forEach((card) => {
             fieldPlay.push(`<div class="div__card">
             <div class="card-image">                
                 <img class="card-photo" src=${card.picture} alt = "" >
@@ -238,31 +279,41 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>${card.dobDate}</p>
                 <p>${card.dobAge} year - ${card.gender}</p>
                 <p>${card.nat}</p>`);
-            card.propertyIsEnumerable('locationCity') ? fieldPlay.push(`<p>${card.locationCountry}</p>`) : false;
-            card.propertyIsEnumerable('locationCity') ? fieldPlay.push(`<p>${card.locationCity}</p>`) : false;
-            card.propertyIsEnumerable('phone') ? fieldPlay.push(`<p>${card.phone}</p>`) : false;
-            card.propertyIsEnumerable('cell') ? fieldPlay.push(`<p>${card.cell}</p>`) : false;
-            card.propertyIsEnumerable('email') ? fieldPlay.push(`<p>${card.email}</p>`) : false;
+            card.propertyIsEnumerable("locationCity")
+                ? fieldPlay.push(`<p>${card.locationCountry}</p>`)
+                : false;
+            card.propertyIsEnumerable("locationCity")
+                ? fieldPlay.push(`<p>${card.locationCity}</p>`)
+                : false;
+            card.propertyIsEnumerable("phone")
+                ? fieldPlay.push(`<p>${card.phone}</p>`)
+                : false;
+            card.propertyIsEnumerable("cell")
+                ? fieldPlay.push(`<p>${card.cell}</p>`)
+                : false;
+            card.propertyIsEnumerable("email")
+                ? fieldPlay.push(`<p>${card.email}</p>`)
+                : false;
             fieldPlay.push(`</div></div>`);
-            parentDiv.innerHTML = fieldPlay.join('');
-        })
+            parentDiv.innerHTML = fieldPlay.join("");
+        });
         return dbVisible;
-    }
-
-    ["click", "input"].forEach(event => {
-        [...document.querySelectorAll(".nav__server")].map(elem => {
+    };
+    
+    ["click", "input"].forEach((event) => {
+        [...document.querySelectorAll(".nav__server")].forEach((elem) => {
             elem.addEventListener(event, async () => {
                 await filterBeforeServer();
                 await readDateServer();
                 await updateForm();
                 document.querySelector(".nav__local").click();
             });
-        })
+        });
     });
-
-    ["click", "input"].forEach(event => {
-        [...document.querySelectorAll(".nav__local")].map(elem => {
-            elem.addEventListener(event, async () => {
+    
+    ["click", "input"].forEach((event) => {
+        [...document.querySelectorAll(".nav__local")].forEach((elem) => {
+            elem.addEventListener(event, async () => {                
                 await readСhoiceForFiltre();
                 createMarkupCSS();
                 createDOM(
@@ -276,11 +327,24 @@ document.addEventListener("DOMContentLoaded", () => {
                                                 filtrationFieldLocation(
                                                     filtrationAge(
                                                         filtrationName(
-                                                            createDateForVisible(dateFriendsServer))))))))))));
+                                                            createDateForVisible(
+                                                                dateFriendsServer
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                );
             });
         });
     });
-
+    
     document.querySelector(".nav__server").click();
 
     window.onresize = createMarkupCSS;
