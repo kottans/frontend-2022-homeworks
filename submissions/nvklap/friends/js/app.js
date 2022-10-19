@@ -30,11 +30,13 @@ function handleInputEvent() {
   usersDataCopy = [...usersData];
   const usersHandled = handleUsers(usersDataCopy, getFormData());
   renderUsersCards(usersHandled);
+  scrollToTop();
 }
 
 function handleResetEvent() {
   usersDataCopy = [...usersData];
   renderUsersCards(usersDataCopy);
+  scrollToTop();
 }
 
 async function getUsersData(url) {
@@ -55,7 +57,7 @@ function createUsersData(users) {
       picture: { large: userPic },
       location: { city, country },
       phone,
-      email,
+      email
     } = user;
     return {
       nameFirst,
@@ -66,7 +68,7 @@ function createUsersData(users) {
       city,
       country,
       phone,
-      email,
+      email
     };
   });
   return users;
@@ -76,6 +78,10 @@ function toggleDisabedOnForm(boolean) {
   Array.from(form.elements).forEach((element) => {
     element.disabled = boolean;
   });
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function renderUsersCards(users) {
@@ -94,7 +100,7 @@ function createUserCard(user) {
     city,
     country,
     phone,
-    email,
+    email
   } = user;
 
   return `
@@ -143,7 +149,7 @@ function getFormData() {
   return {
     search,
     sortBy,
-    gender,
+    gender
   };
 }
 

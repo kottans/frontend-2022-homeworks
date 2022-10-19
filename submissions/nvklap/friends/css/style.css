@@ -82,17 +82,17 @@ body {
 }
 
 .card {
-  background-color: var(--cards-border-color);
+  background: var(--cards-border-color);
   border: 3px solid var(--cards-border-color);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: border 0.3s background-color 0.3s;
+  transition: border 0.3s, background 0.3s;
 }
 
 .card:hover {
-  background-color: var(--label-border);
+  background: var(--label-border);
   border-color: var(--label-border);
 }
 
