@@ -45,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     };
 
-    let dateFriendsServer = {};
-    
-    filterBeforeServer = () => {
+    let dataFriendsServer = {};
+
+    filteringBeforeServer = () => {
         initFriends.randomuser.results = document.querySelector("#check-totalFriend").value;
 
         fixationСhoice = (choice, arrayChoice, stringChoice) => {
@@ -70,20 +70,20 @@ document.addEventListener("DOMContentLoaded", () => {
         fixationСhoice("#check-US", buttonNation, "US");
         initFriends.randomuser.nat = buttonNation;
     };
-    
-    async function readDateServer() {
+
+    async function readDataServer() {
         const response = await fetch(initFriends.randomuser.fullUrl);
         response.ok
-            ? (dateFriendsServer = await response.json())
+            ? (dataFriendsServer = await response.json())
             : alert("Error HTTP: " + response.status);
     }
-    
-    updateForm = () => {
+
+    updateAgeForVisible = () => {
         initFriends.filter.age.min = Math.min(
-            ...dateFriendsServer.results.map((friends) => friends.dob.age)
+            ...dataFriendsServer.results.map((friends) => friends.dob.age)
         );
         initFriends.filter.age.max = Math.max(
-            ...dateFriendsServer.results.map((friends) => friends.dob.age)
+            ...dataFriendsServer.results.map((friends) => friends.dob.age)
         );
 
         document.querySelector("#check-minAge").min = initFriends.filter.age.min;
@@ -93,21 +93,19 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("#check-maxAge").max = initFriends.filter.age.max;
         document.querySelector("#check-maxAge").value = initFriends.filter.age.max;
     };
-    
-    readСhoiceForFiltre = () => { 
-        initFriends.filter.searchName =
-            document.querySelector("#input-name").value;
-        
+
+    readСhoiceForFiltre = () => {
+        initFriends.filter.searchName = document.querySelector("#input-name").value;
         initFriends.sortCard.nameABC = document.querySelector("#check-sort-nameABC").checked;
         initFriends.sortCard.nameZYX = document.querySelector("#check-sort-nameZYX").checked;
         initFriends.sortCard.dobMinMax = document.querySelector("#check-sort-dobMinMax").checked;
         initFriends.sortCard.dobMaxMin = document.querySelector("#check-sort-dobMaxMin").checked;
-        
+
         initFriends.showCardInfo.location = document.querySelector("#check-location").checked;
         initFriends.showCardInfo.email = document.querySelector("#check-email").checked;
         initFriends.showCardInfo.phone = document.querySelector("#check-phone").checked;
         initFriends.showCardInfo.cell = document.querySelector("#check-cell").checked;
-        
+
         const currentSelectorMin = document.querySelector("#check-minAge");
         const currentSelectorMax = document.querySelector("#check-maxAge");
 
@@ -126,8 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     };
-    
-    createDateForVisible = (dbFriends) => {        
+
+    createDataForVisible = (dbFriends) => {
         const dbScreen = [];
         dbScreen.length = 0;
         [...dbFriends.results].forEach((elem) => {
@@ -150,124 +148,84 @@ document.addEventListener("DOMContentLoaded", () => {
         return dbScreen;
     };
 
-    filtrationName = (dbFriends) => {
+    nameFiltering = (dbFriends) => {
         return [...dbFriends].filter(
             (elem) =>
                 elem.name.toLowerCase().indexOf(initFriends.filter.searchName.toLowerCase()) !== -1
         );
     };
-    
-    filtrationAge = (dbFriends) => {
+
+    ageFiltering = (dbFriends) => {
         return [...dbFriends].filter(
             (elem) =>
                 initFriends.filter.age.currentMin <= elem.dobAge &&
                 initFriends.filter.age.currentMax >= elem.dobAge
         );
     };
-    
-    filtrationFieldLocation = (dbFriends) => {
-        return initFriends.showCardInfo.location
-            ? [...dbFriends]
+
+    basedTemplateFiltering = (objectField, fieldForDelete, dbFriends) => {
+        return objectField ? [...dbFriends]
             : [...dbFriends].reduce((filteredArray, friend) => {
-                delete friend.locationCity;
-                delete friend.locationCountry;
+                fieldForDelete.forEach((field) => delete friend[field]);
                 filteredArray.push(friend);
                 return filteredArray;
             }, []);
+    }
+
+    locationFiltering = (dbFriends) => {
+        return basedTemplateFiltering(initFriends.showCardInfo.location, ['locationCity', 'locationCountry'], dbFriends);
     };
-    
-    filtrationFieldEmail = (dbFriends) => {
-        return initFriends.showCardInfo.email
-            ? [...dbFriends]
-            : [...dbFriends].reduce((filteredArray, friend) => {
-                delete friend.email;
-                filteredArray.push(friend);
-                return filteredArray;
-            }, []);
+
+    emailFiltering = (dbFriends) => {
+        return basedTemplateFiltering(initFriends.showCardInfo.email, ['email'], dbFriends);
     };
-    
-    filtrationFieldPhone = (dbFriends) => {
-        return initFriends.showCardInfo.phone
-            ? [...dbFriends]
-            : [...dbFriends].reduce((filteredArray, friend) => {
-                delete friend.phone;
-                filteredArray.push(friend);
-                return filteredArray;
-            }, []);
+
+    phoneFiltering = (dbFriends) => {
+        return basedTemplateFiltering(initFriends.showCardInfo.phone, ['phone'], dbFriends);
     };
-    
-    filtrationFieldCell = (dbFriends) => {
-        return initFriends.showCardInfo.cell
-            ? [...dbFriends]
-            : [...dbFriends].reduce((filteredArray, friend) => {
-                delete friend.cell;
-                filteredArray.push(friend);
-                return filteredArray;
-            }, []);
+
+    cellFiltering = (dbFriends) => {
+        return basedTemplateFiltering(initFriends.showCardInfo.cell, ['cell'], dbFriends);
     };
-    
+
     sortNameABC = (dbFriends) => {
         return initFriends.sortCard.nameABC
-            ? [...dbFriends].sort((a, b) =>
-                a.nameForSort > b.nameForSort ? 1 : -1
-            )
+            ? [...dbFriends].sort((a, b) => a.nameForSort > b.nameForSort ? 1 : -1)
             : [...dbFriends];
     };
-    
+
     sortNameZYX = (dbFriends) => {
         return initFriends.sortCard.nameZYX
-            ? [...dbFriends].sort((a, b) =>
-                a.nameForSort < b.nameForSort ? 1 : -1
-            )
+            ? [...dbFriends].sort((a, b) => a.nameForSort < b.nameForSort ? 1 : -1)
             : [...dbFriends];
     };
     
     sortDobMinMax = (dbFriends) => {
         return initFriends.sortCard.dobMinMax
-            ? [...dbFriends].sort((a, b) =>
-                a.dobDateForSort.getTime() > b.dobDateForSort.getTime()
-                    ? 1
-                    : -1
-            )
+            ? [...dbFriends].sort((a, b) => a.dobDateForSort.getTime() > b.dobDateForSort.getTime() ? 1 : -1)
             : [...dbFriends];
     };
     
     sortDobMaxMin = (dbFriends) => {
         return initFriends.sortCard.dobMaxMin
-            ? [...dbFriends].sort((a, b) =>
-                a.dobDateForSort.getTime() < b.dobDateForSort.getTime()
-                    ? 1
-                    : -1
-            )
+            ? [...dbFriends].sort((a, b) => a.dobDateForSort.getTime() < b.dobDateForSort.getTime() ? 1 : -1)
             : [...dbFriends];
     };
     
     createMarkupCSS = () => {
         initFriends.gridFriends.columns =
-            Math.floor(
-                document.querySelector(".main").offsetWidth /
-                initFriends.profileCard.width
-            ) - 2;
-        initFriends.gridFriends.columns < 1
-            ? (initFriends.gridFriends.columns = 1)
-            : false;
-        document.documentElement.style.setProperty(
-            "--columns-card",
-            initFriends.gridFriends.columns
-        );
+            Math.floor(document.querySelector(".main").offsetWidth / initFriends.profileCard.width) - 2;
+        if (initFriends.gridFriends.columns < 1) { initFriends.gridFriends.columns = 1 };
+        document.documentElement.style.setProperty("--columns-card", initFriends.gridFriends.columns);
     };
     
     createDOM = (dbFriends) => {        
-        const dbVisible = [...dbFriends].reduce((filteredArray, friend) => {
-            delete friend.nameForSort;
-            delete friend.dobDateForSort;
-            filteredArray.push(friend);
-            return filteredArray;
-        }, []);        
         const parentDiv = document.createElement("div");
         parentDiv.className = "main__div";
         document.querySelector(".main__div").replaceWith(parentDiv);
         const fieldPlay = [];
+            
+        const dbVisible = basedTemplateFiltering(false, ['nameForSort', 'dobDateForSort'], dbFriends);
         
         dbVisible.forEach((card) => {
             fieldPlay.push(`<div class="div__card">
@@ -279,33 +237,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>${card.dobDate}</p>
                 <p>${card.dobAge} year - ${card.gender}</p>
                 <p>${card.nat}</p>`);
-            card.propertyIsEnumerable("locationCity")
-                ? fieldPlay.push(`<p>${card.locationCountry}</p>`)
-                : false;
-            card.propertyIsEnumerable("locationCity")
-                ? fieldPlay.push(`<p>${card.locationCity}</p>`)
-                : false;
-            card.propertyIsEnumerable("phone")
-                ? fieldPlay.push(`<p>${card.phone}</p>`)
-                : false;
-            card.propertyIsEnumerable("cell")
-                ? fieldPlay.push(`<p>${card.cell}</p>`)
-                : false;
-            card.propertyIsEnumerable("email")
-                ? fieldPlay.push(`<p>${card.email}</p>`)
-                : false;
+            if (card.propertyIsEnumerable("locationCity")) { fieldPlay.push(`<p>${card.locationCountry}</p>`) };
+            if (card.propertyIsEnumerable("phone")) { fieldPlay.push(`<p>${card.phone}</p>`) };
+            if (card.propertyIsEnumerable("cell")) { fieldPlay.push(`<p>${card.cell}</p>`) };
+            if (card.propertyIsEnumerable("email")) { fieldPlay.push(`<p>${card.email}</p>`) };
             fieldPlay.push(`</div></div>`);
             parentDiv.innerHTML = fieldPlay.join("");
         });
-        return dbVisible;
     };
     
     ["click", "input"].forEach((event) => {
         [...document.querySelectorAll(".nav__server")].forEach((elem) => {
             elem.addEventListener(event, async () => {
-                await filterBeforeServer();
-                await readDateServer();
-                await updateForm();
+                await filteringBeforeServer();
+                await readDataServer();
+                await updateAgeForVisible();
                 document.querySelector(".nav__local").click();
             });
         });
@@ -321,14 +267,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         sortDobMinMax(
                             sortNameZYX(
                                 sortNameABC(
-                                    filtrationFieldCell(
-                                        filtrationFieldPhone(
-                                            filtrationFieldEmail(
-                                                filtrationFieldLocation(
-                                                    filtrationAge(
-                                                        filtrationName(
-                                                            createDateForVisible(
-                                                                dateFriendsServer
+                                    cellFiltering(
+                                        phoneFiltering(
+                                            emailFiltering(
+                                                locationFiltering(
+                                                    ageFiltering(
+                                                        nameFiltering(
+                                                            createDataForVisible(
+                                                                dataFriendsServer
                                                             )
                                                         )
                                                     )
