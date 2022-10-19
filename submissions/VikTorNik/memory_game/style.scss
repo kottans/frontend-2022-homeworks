@@ -63,13 +63,13 @@ $color-check-card: rgb(220, 130, 12);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin: 1.0rem;
+    margin: 1rem;
     font-size: 1.7rem;
 }
 
 .menu__item {
     cursor: pointer;
-    border: .8rem $color-menu-dark solid;
+    border: 0.8rem $color-menu-dark solid;
     background-color: $color-menu-item;
     transition: 0.25s;
 }
@@ -79,7 +79,7 @@ $color-check-card: rgb(220, 130, 12);
     font-weight: 700;
     text-transform: uppercase;
     padding: 1.2rem;
-    line-height: 2.0rem;
+    line-height: 2rem;
     display: block;
     text-align: center;
 }
@@ -112,12 +112,20 @@ $color-check-card: rgb(220, 130, 12);
         .card-back,
         .card-checked,
         .card-off-checked {
-            $square-image: min(calc($main-width / var(--columns-card)) * .85, calc($main-height / var(--rows-card)) * .85);
+            $square-image: min(
+                calc($main-width / var(--columns-card)) * 0.85,
+                calc($main-height / var(--rows-card)) * 0.85
+            );
             width: $square-image;
             height: $square-image;
             position: absolute;
-            margin-left: calc(calc(calc($main-width / var(--columns-card)) - $square-image)/2);
-            margin-top: calc(calc(calc($main-height / var(--rows-card)) - $square-image)/2);
+            margin-left: calc(
+                calc(calc($main-width / var(--columns-card)) - $square-image) /
+                    2
+            );
+            margin-top: calc(
+                calc(calc($main-height / var(--rows-card)) - $square-image) / 2
+            );
             transition: 0.2s;
         }
 
@@ -125,14 +133,14 @@ $color-check-card: rgb(220, 130, 12);
             opacity: 0.3;
             border-color: $color-check-card;
             border-style: solid;
-            border-width: .45rem;
+            border-width: 0.45rem;
             box-shadow: -2px 0px 30px -3px $color-check-card;
         }
 
         .card-face {
             border-color: $color-back-header;
             border-style: solid;
-            border-width: .45rem;
+            border-width: 0.45rem;
         }
 
         .card-back {
@@ -142,7 +150,7 @@ $color-check-card: rgb(220, 130, 12);
         .card-back:hover {
             border-color: $color-back-header;
             border-style: solid;
-            border-width: .2rem;
+            border-width: 0.2rem;
             box-shadow: -2px 0px 30px -3px $color-menu-dark;
         }
     }
@@ -158,7 +166,7 @@ $color-check-card: rgb(220, 130, 12);
 .header {
     background-color: $color-back-header;
     font-weight: 700;
-    text-shadow: .3rem .3rem 1.0rem $color-menu-dark;
+    text-shadow: 0.3rem 0.3rem 1rem $color-menu-dark;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -178,33 +186,40 @@ $color-check-card: rgb(220, 130, 12);
     color: white;
 }
 
-@media (max-width: 576px) {
+$one-px: 0.06em;
+$bp-small-0: 10em;
+$bp-small-1: 22em; //320
+$bp-small-2: 28em; //480
+$bp-med-1: 34em;
+$bp-med-2: 42em; //768
+$bp-large-1: 46em;
+$bp-large-2: 48em;
+$bp-xl-1: 55em; // 992
+$bp-xl-2: 62em; //
+$bp-xl-3: 70em; // 1200
+
+$screen-resolution-range: (
+    $bp-small-0: $bp-small-1 - $one-px,
+    $bp-small-1: $bp-small-2 - $one-px,
+    $bp-small-2: $bp-med-1 - $one-px,
+    $bp-med-1: $bp-med-2 - $one-px,
+    $bp-med-2: $bp-large-1 - $one-px,
+    $bp-large-1: $bp-large-2 - $one-px,
+    $bp-large-2: $bp-xl-1 - $one-px,
+    $bp-xl-1: $bp-xl-2 - $one-px,
+    $bp-xl-2: $bp-xl-3 - $one-px,
+    $bp-xl-3: $bp-xl-3 + $bp-xl-3,
+);
+
+@mixin html-font($font-size) {
     html {
-        font-size: 26%;
+        font-size: $font-size;
     }
 }
 
-@media (min-width: 576px) and (max-width: 768px) {
-    html {
-        font-size: 31%;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 992px) {
-    html {
-        font-size: 42%;
-    }
-}
-
-@media (min-width: 992px) and (max-width: 1200px) {
-    html {
-        font-size: 55%;
-    }
-}
-
-@media (min-width: 1200px) {
-    html {
-        font-size: 66%;
+@each $min-width, $max-width in $screen-resolution-range {
+    @media all and (min-width: $min-width) and (max-width: $max-width) {
+        @include html-font(calc($min-width/ 100));
     }
 }
 
@@ -224,11 +239,22 @@ $color-check-card: rgb(220, 130, 12);
             .card-back,
             .card-checked,
             .card-off-checked {
-                $square-image: min(calc($main-width / var(--rows-card)) * 0.93, calc($main-height / var(--columns-card)) * 0.93);
+                $square-image: min(
+                    calc($main-width / var(--rows-card)) * 0.93,
+                    calc($main-height / var(--columns-card)) * 0.93
+                );
                 width: $square-image;
                 height: $square-image;
-                margin-left: calc(calc(calc($main-width / var(--rows-card)) - $square-image)/2);
-                margin-top: calc(calc(calc($main-height / var(--columns-card)) - $square-image)/2);
+                margin-left: calc(
+                    calc(calc($main-width / var(--rows-card)) - $square-image) /
+                        2
+                );
+                margin-top: calc(
+                    calc(
+                            calc($main-height / var(--columns-card)) -
+                                $square-image
+                        ) / 2
+                );
             }
         }
     }
