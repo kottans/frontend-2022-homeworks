@@ -1,6 +1,6 @@
 const usersList = [];
+const MOBILE_WIDTH_BREAKPOINT = 992;
 let usersFilteredList = [];
-const nameInput = document.querySelector('.filter__block input');
 
 const callAPI = async () => {
     const data = await fetch('https://randomuser.me/api/?results=30&nat=ua');
@@ -33,22 +33,22 @@ const usersListContainer = document.createElement('div');
 usersListContainer.classList.add('users');
 
 const renderUsers = (filtersObject, usersArray) => {
-    let users = filterUsers(filtersObject, usersArray);
-    users = users.map((user) => createUser(user)).join("");
-    usersListContainer.innerHTML = users;
+    const filteredUsers = filterUsers(filtersObject, usersArray);
+    const usersCards = filteredUsers.map((user) => createUserCard(user)).join("");
+    usersListContainer.innerHTML = usersCards;
     mainContainer.innerHTML = '';
     mainContainer.appendChild(usersListContainer);
     window.location.hash = '';
 }
 
-const createUser = (user) => {
-    let picture = user.picture.medium;
-    let name = user.name.first + ' ' + user.name.last;
-    let age = user.dob.age;
-    let location = user.location.country + ', ' + user.location.city;
-    let email = user.email;
-    let phone = user.phone;
-    let gender = user.gender;
+const createUserCard = (user) => {
+    const picture = user.picture.medium;
+    const name = user.name.first + ' ' + user.name.last;
+    const age = user.dob.age;
+    const location = user.location.country + ', ' + user.location.city;
+    const email = user.email;
+    const phone = user.phone;
+    const gender = user.gender;
 
     return `
         <div class="users__item">
@@ -74,26 +74,26 @@ const createUser = (user) => {
                         <p class="uppercase">${gender}</p>
                     </div>
 
-                    <div class="user-button" data-id="${name.replace(/\s/g, '').toLowerCase()}">
+                    <a href="${name.replace(/\s/g, '').toLowerCase()}" class="user-button" data-id="${name.replace(/\s/g, '').toLowerCase()}">
                         View Profile
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
     `;
 }
 
-const renderUser = (user) => {
-    let picture = user.picture.medium;
-    let name = user.name.first + ' ' + user.name.last;
-    let age = user.dob.age;
-    let birthDate = new Date(user.dob.date).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
-    let country = user.location.country;
-    let state = user.location.state;
-    let city = user.location.city;
-    let email = user.email;
-    let phone = user.phone;
-    let gender = user.gender;
+const renderUserProfile = (user) => {
+    const picture = user.picture.medium;
+    const name = user.name.first + ' ' + user.name.last;
+    const age = user.dob.age;
+    const birthDate = new Date(user.dob.date).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+    const country = user.location.country;
+    const state = user.location.state;
+    const city = user.location.city;
+    const email = user.email;
+    const phone = user.phone;
+    const gender = user.gender;
 
     mainContainer.innerHTML = `
         <div class="user user_single">
@@ -128,9 +128,9 @@ const renderUser = (user) => {
                     <p class="uppercase">${gender}</p>
                 </div>
 
-                <div class="user-button user-button_close">
+                <a href="/" class="user-button user-button_close">
                     Back to Friends
-                </div>
+                </a>
             </div>
         </div>
     `;
@@ -143,7 +143,7 @@ sidebarFilters.addEventListener("submit", function(event) {
 
     renderUsers(getSidebarOptions(), usersList);
 
-    if (window.screen.width <= 992) {
+    if (window.screen.width <= MOBILE_WIDTH_BREAKPOINT) {
         toggleMenu();
     }
 });
@@ -164,7 +164,7 @@ const filterUsers = (filtersObject, usersArray) => {
     const filterGender = filtersObject.gender;
     const filterSort = filtersObject.filterSort;
 
-    let users = pipes.reduce((list, func) => {
+    usersFilteredList = pipes.reduce((list, func) => {
         switch (func.name) {
             case 'filterByName':
                 return func(list, filterName);
@@ -177,9 +177,7 @@ const filterUsers = (filtersObject, usersArray) => {
         }
     }, usersArray);
 
-    usersFilteredList = users;
-
-    return users;
+    return usersFilteredList;
 }
 
 const filterByName = (array, searchValue) => {
@@ -200,49 +198,42 @@ const filterByGender = (array, filterOption) => {
 }
 
 const sortBy = (array, sortValue) => {
-    if (sortValue.startsWith('alphabet')) {
-        return array.sort((a, b) => {
-            const nameA = a.name.first.toUpperCase();
-            const nameB = b.name.first.toUpperCase();
+    return array.sort((a, b) => {
+        let result;
 
-            let isReversed = false;
-            let result;
+        if (sortValue.startsWith('alphabet')) {
+            a = a.name.first.toUpperCase();
+            b = b.name.first.toUpperCase();
+        } else {
+            a = a.dob.age;
+            b = b.dob.age;
+        }
 
-            if (sortValue == 'alphabetZA') {
-                isReversed = true;
-            }
+        if (a < b) {
+            result = -1;
+        } else if (a > b) {
+            result = 1;
+        } else {
+            result = 0;
+        }
 
-            // Compare
-            if (nameA < nameB) {
-                result = -1;
-            } else if (nameA > nameB) {
-                result = 1;
-            } else {
-                result = 0;
-            }
+        if (sortValue == 'alphabetZA') {
+            result *= -1;
+        }
 
-            // Reverse if needed
-            if (isReversed) {
-                result *= -1;
-            }
-            return result;
-        });
-    } else {
-        return array.sort((a, b) => {
-            if (sortValue == 'ageLowest') {
-                return a.dob.age - b.dob.age;
-            } else {
-                return b.dob.age - a.dob.age;
-            }
-        });
-    }
+        if (sortValue == 'ageHighest') {
+            return b - a;
+        }
+
+        return result;
+    });
 
     return array;
 }
 
 //close user
 const closeUser = () => {
-    let singleUser = document.querySelector('.user_single');
+    const singleUser = document.querySelector('.user_single');
     
     if (singleUser) {
         singleUser.parentNode.removeChild(singleUser);
@@ -257,7 +248,7 @@ mainContainer.addEventListener('click', (e) => {
 
     if(e.target.closest('.user-button')) {
         if (!e.target.closest('.user-button').classList.contains('user-button_close')) {
-            let id = e.target.closest('.user-button').dataset.id;
+            const id = e.target.closest('.user-button').dataset.id;
             window.location.hash = id;
         } else {
             closeUser();
@@ -269,10 +260,10 @@ mainContainer.addEventListener('click', (e) => {
 window.addEventListener('hashchange', () => {
     if (window.location.hash) {
         const singleUser = usersList.filter((user) => {
-            let name = user.name.first + user.name.last;
+            const name = user.name.first + user.name.last;
             return name.toLowerCase().indexOf(location.hash.split('#')[1]) > -1;
         });
-        renderUser(singleUser[0]);
+        renderUserProfile(singleUser[0]);
     } else {
         renderUsers(getSidebarOptions(), usersFilteredList);
     }
@@ -288,7 +279,7 @@ theme.addEventListener('click', (e) => {
 });
 
 //toggle menu
-const menuToggle = document .querySelector('.header__toggle-menu');
+const menuToggle = document.querySelector('.header__toggle-menu');
 
 menuToggle.addEventListener('click', (e) => {
     e.preventDefault();
