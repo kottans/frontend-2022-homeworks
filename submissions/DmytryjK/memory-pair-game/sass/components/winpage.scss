@@ -1,0 +1,60 @@
+.winMessage {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease-in-out all;
+    user-select: none;
+    .winMessage__image {
+        max-width: 100%;
+        animation: 10s linear infinite img;
+    }
+    .winMessage__title {
+        padding-left: 50px;
+        z-index: 1;
+        position: absolute;
+        color: rgb(252, 252, 252);
+        text-shadow: 3px 3px 5px black;
+        font-size: 100px;
+        font-weight: bold;
+        font-family: gagalin;
+        letter-spacing: 5px;
+        animation: 2s linear infinite title;
+    }
+}
+
+.click-to-continue {
+    position: absolute;
+    bottom: 15%;
+    color: white;
+    background-color: rgb(228, 58, 58);
+    border: none;
+    border-radius: 15px;
+    width: 250px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    animation: btn 3s infinite linear;
+    transition: 0.4s ease-in-out all;
+    &:hover {
+        color: black;
+        transition: 0.4s ease-in-out all;
+        background-color: rgb(1, 160, 9);
+        animation: btn-hover 3s infinite linear;
+    }
+}
+
+.winMessage__active {
+    visibility: visible;
+    opacity: 1;
+    overflow: hidden;
+}
