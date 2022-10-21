@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>friends-app</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/index.js" type="module"></script>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <button class="icon-menu">
+            <img class="icon-menu_img" src="img/menu-ham-icon.png" alt="">
+        </button>
+        <a class="logo_app" href="index.html">
+            <h1 class="title_app">Friends App</h1>
+        </a>
+    </header>
+    <div class="app">
+        <form class="function_menu">
+            <div class="function_title">Search friends</div>
+
+            <div class="icon-close">
+                <img src="img/close-btn.png" alt="close_icon">
+            </div>
+            <div class="search">
+                <input class="search_friends" type="search" name="search_friends" id="search_friends" placeholder="Name friends">
+            </div>
+            <div class="function_title">Sort friends</div>
+            <div class="sorts">
+                <div class="sorts_by sort_by_age">Sort by Age</div>
+                <input type="hidden" id="sort_by_age" name="sort_by_age" value="date">
+                <div class="sorts_list sorts_list_age" id="filterSort">
+                    <label class="sorts_options sorts_age" data-sort="up">
+                        Age from 0 to 99
+                    </label>
+                    <label class="sorts_options sorts_age" data-sort="down">
+                        Age from 99 to 0
+                    </label>
+                </div>
+            </div>
+            <div class="sorts">
+                <div class="sorts_by sort_by_name">Sort by Name</div>
+                <input type="hidden" id="sort_by_name" name="sort_by_name" value="date">
+                <div class="sorts_list sorts_list_name" id="filterSort1">
+                    <label class="sorts_options sorts_name" data-sort="fromA">
+                        Name from A to Z
+                    </label>
+                    <label class="sorts_options sorts_name" data-sort="fromZ">
+                        Name from Z to A
+                    </label>
+                </div>
+            </div>
+            <div class="function_title">Filter by gender</div>
+            <div class="filters">
+                <div class="filters_gender">
+                    <input type="hidden" id="sort_by_gender" name="sort_by_gender" value="date">
+                    <div class="filters_list filters_gender" id="filters_gender">
+                        <label class="filters_label">
+                            <input type="radio" class="gender" name="gender" id="all" value="all" checked/>
+                            <span>all gender</span>
+                        </label>
+                        <label class="filters_label">
+                            <input type="radio" class="gender" name="gender" id="male" value="male" />
+                            <span>male</span>
+                        </label>
+                        <label class="filters_label">
+                            <input type="radio" class="gender" name="gender" id="female" value="female" />
+                            <span>female</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button class="btn apply_btn">Apply (<span class="count_friends"></span>)</button>
+            <input type="reset" class="btn reset_btn" value="Reset">
+        </form>
+        <main id="main" class="main"></main>
+    </div>
+</div>
+</body>
+</html>
