@@ -73,6 +73,9 @@ body {
     border:10px solid #000;
     border-color: transparent transparent white transparent;
   }
+  .menu-item__inner, .menu-item__input {
+    cursor: pointer;
+  }
   .tooltip-items {
     padding: 50px 20px 10px;
     display: flex;
