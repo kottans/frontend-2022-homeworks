@@ -1,35 +1,38 @@
 import { print } from './js/lib.js';
 
 class Creature {
-   constructor(name, gender, species, hands) {
+   constructor(name, gender, species) {
       this.species = species;
       this.name = name;
       this.gender = gender;
-      this.hands = hands;
    }
 
    message() {
-      return `${this.species}; <strong>${this.name}</strong>; ${this.gender}; ${this.hands};`;
+      return [
+         this.species,
+         `<strong>${this.name}</strong>`,
+         this.gender
+      ];
    }
 }
 
 class Human extends Creature {
-   constructor(name, gender, hands, legs, say, species) {
-      super(name, gender, species, hands);
+   constructor(name, gender, hands, legs, say, species, friends) {
+      super(name, gender, species);
       this.say = say;
       this.legs = legs;
-   }
-
-   set friends(names) {
-      this._friends = names.map(friend => friend.name);
-   }
-
-   get friends() {
-      return ` <strong>${this._friends}</strong>`;
+      this.hands = hands;
+      this.friends = friends;
    }
 
    message() {
-      return `${super.message()} ${this.legs}; <em>${this.say}</em>;${this.friends}`;
+      return [
+         ...super.message(),
+         this.legs,
+         this.hands,
+         `<em>${this.say}</em>`,
+         ...this.friends.map(friend => friend.name)
+      ].join('; ');
    }
 
 }
@@ -53,14 +56,19 @@ class FairyTaleCat extends Human {
 }
 
 class Animal extends Creature {
-   constructor(name, gender, paws, say, species, hands = 0) {
-      super(name, gender, species, hands);
+   constructor(name, gender, paws, say, species) {
+      super(name, gender, species);
       this.say = say;
       this.paws = paws;
    }
 
    message() {
-      return `${super.message()} ${this.paws}; <em>${this.say}</em>;`;
+      return [
+         ...super.message(),
+         this.paws,
+         '0',
+         `<em>${this.say}</em>`
+      ].join('; ');
    }
 }
 
