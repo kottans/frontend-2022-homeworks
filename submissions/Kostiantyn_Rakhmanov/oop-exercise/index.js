@@ -16,26 +16,26 @@ class Inhabitant {
 }
 
 class Animal extends Inhabitant {
-   constructor(species, name, gender, legs, saying) {
-      super(species, name, gender, legs, saying);
+   constructor(species, name, gender, saying, legs) {
+      super(species, name, gender, saying, legs);
    }
 }
 
 class Dog extends Animal {
-   constructor(name, gender, saying, legs = 4) {
-      super('dog', name, gender, saying, legs);
+   constructor(name, gender, saying) {
+      super('dog', name, gender, saying, 4);
    }
 }
 
 class Cat extends Animal {
-   constructor(name, gender, saying, legs = 4) {
-      super('cat', name, gender, saying, legs);
+   constructor(name, gender, saying) {
+      super('cat', name, gender, saying, 4);
    }
 }
 
 class Human extends Inhabitant {
-   constructor(name, gender, saying, legs = 2) {
-      super('human', name, gender, saying, legs);
+   constructor(name, gender, saying,) {
+      super('human', name, gender, saying, 2);
       this.hands = 2;
    }
    printOut() {
