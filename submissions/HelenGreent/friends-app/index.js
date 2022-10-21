@@ -35,6 +35,7 @@ function createUserCard(user) {
 }
 
 const createCards = (usersData) => {
+  userCards.innerHTML = "";
   usersData.forEach((user) => {
     createUserCard(user);
   });

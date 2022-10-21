@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
 * {
   margin: 0;
   border: 0;
@@ -45,6 +45,7 @@
 
 .form-title {
   padding: 10px 0 5px 0;
+  font-weight: 600;
 }
 
 .searchName {
@@ -151,6 +152,64 @@ input[type="radio"] + span:hover {
   color: #001aff;
 }
 
+
+.loader {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  content: "";
+  top: 20%;
+  right: 45%;
+  align-items: center;
+  text-align: center;
+  min-height: 50vh;
+}
+
+.ring {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  animation: ring 2s linear infinite;
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 1px 5px 2px #e65c00;
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 1px 5px 2px #18b201;
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 1px 5px 2px #0456c8;
+  }
+}
+
+.ring::before {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(254, 254, 254, 0.3);
+}
+
+.span {
+  color: #fefefe;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 200px;
+  animation: text 3s ease-in-out linear;
+}
+
+@keyframes text {
+  50% {
+    color: #000;
+  }
+}
+
 @media (max-width: 800px) {
   .container {
     flex-direction: column;
@@ -164,5 +223,9 @@ input[type="radio"] + span:hover {
   }
   .user-card {
     width: 200px;
+  }
+  .loader {
+    top: 50%;
+    right: 35%;
   }
 }
