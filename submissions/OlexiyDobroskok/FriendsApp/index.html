@@ -7,14 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FriendsApp</title>
   <link rel="stylesheet" href="./css/style.css">
+  <script defer type="module" src="./js/app.js"></script>
 </head>
 
 <body>
   <header>
-    <h1>
-      <span>Friends</span>
-      <span>APP</span>
-    </h1>
+    <a href="#" class="header__logo"><span>Friends</span>
+      <span>APP</span></a>
   </header>
   <aside id="filter__menu" class="filter__menu">
     <form class="filter__form">
@@ -118,11 +117,13 @@
       <div class="text__section">
         <p class="detailed__age detailed__text__content"></p>
         <p class="detailed__date detailed__text__content"></p>
-        <p class="detailed__email detailed__text__content"></p>
-        <p class="detailed__gender detailed__text__content"></p>
-        <p class="detailed__location detailed__text__content"></p>
+        <p class="detailed__gender detailed__text__content">
         <p class="detailed__nation detailed__text__content"></p>
-        <p class="detailed__phone__number detailed__text__content"></p>
+        <address>
+          <div><strong>Phone: </strong><a href="#" class="detailed__phone__number detailed__text__content"></a></div>
+          <div><strong>Email: </strong><a href="#" class="detailed__email detailed__text__content"></a></div>
+          <p class="detailed__location detailed__text__content"></p>
+        </address>
       </div>
       <div class="detailed__btn__area">
         <button class="friend__btn add__friend">
@@ -140,6 +141,7 @@
         <div class="loader"></div>
       </div>
       <ul class="person__list"></ul>
+      <ul class="page__list"></ul>
     </main>
   </div>
   <dialog class="error">
@@ -155,7 +157,6 @@
   <footer>
     <p>&copy; by OlexiyDobroskok, 2022</p>
   </footer>
-  <script src="./js/app.js"></script>
 </body>
 
 </html>

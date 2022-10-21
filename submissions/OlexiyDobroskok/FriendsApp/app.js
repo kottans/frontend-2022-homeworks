@@ -1,129 +1,65 @@
-const citiesPhotos = [
-  {
-    cityPhoto: "./img/cities/dnipro_1.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/dnipro.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/doneck.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/ivano-frankivsk_2.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/kharkiv_1.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/kharkiv_2.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/kharkiv_4.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/kharkiv.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/kyiv_2.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/kyiv_3.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/kyiv.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/lviv.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/ternopil.jpg",
-  },
-  {
-    cityPhoto: "./img/cities/zaporijja.jpg",
-  },
-];
+import { showFilteredPersons } from "./modules/FilterLogic.js";
+import { getData } from "./modules/Serve.js";
+import {
+  deleteFirstChildElements,
+  updatePersonsData,
+  convertPersonsData,
+  changeSideBtnName,
+  closePreLoader,
+} from "./modules/Service.js";
 
-async function getData(url) {
-  const responceData = await fetch(url);
-  const json = await responceData.json();
-  return json;
-}
-
-async function waitData() {
-  const url =
-    "https://randomuser.me/api/?results=100&inc=gender,name,nat,dob,location,email,phone,picture&nat=us,ua,ch,gb";
-  try {
-    data = await getData(url);
-    const preloaderEl = document.getElementById("preloader");
-    preloaderEl.classList.add("hidden");
-    preloaderEl.classList.remove("visible");
-    return data;
-  } catch {
-    errorWindow.showModal();
-    console.log(error);
-  }
-}
-
+let persons = [];
+let friendsList = [];
 let friendsIdList = [];
 let pageValue = 0;
-const personsList = document.querySelector(".person__list");
-const pageList = document.createElement("ul");
-pageList.classList.add("page__list");
-personsList.after(pageList);
-
-const personsData = waitData();
-personsData.then(({ results: persons }) => {
-  persons.forEach((person, personPosition) => {
-    person.cityImg = shuffle(citiesPhotos)[0];
-    person.id = personPosition;
-  });
-  sort.byAlphabet(persons);
-  pageList.innerHTML = createPageList(persons).join("");
-  updatePersonsList(persons);
-});
-
+const contentArea = document.querySelector(".app__content");
 const errorWindow = document.querySelector(".error");
-const nameFilter = document.querySelector(".name__filter");
-const ageFilter = document.querySelector(".age__filter__by__number");
 const filterMenu = document.querySelector("#filter__menu");
-const filterForm = document.querySelector(".filter__form");
-const filterMenuBtn = document.querySelector(".filter__btn");
 const detailedPersonInfo = document.querySelector(".detailed__person__info");
-const myFriendsBtn = document.querySelector(".my__friends__btn");
 const btnsArea = document.querySelector(".btns__area");
-const iconInFriends = document.querySelector(".detailed__icon__infriends");
+const myFriendsBtn = document.querySelector(".my__friends__btn");
+const pageList = document.querySelector(".page__list");
 
-let friendsList;
+async function init() {
+  const url =
+    "https://randomuser.me/api/?results=100&inc=gender,name,nat,dob,location,email,phone,picture&nat=us,ua,ch,gb";
+  const { results } = await getData(url);
+  persons = results;
+  closePreLoader();
+  updatePersonsData(persons);
+  pageList.innerHTML = createPageList(persons).join("");
+  showFilteredPersons(persons);
+}
 
-personsData.then(({ results: persons }) => {
-  filterForm.addEventListener("input", () =>
-    renderPersonsList(
-      myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
-    )
-  );
-  pageList.addEventListener("click", () =>
-    showPage(
-      event,
-      myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
-    )
-  );
-  filterMenu.addEventListener("click", () =>
-    filterBtnsHandler(
-      event,
-      myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
-    )
-  );
-  personsList.addEventListener("click", () =>
-    createDetailedPersonsInfo(event, persons)
-  );
-  detailedPersonInfo.addEventListener("click", () =>
-    detailedInfoBtnsHandler(
-      event,
-      myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
-    )
-  );
-  btnsArea.addEventListener("click", () => changeDisplayMode(event, persons));
-});
+init();
+
+filterMenu.addEventListener("input", () =>
+  renderPersonsList(
+    myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
+  )
+);
+
+filterMenu.addEventListener("click", () =>
+  filterBtnsHandler(
+    event,
+    myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
+  )
+);
+
+contentArea.addEventListener("click", () =>
+  contentAreaHandler(
+    event,
+    myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
+  )
+);
+
+detailedPersonInfo.addEventListener("click", () =>
+  detailedInfoBtnsHandler(
+    event,
+    myFriendsBtn.dataset.friendsBtn !== "open" ? persons : friendsList
+  )
+);
+btnsArea.addEventListener("click", () => changeDisplayMode(event, persons));
 
 errorWindow.addEventListener("click", errorHandler);
 
@@ -147,7 +83,7 @@ function createPersonsList(persons) {
           return "";
         }
       }
-      const personCard = `
+      return `
       <li id='${id}'class="person__item" ${
         repeatId !== undefined ? ' data-friend="true"' : ""
       }>
@@ -166,32 +102,49 @@ function createPersonsList(persons) {
         }
       </li>
       `;
-      return personCard;
     }
   );
+}
+
+export function updatePersonsList(persons) {
+  const personsList = document.querySelector(".person__list");
+  deleteFirstChildElements(personsList);
+  personsList.innerHTML =
+    persons.length > 0
+      ? createPersonsList(persons).join("")
+      : `<p class="list__message">We found nothing matching your search... =(</p>`;
 }
 
 function createPageList(persons) {
   const convertedPersonsData = convertPersonsData(persons);
   return convertedPersonsData.map((page, number) => {
-    const pageNumber = `
+    return `
     <li class="page__number"><a class="page__link${
       pageValue == number ? " chosen__page" : ""
     }" href="#" data-page-value="${number}">${number + 1}</a></li>`;
-    return pageNumber;
   });
 }
 
-function showPage({ target }, persons) {
+export function updatePageList(persons) {
+  const pageList = document.querySelector(".page__list");
+  deleteFirstChildElements(pageList);
+  pageList.innerHTML = createPageList(persons).join("");
+}
+
+function contentAreaHandler({ target }, persons) {
   const selectedPage = target.closest(".page__link");
-  if (!selectedPage) return;
-  pageValue = selectedPage.dataset.pageValue;
+  const activePerson = target.closest(".person__item");
+  if (!activePerson && !selectedPage) return;
+  if (selectedPage) showPage(selectedPage, persons);
+  if (activePerson) createDetailedPersonsInfo(activePerson, persons);
+}
+
+function showPage(page, persons) {
+  pageValue = page.dataset.pageValue;
   showFilteredPersons(persons);
 }
 
-function createDetailedPersonsInfo({ target }, persons) {
-  const activePerson = target.closest(".person__item");
-  if (!activePerson) return;
+function createDetailedPersonsInfo(activePerson, persons) {
   const personId = activePerson.id;
   if (filterMenu.classList.value === "filter__menu") {
     filterMenu.classList.remove("filter__menu");
@@ -230,17 +183,20 @@ function createDetailedPersonsInfo({ target }, persons) {
   const personPhoneNumber = document.querySelector(".detailed__phone__number");
   const addFriendBtn = document.querySelector(".add__friend");
   const deleteFriendBtn = document.querySelector(".delete__friend");
+  const iconInFriends = document.querySelector(".detailed__icon__infriends");
   personPhoto.src = photo;
   personName.innerText = `${firstName} ${surName}`;
   personDate.innerHTML = `<strong>Birthday:</strong> ${birthday}`;
   personAge.innerHTML = `<strong>Age:</strong> ${age}`;
-  personEmail.innerHTML = `<strong>Email:</strong> ${email}`;
+  personEmail.textContent = email;
+  personEmail.href = `mailto:${email}`;
   personGender.innerHTML = `<strong>Gender:</strong> ${gender}`;
   personLocation.innerHTML = `<strong>Address:</strong> ${streetNumber} ${streetName},
     ${city},${state},
     ${country},${postcode}`;
   personNation.innerHTML = `<strong>Nation:</strong> ${nation}`;
-  personPhoneNumber.innerHTML = `<strong>Phone:</strong> ${phone}`;
+  personPhoneNumber.textContent = phone;
+  personPhoneNumber.href = `tel:${phone}`;
   addFriendBtn.setAttribute("data-person-id", id);
   deleteFriendBtn.setAttribute("data-person-id", id);
   if (activePerson.dataset.friend === "true") {
@@ -259,6 +215,7 @@ function detailedInfoBtnsHandler({ target }, persons) {
   const addFriendBtn = target.closest(".add__friend");
   const deleteFriendBtn = target.closest(".delete__friend");
   if (!activeBtn) return;
+  const iconInFriends = document.querySelector(".detailed__icon__infriends");
   const activePersonId = activeBtn.dataset.personId;
   if (!!addFriendBtn) {
     const repeatId = friendsIdList.find(
@@ -317,6 +274,11 @@ function updateVisualPageToDefaultSettings() {
   changeSideBtnName();
 }
 
+function renderPersonsList(persons) {
+  pageValue = 0;
+  showFilteredPersons(persons);
+}
+
 function filterBtnsHandler({ target }, persons) {
   const resetBtn = target.closest(".reset__filter__btn");
   const sideBtn = target.closest(".filter__btn");
@@ -329,242 +291,11 @@ function filterBtnsHandler({ target }, persons) {
   if (!!resetBtn) resetForm(persons);
 }
 
-function renderPersonsList(persons) {
-  pageValue = 0;
-  showFilteredPersons(persons);
-}
-
-function showFilteredPersons(persons) {
-  validationOfEnteredData(nameFilter, "[^a-z]");
-  validationOfEnteredData(ageFilter, "[^0-9]");
-  let filteredPersonsByAge;
-  let filteredPersonsByName;
-  let filteredPersonsByGender;
-  const inputValueAge = getValueInputField("age__filter__by__number");
-  const inputValueName = getValueInputField("name__filter");
-  const filterMethodValue = document.querySelector("#filter__method").value;
-  if (inputValueAge !== "" && inputValueName !== "") {
-    filteredPersonsByName =
-      filterMethodValue === "extended"
-        ? filterExtendedName(persons, inputValueName)
-        : filterMethodValue === "surname"
-        ? filterSurname(persons, inputValueName)
-        : filterFirstName(persons, inputValueName);
-    filteredPersonsByAge = filterAge(filteredPersonsByName, inputValueAge);
-    filteredPersonsByGender = genderFilter(
-      filteredPersonsByAge,
-      getValueRadioBtn("gender__filter")
-    );
-  } else if (inputValueName !== "") {
-    filteredPersonsByName =
-      filterMethodValue === "extended"
-        ? filterExtendedName(persons, inputValueName)
-        : filterMethodValue === "surname"
-        ? filterSurname(persons, inputValueName)
-        : filterFirstName(persons, inputValueName);
-    filteredPersonsByGender = genderFilter(
-      filteredPersonsByName,
-      getValueRadioBtn("gender__filter")
-    );
-  } else if (inputValueAge !== "") {
-    filteredPersonsByAge = filterAge(persons, inputValueAge);
-    filteredPersonsByGender = genderFilter(
-      filteredPersonsByAge,
-      getValueRadioBtn("gender__filter")
-    );
-  } else {
-    filteredPersonsByGender = genderFilter(
-      persons,
-      getValueRadioBtn("gender__filter")
-    );
-  }
-  sortPersons(filteredPersonsByGender, getValueRadioBtn("sort"));
-  updatePageList(filteredPersonsByGender);
-  updatePersonsList(filteredPersonsByGender);
-}
-
-const sort = {
-  byAgeIncrease(persons) {
-    persons.sort(
-      (firstPerson, secondPerson) => firstPerson.dob.age - secondPerson.dob.age
-    );
-  },
-  byAgeDecrease(persons) {
-    persons.sort(
-      (firstPerson, secondPerson) => secondPerson.dob.age - firstPerson.dob.age
-    );
-  },
-  byAlphabet(persons) {
-    persons.sort((firstPerson, secondPerson) => {
-      if (firstPerson.name.last < secondPerson.name.last) {
-        return -1;
-      }
-      if (firstPerson.name.last > secondPerson.name.last) {
-        return 1;
-      }
-      return 0;
-    });
-  },
-  byAlphabetReverse(persons) {
-    persons.sort((firstPerson, secondPerson) => {
-      if (firstPerson.name.last > secondPerson.name.last) {
-        return -1;
-      }
-      if (firstPerson.name.last < secondPerson.name.last) {
-        return 1;
-      }
-      return 0;
-    });
-  },
-};
-
-function sortPersons(personsData, value) {
-  switch (value) {
-    case "increase":
-      sort.byAgeIncrease(personsData);
-      break;
-    case "decrease":
-      sort.byAgeDecrease(personsData);
-      break;
-    case "alphabet":
-      sort.byAlphabet(personsData);
-      break;
-    case "alphabet__reverse":
-      sort.byAlphabetReverse(personsData);
-      break;
-  }
-}
-
-function genderFilter(personsData, value) {
-  switch (value) {
-    case "male":
-      return personsData.filter((person) => person.gender === "male");
-    case "female":
-      return personsData.filter((person) => person.gender === "female");
-    case "all":
-      return personsData;
-  }
-}
-
-function filterSurname(persons, value) {
-  const searchOptions = new RegExp("^" + value, "i");
-  return persons.filter((person) => {
-    if (person.name.last.search(searchOptions) === -1) {
-      return false;
-    }
-    return true;
-  });
-}
-
-function filterFirstName(persons, value) {
-  const searchOptions = new RegExp("^" + value, "i");
-  return persons.filter((person) => {
-    if (person.name.first.search(searchOptions) === -1) {
-      return false;
-    }
-    return true;
-  });
-}
-
-function filterExtendedName(persons, value) {
-  return persons.filter((person) =>
-    (person.name.first + person.name.last)
-      .toLowerCase()
-      .includes(value.toLowerCase())
-  );
-}
-
-function validationOfEnteredData(entryField, forbiddendValues) {
-  const maxLengthText = 12;
-  const maxLengthNumber = 2;
-  const forbidden = new RegExp(forbiddendValues, "ig");
-  if (entryField.value !== forbidden) {
-    entryField.value = entryField.value.replace(forbidden, "");
-  }
-  entryField.value = entryField.value.slice(
-    0,
-    entryField.type === "text" ? maxLengthText : maxLengthNumber
-  );
-}
-
-function filterAge(persons, value) {
-  const searchOptions = new RegExp("^" + value, "i");
-  return persons.filter((person) => {
-    if (person.dob.age.toString().search(searchOptions) === -1) {
-      return false;
-    }
-    return true;
-  });
-}
-
-function updatePersonsList(persons) {
-  deleteFirstChildsElements(personsList);
-  personsList.innerHTML =
-    persons.length > 0
-      ? createPersonsList(persons).join("")
-      : `<p class="list__message">We found nothing matching your search... =(</p>`;
-}
-
-function updatePageList(persons) {
-  deleteFirstChildsElements(pageList);
-  pageList.innerHTML = createPageList(persons).join("");
-}
-
 function resetForm(persons) {
   pageValue = 0;
-  sort.byAlphabet(persons);
+  showFilteredPersons(persons);
   updatePageList(persons);
   updatePersonsList(persons);
-}
-
-function convertPersonsData(persons) {
-  const convertedPersonsData = [];
-  let count = 0;
-  const personsPerPage = 15;
-  while (count < persons.length) {
-    const page = persons.slice(count, count + personsPerPage);
-    count += personsPerPage;
-    convertedPersonsData.push(page);
-  }
-  return convertedPersonsData;
-}
-
-function shuffle(cities) {
-  return cities.sort(function () {
-    return 0.5 - Math.random();
-  });
-}
-
-function deleteFirstChildsElements(element) {
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
-  }
-}
-
-function getValueRadioBtn(name) {
-  const radioBtn = document.querySelectorAll("input[name=" + name + "]");
-  for (let btn of radioBtn) {
-    if (!!btn.checked) {
-      return btn.value;
-    }
-  }
-}
-
-function getValueInputField(className) {
-  const inputField = document.querySelector("." + className);
-  return inputField.value;
-}
-
-function changeSideBtnName() {
-  const hideFilterBtn = document.querySelector(".hide__filter__btn");
-  const showFilterBtn = document.querySelector(".show__filter__btn");
-  if (filterMenu.classList.value === "filter__menu") {
-    showFilterBtn.classList.add("hide__btn");
-    hideFilterBtn.classList.remove("hide__btn");
-  } else {
-    showFilterBtn.classList.remove("hide__btn");
-    hideFilterBtn.classList.add("hide__btn");
-  }
 }
 
 function errorHandler({ target }) {
@@ -574,6 +305,6 @@ function errorHandler({ target }) {
     errorWindow.close();
   } else {
     errorWindow.close();
-    waitData();
+    init();
   }
 }
