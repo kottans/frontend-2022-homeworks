@@ -1,37 +1,42 @@
 import { print } from './js/lib.js';
 
 class Creature {
-   constructor(name, gender, species) {
+   constructor(name, gender, species, say) {
       this.species = species;
       this.name = name;
       this.gender = gender;
+      this.say = say;
    }
 
    message() {
       return [
          this.species,
          `<strong>${this.name}</strong>`,
-         this.gender
+         this.gender,
+         this.say
       ];
    }
 }
 
 class Human extends Creature {
    constructor(name, gender, hands, legs, say, species, friends) {
-      super(name, gender, species);
-      this.say = say;
+      super(name, gender, species, say);
       this.legs = legs;
       this.hands = hands;
       this.friends = friends;
    }
 
    message() {
+      const superMessage = super.message();
+      const superSay = superMessage.splice(-1);
+      const friends = this.friends.map(friend => friend.name).join(', ');
+
       return [
-         ...super.message(),
+         ...superMessage,
          this.legs,
          this.hands,
-         `<em>${this.say}</em>`,
-         ...this.friends.map(friend => friend.name)
+         `<em>${superSay}</em>`,
+         friends,
       ].join('; ');
    }
 
@@ -63,11 +68,14 @@ class Animal extends Creature {
    }
 
    message() {
+      const superMessage = super.message();
+      const superSay = superMessage.splice(-1);
+
       return [
-         ...super.message(),
+         ...superMessage,
          this.paws,
          '0',
-         `<em>${this.say}</em>`
+         `<em>${superSay}</em>`
       ].join('; ');
    }
 }
