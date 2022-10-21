@@ -9,12 +9,12 @@ class Creature {
    }
 
    message() {
-      return [
-         this.species,
-         `<strong>${this.name}</strong>`,
-         this.gender,
-         this.say
-      ];
+      return {
+         species: this.species,
+         name: `<strong>${this.name}</strong>`,
+         gender: this.gender,
+         say: `<em>${this.say}</em>`,
+      };
    }
 }
 
@@ -27,15 +27,18 @@ class Human extends Creature {
    }
 
    message() {
-      const superMessage = super.message();
-      const superSay = superMessage.splice(-1);
-      const friends = this.friends.map(friend => friend.name).join(', ');
+      const { species, gender, name, say } = super.message();
+      const friends = this.friends.map(friend => {
+         return friend.name;
+      }).join(', ');
 
       return [
-         ...superMessage,
+         species,
+         name,
+         gender,
          this.legs,
          this.hands,
-         `<em>${superSay}</em>`,
+         say,
          friends,
       ].join('; ');
    }
@@ -68,14 +71,16 @@ class Animal extends Creature {
    }
 
    message() {
-      const superMessage = super.message();
-      const superSay = superMessage.splice(-1);
+      const { species, gender, name, say } = super.message();
+      const hands = 0;
 
       return [
-         ...superMessage,
+         species,
+         name,
+         gender,
          this.paws,
-         '0',
-         `<em>${superSay}</em>`
+         hands,
+         say,
       ].join('; ');
    }
 }
