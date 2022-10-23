@@ -1,5 +1,5 @@
 const buttonSwitch = document.querySelector('.switcher-theme__input');
-buttonSwitch.addEventListener('click', toggleClass);
+buttonSwitch.addEventListener('click', toggleThemeClass);
 
 function toggleThemeClass({ currentTarget }) {
 	const inputStatus = currentTarget.checked;
