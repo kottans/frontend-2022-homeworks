@@ -6,7 +6,6 @@ export class Feed{
     this.members = [];
     this.selectedMembers = [];
     this.membersPerPage = 60;
-    this.currentAddress = '';
     this.filters = {
       'nick': ({login: {username: nick}}, data) => {
         return nick.toLowerCase().indexOf(data.toLowerCase()) >= 0;
@@ -15,7 +14,7 @@ export class Feed{
         return `${first} ${last}`.toLowerCase().indexOf(data.toLowerCase()) >= 0;
       },
       'gender': ({gender}, data) => {
-        return data == 'any' ? true : gender == data;
+        return data ? gender == data : true;
       },
       'agefrom': ({dob: {age}}, data) => {
         data = parseInt(data);
@@ -79,7 +78,7 @@ export class Feed{
         this.observer.emit('feedloaded');
       }
     ).catch((error) => {
-      this.showMessage('Sorry, the server is busy. Try again later');
+      this.showMessage('Sorry, the server is busy. Try again later.');
     });
   }
 
@@ -88,7 +87,8 @@ export class Feed{
     if (!$page) return;
     this.$pageContainer.querySelectorAll(`.${this.className}__page`).forEach($page => $page.classList.remove(`${this.className}__page-current`));
     $page.classList.add(`${this.className}__page-current`);
-    this.showPage(Number(target.dataset.pageNumber));
+    this.showPage(target.dataset.pageNumber);
+    this.observer.emit('pageselected', target.dataset.pageNumber);
   }
 
   showLoading(){
@@ -124,40 +124,31 @@ export class Feed{
     `)
   }
 
-  applyFilters({filters, sort}) {
+  applyFilters(filters, sort) {
     filters = Object.entries(filters);
     this.selectedMembers = this.members.slice();
     this.selectedMembers = filters.reduce((members, [filterName, data]) => {
-      return members.filter(member => this.filters[filterName](member, data));
+      if (this.filters[filterName]) return members.filter(member => this.filters[filterName](member, data));
+      throw new Error('There\'s no such page on server. Check the filter options you\'ve entered.');
     }, this.selectedMembers);
-    this.selectedMembers = this.selectedMembers.sort(this.sorts[sort]);
+    if (this.sorts[sort]) this.selectedMembers = this.selectedMembers.sort(this.sorts[sort]);
+    else throw new Error('There\'s no such page on server. Check the sort option you\'ve entered.');
   }
 
-  saveAddress({filters, sort}) {
-    const baseURL = new URL('', window.location.href);
-    const filtersList = Object.entries(filters).map(([filter, value]) => `?${filter}=${value}`).join('');
-    const currentURL = new URL(`${filtersList}?sort=${sort}`, baseURL);
-    this.currentAddress = currentURL;
-  }
-
-  setAddress(pageNumber) {
-    let urlComponents = this.currentAddress.href.split('?');
-    urlComponents.splice(1, 0, `p=${pageNumber}`);
-    const currentAddress = new URL('', urlComponents.join('?'));
-    window.history.pushState(null, null, currentAddress.href);
-  }
-
-  createPages() {
-    const number = Math.ceil(this.selectedMembers.length / this.membersPerPage);
-    if (number > 1) {
-      const $pages = Array.from(Array(number), (element, index) => {
+  createPagination(pageNumber = 0) {
+    const numberOfPages = Math.ceil(this.selectedMembers.length / this.membersPerPage);
+    if (numberOfPages < pageNumber) {
+      throw new Error('There\'s no such page on server. Check the page number you\'ve entered.');
+    }
+    if (numberOfPages > 1) {
+      const $pages = Array.from(Array(numberOfPages), (element, index) => {
         const $page = document.createElement('div');
         $page.classList.add(`${this.className}__page`);
         $page.textContent = index + 1;
         $page.setAttribute('data-page-number', index);
         return $page;
       })
-      $pages[0].classList.add(`${this.className}__page-current`);
+      $pages[Number(pageNumber)].classList.add(`${this.className}__page-current`);
       this.$pageContainer.innerHTML = '';
       this.$pageContainer.append(...$pages);
       this.$pageContainer.classList.remove(`${this.className}__pages-hidden`);
@@ -206,17 +197,20 @@ export class Feed{
     })
   }
 
-  showPage(number) {
-    const members = this.selectedMembers.slice(number * this.membersPerPage, (number + 1) * this.membersPerPage);
+  showPage(pageNumber = 0) {
+    pageNumber = Number(pageNumber);
+    const members = this.selectedMembers.slice(pageNumber * this.membersPerPage, (pageNumber + 1) * this.membersPerPage);
     this.createCards(members);
-    this.setAddress(number);
     document.body.scrollIntoView();
   }
 
-  onOptionsChange(options) {
-    this.applyFilters(options);
-    this.saveAddress(options);
-    this.createPages();
-    this.showPage(0);
+  onOptionsChange({filters, sort, page}) {
+    try {
+      this.applyFilters(filters, sort);
+      this.createPagination(page);
+      this.showPage(page);
+    } catch(error) {
+      this.showMessage(error.message);
+    }   
   }
 }

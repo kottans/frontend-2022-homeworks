@@ -502,6 +502,7 @@ html, body {
   &__text {
     position: relative;
     padding: 2rem;
+    text-align: center;
     font-size: 1.5rem;
     color: $accentColor;
     background-color: $shadowColor;
@@ -520,7 +521,7 @@ html, body {
     }
 
     &:after {
-      right: 2px;
+      right: -2px;
     }
   }
 }

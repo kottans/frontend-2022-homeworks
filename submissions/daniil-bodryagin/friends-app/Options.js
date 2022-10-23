@@ -7,6 +7,7 @@ export class Options {
       filters: {},
       sort: 'az'
     };
+    this.$inputs = {};
   }
 
   toHTML(){
@@ -18,24 +19,24 @@ export class Options {
             <h4 class="${this.className}__filter-caption">Nickname</h4>
             <input type="text" id="nick" class="${this.className}__input" name="nick" placeholder="knightrider82">
           </label>
-          <label for="memberName" class="${this.className}__label">
+          <label for="membername" class="${this.className}__label">
             <h4 class="${this.className}__filter-caption">Name</h4>
-            <input type="text" id="memberName" class="${this.className}__input" name="name" placeholder="David Hasselhoff">
+            <input type="text" id="membername" class="${this.className}__input" name="name" placeholder="David Hasselhoff">
           </label>
           <label for="gender" class="${this.className}__label">
             <h4 class="${this.className}__filter-caption">Gender</h4>
             <select id="gender" class="${this.className}__select" name="gender">
-              <option value="any">Any</option>
+              <option value="">Any</option>
               <option value="male">Man</option>
               <option value="female">Woman</option>
             </select>
           </label>
           <h4 class="${this.className}__filter-caption">Age</h4>
-          <label for="ageFrom" class="${this.className}__label">
-            from <input type="number" id="ageFrom" class="${this.className}__input ${this.className}__input-small" name="agefrom" placeholder="0">
+          <label for="agefrom" class="${this.className}__label">
+            from <input type="number" id="agefrom" class="${this.className}__input ${this.className}__input-small" name="agefrom" placeholder="0">
           </label>
-          <label for="ageTo" class="${this.className}__label">
-            to <input type="number" id="ageTo" class="${this.className}__input ${this.className}__input-small" name="ageto" placeholder="0">
+          <label for="ageto" class="${this.className}__label">
+            to <input type="number" id="ageto" class="${this.className}__input ${this.className}__input-small" name="ageto" placeholder="0">
           </label>
           <label for="email" class="${this.className}__label">
             <h4 class="${this.className}__filter-caption">Email</h4>
@@ -81,20 +82,70 @@ export class Options {
 
   init() {
     this.$element = document.querySelector(`.${this.className}`);
+    this.$inputs.filters = Array.from(this.$element.querySelectorAll('input[type=text],input[type=number],select'))
+      .reduce((filters, $input) => {
+        filters[$input.name] = $input;
+        return filters;
+      }, {});
+    this.$inputs.sorts = Array.from(this.$element.querySelectorAll('input[type=radio]'))
+      .reduce((sorts, $radio) => {
+        sorts[$radio.value] = $radio;
+        return sorts;
+      }, {});
     this.$element.addEventListener('input', this.onInput.bind(this));
     this.$button.addEventListener('click', () => {
       this.$element.classList.toggle(`${this.className}-hidden`);
       document.body.classList.toggle('blocked');
-    })
-    this.observer.subscribe('feedloaded', () => this.observer.emit('optionschange', this.options));
+    });
+    this.getOptionsFromURL();
+    this.showOptions();
+    this.observer.subscribe('feedloaded', () => {
+      this.setURL();
+      this.observer.emit('optionschange', this.options);
+    });
+    this.observer.subscribe('pageselected', (pageNumber) => {
+      this.options.page = pageNumber;
+      this.setURL();
+    });
+  }
+
+  setURL() {
+    const baseURL = new URL('', document.location.href);
+    const pageString = Number(this.options.page) ? `?page=${this.options.page}` : ``;
+    const filtersList = Object.entries(this.options.filters).map(([filter, value]) => `?${filter}=${value}`).join('');
+    const currentAddress = new URL(`${pageString}${filtersList}?sort=${this.options.sort}`, baseURL);
+    window.history.pushState(null, null, currentAddress.href);
+  }
+
+  getOptionsFromURL() {
+    const hrefOptions = document.location.href.split('?').slice(1);
+    for (let hrefOption of hrefOptions) {
+      let [key, value] = hrefOption.split('=');
+      if (key == 'sort') this.options.sort = value;
+      else if (key == 'page') this.options.page = value;
+      else this.options.filters[key] = value;
+    }
+  }
+
+  showOptions() {
+    for (let filter in this.options.filters) {
+      this.$inputs.filters[filter].value = this.options.filters[filter];
+    }
+    for(let radio in this.$inputs.sorts) {
+      if(radio == this.options.sort) this.$inputs.sorts[radio].setAttribute('checked','');
+      else this.$inputs.sorts[radio].removeAttribute('checked');
+    }
   }
 
   onInput({target}) {
     if (target.name == 'sort') {
       this.options.sort = target.value;
     } else {
-      this.options.filters[target.name] = target.value;
+      if (target.value) this.options.filters[target.name] = target.value;
+      else delete this.options.filters[target.name];
+      this.options.page = '0';
     }
+    this.setURL();
     this.observer.emit('optionschange', this.options);
   }
 }
