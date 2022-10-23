@@ -1,7 +1,7 @@
 const buttonSwitch = document.querySelector('.switcher-theme__input');
 buttonSwitch.addEventListener('click', toggleClass);
 
-function toggleClass({ currentTarget }) {
+function toggleThemeClass({ currentTarget }) {
 	const inputStatus = currentTarget.checked;
 	if (inputStatus) {
 		document.body.classList.add('dark-theme');
@@ -26,7 +26,7 @@ let firstCard;
 let secondCard;
 let lockBoard = false;
 
-function flipCards() {
+function flipsAndIdentifiesCards() {
 	if (lockBoard) return;
 	if (this === firstCard) return;
 
@@ -47,19 +47,19 @@ function flipCards() {
 
 function checkMatch() {
 	if (firstCard.dataset.number == secondCard.dataset.number) {
-		cardsMatch();
+		hidesPairedCards();
 	} else {
-		cardsDoNotMatch();
+		flipsUnpairedCards();
 	}
 }
 
-function cardsMatch() {
+function hidesPairedCards() {
 	firstCard.classList.add('hidden');
 	secondCard.classList.add('hidden');
 	resetBoard();
 }
 
-function cardsDoNotMatch() {
+function flipsUnpairedCards() {
 	lockBoard = true;
 	setTimeout(() => {
 		firstCard.classList.remove('flip')
@@ -93,6 +93,6 @@ function cardsShuffling(card) {
 }
 
 cards.forEach(card => {
-	card.addEventListener('click', flipCards);
+	card.addEventListener('click', flipsAndIdentifiesCards);
 	cardsShuffling(card);
 })
