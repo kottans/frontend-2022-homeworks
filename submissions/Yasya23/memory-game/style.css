@@ -1,0 +1,141 @@
+:root {
+  --background-color: #5c5262;
+  --border-card-color: #121013;
+  --front-card-background: #ffffff;
+  --back-card-background: url(img/background.svg);
+  --link-color: #bcbeb6;
+  --button-color: rgb(200, 255, 177);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
+}
+
+.wrapper {
+  width: 550px;
+  height: 550px;
+  margin: auto;
+  padding: 0.5rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: #00000000;
+}
+
+.game {
+  position: relative;
+  display: grid;
+  grid: repeat(4,1fr)/repeat(4,1fr);
+  row-gap: 2%;
+  column-gap:2%;
+  width: 100%;
+  height: 100%;
+  perspective: 63rem;
+}
+
+.game__card {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.game__card.flip {
+  transform: rotateY(180deg);
+}
+
+.game__img-back,
+.game__img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--border-card-color);
+  backface-visibility: hidden;
+}
+
+.game__img {
+  transform: rotateY(180deg);
+  background-color: var(--front-card-background);
+}
+
+.game__img-back {
+  background-image: var(--back-card-background);
+  background-size: cover;
+}
+
+.game__win {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+}
+
+.game__text-win {
+  position: absolute;
+  top: 6.2rem;
+  left: 0.2rem;
+  font-size: 2rem;
+  color: var(--front-card-background);
+}
+
+.game__button {
+  position: absolute;
+  top: 9rem;
+  left: 0.2rem;
+  padding: 0.7rem;
+  border-radius: 0.6rem;
+  border: none;
+  font-size: 1.2rem;
+  background-color: var(--button-color);
+  color: var(--border-card-color);
+}
+
+.game__button:hover {
+  background-color: var(--background-color);
+  outline: 2px solid var(--button-color);
+  color: var(--button-color);
+}
+
+.link {
+  margin-top: 0.8rem;
+  text-align: center;  
+}
+
+.link a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: var(--link-color);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.block {
+  display: block;
+}
+
+@media (max-width: 420px) {
+  .wrapper {
+    max-height: 420px;
+  }
+
+  .game__win {
+    left: 33%;
+  }
+}
+
