@@ -3,8 +3,7 @@ import { getValueInputField } from "./Service.js";
 import { getValueRadioBtn } from "./Service.js";
 import { sortPersons } from "./Sorting.js";
 import * as filters from "./Filters.js";
-import { updatePageList } from "../app.js";
-import { updatePersonsList } from "../app.js";
+import { updatePersonsList, updatePageList } from "./Render.js";
 
 export function showFilteredPersons(persons) {
   const nameFilter = document.querySelector(".name__filter");

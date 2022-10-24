@@ -119,3 +119,12 @@ export function changeSideBtnName() {
     hideFilterBtn.classList.add("hide__btn");
   }
 }
+
+export function updateVisualPageToDefaultSettings() {
+  const filterMenu = document.querySelector("#filter__menu");
+  const detailedPersonInfo = document.querySelector(".detailed__person__info");
+  filterMenu.classList.remove("filter__menu__hide");
+  filterMenu.classList.add("filter__menu");
+  detailedPersonInfo.classList.add("hide__person__info");
+  changeSideBtnName();
+}
