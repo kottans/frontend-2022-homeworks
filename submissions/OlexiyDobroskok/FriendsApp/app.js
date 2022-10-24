@@ -63,7 +63,7 @@ async function init() {
 }
 
 function errorHandler({ target }) {
-  let btn = target.closest("button");
+  const btn = target.closest("button");
   if (!btn) return;
   if (btn.value === "cancel") {
     errorWindow.close();
