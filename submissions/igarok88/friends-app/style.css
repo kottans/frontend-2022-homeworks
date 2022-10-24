@@ -50,9 +50,12 @@ input[type="range"] {
   position: absolute;
   background-color: #c6c6c6;
   pointer-events: none;
+  padding-left: 20px;
 }
 
 #rangeMin {
+  right: 20px;
+  top: 1px;
   height: 0;
   z-index: 1;
 }
