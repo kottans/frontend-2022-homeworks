@@ -654,6 +654,7 @@ dialog::backdrop {
 
 .error__title {
     font-size: 18px;
+    margin-bottom: 10px;
     text-decoration: underline;
     padding: 3px;
     color: red;
@@ -661,6 +662,7 @@ dialog::backdrop {
 
 .error__msg {
     font-size: 16px;
+    padding-left: 3px;
 }
 
 .btn__area {
