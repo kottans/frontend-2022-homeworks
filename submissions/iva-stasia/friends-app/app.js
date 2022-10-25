@@ -10,7 +10,7 @@ const loader = document.querySelector('.loader');
 let initialFriends = [];
 let copyFriends = [];
 
-const getinitialFriends = async () => {
+const getInitialFriends = async () => {
     const url = `https://randomuser.me/api/?inc=gender,name,location,email,dob,cell,picture&results=24`;
     try {
         const response = await fetch(url);
@@ -25,8 +25,8 @@ const getinitialFriends = async () => {
     };
 };
 
-const createCards = (initialFriends) => {
-    const htmlinitialFriendsData = initialFriends.map(friend => {
+const createCards = (friendsData) => {
+    const htmlInitialFriendsData = friendsData.map(friend => {
         return `
             <div class="card glass_bg">
                 <img class="photo" src="${friend.picture.large}" alt="person photo">
@@ -51,7 +51,7 @@ const createCards = (initialFriends) => {
         `;
     }).join('');
 
-    cardsContainer.innerHTML = htmlinitialFriendsData;
+    cardsContainer.innerHTML = htmlInitialFriendsData;
     processCardBtns();
 };
 
@@ -152,7 +152,7 @@ const processCardBtns = () => {
 };
 
 const hideLoader = () => {
-    loader.classList.add('loader_hide');
+    loader.classList.add('loader_hidden');
 };
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -162,4 +162,4 @@ window.addEventListener('DOMContentLoaded', () => {
     filtersHeader.addEventListener('click', openFilters);
   });
 
-getinitialFriends();
+getInitialFriends();
