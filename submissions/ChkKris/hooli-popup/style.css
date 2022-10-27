@@ -1,0 +1,265 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 3px solid pink;
+  border-radius: 50%;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 18px;
+  background-image: url(img/background.jpg);
+  background-size: cover;
+  margin-bottom: 100px;
+  background-repeat: no-repeat;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*HEADER*/
+
+.menu__nav {
+  background-color: rgba(128, 0, 128, 0.8);
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 2px 40px 10px black;
+
+}
+
+.menu__nav_text {
+  border: 0.15rem solid transparent;
+  border-radius: 0.2rem;
+  color: #00FFFF;
+  font-size: 24px;
+  margin-right: 12px;
+
+}
+.menu__nav_text:focus {
+  outline: 3px solid pink;
+}
+.menu__nav_text:hover {
+  outline: 3px solid pink;
+}
+
+.menu__item {
+  display: block;
+  height: 1.715rem;
+  margin: 0.715rem;
+}
+
+.menu__checkbox {
+  position: relative;
+  min-width: 1.715rem;
+}
+
+.nav__picture {
+  width: 1.715rem;
+  border: 0.10rem solid transparent;
+  border-radius: 0.2rem;
+  padding: 0.15rem;
+  background: #00FFFF;
+  margin-right: 20px;
+}
+.nav__picture:focus {
+  outline: 3px solid pink;
+}
+.nav__picture:hover {
+  outline: 3px solid pink;
+}
+
+.nav__picture__img__bell,
+.nav__picture__img__avocado {
+  height: 100%;
+  border-radius: 50%;
+}
+
+.nav__picture__img__avocado {
+  height: 2.1rem;
+  margin-right: 12px;
+  border-radius: 50%;
+  margin-top: 4.5px;
+}
+.nav__picture__img__avocado:focus {
+  outline: 3px solid pink;
+}
+.nav__picture__img__avocado:hover {
+  outline: 3px solid pink;
+}
+
+.checkbox__label {
+  cursor: pointer;
+  position: absolute;
+  height: 1.715rem;
+  width: 1.715rem;
+  border: 0.10rem solid transparent;
+  border-radius: 0.2rem;
+  background: url("icon/popup-button.png") 10% 10%/100% 100% #00FFFF no-repeat;
+}
+
+.hiddenNavbar {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.checkbox__input:focus ~ .checkbox__label {
+  outline: 3px solid pink;
+}
+
+.checkbox__input:hover ~ .checkbox__label {
+  outline: 3px solid pink;
+}
+
+.checkbox__input:checked ~ .popup {
+  display: block;
+}
+
+/*POPUP*/
+
+.popup {
+  display: none;
+  position: absolute;
+  right: -6.45rem;
+  top: 2.15rem;
+  border: 0.15rem solid rgb(135, 105, 145);
+  border-radius: 0.2rem;
+  background-color: #F0FFFF;
+  width: 22rem;
+  height: 23.5rem;
+  padding: 0.2rem 0rem 0.5rem 0.2rem;
+  overflow: auto;
+}
+
+.popup__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.popup__item {
+  user-select: none;
+  flex: 0 0 30%;
+  border: 0.15rem solid transparent;
+  border-radius: 0.2rem;
+  margin: 0.33rem;
+  padding: 0.3rem 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.popup__item:hover {
+  border-color: hotpink;
+  box-shadow: 2px 3px 10px purple;
+
+}
+.popup__item:focus {
+  border-color: #876991;
+}
+
+.popup__image {
+  height: 100%;
+  width: 4rem;
+  object-fit: contain;
+}
+/*.popup__image:hover {
+  box-shadow: 2px 3px 10px purple;
+}*/
+
+.popup__name {
+  color: #666362;
+  margin-top: 0.35rem;
+}
+
+/*POPUP MORE*/
+
+.checkbox__more {
+  flex-basis: 90%;
+  justify-self: center;
+}
+
+.checkbox__input__more:checked ~ .popup__more {
+  display: block;
+  border-top: 1px solid #876991;
+}
+
+.popup__checkbox__label {
+  cursor: pointer;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding: 0.15rem;
+  border-radius: 0.2rem;
+  width: 18rem;
+  border: 0.15rem solid pink;
+}
+
+.popup__checkbox__more {
+  display: block;
+  color: #666362;
+}
+
+.checkbox__input__more:checked ~ .popup__checkbox__label {
+  display: none;
+}
+
+.checkbox__input__more:checked {
+  display: none;
+}
+
+.checkbox__input__more:checked
+  ~ .popup__checkbox__label
+  > .popup__checkbox__more {
+  display: none;
+}
+
+.checkbox__input__more:hover ~ .popup__checkbox__label {
+  box-shadow: 2px 3px 10px purple;
+  border-color: hotpink;
+}
+
+.checkbox__input__more:focus ~ .popup__checkbox__label {
+  box-shadow: 2px 3px 10px purple;
+  border-color: hotpink;
+}
+
+.popup__more {
+  display: none;
+}
+
+/*MEDIA QUERY*/
+
+@media only screen and (max-width: 600px) {
+
+  .popup__list,
+  .popup {
+      width: 12rem;
+      font-size: 13px;
+      overflow: auto;
+      border-radius: 0.2rem;
+  }
+
+  .popup__list,
+  .popup:focus {
+      border-color: #876991;
+  } 
+}
