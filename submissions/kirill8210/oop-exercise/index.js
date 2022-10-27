@@ -14,41 +14,69 @@ class Inhabitant{
         this.gender = gender;
         this.saying = saying;
     }
-    getShow(){
-        return `${this.species}; ${this.name}; ${this.gender}; ${this.saying};`
+
+    getInfo(){
+        return (
+            ['species', 'name', 'gender', 'saying']
+                .map(prop => this[prop]).join('; ')
+        )
     }
 }
 
 class Human extends Inhabitant{
-    constructor(species, name, gender, saying, legs, hands) {
-        super(species, name, gender, saying);
-        this.legs = legs;
-        this.hands = hands;
+    constructor(name, gender, saying) {
+        super('human', name, gender, saying);
+        this.legs = 2;
+        this.hands = 2;
     }
-    getShow(){
-        return super.getShow() + ` ${this.legs}; ${this.hands};`
-    }
-}
-
-class Animals extends Inhabitant{
-    constructor(species, name, gender, saying, legs) {
-        super(species, name, gender, saying);
-        this.legs = legs;
-    }
-    getShow(){
-        return super.getShow() + ` ${this.legs};`
+    getInfo(){
+        return super.getInfo() + ` ${this.legs}; ${this.hands};`
     }
 }
 
-let man = new Human('man', 'Kyryl', 'male', 'Hello, World!', 2, 2);
-let woman = new Human('woman', 'Inna', 'female', 'Hello, World!', 2, 2);
-let cat = new Animals('cat', 'Tom', 'male','May!', 4);
-let dog = new Animals('dog', 'Toby', 'male','Gav!', 4);
+class Man extends Human{
+    constructor(name, saying){
+        super(name, 'male', saying);
+    }
+}
+
+class Woman extends Human{
+    constructor(name, saying){
+        super(name, 'female', saying);
+    }
+}
+
+class Animal extends Inhabitant{
+    constructor(species, name, gender, saying) {
+        super(species, name, gender, saying);
+        this.paws = 4;
+    }
+    getInfo(){
+        return super.getInfo() + ` my paws: ${this.paws};`
+    }
+}
+
+class Cat extends Animal{
+    constructor(name, gender) {
+        super('cat', name, gender, 'May!');
+    }
+}
+
+class Dog extends Animal{
+    constructor(name, gender) {
+        super('dog', name, gender, 'Gav!');
+    }
+}
+
+let man = new Man('Kyryl', 'Hello, World!');
+let woman = new Woman('Inna', 'Hey, Kyryl!');
+let cat = new Cat('Tom', 'male');
+let dog = new Dog('Toby', 'male');
 
 inhabitants = [man, woman, cat, dog];
 
 inhabitants.forEach(inhabitant => {
     print(
-        inhabitant.getShow()
+        inhabitant.getInfo()
     );
 });
