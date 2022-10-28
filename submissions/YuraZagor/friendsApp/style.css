@@ -101,8 +101,10 @@ label, .reset--button{
 .user-info{
 	display: flex;
 	flex-direction: column;
-	justify-items: space-between;
-	
+	justify-items: space-between;	
+}
+.user-contacts{
+	color:rgba(68, 70, 22, 0.658)
 }
 .user-location{
 	color:rgb(28, 101, 104);

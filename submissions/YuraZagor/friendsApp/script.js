@@ -16,6 +16,7 @@ const fetchUsers = async () => {
       throw Error(response.statusText);
     } else {
       const { results } = await response.json();
+      console.log(results)
       return results;		  
     }
   } catch (e) {
@@ -71,23 +72,24 @@ function fillCardContainer(data) {
 
 function createCard( {picture, name, dob, cell, location, email}) {
   const card = `
-	<article class="user-card">
-		<div class="user--img">
-			<img class="user--image" src="${picture.large}" alt="" >
-		</div>
-		<div class="user-info">
-			<h3 class="user-name">${name.first}</h3>
-			<h3 class="user-name">${name.last}</h3>
-			<p class="user-age">${dob.age} years old</p>
-			<a href='tel:${cell}'> ${cell} </a>
-			<p class="user-country"> ${location.country} </p4> 
-			<p class="user-city"> ${location.city} </p5> 
-			<a href='mailto:${email}'> e-mail </a>
-		</div>
-	</article>
-	`;
-return card;
+      <article class="user-card">
+        <div class="user--img">
+          <img class="user--image" src="${picture.large}" alt="" >
+        </div>
+        <div class="user-info">
+          <h3 class="user-name">${name.first}</h3>
+          <h3 class="user-name">${name.last}</h3>
+          <p class="user-age">${dob.age} years old</p>
+          <a href='tel:${cell}' class="user-contacts"> ${cell} </a>
+          <p class="user-location"> ${location.country} </p> 
+          <p class="user-location"> ${location.city} </p> 
+          <a href='mailto:${email}' class="user-contacts"> e-mail </a> 
+        </div>
+      </article>
+      `;
+	return card;
 };
+
 function sortUsers(data, inputValue) {
   
   if (inputValue === 'ageUp' || inputValue === 'ageDown') {
@@ -98,7 +100,7 @@ function sortUsers(data, inputValue) {
     data.sort((a, b) => a.name.first.localeCompare(b.name.first));
     return inputValue === 'az' ? data : data.reverse();
   }
-  return data;
+  return data
 };
 
 function filterByGender(data, inputValue) {
@@ -108,7 +110,7 @@ function filterByGender(data, inputValue) {
   if (inputValue === 'male') {
     return data.filter((user) => user.gender === 'male');
   }
-  return data;
+  return data
 };
 
 function resetUsers(data) {
