@@ -69,25 +69,25 @@ function fillCardContainer(data) {
   });
 };
 
-function createCard( {picture, name, dob, cell, location}) {
+function createCard( {picture, name, dob, cell, location, email}) {
   const card = `
-      <div class="user-card">
-        <div class="user--img">
-          <img class="user--image" src="${picture.large}" alt="" >
-        </div>
-        <div class="user-info">
-          <h3 class="user-name">${name.first}</h3>
-          <h3 class="user-name">${name.last}</h3>
-          <p class="user-age">${dob.age} years old</p>
-          <p class="user-phone"> ${cell}"</p> 
-          <p class="user-country"> ${location.country} </p4> 
-          <p class="user-city"> ${location.city} </p5> 
-        </div>
-      </div>
-      `;
-	return card;
+	<article class="user-card">
+		<div class="user--img">
+			<img class="user--image" src="${picture.large}" alt="" >
+		</div>
+		<div class="user-info">
+			<h3 class="user-name">${name.first}</h3>
+			<h3 class="user-name">${name.last}</h3>
+			<p class="user-age">${dob.age} years old</p>
+			<a href='tel:${cell}'> ${cell} </a>
+			<p class="user-country"> ${location.country} </p4> 
+			<p class="user-city"> ${location.city} </p5> 
+			<a href='mailto:${email}'> e-mail </a>
+		</div>
+	</article>
+	`;
+return card;
 };
-
 function sortUsers(data, inputValue) {
   
   if (inputValue === 'ageUp' || inputValue === 'ageDown') {
