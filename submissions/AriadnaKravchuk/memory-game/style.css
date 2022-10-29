@@ -1,0 +1,500 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+:root {
+    --start-page-title-font-size: 2rem;
+    --start-page-text-font-size: 1rem;
+    --start-page-text-margin: 0.938rem 0 0;
+    --start-page-subtitle-font-size: 1.2rem;
+    --start-page-text-width: 650px;
+    --details-group-width: 500px;
+    --details-button-font-size: 0.875rem;
+    --details-content-font-size: 1rem;
+    --details-content-padding: 0.938rem;
+    --start-page-copyright: 0.938rem;
+    --details-summary-padding: 1rem;
+    --details-summary-font-size: 1.125rem;
+    --game-page-gap: 0.625rem;
+    --game-page-title-font-size: 2.75rem;
+    --game-page-board-padding: 1.1rem;
+    --game-page-board-gap: 0.5rem;
+    --game-page-template: 6.3rem;
+    --game-page-border-settings: 0.313rem #ffffff solid;
+    --game-page-board-radius: 0.313rem;
+    --game-page-board-margin: 0.313rem 0;
+    --card-radius: 0.313rem;
+    --card-back-img-padding: 0.313rem;
+    --status-board-gap: 0.625rem;
+    --status-board-font-size: 1.5rem;
+    --status-board-radius: 0.625rem;
+    --status-board-padding: 0.5rem 0.625rem;
+    --status-board-margin: -1.4rem auto 0;
+    --status-board-height: 3.438rem;
+    --status-board-width: 18.8rem;
+    --card-front-font-size: 3rem;
+    --popup-title-font-size: 2rem;
+    --popup-text-font-size: 1.125rem;
+    --popup-button-padding: 0.938rem;
+    --popup-button-font-size: 1rem;
+    --popup-button-width: 150px;
+    --popup-width: 400px;
+    --popup-padding-horizontal: 1.563rem;
+}
+
+body {
+    background-color: #f5f5dc;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: 0;
+}
+
+.card,
+.card__inner,
+.card__front,
+.card__back,
+.card__img {
+    width: 100%;
+    height: 100%; 
+}
+
+.game-page,
+.main__inner,
+.game__status-board,
+.start-page__inner,
+.start-page,
+.popup,
+.card__front,
+.game-page__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details__summary,
+.details__summary-inner {
+    display: flex;
+    align-items: center;
+}
+
+.start-page__inner,
+.game-page,
+.main__inner,
+.popup__inner {
+    flex-direction: column; 
+}
+
+body,
+.start-page__inner,
+.game-page,
+.popup {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.start-page__subtitle,
+.details-group,
+.details__summary,
+.details__summary-inner,
+.popup__button {
+    width: 100%;
+}
+
+.start-page__title,
+.start-page__text,
+.start-page__subtitle,
+.game-page__title,
+.popup__inner {
+    text-align: center;
+}
+
+.start-page__inner,
+.popup {
+    font-family: 'Capriola', sans-serif;   
+}
+
+.details__summary,
+.details__content {
+    border: 0.063rem solid #c0c0c0;
+    background: #ffffff;
+}
+
+.card__back, .flipped  {
+    transform: rotateY(180deg);
+}
+
+.start-page {
+    width: 100%;
+    height: 100%;
+    background-color: #f5f5dc;
+}
+
+.start-page__inner {
+    max-width: 1140px;
+    padding: 1.25rem;
+    color: #3b3b3b;
+}
+
+.start-page__title {
+    font-size: var(--start-page-title-font-size);
+}
+
+.start-page__text {
+    margin: var(--start-page-text-margin);
+    max-width: var(--start-page-text-width);
+    font-size: var(--start-page-text-font-size);
+}
+
+.start-page__subtitle {
+    font-size: var(--start-page-subtitle-font-size);
+    font-weight: 600;
+    margin: 1.25rem 0;
+}
+
+.details-group {
+    max-width: var(--details-group-width);
+    margin: 0 auto;
+}
+
+.details__summary {
+    gap: 0.313rem;
+    justify-content: space-between;
+    padding: var(--details-summary-padding);
+    font-size: var(--details-summary-font-size);
+    cursor: pointer;
+}
+
+.details__button {
+    font-size: var(--details-button-font-size);
+    text-transform: uppercase;
+    background-color: #5f9ea0;
+    padding: 0.688rem;
+    color: #ffffff;
+    border-radius: 0.25rem;
+}
+
+.details__content {
+    font-size: var(--details-content-font-size);
+    padding: var(--details-content-padding);
+}
+
+.start-page__copyright {
+    margin-top: 2.5rem;
+    font-size: var(--start-page-copyright);
+}
+
+.details__button:active {
+    transform: translateY(-0.063rem);
+}
+
+.details__button:hover,
+.details__button:active {
+    background-color: #588b8d;
+}
+
+.details[open] .details__content {
+    animation: det .3s;
+}
+
+.details__summary-inner {
+    justify-content: space-between;
+    gap: 0.938rem;
+}
+
+.details__text::before {
+    content: "➕";
+    margin-right: 0.5rem;
+}
+
+.details[open] .details__text::before {
+    content: "➖";
+    margin-right: 0.5rem;
+}
+
+.game-page {
+    padding: 0.625rem 0;
+    gap: var(--game-page-gap);
+    background-color: var(--game-page-background);
+    font-family: var(--game-page-font-family);
+    color: var(--game-page-font-color);
+}
+
+.game-page__title {
+    user-select: none;
+    font-size: var(--game-page-title-font-size);
+    line-height: var(--game-page-title-font-size);
+    font-family: inherit;
+}
+
+.game__board {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: var(--game-page-board-padding);
+    gap: var(--game-page-board-gap);
+    grid-template: repeat(4, var(--game-page-template)) / repeat(4, var(--game-page-template));
+    border: var(--game-page-border-settings);
+    border-radius: var(--game-page-board-radius);
+    margin: var(--game-page-board-margin);
+    background-color: var(--game-page-board-background);
+}
+
+.card__inner {
+    position: relative;
+    perspective: 1000px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card__front,
+.card__back {
+    user-select: none;
+    position: absolute;
+    border-radius: var(--card-radius);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card__front {
+    font-size: var(--card-front-font-size);
+    font-family: ui-serif;
+    background-color: var(--card-front-background);
+    border: 0.188rem solid var(--card-front-border);
+    color: var(--card-front-color);
+}
+
+.card__back {
+    background-color: var(--card-back-background);
+    border: 0.188rem solid var(--card-back-border);
+}
+
+.card__img {
+    padding: var(--card-back-img-padding);
+}
+
+.game__status-board {
+    user-select: none;
+    width: var(--status-board-width);
+    gap: var(--status-board-gap);
+    font-size: var(--status-board-font-size);
+    line-height: var(--status-board-font-size);
+    font-family: inherit;
+    background-color: var(--status-board-background);
+    border: var(--game-page-border-settings);
+    border-radius: var(--status-board-radius);
+    padding: var(--status-board-padding);
+    margin: var(--status-board-margin);
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(245, 245, 245, 50%);
+}
+
+.popup__inner {
+    display: flex;
+    width: calc(100% - 2.250rem);
+    padding: 1.563rem 1.125rem;
+    max-width: var(--popup-width);
+    align-items: center;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 1.25rem;
+}
+
+.popup__title {
+    font-size: var(--popup-title-font-size);
+    margin: 1.25rem 0;
+}
+
+.popup__text {
+    font-size: var(--popup-text-font-size);
+}
+
+.popup__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 2.5rem;
+    width: 95%;
+    gap: 5%;
+}
+
+.popup__button {
+    max-width: var(--popup-button-width);
+    padding: var(--popup-button-padding);
+    font-size: var(--popup-button-font-size);
+    color: #ffffff;
+    font-family: inherit;
+    background-color: var(--popup-button-color);
+    border-radius: 5px;
+}
+
+.popup__button:hover,
+.popup__button:active {
+    background-color: var(--popup-button-color-hover);
+}
+
+:root .gothic {
+    --popup-button-color: #32312D;
+    --game-page-background: #f5f5f5;
+    --game-page-font-color: #393939;
+    --game-page-font-family: 'Rye', cursive;
+    --game-page-board-background: #fffff0;
+    --card-front-background: #32312D;
+    --card-back-background: #f5f5f5;
+    --status-board-background: #fffff0;
+    --game-page-border-settings: 0.313rem #393939 solid;
+    --card-front-border: #20201e;
+    --card-back-border: #d3d3d3;
+    --card-front-color: #fffff0;
+    --popup-button-color-hover: #3b3a35;
+    --status-board-font-size: 1.35rem;
+}
+
+:root .daily-life {
+    --popup-button-color: #45B649;
+    --game-page-background: #DCE35B;
+    --game-page-font-color: #ffffff;
+    --game-page-font-family: 'Capriola', sans-serif;
+    --game-page-board-background: #f5f5dc;
+    --card-front-background: #45B649;
+    --card-back-background: #DCE35B;
+    --status-board-background: #45B649;
+    --card-front-border:#48a34b;
+    --card-back-border: #d2d85a;
+    --card-front-color: #ffffff;
+    --popup-button-color-hover: #46a049;
+}
+
+:root .sailor-moon {
+    --popup-button-color: #bba6c1;
+    --game-page-background: #dbc5db;
+    --game-page-font-color: #ffffff;
+    --game-page-font-family: 'Gotu', sans-serif;
+    --game-page-board-background: #f5f5dc;
+    --card-front-background: #bba6c1;
+    --card-back-background: #dbc5db;
+    --status-board-background: #bba6c1;
+    --card-front-border: #c7bac7;
+    --card-back-border: #d1c1d1;
+    --card-front-color: #ffffff;
+    --popup-button-color-hover: #a494a8;
+}
+
+@media (max-width: 500px) {
+    :root {
+        --game-page-title-font-size: 10vw;
+        --game-page-board-padding: 3.2vw;
+        --game-page-board-gap: 1.5vw;
+        --game-page-template: calc(25vw - var(--game-page-board-padding) * 2 / 4 - var(--game-page-board-gap) * 2 / 4 - 0.313rem - 0.625rem * 2 / 4);
+        --game-page-board-radius: 1.3vw;
+        --status-board-font-size: 5vw;
+        --status-board-padding: 0.438rem;
+        --status-board-margin: -1.3rem auto 0;
+        --status-board-height: 11vw;
+        --status-board-width: 64vw;
+        --card-front-font-size: 10vw;
+        --popup-title-font-size: 1.75rem;
+        --popup-text-font-size: 1rem;
+        --popup-button-padding: 0.625rem;
+        --popup-button-font-size: 0.875rem;
+    }
+
+    :root .gothic {
+        --status-board-font-size: 4.7vw;
+        --game-page-border-settings: 0.313rem #393939 solid;
+    }
+}
+
+@media (max-width: 370px) {
+    :root {
+        --game-page-gap: 0.313rem;
+        --start-page-title-font-size: 2.2rem;
+        --start-page-text-font-size: 1rem;
+        --start-page-subtitle-font-size: 1.1rem;
+        --details-button-font-size: 0.625rem;
+        --details-content-font-size: 0.938rem;
+        --status-board-font-size: 4.2vw;
+        --status-board-margin: -1.2rem auto 0;
+        --status-board-width: 59vw;
+        --status-board-padding: 0.30rem;
+    }
+
+    :root .gothic {
+        --status-board-font-size: 3.7vw;
+    }
+}
+
+@media (min-width: 750px) and (min-height: 900px) {
+    :root {
+        --start-page-title-font-size: 2.7rem;
+        --start-page-text-font-size: 1.3rem;
+        --start-page-text-margin: 1.2rem 0 0;
+        --start-page-subtitle-font-size: 1.7rem;
+        --start-page-text-width: 800px;
+        --details-group-width: 550px;
+        --details-button-font-size: 0.875rem;
+        --details-content-font-size: 1.125rem;
+        --details-content-padding: 0.938rem;
+        --start-page-copyright: 1.3rem;
+        --details-summary-padding: 1.25rem;
+        --details-summary-font-size: 1.4rem;
+        --game-page-title-font-size: 3.7rem;
+        --game-page-board-padding: 1.5rem;
+        --game-page-board-gap: 1rem;
+        --game-page-template: 9rem;
+        --game-page-border-settings: 0.625rem #ffffff solid;
+        --game-page-board-radius: 0.5rem;
+        --game-page-board-margin: 0.313rem 0;
+        --card-radius: 0.418rem;
+        --card-back-img-padding: 0.418rem;
+        --status-board-gap: 0.75rem;
+        --status-board-font-size: 2rem;
+        --status-board-radius: 0.8rem;
+        --status-board-padding: 0.65rem 0.75rem;
+        --status-board-margin: -2rem auto 0;
+        --status-board-height: 4.688rem;
+        --status-board-width: 25.625rem;
+        --card-front-font-size: 4.5rem;
+        --popup-width: 450px;
+        --popup-title-font-size: 2.6rem;
+        --popup-text-font-size: 1.4rem;
+        --popup-button-padding: 0.938rem;
+        --popup-button-font-size: 1.2rem;
+        --popup-button-width: 170px;
+    }
+
+    :root .gothic {
+        --status-board-margin: -1.6rem auto 0;
+        --status-board-font-size: 1.9rem;
+        --game-page-border-settings: 0.625rem #393939 solid;
+    }
+}
+
+@media (min-width: 1000px) and (min-height: 900px) {
+    :root {
+        --start-page-title-font-size: 3rem;
+        --start-page-text-font-size: 1.6rem;
+        --start-page-subtitle-font-size: 1.8rem;
+        --start-page-text-width: 950px;
+        --details-group-width: 650px;
+        --details-button-font-size: 1rem;
+        --details-content-font-size: 1.4rem;
+        --start-page-copyright: 1.5rem;
+        --details-summary-font-size: 1.5rem;
+    }
+}
