@@ -1,0 +1,36 @@
+.flipper {
+  aspect-ratio: 1 / 1;
+  
+  perspective: 1000px;
+}
+
+.flipper__inner {
+  position: relative;
+
+  inline-size: 100%;
+  block-size: 100%;
+
+  
+  transform-style: preserve-3d;
+  transform: rotateY(0);
+  transition: transform 0.3s;
+}
+
+.flipper__inner--flipped {
+  transform: rotateY(180deg);
+}
+
+.flipper__side {
+  position: absolute;
+  inset: 0;
+  
+  backface-visibility: hidden;
+}
+
+.flipper__side--front {
+  z-index: 2;
+}
+
+.flipper__side--back {
+  transform: rotateY(180deg);
+}
