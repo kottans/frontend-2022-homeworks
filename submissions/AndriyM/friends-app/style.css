@@ -10,20 +10,6 @@ body {
 	margin: 0 auto;
 }
 
-@media (max-width: 1098.98px) {
-	[class*="__container"] {
-		max-width: none;
-		padding: 25px;
-	}
-}
-
-@media (max-width: 767.98px) {
-	[class*="__container"] {
-		max-width: none;
-		padding: 0px;
-	}
-}
-
 .wrapper {
 	min-height: 100%;
 	display: flex;
@@ -52,9 +38,8 @@ body {
 	text-shadow: 3px 3px 8px rgb(118 90 225);
 }
 
-/* -------------------------cards ------------------------ */
 .main__cards {
-	padding-left: 30px;
+	padding-left: 42px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
@@ -72,13 +57,9 @@ body {
 .card:hover {
 	background-color: rgb(139, 117, 224, 0.4);
 }
-.card:nth-child(2n) {
-	margin-right: 0px;
-}
-
-.card:nth-child(7n),
-.card:nth-child(8n) {
-	margin-bottom: 0px;
+.card:hover .card__email,
+.card:hover .card__phone {
+	color: #fff;
 }
 
 .card__title {
@@ -129,27 +110,29 @@ body {
 	padding: 30px;
 }
 
-/* --------------------- form  ----------------------- */
+.notification.error {
+	color: rgb(170, 29, 29);
+	display: block;
+	text-align: center;
+}
+
 .main__form {
 	display: none;
 	min-width: 268px;
 	background-color: #fff;
 	border-radius: 10px;
 	padding: 20px 10px;
-	height: auto;
-}
-
-.form-wrapper {
-	position: relative;
+	min-height: 50%;
 }
 
 .show {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	display: block;
-	z-index: 99;
-	top: 0px;
+	z-index: 2;
 	background-color: #ccc;
-	left: 53px;
-	position: absolute;
 }
 
 .form__input {
@@ -185,7 +168,7 @@ body {
 .form__sort-age,
 .form__sort-name {
 	display: flex;
-	margin-bottom: 25px;
+	margin-bottom: 17px;
 	gap: 20px;
 	align-items: center;
 	font-size: 18px;
@@ -198,11 +181,12 @@ body {
 	width: 36px;
 	height: 36px;
 	cursor: pointer;
+	transition: transform 0.5s ease-out;
 }
 
-.svg-age:nth-last-child(),
-.svg-name:nth-last-child() {
-	margin-right: 0px;
+.svg-age:hover,
+.svg-name:hover {
+	transform: scale(1.2);
 }
 
 .btn {
@@ -243,32 +227,39 @@ body {
 
 .form__gender,
 .form__age {
-	margin-bottom: 25px;
+	margin-bottom: 17px;
 }
 .form__gender-label {
 	font-weight: 400;
 	font-size: 18px;
 	color: #221f1f;
 	cursor: pointer;
-	margin-right: 15px;
+	display: table;
+	padding: 5px 10px;
+	letter-spacing: 1.5px;
 }
-.form__gender-label:nth-last-child() {
-	margin-right: 0px;
+
+.form__gender-label:hover {
+	text-decoration: underline;
 }
+
 .form__gender-radio {
 	cursor: pointer;
+	margin-right: 10px;
 }
 .form__gender-text,
 .form__age-label {
-	margin-bottom: 8px;
+	margin-bottom: 15px;
 	font-weight: 600;
 	font-size: 18px;
 	color: #221f1f;
 }
 
 .form-filter {
-	position: relative;
-	z-index: 88;
+	position: fixed;
+	top: 68px;
+	left: 10px;
+	z-index: 2;
 	justify-content: center;
 	background-color: rgb(118 90 225);
 	cursor: pointer;
@@ -279,8 +270,13 @@ body {
 	font-size: 23px;
 	color: #fff;
 	text-transform: uppercase;
-	letter-spacing: 18px;
 	font-weight: 700;
+	min-height: 70vh;
+}
+
+.filter-text {
+	text-align: center;
+	letter-spacing: 22px;
 }
 
 .overlay {
@@ -290,7 +286,7 @@ body {
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.7);
-	z-index: 50;
+	z-index: 1;
 	opacity: 1;
 	transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -302,7 +298,7 @@ body {
 
 /* ---------------- adaptive ----------------- */
 
-@media (max-width: 1160.98px) {
+@media (max-width: 1159px) {
 	.card {
 		flex-direction: column;
 	}
@@ -312,20 +308,37 @@ body {
 	}
 }
 
-@media (max-width: 799.98px) {
-	.form-filter {
-		display: block;
-	}
-}
-
-@media (min-width: 800.98px) {
+@media (min-width: 799px) {
 	.form-filter {
 		display: none;
 	}
 	.main__form {
 		display: block;
 		width: 300px;
-		height: 100%;
+		min-height: 100vh;
+	}
+	.main__cards {
+		padding-left: 30px;
+	}
+}
+
+@media (min-width: 1160px) {
+	.main__form {
+		min-height: 100%;
+	}
+}
+
+@media (min-width: 500px) and (max-width: 799px) {
+	.form-filter {
+		display: block;
+		top: 107px;
+	}
+	.header__title {
+		padding-left: 10px;
+	}
+	.main__form {
+		min-width: 300px;
+		padding: 20px;
 	}
 }
 
@@ -334,11 +347,20 @@ body {
 		font-size: 38px;
 		font-weight: 800;
 		text-transform: uppercase;
-		padding: 15px 10px;
+		padding: 15px 0;
 		text-align: center;
 	}
 
 	.card__description {
 		padding-right: 0px;
+	}
+
+	.show {
+		left: 56%;
+	}
+
+	.notification.error {
+		font-size: 25px;
+		text-align: center;
 	}
 }
