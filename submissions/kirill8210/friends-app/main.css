@@ -1,0 +1,373 @@
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: local(''),
+    url('../fonts/roboto-v29-latin_cyrillic-300.woff2') format('woff2'),
+    url('../fonts/roboto-v29-latin_cyrillic-300.woff') format('woff');
+
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+    url('../fonts/roboto-v29-latin_cyrillic-regular.woff2') format('woff2'),
+    url('../fonts/roboto-v29-latin_cyrillic-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''),
+    url('../fonts/roboto-v29-latin_cyrillic-700.woff2') format('woff2'),
+    url('../fonts/roboto-v29-latin_cyrillic-700.woff') format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    font-family: Roboto, sans-serif;
+    line-height: 1.3;
+    font-weight: 400;
+    background-color: #9ff2ff;
+    color: #181818;
+}
+
+button {
+    cursor: pointer;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+@media (max-width: 560px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+
+.header{
+    width: 260px;
+}
+
+.title_app {
+    color: #28a0f2;
+    line-height: 40px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.app {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+.main {
+    width: calc(100% - 250px);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 10px;
+}
+
+.card {
+    width: 218px;
+    max-height: 350px;
+    text-align: center;
+    background-color: #E1FCFF;
+    border: 2px solid #555;
+    border-radius: 8px;
+}
+
+.card_name {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    padding: 10px 5px;
+    background-color: #28a0f2;
+    color: #ffffff;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 6px 6px 0 0;
+}
+
+.card_block_img {
+    height: 150px;
+    padding: 5px 0;
+}
+
+.card_img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.card_age {
+    line-height: 20px;
+    padding: 5px;
+}
+
+.card_email {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.card_phone {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 20px;
+    padding: 5px 0;
+}
+
+.card_login {
+    font-size: 20px;
+    line-height: 22px;
+    padding: 5px 0;
+}
+
+.card_human {
+    font-size: 25px;
+    line-height: 30px;
+    padding: 10px 0;
+    background-color: #28a0f2;
+    color: #ffffff;
+    border-radius: 0 0 6px 6px;
+}
+
+.female .card_human, .female .card_name {
+    background-color: #c93ff2;
+}
+
+.function_menu {
+    height: 350px;
+    background-color: #28a0f2;
+    padding: 10px 25px;
+}
+
+.function_title {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.75px;
+    line-height: 25px;
+    margin-bottom: 15px;
+    color: #9ff2ff;
+}
+
+.search_friends {
+    width: 178px;
+    height: 38px;
+    background-color: #9ff2ff;
+    border: 1px solid #555555;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.search_friends:focus-visible  {
+    outline: none;
+}
+
+.sorts {
+    position: relative;
+    width: 180px;
+    margin-bottom: 15px;
+}
+
+.sorts_select{
+    width: 178px;
+    font-size: 18px;
+    line-height: 18px;
+    background-color: #9ff2ff;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    padding: 7px 15px;
+}
+
+.sorts_select:focus-visible{
+    outline: none;
+}
+
+.sorts_select option{
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.sorts_by {
+    width: 178px;
+    font-size: 18px;
+    line-height: 18px;
+    cursor: pointer;
+    background-color: #9ff2ff;
+    border: 1px solid #555555;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.sorts_list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 210px;
+    z-index: 20;
+    background-color: #ffffff;
+}
+
+.sorts_list_active {
+    display: flex;
+}
+
+.sorts_options {
+    font-size: 14px;
+    line-height: 26px;
+    border: 1px solid #555555;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.filters_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    display: block;
+    width: 178px;
+    font-size: 18px;
+    line-height: 18px;
+    background-color: #9ff2ff;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 15px auto 0;
+    cursor: pointer;
+}
+
+.icon-menu {
+    display: none;
+}
+
+.icon-close {
+    display: none;
+}
+
+.icon-menu {
+    width: 40px;
+}
+
+.icon-menu_img  {
+    width: 30px;
+    height: 26px;
+    margin-top: 7px;
+}
+
+.icon-close {
+    width: 30px;
+}
+
+@media screen and (max-width: 1250px) {
+    .main {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .card {
+        width: 230px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .main {
+        width: 100%;
+    }
+
+    .icon-menu {
+        display: flex;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        border: none;
+        background-color: inherit;
+        width: 30px;
+        height: 40px;
+    }
+
+    .function_menu {
+        position: fixed;
+        height: auto;
+        left: -100%;
+        top: 0;
+        transition: left 0.5s ease-in-out;
+        padding-top: 70px;
+    }
+
+    .icon-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        width: 50px;
+        justify-content: end;
+    }
+
+    .active_menu {
+        left: 0;
+    }
+
+    .apply_btn{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 767.98px)  {
+    .icon-menu {
+        top: 10px;
+    }
+    .main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 550px)  {
+    .main {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
