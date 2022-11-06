@@ -14,4 +14,3 @@ iconMenu.addEventListener('click', addMenu);
 iconClose.addEventListener('click', removeMenu);
 
 export default removeMenu;
-

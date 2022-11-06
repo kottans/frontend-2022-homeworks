@@ -15,3 +15,4 @@ const preparePhoneNumber = (phones) => {
 };
 
 export default preparePhoneNumber;
+
