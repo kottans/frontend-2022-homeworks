@@ -1,7 +1,7 @@
-import arr from './json.js';
+import arrayNumbers from './json.js';
 
-const main = document.querySelector('.main');
-const doubleArray = [...arr, ...arr];
+const mainField = document.querySelector('.main');
+const doubleNumbers = [...arrayNumbers, ...arrayNumbers];
 
 const createCard = (arr) => {
     const {value, id} = arr;
@@ -20,65 +20,55 @@ const createCard = (arr) => {
                 </div>
             </div>
         </div>
-    `);
+    `)
 
     return cards
-};
+}
 
-const renderCards = (arr) => {
+const shuffleCards = (arr) => {
     const card = arr.sort(() => 0.5 - Math.random()).map(createCard);
-    main.append(...card);
+    mainField.append(...card);
 };
 
-renderCards(doubleArray);
+shuffleCards(doubleNumbers);
 
 const toggleCards = document.querySelectorAll('.flipper');
 const hiddenCards = document.querySelectorAll('.card');
 let ArrayCards = [];
-let flipCards = 0;
+let countFlipCards = 0;
 
 const flipCard = ({target}) => {
     const targetCard = target.closest('.card');
-    if (!target.closest('.flip')){
-        targetCard.classList.add('flip');
-        ArrayCards.push(targetCard);
-    }
-
-    if (ArrayCards.length === 2) {
-        hiddenCard();
-    }
-};
-
-const hiddenCard = () => {
-    let oneCard = ArrayCards[0].dataset.dataid;
-    let twoCard = ArrayCards[1].dataset.dataid;
-    if(oneCard === twoCard){
-        ArrayCards.forEach((card) => card.style.visibility = "hidden");
-        flipCards += 2;
-    } else{
-        notHiddenCard();
-    }
-    ArrayCards = [];
-    fullCards();
-};
-
-const notHiddenCard = () => {
-    setTimeout(() => {
-        for (let i = 0; i < hiddenCards.length; i++) {
-            hiddenCards[i].classList.remove('flip');
+    if (ArrayCards.length < 2) {
+        if (!target.closest('.flip')){
+            targetCard.classList.add('flip');
+            ArrayCards.push(targetCard);
         }
-        ArrayCards = []
-    }, 500)
-};
-
-const fullCards = () => {
-    if (flipCards === 12) {
-        setTimeout(() => {
-            alert('YOU WIN!');
-            document.location.reload();
-            flipCards = 0
-        }, 1200);
     }
-};
+    if (ArrayCards.length === 2) {
+        const oneCard = ArrayCards[0].dataset.dataid;
+        const twoCard = ArrayCards[1].dataset.dataid;
+        if(oneCard === twoCard){
+            ArrayCards.forEach((card) => card.style.visibility = "hidden");
+            countFlipCards += 2;
+            ArrayCards = [];
+        } else{
+            setTimeout(() => {
+                for (let i = 0; i < hiddenCards.length; i++) {
+                    hiddenCards[i].classList.remove('flip');
+                }
+                ArrayCards = []
+            }, 500)
+        }
+        if (countFlipCards === 12) {
+            setTimeout(() => {
+                alert('YOU WIN!')
+                document.location.reload();
+                countFlipCards = 0
+            }, 1200);
+        }
+    }
+}
 
 toggleCards.forEach(card => card.addEventListener('click', flipCard));
+
