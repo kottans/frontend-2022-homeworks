@@ -91,12 +91,12 @@ body {
   top: 80px;
   right: -150px;
   max-width: 380px;
-  max-height: 300px;
-  overflow: scroll;
+  max-height: 310px;
+  overflow: auto;
   overflow-x: hidden;
   border: 1px solid #7a7a52;
   border-radius: 5px;
-  padding: 10px;
+  padding: 10px 10px 5px 10px;
   background-color: #ffffe6;
   object-fit: cover;
 }
@@ -150,7 +150,7 @@ body {
 .sub__check-label {
   display: block;
   padding: 0;
-  margin: 30px 0px 30px 0px;
+  margin: 30px 0px 0px 0px;
   font-size: 20px;
   text-align: center;
   text-transform: uppercase;
