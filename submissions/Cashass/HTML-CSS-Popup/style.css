@@ -5,21 +5,23 @@
 
 html,
 body {
+  margin: 0;
   height: 100%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;
+  background-color: #ffe6cc;
 }
 
 .wraper {
   max-width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr;
   min-height: 100vh;
-  background-color: #ffe6cc;
 }
 
 .header {
+  max-width: 100%;
   display: flex;
   justify-content: end;
 }
@@ -29,8 +31,26 @@ body {
   list-style: none;
 }
 
+.container {
+  max-width: 1280px;
+  width: 100%;
+  justify-content: end;
+  height: 100%;
+}
+
+.header__menu {
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto;
+}
+
+.header__lists {
+  display: flex;
+  list-style: none;
+}
+
 .header__list {
-  margin: 10px;
   position: relative;
   vertical-align: middle;
   align-items: center;
@@ -44,6 +64,7 @@ body {
   color: #000;
   border-radius: 5px;
   text-decoration: none;
+  margin: 10px;
 }
 
 .header__link:focus,
@@ -69,14 +90,15 @@ body {
   display: none;
   top: 80px;
   right: -150px;
-  width: 380px;
-  height: 300px;
+  max-width: 380px;
+  max-height: 300px;
   overflow: scroll;
   overflow-x: hidden;
   border: 1px solid #7a7a52;
   border-radius: 5px;
   padding: 10px;
   background-color: #ffffe6;
+  object-fit: cover;
 }
 
 .header__input:checked ~ .popup {
@@ -86,7 +108,7 @@ body {
 .header__lists-popup {
   display: grid;
   grid-template-columns: repeat(3, 110px);
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-rows: auto;
   gap: 15px;
   padding: 5px;
   align-items: end;
@@ -141,7 +163,7 @@ body {
   position: absolute;
   margin-top: 29px;
   border: 1px solid transparent;
-  width: 362px;
+  width: 95%;
   height: 27px;
 }
 
@@ -173,7 +195,7 @@ body {
   align-items: end;
   list-style-type: none;
   grid-template-columns: repeat(3, 110px);
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-rows: auto;
   padding-top: 30px;
   margin-top: 30px;
   border-top: 1px solid #7a7a52;
