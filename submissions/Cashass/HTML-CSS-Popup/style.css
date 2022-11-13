@@ -65,6 +65,7 @@ body {
   border-radius: 5px;
   text-decoration: none;
   margin: 10px;
+  border: 1px solid transparent;
 }
 
 .header__link:focus,
@@ -139,6 +140,7 @@ body {
   text-decoration: none;
   color: #000;
   padding: 3px;
+  border: 1px solid transparent;
 }
 
 .popup__link:focus,
@@ -164,7 +166,7 @@ body {
   margin-top: 29px;
   border: 1px solid transparent;
   width: 95%;
-  height: 27px;
+  height: 25px;
 }
 
 .sub__check-input:focus,
