@@ -46,9 +46,9 @@ const flipCard = ({target}) => {
         openedCardId = oneCard.dataset.dataid;
         oneCard.classList.add('flip');
     } else {
-        awaitFlips = 1;
         twoCard = target.closest('.card');
         if (twoCard === oneCard) return;
+        awaitFlips = 1;
         if (openedCardId === twoCard.dataset.dataid) {
             openedCardId = 0;
             twoCard.classList.add('flip');
