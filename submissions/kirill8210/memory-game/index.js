@@ -20,10 +20,10 @@ const createCard = (arr) => {
                 </div>
             </div>
         </div>
-    `)
+    `);
 
     return cards
-}
+};
 
 const shuffleCards = (arr) => {
     const card = arr.sort(() => 0.5 - Math.random()).map(createCard);
@@ -33,42 +33,49 @@ const shuffleCards = (arr) => {
 shuffleCards(doubleNumbers);
 
 const toggleCards = document.querySelectorAll('.flipper');
-const hiddenCards = document.querySelectorAll('.card');
-let ArrayCards = [];
 let countFlipCards = 0;
+let openedCardId = 0;
+let awaitFlips = 0;
+let oneCard;
+let twoCard;
 
 const flipCard = ({target}) => {
-    const targetCard = target.closest('.card');
-    if (ArrayCards.length < 2) {
-        if (!target.closest('.flip')){
-            targetCard.classList.add('flip');
-            ArrayCards.push(targetCard);
-        }
-    }
-    if (ArrayCards.length === 2) {
-        const oneCard = ArrayCards[0].dataset.dataid;
-        const twoCard = ArrayCards[1].dataset.dataid;
-        if(oneCard === twoCard){
-            ArrayCards.forEach((card) => card.style.visibility = "hidden");
-            countFlipCards += 2;
-            ArrayCards = [];
-        } else{
+    if (awaitFlips === 1) return;
+    if (openedCardId === 0){
+        oneCard = target.closest('.card');
+        openedCardId = oneCard.dataset.dataid;
+        oneCard.classList.add('flip');
+    } else {
+        awaitFlips = 1;
+        twoCard = target.closest('.card');
+        if (twoCard === oneCard) return;
+        if (openedCardId === twoCard.dataset.dataid) {
+            openedCardId = 0;
+            twoCard.classList.add('flip');
+            oneCard.style.visibility = 'hidden';
+            twoCard.style.visibility = 'hidden';
             setTimeout(() => {
-                for (let i = 0; i < hiddenCards.length; i++) {
-                    hiddenCards[i].classList.remove('flip');
-                }
-                ArrayCards = []
+                awaitFlips = 0;
+            }, 800);
+            countFlipCards += 2;
+        } else{
+            openedCardId = 0;
+            twoCard.classList.add('flip');
+            setTimeout(() => {
+                oneCard.classList.remove('flip');
+                twoCard.classList.remove('flip');
+                awaitFlips = 0;
             }, 500)
         }
-        if (countFlipCards === 12) {
-            setTimeout(() => {
-                alert('YOU WIN!')
-                document.location.reload();
-                countFlipCards = 0
-            }, 1200);
-        }
     }
-}
+    if (countFlipCards === 12) {
+        setTimeout(() => {
+            alert('YOU WIN!');
+            document.location.reload();
+            countFlipCards = 0
+        }, 1200);
+    }
+};
 
 toggleCards.forEach(card => card.addEventListener('click', flipCard));
 
