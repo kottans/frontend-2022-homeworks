@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends App</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link type="image/png" sizes="96x96" rel="icon" href="https://img.icons8.com/emoji/96/1A1A1A/speech-balloon.png">
+</head>
+
+<body>
+    <div class="gradient_bg"></div>
+
+    <div class="loader glass_bg">
+        <div class="dot dot1 glass_bg"></div>
+        <div class="dot dot2 glass_bg"></div>
+        <div class="dot dot3 glass_bg"></div>
+    </div>
+
+    <section class="side_bar glass_bg">
+        <div class="filter_header">
+            <h1 class="app_name">Friends app</h1>
+            <div class="filter_btn glass_btn"><i class="fa-solid fa-sliders"></i></i></div>
+            <div class="search_btn glass_btn"><i class="fa-solid fa-magnifying-glass"></i></div>
+        </div>
+
+        <form class="filters">
+            <div class="filter_name text">Sort by name:</div>
+            <div class="filter_wrapper">
+                <label class="filter_label">
+                    <input type="radio" name="sort" value="name_increase">
+                    <span class="text">A - Z<i class="fa-solid fa-up-long"></i></span>
+                </label>
+                <label class="filter_label">
+                    <input type="radio" name="sort" value="name_decrease">
+                    <span class="text">Z - A<i class="fa-solid fa-down-long"></i></span>
+                </label>
+                </div>
+            <hr>
+
+            <div class="filter_name text">Sort by age:</div>
+            <div class="filter_wrapper">
+                <label class="filter_label">
+                    <input type="radio" name="sort" value="age_increase">
+                    <span class="text">Ascending<i class="fa-solid fa-up-long"></i></span>
+                </label>
+                <label class="filter_label">
+                    <input type="radio" name="sort" value="age_decrease">
+                    <span class="text">Descending<i class="fa-solid fa-down-long"></i></span>
+                </label>
+            </div>
+            <hr>
+
+            <div class="filter_name text">Filter by gender:</div>
+                <div class="filter_wrapper">
+                <label class="filter_label">
+                    <input type="radio" name="filter" value="male">
+                    <span class="text">Male<i class="fa-solid fa-mars"></i></span>
+                </label>
+                <label class="filter_label">
+                    <input type="radio" name="filter" value="female">
+                    <span class="text">Female<i class="fa-solid fa-venus"></i></span>
+                </label>
+                <label class="filter_label">
+                    <input type="radio" name="filter" value="both_gender" checked>
+                    <span class="text">Both<i class="fa-solid fa-mars-and-venus"></i></span>
+                </label>
+            </div>
+
+            <input type="reset" name="reset_btn" value="Reset all" class="glass_btn">
+        </form>
+    </section>
+
+    <section class="right_section">
+        <div class="top_block">
+            <div class="greeting">
+                <img src="https://img.icons8.com/sf-black/64/cecbe7/so-so.png" alt="Emoji Hi">
+                <h2 class="text">Hello, Friend!</h2>
+            </div>
+
+            <div class="search_block glass_bg">
+                <form class="search">
+                    <span class="search_icon"><i class="fa-solid fa-search"></i></span>                 
+                    <input type="search" id="search" name="search" placeholder="Bender Bending Rodríguez">
+                </form>
+                <a href="https://github.com/iva-stasia" target="_blank"><img class="profile_picture" src="https://img.icons8.com/sf-black/128/cecbe7/futurama-bender.png" alt="Profile Picture"></a>
+            </div> 
+        </div>
+        
+        <div class="cards_container">
+        </div>
+
+    </section>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
