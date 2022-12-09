@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&family=Varela+Round&display=swap');
+
+:root {
+    --color1: #F8F0E8;
+    --color2: #86A597;
+    --color3: #CDDDD7;
+    --color4: #c92b2b;
+    --color5: #EFB4B3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    list-style: none;
+    text-decoration: none;
+    -webkit-user-select: none;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+}
+
+body {
+    background-color: var(--color1);
+}
+
+.game_container {
+    margin: 2rem auto;
+    width: 30.1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.games_name,
+.clicks_board {
+    text-align: center;
+    color: var(--color4);
+    background-color: var(--color3);
+    box-shadow: 0px 1px 4px #71817b;
+    border-radius: 0.8rem;
+}
+
+.games_name {
+    flex: 0 1 100%;
+    font-family: Coiny, sans-serif;
+    font-size: 3rem;
+}
+
+.clicks_board,
+.reset_btn {
+    flex: 0 1 48%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.clicks_qty {
+    font-size: 1.5rem;
+}
+
+.reset_btn {
+    color: var(--color4);
+    background-color: var(--color5);
+    box-shadow: 0px 1px 4px #817171;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset_btn:hover {
+    color: var(--color5);
+    background-color: var(--color4);
+}
+
+.game_board {
+    flex: 0 1 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 7rem);
+    grid-template-rows: repeat(3, 8rem);
+    gap: 0.7rem;
+    perspective: 1000px;
+}
+
+.card_container {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: all 0.7s ease;
+}
+
+.flipped_card {
+    transform: rotateY(180deg);
+    transition: all 1s ease;
+}
+
+.face,
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 0.8rem;
+    box-shadow: 0px 1px 4px #71817b;
+}
+
+.face {
+    background-color: var(--color3);
+}
+
+.back {
+    background-color: var(--color2);
+    backface-visibility: hidden;
+}
+
+.locked,
+.found_locked {
+    pointer-events: none;
+}
+
+.found_locked .face {
+    opacity: 50%;
+    transition: all 0.2s ease;
+}
+
+/* Messages */
+
+.start_message,
+.win_message {
+    display: none;
+    flex-flow: column wrap;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20rem;
+    height: 10rem;
+    padding: 1rem;
+    background-color: var(--color3);
+    border-radius: 0.8rem;
+    box-shadow: 0px 1px 4px #71817b;
+    z-index: 2;
+}
+
+.show_message {
+    display: flex;
+}
+
+.message_text,
+.click_counter {
+    flex: 1 1 auto;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--color4);
+}
+
+.play_btn {
+    width: 10rem;
+    padding: 0.5rem;
+    text-align: center;
+    color: var(--color5);
+    background-color: var(--color4);
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.play_btn:hover {
+    color: var(--color4);
+    background-color: var(--color5);
+}
+
+.bg {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color1);
+    opacity: 80%;
+    z-index: 1;
+}
+
+.show_message ~ .bg {
+    display: block;
+}
+
+@media (max-width: 1799px) {
+    * {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1599px) {
+    * {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767px) {
+    * {
+        font-size: 15px;
+    }
+    .game_container {
+        width: 22.4rem;
+    }
+    .game_board {
+        grid-template-columns: repeat(3, 7rem);
+        grid-template-rows: repeat(4, 8rem);
+    }
+    .clicks_board,
+    .reset_btn {
+        flex: 0 1 47.7%;
+    }
+    .games_name {
+        height: 4.4rem;
+        padding-top: 0.2rem;
+        font-size: 2.6rem;
+    }
+}
+
+@media (max-width: 390px) {
+    * {
+        font-size: 12px;
+    }
+}
