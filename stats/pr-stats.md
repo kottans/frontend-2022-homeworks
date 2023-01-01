@@ -1,6 +1,6 @@
 # Open and merged PRs by task labels
 
-_as of 2022-12-31T22:38:27.680Z UTC_
+_as of 2023-01-01T22:38:39.584Z UTC_
 
 PR reference legend:
  - #xxx o -- PR is yet open 
@@ -96,7 +96,6 @@ PR reference legend:
 | 3.4 | [marynatovtyn](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Amarynatovtyn) | [**#383**](https://github.com/kottans/frontend-2022-homeworks/pull/383) | [#724 o](https://github.com/kottans/frontend-2022-homeworks/pull/724) | [#726 o](https://github.com/kottans/frontend-2022-homeworks/pull/726) |   |   |   |   |
 | 3.5 | [semenjob](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Asemenjob) | [**#69**](https://github.com/kottans/frontend-2022-homeworks/pull/69) | [**#96**](https://github.com/kottans/frontend-2022-homeworks/pull/96) | [**#105**](https://github.com/kottans/frontend-2022-homeworks/pull/105) |   |   |   |   |
 | 3.6 | [TetianaDiachenko](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ATetianaDiachenko) | [**#293**](https://github.com/kottans/frontend-2022-homeworks/pull/293) | [#601 o](https://github.com/kottans/frontend-2022-homeworks/pull/601) | [#691 o](https://github.com/kottans/frontend-2022-homeworks/pull/691) |   |   |   |   |
-| 3.7 | [TonyG89](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3ATonyG89) |   | [#535 o](https://github.com/kottans/frontend-2022-homeworks/pull/535) |   |   |   | [#714 o](https://github.com/kottans/frontend-2022-homeworks/pull/714) | [#738 o](https://github.com/kottans/frontend-2022-homeworks/pull/738) |
 | = | **2 tasks** |     |     |     |     |     |     |     |
 | 2.1 | [annymax](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Aannymax) | [**#251**](https://github.com/kottans/frontend-2022-homeworks/pull/251) | [#663 o](https://github.com/kottans/frontend-2022-homeworks/pull/663) |   |   |   |   |   |
 | 2.2 | [another96](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Aanother96) | [#420 o](https://github.com/kottans/frontend-2022-homeworks/pull/420) |   | [**#506**](https://github.com/kottans/frontend-2022-homeworks/pull/506) |   |   |   |   |
