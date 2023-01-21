@@ -1,32 +1,39 @@
 const filterBody = document.querySelector(".main__filters");
 const burgerImage = document.querySelector(".burger_img");
-const listOfUsers = document.querySelector(".users");
 const allFilters = document.querySelector(".main__filters");
 const filterButtons = document.querySelector(".filter__buttons");
-const filterForm = document.querySelector('.filter_form');
+const filterForm = document.querySelector(".filter_form");
 const closeBurgerButton = document.querySelector(".close");
 const searchInput = document.querySelector('input[name="search"]');
-const usersURL =
-  "https://randomuser.me/api/?results=16&nat=ua&inc=gender,name,location,picture,dob&seed=1 noinfo";
+const noUsersFoundElement = document.querySelector(".no-usersFound");
 
 let allUsers = [];
 let copyOfAllUsers = [];
+let foundUsers = [];
+let currentArrayOfUsers = [];
+let currentFilterSettings = {
+  selectedGender: "all",
+  currentSort: false,
+  inputText: false,
+};
 
-const getUsersData = async (url) => {
+(async () => {
   try {
-    const response = await fetch(url);
+    const usersURL =
+      "https://randomuser.me/api/?results=16&nat=ua&inc=gender,name,location,picture,dob&seed=1 noinfo";
+    const response = await fetch(usersURL);
     const data = await response.json();
-    allUsers = [...data.results];
+    allUsers = data.results;
     displayAllUsers(allUsers);
   } catch (err) {
     console.log("Error");
   }
-};
-getUsersData(usersURL);
+})();
 
-const displayAllUsers = (usersArray) => {
+const displayAllUsers = usersArray => {
+  const listOfUsers = document.querySelector(".users");
   listOfUsers.innerHTML = "";
-  usersArray.map((user) => {
+  usersArray.map(user => {
     const html = ` <li class="user">
       <div class="user_photo-wrapper">
         <img src=${user.picture.large} alt="" class="user_img" />
@@ -54,166 +61,112 @@ const displayAllUsers = (usersArray) => {
   });
 };
 
-let sortingRules = {
-  filterByGenderIsChoosed: "all",
-  ageByDescendingIsChecked: false,
-  ageByIncreasingIsChecked: false,
-  nameByDescendingIsChecked: false,
-  nameByIncreasingIsChecked: false,
+const compareAge = (firstUser, secondUser) => {
+  return firstUser.dob.age - secondUser.dob.age;
 };
 
-const defineSortingRules = (target) => {
-  switch (target.value) {
-    case "male":
-      sortingRules.filterByGenderIsChoosed = "male";
-      break;
+const compareName = (firstUser, secondUser) => {
+  return firstUser.name.first > secondUser.name.first ? 1 : -1;
+};
 
-    case "female":
-      sortingRules.filterByGenderIsChoosed = "female";
-      break;
+const allSortMethods = {
+  nameDescending: arr => {
+    return arr.sort((a, b) => compareName(b, a));
+  },
+  nameAscending: arr => {
+    return arr.sort(compareName);
+  },
+  ageDescending: arr => {
+    return arr.sort((a, b) => compareAge(b, a));
+  },
+  ageAscending: arr => {
+    return arr.sort(compareAge);
+  },
+};
 
-    case "all":
-      sortingRules.filterByGenderIsChoosed = "all";
-      break;
-
-    case "0-9":
-      sortingRules.ageByIncreasingIsChecked = true;
-      sortingRules.ageByDescendingIsChecked = false;
-      sortingRules.nameByIncreasingIsChecked = false;
-      sortingRules.nameByDescendingIsChecked = false;
-      break;
-
-    case "9-0":
-      sortingRules.ageByDescendingIsChecked = true;
-      sortingRules.ageByIncreasingIsChecked = false;
-      sortingRules.nameByIncreasingIsChecked = false;
-      sortingRules.nameByDescendingIsChecked = false;
-      break;
-
-    case "A-z":
-      sortingRules.nameByIncreasingIsChecked = true;
-      sortingRules.nameByDescendingIsChecked = false;
-      sortingRules.ageByIncreasingIsChecked = false;
-      sortingRules.ageByDescendingIsChecked = false;
-      break;
-
-    case "Z-a":
-      sortingRules.nameByDescendingIsChecked = true;
-      sortingRules.nameByIncreasingIsChecked = false;
-      sortingRules.ageByIncreasingIsChecked = false;
-      sortingRules.ageByDescendingIsChecked = false;
-      break;
+const filterUsers = function (
+  arrayOfUsers,
+  { selectedGender } = currentFilterSettings
+) {
+  if (selectedGender !== "all") {
+    return arrayOfUsers.filter(user => user.gender === selectedGender);
+  } else {
+    return arrayOfUsers;
   }
 };
 
-const dispalySortedUsers = function (target) {
-  copyOfAllUsers = [...allUsers];
-  defineSortingRules(target);
+const defineCurrentFilterSettings = function ({ target: radioButton }) {
+  if (radioButton.className.includes("gender")) {
+    currentFilterSettings.selectedGender = radioButton.value;
+  } else if (radioButton.className.includes("sort")) {
+    currentFilterSettings.currentSort = radioButton.value;
+  }
+};
 
+const ifUsersNotFound = function () {
+  currentArrayOfUsers.length === 0?noUsersFoundElement.classList.remove("hidden"): noUsersFoundElement.classList.add("hidden")
+};
+
+const defineCurrentArrayOfUsers = function () {
   if (searchInput.value !== "") {
-    const findUser = copyOfAllUsers.filter(
-      (user) =>
+    currentFilterSettings.inputText = true;
+    foundUsers = copyOfAllUsers.filter(
+      user =>
         user.name.first
           .toLowerCase()
           .includes(searchInput.value.toLowerCase()) ||
         user.name.last.toLowerCase().includes(searchInput.value.toLowerCase())
     );
-    if (
-      sortingRules.ageByIncreasingIsChecked ||
-      sortingRules.ageByDescendingIsChecked
-    ) {
-      displayAllUsers(
-        sortByAge(filterByGender(findUser, sortingRules), sortingRules)
-      );
-    } else if (
-      sortingRules.nameByIncreasingIsChecked ||
-      sortingRules.nameByDescendingIsChecked
-    ) {
-      displayAllUsers(
-        sortByAlphabets(filterByGender(findUser, sortingRules), sortingRules)
-      );
-    } else {
-      displayAllUsers(filterByGender(findUser, sortingRules));
-    }
-  } else if (
-    sortingRules.ageByIncreasingIsChecked ||
-    sortingRules.ageByDescendingIsChecked
-  ) {
-    displayAllUsers(
-      sortByAge(filterByGender(copyOfAllUsers, sortingRules), sortingRules)
-    );
-  } else if (
-    sortingRules.nameByIncreasingIsChecked ||
-    sortingRules.nameByDescendingIsChecked
-  ) {
-    displayAllUsers(
-      sortByAlphabets(
-        filterByGender(copyOfAllUsers, sortingRules),
-        sortingRules
-      )
-    );
-  } else if (sortingRules.filterByGenderIsChoosed) {
-    displayAllUsers(filterByGender(copyOfAllUsers, sortingRules));
   }
+  currentArrayOfUsers = searchInput.value !== "" ? foundUsers : copyOfAllUsers;
+  ifUsersNotFound();
 };
 
-const filterByGender = (arrayOfUsers, sortingRules) => {
-  if (
-    sortingRules.filterByGenderIsChoosed === "male" ||
-    sortingRules.filterByGenderIsChoosed === "female"
-  ) {
-    arrayOfUsers = arrayOfUsers.filter(
-      (user) => user.gender === sortingRules.filterByGenderIsChoosed
-    );
-    return arrayOfUsers;
-  } else if (sortingRules.filterByGenderIsChoosed === "all") {
-    return arrayOfUsers;
-  }
+const displaySortedUsers = function ({ target: radioButton }) {
+  copyOfAllUsers = [...allUsers];
+  defineCurrentFilterSettings({ target: radioButton });
+  defineCurrentArrayOfUsers();
+
+  const filteredAndSortedUsers =
+    !currentFilterSettings.currentSort && !currentFilterSettings.searchInput
+      ? filterUsers(currentArrayOfUsers, currentFilterSettings)
+      : allSortMethods[currentFilterSettings.currentSort](
+          filterUsers(currentArrayOfUsers, currentFilterSettings)
+        );
+
+  displayAllUsers(filteredAndSortedUsers);
 };
 
-const sortByAge = (arrayOfUsers, sortingRules) => {
-  if (sortingRules.ageByIncreasingIsChecked) {
-    arrayOfUsers.sort(
-      (firstUser, secondUser) => firstUser.dob.age - secondUser.dob.age
-    );
-  } else {
-    arrayOfUsers.sort(
-      (firstUser, secondUser) => secondUser.dob.age - firstUser.dob.age
-    );
-  }
-  return arrayOfUsers;
-};
+allFilters.addEventListener("input", function ({ target: radioButton }) {
+  displaySortedUsers({ target: radioButton });
+});
 
-const sortByAlphabets = (arrayOfUsers, sortingRules) => {
-  if (sortingRules.nameByIncreasingIsChecked) {
-    arrayOfUsers.sort((firstUser, secondUser) =>
-      firstUser.name.first > secondUser.name.first ? 1 : -1
-    );
-  } else {
-    arrayOfUsers.sort((firstUser, secondUser) =>
-      firstUser.name.first > secondUser.name.first ? -1 : 1
-    );
-  }
-  return arrayOfUsers;
-};
-
-const resetFilters = ()=>{
+const resetFilters = () => {
   const inputTypeIsGenderAll = document.querySelector('input[value="all"]');
-  const inputTypeIsGenderFemale = document.querySelector('input[value="female"]');
+  const inputTypeIsGenderFemale = document.querySelector(
+    'input[value="female"]'
+  );
   const inputTypeIsGenderMale = document.querySelector('input[value="male"]');
-  const inputSortAgeByIncreasing = document.querySelector('input[value="0-9"]');
-  const inputSortAgeByDescending = document.querySelector('input[value="9-0"]');
-  const inputSortNameByIncreasing = document.querySelector('input[value="A-z"]');
-  const inputSortNameByDescending = document.querySelector('input[value="Z-a"]');
+  const inputSortAgeByIncreasing = document.querySelector(
+    'input[value="ageAscending"]'
+  );
+  const inputSortAgeByDescending = document.querySelector(
+    'input[value="ageDescending"]'
+  );
+  const inputSortNameByIncreasing = document.querySelector(
+    'input[value="nameAscending"'
+  );
+  const inputSortNameByDescending = document.querySelector(
+    'input[value="nameDescending"]'
+  );
 
   displayAllUsers(allUsers);
-  sortingRules = {
-    filterByGenderIsChoosed: "all",
-    ageByIncreasingIsChecked: false,
-    ageByDescendingIsChecked: false,
-    nameByIncreasingIsChecked: false,
-    nameByDescendingIsChecked: false,
+  currentFilterSettings = {
+    selectedGender: "all",
+    currentSort: false,
+    inputText: false,
   };
+
   searchInput.value = "";
   inputTypeIsGenderAll.checked = true;
   inputTypeIsGenderFemale.checked = false;
@@ -222,22 +175,19 @@ const resetFilters = ()=>{
   inputSortAgeByDescending.checked = false;
   inputSortNameByIncreasing.checked = false;
   inputSortNameByDescending.checked = false;
+  if(!noUsersFoundElement.classList.contains("hidden")){
+    noUsersFoundElement.classList.add("hidden");
+  }
 };
 
-allFilters.addEventListener("input", function (e) {
-  const target = e.target;
-  dispalySortedUsers(target);
+filterForm.addEventListener("submit", function (e) {
+  e.preventDefault();
 });
 
-filterForm.addEventListener('submit', function(e){
-  e.preventDefault();
-})
-
-filterButtons.addEventListener("click", function (e) {
-  const target = e.target;
-  if (target.classList.contains("reset")) {
+filterButtons.addEventListener("click", function ({ target: button }) {
+  if (button.classList.contains("reset")) {
     resetFilters();
-  } else if (target.classList.contains("close")) {
+  } else if (button.classList.contains("close")) {
     document.body.classList.remove("_lock");
     burgerImage.classList.remove("_active");
     filterBody.classList.remove("_active");
@@ -245,9 +195,9 @@ filterButtons.addEventListener("click", function (e) {
   }
 });
 
-burgerImage.addEventListener("click", (e) => {
-  document.body.classList.add("_lock");
-  burgerImage.classList.add("_active");
-  filterBody.classList.add("_active");
-  closeBurgerButton.classList.remove("hidden");
+burgerImage.addEventListener("click", function(){
+  document.body.classList.toggle("_lock");
+  burgerImage.classList.toggle("_active");
+  closeBurgerButton.classList.toggle("hidden");
+  filterBody.classList.toggle("_active");
 });

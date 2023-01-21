@@ -1,4 +1,3 @@
-/*RESET*/
 * {
   padding: 0;
   margin: 0;
@@ -11,82 +10,43 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-:focus,
-:active {
+*:focus,
+*:active {
   outline: none;
 }
-a:focus,
-a:active {
-  outline: none;
-}
-nav,
-footer,
-header,
-aside {
-  display: block;
-}
-html,
-body {
-  height: 100%;
-  width: 100%;
-  font-size: 100%;
-  line-height: 1;
-  font-size: 14px;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
+
 input,
 button,
 textarea {
   font-family: inherit;
 }
-input::-ms-clear {
-  display: none;
-}
-button {
-  cursor: pointer;
-}
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-a,
-a:visited {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: none;
-}
+
 ul li {
   list-style: none;
 }
-img {
-  vertical-align: top;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-}
-/*--------------------*/
 
 body {
+  height: 100vh;
+  line-height: 1;
   user-select: none;
   color: rgb(103, 114, 116);
 }
 
-body._lock {
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+._lock {
   overflow: hidden;
 }
 
 .wrapper {
-  min-height: 100%;
   display: grid;
+  min-height: 100%;
   grid-template: minmax(70px, auto) 1fr minmax(30px, auto) / 1fr;
   grid-template-areas:
     "header"
@@ -118,8 +78,8 @@ body._lock {
 
 .main__filters {
   padding: 20px 10px;
-  box-shadow: 5px 0 5px -5px rgb(103, 114, 116);
   flex: 0 0 300px;
+  box-shadow: 5px 0 5px -5px rgb(103, 114, 116);
 }
 
 .users {
@@ -133,24 +93,24 @@ body._lock {
 }
 
 .user {
-  height: 290px;
-  position: relative;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  border: 2px solid rgb(157, 173, 177);
   margin: 10px;
+  height: 290px;
+  border: 2px solid rgb(157, 173, 177);
   border-radius: 10%;
 }
 
 .user_photo-wrapper {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
   width: 100%;
   height: 120px;
   cursor: pointer;
-  margin-top: 20px;
 }
 
 .user_img {
@@ -159,17 +119,17 @@ body._lock {
 }
 
 .user_name {
-  font-size: 22px;
   margin-bottom: 10px;
+  font-size: 22px;
 }
 
 .user_manipulate {
-  position: absolute;
-  width: 175px;
   display: flex;
-  cursor: pointer;
+  position: absolute;
   justify-content: space-between;
   top: 235px;
+  width: 175px;
+  cursor: pointer;
 }
 
 .user_description {
@@ -177,23 +137,23 @@ body._lock {
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
+  width: 250px;
   font-size: 16px;
   font-weight: bold;
-  width: 250px;
 }
 
 .data {
-  font-size: 18px;
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .footer {
   display: flex;
+  grid-area: footer;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 7px;
-  grid-area: footer;
   box-shadow: 0 -5px 5px -5px rgb(103, 114, 116);
 }
 
@@ -207,41 +167,41 @@ body._lock {
 }
 
 .fieldset_filter {
-  padding: 10px;
-  height: 80px;
-  border: 1px solid rgb(103, 114, 116);
-  border-radius: 10px;
-  text-align: center;
-  margin-bottom: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(1, 1fr);
   align-items: center;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  height: 80px;
   font-size: 20px;
+  border: 1px solid rgb(103, 114, 116);
+  border-radius: 10px;
 }
 
 .fieldset_sort {
-  width: 210px;
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   padding: 10px;
+  width: 210px;
+  font-size: 20px;
   height: 130px;
   border: 1px solid rgb(103, 114, 116);
   border-radius: 10px;
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  font-size: 20px;
 }
 
 .fieldset_search {
-  padding: 10px;
-  border: 1px solid rgb(103, 114, 116);
-  border-radius: 10px;
-  height: 65px;
   display: flex;
   align-items: flex-end;
   text-align: center;
+  padding: 10px;
   margin-bottom: 20px;
+  height: 65px;
+  border: 1px solid rgb(103, 114, 116);
+  border-radius: 10px;
 }
 
 .label_search {
@@ -258,8 +218,8 @@ body._lock {
 select,
 textarea,
 .input_searсh::placeholder {
-  color: rgb(103, 114, 116);
   font-size: 20px;
+  color: rgb(103, 114, 116);
 }
 
 .input_search {
@@ -272,13 +232,13 @@ textarea,
 }
 
 .button {
-  font-size: 16px;
+  margin-top: 12px;
   height: 40px;
   width: 100px;
+  font-size: 16px;
   background-color: white;
   border: 2px solid rgb(103, 114, 116);
   border-radius: 10%;
-  margin-top: 12px;
   color: rgb(103, 114, 116);
 }
 
@@ -330,8 +290,8 @@ textarea,
 
 .label_sort span:first-of-type {
   display: flex;
-  justify-content: center;
   position: relative;
+  justify-content: center;
   font-size: 18px;
   cursor: pointer;
 }
@@ -339,7 +299,6 @@ textarea,
 .label_sort span {
   position: relative;
   top: -27px;
-  cursor: pointer;
 }
 
 .filter_form {
@@ -365,10 +324,30 @@ textarea,
 }
 
 .burger_img {
-  height: 35px;
+  display: none;
   margin-left: 10px;
   margin-top: 15px;
-  display: none;
+  height: 35px;
+}
+
+.no-usersFound {
+  height: 40px;
+  font-size: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.animated-text {
+  animation: move-left-right 10s linear infinite;
+}
+
+@keyframes move-left-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -385,14 +364,14 @@ textarea,
   }
 
   .main__filters {
-    z-index: 1;
     position: fixed;
     top: 0;
     left: -100%;
+    padding: 40px 10px 0px 10px;
+    z-index: 1;
     width: 42%;
     height: 100%;
     background-color: rgb(157, 173, 177, 0.8);
-    padding: 40px 10px 0px 10px;
     transition: left 0.6s ease 0s;
     color: rgb(103, 114, 116);
   }
