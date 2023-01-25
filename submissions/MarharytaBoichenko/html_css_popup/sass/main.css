@@ -1,0 +1,291 @@
+html {
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+body {
+  min-height: 100%;
+  font-family: #000;
+  font-size: 16px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  color: #000;
+  background-image: url("../popup-icons/ua.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: grid;
+  grid-template: minmax(100px, auto) 1fr/1 fr;
+}
+
+.header {
+  padding: 15px 30px;
+  display: grid;
+  grid-template: 1fr/1fr minmax(100px, auto) minmax(100px, auto);
+  justify-content: end;
+  background-color: transparent;
+  border-bottom: 2px solid rgb(163, 165, 167);
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+}
+
+.nav {
+  display: grid;
+  grid-column: 2/3;
+}
+
+.nav__list {
+  display: grid;
+  grid-auto-flow: column;
+  align-content: end;
+  gap: 20px;
+}
+
+.nav__link {
+  font-weight: 700;
+  color: #5d5c5c;
+}
+
+.nav__link:hover,
+.nav__link:focus {
+  color: #2b2a2a;
+}
+
+.account-block {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.account-block__item:not(:last-child) {
+  margin-right: 15px;
+}
+
+.account-block__menu {
+  display: block;
+  width: 35px;
+  height: 35px;
+  background-image: url("../popup-icons/popup-button.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.account-block__checkbox {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+}
+
+.account-block__checkbox:checked ~ .menu {
+  position: absolute;
+  right: 0;
+  top: 70px;
+  display: block;
+  width: 330px;
+  height: 370px;
+  padding: 25px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border-radius: 3px;
+}
+
+.account-block__checkbox:focus ~ .account-block__menu {
+  border: 2px solid #808080;
+  border-radius: 3px;
+}
+
+.menu {
+  display: none;
+  position: relative;
+}
+
+.menu__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr) minmax(40px, auto);
+}
+
+.menu__item {
+  display: grid;
+  justify-items: center;
+}
+
+.menu__item--more {
+  position: relative;
+  display: grid;
+  grid-column: 1/4;
+  width: 100%;
+}
+
+.menu__link {
+  width: 100%;
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 10px 0;
+  display: grid;
+  justify-items: center;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.menu__link:hover,
+.menu__link:focus {
+  border: 1px solid #808080;
+  background-color: #b4e4fe;
+  outline: none;
+  cursor: pointer;
+}
+
+.menu__icon {
+  max-height: 45px;
+  padding-bottom: 15px;
+}
+
+.menu__item--link {
+  grid-column: 1/4;
+}
+
+.account-block__notification {
+  width: 25px;
+  height: auto;
+}
+
+.account-block__photo {
+  width: 40px;
+  height: auto;
+}
+
+.more {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.more-list {
+  display: none;
+}
+
+.more-checkbox {
+  position: absolute;
+  top: 35px;
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+}
+
+.more-checkbox:focus ~ .label {
+  color: #ffffff;
+}
+
+.more-checkbox:checked ~ .label {
+  display: none;
+}
+
+.more-checkbox:checked ~ .more-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr minmax(30px, auto);
+  margin-bottom: 0;
+}
+
+.label {
+  display: block;
+  text-align: center;
+  color: #000;
+  font-weight: 500;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  justify-self: center;
+  border: none;
+  border-radius: 5px;
+  background-color: #416aff;
+  cursor: pointer;
+}
+
+.more-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    -moz-column-gap: 50px;
+         column-gap: 50px;
+  }
+  .nav__list {
+    gap: 25px;
+  }
+  .nav__link {
+    font-size: 1.25rem;
+  }
+  .account-block {
+    gap: 25px;
+  }
+  .account-block__checkbox:checked ~ .menu {
+    width: 450px;
+    height: 400px;
+  }
+  .menu__link {
+    font-size: 0.87rem;
+  }
+  .menu__icon {
+    max-height: 50px;
+  }
+}/*# sourceMappingURL=main.css.map */

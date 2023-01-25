@@ -1,0 +1,273 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  font-family: "Roboto Mono", monospace;
+  color: #182331;
+}
+
+*:focus-visible {
+  outline: none;
+}
+
+*::-moz-selection {
+  background: rgba(110, 123, 127, 0.8);
+}
+
+*::selection {
+  background: rgba(110, 123, 127, 0.8);
+}
+
+.body {
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #fff, transparent 50%), linear-gradient(to bottom, #1e90ff 0%, transparent 70%), linear-gradient(to top, transparent, rgba(255, 255, 255, 0.3) 70%), url("../img/bcg-mountain.webp"), #2d78b5;
+  -webkit-animation: bg 30s infinite;
+          animation: bg 30s infinite;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  max-height: 100vh;
+  position: relative;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+.wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+.wrapper::-webkit-scrollbar-track {
+  box-shadow: transparent;
+}
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: #2d78b5;
+  border-radius: 2px;
+}
+
+@-webkit-keyframes bg {
+  0%, 100% {
+    background-color: #2d78b5;
+  }
+  25% {
+    background-color: #f7efd6;
+  }
+  50% {
+    background-color: #0a6a8d;
+  }
+  75% {
+    background-color: #7ca3d2;
+  }
+}
+
+@keyframes bg {
+  0%, 100% {
+    background-color: #2d78b5;
+  }
+  25% {
+    background-color: #f7efd6;
+  }
+  50% {
+    background-color: #0a6a8d;
+  }
+  75% {
+    background-color: #7ca3d2;
+  }
+}
+.header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.header__logo {
+  display: inline-block;
+  font-size: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: ease 0.25s;
+  cursor: pointer;
+}
+.header__logo:hover, .header__logo:active, .header__logo:focus, .header__logo:focus-visible {
+  background-color: rgba(227, 90, 37, 0.7);
+  transition: ease 0.25s;
+}
+.header__logo-img {
+  width: 70px;
+}
+
+.inner {
+  margin: 0 auto;
+  padding: 20px 30px 30px;
+  max-width: 1300px;
+  flex: 1;
+  display: grid;
+  height: 100%;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: auto;
+  gap: 30px;
+}
+.paper {
+  border-radius: 15px;
+  background-color: rgba(110, 123, 127, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+.menu__list {
+  padding: 15px 0;
+  list-style: none;
+}
+.menu__btn {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 20px 10px 40px;
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  transition: ease 0.25s;
+  text-align: left;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.menu__btn:hover, .menu__btn:active, .menu__btn:focus, .menu__btn:focus-visible {
+  background-color: rgba(227, 90, 37, 0.5);
+  transition: ease 0.25s;
+}
+.menu__btn:hover.is-active:after, .menu__btn:active.is-active:after, .menu__btn:focus.is-active:after, .menu__btn:focus-visible.is-active:after {
+  opacity: 0;
+}
+.menu__btn:before, .menu__btn:after {
+  content: "";
+  position: absolute;
+  display: block;
+  opacity: 0;
+  transition: ease 0.25s;
+}
+.menu__btn:before {
+  top: 12px;
+  left: 15px;
+  width: 15px;
+  height: 15px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 490 490' style='enable-background:new 0 0 490 490' xml:space='preserve'%3E%3Cpath d='M260 150.168V110h109.271l-27.5-55 27.5-55H230v150.168L2.821 466.145 0 470.167V490h475l15-.1v-19.833L260 150.168zM260 30h60.729l-12.5 25 12.5 25H260V30zm-15 150.695 94.541 131.495-36.1 24.595L245 296.771l-58.441 40.014-36.1-24.595L245 180.695zM44.188 460l88.753-123.444 53.66 36.56L245 333.129l58.399 39.986 53.66-36.56L445.813 460H44.188z'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.menu__btn:after {
+  right: 15px;
+  bottom: 8px;
+  left: 15px;
+  width: auto;
+  height: 2px;
+  background-color: rgba(227, 90, 37, 0.5);
+}
+.menu__btn.is-active:before, .menu__btn.is-active::after {
+  opacity: 1;
+  transition: ease 0.25s;
+}
+
+.content {
+  padding: 20px;
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-template-columns: minmax(auto, 350px) minmax(50%, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  grid-template-areas: "top top" "img-wrap info-wrap";
+}
+.content__top {
+  grid-area: top;
+  align-self: center;
+}
+.content__img-wrap {
+  grid-area: img-wrap;
+}
+.content__info-wrap {
+  grid-area: info-wrap;
+}
+.content__title {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+.content__img-inner {
+  height: 0;
+  padding-bottom: 141%;
+  position: relative;
+}
+.content__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.content__info-list {
+  display: flex;
+  flex-flow: column nowrap;
+  list-style: none;
+}
+.content__info-item:not(:last-child) {
+  margin-bottom: 10px;
+}
+.content__info-text {
+  display: inline;
+  font-size: 18px;
+  line-height: 1.3;
+}
+.content__info-text--title {
+  font-weight: 600;
+}
+.content__info-text--plot {
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+@media screen and (max-width: 1400px) {
+  .wrapper__bcg-img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    grid-template-areas: "top" "img-wrap" "info-wrap";
+  }
+  .content__img {
+    max-height: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .inner {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+}/*# sourceMappingURL=style.css.map */
