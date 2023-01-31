@@ -82,7 +82,9 @@ body {
   margin-bottom: 8px;
   height: 42px;
 }
-.menu__item__link:focus, .menu__item__link:hover, .menu__item__link:active {
+.menu__item__link:focus,
+.menu__item__link:hover,
+.menu__item__link:active {
   border: 2px solid royalblue;
   outline: transparent;
 }
@@ -125,7 +127,8 @@ body {
 .header__nav__list__item__label:hover,
 .header__nav__list__item__checkbox:checked + .header__nav__list__item__label,
 .header__nav__list__item__checkbox:focus + .header__nav__list__item__label,
-.header__nav__list__item__checkbox:focus:checked + .header__nav__list__item__label {
+.header__nav__list__item__checkbox:focus:checked
+  + .header__nav__list__item__label {
   border: 2px solid royalblue;
   padding: 3px;
   border-radius: 10px;
@@ -184,4 +187,4 @@ body {
   .popup-svg {
     order: 1;
   }
-}/*# sourceMappingURL=style.css.map */
+}
