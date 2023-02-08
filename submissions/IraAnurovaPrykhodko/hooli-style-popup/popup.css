@@ -95,7 +95,7 @@ body {
     position: relative;
 }
 
-.nav__popup_button:focus > .popup {
+.nav__popup_button:focus > .popup, .nav__popup_button:focus-within > .popup {
     display: block;
 }
 
@@ -166,11 +166,8 @@ body {
     
 }
 
-.popup__more:hover {
+.popup__more:hover, .popup__more:focus-within {
     display: block;
-}
-.popup__more:hover ~ .popup__btn-more {
-    display: none;
 }
 
 .more-line {
@@ -187,3 +184,6 @@ body {
     padding: 30px 0 20px 0;
 }
 
+.popup-more-focus-trap:focus-within .popup__more {
+    display: block;
+}
