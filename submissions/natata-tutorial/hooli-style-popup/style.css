@@ -49,23 +49,26 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	clip: rect(0 0 0 0);
 	overflow: hidden;
 }
-
+html{
+	font-size:14px;
+}
 body {
-	font-size:16px;
 	color: #0d393c;
 	font-family: 'Rubik', sans-serif;
 	line-height: 22px;
+}
+a:focus,
+a:hover{
+	box-shadow: 0 1px currentColor;
 }
 .title{
 	font-family: 'Monoton', cursive;
 	font-size: 4rem;
 	line-height: 5rem;
-
 }
-
-
 .grid {
 	min-height: 100%;
+	min-width: 300px;
 	display: grid;
 	grid-template: minmax(50px, auto) 1fr minmax(50px, auto) / 1fr; 
 	background-color: #f6f5ee;
@@ -75,13 +78,10 @@ body {
 		"footer";
 }
 .grid__header {
-	
-
 	grid-area: header;
 	padding: 15px;
 	display: grid;
-	grid-template: 1fr / 
-		1fr minmax(auto, 250px) minmax(auto, 450px) minmax(auto, 400px) 1fr;
+	grid-template: repeat(2, 1fr) / 1fr minmax(100px, 300px) 1fr;
 	align-items: center;
 	border-bottom: 1px solid currentColor;
 }
@@ -93,10 +93,10 @@ body {
 	font-size: 3.5rem;
 	line-height: 3.5rem;
 	align-self: center;
-	justify-self: self-start;
+	justify-self: center;
 }
 .header__menu {
-	grid-column: 4 / 5;
+	grid-column: 2 / 3;
 }
 .menu__list {
 	display: grid;
@@ -107,14 +107,9 @@ body {
 	display: block;
 	color: currentColor;
 	font-weight:bold;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	padding: 10px 15px;
 	
-}
-
-a:focus,
-a:hover{
-	box-shadow: 0 1px currentColor;
 }
 .popup {
 	position: relative;
@@ -137,10 +132,12 @@ a:hover{
 }
 .popup__container {
 	position: absolute;
-	right: -50px;
+	right: -84px;
 	display: none;
 	width: 300px;
+	max-width: 90vw;
 	height: 330px;
+	max-height: 80vh;
 	background-color: #f6f5ee;
 	color: #0d393c;
 	top: calc(100% + 19px);
@@ -150,28 +147,11 @@ a:hover{
 .popup__check:checked ~ .popup__container{
 	display: block;
 }
-
-.popup__container::before{
-	position: absolute;
-	top:-15px;
-	right: 60px;
-	display: block;
-	content: "";
-	width: 0;
-	height: 0;
-	border-left: 15px solid transparent;
-	border-right: 15px solid transparent;
-	border-bottom: 15px solid #0d393c;
-}
 .popup__list {
 	display: grid;
 	padding: 15px;
 	gap: 15px;
 	grid-template-columns: repeat(auto-fit, minmax(28%, 1fr));
-}
-.popup__item {
-	
-
 }
 .popup__link {
 	color:currentColor;
@@ -242,4 +222,23 @@ a:hover{
 	justify-self: center;
 	align-self: center;
 
+}
+@media (min-width: 600px) {
+	html {
+		font-size:16px;
+	}
+	.grid__header { 
+		grid-template: 1fr / 
+		1fr minmax(auto, 250px) minmax(auto, 450px) minmax(auto, 400px) 1fr;
+	}
+	.header__menu {
+		grid-column: 4 / 5;
+	}
+	.popup__container{
+		right:-50px;
+		top: calc(100% + 22px);
+	}
+	.header__logo {
+		justify-self: self-start;
+	}
 }
