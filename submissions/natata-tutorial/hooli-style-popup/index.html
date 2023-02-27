@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	
+	<div class="grid">
+		<header class="grid__header header">
+			<a href="#" class="header__logo">
+				Hooli
+			</a>
+			<nav class="header__menu menu">
+				<ul class="menu__list">
+					<li class="menu__item"><a href="#" class="menu__link">Mail</a></li>
+					<li class="menu__item"><a href="#" class="menu__link">Images</a></li>
+					<li class="menu__item menu__popup popup">
+						<input type="checkbox" name="check" id="check" class="popup__check visually-hidden">
+						<label for="check" class="menu__link popup__label">
+							<svg enable-background="new 0 0 32 32" height="22px" id="popup_id" version="1.1" viewBox="0 0 32 32" width="22px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="grid-2"><path d="M10.246,4.228c0-0.547-0.443-0.991-0.99-0.991H3.914c-0.548,0-0.991,0.443-0.991,0.991V9.57   c0,0.546,0.443,0.99,0.991,0.99h5.342c0.547,0,0.99-0.444,0.99-0.99V4.228z" fill="#515151"/><path d="M19.453,4.228c0-0.547-0.443-0.991-0.991-0.991h-5.343c-0.546,0-0.99,0.443-0.99,0.991V9.57   c0,0.546,0.444,0.99,0.99,0.99h5.343c0.548,0,0.991-0.444,0.991-0.99V4.228z" fill="#515151"/><path d="M28.868,4.228c0-0.547-0.443-0.991-0.99-0.991h-5.342c-0.548,0-0.991,0.443-0.991,0.991V9.57   c0,0.546,0.443,0.99,0.991,0.99h5.342c0.547,0,0.99-0.444,0.99-0.99V4.228z" fill="#515151"/><path d="M10.246,13.224c0-0.547-0.443-0.99-0.99-0.99H3.914c-0.548,0-0.991,0.443-0.991,0.99v5.342   c0,0.549,0.443,0.99,0.991,0.99h5.342c0.547,0,0.99-0.441,0.99-0.99V13.224z" fill="#515151"/><path d="M19.453,13.224c0-0.547-0.443-0.99-0.991-0.99h-5.343c-0.546,0-0.99,0.443-0.99,0.99v5.342   c0,0.549,0.444,0.99,0.99,0.99h5.343c0.548,0,0.991-0.441,0.991-0.99V13.224z" fill="#515151"/><path d="M28.868,13.224c0-0.547-0.443-0.99-0.99-0.99h-5.342c-0.548,0-0.991,0.443-0.991,0.99v5.342   c0,0.549,0.443,0.99,0.991,0.99h5.342c0.547,0,0.99-0.441,0.99-0.99V13.224z" fill="#515151"/><path d="M10.246,22.43c0-0.545-0.443-0.99-0.99-0.99H3.914c-0.548,0-0.991,0.445-0.991,0.99v5.344   c0,0.547,0.443,0.99,0.991,0.99h5.342c0.547,0,0.99-0.443,0.99-0.99V22.43z" fill="#515151"/><path d="M19.453,22.43c0-0.545-0.443-0.99-0.991-0.99h-5.343c-0.546,0-0.99,0.445-0.99,0.99v5.344   c0,0.547,0.444,0.99,0.99,0.99h5.343c0.548,0,0.991-0.443,0.991-0.99V22.43z" fill="#515151"/><path d="M28.868,22.43c0-0.545-0.443-0.99-0.99-0.99h-5.342c-0.548,0-0.991,0.445-0.991,0.99v5.344   c0,0.547,0.443,0.99,0.991,0.99h5.342c0.547,0,0.99-0.443,0.99-0.99V22.43z" fill="#515151"/></g></svg>
+						</label>
+						<div class="popup__container">
+							<ul class="popup__list">
+								<li class="popup__item">
+									<a href="#" class="popup__link">
+										<div class="popup__image"> 
+											<img src="img/calendar.png" alt="Calendar">
+										</div>
+										<span class="popup__caption">Calendar</span>
+									</a>
+								</li>
+								<li class="popup__item">
+									<a href="#" class="popup__link">
+										<div class="popup__image"> 
+											<img src="img/mail.png" alt="Mail">
+										</div>
+										<span class="popup__caption">Mail</span></a>
+								</li>
+								<li class="popup__item">
+									<a href="#" class="popup__link">
+										<div class="popup__image"> 
+											<img src="img/news.png" alt="News">
+										</div>
+										<span class="popup__caption">News</span>
+									</a>
+								</li>
+								<li class="popup__item">
+									<a href="#" class="popup__link">
+										<div class="popup__image"> 
+											<img src="img/maps.png" alt="Map">
+										</div>
+										<span class="popup__caption">Map</span>
+									</a>
+								</li>
+								<li class="popup__item">
+									<a href="#" class="popup__link">
+										<div class="popup__image"> 
+											<img src="img/files.png" alt="Files">
+										</div>
+										<span class="popup__caption">Files</span>
+									</a>
+								</li>
+								<li class="popup__item">
+									<a href="#" class="popup__link">
+										<div class="popup__image"> 
+											<img src="img/contacts.png" alt="Contacts">
+										</div>
+										<span class="popup__caption">Contacts</span>
+									</a>
+								</li>
+								<li class="popup__item">
+									<a href="#" class="popup__link">
+										<div class="popup__image"> 
+											<img src="img/tanslation.png" alt="Map">
+										</div>
+										<span class="popup__caption">Translate</span>
+									</a>
+								</li>
+								<li class="popup__item">
+									<a href="#" class="popup__link">
+										<div class="popup__image"> 
+											<img src="img/videos.png" alt="Files">
+										</div>
+										<span class="popup__caption">Videos</span>
+									</a>
+								</li>
+								<li class="popup__item">
+									<a href="#" class="popup__link">
+										<div class="popup__image"> 
+											<img src="img/search.png" alt="Contacts">
+										</div>
+										<span class="popup__caption">Search</span>
+									</a>
+								</li>
+							</ul>
+							<div class="popup__more more">
+								<input type="checkbox" id="more-check" name="more-check" class="more__checkbox visually-hidden">
+								<label for="more-check" class="more__label">More</label>
+								<ul class="popup__list popup__list--more">
+									<li class="popup__item">
+										<a href="#" class="popup__link">
+											<div class="popup__image">
+												<img src="img/chat.png" alt="">
+											</div>
+											<span class="popup__caption">Chat</span>
+										</a>
+									</li>
+									<li class="popup__item">
+										<a href="#" class="popup__link">
+											<div class="popup__image">
+												<img src="img/classroom.png" alt="">
+											</div>
+											<span class="popup__caption">Classroom</span>
+										</a>
+									</li>
+									<li class="popup__item">
+										<a href="#" class="popup__link">
+											<div class="popup__image">
+												<img src="img/collection.png" alt="">
+											</div>
+											<span class="popup__caption">Collection</span>
+										</a>
+									</li>
+									<li class="popup__item">
+										<a href="#" class="popup__link">
+											<div class="popup__image">
+												<img src="img/mars.png" alt="">
+											</div>
+											<span class="popup__caption">Mars</span>
+										</a>
+									</li>
+									<li class="popup__item">
+										<a href="#" class="popup__link">
+											<div class="popup__image">
+												<img src="img/blogs.png" alt="">
+											</div>
+											<span class="popup__caption">Blogs</span>
+										</a>
+									</li>
+									<li class="popup__item">
+										<a href="#" class="popup__link">
+											<div class="popup__image">
+												<img src="img/promo.png" alt="">
+											</div>
+											<span class="popup__caption">Promos</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</li>
+					<li class="menu__item"><a href="#" class="menu__link">Profile</a></li>
+				</ul>
+
+			</nav>
+
+		</header>
+		
+		<main class="grid__content content">
+			<section class="content__about">
+				<h1 class="content__title title">Lorem ipsum</h1>
+				<p class="content__subtitle subtitle">Lorem ipsum dolor, sit, amet consectetur adipisicing elit. Quo tenetur quae ad ducimus cum veritatis, suscipit repellendus magni nulla iusto aut illum? Minima vitae magni sunt cupiditate esse, nemo ab vel consectetur possimus perferendis pariatur accusamus eveniet. Quas, pariatur, aspernatur.</p>
+			</section>
+		</main>
+		<footer class="grid__footer footer">
+			<div class="footer__copy">
+				Natata's &copy; 2023
+			</div>
+		</footer>
+	</div>
+	
+</body>
+</html>
+

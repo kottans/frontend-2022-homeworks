@@ -1,0 +1,245 @@
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+body {
+	font-size:16px;
+	color: #0d393c;
+	font-family: 'Rubik', sans-serif;
+	line-height: 22px;
+}
+.title{
+	font-family: 'Monoton', cursive;
+	font-size: 4rem;
+	line-height: 5rem;
+
+}
+
+
+.grid {
+	min-height: 100%;
+	display: grid;
+	grid-template: minmax(50px, auto) 1fr minmax(50px, auto) / 1fr; 
+	background-color: #f6f5ee;
+	grid-template-areas: 
+		"header"
+		"main"
+		"footer";
+}
+.grid__header {
+	
+
+	grid-area: header;
+	padding: 15px;
+	display: grid;
+	grid-template: 1fr / 
+		1fr minmax(auto, 250px) minmax(auto, 450px) minmax(auto, 400px) 1fr;
+	align-items: center;
+	border-bottom: 1px solid currentColor;
+}
+.header__logo {
+	color: currentColor;
+	grid-column: 2 / 3;
+	font-family: 'Monoton', cursive;
+	text-transform: uppercase;
+	font-size: 3.5rem;
+	line-height: 3.5rem;
+	align-self: center;
+	justify-self: self-start;
+}
+.header__menu {
+	grid-column: 4 / 5;
+}
+.menu__list {
+	display: grid;
+	grid-auto-flow:column;
+	justify-items: end;
+}
+.menu__link {
+	display: block;
+	color: currentColor;
+	font-weight:bold;
+	font-size: 1.2rem;
+	padding: 10px 15px;
+	
+}
+
+a:focus,
+a:hover{
+	box-shadow: 0 1px currentColor;
+}
+.popup {
+	position: relative;
+}
+.popup__label {
+	padding: 10px 15px;
+	display: block;
+	height: 42px;
+}
+.more__checkbox:active + .more__label,
+.more__checkbox:focus + .more__label,
+.more__label:hover,
+.popup__check:active + .popup__label,
+.popup__check:focus + .popup__label,
+.popup__label:hover {
+	box-shadow: 0 1px currentColor;
+}
+.popup__label:hover {
+	cursor: pointer;
+}
+.popup__container {
+	position: absolute;
+	right: -50px;
+	display: none;
+	width: 300px;
+	height: 330px;
+	background-color: #f6f5ee;
+	color: #0d393c;
+	top: calc(100% + 19px);
+	overflow-y: scroll;
+	border: 1px solid #0d393c;
+}
+.popup__check:checked ~ .popup__container{
+	display: block;
+}
+
+.popup__container::before{
+	position: absolute;
+	top:-15px;
+	right: 60px;
+	display: block;
+	content: "";
+	width: 0;
+	height: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-bottom: 15px solid #0d393c;
+}
+.popup__list {
+	display: grid;
+	padding: 15px;
+	gap: 15px;
+	grid-template-columns: repeat(auto-fit, minmax(28%, 1fr));
+}
+.popup__item {
+	
+
+}
+.popup__link {
+	color:currentColor;
+	font-size: 1rem;
+	display: grid;
+	grid-auto-flow:row;
+	grid-template: 50px auto / 1fr;
+	justify-items: center;
+	align-items: center;
+}
+.popup__link img{
+	max-width: 100%;
+	height: auto;
+}
+.popup__image{
+	margin: 10px;
+}
+.popup__caption{
+	align-self: center;
+}
+.more__label {
+	display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    background-color: #ddd;
+}
+
+.popup__list--more {
+	display: none;
+}
+.more__checkbox:checked ~ .more__label {
+	display: none;
+}
+.more__checkbox:checked ~ .popup__list--more {
+	display: grid;
+}
+
+
+.grid__content {
+	padding: 15px;
+	grid-area: main;
+	display: grid;
+	grid-template: 1fr minmax(auto, calc( 100% - 50px - 50px )) 1fr/ 
+	1fr minmax(auto, 600px) 1fr;
+}
+.content {}
+.content__about {
+	grid-column: 2 / 3;
+	grid-row: 2 / 3;
+	align-self: center;
+
+}
+.content__title {
+	margin-bottom: 30px;
+}
+.grid__footer {
+	border-top: 1px solid currentColor;
+
+	grid-area: footer;
+	display: grid;
+	grid-template: 1fr / 1fr minmax(auto, 1100px) 1fr;
+
+	padding: 15px;
+}
+.footer__copy{
+	grid-column: 2 / 3;
+	justify-self: center;
+	align-self: center;
+
+}
