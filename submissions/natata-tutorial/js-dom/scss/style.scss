@@ -1,137 +1,15 @@
-* {
-   padding: 0;
-   margin: 0;
-   border: 0;
-}
-
-*,
-*:before,
-*:after {
-   -moz-box-sizing: border-box;
-   -webkit-box-sizing: border-box;
-   box-sizing: border-box;
-}
-
-:focus,
-:active {
-   outline: none;
-}
-
-a {
-   box-shadow: none;
-   &:focus,
-   &:active,
-   &:hover {
-      outline: none;
-      box-shadow: 0 1px  currentColor;
-   }
-}
-
-nav,
-footer,
-header,
-aside {
-   display: block;
-}
-
-html,
-body {
-   height: 100%;
-   width: 100%;
-   font-size: 100%;
-   line-height: 1;
-   font-size: 16px;
-   -ms-text-size-adjust: 100%;
-   -moz-text-size-adjust: 100%;
-   -webkit-text-size-adjust: 100%;
-}
-
-input,
-button,
-textarea {
-   font-family: inherit;
-}
-
-input::-ms-clear {
-   display: none;
-}
-
-button {
-   cursor: pointer;
-}
-
-button::-moz-focus-inner {
-   padding: 0;
-   border: 0;
-}
-
-a,
-a:visited {
-   text-decoration: none;
-}
-
-a:hover {
-   text-decoration: none;
-}
-
-ul li {
-   list-style: none;
-}
-
-img {
-   vertical-align: top;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-   font-size: inherit;
-   font-weight: 400;
-}
-
-@mixin devices ($breakpoint) {
-   //the name of the mixin is devices
-
-   @if $breakpoint ==tablet {
-      @media only screen and (min-width: 680px) {
-         @content;
-      }
-   }
-
-   @if $breakpoint ==mobile {
-      @media only screen and (min-width: 421px) {
-         @content;
-      }
-   }
-}
-
-.visually-hidden {
-   position: absolute;
-   width: 1px;
-   height: 1px;
-   margin: -1px;
-   border: 0;
-   padding: 0;
-   white-space: nowrap;
-   clip-path: inset(100%);
-   clip: rect(0 0 0 0);
-   overflow: hidden;
-}
+@import "variables", "reset";
 
 html {
-   font-size: 14px;
+   font-size: $main-font-style;
 }
 
-body{
-   color: #0d393c;
-   font-family: 'Fredoka', sans-serif;
-   line-height: 22px;
-   background-color: #f6f5ee;
+body {
+   color: $font-color;
+   font-family: $main-font-family;
+   line-height: $main-line-height;
+   background-color: $background-color;
 }
-
 
 .page {
    min-height: 100%;
@@ -139,17 +17,17 @@ body{
    display: grid;
    grid-template: minmax(50px, auto) 1fr minmax(50px, auto) / 1fr;
    grid-template-areas:
-         "header"
-         "main"
-         "footer";
+      "header"
+      "main"
+      "footer";
 
    &__header {
       grid-area: header;
       display: grid;
-      grid-template: 1fr / 1fr minmax(40px, auto)  minmax(150px, 720px) minmax(40px, auto) 1fr;
+      grid-template: 1fr / 1fr minmax(40px, auto) minmax(150px, 720px) minmax(40px, auto) 1fr;
       justify-content: center;
       align-items: center;
-      padding: 15px;
+      padding: $main-padding;
    }
 
    &__burger {
@@ -157,106 +35,95 @@ body{
       align-self: center;
       justify-self: center;
    }
-   
+
    &__logo {
       // grid-column: 4 / 5;
-      font-family: 'Kristi', cursive;
+      font-family: $header-font-family;
       display: block;
-      font-size: 3rem;
+      font-size: $logo-font-style;
+      list-style: $logo-line-height;
       color: currentColor;
       align-self: center;
       justify-self: center;
-      font-display:swap;
    }
 
    &__aside {
       position: fixed;
-      background-color: #ffffffe9;
+      background-color: $backgrount-transparent-color;
       top: 60px;
       left: -100%;
       width: 100%;
       height: auto;
       display: flex;
       justify-content: center;
-      padding: 10px;
+      padding: $main-padding;
       transition: all 0.4s ease-in;
       z-index: 1;
       overflow: auto;
-
-     
-      
    }
-
 
    &__main {
       grid-area: main;
       display: grid;
       grid-template: 1fr / 1fr minmax(150px, 800px) 1fr;
-      padding: 15px;
+      padding: $main-padding;
    }
 
    &__footer {
       grid-area: footer;
       display: grid;
       grid-template: 1fr / 1fr minmax(100px, 800px) 1fr;
-      padding: 15px;
+      padding: $main-padding;
    }
-   &__copyright{
+   &__copyright {
       grid-column: 2/3;
-      
    }
 }
 
-
-
 .burger {
-
-   &__checkbox:checked  ~  &__button {
-            span {
-               &:nth-child(1) {
-                  top: 11px;
-                  transform: rotate(135deg);
-               }
-
-               &:nth-child(2) {
-                  opacity: 0;
-                  left: -60px;
-               }
-
-               &:nth-child(3) {
-                  top: 11px;
-                  transform: rotate(-131deg);
-               }
-            }
-            
+   &__checkbox:checked ~ &__button {
+      span {
+         &:nth-child(1) {
+            top: 11px;
+            transform: rotate(135deg);
          }
+
+         &:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+         }
+
+         &:nth-child(3) {
+            top: 11px;
+            transform: rotate(-131deg);
+         }
+      }
+   }
    &__checkbox ~ &__button {
       box-shadow: none;
       @include devices(tablet) {
-            display: none;
-         }
+         display: none;
+      }
    }
 
-   &__checkbox:focus  ~ &__button,
+   &__checkbox:focus ~ &__button,
    &__checkbox:active ~ &__button,
    &__checkbox:hover ~ &__button {
-               box-shadow: 0 0 5px #999;
-               border-radius: 50px;
-            }
+      box-shadow: 0 0 5px $shadow-color;
+      border-radius: 50px;
+   }
    &__checkbox ~ .page__aside {
       left: -100%;
       @include devices(tablet) {
-            position: absolute;
-            left: 0;
-            width: 200px;
-         }
+         position: absolute;
+         left: 0;
+         width: 200px;
+      }
    }
 
    &__checkbox:checked ~ .page__aside {
       left: 0;
    }
-
-      
 
    &__button {
       width: 25px;
@@ -264,19 +131,19 @@ body{
       display: block;
       position: relative;
       transform: rotate(0deg);
-      transition: .5s ease-in-out;
+      transition: 0.5s ease-in-out;
       cursor: pointer;
 
       span {
-            &:nth-child(1) {
-               top: 5px;
-            }
-            &:nth-child(2) {
-               top: 11px;
-            }
-            &:nth-child(3) {
-               top: 17px;
-            }
+         &:nth-child(1) {
+            top: 5px;
+         }
+         &:nth-child(2) {
+            top: 11px;
+         }
+         &:nth-child(3) {
+            top: 17px;
+         }
       }
    }
 
@@ -290,32 +157,31 @@ body{
       opacity: 1;
       left: 20%;
       transform: rotate(0deg);
-      transition: .25s ease-in-out;
+      transition: 0.25s ease-in-out;
    }
 
-      @include devices(tablet) {
-         position: relative;
-      }
+   @include devices(tablet) {
+      position: relative;
+   }
 }
 
-.sidenav{
-   &__title{
-      font-family: 'Kristi', cursive;
-         font-size: 2rem;
-         line-height: 2.5rem;
+.sidenav {
+   &__title {
+      font-family: $header-font-family;
+      font-size: $subtitle-font-style;
+      line-height: $subtitle-line-height;
    }
-   &__item{
+   &__item {
       color: currentColor;
    }
 }
 
 .content {
-
    &__seciton {
       grid-column: 2/3;
-      display:grid;
-      grid-template:repeat(5, auto)/ repeat(3, 1fr);
-      gap:15px;
+      display: grid;
+      grid-template: 80px repeat(4, auto) / repeat(3, 1fr);
+      gap: $main-padding;
    }
 
    &__title {
@@ -323,42 +189,44 @@ body{
       grid-row: 1/2;
       align-self: center;
       justify-self: right;
-      font-family: 'Kristi', cursive;
-      font-size:3rem;
-      line-height: 4.5rem;
+      font-family: $header-font-family;
+      font-size: $title-font-style;
+      line-height: $title-line-height;
 
       @include devices(mobile) {
-            grid-column: 2/4;
-            font-size: 4rem;
-         }
+         grid-column: 2/4;
+         font-size: $title-font-style--mobile;
+      }
    }
 
    &__text {
       grid-column: 1/4;
       grid-row: 6;
-      background-color: #ffffffd3;
+      background-color: $backgrount-transparent-color;
       align-self: center;
       justify-self: center;
-      padding: 15px;
+      padding: $main-padding;
       @include devices(mobile) {
-            grid-column: 1/3;
-            grid-row: 3/5;
-         }
+         grid-column: 1/3;
+         grid-row: 3/5;
+      }
    }
    &__picture {
       grid-column: 2/4;
       grid-row: 2/5;
-      width:100%;
+      width: 100%;
       height: auto;
       @include devices(mobile) {
-            grid-column: 2/4;
-            grid-row: 2/6;
-         }
+         grid-column: 2/4;
+         grid-row: 2/6;
+      }
    }
 }
-
 
 .copyright {
    align-self: center;
    justify-self: center;
+   a {
+      color: currentColor;
+   }
 }

@@ -1,3 +1,29 @@
+@font-face {
+  src: url("../fonts/Kristi-Regular.woff2") format("woff2");
+  font-family: "Kristi";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "kristi-fallback1";
+  src: local("Brush Script MT");
+  size-adjust: 60.85099821%;
+}
+@font-face {
+  font-family: "kristi-fallback2";
+  src: local("Georgia");
+  size-adjust: 60.85099821%;
+}
+@font-face {
+  font-family: "Fredoka";
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("../fonts/Fredoka-Regular.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 * {
   padding: 0;
   margin: 0;
@@ -37,9 +63,6 @@ body {
   font-size: 100%;
   line-height: 1;
   font-size: 16px;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
 }
 
 input,
@@ -134,24 +157,24 @@ body {
   justify-self: center;
 }
 .page__logo {
-  font-family: "Kristi", cursive;
+  font-family: "Kristi", "kristi-fallback1", "kristi-fallback2", cursive;
   display: block;
   font-size: 3rem;
+  list-style: 4.5rem;
   color: currentColor;
   align-self: center;
   justify-self: center;
-  font-display: swap;
 }
 .page__aside {
   position: fixed;
-  background-color: rgba(255, 255, 255, 0.9137254902);
+  background-color: rgba(255, 255, 255, 0.8274509804);
   top: 60px;
   left: -100%;
   width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 15px;
   transition: all 0.4s ease-in;
   z-index: 1;
   overflow: auto;
@@ -246,7 +269,7 @@ body {
 }
 
 .sidenav__title {
-  font-family: "Kristi", cursive;
+  font-family: "Kristi", "kristi-fallback1", "kristi-fallback2", cursive;
   font-size: 2rem;
   line-height: 2.5rem;
 }
@@ -257,7 +280,7 @@ body {
 .content__seciton {
   grid-column: 2/3;
   display: grid;
-  grid-template: repeat(5, auto)/repeat(3, 1fr);
+  grid-template: 80px repeat(4, auto)/repeat(3, 1fr);
   gap: 15px;
 }
 .content__title {
@@ -265,7 +288,7 @@ body {
   grid-row: 1/2;
   align-self: center;
   justify-self: right;
-  font-family: "Kristi", cursive;
+  font-family: "Kristi", "kristi-fallback1", "kristi-fallback2", cursive;
   font-size: 3rem;
   line-height: 4.5rem;
 }
@@ -305,4 +328,7 @@ body {
 .copyright {
   align-self: center;
   justify-self: center;
+}
+.copyright a {
+  color: currentColor;
 }
