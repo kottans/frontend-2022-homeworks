@@ -1,0 +1,248 @@
+@charset "UTF-8";
+/* NULL STYLE ===============================================================*/ /*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+/*===========================================================================*/
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* HEADER ===================================================================*/
+.header {
+  padding: 20px;
+}
+.navigation__list {
+  justify-content: flex-end;
+}
+.navigation__item {
+  margin: 0 15px;
+}
+.navigation__link {
+  display: inline-block;
+  transform: scale(1);
+  transition: 0.3s;
+}
+.navigation__link:hover, .navigation__link:focus {
+  transform: scale(1.1);
+}
+.navigation__link_popup {
+  width: 24px;
+  height: 24px;
+  background: url("./images/popup-icons/popup-button.png") 0 0/100% no-repeat;
+}
+.navigation__link_bell {
+  width: 24px;
+  height: 24px;
+  background: url("./images/popup-icons/bell.png") 0 0/100% no-repeat;
+}
+.navigation__link_user {
+  width: 30px;
+  height: 30px;
+  background: url("./images/popup-icons/ava-l.png") 0 0/100% no-repeat;
+  border-radius: 50%;
+}
+
+/*===========================================================================*/
+/* POPUP ===================================================================*/
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+.popup:target {
+  opacity: 1;
+  visibility: visible;
+}
+.popup:target .popup__content {
+  opacity: 1;
+  transform: perspective(600px) translate(0, 0) rotate(0deg);
+}
+.popup__area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.popup__body {
+  justify-content: flex-end;
+  min-height: 100%;
+  padding: 60px 20px 30px;
+  background: rgba(0, 0, 0, 0.5);
+}
+.popup__content {
+  position: relative;
+  z-index: 10;
+  width: 50%;
+  height: 80vh;
+  color: #000000;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 0 #808080;
+  overflow-y: auto;
+  opacity: 0;
+  transition: 0.3s;
+  transform: perspective(600px) translate(0, -100%) rotateX(45deg);
+}
+.popup__container {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
+}
+.popup__list-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 30%;
+  min-height: 100%;
+}
+.popup__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 0 0 100%;
+  padding: 30px;
+  transform: scale(1);
+  transition: 0.3s;
+}
+.popup__item:hover, .popup__item:focus {
+  transform: scale(1.2);
+}
+.popup__image {
+  margin: 0 0 10px 0;
+}
+.popup__check {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.popup__check:checked ~ .popup__label {
+  display: none;
+}
+.popup__check:checked ~ .popup__more-content {
+  display: flex;
+}
+.popup__check:checked ~ .popup__footer {
+  display: block;
+}
+.popup__label {
+  display: block;
+  padding: 20px;
+  text-align: center;
+  background: #d3d3d3;
+  cursor: pointer;
+}
+.popup__label:focus {
+  color: #0000ff;
+}
+.popup__more-content {
+  display: none;
+  padding-top: 40px;
+  border-top: 1px solid #808080;
+}
+.popup__footer {
+  display: none;
+  padding: 20px;
+  text-align: center;
+}
+
+/*===========================================================================*/
