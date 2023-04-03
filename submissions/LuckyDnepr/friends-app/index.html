@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <script type="module" src="script.js" defer></script>
+        <title>Friends App</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header class="header">
+                <a class="logo" id="top_anchor" href="index.html"></a>
+                <h1 class="title">Friends App</h1>
+                <div class="theme_change">
+                    <input type="checkbox" id="theme_change_input">
+                    <label id="theme_change_input_label" for="theme_change_input">Light theme</label>
+                </div>
+            </header>
+
+            <nav class="nav">
+                <div class="nav_menu">
+                    <input type="checkbox" id="filters_menu_input">
+                    <label for="filters_menu_input" class="nav_menu_item" id="filters_menu_input_label">
+                        Filters <span class="nav_menu_item_img" id="filters_menu_icon"></span>
+                     </label>
+                    </input>
+                </div>
+                <div class="text_search">
+                    <input type="text" class="text_search_input" placeholder="Search in user info... O_o">
+                </div>
+            </nav>
+            <div class="main main_filter_hidden">
+                <aside class="main_aside hide">
+                    <form class="filter_form" action="">
+                        <h3>Filters settings</h3>
+                        <div class="filters_block filters_group">
+                            <p class="filter_group_name">Gender filter</p>
+                            <div class="filter_inputs">
+                                <input
+                                    type="checkbox"
+                                    class="f_element formSubmit filtering"
+                                    name="gender"
+                                    id="f_gender_male"
+                                    value="male"
+                                />
+                                <label
+                                    for="f_gender_male"
+                                    class="f_element_label"
+                                >
+                                    &#9794; Male
+                                </label>
+                                <input
+                                    type="checkbox"
+                                    class="f_element formSubmit filtering"
+                                    name="gender"
+                                    id="f_gender_female"
+                                    value="female"
+                                />
+                                <label
+                                    for="f_gender_female"
+                                    class="f_element_label"
+                                >
+                                    &#9792; Female
+                                </label>
+                            </div>
+                        </div>
+                        <div class="filters_block filters_group">
+                            <p class="filter_group_name">Age filter</p>
+                            <div class="filter_inputs">
+                                <input
+                                    type="checkbox"
+                                    class="f_element formSubmit filtering"
+                                    name="age"
+                                    id="f_18_35"
+                                    value="18-35"
+                                />
+                                <label for="f_18_35" class="f_element_label">
+                                    18 <span class="symbol">&le;</span> Age
+                                    <span class="symbol">&le;</span> 35
+                                </label>
+                                <input
+                                    type="checkbox"
+                                    class="f_element formSubmit filtering"
+                                    name="age"
+                                    id="f_35_50"
+                                    value="35-50"
+                                />
+                                <label for="f_35_50" class="f_element_label">
+                                    35 <span class="symbol">&le;</span> Age
+                                    <span class="symbol">&le;</span> 50
+                                </label>
+                                <input
+                                    type="checkbox"
+                                    class="f_element formSubmit filtering"
+                                    name="age"
+                                    id="f_51_90"
+                                    value="50-90"
+                                />
+                                <label for="f_51_90" class="f_element_label">
+                                    50 <span class="symbol">&le;</span> Age
+                                    <span class="symbol">&le;</span> 90
+                                </label>
+                            </div>
+                        </div>
+                        <div class="filters_block sorting_group">
+                            <p class="filter_group_name">Sort by...</p>
+                            <button class="f_element formSubmit disable_sort_btn">
+                                Disable sorting
+                            </button>
+                            <div class="filter_inputs">
+                                <input
+                                    type="radio"
+                                    class="f_element formSubmit sorting"
+                                    name="sorting"
+                                    id="login_asc"
+                                    value="login_asc"
+                                />
+                                <label for="login_asc" class="f_element_label">
+                                    Login
+                                    <span class="nav_menu_item_img sort_asc"></span>
+                                </label>
+                                <input
+                                    type="radio"
+                                    class="f_element formSubmit sorting"
+                                    name="sorting"
+                                    id="login_des"
+                                    value="login_des"
+                                />
+                                <label for="login_des" class="f_element_label">
+                                    Login
+                                    <span class="nav_menu_item_img sort_des"></span>
+                                </label>
+                            </div>
+                            <div class="filter_inputs">
+                                <input
+                                    type="radio"
+                                    class="f_element formSubmit sorting"
+                                    name="sorting"
+                                    id="name_asc"
+                                    value="name_asc"
+                                />
+                                <label for="name_asc" class="f_element_label">
+                                    Last name
+                                    <span class="nav_menu_item_img sort_asc"></span>
+                                </label>
+                                <input
+                                    type="radio"
+                                    class="f_element formSubmit sorting"
+                                    name="sorting"
+                                    id="name_des"
+                                    value="name_des"
+                                />
+                                <label for="name_des" class="f_element_label">
+                                    Last name
+                                    <span class="nav_menu_item_img sort_des"></span>
+                                </label>
+                            </div>
+                            <div class="filter_inputs">
+                                <input
+                                    type="radio"
+                                    class="f_element formSubmit sorting"
+                                    name="sorting"
+                                    id="age_asc"
+                                    value="age_asc"
+                                />
+                                <label for="age_asc" class="f_element_label">
+                                    Age
+                                    <span class="nav_menu_item_img sort_asc"></span>
+                                </label>
+                                <input
+                                    type="radio"
+                                    class="f_element formSubmit sorting"
+                                    name="sorting"
+                                    id="age_des"
+                                    value="age_des"
+                                />
+                                <label for="age_des" class="f_element_label">
+                                    Age
+                                    <span class="nav_menu_item_img sort_des"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </aside>
+                <div class="main_content main_filter_hidden">
+                    <h3>Found users</h3>
+                    <div class="found_users"></div>
+                </div>
+            </div>
+            <footer class="footer"><a class="gototop" href="#top_anchor">&uarr;   Go to top   &uarr;</a>
+            <p class="created_by">>>>Created by LuckyDnepr<<<</p></footer>
+        </div>
+        <div class="lds-ripple hide">
+            <div></div>
+            <div></div>
+        </div>
+    </body>
+</html>
