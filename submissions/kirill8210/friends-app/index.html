@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>friends-app</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/index.js" type="module"></script>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <button class="icon-menu">
+            <img class="icon-menu_img" src="img/menu-ham-icon.png" alt="">
+        </button>
+        <a class="logo_app" href="index.html">
+            <h1 class="title_app">Friends App</h1>
+        </a>
+    </header>
+    <div class="app">
+        <form class="function_menu" id="function_menu">
+            <div class="function_title">Search friends:</div>
+
+            <div class="icon-close">
+                <img src="img/close-btn.png" alt="close_icon">
+            </div>
+            <div class="search">
+                <input class="search_friends" type="search" name="search_friends" id="search_friends" placeholder="Name friends">
+            </div>
+            <div class="function_title">Sort friends:</div>
+            <div class="sorts">
+                <select id="sorts_users" class="sorts_select">
+                    <option value="default" selected="selected">Sort Users</option>
+                    <option value="age_up">Age from 0 to 99</option>
+                    <option value="age_down">Age from 99 to 0</option>
+                    <option value="name_fromA">Name from A to Z</option>
+                    <option value="name_fromZ">Name from Z to A</option>
+                </select>
+            </div>
+            <div class="function_title">Filter by gender:</div>
+            <div class="filters">
+                <div class="filters_gender">
+                    <input type="hidden" id="sort_by_gender" name="sort_by_gender" value="date">
+                    <div class="filters_list filters_gender" id="filters_gender">
+                        <label class="filters_label">
+                            <input type="radio" class="gender" name="gender" id="all" value="all" checked/>
+                            <span>all gender</span>
+                        </label>
+                        <label class="filters_label">
+                            <input type="radio" class="gender" name="gender" id="male" value="male" />
+                            <span>male</span>
+                        </label>
+                        <label class="filters_label">
+                            <input type="radio" class="gender" name="gender" id="female" value="female" />
+                            <span>female</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button type="reset" class="btn reset_btn" id="reset_btn" from="function_menu">Reset</button>
+        </form>
+        <main id="main" class="main"></main>
+    </div>
+</div>
+</body>
+</html>
+
