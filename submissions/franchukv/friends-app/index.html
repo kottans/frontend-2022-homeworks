@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Franchukv - Friends App</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="popup-section">
+            <div class="popup popup-options">
+                <span class="popup-options-title">Options</span>
+
+                <button class="popup-closer popup-closer-options"></button>
+
+                <form id="options" onsubmit="return false">
+                    <fieldset class="users-limit-container">
+                        <div class="users-limit-input-container">
+                            <label class="users-limit-title" for="usersLimitInput">
+                                Change users limit<br>
+                                <span class="users-limit-title__span">(only for this session)</span>
+                            </label>
+
+                            <div class="users-limit-input">
+                                <input id="usersLimitInput" type="number" name="usersLimitInput" max="5000" value="200">
+                                <small class="users-limit-input__small">max = 5000</small>
+                            </div>
+                        </div>
+
+                        <div class="users-limit-button-container">
+                            <button type="button" id="usersLimitResetButton">Default</button>
+                            <button type="button" id="usersLimitAcceptButton">Apply</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="popup-chat-container"></div>
+
+            <div class="popup-overlay"></div>
+        </div>
+
+        <div class="bottom-menu">
+            <button class="options-button bottom-menu__options-button bottom-menu-button"></button>
+            <button class="filter-button bottom-menu-button"></button>
+            <button class="to-top-button bottom-menu-button"></button>
+        </div>
+
+        <div class="content-wrapper">
+            <aside class="sidebar sidebar-hide _filter-lock">
+                <form id="filter" onsubmit="return false">
+                    <fieldset class="filter-top">
+                        <input type="search" name="search" class="search-input" placeholder="Type name to find user">
+                        <button class="options-button sidebar-options-button"></button>
+                    </fieldset>
+
+                    <div class="filter__order">
+                        <fieldset class="filter__order-by filter__order-by--age">
+                            <input type="radio" name="sorters" id="ageASC" class="order-by__input-age" value="ageASC">
+                            <label class="order-by__label order-by--asc" for="ageASC">By Ascending</label>
+                            <input type="radio" name="sorters" id="ageDESC" class="order-by__input-age" value="ageDESC">
+                            <label class="order-by__label order-by--desc" for="ageDESC">By Descending</label>
+                        </fieldset>
+
+                        <fieldset class="filter__order-by filter__order-by--name">
+                            <input type="radio" name="sorters" id="nameASC" class="order-by__input-name"
+                                value="nameASC">
+                            <label class="order-by__label order-by--asc" for="nameASC">By Ascending</label>
+                            <input type="radio" name="sorters" id="nameDESC" class="order-by__input-name"
+                                value="nameDESC">
+                            <label class="order-by__label order-by--desc" for="nameDESC">By Descending</label>
+                        </fieldset>
+                    </div>
+
+                    <fieldset class="filter__gender">
+                        <input class="gender__input" type="radio" name="gender" id="male" value="male">
+                        <label class="gender__label" for="male">male</label>
+                        <input class="gender__input" type="radio" name="gender" id="female" value="female">
+                        <label class="gender__label" for="female">female</label>
+                        <input class="gender__input" type="radio" name="gender" id="all" value="all" checked>
+                        <label class="gender__label" for="all">all</label>
+                    </fieldset>
+
+                    <button type="reset" id="resetButton">Reset</button>
+                </form>
+            </aside>
+            <main class="users"></main>
+        </div>
+    </div>
+    <footer class="footer"><a class="copyright" href="https://github.com/franchukv">&copy; Franchukv</a></footer>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
