@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="menu.js" defer type="text/javascript"></script>
+    <script src="script.js" defer type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Memory Game</title>
+</head>
+
+<body>
+    <div class="fader hide"></div>
+    <div class="wrapper">
+        <header class="header hide">
+            <h1 class="title">Memory Game</h1>
+        </header>
+        <div class="main">
+            <div class="nav hide">
+                <div class="nav_menu fieldsize">
+                    <input type="radio" id="field6" class="nav_menu_item" name="field_size" data-fieldcols="2"
+                        data-fieldrows="3" checked />
+                    <label class="nav_menu_item_label" for="field6">6 cards</label>
+                    <input type="radio" id="field12" class="nav_menu_item" name="field_size" data-fieldcols="4"
+                        data-fieldrows="3" />
+                    <label class="nav_menu_item_label" for="field12">12 cards</label>
+                </div>
+                <div class="nav_menu themes"></div>
+                <div class="theme_image">
+                    <img src="./images/wait.png" alt="" class="theme_image_img" />
+                </div>
+                <button class="start-game">Start Game</button>
+            </div>
+            <div class="game_field"></div>
+            <div class="modal hide">
+                <p class="win_text">You win!</p>
+                <button class="buttons" id="replay">Replay</button>
+                <button class="buttons" id="back_to_menu">
+                    Back to menu...
+                </button>
+                <a class="coauthorlink" href="https://www.instagram.com/vitavol_art/" target="blank">images author
+                    Instagram</a>
+            </div>
+        </div>
+        <footer class="footer hide">
+            <p>Created by LuckyDnepr</p>
+        </footer>
+    </div>
+</body>
+
+</html>

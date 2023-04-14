@@ -1,0 +1,43 @@
+[
+    {
+        "theme": "My cute dolls",
+        "pictures": [
+            "./images/card-1.png",
+            "./images/card-2.png",
+            "./images/card-3.png",
+            "./images/card-4.png",
+            "./images/card-5.png",
+            "./images/card-6.png",
+            "./images/card-7.png",
+            "./images/card-8.png",
+            "./images/card-9.png",
+            "./images/card-10.png"
+        ]
+    },
+    {
+        "theme": "Looney Tunes",
+        "pictures": [
+            "./images/card-tunes-1.png",
+            "./images/card-tunes-2.png",
+            "./images/card-tunes-3.png",
+            "./images/card-tunes-4.png",
+            "./images/card-tunes-5.png",
+            "./images/card-tunes-6.png",
+            "./images/card-tunes-7.png",
+            "./images/card-tunes-8.png"
+        ]
+    },
+    {
+        "theme": "Smeshariki",
+        "pictures": [
+            "./images/card-balls-1.png",
+            "./images/card-balls-2.png",
+            "./images/card-balls-3.png",
+            "./images/card-balls-4.png",
+            "./images/card-balls-5.png",
+            "./images/card-balls-6.png",
+            "./images/card-balls-7.png",
+            "./images/card-balls-8.png"
+        ]
+    }
+]
