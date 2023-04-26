@@ -1,0 +1,212 @@
+/*---Fonts---*/
+@font-face {
+    font-family: "Rick and Morty";
+    src: url("./fonts/get_schwifty.ttf") format('truetype');
+}
+
+/*---General---*/
+
+html {
+    font-size: 16px;
+    background-color: #2A2A2A;
+    color: #86C199;
+
+    overflow: hidden;
+
+    font-family: "Rick and Morty", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+
+    padding: 1rem;
+
+    user-select: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*---Page----*/
+
+.main-title {
+    font-size: 5rem;
+
+    margin: 2rem 0;
+}
+
+.count {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.game-box {
+    max-height: 50rem;
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns:repeat(4, 1fr);
+    gap: 10px;
+}
+
+.card-container {
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-container, .front, .back {
+    width: 9rem;
+    height: 11rem;
+
+    border-radius: 1rem;
+}
+
+.front, .back {
+    backface-visibility: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+
+    background-image: url("images/card-bg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    background-color: #707070;
+}
+
+.back {
+    transform: rotateY(180deg);
+    position: relative;
+}
+
+.back img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 1rem;
+}
+
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+}
+
+.card-container.flipped .flipper {
+    transform: rotateY(180deg);
+}
+
+.card-container.none {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+    pointer-events: none;
+}
+
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, 0);
+    font-size: 1rem;
+    animation-name: bright;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.popup_btn {
+    width: 1rem;
+    height: 0.5rem;
+    background-color: #86C199;
+    font-family: "Rick and Morty", sans-serif;
+    font-size: 0.5rem;
+    color: #2A2A2A;
+    outline: none;
+    border: none;
+    border-radius: 1rem;
+}
+
+.popup.visible .popup_btn {
+    width: 10rem;
+    height: 5rem;
+    font-size: 2rem;
+    transition: 1s ease-in;
+}
+
+.popup.visible {
+    opacity: 1;
+    font-size: 10rem;
+    transition: font-size 1s ease-in;
+    z-index: 2;
+}
+
+/*---Animations---*/
+
+@keyframes bright {
+    0% {
+        text-shadow: 0 0 0 #86C199;
+    }
+    50% {
+        text-shadow: 0 0 10px #86C199;
+    }
+
+    100% {
+        text-shadow: 0 0 0 #86C199;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    html {
+        font-size: 7px;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    html {
+        font-size: 14px;
+    }
+}
