@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="css/null.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="css/style.css"
+		/>
+		<title>Friends-app</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__container">
+					<h1 class="header__title">Friends App</h1>
+				</div>
+			</header>
+			<main class="main">
+				<div class="main__container content">
+					<div class="form-wrapper">
+						<div class="overlay is-hidden"></div>
+						<div class="form-filter">
+							<div class="filter-text">Open Filter</div>
+						</div>
+						<div class="main__form">
+							<form
+								name="form"
+								class="form"
+							>
+								<label class="form__label"
+									>Filter by name
+									<input
+										type="text"
+										name="nameInput"
+										class="form__input"
+										placeholder="Enter friends name"
+									/>
+								</label>
+								<div class="form__gender">
+									<div class="form__gender-text">
+										Filter by sex:
+									</div>
+									<label class="form__gender-label">
+										<input
+											checked
+											type="radio"
+											name="nameRadio"
+											class="form__gender-radio"
+											data-filter="all"
+										/>
+										all
+									</label>
+									<label class="form__gender-label">
+										<input
+											type="radio"
+											name="nameRadio"
+											data-filter="male"
+											class="form__gender-radio"
+										/>
+										male
+									</label>
+									<label class="form__gender-label">
+										<input
+											type="radio"
+											name="nameRadio"
+											class="form__gender-radio"
+											data-filter="female"
+										/>
+										female
+									</label>
+								</div>
+								<div class="form__sort">
+									<div class="form__sort-age">
+										<p>Sort by age: </p>
+										<img
+											class="svg-age"
+											src="./assets/img/3.svg"
+											alt=""
+											data-sort="ascending-age"
+										/>
+										<img
+											class="svg-age"
+											src="./assets/img/4.svg"
+											alt=""
+											data-sort="descending-age"
+										/>
+									</div>
+									<div class="form__sort-name">
+										<p>Sort by name: </p>
+										<img
+											class="svg-name"
+											src="./assets/img/2.svg"
+											alt=""
+											data-sort="ascending-name"
+										/>
+										<img
+											class="svg-name"
+											src="./assets/img/1.svg"
+											data-sort="descending-name"
+											alt=""
+										/>
+									</div>
+								</div>
+								<div class="form__btn">
+									<button
+										type="button"
+										class="btn form__clear"
+										>Reset</button
+									>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="main__cards"></div>
+				</div>
+			</main>
+		</div>
+		<script
+			src="index.js"
+			type="module"
+		></script>
+	</body>
+</html>
