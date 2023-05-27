@@ -1,0 +1,264 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+/* ================================== */
+@import url("https://fonts.cdnfonts.com/css/harry-potter");
+
+@keyframes append-animate {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes blinker {
+  60% {
+    opacity: 0;
+  }
+}
+
+body {
+  height: 100vh;
+  font-family: "Harry Potter", sans-serif;
+  cursor: url(../img/dobbySoc-cursor.png), auto;
+  background: url(../img/backgroundImage.jpg);
+  color: #e8e7cb;
+  user-select: none;
+  opacity: 0.8;
+  background-position: 0 0;
+  background-size: auto;
+  background-repeat: round;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+.header {
+  text-align: center;
+  font-size: 85px;
+}
+
+.main__title {
+  margin-top: 50px;
+}
+
+.main {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  animation: append-animate 0.5s linear;
+  margin-bottom: 15px;
+}
+
+._wrapperOfTheButton {
+  position: relative;
+  top: 160px;
+}
+
+.button {
+  font-size: 45px;
+}
+
+._hide {
+  display: none;
+}
+
+.restart__title {
+  font-size: 55px;
+  margin-bottom: 30px;
+}
+
+.main__list-items {
+  position: relative;
+  top: 70px;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+  perspective: 1000px;
+}
+
+.list__item {
+  transition: 0.7s;
+  transform-style: preserve-3d;
+  height: 130px;
+  width: 130px;
+}
+
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.img {
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  border: 3px solid lightblue;
+  top: 0;
+  left: 0;
+}
+
+._flip {
+  transform: rotateY(180deg);
+}
+
+._moreOpacity {
+  opacity: 0.4;
+  transition: opacity 2s linear;
+}
+
+.blink_me {
+  animation: blinker 3s linear infinite;
+}
+
+.animated {
+  animation: append-animate 0.8s linear;
+}
+
+@media (max-width: 1024px) {
+  .header {
+    font-size: 75px;
+  }
+
+  .main {
+    margin-bottom: 15px;
+  }
+
+  ._wrapperOfTheButton {
+    top: 140px;
+  }
+
+  .main__list-items {
+    top: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    font-size: 65px;
+  }
+
+  .restart__title {
+    font-size: 45px;
+    margin-bottom: 30px;
+  }
+
+  .main__list-items {
+    top: 80px;
+  }
+
+  .list__item {
+    height: 110px;
+    width: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 60px;
+  }
+
+  .restart__title {
+    font-size: 35px;
+  }
+
+  .main__list-items {
+    top: 110px;
+  }
+
+  .list__item {
+    height: 90px;
+    width: 90px;
+  }
+}
