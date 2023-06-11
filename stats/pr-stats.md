@@ -1,6 +1,6 @@
 # Open and merged PRs by task labels
 
-_as of 2023-06-10T22:38:24.893Z UTC_
+_as of 2023-06-11T22:38:32.748Z UTC_
 
 PR reference legend:
  - #xxx o -- PR is yet open 
