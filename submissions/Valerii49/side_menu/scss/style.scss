@@ -255,6 +255,7 @@ body {
 		}
 	}
 	&__icon {
+		cursor: pointer;
 	}
 	@media (max-width: $mobile) {
 		&__title {
@@ -282,10 +283,14 @@ body {
 		width: rem(30);
 		height: rem(18);
 		z-index: 6;
+		margin-top: rem(14);
+		margin-bottom: rem(14);
 		cursor: pointer;
+
 		@media (any-hover: none) {
 			cursor: default;
 		}
+
 		span,
 		&::before,
 		&::after {
@@ -321,7 +326,6 @@ body {
 		}
 	}
 }
-//*========================================
 .main-module {
 	// main-module__images
 	&__images {
@@ -450,72 +454,66 @@ body {
 .footer__copy-right {
 	border-top: 1px solid;
 }
-//========arrow=============================
 .arrow-main {
 	position: absolute;
-	top: rem(44);
-	right: 0;
+	top: rem(42);
 	transform: rotate(-90deg);
 	z-index: 6;
-	cursor: pointer;
 	opacity: 0;
-	animation: arrow-main-btn 1.2s ease-in-out 3;
-}
-.arrow-main div {
-	padding: 0px 0px 0px 20px;
+	animation: arrow-main 1.2s ease-in-out 3;
 	position: relative;
-	top: 0px;
-	width: 25px;
-	height: 2px;
+	width: rem(20);
+	height: rem(2);
 	background-color: var(--accent);
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-	left: 0;
+	left: rem(7);
 	display: block;
 }
-.arrow-main div::after {
+.arrow-main::after {
 	content: "";
 	position: absolute;
-	width: 11px;
-	height: 2px;
+	width: rem(11);
+	height: rem(2);
 	top: -3px;
-	right: -2px;
+	right: rem(-2);
 	background-color: var(--accent);
 	transform: rotate(45deg);
 }
-.arrow-main div::before {
+.arrow-main::before {
 	content: "";
 	position: absolute;
-	width: 10px;
-	height: 2px;
-	top: 4px;
-	right: -1px;
+	width: rem(10);
+	height: rem(2);
+	top: rem(4);
+	right: rem(-1);
 	background-color: var(--accent);
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 	transform: rotate(-45deg);
 }
-@keyframes arrow-main-btn {
+
+@keyframes arrow-main {
 	0% {
-		top: rem(44);
+		top: rem(42);
 		opacity: 1;
 	}
 	25% {
-		top: rem(32);
+		top: rem(30);
 		opacity: 1;
 	}
 	37.5% {
-		top: rem(40);
+		top: rem(38);
 		opacity: 1;
 	}
 	50% {
-		top: rem(32);
+		top: rem(30);
 		opacity: 1;
 	}
 	99% {
-		top: rem(44);
+		top: rem(42);
 		opacity: 1;
 	}
 	100% {
-		top: rem(44);
+		top: rem(42);
 		opacity: 0;
 	}
 }
