@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Friends App</title>
+  </head>
+  <body>
+    <header class="header">Friends App</header>
+    <main>
+      <div class="container">
+        <aside class="menu">
+          <form class="form" id="form" onsubmit="return false;">
+            <label for="search_by_name" class="form__title">Поиск:</label>
+            <input
+              type="text"
+              id="search_by_name"
+              name="search"
+              placeholder="Имя, возраст, город или страна"
+            />
+            <h4 class="form__title">Сортировать по имени:</h4>
+            <label for="name_ascending">&#8595;</label>
+            <input
+              type="radio"
+              id="name_ascending"
+              name="sort"
+              value="nameAscending"
+            />
+            <label for="name_descending">&#8593;</label>
+            <input
+              type="radio"
+              id="name_descending"
+              name="sort"
+              value="nameDescending"
+            />
+
+            <h4 class="form__title">Сортировать по возрасту:</h4>
+            <label for="age_ascending">&#8595;</label>
+            <input
+              type="radio"
+              id="age_ascending"
+              name="sort"
+              value="ageAscending"
+            />
+
+            <label for="age_descending">&#8593;</label>
+            <input
+              type="radio"
+              id="age_descending"
+              name="sort"
+              value="ageDescending"
+            />
+
+            <h4 class="form__title">Пол:</h4>
+            <label for="gender_all">Все</label>
+            <input
+              type="radio"
+              id="gender_all"
+              name="gender"
+              value="all"
+              checked
+            />
+            <label for="gender_male">Мужчины</label>
+            <input type="radio" id="gender_male" name="gender" value="male" />
+            <label for="gender_female">Женщины</label>
+            <input
+              type="radio"
+              id="gender_female"
+              name="gender"
+              value="female"
+            />
+          </form>
+        </aside>
+
+        <div id="target" class="friends-list"></div>
+      </div>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
