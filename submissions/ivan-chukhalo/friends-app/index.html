@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 class="header">Friends App</h1>
+    <aside class="aside" id="aside">
+        <div class="sorters-wrapper">
+            <div class="sorters">
+                <div class="sorters__sub-section">
+                    <span class="sorters__title">By age:</span>
+                    <div class="sorters__buttons">
+                        <button id="btn__sort-age_ascending" class="sorters__button">
+                            <img src="./assets/svg/sort.svg" alt="#" class="sorters__icon sorters__icon_ascending">
+                        </button>
+                        <button id="btn__sort-age_descending" class="sorters__button">
+                            <img src="./assets/svg/sort.svg" alt="#" class="sorters__icon">
+                        </button>
+                    </div>
+                </div>
+                <div class="sorters__sub-section">
+                    <span class="sorters__title">By name:</span>
+                    <div class="sorters__buttons">
+                        <button id="btn__sort-name_alphabetical" class="sorters__button">
+                            <img src="./assets/svg/sort-by-alpha.svg" alt="#" class="sorters__icon">
+                        </button>
+                        <button id="btn__sort-name_alphabetical-reverse" class="sorters__button">
+                            <img src="./assets/svg/sort-by-alpha-reverse.svg" alt="#" class="sorters__icon sorters__icon_Z-A">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="sorters">
+                <input type="number" class="input"  id="input__filter_by-age" min="18" max="100" placeholder="Age">
+                <button class="btn-filter" id="btn__filter_by-age">Filter by age</button>
+            </div>
+            <div class="sorters">
+                <input type="text" class="input"  id="input__filter_by-name" maxlength="25" placeholder="Name">
+                <button id="btn__filter_by-name" class="btn-filter">Filter by name</button>
+            </div>
+            <div class="sorters">
+                <div class="sex-options">
+                    <span class="sex-option">
+                        <input type="radio" id="sex_male" name="sex">
+                        <label class="sex" for="sex-male">M</label>
+                    </span>
+                    <span class="sex-option">
+                        <input type="radio" id="sex_female" name="sex">
+                        <label class="sex" for="sex-female">F</label>
+                    </span>
+                    <span class="sex-option">
+                        <input type="radio" id="sex_all" name="sex" checked>
+                        <label class="sex" for="sex-all">All</label>
+                    </span>
+                </div>
+                <button class="btn-filter" id="btn__filter_by-sex">Filter by sex</button>
+            </div>
+            <button class="btn-filter" id="btn_reset">Reset</button>
+        </div>
+    </aside>
+    <main class="main" id="main">
+        Loading...
+    </main>
+    <script src="./app.js"></script>
+</body>
+</html>
