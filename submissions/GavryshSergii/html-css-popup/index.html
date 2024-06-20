@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <title>HTML-CSS-Popup</title>
+</head>
+<body>
+<header class="header">
+    <a href="#" class="header__logo">
+        <img src="img/favicon.png" alt="Logo" class="logo_img"/>
+    </a>
+
+    <nav>
+        <ul class="header__menu">
+            <li><a href="#" class="header__link">Mail</a></li>
+            <li><a href="#" class="header__link">Images</a></li>
+            <li>
+                <input type="checkbox" id="popup_checkbox" class="hidden_checkbox"/>
+                <label for="popup_checkbox" class="popup_label">
+                    <img src="img/popup-button.png" alt="popup"/>
+                </label>
+                <div class="popup_container">
+                    <ul class="popup_grid">
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/calendar.png" alt="" />
+                                </div>
+                                <p>Calendar</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/mail.png" alt="" />
+                                </div>
+                                <p>Mail</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/news.png" alt="" />
+                                </div>
+                                <p>News</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/maps.png" alt="" />
+                                </div>
+                                <p>Map</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/files.png" alt="" />
+                                </div>
+                                <p>Files</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/contacts.png" alt="" />
+                                </div>
+                                <p>Contacts</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/translation.png" alt="" />
+                                </div>
+                                <p>Translate</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/videos.png" alt="" />
+                                </div>
+                                <p>Videos</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/search.png" alt="" />
+                                </div>
+                                <p>Search</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/photos.png" alt="" />
+                                </div>
+                                <p>Photo</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/apps.png" alt="" />
+                                </div>
+                                <p>Apps</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="popup_item">
+                                <div class="popup_image_container">
+                                    <img src="img/documents.png" alt="" />
+                                </div>
+                                <p>Document</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <input type="checkbox" id="more_checkbox" class="hidden_checkbox"/>
+                    <label for="more_checkbox" class="more_label"> More </label>
+                    <div class="popup_more">
+                        <hr class="more_hr"/>
+                        <ul class="popup_grid">
+                            <li>
+                                <a href="#" class="popup_item">
+                                    <div class="popup_image_container">
+                                        <img src="img/chat.png" alt="" />
+                                    </div>
+                                    <p>Chat</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="popup_item">
+                                    <div class="popup_image_container">
+                                        <img src="img/classroom.png" alt="" />
+                                    </div>
+                                    <p>Classroom</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="popup_item">
+                                    <div class="popup_image_container">
+                                        <img src="img/collection.png" alt="" />
+                                    </div>
+                                    <p>Collection</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="popup_item">
+                                    <div class="popup_image_container">
+                                        <img src="img/mars.png" alt="" />
+                                    </div>
+                                    <p>Mars</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="popup_item">
+                                    <div class="popup_image_container">
+                                        <img src="img/blogs.png" alt="" />
+                                    </div>
+                                    <p>Blogs</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="popup_item">
+                                    <div class="popup_image_container">
+                                        <img src="img/promo.png" alt="" />
+                                    </div>
+                                    <p>Promos</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="user_avatar">
+                    <img src="img/avatar.png" alt="AV" class="avatar">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+</body>
+</html>
