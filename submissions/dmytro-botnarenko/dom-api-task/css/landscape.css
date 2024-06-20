@@ -1,0 +1,102 @@
+@media screen and (min-width: 481px) and (max-width: 1024px) and (max-height: 480px) {
+  /* ------------SWITCHER--------------- */
+  .switcher {
+    width: 4%;
+    left: 15px;
+  }
+  /* ------------MAIN--------------- */
+  .main__info {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .main__info__name {
+    width: 100%;
+    text-align: center;
+    padding: 0 0 1% 0;
+    font-size: 2rem;
+  }
+  .main__info__personage {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 60%;
+  }
+  .main__info__figure {
+    width: 40%;
+  }
+  .main__info__personage table {
+    width: 50%;
+  }
+  .main__info__personage table caption {
+    display: none;
+  }
+  .main__info__text {
+    width: 40%;
+    padding: 0 3% 0 0;
+    margin: 0;
+  }
+  /* ------------NAVIGATION--------------- */
+
+  .main__navigation__menu input {
+    left: 0;
+  }
+  /*Hamburger*/
+  .main__navigation__menu__burger {
+    left: -6px;
+  }
+  /*Menu list*/
+  .main__navigation__menu__container {
+    top: 0px;
+    width: 430px;
+    padding: 30px 10px;
+  }
+  .main__navigation__menu__list {
+    display: grid;
+    grid-template: auto / 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 6px;
+  }
+  .main__navigation__menu__list__link {
+    font-size: 1.1rem;
+  }
+  .main__navigation__menu__container h2,
+  .main__navigation__menu__list__link {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) and (min-height: 481px) and (max-height: 600px) {
+  /* ------------SWITCHER--------------- */
+  .switcher {
+    width: 3%;
+    top: 30px;
+    left: 30px;
+  }
+  /* -------------MAIN------------------ */
+  .main__container {
+    padding: 30px;
+  }
+  .main__info {
+    width: 85%;
+    padding: 0 3% 0 0;
+  }
+  .main__info__personage {
+    flex-direction: row;
+  }
+  .main__info__figure {
+    margin-right: 16px;
+  }
+  .main__info__personage table caption {
+    padding-bottom: 8px;
+  }
+  /* ------------NAVIGATION--------------- */
+
+  .main__navigation__image {
+    max-width: 50%;
+  }
+  .main__navigation__menu__container {
+    padding: 4% 4%;
+  }
+  .main__navigation__menu__list__link {
+    margin-bottom: 7%;
+  }
+}
