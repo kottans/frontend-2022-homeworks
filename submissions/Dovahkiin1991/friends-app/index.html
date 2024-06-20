@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends App</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__toggle-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <a href="#" class="header__logo">Friends App</a>
+
+        <a href="#" class="header__toggle">Toggle Theme</a>
+    </header>
+
+    <div class="main">
+        <form class="main__sidebar">
+            <div class="main__sidebar--inner">
+                <div class="main__sidebar--block">
+                    <h4>Look for a friend:</h4>
+                </div>
+    
+                <div class="main__sidebar--block">
+                    <h6>Search by name:</h6>
+    
+                    <div class="filter">
+                        <div class="filter__block">
+                            <input type="text" name="name" id="filterName">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="main__sidebar--block">
+                    <h6>Filter by gender:</h6>
+    
+                    <div class="filter">
+                        <div class="filter__block">
+                            <label for="genderAll">All:</label>
+                            <input type="radio" name="gender" value="genderAll" id="genderAll" checked>
+                        </div>
+    
+                        <div class="filter__block">
+                            <label for="male">Male:</label>
+                            <input type="radio" name="gender" value="male" id="male">
+                        </div>
+    
+                        <div class="filter__block">
+                            <label for="female">Female:</label>
+                            <input type="radio" name="gender" value="female" id="female">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="main__sidebar--block">
+                    <h6>Sort by alphabet:</h6>
+    
+                    <div class="filter">
+                        <div class="filter__block">
+                            <label for="alphabetAZ">A-Z:</label>
+                            <input type="radio" name="filterSort" value="alphabetAZ" id="alphabetAZ" checked>
+                        </div>
+    
+                        <div class="filter__block">
+                            <label for="alphabetZA">Z-A:</label>
+                            <input type="radio" name="filterSort" value="alphabetZA" id="alphabetZA">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="main__sidebar--block">
+                    <h6>Sort by Age:</h6>
+    
+                    <div class="filter">
+                        <div class="filter__block">
+                            <label for="ageLowest">From lowest:</label>
+                            <input type="radio" name="filterSort" value="ageLowest" id="ageLowest">
+                        </div>
+    
+                        <div class="filter__block">
+                            <label for="ageHighest">From highest:</label>
+                            <input type="radio" name="filterSort" value="ageHighest" id="ageHighest">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main__sidebar--block">
+                    <div class="filter">
+                        <div class="filter__block">
+                            <input type="reset" value="Reset" name="reset">
+                        </div>
+
+                        <div class="filter__block">
+                            <input type="submit" value="Apply filters" name="submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="main__content" id="main__content"></div>
+    </div>
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>
