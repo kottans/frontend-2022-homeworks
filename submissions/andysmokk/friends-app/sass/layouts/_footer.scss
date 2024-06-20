@@ -1,0 +1,28 @@
+.footer {
+    font-size: 54px;
+    font-weight: 600;
+    text-align: flex-end;
+    margin-top: 10px;
+    padding: 10px;
+
+    text-shadow: var(--default-white-shadow)
+}
+
+.footer-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.github-img {
+    fill: var(--background-color-btn);
+}
+
+.footer-link:hover .github-img,
+.footer-link:focus .github-img {
+    fill: var(--hover-focus);
+}
+
+.footer-text {
+    margin-left: 15px;
+}
