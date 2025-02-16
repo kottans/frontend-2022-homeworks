@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory-Pair-Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <template id="card-template">
+        <div class="flip-container">
+            <div class="flipper">
+                <div class="front">
+                    <img id='shirt-img' src="./img/shirt.gif" alt="cover image">
+                </div>
+                <div class="back"></div>
+            </div>
+        </div>
+    </template>
+
+    <div id="controlPanel">
+        Attempts: <span id="attemptNumOutput"></span>
+        Time: <span id="timeOutput"></span>
+    </div>
+
+    <div id="popup" class="active">
+        <h1 id="gameTitle">Memory Pair Game</h1>
+        <p id="gameInfo">Try to flip two similar cards. Good luck!</p>
+        <button id="startGame">Start new game</button>
+    </div>
+
+    <div id="board"></div>
+    
+    <script src="cards.js"></script>
+    <script src="deck.js"></script>
+    <script src="game-manager.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
