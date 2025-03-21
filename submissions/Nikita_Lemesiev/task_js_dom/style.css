@@ -1,0 +1,148 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: black;
+    /*border: 0.5px dashed white;
+    */
+}
+
+@media (min-width: 601px) {
+
+    /*Хедер*/
+    header {
+        height: 40px;
+        vertical-align: middle;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    nav {
+        padding-left: 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #nav-bar li {
+        display: inline;
+        margin-left: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    #logo {
+        height: 35px;
+        width: auto;
+    }
+
+    /*контент контейнер*/
+    #main-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    /*Меню main menu*/
+    #main-menu {
+        width: 20%;
+    }
+
+    #main-menu li {
+        height: 40px;
+        text-align: center;
+        vertical-align: middle;
+        font-weight: 500;
+        padding: 10px 0;
+        cursor: pointer;
+    }
+
+    #main-menu li:hover {
+        text-decoration: underline;
+        background-image: url(images/wrarrow.png);
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+    
+    #main-menu li:focus {
+        background-image: url(images/wrarrow.png);
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+
+    /*Сериалы*/
+    #main {
+        width: 80%;
+        height: 90%;
+        margin-left: 30px;
+        text-align: center;
+    }
+
+    #main h1, #main img {
+        margin-bottom: 30px;
+    }
+
+    #main-img {
+        width: 500px;
+        height: auto;
+    }
+}
+
+/*Smartphone styles*/
+@media (max-width: 600px) {
+
+    #logo {
+        height: 40px;
+        width: auto;
+    }
+
+    #main-content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        text-align: center;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid grey;
+    }
+
+    nav ul {
+        display: none;
+        text-align: center;
+    }
+
+    #main {
+        border-top: 1px solid grey;
+    }
+
+    #main-img {
+        width: 400px;
+        height: auto;
+    }
+
+    #main-menu li {
+        font-size: 25px;
+        padding-bottom: 15px;
+    }
+
+    #main h1 {
+        padding-top: 20px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    #main p {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+}
