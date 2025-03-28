@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Friends App</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="animation.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    </head>
+
+    <body>  
+        <header id="header">
+            <h1>Welcome to Frinder</h1>
+        </header>
+        <main>
+            <div class="selector_wrapper">
+                <input type="checkbox" class="hide_selector" id="hide_selector">
+                <label for="hide_selector" class="selector_closed">
+                    <span class="material-symbols-outlined">
+                        menu
+                        </span>
+                </label>
+                <label for="hide_selector" class="selector_opened">
+                    <span class="material-symbols-outlined">
+                        close
+                        </span>
+                </label>
+                    
+                <div class="selector">
+
+                <div class="selector_gender">
+                    <label>
+                    <input type="radio" value="all" checked class="gender_check" name="gender_check">
+                    All</label>
+                    <label>
+                    <input type="radio" value="male" class="gender_check" name="gender_check">
+                    Male</label>
+                    <label>
+                    <input type="radio" value="female" class="gender_check" name="gender_check">
+                    Female</label>  
+                </div>
+
+                <div class="selector_sort">
+                    <label>
+                    <input type="radio" value="age_up" class="sort_check" name="sort_check">
+                    <span class="material-symbols-outlined">
+                        arrow_upward
+                        </span>
+                    </label>
+                    <span>Sort by age</span>
+                    <label>
+                    <input type="radio" value="age_down" class="sort_check" name="sort_check">
+                    <span class="material-symbols-outlined">
+                        arrow_downward
+                        </span>
+                    </label>
+                    <label>
+                    <input type="radio" value="names_up" class="sort_check" name="sort_check">
+                    <span class="material-symbols-outlined">
+                        arrow_forward_ios
+                        </span>
+                    </label>
+                    <span>A to Z</span>
+                    <label>
+                    <input type="radio" value="names_down" class="sort_check" name="sort_check">
+                    <span class="material-symbols-outlined">
+                        arrow_back_ios
+                        </span>
+                    </label>
+                </div>
+
+                <div class="search_field">
+                    <input type="text" placeholder="Enter name or age..." class="text_check" id="text_input">
+                </div>
+            </div>
+            </div> 
+
+            <div class="usercards">
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
+
