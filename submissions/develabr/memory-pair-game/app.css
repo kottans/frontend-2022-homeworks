@@ -1,0 +1,123 @@
+:root {
+  --light-color: #fff;
+  --dark--color: #333;
+  --card-color: #e2e2e2;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(100vw - 85%);
+}
+
+.container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: grid;
+  grid-template: repeat(3, 150px) / repeat(4, 150px);
+  gap: 5px;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 648px) {
+  .wrapper {
+    grid-template: repeat(4, 150px) / repeat(3, 150px);
+  }
+}
+
+@media only screen and (max-width: 468px) {
+  .wrapper {
+    grid-template: repeat(6, 150px) / repeat(2, 150px);
+  }
+}
+
+.card {
+  position: relative;
+  transition: all 0.4s linear;
+  transform-style: preserve-3d;
+}
+
+.card,
+.back,
+.front {
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.back,
+.front {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.front {
+  z-index: 2;
+  background: var(--card-color) url('./img/catBlack.svg') no-repeat center
+    center / contain;
+}
+
+.back {
+  transform: rotateY(180deg);
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: var(--card-color);
+}
+
+.selected {
+  transform: rotateY(180deg);
+}
+
+html.dark .match .front {
+  background: var(--dark-color);
+}
+
+html.light .match .front {
+  background: var(--light-color);
+}
+
+html.dark body {
+  background-color: var(--dark--color);
+  color: var(--light-color);
+}
+
+html.light body {
+  background-color: var(--light-color);
+  color: var(--dark--color);
+}
+
+.theme {
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+html.dark .theme {
+  background: url('./img/sun.svg') 0 0/100% no-repeat;
+  filter: invert(1);
+}
+
+html.light .theme {
+  background: url('./img/moon.svg') 0 0/100% no-repeat;
+}
