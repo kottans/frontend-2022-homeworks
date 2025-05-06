@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Friends App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1 class="header__name">Friends app</h1>
+        <div class="menu__burger">
+          <img src="img/filter.png" alt="" class="burger_img" />
+        </div>
+      </header>
+      <main class="main">
+        <div class="main__filters">
+          <div class="filters">
+            <form class="filter_form">
+              <div class="search filter">
+                <fieldset class="fieldset_search fieldset">
+                  <legend class="fieldset_name">Search:</legend>
+                  <label class="label_search">
+                    <input
+                      type="search"
+                      class="input_search"
+                      name="search"
+                      autocomplete="off"
+                      placeholder="Who are we looking for?"
+                    />
+                  </label>
+                </fieldset>
+              </div>
+              <div class="filter_gender filter">
+                <fieldset class="fieldset_filter fieldset">
+                  <legend class="fieldset_name">Choose gender:</legend>
+                  <label class="label_filter">
+                    <input
+                      type="radio"
+                      class="radioButton gender"
+                      name="gender"
+                      value="all"
+                      checked
+                    />
+                    <span>All</span><span></span>
+                  </label>
+                  <label class="label_filter">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      class="radioButton gender"
+                    />
+                    <span>Male</span><span></span>
+                  </label>
+                  <label class="label_filter">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      class="radioButton gender"
+                    />
+                    <span>Female</span><span></span>
+                  </label>
+                </fieldset>
+              </div>
+              <div class="filter_alphabet filter">
+                <fieldset class="fieldset_sort fieldset">
+                  <legend class="fieldset_name">Sort by:</legend>
+                  <label class="label_sort">
+                    <input
+                      type="radio"
+                      name="sort"
+                      value="nameAscending"
+                      class="radioButton sort"
+                    />
+                    <span>A-z</span><span></span>
+                  </label>
+                  <label class="label_sort">
+                    <input
+                      type="radio"
+                      name="sort"
+                      value="nameDescending"
+                      class="radioButton sort"
+                    />
+                    <span>Z-a</span><span></span>
+                  </label>
+                  <label class="label_sort">
+                    <input
+                      type="radio"
+                      name="sort"
+                      value="ageAscending"
+                      class="radioButton sort"
+                    />
+                    <span>0-9</span><span></span>
+                  </label>
+                  <label class="label_sort">
+                    <input
+                      type="radio"
+                      name="sort"
+                      value="ageDescending"
+                      class="radioButton sort"
+                    />
+                    <span>9-0</span><span></span>
+                  </label>
+                </fieldset>
+              </div>
+            </form>
+            <div class="filter__buttons">
+              <button class="button reset">Reset</button>
+              <button class="button close hidden">Close filters</button>
+            </div>
+          </div>
+        </div>
+        <div class="main__content">
+          <ul class="users"></ul>
+          <div class="no-usersFound hidden">
+            <p class="animated-text">No users are found :(</p>
+            <p></p>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <a href="https://github.com/chernetskyi8704" class="footer_link">
+          © Dmytro Chernetskyi 2023
+        </a>
+        <a href="https://www.flaticon.com/free-icons/friends">
+          Friends icons created by Freepik - Flaticon
+        </a>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
