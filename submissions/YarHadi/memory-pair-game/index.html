@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pair game</title>
+
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Martel Sans"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Markazi Text"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header-cont">
+      <audio autoplay controls><source src='./music/music.mp3'></audio>
+      <a class="header-item header-button" onclick="reset()">Reset</a>
+      <a class="header-item header-button" onclick="showHelp()">Help</a>
+      <a
+        href="https://github.com/YarHadi/kottans-frontend"
+        class="header-item"
+        target="_blank"
+      >
+        <img
+          src="./img/user-photo.png"
+          class="user"
+          alt="A handsome young man with an elegant beard"
+        />
+      </a>
+    </header>
+    <main>
+      <div class="help-menu">
+        <div class="help-container">
+          <div class="iggy-cont">
+            <p class="help-text">
+              Your task is to match the character with his stand.<br />
+              If you are not familiar with this anime, here is a hint for you.
+            </p>
+          </div>
+          <div class="img-help-container">
+            <img src="./img/help-menu/dio.png" class="help-img" />
+            <img src="./img/help-menu/giorno.jpeg" class="help-img" />
+            <img src="./img/help-menu/jolyne.jpeg" class="help-img" />
+            <img src="./img/help-menu/josuke.png" class="help-img" />
+            <img src="./img/help-menu/jotaro.png" class="help-img" />
+            <img src="./img/help-menu/kira.png" class="help-img" />
+          </div>
+          <a class="close-help" onclick="closeHelp()">OK. Lets do this!</a>
+          <img src="./img/help-menu/iggy.webp" class="help-iggy" alt="" />
+        </div>
+      </div>
+      <div class="main-field"></div>
+    </main>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
+
