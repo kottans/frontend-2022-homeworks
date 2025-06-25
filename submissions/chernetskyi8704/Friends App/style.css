@@ -1,0 +1,428 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:focus,
+*:active {
+  outline: none;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+ul li {
+  list-style: none;
+}
+
+body {
+  height: 100vh;
+  line-height: 1;
+  user-select: none;
+  color: rgb(103, 114, 116);
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+._lock {
+  overflow: hidden;
+}
+
+.wrapper {
+  display: grid;
+  min-height: 100%;
+  grid-template: minmax(70px, auto) 1fr minmax(30px, auto) / 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: header;
+  box-shadow: 0 5px 5px -5px rgb(103, 114, 116);
+}
+
+.header__name {
+  font-size: 44px;
+}
+
+.main {
+  display: flex;
+  grid-area: main;
+}
+
+.main__content {
+  padding: 20px;
+  flex: 1 1 auto;
+}
+
+.main__filters {
+  padding: 20px 10px;
+  flex: 0 0 300px;
+  box-shadow: 5px 0 5px -5px rgb(103, 114, 116);
+}
+
+.users {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.img_manipulate {
+  height: 30px;
+}
+
+.user {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  height: 290px;
+  border: 2px solid rgb(157, 173, 177);
+  border-radius: 10%;
+}
+
+.user_photo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  height: 120px;
+  cursor: pointer;
+}
+
+.user_img {
+  height: 100%;
+  border-radius: 50%;
+}
+
+.user_name {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.user_manipulate {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  top: 235px;
+  width: 175px;
+  cursor: pointer;
+}
+
+.user_description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  width: 250px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.data {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.footer {
+  display: flex;
+  grid-area: footer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  box-shadow: 0 -5px 5px -5px rgb(103, 114, 116);
+}
+
+.footer a {
+  color: rgb(103, 114, 116);
+}
+
+.footer_link {
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.fieldset_filter {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  height: 80px;
+  font-size: 20px;
+  border: 1px solid rgb(103, 114, 116);
+  border-radius: 10px;
+}
+
+.fieldset_sort {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  padding: 10px;
+  width: 210px;
+  font-size: 20px;
+  height: 130px;
+  border: 1px solid rgb(103, 114, 116);
+  border-radius: 10px;
+}
+
+.fieldset_search {
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  height: 65px;
+  border: 1px solid rgb(103, 114, 116);
+  border-radius: 10px;
+}
+
+.label_search {
+  caret-color: rgb(103, 114, 116);
+  border-radius: 10px;
+}
+
+.fieldset_name {
+  font-size: 30px;
+  letter-spacing: 3px;
+}
+
+.input_search,
+select,
+textarea,
+.input_searсh::placeholder {
+  font-size: 20px;
+  color: rgb(103, 114, 116);
+}
+
+.input_search {
+  text-align: center;
+}
+
+.filter__buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  margin-top: 12px;
+  height: 40px;
+  width: 100px;
+  font-size: 16px;
+  background-color: white;
+  border: 2px solid rgb(103, 114, 116);
+  border-radius: 10%;
+  color: rgb(103, 114, 116);
+}
+
+.button:hover {
+  background-color: rgb(157, 173, 177);
+}
+
+.close {
+  margin-left: 10px;
+}
+
+.radioButton {
+  width: 80px;
+  height: 30px;
+  border-radius: 10%;
+  border: 2px solid rgb(103, 114, 116);
+  background-color: white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.radioButton:focus {
+  cursor: pointer;
+  outline: none;
+}
+
+.radioButton:checked {
+  background-color: rgb(157, 173, 177);
+  cursor: pointer;
+}
+
+.radioButton:checked ~ span:first-of-type {
+  color: white;
+  cursor: pointer;
+}
+
+.label_filter span:first-of-type {
+  position: relative;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.label_filter span {
+  position: relative;
+  top: -28px;
+  cursor: pointer;
+}
+
+.label_sort span:first-of-type {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.label_sort span {
+  position: relative;
+  top: -27px;
+}
+
+.filter_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.messages_counter {
+  margin-left: 4px;
+}
+
+.img_broken:hover {
+  display: none;
+}
+
+.img_broken:hover ~ .img_liked {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.burger_img {
+  display: none;
+  margin-left: 10px;
+  margin-top: 15px;
+  height: 35px;
+}
+
+.no-usersFound {
+  height: 40px;
+  font-size: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.animated-text {
+  animation: move-left-right 10s linear infinite;
+}
+
+@keyframes move-left-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 1024px) {
+  .users {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .burger_img {
+    display: block;
+  }
+
+  .main__filters._active {
+    left: 0;
+  }
+
+  .main__filters {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    padding: 40px 10px 0px 10px;
+    z-index: 1;
+    width: 42%;
+    height: 100%;
+    background-color: rgb(157, 173, 177, 0.8);
+    transition: left 0.6s ease 0s;
+    color: rgb(103, 114, 116);
+  }
+
+  .input_search {
+    background-color: white;
+  }
+
+  .fieldset_filter {
+    width: 300px;
+  }
+
+  .fieldset_search {
+    background-color: white;
+  }
+
+  .fieldset_name {
+    font-size: 26px;
+    letter-spacing: 3px;
+  }
+
+  .button {
+    background-color: white;
+    color: rgb(103, 114, 116);
+  }
+}
+
+@media (max-width: 768px) {
+  .users {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main__filters {
+    width: 60%;
+  }
+
+  .fieldset_filter {
+    width: 270px;
+  }
+
+  .fieldset_sort {
+    width: 190px;
+  }
+}
+
+@media (max-width: 480px) {
+  .users {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .main__filters {
+    width: 100%;
+  }
+}
