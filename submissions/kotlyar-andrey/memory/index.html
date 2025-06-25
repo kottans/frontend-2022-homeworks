@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Memory - Pair Game</title>
+  </head>
+  <body>
+    <main class="main">
+      <h1 class="title">Memory - Pair Game</h1>
+      <div id="target" class="target"></div>
+    </main>
+    <div class="html-templates">
+      <div id="settings">
+        <h2 class="title">Создание игры</h2>
+        <label for="input_rows">Рядов:</label>
+        <input type="number" min="2" max="8" value="3" id="input_rows" />
+        <label for="input_columns">Столбцов</label>
+        <input type="number" min="2" max="8" value="4" id="input_columns" />
+
+        <div class="image_choiser">
+          <input
+            class="radio_input"
+            type="radio"
+            name="image_type"
+            value="monsters"
+            id="radio_monsters"
+            checked
+          />
+          <label class="radio_container monsters" for="radio_monsters">
+            <span>Монстры</span>
+          </label>
+
+          <input
+            class="radio_input"
+            type="radio"
+            name="image_type"
+            value="colors"
+            id="radio_colors"
+          />
+          <label class="radio_container colors" for="radio_colors">
+            <span>Цвета</span>
+          </label>
+
+          <input
+            class="radio_input"
+            type="radio"
+            name="image_type"
+            value="girls"
+            id="radio_girls"
+          />
+          <label class="radio_container girls" for="radio_girls">
+            <span>Героини</span>
+          </label>
+        </div>
+        <button class="button" id="start_button">Начать</button>
+        <div id="message_container" class="message_container"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
