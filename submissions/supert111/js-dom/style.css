@@ -1,0 +1,164 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+    padding: 20px;
+    margin: 0 auto;
+    background-image: url(./images/Margo.jpg);
+    background-size: 100%;
+  }
+  
+  @media screen and (min-width: 480px) {
+    .container {
+      width: 480px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .container {
+      width: 768px;
+      padding: 40px 74px;
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .container {
+      display: flex;
+      width: 1024px;
+      padding: 0 40px;
+    }
+  }
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.header__style {
+  height: 50px;
+  padding: 20px 0 0;
+  border-bottom: 1px solid grey;
+}
+
+.side__menu {
+  padding: 40px 0;
+  background-image: url(./images/background1.jpg);
+  background-size: 100%;
+  background-attachment: fixed;
+}
+
+.title__ulList {
+  text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .title__ulList {
+    margin: 38px 0 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .images__style {
+    width: 674px;
+    height: 380px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .winners__teams {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+  }
+}
+
+.team__item {
+  position: relative;
+  margin-top: 14px;
+}
+
+.team__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92%;
+  height: 32px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.team__link::after {
+  display: none;
+  position: absolute;
+  right: 0;
+  content: "";
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-size: contain;
+  background-image: url(./images/soccer-ball.jpg);
+  animation: ball 1000ms cubic-bezier(0.165, 0.540, 0.440, 1.000) infinite alternate;
+  animation-iteration-count: 1;
+}
+
+@keyframes ball {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+@media screen and (min-width: 768px) {
+  .team__link::after {
+    right: 10px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .team__link::after {
+    right: -8px;
+  }
+}
+
+.team__link:hover:after,
+.team__link:focus:after {
+  display: block;
+}
+
+.content__block {
+  text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .content__block {
+    margin: 0 0 0 20px;
+  }
+}
+
+.title__h1,
+.final__result,
+img,
+.description__game  {
+  margin: 20px 0 0;
+}
+
+.final__result {
+  color: darkred;
+  font-size: large;
+}
+
+.description__game {
+  text-align: justify;
+}
