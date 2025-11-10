@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <h1>Friends APP</h1>
+    </header>
+    <main class="main-content">
+      <div class="form-parameters back-img600">
+        <form class="form-wrap">
+          <input type="text" placeholder="looking for..." class="input" />
+          <button id="clear">&#9746;</button>
+          <fieldset>
+            <label>
+              <input
+                type="radio"
+                name="sex"
+                value="male"
+                class="radio-control"
+              />
+              <div class="radio-control-label">male</div>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sex"
+                value="female"
+                class="radio-control"
+              />
+              <div class="radio-control-label">female</div>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sex"
+                value="all"
+                class="radio-control"
+                checked
+              />
+              <div class="radio-control-label">all</div>
+            </label>
+          </fieldset>
+          <fieldset>
+            <label>
+              <input
+                type="radio"
+                name="name"
+                value="name up"
+                class="radio-control"
+              />
+              <div class="radio-control-label">name <span>&#8599;</span></div>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="name"
+                value="name down"
+                class="radio-control"
+              />
+              <div class="radio-control-label">name <span>&#8600;</span></div>
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="name"
+                value="age up"
+                class="radio-control"
+              />
+              <div class="radio-control-label">age <span>&#8599;</span></div>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="name"
+                value="age down"
+                class="radio-control"
+              />
+              <div class="radio-control-label">age <span>&#8600;</span></div>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="name"
+                value="unsorted"
+                class="radio-control"
+                checked
+              />
+              <div class="radio-control-label">unsorted</div>
+            </label>
+          </fieldset>
+          <button class="reset">reset</button>
+        </form>
+      </div>
+      <section class="content"></section>
+    </main>
+    <footer class="main-footer"></footer>
+    <script src="./index.js"></script>
+  </body>
+</html>
