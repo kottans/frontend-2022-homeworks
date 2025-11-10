@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="index.css"/>
+        <title>Friends App</title>
+    </head>
+    <body>
+        <div class="wrapper" id="wrapper">
+            <header>
+                <h1 class="header">Friends app</h1>
+            </header>
+            <div class="container" id="container">
+                <div class="sidebar" id="sidebar">
+                    <form class="filter-form">
+                        <input class="searchName" type="text" name="name" id="searchByName" placeholder="Type name of the user..."/>
+                        <p class="form-title">Search by age:</p>
+                            from <input type="number" min="18" max="90" id="ageRangeMin" value="18"/>
+                            to <input type="number" min="18" max="90" id="ageRangeMax" value="90"/>
+                        <section class="filter-section" id="filterGender">
+                            <p class="form-title">Sort by Gender:</p>
+                            <label>
+                                <input type="radio" name="filterGender" value="male"/>
+                                <span>Male </span>
+                            </label>
+                            <label>
+                                <input type="radio" name="filterGender" value="female"/>
+                                <span>Female </span>
+                            </label>
+                            <label>
+                                <input type="radio" name="filterGender" value="all"/>
+                                <span>All </span>
+                            </label>
+                        </section>
+                        <section class="sort-section" id="sort">
+                            <p class="form-title">Sort by Name:</p>
+                            <label>
+                                <input type="radio" name="sort" value="namesSortAsc"/>
+                                <span>A>Z </span>
+                            </label>
+                            <label>
+                                <input type="radio" name="sort" value="namesSortDesc"/>
+                                <span>Z>A </span>
+                            </label>
+                            <br/>
+                            <p class="form-title">Sort by Age:</p>
+                            <label>
+                                <input type="radio" name="sort" value="agesSortAsc"/>
+                                <span>Younger</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="sort" value="agesSortDesc"/>
+                                <span>Older</span>
+                            </label>
+                        </section>
+                        <button type="reset" class="reset-button" id="resetAgeFilter" value="reset">Reset</button>
+                    </form>
+                </div>
+                <main class="main" id="main">
+                    <div class="user-cards" id="user-cards">
+                        <div id="user-card"></div>
+                        <div class="loader">
+                            <div class="ring"></div>
+                                <span class="span">loading...</span>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
