@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Side-menu</title>
+    <link
+      rel="preload"
+      href="fonts/Kristi-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="page__header">
+        <div class="page__burger burger">
+          <input
+            id="burger-checkbox"
+            name="burger-checkbox"
+            type="checkbox"
+            class="burger__checkbox visually-hidden"
+          />
+          <label for="burger-checkbox" class="burger__button">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+          </label>
+          <aside class="page__aside">
+            <nav class="page__sidenav sidenav">
+              <div class="sidenav__title">Art Movements and Styles</div>
+            </nav>
+          </aside>
+        </div>
+
+        <a class="page__logo" href="./"><h1>Art Styles</h1></a>
+      </header>
+      <main class="page__main content">
+        <section class="content__seciton">
+          <h2 class="content__title">Art Movements and Styles</h2>
+          <img
+            class="content__picture"
+            src="images/impression-sunrise-courtesy-of-musee-marmottan-uai-600x337-1.jpg"
+            alt="Impression Sunrise"
+          />
+          <div class="content__text">
+            Please select one of items in side-menu
+          </div>
+        </section>
+      </main>
+      <footer class="page__footer">
+        <div class="page__copyright copyright">
+          <a href="https://github.com/natata-tutorial">Natata's</a> &copy; 2023
+        </div>
+      </footer>
+    </div>
+    <script defer type="module" src="js/script.js"></script>
+  </body>
+</html>
