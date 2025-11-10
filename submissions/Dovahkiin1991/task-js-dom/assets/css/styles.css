@@ -1,0 +1,140 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+a, button {
+    cursor: revert;
+}
+
+ol, ul, menu {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+::placeholder {
+    color: unset;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #cecece;
+    padding: 2rem;
+}
+
+.app {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem;
+    max-width: 1920px;
+}
+
+.app__side {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(30, 30, 30, 0.1) 0px 1px 6px 2px;
+    flex: 1 0 calc(25% - 1rem);
+    width: calc(25% - 1rem);
+    padding: 1rem;
+    margin-right: 1rem;
+}
+
+.app__side_title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.app__side_title:last-child {
+    margin-bottom: 0;
+}
+
+.app__content {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(30, 30, 30, 0.1) 0px 1px 6px 2px;
+    flex: 1 0 75%;
+    width: 75%;
+    padding: 1rem;
+}
+
+.sidebar {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0px;
+    line-height: 1;
+    margin: -0.25rem;
+    padding: 0;
+}
+
+.sidebar__item {
+    position: relative;
+    display: block;
+}
+
+.sidebar__link {
+    cursor: pointer;
+    display: block;
+    color: rgb(0, 0, 0);
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 0.25rem;
+}
+
+.sidebar__link_active {
+    text-decoration: underline;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+}
+
+table tbody tr td {
+    border-bottom: 1px solid #ccc;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table td {
+    padding: 0.5rem;
+}
+
+table tr > td:first-child {
+    font-weight: bold;
+}
+
+table thead td {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+@media (max-width: 767px) {
+    .app__side {
+        flex: 1 0 100%;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .app__content {
+        flex: 1 0 100%;
+        width: 100%;
+    }
+
+    .sidebar__item {
+        display: inline-block;
+    }
+}
