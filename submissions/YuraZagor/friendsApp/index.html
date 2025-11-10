@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+  <title>Friends App</title>
+</head>
+<body>
+	<div class="wrapper">
+		<h1 class="main-title">Friends App by YuraZagor and KOTTANS</h1>
+		
+		<nav class="sorting-container">
+			<form action="#" class="form">
+
+				<div class="lower">
+					<div class="age--sorting">
+						<p class="sort--title"> AGE: </p>
+						<input type="radio" id="ageUp" name="filters" value="ageUp" class="checkbox--icon sorters" />
+						<label for="ageUp"> <p class="signiture">||  ageUp |</p></label>
+						<input type="radio" id="ageDown" name="filters" value="ageDown"class="checkbox--icon sorters"  />
+						<label for="ageDown"> <p class="signiture">| ageDown ||</p></label>
+					</div>
+					
+					<div class="name--sorting">
+						<p class="sort--title">NAME:</p>
+						<input type="radio" id="az" name="filters" value="az" class="checkbox--icon sorters" />
+						<label for="az"><p class="signiture">|| A-Z |</p></label> 
+						<input type="radio" id="za" name="filters" value="za" class="checkbox--icon sorters" />
+						<label for="za"><p class="signiture"> | Z-A ||</p></label>
+						<input type="radio" id="empty" name="filters" value="" class="checkbox--icon sorters" />
+					</div>			
+
+					<input class="reset--button" type="submit" value="Reset">
+				</div>
+				<div class="upper">					
+					<div class="gender--sorting">
+						<p class="sort--title">GENDER:</p>
+						<input type="radio" id="sex--any" name="gender--filter" value="all" class="checkbox--icon gender" checked />
+						<label for="sex--any"> <p class="signiture">|| All |</p> </label>
+						<input type="radio" id="male" name="gender--filter" value="male" class="checkbox--icon gender" />
+						<label for="male"> <p class="signiture">| Male |</p> </label>
+						<input type="radio" id="female" name="gender--filter" value="female" class="checkbox--icon gender" />
+						<label for="female"> <p class="signiture">| Female ||</p> </label>
+
+						<input type="search" class="main-search" id="user--names" placeholder="Search by name..." autocomplete="off">
+					</div>
+				</div>
+			</form>
+		</nav>
+		<main class="cards--container">
+			
+		</main>
+		<footer>
+			<div class="footer-info">
+				<a class="github-link" href="https://github.com/YuraZagor" target="_blank" >Made by YuraZagor</a>
+			</div>
+		</footer>
+	</div>
+	
+	<script src="script.js"></script>
+</body>
+</html>
