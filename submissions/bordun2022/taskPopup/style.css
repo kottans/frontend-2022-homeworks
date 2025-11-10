@@ -1,0 +1,280 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: grey;
+}
+
+body {
+    background: linear-gradient(to right, pink 0%, white 90%);
+    background-size: content;
+    background-attachment: fixed;
+}
+
+  ul li {
+    list-style: none;
+  }
+
+.navigation_list {
+  margin: 20px 60px 0 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  justify-content: flex-end;
+  position: relative;
+
+}
+
+.link1 > a {
+  padding-top: 8px;
+}
+
+a, label {
+  display: block;
+}
+
+img {
+  height: 35px;
+  width: auto;
+  
+}
+   a:hover, input:hover {
+    color: grey;
+    background-color: transparent;
+    border: 1px solid grey; 
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+   }
+
+a:focus, input:focus {
+    outline: 2px lightgreen solid;
+    
+}
+
+.card {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); 
+  max-width: 1300px;
+  max-height: 1300px;
+  }
+
+input {
+    -webkit-appearance: none;
+    cursor: pointer;
+    right: 138px; 
+    margin-left: 1em;
+    appearance: none;
+    
+}
+
+#pop_btn1 {
+    position: absolute;
+    height: 34px;
+    width: 64px;
+   
+}
+
+.pop_menu {
+    max-height: 0;
+    display: none;
+    position: absolute;
+}
+
+.nav_item, #label_1 {
+  height: 35px;
+  width: 60px;
+}
+
+#pop_btn1:checked ~ .pop_menu {
+    max-height: 500px;
+    top: 30px;
+    right: 20px;
+    gap: 30px;
+    margin: 20px;
+    padding: 30px;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(4, 40px), repeat(4, 40px); 
+    font-size: 12px;
+    text-align: center; 
+    overflow-y: auto;
+    
+} 
+
+#more_btn1 {
+  width: 240px;
+  height: 20px;
+  position: fixed;
+  right: 130px;
+  
+}
+
+#label_2::before {
+    content: "More";
+    font-size: 15px;
+    width: 240px;
+    display: block;
+    grid-column: span 3;
+    background: lightgrey;
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    position: absolute; 
+} 
+
+#more.btn1:checked + #label_2:before, #more_btn1:checked {
+    height: 0;
+    opacity: 0;
+    cursor: none;
+}
+
+.pop_menu2 {
+    max-height: 20px;
+    display: none;
+    padding-top: 15px;
+}
+
+#more_btn1:checked ~ .pop_menu2 {
+    max-height: 1000px;
+    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(2, 40px);
+}
+
+
+
+@media screen and (max-width: 660px) {
+    * {
+        font-size: 16px;
+    }
+
+    .navigation_list {
+        margin: 10px 30px 10px 0px;
+        gap: 10px;
+    }
+
+    img {
+        width: auto; 
+        height: 35px;
+    }
+
+    .nav_item {
+        height: 45px;
+        width: 15%;
+    }
+
+    .nav_btn {
+        position: relative;
+        
+    }
+
+    #pop_btn1 {
+        right: 0;
+        height: 40px;
+        width: 50px;
+    }
+
+    #pop_btn1:checked ~ .pop_menu {
+        display: grid;
+        max-width:660px;
+        top: 50px;
+        right: -120px;
+        gap: 12px;
+        margin: 0;
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(4, 60px);
+        overflow-y: auto;
+    }
+
+    #more_btn1 {
+        height: 30px;
+        width: 270px;
+        right: 62px;
+        
+    }
+
+    #label_2:before {
+        width: 270px;
+        height: 25px;
+        padding-top: 5px;
+    }
+
+    #more_btn1:checked ~ .pop_menu2 {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(2, 65px);
+        padding-bottom: 15px;
+        max-width:660px;
+        
+}
+
+@media screen and (max-width: 280px) {
+    * {
+        font-size: 14px;
+    }
+
+    .navigation_list {
+        margin: 10px 15px 0px 0px;
+        gap: 15px;
+    }
+    .nav_item {
+        height: 55px;
+        width: 15%;
+    }
+
+    .nav_btn {
+        position: relative;
+        
+    }
+
+    #pop_btn1 {
+        right: -15px;
+        height: 35px;
+        width: 50px;
+    }
+
+    #pop_btn1:checked ~ .pop_menu {
+        display: grid;
+        max-width:280px;
+        top: 50px;
+        right: -115px;
+        gap: 12px;
+        margin: 0;
+        grid-template-columns: repeat(3, 60px);
+        grid-template-rows: repeat(4, 60px);
+        overflow-y: auto;
+    }
+
+    #more_btn1 {
+        right: 39px;
+        height: 30px;
+        width: 210px;
+    }
+
+    #label_2:before {
+        width: 215px;
+        height: 25px;
+        padding-top: 5px;
+        right: 25px;
+
+    }
+
+    #more_btn1:checked ~ .pop_menu2 {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(3, 60px);
+        grid-template-rows: repeat(2, 65px);   
+        padding-top: 30px;  
+        
+    }
+}
+}
