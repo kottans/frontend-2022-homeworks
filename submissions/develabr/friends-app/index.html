@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends App</title>
+    <link rel="stylesheet" href="./app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="main-title">Friends App</h1>
+      </header>
+      <div class="wrapper">
+        <aside class="menu">
+          <form id="form" class="form">
+            <div class="form-group">
+              <label for="search">Search User</label>
+              <input
+                type="text"
+                class="search-input"
+                id="search-field"
+                name="search"
+                placeholder="Enter user name..."
+              />
+            </div>
+
+            <div class="form-group">
+              <p class="form-group-title">Gender Filtering</p>
+              <label>
+                <input
+                  id="all"
+                  class="radio-button"
+                  type="radio"
+                  name="filter"
+                  value="all"
+                  checked
+                />
+                All
+              </label>
+
+              <label>
+                <input
+                  id="male"
+                  class="radio-button"
+                  type="radio"
+                  name="filter"
+                  value="male"
+                />
+                Male
+              </label>
+              <label
+                ><input
+                  id="female"
+                  class="radio-button"
+                  type="radio"
+                  name="filter"
+                  value="female"
+                />
+                Female
+              </label>
+            </div>
+            <div class="form-group">
+              <p class="form-group-title">Young/Old</p>
+              <label
+                ><input
+                  class="radio-button"
+                  type="radio"
+                  id="age-down"
+                  name="sort"
+                  value="age-down"
+                />
+                Age ↓
+              </label>
+              <label
+                ><input
+                  class="radio-button"
+                  type="radio"
+                  id="age-up"
+                  name="sort"
+                  value="age-up"
+                />
+                Age ↑
+              </label>
+            </div>
+            <div class="form-group">
+              <p class="form-group-title">Name sorting</p>
+              <label
+                ><input
+                  class="radio-button"
+                  type="radio"
+                  id="name-down"
+                  name="sort"
+                  value="name-down"
+                />
+                A-Z
+              </label>
+              <label
+                ><input
+                  class="radio-button"
+                  type="radio"
+                  id="name-up"
+                  name="sort"
+                  value="name-up"
+                />
+                Z-A
+              </label>
+            </div>
+            <div class="form-group">
+              <button id="reset-button" class="reset-button">Reset</button>
+            </div>
+          </form>
+        </aside>
+        <main id="content" class="content-column"></main>
+      </div>
+      <footer class="footer">
+        <span>Friends App©2022</span>
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
