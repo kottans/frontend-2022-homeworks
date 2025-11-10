@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Ms Madi', cursive;
+    background-image: url("../img/wallpaper-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1 {
+    font-family: 'Ms Madi', cursive;
+    font-size: 2em;
+}
+
+img {
+    width: 100px;
+    height: 130px;
+    border-radius: 10px;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.summary {
+    margin-top: 10px;
+}
+
+.score,
+.summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.score div {
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.main {
+    margin: 10px auto;
+    width: fit-content;
+}
+
+.tablet {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    justify-content: center;
+}
+
+.tablet-item {
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.hiden {
+    opacity: 50%;
+}
+
+.buttonBlock {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.menuBtn,
+.gameBtn {
+    margin: 10px;
+    width: 150px;
+    padding: 2px;
+    font-family: 'Ms Madi', cursive;
+    font-size: 1.5em;
+}
+
+
+@media (max-width: 460px) {
+    body {
+        height: 100vh;
+        background-size: 100% 100%;
+    }
+
+    img,
+    .flip-container,
+    .front,
+    .back {
+        width: 50px;
+        height: 65px;
+        border-radius: 5px;
+    }
+
+    .menuBtn,
+    .gameBtn {
+        width: 100px;
+    }
+}
+
