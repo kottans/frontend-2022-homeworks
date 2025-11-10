@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/css/styles.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Friends App</title>
+  </head>
+
+  <body>
+    <div class="overlay">
+      <header class="header">
+        <div class="container">
+          <div class="logo-box">
+            <svg class="logo-img" width=" 300" height="50">
+              <use href="./images/sprite.svg#friends"></use>
+            </svg>
+            <h1 class="header-title">App</h1>
+          </div>
+        </div>
+      </header>
+      <main class="main">
+        <div class="container">
+          <div class="main-box">
+            <div class="main-box-left-panel">
+              <form action="" class="search-form" id="search-form">
+                <input
+                  class="search-form-input"
+                  type="text"
+                  name="nameInput"
+                  placeholder="Enter name"
+                  id="name"
+                  title="For example: Amina"
+                />
+              </form>
+              <form
+                action=""
+                class="filter-name-age-form"
+                id="filter-name-age-form"
+              >
+                <fieldset class="filter-name-fieldset">
+                  <legend class="filter-name-legend">Name</legend>
+                  <div class="ïmg">
+                    <input
+                      class="filter-name-input"
+                      type="radio"
+                      id="firstNameA-z"
+                      name="nameSortInput"
+                      value="first name A-Z"
+                    />
+                    <label class="filter-name-label" for="firstNameA-z"
+                      ><svg class="filter-name-svg" width="25" height="25">
+                        <use href="./images/sprite.svg#a-z"></use></svg
+                      ><span class="filter-name-label-span"
+                        >First name</span
+                      ></label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      class="filter-name-input"
+                      type="radio"
+                      id="firstNameZ-a"
+                      name="nameSortInput"
+                      value="first name Z-A"
+                    />
+                    <label class="filter-name-label" for="firstNameZ-a"
+                      ><svg class="filter-name-svg" width="25" height="25">
+                        <use href="./images/sprite.svg#z-a"></use></svg
+                      ><span class="filter-name-label-span"
+                        >First name</span
+                      ></label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      class="filter-name-input"
+                      type="radio"
+                      id="lastNameA-z"
+                      name="nameSortInput"
+                      value="last name A-Z"
+                    />
+                    <label class="filter-name-label" for="lastNameA-z"
+                      ><svg class="filter-name-svg" width="25" height="25">
+                        <use href="./images/sprite.svg#a-z"></use></svg
+                      ><span class="filter-name-label-span"
+                        >Last name</span
+                      ></label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      class="filter-name-input"
+                      type="radio"
+                      id="lastNameZ-a"
+                      name="nameSortInput"
+                      value="last name Z-A"
+                    />
+                    <label class="filter-name-label" for="lastNameZ-a"
+                      ><svg class="filter-name-svg" width="25" height="25">
+                        <use href="./images/sprite.svg#z-a"></use></svg
+                      ><span class="filter-name-label-span"
+                        >Last name</span
+                      ></label
+                    >
+                  </div>
+                </fieldset>
+                <fieldset class="filter-age-fieldset">
+                  <legend class="filter-age-legend">Age</legend>
+                  <div>
+                    <input
+                      class="filter-age-input"
+                      type="radio"
+                      id="age-ascending"
+                      name="ageInput"
+                      value="age-ascending"
+                    />
+                    <label class="filter-age-label" for="age-ascending"
+                      ><svg class="filter-age-svg" width="26" height="26">
+                        <use href="./images/sprite.svg#ascending"></use></svg
+                      ><span class="filter-name-label-span"
+                        >Ascending</span
+                      ></label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      class="filter-age-input"
+                      type="radio"
+                      id="age-descending"
+                      name="ageInput"
+                      value="age-descending"
+                    />
+                    <label class="filter-age-label" for="age-descending">
+                      <svg class="filter-age-svg" width="26" height="26">
+                        <use href="./images/sprite.svg#descending"></use></svg
+                      ><span class="filter-name-label-span">Descending</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </form>
+              <form
+                action=""
+                class="filter-gender-form"
+                id="filter-gender-form"
+              >
+                <fieldset class="filter-gender-fieldset">
+                  <legend class="filter-gender-legend">Gender</legend>
+                  <div>
+                    <input
+                      class="filter-gender-input"
+                      type="radio"
+                      id="all"
+                      name="genderInput"
+                      value="all"
+                      checked
+                    />
+                    <label class="filter-gender-label active" for="all">
+                      <svg class="filter-gender-svg" width="25" height="25">
+                        <use
+                          href="./images/sprite.svg#female-male-filter"
+                        ></use></svg
+                      ><span class="filter-name-label-span">All</span>
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      class="filter-gender-input"
+                      type="radio"
+                      id="female"
+                      name="genderInput"
+                      value="female"
+                    />
+                    <label class="filter-gender-label" for="female">
+                      <svg class="filter-gender-svg" width="24" height="24">
+                        <use href="./images/sprite.svg#female"></use></svg
+                      ><span class="filter-name-label-span">Female</span>
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      class="filter-gender-input"
+                      type="radio"
+                      id="male"
+                      name="genderInput"
+                      value="male"
+                    />
+                    <label class="filter-gender-label" for="male">
+                      <svg class="filter-gender-svg" width="25" height="25">
+                        <use href="./images/sprite.svg#male"></use></svg
+                      ><span class="filter-name-label-span">Male</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+            <ul class="main-box-list"></ul>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-box">
+            <a
+              class="footer-link"
+              href="https://github.com/andysmokk/friends-app"
+            >
+              <svg class="github-img" width="40" height="40">
+                <use href="./images/sprite.svg#github"></use>
+              </svg>
+            </a>
+            <p class="footer-text">2022</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>
