@@ -1,0 +1,221 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  background-color: var(--color-00);
+  overflow-x: hidden;
+  font-family: "Oswald", sans-serif;
+  font-family: "Permanent Marker", cursive;
+  background: url("./img/background.jpg") no-repeat center top fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+:root {
+  --dark-green: rgba(3, 42, 24, 0.7);
+  --light-green: #669374;
+  --light-sand: #cab7b3;
+  --sand: #deb69d;
+  --light-brown: #8f6b5f;
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.modal {
+  animation: fade 0.6s linear;
+  animation-fill-mode: forwards;
+}
+
+.modal,
+.game__number {
+  position: absolute;
+  max-width: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--light-green);
+  color: var(--light-sand);
+  text-shadow: 2px 2px 5px var(--dark-green);
+  text-transform: uppercase;
+  font-size: 1.6em;
+  text-align: center;
+  padding: 15px;
+  border-radius: 1em;
+  box-shadow: 2px 2px 5px var(--dark-green);
+}
+
+.modal {
+  background-color: var(--light-brown);
+  color: var(--light-sand);
+}
+
+.game__number__input {
+  margin-left: 10px;
+  width: 60%;
+  height: 100%;
+  color: var(--dark-green);
+  font-size: 1em;
+  text-align: center;
+  border-radius: 1em;
+  box-shadow: inset 2px 2px 5px var(--dark-green);
+}
+
+.header__main {
+  height: 80px;
+  text-align: center;
+  font-size: 1.2em;
+  padding-top: 20px;
+  color: var(--light-sand);
+  text-shadow: 5px 5px 15px var(--dark-green);
+  border-bottom: var(--light-green) 2px solid;
+}
+
+.game__info {
+  display: flex;
+  justify-content: space-around;
+  max-width: 500px;
+  height: min(80px, 15vh);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.level {
+  padding-top: 5px;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+}
+
+.game__info button,
+.level {
+  width: 20%;
+  height: 50px;
+  border: 2px solid var(--light-sand);
+  border-radius: 15px;
+  background-color: var(--light-green);
+  color: var(--light-sand);
+  font-size: 1.2em;
+  box-shadow: 3px 3px 1px 1px rgba(var(--dark-green), 0.5);
+}
+
+.game__info button:hover {
+  color: var(--light-green);
+  background-color: var(--light-sand);
+}
+
+.game__info button:active {
+  color: var(--light-green);
+  background-color: var(--light-sand);
+  border: 5px solid var(--light-brown);
+  box-shadow: 0px 0px 1px 1px var(--dark-green);
+}
+
+.game__wrap {
+  margin: 20px auto;
+  max-width: 500px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  justify-items: center;
+}
+
+.round {
+  transform: rotateY(180deg);
+}
+
+.hidden {
+  -webkit-animation: hide 0.6s linear;
+  -moz-animation: hide 0.6s linear;
+  -o-animation: hide 0.6s linear;
+  animation: hide 0.6s linear;
+  animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  transition: all 0.6s linear;
+  --webkit-transition: all 0.6s linear;
+}
+
+.flip-container,
+.front,
+.back {
+  width: 100px;
+  height: 140px;
+}
+
+.flipper {
+  transition: 0.6s;
+  --webkit-transition: 0.6s;
+  -webkit-transition: 0.6s;
+  --moz-transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 3px solid var(--light-green);
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px var(--dark-green);
+}
+
+.front {
+  background-color: var(--light-sand);
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.img__back {
+  display: block;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 640px) {
+  .game__wrap {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .game__wrap {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 250px;
+  }
+
+  .header__main,
+  .game__info {
+    font-size: 0.8em;
+  }
+}
