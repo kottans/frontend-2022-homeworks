@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Friends App</title>
+</head>
+<body>
+  <header class="header">
+    <h1 class="header-title">Friends App</h1>
+  </header>
+  <main class="main">
+    <section class="friends-filters">
+      <button class="filters-button">Friends filters</button>
+      <form class="form">
+        <h3 class="form-header">Search</h2>
+        <div class="search">
+          <input class="search-input" name="search" type="text" placeholder="Search...">
+        </div>
+        <h3 class="form-header">Sort by</h2>
+        <div class="sorting">
+            <select class="sorting-select" name="sorting">
+              <option value="default" selected>Default</option> 
+              <option value="age-desc">Age (⇩)</option>
+              <option value="age-asc">Age (⇧)</option>
+              <option value="name-desc">Name (z - a)</option>
+              <option value="name-asc">Name (a - z)</option>
+            </select>
+        </div>
+        <h3 class="form-header">Gender</h2>
+        <div class="filter">
+            <label class="filter-elem">              
+              Female
+              <input class="filter-checkbox" type="radio" name="gender" value="female">
+              <span class="filter-mark"></span>
+            </label>
+            <label class="filter-elem">
+              Male
+              <input class="filter-checkbox" type="radio" name="gender" value="male">
+              <span class="filter-mark"></span>
+            </label>
+            <label class="filter-elem">
+              All
+              <input class="filter-checkbox" type="radio" name="gender" value="all">
+              <span class="filter-mark"></span>
+            </label>
+        </div>
+        <button class="form-button" type="reset">Reset filters</button>
+      </form>
+    </section>
+    <section class="friends-container"></section>
+    <script src="./friends.js"></script>
+    <script src="./handler.js"></script>
+    <script src="./sort.js"></script>
+    <script src="./main.js"></script>
+  </main>
+</body>
+</html>
