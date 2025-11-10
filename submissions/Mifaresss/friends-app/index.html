@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Friends App | Mifares</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins:regular,500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<header class="header">
+				<h1 class=" funny-title title">Friends App</h1>
+			</header>
+			<form class="filter" action="#">
+
+				<div class="filter__gender filter-sorter">
+					<p class="filter-sorter__description">Filter by gender:</p>
+					<div class="filter-sorter__wrapper">
+						<input class="filter-sorter__input" id="gender__all" type="radio" name="gender" checked>
+						<label class="filter-sorter__label filter-gender__all" for="gender__all">
+							<span class="filter-sorter__span filter-gender__span_all">All</span>
+							<svg class="filter-sorter__img" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36px" height="36px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><g><g><circle cx="22.336" cy="19.721" r="8.272" /><path d="M37.999,30.217v-0.04H8.363v0.027c-2.142,0-3.878,1.729-3.894,3.867H4.466v23.439h0.039c-0.002,0.893,0.337,1.786,1.018,2.467c1.358,1.359,3.56,1.359,4.919,0c0.68-0.681,1.019-1.574,1.017-2.467h0.008V41.32v-0.172h0.009c0.025-0.592,0.505-1.064,1.101-1.064c0.598,0,1.078,0.473,1.103,1.064h0.009v0.172v10.44v32.293c0.003,2.245,1.822,4.063,4.068,4.063c2.246,0,4.068-1.821,4.068-4.068V62.444h0.03c0-0.623,0.504-1.128,1.126-1.128c0.622,0,1.127,0.505,1.127,1.128h0.029v21.604c0,2.247,1.823,4.068,4.069,4.068c2.247,0,4.068-1.821,4.068-4.068V62.444V51.76V41.32v-0.172c0-0.615,0.497-1.112,1.112-1.112c0.613,0,1.11,0.497,1.11,1.112v0.172v16.191h0.038c-0.002,0.893,0.337,1.786,1.018,2.467c1.359,1.359,3.561,1.359,4.92,0c0.681-0.681,1.02-1.574,1.018-2.467h0.007V34.072C41.499,32.057,39.962,30.418,37.999,30.217z" /></g><g><circle cx="72.297" cy="19.768" r="8.32" /><path d="M95.534,54.161l-5.55-20.712c-0.003-0.016-0.009-0.032-0.013-0.048l-0.098-0.365l-0.014,0.004c-0.506-1.579-1.968-2.729-3.715-2.729c-0.014,0-0.026,0.004-0.04,0.004v-0.072h-26.12v0.068c-1.747,0-3.209,1.151-3.715,2.729l-0.014-0.004L56.157,33.4c-0.004,0.017-0.01,0.033-0.013,0.05l-5.55,20.711l0.052,0.014c-0.025,0.171-0.052,0.342-0.052,0.52c0,1.952,1.583,3.536,3.536,3.536c1.495,0,2.767-0.932,3.283-2.244l0.025,0.007l4.071-15.193v0.057h0.032c0.111-0.5,0.536-0.882,1.07-0.882c0.534,0,0.959,0.382,1.07,0.882h0.033v0.164c0.002,0.025,0.015,0.047,0.015,0.072c0,0.025-0.013,0.047-0.015,0.072v0.155l-6.518,24.326c-0.105,0.214-0.169,0.449-0.187,0.698l-0.014,0.051l0.008,0.002c-0.001,0.028-0.008,0.054-0.008,0.082c0,1.048,0.85,1.897,1.898,1.897h4.82v16.08c0,2.259,1.831,4.09,4.091,4.09c2.259,0,4.091-1.832,4.091-4.09l0-16.08h2.326v16.08c0,2.259,1.832,4.09,4.091,4.09c2.26,0,4.091-1.832,4.091-4.09v-16.08h4.835c1.048,0,1.898-0.849,1.898-1.897c0-0.028-0.007-0.055-0.008-0.082l0.008-0.002l-0.014-0.051c-0.018-0.249-0.082-0.484-0.187-0.698l-6.499-24.253l0.021-0.006c-0.027-0.096-0.06-0.191-0.06-0.296c0-0.616,0.5-1.118,1.118-1.118c0.525,0,0.946,0.371,1.065,0.86l0.043-0.011l4.065,15.169l0.024-0.007c0.517,1.312,1.788,2.244,3.283,2.244c1.953,0,3.536-1.584,3.536-3.536c0-0.178-0.027-0.349-0.052-0.52L95.534,54.161z" /></g></g>
+							</svg>
+						</label>
+					</div>
+					<div class="filter-sorter__wrapper">
+						<input class="filter-sorter__input" id="male" type="radio" name="gender">
+						<label class="filter-sorter__label" for="male">
+							<span class="filter-sorter__span filter-gender__span">Man</span>
+							<svg class="filter-sorter__img" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36px" height="36px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><g>	<circle cx="49.354" cy="19.938" r="8.272" />	<path		d="M65.016,30.435v-0.04H35.38v0.027c-2.142,0-3.878,1.729-3.894,3.867h-0.003v23.439h0.039c-0.002,0.893,0.337,1.786,1.018,2.467c1.358,1.359,3.56,1.359,4.919,0c0.68-0.681,1.019-1.574,1.017-2.467h0.008V41.537v-0.172h0.009c0.025-0.592,0.505-1.064,1.101-1.064c0.598,0,1.078,0.473,1.103,1.064h0.009v0.172v10.44v32.293c0.003,2.245,1.822,4.063,4.068,4.063c2.246,0,4.068-1.821,4.068-4.068V62.661h0.03c0-0.623,0.504-1.128,1.126-1.128c0.622,0,1.127,0.505,1.127,1.128h0.029v21.604c0,2.247,1.823,4.068,4.069,4.068c2.247,0,4.068-1.821,4.068-4.068V62.661V51.978v-10.44v-0.172c0-0.615,0.497-1.112,1.112-1.112c0.613,0,1.11,0.497,1.11,1.112v0.172v16.191h0.038c-0.002,0.893,0.337,1.786,1.018,2.467c1.359,1.359,3.561,1.359,4.92,0c0.681-0.681,1.02-1.574,1.018-2.467h0.007V34.289C68.516,32.274,66.979,30.636,65.016,30.435z" /></g>
+							</svg>
+						</label>
+					</div>
+					<div class="filter-sorter__wrapper">
+						<input class="filter-sorter__input" id="female" type="radio" name="gender">
+						<label class="filter-sorter__label" for="female">
+							<span class="filter-sorter__span filter-gender__span">Women</span>
+							<svg class="filter-sorter__img" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36px" height="36px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><g>	<circle cx="49.244" cy="20.203" r="8.2" />	<path		d="M72.147,54.101l-5.47-20.414c-0.003-0.016-0.009-0.031-0.013-0.047l-0.096-0.359l-0.014,0.004c-0.499-1.556-1.94-2.69-3.662-2.69c-0.013,0-0.026,0.004-0.039,0.004v-0.071H37.108v0.067c-1.722,0-3.163,1.134-3.662,2.69l-0.014-0.004l-0.096,0.358c-0.004,0.017-0.01,0.032-0.013,0.049l-5.47,20.413l0.052,0.014c-0.025,0.169-0.052,0.337-0.052,0.513c0,1.924,1.56,3.485,3.485,3.485c1.474,0,2.727-0.919,3.236-2.212l0.024,0.006l4.013-14.974v0.057h0.031c0.11-0.493,0.529-0.869,1.054-0.869c0.526,0,0.945,0.377,1.055,0.869h0.033v0.161c0.002,0.025,0.014,0.046,0.014,0.071s-0.013,0.046-0.014,0.071v0.153L34.36,65.424c-0.104,0.211-0.167,0.442-0.184,0.688l-0.014,0.051l0.008,0.002c-0.001,0.027-0.008,0.053-0.008,0.081c0,1.033,0.838,1.87,1.871,1.87h4.751v15.849c0,2.226,1.805,4.032,4.032,4.032c2.227,0,4.032-1.805,4.032-4.032l0-15.849h2.293v15.849c0,2.226,1.806,4.032,4.033,4.032c2.227,0,4.032-1.805,4.032-4.032V68.116h4.765c1.033,0,1.871-0.837,1.871-1.87c0-0.028-0.007-0.054-0.008-0.081l0.008-0.002l-0.014-0.051c-0.018-0.246-0.081-0.477-0.184-0.688L59.24,41.52l0.021-0.006c-0.027-0.095-0.059-0.188-0.059-0.291c0-0.608,0.493-1.102,1.102-1.102c0.518,0,0.932,0.365,1.05,0.847l0.042-0.011l4.006,14.951l0.024-0.006c0.509,1.293,1.762,2.212,3.236,2.212c1.925,0,3.485-1.561,3.485-3.485c0-0.176-0.027-0.344-0.052-0.513L72.147,54.101z" /></g>
+							</svg>
+						</label>
+					</div>
+				</div>
+
+				<div class="filter__age filter-sorter">
+					<p class="filter-sorter__description">Sort by age:</p>
+					<div class="filter-sorter__wrapper">
+						<input class="filter-sorter__input" id="sort-by-age__ascending" type="radio" name="sorting">
+						<label class="filter-sorter__label sort-by-age__label" for="sort-by-age__ascending">
+							<span class="filter-sorter__span sort-by-age__span">Up</span>
+							<img class="filter-sorter__img" src="./images/sort-by-age/arrow-up-svgrepo-com.svg" alt="">
+						</label>
+					</div>
+					<div class="filter-sorter__wrapper">
+						<input class="filter-sorter__input" id="sort-by-age__descending" type="radio" name="sorting">
+						<label class="filter-sorter__label sort-by-age__label" for="sort-by-age__descending">
+							<span class="filter-sorter__span sort-by-age__span">Down</span>
+							<img class="filter-sorter__img sort-by-age__img"
+								src="./images/sort-by-age/arrow-down-svgrepo-com.svg" alt="">
+						</label>
+					</div>
+				</div>
+				<div class="filter__alphabet filter-sorter">
+					<p class="filter-sorter__description">Sort by alphabet:</p>
+					<div class="filter-sorter__wrapper">
+						<input class="filter-sorter__input" id="by-alphabet__a-z" type="radio" name="sorting">
+						<label class="filter-sorter__label sort-by-alphabet__label" for="by-alphabet__a-z">
+							<span class="filter-sorter__span">A→Z</span>
+						</label>
+					</div>
+					<div class="filter-sorter__wrapper">
+						<input class="filter-sorter__input" id="by-alphabet__z-a" type="radio" name="sorting">
+						<label class="filter-sorter__label sort-by-alphabet__label" for="by-alphabet__z-a">
+							<span class="filter-sorter__span">Z←A</span>
+						</label>
+					</div>
+				</div>
+
+				<div class="filter__name filter-name">
+					<label class="filter-name__label">Filter by name:</label>
+					<input class="filter-name__input" id="name" type="text" placeholder="Typing a name...">
+				</div>
+
+				<div class="filter__reset filter-reset">
+					<button type="reset" class="filter-reset__button">Reset</button>
+				</div>
+			</form>
+			<div class="people">
+				<ul class="people__list"></ul>
+			</div>
+		</div>
+		<footer class="footer">
+			<p class="footer__description">Created by <a class="footer__link" href="https://github.com/Mifaresss">Mifaresss</a></p>
+		</footer>
+	</div>
+	<script src="scripts.js" type="module"></script>
+</body>
+
+</html>
