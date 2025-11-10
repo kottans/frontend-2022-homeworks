@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Friends app</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <nav class="header__menu">
+                <a href="" class="header__logo header__link"> Friends App</a>
+                <ul class="header__items">
+                    <li class="header__item">
+                        <a href="#">
+                            <img src="assets/image/setting.jpg" width="35" height="35" alt="" title="setting"
+                                class="image">
+                        </a>
+                    </li>
+                    <li class="header__item">
+                        <a href="#">
+                            <img src="assets/image/likes.jpg" width="35" height="35" alt="" title="likes" class="image">
+                        </a>
+                    </li>
+                    <li class="header__item">
+                        <a href="#">
+                            <img src="assets/image/bell.jpg" width="35" height="35" alt="" title="notifications"
+                                class="image">
+                        </a>
+                    </li>
+                    <li class="header__item">
+                        <a href="#">
+                            <img src="assets/image/girl.png" width="35" height="35" alt="" title="profile"
+                                class="image">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main__content">
+            <img src="assets/image/burger.png" alt="" class="burger__menu" width="25" height="25">
+            <aside class="container__filter">
+                <div class="fixed">
+                    <div class="filter__items">
+                        <input type="search" id="search_name" name="search_name" class="input__search__name"
+                            placeholder="Input name...">
+                    </div>
+                    <div class="filter__items">
+                        <span class="text">Age:</span>
+                        <div class="filter__item">
+                            <span class="input__radio">
+                                <input type="radio" id="search_age_up" name="sort" value="ageUp" class="radio__button">
+                                <label class="search__text arrow" for="search_age_up"> &#8679;</label>
+                            </span>
+                            <span class="input__radio">
+                                <input type="radio" id="search_age_down" name="sort" value="ageDown" class="radio__button">
+                                <label class="search__text arrow" for="search_age_down">&#8681;</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="filter__items">
+                        <span class="text">Name:</span>
+                        <div class="filter__item">
+                            <span class="input__radio">
+                                <input type="radio" id="search_by_alphabet_up" name="sort" value="alphabetUp" 
+                                    class="radio__button">
+                                <label class="search__text" for="search_by_alphabet_up"> A-Z</label>
+                            </span>
+                            <span class="input__radio">
+                                <input type="radio" id="search_by_alphabet_down" name="sort" value="alphabetDown"
+                                    class="radio__button">
+                                <label class="search__text" for="search_by_alphabet_down"> Z-A</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="filter__items">
+                        <span class="text">Gender:</span>
+                        <span class="input__radio">
+                            <input type="radio" id="male" name="search_by_gender" value="male" class="radio__button">
+                            <label for="male" class="search__text">M</label>
+                        </span>
+                        <span class="input__radio">
+                            <input type="radio" id="female" name="search_by_gender" value="female" class="radio__button">
+                            <label for="female" class="search__text">F</label>
+                        </span>
+                        <span class="input__radio">
+                            <input type="radio" id="all" name="search_by_gender" value="all" class="radio__button">
+                            <label for="all" class="search__text">All</label>
+                        </span>
+                    </div>
+                    <button class="reset__button">Reset</button>
+                </div>
+            </aside>
+            <section class="container__users">
+                <div class="container__user__card"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
