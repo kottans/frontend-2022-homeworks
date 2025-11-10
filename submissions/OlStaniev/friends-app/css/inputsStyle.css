@@ -1,0 +1,206 @@
+input,
+label {
+    pointer-events: none;
+}
+
+.input-active input,
+.input-active label {
+    pointer-events: all;
+}
+
+.inputWrapper {
+    position: relative;
+    margin-right: 15px;
+}
+
+.inputWrapper>input {
+    appearance: none;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.inputWrapper>.inputSpan {
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #9b9b9b;
+    border-radius: 50%;
+    top: 4px;
+    z-index: -5;
+}
+
+.inputWrapper>.inputSpan::after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    display: block;
+    position: absolute;
+    background-color: #4285f4;
+    border-radius: 50%;
+    top: -2px;
+    left: -2px;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.inputWrapper>.inputSpan::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    border: 2px solid #4285f4;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.inputWrapper>input:checked~span:after {
+    transform: scale(0.5);
+}
+
+.inputWrapper>input:checked~span::before {
+    background-color: none;
+    transform: scale(1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    width: max-content;
+    margin-right: 10px;
+    margin-left: 25px;
+    z-index: 6;
+}
+
+@media(max-width: 768px) {
+    .label {
+        margin-right: 25px;
+        margin-left: 0;
+    }
+
+    .container {
+        align-items: flex-end;
+    }
+
+    .inputWrapper>.inputSpan {
+        left: -5px;
+    }
+}
+
+.label,
+.searchForm input {
+    cursor: pointer;
+}
+
+.searchForm .searchField {
+    cursor: text;
+}
+
+.searchByName {
+    position: relative;
+    padding: 20px 0 0;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 180px;
+}
+
+.searchField {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #9b9b9b;
+    outline: 0;
+    font-size: 14px;
+    font-weight: 300;
+    color: #4285f4;
+    letter-spacing: 1px;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+p {
+    cursor: default;
+}
+
+.formLabel {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #9b9b9b;
+    pointer-events: none;
+}
+
+.searchField:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 1px;
+    border-color: #4285f4;
+    border-image-slice: 1;
+}
+
+.searchField:focus~.formLabel {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #4285f4;
+    font-weight: 700;
+}
+
+.burgerBtn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    cursor: pointer;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    z-index: 7;
+}
+
+.burgerBtn span {
+    background: #0f66f1;
+    border-radius: 10px;
+    height: 7px;
+    margin: 7px 0;
+    transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+span:nth-of-type(1) {
+    width: 50%;
+}
+
+span:nth-of-type(2) {
+    width: 100%;
+}
+
+span:nth-of-type(3) {
+    width: 75%;
+}
+
+.burgerBtn-active span:nth-of-type(1) {
+    transform-origin: bottom;
+    transform: rotatez(45deg) translate(8px, 0px)
+}
+
+.burgerBtn-active span:nth-of-type(2) {
+    transform-origin: top;
+    transform: rotatez(-45deg)
+}
+
+.burgerBtn-active span:nth-of-type(3) {
+    transform-origin: bottom;
+    width: 50%;
+    transform: translate(30px, -11px) rotatez(45deg);
+}
