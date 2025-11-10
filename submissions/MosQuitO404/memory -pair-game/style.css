@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&family=Fredoka+One&family=Pacifico&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka One', cursive;
+}
+
+:root {
+    --white: #e6e9dd;
+    --violet: #6A3799;
+    --light-violet: #a375cd;
+    --lighter-violet: #c7a0eb;
+}
+
+html {
+    background-image: url(./img/card_table.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+#popup.active {
+    display: inline;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    min-width: 515px;
+}
+
+#popup {
+    display: none;
+}
+
+#gameTitle {
+    font-family: 'Pacifico', cursive;
+    color: var(--white);
+    font-size: 48px;
+    margin-bottom: 30px;
+    text-shadow: 
+        0px 3px 10px var(--lighter-violet), 
+        0px -2px 4px var(--light-violet), 
+        0px 12px 20px var(--violet);
+}
+
+#gameInfo {
+    font-family: 'Fredoka', sans-serif;
+    color: var(--white);
+    font-size: 22px;
+    margin-bottom: 100px;
+}
+
+#startGame {
+    border: solid 2px var(--white);
+    background-color: var(--violet);
+    color: var(--white); 
+    outline: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: .5rem;
+}
+
+#startGame:hover {
+    cursor: pointer;
+    box-shadow: 
+        0 0 .1rem var(--white),
+        0 0 .2rem var(--white),
+        0 0 .3rem var(--violet),
+        0 0 .8rem var(--violet),
+        0 0 1rem var(--violet),
+        inset 0 0 1.3rem var(--violet);
+}
+
+#controlPanel {
+    display: none;
+}
+
+#controlPanel.active {
+    display: flex;
+    justify-content: space-around;
+    color: var(--white);
+    font-size: 24px;
+    padding: 10px;
+    min-width: 460px;
+}
+
+#attemptNumOutput {
+    text-align: start;
+    width: 30px;
+}
+
+#timeOutput {
+    text-align: start;
+    width: 100px;
+}
+
+#board {
+    display: none;
+}
+
+#board.active {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 460px;
+    height: 530px;
+}
+
+.flip-container {
+	perspective: 1000px;
+    cursor: pointer;
+}
+	
+.flip-container.flipped .flipper {
+	transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+	width: 80px;
+	height: 118px;
+}
+
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+
+.back {
+	transform: rotateY(180deg);
+}
+
+#card-img {
+    width: 80px;
+}
+
+#shirt-img {
+    width: 80px;
+    height: 118px;
+}
