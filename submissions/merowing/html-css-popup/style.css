@@ -1,0 +1,198 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Verdana, Georgia;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+header > * {
+    padding: 0 40px;
+}
+
+ul {
+    list-style: none;
+}
+nav {
+    width: 300px;
+}
+nav > ul {
+    display: flex;
+    justify-content: space-between;
+}
+nav > ul > li {
+    width: 30px;
+    height: 30px;
+}
+
+/* main menu icon for hidden block */
+.menu {
+    cursor: pointer;
+    position: relative;
+}
+.menu:hover li {
+    background-color: gray;
+}
+.menu ul {
+    padding: 0;
+    height: inherit;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+.menu li {
+    background-color: lightgray;
+    height: 7px;
+    width: 7px;
+    border-radius: 1px;
+    transition: background-color 0.1s linear;
+}
+
+/* click on main menu item */
+.menu > label {
+    position: absolute;
+    font-size: 0;
+    width: 100%;
+    height: 100%;
+}
+input.checkBoxShowMenu {
+    height: 0;
+    position: absolute;
+}
+li:focus,
+.menuBlock .items > *:focus,
+input.checkBoxShowMenu:focus + ul,
+.menuBlock .items > input[type=checkbox]:focus::before {
+    outline: 2px solid lightskyblue;
+}
+.menuBlock .items > input[type=checkbox]:focus {
+    outline: none;
+}
+input.checkBoxShowMenu:checked ~ .menuBlockWrap {
+    display: block;
+}
+input.checkBoxShowMenu:checked + ul > li {
+    background-color: gray;
+}
+
+/* hidden menu block */
+.menuBlockWrap {
+    display: none;
+}
+
+/* arrow style */
+.menuBlockWrap::after {
+    content:'';
+    display: block;
+    position: absolute;
+    top: 36px;
+    right: 6.5px;
+    width: 16px;
+    height: 16px;
+    background: whitesmoke;
+    border-right: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    transform:rotate(-45deg);
+}
+
+.menuBlock {
+    position: absolute;
+    top: 45px;
+    left: -240px;
+    width: 340px;
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    cursor: default;
+
+    text-align: center;
+    height: 380px;
+    overflow: auto;
+}
+.menuBlock > div.items {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    position: relative;
+    width: 310px;
+    z-index: 1;
+}
+.menuBlock > div.items > div {
+    width: 90px;
+    height: 90px;
+    border: 1px solid whitesmoke;
+    box-sizing: border-box;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.menuBlock > div.items > div.smile:hover {
+    border: 1px solid lightcoral;
+    cursor: pointer;
+}
+.menuBlock > div.items > div > * {
+    padding: 4px 0;
+    font: 14px normal Arial, Georgia;
+}
+.menuBlock > div.items > div > img {
+    width: 54px;
+}
+.menuBlock > div.items hr {
+    flex: 100%;
+    height: 1px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background-color: lightgray;
+    display: none;
+}
+.menuBlock div.items input:checked ~ div.more {
+    display: flex;
+}
+.menuBlock div.items input:checked ~ hr {
+    display: block;
+    margin: 10px 0;
+}
+.menuBlock > div.items > div.more {
+    display: none;
+}
+
+/* Load more smiles button */
+input.checkboxMore {
+    position: absolute;
+    bottom: 0;
+    line-height: 40px;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 0;
+}
+input.checkboxMore:before {
+    content: 'Load more smiles';
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+input.checkboxMore:checked:before {
+    content: 'Hide additional smiles';
+}
+
+/* Other main menu items */
+.others,
+.person {
+    background-color: lightgray;
+}
+.person {
+    border-radius: 15px;
+}
