@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+  color: #684a4a;
+  font-family: "Montserrat", Helvetica, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input {
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+}
+.container {
+  max-width: 80vw;
+  margin: 1em auto;
+  &__title {
+    user-select: none;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 0.5em;
+    @media (max-width: 900px) {
+      font-size: 1.5em;
+      margin-bottom: 0.67em;
+    }
+    @media (max-width: 500px) {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+  }
+  &__new-game {
+    display: block;
+    margin: 0 auto 1em;
+    font-size: 1.5em;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    background-color: #684a4a50;
+    @media (max-width: 900px) {
+      font-size: 1em;
+      padding: 0.3em;
+    }
+  }
+  @media (max-width: 500px) {
+    max-width: 90vw;
+  }
+}
+.game {
+  user-select: none;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  &__card {
+    cursor: pointer;
+
+    transition: all 0.6s ease 0s;
+    transform-style: preserve-3d;
+    position: relative;
+    width: 12vw;
+    height: 12vw;
+    margin-bottom: 1vw;
+    @media (max-width: 500px) {
+      width: 28vw;
+      height: 28vw;
+    }
+  }
+  &__card-back,
+  &__card-front {
+    height: 100%;
+    width: 100%;
+    border: 0.15rem solid #684a4a;
+    border-radius: 0.3rem;
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  &__card-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+  }
+  &__card-back {
+    transform: rotateY(180deg);
+  }
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.modal {
+  position: absolute;
+  left: 25%;
+  top: 200px;
+  background-color: #fff;
+  border: 0.15rem solid #684a4a;
+  width: 50%;
+  height: 150px;
+  border-radius: 0.3em;
+  z-index: 3;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  &__text {
+    margin: auto;
+    font-weight: 900;
+  }
+  &__btn {
+    margin: auto;
+    font-weight: 900;
+    user-select: none;
+    cursor: pointer;
+  }
+}
