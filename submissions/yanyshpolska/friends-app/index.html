@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends Application</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">Friends from Ukraine</h1>
+    </header>
+    <main class="container">
+      <form class="options">
+        <div class="options__sorting">
+          <div class="options__group-item">
+            <span class="options__option-name">Name</span>
+            <div>
+              <input
+                type="radio"
+                name="sorting"
+                data-info="name"
+                id="name-descending"
+                value="descending"
+                class="options__sorting-radio"
+              />
+              <label for="name-descending" class="options__label"
+                >&#8595;</label
+              >
+              <input
+                checked
+                type="radio"
+                name="sorting"
+                data-info="name"
+                id="name-ascending"
+                value="ascending"
+                class="options__sorting-radio"
+              />
+              <label for="name-ascending" class="options__label">&#8593;</label>
+            </div>
+          </div>
+          <div class="options__group-item">
+            <span class="options__option-name">Age</span>
+            <div>
+              <input
+                type="radio"
+                name="sorting"
+                data-info="age"
+                id="age-descending"
+                value="descending"
+                class="options__sorting-radio"
+              />
+              <label for="age-descending" class="options__label">
+                &#8595;</label
+              >
+              <input
+                type="radio"
+                name="sorting"
+                data-info="age"
+                id="age-ascending"
+                value="ascending"
+                class="options__sorting-radio"
+              />
+              <label for="age-ascending" class="options__label"> &#8593;</label>
+            </div>
+          </div>
+        </div>
+        <div class="options__filtering">
+          <div class="options__group-item">
+            <span class="options__option-name">Sex</span>
+            <div>
+              <input
+                type="radio"
+                name="gender"
+                id="male"
+                value="male"
+                class="options__sorting-radio"
+              />
+              <label for="male" class="options__label"> M </label>
+              <input
+                type="radio"
+                name="gender"
+                id="female"
+                value="female"
+                class="options__sorting-radio"
+              />
+              <label for="female" class="options__label"> F </label>
+              <input
+                checked
+                type="radio"
+                name="gender"
+                value="all"
+                id="gender-all"
+                class="options__sorting-radio"
+              />
+              <label for="gender-all" class="options__label"> &#9893; </label>
+            </div>
+          </div>
+        </div>
+
+        <input
+          onkeydown="return event.key != 'Enter';"
+          autocomplete="off"
+          type="search"
+          name="search"
+          placeholder="Type name..."
+          class="options__search"
+        />
+      </form>
+      <div class="friends"></div>
+    </main>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
