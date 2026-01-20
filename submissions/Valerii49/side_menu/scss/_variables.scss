@@ -1,0 +1,19 @@
+//********** Colors **********
+:root {
+	--text-primary: #fff;
+	--accent: #0f0;
+	//*====.main-module__image::after
+	--display-after: block;
+	--display-gallery: none;
+}
+// **** Fonts ****
+$fontFamily: "Montserrat";
+// **** Sizes ****
+$fontSize: rem(16);
+$minWidth: 320;
+$maxWidth: 1920;
+$maxWidthContainer: 1700;
+$containerPadding: 30;
+$containerWidth: $maxWidthContainer + $containerPadding;
+//********** Media Queries **********
+$mobile: em(767.98);
