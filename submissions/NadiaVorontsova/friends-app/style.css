@@ -1,0 +1,394 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 10px 4%;
+    flex: 1 0 8vh;
+    box-shadow: 0px 0px 8px 1px grey;
+    z-index: 1;
+}
+
+.header__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    display: flex;
+    color: rgb(57, 57, 57);
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+    transition: .4s;
+}
+
+.header__items {
+    display: flex;
+    align-items: center;
+}
+
+.header__item {
+    list-style-type: none;
+    margin-left: 18px;
+    transition: .4s;
+}
+
+.image {
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.header__link {
+    text-decoration: none;
+}
+
+.main__content {
+    flex: 1 1 92vh;
+    display: flex;
+}
+
+.container__filter {
+    flex: 1 0 20%;
+    padding: 5% 1%;
+    background-color: rgb(217, 129, 5);
+    text-align: center;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.filter__items {
+    margin: 15% 0;
+}
+
+.filter__item {
+    margin-top: 5%;
+    display: inline;
+}
+
+.text {
+    font-size: 21px;
+    font-weight: 700;
+    font-style: italic;
+    color: white;
+}
+
+.search__text {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.input__search__name {
+    border: none;
+    background-color: rgb(217, 129, 5);
+    border-bottom: 2px solid white;
+    margin-top: 2%;
+    padding: 5% 0 3% 5%;
+    color: white;
+    font-size: 20px;
+    width: 80%;
+    transition: .4s;
+}
+
+.input__search__name::-webkit-search-cancel-button {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    width: 10px;
+    background-image: url(assets/image/search.png);
+    background-size: 10px 10px;
+}
+
+.input__search__name::placeholder {
+    color: white;
+    font-size: 17px;
+    opacity: .6;
+    font-style: italic;
+}
+
+.input__search__name:focus {
+    outline: none;
+}
+
+.input__search__name:hover,
+.header__logo:hover,
+.header__item:hover,
+.input__search__name:focus {
+    transform: scale(1.1);
+    transition: .4s;
+}
+
+.input__radio {
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.radio__button {
+    appearance: none;
+}
+
+.arrow {
+    font-size: 30px;
+}
+
+.radio__button:checked~.search__text {
+    color: #790604;
+    font-weight: bold;
+}
+
+.reset__button {
+    width: 65%;
+    font-size: 17px;
+    padding: 3% 0;
+    color: rgb(57, 57, 57);
+    font-weight: 900;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+.reset__button:hover {
+    transition-duration: 0.4s;
+    box-shadow: 0 10px 10px 0 rgba(79, 79, 79, 0.24);
+    transform: scale(1.05);
+}
+
+@keyframes load {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    margin: 15%;
+    animation-name: load;
+    animation-duration: 5s;
+}
+
+.error__message {
+    font-size: 35px;
+    margin: 20%;
+    color: rgb(57, 57, 57);
+}
+
+.container__users {
+    flex: 1 1 80%;
+    padding: 4% 4%;
+}
+
+.container__user__card {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    column-gap: 1%;
+}
+
+.user__card {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 2% 0;
+    margin: 0 2%;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 3%;
+    transition: .4s;
+}
+
+.user__card:hover {
+    transform: scale(1.1);
+    transition: .4s;
+}
+
+.user__photo {
+    border: 2px solid rgb(57, 57, 57);
+    border-radius: 50%;
+    width: 60%;
+    margin-bottom: 5%;
+    object-fit: scale-down;
+}
+
+.user__name {
+    border-bottom: 1px solid #790604;
+    color: rgb(57, 57, 57);
+    padding: 3% 5%;
+    margin-bottom: 1%;
+    text-align: center;
+}
+
+.user__info {
+    font-size: 15px;
+    overflow-wrap: break-word;
+}
+
+.burger__menu {
+    display: none;
+}
+
+@media(max-width:1181px) {
+    .loading {
+        margin: 25%;
+    }
+
+    .container__filter {
+        flex: 1 0 25%;
+        padding: 9% 1%;
+    }
+
+    .container__users {
+        flex: 1 1 75%;
+        padding: 4% 4%;
+    }
+
+    .user__card {
+        width: 25%;
+    }
+}
+
+@media(max-width:1025px) {
+    .user__card {
+        width: 45%;
+    }
+
+    .user__photo {
+        width: 55%;
+        object-fit: contain;
+    }
+}
+
+@media(max-width:916px) {
+    .header {
+        padding: 22px 4%;
+    }
+
+    .container__filter {
+        flex: 1 0 35%;
+        padding: 12% 1%;
+    }
+
+    .container__users {
+        flex: 1 1 65%;
+    }
+
+    .user__card {
+        width: 100%;
+        padding-top: 10%;
+    }
+
+    .user__info {
+        font-size: 15px;
+        overflow-wrap: break-word;
+    }
+
+    .text {
+        font-size: 23px;
+    }
+
+    .search__text {
+        font-size: 22px;
+    }
+
+    .user__name {
+        font-size: 28px;
+    }
+
+    .user__info {
+        font-size: 20px;
+    }
+}
+
+@media(max-width:740px) {
+    .container__filter {
+        flex: 1 0 35%;
+        padding: 2% 0%;
+    }
+}
+
+
+@media(max-width:541px) {
+    .main__content {
+        flex-direction: column;
+    }
+
+    .fixed {
+        position: relative;
+    }
+
+    .container__filter {
+        flex: 1 1 auto;
+        padding: 2% 9% 8% 9%;
+        display: none;
+    }
+
+    .container__users {
+        flex: 1 1 60%;
+        padding: 6% 4%;
+    }
+
+    .burger__menu {
+        display: block;
+        margin: 3% 0 3% 87%;
+    }
+
+    .filter__items {
+        margin: 5% 0;
+    }
+
+    .filter__item {
+        margin-top: 2%;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .arrow {
+        font-size: 28px;
+    }
+}
+
+@media(max-height:415px) {
+    .container__filter {
+        padding: 2% 2%;
+    }
+
+    .filter__items {
+        margin: 8% 0;
+    }
+
+    .filter__item {
+        margin-top: 1%;
+    }
+
+    .text {
+        font-size: 20px;
+    }
+
+    .search__text {
+        font-size: 19px;
+    }
+}
+
+@media(max-height:380px) {
+    .container__filter {
+        padding: 0 0;
+    }
+}
