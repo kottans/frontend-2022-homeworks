@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Friends app</title>
+    </head>
+    <body>
+        <header class="header">
+            <h1>Friends App</h1>
+        </header>
+        <!--==================== MAIN ====================-->
+        <main class="main">
+            <div class="controls">
+                <form class="controls-form">
+                    <input type="text" name="search" placeholder="Input name" class="controls-search">
+                    <div class="controls-filters">
+                        <div class="filters-group">
+                            <div class="filters-group__title">Name Sorting</div>
+                            <label for="name-sorting-down" class="form__label">
+                                <input type="radio" name="sorting" id="name-sorting-down" class="controls-sort-name">
+                                <span class="form__control-description">A-Z</span>
+                            </label>
+                            <label for="sorting-up" class="form__label">
+                                <input type="radio" name="sorting" id="name-sorting-up" class="controls-sort-name">
+                                <span class="form__control-description">Z-A</span>
+                              </label>
+                        </div>
+                        <div class="filters-group">
+                            <div class="filters-group__title">Age Sorting</div>
+                            <label for="age-sorting-down" class="form__label">
+                              <input type="radio" name="sorting" id="age-sorting-down" class="controls-sort-age">
+                              <span class="form__control-description">Age ↓</span>
+                            </label>
+                            <label for="age-sorting-up" class="form__label">
+                              <input type="radio" name="sorting" id="age-sorting-up" class="controls-sort-age">
+                              <span class="form__control-description">Age ↑</span>
+                            </label>
+                        </div>
+                        <div class="filters-group">
+                            <div class="filters-group__title">Gender Filtering</div>
+                            <label for="gender-filtering-male" class="form__label">
+                              <input type="radio" name="filtering" id="gender-filtering-male" value="male" class="form__filter-control">
+                              <span class="form__control-description">Male</span>
+                            </label>
+                            <label for="gender-filtering-female" class="form__label">
+                              <input type="radio" name="filtering" id="gender-filtering-female" value="female" class="form__filter-control">
+                              <span class="form__control-description">Female</span>
+                            </label>
+                        </div>
+                        <button class="controls-reset-button">Reset</button>
+                    </div>
+                </form>
+            </div>
+            <div class="users-container">
+                
+            </div>
+        </main>
+        <script src="js/index.js"></script>
+    </body>
+    
+</html>
+
