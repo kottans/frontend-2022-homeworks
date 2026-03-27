@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+  <link href="style/style.css" rel="stylesheet">
+  <title>Friends App</title>
+</head>
+
+<body>
+  <header class="header-app">
+    <h1 class="header">Friends App</h1>
+    <input id="search" class="search" placeholder="search" type="search">
+  </header>
+
+
+  <div class="filter_menu" id="filter_menu">
+
+    <div class="search_friends" id="search_friends">
+    </div>
+    <div class="filter_sort" id="filter-item">
+      <p class="filter_caption"><b>Sort</b></p>
+      <div class="sort_button">
+        <div class="radio_abc_sort">
+          <input type="radio" class="sort_btn" name="sort" id="a-z">
+          <label for="a-z" class="radio_sort" id="radio_sort_btn">A-Z</label>
+        </div>
+        <div class="radio_abc_sort">
+          <input type="radio" class="sort_btn" name="sort" id="z-a">
+          <label for="z-a" class="radio_sort" id="radio_sort_btn">Z-A</label>
+        </div>
+
+        <div class="radio_age_sort">
+          <input type="radio" class="sort_btn" name="sort" id="0-9">
+          <label for="0-9" class="radio_sort" id="radio_sort_btn">0-9</label>
+        </div>
+        <div class="radio_age_sort">
+          <input type="radio" class="sort_btn" name="sort" id="9-0">
+          <label for="9-0" class="radio_sort" id="radio_sort_btn">9-0</label>
+        </div>
+
+
+      </div>
+
+      <div class="filter_sort sort_by_gender" id="sort_by_gender">
+        <p class="filter_caption"><b>Gender</b></p>
+        <div class="sort_gender" id="filter_gender">
+          <label class="man_sort">
+            <input type="checkbox" id="checkbox" class="gender_checkbox" value="male" checked>
+            Man
+          </label>
+
+          <label>
+            <input type="checkbox" id="checkbox" class="gender_checkbox" value="female" checked>
+            Woman
+          </label>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <main class="main">
+    <div class="all_humans" id="all_humans">
+
+    </div>
+  </main>
+  <script src="js/app.js" type="text/javascript"></script>
+</body>
+
+</html>
