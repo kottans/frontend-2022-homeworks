@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends App</title>
+  <link href='https://fonts.googleapis.com/css?family=MedievalSharp' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">Friends App</div>
+      <div class="buttons">
+          <label class="searchLabel">Find your friend <br>
+              <input type="search" id="searchFriend" maxlength = 15 placeholder="   Write name here " autocomplete="off" >
+          </label>
+          <label class="searchLabel">Choose gender <br>
+            <select class="searchSelector" id="sex" autocomplete="off">
+              <option value="All" >All</option>
+              <option value="Male" >M a l e</option>
+              <option value="Female" >F e m a l e</option>
+            </select>
+          </label>
+          <label class="searchLabel"> Sort<br>
+            <select class="searchSelector" id="ageAndName" autocomplete="off">
+              <option value="default">By default</option>
+                <optgroup label="Age">
+                  <option value="upAge">Yonger first</option>
+                  <option value="downAge">Older first</option>
+                </optgroup>
+                <optgroup label="Name">
+                  <option value="AtoZ">A to Z</option>
+                  <option value="ZtoA">Z to A</option>
+                </optgroup>
+            </select>
+          </label>
+      </div>
+    <div class="list"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
