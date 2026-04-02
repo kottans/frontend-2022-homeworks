@@ -1,0 +1,931 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
+}
+html {
+    height: 100%;
+}
+body {
+    position: relative;
+}
+body.overflow {
+    overflow: hidden;
+}
+
+footer {
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+footer span {
+    font: italic 12px/40px Verdana;
+    line-height: 40px;
+}
+
+#wrap {
+    display: flex;
+    padding-bottom: 40px;
+    margin: 0 auto;
+    max-width: 1600px;
+}
+.filter {
+    width: 270px;
+    position: fixed;
+    height: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 0 10px;
+    overflow: auto;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.friendlist {
+    margin-left: 270px;
+    padding: 40px 0px 40px 60px;
+    flex: 1;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    margin-bottom: 10px;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    font-size: 0;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: lightcoral;
+    color: white;
+}
+fieldset label {
+    font-size: 15px;
+    padding: 8px 0;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    font-family: Arial;
+}
+fieldset > div {
+    position: relative;
+    width: 100%;
+}
+fieldset label:hover,
+fieldset input:checked + label,
+fieldset label:hover::before {
+    background-color: #b36161;
+}
+fieldset input {
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    height: 18px;
+    float: left;
+    margin-right: 4px;
+    cursor: pointer;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+}
+.filter-title {
+    padding-bottom: 10px;
+    text-align: left;
+    font-family: Verdana;
+    font-size: 12px;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+fieldset label[for="desc"]::before,
+fieldset label[for="asc"]::before {
+    visibility: visible;
+    position: absolute;
+    top: 6px;
+    left: 13px;
+}
+fieldset label[for="asc"]::before {
+    content: '\2191';
+}
+fieldset label[for="desc"]::before {
+    content: '\2193';
+}
+.logo {
+    height: 80px;
+    font-size: 0;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    width: inherit;
+    padding-bottom: 20px;
+}
+.logo span,
+.logo-app {
+    margin: 0;
+    display: inline-block;
+    font-size: 26px;
+}
+.logo .logo-app {
+    padding: 4px 12px 7px 0;
+    color: yellow;
+    position: relative;
+}
+.logo .logo-cube {
+    width: 40px;
+    height: 40px;
+    background-color: darkgray;
+    transform: rotate(20deg);
+    position: absolute;
+    top: 0;
+    right: 10px;
+    z-index: -1;
+}
+
+.filter-top {
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+}
+.filter-top > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.filter-top > ul li {
+    margin: 0;
+}
+.filter-top > ul li:first-child {
+    font-size: 20px;
+    font-weight: 700;
+}
+.filter-top button.reset-filter {
+    border: 0;
+    background: none;
+    padding: 6px 0;
+    cursor: pointer;
+    outline: none;
+}
+.filter-top button.reset-filter:hover {
+    color: lightcoral;
+}
+
+.filter-search {
+    margin-bottom: 10px;
+    position: relative;
+}
+.filter-search input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    border-bottom: 1px solid lightgray;
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    vertical-align: middle;
+}
+.search-clear {
+    position: absolute;
+    width: 38px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    font-size: 28px;
+    text-align: center;
+    line-height: 38px;
+    cursor: pointer;
+    display: none;
+}
+.search-clear::before {
+    content: '\00D7';
+}
+.search-clear.visible {
+    display: block;
+}
+
+.friendlist > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(244px, 1fr));
+    gap: 10px;
+}
+.friendlist ul.friends-not-found {
+    height: 100px;
+    align-items: center;
+    text-align: center;
+}
+.friendlist ul.friends-not-found.hidden {
+    display: none;
+}
+.friendlist > ul > li {
+    width: 244px;
+    height: 330px;
+    text-align: center;
+    margin-bottom: 0;
+}
+.friendcard {
+    position: relative;
+    height: 100%;
+    border: 1px solid lightcoral;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: default;
+}
+.friendcard > ul {
+    list-style: none;
+}
+.friendcard > ul > li {
+    margin: 0;
+}
+.friendcard img {
+    border-radius: 70px;
+    margin-top: 20px;
+    display: none;
+}
+.friendcard img.large {
+    display: inline-block;
+}
+.friendcard-title {
+    color: lightgray;
+    padding-top: 6px;
+}
+.friendcard-name {
+    font-weight: 700;
+    font-size: 20px;
+    padding-top: 10px;
+    word-break: break-all;
+}
+.friendcard-from {
+    color: #2c2c2c;
+    font-size: 14px;
+    font-style: italic;
+    padding-top: 4px;
+}
+.friendcard-birth {
+    font-style: italic;
+    color: #2c2c2c;
+    padding-top: 10px;
+}
+.friendcard-id {
+    position: absolute;
+    right: 17px;
+    top: 12px;
+    font: 700 16px Arial;
+    color: #ccc;
+}
+.friendcard-gender-female,
+.friendcard-gender-male {
+    background: url('./images/gender.png') no-repeat;
+    background-position: 0px 0px;
+    background-size: cover;
+    position: absolute;
+    top: 12px;
+    left: 13px;
+    width: 17px;
+    height: 28px;
+}
+.friendcard-gender-male {
+    background-position: -17px 0px;
+    width: 21px;
+}
+
+.pagination {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+    padding: 10px 0 20px 0;
+    margin: 0;
+}
+.pagination ul {
+    font-size: 0;
+}
+.pagination li {
+    color: white;
+    display: inline-block;
+    border-radius: 40px;
+    width: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 4px 0 0;
+    border: 1px solid lightcoral;
+    color: lightcoral;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.pagination li.active,
+.pagination li:hover {
+    background-color: lightcoral;
+    color: white;
+}
+
+.filter-country {
+    width: 100%;
+    border-radius: 10px;
+    color: #fff;
+    outline: none;
+    font: normal 14px Arial;
+    border: 1px solid lightcoral;
+    border-right: 0;
+    position: relative;
+    height: 200px;
+}
+.filter-country > option {
+    color: #000;
+    padding: 8px 6px;
+    box-sizing: border-box;
+}
+.filter-country > option:checked {
+    background: #b36161 linear-gradient(0deg, #b36161 0%, #b36161 100%);
+}
+.filter-country::-webkit-scrollbar {
+    width: 16px;
+    background-color: lightcoral;
+    border-radius: 0 8px 8px 0;
+}
+.filter-country::-webkit-scrollbar-thumb {
+    background-color: #b36161;
+    border-radius: 8px;
+    border: 2px solid lightcoral;
+}
+
+.filter-ages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.filter-ages > select {
+    font-size: 16px;
+    padding: 7px 0;
+    border-radius: 10px;
+    width: 100px;
+    outline: none;
+    color: #fff;
+    background-color: #b36161;
+    border: 0;
+    text-align: center;
+}
+.filter-ages > select option {
+    background-color: white;
+    color: black;
+}
+
+.mobile-top {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+}
+.mobile-menu {
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 54px;
+    height: 54px;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+}
+.mobile-menu > div {
+    background-color: #b36161;
+    width: 31px;
+    height: 3px;
+    margin: 3px 0;
+}
+.mobile-search {
+    height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    flex: 1;
+}
+.mobile-search .search {
+    font-size: 20px;
+    padding: 8px 0;
+    border-radius: 10px;
+    border: 0;
+    outline: none;
+    width: 100%;
+}
+.mobile-close {
+    height: 54px;
+    position: fixed;
+    background-color: white;
+    z-index: 1;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.mobile-close > div {
+    display: flex;
+    width: 54px;
+    height: 54px;
+    align-items: center;
+    position: relative;
+    padding-left: 20px;
+}
+.mobile-close > div > div {
+    width: 31px;
+    height: 3px;
+    background-color: #b36161;
+    margin: 3px 0;
+    position: absolute;
+}
+.mobile-close div.left {
+    transform: rotate(45deg);
+}
+.mobile-close div.right {
+    transform: rotate(-45deg);
+}
+.mobile-reset.hidden {
+    display: none;
+}
+div.mobile-reset {
+    width: auto;
+    padding: 0 20px 0 10px;
+}
+.mobile-reset > button {
+    color: lightcoral;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #b36161;
+}
+.mobile-search-clear {
+    width: 55px;
+    order: 3;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mobile-search-clear > div {
+    width: 20px;
+    height: 2px;
+    background-color: #ccc;
+    position: absolute;
+    transform: rotate(45deg);
+}
+.mobile-search-clear > div:last-child {
+    transform: rotate(-45deg);
+}
+.mobile-search-clear.hidden {
+    display: none;
+}
+
+.preload {
+    width: 40px;
+    height: 40px;
+    top: 110px;
+    left: 60px;
+    position: absolute;
+}
+.preload.hidden {
+    display: none;
+}
+.preload > img {
+    width: 100%;
+}
+
+.mobile-countries {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.mobile-countries > div {
+    flex: 1;
+}
+.mobile-countries button {
+    color: lightcoral;
+    background-color: white;
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid #b36161;
+    display: none;
+}
+
+/* media queries */
+@media only screen and (min-width: 820px) and (max-width: 900px) and (max-height: 1180px) {
+    .friendlist {
+        padding: 40px 20px;
+    }
+}
+@media only screen and (min-width: 280px) and (max-width: 540px) and (max-height: 920px) {
+    .friendlist {
+        margin: 0;
+        padding: 0;
+    }
+    .friendlist > ul {
+        justify-items: center;
+        grid-template-columns: 1fr;
+        padding: 0 40px;
+    }
+    .friendlist > ul > li {
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+    }
+    .friendcard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 0;
+    }
+    .friendcard img.large {
+        height: 40%;
+    }
+    .friendcard > ul {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .friendcard-name {
+        flex: 50%;
+    }
+    .friendcard-from {
+        flex: 25%;
+    }
+    .friendcard-birth {
+        flex: 25%;
+    }
+
+    .pagination {
+        display: none;
+    }
+    #wrap {
+        padding: 74px 0;
+    }
+    fieldset label {
+        font-size: 16px;
+    }
+    fieldset label[for="desc"]::before,
+    fieldset label[for="asc"]::before {
+        visibility: visible;
+        position: absolute;
+        top: 6px;
+        left: 16px;
+        font-size: 20px;
+    }
+    .filter {
+        background-color: white;
+        width: 100%;
+        top: 0;
+        position: fixed;
+        z-index: 2;
+        padding: 0 20px;
+        display: none;
+    }
+    #filter-form {
+        margin-top: 64px;
+    }
+    .filter.visible {
+        display: block;
+    }
+    .filter .logo,
+    .filter-search {
+        display: none;
+    }
+    .filter-top {
+        display: block;
+        border: 0;
+    }
+    .filter-top {
+        display: none;
+    }
+    .filter-top li:first-child {
+        display: none;
+    }
+    .filter-top li button.reset-filter {
+        position: absolute;
+    }
+    fieldset label,
+    .filter-ages > select {
+        padding: 12px 0;
+    }
+    .filter-country {
+        height: auto;
+        border: 0;
+        padding: 14px 0;
+        background-color: #b36161;
+    }
+    .filter-country.empty {
+        background-color: lightcoral;
+    }
+
+    .mobile-close {
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+    .mobile-top {
+        display: flex;
+    }
+
+    .preload {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .mobile-countries button {
+        padding: 14px 10px;
+        display: block;
+    }
+    .mobile-countries button:active {
+        background-color: #b36161;
+        color: white;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 920px) and (max-height: 420px) and (min-width: 600px) {
+    #wrap {
+        padding: 74px 0;
+    }
+    .filter {
+        background-color: white;
+        width: 100%;
+        top: 0;
+        position: fixed;
+        z-index: 2;
+        padding: 0 20px;
+        display: none;
+        text-align: center;
+    }
+    .filter.visible {
+        display: block;
+    }
+    .filter-top {
+        display: none;
+    }
+    .filter .logo {
+        padding: 20px 0;
+        position: relative;
+        display: inline-block;
+        width: auto;
+        height: auto;
+    }
+    .filter .logo .logo-cube {
+        top: 6px;
+        right: 14px;
+        width: 44px;
+        height: 44px;
+    }
+    .filter-search {
+        display: none;
+    }
+
+    .friendlist {
+        margin: 0;
+        padding: 0;
+    }
+    .friendlist > ul {
+        justify-items: center;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        padding: 0 10px;
+    }
+    .friendlist > ul > li {
+        width: 200px;
+        height: 274px;
+    }
+    .friendcard {
+        overflow: auto;
+        padding: 0 10px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .friendcard img.large {
+        display: none;
+    }
+    .friendcard img.medium {
+        display: inline-block;
+        width: 72px;
+    }
+    .friendcard > ul {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .friendcard-name {
+        flex: 1;
+    }
+    
+    .friendcard-birth .age {
+        display: block;
+    }
+    .pagination {
+        display: none;
+    }
+
+    .mobile-top {
+        display: flex;
+    }
+    .mobile-menu {
+        padding: 0;
+        align-items: center;
+    }
+    .mobile-search .search {
+        text-align: center;
+        width: 320px;
+    }
+
+    #filter-form > ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 50px;
+        padding-bottom: 20px;
+    }
+    li.gender {
+        order: 1;
+    }
+    li.sortby {
+        order: 2;
+    }
+    li.updown {
+        order: 3;
+        grid-column: 2 / -1;
+    }
+    li.ages {
+        order: 4;
+    }
+    li.countries {
+        order: 5;
+    }
+    fieldset label,
+    .filter-ages > select {
+        font-size: 16px;
+        padding: 10px 0;
+    }
+
+    fieldset label[for="desc"]::before,
+    fieldset label[for="asc"]::before {
+        visibility: visible;
+        position: absolute;
+        top: 4px;
+        left: 16px;
+        font-size: 20px;
+    }
+    .filter-country {
+        height: auto;
+        border: 0;
+        padding: 11px 0;
+        background-color: #b36161;
+    }
+    .filter-country.empty {
+        background-color: lightcoral;
+    }
+
+    .mobile-close {
+        display: flex;
+        background: none;
+        justify-content: space-between;
+    }
+    .mobile-close > div {
+        justify-content: center;
+        padding-left: 0;
+        background-color: white;
+    }
+    .friendlist ul.friends-not-found {
+        grid-template-columns: 1fr;
+    }
+
+    .preload {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .mobile-countries button {
+        display: block;
+    }
+    .mobile-countries button:active {
+        background-color: #b36161;
+        color: white;
+    }
+}
+@media (min-width: 2100px) {
+    .filter {
+        width: 300px;
+    }
+    fieldset label,
+    .filter-ages select,
+    .filter-country {
+        font-size: 17px;
+    }
+    .filter-ages select {
+        padding: 9px 0;
+    }
+    .filter-title {
+        font-size: 14px;
+    }
+    .pagination li {
+        width: 38px;
+        line-height: 38px;
+        margin: 0 8px 0 0 ;
+    }
+    .friendcard-name {
+        font-size: 22px;
+    }
+    .friendcard-from {
+        font-size: 16px;
+    }
+    footer span {
+        font-size: 13px;
+    }
+}
+@media (min-width: 2300px) {
+    .filter {
+        width: 320px;
+    }
+    .friendlist {
+        margin-left: 320px;
+    }
+    .friendlist > ul {
+        grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
+        gap: 20px;
+    }
+    .friendlist > ul li {
+        font-size: 1.1em;
+        width: 264px;
+    }
+    
+    .friendcard {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .friendcard > img {
+        height: 40%;
+    }
+    .friendcard > ul {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-bottom: 20px;
+    }
+    ul li.friendcard-name {
+        flex: 1;
+        font-size: 24px;
+    }
+
+    .pagination li {
+        width: 42px;
+        line-height: 42px;
+        margin: 0 10px 0 0 ;
+    }
+    .filter-top > ul li:first-child {
+        font-size: 26px;
+    }
+    .filter-top button.reset-filter {
+        font-size: 16px;
+    }
+    .filter-search {
+        margin-bottom: 20px;
+    }
+    .filter-search input {
+        font-size: 20px;
+    }
+    .filter-title {
+        font-size: 16px;
+    }
+
+    fieldset label,
+    .filter-ages select {
+        padding: 12px 0;
+        font-size: 19px;
+    }
+    .filter-country {
+        height: 300px;
+        font-size: 19px;
+    }
+
+    .logo span,
+    .logo-app {
+        font-size: 36px;
+    }
+    .logo .logo-cube {
+        width: 54px;
+        height: 54px;
+    }
+
+    footer span {
+        font-size: 15px;
+    }
+}
