@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./style/flipStyle.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Memory game</title>
+</head>
+
+<body>
+    <div id="root" class="unselectable"></div>
+
+    <script type="text/html" id="cardTemplate">
+    <div id ={{id}} data-id="{{dataId}}" class="flip-container tablet-item {{classList}}" >
+        <div class="flipper">
+            <div class="front">
+                <img src="{{imgUrl}}" alt=""> 
+            </div>
+            <div class="back">
+                <img src="./img/card-wallpaper.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    </script>
+
+    <script type="text/html" id="summaryTemplate">
+            <h1 id="title">Memory game</h1>
+            <section class="results">
+                <div class="score">
+                    <h2>Score</h2>
+                    <div id="scoreResult">{{totalScore}}</div>
+                </div>
+                <div class="score">
+                    <h2>Best</h2>
+                    <div id="bestResult">{{bestScore}}</div>
+                </div>
+            </section>
+    </script>
+
+    <script type="text/html" id="matrixTemplate">
+        <div class="tablet" id="tablet">
+            {{matrix}}
+        </div>
+        <div id="gamesButtons" class="buttonBlock">
+            <button id="resetGameBtn" class="gameBtn">Reset</button>
+            <button id="menuGameBtn" class="gameBtn">Menu</button>
+        </div>
+    </script>
+
+    <script type="text/html" id="menuTemplate">
+        <button id="{{number}}" class="menuBtn">{{number}} Cards</button>
+    </script>
+
+    <script src="./utils/сonstant.js"></script>
+    <script src="./utils/PubSub.js"></script>
+    <script src="./Modell/BaseModel.js"></script>
+    <script src="./Modell/MatrixModel.js"></script>
+    <script src="./Modell/SummaryModel.js"></script>
+    <script src="./Modell/MenuModel.js"></script>
+    <script src="./utils/Controller.js"></script>
+    <script src="./View/BaseView.js"></script>
+    <script src="./View/CardView.js"></script>
+    <script src="./View/MatrixView.js"></script>
+    <script src="./View/SummaryView.js"></script>
+    <script src="./View/MenuView.js"></script>
+    <script src="./View/AppView.js"></script>
+</body>
+
+</html>
+
