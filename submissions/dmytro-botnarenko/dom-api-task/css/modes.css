@@ -1,0 +1,20 @@
+.dark-mode {
+  background-color: rgb(156, 15, 2);
+  color: rgb(192, 192, 192);
+}
+.dark-burger-mode {
+  color: rgb(252, 233, 136);
+  background-color: rgb(252, 233, 136);
+}
+.dark-strip-mode {
+  box-shadow: rgb(252, 233, 136) 0px 0px 0px 3px,
+              rgb(157, 36, 58) 0px 0px 0px 6px, 
+              rgb(252, 233, 136) 0px 0px 0px 9px;
+}
+.dark-strip-mode:hover {
+  background-color: rgb(252, 233, 136);
+}
+.highlight {
+  font-weight: bold;
+  color: rgb(252, 233, 136);
+}

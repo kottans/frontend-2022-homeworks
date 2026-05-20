@@ -1,0 +1,22 @@
+@media screen and (min-width: 481px) and (max-width: 1024px) and (min-height: 601px) {
+  /* ------------MAIN--------------- */
+  .main__info {
+    width: 70%;
+    margin-right: 2%;
+  }
+  .main__info__figure {
+    margin: 16px 0;
+    width: 50%;
+  }
+  .main__info__personage table caption {
+    padding-bottom: 8px;
+  }
+  .main__info__text {
+    padding: 15px 0 0 0;
+  }
+  /* ------------NAVIGATION--------------- */
+
+  .main__navigation__menu__container {
+    padding: 10% 4%;
+  }
+}
