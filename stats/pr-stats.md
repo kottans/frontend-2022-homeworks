@@ -1,6 +1,6 @@
 # Open and merged PRs by task labels
 
-_as of 2026-06-04T00:13:56.133Z UTC_
+_as of 2026-06-04T23:46:41.405Z UTC_
 
 PR reference legend:
  - #xxx o -- PR is yet open 
@@ -106,7 +106,7 @@ PR reference legend:
 | 2.7 | [EnF1NeeT](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AEnF1NeeT) | [**#139**](https://github.com/kottans/frontend-2022-homeworks/pull/139) | [**#341**](https://github.com/kottans/frontend-2022-homeworks/pull/341) |   |   |   |   |   |
 | 2.8 | [Halv27](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AHalv27) | [**#152**](https://github.com/kottans/frontend-2022-homeworks/pull/152) |   | [#690 o](https://github.com/kottans/frontend-2022-homeworks/pull/690) |   |   |   |   |
 | 2.9 | [kuslosolodka](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Akuslosolodka) | [**#113**](https://github.com/kottans/frontend-2022-homeworks/pull/113) |   | [**#390**](https://github.com/kottans/frontend-2022-homeworks/pull/390) |   |   |   |   |
-| 2.10 | [maksimsergeev97](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Amaksimsergeev97) | [**#127**](https://github.com/kottans/frontend-2022-homeworks/pull/127) | [#556 o](https://github.com/kottans/frontend-2022-homeworks/pull/556) |   |   |   |   |   |
+| 2.10 | [maksymserhieiev97](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Amaksymserhieiev97) | [**#127**](https://github.com/kottans/frontend-2022-homeworks/pull/127) | [#556 o](https://github.com/kottans/frontend-2022-homeworks/pull/556) |   |   |   |   |   |
 | 2.11 | [maximmorenko](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3Amaximmorenko) | [**#7**](https://github.com/kottans/frontend-2022-homeworks/pull/7) |   | [**#31**](https://github.com/kottans/frontend-2022-homeworks/pull/31) |   |   |   |   |
 | 2.12 | [Vlada-khom](https://github.com/kottans/frontend-2022-homeworks/pulls?q=is%3Apr+author%3AVlada-khom) | [**#47**](https://github.com/kottans/frontend-2022-homeworks/pull/47) |   | [**#208**](https://github.com/kottans/frontend-2022-homeworks/pull/208) |   |   |   |   |
 | = | **1 task** |     |     |     |     |     |     |     |
