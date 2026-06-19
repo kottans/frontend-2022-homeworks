@@ -1,0 +1,65 @@
+:root {
+  --almond: #EED7CE;
+  --persianPink: #FF87CA;
+  --green: #17ca17;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--almond);
+  display: flex;
+}
+
+.memorygame-area {
+  width: 700px;
+  height: 700px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memorygame-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+  transform: scale(1);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform .5s;
+}
+
+.memorygame-card:active {
+  transform: scale(0.95);
+  transition: transform .3s;
+}
+
+.back,
+.front {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  background: var(--persianPink);
+  backface-visibility: hidden;
+}
+
+.front {
+  transform: rotateY(180deg);
+}
+
+.memorygame-card.flip {
+  transform: rotateY(180deg);
+}
+
+.cardFound .back, .cardFound .front {
+  background-color: var(--green);
+}
