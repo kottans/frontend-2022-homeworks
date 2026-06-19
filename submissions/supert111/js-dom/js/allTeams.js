@@ -1,0 +1,42 @@
+export default [
+    {
+        champ: '2022 year',
+        img: '21-22-Real.jpg',
+        alt: 'Real Madrid is the winner of the 2022 Champions League',
+        href: '/',
+        result: 'Liverpool  0 - 1  Real Madrid',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie at elementum eu facilisis. Odio pellentesque diam volutpat commodo sed. Sem integer vitae justo eget magna fermentum iaculis eu. Pharetra pharetra massa massa ultricies mi. Tellus at urna condimentum mattis pellentesque id. Massa enim nec dui nunc mattis. Urna nunc id cursus metus aliquam.',
+    },
+    {
+        champ: '2021 year',
+        img: '20-21Chelsea.jpg',
+        alt: 'Chelsea is the winner of the 2021 Champions League',
+        href: '/champ-2021',
+        result: 'Manchester City  0 - 1  Chelsea',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie at elementum eu facilisis. Odio pellentesque diam volutpat commodo sed. Sem integer vitae justo eget magna fermentum iaculis eu. Pharetra pharetra massa massa ultricies mi. Tellus at urna condimentum mattis pellentesque id. Massa enim nec dui nunc mattis. Urna nunc id cursus metus aliquam.',
+    },
+    {
+        champ: '2020 year',
+        img: '19-20 FC Bayern München.jpg',
+        alt: 'Bayern München is the winner of the 2020 Champions League',
+        href: '/champ-2020',
+        result: 'Paris Saint-Germain  0 - 1  FC Bayern München',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie at elementum eu facilisis. Odio pellentesque diam volutpat commodo sed. Sem integer vitae justo eget magna fermentum iaculis eu. Pharetra pharetra massa massa ultricies mi. Tellus at urna condimentum mattis pellentesque id. Massa enim nec dui nunc mattis. Urna nunc id cursus metus aliquam.',
+    },
+    {
+        champ: '2019 year',
+        img: 'Liverpool-Champions-League-18-19.jpg',
+        alt: 'Liverpool is the winner of the 2019 Champions League',
+        href: '/champ-2019',
+        result: 'Tottenham Hotspur FC  0 - 2  Liverpool',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie at elementum eu facilisis. Odio pellentesque diam volutpat commodo sed. Sem integer vitae justo eget magna fermentum iaculis eu. Pharetra pharetra massa massa ultricies mi. Tellus at urna condimentum mattis pellentesque id. Massa enim nec dui nunc mattis. Urna nunc id cursus metus aliquam.',
+    },
+    {
+        champ: '2018 year',
+        img: '17-18 Real_Madrid.jpg',
+        alt: 'Real Madrid is the winner of the 2018 Champions League',
+        href: '/champ-2018',
+        result: 'Real Madrid  3 - 1  Liverpool',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie at elementum eu facilisis. Odio pellentesque diam volutpat commodo sed. Sem integer vitae justo eget magna fermentum iaculis eu. Pharetra pharetra massa massa ultricies mi. Tellus at urna condimentum mattis pellentesque id. Massa enim nec dui nunc mattis. Urna nunc id cursus metus aliquam.',
+    },
+]
