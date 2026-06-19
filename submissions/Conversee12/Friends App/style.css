@@ -1,0 +1,308 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+body {
+  background: linear-gradient(to top, #ffff66 35%, #0099ff 103%);
+}
+
+.container {
+  display: flex;
+  margin: 70px;
+}
+
+.menu {
+  position: sticky;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  color: white;
+  background-color: rgb(25, 33, 196);
+  font-size: 20px;
+  height: 350px;
+  min-width: 300px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+label {
+  font-size: 18px;
+}
+
+.menu__form {
+  margin: 15px;
+}
+
+.menu__search {
+  margin: 10px;
+}
+
+.menu__search label {
+  font-size: 20px;
+}
+
+.menu__input {
+  margin: 7px;
+}
+
+input[type="text"] {
+  border-radius: 5px;
+  border: 1px solid transparent;
+  height: 20px;
+  width: 120px;
+}
+
+.menu__name {
+  margin: 19px;
+}
+
+.menu__age {
+  margin: 19px;
+}
+
+.menu__sex {
+  margin: 19px;
+}
+
+.menu__button_reset {
+  margin: 13px;
+  border-radius: 15px;
+}
+
+button {
+  width: 90%;
+  height: 30px;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: rgb(232, 221, 16);
+  cursor: pointer;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 0 darkorange;
+}
+
+button:active {
+  background-color: rgb(232, 221, 16);
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 darkorange;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1050px;
+  min-height: 600px;
+  max-height: 2350px;
+  margin-left: 25px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  background: linear-gradient(to top, #30e9ff 9%, #0d0551 106%);
+  width: 242.5px;
+  height: 216.875px;
+  border-radius: 15px;
+}
+
+.card__image {
+  align-self: center;
+  margin-top: 5px;
+}
+
+.card__image img {
+  border-radius: 50%;
+
+}
+
+.card__discription {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  color: rgb(46, 9, 125);
+}
+
+.card__name {
+  align-self: center;
+  font-weight: 1000;
+}
+
+.card__city {
+  align-self: center;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.card__street {
+  align-self: center;
+  text-align: center;
+  font-size: 16px;
+}
+
+@media (max-width:600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .menu {
+    position: relative;
+    top: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 19px;
+    height: 190px;
+    width: 100%;
+    margin-top: 0px;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  .menu__form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px auto;
+  }
+
+  .menu__search {
+    margin-left: 20px;
+  }
+
+  .menu__search label {
+    font-size: 19px;
+  }
+
+  input[type="text"] {
+    height: 20px;
+    width: 210px;
+  }
+
+  .menu__name {
+    margin: 3px 20px;
+  }
+
+  .menu__age {
+    margin: 3px;
+  }
+
+  .menu__sex {
+    margin: 3px 20px;
+  }
+
+  .menu__button_reset {
+    margin: 10px 20px;
+  }
+
+  button {
+    min-width: 300px;
+    height: 20px;
+    font-size: 16px;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1050px;
+    max-height: 3150px;
+    margin-left: 0px;
+  }
+
+  .card {
+    flex-direction: column;
+    width: 165px;
+    height: 165px;
+  }
+
+  .card__image {
+    align-self: center;
+    margin-top: 5px;
+  }
+
+  .card__image img {
+    width: 80px;
+  }
+
+  .card__discription {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .card__city {
+    font-size: 15px;
+  }
+
+  .card__street {
+    font-size: 12px;
+  }
+}
+
+@media (max-width:500px) {
+  .container {
+    margin: 10px;
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  .card {
+    margin: 10px 0;
+    height: 165px;
+  }
+
+  .menu__name {
+    margin: 3px 5px 3px 20px;
+  }
+
+  .menu__button_reset {
+    margin: 0 30px;
+  }
+
+  input[type="text"] {
+    height: 20px;
+    width: 180px;
+  }
+}
+
+@media (max-width:450px) {
+
+  input[type="text"] {
+    height: 20px;
+    width: 160px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    font-size: 17px;
+    height: 190px;
+    width: 100%;
+    margin-top: 0px;
+  }
+}
+
+
+@media (max-width:380px) {
+  .menu__button_reset {
+    margin: 5px 29px;
+  }
+
+  button {
+    min-width: 250px;
+    height: 20px;
+    font-size: 16px;
+  }
+
+}

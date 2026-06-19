@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="menu">
+      <form class="menu__form">
+        <div class="menu__search">
+          <label>Search User:
+            <input type="text" placeholder="Type name here" class="menu__input">
+          </label>
+        </div>
+
+        <div class="menu__name">
+          <p>Sort by Name:</p>
+          <input type="radio" id="nameChoice1" name="sort_name" value="A-Z">
+          <label for="nameChoice1">A-Z</label>
+
+          <input type="radio" id="nameChoice2" name="sort_name" value="Z-A">
+          <label for="nameChoice2">Z-A</label>
+        </div>
+
+        <div class="menu__age">
+          <p>Sort by Age:</p>
+          <input type="radio" id="ageChoice1" name="sort_age" value="old">
+          <label for="ageChoice1">First old</label>
+
+          <input type="radio" id="ageChoice2" name="sort_age" value="young">
+          <label for="ageChoice2">First young</label>
+        </div>
+
+        <div class="menu__sex">
+          <p>Filter by sex:</p>
+          <div>
+            <input type="radio" id="all" name="filter_sex" value="all" checked>
+            <label for="all">All</label>
+
+            <input type="radio" id="male" name="filter_sex" value="male">
+            <label for="male">Male</label>
+
+            <input type="radio" id="female" name="filter_sex" value="female">
+            <label for="female">Female</label>
+          </div>
+        </div>
+      </form>
+      <div class="menu__button">
+        <button class="menu__button_reset">
+          Reset
+        </button>
+      </div>
+    </div>
+
+    <div class="cards">
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
