@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Nunito";
+    font-size: 18px;
+    color: rgba(36, 34, 34, 0.995);
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.header {
+    background-color: rgb(149, 207, 213);
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.header__text {
+    font-size: 36px;
+}
+
+.wrapper__content {
+    display: flex;
+    flex: 1 1 auto;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.wrapper__content > * {
+    flex: 0 0 auto;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 30px;
+    max-width: 500px;
+}
+
+.navigation__item {
+    list-style: none;
+    margin-bottom: 10px;
+    transition-duration: 1.25s;
+    border-bottom: 2px solid transparent;
+}
+
+.navigation__link {
+    color: black;
+}
+
+.navigation__item:hover {
+    transform: scale(1.005);
+    border-bottom: 2px solid rgb(149, 207, 213);
+}
+
+.navigation__link,
+.navigation__link:visited {
+    text-decoration: none;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+.main__content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    max-width: 1000px;
+    padding: 10px 15px;
+}
+
+.main__content > * {
+    margin-bottom: 10px;
+}
+
+.main__title {
+    font-weight: bold;
+    font-size: 28px;
+    display: block;
+}
+
+.main__subtitle {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.main__img {
+    display: block;
+    max-width: 400px;
+    max-height: 300px;
+    align-self: center;
+}
+
+.main__text {
+    max-width: 800px;
+    text-align: center;
+    align-self: center;
+}
+
+.footer {
+    background-color: rgb(220, 220, 220);
+    padding: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.footer__desc {
+    display: block;
+    text-align: center;
+}
+
+.footer__text {
+    font-size: 14px;
+    color: black;
+    font-style: italic;
+}
+
+.footer__link,
+.footer__link:visited {
+    text-decoration: none;
+    color: black;
+}
+
+@media (max-width: 1120px) {
+    .wrapper__content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        align-self: center;
+    }
+}
+
+@media (max-width: 650px) {
+    .header__text {
+        font-size: 28px;
+    }
+}
