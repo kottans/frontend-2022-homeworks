@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FriendsApp</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Raleway:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header class="header container">
+      <button type="button" class="header__button"></button>
+      <a href="/index.html" class="header__link">
+        <img class="header__logo" src="./images/World-Peace.svg" />
+        <h1 class="header__title">
+          Friends<span class="header__link--accent">App</span>
+        </h1></a
+      >
+    </header>
+    <main>
+      <div class="container">
+        <div class="wrap">
+          <div class="menu">
+            <form class="form">
+              <div class="search">
+                <input
+                  type="text"
+                  class="search__name"
+                  placeholder="Enter name"
+                  name="search"
+                />
+              </div>
+              <div class="sort">
+                <p class="sort__text">Sort</p>
+                <div class="sort__age">
+                  <p class="sort__text">by age</p>
+                  <div class="sort__thumb">
+                    <label class="sort__label">
+                      <input
+                        type="radio"
+                        class="sort__input"
+                        name="sorter"
+                        value="ascending"
+                        data-sort="age"
+                      />
+                      <svg class="sort__icon sort__age--up" width="35" height="35">
+                        <use href="./images/sprite.svg#1-9"></use>
+                      </svg>
+                    </label>
+                    <label class="sort__label">
+                      <input
+                        type="radio"
+                        class="sort__input"
+                        name="sorter"
+                        value="descending"
+                        data-sort="age"
+                      />
+                      <svg class="sort__icon sort__age--down" width="35" height="35">
+                        <use href="./images/sprite.svg#9-1"></use>
+                      </svg>
+                    </label>
+                  </div>
+                </div>
+                <div class="sort__name">
+                  <p class="sort__text">by name</p>
+                  <div class="sort__thumb">
+                    <label class="sort__label">
+                      <input
+                        type="radio"
+                        class="sort__input"
+                        name="sorter"
+                        value="descending"
+                        data-sort="name"
+                      />
+                      <svg class="sort__icon sort__name--down" width="35" height="35">
+                        <use href="./images/sprite.svg#z-a"></use>
+                      </svg>
+                    </label>
+                    <label class="sort__label">
+                      <input
+                        type="radio"
+                        class="sort__input"
+                        name="sorter"
+                        value="ascending"
+                        data-sort="name"
+                      />
+                      <svg class="sort__icon sort__name--up" width="35" height="35">
+                        <use href="./images/sprite.svg#a-z"></use>
+                      </svg>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="radio filter">
+                <p class="filter__text">Filter by sex</p>
+                <div class="filter__thumb">
+                  <label class="filter__label">
+                    <input type="radio" class="filter__input" name="sex" value="female" />
+                    <svg class="filter__icon filter__icon--female" width="35" height="35">
+                      <use href="./images/sprite.svg#female"></use>
+                    </svg>
+                  </label>
+                  <label class="filter__label">
+                    <input type="radio" class="filter__input" name="sex" value="male" />
+                    <svg class="filter__icon filter__icon--male" width="35" height="35">
+                      <use href="./images/sprite.svg#male"></use>
+                    </svg>
+                  </label>
+                  <label class="filter__label">
+                    <input type="radio" class="filter__input" name="sex" value="all" />
+                    <svg class="filter__icon filter__icon--all" width="35" height="35">
+                      <use href="./images/sprite.svg#gender"></use>
+                    </svg>
+                  </label>
+                </div>
+              </div>
+              <button type="button" class="reset">Reset all</button>
+            </form>
+          </div>
+          <ul class="friends list"></ul>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">Developed with</p>
+      <svg class="footer__icon" width="30" height="30">
+        <use href="./images/sprite.svg#heart"></use>
+      </svg>
+    </footer>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
