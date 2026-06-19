@@ -1,0 +1,16 @@
+.main {
+    margin-top: 130px;
+    height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    background-color: $light-color;
+}
+
+.wrapper {
+    margin-left: auto;
+    width: calc(100% - 350px);
+    order: 1;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
