@@ -1,0 +1,458 @@
+/* ========================================== Common Styles ========================================== */
+:root {
+	--main-color: #e7eac0;
+	--gray-color: #817f7f;
+
+	--male-background-color: rgba(40, 110, 180, 0.6);
+	--female-background-color: rgba(211, 113, 238, 0.5);
+
+	--element-bc-color-on-focus: rgba(125, 129, 134, 0.331);
+	--element-outline-color-on-focus: rgba(202, 202, 202, 0.657);
+}
+body {
+	font-family: 'Poppins', sans-serif;
+	height: 100%;
+	background: url(../images/background/earth-1756274_1280.webp);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-attachment: fixed;
+	background-position: top;
+}
+body::-webkit-scrollbar {
+	width: 13px;
+}
+body::-webkit-scrollbar-track {
+	background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(154,154,154,1) 40%, rgba(154,154,154,1) 50%, rgba(154,154,154,1) 60%, rgba(0,0,0,1) 60%, rgba(0,0,0,1) 100%);
+}
+body::-webkit-scrollbar-thumb {
+	background: linear-gradient(90deg, #f598a8, #b5b4af);
+	border-radius: 5px;
+}
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+.container {
+	max-width: 1200px;
+	margin: 0 auto 30px;
+	padding: 0 15px;
+	flex: 1 1 auto;
+}
+
+
+/* ========================================== Header Styles ========================================== */
+.header {
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+@import "https://fonts.googleapis.com/css?family=Russo+One";
+.funny-title {
+	border-top: 5px solid var(--main-color);
+	border-bottom: 5px solid var(--main-color);
+	font-size: 50px;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Russo One',sans-serif;
+	font-weight: 900;
+	letter-spacing: 5px;
+}
+.title {
+	animation-play-state: running;
+	color: transparent;
+	background: url(https://obninsksite.ru/assets/theme/images/blog/square.svg) no-repeat var(--main-color);
+	background-size: cover;
+	-webkit-text-fill-color: transparent;
+	-moz-text-fill-color:transparent;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	animation: move-background 20s infinite linear alternate;
+}
+@keyframes move-background {
+	0% {
+		background-position: -300px 0;
+	}
+	100% {
+		background-position: 300px -300px;
+	}
+}
+
+
+
+
+/* ========================================== Form Styles ========================================== */
+.filter {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 10px;
+	border: 2px solid var(--gray-color);
+	border-radius: 5px;
+	box-shadow: 0 0 7px rgba(129, 127, 127, 0.934);
+	position: sticky;
+	background-color: rgba(88, 94, 98, 0.675);
+	top: 5px;
+	z-index: 5;
+	color: var(--main-color);
+}
+.filter::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 3px;
+	backdrop-filter: blur(10px);
+	top: 0;
+	left: 0;
+	z-index: -5;
+}
+
+
+/* ================== Filter By Gender, Age, Alphabet Styles ================== */
+.filter-sorter {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	flex: 1 1 auto;
+	position: relative;
+}
+.filter-sorter__description {
+	position: absolute;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
+}
+.filter-sorter__wrapper {
+	margin-top: 23px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 1 1 auto;
+}
+.filter-sorter__label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border: 2px solid var(--gray-color);
+	border-radius: 5px;
+	flex: 1 1 auto;
+	padding: 0 5px;
+}
+.filter-sorter__input  {
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+	height: 1px;	
+	overflow: hidden;
+	border: 0;
+	padding: 0;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	margin: -1px;
+}
+.filter-sorter__input:checked ~ .filter-sorter__label {
+	background-color: var(--element-bc-color-on-focus);
+	outline: 3px solid var(--element-outline-color-on-focus);
+}
+.filter-sorter__img {
+	width: 34px;
+	height: 100%;
+	fill: var(--main-color);
+}
+/* ===== Filter OnLy By Gender Styles ===== */
+.filter-gender__span_all {
+	margin-right: 5px;
+}
+/* ===== Sort OnLy By Alphabet Styles ===== */
+.sort-by-alphabet__label {
+	padding: 9px;
+}
+
+
+/* ================== Filter By Name Styles ================== */
+.filter-name {
+	flex: 1 1 auto;
+	display: flex;
+	gap: 7.3px;
+	flex-direction: column;
+}
+.filter-name__input {
+	border: 2px solid var(--gray-color);
+	border-radius: 5px;
+	height: 38px;
+	padding-left: 8px;
+	flex: 1 1 auto;
+	background-color: transparent;
+	color: var(--main-color);
+}
+.filter-name__input:focus {
+	background-color: var(--element-bc-color-on-focus);
+	outline: 3px solid var(--element-outline-color-on-focus);
+}
+/* ================== ResetButton Styles ================== */
+.filter-reset {
+	display: flex;
+	flex: 1 1 auto;
+}
+.filter-reset__button {
+	font-size: 18px;
+	flex: 1 1 auto;
+	padding: 15px 5px;
+	border: 2px solid var(--gray-color);
+	background-color: transparent;
+	color: var(--main-color);
+	border-radius: 5px;
+	transition: all .2s;
+}
+.filter-reset__button:hover {
+	background-color: var(--element-bc-color-on-focus);
+}
+.filter-reset__button:active {
+	outline: 3px solid var(--element-outline-color-on-focus);
+}
+
+
+
+/* ================================== People Cards ================================== */
+.people {
+	margin-top: 20px;
+}
+.people__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+.people__human {
+	display: flex;
+	flex-direction: column;
+	width: calc(110px + 141 * ((100vw - 320px) / (1600 - 320)));
+	padding: 7px;
+	border-radius: 5px;
+	flex: 1 1 auto;
+	position: relative;
+}
+.people__human_male {
+	background-color: var(--male-background-color);
+	box-shadow: 0 0 8px var(--male-background-color);
+}
+.people__human_female {
+	background-color: var(--female-background-color);
+	box-shadow: 0 0 8px var(--female-background-color);
+}
+.people__name {
+	font-size: calc(14px + 3 * ((100vw - 320px) / (1600 - 320)));
+	font-weight: 600;
+	margin-top: 5px;
+	flex: 1 1 auto;
+}
+.people__img {
+	width: 100%;
+	border-radius: 5px;
+}
+.people__age {
+	margin-top: 5px;
+	margin-bottom: 2px;
+	font-size: calc(14px + 2 * ((100vw - 320px) / (1600 - 320)));
+}
+.people__gender {
+	width: calc(25px + 20 * ((100vw - 320px) / (1600 - 320)));
+	position: absolute;
+	right: 0;
+	bottom: 3px;
+}
+
+
+
+/* ================================== Footer Styles ================================== */
+.footer {
+	height: 60px;
+	background-color: rgba(105, 106, 103, 0.495);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.footer__description {
+	color: rgb(153, 152, 152);
+}
+.footer__link {
+	color: rgb(153, 152, 152);
+	transition: all .2s;
+	background-color: transparent;
+	position: relative;
+}
+.footer__link::after  {
+	position: absolute;
+	transition: all .2s;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '';
+  color: transparent;
+  background: #d8ddd7;
+  height: 1px;
+}
+.footer__link:hover {
+	color: rgb(183, 182, 182);
+}
+.footer__link:hover:after {
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+/* ================================== Media Request Styles ================================== */
+@media (max-width: 1094px) {
+	.filter-gender__span_all,
+	.filter-gender__span {
+		display: none;
+	}
+}
+@media (max-width: 930px) {
+	body {
+		background-size: 120% 100%;
+	}
+	.filter {
+		font-size: 14px;
+	}
+	.filter-sorter__wrapper {
+		margin-top: 20px;
+	}
+	.filter-sorter {
+		gap: 10px;
+	}
+	.filter-sorter__label {
+		padding: 0;
+	}
+	.filter-name {
+		gap: 5.5px;
+	}
+	.filter-name__input {
+		height: 32px;
+	}
+	.filter-sorter__img {
+		width: 28px;
+	}
+	.filter-gender__all {
+		padding: 0 5px;
+	}
+	.filter-reset__button {
+		padding: 10px 10px;
+	}
+	/* ===== Filter OnLy By Age Styles ===== */
+	.sort-by-age__span {
+		display: none;
+	}
+	/* ===== Filter OnLy By Alphabet Styles ===== */
+	.sort-by-alphabet__label {
+		padding: 7px;
+	}
+}
+@media (max-width: 674px) {
+	body {
+		background-size: 150% 100%;
+	}
+	.filter {
+		gap: 18px;
+	}
+	.filter-sorter__wrapper {
+		margin-top: 20px;
+	}
+	.filter-sorter {
+		gap: 8px;
+	}
+	.filter-name {
+		gap: 6px;
+	}
+}
+@media (max-width: 500px) {
+	body {
+		background-size: 170% 100%;
+	}
+	.header {
+		height: 70px;
+	}
+	.container {
+		padding: 0 10px;
+	}
+	.title {
+		font-size: 34px;
+		letter-spacing: 3px;
+	}
+	.filter {
+		gap: 12px;
+		padding: 8px;
+	}
+	.filter-name {
+		gap: 3.7px;
+	}
+	.filter-name__label {
+		min-width: none;
+	}
+	.filter-name__input {
+		padding: 6px 0px 6px 5px;
+	}
+	.sort-by-alphabet__label {
+		padding: 7px 4px;
+	}
+	.filter-sorter {
+		gap: 7px;
+	}
+	.filter-sorter__input:checked ~ .filter-sorter__label {
+    outline: 2px solid rgb(202, 202, 202);
+	}	
+	.filter-reset__button {
+		padding: 9px 10px;
+	}
+}
+@media (max-width: 400px) {
+	body {
+		background-size: 190% 100%;
+	}
+	.filter {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+	}
+	.filter-name__input {
+		width: 100%;
+	}
+	.filter-name {
+		gap: 6px;
+	}
+	.filter::before {
+		content: '';
+		position: absolute;
+		width: 63.21px;
+		height: 32.86px;
+		background-color: rgba(0, 0, 0, 0);
+		backdrop-filter: blur(10px);
+		bottom: -38px;
+		right: -2px;
+		border-radius: 5px;
+		z-index: -5;
+	}
+	.filter-reset__button {
+		position: absolute;
+		bottom: -38px;
+		right: -2px;
+		padding: 1px 5px;
+	}
+	.people {
+		margin-top: 15px;
+	}
+}
