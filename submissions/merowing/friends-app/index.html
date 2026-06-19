@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Friends application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <div id="wrap">
+            <div class="filter">
+                <div class="mobile-close">
+                    <div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                    </div>
+                    <div class="mobile-reset hidden">
+                        <button type="button">Clear all filters</button>
+                    </div>
+                </div>
+                <div class="logo">
+                    <span>Friends</span>
+                    <div class="logo-app">
+                        <span>app</span>
+                        <div class="logo-cube"></div>
+                    </div>
+                </div>
+                <form id="filter-form">
+                <div class="filter-top">
+                    <ul>
+                        <li>Filter</li>
+                        <li><button class="reset-filter" type="button">Reset all</button></li>
+                    </ul>
+                </div>
+                <div class="filter-search">
+                    <input type="text" class="search" name="searchValue" placeholder="Search by name...">
+                    <div class="search-clear"></div>
+                </div>
+                <ul>
+                    <li class="gender">
+                        <div class="filter-title">Select a gender</div>
+                        <fieldset id="gender">
+                            <div>
+                                <input type="radio" id="both" name="gender" value="both" checked>
+                                <label for="both">Both</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="male" name="gender" value="male">
+                                <label for="male">Male</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Female</label>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li class="sortby">
+                        <div class="filter-title">Sort by</div>
+                        <fieldset id="sortby">
+                            <div>
+                                <input type="radio" id="age" name="sortby" value="age">
+                                <label for="age">Age</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="name" name="sortby" value="name">
+                                <label for="name">Name</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="none1" name="sortby" value="-1" checked>
+                                <label for="none1">None</label>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li class="updown">
+                        <fieldset id="updown">
+                            <div>
+                                <input type="radio" id="asc" name="updown" value="0">
+                                <label for="asc">Asc</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="desc" name="updown" value="1">
+                                <label for="desc">Desc</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="none2" name="updown" value="-1" checked>
+                                <label for="none2">None</label>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li class="ages">
+                        <div class="filter-title">Select an age</div>
+                        <div class="filter-ages">
+                            <select name="ageMin" aria-label="age-min">
+                            </select>
+                            <select name="ageMax" aria-label="age-max">
+                            </select>
+                        </div>
+                    </li>
+                    <li class="countries">
+                        <div class="filter-title">Select countries</div>
+                        <div class="mobile-countries">
+                            <div>
+                                <select name="country" class="filter-country" aria-label="countries" multiple>
+                                </select>
+                            </div>
+                            <button type="button" class="mobile-clear-countries">Clear</button>
+                        </div>
+                    </li>
+                </ul>
+                </form>
+            </div>
+            <div class="friendlist">
+                <div class="pagination">
+                    <ul></ul>
+                </div>
+                <ul></ul>
+                <ul class="friends-not-found hidden">
+                    <li>Friends not found!</li>
+                </ul>
+                <div class="preload">
+                    <img src="./images/loading-gif.gif" alt="loading-image">
+                </div>
+            </div>
+        </div>
+        <div class="mobile-top">
+            <div class="mobile-search">
+                <input type="text" class="search" placeholder="Search by name...">
+            </div>
+            <div class="mobile-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="mobile-search-clear hidden">
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <span>Created by <a href="https://github.com/merowing" target="_blank">merowing</a> for kottans.org @ 2022</span>
+    </footer>
+    <script src="./index.js"></script>
+</body>
+</html>
