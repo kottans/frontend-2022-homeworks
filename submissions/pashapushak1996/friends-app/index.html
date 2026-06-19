@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends app</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style/reset.css">
+  <link rel="stylesheet" href="./style/main.css">
+</head>
+<body>
+<div class="wrapper">
+  <header class="header">
+    <div class="container">
+      <div class="header__logo">
+        <img src="./icons/logo.png" alt="">
+        <span>Friends App</span>
+      </div>
+      <div id="header-button" class="header__button">
+        <img src="./icons/filters-icon.png" alt="filters">
+      </div>
+      <div class="header__search">
+        <input type="text" placeholder="Find person...">
+        <div class="header__search-icon">
+          <img src="./icons/search.png" alt="">
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <div class="container">
+      <aside class="aside">
+        <div class="aside__inner">
+          <div id="aside-search" class="aside__panel none">
+            <span class="aside__title">Search:</span>
+            <input id="filter-search" class="aside__search" type="text" placeholder="Find person">
+          </div>
+          <div class="aside__panel">
+            <span class="aside__title">Sort by:</span>
+            <div class="aside__item">
+              <span>Age:</span>
+              <div class="aside__icon">
+                <input type="radio" name="sort-options" value="age" checked>
+                <img src="./icons/default-age.svg" alt="">
+              </div>
+              <div class="aside__icon">
+                <input type="radio" name="sort-options" value="age-asc">
+                <img src="./icons/younger.svg" alt="">
+              </div>
+              <div class="aside__icon">
+                <input type="radio" name="sort-options" value="age-desc">
+                <img src="./icons/elder.svg" alt="">
+              </div>
+            </div>
+            <div class="aside__item">
+              <span>Name:</span>
+              <div class="aside__icon">
+                <input id="alphabetical" type="radio" name="sort-options" value="name" checked>
+                <img src="./icons/alphabetical-sorting-R.svg" alt="">
+              </div>
+              <div class="aside__icon">
+                <input type="radio" name="sort-options" value="name-desc">
+                <img src="icons/alphabetical-sorting_Z-A.svg" alt="">
+              </div>
+              <div class="aside__icon">
+                <input type="radio" name="sort-options" value="name-asc">
+                <img src="icons/alphabetical-sorting_A-Z.svg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="aside__panel">
+            <span class="aside__title">Filter by:</span>
+            <div class="aside__item">
+              <span>Age:</span>
+              <input id="min-age" name="max-age" type="text" placeholder="min">
+              <input id="max-age" name="min-age" type="text" placeholder="max">
+            </div>
+            <div class="aside__item">
+              <span>Gender:</span>
+              <div class="aside__icon">
+                <input id="all-genders" type="radio" name="genders" value="all-genders" checked>
+                <img src="./icons/all-genders.svg" alt="default age">
+              </div>
+              <div class="aside__icon">
+                <input type="radio" name="genders" value="female">
+                <img src="./icons/female.svg" alt="default age">
+              </div>
+              <div class="aside__icon">
+                <input type="radio" name="genders" value="male">
+                <img src="./icons/male.svg" alt="default age">
+              </div>
+            </div>
+          </div>
+          <div id="filter-button" class="aside__button">Filter</div>
+          <div id="reset-button" class="aside__button">Reset</div>
+        </div>
+      </aside>
+      <div class="content">
+      </div>
+    </div>
+  </main>
+</div>
+<script src="./js/app.js"></script>
+</body>
+</html>
