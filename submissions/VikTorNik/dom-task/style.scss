@@ -1,0 +1,173 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+$color-back-header: rgb(68, 202, 206);
+$color-text-header: rgb(110, 251, 240);
+$color-menu-dark: rgb(6, 61, 63);
+$color-menu-item: rgb(29, 153, 157);
+$color-menu-hover-item: rgb(10, 110, 100);
+$color-menu-text: rgb(156, 250, 242);
+$color-menu-hover-text: rgb(240, 209, 56);
+$color-main: rgb(243, 221, 161);
+$color-table-title: rgb(242, 212, 102);
+$color-table-item: rgb(225, 205, 134);
+
+.wrapper {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "footer footer";
+    grid-template-rows: 0.8fr 12fr 0.5fr;
+    grid-template-columns: 1fr 5fr;
+    height: 100vh;
+    font: 1.7rem Arial, Helvetica, sans-serif;
+}
+
+#user-pageHeader {
+    grid-area: header;
+}
+
+#user-pageNav {
+    grid-area: nav;
+}
+
+#user-pageMain {
+    grid-area: main;
+}
+
+#user-pageFooter {
+    grid-area: footer;
+}
+
+.navigation {
+    background-color: $color-menu-dark;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 1.0rem;
+    font-size: 1.7rem;
+}
+
+.menu__item {
+    cursor: pointer;
+    border: .8rem $color-menu-dark solid;
+    background-color: $color-menu-item;
+}
+
+.menu__title {
+    color: $color-menu-text;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1.2rem;
+    line-height: 2.0rem;
+    display: block;
+}
+
+.menu__item:hover,
+.menu__title:focus {
+    background-color: $color-menu-hover-item;
+}
+
+.menu__item:hover .menu__title,
+.menu__title:focus {
+    color: $color-menu-hover-text;
+}
+
+.main {
+    background-color: $color-main;
+    font-size: 1.5rem;
+    padding: 1.4rem;
+}
+
+.main__td-title {
+    background: $color-table-title;
+    color: $color-menu-dark;
+    font-weight: 600;
+    padding: 1.4rem;
+    width: 15%;
+    vertical-align: top;
+}
+
+.main__td-text {
+    background: $color-table-item;
+    padding: 1.4rem;
+    width: 85%;
+}
+
+.header {
+    text-transform: uppercase;
+    font-size: 2.6rem;
+    color: $color-text-header;
+}
+
+.footer,
+.header {
+    background-color: $color-back-header;
+    font-weight: 700;
+    text-shadow: 3px 3px 10px $color-menu-dark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    font-size: 1.3rem;
+}
+
+.git,
+.menu__title {
+    text-decoration: none;
+}
+
+.git:hover,
+.git:focus {
+    color: white;
+}
+
+$one-px : 0.06em;
+$bp-small-0 : 10em;
+$bp-small-1 : 22em; //320
+$bp-small-2 : 30em; //480
+$bp-med-1 : 40em;
+$bp-med-2 : 45em; //768
+$bp-large-1 : 50em;
+$bp-large-2 : 55em;
+$bp-xl-1 : 60em; // 992
+$bp-xl-2 : 67em; // 
+$bp-xl-3 : 75em; // 1200
+
+$screen-resolution-range: (
+    $bp-small-0 : $bp-small-1 - $one-px,
+    $bp-small-1 : $bp-small-2 - $one-px,
+    $bp-small-2 : $bp-med-1 - $one-px,
+    $bp-med-1 : $bp-med-2 - $one-px,
+    $bp-med-2 : $bp-large-1 - $one-px,
+    $bp-large-1 : $bp-large-2 - $one-px,
+    $bp-large-2 : $bp-xl-1 - $one-px,
+    $bp-xl-1 : $bp-xl-2 - $one-px,
+    $bp-xl-2 : $bp-xl-3 - $one-px,
+    $bp-xl-3 : $bp-xl-3 + $bp-xl-3,    
+);
+
+@mixin html-font ($font-size) {
+    html {
+        font-size: $font-size;
+    }
+}
+
+@each $min-width,
+$max-width in $screen-resolution-range {
+    @media all and (min-width: $min-width) and (max-width: $max-width) {
+        @include html-font (calc($min-width/ 100));
+    }
+}
