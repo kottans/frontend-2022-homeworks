@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FriendsApp</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script defer type="module" src="./js/app.js"></script>
+</head>
+
+<body>
+  <header>
+    <a href="#" class="header__logo"><span>Friends</span>
+      <span>APP</span></a>
+  </header>
+  <aside id="filter__menu" class="filter__menu">
+    <form class="filter__form">
+      <section class="entry__field">
+        <h3 class="filter__title">Filter by</h3>
+        <input type="text" class="name__filter" placeholder="Enter Name">
+        <select name="filter__method" id="filter__method">
+          <option value="name">Strict: Name</option>
+          <option value="surname">Strict: Surname</option>
+          <option value="extended" selected>Extended: Firstname + Surname</option>
+        </select>
+        <input type="number" placeholder="Enter Age" class="age__filter__by__number">
+        <button type="reset" class="reset__filter__btn">RESET</button>
+      </section>
+      <section class="filter__btns">
+        <div class="filter__alphabet">
+          <h4 class="filter__title">Alphabet:</h4>
+          <div class="filter__wrap">
+            <input type="radio" id="alphabet" name="sort" class="alphabet__sort" value="alphabet" checked>
+            <label for="alphabet" class="alphabet__label">
+              <i class="filter__icon"><img src="./img/sort_az.png" alt=""></i>
+            </label>
+            <input type="radio" id="alphabet__reverse" name="sort" class="alphabet__sort__reverse"
+              value="alphabet__reverse">
+            <label for="alphabet__reverse" class="alphabet__label">
+              <i class="filter__icon"><img src="./img/sort_za.png" alt=""></i>
+            </label>
+          </div>
+        </div>
+        <div class="filter__age">
+          <h4 class="filter__title">Age:</h4>
+          <div class="filter__wrap">
+            <input type="radio" id="age__increase" name="sort" class="age__sort__increase" value="increase">
+            <label for="age__increase" class="age__label">
+              <i class="filter__icon"><img src="./img/increase.png" alt=""></i>
+            </label>
+            <input type="radio" id="age__decrease" name="sort" class="age__sort__decrease" value="decrease">
+            <label for="age__decrease" class="age__label">
+              <i class="filter__icon"><img src="./img/decrease.png" alt=""></i>
+            </label>
+          </div>
+        </div>
+        <div class="filter__gender">
+          <h4 class="filter__title">Gender:</h4>
+          <div class="filter__wrap">
+            <input type="radio" id="gender__male" name="gender__filter" class="gender__filter__male" value="male">
+            <label for="gender__male" class="gender__label">
+              <i class="filter__icon"><img src="./img/man.png" alt=""></i>
+            </label>
+            <input type="radio" id="gender__female" name="gender__filter" class="gender__filter__female" value="female">
+            <label for="gender__female" class="gender__label">
+              <i class="filter__icon"><img src="./img/woman.png" alt=""></i>
+            </label>
+            <input type="radio" id="gender__all" name="gender__filter" class="gender__filter__all" value="all" checked>
+            <label for="gender__all" class="gender__label">
+              <i class="filter__icon"><img src="./img/all.png" alt=""></i>
+            </label>
+          </div>
+        </div>
+      </section>
+    </form>
+    <button class="filter__btn show__filter__btn hide__btn">
+      <span class="filter__btn__text">S</span>
+      <span class="filter__btn__text">H</span>
+      <span class="filter__btn__text">O</span>
+      <span class="filter__btn__text">W</span>
+      <br>
+      <br>
+      <span class="filter__btn__text">F</span>
+      <span class="filter__btn__text">I</span>
+      <span class="filter__btn__text">L</span>
+      <span class="filter__btn__text">T</span>
+      <span class="filter__btn__text">E</span>
+      <span class="filter__btn__text">R</span>
+    </button>
+    <button class="filter__btn hide__filter__btn">
+      <span class="filter__btn__text">H</span>
+      <span class="filter__btn__text">I</span>
+      <span class="filter__btn__text">D</span>
+      <span class="filter__btn__text">E</span>
+      <br>
+      <br>
+      <span class="filter__btn__text">F</span>
+      <span class="filter__btn__text">I</span>
+      <span class="filter__btn__text">L</span>
+      <span class="filter__btn__text">T</span>
+      <span class="filter__btn__text">E</span>
+      <span class="filter__btn__text">R</span>
+    </button>
+  </aside>
+  <div class="container">
+    <div class="btns__area">
+      <button class="friend__btn all__persons__btn select__btn">
+        All People
+      </button>
+      <button class="friend__btn my__friends__btn">My Friends</button>
+    </div>
+    <article class="detailed__person__info hide__person__info">
+      <img src="#" alt="" class="detailed__photo">
+      <h2 class="detailed__name"></h2>
+      <div class="text__section">
+        <p class="detailed__age detailed__text__content"></p>
+        <p class="detailed__date detailed__text__content"></p>
+        <p class="detailed__gender detailed__text__content">
+        <p class="detailed__nation detailed__text__content"></p>
+        <address>
+          <div><strong>Phone: </strong><a href="#" class="detailed__phone__number detailed__text__content"></a></div>
+          <div><strong>Email: </strong><a href="#" class="detailed__email detailed__text__content"></a></div>
+          <p class="detailed__location detailed__text__content"></p>
+        </address>
+      </div>
+      <div class="detailed__btn__area">
+        <button class="friend__btn add__friend">
+          <img src="./img/friends__ico/add__friends.png" alt="">
+        </button>
+        <button class="friend__btn delete__friend hide__btn">
+          <img src="./img/friends__ico/delete_friends.png" alt="">
+        </button>
+      </div>
+      <i class="detailed__icon__infriends hide__btn"><img src="./img/friends__ico/in__friends__bigIco.png" alt=""
+          class="detailed__icon__img"></i>
+    </article>
+    <main class="app__content">
+      <div id="preloader" class="visible">
+        <div class="loader"></div>
+      </div>
+      <ul class="person__list"></ul>
+      <ul class="page__list"></ul>
+    </main>
+  </div>
+  <dialog class="error">
+    <h4 class="error__title">Error</h4>
+    <p class="error__msg">
+      Repeat the request?
+    </p>
+    <div class="btn__area">
+      <button class="error__btn" value="repeat">Repeat</button>
+      <button class="error__btn" value="cancel">Cancel</button>
+    </div>
+  </dialog>
+  <footer>
+    <p>&copy; by OlexiyDobroskok, 2022</p>
+  </footer>
+</body>
+
+</html>
