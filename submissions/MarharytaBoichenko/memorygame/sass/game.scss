@@ -1,0 +1,260 @@
+$primaryColor: #02114f;
+$mainFont: "Nunito Sans", sans-serif;
+$bcgColor: #30c5f7;
+$bcgMenuColor: #ffffff;
+$btnColor: #f9d553;
+
+body {
+  min-height: 100%;
+  font-family: $mainFont;
+  font-size: 16px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  background-color: $bcgColor;
+  color: $primaryColor;
+}
+
+.list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  row-gap: 15px;
+  column-gap: 15px;
+  justify-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  user-select: none;
+}
+
+.cards__item {
+  box-shadow: 10px 10px 10px 5px rgba(17, 45, 158, 0.63);
+}
+
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card.open .flipper {
+  transform: rotateY(180deg);
+}
+
+.open {
+  pointer-events: none;
+}
+
+.flip-card,
+.cards__item--front,
+.cards__item--back {
+  width: 95px;
+  height: 95px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.flipper {
+  transition: 0.3s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.cards__item--front,
+.cards__item--back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+.cards__item--front {
+  background-image: url("../images/yellow.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 99;
+  cursor: pointer;
+}
+
+.cards__item--back {
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
+
+.cards__image {
+  width: 95px;
+  height: 95px;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.instruction,
+.congrats {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+}
+
+.congrats__text,
+.instruction__text {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 30%;
+}
+
+.restart,
+.instruction__button {
+  width: 100px;
+  height: 30px;
+  background-color: $btnColor;
+  border: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.restart:hover,
+.restart:focus,
+.instruction__button:hover,
+.instruction__button:focus {
+  background-color: #efe0ab;
+}
+
+.hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.congrats {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (orientation: landscape) {
+  .title {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .cards {
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .congrats__text,
+  .instruction__text {
+    margin-bottom: 5px;
+    margin-top: 10%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cards {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .flip-card,
+  .cards__item--front,
+  .cards__item--back {
+    width: 110px;
+    height: 110px;
+  }
+
+  .cards__image {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+  }
+
+  .instruction,
+  .congrats {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .congrats__text,
+  .instruction__text {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .restart,
+  .instruction__button {
+    width: 120px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .cards {
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  .title {
+    font-size: 4rem;
+  }
+
+  .flip-card,
+  .cards__item--front,
+  .cards__item--back {
+    width: 150px;
+    height: 150px;
+  }
+
+  .cards__image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .instruction,
+  .congrats {
+    display: flex;
+    width: 800px;
+    height: 800px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .congrats__text,
+  .instruction__text {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .restart,
+  .instruction__button {
+    width: 120px;
+    height: 50px;
+  }
+}
