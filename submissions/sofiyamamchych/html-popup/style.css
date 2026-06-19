@@ -1,0 +1,233 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	color: #454545;
+}
+
+a {
+	text-decoration: none;
+	color: #454545;
+	transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+	opacity: 0.8;
+	transition: all 0.3s ease-in-out;
+}
+
+.relative {
+	position: relative;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 0 15px;
+	max-width: 990px;
+}
+
+header {
+	display: flex;
+	flex-flow: wrap column;
+	justify-content: center;
+	align-items: center;
+	padding: 40px 0;
+}
+
+.logo {
+	margin-bottom: 36px;
+	display: block;
+}
+
+.logo:hover {
+	transform: scale(1.05);
+	transition: all 0.2s ease-in-out;
+}
+
+nav {
+	width: 100%;
+	max-width: 320px;
+}
+
+header nav ol.navigation {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.nav-link {
+	margin: 0 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav-link:last-child,.nav-link:first-child {
+	margin: 0;
+}
+
+.nav-link > a {
+	padding: 10px;
+	display: flex;
+	border-radius: 20px;
+	box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+        			inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link > a:hover, .dropdown-trigger:hover {
+	box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-trigger {
+	position: relative;
+	border-radius: 20px;
+	border-radius: 20px;
+	box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+        			inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-trigger .label.main img {
+	width: 38px;
+	padding: 10px;
+	box-sizing: content-box;
+	position: relative;
+	top: 2px;
+}
+
+.dropdown {
+	padding: 20px;
+	border: 1px solid #454545;
+	position: absolute;
+	top: 75px;
+	left: -125px;
+	width: 300px;
+	background-color: #fff;
+	border-radius: 4px;
+	display: none;
+	height: 550px;
+	overflow-y: scroll;
+}
+
+.dropdown::-webkit-scrollbar {
+  visibility: hidden;
+}
+
+.dropdown ol {
+	list-style: none;
+	display: flex;
+	flex-flow: wrap row;
+	margin: 0;
+	padding: 0;
+	justify-content: flex-start;
+}
+
+.dropdown ol li {
+	width: calc(33.33% - 16px);
+	margin: 8px;
+	margin-bottom: 10px;
+}
+
+.dropdown ol li a {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 16px;
+	padding: 10px;
+}
+
+.dropdown ol li a:hover {
+	background-color: #FFEF00;
+}
+
+.dropdown ol li img {
+	width: 30px;
+	margin-bottom: 10px;
+}
+
+.label.more {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 200px;
+	margin: 0px auto;
+	border: 0;
+	background-color: transparent;
+	font-size: 16px;
+	padding: 10px 30px;
+	border: 1px solid;
+	border-radius: 20px;
+	color: #454545;
+}
+
+.more img {
+	width: 30px;
+	margin-right: 10px;
+}
+
+.dropdown ol.main-list {
+	margin-bottom: 20px;	
+}
+
+.dropdown ol.more-list {
+	display: none;
+}
+
+/*************** Dropdowns with checkboxes ****************/
+
+input[type=checkbox].checkbox-hidden {
+  /*display: none;*/
+  appearance: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.label {
+	display: block;
+	cursor: pointer;
+}
+
+#dropdown-trigger:checked ~ .dropdown {
+	display: block;
+}
+
+#morelink:checked ~ .more-list {
+	display: flex;
+	margin-top: 20px;
+	position: relative;
+	z-index: 10;
+}
+
+#morelink:hover ~ label {
+	background-color: #FFEF00;
+}
+
+/**********************************************************/
+
+@media (min-width: 600px) {
+	header {
+		flex-flow: wrap row;
+		justify-content: space-between;
+	}
+
+	.logo {
+		margin-bottom: 0;
+	}
+
+	.dropdown {
+		padding: 40px;
+		left: -216px;
+		width: 400px;
+	}
+}
+
