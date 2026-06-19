@@ -1,0 +1,23 @@
+.error {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  background: rgba(255, 255, 255, 50%);
+}
+
+.error__message {
+  background: var(--color-error);
+  color: var(--color-light);
+  font-size: 3vh;
+  padding: 3vh 5vh;
+  text-align: center;
+  margin: 0 30px;
+  border-radius: 10px;
+  font-weight: 700;
+}
