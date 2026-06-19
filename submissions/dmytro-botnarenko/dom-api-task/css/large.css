@@ -1,0 +1,128 @@
+@media screen and (min-width: 1025px) {
+  /* ------------SWITCHER--------------- */
+  .switcher {
+    width: 3%;
+    top: 4%;
+    left: 2%;
+  }
+  /* ------------MAIN--------------- */
+  .main__info {
+    width: 75%;
+  }
+  .main__info__name {
+    font-size: 2.5rem;
+    padding: 20px 0;
+  }
+  .main__info__personage {
+    flex-direction: row;
+    width: 100%;
+  }
+  .main__info__figure {
+    max-width: 30%;
+  }
+  .main__info__figure__caption {
+    padding: 10px 0 0 0;
+  }
+  .main__info__personage table {
+    width: 50%;
+    height: 70%;
+  }
+  .main__info__personage table caption {
+    padding-bottom: 20px;
+  }
+  .main__info__text {
+    column-count: 2;
+    padding: 2% 2% 0 0;
+  }
+  /* ------------NAVIGATION--------------- */
+  .main__navigation {
+    width: 25%;
+  }
+  .main__navigation__menu__container {
+    padding: 3%;
+  }
+  .main__navigation__image {
+    border-radius: 50%;
+    max-width: 40%;
+    padding-bottom: 5%;
+  }
+  .main__navigation__menu__list {
+    border-radius: 3%;
+  }
+  .main__navigation__menu__list__link {
+    font-size: 1.4em;
+    padding: 2% 0;
+  }
+  .main__navigation__menu h2,
+  .main__navigation__menu__list__link {
+    margin-bottom: 3%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .main__info__text {
+    padding-bottom: 10px;
+  }
+  .main__info__strip {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: 20px;
+    justify-content: space-around;
+  }
+  .main__info__strip li {
+    text-align: center;
+  }
+  .main__info__strip__link {
+    border-radius: 3px;
+    box-shadow: rgb(156, 15, 2) 0px 0px 0px 3px, 
+                rgb(244, 165, 148) 0px 0px 0px 6px, 
+                  rgb(156, 15, 2) 0px 0px 0px 9px;
+    transition: background-color 0.55s;
+  }
+  .main__info__strip__link:hover {
+    background-color: rgb(156, 15, 2);
+  }
+  .main__info__strip__link__image {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-height: 900px) {
+  .main__info__figure__image {
+    max-height: 370px;
+  }
+  .main__info__strip__link__image {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1025px) and (min-height: 1200px) {
+  .main__navigation {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 3440px) {
+  body {
+    font-size: calc(14px + 0.39vw);
+    line-height: calc(20px + 0.39vw);
+  }
+  .main__info__personage {
+    flex-grow: 1;
+  }
+  .main__info__figure__image {
+    max-height: 600px;
+  }
+  .main__info__text {
+    align-self: center;
+    column-count: 2;
+    column-gap: 3rem;
+    width: 70%;
+  }
+  .main__info__strip {
+    margin-top: 50px;
+  }
+  .main__info__strip__link__image {
+    width: 80%;
+  }
+}
