@@ -1,0 +1,101 @@
+* {
+    font-family: Jost, Helvetica Neue, Arial, sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    color: #1a0d00;
+}
+
+h1, h2, h3, ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menuItem {
+    font-size: 20px;
+    padding: 5px 12px;
+    background-color: #fff2e6;
+    border: 1px dashed #3f3f3f;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.menuItem:hover {
+    color: #804000;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeCatImg {
+    height: 150px;
+}
+
+.mainTitle {
+    width: 200px;
+    font-size: 24px;
+}
+
+.contentContainer {
+    display: flex;
+    gap: 0 40px;
+    margin-top: 20px;
+}
+
+.leftBar {
+    flex: 0 0 220px;
+}
+
+.stickySideBar {
+    position: sticky;
+    top: 20px;
+}
+
+.content {
+    padding-right: 30px;
+    font-size: 16px;
+}
+
+@media (max-width: 500px) {
+    .homeCatImg {
+        height: 125px;
+    }
+
+    .mainTitle {
+        font-size: 20px;
+        width: 168px;
+    }
+    
+    .leftBar {
+        flex: 0 0 140px;
+    }
+    
+    .menuItem, .content {
+        font-size: 15px;
+    }
+    
+    .contentContainer {
+        gap: 0 15px;
+    }
+    
+    .container {
+        padding: 0 7px;
+    }
+}
