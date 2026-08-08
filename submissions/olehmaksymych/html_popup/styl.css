@@ -1,0 +1,182 @@
+
+:root {
+  --green: #27ae60;
+  --black: #192a56;
+  --light-color: #666;
+  --picture-size: 30px;
+  --border-radious: 3px;
+}
+
+* {
+  margin: 0; padding: 0;
+  box-sizing:border-box;
+  text-decoration: none;
+  outline: none; 
+  border:none;
+  transition: all .2s linear; 
+}
+
+
+
+.header_menu  a.navbar.active,
+.header_menu a.navbar:hover{
+    color: rgb(255, 255, 255);
+    border-radius: var(--border-radious);
+    background: var(--green);
+}
+
+.navbar{
+  color:aqua;
+  margin-left: 5px ;
+}
+
+.image_item{
+  height: var(--picture-size);
+  width: var(--picture-size);
+  border-radius: var(--border-radious);
+}
+
+#popup_icon2{
+  width: var(--picture-size);
+  height: var(--picture-size);
+  margin-top: 1px;
+  margin-left: 40px;
+  margin-right: 35px;
+  border: 2px solid var(--black);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+body {
+  width:100%;
+  background-color: rgb(57, 58, 61);
+}
+ 
+header{
+  position: fixed;
+  top:0; left:0; right:0;
+  background: rgb(12, 11, 87);
+  padding: 1rem 7%;
+  display: flex;
+  align-items: center;
+  justify-content:flex-end;
+  z-index:1;
+  box-shadow: 0.5rem 1.5rem rgba(0,0,0,.1);
+} 
+
+ .header_item {
+  /* the style for the header list items */
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.3rem 1.1rem;
+}  
+
+.container_item {
+  width: 80px;
+  height:65px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.hover_item{
+  color: #fff;
+  text-align: center;
+  font-size: 60%;
+  text-decoration: none;
+  outline: none;
+}
+
+
+li {
+  list-style: none; /*it will hide a toggle for the list item*/
+}
+
+.menu_container_items, /*the initial style for the popup containers (more and main) */
+.menu_container_items_more {
+  display: none;
+}
+
+
+.icon_for_thecheckbox{
+  -webkit-appearance: none;
+  /* position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0); */
+}
+
+
+.icon_for_thecheckbox_more {
+  /* -webkit-appearance: none; */
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+
+/*The style of the popup btn itself*/
+#popup_icon {
+  display: inline-block;
+  margin: 5px;
+  padding: 3px 3px;
+  border: 2px solid var(--black);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+/* Show hidden content when the checkbox is checked */
+#popup_box:checked ~ * .menu_container_items {
+  position: absolute;
+  top: 50px;
+  left: -35px;
+  width: 350%;
+  height: 500%;
+  display: flex;
+  flex-flow: wrap; 
+  justify-content: center;
+  gap: 5px;
+  background-color: darkgreen;
+  border: 2px solid var(--black);
+  border-radius: var(--border-radious);
+  align-items: center;
+  text-align: center;
+  overflow: scroll;
+  /* scrollbar-width: none; */
+  margin-bottom: 15px;
+}
+
+/* Style the button when the checkbox is checked */
+#popup_box:checked ~ * #popup_icon {
+  background-color: orangered;
+  border: 2px solid aqua;
+}
+
+#popup_box_more:checked ~ * #popup_icon2{
+  display: none;
+}
+
+#popup_box_more:checked ~ * .menu_container_items_more {
+  position: relative;
+  display: flex;
+  flex-flow: wrap; 
+  justify-content: center;
+  gap: 5px;
+  align-items: baseline;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+
+
+
+li.container_item:focus-within {
+  /* margin: 9px 5px; */
+  outline: 1.5px solid rgb(105, 97, 100);
+  border-radius: 3px;
+  background-color: rgb(54, 14, 197);
+  padding: 5px;
+  text-align: center;
+}
