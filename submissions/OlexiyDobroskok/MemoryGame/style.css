@@ -1,0 +1,695 @@
+* {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  background-color: black;
+  height: 100%;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #b9423c;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.text__info {
+  font-size: 24px;
+  font-weight: bold;
+  color: #b9423c;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.wrap {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 30px;
+}
+
+.card__list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 520px;
+  height: 530px;
+  padding: 10px;
+  margin: 30px 0px;
+  background-image: url(../img/Kottans.jpg);
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 17px 6px #fcf8f8;
+  -moz-box-shadow: 0px 0px 17px 6px #fcf8f8;
+  box-shadow: 0px 0px 17px 6px #fcf8f8;
+  perspective: 1000px;
+  position: relative;
+}
+
+.increased__z-index {
+  z-index: 10;
+}
+
+.card__item {
+  width: 125px;
+  height: 170px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.2s;
+}
+
+.card__item:active {
+  transform: scale(0.97);
+  transition: transform 0.5s;
+}
+
+.card__item:hover {
+  cursor: pointer;
+  transform: scale(1.05, 1.05);
+  transition: transform 0.5s;
+}
+
+.card__item.flipped {
+  transform: rotateY(180deg);
+}
+
+.closed__card,
+.opened__card {
+  width: 125px;
+  height: 170px;
+  position: absolute;
+  border: solid 10px black;
+  backface-visibility: hidden;
+}
+
+.opened__card {
+  transform: rotateY(180deg);
+}
+
+.disable__click {
+  pointer-events: none;
+}
+
+dialog {
+  display: block;
+  width: 550px;
+  height: 590px;
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  top: 70px;
+  left: 0px;
+  background-color: rgb(0, 0, 0);
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 47px 7px #b43c3c;
+  -moz-box-shadow: 0px 0px 47px 7px #b43c3c;
+  box-shadow: 0px 0px 47px 7px #b43c3c;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 1s;
+}
+
+dialog[open] {
+  opacity: 1;
+}
+
+dialog::backdrop {
+  background-color: rgba(170, 204, 219, 0.281);
+}
+
+.hide__popup {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.rules__title {
+  font-size: 24px;
+  color: #b9423c;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.rules__text {
+  font-size: 16px;
+  color: #b9423c;
+  padding: 15px 10px 0 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.rules__btn {
+  display: block;
+  margin: 30px auto;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #b9423c;
+  border: none;
+}
+
+.rules__btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+.rules__btn:active {
+  transform: scale(0.9);
+  transition: transform 0.5s;
+}
+
+.character__list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.character {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 180px;
+  padding-top: 10px;
+}
+
+.character__name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #b9423c;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.character__text {
+  font-size: 18px;
+  color: #b9423c;
+  padding-left: 10px;
+}
+
+.character__img {
+  width: 100px;
+  height: 150px;
+  padding-top: 10px;
+}
+
+.win__title {
+  font-size: 24px;
+  line-height: 1.5em;
+  font-weight: bolder;
+  color: #b9423c;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.win__text {
+  font-size: 24px;
+  font-weight: bolder;
+  color: #b9423c;
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 15px;
+}
+
+.win__img {
+  display: block;
+  width: 250px;
+  height: 350px;
+  margin: 0 auto;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 100px 8px #b43b3c;
+  -moz-box-shadow: 0px 0px 100px 8px #b43b3c;
+  box-shadow: 0px 0px 100px 8px #b43b3c;
+}
+
+.win__btn {
+  display: block;
+  margin: 30px auto;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #b9423c;
+  border: none;
+}
+
+.win__btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+.win__btn:active {
+  transform: scale(0.9);
+  transition: transform 0.5s;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  padding-top: 20px;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+footer,
+a {
+  color: #b9423c;
+  text-decoration: none;
+  padding-right: 30px;
+}
+
+@media (max-width: 576px) {
+  dialog {
+    width: 330px;
+    height: 485px;
+    top: 5px;
+  }
+
+  .rules__title {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .rules__text {
+    font-size: 14px;
+    margin: 0px;
+  }
+
+  .rules__btn {
+    margin: 0 auto;
+  }
+
+  .character__list {
+    margin-bottom: 60px;
+  }
+  .character {
+    width: 105px;
+  }
+
+  .character__name {
+    font-size: 14px;
+  }
+
+  .character__text {
+    font-size: 10px;
+  }
+
+  .character__img {
+    width: 50px;
+    height: 80px;
+    padding-top: 10px;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .text__info {
+    font-size: 16px;
+    padding-top: 5px;
+    margin-bottom: 7px;
+  }
+
+  .wrap {
+    margin: 0 15px;
+  }
+
+  .card__list {
+    width: 290px;
+    height: 460px;
+    justify-content: space-between;
+    margin: 0px;
+  }
+
+  .card__item {
+    width: 90px;
+    height: 110px;
+  }
+
+  .closed__card,
+  .opened__card {
+    width: 90px;
+    height: 110px;
+    border: solid 5px black;
+  }
+
+  .win__title {
+    font-size: 18px;
+    line-height: 1.2em;
+  }
+
+  .win__text {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .win__img {
+    width: 180px;
+    height: 280px;
+    margin: 0 auto 40px auto;
+    -webkit-box-shadow: 0px 0px 50px 8px #b43b3c;
+    -moz-box-shadow: 0px 0px 50px 8px #b43b3c;
+    box-shadow: 0px 0px 50px 8px #b43b3c;
+  }
+
+  .win__btn {
+    margin: 0 auto;
+  }
+
+  footer {
+    height: 15px;
+    padding-top: 10px;
+  }
+
+  footer,
+  a {
+    padding-right: 10px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  dialog {
+    width: 440px;
+    height: 490px;
+    top: 50px;
+  }
+
+  .rules__title {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .rules__text {
+    font-size: 16px;
+  }
+
+  .rules__btn {
+    margin: 0 auto;
+  }
+
+  .character {
+    width: 140px;
+  }
+
+  .character__list {
+    margin-bottom: 30px;
+  }
+
+  .character__name {
+    font-size: 14px;
+  }
+
+  .character__text {
+    font-size: 12px;
+  }
+
+  .character__img {
+    width: 80px;
+    height: 110px;
+    padding-top: 10px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .text__info {
+    font-size: 16px;
+    padding-top: 10px;
+  }
+
+  .wrap {
+    margin: 0 15px;
+  }
+
+  .card__list {
+    width: 440px;
+    height: 440px;
+    justify-content: space-between;
+  }
+
+  .card__item {
+    width: 105px;
+    height: 140px;
+  }
+
+  .closed__card,
+  .opened__card {
+    width: 105px;
+    height: 140px;
+    border: solid 5px black;
+  }
+
+  .win__title {
+    font-size: 18px;
+    line-height: 1.2em;
+  }
+
+  .win__text {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .win__img {
+    width: 200px;
+    height: 300px;
+    margin: 0 auto 30px auto;
+    -webkit-box-shadow: 0px 0px 50px 8px #b43b3c;
+    -moz-box-shadow: 0px 0px 50px 8px #b43b3c;
+    box-shadow: 0px 0px 50px 8px #b43b3c;
+  }
+
+  .win__btn {
+    margin: 0 auto;
+  }
+
+  footer {
+    height: 15px;
+    padding-top: 10px;
+  }
+
+  footer,
+  a {
+    padding-right: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  dialog {
+    width: 480px;
+    height: 530px;
+    top: 50px;
+  }
+
+  .rules__title {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .rules__text {
+    font-size: 16px;
+  }
+
+  .rules__btn {
+    margin: 0 auto;
+  }
+
+  .character {
+    width: 140px;
+  }
+
+  .character__list {
+    margin-bottom: 40px;
+  }
+
+  .character__name {
+    font-size: 14px;
+  }
+
+  .character__text {
+    font-size: 12px;
+  }
+
+  .character__img {
+    width: 80px;
+    height: 110px;
+    padding-top: 10px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .text__info {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .wrap {
+    margin: 0 15px;
+  }
+
+  .card__list {
+    width: 480px;
+    height: 470px;
+    justify-content: space-between;
+  }
+
+  .card__item {
+    width: 115px;
+    height: 150px;
+  }
+
+  .closed__card,
+  .opened__card {
+    width: 115px;
+    height: 150px;
+    border: solid 5px black;
+  }
+
+  .win__title {
+    font-size: 18px;
+    line-height: 1.2em;
+  }
+
+  .win__text {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .win__img {
+    width: 220px;
+    height: 320px;
+    margin: 0 auto 40px auto;
+    -webkit-box-shadow: 0px 0px 50px 8px #b43b3c;
+    -moz-box-shadow: 0px 0px 50px 8px #b43b3c;
+    box-shadow: 0px 0px 50px 8px #b43b3c;
+  }
+
+  .win__btn {
+    margin: 0 auto;
+  }
+
+  footer {
+    height: 15px;
+    padding-top: 10px;
+  }
+
+  footer,
+  a {
+    padding-right: 10px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 420px) {
+  .title {
+    display: none;
+  }
+
+  .text__info {
+    font-size: 12px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .card__list {
+    width: 500px;
+    height: 230px;
+    padding: 5px;
+    margin: 5px 0px;
+  }
+
+  .card__item {
+    width: 80px;
+    height: 110px;
+  }
+
+  .closed__card,
+  .opened__card {
+    width: 80px;
+    height: 110px;
+    border: solid 5px black;
+  }
+
+  dialog {
+    width: 500px;
+    height: 262px;
+    top: 5px;
+  }
+
+  .rules__title {
+    font-size: 14px;
+    padding-top: 5px;
+  }
+
+  .rules__text {
+    font-size: 12px;
+    padding: 5px 10px 0 10px;
+    margin-bottom: 5px;
+  }
+
+  .rules__btn {
+    width: 100px;
+    height: 25px;
+    font-size: 14px;
+  }
+
+  .character {
+    width: 80px;
+    padding-top: 10px;
+  }
+
+  .character__name {
+    font-size: 14px;
+  }
+
+  .character__text {
+    font-size: 8px;
+  }
+
+  .character__img {
+    width: 50px;
+    height: 80px;
+  }
+
+  .win__title {
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+
+  .win__text {
+    font-size: 14px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  .win__img {
+    width: 90px;
+    height: 120px;
+    padding-top: 0px;
+    margin-bottom: 20px;
+  }
+
+  .win__btn {
+    width: 100px;
+    height: 25px;
+    font-size: 14px;
+  }
+}
