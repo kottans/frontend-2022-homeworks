@@ -1,0 +1,305 @@
+html,
+body,
+main {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+#fruits {
+    list-style: none;
+    padding: 0;
+    font-size: 0;
+    max-width: 880px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-row-gap: 20px;
+    justify-items: center;
+}
+.cardBlockInside > div:first-child {
+    background-position: center center;
+    background-repeat: no-repeat;
+    transform: rotateY(180deg);
+}
+.fruit-1 {
+    background: url('./images/fruit-1.png');
+}
+.fruit-2 {
+    background: url('./images/fruit-2.png');
+}
+.fruit-3 {
+    background: url('./images/fruit-3.png');
+}
+.fruit-4 {
+    background: url('./images/fruit-4.png');
+}
+.fruit-5 {
+    background: url('./images/fruit-5.png');
+}
+.fruit-6 {
+    background: url('./images/fruit-6.png');
+}
+.fruit-7 {
+    background: url('./images/fruit-7.png');
+}
+.fruit-8 {
+    background: url('./images/fruit-8.png');
+}
+.fruit-9 {
+    background: url('./images/fruit-9.png');
+}
+.fruit-10 {
+    background: url('./images/fruit-10.png');
+}
+.fruit-11 {
+    background: url('./images/fruit-11.png');
+}
+.fruit-12 {
+    background: url('./images/fruit-12.png');
+}
+.fruit-13 {
+    background: url('./images/fruit-13.png');
+}
+.fruit-14 {
+    background: url('./images/fruit-14.png');
+}
+.fruit-15 {
+    background: url('./images/fruit-15.png');
+}
+.fruit-16 {
+    background: url('./images/fruit-16.png');
+}
+.fruit-17 {
+    background: url('./images/fruit-17.png');
+}
+.fruit-18 {
+    background: url('./images/fruit-18.png');
+}
+.fruit-19 {
+    background: url('./images/fruit-19.png');
+}
+.fruit-20 {
+    background: url('./images/fruit-20.png');
+}
+
+.card {
+    width: 180px;
+    height: 180px;
+    perspective: 1000px;
+    box-sizing: border-box;
+}
+.cardBlockInside {
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.flip {
+    transform: rotateY(180deg);
+}
+.cardBlockInside > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.back {
+    background-color: gray;
+}
+.same {
+    border: 1px solid lightgray;
+}
+
+/* media queries */
+
+/* for pc */
+@media screen and (max-width: 1300px) {
+    .card {
+        width: 160px;
+        height: 160px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .card {
+        width: 140px;
+        height: 140px;
+    }
+}
+@media screen and (max-width: 960px) {
+    #fruits {
+        max-width: 680px;
+    }
+    .card {
+        width: 110px;
+        height: 110px;
+    }
+}
+@media screen and (max-width: 800px) {
+    #fruits {
+        max-width: 400px;
+    }
+    .card {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media screen and (min-width: 2400px) {
+    #fruits {
+        max-width: 1600px;
+    }
+    .card {
+        width: 280px;
+        height: 280px;
+    }
+}
+@media screen and (min-width: 3800px) {
+    #fruits {
+        max-width: 2400px;
+        grid-row-gap: 100px;
+    }
+    .card {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+/* for mobile devices */
+@media only screen 
+and (min-width : 280px) 
+and (max-width : 670px) 
+and (orientation : portrait) {
+    #fruits {
+        grid-template-columns: repeat(2, 50%);
+        max-width: 600px;
+    }
+    .card {
+        width: 100px;
+        height: 100px;
+    }
+}
+@media only screen 
+and (min-width : 280px) 
+and (max-width : 670px) 
+and (orientation : landscape) {
+    #fruits {
+        grid-template-columns: repeat(4, 25%);
+        max-width: 800px;
+    }
+    .card {
+        width: 130px;
+        height: 130px;
+    }
+}
+@media only screen 
+and (min-width : 360px) 
+and (max-width : 740px) 
+and (orientation : portrait) {
+    #fruits {
+        grid-template-columns: repeat(2, 50%);
+        margin-top: 20px;
+    }
+    .card {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media only screen 
+and (min-width : 500px) 
+and (max-width : 760px) 
+and (orientation : portrait) {
+    #fruits {
+        grid-template-columns: repeat(3, 33%);
+        max-width: 740px;
+    }
+    .card {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+@media only screen 
+and (min-width : 380px) 
+and (max-width : 800px) 
+and (orientation : portrait) {
+    #fruits {
+        grid-template-columns: repeat(2, 50%);
+        max-width: 700px;
+    }
+    .card {
+        width: 280px;
+        height: 280px;
+    }
+}
+@media only screen 
+and (min-width : 400px) 
+and (max-width : 900px) 
+and (orientation : portrait) {
+    #fruits {
+        grid-template-columns: repeat(2, 50%);
+    }
+    .card {
+        width: 110px;
+        height: 110px;
+    }
+}
+@media only screen 
+and (min-width : 400px) 
+and (max-width : 920px) 
+and (orientation : landscape) {
+    #fruits {
+        grid-template-columns: repeat(4, 25%);
+        grid-row-gap: 10px;
+        margin-top: 10px;
+        max-width: 700px;
+    }
+    .card {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media only screen 
+and (min-width : 375px) 
+and (max-width : 670px) 
+and (orientation : portrait) {
+    #fruits {
+        grid-template-columns: repeat(3, 33.3%);
+    }
+    .card {
+        width: 80px;
+        height: 80px;
+    }
+}
+@media only screen 
+and (min-width : 375px) 
+and (max-width : 670px) 
+and (orientation : landscape) {
+    #fruits {
+        grid-template-columns: repeat(4, 25%);
+        margin: 10px auto;
+        max-width: 600px;
+    }
+    .card {
+        width: 100px;
+        height: 100px;
+    }
+}
+@media only screen 
+and (min-width : 760px) 
+and (max-width : 1200px) 
+and (orientation : portrait) {
+    #fruits {
+        grid-template-columns: repeat(3, 33%);
+        max-width: 800px;
+    }
+    .card {
+        width: 200px;
+        height: 200px;
+    }
+}
