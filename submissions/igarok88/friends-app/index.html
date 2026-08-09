@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="options-bar">
+        <div class="options-bar__option">
+          <input
+            class="options-bar__search"
+            type="text"
+            placeholder="search friends"
+          />
+        </div>
+
+        <div class="options-bar__option options-bar__sort-name-alphabet">
+          <h2 class="options-bar__title">Sort by alphabet:</h2>
+          <div class="options-bar__btn-container">
+            <div class="options-bar__btn" data-value="A-Z">A - Z</div>
+            <div class="options-bar__btn" data-value="Z-A">Z - A</div>
+            <div
+              class="options-bar__btn options-bar__btn_no-active"
+              data-value="reset"
+            >
+              Reset
+            </div>
+          </div>
+        </div>
+
+        <div class="options-bar__option options-bar__sort-age">
+          <h2 class="options-bar__title">Sort by age:</h2>
+          <div class="options-bar__btn-container">
+            <div class="options-bar__btn" data-value="up">↑</div>
+            <div class="options-bar__btn" data-value="down">↓</div>
+            <div
+              class="options-bar__btn options-bar__btn_no-active"
+              data-value="reset"
+            >
+              Reset
+            </div>
+          </div>
+        </div>
+
+        <div class="options-bar__option options-bar__filter-age">
+          <h2 class="options-bar__title">Filter by age:</h2>
+          <div class="options-bar__filter-age-container">
+            <div class="options-bar__ranges">
+              <input id="rangeMin" type="range" />
+              <input id="rangeMax" type="range" />
+            </div>
+            <div class="options-bar__inputs-age">
+              <div class="options-bar__input-age-container">
+                <div class="options-bar__input-age-title">Min age:</div>
+                <input
+                  class="options-bar__input"
+                  type="text"
+                  id="inputMin"
+                  disabled
+                />
+              </div>
+              <div class="options-bar__input-age-container">
+                <div class="options-bar__input-age-title">Max age:</div>
+                <input
+                  class="options-bar__input"
+                  type="text"
+                  id="inputMax"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="options-bar__option options-bar__gender">
+          <h2 class="options-bar__title">Filter by gender:</h2>
+          <div class="options-bar__btn-container">
+            <div
+              class="options-bar__btn options-bar__btn_active"
+              data-value="all"
+            >
+              All
+            </div>
+            <div class="options-bar__btn" data-value="male">Male</div>
+            <div class="options-bar__btn" data-value="female">Female</div>
+          </div>
+        </div>
+
+        <div class="options-bar__option options-bar__pagination">
+          <h2 class="options-bar__title">
+            Users:&ensp;<span id="numberOfUsers"></span>
+          </h2>
+          <h2 class="options-bar__title">
+            <span id="currentPage"></span>&ensp;/&ensp;<span
+              id="totalPages"
+            ></span>
+          </h2>
+          <div class="options-bar__btn-container">
+            <div class="options-bar__btn" id="paginationLeft"><</div>
+            <div class="options-bar__btn" id="paginationRight">></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="user__container">
+        <div class="user__container-spiner">
+          <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
