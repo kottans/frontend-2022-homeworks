@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Friends</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital@1&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/friends.ico" type="image/png">
+    <link rel="stylesheet" href="css/null_style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="preloader" id="preloader">
+        <img src="./img/preloader.gif" alt="">
+    </div>
+    <div class="wrapper">
+        <header id="header" class="header">
+            <div id="header__btn" class="header__btn">
+                <span></span>
+            </div>
+            <div class="header__text">Friends App</div>
+        </header>
+        <nav id="nav" class="nav">
+            <form class="nav__form" id="nav__form" name="nav" action="#" method="get">
+                <span class="nav__filter">Filter by</span>
+                <div class="nav__input" id="nav__input">
+                    <span class="nav__settings">Name</span>
+                    <input class="nav__input-username" id="username" type="text" name="username" value=""
+                        placeholder="John Smit">
+                </div>
+                <div class="nav__checkbox" id="nav__checkbox">
+                    <span class="nav__settings">Nationality</span>
+                    <div class="nav__checkbox-list">
+                        <label class="nav__checkbox-label">
+                            <input class="nav__checkbox-input" type="checkbox" name="UA">
+                            <span class="nav__checkbox-field"></span>
+                            <span class="nav__checkbox-text">UA</span>
+                        </label>
+                        <label class="nav__checkbox-label">
+                            <input class="nav__checkbox-input" type="checkbox" name="US">
+                            <span class="nav__checkbox-field"></span>
+                            <span class="nav__checkbox-text">US</span>
+                        </label>
+                        <label class="nav__checkbox-label">
+                            <input class="nav__checkbox-input" type="checkbox" name="DK">
+                            <span class="nav__checkbox-field"></span>
+                            <span class="nav__checkbox-text">DK</span>
+                        </label>
+                        <label class="nav__checkbox-label">
+                            <input class="nav__checkbox-input" type="checkbox" name="FR">
+                            <span class="nav__checkbox-field"></span>
+                            <span class="nav__checkbox-text">FR</span>
+                        </label>
+                        <label class="nav__checkbox-label">
+                            <input class="nav__checkbox-input" type="checkbox" name="GB">
+                            <span class="nav__checkbox-field"></span>
+                            <span class="nav__checkbox-text">GB</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav__radio" id="nav__radio-gender">
+                    <span class="nav__settings">Gender</span>
+                    <div class="nav__radio-gender">
+                        <label class="nav__radio-label">
+                            <input class="nav__radio-input" type="radio" name="gender" value="all">
+                            <span class="nav__radio-field"></span>
+                            <span class="nav__radio-text">All</span>
+                        </label>
+                        <label class="nav__radio-label">
+                            <input class="nav__radio-input" type="radio" name="gender" value="male">
+                            <span class="nav__radio-field"></span>
+                            <span class="nav__radio-text">Male</span>
+                        </label>
+                        <label class="nav__radio-label">
+                            <input class="nav__radio-input" type="radio" name="gender" value="female">
+                            <span class="nav__radio-field"></span>
+                            <span class="nav__radio-text">Female</span>
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <span class="nav__sort">Sort</span>
+                <div class="nav__radio-sort" id="nav__radio-sort">
+                    <div class="nav__radio-sort">
+                        <label class="nav__radio-label">
+                            <input class="nav__radio-input" type="radio" name="sort" value="ageAZ">
+                            <span class="nav__radio-field"></span>
+                            <span class="nav__radio-text">Age min</span>
+                        </label>
+                        <label class="nav__radio-label">
+                            <input class="nav__radio-input" type="radio" name="sort" value="ageZA">
+                            <span class="nav__radio-field"></span>
+                            <span class="nav__radio-text">Age max</span>
+                        </label>
+                        <label class="nav__radio-label">
+                            <input class="nav__radio-input" type="radio" name="sort" value="nameAZ">
+                            <span class="nav__radio-field"></span>
+                            <span class="nav__radio-text">Name A-Z</span>
+                        </label>
+                        <label class="nav__radio-label">
+                            <input class="nav__radio-input" type="radio" name="sort" value="nameZA">
+                            <span class="nav__radio-field"></span>
+                            <span class="nav__radio-text">Name Z-A</span>
+                        </label>
+                        <label class="nav__radio-label">
+                            <input class="nav__radio-input" type="radio" name="sort" value="unsorted">
+                            <span class="nav__radio-field"></span>
+                            <span class="nav__radio-text">Unsorted</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav__buttons">
+                    <button class="nav__form-ok" id="nav__form-ok" type="button">Ok</button>
+                    <button class="nav__form-reset" id="nav__form-reset" type="button">Reset</button>
+                </div>
+            </form>
+        </nav>
+        <main id="main" class="main">
+            <div id="main__content" class="main__content"></div>
+            <div class="main__pagination" id="main__pagination"></div>
+        </main>
+    </div>
+    <script src="js/friends_data.js"></script>
+    <script src="js/friends.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/pagination.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
