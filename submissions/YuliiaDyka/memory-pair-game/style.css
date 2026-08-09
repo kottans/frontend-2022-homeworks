@@ -1,0 +1,342 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+body {
+    margin: auto;
+    font-family: 'Quicksand', sans-serif;
+    overflow: auto;
+    background: linear-gradient(
+        315deg,
+        rgba(101, 0, 94, 1) 3%,
+        rgba(60, 132, 206, 1) 38%,
+        rgba(255, 25, 25, 1) 98%
+    );
+    animation: gradient 20s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    user-select: none;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.header {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: rgba(247, 239, 250, 0.1);
+    box-shadow: 0 0 10px 1px rgba(122, 121, 121, 0.2);
+}
+
+.title {
+    color: white;
+}
+
+.header-img {
+    width: 40px;
+    margin: 10px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 60%;
+    margin: 0 auto;
+    height: 80px;
+}
+
+.collection {
+    display: flex;
+    width: calc(100% / 2);
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border-radius: 50px;
+    background: rgba(247, 239, 250, 0.1);
+    margin: 0 50px;
+    padding: 0 7px;
+}
+
+.collection::after {
+    content: "Your folded pairs will be here";
+    color: rgba(247, 239, 250, 0.5);
+    font-size: 13px;
+    position: absolute;
+    bottom: 0px;
+}
+
+.miniCard {
+    height: 25px;
+    width: 25px;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+}
+
+.score__value {
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.desc_score {   
+    color: white;
+    font-size: 20px;
+    margin-left: 10px;
+}
+  
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+.btn {
+    font-family: 'Quicksand', sans-serif;
+    width: 100px;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    background: rgba(247, 239, 250, 0.1);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: rgba(247, 239, 250, 0.2);
+}
+
+.btn:active {
+    background: rgba(247, 239, 250, 0.3);
+}
+
+.btn__red {
+    background: rgba(238, 83, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    to {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+}
+
+.game__field {
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    margin: 25px auto;
+    grid-template-columns: repeat(6, 120px);
+    grid-template-rows: repeat(2, 120px);
+    grid-gap: 10px;
+}
+
+.field__over {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    margin: 15px 0;
+}
+
+.game__over {
+    text-align: center;
+    line-height: 75px;
+    color: white;
+    font-size: 40px;
+    height: 150px;
+    width: 150px;
+    background: rgba(247, 239, 250, 0.1);
+    border-radius: 10px;
+    -webkit-animation: rotate-in-center 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: rotate-in-center 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}  
+
+@-webkit-keyframes rotate-in-center {
+    0% {
+      -webkit-transform: rotate(-360deg);
+              transform: rotate(-360deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+      opacity: 1;
+    }
+  }
+  @keyframes rotate-in-center {
+    0% {
+      -webkit-transform: rotate(-360deg);
+              transform: rotate(-360deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+      opacity: 1;
+    }
+}
+
+.card {
+    position: relative;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card__face.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.back__side,
+.front__side {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    left: 0;
+    top: 0;
+    transition: 0.2s;
+    backface-visibility: hidden;
+}
+
+.back__side {
+    transform: rotateY(180deg);
+}
+
+.front__side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(247, 239, 250, 0.1);
+    width: 120px;
+    height: 120px;
+    color: white;
+    border-radius: 20px;
+}
+
+.rotate180 {
+    transform: rotateY(180deg);
+}
+
+.rotate360 {
+    transform: rotateY(360deg);
+}
+
+.hidden {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+
+}
+
+.task__name {
+    color: white;
+    font-size: 10px;
+}
+
+
+/* tablet */
+
+@media only screen
+
+and (min-width: 768px)
+and (max-width: 1199px) {
+
+    .desc_score {
+        font-size: 15px;
+    }
+
+    .collection {
+        width: 100%;
+    }
+
+    .btn {
+        font-size: 15px;
+    }
+
+    .game__field {
+        margin-top: 40px;
+        grid-template-columns: repeat(6, 100px);
+        grid-template-rows: repeat(2, 100px);
+        grid-gap: 10px;
+    }
+}
+
+/* mobile */
+
+@media only screen
+
+and (min-width: 320px)
+and (max-width: 767px) {
+
+    .title {
+        font-size: 18px;
+    }
+
+    .menu {
+        display: block;
+        height: 100px;
+        width: 80%;
+    }
+
+    .desc_score {
+        font-size: 15px;
+    }
+
+    .btn {
+        font-size: 10px;
+        position: absolute;
+        top: 8px;
+        right: 0;
+    }
+
+    .collection {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+        width: calc(100% - 10px);
+    }
+
+    .collection::after {
+        bottom: -20px;
+        font-size: 12px;
+    }
+
+    .game__field {
+        margin-top: 40px;
+        grid-template-columns: repeat(3, 60px);
+        grid-template-rows: repeat(4, 60px);
+        grid-gap: 5px;
+    }
+
+    .miniCard {
+        height: 15px;
+        width: 15px;
+    }
+}
