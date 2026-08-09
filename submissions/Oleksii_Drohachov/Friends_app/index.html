@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="resetCss.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Friends App</title>
+  </head>
+  <body>
+    <div class="main__container">
+      <div class="header">
+        <h2 class="header__title">Friends App</h2>
+        <button class="open__filter__btn">
+          <img
+            src="icons/searching-a-person-svgrepo-com.svg"
+            class="open__filter__icon"
+            alt=""
+          />
+        </button>
+      </div>
+
+      <div class="content__container">
+        <div class="filter__container">
+          <label for="inputSearch" class="search__label"
+            >Searching for...</label
+          >
+          <input
+            type="search"
+            class="search__input"
+            id="inputSearch"
+            name="name"
+            placeholder="First name or last name..."
+          />
+
+          <h3 class="sorting__title">Sorting filters:</h3>
+
+          <form class="sorting__container">
+            <span class="span age__span">Age:</span>
+            <label
+              ><input
+                type="radio"
+                name="sorting"
+                value="elderSort"
+                class="icons elder"
+            /></label>
+            <label
+              ><input
+                type="radio"
+                name="sorting"
+                value="youngerSort"
+                class="icons younger"
+            /></label>
+
+            <span class="span alphabet__span">Alphabet:</span>
+            <label
+              ><input
+                type="radio"
+                name="sorting"
+                value="randomSort"
+                class="icons random"
+                checked="checked"
+            /></label>
+            <label
+              ><input
+                type="radio"
+                name="sorting"
+                value="ascendingSort"
+                class="icons a__z"
+            /></label>
+            <label
+              ><input
+                type="radio"
+                name="sorting"
+                value="descendingSort"
+                class="icons z__a"
+            /></label>
+
+            <span class="span gender__span">Gender:</span>
+            <label
+              ><input
+                type="radio"
+                name="filter"
+                value="randomGender"
+                checked="checked"
+                class="icons all__genders"
+            /></label>
+            <label
+              ><input
+                type="radio"
+                name="filter"
+                value="female"
+                class="icons female"
+            /></label>
+            <label
+              ><input
+                type="radio"
+                name="filter"
+                value="male"
+                class="icons male"
+            /></label>
+          </form>
+
+          <button class="apply__filters_btn">Reset filters</button>
+        </div>
+
+        <div class="cards__container"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
