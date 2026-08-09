@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends App</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" href="./img/favicon.png" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <aside class="aside">
+        <form class="form">
+          <fieldset class="fieldset fieldset-search">
+            <input
+              class="search form-input"
+              type="search"
+              name="search"
+              id="search"
+              placeholder="Enter name here..."
+            />
+          </fieldset>
+          <fieldset class="fieldset fieldset-sort">
+            <input
+              class="form-input"
+              type="radio"
+              name="sort-type"
+              id="name-ascending"
+              value="name-ascending"
+            />
+            <label class="form-label" for="name-ascending">A-Z</label
+            ><input
+              class="form-input"
+              type="radio"
+              name="sort-type"
+              id="name-descending"
+              value="name-descending"
+            />
+            <label class="form-label" for="name-descending"> Z-A</label>
+          </fieldset>
+          <fieldset class="fieldset fieldset-sort">
+            <input
+              class="form-input"
+              type="radio"
+              name="sort-type"
+              id="age-descending"
+              value="age-descending"
+            />
+            <label class="form-label" for="age-descending">Older</label>
+            <input
+              class="form-input"
+              type="radio"
+              name="sort-type"
+              id="age-ascending"
+              value="age-ascending"
+            />
+            <label class="form-label" for="age-ascending">Younger</label>
+          </fieldset>
+          <fieldset class="fieldset fieldset-filter">
+            <input
+              class="form-input"
+              type="radio"
+              name="gender"
+              id="all"
+              value="all"
+              checked
+            />
+            <label class="form-label" for="all">All</label>
+            <input
+              class="form-input"
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+            />
+            <label class="form-label" for="female">Female</label>
+            <input
+              class="form-input"
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+            />
+            <label class="form-label" for="male">Male</label>
+          </fieldset>
+
+          <button class="btn-reset" type="reset">Reset</button>
+        </form>
+      </aside>
+      <main class="main">
+        <ul class="cards-wrapper"></ul>
+      </main>
+    </div>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
