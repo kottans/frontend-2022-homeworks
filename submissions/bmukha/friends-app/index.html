@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/spinner.css" />
+    <title>Friends App</title>
+  </head>
+  <body>
+    <header class="header">
+      <img src="./img/bars-solid.svg" alt="" id="menu-button" />
+      <h1 class="title">
+        <a href="https://github.com/bmukha/friends-app">Friends App</a>
+      </h1>
+    </header>
+    <main id="content"></main>
+    <aside id="aside" class="hidden">
+      <div id="sort-and-filter">
+        <fieldset class="filter">
+          <legend>Filter:</legend>
+          <fieldset>
+            <legend>By gender:</legend>
+            <button
+              class="filter-gender-button is-pressed"
+              data-type="filter gender all"
+            >
+              <img
+                src="./img/male&female.svg"
+                alt=""
+                class="filter-gender-button-icon"
+              /></button
+            ><button
+              class="filter-gender-button"
+              data-type="filter gender male"
+            >
+              <img
+                src="./img/male.svg"
+                alt=""
+                class="filter-gender-button-icon"
+              /></button
+            ><button
+              class="filter-gender-button"
+              data-type="filter gender female"
+            >
+              <img
+                src="./img/female.svg"
+                alt=""
+                class="filter-gender-button-icon"
+              />
+            </button>
+          </fieldset>
+          <fieldset>
+            <legend>By age:</legend>
+            <label for="min-age-input">From:</label
+            ><input
+              type="number"
+              name="from"
+              id="min-age-input"
+              class="age-input"
+              min="0"
+            />
+            <label for="max-age-input">To:</label
+            ><input
+              type="number"
+              name="to"
+              id="max-age-input"
+              class="age-input"
+            />
+          </fieldset>
+          <fieldset>
+            <legend>By name:</legend>
+            <input
+              type="text"
+              id="name-input"
+              placeholder="Enter your prompt..."
+            />
+          </fieldset>
+        </fieldset>
+        <fieldset class="sort">
+          <legend>Sort:</legend>
+          <fieldset>
+            <legend>Initial:</legend>
+            <button class="sort-button is-pressed" data-type="sort initial">
+              <img src="./img/initial.svg" alt="" class="sort-button-icon" />
+            </button>
+          </fieldset>
+          <fieldset>
+            <legend>By name:</legend>
+            <button class="sort-button" data-type="sort name-ascending">
+              <img
+                src="./img/a-z.svg"
+                alt=""
+                class="sort-button-icon"
+              /></button
+            ><button class="sort-button" data-type="sort name-descending">
+              <img src="./img/z-a.svg" alt="" class="sort-button-icon" />
+            </button>
+          </fieldset>
+          <fieldset>
+            <legend>By age:</legend>
+            <button class="sort-button" data-type="sort age-ascending">
+              <img
+                src="./img/1-9.svg"
+                alt=""
+                class="sort-button-icon"
+              /></button
+            ><button class="sort-button" data-type="sort age-descending">
+              <img src="./img/9-1.svg" alt="" class="sort-button-icon" />
+            </button>
+          </fieldset>
+        </fieldset>
+        <fieldset>
+          <legend>Reset</legend>
+          <button id="reset-button" class="reset-button">RESET</button>
+        </fieldset>
+      </div>
+    </aside>
+    <footer class="footer">
+      <p>
+        Made by <a href="https://github.com/bmukha">Bohdan Mukha</a> for
+        <a href="https://kottans.org/">Kottans</a>
+      </p>
+    </footer>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
