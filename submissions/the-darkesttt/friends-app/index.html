@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="./img/favicon.webp" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="sort-bar">
+            <input type="checkbox" name="" id="sortBarCheck">
+            <div class="sort-bar__toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="sort-bar__inner">
+                <input class="sort-bar__search" type="text" placeholder="Enter user name here...">
+                <div class="sort-bar__gender">
+                    <p>Choose gender:</p>
+                    <div class="sort-bar__radio">
+                        <label>
+                            Male
+                            <input type="radio" name="gender" id="male" value="male">
+                        </label>
+                        <label>
+                            Female
+                            <input type="radio" name="gender" id="female" value="female">
+                        </label>
+                        <label>
+                            All
+                            <input type="radio" name="gender" id="all" value="all">
+                        </label>
+                    </div>
+                </div>
+                <div class="sort-bar__age">
+                    <p>Choose sort by age:</p>
+                    <div class="sort-bar__radio">
+                        <label>
+                            Age Up
+                            <input type="radio" name="age" id="ageUp" value="ageUp">
+                        </label>
+                        <label>
+                            Age Down
+                            <input type="radio" name="age" id="ageDown" value="ageDown">
+                        </label>
+                    </div>
+                </div>
+                <div class="sort-bar__alphabet">
+                    <p>Choose sort by alphabet:</p>
+                    <div class="sort-bar__radio">
+                        <label>
+                            A-Z
+                            <input type="radio" name="alphabet" id="AZ" value="AZ">
+                        </label>
+                        <label>
+                            Z-A
+                            <input type="radio" name="alphabet" id="ZA" value="ZA">
+                        </label>
+                    </div>
+                </div>
+                <button class="sort-bar__reset" value="reset">Reset</button>
+            </div>
+        </div>
+        <div class="content">
+            <ul class="users-list"></ul>
+            <ul class="pagination-list"></ul>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
