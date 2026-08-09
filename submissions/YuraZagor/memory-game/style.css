@@ -1,0 +1,102 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: beige;
+}
+.show--message{
+	position: absolute;
+	top: 50%;  
+	left: 50%;
+	transform: translateX(-50%);
+	transform: translate(-50%);
+
+	border: 2px solid grey;
+	max-width: 350px;
+	padding: 10px;
+	font-size: 200%;
+	text-align: center;
+	background-color: rgb(218, 216, 207);
+	user-select: none;
+}
+.hide--message {
+	display: none
+}
+
+.title, .subtitle {
+	padding: 15px;
+	text-align: center;
+	user-select: none;
+}
+
+.container {
+	max-width: 1000px;
+	margin: auto;
+	display: grid;
+	grid-template: repeat(3, 130px)/repeat(4, 150px);
+	justify-content: space-around;
+	gap: 5px;
+	padding: 10px;
+	box-shadow: 2px 2px 30px 2px rgb(56, 56, 54);
+	user-select: none;
+}
+
+.hidden{
+	visibility: hidden;
+}
+
+.card {
+	position: relative;
+	perspective: 200px;
+	transition: 0.7s;
+	transform-style: preserve-3d;
+}
+
+.open {
+	transform: rotateY(180deg);
+	transform-style: preserve-3d;
+	transition: 0.7s;
+}
+
+.front, .back {
+	position: absolute;
+	width: 150px;
+	height: 130px;
+	backface-visibility: hidden;
+}
+
+.front {
+	transform: rotateY(0deg);
+	object-fit: contain;
+}
+
+.back {
+	object-fit: contain;
+	transform: rotateY(180deg);
+}
+
+@media(max-width: 790px) {
+	.container {
+		grid-template: repeat(4, 109px)/repeat(3, 126px);
+	}
+	.front, .back {
+		position: absolute;
+		width: 126px;
+		height: 109px;	
+	}
+
+}
+@media(max-width: 450px) {
+	.container {
+		grid-template: repeat(4, 91px)/repeat(3, 105px);
+	}
+	.front, .back {
+		position: absolute;
+		width: 105px;
+		height: 91px;	
+	}
+	.title {
+		display: none;
+	}
+}
