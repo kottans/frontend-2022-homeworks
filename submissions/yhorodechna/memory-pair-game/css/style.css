@@ -1,0 +1,274 @@
+body {
+    background-color: #f6eee0;
+}
+.wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.header {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 0px 0px 10px 10px;
+    margin: 0px 0px 10px 0px;
+    background-color: #e4b7a0;
+}
+.header__title {
+    font-family: "Fredericka the Great", cursive;
+    padding: 10px;
+    user-select: none;
+}
+.main {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+}
+.main__game-board,
+.main__won-message {
+    margin: 0 auto;
+}
+.main__level {
+    font-family: "Fredericka the Great", cursive;
+    text-align: center;
+    margin: 0px 0px 10px 0px;
+    font-size: 20px;
+    user-select: none;
+}
+.main__won-message.hide {
+    display: none;
+}
+.won-message.hide {
+    display: none;
+}
+.main__level.hide {
+    display: none;
+}
+.main__game-board {
+    padding: 0px 20px 20px 20px;
+    height: auto;
+    border: 1px solid #000;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    background-color: #a45c40;
+}
+.flip-container {
+    perspective: 1000px;
+    margin: 8px;
+}
+.flip-container.active .flipper {
+    transform: rotateY(180deg);
+}
+.card,
+.flip-container,
+.front,
+.back {
+    width: 120px;
+    height: 160px;
+    user-select: none;
+}
+.card,
+.back__text {
+    font-family: "Special Elite", cursive;
+    font-size: 140px;
+    padding: 20px;
+    border: 1px solid #000;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 10px;
+}
+.card {
+    color: rgba(0, 0, 0, 0.443);
+    transition: all linear 0.3s;
+}
+.card:hover {
+    color: rgba(0, 0, 0);
+    transition: all linear 0.3s;
+}
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+.front,
+.back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #c38370;
+    border-radius: 10px;
+}
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+.back {
+    transform: rotateY(180deg);
+}
+.back__text {
+    background: url("../images/rainbow.jpeg");
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.flip-container.hidden .back {
+    opacity: 0;
+    transition: all linear 0.5s;
+}
+.flip-container.hidden .front {
+    opacity: 0;
+    transition: all linear 0.5s;
+}
+.main__won-message {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.won__message {
+    background-color: #a45c40be;
+    border: 1px solid #000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+}
+.won__level,
+.won__moves,
+.won__accuracy,
+.won__button-text {
+    font-family: "Fredericka the Great", cursive;
+    font-size: 20px;
+}
+.won__button {
+    background-color: #e4b7a0;
+    border-radius: 0px 0px 10px 10px;
+    width: 100%;
+    height: 40px;
+}
+.won__button:hover .won__button-text {
+    transition: all linear 0.3s;
+    font-size: 24px;
+}
+.won__button-text {
+    text-align: center;
+    transition: all linear 0.3s;
+}
+@media (min-width: 50px) {
+    .main{
+        width: 100%;
+    }
+    .card,
+    .flip-container,
+    .front,
+    .back {
+        width: 46px;
+        height: 60px;
+    }
+    .header__title {
+        font-size: 20px;
+    }
+    .card,
+    .back__text {
+        padding: 8px;
+        font-size: 50px;
+    }
+    .main__level {
+        font-size: 16px;
+    }
+    .won__level {
+        margin: 10px 0px 0px 0px;
+    }
+    .flip-container {
+        margin: 2px;
+    }
+}
+
+@media (min-width: 330px) {
+    .main{
+        width: 100%;
+    }
+    .card,
+    .flip-container,
+    .front,
+    .back {
+        width: 60px;
+        height: 80px;
+    }
+    .card,
+    .back__text {
+        padding: 10px;
+        font-size: 70px;
+    }
+    .main__level {
+        font-size: 16px;
+    }
+    .flip-container {
+        margin: 2px;
+    }
+}
+
+@media (min-width: 492px) {
+    .main{
+        width: 100%;
+    }
+    .card,
+    .flip-container,
+    .front,
+    .back {
+        width: 88px;
+        height: 110px;
+    }
+    .card,
+    .back__text {
+        font-size: 110px;
+    }
+    .main__level {
+        font-size: 16px;
+    }
+    .flip-container {
+        margin: 8px;
+    }
+}
+
+@media (min-width: 892px) {
+    .main{
+        width: 80%;
+    }
+    .card,
+    .flip-container,
+    .front,
+    .back {
+        width: 120px;
+        height: 160px;
+    }
+    .card,
+    .back__text {
+        padding: 20px;
+        font-size: 140px;
+    }
+    .header__title {
+        font-size: 28px;
+    }
+    .main__level {
+        font-size: 20px;
+    }
+    .flip-container {
+        margin: 8px;
+    }
+}
