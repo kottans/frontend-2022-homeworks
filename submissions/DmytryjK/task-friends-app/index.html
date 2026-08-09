@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="full-page">
+        <div class="container">
+            <header class="header">
+                <a class="header__logo-link" href="/">
+                    <img class="header__logo" src="img/logo/friendsapplogo.svg" alt="friendsapp logo">
+                </a>
+                <div class="header__search-block">
+                    <input class="header__search-input" type="text" placeholder="Search friend">
+                    <button class="header__search-submit">
+                        <svg class="header__search-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/>
+                            <path d="M11 2c4.968 0 9 4.032 9 9s-4.032 9-9 9-9-4.032-9-9 4.032-9 9-9zm0 16c3.867 0 7-3.133 7-7 0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7zm8.485.071l2.829 2.828-1.415 1.415-2.828-2.829 1.414-1.414z"/>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+            <main class="main">
+                <div class="wrapper">
+                    <nav class="navigation-top">
+                        <ul class="navigation-top__list">
+                            <li class="navigation-top__item">
+                                <button class="navigation-top__list-adaptive-burger">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                                    </svg>
+                                </button>
+                            </li>
+                            <li class="navigation-top__item">
+                                <label class="navigation-top__sort" for="navigation-top-sort">Sort by:</label>
+                                <select class="navigation-top__select" name="sort" id="navigation-top-sort">
+                                    <option value="A-Z">name from A to Z</option>
+                                    <option value="Z-A">name from Z to A</option>
+                                    <option value="1-99">age by ascending</option>
+                                    <option value="99-1">age by descending</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="content">
+                    </div>
+                </div>
+
+                <nav class="navigation-left">
+                    <div class="navigation-left__header">
+                        <svg class="navigation-left__img-filter" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                        </svg>
+                        <h3 class="navigation-left__title">Filters</h3>
+                        <button class="navigation-left__closebtn"></button>
+                    </div>
+                    <ul class="navigation-left__list">
+                        <li class="navigation-left__item navigation-left__item-sex">
+                            <span>SEX:</span>
+                            <button class="navigation-left__btn filterBySex navigation-left__btn-active" type="button" data-filter="male,female">both</button>
+                            <button class="navigation-left__btn filterBySex" type="button" data-filter="male">male</button>
+                            <button class="navigation-left__btn filterBySex" type="button" data-filter="female">female</button>
+                            <hr>
+                        </li>
+                        <li class="navigation-left__item navigation-left__item-age">
+                            <span>Age:</span>
+                            <div id="range-slider" class="navigation-left__item-age">
+                            </div>
+                            <div class="navigation-left__item-min-max-wrapper">
+                                <input class="navigation-left__item-minage range-parametres" id="first-input" min="1" max="100" type="number" inputmode="numeric">
+                                <input class="navigation-left__item-maxage range-parametres" id="second-input" min="1" max="100" type="number" inputmode="numeric">
+                            </div>
+                            <input type="submit" class="navigation-left__item-submit range-parametres" value="OK">
+                            <hr>
+                        </li>
+                        <li class="navigation-left__item">
+                            <button class="navigation-left__bottom-btn navigation-left__apply-btn">Apply</button>
+                            <button class="navigation-left__bottom-btn navigation-left__reset-btn">Reset filters</button>
+                        </li>
+                    </ul>
+                </nav>
+
+            </main>
+        </div>
+        <section class="preloader">
+            <div class="preloader__content">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+    </div>
+    <script src="js/bundle.js"></script>
+</body>
+</html>
