@@ -1,0 +1,280 @@
+@font-face {
+    font-family: FontFrom80x;
+    src: url("fonts/good_times_rg.otf") format("opentype");
+}
+
+@font-face {
+    font-family: AtarianSystem;
+    src: url("fonts/SF\ Atarian\ System.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: AtarianSystem_italic;
+    src: url("fonts/SF\ Atarian\ System\ Italic.ttf") format("opentype");
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url(images/bg_805x.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+    padding-bottom: 8px;
+}
+
+li { list-style: none; }
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* tv */
+
+.container {
+    height:560px;
+    width: 600px;
+    position: absolute;
+    margin: auto;
+    top: 30px;
+    left: 0px;
+    right: 0px;
+}
+
+.tv {
+    background-image: url(images/wood-texture.jpg);
+    background-size: cover;
+    height: 420px;
+    width: 540px;
+    position: absolute;
+    top: 115px;
+    left: 30px;
+    border-radius: 15px;
+}
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    background-image: url(images/wooden_btn.jpg);
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    position: absolute;
+    top: 200px;
+    right: 30px;
+    outline: none;
+    cursor: pointer;
+}
+
+.speaker {
+    position: absolute;
+    top: 100px;
+    right: 14px;
+}
+
+.speaker>div {
+    background-image: url(images/speaker-textur.jpg);
+    background-size: cover;
+    height: 12px;
+    width: 100px;
+    margin-bottom: 10px;
+    border-radius: 16px;
+}
+
+.slot {
+    background-color: black;
+    height: 12px;
+    width: 480px;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 5px;
+    left: 30px;
+}
+
+.antenna {
+    background-image: url(images/antenna_stand2.jpg);
+    height: 25px;
+    width: 120px;
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+    top: -428px;
+    left: 100px;
+}
+
+.a {
+    background-image: url(images/antenna_stand2.jpg);
+    height: 80px;
+    width: 12px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.a:nth-child(1) {
+    bottom: 70px;
+    left: 35px;
+    transform: rotate(-30deg);
+}
+
+.a:nth-child(2) {
+    bottom: 150px;
+    left: 75px;
+    transform: rotate(30deg);
+}
+
+.stand1,.stand2 {
+    background-image: url(images/antenna_stand2.jpg);
+    height: 20px;
+    width: 36px;
+    position: absolute;
+    border-radius: 0 0 15px 15px;
+    bottom: -25px;
+}
+
+.stand1 {
+    left: 20px;
+}
+
+.stand2 {
+    right: 20px;
+}
+
+input[type="checkbox"]::before{
+    z-index: 5;
+    content: '';
+    position: absolute;
+    height: 280px;
+    width: 340px;
+    bottom: -84px;
+    right: 90px;
+    border-radius: 5px;
+    border: 10px solid black;
+    background-size: 125px 140px;
+    background-image: linear-gradient(
+        to left,
+        #db9dff3c 25px,
+        #9dc4ff40 25px,
+        #9dc4ff4a 50px,
+        #fefc9342 50px,
+        #fefc9341 75px,
+        #fcc6704b 75px,
+        #fcc67044 100px,
+        #ff9ea843 100px,
+        #ff9ea83b 125px
+    );
+    animation: move 80s infinite linear;
+}
+@keyframes move {
+    100%{
+        background-position:  2000px 0;
+    }
+}
+input:checked[type="checkbox"]::before{
+    background-size: 100% 100%;
+    animation: none;
+    background-image: linear-gradient(
+        -45deg,
+        transparent 150px,
+        rgba(255, 255, 255, 0.144) 150px,
+        rgba(255, 255, 255, 0.028) 180px,
+        transparent 180px
+    );
+}
+
+.buttons-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 50px;
+    width: 360px;
+    position: absolute;
+    bottom: 15px;
+    left: 27px;
+}
+
+button {
+    height: 50px;
+    width: 40px;
+    background-image: url(images/wooden_btn.jpg);
+    cursor: pointer;
+    font-family: FontFrom80x;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.button:hover {
+    transition: 0.25s;
+    background-image: url(images/antenna_stand2.jpg);
+    color: whitesmoke;
+}
+
+/* movies description */
+
+.movies {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 540px;
+    position: absolute;
+    margin: auto;
+    top: 620px;
+    left: 0px;
+    right: 0px;
+}
+
+.title {
+    font-family: FontFrom80x;
+    font-size: 27px;
+    text-transform: uppercase;
+}
+
+.genre {
+    font-family: AtarianSystem;
+    font-size: 23px;
+}
+
+.year {
+    font-family: AtarianSystem;
+    font-size: 21px;
+}
+
+.duration {
+    font-family: AtarianSystem;
+    font-size: 21px;
+}
+
+.director {
+    font-family: AtarianSystem;
+    font-size: 21px;
+}
+
+.writers {
+    font-family: AtarianSystem;
+    font-size: 21px;
+}
+
+.stars {
+    font-family: AtarianSystem;
+    font-size: 21px;
+}
+
+.description {
+    font-family: AtarianSystem_italic;
+    font-size: 21px;
+}
+
+#image {
+    position: absolute;
+    background-color: black;
+    height: 280px;
+    width: 340px;
+    bottom: 68px;
+    right: 93px;
+    border-radius: 5px;
+    border: 10px solid #151515;
+    background-size: cover;
+}
