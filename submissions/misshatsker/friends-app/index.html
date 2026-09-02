@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/x-icon" href="./icons/heart.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>Friends App</title>
+</head>
+<body>
+    <div class="mainMenu active">
+        <button class="findBtn">Find a friend</button>
+    </div>
+    <div class="sectionDating">
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <form class="asideSearchForm">
+            <div class="filterBy">
+                <div class="searchField">
+                    <input class="searchInput" type="text" placeholder="Search by name ...">
+                    <button class="searchFieldButton" type="submit"></button>
+                </div>
+                <p class="searchText">Filter by:</p>
+            </div>
+            <div class="sortBy">
+                <p class="searchText">Sort by:</p>
+            </div>
+            <input type="reset" class="resetBtn" value="reset">
+        </form>
+        <div class="sectionUsers"></div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
