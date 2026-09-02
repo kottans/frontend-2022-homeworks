@@ -1,0 +1,166 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-image: url("img/main.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
+  margin-top: 25px;
+  margin-bottom: 0;
+  align-self: center;
+}
+
+.header p {
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  margin: auto;
+  display: flex;
+  height: 600px;
+  width: 750px;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory__card {
+  border: 3px solid rgb(64, 19, 106);
+  min-width: calc(25% - 10px);
+  min-height: calc(33.333% -10px);
+  position: relative;
+  margin: 5px;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 5px;
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+.memory__card:active {
+  transform: scale(.85);
+  transition: transform 0.4s;
+}
+
+.memory__card.flip {
+  transform: rotateY(180deg);
+}
+
+.game__win {
+  display: none;
+  z-index: 5;
+  position: absolute;
+  margin: 240px 120px;
+  width: 500px;
+  height: 150px;
+  background-color: rgb(59, 24, 112);
+  border: 2px solid white;
+}
+
+.win {
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  padding: 17px;
+}
+
+.button {
+  font-size: 29px;
+  color: rgb(243, 41, 172);
+  text-align: center;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.button:hover,
+.footer a:hover {
+  color: aqua;
+}
+
+.footer {
+  align-self: center;
+  margin-top: 25px;
+}
+
+.footer a {
+  font-size: 18px;
+  text-decoration: none;
+  color: rgb(64, 19, 106);
+  font-weight: 1000;
+  word-spacing: 5px;
+}
+
+@media (max-width:600px) {
+  html {
+    height: 100%;
+    display: flex;
+    align-items: center
+  }
+
+  .container {
+    height: 300px;
+    width: 350px;
+  }
+
+  .header {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .header p {
+    font-size: 14px;
+  }
+
+  .footer {
+    margin-top: 15px;
+  }
+
+  .footer a {
+    font-size: 14px;
+    color: white;
+  }
+
+  .game__win {
+    margin: 110px 10px;
+    width: 330px;
+    height: 70px;
+  }
+
+  .win {
+    font-size: 10px;
+    padding: 10px;
+  }
+
+  .button {
+    font-size: 12px;
+  }
+}
