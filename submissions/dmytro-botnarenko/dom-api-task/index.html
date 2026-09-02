@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/landscape.css">
+    <link rel="stylesheet" href="css/medium.css">
+    <link rel="stylesheet" href="css/large.css">
+    <link rel="stylesheet" href="css/modes.css">
+    <title>Tom&Jerry Dom project</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <button class="switcher" type="button">
+        <img
+          class="switcher__image"
+          src="img/moon-icon.svg"
+          alt="Light mode switcher"
+        >
+      </button>
+      <div class="main__container">
+        <main class="main__info">
+          <h1 class="main__info__name">Jerry</h1>
+          <div class="main__info__personage">
+            <figure class="main__info__figure">
+              <img
+                class="main__info__figure__image"
+                src="img/jerry_mouse.webp"
+                alt="Jerry Mouse"
+              >
+              <figcaption class="main__info__figure__caption">
+                Image
+                <a
+                  class="main__info__figure__caption__link"
+                  href="https://en.wikipedia.org/wiki/Jerry_Mouse"
+                  target="_blank"
+                  >link</a
+                >
+              </figcaption>
+            </figure>
+            <table>
+              <caption>
+                Character Main Characteristics
+              </caption>
+              <tr>
+                <th>Full Name</th>
+                <td id="fullname">Jerry Mouse</td>
+              </tr>
+              <tr>
+                <th>Species</th>
+                <td id="species">Mouse</td>
+              </tr>
+              <tr>
+                <th>Gender</th>
+                <td id="gender">Male</td>
+              </tr>
+              <tr>
+                <th>First Appearance</th>
+                <td id="appearance">"Puss Gets the Boot"</td>
+              </tr>
+              <tr>
+                <th>Likes</th>
+                <td id="likes">Cheese, escaping Tom</td>
+              </tr>
+              <tr>
+                <th>Dislikes</th>
+                <td id="dislikes">Getting injured, being retaliated</td>
+              </tr>
+            </table>
+          </div>
+          <p class="main__info__text">
+            Jeremy Adam "Jerry" Mouse is a fictional character and is one of two
+            protagonists in Metro-Goldwyn Mayer's series of Tom and Jerry
+            theatrical cartoon short films. Created by William Hanna and Joseph
+            Barbera, he is a brown house mouse, who first appeared as an unnamed
+            mouse in the 1940 MGM animated short Puss Gets the Boot. Hanna gave
+            the mouse's original name as Jinx, while Barbera claimed the mouse
+            went unnamed in his first appearance.
+          </p>
+          <ul class="main__info__strip">
+            <li>
+              <a class="main__info__strip__link" href="#"
+                ><img
+                  id="2jerry"
+                  class="main__info__strip__link__image"
+                  src="img/jerry_mouse-strip.webp"
+                  alt="Jerry Mouse"
+              ></a>
+            </li>
+            <li>
+              <a class="main__info__strip__link" href="#"
+                ><img
+                  id="2tom"
+                  class="main__info__strip__link__image"
+                  src="img/tom_cat-strip.webp"
+                  alt="Tom Cat"
+              ></a>
+            </li>
+            <li>
+              <a class="main__info__strip__link" href="#"
+                ><img
+                  id="2spike"
+                  class="main__info__strip__link__image"
+                  src="img/spike_bulldog-strip.webp"
+                  alt="Spike Bulldog"
+              ></a>
+            </li>
+            <li>
+              <a class="main__info__strip__link" href="#"
+                ><img
+                  id="2tyke"
+                  class="main__info__strip__link__image"
+                  src="img/tyke_bulldog-strip.webp"
+                  alt="Tyke Bulldog"
+              ></a>
+            </li>
+            <li>
+              <a class="main__info__strip__link" href="#"
+                ><img
+                  id="2nibbles"
+                  class="main__info__strip__link__image"
+                  src="img/nibbles_mouse-strip.webp"
+                  alt="Nibbles Mouse"
+              ></a>
+            </li>
+            <li>
+              <a class="main__info__strip__link" href="#"
+                ><img
+                  id="2mammy"
+                  class="main__info__strip__link__image"
+                  src="img/mammy_two_shoes-strip.webp"
+                  alt="Mammy Two Shoes"
+              ></a>
+            </li>
+            <li>
+              <a class="main__info__strip__link" href="#"
+                ><img
+                  id="2uncle"
+                  class="main__info__strip__link__image"
+                  src="./img/uncle_pecos-strip.webp"
+                  alt="Uncle Pecos"
+              ></a>
+            </li>
+            <li>
+              <a class="main__info__strip__link" href="#"
+                ><img
+                  id="2toodles"
+                  class="main__info__strip__link__image"
+                  src="./img/toodles_galore-strip.webp"
+                  alt="Toodles Galore"
+              ></a>
+            </li>
+          </ul>
+        </main>
+        <nav class="main__navigation">
+          <a
+            href="https://metro-goldwyn-mayer-cartoons.fandom.com/wiki/Tom_and_Jerry"
+            target="_blank"
+            class="main__navigation__link"
+          >
+            <img
+              class="main__navigation__image"
+              src="./img/tom&jerry.webp"
+              alt="tom&jerry"
+            >
+          </a>
+          <div class="main__navigation__menu">
+            <input type="checkbox">
+            <span class="main__navigation__menu__burger"></span>
+            <span class="main__navigation__menu__burger"></span>
+            <span class="main__navigation__menu__burger"></span>
+            <div class="main__navigation__menu__container">
+              <h2>Characters</h2>
+              <ul class="main__navigation__menu__list">
+                <li>
+                  <a
+                    href="#"
+                    id="1jerry"
+                    class="main__navigation__menu__list__link"
+                    >Jerry</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    id="1tom"
+                    class="main__navigation__menu__list__link"
+                    >Tom</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    id="1spike"
+                    class="main__navigation__menu__list__link"
+                    >Spike</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    id="1tyke"
+                    class="main__navigation__menu__list__link"
+                    >Tyke</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    id="1nibbles"
+                    class="main__navigation__menu__list__link"
+                    >Nibbles</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    id="1mammy"
+                    class="main__navigation__menu__list__link"
+                    >Mammy Two Shoes</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    id="1uncle"
+                    class="main__navigation__menu__list__link"
+                    >Uncle Pecos</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    id="1toodles"
+                    class="main__navigation__menu__list__link"
+                    >Toodles Galore</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <footer>
+        <div class="tooltip">
+          Copyright information
+          <p class="tooltip__text">
+            This webpage was made for educational purposes only, and is not
+            intended for any commercial purposes. All rights to the names and
+            images of the characters belong to their owners. By MGM - MGM, Fair
+            use,
+            <a
+              href="https://tomandjerry.fandom.com/wiki/Tom_and_Jerry_Wiki"
+              target="_blank"
+              >Wiki Fandom</a
+            >
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
