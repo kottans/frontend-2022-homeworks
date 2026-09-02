@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>FriendsApp</title>
+</head>
+<body>
+    <div class="content-wrapper">
+        <header class="header">
+            <button class="hamburger-menu">
+                <div class="hamburger-menu__line"></div>
+                <div class="hamburger-menu__line"></div>
+                <div class="hamburger-menu__line"></div>
+            </button>
+            <a href="index.html" class="header-logo header-link">
+                <i class="fa-solid fa-hashtag header-icon"></i>
+                <h1 class="header-title"><span>F</span>riends<span>A</span>pp</h1>
+            </a>
+            <a href="https://github.com/SofiiaTrokhymchuk/friends-app" target="_blank" class="header-link">
+                <i class="fa-brands fa-github header-icon"></i>
+            </a>
+        </header>
+        <main class="main">
+            <section class="input-container" id="inputContainer">
+                <form class="input-form" id="inputForm">
+                    <section class="search-container">
+                        <input type="text" autocomplete="off" name="enteredName" id="enteredName" 
+                        placeholder="Search for friends..." class="search_container__input">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <i class="fa-solid fa-circle-xmark close-icon" id="closeIcon"></i>
+                    </section>
+                    <section class="filters-container">
+                        <h3 class="input-category-title">Filters</h3>
+                        <h4 class="input-method-title">Gender Filter</h3>
+                        <input type="radio" name="genderFilter" value="allGenders" id="allGenders" class="radio-button-input" checked>
+                        <label for="allGenders" class="input-label"><i class="fa-solid fa-venus-mars"></i> All </label>
+
+                        <input type="radio" name="genderFilter" value="male" id="male" class="radio-button-input">
+                        <label for="male" class="input-label"><i class="fa-solid fa-mars"></i> M </label>
+
+                        <input type="radio" name="genderFilter" value="female" id="female" class="radio-button-input">
+                        <label for="female" class="input-label"><i class="fa-solid fa-venus"></i> F </label>
+                    </section>
+                    <section class="sorters-container">
+                        <h3 class="input-category-title">Sorters</h3>
+                        <input type="radio" name="sortingMethod" value="unsortedUsers" id="unsortedUsers" class="radio-button-input" checked>
+                        <label for="unsortedUsers" class="input-label">Unsorted</label>
+                        
+                        <h4 class="input-method-title">Sort by Name</h3>
+                        <input type="radio" name="sortingMethod" value="nameAscending" id="nameAscending" class="radio-button-input">
+                        <label for="nameAscending" class="input-label">(A-Z)</label>
+
+                        <input type="radio" name="sortingMethod" value="nameDescending" id="nameDescending" class="radio-button-input">
+                        <label for="nameDescending" class="input-label">(Z-A)</label>
+        
+                        <h4 class="input-method-title">Sort by Age</h3>
+                        <input type="radio" name="sortingMethod" value="ageAscending" id="ageAscending" class="radio-button-input">
+                        <label for="ageAscending" class="input-label">(0-&infin;)</label>
+
+                        <input type="radio" name="sortingMethod" value="ageDescending" id="ageDescending" class="radio-button-input">
+                        <label for="ageDescending" class="input-label">(&infin;-0)</label>
+                    </section>
+                </form>
+            </section>
+            <section class="users-container" id="usersContainer">
+                <div class="loader-wrapper">
+                    <div class="loader"></div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <span>&copy;2022 Sonia Trokhymchuk</span>
+        </footer>
+    </div>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
