@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MemoryPairGame Money Heist</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <h1 class="title">
+    Memory Game <br>
+    La Casa de Papel
+  </h1>
+  <div class="wrap"></div>
+  <dialog class="rules">
+    <h2 class="rules__title">
+      Find out which Money Heist Character you would be!
+    </h2>
+    <p class="rules__text">
+      On the field of twelve cards, find pairs of identical cards with minimal
+      number of attempts.The number of times you try will show what character
+      you are:
+    </p>
+    <ul class="character__list">
+      <li class="character">
+        <img src="./img/professor.jpg" alt="" class="character__img">
+        <p class="character__text">(Attempts &le; 12)</p>
+        <span class="character__name">Professor</span>
+      </li>
+      <li class="character">
+        <img src="./img/alisia.jpg" alt="" class="character__img">
+        <p class="character__text">(12 &lt; Attempts &le; 15)</p>
+        <span class="character__name">Alisia</span>
+      </li>
+      <li class="character">
+        <img src="./img/berlin.jpg" alt="" class="character__img">
+        <p class="character__text">(15 &lt; Attempts &le; 18)</p>
+        <span class="character__name">Berlin</span>
+      </li>
+      <li class="character">
+        <img src="./img/tokio.jpg" alt="" class="character__img">
+        <p class="character__text">(18 &lt; Attempts &le; 23)</p>
+        <span class="character__name">Tokio</span>
+      </li>
+      <li class="character">
+        <img src="./img/denver.jpg" alt="" class="character__img">
+        <p class="character__text">(23 &lt; Attempts &le; 27)</p>
+        <span class="character__name">Denver</span>
+      </li>
+      <li class="character">
+        <img src="./img/arturo.jpg" alt="" class="character__img">
+        <p class="character__text">(Attempts &ge; 28)</p>
+        <span class="character__name">Arturo</span>
+      </li>
+    </ul>
+    <button class="rules__btn">Let's try!</button>
+  </dialog>
+  <dialog class="win__window">
+    <h2 class="win__title"></h2>
+    <p class="win__text"></p>
+    <img src="" alt="" class="win__img">
+    <button class="win__btn">Try Again!</button>
+  </dialog>
+  <footer>
+    <a href="https://www.instagram.com/captainjoser/" target="_blank">Painter: captainjoser</a>
+  </footer>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
