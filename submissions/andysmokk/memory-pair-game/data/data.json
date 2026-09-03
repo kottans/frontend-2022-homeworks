@@ -1,0 +1,20 @@
+[
+  { "imageSrc": "./images/baratheon.png", "name": "baratheon" },
+  { "imageSrc": "./images/cap-cap.png", "name": "cap-cap" },
+  { "imageSrc": "./images/greyjoy.png", "name": "greyjoy" },
+  { "imageSrc": "./images/lanister.png", "name": "lanister" },
+  { "imageSrc": "./images/martell.png", "name": "martell" },
+  { "imageSrc": "./images/stark.png", "name": "stark" },
+  { "imageSrc": "./images/targaryen.png", "name": "targaryen" },
+  { "imageSrc": "./images/tully.png", "name": "tully" },
+  { "imageSrc": "./images/tyrell.png", "name": "tyrell" },
+  { "imageSrc": "./images/baratheon.png", "name": "baratheon" },
+  { "imageSrc": "./images/cap-cap.png", "name": "cap-cap" },
+  { "imageSrc": "./images/greyjoy.png", "name": "greyjoy" },
+  { "imageSrc": "./images/lanister.png", "name": "lanister" },
+  { "imageSrc": "./images/martell.png", "name": "martell" },
+  { "imageSrc": "./images/stark.png", "name": "stark" },
+  { "imageSrc": "./images/targaryen.png", "name": "targaryen" },
+  { "imageSrc": "./images/tully.png", "name": "tully" },
+  { "imageSrc": "./images/tyrell.png", "name": "tyrell" }
+]
