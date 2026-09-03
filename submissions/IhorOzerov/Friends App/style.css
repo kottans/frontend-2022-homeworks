@@ -1,0 +1,249 @@
+@font-face {
+    font-family: 'Kennebunkport';
+    src: URL('./kennebunkport.ttf') format('truetype');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    -moz-user-drag: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 16px;
+    background: linear-gradient(0.25turn, #e49b10, #c0198b);
+    font-family: 'Kennebunkport', sans-serif;
+}
+
+.header{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+    padding: 10px;
+}
+
+.buttons{
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.searchLabel{
+    height: 50px;
+    letter-spacing: 0.2rem;
+    font-size: 1.4rem;
+}
+
+#searchFriend{
+    border: none;
+    border-radius: 8px;
+    height: 30px;
+    width: 15vw;
+    min-width: 180px;
+    margin: 5px;
+    cursor: text;
+    box-shadow: 1px 1px #d8c5be;
+    background-color: #d8c5be;
+}
+
+#searchFriend::placeholder{
+    font-family: 'Kennebunkport', sans-serif;
+    letter-spacing: .25rem;
+}
+
+.searchSelector{
+    cursor: pointer;
+    margin: 5px;
+    width: 15vw;
+    min-width: 100px;
+    text-align: start;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px #d8c5be;
+    border-radius: 7px;
+    background-color: #d8c5be;
+    font-family: 'Kennebunkport', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.13rem;
+    height: 30px;
+}
+
+.searchSelector option{
+    color: #c0198b;
+    font-size: 1.3rem;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.list {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.human{
+    margin: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: aliceblue;
+    position: relative;
+    letter-spacing: 0.2rem;
+    border-radius: 20px;
+}
+
+.profileColor{
+    background-color: #2d8b57;
+    top: 0;
+    height: 85px;
+    width: 100%;
+    position: absolute;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.myFace{
+    z-index: 1;
+    position: relative;
+}
+
+.myData{
+    margin-bottom: 7px;
+    font-size: 1.1rem;
+}
+
+.errorScreen{
+    background-color: #edd5a0;
+    height: 100vh;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.errorText{
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+    padding: 30px;
+}
+
+.errorImage{
+    width: 36vw;
+}
+
+@media (max-width: 1200px) {
+    .list {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .buttons__sorting{
+        width: auto;
+    }
+}
+
+@media (max-width: 1000px)  {
+    .list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+    .list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px)  {
+    .header{
+        padding-bottom: 0;
+    }
+    .list {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 30px 5px 5px 10px;
+    }
+    .searchLabel{
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+    .buttons{
+        flex-wrap: wrap;
+        margin-bottom: 55px;
+    }
+    .searchSelector{
+        height: 30px;
+        width: 130px;
+    }
+    #searchFriend{
+        width: 80vw;
+        height: 35px;
+    }
+    .human{
+        height: 150px;
+        width: 28vw;
+        font-size: .8rem;
+        font-weight: 500;
+        margin: 10px 3px;
+    }
+    .myFace{
+        height: 75px;
+    }
+    .myData{
+        margin: 2px 4px;
+        max-width: 90vw;
+        font-size: 3vw;
+    }
+    .profileColor{
+        height: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    .header{
+        padding-bottom: 0;
+    }
+    .buttons{
+        flex-wrap: wrap;
+    }
+    .searchSelector{
+        height: 40px;
+        width: 100px;
+    }
+    #searchFriend{
+        width: 80vw;
+        height: 40px;
+    }
+    .searchLabel{
+        margin: 3px;
+    }
+    .list {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 40px 5px 5px 10px;
+    }
+    .human{
+        height: 150px;
+        width: 28vw;
+        font-size: .6rem;
+        font-weight: 600;
+        margin: 10px 3px;
+    }
+    .myFace{
+        height: 60px;
+    }
+    .myData{
+        margin: 6px 4px;
+        max-width: 90vw;
+    }
+    .profileColor{
+        height: 45px;
+    }
+}
