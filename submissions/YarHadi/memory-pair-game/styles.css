@@ -1,0 +1,392 @@
+/* header */
+
+.header-cont {
+	display: flex;
+	height: 60px;
+	justify-content: end;
+	align-items: center;
+	padding: 0 20px;
+	background: rgb(230, 109, 203);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	background-image: url(../img/headerback.png);
+  
+	background-blend-mode: soft-light;
+	background-size: 350px;
+  }
+  
+  .header-item {
+	height: 40px;
+	margin: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .header-button {
+	background: rgb(248, 235, 220);
+	border-radius: 5px;
+	padding: 0 10px;
+	cursor: pointer;
+	font-family: "Markazi Text";
+	font-size: 24px;
+	line-height: 29px;
+	text-decoration-color: rgb(64, 26, 82);
+  }
+  
+  .user {
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	border-radius: 100%;
+  }
+  
+  /* help menu */
+  
+  .help-menu {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	overflow-y: auto;
+	justify-content: center;
+	transition: all 0.3s ease-in-out;
+	background: rgba(255, 255, 255, 0.6);
+	z-index: 1;
+	padding-top: 20px;
+	overflow-x: clip;
+  }
+  .help-container {
+	display: flex;
+	width: fit-content;
+	background: rgba(162, 227, 255, 0.95);
+	border-radius: 10px;
+	height: 800px;
+	padding: 20px 100px;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 30px;
+  }
+  
+  .iggy-cont {
+	display: flex;
+	width: fit-content;
+	padding: 10px;
+	background: rgb(251, 251, 251);
+	border-radius: 40px;
+  }
+  
+  .help-text {
+	font-family: "Martel Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 44px;
+	text-align: center;
+	color: rgb(0, 0, 0);
+  }
+  
+  .help-iggy {
+	position: relative;
+	top: -839px;
+	left: 425px;
+	width: 222px;
+	height: 335px;
+	transform: rotate(-6.54deg);
+	-webkit-user-drag: none;
+  }
+  .img-help-container {
+	display: grid;
+	grid-template-columns: repeat(3, 250px);
+	justify-items: center;
+  }
+  
+  .help-img {
+	display: block;
+	background-color: white;
+	width: 200px;
+	height: 300px;
+	object-fit: cover;
+	margin: 10px;
+	-webkit-user-drag: none;
+  }
+  
+  .close-help {
+	font-size: 20px;
+	background-color: rgb(248, 235, 220);
+	border-radius: 6px;
+	text-decoration: none;
+	padding: 5px;
+	margin: 10px;
+	cursor: pointer;
+	border: 2px solid rgb(59, 51, 51);
+  }
+  
+  /* main-field */
+  
+  html,
+  body {
+	height: 100%;
+	user-select: none;
+  }
+  
+  body {
+	display: flex;
+	flex-direction: column;
+	overflow: clip;
+  }
+  
+  main {
+	display: flex;
+	background: url(../img/background.jpg) center;
+	background-size: 100%;
+	justify-content: center;
+	flex-grow: 1;
+  }
+  
+  .main-field {
+	display: grid;
+	grid-template-columns: repeat(4, 180px);
+	justify-items: center;
+	justify-content: center;
+	margin: 20px;
+	padding: 50px;
+	background-color: rgba(255, 255, 255, 0.76);
+	height: fit-content;
+  }
+  
+  .character-img {
+	display: block;
+	max-height: 230px;
+	max-width: 150px;
+	-webkit-user-drag: none;
+  }
+  
+  /* flip img */
+  
+  /* entire container, keeps perspective */
+  .flip-container {
+	border: 2px solid black;
+	margin: 5px;
+	background-color: rgb(255, 255, 255);
+	cursor: pointer;
+  }
+  
+  .flip-container,
+  .front,
+  .back {
+	width: 150px;
+	height: 230px;
+  }
+  
+  /* flip speed goes here */
+  .flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+  
+	position: relative;
+  }
+  
+  /* hide back of pane during swap */
+  .front,
+  .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+  }
+  
+  /* front pane, placed above back */
+  .front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  /* back, initially hidden pane */
+  .back {
+	transform: rotateY(180deg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  /* adaptive */
+  
+  @media screen and (max-width: 1160px) {
+	.help-iggy {
+	  width: 162px;
+	  height: 252px;
+	  left: 383px;
+	  top: -715px;
+	}
+  
+	.help-container {
+	  padding: 20px 60px;
+	  height: 700px;
+	}
+  
+	.close-help {
+	  margin: 7px;
+	}
+  
+	.img-help-container {
+	  grid-template-columns: repeat(3, 200px);
+	}
+  
+	.help-img {
+	  width: 150px;
+	  height: 250px;
+	}
+  }
+  
+  @media screen and (max-width: 855px) {
+	.header-cont {
+	  height: 40px;
+	}
+  
+	.header-item {
+	  height: 25px;
+	}
+  
+	.header-button {
+	  font-size: 16px;
+	}
+  
+	.user {
+	  width: 25px;
+	  height: 25px;
+	}
+  
+	.flip-container,
+	.front,
+	.back {
+	  width: 100px;
+	  height: 170px;
+	}
+  
+	.main-field {
+	  grid-template-columns: repeat(4, 125px);
+	  margin: 10px;
+	  padding: 10px;
+	}
+  
+	.character-img {
+	  max-height: 170px;
+	  max-width: 100px;
+	}
+  
+	.iggy-cont {
+	  padding: 5px;
+	}
+  
+	.help-text {
+	  font-size: 15px;
+	  line-height: 30px;
+	}
+  
+	.help-iggy {
+	  width: 145px;
+	  height: 223px;
+	  left: 285px;
+	  top: -691px;
+	}
+  
+	.help-container {
+	  padding: 20px 60px;
+	  height: 660px;
+	}
+	.img-help-container {
+	  grid-template-columns: repeat(3, 175px);
+	}
+  }
+  
+  @media screen and (max-width: 670px) {
+	.help-img {
+	  width: 130px;
+	  height: 200px;
+	}
+	.img-help-container {
+	  grid-template-columns: repeat(3, 140px);
+	}
+	.help-iggy {
+	  width: 120px;
+	  left: 228px;
+	  top: -581px;
+	}
+  
+	.close-help {
+	  font-size: 16px;
+	}
+	.help-container {
+	  height: 550px;
+	}
+  
+	.help-text {
+	  font-size: 12px;
+	}
+  }
+  
+  @media screen and (max-width: 530px) {
+	.header-cont {
+	  height: 40px;
+	}
+  
+	.header-item {
+	  height: 30px;
+	}
+  
+	.header-button {
+	  font-size: 15px;
+	}
+  
+	.user {
+	  width: 30px;
+	  height: 30px;
+	}
+  
+	.flip-container,
+	.front,
+	.back {
+	  width: 80px;
+	  height: 120px;
+	}
+  
+	.main-field {
+	  grid-template-columns: repeat(4, 90px);
+	  margin: 5px;
+	  padding: 5px;
+	}
+  
+	.character-img {
+	  max-height: 120px;
+	  max-width: 80px;
+	}
+  
+	.help-container {
+	  padding: 20px 30px;
+	}
+  
+	.help-img {
+	  width: 97px;
+	  height: 150px;
+	}
+	.img-help-container {
+	  grid-template-columns: repeat(3, 105px);
+	}
+  
+	.help-container {
+	  height: 470px;
+	}
+  
+	.help-iggy {
+	  width: 92px;
+	  left: 170px;
+	  top: -516px;
+	}
+  }
+  
