@@ -1,0 +1,309 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input {
+  outline: none;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #d6d6d6;
+}
+
+.header {
+  position: relative;
+  background-color: #ff4c68;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 0 4px 0 #2e2e2e;
+  z-index: 7;
+}
+
+.title {
+  margin-left: 15px;
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+.main {
+  display: flex;
+  width: 82%;
+  margin: auto;
+}
+
+.loader-wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #d6d6d6;
+  z-index: 6;
+}
+
+.loader-wrapper.remove {
+  display: none;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 7px solid #2e2e2e;
+  border-top: 7px solid #ff4c68;
+  border-radius: 50%;
+  background-color: #d6d6d6;
+  position: absolute;
+  top: 45%;
+  left: 48%;
+  animation: spin 0.4s infinite linear;
+}
+
+.filter-form {
+  margin: 15px 0 0 15px;
+  text-align: center;
+  border: 2px solid #ef8172;
+  border-radius: 10px;
+  padding: 10px;
+  height: 335px;
+  background-color: #f4f4f4;
+  box-shadow: 0 0 6px 1.2px #ef8172;
+}
+
+.search-container {
+  grid-area: search;
+  margin-bottom: 5px;
+}
+
+.search {
+  all: unset;
+  border-bottom: 2px solid #ef8172;
+  width: 260px;
+  text-align: left;
+  padding-bottom: 5px;
+  margin: 10px 10px 10px 10px;
+}
+
+.search:focus::placeholder {
+  color: #111;
+  opacity: 1;
+}
+
+.additional-text {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.name-sorters,
+.age-sorters,
+.gender-filters {
+  margin: 10px 0 10px 0;
+}
+
+.option-label {
+  position: relative;
+  cursor: pointer;
+  padding-left: 25px;
+  margin-left: 5px;
+}
+
+.option-label:hover .radio-input ~ .option-button,
+.option-label:focus-within .option-button {
+  background-color: #2e2e2e;
+}
+
+.option-label .radio-input:checked ~ .option-button {
+  background-color: #2e2e2e;
+}
+
+.radio-input {
+  appearance: none;
+  position: absolute;
+}
+
+.option-button {
+  position: absolute;
+  background-color: #bbc4c2;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  inset: 0;
+  transition: 0.2s ease-in-out;
+}
+
+.option-button:after {
+  content: "";
+  display: none;
+  position: absolute;
+}
+
+.option-label .option-button::after {
+  inset: 0;
+  margin: auto;
+  background-color: #ff4c68;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.option-label .radio-input:checked ~ .option-button::after {
+  display: block;
+}
+
+.reset-button {
+  height: 30px;
+  background-color: #2e2e2e;
+  color: #ff4c68;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+}
+
+.reset-button:hover,
+.reset-button:focus {
+  background-color: #5c5c5c;
+  color: #fff;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.all-users {
+  padding: 15px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px 15px;
+  justify-items: center;
+  align-items: center;
+}
+
+.user-profile-card {
+  position: relative;
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #ef8172;
+  width: 280px;
+  max-width: 300px;
+  height: 400px;
+  box-shadow: 0 0 3px 1px #2e2e2e;
+}
+
+.user-profile-card.hidden {
+  display: none;
+}
+
+.card-top {
+  background-color: #2e2e2e;
+  border-radius: 10px 10px 0 0;
+  height: 100px;
+}
+
+.photo-wrapper {
+  padding: 7px;
+  top: -75px;
+  position: relative;
+  width: 125px;
+  height: 125px;
+  background-color: #ef8172;
+  border-radius: 100%;
+  margin: 10px auto 0 auto;
+}
+
+.profile-photo {
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info {
+  margin-top: -70px;
+}
+
+.age-and-gender,
+.user-phone,
+.user-email {
+  font-weight: bold;
+}
+
+.user-phone,
+.user-email {
+  display: block;
+}
+
+.user-email {
+  margin-top: 8px;
+}
+
+.user-contacts {
+  margin-top: 40px;
+  padding: 0 20px 0 20px;
+  word-wrap: break-word;
+}
+
+.card-bottom {
+  width: 100%;
+  height: 50px;
+  background-color: #2e2e2e;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  bottom: 0;
+  line-height: 50px;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filter-form {
+    margin: 0 auto 0 auto;
+  }
+}
