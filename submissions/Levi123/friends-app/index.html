@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container _container">
+                <a href="" class="header__logo">
+                    <img src="img/friendsapp.png" alt="logo" class="header__logo-img">
+                </a>
+                <nav class="header__menu menu">
+                    <ul class="menu__list">
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Home</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="index.html" class="menu__link active">Find friends</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Groups</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Events</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="page">
+            <div class="page__main-block main-block">
+                <div class="main-block__containter _container">
+                    <div class="main-block__filter">
+                        <form action="" class="filter__search">
+                            <input type="text" class="form__name" placeholder="Name your friend..." data-sort-type="name">
+                            <div class="filter__group">
+                                <h3 class="group__title">Sort by name:</h3>
+                                <label for="sort-az" class="form__label">
+                                    <input type="radio" name="sort-az-age" class="filter__radio" data-sort-type="ascending" id="sort-az">
+                                    <p class="label__description">A-Z</p>
+                                </label>
+                                <label for="sort-za" class="form__label">
+                                    <input type="radio" name="sort-az-age" class="filter__radio" data-sort-type="descending" id="sort-za">
+                                    <p class="label__description">Z-A</p>
+                                </label>
+                            </div>
+
+                            <div class="filter__group">
+                                <h3 class="group__title">Sort by age:</h3>
+                                <label for="sort-age-up" class="form__label">
+                                    <input type="radio" name="sort-az-age" class="filter__radio" data-sort-type="ageUp" id="sort-age-up">
+                                    <p class="label__description">Age</p>
+                                    <img src="img/arrow-up.png" alt="arrow-up-age-filter" class="label__image">
+                                </label>
+                                <label for="sort-age-down" class="form__label">
+                                    <input type="radio" name="sort-az-age" class="filter__radio" data-sort-type="ageDown" id="sort-age-down">
+                                    <p class="label__description">Age</p>
+                                    <img src="img/arrow-down.png" alt="arrow-down-age-filter" class="label__image">
+                                </label>
+                            </div>
+
+                            <div class="filter__group">
+                                <h3 class="group__title">Filter by gender:</h3>
+                                <label for="sort-male" class="form__label">
+                                    <input type="radio" name="filter-gender" class="filter__radio" data-sort-type="male" id="sort-male">
+                                    <p class="label__description">Male</p>
+                                    <img src="img/man.png" alt="male-gender-filter" class="label__image">
+                                </label>
+                                <label for="sort-female" class="form__label">
+                                    <input type="radio" name="filter-gender" class="filter__radio" data-sort-type="female" id="sort-female">
+                                    <p class="label__description">Female</p>
+                                    <img src="img/woman.png" alt="female-gender-filter" class="label__image">
+                                </label>
+                            </div>
+
+                            <button type="button" class="search__button">Clear filter!</button>
+                        </form>
+                    </div>
+                    <div class="main-block__content">
+                        <ul class="content__list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container _container">
+                <a href="" class="header__logo">
+                    <img src="img/friendsapp.png" alt="logo" class="header__logo-img">
+                </a>
+                <div class="footer__content">
+                    <h4 class="footer__title">Kottans! Thank you all</h4>
+                    <p class="footer__description">2022. Ukraine is a capital of great people! 🇺🇦</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+<script src="script.js"></script>   
+</body>
+</html>
