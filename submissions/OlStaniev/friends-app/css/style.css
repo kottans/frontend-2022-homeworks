@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+body {
+    width: 100%;
+    color: rgb(155, 155, 155);
+    background-color: rgb(33, 33, 33);
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    overflow-y: scroll;
+}
+
+.burgerForForm {
+    display: none;
+    z-index: 5;
+}
+
+.searchFormWrapper {
+    width: 300px;
+    padding: 50px;
+    border-right: 1px solid rgb(155, 155, 155);
+    position: sticky;
+    top: 0;
+    font-size: 18px;
+    line-height: 1.5;
+    z-index: 3;
+}
+
+.searchForm>div {
+    margin-bottom: 50px;
+}
+
+main>.content {
+    width: calc(100% - 300px);
+    height: 100vh;
+}
+
+.contentWrapper {
+    width: 100%;
+    padding: 0 50px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.userCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -90px;
+}
+
+.contentWrapper .userCard {
+    position: relative;
+    cursor: pointer;
+}
+
+.contentWrapper .userCard .face {
+    width: 300px;
+    height: 200px;
+    transition: 0.5s;
+    border-radius: 30px;
+}
+
+.contentWrapper .userCard .face.face1 {
+    position: relative;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+
+.contentWrapper .userCard:hover .face.face1 {
+    background: #4285f4;
+    transform: translateY(0);
+    border-radius: 30px 30px 0 0;
+}
+
+.contentWrapper .userCard .face.face1 .content {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.contentWrapper .userCard:hover .face.face1 .content {
+    opacity: 1;
+}
+
+.contentWrapper .userCard .face.face1 .content img {
+    max-width: 100px;
+}
+
+.contentWrapper .userCard .face.face1 .content {
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.contentWrapper .userCard .face.face2 {
+    position: relative;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    transform: translateY(-100px);
+    visibility: hidden;
+}
+
+.contentWrapper .userCard:hover .face.face2 {
+    transform: translateY(0);
+    border-radius: 0 0 30px 30px;
+    visibility: inherit;
+}
+
+.concontentWrappertainer .userCard .face.face2 .content {
+    margin: 15px 0 0;
+    text-decoration: none;
+    font-weight: 900;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #333;
+}
+
+.content>p {
+    font-size: 14px;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination>ol {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+    margin-top: 100px;
+    padding-bottom: 50px;
+    z-index: 5;
+}
+
+.pagination>ol>li {
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.currentPage {
+    text-decoration: underline;
+}
+
+.error {
+    margin-top: 100px;
+    text-align: center;
+    color: #4285f4;
+}
+
+@media(max-width:1024px) {
+    main {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .contentWrapper {
+        padding-top: 0;
+    }
+
+    .searchFormWrapper {
+        width: 100%;
+        background-color: rgb(33, 33, 33);
+        border-right: 0px;
+        border-bottom: 1px solid rgb(155, 155, 155);
+    }
+
+    main>.content {
+        width: 100%;
+    }
+
+    .searchForm {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .searchForm>div {
+        margin-bottom: 0;
+    }
+}
+
+@media(max-width:768px) {
+    .searchFormWrapper {
+        display: none;
+        width: 100vw;
+        padding: 50px;
+        position: sticky;
+        top: 0;
+        font-size: 18px;
+        line-height: 1.5;
+        z-index: 3;
+    }
+    .searchFormWrapper-action{
+        display: block;
+    }
+
+    .searchForm {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-start;
+    }
+
+    .searchForm>div {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+    }
+
+    .contentWrapper {
+        margin-top: 0;
+    }
+
+    .burgerForForm {
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+    }
+    
+}

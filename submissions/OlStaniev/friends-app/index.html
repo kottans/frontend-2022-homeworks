@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/inputsStyle.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Friends app</title>
+</head>
+
+<body>
+    <main>
+        <div class="burgerForForm">
+            <button class="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="searchFormWrapper">
+            <form class="searchForm" action="#" method="post">
+                <div class="searchByName">
+                    <label class="formLabel" for="searchName">Search by name</label>
+                    <input class="searchField" type="text" name="searchName" id="searchName">
+                </div>
+                <div class="sortingByAge">
+                    <p>Sorting by age</p>
+                    <div class="container">
+                        <div class="inputWrapper">
+                            <input class="input" type="radio" name="sort" value="ageUp" id="ageUp">
+                            <span class="inputSpan"></span>
+                        </div>
+                        <label class='label' for="ageUp">
+                            &#11014;</label>
+                        <div class="inputWrapper">
+                            <input class="input" type="radio" name="sort" value="ageDown" id="ageDown">
+                            <span class="inputSpan"></span>
+                        </div>
+                        <label class='label' for="ageDown">
+                            &#11015;</label>
+                    </div>
+                </div>
+                <div class="sortingByAlphabet">
+                    <p>Sorting by alphabet</p>
+                    <div class="container">
+                        <div class="inputWrapper">
+                            <input class="input" type="radio" name="sort" value="az" id="az">
+                            <span class="inputSpan"></span>
+                        </div>
+                        <label class='label' for="az">A-z</label>
+                        <div class="inputWrapper">
+                            <input class="input" type="radio" name="sort" value="za" id="za">
+                            <span class="inputSpan"></span>
+                        </div>
+                        <label class='label' for="za">z-A</label>
+                    </div>
+                </div>
+                <div class="filterGender">
+                    <p>Filter by gender</p>
+                    <div class="container">
+                        <div class="inputWrapper">
+                            <input class="input" type="radio" value="female" name="gender" id="female">
+                            <span class="inputSpan"></span>
+                        </div>
+                        <label class='label' for="female">Female</label>
+                        <div class="inputWrapper">
+                            <input class="input" type="radio" value="male" name="gender" id="male">
+                            <span class="inputSpan"></span>
+                        </div>
+                        <label class='label' for="male">Male</label>
+                        <div class="inputWrapper">
+                            <input class="input" type="radio" value="all" name="gender" id="all" checked>
+                            <span class="inputSpan"></span>
+                        </div>
+                        <label class='label' for="all">All</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="content">
+            <div class="contentWrapper">
+                <div class="loader">
+                    <span>Loading...</span>
+                </div>
+            </div>
+            <div class="pagination">
+                <ol class="paginationList">
+                </ol>
+            </div>
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+</html>
