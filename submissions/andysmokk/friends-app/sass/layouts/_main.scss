@@ -1,0 +1,273 @@
+.main-box {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    column-gap: 15px;
+
+    @media screen and (max-width: 1000px) {
+        grid-template-columns: 210px 1fr;
+    }
+
+    @media screen and (max-width: 800px) {
+        grid-template-columns: 190px 1fr;
+        column-gap: 10px;
+    }
+
+    @media screen and (max-width: 550px) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.main-box-left-panel {
+    padding: 10px;
+    border-radius: 5px;
+    grid-row: 1;
+    border: 2px solid var(--friends-blue);
+}
+
+.filter-name-age-form {
+    @media screen and (max-width: 550px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 5px;
+    }
+}
+
+.filter-name-age-form,
+.filter-gender-form,
+.filter-age-fieldset {
+    margin-top: 15px;
+
+    @media screen and (max-width: 550px) {
+        margin-top: 5px;
+    }
+}
+
+.filter-age-fieldset {
+    @media screen and (max-width: 550px) {
+        margin: 0;
+    }
+}
+
+.search-form-input {
+    font-size: var(--default-font-size);
+    padding: 10px;
+    border: 2px solid var(--friends-blue);
+    border-radius: 5px;
+    width: 90%;
+    transition: 0.1s;
+
+    @media screen and (max-width: 1000px) {
+        width: 87%;
+    }
+
+    @media screen and (max-width: 550px) {
+        width: 95%;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 94.5%;
+    }
+
+    @media screen and (max-width: 450px) {
+        width: 94%;
+    }
+
+    @media screen and (max-width: 375px) {
+        width: 92%;
+    }
+
+    @media screen and (max-width: 325px) {
+        width: 90%;
+    }
+}
+
+.search-form-input:hover,
+.search-form-input:focus {
+    border: 2px solid var(--friends-yellow);
+    outline: none;
+    box-shadow: var(--default-shadow);
+    transform: scale(1.02);
+}
+
+.filter-name-fieldset,
+.filter-age-fieldset,
+.filter-gender-fieldset {
+    padding: 5px 10px 10px 10px;
+    border: 2px solid var(--friends-blue);
+    border-radius: 5px;
+    transition: 0.1s;
+}
+
+.filter-name-fieldset:hover,
+.filter-name-fieldset:focus,
+.filter-age-fieldset:hover,
+.filter-age-fieldset:focus,
+.filter-gender-fieldset:hover,
+.filter-gender-fieldset:focus {
+    border: 2px solid var(--friends-yellow);
+    box-shadow: var(--default-shadow);
+    transform: scale(1.02);
+
+    color: var(--friends-blue);
+    font-weight: 600;
+    fill: var(--friends-blue);
+}
+
+.filter-name-legend,
+.filter-age-legend,
+.filter-gender-legend {
+    padding: 0px 5px 0px 5px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.filter-name-input,
+.filter-name-label,
+.filter-age-input,
+.filter-age-label,
+.filter-gender-input,
+.filter-gender-label {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.filter-name-input,
+.filter-age-input,
+.filter-gender-input {
+    display: none;
+}
+
+.filter-name-label:hover,
+.filter-age-label:hover,
+.filter-gender-label:hover {
+    color: var(--hover-focus);
+    font-weight: 700;
+}
+
+.active {
+    color: var(--hover-focus);
+    font-weight: 700;
+    fill: var(--hover-focus);
+}
+
+.filter-age-legend {
+    padding: 0px 5px 0px 5px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.main-box-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 0.03fr);
+    grid-row: 1 / 2;
+    column-gap: 15px;
+    row-gap: 15px;
+
+    @media screen and (max-width: 1000px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (max-width: 800px) {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 10px;
+        row-gap: 10px;
+    }
+
+    @media screen and (max-width: 700px) {
+        grid-template-columns: 1fr;
+    }
+
+    @media screen and (max-width: 550px) {
+        grid-template-columns: 1fr;
+        // column-gap: 10px;
+        row-gap: 10px;
+        margin-top: 10px;
+    }
+}
+
+.main-box-list-item {
+    position: relative;
+    display: grid;
+    justify-items: stretch;
+    padding: 7px;
+    border: 2px solid var(--friends-blue);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-box-list-item:hover {
+    color: var(--friends-blue);
+    font-weight: 600;
+    border: 2px solid var(--friends-yellow);
+    box-shadow: var(--default-shadow);
+    transform: scale(1.02);
+}
+
+.friend-name {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.friend-text {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.friend-text-span {
+    text-transform: capitalize;
+    margin-left: 7px;
+}
+
+.github-img {
+    transition: 0.3s;
+}
+
+.footer-link:hover .github-img,
+.footer-link:focus .github-img {
+    fill: var(--hover-focus);
+    transform: scale(1.2);
+}
+
+.filter-name-label,
+.filter-age-label,
+.filter-gender-label {
+    display: flex;
+    margin-top: 5px;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.filter-name-label:hover .filter-name-svg,
+.filter-name-label:focus .filter-name-svg,
+.filter-age-label:hover .filter-age-svg,
+.filter-age-label:focus .filter-age-svg,
+.filter-gender-label:hover .filter-gender-svg,
+.filter-gender-label:focus .filter-gender-svg {
+    fill: var(--hover-focus);
+    transform: scale(1.2);
+}
+
+.friend-gender-svg,
+.friend-phone-svg,
+.friend-location-svg {
+    transition: 0.3s;
+}
+
+.main-box-list-item:hover .friend-gender-svg,
+.main-box-list-item:hover .friend-phone-svg,
+.main-box-list-item:hover .friend-location-svg {
+    fill: var(--friends-blue);
+    transform: scale(1.2);
+}
+
+.filter-name-label-span {
+    padding-top: 5px;
+    margin-left: 7px;
+}
