@@ -1,0 +1,126 @@
+/* ====================================== Common Styles ====================================== */
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family: Roboto, sans-serif;
+	margin: 0;
+	background: linear-gradient(90deg, #aea4e3, #d3ffe8);
+}
+
+/* ====================================== Switcher Styles ====================================== */
+.switcher-theme {
+	position: absolute;
+	top: 23px;
+	left: calc(50% - 150px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	width: 300px;
+}
+.switcher-theme__description {
+	font-weight: 500;
+	color: #8a81b7;
+	order: 1;
+}
+.switcher-theme__input {
+	position: relative;
+	width: 42px;
+	height: 21px;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #bcbbbb;
+	box-shadow: 0 0 4px #bcbbbb;
+	border-radius: 30px;
+	cursor: pointer;
+	order: 2;
+}
+.switcher-theme__input:before {
+	content: '';
+	position: absolute;
+	top: -2px;
+	width: 25px;
+	height: 25px;
+	background-color: #e8b6a4;
+	border-radius: 50%;
+	box-shadow: 0 0 3px #debbae;
+}
+.switcher-theme__input:checked:before {
+	left: 19px;
+	background-color: #3b5f4c;
+	box-shadow: 0 0 3px #406652;
+}
+.switcher-theme__input:checked ~ .switcher-theme__description {
+	color: #bcbbbb;
+}
+.dark-theme {
+	background: linear-gradient(90deg, #2f2b41, #263d31);
+}
+
+/* ====================================== Main Structure Styles ====================================== */
+.container {
+	max-width: 100vh;
+	height: 100%;
+	margin: 0 auto;
+	padding: 70px 20px 40px 20px;
+}
+.cards {
+	width: 100%;
+	height: 100%;
+	perspective: 800px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 15px;
+	padding: 15px;
+	border-radius: 20px;
+	box-shadow: 0px 0px 20px rgba(255, 127, 80, 0.883);
+	user-select: none;
+}
+.cards__item {
+	width: calc(25% - 15px);
+	height: calc(25% - 15px);
+	position: relative;
+	transform-style: preserve-3d;
+	background-color: #e6967949;
+	border-radius: 20px;
+	transition: all .4s;
+	cursor: pointer;
+}
+.flip {
+	transform: rotateY(180deg);
+}
+.cards__img {
+	width: 100%;
+  height: 100%;
+	position: absolute;
+	padding: 5px;
+	backface-visibility: hidden;
+}
+.cards__img {
+	transform: rotateY(180deg);
+}
+.hidden {
+	visibility: hidden;
+	transition: all .6s;
+}
+
+@media (max-width: 500px) {
+	.switcher-theme {
+		top: 177px;
+	}
+	.container {
+		margin-top: 150px;
+		height: 60%;
+	}
+	.cards {
+		gap: 10px;
+	}
+	.cards__item {
+		border-radius: 10px;
+		width: calc(25% - 10px);
+		height: calc(25% - 10px);
+	}
+}
