@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+    <link rel="icon" href="./assets/img/friends.png" type="image/png">
+    <title>Friends App</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container container">
+                <a class="header__logo" href="index.html">Friends App</a>
+                <form action="#" class="search">
+                    <input class="search__input" type="text" placeholder="Search by name..." name="search">
+                </form>
+            </div>
+        </header>
+        <div class="content">
+            <div class="content__container container">
+                <aside class="sidebar">
+                    <form action="#" class="sidebar__inner">
+                        <div class="select">
+                            <label class="select__label" for="select__filter">Choose gender</label>
+                            <select class="select__inner" id="select__filter">
+                                <option value="all">All</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="select">
+                            <label class="select__label" for="select__sort">Choose a sort</label>
+                            <select class="select__inner" id="select__sort">
+                                <option value="age-up">Age up</option>
+                                <option value="age-down">Age down</option>
+                                <option value="fullname-up">Name up</option>
+                                <option value="fullname-down">Name down</option>
+                            </select>
+                        </div>
+                        <button class="sidebar__button" type="reset">Reset</button>
+                    </form>
+                </aside>
+                <main class="main">
+                    <div class="main__inner">
+                    </div>
+                </main>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer__container container">
+                <div class="footer__text">&copy Ariadna Kravchuk 2022</div>
+            </div>
+        </footer>
+    </div>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
