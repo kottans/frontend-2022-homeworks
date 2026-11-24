@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+  color: white;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.action {
+  display: flex;
+}
+.action__sidebar {
+  background-color: rgb(48, 175, 192);
+  width: 300px;
+  height: 100vh;
+  padding: 15px 0;
+}
+.action__sidebar li {
+  cursor: pointer;
+  padding: 15px;
+}
+.action__sidebar li.active {
+  background-color: rgb(96, 95, 148);
+}
+.action__sidebar li:hover {
+  background-color: rgb(95, 148, 131);
+}
+.action__content {
+  background-color: rgb(79, 189, 154);
+  width: 100%;
+  height: 100vh;
+  padding: 15px;
+}
+.action__content h2 {
+  padding: 10px 0;
+}
+.action__content p {
+  padding: 10px 0;
+}
