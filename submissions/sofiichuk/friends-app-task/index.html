@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>friends app</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="side_menu">
+        <div class='side_menu_content' id='side_menu_content'>
+            <div class="title_center">Name:</div>
+            <input id="search_bar" name="search_bar" placeholder="Search" type="text">
+            <div class="title_center">Name (A-Z):</div>
+            <div id="name_sort_buttons">
+                <button class="sort_button" id="name_descending"><img alt="" src="descending.png"></button>
+                <button class="sort_button" id="name_ascending"><img alt="" src="ascending.png"></button>
+            </div>
+            <div class="title_center">Sex:</div>
+            <div class="gender" id="gender">
+                <div class="filter_element"><input id="male" name="sex" type="radio"
+                                                   value="male">
+                    <label for="male">&nbsp;&nbsp;Male&nbsp;&nbsp;</label></div>
+
+                <div class="filter_element"><input id="female" name="sex" type="radio"
+                                                   value="female">
+                    <label for="female">Female</label></div>
+
+                <div class="filter_element"><input id="another_gender" name="sex" type="radio"
+                                                   value="other">
+                    <label for="another_gender">&nbsp;Other&nbsp;&nbsp;</label></div>
+
+                <div class="filter_element"><input id="all" name="sex" type="radio"
+                                                   value="all">
+                    <label for="all">&nbsp;&nbsp;&nbsp;All&nbsp;&nbsp;&nbsp;&nbsp;</label></div>
+            </div>
+            <div class="title_center">Age:</div>
+            <div class="age_block">
+                <div class="age_inputs" id="age_inputs">
+                    <input class="num_input" id="min_age_input" max="120" min="0" name="number" placeholder=" min"
+                           type="number">
+                    <input class="num_input" id="max_age_input" max="120" min="0" name="number" placeholder=" max"
+                           type="number">
+                </div>
+                <div class="age_inputs">
+                    <button class="sort_button" id="age_descending"><img alt="" src="descending.png"></button>
+                    <button class="sort_button" id="age_ascending"><img alt="" src="ascending.png"></button>
+                </div>
+            </div>
+            <div>
+                <button class="button_standard" id="reset">Show me another bunch of dudes</button>
+            </div>
+        </div>
+        <div class="button_container">
+            <button class="switch_style_button" id="switch_style_button">Too bright?</button>
+        </div>
+    </div>
+    <ul id="user_cards"></ul>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
