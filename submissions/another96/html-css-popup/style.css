@@ -1,0 +1,155 @@
+body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* NAVIGATION MENU */
+nav{
+    width: 100%;
+    background-color:#1D2A35 ;
+}
+.vertical-nav{
+color: aliceblue;
+list-style: none;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+margin: 0;
+padding: 0;
+align-items: center;
+margin-right: 50px;
+flex-wrap: wrap;
+}
+
+.icon{
+    width: 40px;
+    aspect-ratio: 1/1;
+}
+
+.icon-nav{
+    width: 30px;
+    aspect-ratio: 1/1;
+}
+
+.nav-item{
+    padding: 10px;
+}
+
+.first-input, .second-input{
+	-webkit-appearance: none;
+}
+
+/* MAIN POPUP */
+.main-popup-container{
+        display: none;
+        position:absolute;
+        right: 15px;
+        margin-top: 20px;
+        width: 300px;
+        height: 350px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        align-items: center;
+        text-align: center;
+    }
+    .main-popup-container::-webkit-scrollbar {
+        display: none;
+      }
+.first-input:checked~.main-popup-container {
+	display: flex;
+    background-color: #38444D;
+    flex-direction: column;
+}
+.popup{
+    list-style: none;
+    display: grid;
+    gap: 20px;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+    padding: 15px;
+    width: 90%;
+}
+.popup-link{
+    text-decoration: none;
+    color: white;
+}
+
+.popup-text{
+    margin: 0;
+}
+
+
+/* SUB POPUP */
+.sub-popup-label{
+    width: 100%;
+}
+.subpopup-text{
+    background-color: #495765;
+}
+.sub-popup-container {
+	display: none;
+    background-color: #495765;
+    width: 100%; 
+}
+
+
+
+.second-input:checked~.sub-popup-container {
+display: block;
+}
+.second-input:checked~.sub-popup-label{
+    display: none;
+}
+
+
+.sub-popup{
+    list-style: none;
+    display: grid;
+    gap: 10px;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 20px;
+    padding: 15px;
+    width: 90%;
+}
+.sub-nav-item{
+    padding: 5px;
+    align-items: center;
+}
+
+.link-focus:focus,
+.sub-nav-item:focus,
+.nav-item:hover,
+.sub-nav-item:hover{
+	outline: 2px solid white;
+	border-radius: 10%;
+    background-color: #1D2A35;
+}
+
+
+/* FOR MOBILE */
+
+@media only screen and (max-width: 600px) {
+    .vertical-nav{
+        justify-content: center;
+        margin-right: 0px;
+    }
+    .main-popup-container{
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 80vw;
+    }
+
+    .icon{
+        min-width: 20px;
+    }
+
+  }
+  input{
+    display: none;
+  }
