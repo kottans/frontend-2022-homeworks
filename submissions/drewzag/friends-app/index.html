@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <script src="./src/main.js" type="module" defer></script>
+    <title>Friends App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header__wrapper">
+        <div class="title">
+          <div class="app">Friends App</div>
+          <button class="menu">
+            <img src="./assets/menu.png" alt="" />
+          </button>
+        </div>
+        <div class="header">
+          <fieldset class="sort__name">
+            <legend>Sort by name</legend>
+            <div>
+              <input type="radio" id="name_asc" name="sort" value="name_acs" />
+              <label for="name_asc"> A-Z </label>
+            </div>
+            <div>
+              <input type="radio" id="name_desc" name="sort" value="name_desc" />
+              <label for="name_desc"> Z-A </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="sort__age">
+            <legend>Sort by age</legend>
+            <div>
+              <input type="radio" id="age_asc" name="sort" value="age_asc" />
+              <label for="age_asc"> 1-9 </label>
+            </div>
+            <div>
+              <input type="radio" id="age_desc" name="sort" value="age_desc" />
+              <label for="age_desc"> 9-1 </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="filter__gender">
+            <legend>Filter by gender</legend>
+            <div>
+              <input type="radio" id="all" name="gender" value="all" checked />
+              <label for="all">All</label>
+            </div>
+            <div>
+              <input type="radio" id="male" name="gender" value="male" />
+              <label for="male">Male</label>
+            </div>
+            <div>
+              <input type="radio" id="female" name="gender" value="female" />
+              <label for="female">Female</label>
+            </div>
+          </fieldset>
+
+          <div>
+            <input type="text" class="input__find" placeholder="Find user" />
+          </div>
+          <button class="reset">Reset</button>
+        </div>
+      </div>
+      <div class="cards__wrapper"></div>
+    </div>
+  </body>
+</html>
