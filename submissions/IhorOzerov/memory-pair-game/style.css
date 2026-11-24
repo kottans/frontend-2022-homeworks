@@ -1,0 +1,146 @@
+@font-face {
+    font-family: 'Cloister Black';
+    src: URL('./CloisterBlack.ttf') format('truetype');
+}
+
+body{
+    overflow-y: hidden;
+    background-image: url(./images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Cloister Black', sans-serif;
+    overflow-x: hidden;
+    -moz-user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.container {
+    perspective: 1000px;
+    display: grid;
+    grid-template-columns: repeat(4, 120px);
+    grid-template-rows: repeat(4, 120px);
+    justify-items: center;
+    align-items: center;
+    background-color:#ba5137;
+    padding: 10px;
+    box-shadow: 1px 1px 2px #ba5137, -1px -1px 2px #ba5137;
+    border-radius: 5px;
+    margin-top: 85px;
+    z-index: 1;
+}   
+
+.flipper.rotated{
+    transform: rotateY(-180deg);
+    transition: 0.6s linear;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flipper {
+    transition: 0.6s linear;
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+}
+
+.flipper:active{
+    transform: scale(0.97);
+    transition: 0.2s;
+}
+
+.front,.back {
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color:#344463;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #344463, -1px -1px 2px #344463;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.winTable {
+    grid-template-rows: repeat(3, 1fr);
+    position: absolute;
+    box-shadow: 2px 2px 3px #b18e4c, -2px -2px 3px #b18e4c;
+    border-radius: 5px;
+    width: 510px;
+    height: 510px;
+    background-color:#b18e4c;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    margin-top: 90px;
+    z-index: 1;
+}
+
+.winImage {
+    width: 270px;
+    display: block;
+}
+
+.winText {
+    text-align: center;
+    font-size: 50px;
+    margin: 10px;
+}
+
+.winButton {
+    font-family: 'Cloister Black', sans-serif;
+    background-color: #b18e4c;
+    border: none;
+    font-size: 45px;
+    cursor: pointer;
+    color: black;
+}
+
+.topic {
+    position: absolute;
+    top: 0;
+    margin-top: 15px;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 3px;
+    color: #151515;
+}
+
+.topic p {
+    margin: 0 0 10px 0;
+}
+
+.mainText span {
+    font-size: 70px;
+}
+
+.sideImages {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+
+.sideImages :nth-child(1) {
+    margin-left: -90px;
+    height: 340px;
+}
+
+.sideImages :nth-child(2) {
+    height: 340px;
+    margin-right: -60px;
+}

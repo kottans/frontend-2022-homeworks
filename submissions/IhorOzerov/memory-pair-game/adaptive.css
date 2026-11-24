@@ -1,0 +1,285 @@
+@media (max-width: 1920px) and (min-width: 1340px) {
+    .sideImages :nth-child(1) {
+        margin-left: -70px;
+        height: 350px;
+    }
+    .sideImages :nth-child(2) {
+        height: 350px;
+        margin-right: -40px;
+    }
+    .container {
+        grid-template-columns: repeat(4, 120px);
+        grid-template-rows: repeat(4, 120px);
+        padding: 10px;
+        margin-top: 120px;
+    }
+    .flipper,.front,.back {
+        width: 100px;
+        height: 100px
+    }
+    .winTable {
+        width: 36vw;
+        height: 36vw;
+        min-height: 520px;
+        min-width: 520px;
+        margin-bottom: -50px;
+    }
+    .winImage {
+        width: 22vw;
+    }
+    .winText {
+        font-size: 4.5vw;
+    }
+    .winButton {
+        font-size: 4vw;
+    }
+    .topic {
+        font-size: 55px;
+        margin-top: 10px;
+    }
+    .mainText span {
+        font-size: 85px;
+    }
+}
+@media (max-width: 850px) and (min-width: 701px) {
+    body {
+        background-size: auto;
+    }
+    .sideImages :nth-child(1) {
+        margin-left: -75px;
+        height: 280px;
+    }
+    .sideImages :nth-child(2) {
+        height: 280px;
+        margin-right: -40px;
+    }
+    .container {
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: repeat(4, 100px);
+        padding: 10px;
+    }
+    .flipper,.front,.back {
+        width: 90px;
+        height: 90px
+    }
+    .winTable {
+        width: 68vw;
+        height: 68vw;
+        margin-bottom: 0px;
+        max-width: 450px;
+        max-height: 450px;;
+    }
+    .winImage {
+        width: 35vw;
+    }
+    .winText {
+        font-size: 6vw;
+    }
+    .winButton {
+        font-size: 5vw;
+    }
+    .topic {
+        font-size: 30px;
+        letter-spacing: 3px;
+        margin-top: 20px;
+    }
+    .topic p{
+        margin: 0;
+    }
+    .mainText span {
+        font-size: 55px;
+    }
+}
+@media (max-width: 700px) and (min-width: 601px) {
+    body {
+        background-size: auto;
+    }
+    .sideImages :nth-child(1) {
+        margin-left: -60px;
+        height: 210px;
+    }
+    .sideImages :nth-child(2) {
+        height: 210px;
+        margin-right: -40px;
+    }
+    .container {
+        grid-template-columns: repeat(4, 95px);
+        grid-template-rows: repeat(4, 95px);
+        padding: 10px;
+        margin-top: 60px;
+    }
+    .flipper,.front,.back {
+        width: 85px;
+        height: 85px
+    }
+    .winTable {
+        width: 67vw;
+        height: 67vw;
+        min-width: 360px;
+        min-height: 360px;
+        margin-bottom: 30px;
+    }
+    .winImage {
+        width: 35vw;
+    }
+    .winText {
+        font-size: 6vw;
+    }
+    .winButton {
+        font-size: 5vw;
+    }
+    .topic {
+        font-size: 30px;
+        letter-spacing: 3px;
+        margin-top: 20px;
+    }
+    .topic p{
+        margin: 0;
+    }
+    .mainText span {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 600px) and (min-width: 440px) {
+    body {
+        background-size: auto;
+    }
+    .sideImages :nth-child(1) {
+        margin-left: -60px;
+        height: 35vw;
+    }
+    .sideImages :nth-child(2) {
+        height: 35vw;
+        margin-right: -40px;
+    }
+    .container {
+        grid-template-columns: repeat(4, 80px);
+        grid-template-rows: repeat(4, 80px);
+        padding: 5px;
+        margin-bottom: 90px;
+    }
+    .flipper,.front,.back {
+        width: 70px;
+        height: 70px
+    }
+    .winTable {
+        width: 60vw;
+        height: 60vw;
+        min-width: 350px;
+        min-height: 350px;
+        margin-top: 0;
+    }
+    .winImage {
+        width: 40vw;
+    }
+    .winText {
+        font-size: 6vw;
+    }
+    .winButton {
+        font-size: 5vw;
+    }
+    .topic {
+        font-size: 25px;
+        letter-spacing: 3px;
+        margin-top: 20px;
+    }
+    .mainText span {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 439px) and (min-width: 370px) {
+    body {
+        background-size: auto;
+    }
+    .sideImages :nth-child(1) {
+        margin-left: -50px;
+        height: 170px;
+    }
+    .sideImages :nth-child(2) {
+        height: 170px;
+        margin-right: -40px;
+    }
+    .container {
+        grid-template-columns: repeat(4, 75px);
+        grid-template-rows: repeat(4, 75px);
+        padding: 5px;
+        margin-bottom: 160px;
+    }
+    .flipper,.front,.back {
+        width: 65px;
+        height: 65px;
+    }
+    .winTable {
+        width: 80vw;
+        height: 80vw;
+        min-width: 330px;
+        min-height: 330px;
+        margin-bottom: 170px;
+    }
+    .winImage {
+        width: 40vw;
+    }
+    .winText {
+        font-size: 7vw;
+    }
+    .winButton {
+        font-size: 6vw;
+    }
+    .topic {
+        font-size: 25px;
+        letter-spacing: 3px;
+        margin-top: 15px;
+    }
+    .mainText span {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 369px) and (min-width: 280px) {
+    body {
+        background-size: auto;
+    }
+    .sideImages :nth-child(1) {
+        margin-left: -50px;
+        height: 180px;
+    }
+    .sideImages :nth-child(2) {
+        height: 180px;
+        margin-right: -40px;
+    }
+    .container {
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: repeat(4, 70px);
+        padding: 5px;
+        margin-bottom: 170px;
+    }
+    .flipper,.front,.back {
+        width: 60px;
+        height: 60px;
+    }
+    .winTable {
+        width: 85vw;
+        height: 85vw;
+        min-width: 290px;
+        min-height: 290px;
+        margin-bottom: 180px;
+    }
+    .winImage {
+        width: 42vw;
+    }
+    .winText {
+        font-size: 8vw;
+    }
+    .winButton {
+        font-size: 6vw;
+    }
+    .topic {
+        font-size: 20px;
+        margin-top: 15px;
+    }
+    .mainText span {
+        font-size: 12vw;
+    }
+}
