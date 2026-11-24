@@ -1,0 +1,98 @@
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+    margin: 0;
+}
+main{
+    max-width: 1280px;
+    margin: 50px auto;
+    position: relative;
+}
+#game-field{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+}
+.game-card{
+    position: relative;
+    width: 20%;
+    margin: 5px;
+    aspect-ratio: 1/1;
+    border-radius: 3px;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease-in;
+    box-shadow: 2px 2px 2px lightgrey;
+    cursor: pointer;
+}
+.front, .back{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1/1;
+    backface-visibility: hidden;
+    border-radius: inherit;
+}
+.front{
+    background-color: aquamarine;
+}
+.back{
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(180deg);
+}
+.active{
+    transform: rotateY(180deg);
+}
+.matched{
+    transition:visibility 0.3s linear,opacity 0.3s linear;
+    visibility: hidden;
+    opacity: 0;
+}
+.card-img{
+    width: 85%;
+}
+.win-message{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+    position: absolute;
+    top: 45%;
+    left: calc(50% - 200px);
+    font-family: monospace;
+}
+.win-mess--text{
+    font-size: 24px;
+    text-align: center;
+}
+.restart-button{
+    appearance: none;
+    font-family: monospace;
+    margin: 10px;
+    font-size: 20px;
+}
+.show-win{
+    display: flex;
+}
+@media (max-width: 900px){
+    .game-card{
+        max-width: 200px;
+        width: 30%;
+    }
+}
+@media (orientation: landscape) and (max-width: 1000px) {
+    main{
+        margin: 20px auto;
+    }
+    .game-card{
+        height: 29vh;
+        width: auto;
+    }
+}
