@@ -1,0 +1,81 @@
+// **** Fonts ****
+
+$font-path: "../fonts";
+
+@font-face {
+   // This is parsed as an interpolated special function.
+   src: url("#{$font-path}/Kristi-Regular.woff2") format("woff2");
+
+   font-family: "Kristi";
+   font-style: normal;
+   font-weight: 400;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: "kristi-fallback1";
+   src: local("Brush Script MT");
+   size-adjust: 60.85099821%;
+}
+@font-face {
+   font-family: "kristi-fallback2";
+   src: local("Georgia");
+   size-adjust: 60.85099821%;
+}
+
+@font-face {
+   font-family: "Fredoka";
+   font-style: normal;
+   font-weight: 300;
+   font-stretch: 100%;
+   font-display: swap;
+   src: url("#{$font-path}/Fredoka-Regular.woff2") format("woff2");
+   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
+      U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+// **** Colors ****
+
+$font-color: #0d393c;
+$background-color: #f6f5ee;
+$backgrount-transparent-color: #ffffffd3;
+$shadow-color: #999;
+
+// **** Fonts ****
+
+$main-font-family: "Fredoka", sans-serif;
+$header-font-family: "Kristi", "kristi-fallback1", "kristi-fallback2", cursive;
+
+// **** Sizes ****
+
+$main-font-style: 14px;
+$main-line-height: 22px;
+
+$logo-font-style: 3rem;
+$logo-line-height: 4.5rem;
+
+$title-font-style: 3rem;
+$title-font-style--mobile: 4rem;
+$title-line-height: 4.5rem;
+
+$subtitle-font-style: 2rem;
+$subtitle-line-height: 2.5rem;
+
+$main-padding: 15px;
+
+// **** Media Queries ****
+
+@mixin devices($breakpoint) {
+   //the name of the mixin is devices
+
+   @if $breakpoint ==tablet {
+      @media only screen and (min-width: 680px) {
+         @content;
+      }
+   }
+
+   @if $breakpoint ==mobile {
+      @media only screen and (min-width: 421px) {
+         @content;
+      }
+   }
+}
