@@ -1,0 +1,57 @@
+.mob_menu {
+    display: none;
+}
+
+@media (max-width: 960px) {
+    .mob_menu {
+        display: block;
+        z-index: 5;
+        position: relative;
+        width: 30px;
+        height: 18px;
+        cursor: pointer;
+    }
+
+    .mob_menu span,
+    .mob_menu::before,
+    .mob_menu::after {
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 10%;
+        transition: all 0.3s ease 0s;
+        background-color: #0071f0;
+    }
+
+    .mob_menu::before,
+    .mob_menu::after {
+        content: "";
+    }
+
+    .mob_menu::before {
+        top: 0;
+    }
+
+    .mob_menu::after {
+        bottom: 0;
+    }
+
+    .mob_menu span {
+        top: 50%;
+        transform: scale(1) translate(0px, -50%);
+    }
+
+    .mob_menu.active span {
+        transform: scale(0) translate(0px, -50%);
+    }
+
+    .mob_menu.active::before {
+        top: 50%;
+        transform: rotate(-45deg) translate(0px, -50%);
+    }
+
+    .mob_menu.active::after {
+        bottom: 50%;
+        transform: rotate(45deg) translate(0px, 50%);
+    }
+}
