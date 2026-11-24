@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    background-color: #c1e8f9;
+    text-align: center;
+    font-size: 28px;
+
+}
+
+.more {
+    height: 1px;
+    visibility: hidden;
+    overflow-x: hidden;
+    display: none;
+}
+
+.header-text {
+    color: #173874;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    background-color: #8bbad0;
+    overflow: hidden;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav {
+    padding: 5px 10px;
+    background-color: #efefef;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.menu {
+    width: 250px;
+    padding: 20px 10px;
+    background-color: #c1e8f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 90%;
+    align-self: auto;
+    margin-right: 25px;
+}
+
+.menu li {
+    list-style: none;
+    padding: 0px;
+}
+
+.menu li a {
+    font-size: 25px;
+    display: block;
+    padding: 15px;
+    margin: 0;
+}
+
+.menu li a:link,
+.menu li a:visited {
+    text-decoration: none;
+}
+
+.menu li a:hover {
+    background-color: #9adef9;
+}
+
+.menu li a:active {
+    background-color: #69c2d2;
+}
+
+.menu li a:focus {
+    background-color: #a5c3e6;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-img {
+    text-align: center;
+}
+
+.main-wrapper img {
+    width: 100%;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 25px;
+    color: #173874;
+    margin: 5px 0px;
+    font-weight: bold;
+}
+
+.main-content {
+    padding: 30px 100px 20px;
+    background-color: #b9d4e0;
+}
+
+.main-text {
+    font-size: 22px;
+    max-width: 480px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.footer {
+    border-top: 1px solid #ccc;
+    background-color: #d4d4d4;
+    text-align: center;
+    font-size: 17px;
+    padding: 15px 0;
+    color: #473f3f;
+}
+
+.hidden {
+    visibility: hidden;
+    overflow-x: hidden;
+    display: none;
+}
+
+.keywords {
+    font-weight: 600;
+    color: #0a2a46;
+}
+
+@media (max-width: 992px) {
+    .main-wrapper {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .menu {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        border: 0;
+        margin: 0;
+    }
+
+    .menu li:nth-child(even) {
+        background-color: #b9d4e0;
+    }
+
+    .menu li a {
+        font-size: 30px;
+        padding: 5px;
+    }
+
+    .menu a:hover {
+        background-color: #809da8;
+    }
+
+    .menu a:active {
+        background-color: #6e7abd;
+    }
+
+    .menu a:focus {
+        background-color: #6b85a3;
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 20px 30px 30px;
+    }
+
+    .header {
+        background-color: #7cb0c6;
+        font-size: 40px;
+    }
+
+    .main-text {
+        font-size: 26px;
+    }
+
+    .main-title {
+        font-size: 30px;
+    }
+
+    .footer {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 576px) {
+    .more {
+        background-image: url("https://rukhlovka.github.io/study/js-dom/img/burger.png");
+        background-color: #7cb0c6;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border: 0;
+        width: 44px;
+        height: 44px;
+        display: block;
+        visibility: visible;
+        overflow-x: auto;
+        right: 0;
+        top: 0;
+    }
+
+    .more:visited {
+        background-color: #7cb0c6;
+    }
+
+    .more:hover {
+        background-color: #6ebee0;
+    }
+
+    .more:active {
+        background-color: #4e8ba4;
+    }
+
+    .more:focus {
+        background-color: #49a3c9;
+    }
+
+    .menu-ul {
+        display: none;
+    }
+
+    .menu li a {
+        font-size: 24px;
+    }
+
+    .open {
+        display: block;
+    }
+
+    .header {
+        font-size: 30px;
+    }
+
+    .main-text {
+        font-size: 22px;
+    }
+
+    .main-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 356px) {
+    .header {
+        font-size: 20px;
+    }
+}
