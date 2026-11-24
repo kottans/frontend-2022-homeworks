@@ -1,0 +1,1104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+}
+
+.icon {
+    display: block;
+    height: 40px;
+    width: 40px;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.outer_box {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav {
+    display: flex;
+    width: 250px;
+    justify-content: flex-end;
+}
+
+.item {
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border: #a18484 1px solid;
+    border-radius: 15px;
+    background-image: linear-gradient(-45deg, #F8E2CF, #C1A3A3, #F8E2CF);
+    margin: 4px;
+    width: 50px;
+    height: 50px;
+}
+
+.tribute .link:hover,
+.item:hover,
+.item:focus {
+    outline: #a18484 2px;
+    padding: 2px;
+    border-radius: 15px;
+    border: 1px solid #a18484;
+    box-shadow: 1px 3px 3px #a18484;
+}
+
+.label,
+.item:hover{
+    cursor: pointer;
+}
+.popUp:hover,
+.popUp_2:hover{
+    cursor: auto;
+}
+
+.checkBox:focus-visible~.label {
+    outline: -webkit-focus-ring-color auto 1px;
+    outline-offset: 7px;
+}
+
+.checkBox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.popUp,
+.popUp_2 {
+    position: absolute;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    width: 150px;
+    height: fit-content;
+    padding: 5px;
+    top: 45px;
+    left: -50px;
+}
+
+.popUp {
+    height: 250px;
+    top: 55px;
+    background-image: linear-gradient(45deg, #F5C6AA, #C1A3A3);
+    border-radius: 8px;
+    border: 1px solid #a18484;
+    box-shadow: 1px 3px 3px #a18484;
+    overflow-y: overlay;
+    overflow-x: hidden;
+    z-index: 1000;
+}
+
+.popUp::-webkit-scrollbar {
+    width: 8px;
+    height: 0;
+    background-color: transparent;
+}
+
+.popUp::-webkit-scrollbar-thumb {
+    background-color: #a18484;
+    border-radius: 15px;
+}
+
+.popUp::-webkit-scrollbar-thumb:hover {
+    background-color: #FDF6F0;
+}
+
+.lvl1:checked~.popUp,
+.lvl2:checked~.popUp_2 {
+    display: flex;
+}
+
+.tribute .link {
+    color: #2c2b2b;
+    font-size: 0.7em;
+    margin-top: 5px;
+    padding: 2px;
+    border: 1px solid transparent;
+}
+
+.tribute .link:focus {
+    outline-offset: 1px;
+}
+
+.header {
+    background-image: linear-gradient(-90deg, #F5C6AA, #C1A3A3);
+    flex: 0 1 66px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.main {
+    background-image: linear-gradient(90deg, #F5C6AA, #C1A3A3);
+    flex: 1 1 auto;
+    align-items: stretch;
+}
+
+.footer {
+    background-color: #C1A3A3;
+    flex: 0 1 60px;
+    flex-direction: column;
+}
+
+/*Cat picture for wide screens*/
+@media (min-width: 500px) {
+    .canvas {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 3%;
+        /*border: 1px solid blue;*/
+        width: 75%;
+    }
+
+    .picture {
+        width: 500px;
+        height: 450px;
+        min-width: 500px;
+        min-height: 450px;
+        /*border: 1px red solid;*/
+        position: relative;
+    }
+
+    .laptop_head {
+        position: absolute;
+        width: 240px;
+        height: 170px;
+        left: 130px;
+        border-radius: 20px;
+        background-color: #9aa9b9;
+        top: 50px;
+        /*временно*/
+        z-index: 10;
+    }
+
+    .laptop_screen {
+        position: absolute;
+        width: 200px;
+        height: 140px;
+        left: 20px;
+        background-color: #dcdbe2;
+        top: 15px;
+        z-index: 10;
+    }
+
+    .laptop_site_header {
+        position: absolute;
+        width: 180px;
+        height: 45px;
+        left: 10px;
+        background-color: #a07c91;
+        top: 10px;
+    }
+
+    .laptop_site_pic {
+        position: absolute;
+        width: 80px;
+        height: 70px;
+        left: 10px;
+        background-color: #c09ab0;
+        top: 60px;
+    }
+
+    .laptop_site_text {
+        position: absolute;
+        width: 90px;
+        height: 70px;
+        left: 100px;
+        background-color: #c09ab0;
+        top: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .line {
+        /*position: absolute;*/
+        width: 90px;
+        height: 6px;
+        left: 0;
+        background-color: #dcdbe2;
+    }
+
+    .laptop_block_left {
+        position: absolute;
+        width: 240px;
+        height: 100px;
+        /*border: 1px solid black;*/
+        left: 100px;
+        border-radius: 10px;
+        background-color: #9aa9b9;
+        top: 221px;
+        transform: skewX(-30deg);
+        z-index: 10;
+    }
+
+    .laptop_block_right {
+        position: absolute;
+        width: 240px;
+        height: 100px;
+        /*border: 1px solid black;*/
+        right: 100px;
+        border-radius: 10px;
+        background-color: #9aa9b9;
+        top: 221px;
+        /*временно*/
+        transform: skewX(30deg);
+        z-index: 10;
+    }
+
+    .laptop_block_left_shadow {
+        position: absolute;
+        width: 240px;
+        height: 100px;
+        /*border: 1px solid black;*/
+        left: 98px;
+        border-radius: 10px;
+        background-color: #475260;
+        top: 228px;
+        transform: skewX(-30deg);
+        z-index: 5;
+    }
+
+    .laptop_block_right_shadow {
+        position: absolute;
+        width: 240px;
+        height: 100px;
+        /*border: 1px solid black;*/
+        right: 98px;
+        border-radius: 10px;
+        background-color: #475260;
+        top: 228px;
+        transform: skewX(30deg);
+        z-index: 5;
+    }
+
+    .laptop_keyboard_left {
+        position: absolute;
+        width: 220px;
+        height: 60px;
+        left: 115px;
+        background-color: #353d43;
+        top: 231px;
+        transform: skewX(-30deg);
+        z-index: 15;
+    }
+
+    .laptop_keyboard_right {
+        position: absolute;
+        width: 220px;
+        height: 60px;
+        right: 115px;
+        background-color: #353d43;
+        top: 231px;
+        transform: skewX(30deg);
+        z-index: 15;
+    }
+
+    .keyboard_keys_1 {
+        position: absolute;
+        height: 5px;
+        width: 252px;
+        background-color: #9aa9b9;
+        top: 238px;
+        left: 120px;
+        z-index: 20;
+    }
+
+    .keyboard_keys_2 {
+        position: absolute;
+        height: 5px;
+        width: 270px;
+        background-color: #9aa9b9;
+        top: 254px;
+        left: 115px;
+        z-index: 20;
+    }
+
+    .keyboard_keys_3 {
+        position: absolute;
+        height: 5px;
+        width: 287px;
+        background-color: #9aa9b9;
+        top: 272px;
+        left: 105px;
+        z-index: 20;
+    }
+
+    .keyboard_vert_1_l {
+        position: absolute;
+        height: 70px;
+        width: 5px;
+        background-color: #9aa9b9;
+        top: 226px;
+        left: 135px;
+        transform: rotate(30deg);
+        z-index: 25;
+    }
+
+    .keyboard_vert_2_l {
+        position: absolute;
+        height: 50px;
+        width: 5px;
+        background-color: #9aa9b9;
+        top: 226px;
+        left: 165px;
+        transform: rotate(30deg);
+        z-index: 25;
+    }
+
+    .keyboard_vert_3_l {
+        position: absolute;
+        height: 70px;
+        width: 5px;
+        background-color: #9aa9b9;
+        top: 226px;
+        left: 190px;
+        transform: rotate(30deg);
+        z-index: 25;
+    }
+
+    .keyboard_vert_4_r {
+        position: absolute;
+        height: 70px;
+        width: 5px;
+        background-color: #9aa9b9;
+        top: 226px;
+        right: 190px;
+        transform: rotate(-30deg);
+        z-index: 25;
+    }
+
+    .keyboard_vert_5_r {
+        position: absolute;
+        height: 70px;
+        width: 5px;
+        background-color: #9aa9b9;
+        top: 226px;
+        right: 165px;
+        transform: rotate(-30deg);
+        z-index: 25;
+    }
+
+    .keyboard_vert_6_r {
+        position: absolute;
+        height: 70px;
+        width: 5px;
+        background-color: #9aa9b9;
+        top: 226px;
+        right: 135px;
+        transform: rotate(-30deg);
+        z-index: 25;
+    }
+
+    .touchpad_left {
+        position: absolute;
+        width: 60px;
+        height: 20px;
+        left: 210px;
+        background-color: #bec6cd;
+        top: 297px;
+        transform: skewX(-25deg);
+        z-index: 25;
+    }
+
+    .touchpad_right {
+        position: absolute;
+        width: 60px;
+        height: 20px;
+        right: 210px;
+        background-color: #bec6cd;
+        top: 297px;
+        transform: skewX(25deg);
+        z-index: 25;
+    }
+
+    .cat_frame {
+        position: absolute;
+        /*border: 1px solid red;*/
+        width: 240px;
+        height: 240px;
+        top: 85px;
+        left: 130px;
+        z-index: 30;
+    }
+
+    .cat_head {
+        position: absolute;
+        width: 130px;
+        height: 110px;
+        border-radius: 50%;
+        background-color: #f0f9ec;
+        left: 55px;
+        top: 20px;
+        z-index: 35;
+    }
+
+    .color_point {
+        position: absolute;
+        width: 80px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #f8a46d;
+        left: 5px;
+        top: 3px;
+        transform: rotate(-25deg);
+        z-index: -1;
+    }
+
+    .nose {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 12px solid #d57c6f;
+        left: 55px;
+        top: 63px;
+        z-index: 36;
+    }
+
+    .nose_vert {
+        position: absolute;
+        height: 7px;
+        width: 2px;
+        background-color: #371321;
+        top: 73px;
+        left: 64px;
+        z-index: 35;
+    }
+
+    .left_lip {
+        position: absolute;
+        height: 12px;
+        width: 2px;
+        background-color: #371321;
+        top: 2px;
+        left: -6px;
+        transform: rotate(45deg);
+        z-index: 35;
+    }
+
+    .right_lip {
+        position: absolute;
+        height: 13px;
+        width: 2px;
+        background-color: #371321;
+        top: 2px;
+        right: -5px;
+        transform: rotate(-45deg);
+        z-index: 35;
+    }
+
+    .left_eye {
+        position: absolute;
+        width: 20px;
+        height: 35px;
+        background-color: #72c8e9;
+        border-radius: 50%;
+        left: 28px;
+        top: 33px;
+        z-index: 35;
+    }
+
+    .left_eye_inner {
+        position: absolute;
+        width: 14px;
+        height: 35px;
+        background-color: #371321;
+        border-radius: 50%;
+        left: 34px;
+        top: 33px;
+        z-index: 35;
+
+    }
+
+    .left_eye_highlight {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        left: 0;
+        top: 7px;
+        z-index: 35;
+    }
+
+    .right_eye {
+        position: absolute;
+        width: 20px;
+        height: 35px;
+        background-color: #72c8e9;
+        border-radius: 50%;
+        right: 28px;
+        top: 33px;
+        z-index: 35;
+    }
+
+    .right_eye_inner {
+        position: absolute;
+        width: 14px;
+        height: 35px;
+        background-color: #371321;
+        border-radius: 50%;
+        right: 34px;
+        top: 33px;
+        z-index: 35;
+    }
+
+    .right_eye_highlight {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        right: 0;
+        top: 7px;
+        z-index: 35;
+    }
+
+    .ear_left {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #f8a46d;
+        clip-path: polygon(98% 55%, 85% 46%, 72% 36%, 46% 24%, 30% 18%, 20% 15%, 13% 15%, 12% 20%, 11% 29%, 11% 43%, 11% 53%, 13% 65%, 19% 80%, 27% 93%, 34% 97%, 39% 99%, 69% 86%);
+        left: 50px;
+        top: -8px;
+        z-index: 34;
+    }
+
+    .ear_left_inner {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-color: #d57c6f;
+        clip-path: polygon(98% 55%, 85% 46%, 72% 36%, 46% 24%, 30% 18%, 20% 15%, 13% 15%, 12% 20%, 11% 29%, 11% 43%, 11% 53%, 13% 65%, 19% 80%, 27% 93%, 34% 97%, 39% 99%, 69% 86%);
+        left: 4px;
+        top: 8px;
+    }
+
+    .ear_right {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #f0f9ec;
+        clip-path: polygon(98% 55%, 85% 46%, 72% 36%, 46% 24%, 30% 18%, 20% 15%, 13% 15%, 12% 20%, 11% 29%, 11% 43%, 11% 53%, 13% 65%, 19% 80%, 27% 93%, 34% 97%, 39% 99%, 69% 86%);
+        transform: scaleX(-1);
+        z-index: -29;
+        right: 50px;
+        top: -8px;
+    }
+
+    .ear_right_inner {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-color: #d57c6f;
+        clip-path: polygon(98% 55%, 85% 46%, 72% 36%, 46% 24%, 30% 18%, 20% 15%, 13% 15%, 12% 20%, 11% 29%, 11% 43%, 11% 53%, 13% 65%, 19% 80%, 27% 93%, 34% 97%, 39% 99%, 69% 86%);
+        left: 5px;
+        top: 8px;
+    }
+
+    .cat_body {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 45%;
+        background-color: #f0f9ec;
+        left: 70px;
+        top: 110px;
+        z-index: 30;
+    }
+
+    .paw_left {
+        position: absolute;
+        width: 30px;
+        height: 50px;
+        background-color: #e5bea5;
+        border-radius: 45%;
+        transform: rotate(-30deg);
+        top: 173px;
+        left: 90px;
+        z-index: 34;
+    }
+
+    .paw_left_white {
+        position: absolute;
+        width: 25px;
+        height: 27px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        transform: rotate(-30deg);
+        top: 23px;
+        left: 2px;
+        z-index: 35;
+    }
+
+    .claw_1_l {
+        position: absolute;
+        width: 1px;
+        height: 12px;
+        background-color: black;
+        z-index: 36;
+        top: 15px;
+        left: 10px;
+        transform: rotate(18deg);
+    }
+
+    .claw_2_l {
+        position: absolute;
+        width: 1px;
+        height: 9px;
+        background-color: black;
+        z-index: 36;
+        top: 15px;
+        left: 5px;
+        transform: rotate(15deg);
+    }
+
+    .paw_right {
+        position: absolute;
+        width: 30px;
+        height: 50px;
+        background-color: #f8a46d;
+        border-radius: 45%;
+        transform: rotate(30deg);
+        top: 173px;
+        right: 90px;
+        z-index: 37;
+    }
+
+    .paw_right_white {
+        position: absolute;
+        width: 24px;
+        height: 27px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        transform: rotate(20deg);
+        top: 23px;
+        right: 2px;
+        z-index: 38;
+    }
+
+    .claw_1_r {
+        position: absolute;
+        width: 1px;
+        height: 12px;
+        background-color: black;
+        z-index: 36;
+        top: 15px;
+        right: 10px;
+        transform: rotate(-18deg);
+    }
+
+    .claw_2_r {
+        position: absolute;
+        width: 1px;
+        height: 9px;
+        background-color: black;
+        z-index: 36;
+        top: 15px;
+        right: 5px;
+        transform: rotate(-18deg);
+    }
+
+    .claw_3_r {
+        position: absolute;
+        width: 1px;
+        height: 10px;
+        background-color: black;
+        z-index: 36;
+        top: 16px;
+        right: 16px;
+        transform: rotate(-18deg);
+    }
+
+    .cat_tail {
+        position: absolute;
+        width: 130px;
+        height: 130px;
+        background-color: #f0f9ec;
+        clip-path: polygon(15% 71%, 19% 76%, 27% 79%, 40% 81%, 53% 81%, 62% 81%, 73% 80%, 82% 76%, 88% 69%, 93% 61%, 94% 52%, 95% 43%, 93% 36%, 87% 30%, 84% 33%, 82% 36%, 81% 41%, 81% 46%, 81% 53%, 80% 58%, 77% 64%, 69% 69%, 61% 72%, 41% 72%, 30% 69%);
+        z-index: 29;
+        left: 100px;
+        top: 90px;
+    }
+
+    .cat_tail_top {
+        position: absolute;
+        width: 130px;
+        height: 130px;
+        background-color: #e5bea5;
+        clip-path: polygon(93% 61%, 94% 52%, 95% 43%, 93% 36%, 87% 30%, 84% 33%, 82% 36%, 81% 41%, 81% 46%, 81% 53%);
+        z-index: 29;
+        left: 0;
+        top: 0;
+    }
+
+}
+
+/*Cat picture without laptop*/
+@media (max-width: 500px) {
+    .canvas {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 3%;
+        /*border: 1px solid blue;*/
+        width: 75%;
+    }
+
+    .cat_frame {
+        position: relative;
+        /*border: 1px solid #22f62b;*/
+        width: 240px;
+        height: 240px;
+        z-index: 30;
+    }
+
+    .cat_head {
+        position: absolute;
+        width: 130px;
+        height: 110px;
+        border-radius: 50%;
+        background-color: #f0f9ec;
+        left: 55px;
+        top: 20px;
+        z-index: 35;
+    }
+
+    .color_point {
+        position: absolute;
+        width: 80px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #f8a46d;
+        left: 5px;
+        top: 3px;
+        transform: rotate(-25deg);
+        z-index: -1;
+    }
+
+    .nose {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 12px solid #d57c6f;
+        left: 55px;
+        top: 63px;
+        z-index: 36;
+    }
+
+    .nose_vert {
+        position: absolute;
+        height: 7px;
+        width: 2px;
+        background-color: #371321;
+        top: 73px;
+        left: 64px;
+        z-index: 35;
+    }
+
+    .left_lip {
+        position: absolute;
+        height: 12px;
+        width: 2px;
+        background-color: #371321;
+        top: 2px;
+        left: -6px;
+        transform: rotate(45deg);
+        z-index: 35;
+    }
+
+    .right_lip {
+        position: absolute;
+        height: 13px;
+        width: 2px;
+        background-color: #371321;
+        top: 2px;
+        right: -5px;
+        transform: rotate(-45deg);
+        z-index: 35;
+    }
+
+    .left_eye {
+        position: absolute;
+        width: 20px;
+        height: 35px;
+        background-color: #72c8e9;
+        border-radius: 50%;
+        left: 28px;
+        top: 33px;
+        z-index: 35;
+    }
+
+    .left_eye_inner {
+        position: absolute;
+        width: 14px;
+        height: 35px;
+        background-color: #371321;
+        border-radius: 50%;
+        left: 34px;
+        top: 33px;
+        z-index: 35;
+
+    }
+
+    .left_eye_highlight {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        left: 0;
+        top: 7px;
+        z-index: 35;
+    }
+
+    .right_eye {
+        position: absolute;
+        width: 20px;
+        height: 35px;
+        background-color: #72c8e9;
+        border-radius: 50%;
+        right: 28px;
+        top: 33px;
+        z-index: 35;
+    }
+
+    .right_eye_inner {
+        position: absolute;
+        width: 14px;
+        height: 35px;
+        background-color: #371321;
+        border-radius: 50%;
+        right: 34px;
+        top: 33px;
+        z-index: 35;
+    }
+
+    .right_eye_highlight {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        right: 0;
+        top: 7px;
+        z-index: 35;
+    }
+
+    .ear_left {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #f8a46d;
+        clip-path: polygon(98% 55%, 85% 46%, 72% 36%, 46% 24%, 30% 18%, 20% 15%, 13% 15%, 12% 20%, 11% 29%, 11% 43%, 11% 53%, 13% 65%, 19% 80%, 27% 93%, 34% 97%, 39% 99%, 69% 86%);
+        left: 50px;
+        top: -8px;
+        z-index: 34;
+    }
+
+    .ear_left_inner {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-color: #d57c6f;
+        clip-path: polygon(98% 55%, 85% 46%, 72% 36%, 46% 24%, 30% 18%, 20% 15%, 13% 15%, 12% 20%, 11% 29%, 11% 43%, 11% 53%, 13% 65%, 19% 80%, 27% 93%, 34% 97%, 39% 99%, 69% 86%);
+        left: 4px;
+        top: 8px;
+    }
+
+    .ear_right {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #f0f9ec;
+        clip-path: polygon(98% 55%, 85% 46%, 72% 36%, 46% 24%, 30% 18%, 20% 15%, 13% 15%, 12% 20%, 11% 29%, 11% 43%, 11% 53%, 13% 65%, 19% 80%, 27% 93%, 34% 97%, 39% 99%, 69% 86%);
+        transform: scaleX(-1);
+        z-index: -29;
+        right: 50px;
+        top: -8px;
+    }
+
+    .ear_right_inner {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-color: #d57c6f;
+        clip-path: polygon(98% 55%, 85% 46%, 72% 36%, 46% 24%, 30% 18%, 20% 15%, 13% 15%, 12% 20%, 11% 29%, 11% 43%, 11% 53%, 13% 65%, 19% 80%, 27% 93%, 34% 97%, 39% 99%, 69% 86%);
+        left: 5px;
+        top: 8px;
+    }
+
+    .cat_body {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 45%;
+        background-color: #f0f9ec;
+        left: 70px;
+        top: 110px;
+        z-index: 30;
+    }
+
+    .paw_left {
+        position: absolute;
+        width: 30px;
+        height: 50px;
+        background-color: #e5bea5;
+        border-radius: 45%;
+        transform: rotate(-30deg);
+        top: 173px;
+        left: 90px;
+        z-index: 34;
+    }
+
+    .paw_left_white {
+        position: absolute;
+        width: 25px;
+        height: 27px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        transform: rotate(-30deg);
+        top: 23px;
+        left: 2px;
+        z-index: 35;
+    }
+
+    .claw_1_l {
+        position: absolute;
+        width: 1px;
+        height: 12px;
+        background-color: black;
+        z-index: 36;
+        top: 15px;
+        left: 10px;
+        transform: rotate(18deg);
+    }
+
+    .claw_2_l {
+        position: absolute;
+        width: 1px;
+        height: 9px;
+        background-color: black;
+        z-index: 36;
+        top: 15px;
+        left: 5px;
+        transform: rotate(15deg);
+    }
+
+    .paw_right {
+        position: absolute;
+        width: 30px;
+        height: 50px;
+        background-color: #f8a46d;
+        border-radius: 45%;
+        transform: rotate(30deg);
+        top: 173px;
+        right: 90px;
+        z-index: 37;
+    }
+
+    .paw_right_white {
+        position: absolute;
+        width: 24px;
+        height: 27px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        transform: rotate(20deg);
+        top: 23px;
+        right: 2px;
+        z-index: 38;
+    }
+
+    .claw_1_r {
+        position: absolute;
+        width: 1px;
+        height: 12px;
+        background-color: black;
+        z-index: 36;
+        top: 15px;
+        right: 10px;
+        transform: rotate(-18deg);
+    }
+
+    .claw_2_r {
+        position: absolute;
+        width: 1px;
+        height: 9px;
+        background-color: black;
+        z-index: 36;
+        top: 15px;
+        right: 5px;
+        transform: rotate(-18deg);
+    }
+
+    .claw_3_r {
+        position: absolute;
+        width: 1px;
+        height: 10px;
+        background-color: black;
+        z-index: 36;
+        top: 16px;
+        right: 16px;
+        transform: rotate(-18deg);
+    }
+
+    .cat_tail {
+        position: absolute;
+        width: 130px;
+        height: 130px;
+        background-color: #f0f9ec;
+        clip-path: polygon(15% 71%, 19% 76%, 27% 79%, 40% 81%, 53% 81%, 62% 81%, 73% 80%, 82% 76%, 88% 69%, 93% 61%, 94% 52%, 95% 43%, 93% 36%, 87% 30%, 84% 33%, 82% 36%, 81% 41%, 81% 46%, 81% 53%, 80% 58%, 77% 64%, 69% 69%, 61% 72%, 41% 72%, 30% 69%);
+        z-index: 29;
+        left: 100px;
+        top: 90px;
+    }
+
+    .cat_tail_top {
+        position: absolute;
+        width: 130px;
+        height: 130px;
+        background-color: #e5bea5;
+        clip-path: polygon(93% 61%, 94% 52%, 95% 43%, 93% 36%, 87% 30%, 84% 33%, 82% 36%, 81% 41%, 81% 46%, 81% 53%);
+        z-index: 29;
+        left: 0;
+        top: 0;
+    }
+
+}
