@@ -1,0 +1,319 @@
+body {
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+:root {
+  --green: rgba(51, 131, 09, 0.75);
+  --light-green: rgba(201, 212, 108, 0.5);
+  --carrot: rgba(228, 135, 22, 1);
+  --light-carrot: rgba(250, 171, 1, 0.8);
+  --sand: rgba(223, 188, 178, 0.8);
+}
+
+.main-header {
+  z-index: 100;
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  height: min(80px, 7vmax);
+  background-color: var(--carrot);
+}
+
+.main-header h1 {
+  padding: 0.2em;
+  margin: 0;
+  color: white;
+  font-size: 2.5em;
+  text-align: center;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-wrap {
+  position: sticky;
+  top: calc(min(80px, 7vmax) + 4px);
+}
+
+.form-parameters {
+  margin: 0;
+  position: relative;
+  width: 20%;
+  min-height: calc(100vh - min(80px, 7vmax));
+  align-self: sticky;
+  color: var(--green);
+  background-color: var(--carrot);
+  background-size: auto 100%;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.back-img {
+  background-image: url("./img/palitra.png");
+}
+
+.back-img600 {
+  background-image: url("./img/palitra_600.png");
+}
+
+.form-parameters fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 2%;
+  margin: 2px 2px 10px;
+}
+
+.form-parameters fieldset label {
+  height: 30px;
+  font-size: 18px;
+  font-family: "Bungee Spice", cursive;
+}
+
+.radio-control-label {
+  position: relative;
+  top: -40px;
+  left: 40px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.radio-control-label span {
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.radio-control {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  margin: 4px 13px 13px 5px;
+  padding: 5px;
+  background-color: var(--light-carrot);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.radio-control:checked {
+  background-color: green;
+}
+
+.radio-control:checked:before {
+  content: "\1F34A";
+  color: var(--carrot);
+  position: relative;
+  padding: initial;
+  top: -5px;
+  left: -5px;
+  font-size: 18px;
+}
+
+.radio-control:checked:before ~ .radio-control-label {
+  top: -5px;
+  left: -5px;
+}
+
+.input {
+  box-sizing: border-box;
+  width: calc(100% - 4px);
+  color: var(--green);
+  font-size: 24px;
+  padding: 5px;
+  border: none;
+  border-radius: 2%;
+  background-color: rgba(255, 255, 255, 0.75);
+  outline: none;
+  margin: 0px 2px 10px;
+}
+
+#clear {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  border: none;
+  top: 4px;
+  right: 4px;
+  width: 25px;
+  height: 25px;
+  font-size: 30px;
+  line-height: 26px;
+  color: var(--green);
+}
+
+#clear:hover {
+  color: var(--carrot);
+}
+
+#clear:active {
+  color: var(--light-carrot);
+}
+
+.reset {
+  width: 50%;
+  background-color: var(--green);
+  margin: 0 25%;
+  font-family: "Bungee Spice", cursive;
+  font-size: 18px;
+  height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.content {
+  margin: 0;
+  width: 80%;
+  min-height: calc(100vh - min(80px, 7vmax));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  align-content: space-evenly;
+  background-color: var(--light-green);
+}
+
+.friend-wrap {
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 5%;
+  box-shadow: 3px 7px 7px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
+  align-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.friend-wrap * {
+  margin: 0;
+}
+
+.friend-header,
+.friend-gender {
+  width: 100%;
+  height: 12%;
+  background-color: var(--green);
+  color: white;
+  text-align: center;
+}
+
+.friend-header h3 {
+  padding: 5px;
+  font-size: 1.1em;
+}
+
+.friend-img {
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: inset 1px 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.male {
+  border: 2px solid var(--green);
+}
+
+.female {
+  border: 2px solid var(--carrot);
+}
+
+.friend-wrap p {
+  font-size: 18px;
+}
+
+.friend-wrap p,
+.friend-wrap a {
+  color: var(--carrot);
+  font-weight: 700;
+}
+.friend-wrap a:hover {
+  color: var(--green);
+}
+
+.friend-gender h4 {
+  padding: 8px;
+  text-transform: uppercase;
+}
+
+.friend-email {
+  font-size: 13px;
+}
+
+@media screen and (max-width: 800px) {
+  .form-parameters {
+    width: 25%;
+  }
+  .content {
+    width: 75%;
+  }
+  .radio-control-label {
+    font-size: 13px;
+  }
+  .reset {
+    width: 80%;
+    margin: 0 10%;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .main-header h1 {
+    padding: 0;
+  }
+  .radio-control-label {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .main-header {
+    font-size: 0.8em;
+  }
+  .form-parameters {
+    width: 30%;
+  }
+  .content {
+    width: 70%;
+  }
+  .radio-control-label {
+    font-size: 10px;
+  }
+  .input {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 388px) {
+  .form-parameters {
+    width: 30%;
+  }
+  .content {
+    width: 70%;
+  }
+  .radio-control-label {
+    font-size: 7px;
+  }
+  .input {
+    font-size: 14px;
+  }
+  #clear {
+    width: 20px;
+    height: 20px;
+    font-size: 25px;
+    line-height: 22px;
+  }
+}
