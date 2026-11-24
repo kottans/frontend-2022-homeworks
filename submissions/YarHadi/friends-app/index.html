@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends App</title>
+
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Judson"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/junge" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="header-container">
+      <input type="checkbox" class="filter-input" id="nav-filter-btn" />
+      <label for="nav-filter-btn" id="nav-filter-btn-label">
+        <img
+          src="./icons/menu.png"
+          style="cursor: pointer; filter: invert(100%)"
+          class="nav-img"
+        />
+      </label>
+      <div class="filter-container">
+        <button class="reset-btn close-btn" onclick="closeFilters()">X</button>
+        <label class="filter-text" for="searchName">Search by name:</label>
+        <input
+          class="search-name-field"
+          type="text"
+          name="search"
+          id="searchName"
+        />
+        <p class="filter-text">Sort by age:</p>
+        <div class="filter-box">
+          <input type="radio" id="sortByAgeUp" name="sort" value="ageUp" />
+          <label for="sortByAgeUp">
+            <img class="filter-img" src="./icons/ageUp.png" />
+          </label>
+          <input type="radio" id="sortByAgeDown" name="sort" value="ageDown" />
+          <label for="sortByAgeDown">
+            <img class="filter-img" src="./icons/ageDown.png" />
+          </label>
+        </div>
+        <p class="filter-text">Sort by name:</p>
+        <div class="filter-box">
+          <input type="radio" id="sortByNameUp" name="sort" value="nameUp" />
+          <label for="sortByNameUp">
+            <img class="filter-img" src="./icons/az.jpg" />
+          </label>
+          <input
+            type="radio"
+            id="sortByNameDown"
+            name="sort"
+            value="nameDown"
+          />
+          <label for="sortByNameDown">
+            <img class="filter-img" src="./icons/za.png" />
+          </label>
+        </div>
+        <p class="filter-text">Filter by gender:</p>
+        <div class="filter-box">
+          <input
+            class="input"
+            type="radio"
+            name="filter"
+            value="male"
+            id="male"
+          />
+          <label for="male">
+            <img class="filter-img" src="./icons/male.png" />
+          </label>
+          <input type="radio" id="female" name="filter" value="female" />
+          <label for="female">
+            <img class="filter-img" src="./icons/female.png" />
+          </label>
+          <input type="radio" id="all" name="filter" value="all" checked />
+          <label for="all">
+            <img class="filter-img" src="./icons/all.png" />
+          </label>
+        </div>
+        <button class="reset-btn" id="reset-button">Reset filters</button>
+      </div>
+      <p class="header-text">Friends App</p>
+      <a href="https://github.com/YarHadi/kottans-frontend" target="_blank">
+        <img src="./icons/header-user-photo.png" class="header-user-img" />
+      </a>
+    </header>
+    <main class="main-container">
+      <div class="friends-container">
+        <div class="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </main>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
+
