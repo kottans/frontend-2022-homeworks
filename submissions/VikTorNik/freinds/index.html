@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="user-pageNav" class="nav">
+            <div class="nav__div nav__server">
+                <p class="nav-caption">download friends</p>
+                <div>
+                    <input type="number" min="1" max="100" step="1" value="7"
+                        id="check-totalFriend" class="nav-filter">
+                    <label for="check-totalFriend"><img height="30rem"
+                            src="img/freinds.png"></label>
+                </div>
+                <div class="more-collumn">
+                    <div>
+                        <input type="checkbox" id="check-male"
+                            class="nav-filter">
+                        <label for="check-male"><img img height="25rem"
+                                src="img/man.png"></label>
+                    </div>
+                    <div> <input type="checkbox" id="check-female"
+                            class="nav-filter">
+                        <label for="check-female"><img img height="25rem"
+                                src="img/woman.png"></label>
+                    </div>
+                </div>
+                <div class="more-collumn">
+                    <div>
+                        <input type="checkbox" id="check-UA" class="nav-filter">
+                        <label for="check-UA"><img img height="25rem"
+                                src="img/ukr.png"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="check-ES" class="nav-filter">
+                        <label for="check-ES"><img height="25rem"
+                                src="img/spa.png"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="check-GB" class="nav-filter">
+                        <label for="check-GB"><img height="25rem"
+                                src="img/gbr.png"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="check-NO" class="nav-filter">
+                        <label for="check-NO"><img height="25rem"
+                                src="img/nor.png"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="check-CA" class="nav-filter">
+                        <label for="check-CA"><img height="25rem"
+                                src="img/can.png"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="check-US" class="nav-filter">
+                        <label for="check-US"><img height="25rem"
+                                src="img/usa.png"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav__div nav__local">
+                <p class="nav-caption">Filter by age</p>
+                <div class="more-collumn">
+                    <div>
+                        <img height="50rem" src="img/from.png">
+                        <input type="number" min="1" step="1" value="25"
+                            id="check-minAge" class="nav-filter">
+                        <label for="check-minAge"></label>
+                        <input type="number" min="1" step="1" value="50"
+                            id="check-maxAge" class="nav-filter">
+                        <label for="check-maxAge"><img height="50rem"
+                                src="img/to.png"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav__div nav__local">
+                <p class="nav-caption">Filter by name</p>
+                <input type="text" size="4" autofocus value=""
+                    placeholder="name" id="input-name" class="nav-filter">
+                <label for="input-name" class="nav-caption"><img height="30rem"
+                        src="img/search.png"></label>
+            </div>
+
+            <div class="nav__div nav__local">
+                <p class="nav-caption">Sorting</p>
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" name="answer" id="check-sort-noSort"
+                            class="nav-filter" checked>
+                        <img height="30rem" src="img/random.png">
+                    </label>
+                    <div class="more-collumn">
+                        <label class="radio">
+                            <input type="radio" name="answer"
+                                id="check-sort-nameABC" class="nav-filter">
+                            <img height="30rem" src="img/abc.png">
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="answer"
+                                id="check-sort-nameZYX" class="nav-filter">
+                            <img height="30rem" src="img/zyx.png">
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="answer"
+                                id="check-sort-dobMinMax" class="nav-filter">
+                            <img height="35rem" src="img/old-y.png">
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="answer"
+                                id="check-sort-dobMaxMin" class="nav-filter">
+                            <img height="35rem" src="img/y-old.png">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="nav__div nav__local">
+                <p class="nav-caption">Add info</p>
+                <div class="more-collumn">
+                    <div>
+                        <input type="checkbox" id="check-location"
+                            class="nav-filter">
+                        <label for="check-location"><img height="30rem"
+                                src="img/location.png"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="check-cell"
+                            class="nav-filter">
+                        <label for="check-cell"><img height="30rem"
+                                src="img/cell.png"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="check-phone"
+                            class="nav-filter">
+                        <label for="check-phone"><img height="30rem"
+                                src="img/phone.png"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="check-email"
+                            class="nav-filter">
+                        <label for="check-email"><img height="30rem"
+                                src="img/email.png"></label>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main id="user-pageMain" class="main">
+            <div class="main__div">
+            </div>
+        </main>
+
+        <main id="user-overpageMain" class="overmain">
+            
+        </main>
+    </div>
+</body>
+
+</html>

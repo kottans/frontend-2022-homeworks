@@ -1,0 +1,235 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+$main-height: 100vh;
+$menu-width: 18vw;
+$overmain-width: 2vw;
+$main-width: 100vw - $menu-width - $overmain-width;
+
+$color-menu-dark: rgb(0, 121, 125);
+$color-menu-text: rgb(145, 240, 230);
+$color-menu-item: rgb(255, 255, 255, 0.35);
+$color-main: rgb(243, 221, 161);
+$color-card: rgba(255, 255, 255, 0.5);
+$color-card-hover: rgb(244, 227, 190);
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-areas:
+        "nav main overmain";
+    grid-template-rows: minmax(100vh, max-content);
+    grid-template-columns: $menu-width $main-width $overmain-width;
+    overflow-x: hidden;
+}
+
+#user-pageNav {
+    grid-area: nav;
+}
+
+#user-pageMain {
+    grid-area: main;
+}
+
+#user-overpageMain {
+    grid-area: overmain;    
+}
+
+.nav {
+    background-color: $color-menu-dark;
+    color: $color-menu-text;
+    font-weight: 700;
+    padding-top: 7px;
+}
+
+.nav__div {
+    display: block;
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+    padding: 0.7rem 1.8rem;
+    margin: 1.5vh 1.1vw 2.2vh 1.1vw;
+    border-radius: .5vw;
+    background-color: $color-menu-item;
+
+    .more-collumn {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .nav-filter {
+        cursor: pointer;
+        transform: scale(1.1);
+        opacity: 0.6;
+    }
+
+    #input-name,
+    #check-totalFriend,
+    #check-minAge,
+    #check-maxAge {
+        font-size: 1.8rem;
+        font-weight: 600;
+        border-radius: .3vw;
+        padding-left: .3rem;
+    }
+
+    #check-totalFriend,
+    #check-minAge,
+    #check-maxAge {
+        width: 50%;
+    }
+
+    label img {
+        margin: 0 0.8rem 0 0.8rem;
+    }
+
+    .nav-caption {
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+}
+
+.main,
+.overmain {
+    background-color: $color-main;
+}
+
+.main__div {
+    display: grid;
+    grid-template-columns: repeat(var(--columns-card), 1fr);
+    grid-template-rows: repeat(auto-fit, 1fr);
+
+    .div__card {
+        display: flex;
+        background-color: $color-card;        
+        border-radius: .9rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        margin: 20px 20px;
+
+        .card-image {
+            float: left;
+            padding: 13px;
+
+            .card-photo {
+                border-radius: 6px;
+                width: 10rem;
+                height: 10rem;
+            }
+        }
+
+        .card-text {
+            padding: 1.5vh .1vw;
+            font-size: 1.6rem;
+            font-weight: 600;
+
+            p:first-child {
+                font-size: 2.5rem;
+                opacity: 1;
+            }
+
+            p {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .div__card:hover {
+        background-color: $color-card-hover;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 50%;
+    }
+
+    $menu-width: 36vw;
+    $overmain-width: 4vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
+
+    .wrapper {
+        grid-template-columns: $menu-width $main-width $overmain-width;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 50%;
+    }
+
+    $menu-width: 30vw;
+    $overmain-width: 2.5vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
+
+    .wrapper {
+        grid-template-columns: $menu-width $main-width $overmain-width;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    html {
+        font-size: 52%;
+    }
+
+    $menu-width: 28vw;
+    $overmain-width: 2vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
+
+    .wrapper {
+        grid-template-columns: $menu-width $main-width $overmain-width;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+    html {
+        font-size: 58%;
+    }
+
+    $menu-width: 26vw;
+    $overmain-width: 1.5vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
+
+    .wrapper {
+        grid-template-columns: $menu-width $main-width $overmain-width;
+    }
+}
+
+@media (min-width: 1201px) {
+    html {
+        font-size: 67%;
+    }
+
+    $menu-width: 19vw;
+    $overmain-width: 1vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
+
+    .wrapper {
+        grid-template-columns: $menu-width $main-width $overmain-width;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    html {
+        font-size: 53%;
+    }
+
+    $menu-width: 26vw;
+    $overmain-width: 1vw;
+    $main-width: 100vw - $menu-width - $overmain-width;
+
+    .wrapper {
+        grid-template-columns: $menu-width $main-width $overmain-width;
+    }
+}
