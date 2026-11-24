@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    font-size: 18px;
+}
+
+html {
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 10px rgba($dark-color, 0.4);
+    }
+    ::-webkit-scrollbar-thumb {
+        background-image: linear-gradient($first-accent-color, $second-accent-color);
+        &:hover {
+            box-shadow: inset 0 0 10px rgba($light-color, 0.8);
+        }
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 30px;
+    margin: 0 auto;
+}
+
+.full-page {
+    background-color: $light-color;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
