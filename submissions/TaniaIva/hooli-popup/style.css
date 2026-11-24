@@ -1,0 +1,136 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   color: grey;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 14px;
+}
+
+.nav__menu {
+   display: flex;
+   justify-content: center;
+   padding: 20px;
+}
+
+.menu__item {
+   position: relative;
+   margin: 20px;
+   text-decoration: none;
+   color: grey;
+}
+
+
+
+.once__more-div {
+   display: block;
+}
+
+.modal__label {
+   position: relative;
+   cursor: pointer;
+}
+
+.modal {
+   appearance: none;
+   position: absolute;
+}
+
+.menu__item image {
+   display: block;
+}
+
+.div__for-popup {
+   position: absolute;
+   top: 50px;
+   right: -50px;
+   width: 350px;
+   height: 500px;
+   overflow-y: scroll;
+   border: 1px solid grey;
+   border-radius: 5px;
+   box-shadow: 1px 3px 7px #373232;
+   padding-top: 20px;
+   display: none;
+}
+
+.modal:checked~.div__for-popup{
+   display: block;
+}
+
+.image {
+   width: 20px;
+}
+
+.popup {
+   display: grid;
+   grid-template-columns: repeat(3, 100px);
+   grid-template-rows: repeat(1, 1fr);
+   gap: 10px;
+}
+
+
+.popup__item {
+   padding: 5px;
+   margin: 0 auto;
+   text-align: center;
+   cursor: pointer;
+}
+
+.popup__item:focus {
+   border: 1px solid grey;
+}
+
+.image__popup {
+   margin: 20px;
+   height: 30px;
+}
+
+
+.modal__more-label {
+   display: block;
+   width: 100%;
+   text-align: center;
+   background-color: rgb(224, 233, 235);
+   padding: 10px;
+   color: #373232;
+   cursor: pointer;
+}
+
+.popup__more {
+   display: grid;
+   grid-template-columns: repeat(3, 100px);
+   grid-template-rows: repeat(1, 1fr);
+   gap: 10px;
+}
+
+.modal__more {
+   appearance: none;
+}
+
+.modal__more:checked ~ .modal__more-label {
+   display: none;
+}
+
+.div__for-popup-more {
+   margin-top: 40px;
+   padding-bottom: 20px;
+   position: absolute;
+   display: none;
+}
+
+.modal__more:checked ~ .div__for-popup-more {
+   display: block;
+}
+
+
+.popup__item:focus, .popup__item:active, .popup__item:hover {
+   border: 1px solid greenyellow;
+}
+
+.menu__item:focus, .menu__item:active, .menu__item:hover {
+   border: 1px solid greenyellow;
+}
