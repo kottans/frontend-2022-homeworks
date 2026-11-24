@@ -1,0 +1,43 @@
+
+html {
+    min-height: 100vh;
+    font-family: Lunacy;
+    color: #fff;
+  }
+body{
+    background-color: #000;
+    text-align: center;
+    margin: 0 auto;
+}
+button{
+    font-size: 20px;
+    padding: 5px 20px;
+    margin-bottom: 2%;
+}
+img{
+    width: 20%;
+    height: 27vh;
+    padding: 5px;
+    border: 0.2em solid rgb(59, 57, 57);
+}
+h3{
+    margin-top: 1%;
+}
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 420px) {
+    img{
+        height: 18vh;
+        }
+    h3{
+        margin: 0;
+    }
+    button{padding: 2px 10px;}
+}
+@media screen and (min-width:1900px) {
+    img{width: 14%;}
+}
