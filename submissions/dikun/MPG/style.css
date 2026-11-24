@@ -1,0 +1,296 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+  font-family: 'Roboto Condensed', sans-serif;
+  -webkit-user-select: none;  
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+button {
+	cursor: pointer;
+	color: inherit;
+	background-color: inherit;
+}
+
+a {
+	color: inherit;
+}
+
+a:link,
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;	
+  background-color: #263238;
+  color: #fff;
+  overflow: auto;  
+}
+
+.wrapper > main {
+    flex: 1 1 auto;
+}
+
+.title {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.subtitle {
+  text-align: center;
+  padding-top: 15px;
+  font-size: 27px;
+  color: #23B123;
+}
+
+.header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.menu__body  {
+  margin-top: 30px;
+  padding: 0 10px;
+}
+
+.menu__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  gap: 15px;
+}
+
+.menu__link {  
+  display: inline-block; 
+  padding: 10px; 
+  width: 150px;
+  height: 50px;
+  font-size: 25px;
+  font-weight: 400; 
+  transition: all 0.3s ease 0s;
+}
+
+.menu__link:hover {
+  width: 250px;
+  color: #23B123;
+  border: 1px solid #23B123;
+  border-radius: 5px;
+}
+
+.game {
+  width: 650px;
+  height: 650px;
+  margin: auto;
+  margin-top: 15px;
+  padding: 0 10px;
+  display: flex;
+  flex-flow: row wrap;
+  perspective: 1000px;  
+}
+
+.card {
+  position: relative;
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);  
+  margin: 5px; 
+  transition: transform 0.5s;
+  transform-style: preserve-3d;  
+  cursor: pointer;  
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.card.hide {
+  opacity: 0;  
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; 
+  -moz-backface-visibility: hidden; 
+  -ms-backface-visibility: hidden;
+}
+
+.front {
+  transform: rotateY(180deg);
+  object-fit: contain;
+}
+
+.back {
+  z-index: 2;
+  transform: rotateY(0deg);
+  user-select: none;
+  -webkit-user-select: none;   
+  -moz-user-select: none;      
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+}
+
+.footer {
+ height: 50px;
+}
+
+.footer_title {
+  padding-top: 15px;
+  text-align: center;
+  color: #23B123;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0,0,0, .56);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  min-height: 140px;
+  background: #F2F2F2;
+  padding: 38px 40px 40px 40px;
+  z-index: 2;
+}
+
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 46px;
+  line-height: 21px;
+  color: #23B123;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.modal__title {
+  font-weight: 700;
+  font-size: 20px;               
+  text-align: center;
+}
+
+.modal__subtitle {
+  padding-top: 13px;
+  font-weight: 500;
+  font-size: 22px;
+  text-align: center;
+  color: #23B123;
+}
+
+@media (max-width: 768px) {
+  .title {
+    margin-top: 50px;
+    font-size: 30px;
+  }
+
+  .menu__body {
+    margin-top: 15px;
+  } 
+
+  .game {
+    width: 550px;
+    height: 750px;
+  }
+}
+
+@media (max-width: 550px) {
+  .game {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 425px) {
+  .title {
+    margin-top: 30px;
+    font-size: 25px;
+  }
+
+  .subtitle {    
+    padding-top: 10px;
+    font-size: 18px;
+    
+  }
+
+  .menu__body {
+    margin-top: 10px;
+  } 
+
+  .menu__link {    
+    width: 100px;
+    height: 40px; 
+    font-size: 16px;      
+  }
+  
+  .menu__link:hover {
+    width: 100px;       
+  } 
+
+  .game {
+    width: 300px;
+    height: 300px;
+  }
+
+  .card {
+    width: calc(33% - 10px);
+    height: calc(25% - 10px); 
+  }
+
+  .modal {   
+    width: 280px;    
+  }
+}
